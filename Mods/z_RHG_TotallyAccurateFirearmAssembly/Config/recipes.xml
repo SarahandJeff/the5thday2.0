@@ -1,0 +1,2033 @@
+<configs>
+	<remove xpath="/recipes/recipe[starts-with(@name,'ammo762mm')]"/>
+	<remove xpath="/recipes/recipe[starts-with(@name,'ammo9mm')]"/>
+	<remove xpath="/recipes/recipe[starts-with(@name,'ammo44Magnum')]"/>
+	<remove xpath="/recipes/recipe[starts-with(@name,'ammoBundle9mmBullet')]"/>
+	<remove xpath="/recipes/recipe[starts-with(@name,'ammoShotgunSlug')]"/>
+	<remove xpath="/recipes/recipe[starts-with(@name,'ammoBundleShotgunSlug')]"/>
+	
+	<remove xpath="/recipes/recipe[starts-with(@name,'ammoShotgunShell')]"/>
+	<remove xpath="/recipes/recipe[starts-with(@name,'ammoBundleShotgunShell')]"/>
+
+	<remove xpath="/recipes/recipe[starts-with(@name,'ammoShotgunBreachingSlug')]"/>
+	<remove xpath="/recipes/recipe[starts-with(@name,'ammoBundleShotgunBreachingSlug')]"/>
+
+	
+<set xpath="//recipe[@name='modGunLaserSight']/@craft_area">GunsmithingBench</set>
+<set xpath="//recipe[@name='modGunFlashlight']/@craft_area">GunsmithingBench</set>
+<setattribute xpath="//recipe[@name='modGunLaserSight']" name="craft_tool">toolTAAssemblyMat</setattribute>
+<setattribute xpath="//recipe[@name='modGunFlashlight']" name="craft_tool">toolTAAssemblyMat</setattribute>
+
+<set xpath="//recipe[@name='modGunReflexSight']/@craft_area">GunsmithingBench</set>
+<set xpath="//recipe[@name='modGunScopeSmall']/@craft_area">GunsmithingBench</set>
+<set xpath="//recipe[@name='modGunScopeMedium']/@craft_area">GunsmithingBench</set>
+<set xpath="//recipe[@name='modGunScopeLarge']/@craft_area">GunsmithingBench</set>
+<setattribute xpath="//recipe[@name='modGunReflexSight']" name="craft_tool">toolTAAssemblyMat</setattribute>
+<setattribute xpath="//recipe[@name='modGunScopeSmall']" name="craft_tool">toolTAAssemblyMat</setattribute>
+<setattribute xpath="//recipe[@name='modGunScopeMedium']" name="craft_tool">toolTAAssemblyMat</setattribute>
+<setattribute xpath="//recipe[@name='modGunScopeLarge']" name="craft_tool">toolTAAssemblyMat</setattribute>
+
+<set xpath="//recipe[@name='modGunTriggerGroupSemi']/@craft_area">GunsmithingBench</set>
+<set xpath="//recipe[@name='modGunTriggerGroupBurst3']/@craft_area">GunsmithingBench</set>
+<set xpath="//recipe[@name='modGunTriggerGroupAutomatic']/@craft_area">GunsmithingBench</set>
+<setattribute xpath="//recipe[@name='modGunTriggerGroupSemi']" name="craft_tool">toolTAViceBlocks</setattribute>
+<setattribute xpath="//recipe[@name='modGunTriggerGroupBurst3']" name="craft_tool">toolTAViceBlocks</setattribute>
+<setattribute xpath="//recipe[@name='modGunTriggerGroupAutomatic']" name="craft_tool">toolTAViceBlocks</setattribute>
+
+<set xpath="//recipe[@name='modGunBipod']/@craft_area">GunsmithingBench</set>
+<set xpath="//recipe[@name='modGunForegrip']/@craft_area">GunsmithingBench</set>
+<set xpath="//recipe[@name='modGunRetractingStock']/@craft_area">GunsmithingBench</set>
+<setattribute xpath="//recipe[@name='modGunBipod']" name="craft_tool">toolTARifleStand</setattribute>
+<setattribute xpath="//recipe[@name='modGunForegrip']" name="craft_tool">toolTARifleStand</setattribute>
+<setattribute xpath="//recipe[@name='modGunRetractingStock']" name="craft_tool">toolTARifleStand</setattribute>
+
+<set xpath="//recipe[@name='modGunMagazineExtender']/@craft_area">GunsmithingBench</set>
+<set xpath="//recipe[@name='modGunDrumMagazineExtender']/@craft_area">GunsmithingBench</set>
+<setattribute xpath="//recipe[@name='modGunMagazineExtender']" name="craft_tool">toolTAAssemblyMat</setattribute>
+<setattribute xpath="//recipe[@name='modGunDrumMagazineExtender']" name="craft_tool">toolTAViceBlocks</setattribute>
+
+
+<set xpath="//recipe[@name='modGunMeleeTheHunter']/@craft_area">GunsmithingBench</set>
+<set xpath="//recipe[@name='modGunCrippleEm']/@craft_area">GunsmithingBench</set>
+<set xpath="//recipe[@name='modGunMeleeRadRemover']/@craft_area">GunsmithingBench</set>
+<setattribute xpath="//recipe[@name='modGunMeleeTheHunter']" name="craft_tool">toolTAAssemblyMat</setattribute>
+<setattribute xpath="//recipe[@name='modGunCrippleEm']" name="craft_tool">toolTAGunsmithKit</setattribute>
+<setattribute xpath="//recipe[@name='modGunMeleeRadRemover']" name="craft_tool">toolTAGunsmithKit</setattribute>
+
+<!--Benches-->
+
+<append xpath="/recipes">
+
+		<recipe name="MillingMachine" count="1" craft_time="300" craft_area="workbench" >
+			<ingredient name="BrokenMillingMachine" count="1"/>
+			<ingredient name="resourceForgedSteel" count="50"/>
+			<ingredient name="HOHVehicleBolts4" count="30"/>
+			<ingredient name="resourceMechanicalParts" count="15"/>
+			<ingredient name="resourceElectricParts" count="20"/>
+		</recipe>
+		
+		<recipe name="LathingMachine" count="1" craft_time="300" craft_area="workbench" >
+			<ingredient name="BrokenLathingMachine" count="1"/>
+			<ingredient name="resourceForgedSteel" count="50"/>
+			<ingredient name="HOHVehicleBolts4" count="30"/>
+			<ingredient name="resourceMechanicalParts" count="15"/>
+			<ingredient name="resourceElectricParts" count="20"/>
+		</recipe>
+		<recipe name="PowerHammer" count="1" craft_time="300" craft_area="workbench" >
+			<ingredient name="BrokenPowerHammer" count="1"/>
+			<ingredient name="resourceForgedSteel" count="50"/>
+			<ingredient name="HOHVehicleBolts4" count="30"/>
+			<ingredient name="resourceMechanicalParts" count="15"/>
+			<ingredient name="resourceElectricParts" count="20"/>
+		</recipe>
+		
+		<recipe name="AmmoBench" count="1" craft_time="300" craft_area="workbench" >
+			<ingredient name="BrokenAmmoBench" count="1"/>
+			<ingredient name="resourceForgedIron" count="100"/>
+			<ingredient name="HOHVehicleBolts4" count="40"/>
+			<ingredient name="resourceWood" count="10"/>
+		</recipe>	
+		
+		<recipe name="GunsmithingBench" count="1" craft_time="300" craft_area="workbench" >
+			<ingredient name="BrokenGunsmithingBench" count="1"/>
+			<ingredient name="resourceForgedIron" count="100"/>
+			<ingredient name="HOHVehicleBolts4" count="40"/>
+			<ingredient name="resourceWood" count="10"/>
+		</recipe>
+
+</append>
+
+<!-- Weapons -->
+
+
+
+
+
+
+
+
+
+<!--Ammo-->
+
+<append xpath="/recipes">
+
+	<recipe name="ammoPrimerSml" count="3" craft_area="AmmoBench" tags="workbenchCrafting,PerkHOHRifles" >
+		<ingredient name="resourceScrapIron" count="3"/>
+		<ingredient name="resourceGunPowder" count="1"/>
+	</recipe>
+
+	<recipe name="ammoPrimerSmlBundle" count="1" craft_area="AmmoBench" tags="workbenchCrafting,PerkHOHRifles" >
+		<ingredient name="resourceScrapIron" count="270"/>
+		<ingredient name="resourceGunPowder" count="90"/>
+	</recipe>
+
+	<recipe name="ammoPrimerMed" count="3" craft_area="AmmoBench" tags="workbenchCrafting,PerkHOHRifles" >
+		<ingredient name="resourceScrapIron" count="3"/>
+		<ingredient name="resourceGunPowder" count="2"/>
+	</recipe>
+
+	<recipe name="ammoPrimerMedBundle" count="1" craft_area="AmmoBench" tags="workbenchCrafting,PerkHOHRifles" >
+		<ingredient name="resourceScrapIron" count="270"/>
+		<ingredient name="resourceGunPowder" count="180"/>
+	</recipe>
+
+
+
+
+	<recipe name="ammo9mmCase" count="10" craft_time="10" craft_area="AmmoBench" craft_tool="toolTATumbler" tags="workbenchCrafting,PerkHOHPistols">
+		<ingredient name="ammoCasingSpentSml" count="10"/>
+		<ingredient name="resourceCrushedSand" count="50"/>
+
+	</recipe>
+
+	<recipe name="ammo9mmCase" count="30" craft_time="4" craft_area="MillingMachine" tags="workbenchCrafting,PerkHOHMachineGuns">
+		
+		<ingredient name="resourceBrassIngot" count="5"/>
+	</recipe>
+
+	<recipe name="ammo9mmTip" count="30" craft_time="4" craft_area="MillingMachine" tags="workbenchCrafting,PerkHOHMachineGuns">
+		<ingredient name="resourceLeadIngot" count="5"/>
+		<ingredient name="resourceBrassIngot" count="1"/>
+	</recipe>
+	
+	
+	<recipe name="ammo9mmBulletBall" craft_time="1" count="1" craft_area="AmmoBench" tags="workbenchCrafting,PerkHOHPistols">
+		<ingredient name="ammo9mmTip" count="1"/>
+		<ingredient name="resourceSmokelessPowder" count="2"/>
+		<ingredient name="ammo9mmCase" count="1"/>
+		<ingredient name="ammoPrimerSml" count="1"/>
+	</recipe>
+
+	<recipe name="ammo9mmBulletBall" craft_time="2" count="9" craft_area="AmmoBench" craft_tool="toolTABulletPress" tags="PerkHOHPistols,workbenchCrafting">
+		<ingredient name="ammo9mmTip" count="3"/>
+		<ingredient name="resourceSmokelessPowder" count="6"/>
+		<ingredient name="ammo9mmCase" count="3"/>
+		<ingredient name="ammoPrimerSml" count="3"/>
+	</recipe>
+
+	<recipe name="ammo9mmBulletHP" craft_time="2" count="1" craft_area="AmmoBench" tags="learnable,workbenchCrafting,PerkHOHPistols">
+		<ingredient name="ammo9mmTip" count="1"/>
+		<ingredient name="resourceSmokelessPowder" count="3"/>
+		<ingredient name="ammo9mmCase" count="1"/>
+		<ingredient name="ammoPrimerSml" count="1"/>
+	</recipe>
+
+	<recipe name="ammo9mmBulletHP" craft_time="3" count="9" craft_area="AmmoBench" craft_tool="toolTABulletPress"  tags="learnable,PerkHOHPistols,workbenchCrafting">
+		<ingredient name="ammo9mmTip" count="3"/>
+		<ingredient name="resourceSmokelessPowder" count="9"/>
+		<ingredient name="ammo9mmCase" count="3"/>
+		<ingredient name="ammoPrimerSml" count="3"/>
+	</recipe>
+
+	<recipe name="ammo9mmBulletAP" craft_time="3" count="1" craft_area="AmmoBench" tags="learnable,workbenchCrafting,PerkHOHPistols">
+		<ingredient name="ammo9mmTip" count="1"/>
+		<ingredient name="resourceSmokelessPowder" count="4"/>
+		<ingredient name="ammo9mmCase" count="1"/>
+		<ingredient name="ammoPrimerSml" count="1"/>
+	</recipe>
+
+	<recipe name="ammo9mmBulletAP" craft_time="4" count="9" craft_area="AmmoBench" craft_tool="toolTABulletPress"  tags="learnable,PerkHOHPistols,workbenchCrafting">
+		<ingredient name="ammo9mmTip" count="3"/>
+		<ingredient name="resourceSmokelessPowder" count="12"/>
+		<ingredient name="ammo9mmCase" count="3"/>
+		<ingredient name="ammoPrimerSml" count="3"/>
+	</recipe>
+
+
+	<recipe name="ammo45ACPCase" count="10" craft_time="10" craft_area="AmmoBench" craft_tool="toolTATumbler" tags="workbenchCrafting,PerkHOHPistols">
+		<ingredient name="ammoCasingSpentSml" count="10"/>
+		<ingredient name="resourceCrushedSand" count="50"/>
+
+	</recipe>
+
+	<recipe name="ammo45ACPCase" count="30" craft_time="5" craft_area="MillingMachine" tags="workbenchCrafting,PerkHOHMachineGuns">
+		
+		<ingredient name="resourceBrassIngot" count="5"/>
+	</recipe>
+
+	<recipe name="ammo45ACPTip" count="30" craft_time="5" craft_area="MillingMachine" tags="workbenchCrafting,PerkHOHMachineGuns">
+		<ingredient name="resourceLeadIngot" count="6"/>
+		<ingredient name="resourceBrassIngot" count="1"/>
+	</recipe>
+	
+	
+	<recipe name="ammo45ACP" craft_time="1" count="1" craft_area="AmmoBench" tags="workbenchCrafting,PerkHOHPistols">
+		<ingredient name="ammo45ACPTip" count="1"/>
+		<ingredient name="resourceSmokelessPowder" count="2"/>
+		<ingredient name="ammo45ACPCase" count="1"/>
+		<ingredient name="ammoPrimerSml" count="1"/>
+	</recipe>
+
+	<recipe name="ammo45ACP" craft_time="2" count="9" craft_area="AmmoBench" craft_tool="toolTABulletPress" tags="PerkHOHPistols,workbenchCrafting">
+		<ingredient name="ammo45ACPTip" count="3"/>
+		<ingredient name="resourceSmokelessPowder" count="6"/>
+		<ingredient name="ammo45ACPCase" count="3"/>
+		<ingredient name="ammoPrimerSml" count="3"/>
+	</recipe>
+
+	<recipe name="ammoHP45ACP" craft_time="2" count="1" craft_area="AmmoBench" tags="learnable,perkPistolPeteHPAmmo,workbenchCrafting,PerkHOHPistols">
+		<ingredient name="ammo45ACPTip" count="1"/>
+		<ingredient name="resourceSmokelessPowder" count="3"/>
+		<ingredient name="ammo45ACPCase" count="1"/>
+		<ingredient name="ammoPrimerSml" count="1"/>
+	</recipe>
+
+	<recipe name="ammoHP45ACP" craft_time="3" count="9" craft_area="AmmoBench" craft_tool="toolTABulletPress"  tags="learnable,perkPistolPeteHPAmmo,PerkHOHPistols,workbenchCrafting">
+		<ingredient name="ammo45ACPTip" count="3"/>
+		<ingredient name="resourceSmokelessPowder" count="9"/>
+		<ingredient name="ammo45ACPCase" count="3"/>
+		<ingredient name="ammoPrimerSml" count="3"/>
+	</recipe>
+
+	<recipe name="ammoAP45ACP" craft_time="3" count="1" craft_area="AmmoBench" tags="learnable,workbenchCrafting,PerkHOHPistols">
+		<ingredient name="ammo45ACPTip" count="1"/>
+		<ingredient name="resourceSmokelessPowder" count="4"/>
+		<ingredient name="ammo45ACPCase" count="1"/>
+		<ingredient name="ammoPrimerSml" count="1"/>
+	</recipe>
+
+	<recipe name="ammoAP45ACP" craft_time="4" count="9" craft_area="AmmoBench" craft_tool="toolTABulletPress"  tags="learnable,PerkHOHPistols,workbenchCrafting">
+		<ingredient name="ammo45ACPTip" count="3"/>
+		<ingredient name="resourceSmokelessPowder" count="12"/>
+		<ingredient name="ammo45ACPCase" count="3"/>
+		<ingredient name="ammoPrimerSml" count="3"/>
+	</recipe>
+
+
+
+	<recipe name="ammo44MagCase" count="10" craft_time="10" craft_area="AmmoBench" craft_tool="toolTATumbler" tags="workbenchCrafting,PerkHOHPistols">
+		<ingredient name="ammoCasingSpentSml" count="10"/>
+		<ingredient name="resourceCrushedSand" count="50"/>
+
+	</recipe>
+
+	<recipe name="ammo44MagCase" count="25" craft_time="6" craft_area="MillingMachine" tags="workbenchCrafting,PerkHOHMachineGuns">
+		
+		<ingredient name="resourceBrassIngot" count="5"/>
+	</recipe>
+
+	<recipe name="ammo44MagTip" count="25" craft_time="6" craft_area="MillingMachine" tags="workbenchCrafting,PerkHOHMachineGuns">
+		<ingredient name="resourceLeadIngot" count="6"/>
+		<ingredient name="resourceBrassIngot" count="1"/>
+	</recipe>
+	
+	
+	<recipe name="ammo44MagnumBulletBall" craft_time="2"  count="1" craft_area="AmmoBench" tags="workbenchCrafting,PerkHOHPistols">
+		<ingredient name="ammo44MagTip" count="1"/>
+		<ingredient name="resourceSmokelessPowder" count="4"/>
+		<ingredient name="ammo44MagCase" count="1"/>
+		<ingredient name="ammoPrimerSml" count="1"/>
+	</recipe>
+
+	<recipe name="ammo44MagnumBulletBall" craft_time="3"  count="9" craft_area="AmmoBench" craft_tool="toolTABulletPress" tags="PerkHOHPistols,workbenchCrafting">
+		<ingredient name="ammo44MagTip" count="3"/>
+		<ingredient name="resourceSmokelessPowder" count="12"/>
+		<ingredient name="ammo44MagCase" count="3"/>
+		<ingredient name="ammoPrimerSml" count="3"/>
+	</recipe>
+
+	<recipe name="ammo44MagnumBulletHP" craft_time="3" count="1" craft_area="AmmoBench" tags="learnable,workbenchCrafting,PerkHOHPistols">
+		<ingredient name="ammo44MagTip" count="1"/>
+		<ingredient name="resourceSmokelessPowder" count="5"/>
+		<ingredient name="ammo44MagCase" count="1"/>
+		<ingredient name="ammoPrimerSml" count="1"/>
+	</recipe>
+
+	<recipe name="ammo44MagnumBulletHP" craft_time="4"  count="9" craft_area="AmmoBench" craft_tool="toolTABulletPress"  tags="learnable,PerkHOHPistols,workbenchCrafting">
+		<ingredient name="ammo44MagTip" count="3"/>
+		<ingredient name="resourceSmokelessPowder" count="15"/>
+		<ingredient name="ammo44MagCase" count="3"/>
+		<ingredient name="ammoPrimerSml" count="3"/>
+	</recipe>
+
+	<recipe name="ammo44MagnumBulletAP" craft_time="4"  count="1" craft_area="AmmoBench" tags="learnable,workbenchCrafting,PerkHOHPistols">
+		<ingredient name="ammo44MagTip" count="1"/>
+		<ingredient name="resourceSmokelessPowder" count="6"/>
+		<ingredient name="ammo44MagCase" count="1"/>
+		<ingredient name="ammoPrimerSml" count="1"/>
+	</recipe>
+
+	<recipe name="ammo44MagnumBulletAP" craft_time="5" count="9" craft_area="AmmoBench" craft_tool="toolTABulletPress"  tags="learnable,PerkHOHPistols,workbenchCrafting">
+		<ingredient name="ammo44MagTip" count="3"/>
+		<ingredient name="resourceSmokelessPowder" count="18"/>
+		<ingredient name="ammo44MagCase" count="3"/>
+		<ingredient name="ammoPrimerSml" count="3"/>
+	</recipe>
+
+	
+	
+	<recipe name="ammo50aeCase" count="10" craft_time="10" craft_area="AmmoBench" craft_tool="toolTATumbler" tags="workbenchCrafting,PerkHOHPistols">
+		<ingredient name="ammoCasingSpentSml" count="10"/>
+		<ingredient name="resourceCrushedSand" count="50"/>
+
+	</recipe>
+
+	<recipe name="ammo50aeCase" count="25" craft_time="7" craft_area="MillingMachine" tags="workbenchCrafting,PerkHOHMachineGuns">
+		
+		<ingredient name="resourceBrassIngot" count="5"/>
+	</recipe>
+
+	<recipe name="ammo50aeTip" count="25" craft_time="7" craft_area="MillingMachine" tags="workbenchCrafting,PerkHOHMachineGuns">
+		
+		<ingredient name="resourceLeadIngot" count="10"/>
+	</recipe>
+	
+	
+	<recipe name="ammo50ae" craft_time="2" count="1" craft_area="AmmoBench" tags="workbenchCrafting,PerkHOHPistols">
+		<ingredient name="ammo50aeTip" count="1"/>
+		<ingredient name="resourceSmokelessPowder" count="5"/>
+		<ingredient name="ammo50aeCase" count="1"/>
+		<ingredient name="ammoPrimerSml" count="1"/>
+	</recipe>
+
+	<recipe name="ammo50ae" craft_time="3" count="9" craft_area="AmmoBench" craft_tool="toolTABulletPress" tags="PerkHOHPistols,workbenchCrafting">
+		<ingredient name="ammo50aeTip" count="3"/>
+		<ingredient name="resourceSmokelessPowder" count="15"/>
+		<ingredient name="ammo50aeCase" count="3"/>
+		<ingredient name="ammoPrimerSml" count="3"/>
+	</recipe>
+
+	<recipe name="ammo50aeHP" craft_time="3" count="1" craft_area="AmmoBench" tags="learnable,workbenchCrafting,PerkHOHPistols">
+		<ingredient name="ammo50aeTip" count="1"/>
+		<ingredient name="resourceSmokelessPowder" count="6"/>
+		<ingredient name="ammo50aeCase" count="1"/>
+		<ingredient name="ammoPrimerSml" count="1"/>
+	</recipe>
+
+	<recipe name="ammo50aeHP" craft_time="4" count="9" craft_area="AmmoBench" craft_tool="toolTABulletPress"  tags="learnable,PerkHOHPistols,workbenchCrafting">
+		<ingredient name="ammo50aeTip" count="3"/>
+		<ingredient name="resourceSmokelessPowder" count="18"/>
+		<ingredient name="ammo50aeCase" count="3"/>
+		<ingredient name="ammoPrimerSml" count="3"/>
+	</recipe>
+
+	<recipe name="ammo50aeAP" craft_time="4" count="1" craft_area="AmmoBench" tags="learnable,workbenchCrafting,PerkHOHPistols">
+		<ingredient name="ammo50aeTip" count="1"/>
+		<ingredient name="resourceSmokelessPowder" count="7"/>
+		<ingredient name="ammo50aeCase" count="1"/>
+		<ingredient name="ammoPrimerSml" count="1"/>
+	</recipe>
+
+	<recipe name="ammo50aeAP" craft_time="5" count="9" craft_area="AmmoBench" craft_tool="toolTABulletPress"  tags="learnable,PerkHOHPistols,workbenchCrafting">
+		<ingredient name="ammo50aeTip" count="3"/>
+		<ingredient name="resourceSmokelessPowder" count="21"/>
+		<ingredient name="ammo50aeCase" count="3"/>
+		<ingredient name="ammoPrimerSml" count="3"/>
+	</recipe>
+
+
+
+	<recipe name="ammo556Case" count="10" craft_time="10" craft_area="AmmoBench" craft_tool="toolTATumbler"  tags="workbenchCrafting,PerkHOHMachineGuns">
+		<ingredient name="ammoCasingSpentMed" count="10"/>
+		<ingredient name="resourceCrushedSand" count="50"/>
+	</recipe>
+
+	<recipe name="ammo556Case" count="20" craft_time="8" craft_area="MillingMachine" tags="workbenchCrafting,PerkHOHMachineGuns">
+		
+		<ingredient name="resourceBrassIngot" count="6"/>
+	</recipe>
+
+	<recipe name="ammo556Tip" count="20" craft_time="8" craft_area="MillingMachine" tags="workbenchCrafting,PerkHOHMachineGuns">
+		<ingredient name="resourceLeadIngot" count="6"/>
+		<ingredient name="resourceBrassIngot" count="2"/>
+	</recipe>
+
+
+	<recipe name="ammo556" craft_time="3" count="1" craft_area="AmmoBench" tags="workbenchCrafting,PerkHOHMachineGuns">
+		<ingredient name="ammo556Tip" count="1"/>
+		<ingredient name="resourceSmokelessPowder" count="6"/>
+		<ingredient name="ammo556Case" count="1"/>
+		<ingredient name="ammoPrimerMed" count="1"/>
+	</recipe>
+
+	<recipe name="ammo556" craft_time="4" count="9" craft_area="AmmoBench" craft_tool="toolTABulletPress"  tags="PerkHOHMachineGuns,workbenchCrafting">
+		<ingredient name="ammo556Tip" count="3"/>
+		<ingredient name="resourceSmokelessPowder" count="18"/>
+		<ingredient name="ammo556Case" count="3"/>
+		<ingredient name="ammoPrimerMed" count="3"/>
+	</recipe>
+
+	<recipe name="ammo556HP" craft_time="4" count="1" craft_area="AmmoBench" tags="learnable,workbenchCrafting,PerkHOHMachineGuns">
+		<ingredient name="ammo556Tip" count="1"/>
+		<ingredient name="resourceSmokelessPowder" count="7"/>
+		<ingredient name="ammo556Case" count="1"/>
+		<ingredient name="ammoPrimerMed" count="1"/>
+	</recipe>
+
+	<recipe name="ammo556HP" craft_time="5" count="9" craft_area="AmmoBench" craft_tool="toolTABulletPress"  tags="learnable,PerkHOHMachineGuns,workbenchCrafting">
+		<ingredient name="ammo556Tip" count="3"/>
+		<ingredient name="resourceSmokelessPowder" count="21"/>
+		<ingredient name="ammo556Case" count="3"/>
+		<ingredient name="ammoPrimerMed" count="3"/>
+	</recipe>
+
+	<recipe name="ammo556AP" craft_time="5" count="1" craft_area="AmmoBench" tags="learnable,perkAutoWeaponsDamage,workbenchCrafting,PerkHOHMachineGuns">
+		<ingredient name="ammo556Tip" count="1"/>
+		<ingredient name="resourceSmokelessPowder" count="8"/>
+		<ingredient name="ammo556Case" count="1"/>
+		<ingredient name="ammoPrimerMed" count="1"/>
+	</recipe>
+
+	<recipe name="ammo556AP" craft_time="6" count="9" craft_area="AmmoBench" craft_tool="toolTABulletPress"  tags="learnable,PerkHOHMachineGuns,workbenchCrafting">
+		<ingredient name="ammo556Tip" count="3"/>
+		<ingredient name="resourceSmokelessPowder" count="24"/>
+		<ingredient name="ammo556Case" count="3"/>
+		<ingredient name="ammoPrimerMed" count="3"/>
+	</recipe>
+
+
+	<recipe name="ammo762Case" count="10" craft_time="10" craft_area="AmmoBench" craft_tool="toolTATumbler"  tags="workbenchCrafting,PerkHOHMachineGuns">
+		<ingredient name="ammoCasingSpentMed" count="10"/>
+		<ingredient name="resourceCrushedSand" count="50"/>
+	</recipe>
+
+	<recipe name="ammo762Case" count="20" craft_time="10" craft_area="MillingMachine" tags="workbenchCrafting,PerkHOHMachineGuns">
+		
+		<ingredient name="resourceBrassIngot" count="6"/>
+	</recipe>
+
+	<recipe name="ammo762Tip" count="20" craft_time="10" craft_area="MillingMachine" tags="workbenchCrafting,PerkHOHMachineGuns">
+		<ingredient name="resourceLeadIngot" count="6"/>
+		<ingredient name="resourceBrassIngot" count="2"/>
+	</recipe>
+
+
+	<recipe name="ammo762mmBulletBall" craft_time="3" count="1" craft_area="AmmoBench" tags="workbenchCrafting,PerkHOHMachineGuns">
+		<ingredient name="ammo762Tip" count="1"/>
+		<ingredient name="resourceSmokelessPowder" count="8"/>
+		<ingredient name="ammo762Case" count="1"/>
+		<ingredient name="ammoPrimerMed" count="1"/>
+	</recipe>
+
+	<recipe name="ammo762mmBulletBall" craft_time="4" count="9" craft_area="AmmoBench" craft_tool="toolTABulletPress"  tags="PerkHOHMachineGuns,workbenchCrafting">
+		<ingredient name="ammo762Tip" count="3"/>
+		<ingredient name="resourceSmokelessPowder" count="24"/>
+		<ingredient name="ammo762Case" count="3"/>
+		<ingredient name="ammoPrimerMed" count="3"/>
+	</recipe>
+
+	<recipe name="ammo762mmBulletHP" craft_time="4" count="1" craft_area="AmmoBench" tags="learnable,workbenchCrafting,PerkHOHMachineGuns">
+		<ingredient name="ammo762Tip" count="1"/>
+		<ingredient name="resourceSmokelessPowder" count="9"/>
+		<ingredient name="ammo762Case" count="1"/>
+		<ingredient name="ammoPrimerMed" count="1"/>
+	</recipe>
+
+	<recipe name="ammo762mmBulletHP" craft_time="5" count="9" craft_area="AmmoBench" craft_tool="toolTABulletPress"  tags="learnable,PerkHOHMachineGuns,workbenchCrafting">
+		<ingredient name="ammo762Tip" count="3"/>
+		<ingredient name="resourceSmokelessPowder" count="27"/>
+		<ingredient name="ammo762Case" count="3"/>
+		<ingredient name="ammoPrimerMed" count="3"/>
+	</recipe>
+
+	<recipe name="ammo762mmBulletAP" craft_time="5" count="1" craft_area="AmmoBench" tags="learnable,workbenchCrafting,PerkHOHMachineGuns">
+		<ingredient name="ammo762Tip" count="1"/>
+		<ingredient name="resourceSmokelessPowder" count="10"/>
+		<ingredient name="ammo762Case" count="1"/>
+		<ingredient name="ammoPrimerMed" count="1"/>
+	</recipe>
+
+	<recipe name="ammo762mmBulletAP" craft_time="6" count="9" craft_area="AmmoBench" craft_tool="toolTABulletPress"  tags="learnable,PerkHOHMachineGuns,workbenchCrafting">
+		<ingredient name="ammo762Tip" count="3"/>
+		<ingredient name="resourceSmokelessPowder" count="30"/>
+		<ingredient name="ammo762Case" count="3"/>
+		<ingredient name="ammoPrimerMed" count="3"/>
+	</recipe>
+
+
+	<recipe name="ammo50BMGCase" count="5" craft_time="10" craft_area="AmmoBench" craft_tool="toolTATumbler"  tags="workbenchCrafting,PerkHOHMachineGuns">
+		<ingredient name="ammoCasingSpentMed" count="5"/>
+		<ingredient name="resourceCrushedSand" count="100"/>
+	</recipe>
+
+	<recipe name="ammo50BMGCase" count="10" craft_time="20" craft_area="MillingMachine" tags="workbenchCrafting,PerkHOHMachineGuns">
+		
+		<ingredient name="resourceBrassIngot" count="10"/>
+	</recipe>
+
+	<recipe name="ammo50BMGTip" count="10" craft_time="20" craft_area="MillingMachine" tags="workbenchCrafting,PerkHOHMachineGuns">
+		<ingredient name="resourceLeadIngot" count="10"/>
+		<ingredient name="resourceBrassIngot" count="4"/>
+	</recipe>
+
+
+	<recipe name="ammo50BMG" craft_time="5" count="1" craft_area="AmmoBench" tags="learnable,workbenchCrafting,PerkHOHRifles">
+		<ingredient name="ammo50BMGTip" count="1"/>
+		<ingredient name="resourceSmokelessPowder" count="20"/>
+		<ingredient name="ammo50BMGCase" count="1"/>
+		<ingredient name="ammoPrimerMed" count="1"/>
+	</recipe>
+
+	<recipe name="ammo50BMG" craft_time="6" count="9" craft_area="AmmoBench" craft_tool="toolTABulletPress"  tags="learnable,PerkHOHRifles,workbenchCrafting">
+		<ingredient name="ammo50BMGTip" count="3"/>
+		<ingredient name="resourceSmokelessPowder" count="60"/>
+		<ingredient name="ammo50BMGCase" count="3"/>
+		<ingredient name="ammoPrimerMed" count="3"/>
+	</recipe>
+	
+	<recipe name="ammo127HEIAP" craft_time="6" count="1" craft_area="AmmoBench" tags="learnable,workbenchCrafting,PerkHOHRifles">
+		<ingredient name="ammo50BMGTip" count="1"/>
+		<ingredient name="resourceSmokelessPowder" count="30"/>
+		<ingredient name="ammo50BMGCase" count="1"/>
+		<ingredient name="ammoPrimerMed" count="1"/>
+	</recipe>
+
+	<recipe name="ammo127HEIAP" craft_time="7" count="9" craft_area="AmmoBench" craft_tool="toolTABulletPress"  tags="learnable,PerkHOHRifles,workbenchCrafting">
+		<ingredient name="ammo50BMGTip" count="3"/>
+		<ingredient name="resourceSmokelessPowder" count="90"/>
+		<ingredient name="ammo50BMGCase" count="3"/>
+		<ingredient name="ammoPrimerMed" count="3"/>
+	</recipe>
+
+
+	<recipe name="ammo40mmRubber" craft_time="7" count="1" craft_area="AmmoBench" tags="workbenchCrafting,craftingExplosives">
+		<ingredient name="resourceScrapPolymers" count="10"/>
+		<ingredient name="resourceGunPowder" count="10"/>
+		<ingredient name="resourceRocketCasing" count="1"/>
+	</recipe>
+
+	<recipe name="ammo40mmRubber" craft_time="8" count="9" craft_area="AmmoBench" craft_tool="toolTABulletPress" tags="workbenchCrafting,craftingExplosives">
+		<ingredient name="resourceScrapPolymers" count="30"/>
+		<ingredient name="resourceGunPowder" count="30"/>
+		<ingredient name="resourceRocketCasing" count="3"/>
+	</recipe>
+
+	<recipe name="ammo40mmG" craft_time="5" count="1" craft_area="AmmoBench" tags="workbenchCrafting,craftingExplosives">
+		<ingredient name="resourceBuckshot" count="20"/>
+		<ingredient name="resourceGunPowder" count="50"/>
+		<ingredient name="resourceRocketCasing" count="1"/>
+	</recipe>
+
+	<recipe name="ammo40mmG" craft_time="6" count="9" craft_area="AmmoBench" craft_tool="toolTABulletPress"  tags="craftingExplosives,workbenchCrafting">
+		<ingredient name="resourceBuckshot" count="60"/>
+		<ingredient name="resourceGunPowder" count="150"/>
+		<ingredient name="resourceRocketCasing" count="3"/>
+	</recipe>
+	
+	<recipe name="ammo40mmHE" craft_time="6" count="1" craft_area="AmmoBench" tags="workbenchCrafting,craftingExplosives">
+		<ingredient name="resourceRocketTip" count="1"/>
+		<ingredient name="resourceGunPowder" count="100"/>
+		<ingredient name="resourceRocketCasing" count="1"/>
+	</recipe>
+
+	<recipe name="ammo40mmHE" craft_time="7" count="9" craft_area="AmmoBench" craft_tool="toolTABulletPress" tags="workbenchCrafting,craftingExplosives">
+		<ingredient name="resourceRocketTip" count="3"/>
+		<ingredient name="resourceGunPowder" count="300"/>
+		<ingredient name="resourceRocketCasing" count="3"/>
+	</recipe>
+
+
+	<recipe name="ammo12gaCase" count="20" craft_time="10" craft_area="MillingMachine" tags="workbenchCrafting,PerkHOHMachineGuns">
+		
+		<ingredient name="resourceBrassIngot" count="6"/>
+	</recipe>
+
+	<recipe name="ammo12gaCartridge" count="10" craft_time="10" craft_area="AmmoBench" craft_tool="toolTATumbler"  tags="workbenchCrafting,PerkHOHMachineGuns">
+		<ingredient name="ammoCasingSpentCartridge" count="10"/>
+		<ingredient name="resourceCrushedSand" count="100"/>
+	</recipe>
+
+	<recipe name="ammo12gaCartridge" count="10" craft_time="10" craft_area="AmmoBench"  tags="workbenchCrafting,PerkHOHMachineGuns">
+		<ingredient name="resourceScrapPolymers" count="50"/>
+		<ingredient name="ammo12gaCase" count="10"/>
+	</recipe>
+
+	<recipe name="ammoShotgunRubberSlug" craft_time="2" count="1" craft_area="AmmoBench" tags="workbenchCrafting">
+		<ingredient name="resourceScrapPolymers" count="10"/>
+		<ingredient name="resourceSmokelessPowder" count="2"/>
+		<ingredient name="ammo12gaCartridge" count="1"/>
+		<ingredient name="ammoPrimerSml" count="1"/>
+	</recipe>
+
+	<recipe name="ammoShotgunRubberSlug" craft_time="3" count="9" craft_area="AmmoBench" craft_tool="toolTABulletPress" tags="workbenchCrafting,PerkHOHShotGuns">
+		<ingredient name="resourceScrapPolymers" count="30"/>
+		<ingredient name="resourceSmokelessPowder" count="6"/>
+		<ingredient name="ammo12gaCartridge" count="3"/>
+		<ingredient name="ammoPrimerSml" count="3"/>
+	</recipe>
+
+	<recipe name="ammoShotgunShell" craft_time="3" count="1" craft_area="AmmoBench" tags="workbenchCrafting">
+		<ingredient name="resourceBuckshot" count="1"/>
+		<ingredient name="resourceSmokelessPowder" count="3"/>
+		<ingredient name="ammo12gaCartridge" count="1"/>
+		<ingredient name="ammoPrimerSml" count="1"/>
+	</recipe>
+
+	<recipe name="ammoShotgunShell" craft_time="4" count="9" craft_area="AmmoBench" craft_tool="toolTABulletPress" tags="workbenchCrafting,PerkHOHShotGuns">
+		<ingredient name="resourceBuckshot" count="3"/>
+		<ingredient name="resourceSmokelessPowder" count="9"/>
+		<ingredient name="ammo12gaCartridge" count="3"/>
+		<ingredient name="ammoPrimerSml" count="3"/>
+	</recipe>
+
+	<recipe name="ammoShotgunSlug" craft_time="4" count="1" craft_area="AmmoBench" tags="learnable,workbenchCrafting">
+		<ingredient name="ammo44MagTip" count="1"/>
+		<ingredient name="resourceSmokelessPowder" count="5"/>
+		<ingredient name="ammo12gaCartridge" count="1"/>
+		<ingredient name="ammoPrimerSml" count="1"/>
+	</recipe>
+
+	<recipe name="ammoShotgunSlug" craft_time="5" count="9" craft_area="AmmoBench" craft_tool="toolTABulletPress" tags="learnable,workbenchCrafting,PerkHOHShotGuns">
+		<ingredient name="ammo44MagTip" count="3"/>
+		<ingredient name="resourceSmokelessPowder" count="15"/>
+		<ingredient name="ammo12gaCartridge" count="3"/>
+		<ingredient name="ammoPrimerSml" count="3"/>
+	</recipe>
+
+	<recipe name="ammoShotgunBreachingSlug" craft_time="5" count="1" craft_area="AmmoBench" tags="learnable,workbenchCrafting">
+		<ingredient name="ammo50aeTip" count="1"/>
+		<ingredient name="resourceSmokelessPowder" count="6"/>
+		<ingredient name="ammo12gaCartridge" count="1"/>
+		<ingredient name="ammoPrimerSml" count="1"/>
+	</recipe>
+
+	<recipe name="ammoShotgunBreachingSlug" craft_time="6" count="9" craft_area="AmmoBench" craft_tool="toolTABulletPress" tags="learnable,workbenchCrafting,PerkHOHShotGuns">
+		<ingredient name="ammo50aeTip" count="3"/>
+		<ingredient name="resourceSmokelessPowder" count="18"/>
+		<ingredient name="ammo12gaCartridge" count="3"/>
+		<ingredient name="ammoPrimerSml" count="3"/>
+	</recipe>
+
+
+	<!-- Unused Sniper Ammo
+
+	<recipe name="ammo3006Case" count="10" craft_time="10" craft_area="AmmoBench" craft_tool="toolTATumbler"  tags="workbenchCrafting,PerkHOHMachineGuns">
+		<ingredient name="ammoCasingSpentMed" count="10"/>
+		<ingredient name="resourceCrushedSand" count="50"/>
+	</recipe>
+
+	<recipe name="ammo3006Case" count="20" craft_area="MillingMachine" tags="workbenchCrafting,PerkHOHMachineGuns">
+		<ingredient name="resourceScrapBrass" count="60"/>
+	</recipe>
+
+	<recipe name="ammo3006Tip" count="20" craft_area="MillingMachine" tags="workbenchCrafting,PerkHOHMachineGuns">
+		<ingredient name="resourceScrapLead" count="60"/>
+		<ingredient name="resourceScrapBrass" count="5"/>
+	</recipe>
+
+
+	<recipe name="ammo3006" craft_time="4" count="1" craft_area="AmmoBench" tags="workbenchCrafting,PerkHOHRifles">
+		<ingredient name="ammo3006Tip" count="1"/>
+		<ingredient name="resourceSmokelessPowder" count="10"/>
+		<ingredient name="ammo3006Case" count="1"/>
+		<ingredient name="ammoPrimerMed" count="1"/>
+	</recipe>
+
+	<recipe name="ammo3006" craft_time="5" count="9" craft_area="AmmoBench" craft_tool="toolTABulletPress"  tags="PerkHOHRifles,workbenchCrafting">
+		<ingredient name="ammo3006Tip" count="3"/>
+		<ingredient name="resourceSmokelessPowder" count="30"/>
+		<ingredient name="ammo3006Case" count="3"/>
+		<ingredient name="ammoPrimerMed" count="3"/>
+	</recipe>
+
+	<recipe name="ammo3006SC" craft_time="5" count="1" craft_area="AmmoBench" tags="learnable,workbenchCrafting,PerkHOHRifles">
+		<ingredient name="ammo3006Tip" count="1"/>
+		<ingredient name="resourceSmokelessPowder" count="12"/>
+		<ingredient name="ammo3006Case" count="1"/>
+		<ingredient name="ammoPrimerMed" count="1"/>
+	</recipe>
+
+	<recipe name="ammo3006SC" craft_time="6" count="9" craft_area="AmmoBench" craft_tool="toolTABulletPress"  tags="learnable,PerkHOHRifles,workbenchCrafting">
+		<ingredient name="ammo3006Tip" count="3"/>
+		<ingredient name="resourceSmokelessPowder" count="36"/>
+		<ingredient name="ammo3006Case" count="3"/>
+		<ingredient name="ammoPrimerMed" count="3"/>
+	</recipe>
+
+
+
+	<recipe name="ammo338Case" count="10" craft_time="10" craft_area="AmmoBench" craft_tool="toolTATumbler"  tags="workbenchCrafting,PerkHOHMachineGuns">
+		<ingredient name="ammoCasingSpentMed" count="10"/>
+		<ingredient name="resourceCrushedSand" count="50"/>
+	</recipe>
+
+	<recipe name="ammo338Case" count="20" craft_area="MillingMachine" tags="workbenchCrafting,PerkHOHMachineGuns">
+		<ingredient name="resourceScrapBrass" count="60"/>
+	</recipe>
+
+	<recipe name="ammo338Tip" count="20" craft_area="MillingMachine" tags="workbenchCrafting,PerkHOHMachineGuns">
+		<ingredient name="resourceScrapLead" count="60"/>
+		<ingredient name="resourceScrapBrass" count="5"/>
+	</recipe>
+
+
+	<recipe name="ammo338" craft_time="4" count="1" craft_area="AmmoBench" tags="workbenchCrafting,PerkHOHRifles">
+		<ingredient name="ammo338Tip" count="1"/>
+		<ingredient name="resourceSmokelessPowder" count="12"/>
+		<ingredient name="ammo338Case" count="1"/>
+		<ingredient name="ammoPrimerMed" count="1"/>
+	</recipe>
+
+	<recipe name="ammo338" craft_time="5" count="9" craft_area="AmmoBench" craft_tool="toolTABulletPress"  tags="PerkHOHRifles,workbenchCrafting">
+		<ingredient name="ammo338Tip" count="3"/>
+		<ingredient name="resourceSmokelessPowder" count="36"/>
+		<ingredient name="ammo338Case" count="3"/>
+		<ingredient name="ammoPrimerMed" count="3"/>
+	</recipe>
+
+	<recipe name="ammo338HP" craft_time="5" count="1" craft_area="AmmoBench" tags="learnable,workbenchCrafting,PerkHOHRifles">
+		<ingredient name="ammo338Tip" count="1"/>
+		<ingredient name="resourceSmokelessPowder" count="14"/>
+		<ingredient name="ammo338Case" count="1"/>
+		<ingredient name="ammoPrimerMed" count="1"/>
+	</recipe>
+
+	<recipe name="ammo338HP" craft_time="6" count="9" craft_area="AmmoBench" craft_tool="toolTABulletPress"  tags="learnable,PerkHOHRifles,workbenchCrafting">
+		<ingredient name="ammo338Tip" count="3"/>
+		<ingredient name="resourceSmokelessPowder" count="42"/>
+		<ingredient name="ammo338Case" count="3"/>
+		<ingredient name="ammoPrimerMed" count="3"/>
+	</recipe>
+
+	<recipe name="ammo338AP" craft_time="6" count="1" craft_area="AmmoBench" tags="learnable,workbenchCrafting,PerkHOHRifles">
+		<ingredient name="ammo338Tip" count="1"/>
+		<ingredient name="resourceSmokelessPowder" count="16"/>
+		<ingredient name="ammo338Case" count="1"/>
+		<ingredient name="ammoPrimerMed" count="1"/>
+	</recipe>
+
+	<recipe name="ammo338AP" craft_time="7" count="9" craft_area="AmmoBench" craft_tool="toolTABulletPress"  tags="learnable,PerkHOHRifles,workbenchCrafting">
+		<ingredient name="ammo338Tip" count="3"/>
+		<ingredient name="resourceSmokelessPowder" count="48"/>
+		<ingredient name="ammo338Case" count="3"/>
+		<ingredient name="ammoPrimerMed" count="3"/>
+	</recipe>
+-->
+
+</append>
+
+<!-- Bulk AMMO -->
+
+
+<append xpath="/recipes">
+
+	<recipe name="resourceSmokelessPowder" craft_time=".5" count="1" craft_area="AmmoBench" tags="workbenchCrafting">
+	<ingredient name="resourceGunPowder" count="1"/>
+	<ingredient name="resourceOilShale" count="2"/>
+	</recipe>
+
+	<recipe name="resourceSmokelessPowder" craft_time="1" count="9" craft_area="AmmoBench" craft_tool="toolTASmokelessPowder" tags="workbenchCrafting">
+	<ingredient name="resourceGunPowder" count="3"/>
+	<ingredient name="resourceOilShale" count="6"/>
+	</recipe>
+
+	<recipe name="resourceSmokelessPowderBundle" count="1" craft_time="60" craft_area="AmmoBench" craft_tool="toolTASmokelessPowder" tags="learnable,workbenchCrafting">
+	<ingredient name="resourceGunPowder" count="6000"/>
+	<ingredient name="resourceOilShale" count="12000"/>
+	</recipe>
+
+	<recipe name="resourceSmokelessPowderBundle" count="1" craft_time="10" craft_area="AmmoBench" craft_tool="toolTASmokelessPowder" tags="learnable,workbenchCrafting">
+	<ingredient name="resourceSmokelessPowder" count="6000"/>
+	</recipe>
+
+
+
+	<recipe name="AmmoBoxEmpty" count="1" craft_time="10" craft_area="AmmoBench" craft_tool="toolTAAmmoBoxes">
+		<ingredient name="resourceScrapIron" count="50"/>
+		<ingredient name="resourceNail" count="5"/>
+	</recipe>
+
+	<recipe name="AmmoCaseEmpty" count="1" craft_time="10" craft_area="AmmoBench" craft_tool="toolTAAmmoBoxes">
+		<ingredient name="resourceScrapPolymers" count="20"/>
+	    <ingredient name="resourceNail" count="5"/>
+	</recipe>
+
+
+
+	<recipe name="Pack45ACPAmmo" count="1" craft_time="3" craft_area="AmmoBench" craft_tool="toolTABoxFolder" tags="workbenchCrafting,PerkHOHPistols">
+		<ingredient name="ammo45ACP" count="50"/>
+	     <ingredient name="resourceCardBoard" count="1"/>
+	</recipe>
+	
+	<recipe name="AmmoCase45ACP" count="1" craft_time="5" craft_area="AmmoBench" craft_tool="toolTAAmmoBoxes" tags="workbenchCrafting,PerkHOHPistols">
+		<ingredient name="Pack45ACPAmmo" count="6"/>
+	    <ingredient name="AmmoCaseEmpty" count="1"/>
+	</recipe>
+
+	<recipe name="PackHP45ACPAmmo" count="1" craft_time="3" craft_area="AmmoBench" craft_tool="toolTABoxFolder" tags="workbenchCrafting,PerkHOHPistols">
+		<ingredient name="ammoHP45ACP" count="50"/>
+	     <ingredient name="resourceCardBoard" count="1"/>
+	</recipe>
+	
+	<recipe name="AmmoCase45ACPHP" count="1" craft_time="5" craft_area="AmmoBench" craft_tool="toolTAAmmoBoxes" tags="workbenchCrafting,PerkHOHPistols">
+		<ingredient name="PackHP45ACPAmmo" count="6"/>
+	    <ingredient name="AmmoCaseEmpty" count="1"/>
+	</recipe>
+
+	<recipe name="PackAP45ACPAmmo" count="1" craft_time="3" craft_area="AmmoBench" craft_tool="toolTABoxFolder" tags="workbenchCrafting,PerkHOHPistols">
+		<ingredient name="ammoAP45ACP" count="50"/>
+	     <ingredient name="resourceCardBoard" count="1"/>
+	</recipe>
+	
+	<recipe name="AmmoCase45ACPAP" count="1" craft_time="5" craft_area="AmmoBench" craft_tool="toolTAAmmoBoxes" tags="workbenchCrafting,PerkHOHPistols">
+		<ingredient name="PackAP45ACPAmmo" count="6"/>
+	    <ingredient name="AmmoCaseEmpty" count="1"/>
+	</recipe>
+
+
+
+	<recipe name="Pack9mmAmmo" count="1" craft_time="3" craft_area="AmmoBench" craft_tool="toolTABoxFolder" tags="workbenchCrafting,PerkHOHPistols">
+		<ingredient name="ammo9mmBulletBall" count="50"/>
+	     <ingredient name="resourceCardBoard" count="1"/>
+	</recipe>
+		
+	<recipe name="AmmoCase9mm" count="1" craft_time="5" craft_area="AmmoBench" craft_tool="toolTAAmmoBoxes" tags="workbenchCrafting,PerkHOHPistols">
+		<ingredient name="Pack9mmAmmo" count="6"/>
+	    <ingredient name="AmmoCaseEmpty" count="1"/>
+	</recipe>
+
+	<recipe name="PackHP9mmAmmo" count="1" craft_time="3" craft_area="AmmoBench" craft_tool="toolTABoxFolder" tags="workbenchCrafting,PerkHOHPistols">
+		<ingredient name="ammo9mmBulletHP" count="50"/>
+	     <ingredient name="resourceCardBoard" count="1"/>
+	</recipe>
+	
+	<recipe name="AmmoCase9mmHP" count="1" craft_time="5" craft_area="AmmoBench" craft_tool="toolTAAmmoBoxes" tags="workbenchCrafting,PerkHOHPistols">
+		<ingredient name="PackHP9mmAmmo" count="6"/>
+	    <ingredient name="AmmoCaseEmpty" count="1"/>
+	</recipe>
+
+	<recipe name="PackAP9mmAmmo" count="1" craft_time="3" craft_area="AmmoBench" craft_tool="toolTABoxFolder" tags="workbenchCrafting,PerkHOHPistols">
+		<ingredient name="ammo9mmBulletAP" count="50"/>
+	     <ingredient name="resourceCardBoard" count="1"/>
+	</recipe>
+	
+	<recipe name="AmmoCase9mmAP" count="1" craft_time="5" craft_area="AmmoBench" craft_tool="toolTAAmmoBoxes" tags="workbenchCrafting,PerkHOHPistols">
+		<ingredient name="PackAP9mmAmmo" count="6"/>
+	    <ingredient name="AmmoCaseEmpty" count="1"/>
+	</recipe>
+
+
+
+	<recipe name="Pack44magnum" count="1" craft_time="3" craft_area="AmmoBench" craft_tool="toolTABoxFolder" tags="workbenchCrafting,PerkHOHPistols">
+		<ingredient name="ammo44MagnumBulletBall" count="50"/>
+	     <ingredient name="resourceCardBoard" count="1"/>
+	</recipe>
+	
+	<recipe name="AmmoCase44" count="1" craft_time="5" craft_area="AmmoBench" craft_tool="toolTAAmmoBoxes" tags="workbenchCrafting,PerkHOHPistols">
+		<ingredient name="Pack44magnum" count="6"/>
+	    <ingredient name="AmmoCaseEmpty" count="1"/>
+	</recipe>
+
+	<recipe name="Pack44magnumHP" count="1" craft_time="3" craft_area="AmmoBench" craft_tool="toolTABoxFolder" tags="workbenchCrafting,PerkHOHPistols">
+		<ingredient name="ammo44MagnumBulletHP" count="50"/>
+	     <ingredient name="resourceCardBoard" count="1"/>
+	</recipe>
+	
+	<recipe name="AmmoCase44HP" count="1" craft_time="5" craft_area="AmmoBench" craft_tool="toolTAAmmoBoxes" tags="workbenchCrafting,PerkHOHPistols">
+		<ingredient name="Pack44magnumHP" count="6"/>
+	    <ingredient name="AmmoCaseEmpty" count="1"/>
+	</recipe>
+
+	<recipe name="Pack44magnumAP" count="1" craft_time="3" craft_area="AmmoBench" craft_tool="toolTABoxFolder" tags="workbenchCrafting,PerkHOHPistols">
+		<ingredient name="ammo44MagnumBulletAP" count="50"/>
+	     <ingredient name="resourceCardBoard" count="1"/>
+	</recipe>
+	
+	<recipe name="AmmoCase44AP" count="1" craft_time="5" craft_area="AmmoBench" craft_tool="toolTAAmmoBoxes" tags="workbenchCrafting,PerkHOHPistols">
+		<ingredient name="Pack44magnumAP" count="6"/>
+	    <ingredient name="AmmoCaseEmpty" count="1"/>
+	</recipe>
+
+
+	<recipe name="Pack50ae" count="1" craft_time="3" craft_area="AmmoBench" craft_tool="toolTABoxFolder" tags="workbenchCrafting,PerkHOHPistols">
+		<ingredient name="ammo50ae" count="50"/>
+	     <ingredient name="resourceCardBoard" count="1"/>
+	</recipe>
+	
+	<recipe name="AmmoCase50ae" count="1" craft_time="5" craft_area="AmmoBench" craft_tool="toolTAAmmoBoxes" tags="workbenchCrafting,PerkHOHPistols">
+		<ingredient name="Pack50ae" count="6"/>
+	    <ingredient name="AmmoCaseEmpty" count="1"/>
+	</recipe>
+
+	<recipe name="Pack50aeHP" count="1" craft_time="3" craft_area="AmmoBench" craft_tool="toolTABoxFolder" tags="workbenchCrafting,PerkHOHPistols">
+		<ingredient name="ammo50aeHP" count="50"/>
+	     <ingredient name="resourceCardBoard" count="1"/>
+	</recipe>
+	
+	<recipe name="AmmoCase50aeHP" count="1" craft_time="5" craft_area="AmmoBench" craft_tool="toolTAAmmoBoxes" tags="workbenchCrafting,PerkHOHPistols">
+		<ingredient name="Pack50aeHP" count="6"/>
+	    <ingredient name="AmmoCaseEmpty" count="1"/>
+	</recipe>
+
+	<recipe name="Pack50aeAP" count="1" craft_time="3" craft_area="AmmoBench" craft_tool="toolTABoxFolder" tags="workbenchCrafting,PerkHOHPistols">
+		<ingredient name="ammo50aeAP" count="50"/>
+	     <ingredient name="resourceCardBoard" count="1"/>
+	</recipe>
+	
+	<recipe name="AmmoCase50aeAP" count="1" craft_time="5" craft_area="AmmoBench" craft_tool="toolTAAmmoBoxes" tags="workbenchCrafting,PerkHOHPistols">
+		<ingredient name="Pack50aeAP" count="6"/>
+	    <ingredient name="AmmoCaseEmpty" count="1"/>
+	</recipe>
+
+
+	<recipe name="Pack556ammo" count="1" craft_time="3" craft_area="AmmoBench" craft_tool="toolTABoxFolder" tags="workbenchCrafting,craftingMachineGuns">
+		<ingredient name="ammo556" count="20"/>
+	     <ingredient name="resourceCardBoard" count="1"/>
+	</recipe>
+
+	<recipe name="AmmoBox556" count="1" craft_time="5" craft_area="AmmoBench" craft_tool="toolTAAmmoBoxes" tags="workbenchCrafting,craftingMachineGuns">
+		<ingredient name="Pack556ammo" count="10"/>
+	    <ingredient name="AmmoBoxEmpty" count="1"/>
+	</recipe>
+
+	<recipe name="PackHP556ammo" count="1" craft_time="3" craft_area="AmmoBench" craft_tool="toolTABoxFolder" tags="workbenchCrafting,craftingMachineGuns">
+		<ingredient name="ammo556HP" count="20"/>
+	     <ingredient name="resourceCardBoard" count="1"/>
+	</recipe>
+
+	<recipe name="AmmoBox556HP" count="1" craft_time="5" craft_area="AmmoBench" craft_tool="toolTAAmmoBoxes" tags="workbenchCrafting,craftingMachineGuns">
+		<ingredient name="PackHP556ammo" count="10"/>
+	    <ingredient name="AmmoBoxEmpty" count="1"/>
+	</recipe>
+
+	<recipe name="PackAP556ammo" count="1" craft_time="3" craft_area="AmmoBench" craft_tool="toolTABoxFolder" tags="workbenchCrafting,craftingMachineGuns">
+		<ingredient name="ammo556AP" count="20"/>
+	     <ingredient name="resourceCardBoard" count="1"/>
+	</recipe>
+
+	<recipe name="AmmoBox556AP" count="1" craft_time="5" craft_area="AmmoBench" craft_tool="toolTAAmmoBoxes" tags="workbenchCrafting,craftingMachineGuns">
+		<ingredient name="PackAP556ammo" count="10"/>
+	    <ingredient name="AmmoBoxEmpty" count="1"/>
+	</recipe>
+
+
+	<recipe name="Packof762mmAmmo" count="1" craft_time="3" craft_area="AmmoBench" craft_tool="toolTABoxFolder" tags="workbenchCrafting,PerkHOHMachineGuns">
+		<ingredient name="ammo762mmBulletBall" count="20"/>
+	     <ingredient name="resourceCardBoard" count="1"/>
+	</recipe>
+
+	<recipe name="AmmoBox762" count="1" craft_time="5" craft_area="AmmoBench" craft_tool="toolTAAmmoBoxes" tags="workbenchCrafting,PerkHOHMachineGuns">
+		<ingredient name="Packof762mmAmmo" count="10"/>
+	    <ingredient name="AmmoBoxEmpty" count="1"/>
+	</recipe>
+
+	<recipe name="PackofHP762mmAmmo" count="1" craft_time="3" craft_area="AmmoBench" craft_tool="toolTABoxFolder" tags="workbenchCrafting,PerkHOHMachineGuns">
+		<ingredient name="ammo762mmBulletHP" count="20"/>
+	     <ingredient name="resourceCardBoard" count="1"/>
+	</recipe>
+
+	<recipe name="AmmoBox762HP" count="1" craft_time="5" craft_area="AmmoBench" craft_tool="toolTAAmmoBoxes" tags="workbenchCrafting,PerkHOHMachineGuns">
+		<ingredient name="PackofHP762mmAmmo" count="10"/>
+	    <ingredient name="AmmoBoxEmpty" count="1"/>
+	</recipe>
+
+	<recipe name="PackofAP762mmAmmo" count="1" craft_time="3" craft_area="AmmoBench" craft_tool="toolTABoxFolder" tags="workbenchCrafting,PerkHOHMachineGuns">
+		<ingredient name="ammo762mmBulletAP" count="20"/>
+	     <ingredient name="resourceCardBoard" count="1"/>
+	</recipe>
+
+	<recipe name="AmmoBox762AP" count="1" craft_time="5" craft_area="AmmoBench" craft_tool="toolTAAmmoBoxes" tags="workbenchCrafting,PerkHOHMachineGuns">
+		<ingredient name="PackofAP762mmAmmo" count="10"/>
+	    <ingredient name="AmmoBoxEmpty" count="1"/>
+	</recipe>
+
+
+
+	<recipe name="Pack50BMG" count="1" craft_time="3" craft_area="AmmoBench" craft_tool="toolTABoxFolder" tags="workbenchCrafting,craftingRifles">
+		<ingredient name="ammo50BMG" count="10"/>
+	     <ingredient name="resourceCardBoard" count="1"/>
+	</recipe>
+
+	<recipe name="AmmoBox50BMG" count="1" craft_time="5" craft_area="AmmoBench" craft_tool="toolTAAmmoBoxes" tags="workbenchCrafting,craftingRifles">
+		<ingredient name="Pack50BMG" count="20"/>
+	    <ingredient name="AmmoBoxEmpty" count="1"/>
+	</recipe>
+
+	<recipe name="Packof127mmAmmo" count="1" craft_time="3" craft_area="AmmoBench" craft_tool="toolTABoxFolder" tags="workbenchCrafting,craftingRifles">
+		<ingredient name="ammo127HEIAP" count="10"/>
+	     <ingredient name="resourceCardBoard" count="1"/>
+	</recipe>
+
+	<recipe name="AmmoBox127mm" count="1" craft_time="5" craft_area="AmmoBench" craft_tool="toolTAAmmoBoxes" tags="workbenchCrafting,craftingRifles">
+		<ingredient name="Packof127mmAmmo" count="20"/>
+	    <ingredient name="AmmoBoxEmpty" count="1"/>
+	</recipe>
+
+
+	<recipe name="AmmoBox40mmGA" count="1" craft_time="5" craft_area="AmmoBench" craft_tool="toolTAAmmoBoxes" tags="workbenchCrafting,craftingExplosives">
+		<ingredient name="ammo40mmG" count="30"/>
+	    <ingredient name="AmmoBoxEmpty" count="1"/>
+	</recipe>
+
+	<recipe name="AmmoBox40mmHE" count="1" craft_time="5" craft_area="AmmoBench" craft_tool="toolTAAmmoBoxes" tags="workbenchCrafting,craftingExplosives">
+		<ingredient name="ammo40mmHE" count="30"/>
+	    <ingredient name="AmmoBoxEmpty" count="1"/>
+	</recipe>
+
+	<recipe name="AmmoBox40mmRubber" count="1" craft_time="5" craft_area="AmmoBench" craft_tool="toolTAAmmoBoxes" tags="workbenchCrafting,craftingExplosives">
+		<ingredient name="ammo40mmRubber" count="30"/>
+	    <ingredient name="AmmoBoxEmpty" count="1"/>
+	</recipe>
+
+
+	<recipe name="PackofShotgunShellAmmo" count="1" craft_time="3" craft_area="AmmoBench" craft_tool="toolTABoxFolder" tags="workbenchCrafting,PerkHOHShotGuns">
+		<ingredient name="ammoShotgunShell" count="25"/>
+		<ingredient name="resourceScrapPolymers" count="10"/>
+	</recipe>
+
+	<recipe name="AmmoCaseShells" count="1" craft_time="5" craft_area="AmmoBench" craft_tool="toolTAAmmoBoxes" tags="workbenchCrafting,PerkHOHShotGuns">
+		<ingredient name="PackofShotgunShellAmmo" count="6"/>
+		<ingredient name="AmmoCaseEmpty" count="1"/>
+	</recipe>
+
+	<recipe name="PackofShotgunSlugAmmo" count="1" craft_time="3" craft_area="AmmoBench" craft_tool="toolTABoxFolder" tags="workbenchCrafting,PerkHOHShotGuns">
+		<ingredient name="ammoShotgunSlug" count="25"/>
+		<ingredient name="resourceScrapPolymers" count="10"/>
+	</recipe>
+
+	<recipe name="AmmoCaseSlugs" count="1" craft_time="5" craft_area="AmmoBench" craft_tool="toolTAAmmoBoxes" tags="workbenchCrafting,PerkHOHShotGuns">
+		<ingredient name="PackofShotgunSlugAmmo" count="6"/>
+		<ingredient name="AmmoCaseEmpty" count="1"/>
+	</recipe>
+
+	<recipe name="PackofShotgunBreachingSlugAmmo" count="1" craft_time="3" craft_area="AmmoBench" craft_tool="toolTABoxFolder" tags="workbenchCrafting,PerkHOHShotGuns">
+		<ingredient name="ammoShotgunBreachingSlug" count="25"/>
+		<ingredient name="resourceScrapPolymers" count="10"/>
+	</recipe>
+
+	<recipe name="AmmoCaseBreachSlugs" count="1" craft_time="5" craft_area="AmmoBench" craft_tool="toolTAAmmoBoxes" tags="workbenchCrafting,PerkHOHShotGuns">
+		<ingredient name="PackofShotgunBreachingSlugAmmo" count="6"/>
+		<ingredient name="AmmoCaseEmpty" count="1"/>
+	</recipe>
+
+	<recipe name="PackofShotgunRubberSlugAmmo" count="1" craft_time="3" craft_area="AmmoBench" craft_tool="toolTABoxFolder" tags="workbenchCrafting,PerkHOHShotGuns">
+		<ingredient name="ammoShotgunRubberSlug" count="25"/>
+		<ingredient name="resourceScrapPolymers" count="10"/>
+	</recipe>
+
+	<recipe name="AmmoCaseRubberSlugs" count="1" craft_time="5" craft_area="AmmoBench" craft_tool="toolTAAmmoBoxes" tags="workbenchCrafting,PerkHOHShotGuns">
+		<ingredient name="PackofShotgunRubberSlugAmmo" count="6"/>
+		<ingredient name="AmmoCaseEmpty" count="1"/>
+	</recipe>
+
+
+
+
+
+</append>
+
+
+<!-- Mods -->
+
+<append xpath="/recipes">	
+
+	<recipe name="DualDrumMag" count="1"  craft_time="300" craft_area="GunsmithingBench" craft_tool="toolTAViceBlocks" tags="learnable,workbenchCrafting,perkAutoWeaponsDrumMag">
+		<ingredient name="modGunDrumMagazineExtender" count="2"/>	
+		<ingredient name="resourceForgedSteel" count="15"/>
+		<ingredient name="resourceScrapPolymers" count="20"/>
+		<ingredient name="resourceSpring" count="10"/>
+		<ingredient name="resourceMechanicalParts" count="5"/>
+	</recipe>
+
+</append>
+
+
+<!-- Parts -->
+
+
+	
+<append xpath="/recipes"> <!-- Generic Parts -->
+
+<!-- Forged Parts --> <!-- Forged Parts --> <!-- Forged Parts --> 
+
+	<recipe name="resourceGunLube" count="50" craft_time="60" craft_area="chemistryStation">
+		<ingredient name="resourceOil" count="5"/>
+		<ingredient name="resourceOilShale" count="150"/>
+		<ingredient name="resourceScrapIron" count="50"/>
+	</recipe>
+	
+	<recipe name="resourceSteelCleaner" count="150" craft_time="60" craft_area="chemistryStation">
+		<ingredient name="resourcePotassiumNitratePowder" count="100"/>
+		<ingredient name="resourceOilShale" count="125"/>
+		<ingredient name="resourceAcid" count="1"/>
+		<ingredient name="resourceScrapPolymers" count="50"/>
+	</recipe>
+	
+	<recipe name="resourceBoraxPowder" count="100" craft_time="60" craft_area="chemistryStation">
+		<ingredient name="resourcePotassiumNitratePowder" count="400"/>
+		<ingredient name="resourceOilShale" count="20"/>
+		<ingredient name="resourceAcid" count="1"/>
+		<ingredient name="resourceBrokenGlass" count="20"/>
+	</recipe>
+	
+	
+	<recipe name="ResourceForgedBilletSml" count="1" craft_time="100" material_based="true" craft_area="forge" craft_tool="toolForgeCrucible">
+		<ingredient name="unit_iron" count="400"/>
+		<ingredient name="unit_glass" count="150"/>
+		<ingredient name="unit_clay" count="200"/>
+	</recipe>	
+
+	<recipe name="ResourceForgedBilletMed" count="1" craft_time="150" material_based="true" craft_area="forge" craft_tool="toolForgeCrucible">
+		<ingredient name="unit_iron" count="800"/>
+		<ingredient name="unit_glass" count="300"/>
+		<ingredient name="unit_clay" count="400"/>
+	</recipe>	
+
+	<recipe name="ResourceForgedBilletLrg" count="1" craft_time="200" material_based="true" craft_area="forge" craft_tool="toolForgeCrucible">
+		<ingredient name="unit_iron" count="1200"/>
+		<ingredient name="unit_glass" count="450"/>
+		<ingredient name="unit_clay" count="600"/>
+	</recipe>	
+
+	<recipe name="ResourceForgedBilletLng" count="1" craft_time="200" material_based="true" craft_area="forge" craft_tool="toolForgeCrucible">
+		<ingredient name="unit_iron" count="1200"/>
+		<ingredient name="unit_glass" count="450"/>
+		<ingredient name="unit_clay" count="600"/>
+	</recipe>	
+
+
+	<recipe name="partUpperDrawnSml" count="1" craft_time="50" craft_area="PowerHammer">
+		<ingredient name="ResourceForgedBilletSml" count="1"/>
+		<ingredient name="resourceBoraxPowder" count="10"/>
+	</recipe>	
+
+	<recipe name="partUpperDrawnMed" count="1" craft_time="100" craft_area="PowerHammer">
+		<ingredient name="ResourceForgedBilletMed" count="1"/>
+		<ingredient name="resourceBoraxPowder" count="20"/>
+	</recipe>
+
+	<recipe name="partUpperDrawnLrg" count="1" craft_time="150" craft_area="PowerHammer">
+		<ingredient name="ResourceForgedBilletLrg" count="1"/>
+		<ingredient name="resourceBoraxPowder" count="30"/>
+	</recipe>	
+
+	<recipe name="partLowerDrawnSml" count="1" craft_time="50" craft_area="PowerHammer">
+		<ingredient name="ResourceForgedBilletSml" count="1"/>
+		<ingredient name="resourceBoraxPowder" count="10"/>
+	</recipe>	
+
+	<recipe name="partLowerDrawnMed" count="1" craft_time="100" craft_area="PowerHammer">
+		<ingredient name="ResourceForgedBilletMed" count="1"/>
+		<ingredient name="resourceBoraxPowder" count="20"/>	
+	</recipe>	
+
+	<recipe name="partLowerDrawnLrg" count="1" craft_time="150" craft_area="PowerHammer">
+		<ingredient name="ResourceForgedBilletLrg" count="1"/>
+		<ingredient name="resourceBoraxPowder" count="30"/>
+	</recipe>	
+
+	<recipe name="partBarrelDrawnSml" count="3" craft_time="150" craft_area="PowerHammer">
+		<ingredient name="ResourceForgedBilletLng" count="1"/>
+		<ingredient name="resourceBoraxPowder" count="10"/>
+	</recipe>	
+
+	<recipe name="partBarrelDrawnMed" count="2" craft_time="100" craft_area="PowerHammer">
+		<ingredient name="ResourceForgedBilletLng" count="1"/>
+		<ingredient name="resourceBoraxPowder" count="20"/>	
+	</recipe>	
+
+	<recipe name="partBarrelDrawnLrg" count="1" craft_time="50" craft_area="PowerHammer">
+		<ingredient name="ResourceForgedBilletLng" count="1"/>
+		<ingredient name="resourceBoraxPowder" count="30"/>
+	</recipe>	
+
+
+<!-- General Parts --> <!-- General Parts --> <!-- General Parts --> 
+
+	<recipe name="partUpperPins" count="1" craft_time="30" material_based="true" craft_area="forge" craft_tool="toolForgeCrucible">
+		<ingredient name="unit_iron" count="100"/>
+		<ingredient name="unit_clay" count="50"/>
+	</recipe>	
+
+	<recipe name="partLowerPins" count="1" craft_time="30" material_based="true" craft_area="forge" craft_tool="toolForgeCrucible">
+		<ingredient name="unit_iron" count="150"/>
+		<ingredient name="unit_clay" count="75"/>
+	</recipe>	
+	
+	<recipe name="partBufferTube" count="1" craft_time="300" craft_tool="toolTAGunsmithKit" craft_area="GunsmithingBench" tags="workbenchCrafting">
+		<ingredient name="resourceForgedSteel" count="12"/>
+		<ingredient name="resourceMetalPipe" count="6"/>
+		<ingredient name="resourceMechanicalParts" count="8"/>
+		<ingredient name="resourceSpring" count="6"/>
+		<ingredient name="resourceOil" count="2"/>
+	</recipe>
+	
+	<recipe name="partPistolGrip" count="1" craft_time="120" craft_tool="toolTAAssemblyMat" craft_area="GunsmithingBench" tags="workbenchCrafting">
+		<ingredient name="resourceForgedIron" count="6"/>
+		<ingredient name="resourceScrapPolymers" count="40"/>
+		<ingredient name="resourceScrapIron" count="4"/>
+		<ingredient name="resourceLeather" count="3"/>
+	</recipe>
+
+	<recipe name="partMagRelease" count="1" craft_time="120" craft_tool="toolTAAssemblyMat" craft_area="GunsmithingBench" tags="workbenchCrafting">
+		<ingredient name="resourceForgedIron" count="5"/>
+		<ingredient name="resourceScrapPolymers" count="15"/>
+		<ingredient name="resourceMechanicalParts" count="3"/>
+		<ingredient name="resourceSpring" count="1"/>
+	</recipe>
+	
+	<recipe name="partTrigger" count="1" craft_time="180" craft_tool="toolTAGunsmithKit" craft_area="GunsmithingBench" tags="workbenchCrafting">
+		<ingredient name="resourceForgedSteel" count="8"/>
+		<ingredient name="resourceForgedIron" count="6"/>
+		<ingredient name="resourceMechanicalParts" count="6"/>
+		<ingredient name="resourceSpring" count="3"/>
+		<ingredient name="resourceOil" count="2"/>
+	</recipe>
+
+	<recipe name="partMuzzle" count="1" craft_time="120" craft_tool="toolTAAssemblyMat" craft_area="GunsmithingBench" tags="workbenchCrafting">
+		<ingredient name="resourceForgedSteel" count="3"/>
+		<ingredient name="resourceForgedIron" count="1"/>
+		<ingredient name="resourceMechanicalParts" count="2"/>
+		<ingredient name="resourceMetalPipe" count="1"/>
+	</recipe>
+
+	<recipe name="partMuzzleDMR" count="1" craft_time="120" craft_tool="toolTAGunsmithKit" craft_area="GunsmithingBench" tags="workbenchCrafting">
+		<ingredient name="resourceForgedSteel" count="3"/>
+		<ingredient name="resourceForgedIron" count="1"/>
+		<ingredient name="resourceMechanicalParts" count="2"/>
+		<ingredient name="resourceMetalPipe" count="1"/>
+	</recipe>
+
+	<recipe name="partScope" count="1" craft_time="240" craft_tool="toolTAGunsmithKit" craft_area="GunsmithingBench" tags="workbenchCrafting">
+		<ingredient name="resourceForgedSteel" count="18"/>
+		<ingredient name="resourceBrokenGlass" count="30"/>
+		<ingredient name="resourceMechanicalParts" count="12"/>
+		<ingredient name="resourceScrapPolymers" count="35"/>
+	</recipe>
+
+
+<!-- Barrels Blank--> <!-- Barrels Blank--> <!-- Barrels Blank--> <!-- Barrels Blank-->
+	
+	<recipe name="part9inBarrel" count="1" craft_time="130" craft_area="LathingMachine">
+		<ingredient name="partBarrelDrawnMed" count="1"/>
+		<ingredient name="resourceSteelCleaner" count="3"/>
+	</recipe>
+
+	<recipe name="part15inBarrel" count="1" craft_time="140" craft_area="LathingMachine">
+		<ingredient name="partBarrelDrawnMed" count="1"/>
+		<ingredient name="resourceSteelCleaner" count="6"/>
+	</recipe>	
+
+	<recipe name="part16inBarrel" count="1" craft_time="160" craft_area="LathingMachine">
+		<ingredient name="partBarrelDrawnMed" count="1"/>
+		<ingredient name="resourceSteelCleaner" count="9"/>
+	</recipe>	
+
+	<recipe name="part16inBarrel762" count="1" craft_time="180" craft_area="LathingMachine">
+		<ingredient name="partBarrelDrawnMed" count="1"/>
+		<ingredient name="resourceSteelCleaner" count="9"/>
+	</recipe>	
+
+	<recipe name="part18inBarrel" count="1" craft_time="170" craft_area="LathingMachine">
+		<ingredient name="partBarrelDrawnMed" count="1"/>
+		<ingredient name="resourceSteelCleaner" count="12"/>
+	</recipe>	
+
+	<recipe name="part18inBarrel762" count="1" craft_time="180" craft_area="LathingMachine">
+		<ingredient name="partBarrelDrawnMed" count="1"/>
+		<ingredient name="resourceSteelCleaner" count="12"/>
+	</recipe>	
+
+	<recipe name="part20inBarrel" count="1" craft_time="180" craft_area="LathingMachine">
+		<ingredient name="partBarrelDrawnMed" count="1"/>
+		<ingredient name="resourceSteelCleaner" count="15"/>
+	</recipe>	
+
+	<recipe name="part20inBarrel762" count="1" craft_time="180" craft_area="LathingMachine">
+		<ingredient name="partBarrelDrawnLrg" count="1"/>
+		<ingredient name="resourceSteelCleaner" count="15"/>
+	</recipe>	
+
+</append>	
+
+
+<append xpath="/recipes"> <!-- M16A1, M4A1, HK416, M110 Parts-->
+
+<!--#########################################################################################################################################################################################################################-->
+<!--############################ M16A1, M4A1, HK416, M110 ############################## M16A1, M4A1, HK416, M110 ######################################### M16A1, M4A1, HK416, M110 ########################################-->
+
+<!-- Uppers --> <!-- Uppers --> <!-- Uppers --> 
+
+	<recipe name="partChargingHandle" count="1" craft_time="180" craft_tool="toolTAAssemblyMat" craft_area="GunsmithingBench" tags="workbenchCrafting">
+		<ingredient name="resourceForgedIron" count="8"/>
+		<ingredient name="resourceScrapPolymers" count="25"/>
+		<ingredient name="resourceMechanicalParts" count="4"/>
+		<ingredient name="resourceSpring" count="2"/>
+		<ingredient name="resourceOil" count="1"/>
+	</recipe>
+
+	<recipe name="partUpperEmpty" count="1" craft_time="180" craft_tool="toolTAMillingChucks" craft_area="MillingMachine">
+		<ingredient name="partUpperDrawnMed" count="1"/>
+		<ingredient name="resourceSteelCleaner" count="10"/>
+	</recipe>	
+	
+	<recipe name="partBoltCarrier556" count="1" craft_time="420" craft_tool="toolTAGunsmithKit" craft_area="GunsmithingBench" tags="workbenchCrafting">
+		<ingredient name="resourceForgedSteel" count="30"/>
+		<ingredient name="resourceForgedIron" count="15"/>
+		<ingredient name="resourceMechanicalParts" count="10"/>
+		<ingredient name="resourceSpring" count="6"/>
+		<ingredient name="resourceOil" count="4"/>
+	</recipe>
+	
+	<recipe name="partBoltCarrier762" count="1" craft_time="420" craft_tool="toolTAGunsmithKit" craft_area="GunsmithingBench" tags="workbenchCrafting">
+		<ingredient name="resourceForgedSteel" count="40"/>
+		<ingredient name="resourceForgedIron" count="20"/>
+		<ingredient name="resourceMechanicalParts" count="10"/>
+		<ingredient name="resourceSpring" count="8"/>
+		<ingredient name="resourceOil" count="4"/>
+	</recipe>
+
+	<recipe name="partUpperComplete556" count="1" craft_time="300" craft_tool="toolTAViceBlocks" craft_area="GunsmithingBench" tags="workbenchCrafting">
+		<ingredient name="partChargingHandle" count="1"/> <!-- Recipe -->
+		<ingredient name="partBoltCarrier556" count="1"/> <!-- Recipe -->
+		<ingredient name="partUpperEmpty" count="1"/> <!-- Recipe FORGE?-->
+		<ingredient name="partUpperPins" count="1"/> <!-- Recipe FORGE-->
+	</recipe>
+
+	<recipe name="partUpperComplete762" count="1" craft_time="300" craft_tool="toolTAViceBlocks" craft_area="GunsmithingBench" tags="workbenchCrafting">
+		<ingredient name="partChargingHandle" count="1"/> <!-- Recipe -->
+		<ingredient name="partBoltCarrier762" count="1"/> <!-- Recipe -->
+		<ingredient name="partUpperEmpty" count="1"/> <!-- Recipe FORGE?-->
+		<ingredient name="partUpperPins" count="1"/> <!-- Recipe FORGE-->
+	</recipe>
+
+<!-- Lowers --> <!-- Lowers --> <!-- Lowers --> 
+
+	<recipe name="partLowerEmpty" count="1" craft_time="180" craft_tool="toolTAMillingChucks" craft_area="MillingMachine">
+		<ingredient name="partLowerDrawnMed" count="1"/>
+		<ingredient name="resourceSteelCleaner" count="10"/>
+	</recipe>	
+
+	<recipe name="partLowerComplete" count="1" craft_time="240" craft_tool="toolTAViceBlocks" craft_area="GunsmithingBench" tags="workbenchCrafting">
+		<ingredient name="partMagRelease" count="1"/> 
+		<ingredient name="partTrigger" count="1"/>
+		<ingredient name="partBufferTube" count="1"/>
+		<ingredient name="partLowerEmpty" count="1"/>
+		<ingredient name="partPistolGrip" count="1"/>
+	</recipe>
+
+	<recipe name="partLowerCompleteNS" count="1" craft_time="240" craft_tool="toolTAViceBlocks" craft_area="GunsmithingBench" tags="workbenchCrafting">
+		<ingredient name="partMagRelease" count="1"/> 
+		<ingredient name="partTrigger" count="1"/>
+		<ingredient name="partBufferTube" count="1"/>
+		<ingredient name="partLowerEmpty" count="1"/>
+		<ingredient name="partPistolGrip" count="1"/>
+	</recipe>
+
+<!-- Receivers --> <!-- Receivers --> <!-- Receivers --> 
+
+	<recipe name="partRecieverCompleteNS" count="1" craft_time="240" craft_tool="toolTAViceBlocks" craft_area="GunsmithingBench" tags="workbenchCrafting">
+		<ingredient name="partUpperComplete556" count="1"/>
+		<ingredient name="partLowerCompleteNS" count="1"/>
+		<ingredient name="partLowerPins" count="1"/>
+	</recipe>
+
+	<recipe name="partRecieverComplete" count="1" craft_time="240" craft_tool="toolTAViceBlocks" craft_area="GunsmithingBench" tags="workbenchCrafting">
+		<ingredient name="partUpperComplete556" count="1"/>
+		<ingredient name="partLowerComplete" count="1"/>
+		<ingredient name="partLowerPins" count="1"/>
+	</recipe>
+
+	<recipe name="partRecieverCompleteTan" count="1" craft_time="240" craft_tool="toolTAViceBlocks" craft_area="GunsmithingBench" tags="workbenchCrafting">
+		<ingredient name="partUpperComplete762" count="1"/>
+		<ingredient name="partBufferTube" count="1"/>
+		<ingredient name="partLowerCompleteNS" count="1"/>
+		<ingredient name="partLowerPins" count="1"/>
+	</recipe>
+
+<!-- Stocks --> <!-- Stocks --> <!-- Stocks --> 
+		
+	<recipe name="partStock" count="1" craft_time="120" craft_tool="toolTAGunsmithKit" craft_area="GunsmithingBench" tags="workbenchCrafting">
+		<ingredient name="resourceForgedIron" count="10"/>
+		<ingredient name="resourceMetalPipe" count="3"/>
+		<ingredient name="resourceScrapPolymers" count="80"/>
+		<ingredient name="resourceScrapIron" count="8"/>
+		<ingredient name="resourceLeather" count="6"/>
+	</recipe>
+		
+	<recipe name="partStockFixed" count="1" craft_time="120" craft_tool="toolTAGunsmithKit" craft_area="GunsmithingBench" tags="workbenchCrafting">
+		<ingredient name="resourceForgedIron" count="15"/>
+		<ingredient name="resourceScrapPolymers" count="100"/>
+		<ingredient name="resourceScrapIron" count="8"/>
+		<ingredient name="resourceLeather" count="6"/>
+	</recipe>
+		
+	<recipe name="partStockFixedTan" count="1" craft_time="180" craft_tool="toolTAGunsmithKit" craft_area="GunsmithingBench" tags="workbenchCrafting">
+		<ingredient name="resourceForgedIron" count="15"/>
+		<ingredient name="resourceScrapPolymers" count="100"/>
+		<ingredient name="resourceScrapIron" count="8"/>
+		<ingredient name="resourceLeather" count="6"/>
+	</recipe>
+		
+	<recipe name="partStockTac" count="1" craft_time="240" craft_tool="toolTAGunsmithKit" craft_area="GunsmithingBench" tags="workbenchCrafting">
+		<ingredient name="resourceForgedIron" count="15"/>
+		<ingredient name="resourceScrapPolymers" count="100"/>
+		<ingredient name="resourceScrapIron" count="8"/>
+		<ingredient name="resourceLeather" count="6"/>
+	</recipe>
+
+<!-- Barrel Parts --> <!-- Barrel Parts --> <!-- Barrel Parts --> 
+
+	<recipe name="partHKGasBlock" count="1" craft_time="120" craft_tool="toolTAGunsmithKit" craft_area="GunsmithingBench" tags="workbenchCrafting">
+		<ingredient name="resourceForgedIron" count="4"/>
+		<ingredient name="resourceScrapPolymers" count="15"/>
+		<ingredient name="resourceMechanicalParts" count="4"/>
+		<ingredient name="resourceSpring" count="2"/>
+	</recipe>
+
+	<recipe name="partDeltaRing" count="1" craft_time="120" craft_tool="toolTAAssemblyMat" craft_area="GunsmithingBench" tags="workbenchCrafting">
+		<ingredient name="resourceForgedIron" count="4"/>
+		<ingredient name="resourceScrapPolymers" count="15"/>
+		<ingredient name="resourceMechanicalParts" count="4"/>
+		<ingredient name="resourceSpring" count="2"/>
+	</recipe>
+
+	<recipe name="partGasBlock" count="1" craft_time="120" craft_tool="toolTAGunsmithKit" craft_area="GunsmithingBench" tags="workbenchCrafting">
+		<ingredient name="resourceForgedIron" count="4"/>
+		<ingredient name="resourceScrapPolymers" count="15"/>
+		<ingredient name="resourceMechanicalParts" count="4"/>
+		<ingredient name="resourceSpring" count="2"/>
+	</recipe>
+
+<!-- Guards --> <!-- Guards --> <!-- Guards --> 
+
+	<recipe name="part15inRail" count="1" craft_time="180" craft_tool="toolTAGunsmithKit" craft_area="GunsmithingBench" tags="workbenchCrafting">
+		<ingredient name="resourceForgedSteel" count="8"/>
+		<ingredient name="resourceScrapPolymers" count="30"/>
+		<ingredient name="resourceMetalPipe" count="5"/>
+		<ingredient name="resourceScrapIron" count="2"/>
+	</recipe>
+
+	<recipe name="part16inGuard" count="1" craft_time="180" craft_tool="toolTAAssemblyMat" craft_area="GunsmithingBench" tags="workbenchCrafting">
+		<ingredient name="resourceScrapPolymers" count="50"/>
+		<ingredient name="resourceMetalPipe" count="4"/>
+		<ingredient name="resourceScrapIron" count="4"/>
+	</recipe>
+
+	<recipe name="part20inGuard" count="1" craft_time="180" craft_tool="toolTAAssemblyMat" craft_area="GunsmithingBench" tags="workbenchCrafting">
+		<ingredient name="resourceScrapPolymers" count="90"/>
+		<ingredient name="resourceMetalPipe" count="6"/>
+		<ingredient name="resourceScrapIron" count="6"/>
+	</recipe>	
+
+	<recipe name="part20inRail" count="1" craft_time="180" craft_tool="toolTAGunsmithKit" craft_area="GunsmithingBench" tags="workbenchCrafting">
+		<ingredient name="resourceForgedSteel" count="10"/>
+		<ingredient name="resourceScrapPolymers" count="40"/>
+		<ingredient name="resourceMetalPipe" count="6"/>
+		<ingredient name="resourceScrapIron" count="3"/>
+	</recipe>	
+
+<!-- Sights --> <!-- Sights --> <!-- Sights --> 
+
+	<recipe name="partHKSightF" count="1" craft_time="120" craft_tool="toolTAAssemblyMat" craft_area="GunsmithingBench" tags="workbenchCrafting">
+		<ingredient name="resourceForgedSteel" count="5"/>
+		<ingredient name="resourceForgedIron" count="4"/>
+		<ingredient name="resourceMechanicalParts" count="5"/>
+		<ingredient name="resourceScrapPolymers" count="20"/>
+	</recipe>
+
+	<recipe name="partHKSightR" count="1" craft_time="180" craft_tool="toolTAAssemblyMat" craft_area="GunsmithingBench" tags="workbenchCrafting">
+		<ingredient name="resourceForgedSteel" count="10"/>
+		<ingredient name="resourceForgedIron" count="8"/>
+		<ingredient name="resourceMechanicalParts" count="10"/>
+		<ingredient name="resourceScrapPolymers" count="40"/>
+	</recipe>
+
+	<recipe name="partM4SightF" count="1" craft_time="120" craft_tool="toolTAAssemblyMat" craft_area="GunsmithingBench" tags="workbenchCrafting">
+		<ingredient name="resourceForgedSteel" count="5"/>
+		<ingredient name="resourceForgedIron" count="4"/>
+		<ingredient name="resourceMechanicalParts" count="5"/>
+		<ingredient name="resourceScrapPolymers" count="20"/>
+	</recipe>
+
+	<recipe name="partM4SightR" count="1" craft_time="180" craft_tool="toolTAAssemblyMat" craft_area="GunsmithingBench" tags="workbenchCrafting">
+		<ingredient name="resourceForgedSteel" count="10"/>
+		<ingredient name="resourceForgedIron" count="8"/>
+		<ingredient name="resourceMechanicalParts" count="10"/>
+		<ingredient name="resourceScrapPolymers" count="40"/>
+	</recipe>
+
+<!-- Barrels --> <!-- Barrels --> <!-- Barrels --> 
+
+	<recipe name="part15inBarrelComplete" count="1" craft_time="120" craft_tool="toolTARiflingBroach" craft_area="GunsmithingBench" tags="workbenchCrafting">
+		<ingredient name="part15inBarrel" count="1"/>
+		<ingredient name="part15inRail" count="1"/>
+		<ingredient name="partHKGasBlock" count="1"/>
+		<ingredient name="partHKSightF" count="1"/>
+		<ingredient name="partMuzzle" count="1"/>
+	</recipe>
+	
+	<recipe name="part16inBarrelComplete" count="1" craft_time="120" craft_tool="toolTARiflingBroach" craft_area="GunsmithingBench" tags="workbenchCrafting">
+		<ingredient name="part16inBarrel" count="1"/>
+		<ingredient name="partDeltaRing" count="1"/>
+		<ingredient name="partM4SightF" count="1"/>
+		<ingredient name="partMuzzle" count="1"/>
+	</recipe>
+
+	<recipe name="part20inBarrelComplete" count="1" craft_time="120" craft_tool="toolTARiflingBroach" craft_area="GunsmithingBench" tags="workbenchCrafting">
+		<ingredient name="part20inBarrel" count="1"/>
+		<ingredient name="partDeltaRing" count="1"/>
+		<ingredient name="partM4SightF" count="1"/>
+		<ingredient name="partMuzzle" count="1"/>
+	</recipe>
+
+	<recipe name="part20inBarrelCompleteTan" count="1" craft_time="120" craft_tool="toolTARiflingBroach" craft_area="GunsmithingBench" tags="workbenchCrafting">
+		<ingredient name="part20inBarrel762" count="1"/>
+		<ingredient name="part20inRail" count="1"/>
+		<ingredient name="partGasBlock" count="1"/>
+		<ingredient name="partMuzzleDMR" count="1"/>
+	</recipe>
+
+</append>
+
+<append xpath="/recipes"> <!-- Scar H, Scar L Parts -->
+		<!--#########################################################################################################################################################################################################################-->
+		<!--################################# Scar H, Scar L ############################# Scar H, Scar L ########################## Scar H, Scar L ######################### Scar H, Scar L ########################################-->
+
+		<!-- Uppers --> <!-- Uppers --> <!-- Uppers --> 
+
+			<recipe name="partChargingHandleSC" count="1" craft_time="180" craft_tool="toolTAAssemblyMat" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="resourceForgedIron" count="8"/>
+				<ingredient name="resourceScrapPolymers" count="25"/>
+				<ingredient name="resourceMechanicalParts" count="4"/>
+				<ingredient name="resourceSpring" count="2"/>
+				<ingredient name="resourceOil" count="1"/>
+			</recipe>
+
+			<recipe name="partUpperEmptySC" count="1" craft_time="180" craft_area="MillingMachine" craft_tool="toolTAMillingChucks">
+				<ingredient name="partUpperDrawnMed" count="1"/>
+				<ingredient name="resourceSteelCleaner" count="15"/>
+			</recipe>	
+			
+			<recipe name="partBoltCarrierSC556" count="1" craft_time="420" craft_tool="toolTAGunsmithKit" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="resourceForgedSteel" count="30"/>
+				<ingredient name="resourceForgedIron" count="15"/>
+				<ingredient name="resourceMechanicalParts" count="10"/>
+				<ingredient name="resourceSpring" count="6"/>
+				<ingredient name="resourceOil" count="4"/>
+			</recipe>
+			
+			<recipe name="partBoltCarrierSC762" count="1" craft_time="420" craft_tool="toolTAGunsmithKit" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="resourceForgedSteel" count="40"/>
+				<ingredient name="resourceForgedIron" count="20"/>
+				<ingredient name="resourceMechanicalParts" count="10"/>
+				<ingredient name="resourceSpring" count="8"/>
+				<ingredient name="resourceOil" count="4"/>
+			</recipe>
+
+			<recipe name="partUpperCompleteSC556" count="1" craft_time="300" craft_tool="toolTAViceBlocks" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="partUpperEmptySC" count="1"/> <!-- Recipe -->
+				<ingredient name="partChargingHandleSC" count="1"/> <!-- Recipe -->
+				<ingredient name="partBoltCarrierSC556" count="1"/> <!-- Recipe FORGE?-->
+				<ingredient name="partUpperPins" count="1"/> <!-- Recipe FORGE-->
+			</recipe>
+
+			<recipe name="partUpperCompleteSC762" count="1" craft_time="300" craft_tool="toolTAViceBlocks" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="partUpperEmptySC" count="1"/> <!-- Recipe -->
+				<ingredient name="partChargingHandleSC" count="1"/> <!-- Recipe -->
+				<ingredient name="partBoltCarrierSC762" count="1"/> <!-- Recipe FORGE?-->
+				<ingredient name="partUpperPins" count="1"/> <!-- Recipe FORGE-->
+			</recipe>
+
+		<!-- Lowers --> <!-- Lowers --> <!-- Lowers --> <!-- Lowers -->
+
+			<recipe name="partLowerCompleteSC" count="1" craft_time="240" craft_tool="toolTAViceBlocks" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="partMagRelease" count="1"/> 
+				<ingredient name="partTrigger" count="1"/>
+				<ingredient name="partLowerEmpty" count="1"/>
+				<ingredient name="partPistolGrip" count="1"/>
+				<ingredient name="partLowerPins" count="1"/>
+			</recipe>
+
+		<!-- Stocks --> <!-- Stocks --> <!-- Stocks --> <!-- Stocks -->
+				
+			<recipe name="partStockSC" count="1" craft_time="240" craft_tool="toolTAGunsmithKit" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="resourceForgedIron" count="15"/>
+				<ingredient name="resourceScrapPolymers" count="100"/>
+				<ingredient name="resourceScrapIron" count="8"/>
+				<ingredient name="resourceLeather" count="6"/>
+			</recipe>
+
+		<!-- Barrel Parts --> <!-- Barrel Parts --> <!-- Barrel Parts --> 
+
+			<recipe name="partMuzzleSC" count="1" craft_time="120" craft_tool="toolTAGunsmithKit" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="resourceForgedSteel" count="3"/>
+				<ingredient name="resourceForgedIron" count="1"/>
+				<ingredient name="resourceMechanicalParts" count="2"/>
+				<ingredient name="resourceMetalPipe" count="1"/>
+			</recipe>
+
+		<!-- Sights --> <!-- Sights --> <!-- Sights --> 
+
+			<recipe name="partSCSightF" count="1" craft_time="120" craft_tool="toolTAAssemblyMat" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="resourceForgedSteel" count="5"/>
+				<ingredient name="resourceForgedIron" count="4"/>
+				<ingredient name="resourceMechanicalParts" count="5"/>
+				<ingredient name="resourceScrapPolymers" count="20"/>
+			</recipe>
+				
+			<recipe name="partSCSightR" count="1" craft_time="180" craft_tool="toolTAAssemblyMat" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="resourceForgedSteel" count="10"/>
+				<ingredient name="resourceForgedIron" count="8"/>
+				<ingredient name="resourceMechanicalParts" count="10"/>
+				<ingredient name="resourceScrapPolymers" count="40"/>
+			</recipe>
+
+		<!-- Barrels --> <!-- Barrels --> <!-- Barrels --> 
+			
+			<recipe name="part14inBarrelCompleteSC" count="1" craft_time="120" craft_tool="toolTARiflingBroach" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="part15inBarrel" count="1"/>
+				<ingredient name="partHKGasBlock" count="1"/>
+				<ingredient name="partSCSightF" count="1"/>
+				<ingredient name="partMuzzleSC" count="1"/>
+			</recipe>
+			
+			<recipe name="part16inBarrelCompleteSC" count="1" craft_time="120" craft_tool="toolTARiflingBroach" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="part16inBarrel762" count="1"/>
+				<ingredient name="partHKGasBlock" count="1"/>
+				<ingredient name="partSCSightF" count="1"/>
+				<ingredient name="partMuzzleSC" count="1"/>
+			</recipe>
+
+		</append>
+
+
+
+<append xpath="/recipes"> <!-- ACR Parts -->
+		<!--#########################################################################################################################################################################################################################-->
+		<!--###################################### ACR ############################################ ACR ####################################### ACR ################################### ACR #########################################-->
+
+		<!-- Uppers --> <!-- Uppers --> <!-- Uppers --> 
+
+			<recipe name="partChargingHandleACR" count="1" craft_time="180" craft_tool="toolTAAssemblyMat" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="resourceForgedIron" count="8"/>
+				<ingredient name="resourceScrapPolymers" count="25"/>
+				<ingredient name="resourceMechanicalParts" count="4"/>
+				<ingredient name="resourceSpring" count="2"/>
+				<ingredient name="resourceOil" count="1"/>
+			</recipe>
+
+			<recipe name="partUpperEmptyACR" count="1" craft_time="180" craft_area="MillingMachine" craft_tool="toolTAMillingChucks">
+				<ingredient name="partUpperDrawnMed" count="1"/>
+				<ingredient name="resourceSteelCleaner" count="15"/>
+			</recipe>	
+			
+			<recipe name="partBoltCarrierACR" count="1" craft_time="420" craft_tool="toolTAGunsmithKit" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="resourceForgedSteel" count="30"/>
+				<ingredient name="resourceForgedIron" count="15"/>
+				<ingredient name="resourceMechanicalParts" count="10"/>
+				<ingredient name="resourceSpring" count="6"/>
+				<ingredient name="resourceOil" count="4"/>
+			</recipe>
+
+			<recipe name="partUpperCompleteACR" count="1" craft_time="300" craft_tool="toolTAViceBlocks" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="partACRSightF" count="1"/>
+				<ingredient name="partUpperEmptyACR" count="1"/>
+				<ingredient name="partChargingHandleACR" count="1"/>
+				<ingredient name="partBoltCarrierACR" count="1"/>
+				<ingredient name="part12inGuardACR" count="1"/>
+			</recipe>
+
+		<!-- Lowers --> <!-- Lowers --> <!-- Lowers --> <!-- Lowers -->
+
+			<recipe name="partLowerEmptyACR" count="1" craft_time="180" craft_area="MillingMachine" craft_tool="toolTAMillingChucks">
+				<ingredient name="partLowerDrawnMed" count="1"/>
+				<ingredient name="resourceSteelCleaner" count="10"/>
+			</recipe>	
+
+			<recipe name="partLowerCompleteACR" count="1" craft_time="240" craft_tool="toolTAViceBlocks" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="partMagRelease" count="1"/> 
+				<ingredient name="partTrigger" count="1"/>
+				<ingredient name="partLowerEmptyACR" count="1"/>
+				<ingredient name="partPistolGrip" count="1"/>
+				<ingredient name="partLowerPins" count="1"/>
+			</recipe>
+			
+		<!-- Stocks --> <!-- Stocks --> <!-- Stocks --> <!-- Stocks -->
+			
+			<recipe name="partStockACR" count="1" craft_time="240" craft_tool="toolTAGunsmithKit" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="resourceForgedIron" count="15"/>
+				<ingredient name="resourceScrapPolymers" count="100"/>
+				<ingredient name="resourceScrapIron" count="8"/>
+				<ingredient name="resourceLeather" count="6"/>
+			</recipe>
+
+		<!-- Guards --> <!-- Guards --> <!-- Guards --> 
+
+			<recipe name="part12inGuardACR" count="1" craft_time="180" craft_tool="toolTAGunsmithKit" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="resourceForgedSteel" count="8"/>
+				<ingredient name="resourceScrapPolymers" count="30"/>
+				<ingredient name="resourceMetalPipe" count="5"/>
+				<ingredient name="resourceScrapIron" count="2"/>
+			</recipe>
+			
+		<!-- Barrel Muzzles -->	<!-- Barrel Muzzles -->	<!-- Barrel Muzzles -->	<!-- Barrel Muzzles -->	
+				
+		<!-- Barrel Sights -->	<!-- Barrel Sights -->	<!-- Barrel Sights -->	<!-- Barrel Sights -->	
+
+			<recipe name="partACRSightF" count="1" craft_time="120" craft_tool="toolTAAssemblyMat" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="resourceForgedSteel" count="5"/>
+				<ingredient name="resourceForgedIron" count="4"/>
+				<ingredient name="resourceMechanicalParts" count="5"/>
+				<ingredient name="resourceScrapPolymers" count="20"/>
+			</recipe>
+				
+			<recipe name="partACRSightR" count="1" craft_time="180" craft_tool="toolTAAssemblyMat" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="resourceForgedSteel" count="10"/>
+				<ingredient name="resourceForgedIron" count="8"/>
+				<ingredient name="resourceMechanicalParts" count="10"/>
+				<ingredient name="resourceScrapPolymers" count="40"/>
+			</recipe>
+
+				
+		<!-- Barrels --> <!-- Barrels --> <!-- Barrels --> <!-- Barrels --> 
+			
+			<recipe name="part18inBarrelCompleteACR" count="1" craft_time="120" craft_tool="toolTARiflingBroach" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="part18inBarrel" count="1"/>
+				<ingredient name="partHKGasBlock" count="1"/>
+				<ingredient name="partMuzzle" count="1"/>
+			</recipe>
+
+		</append>
+
+
+
+
+
+<append xpath="/recipes"> <!-- Mark 23 Parts -->
+		<!--#########################################################################################################################################################################################################################-->
+		<!--################################## Mark 23 ######################################## Mark 23 ##################################### Mark 23 ################################### Mark 23 ###################################-->
+
+		<!-- Misc --> <!-- Misc --> <!-- Misc --> 
+
+			<recipe name="partMKPins" count="1" craft_time="300" material_based="true" craft_area="forge" craft_tool="toolForgeCrucible">
+				<ingredient name="unit_iron" count="200"/>
+				<ingredient name="unit_clay" count="100"/>
+			</recipe>	
+
+		<!-- Uppers --> <!-- Uppers --> <!-- Uppers --> 
+
+			<recipe name="partMKSlide" count="1" craft_time="120" craft_area="MillingMachine" craft_tool="toolTAMillingChucks">
+				<ingredient name="partUpperDrawnSml" count="1"/>
+				<ingredient name="resourceSteelCleaner" count="8"/>
+			</recipe>	
+			
+			<recipe name="partMKFPin" count="1" craft_time="420" craft_tool="toolTAGunsmithKit" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="resourceForgedSteel" count="5"/>
+				<ingredient name="resourceForgedIron" count="8"/>
+				<ingredient name="resourceMechanicalParts" count="3"/>
+				<ingredient name="resourceSpring" count="2"/>
+				<ingredient name="resourceOil" count="1"/>
+			</recipe>
+			
+			<recipe name="partMKSlideComplete" count="1" craft_time="300" craft_tool="toolTAViceBlocks" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="partMKSightR" count="1"/>	
+				<ingredient name="partMKSightF" count="1"/>	
+				<ingredient name="partMKSlide" count="1"/>
+				<ingredient name="partMKFPin" count="1"/>
+				<ingredient name="part5inBarrelMK" count="1"/>
+			</recipe>
+
+		<!-- Lowers --> <!-- Lowers --> <!-- Lowers --> <!-- Lowers -->
+
+			<recipe name="partMKFrame" count="1" craft_time="120" craft_area="MillingMachine" craft_tool="toolTAMillingChucks">
+				<ingredient name="partLowerDrawnSml" count="1"/>
+				<ingredient name="resourceSteelCleaner" count="8"/>
+			</recipe>	
+
+			<recipe name="partMKSafety" count="1" craft_time="240" craft_tool="toolTAAssemblyMat" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="resourceForgedSteel" count="1"/>
+				<ingredient name="resourceForgedIron" count="2"/>
+				<ingredient name="resourceScrapPolymers" count="10"/>
+				<ingredient name="resourceSpring" count="1"/>
+			</recipe>
+			
+			<recipe name="partMKTrigger" count="1" craft_time="240" craft_tool="toolTAGunsmithKit" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="resourceForgedIron" count="2"/>
+				<ingredient name="resourceScrapPolymers" count="100"/>
+				<ingredient name="resourceSpring" count="6"/>
+			</recipe>
+
+			<recipe name="partMKHammer" count="1" craft_time="180" craft_tool="toolTAGunsmithKit" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="resourceForgedSteel" count="3"/>
+				<ingredient name="resourceForgedIron" count="6"/>
+				<ingredient name="resourceScrapPolymers" count="40"/>
+				<ingredient name="resourceSpring" count="6"/>
+			</recipe>
+
+			<recipe name="partMKFrameComplete" count="1" craft_time="120" craft_tool="toolTAViceBlocks" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="partMKSafety" count="1"/> 
+				<ingredient name="partMKHammer" count="1"/>
+				<ingredient name="partMKTrigger" count="1"/>
+				<ingredient name="partMKFrame" count="1"/>
+			</recipe>
+
+			<recipe name="partMKLock" count="1" craft_time="120" craft_tool="toolTAAssemblyMat" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="resourceForgedSteel" count="1"/>
+				<ingredient name="resourceForgedIron" count="3"/>
+				<ingredient name="resourceMechanicalParts" count="2"/>
+				<ingredient name="resourceScrapPolymers" count="10"/>
+			</recipe>
+			
+		<!-- Sights --> <!-- Sights --> <!-- Sights --> 
+			
+			<recipe name="partMKSightF" count="1" craft_time="180" craft_tool="toolTAAssemblyMat" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="resourceForgedSteel" count="1"/>
+				<ingredient name="resourceForgedIron" count="2"/>
+				<ingredient name="resourceMechanicalParts" count="1"/>
+				<ingredient name="resourceScrapPolymers" count="10"/>
+			</recipe>
+
+				
+			<recipe name="partMKSightR" count="1" craft_time="180" craft_tool="toolTAAssemblyMat" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="resourceForgedSteel" count="1"/>
+				<ingredient name="resourceForgedIron" count="2"/>
+				<ingredient name="resourceMechanicalParts" count="1"/>
+				<ingredient name="resourceScrapPolymers" count="10"/>
+			</recipe>
+
+				
+		<!-- Barrels --> <!-- Barrels --> <!-- Barrels --> <!-- Barrels --> 
+
+			<recipe name="part5inBarrelMK" count="1" craft_time="120" craft_area="LathingMachine">
+				<ingredient name="partBarrelDrawnSml" count="1"/>
+				<ingredient name="resourceSteelCleaner" count="3"/>
+			</recipe>	
+
+ </append>
+
+
+<append xpath="/recipes"> <!-- M82A1 Parts -->
+		<!--#########################################################################################################################################################################################################################-->
+		<!--####################################### M82A1  ######################################### M82A1 ############################ M82A1 ######################################## M82A1 ########################################-->
+
+		<!-- Misc --> <!-- Misc --> <!-- Misc --> 
+
+			<recipe name="partPinsM82" count="1" craft_time="300" material_based="true" craft_area="forge" craft_tool="toolForgeCrucible">
+				<ingredient name="unit_iron" count="150"/>
+				<ingredient name="unit_clay" count="75"/>
+			</recipe>	
+
+		<!-- Uppers --> <!-- Uppers --> <!-- Uppers --> 
+
+			<recipe name="partUpperEmptyM82" count="1" craft_time="250" craft_area="MillingMachine" craft_tool="toolTAMillingChucks">
+				<ingredient name="partUpperDrawnLrg" count="1"/>
+				<ingredient name="resourceSteelCleaner" count="25"/>
+			</recipe>	
+			
+			<recipe name="partM82Recoil" count="1" craft_time="420" craft_tool="toolTAGunsmithKit" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="resourceForgedSteel" count="8"/>
+				<ingredient name="resourceForgedIron" count="10"/>
+				<ingredient name="resourceMechanicalParts" count="6"/>
+				<ingredient name="resourceSpring" count="8"/>
+				<ingredient name="resourceOil" count="4"/>
+			</recipe>
+			
+			<recipe name="partBoltCarrierM82" count="1" craft_time="420" craft_tool="toolTAGunsmithKit" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="resourceForgedSteel" count="30"/>
+				<ingredient name="resourceForgedIron" count="25"/>
+				<ingredient name="resourceMechanicalParts" count="15"/>
+				<ingredient name="resourceSpring" count="20"/>
+				<ingredient name="resourceOil" count="6"/>
+			</recipe>
+
+			<recipe name="partUpperCompleteM82" count="1" craft_time="300" craft_tool="toolTAViceBlocks" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="partUpperEmptyM82" count="1"/>		
+				<ingredient name="part29inBarrelCompleteM82" count="1"/>	
+				<ingredient name="partM82Recoil" count="1"/>
+				<ingredient name="partUpperPins" count="1"/>
+			</recipe>
+
+		<!-- Lowers --> <!-- Lowers --> <!-- Lowers --> <!-- Lowers -->
+
+			<recipe name="partLowerEmptyM82" count="1" craft_time="250" craft_area="MillingMachine" craft_tool="toolTAMillingChucks">
+				<ingredient name="partLowerDrawnLrg" count="1"/>
+				<ingredient name="resourceSteelCleaner" count="25"/>
+			</recipe>	
+			
+			<recipe name="partM82Trigger" count="1" craft_time="240" craft_tool="toolTAGunsmithKit" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="resourceForgedSteel" count="12"/>
+				<ingredient name="resourceForgedIron" count="16"/>
+				<ingredient name="resourceMechanicalParts" count="6"/>
+				<ingredient name="resourceSpring" count="8"/>
+				<ingredient name="resourceScrapPolymers" count="60"/>
+			</recipe>
+			
+			<recipe name="partPistolGripM82" count="1" craft_time="240" craft_tool="toolTAGunsmithKit" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="resourceForgedSteel" count="5"/>
+				<ingredient name="resourceForgedIron" count="6"/>
+				<ingredient name="resourceScrapPolymers" count="200"/>
+				<ingredient name="resourceScrapIron" count="3"/>
+			</recipe>
+
+			<recipe name="partLowerCompleteM82" count="1" craft_time="120" craft_tool="toolTAAssemblyMat" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="partLowerEmptyM82" count="1"/>		
+				<ingredient name="partM82Trigger" count="1"/>	
+				<ingredient name="partPistolGripM82" count="1"/>
+				<ingredient name="partStockM82" count="1"/>
+				<ingredient name="partLowerPins" count="1"/>
+			</recipe>
+
+		<!-- Stocks --> <!-- Stocks --> <!-- Stocks --> <!-- Stocks -->
+				
+			<recipe name="partStockM82" count="1" craft_time="240" craft_tool="toolTAGunsmithKit" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="resourceForgedSteel" count="12"/>
+				<ingredient name="resourceForgedIron" count="15"/>
+				<ingredient name="resourceScrapPolymers" count="150"/>
+				<ingredient name="resourceScrapIron" count="8"/>
+			</recipe>
+			
+		<!-- Barrel Muzzles -->	<!-- Barrel Muzzles -->	<!-- Barrel Muzzles -->	<!-- Barrel Muzzles -->	
+
+			<recipe name="partMuzzleM82" count="1" craft_time="120" craft_tool="toolTAGunsmithKit" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="resourceForgedSteel" count="7"/>
+				<ingredient name="resourceForgedIron" count="9"/>
+				<ingredient name="resourceMechanicalParts" count="8"/>
+				<ingredient name="resourceMetalPipe" count="3"/>
+			</recipe>
+
+				
+		<!-- Barrels --> <!-- Barrels --> <!-- Barrels --> <!-- Barrels --> 
+
+			<recipe name="part29inBarrelM82" count="1" craft_time="250" craft_area="LathingMachine">
+				<ingredient name="partBarrelDrawnLrg" count="1"/>
+				<ingredient name="resourceSteelCleaner" count="20"/>
+			</recipe>	
+
+			<recipe name="part29inBarrelCompleteM82" count="1" craft_time="120" craft_tool="toolTARiflingBroach" craft_area="GunsmithingBench" tags="workbenchCrafting">
+				<ingredient name="partMuzzleM82" count="1"/>		
+				<ingredient name="part29inBarrelM82" count="1"/>
+			</recipe>
+
+	</append>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<append xpath="/recipes"> <!--Challenge Rewards-->
+	<recipe name="ammoBundle45ACP" count="1">
+		<ingredient name="researchDataSheet" count="1"/>
+	</recipe>
+	<recipe name="ammoBundleAP45ACP" count="1">
+		<ingredient name="researchDataSheet" count="2"/>
+	</recipe>
+
+	<recipe name="ammoBundle9mmBulletBall" count="1">
+		<ingredient name="researchDataSheet" count="1"/>
+	</recipe>
+	<recipe name="ammoBundle9mmBulletAP" count="1">
+		<ingredient name="researchDataSheet" count="2"/>
+	</recipe>
+
+	<recipe name="ammoBundle44MagnumBulletBall" count="1">
+		<ingredient name="researchDataSheet" count="1"/>
+	</recipe>
+	<recipe name="ammoBundle44MagnumBulletAP" count="1">
+		<ingredient name="researchDataSheet" count="2"/>
+	</recipe>
+
+	<recipe name="ammoBundle50ae" count="1">
+		<ingredient name="researchDataSheet" count="1"/>
+	</recipe>
+	<recipe name="ammoBundle50aeAP" count="1">
+		<ingredient name="researchDataSheet" count="2"/>
+	</recipe>
+
+	<recipe name="AmmoBundle556" count="1">
+		<ingredient name="researchDataSheet" count="1"/>
+	</recipe>
+	<recipe name="AmmoBundle556AP" count="1">
+		<ingredient name="researchDataSheet" count="2"/>
+	</recipe>
+
+	<recipe name="ammoBundle762mmBulletBall" count="1">
+		<ingredient name="researchDataSheet" count="1"/>
+	</recipe>
+	<recipe name="ammoBundle762mmBulletAP" count="1">
+		<ingredient name="researchDataSheet" count="2"/>
+	</recipe>
+
+	<recipe name="ammoBundleShotgunShell" count="1">
+		<ingredient name="researchDataSheet" count="1"/>
+	</recipe>
+	<recipe name="ammoBundleShotgunSlug" count="1">
+		<ingredient name="researchDataSheet" count="3"/>
+	</recipe>
+  
+  </append>
+
+
+
+
+
+
+</configs>

@@ -1,0 +1,356 @@
+<snj>
+
+<!--<passive_effect name="DisableItem" operation="base_set" value="1" level="1,5" tags="PerkOOGKnifes,PerkOOGBows,PerkOOGRifles,PerkOOGPistols,PerkOOGMachineGuns,PerkOOGSpears"/>-->
+<append xpath="//item_modifier[@name='modGunMuzzleBrake']/@blocked_tags">,noExtender</append>
+<append xpath="//item_modifier[@name='modGunBarrelExtender']/@blocked_tags">,noExtender</append>
+<append xpath="//item_modifier[@name='modGunForegrip']/@blocked_tags">,noGrip</append>
+<append xpath="//item_modifier[@name='modGunReflexSight']/@installable_tags">,ReflexSight</append>
+
+<append xpath="//item_modifier[@name='modMeleeClubMetalSpikes']/@blocked_tags">,noSpikes</append>
+<append xpath="//item_modifier[@name='modMeleeClubBarbedWire']/@blocked_tags">,noWire</append>
+<append xpath="//item_modifier[@name='modMeleeClubMetalChain']/@blocked_tags">,noChain</append>
+
+    <set xpath="//item_modifier[@name='modGunLaserSight']/@modifier_tags">lasersight</set>
+	<set xpath="//item_modifier[@name='modGunFlashlight']/@modifier_tags">flashlight</set>
+	<set xpath="//item_modifier[@name='modGunLaserSight']/@blocked_tags">nolasersight</set>
+	<set xpath="//item_modifier[@name='modGunFlashlight']/@blocked_tags">noflashlight</set>
+
+<append xpath="/item_modifiers">
+<item_modifier name="modMeleeMetalBatBolts" installable_tags="metalBat" modifier_tags="shaft" blocked_tags="noMods" type="attachment">
+		<property name="Extends" value="modGeneralMaster" param1="CustomIcon"/>
+		<!--<property name="UnlockedBy" value="modmodMeleeMetalBatBoltsSchematic"/>-->
+		<property name="TraderStageTemplate" value="modsTier2"/>
+        <property name="CustomIcon" value="HOHVehicleBolts8"/>
+		<item_property_overrides name="*">
+			<property name="Material" value="Mmetal"/>
+		</item_property_overrides>
+
+		<item_property_overrides name="meleeWpnClubT1BaseballBatMetal">
+        <property name="Meshfile" value="#@modfolder:Assets/HOH_Melee_Weapons_bats.unity3d?Metal_Bat_Bolted"/>
+		<!--	<requirement name="HoldingItemHasTags" tags="metalBat" />
+            <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="Bolts" />-->
+		</item_property_overrides>
+
+
+		<effect_group tiered="false">
+			<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="20"/>
+			<requirement name="CVarCompare" cvar="bleedCounter" operation="LT" value="@$maxBleedCounter" target="other"/>
+				<triggered_effect trigger="onSelfPrimaryActionRayHit" action="ModifyCVar" target="other" cvar="bleedCounter" operation="add" value="1"/>
+		</effect_group>
+		<effect_group tiered="false">
+			<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="40"/>
+			<requirement name="CVarCompare" cvar="bleedCounter" operation="LT" value="@$maxBleedCounter" target="other"/>
+				<triggered_effect trigger="onSelfSecondaryActionRayHit" action="ModifyCVar" target="other" cvar="bleedCounter" operation="add" value="1"/>
+		</effect_group>
+		<effect_group tiered="false">
+			<requirement name="CVarCompare" cvar="bleedCounter" operation="GT" value="0" target="other"/>
+				<triggered_effect trigger="onSelfPrimaryActionRayHit" action="AddBuff" target="other" buff="buffInjuryBleeding"/>
+				<triggered_effect trigger="onSelfSecondaryActionRayHit" action="AddBuff" target="other" buff="buffInjuryBleeding"/>
+		</effect_group>
+
+		
+	</item_modifier>
+
+<!-- <effect_group tiered="false" name="internal attachment prefab (A19)">
+      <requirement name="HoldingItemHasTags" tags="showGrip" />
+      <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="HANDLE_UMP_1_0" />
+    </effect_group>-->
+</append>
+
+
+
+<append xpath="//item_modifier[@name='modGunBarrelExtender']">
+ <effect_group tiered="false" name="internal attachment prefab (A19)">
+      <requirement name="HoldingItemHasTags" tags="showExtender" />
+      <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="extender" />
+    </effect_group>
+</append>
+<append xpath="//item_modifier[@name='modGunForegrip']">
+ <effect_group tiered="false" name="internal attachment prefab (A19)">
+      <requirement name="HoldingItemHasTags" tags="showGrip" />
+      <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="HANDLE_UMP_1_0" />
+    </effect_group>
+</append>
+<append xpath="//item_modifier[@name='modGunRetractingStock']">
+ <effect_group tiered="false" name="internal attachment prefab (A19)">
+      <requirement name="HoldingItemHasTags" tags="showStock" />
+      <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="stocks" />
+      <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="false" parent_transform="#HeldItemRoot" transform_path="stock_folded" />
+    </effect_group>
+</append>
+<append xpath="//item_modifier[@name='modGunRetractingStock']">
+ <effect_group tiered="false" name="internal attachment prefab (A19)">
+      <requirement name="HoldingItemHasTags" tags="showStock" />
+      <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="HANDLE_UMP_1_0" />
+      <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="false" parent_transform="#HeldItemRoot" transform_path="stock_folded" />
+    </effect_group>
+</append>
+
+
+
+<append xpath="/item_modifiers/item_modifier[@name='modGunReflexSight']">
+        <item_property_overrides name="5thdayAR15">
+            <property name="ScopeOffset" value="-.00199,0.0972,-0.098" />
+            <property name="ScopeScale" value=".63,.63,.63" />
+            <property name="ScopeCameraOffset" value=".00099,.003,0.0016" />
+        </item_property_overrides>
+        <item_property_overrides name="5thdayAR15_556">
+            <property name="ScopeOffset" value="-.00199,0.0972,-0.098" />
+            <property name="ScopeScale" value=".63,.63,.63" />
+            <property name="ScopeCameraOffset" value=".00099,.003,0.0016" />
+        </item_property_overrides>
+        <item_property_overrides name="5thday_P90">
+            <property name="ScopeOffset" value="-.00199,0.0972,-0.098" />
+            <property name="ScopeScale" value=".63,.63,.63" />
+            <property name="ScopeCameraOffset" value=".00099,-.12,0.0016" />
+        </item_property_overrides>
+         <item_property_overrides name="5thday_Ump">
+            <property name="ScopeOffset" value="-.00199,0,0" />
+            <property name="ScopeScale" value=".63,.63,.63" />
+            <property name="ScopeCameraOffset" value="-.012,-.025,0.0016" />
+        </item_property_overrides>
+        <item_property_overrides name="5thday_Vector">
+            <property name="ScopeOffset" value="-.00199,0,0" />
+            <property name="ScopeScale" value=".63,.63,.63" />
+            <property name="ScopeCameraOffset" value="-.004,-.011,0.0016" />
+        </item_property_overrides>
+        
+        <item_property_overrides name="5thday_Scar_H">
+         <property name="ScopeOffset" value="-.00099,0.0972,-0.098" />
+            <property name="ScopeScale" value=".63,.63,.63" />
+            <property name="ScopeCameraOffset" value="-.00099,-.023,0.0016" />
+             <property name="CrosshairOnAim" value="false"/>
+            <property name="CrosshairUpAfterShot" value="false"/>
+        </item_property_overrides>
+        <item_property_overrides name="5thday_Scar_L">
+         <property name="ScopeOffset" value="-.00099,0.0972,-0.098" />
+            <property name="ScopeScale" value=".63,.63,.63" />
+            <property name="ScopeCameraOffset" value="-.00099,-.023,0.0016" />
+             <property name="CrosshairOnAim" value="false"/>
+            <property name="CrosshairUpAfterShot" value="false"/>
+        </item_property_overrides>
+         <item_property_overrides name="5thday_Glock9mm">
+            <property name="ScopeOffset" value="-.00199,0.0972,-0.098" />
+            <property name="ScopeScale" value=".63,.63,.63" />
+            <property name="ScopeCameraOffset" value=".0001,-.025,0.0016" />
+        </item_property_overrides>
+         <item_property_overrides name="5thday_DesertEagle">
+            <property name="ScopeOffset" value="-.00199,0.0972,-0.098" />
+            <property name="ScopeScale" value=".63,.63,.63" />
+            <property name="ScopeCameraOffset" value=".0001,-.022,0.0016" />
+        </item_property_overrides>
+         <item_property_overrides name="5thday_MK23">
+            <property name="ScopeOffset" value="-.00199,0.072,-0.098" />
+            <property name="ScopeScale" value=".63,.63,.63" />
+            <property name="ScopeCameraOffset" value=".0001,-.002,0.0016" />
+        </item_property_overrides>
+        
+        <effect_group tiered="false">
+            <requirement name="HoldingItemHasTags" tags="attachmentsIncluded"/>
+            <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="holosight"/>
+             
+            <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="false" parent_transform="#HeldItemRoot" transform_path="F_iron_up">
+                <requirement name="IsFPV"/>
+            </triggered_effect>
+            <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="false" parent_transform="#HeldItemRoot" transform_path="B_iron_up">
+                <requirement name="IsFPV"/>
+            </triggered_effect>    
+            <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="F_iron_down">
+                <requirement name="IsFPV"/>
+            </triggered_effect>    
+            <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="B_iron_down">
+                <requirement name="IsFPV"/>
+            </triggered_effect>
+            
+            <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="false" parent_transform="#HeldItemRoot" transform_path="F_iron_up">
+                <requirement name="!IsFPV"/>
+            </triggered_effect>
+            <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="false" parent_transform="#HeldItemRoot" transform_path="B_iron_up">
+                <requirement name="!IsFPV"/>
+            </triggered_effect>            
+            <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="F_iron_down">
+                <requirement name="!IsFPV"/>
+            </triggered_effect>
+            <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="B_iron_down">
+                <requirement name="!IsFPV"/>
+            </triggered_effect>
+            
+        <triggered_effect trigger="onSelfAimingGunStop" action="SetTransformActive" active="false" parent_transform="#HeldItemRoot" transform_path="F_iron_up"/>
+    
+
+
+
+
+
+        </effect_group>
+
+
+
+
+
+
+
+	</append>
+<append xpath="/item_modifiers/item_modifier[@name='modGunScopeMedium']">
+        <item_property_overrides name="5thdayAR15">
+        <property name="Zoom_max_out" value="30"/>
+        <property name="Zoom_max_in" value="30"/>
+            <property name="ScopeCameraOffset" value="0,-.0365,-.05"/>
+            <property name="Zoom_overlay" value="#@modfolder:Assets/HOH_Ranged_Weapons_Sights.unity3d?ARScope"/>
+            <property name="CrosshairOnAim" value="false"/>
+            <property name="CrosshairUpAfterShot" value="false"/>
+        </item_property_overrides>
+        <item_property_overrides name="5thdayAR15_556">
+        <property name="Zoom_max_out" value="30"/>
+        <property name="Zoom_max_in" value="30"/>
+            <property name="ScopeCameraOffset" value="0,-.0365,-.05"/>
+            <property name="Zoom_overlay" value="#@modfolder:Assets/HOH_Ranged_Weapons_Sights.unity3d?ARScope"/>
+            <property name="CrosshairOnAim" value="false"/>
+            <property name="CrosshairUpAfterShot" value="false"/>
+        </item_property_overrides>
+        <item_property_overrides name="5d_m700">
+			<property name="ScopeOffset" value="-.0018,.075,.015"/>
+			<property name="ScopeScale" value="1,1,1"/>
+			<property name="ScopeCameraOffset" value="0,-.0238,0"/>
+		</item_property_overrides>
+        <item_property_overrides name="5thday_Scar_H">
+        <property name="Zoom_max_out" value="30"/>
+        <property name="Zoom_max_in" value="30"/>
+            <property name="ScopeCameraOffset" value="0,-.0265,-.05"/>
+            <property name="Zoom_overlay" value="#@modfolder:Assets/HOH_Ranged_Weapons_Sights.unity3d?ARScope"/>
+            <property name="CrosshairOnAim" value="false"/>
+            <property name="CrosshairUpAfterShot" value="false"/>
+        </item_property_overrides>
+        <item_property_overrides name="5thday_Scar_L">
+        <property name="Zoom_max_out" value="30"/>
+        <property name="Zoom_max_in" value="30"/>
+            <property name="ScopeCameraOffset" value="0,-.0265,-.05"/>
+            <property name="Zoom_overlay" value="#@modfolder:Assets/HOH_Ranged_Weapons_Sights.unity3d?ARScope"/>
+            <property name="CrosshairOnAim" value="false"/>
+            <property name="CrosshairUpAfterShot" value="false"/>
+        </item_property_overrides>
+        
+        <effect_group tiered="false">
+            <requirement name="HoldingItemHasTags" tags="attachmentsIncluded"/>
+                <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="4x_scope"/>
+                
+            <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="false" parent_transform="#HeldItemRoot" transform_path="F_iron_up">
+                <requirement name="IsFPV"/>
+            </triggered_effect>
+            <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="false" parent_transform="#HeldItemRoot" transform_path="B_iron_up">
+                <requirement name="IsFPV"/>
+            </triggered_effect>    
+            <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="F_iron_down">
+                <requirement name="IsFPV"/>
+            </triggered_effect>    
+            <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="B_iron_down">
+                <requirement name="IsFPV"/>
+            </triggered_effect>
+            
+            <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="false" parent_transform="#HeldItemRoot" transform_path="F_iron_up">
+                <requirement name="!IsFPV"/>
+            </triggered_effect>
+            <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="false" parent_transform="#HeldItemRoot" transform_path="B_iron_up">
+                <requirement name="!IsFPV"/>
+            </triggered_effect>            
+            <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="F_iron_down">
+                <requirement name="!IsFPV"/>
+            </triggered_effect>
+            <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="B_iron_down">
+                <requirement name="!IsFPV"/>
+            </triggered_effect>
+            
+        <triggered_effect trigger="onSelfAimingGunStop" action="SetTransformActive" active="false" parent_transform="#HeldItemRoot" transform_path="F_iron_up"/>
+        </effect_group>
+    </append>
+<append xpath="/item_modifiers/item_modifier[@name='modGunScopeLarge']">
+        <item_property_overrides name="5d_m700">
+			<property name="ScopeOffset" value="-.0018,.075,.015"/>
+			<property name="ScopeScale" value="1,1,1"/>
+			<property name="ScopeCameraOffset" value="0,-.0238,0"/>
+            <property name="Zoom_overlay" value="#@modfolder:Assets/HOH_Ranged_Weapons_Sights.unity3d?SniperScope"/>
+	            <property name="CrosshairOnAim" value="false"/>
+    	        <property name="CrosshairUpAfterShot" value="false"/>
+		</item_property_overrides>
+        
+        <effect_group tiered="false">
+            <requirement name="HoldingItemHasTags" tags="attachmentsIncluded"/>
+               <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="5dscope"/>
+        </effect_group>
+    </append>
+
+
+    
+
+<!--<append xpath="/item_modifiers/item_modifier[@name='modGunMagazineExtender']">
+        <item_property_overrides name="5thdayAR15">
+            <property name="Meshfile" value="#@modfolder:Resources/5thday_Weapons.unity3d?AR159mm_1"/>
+			<property name="Magazine_items" value="ammo556"/>
+        </item_property_overrides>
+    </append>-->
+
+
+<append xpath="/item_modifiers/item_modifier[@name='modGunReflexSight']">
+
+        <item_property_overrides name="5thdayP90">
+        <property name="Zoom_max_out" value="50"/>
+        <property name="Zoom_max_in" value="50"/>
+            <property name="ScopeCameraOffset" value="0,-.0328,0"/>
+            <property name="CrosshairOnAim" value="false"/>
+            <property name="CrosshairUpAfterShot" value="false"/>
+        </item_property_overrides>
+
+    </append>
+
+<append xpath="/item_modifiers">
+
+    <item_modifier name="modBallistic" installable_tags="specialMod" modifier_tags="specialMod" blocked_tags="noMods" type="attachment">
+        
+		<property name="TraderStageTemplate" value="modsTier3"/>
+        <property name="Extends" value="modGeneralMaster"/>
+		<property name="CreativeMode" value="Dev"/>
+		<property name="CustomIcon" value="modMeleeStunBatonRepulsor"/>
+		<property name="CustomIconTint" value="ff9f9f"/>
+		<property name="DescriptionKey" value="SacredFlameDesc"/>
+<!--
+		<effect_group tiered="false">
+			<requirement name="EntityTagCompare" target="other" tags="entity,zombie,walker,feral,radiated"/>
+			<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/>
+				<triggered_effect trigger="onSelfDamagedOther" action="AddBuff" target="other" range="5" buff="buffBurningElement"/>
+		</effect_group>
+		<effect_group tiered="false">
+			<requirement name="EntityTagCompare" target="other" tags="entity,zombie,walker,feral,radiated"/>
+			<requirement name="RandomRoll" seed_type="Random" min_max="0,800" operation="LTE" value="50"/>
+				<triggered_effect trigger="onSelfDamagedOther" action="AddBuff" target="other" range="7" buff="buffBurningElement"/>
+		</effect_group>
+-->
+
+
+            <effect_group name="grenadeLauncherStart" tiered="false">
+				<triggered_effect trigger="onSelfEquipUpdate" action="AddBuff" buff="GrenadeLauncherExplosion"/>
+			</effect_group>
+			<effect_group name="grenadeLauncherStop" tiered="false">
+				<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="GrenadeLauncherExplosion"/>
+			</effect_group>
+
+
+        </item_modifier>
+
+    <item_modifier name="modExtraSharpArrows" installable_tags="PerkHOHBows" modifier_tags="damage" blocked_tags="noMods" type="attachment">
+		<property name="Extends" value="modGeneralMaster" param1="CustomIcon"/>
+		<property name="UnlockedBy" value="modMeleeSerratedBladeSchematic"/>
+		<property name="TraderStageTemplate" value="modsTier1"/>
+
+		<effect_group tiered="false">
+			<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="10"/>
+			<requirement name="CVarCompare" cvar="bleedCounter" operation="LT" value="@$maxBleedCounter" target="other"/>
+				<triggered_effect trigger="onSelfPrimaryActionRayHit" action="ModifyCVar" target="other" cvar="bleedCounter" operation="add" value="1"/>
+		</effect_group>
+		<effect_group tiered="false">
+			<requirement name="CVarCompare" cvar="bleedCounter" operation="GT" value="0" target="other"/>
+				<triggered_effect trigger="onSelfPrimaryActionRayHit" action="AddBuff" target="other" buff="buffInjuryBleeding"/>
+		</effect_group>
+	</item_modifier>
+</append>
+
+</snj>

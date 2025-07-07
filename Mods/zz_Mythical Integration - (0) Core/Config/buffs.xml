@@ -1,0 +1,420 @@
+<MythicalIntegration>
+<!--
+  This is intended to expand twitch integration for streamers to help them have more successful streams.
+  
+  
+  New ideas to implement:
+  bruce_wayne -> super stealth mode when crouched to facilitate sneak attack playstyle.
+  Golden Gun: 1 day cooldown, despawns at the end of the day if not used. Cycles by command use time, not midnight. Does 10k damage at level 100 so it doesn't start as a 1 shot on Yogi, but still cripples him. Give significant heat and noise generation to promote hordes coming in after the boss dies.
+  learning_so_much - grant XP
+  action_movie_guns - instant reload
+  ??? - grant food/water directly
+  LiquidxSunshine
+
+Drink the blood of the gods
+Side effects may include glowing skin, regrowing lost limbs, and burning the unholy to ash in your presence.
+May feel weary or tired after effects wear off.
+Commander Neowhulfe
+
+Dread enemy of the Sage Canine
+Has chosen to fight alongside humans against the undead.
+Loyal underlings will fight to the death on his behalf.
+NegImSleepy
+
+Lethargy is contagious
+Even zombies will become sleepy with  you.
+GuudVibin
+
+The sunshine chicken
+Radiates its holy positivity, becoming a beacon of hope. Protect it and it will protect you.
+NeverEverGiveUp (NEGU)
+
+Sheer tenacity will push you through and you become more resilient the worse your fate becomes.
+
+not_in_the_face - reverse of #headshot. Immune to damage to the head.
+#festering_wounds - put regen on cooldown
+Cheap short distance teleport to get people off of towers.
+drowsy/drunk walk
+Lower jump height like a reverse #jump.
+Commands to double or half zombies nearby.
+#drunk - inverts controls
+#does_this_look_infected": Laceration and 25% infection instantly.
+Generate tons of heat
+wakey_wakey - wakes up all nearby sleepers.
+jam_guns - give a debuff that randomly gives a short duration no_range.
+
+-->
+
+
+	<append xpath="/buffs"> <!-- Buff commands -->
+	
+		<buff name="myth_buff_bananaclip" name_key="MythBuff_bananaClip" description_key="MythBuff_bananaClipDesc" icon="ui_game_symbol_backpack" icon_color="255,255,255">
+			<stack_type value="replace"/>
+			<duration value="60"/>
+			<display_value value=".MythBananaClip"/>
+			<display_value_format value="time"/>
+			
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".MythBananaClip" operation="set" value="60"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".MythBananaClip" operation="set" value="60"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".MythBananaClip" operation="add" value="-1"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".MythBananaClip" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="myth_buff_bananaclip"/>
+			</effect_group>
+			<effect_group>
+				<passive_effect name="MagazineSize" operation="perc_add" value="1"/>
+			</effect_group>
+		</buff>
+	
+		<buff name="myth_buff_instantReload" name_key="myth_buff_instantReload" description_key="myth_buff_instantReloadDesc" icon="ui_game_symbol_backpack" icon_color="255,255,255">
+			<stack_type value="replace"/>
+			<duration value="60"/>
+			<display_value value=".MythFastDraw"/>
+			<display_value_format value="time"/>
+			
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".MythFastDraw" operation="set" value="60"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".MythFastDraw" operation="set" value="60"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".MythFastDraw" operation="add" value="-1"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".MythFastDraw" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="myth_buff_fastdraw"/>
+			</effect_group>
+			<effect_group>
+				<passive_effect name="ReloadSpeedMultiplier" operation="perc_add" value="3"/>
+			</effect_group>
+		</buff>
+			
+		<buff name="myth_buffNehImSleepy"  description="You are so sleepy that everyone around you suffers from it. Reduces the walk, run, crouch, and attack speed by 75% and reduces projectile velocity by 75%" 
+		icon="ui_game_symbol_twitch_slow" icon_color="255,255,175" remove_on_death="true" tags="streamer">
+			<update_rate value="1"/>		
+			<stack_type value="replace"/>
+			<duration value="60"/>
+			<display_value value=".TwitchSleepyTimer"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".TwitchSleepyTimer" operation="set" value="60"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".TwitchSleepyTimer" operation="set" value="60"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".TwitchSleepyTimer" operation="add" value="-1"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".TwitchSleepyTimer" operation="set" value="0"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="myth_buffNehImSleepySelf" target="self"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="selfAOE" range="100" buff="myth_buffNehImSleepyToo" target_tags="zombie,animal"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="selfAOE" range="100" buff="myth_buffClumsyRunnerShort" target_tags="zombie,animal"/>
+			</effect_group>
+
+		</buff>
+
+		<buff name="myth_buffNehImSleepySelf" hidden="true" remove_on_death="true" tags="streamer">
+					<stack_type value="replace"/><duration value="2"/>
+					
+			<effect_group>
+				<passive_effect name="WalkSpeed" operation="perc_subtract" value="0.60"/>
+				<passive_effect name="RunSpeed" operation="perc_subtract" value="0.60"/>
+				<passive_effect name="CrouchSpeed" operation="perc_subtract" value="0.60"/>
+				<passive_effect name="JumpStrength" operation="perc_subtract" value=".25"/>
+				<passive_effect name="AttacksPerMinute" operation="perc_add" value="-.60"/>
+				<passive_effect name="ProjectileVelocity" operation="perc_add" value="-.60"/>
+			</effect_group>
+		</buff>
+		<buff name="myth_buffNehImSleepyToo" hidden="true" remove_on_death="true" tags="streamer">
+					<stack_type value="replace"/><duration value="2"/>
+					
+			<effect_group>
+				<passive_effect name="WalkSpeed" operation="perc_subtract" value="0.85"/>
+				<passive_effect name="RunSpeed" operation="perc_subtract" value="0.85"/>
+				<passive_effect name="CrouchSpeed" operation="perc_subtract" value="0.85"/>
+				<passive_effect name="JumpStrength" operation="perc_subtract" value=".5"/>
+				<passive_effect name="AttacksPerMinute" operation="perc_add" value="-.85"/>
+				<passive_effect name="ProjectileVelocity" operation="perc_add" value="-.85"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="myth_buffNeverEverGiveUp" name_key="myth_buffNeverEverGiveUpName" description="Never Ever Give Up. Gain greater armor the more damaged you are." description_key="myth_buffNeverEverGiveUpDesc"
+			icon="ui_game_symbol_candy_fortitude" icon_color="255,253,55" remove_on_death="true" tags="streamer">
+			<update_rate value="1"/>
+			<stack_type value="replace"/>
+			<duration value="60"/>
+			<display_value value=".TwitchNEGUTimer"/>
+			
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".TwitchNEGUTimer" operation="set" value="60"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".TwitchNEGUTimer" operation="set" value="60"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".TwitchNEGUTimer" operation="add" value="-1"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".TwitchNEGUTimer" operation="set" value="0"/>
+			</effect_group>
+			
+			<effect_group>
+				<passive_effect name="PhysicalDamageResist" operation="base_add" value="0.2">            
+					<requirement name="StatComparePercCurrentToMax" target="self" stat="health" operation="GTE" value=".90"/>
+				</passive_effect>
+				<passive_effect name="ElementalDamageResist" operation="base_add" value="0.2">
+					<requirement name="StatComparePercCurrentToMax" target="self" stat="health" operation="GTE" value=".90"/>
+				</passive_effect>
+				
+				<passive_effect name="PhysicalDamageResist" operation="base_add" value="0.3">            
+					<requirement name="StatComparePercCurrentToMax" target="self" stat="health" operation="GTE" value=".80"/>
+				</passive_effect>
+				<passive_effect name="ElementalDamageResist" operation="base_add" value="0.3">
+					<requirement name="StatComparePercCurrentToMax" target="self" stat="health" operation="GTE" value=".80"/>
+				</passive_effect>
+				
+				<passive_effect name="PhysicalDamageResist" operation="base_add" value="0.4">            
+					<requirement name="StatComparePercCurrentToMax" target="self" stat="health" operation="GTE" value=".70"/>
+				</passive_effect>
+				<passive_effect name="ElementalDamageResist" operation="base_add" value="0.4">
+					<requirement name="StatComparePercCurrentToMax" target="self" stat="health" operation="GTE" value=".70"/>
+				</passive_effect>
+				
+				<passive_effect name="PhysicalDamageResist" operation="base_add" value="0.5">            
+					<requirement name="StatComparePercCurrentToMax" target="self" stat="health" operation="GTE" value=".60"/>
+				</passive_effect>
+				<passive_effect name="ElementalDamageResist" operation="base_add" value="0.5">
+					<requirement name="StatComparePercCurrentToMax" target="self" stat="health" operation="GTE" value=".60"/>
+				</passive_effect>
+				
+				<passive_effect name="PhysicalDamageResist" operation="base_add" value="0.6">            
+					<requirement name="StatComparePercCurrentToMax" target="self" stat="health" operation="GTE" value=".50"/>
+				</passive_effect>
+				<passive_effect name="ElementalDamageResist" operation="base_add" value="0.6">
+					<requirement name="StatComparePercCurrentToMax" target="self" stat="health" operation="GTE" value=".50"/>
+				</passive_effect>
+				
+				<passive_effect name="PhysicalDamageResist" operation="base_add" value="0.7">            
+					<requirement name="StatComparePercCurrentToMax" target="self" stat="health" operation="GTE" value=".40"/>
+				</passive_effect>
+				<passive_effect name="ElementalDamageResist" operation="base_add" value="0.7">
+					<requirement name="StatComparePercCurrentToMax" target="self" stat="health" operation="GTE" value=".40"/>
+				</passive_effect>
+				
+				<passive_effect name="PhysicalDamageResist" operation="base_add" value="0.8">            
+					<requirement name="StatComparePercCurrentToMax" target="self" stat="health" operation="GTE" value=".30"/>
+				</passive_effect>
+				<passive_effect name="ElementalDamageResist" operation="base_add" value="0.8">
+					<requirement name="StatComparePercCurrentToMax" target="self" stat="health" operation="GTE" value=".30"/>
+				</passive_effect>
+				
+				<passive_effect name="PhysicalDamageResist" operation="base_add" value="0.9">            
+					<requirement name="StatComparePercCurrentToMax" target="self" stat="health" operation="GTE" value=".20"/>
+				</passive_effect>
+				<passive_effect name="ElementalDamageResist" operation="base_add" value="0.9">
+					<requirement name="StatComparePercCurrentToMax" target="self" stat="health" operation="GTE" value=".20"/>
+				</passive_effect>
+				
+				<passive_effect name="PhysicalDamageResist" operation="base_add" value="1">            
+					<requirement name="StatComparePercCurrentToMax" target="self" stat="health" operation="GTE" value=".10"/>
+				</passive_effect>
+				<passive_effect name="ElementalDamageResist" operation="base_add" value="1">
+					<requirement name="StatComparePercCurrentToMax" target="self" stat="health" operation="GTE" value=".10"/>
+				</passive_effect>
+			</effect_group>
+		</buff>
+
+		<buff name="myth_buffBadJump" name_key="myth_buffBadJump" description_key="myth_buffBadJumpDesc" icon="ui_game_symbol_twitch_jump" icon_color="255,175,175">
+			<stack_type value="replace"/>
+			<duration value="60"/>
+			<display_value value=".MythBadJumpTimer"/>
+			<display_value_format value="time"/>
+
+			<effect_group>
+				<passive_effect name="BuffBlink" operation="base_set" value="2" duration="0,3" tags="twitch_buffJump"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".MythBadJumpTimer" operation="set" value="60"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".MythBadJumpTimer" operation="set" value="60"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".MythBadJumpTimer" operation="add" value="-1"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".MythBadJumpTimer" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="twitch_buffJump"/>
+			</effect_group>
+
+			<effect_group>
+				<passive_effect name="JumpStrength" operation="perc_add" value="-0.8"/>
+				<passive_effect name="StaminaLoss" operation="perc_add" value=".75" tags="jumping"/>
+
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffDontBreakMyLeg"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="RemoveBuff" buff="buffDontBreakMyLeg"/>
+
+				<triggered_effect trigger="onSelfJump" action="PlaySound" sound="minibike_horn" play_in_head="false"/>
+			</effect_group>
+		</buff>
+
+	<buff name="myth_buffNoRanged_20min" name_key="TwitchBuff_NoRange" description_key="TwitchBuff_NoRangeDesc" icon="ui_game_symbol_twitch_no_ranged" icon_color="255,175,175">
+		<stack_type value="replace"/>
+		<duration value="1200"/>
+		<display_value value=".TwitchNoRangedTimer"/>
+		<display_value_format value="time"/>
+
+		<effect_group>
+			<passive_effect name="BuffBlink" operation="base_set" value="2" duration="0,3" tags="twitch_buffNoRanged"/>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".TwitchNoRangedTimer" operation="set" value="1200"/>
+			<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".TwitchNoRangedTimer" operation="set" value="1200"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".TwitchNoRangedTimer" operation="add" value="-1"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".TwitchNoRangedTimer" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="twitch_buffNoRanged"/>
+
+			<triggered_effect trigger="onSelfBuffUpdate" action="PlaySound" sound="twitch_bad_buff_ended" play_in_head="true">
+				<requirement name="CVarCompare" cvar=".TwitchNoRangedTimer" operation="LTE" value="0"/>
+			</triggered_effect>
+		</effect_group>
+
+		<effect_group>
+			<!-- <passive_effect name="EntityDamage" operation="perc_add" value="-.75" tags="ranged"/> -->
+			<!-- <passive_effect name="BlockDamage" operation="perc_add" value="-.75" tags="ranged"/> -->
+			<passive_effect name="DisableItem" operation="base_set" value="1" tags="ranged" />
+			<passive_effect name="StaminaChangeOT" operation="base_add" value="2"/>
+		</effect_group>
+	</buff>
+		<buff name="myth_channelNoSafe_11min" name_key="TwitchBuff_NoSafe" description_key="TwitchBuff_NoSafeDesc" icon="ui_game_symbol_brick" icon_color="255,175,175">
+		<stack_type value="replace"/>
+		<duration value="660"/>
+		<display_value value=".TwitchNoSafeTimer"/>
+		<display_value_format value="time"/>
+
+		<effect_group>
+			<passive_effect name="BuffBlink" operation="base_set" value="2" duration="0,3" tags="twitch_buffNoSafe"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="twitch_buffNoHealingManager"/>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".TwitchNoSafeTimer" operation="set" value="660"/>
+			<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".TwitchNoSafeTimer" operation="set" value="660"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".TwitchNoSafeTimer" operation="add" value="-1"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".TwitchNoSafeTimer" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="twitch_voteNoSafe"/>
+
+			<triggered_effect trigger="onSelfBuffUpdate" action="PlaySound" sound="twitch_buffNoSafe" play_in_head="true">
+				<requirement name="CVarCompare" cvar=".TwitchNoSafeTimer" operation="LTE" value="0"/>
+			</triggered_effect>
+		</effect_group>
+
+		<effect_group>
+			<requirement name="StatCompareCurrent" stat="Health" operation="GTE" value="4"/>
+			<requirement name="InSafeZone" />
+			<passive_effect name="HealthChangeOT" operation="base_subtract" value="2"/>
+			<passive_effect name="BuffBlink" operation="base_set" value="2" tags="twitch_buffNoSafe"/>
+		</effect_group>
+	</buff>
+
+		<buff name="myth_buff_scoutScreamSpawner" hidden="true" remove_on_death="true">
+			<stack_type value="effect"/>
+			<duration value="1"/>
+			<effect_group name="scream">
+				<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="myth_scream_scout"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="myth_buff_scoutScreamPropagator" hidden="true" remove_on_death="true">
+				<stack_type value="replace"/>
+				<duration value="13"/>
+				<update_rate value="12"/>
+			<!-- <display_value_key value="myth_buffLiquid_X_SunshineEffectNameShort"/> -->
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="selfAOE" range="50" buff="myth_buff_scoutScreamSpawner" target_tags="player" />
+				
+				
+				<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="zombiefemalescoutalert" play_in_head="true"/>
+				<!-- <triggered_effect trigger="onSelfBuffStart" action="FadeOutSound" sound="FireMediumLoop" play_in_head="true"/> -->
+				<!-- <triggered_effect trigger="onSelfBuffRemove" action="PlaySound" sound="forge_fire_die" play_in_head="true"/> -->
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="self" buff="myth_buff_scoutScreamPropagator"/>
+			</effect_group>
+		</buff>
+
+		<buff name="myth_buff_scoutFeralScreamSpawner" hidden="true" remove_on_death="true">
+			<stack_type value="effect"/>
+			<duration value="1"/>
+			<effect_group name="scream">
+				<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="myth_scream_scoutFeral"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="myth_buff_scoutFeralScreamPropagator" hidden="true" remove_on_death="true">
+				<stack_type value="replace"/>
+				<duration value="13"/>
+				<update_rate value="12"/>
+			<!-- <display_value_key value="myth_buffLiquid_X_SunshineEffectNameShort"/> -->
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="selfAOE" range="50" buff="myth_buff_scoutFeralScreamSpawner" target_tags="player" />
+				
+				
+				<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="zombiefemalescoutalert" play_in_head="true"/>
+				<!-- <triggered_effect trigger="onSelfBuffStart" action="FadeOutSound" sound="FireMediumLoop" play_in_head="true"/> -->
+				<!-- <triggered_effect trigger="onSelfBuffRemove" action="PlaySound" sound="forge_fire_die" play_in_head="true"/> -->
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="self" buff="myth_buff_scoutFeralScreamPropagator"/>
+			</effect_group>
+		</buff>
+
+
+		<buff name="myth_buff_scoutRadiatedScreamSpawner" hidden="true" remove_on_death="true">
+			<stack_type value="effect"/>
+			<duration value="1"/>
+			<effect_group name="scream">
+				<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="myth_scream_scoutRadiated"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="myth_buff_scoutRadiatedScreamPropagator" hidden="true" remove_on_death="true">
+				<stack_type value="replace"/>
+				<duration value="13"/>
+				<update_rate value="12"/>
+			<!-- <display_value_key value="myth_buffLiquid_X_SunshineEffectNameShort"/> -->
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="selfAOE" range="50" buff="myth_buff_scoutRadiatedScreamSpawner" target_tags="player" />
+				
+				
+				<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="zombiefemalescoutalert" play_in_head="true"/>
+				<!-- <triggered_effect trigger="onSelfBuffStart" action="FadeOutSound" sound="FireMediumLoop" play_in_head="true"/> -->
+				<!-- <triggered_effect trigger="onSelfBuffRemove" action="PlaySound" sound="forge_fire_die" play_in_head="true"/> -->
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="self" buff="myth_buff_scoutRadiatedScreamPropagator"/>
+			</effect_group>
+		</buff>
+
+
+		<buff name="myth_buff_scoutSuperKarenScreamSpawner" hidden="true" remove_on_death="true">
+			<stack_type value="effect"/>
+			<duration value="1"/>
+			<effect_group name="scream">
+				<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="myth_scream_scoutSuperKaren"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="myth_buff_scoutSuperKarenScreamPropagator" hidden="true" remove_on_death="true">
+				<stack_type value="replace"/>
+				<duration value="9"/>
+				<update_rate value="8"/>
+			<!-- <display_value_key value="myth_buffLiquid_X_SunshineEffectNameShort"/> -->
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="selfAOE" range="50" buff="myth_buff_scoutSuperKarenScreamSpawner" target_tags="player" />
+				
+				
+				<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="zombiefemalescoutalert" play_in_head="true"/>
+				<!-- <triggered_effect trigger="onSelfBuffStart" action="FadeOutSound" sound="FireMediumLoop" play_in_head="true"/> -->
+				<!-- <triggered_effect trigger="onSelfBuffRemove" action="PlaySound" sound="forge_fire_die" play_in_head="true"/> -->
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="self" buff="myth_buff_scoutSuperKarenScreamPropagator"/>
+			</effect_group>
+		</buff>
+
+
+		<buff name="myth_buff_youSuckAviose" hidden="true" remove_on_death="true">
+			<stack_type value="replace"/>
+			<duration value="1"/>
+
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyStats" stat="Health" operation="add" value="300"/>
+
+				<!-- <triggered_effect trigger="onSelfBuffUpdate" action="RemoveAllNegativeBuffs" /> -->
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$dysenteryCounter" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$dysenteryCureCounter" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffInfectionCatch,buffInfection01Main,buffInjuryBleeding,buffArmorShredding,buffInjuryAbrasion,buffInjuryAbrasionTreated,buffLegSprained,buffLegBroken,buffLegSplinted,buffLegCast,buffArmSprained"/>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffArmBroken,buffInjuryStunned01,buffInjuryStunned02,buffInjuryStunned03,buffInjuryCrippled01,buffInjuryKnockdown01,buffInjuryKnockdown01,buffInjuryUnconscious,buffLaceration,buffFatigued"/>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffInjuryConcussion,buffShocked,buffBurningElement,buffBurningEnvironment,buffBurningFlamingArrow,buffBurningMolotov,buffBurning"/>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffLegSplinted,buffLegCast,buffArmSprained,buffArmBroken,buffArmSplinted,buffArmCast"/>
+				<!-- <passive_effect name="HealthMaxModifierOT" operation="base_add" value="1"/> -->
+				<!-- <passive_effect name="StaminaMaxModifierOT" operation="base_add" value="1"/> -->
+
+				<passive_effect name="StaminaChangeOT" operation="perc_add" value="200"/>
+
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffInjuryBleeding"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="RemoveBuff" buff="buffInjuryBleeding"/>
+			</effect_group>
+		</buff>
+	</append>
+</MythicalIntegration>
+

@@ -1,0 +1,41 @@
+<Witos>
+	<append xpath="/recipes">
+		<recipe name="vehicleSnowMobilechassis" count="1" craft_area="workbench" craft_time="150" tags="perkGreaseMonkey,learnable,workbenchCrafting">
+			<ingredient name="resourceForgedSteel" count="55"/>
+			<ingredient name="resourceMechanicalParts" count="30"/>
+			<ingredient name="resourceDuctTape" count="12"/>
+			<ingredient name="resourceMetalPipe" count="12"/>
+			<ingredient name="resourceSpring" count="1"/>
+			<effect_group>
+				<passive_effect name="CraftingIngredientCount" operation="perc_add" level="0,3" value=".5,.5" tags="resourceForgedSteel,resourceMetalPipe,resourceMechanicalParts,resourceDuctTape"/>
+			</effect_group>
+		</recipe>
+		<recipe name="vehicleSnowMobileSkate" count="1" craft_area="workbench" craft_time="150" tags="perkGreaseMonkey,learnable,workbenchCrafting">
+			<ingredient name="resourceForgedSteel" count="20"/>
+			<ingredient name="resourceMechanicalParts" count="12"/>
+			<ingredient name="resourceScrapPolymers" count="50"/>
+			<ingredient name="resourceElectricParts" count="15"/>
+			<ingredient name="resourceSpring" count="2"/>
+			<effect_group>
+				<passive_effect name="CraftingIngredientCount" operation="perc_add" level="0,3" value=".5,.5" tags="resourceForgedSteel,resourceElectricParts,resourceMechanicalParts,resourceScrapPolymers"/>
+			</effect_group>
+		</recipe>
+		<recipe name="vehicleSnowMobilecaterpillar" count="1" craft_area="workbench" craft_time="150" tags="perkGreaseMonkey,learnable,workbenchCrafting">
+			<ingredient name="resourceForgedSteel" count="250"/>
+			<ingredient name="resourceMechanicalParts" count="50"/>
+			<ingredient name="resourceScrapPolymers" count="50"/>
+			<ingredient name="resourceElectricParts" count="15"/>
+			<ingredient name="vehicleWheels" count="10"/>
+			<effect_group>
+				<passive_effect name="CraftingIngredientCount" operation="perc_add" level="0,3" value=".5,.5" tags="resourceForgedSteel,resourceElectricParts,resourceMechanicalParts,resourceScrapPolymers"/>
+			</effect_group>
+		</recipe>
+		<recipe name="vehicleSnowMobilePlaceable" count="1" craft_area="workbench" craft_time="150" tags="workbenchCrafting">
+			<ingredient name="vehicleSnowMobilecaterpillar" count="1"/>
+			<ingredient name="vehicleSnowMobilechassis" count="1"/>
+			<ingredient name="vehicleSnowMobileSkate" count="2"/>
+			<ingredient name="smallEngine" count="1"/>
+			<ingredient name="carBattery" count="1"/>
+		</recipe>
+	</append>
+ </Witos>

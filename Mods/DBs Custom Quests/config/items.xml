@@ -1,0 +1,205 @@
+<config>
+
+<append xpath="/items">              
+
+<item name="meleefirehand">
+	<property name="Extends" value="meleeHandZombieCopFeral"/>
+	<property name="CreativeMode" value="None"/>
+	<property class="Action0">
+		<property name="DamageEntity" value="20"/>
+		<property name="DamageBlock" value="24"/>
+		<property name="Range" value="1.6"/>
+	 </property>
+	<property class="Action1">
+		<property name="Magazine_items" value="ammoFire"/>
+	</property>
+	<effect_group name="meleefirehand" tiered="false">
+		<!--<passive_effect name="AttacksPerMinute" operation="base_set" value="75"/>  A16 .8 -->
+		<passive_effect name="MagazineSize" operation="base_set" value="1"/>
+		<passive_effect name="BurstRoundCount" operation="base_set" value="6"/>
+		<passive_effect name="SpreadDegreesVertical" operation="base_set" value="10"/>
+		<passive_effect name="SpreadDegreesHorizontal" operation="base_set" value="40"/>
+		<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" fireOneBuff="true"
+			buff="buffFatiguedTrigger,buffArmSprainedCHTrigger,buffLegSprainedCHTrigger,buffLaceration,buffAbrasionCatch,buffInjuryStunned01CHTrigger,buffInjuryBleedingTwo"
+			weights=".11,.07,.07,.05,.29,.36,.11"/>
+		<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" target="other" cvar="abrasionZombieHit" operation="set" value="3200"/><!--AbrasionRadiated-->
+	</effect_group>
+</item>
+
+<item name="ammoFire">	<!-- particleeffects/p_fire_small -->
+	<property name="Meshfile" value="@:ItemModEffects/mod_spear_iron_flamePrefab.prefab"/>
+	<property name="Material" value="Morganic"/>
+	<property name="CreativeMode" value="None"/>
+	<property name="CreativeMode" value="None"/>
+	<property name="CustomIcon" value="missingIcon"/>
+	<property class="Action1">
+		<property name="Class" value="Projectile"/>
+		<property name="DamageEntity" value="3"/>
+		<property name="DamageBlock" value="80"/>
+		<property name="Velocity" value="8"/>
+		<property name="FlyTime" value="2"/>
+		<property name="LifeTime" value="4"/>
+		<property name="Explosion.ParticleIndex" value="10"/>
+	    <property name="Explosion.Duration" value="8"/>
+	    <property name="Explosion.RadiusBlocks" value="1"/>
+	    <property name="Explosion.RadiusEntities" value="1"/>
+	    <property name="Explosion.BlastPower" value="35"/>
+	    <property name="Explosion.DamageBonus.stone" value=".1"/>
+	    <property name="Explosion.DamageBonus.metal" value="0"/>
+	    <property name="Explosion.DamageBonus.earth" value="0"/>
+	    <property name="Explosion.DamageBonus.water" value="0"/>
+	    <property name="Explosion.DamageBonus.wood" value="6"/>
+		<property name="Explosion.Buff" value="buffBurningMolotov"/>
+		<property name="ExplodeOnHit" value="true"/>
+	</property>
+	<effect_group name="ammoFire" tiered="false">
+		<triggered_effect trigger="onProjectileImpact" action="ModifyCVar" target="positionAOE" range="2.7" cvar="buffBurningMolotovDuration" operation="set" value="16"/>	
+		<triggered_effect trigger="onProjectileImpact" action="ModifyCVar" target="positionAOE" range="2.7" cvar="buffBurningMolotovDuration" operation="set" value="17"/>	
+		<triggered_effect trigger="onProjectileImpact" action="AddBuff" target="positionAOE" range="2.7" buff="buffBurningMolotov">			
+			<requirement name="CVarCompare" target="other" cvar="_underwater" operation="LT" value="0.3"/>
+		</triggered_effect>
+		<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" target="other" cvar="abrasionZombieHit" operation="set" value="3200"/><!--AbrasionRadiated-->
+	</effect_group>
+</item>
+
+<item name="MeleeFuckyouhand">
+	<property name="Extends" value="meleeHandZombieHazMat"/>
+	<property name="CreativeMode" value="None"/>
+	<property name="HoldType" value="9"/>
+	<property class="Action0">
+		<property name="DamageEntity" value="6"/>
+		<property name="DamageBlock" value="24"/>
+	</property>
+	<effect_group name="MeleeFuckyouhand" tiered="false">
+		<passive_effect name="ModSlots" operation="base_set" value="0"/>
+		<!-- 
+		<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" fireOneBuff="true"
+			buff="buffFatiguedTrigger,buffArmSprainedCHTrigger,buffLegSprainedCHTrigger,buffLaceration,buffAbrasionCatch,buffInjuryStunned01CHTrigger,buffInjuryBleedingTwo"
+			weights=".11,.07,.07,.05,.29,.36,.11"/> --> 
+		<triggered_effect trigger="onSelfAttackedOther" action="AddBuff"  buff="startInfection" target="other"/>
+		<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" target="other" cvar="infectionCounter" operation="add" value="150"><!--InfectionSpecialHazmatFeral-->
+			<requirement name="CVarCompare" target="other" cvar="infectionCounter" operation="GT" value="0"/></triggered_effect>
+	</effect_group>
+</item>
+
+<item name="Meleeweakhand">
+	<property name="Extends" value="meleeHandZombieHazMat"/>
+	<property name="CreativeMode" value="None"/>
+	<property name="HoldType" value="9"/>
+	<property class="Action0">
+		<property name="DamageEntity" value="5"/>
+		<property name="DamageBlock" value="5"/>
+	</property>
+</item>
+
+<item name="meleeHandBird">
+	<property name="Extends" value="meleeHandMaster"/>
+	<property name="CreativeMode" value="None"/>
+	<property name="HoldType" value="35"/>
+	<property class="Action0">
+		<property name="Delay" value=".7"/> <!-- obsolete if rounds per minute exists -->
+		<property name="Range" value="1.4"/>
+		<property name="DamageEntity" value="4"/>
+		<property name="DamageBlock" value="2"/>
+	</property>
+	<effect_group name="meleeHandBird" tiered="false">
+		<passive_effect name="ModSlots" operation="base_set" value="0"/>
+		<!--<passive_effect name="AttacksPerMinute" operation="base_set" value="85"/>  A16 .7 -->
+		<passive_effect name="DamageModifier" operation="perc_add" value="3" tags="earth"/>
+		<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" fireOneBuff="true"
+			buff="buffFatiguedTrigger,buffArmSprainedCHTrigger,buffLegSprainedCHTrigger,buffLaceration,buffAbrasionCatch,buffInjuryStunned01CHTrigger,buffInjuryBleedingTwo"
+			weights=".11,.07,.07,.05,.29,.36,.11"/>
+	</effect_group>
+</item>
+
+<item name="meleeHandAcidJoe">
+	<property name="Extends" value="meleeHandMaster"/>
+	<property name="CreativeMode" value="None"/>
+	<property name="Degradation" value="99999" param1="true"/>
+	<property class="Action0">
+		<property name="Range" value="1.75"/>
+		<property name="DamageEntity" value="10"/>
+		<property name="DamageBlock" value="50"/>
+	</property>
+	<property class="Action1"> <!-- UseAction -->
+		<property name="Class" value="Vomit"/>
+		<property name="Hitmask_override" value="Arrow"/>
+		<property name="Delay" value=".3"/> <!-- obsolete if rounds per minute exists -->
+		<property name="Range" value="200"/>
+		<property name="Infinite_ammo" value="true"/>
+		<property name="Magazine_items" value="ammoProjectileZombieVomit"/>
+		<property name="Sound_warning" value="hulkvomitwarning"/>
+		<property name="Sound_start" value="hulkvomitattack"/>
+		<property name="Sound_repeat" value=""/>
+		<property name="Sound_end" value=""/>
+		<property name="Sound_empty" value=""/>
+		<property name="Sound_reload" value=""/>
+	</property>
+	<effect_group name="meleeHandAcidJoe" tiered="false">
+		<passive_effect name="ModSlots" operation="base_set" value="0"/>
+		<!--<passive_effect name="AttacksPerMinute" operation="base_set" value="75"/>  A16 .8 -->
+		<passive_effect name="DamageFalloffRange" operation="base_set" value="50"/>
+		<passive_effect name="MaxRange" operation="base_set" value="100"/>
+		<passive_effect name="MagazineSize" operation="base_set" value="1"/>
+		<passive_effect name="BurstRoundCount" operation="base_set" value="1"/>
+		<passive_effect name="SpreadDegreesVertical" operation="base_set" value="2"/>
+		<passive_effect name="SpreadDegreesHorizontal" operation="base_set" value="4"/>
+		<passive_effect name="SpreadMultiplierIdle" operation="base_set" value="1"/>
+		<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" fireOneBuff="true"
+			buff="buffFatiguedTrigger,buffArmSprainedCHTrigger,buffLegSprainedCHTrigger,buffLaceration,buffAbrasionCatch,buffInjuryStunned01CHTrigger,buffInjuryBleedingTwo"
+			weights=".11,.07,.07,.05,.29,.36,.11"/>
+		<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" target="other" cvar="infectionCounter" operation="add" value="10"><!--InfectionRegular-->
+			<requirement name="CVarCompare" target="other" cvar="infectionCounter" operation="GT" value="0"/></triggered_effect>
+		<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" target="other" cvar="abrasionZombieHit" operation="set" value="1800"/><!--AbrasionRegular-->
+	</effect_group>
+</item>
+
+
+<item name="meleeRadsHand">
+	<property name="Extends" value="meleeHandZombieCopFeral"/>
+	<property name="CreativeMode" value="None"/>
+	<property class="Action0">
+		<property name="DamageEntity" value="10"/>
+		<property name="DamageBlock" value="9"/>
+		<property name="Range" value="1.6"/>
+	 </property>
+	<property class="Action1">
+		<property name="Sound_warning" value="zombie_mutated_attack_ranged"/>
+		<property name="Magazine_items" value="ammoRads"/>
+	</property>
+	<effect_group name="meleeRadsHand" tiered="false">
+		<!--<passive_effect name="AttacksPerMinute" operation="base_set" value="75"/>  A16 .8 -->
+		<passive_effect name="MagazineSize" operation="base_set" value="8"/>
+		<passive_effect name="BurstRoundCount" operation="base_set" value="4"/> <!-- 10 6 -->
+		<passive_effect name="SpreadDegreesVertical" operation="base_set" value="10"/>
+		<passive_effect name="SpreadDegreesHorizontal" operation="base_set" value="20"/>
+	</effect_group>
+</item>
+
+<item name="ammoRads">
+	<property name="Meshfile" value="@:Other/Items/Weapons/Ranged/Vomit/vomitBulbPrefab.prefab"/>  <!-- particleeffects/p_sparks_fuse -->
+	<property name="Material" value="Morganic"/>
+	<property name="CreativeMode" value="None"/>
+	<property name="CustomIcon" value="missingIcon"/>
+	<property class="Action1">
+		<property name="Class" value="Projectile"/>
+		<property name="DamageEntity" value="1"/>
+		<property name="DamageBlock" value="10"/>
+		<property name="Velocity" value="18"/>
+		<property name="FlyTime" value="2"/>
+		<property name="LifeTime" value="4"/>
+		<property name="CollisionRadius" value=".5"/>
+		<property name="DamageBonus.earth" value="10"/>
+		<property name="Buff" value="buffRads"/> 
+	</property>
+	<effect_group name="ammoRads" tiered="false">
+		<passive_effect name="ModSlots" operation="base_set" value="0"/>
+		<passive_effect name="DamageModifier" operation="perc_set" value="10" tags="earth"/>
+		<passive_effect name="DamageModifier" operation="perc_set" value="0.5" tags="stone"/>
+		<passive_effect name="DamageModifier" operation="perc_add" value="1.2" tags="metal"/>
+		<passive_effect name="BuffProcChance" operation="base_set" value=".30" tags="buffRads"/> 
+	</effect_group>
+</item>
+
+</append>
+</config>

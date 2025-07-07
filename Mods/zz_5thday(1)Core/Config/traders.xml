@@ -1,0 +1,510 @@
+<snj>
+
+	<remove xpath="//trader_item_group/item[starts-with(@name, 'bladesSkillMagazine')]"/>
+	<remove xpath="//trader_item_group/item[starts-with(@name, 'handgunsSkillMagazine')]"/>
+	<remove xpath="//trader_item_group/item[starts-with(@name, 'shotgunsSkillMagazine')]"/>
+	<remove xpath="//trader_item_group/item[starts-with(@name, 'machineGunsSkillMagazine')]"/>
+	<remove xpath="//trader_item_group/item[starts-with(@name, 'riflesSkillMagazine')]"/>
+	<remove xpath="//trader_item_group/item[starts-with(@name, 'spearsSkillMagazine')]"/>
+	<remove xpath="//trader_item_group/item[starts-with(@name, 'clubsSkillMagazine')]"/>
+	<remove xpath="//trader_item_group/item[starts-with(@name, 'sledgehammersSkillMagazine')]"/>
+	<remove xpath="//trader_item_group/item[starts-with(@name, 'bowsSkillMagazine')]"/>
+	<remove xpath="//trader_item_group/item[starts-with(@name, 'salvageToolsSkillMagazine')]"/>
+	<remove xpath="//trader_item_group/item[starts-with(@name, 'repairToolsSkillMagazine')]"/>
+	<remove xpath="//trader_item_group/item[starts-with(@name, 'harvestingToolsSkillMagazine')]"/>
+	<remove xpath="//trader_item_group/item[starts-with(@name, 'knucklesSkillMagazine')]"/>
+	<remove xpath="//trader_item_group/item[starts-with(@name, 'foodSkillMagazine')]"/>
+	<remove xpath="//trader_item_group/item[contains(@name, 'vehicleMinibikeChassis')]"/>
+	<remove xpath="//trader_item_group/item[contains(@name, 'vehicleMinibikeHandlebars')]"/>
+	<remove xpath="//trader_item_group/item[contains(@name, 'vehicleMotorcycle')]"/>
+	<remove xpath="//trader_item_group/item[contains(@name, 'vehicleTruck4x4')]"/>
+	<remove xpath="//trader_item_group/item[contains(@name, 'vehicleGyroCopter')]"/>
+	<remove xpath="//trader_item_group/item[contains(@name, 'vehicleGyrocopter')]"/>
+	<remove xpath="//trader_item_group/item[contains(@name, 'vehicleBicycleChassis')]"/>
+	<remove xpath="//trader_item_group/item[contains(@name, 'vehicleBicyclePlaceable')]"/>
+	<remove xpath="//trader_item_group/item[contains(@name, 'vehicleMinibikePlaceable')]"/>
+	
+	<remove xpath="//trader_item_group/item[contains(@name, 'modArmorPerception')]"/>
+	<remove xpath="//trader_item_group/item[contains(@name, 'modArmorStrength')]"/>
+	<remove xpath="//trader_item_group/item[contains(@name, 'modArmorFortitude')]"/>
+	<remove xpath="//trader_item_group/item[contains(@name, 'modArmorAgility')]"/>
+	<remove xpath="//trader_item_group/item[contains(@name, 'modArmorIntellect')]"/>
+
+
+
+
+
+
+	<!--<remove xpath="//trader_item_group/item[(contains(@name, 'Chassis')) and (contains(@name, 'vehicle'))]"/>
+	<remove xpath="//trader_item_group/item[(contains(@name, 'chassis')) and (contains(@name, 'vehicle'))]"/>-->
+	<remove xpath="//trader_item_group/item[(contains(@name, 'melee')) and (contains(@name, 'Stone'))]"/>
+	
+	<remove xpath="//trader_item_group/item[(contains(@name, 'gunHandgun')) and (contains(@name, 'Pistol'))]"/>
+	<!--<remove xpath="//trader_item_group/item[(contains(@name, 'gunHandgun')) and (contains(@name, 'Pipe'))]"/>-->
+	<remove xpath="//trader_item_group/item[(contains(@name, 'gunRifleT2LeverActionRifle'))]"/>
+	<remove xpath="//trader_item_group/item[(contains(@name, 'ammo44MagnumBullet'))]"/>
+	<remove xpath="//trader_item_group/item[(contains(@name, 'gunExplosivesT3RocketLauncher'))]"/>
+	<append xpath="//trader_item_group[@name='groupRangedAll']">
+		   <item name="TAMGL140" quality="1,5" />
+	
+</append>
+
+
+
+
+	<remove xpath="/traders/trader_item_groups/trader_item_group[starts-with(@name,'skillMagazines')]"/>
+	<remove xpath="/traders/trader_info/trader_items/item[starts-with(@group,'skillMagazines')]"/>
+<append xpath="//trader_item_group[@name='traderAlways']">
+	<item name="GunsmithDriver" count="3,5"/>
+	<item name="resourceGunLube" count="3,5"/>
+	<item name="repairKitArmor" count="1,2"/>
+	<item name="repairKitTools" count="1,2"/>
+	<item name="repairKitWeapon" count="1,2"/>
+</append>
+<append xpath="//trader_item_groups">
+	<trader_item_group name="groupFarming">
+		<item name="ChickenCoop" count="1"/>
+		<item name="PigPenPlaceable" count="1"/>
+		<item name="MilkingStationPlaceable" count="1"/>
+			
+	</trader_item_group>
+	 <trader_item_group name="groupVehiclesPlaceable" count="1">
+	 	<item name="vehicleMinibikePlaceable"/>
+		<item name="vehicleWitosQuadPlaceable"/>
+		<item name="vehicleMotorcyclePlaceable"/>
+
+		
+	 	
+		
+		 
+	 
+		<item name="vehicleSnowMobilePlaceable"/>
+		<item name="vehicleTruck4x4Placeable"/>
+		<item name="vehicleWitosFAVPlaceable"/>
+	
+		
+	 </trader_item_group>
+</append>
+
+
+	
+	<!--<remove xpath="/traders/trader_info[@id='1']"/>
+	<remove xpath="/traders/trader_info[@id='2']"/>
+	<remove xpath="/traders/trader_info[@id='6']"/>
+	<remove xpath="/traders/trader_info[@id='7']"/>
+	<remove xpath="/traders/trader_info[@id='8']"/>-->
+	<append xpath="/traders">
+	<trader_info id="81" reset_interval="3"  allow_sell="false">
+	<!-- *** SPECIALTY -->
+			<trader_items count="all">
+				<item group="groupArmorMods" unique_only="true" count="4,6"/>
+				<item group="groupArmorLight" unique_only="true" count="8"/>
+				<item group="groupArmorMedium" unique_only="true" count="8"/>
+				<item group="groupArmorHeavy" unique_only="true" count="8"/>
+				<item name="armorParts" count="3,5"/>
+				<item name="resourceSewingKit" count="3,5"/>
+				
+				<item group="books" unique_only="true" count="3,4"/>
+				<item group="tools" unique_only="true" count="10"/>
+				<item name="toolDewGatherer" count="1,3"/>
+				<item name="toolDewTarp" count="1,3"/>
+				<item name="toolDewFilter" count="1,3"/>
+				<item name="toolCookingPot" count="1,3"/>
+				<item name="toolCookingGrill" count="1,3"/>
+				<item group="groupDyeMods" count="5"/>
+			</trader_items>
+			
+			<!-- *** GENERAL -->
+			<trader_items count="all">
+				<item group="traderAlways"/>
+				<item group="traderGeneral" count="4,8"/>
+				<item group="groupModsAll" count="7,10"/>
+				<item group="generalResources" count="5,8"/>
+				<item group="tools" unique_only="true" count="10"/>
+				<item group="rareTools" unique_only="true" count="2,3"/>
+				<item group="groupMeleeAll" count="5,7"/>
+				<item group="groupRangedAll" count="5,7"/>
+				<item group="weaponsGunParts" count="2,4"/>
+				<item group="traderElectrical" unique_only="true" count="5,10"/>
+				<item group="traderSolarCells" count="2,4"/>
+				<item group="constructionSupplies" count="2,4"/>
+				<item group="decorativeBlocks" unique_only="true" count="6,10"/>
+			</trader_items>
+	</trader_info>
+	
+	<trader_info id="82" reset_interval="3"  allow_sell="false">
+	<!-- *** SPECIALTY -->
+			<trader_items count="all">
+				<item name="resourceCropAloeLeaf" count="2,5"/>
+				<item name="medicalAloeCream" count="2,5"/>
+				<item group="medicine"  unique_only="true" count="4,6"/>
+				<item group="rareMedicine" count="2,4"/>
+				
+				<item group="commonBooks" unique_only="true" count="2,3"/>
+				<item group="rareBooks" count="1,2"/>
+				<item group="perkBooks" count="1,2"/>
+				<item group="tools" unique_only="true" count="10"/>
+				<item name="toolDewGatherer" count="1,3"/>
+				<item name="toolDewTarp" count="1,3"/>
+				<item name="toolDewFilter" count="1,3"/>
+				<item name="toolCookingPot" count="1,3"/>
+				<item name="toolCookingGrill" count="1,3"/>
+			</trader_items>
+			
+			<!-- *** GENERAL -->
+			<trader_items count="all">
+				<item group="traderAlways"/>
+				<item group="traderGeneral" count="4,8"/>
+				<item group="generalResources" count="5,8"/>
+				<item group="groupModsAll" count="7,10"/>
+				<item group="tools" unique_only="true" count="10"/>
+				<item group="rareTools" unique_only="true" count="2,3"/>
+				<item group="groupMeleeAll" count="5,7"/>
+				<item group="groupRangedAll" count="5,7"/>
+				<item group="weaponsGunParts" count="2,4"/>
+				<item name="armorParts" count="1,2"/>
+				<item name="resourceSewingKit" count="1,2"/>
+				<item group="traderElectrical" unique_only="true" count="5,10"/>
+				<item group="traderSolarCells" count="2,4"/>
+				<item group="groupArmorLight" unique_only="true" count="6"/>
+				<item group="groupArmorMedium" unique_only="true" count="6"/>
+				<item group="groupArmorHeavy" unique_only="true" count="6"/>
+				<item group="constructionSupplies" count="2,4"/>
+				<item group="decorativeBlocks" unique_only="true" count="6,10"/>
+			</trader_items>
+	</trader_info>
+	
+	<trader_info id="83" reset_interval="3"  allow_sell="false">
+		<!-- *** SPECIALTY -->
+			<trader_items count="all">
+				<item group="groupVehicles" unique_only="true" count="2"/>
+				<item group="groupMeleeMods" unique_only="true" count="1,2"/>
+				<item group="tools" unique_only="true" count="10"/>
+				<item group="rareTools" unique_only="true" count="2,3"/>
+				<item group="traderElectrical" unique_only="true" count="8,15"/>
+				<item group="traderSolarCells" count="2,4"/>
+				
+				<item group="books" unique_only="true" count="3,4"/>
+				<item name="toolDewGatherer" count="1,3"/>
+				<item name="toolDewTarp" count="1,3"/>
+				<item name="toolDewFilter" count="1,3"/>
+				<item name="toolCookingPot" count="1,3"/>
+				<item name="toolCookingGrill" count="1,3"/>
+			</trader_items>
+			
+			<!-- *** GENERAL -->
+			<trader_items count="all">
+				<item group="traderAlways"/>
+				<item group="traderGeneral" count="4,10"/>
+				<item group="groupModsAll" count="7,10"/>
+				<item group="tools" unique_only="true" count="10"/>
+				<item group="generalResources" count="5,8"/>
+				<item group="traderElectrical" unique_only="true" count="2,5"/>
+				<item group="traderSolarCells" count="2,4"/>
+				<item group="groupMeleeAll" count="5,7"/>
+				<item group="groupRangedAll" count="5,7"/>
+				<item group="weaponsGunParts" count="2,4"/>
+				<item name="armorParts" count="1,2"/>
+				<item name="resourceSewingKit" count="1,2"/>
+				<item group="groupArmorLight" unique_only="true" count="6"/>
+				<item group="groupArmorMedium" unique_only="true" count="6"/>
+				<item group="groupArmorHeavy" unique_only="true" count="6"/>
+				<item group="constructionSupplies" count="2,4"/>
+				<item group="decorativeBlocks" unique_only="true" count="6,10"/>
+			</trader_items>
+	</trader_info>
+	
+	<trader_info id="84" reset_interval="3"  allow_sell="false">
+		<!-- *** SPECIALTY -->
+			<trader_items count="all">
+				<item group="groupAllAmmo" unique_only="true" count="2,4"/>
+				<item group="ammoSupplies" count="2,3"/>
+				<item group="groupRangedAll" unique_only="true" count="5,7"/>
+				<item group="groupMeleeAll" unique_only="true" count="5,7"/>
+				<item group="weaponsGunParts" unique_only="true" count="2,4"/>
+				<item group="groupRangedMods" count="1,2"/>
+				<item group="tools" unique_only="true" count="10"/>
+				
+				<item group="books" unique_only="true" count="3,4"/>
+				<item name="toolDewGatherer" count="1,3"/>
+				<item name="toolDewTarp" count="1,3"/>
+				<item name="toolDewFilter" count="1,3"/>
+				<item name="toolCookingPot" count="1,3"/>
+				<item name="toolCookingGrill" count="1,3"/>
+			</trader_items>
+			
+			<!-- *** GENERAL -->
+			<trader_items count="all">
+				<item group="traderAlways"/>
+				<item group="traderGeneral" count="4,8"/>
+				<item group="generalResources" count="5,8"/>
+				<item group="groupModsAll" count="7,10"/>
+				<item group="groupMeleeAll" count="5,7"/>
+				<item group="groupRangedAll" count="5,7"/>
+				<item group="weaponsGunParts" count="2,4"/>
+				<item name="armorParts" count="1,2"/>
+				<item name="resourceSewingKit" count="1,2"/>
+				<item group="tools" unique_only="true" count="10"/>
+				<item group="rareTools" unique_only="true" count="2,3"/>
+				<item group="traderElectrical" unique_only="true" count="5,10"/>
+				<item group="traderSolarCells" count="2,4"/>
+				<item group="groupArmorLight" unique_only="true" count="6"/>
+				<item group="groupArmorMedium" unique_only="true" count="6"/>
+				<item group="groupArmorHeavy" unique_only="true" count="6"/>
+				<item group="constructionSupplies" count="2,4"/>
+				<item group="decorativeBlocks" unique_only="true" count="6,10"/>
+			</trader_items>
+	</trader_info>
+	
+	<trader_info id="85" reset_interval="3"  allow_sell="false">
+		<!-- *** SPECIALTY -->
+			<trader_items count="all">
+				<item group="seeds" unique_only="true" count="2,5" />
+				<item group="cannedfood" count="3,6"/>
+				<item group="foodSupplies" count="2,5"/>
+				<item group="groupFoodAll" count="1,3"/>
+				<item group="tools" unique_only="true" count="10"/>
+				
+				<item group="books" unique_only="true" count="3,4"/>
+				<item name="toolDewGatherer" count="1,3"/>
+				<item name="toolDewTarp" count="1,3"/>
+				<item name="toolDewFilter" count="1,3"/>
+				<item name="toolCookingPot" count="1,3"/>
+				<item name="toolCookingGrill" count="1,3"/>
+			</trader_items>
+			
+			<!-- *** GENERAL -->
+			<trader_items count="all">
+				<item group="traderAlways"/>
+				<item group="traderGeneral" count="4,8"/>
+				<item group="generalResources" count="5,8"/>
+				<item group="groupModsAll" count="7,10"/>
+				<item group="tools" count="10"/>
+				<item group="rareTools" count="2,3"/>
+				<item group="groupMeleeAll" count="5,7"/>
+				<item group="groupRangedAll" count="5,7"/>
+				<item group="weaponsGunParts" count="2,4"/>
+				<item name="armorParts" count="1,2"/>
+				<item name="resourceSewingKit" count="1,2"/>
+				<item group="traderElectrical" unique_only="true" count="5,10"/>
+				<item group="traderSolarCells" count="2,4"/>
+				<item group="groupArmorLight" unique_only="true" count="6"/>
+				<item group="groupArmorMedium" unique_only="true" count="6"/>
+				<item group="groupArmorHeavy" unique_only="true" count="6"/>
+				<item group="constructionSupplies" count="2,4"/>
+				<item group="decorativeBlocks" unique_only="true" count="6,10"/>
+			</trader_items>
+	</trader_info>
+
+    <trader_info id="86" reset_interval="3" >
+	 <trader_items count="all">
+				<item group="groupVehicles" unique_only="true" count="4,10"/>
+				<item group="groupVehiclesPlaceable" unique_only="true" count="1"/>
+				
+				<item group="tools" unique_only="true" count="20"/>
+				<item group="rareTools" unique_only="true" count="4,6"/>
+				<item group="traderElectrical" unique_only="true" count="16,30"/>
+				<item group="traderSolarCells" count="4,8"/>
+				<item group="books" unique_only="true" count="6,8"/>
+				<item group="groupAllAmmo" unique_only="true" count="8,16"/>
+				<item group="ammoSupplies" count="5,10"/>
+				<item group="groupRangedAll" unique_only="true" count="10,14"/>
+				<item group="groupMeleeAll" unique_only="true" count="10,14"/>
+				<item group="weaponsGunParts" unique_only="true" count="4,8"/>
+				<item group="groupRangedMods" count="2,4"/>
+			</trader_items>
+			
+			<!-- *** GENERAL -->
+			<trader_items count="all">
+				<item group="traderAlways"/>
+				<item group="traderGeneral" count="4,10"/>
+				<item group="groupModsAll" count="7,10"/>
+				<item group="tools" unique_only="true" count="10"/>
+				<item group="generalResources" count="5,8"/>
+				<item group="traderElectrical" unique_only="true" count="2,5"/>
+				<item group="traderSolarCells" count="2,4"/>
+				<item group="constructionSupplies" count="3,5"/>
+				<item group="decorativeBlocks" unique_only="true" count="6,10"/>
+				
+			</trader_items>
+	</trader_info>
+
+ <trader_info id="99" reset_interval="3" >
+	 <trader_items count="all">
+				<item group="groupVehicles" unique_only="true" count="4,10"/>
+				<item group="groupVehiclesPlaceable" unique_only="true" count="1"/>
+				
+				<item group="tools" unique_only="true" count="20"/>
+				<item group="rareTools" unique_only="true" count="4,6"/>
+				<item group="traderElectrical" unique_only="true" count="16,30"/>
+				<item group="traderSolarCells" count="4,8"/>
+				<item group="books" unique_only="true" count="6,8"/>
+				<item group="groupAllAmmo" unique_only="true" count="8,16"/>
+				<item group="ammoSupplies" count="5,10"/>
+				<item group="groupRangedAll" unique_only="true" count="10,14"/>
+				<item group="groupMeleeAll" unique_only="true" count="10,14"/>
+				<item group="weaponsGunParts" unique_only="true" count="4,8"/>
+				<item group="groupRangedMods" count="2,4"/>
+			</trader_items>
+			
+			<!-- *** GENERAL -->
+			<trader_items count="all">
+				<item group="traderAlways"/>
+				<item group="traderGeneral" count="4,10"/>
+				<item group="groupModsAll" count="7,10"/>
+				<item group="tools" unique_only="true" count="10"/>
+				<item group="generalResources" count="5,8"/>
+				<item group="traderElectrical" unique_only="true" count="2,5"/>
+				<item group="traderSolarCells" count="2,4"/>
+				<item group="constructionSupplies" count="3,5"/>
+				<item group="decorativeBlocks" unique_only="true" count="6,10"/>
+				
+			</trader_items>
+	</trader_info>
+</append>
+<remove xpath="/traders/trader_info[@id='6']/trader_items"/>
+<append xpath="/traders/trader_info[@id='6']">
+<!-- *** SPECIALTY -->
+			<trader_items count="all">
+				<item group="groupVehicles" unique_only="true" count="2,5"/>
+				<item name="vehicleMinibikePlaceable" unique_only="true" count="1"/>
+				<item group="tools" unique_only="true" count="10"/>
+				<item group="rareTools" unique_only="true" count="2,3"/>
+				<item group="traderElectrical" unique_only="true" count="8,15"/>
+				<item group="traderSolarCells" count="2,4"/>
+				<item group="books" unique_only="true" count="3,4"/>
+			</trader_items>
+			
+			<!-- *** GENERAL -->
+			<trader_items count="all">
+				<item group="traderAlways"/>
+				<item group="traderGeneral" count="4,10"/>
+				<item group="groupModsAll" count="7,10"/>
+				<item group="tools" unique_only="true" count="10"/>
+				<item group="generalResources" count="5,8"/>
+				<item group="traderElectrical" unique_only="true" count="2,5"/>
+				<item group="traderSolarCells" count="2,4"/>
+				<item group="constructionSupplies" count="3,5"/>
+				<item group="decorativeBlocks" unique_only="true" count="6,10"/>
+				
+			</trader_items>
+	</append>
+<remove xpath="/traders/trader_info[@id='7']/trader_items"/>
+<append xpath="/traders/trader_info[@id='7']">
+<!-- *** SPECIALTY -->
+			<trader_items count="all">
+				<item group="groupAllAmmo" unique_only="true" count="4,8"/>
+				<item group="ammoSupplies" count="3,5"/>
+				<item group="groupRangedAll" unique_only="true" count="5,7"/>
+				<item group="groupMeleeAll" unique_only="true" count="5,7"/>
+				<item group="weaponsGunParts" unique_only="true" count="2,4"/>
+				<item group="groupRangedMods" count="1,2"/>
+				<item group="tools" unique_only="true" count="10"/>
+				<item group="books" unique_only="true" count="3,4"/>
+			</trader_items>
+			
+			<!-- *** GENERAL -->
+			<trader_items count="all">
+				<item group="traderAlways"/>
+				<item group="traderGeneral" count="4,8"/>
+				<item group="generalResources" count="5,8"/>
+				<item group="groupModsAll" count="7,10"/>
+				<item group="groupMeleeAll" count="5,7"/>
+				<item group="groupRangedAll" count="5,7"/>
+				<item group="weaponsGunParts" count="2,4"/>
+				<item group="tools" unique_only="true" count="10"/>
+				<item group="rareTools" unique_only="true" count="2,3"/>
+			</trader_items>
+</append>
+<remove xpath="/traders/trader_info[@id='2']/trader_items"/>
+<append xpath="/traders/trader_info[@id='2']">
+<!-- *** SPECIALTY -->
+			<trader_items count="all">
+				<item name="resourceCropAloeLeaf" count="2,5"/>
+				<item name="medicalAloeCream" count="2,5"/>
+				<item group="medicine"  unique_only="true" count="6,8"/>
+				<item group="rareMedicine" count="3,5"/>
+				<item group="commonBooks" unique_only="true" count="2,3"/>
+				<item group="rareBooks" count="1,2"/>
+				<item group="perkBooks" count="1,2"/>
+			</trader_items>
+			
+			<!-- *** GENERAL -->
+			<trader_items count="all">
+				<item group="traderAlways"/>
+				<item group="traderGeneral" count="4,8"/>
+				<item group="generalResources" count="5,8"/>
+				<item name="resourceSewingKit" count="1,2"/>
+			
+			</trader_items>
+</append>
+<remove xpath="/traders/trader_info[@id='1']/trader_items"/>
+<append xpath="/traders/trader_info[@id='1']">
+<!-- *** SPECIALTY -->
+			<trader_items count="all">
+				<item group="groupArmorMods" unique_only="true" count="4,6"/>
+				<item group="groupArmorLight" unique_only="true" count="10"/>
+				<item group="groupArmorMedium" unique_only="true" count="10"/>
+				<item group="groupArmorHeavy" unique_only="true" count="10"/>
+				<item name="armorParts" count="5,8"/>
+				<item name="resourceSewingKit" count="5,8"/>
+				<item group="books" unique_only="true" count="3,4"/>
+				<item group="groupDyeMods" count="5"/>
+			</trader_items>
+			
+			<!-- *** GENERAL -->
+			<trader_items count="all">
+				<item group="traderAlways"/>
+				<item group="traderGeneral" count="4,8"/>
+				<item group="groupModsAll" count="7,10"/>
+				<item group="generalResources" count="5,8"/>
+			
+			</trader_items>
+</append>
+<remove xpath="/traders/trader_info[@id='8']/trader_items"/>
+<append xpath="/traders/trader_info[@id='8']">
+			<!-- *** SPECIALTY -->
+			<trader_items count="all">
+				<item group="seeds" unique_only="true" count="2,5" />
+				<item group="cannedfood" count="3,6"/>
+				<item group="foodSupplies" count="2,5"/>
+				<item group="groupFoodAll" count="1,3"/>
+				<item group="tools" unique_only="true" count="10"/>
+				<item group="books" unique_only="true" count="3,4"/>
+				<item name="toolDewGatherer" count="1,3"/>
+				<item name="toolDewTarp" count="1,3"/>
+				<item name="toolDewFilter" count="1,3"/>
+				<item name="toolCookingPot" count="1,3"/>
+				<item name="toolCookingGrill" count="1,3"/>
+				<item group="groupFarming" count="1"/>
+			</trader_items>
+			
+			<!-- *** GENERAL -->
+			<trader_items count="all">
+				<item group="traderAlways"/>
+				<item group="traderGeneral" count="4,8"/>
+				<item group="generalResources" count="5,8"/>
+				<item group="groupModsAll" count="7,10"/>
+				<item group="tools" count="10"/>
+				<item name="resourceSewingKit" count="1,2"/>
+				<item group="constructionSupplies" count="2,4"/>
+			</trader_items>
+
+	
+</append>
+<append xpath="/traders/trader_item_groups/trader_item_group[@name='rareTools']">
+			<item name="CFIDCardGreen" count="1,2" prob="0.05"/>
+			<item name="CFIDCardBlue" count="1,2" prob="0.04"/>
+			<item name="CFIDCardRed" count="1,2" prob="0.03"/>
+    </append>
+
+
+
+<append xpath="/traders/trader_item_groups/trader_item_group[@name='groupDyeMods']">
+<item name="modDyeArcherGreen"/>
+	<item name="modDyeArcherRed"/>
+	<item name="modDyeArcherBlue"/>
+	<item name="modDyeArcherPink"/>
+	<item name="modDyeArcherOrange"/>
+</append>
+</snj>

@@ -1,0 +1,130 @@
+<Configs>
+<insertBefore xpath="/lootcontainers/lootgroup[@name='groupScrapCommon']">
+		<lootgroup name="groupMRE">
+			<item name="MREBreakfast"/>
+			<item name="MREChickenCurry"/>
+			<item name="MREBeefStew"/>
+			<item name="MRELambStew"/>
+			<item name="MREPastaMarinara"/>
+		</lootgroup>
+		<lootgroup name="groupSimpleFoods">
+			<item name="FruitbytheFoot"/>
+     		 <item name="MREBreakfast"/>
+			<item name="MREChickenCurry"/>
+			<item name="MREBeefStew"/>
+			<item name="MRELambStew"/>
+			<item name="MREPastaMarinara"/>
+		</lootgroup>
+		<lootgroup name="groupDrinks">
+			<item name="drinkCocaCola"/>
+      <item name="drinkDrPepper"/>
+      <item name="MtnDew"/>
+		</lootgroup>
+		<lootgroup name="groupAllDrops">
+			<item group="groupSimpleFoods"  loot_prob_template="ProbT1Cap"/>
+			<item group="groupDrinks"/>
+		</lootgroup>
+	</insertBefore>
+ 
+<append xpath="/lootcontainers/lootgroup[@name='groupFoodPileSmall']">
+		<item group="groupSimpleFoods"  loot_prob_template="ProbT1Cap"/>
+		<item group="groupDrinks"  prob=".19"/>
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='groupFoodPileMed']">
+		<item group="groupAllDrops"  loot_prob_template="ProbT1Cap"/>
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='groupFoodPileLarge']">
+		<item group="groupSimpleFoods"  loot_prob_template="ProbT1Cap"/>
+		<item name="MtnDew"  prob=".19"/>
+    <item name="drinkDrPepper" loot_prob_template="low"/>
+    <item name="drinkCocaCola" loot_prob_template="low"/>
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='groupDrinksCommon']">
+		<item name="drinkDrPepper" loot_prob_template="low"/>
+    <item name="drinkCocaCola" loot_prob_template="low"/>
+		<item name="MtnDew"  prob=".19"/>
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='groupDrinksUncommon']">
+		<item name="drinkDrPepper"/>
+    <item name="drinkCocaCola"/>
+		<item name="MtnDew"  prob=".19"/>
+	</append>
+	
+  
+  <!-- Shamway Cardboard boxes loot -->
+  <append xpath="/lootcontainers/lootgroup[@name='groupFoodTrashCommon' or @name='groupDumpsterFood']">
+    <item name="FruitbytheFoot" loot_prob_template="low"/>
+	<item name="foodScraps" loot_prob_template="med"/>
+	
+  </append>
+
+
+  <append xpath="/lootcontainers/lootgroup[@name='groupShamwayCrate']">
+    <item group="groupSimpleFoods"  loot_prob_template="med"/>
+    <item group="groupAllDrops"  loot_prob_template="low"/>
+  </append>
+
+  <append xpath="/lootcontainers/lootgroup[@name='groupFoodPileSmall']">
+    <item group="groupSimpleFoods" loot_prob_template="veryLow"/>
+  </append>
+
+  <append xpath="/lootcontainers/lootgroup[@name='groupFoodPileMed']">
+    <item group="groupAllDrops" loot_prob_template="veryLow"/>
+  </append>
+
+  <append xpath="/lootcontainers/lootgroup[@name='groupFoodPileLarge']">
+    <item group="groupSimpleFoods" prob=".19"/>
+  </append>
+
+<append xpath="/lootcontainers">
+<lootgroup name="FoodCrate">
+	<item name="Crate_Pumpkin" count="1"/>
+	<item name="Crate_YuccaFruit" count="1"/>
+	<item name="Crate_Mushrooms" count="1"/>
+	<item name="Crate_Potato" count="1"/>
+	<item name="Crate_Blueberries" count="1"/>
+	<item name="Crate_Corn" count="1"/>
+	
+</lootgroup>
+    <lootcontainer name="Food_Crate" size="1,1" sound_open="UseActions/open_garbage" sound_close="UseActions/close_garbage" loot_quality_template="qualPlus1Template" destroy_on_close="false">
+			<item group="FoodCrate" loot_prob_template="med"/>
+	</lootcontainer>
+</append>
+  <remove xpath="/lootcontainers/lootgroup/item[@name='foodMeatStew']"/>
+	<remove xpath="/lootcontainers/lootgroup/item[@name='foodFishTacos']"/>
+	<remove xpath="/lootcontainers/lootgroup/item[@name='foodChiliDog']"/>
+	<remove xpath="/lootcontainers/lootgroup/item[@name='foodBlueberryPie']"/>
+	<remove xpath="/lootcontainers/lootgroup/item[@name='foodPumpkinPie']"/>
+	<remove xpath="/lootcontainers/lootgroup/item[@name='foodPumpkinCheesecake']"/>
+	<remove xpath="/lootcontainers/lootgroup/item[@name='foodGumboStew']"/>
+	<remove xpath="/lootcontainers/lootgroup/item[@name='foodShepardsPie']"/>
+	<remove xpath="/lootcontainers/lootgroup/item[@name='foodSpaghetti']"/>
+	<remove xpath="/lootcontainers/lootgroup/item[@name='foodTunaFishGravyToast']"/>
+ 
+	    <append xpath="/lootcontainers/lootgroup[@name='cannedfood']">
+          <item name="drinkJarEmpty" count="1,3" prob="0.3"/>
+	    </append>
+        <append xpath="/lootcontainers/lootgroup[contains(@name, 'groupFood')]">
+            <item name="drinkJarEmpty" count="1,3" prob="0.3"/>
+        </append>
+        <append xpath="/lootcontainers/lootgroup[contains(@name, 'groupDrink')]">
+            <item name="drinkJarEmpty" count="1,7" prob="0.2"/>
+        </append>
+
+
+
+
+
+  <append xpath="/lootcontainers/lootgroup[@name='CloudsOPFood']">
+    
+	  <item name="MREBreakfast" count="1,5" prob="0.05" />
+	  <item name="MREChickenCurry" count="1,5" prob="0.05" />
+	  <item name="MREBeefStew" count="1,5" prob="0.05" />
+	  <item name="MRELambStew" count="1,5" prob="0.05" />
+	  <item name="MREPastaMarinara" count="1,5" prob="0.05" />
+	  <item name="MtnDew" count="1,5" prob="0.05" />
+	  <item name="drinkDrPepper" count="1,5" prob="0.05" />
+</append>
+
+
+</Configs>

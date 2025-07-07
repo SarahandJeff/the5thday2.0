@@ -1,0 +1,200 @@
+<config>
+	<append xpath="/lootcontainers/lootgroup[@name='workstationToolsScaled']">
+		<item name="toolTASmokelessPowder" loot_prob_template="ProbT1Cap"/>
+		<item name="toolTATumbler" loot_prob_template="ProbT1Cap"/>
+		<item name="toolTAPowderLoader" loot_prob_template="ProbT1Cap"/>
+		<item name="toolTABulletPress" loot_prob_template="ProbT2Cap"/>
+		<item name="toolTABoxFolder" loot_prob_template="ProbT2Cap"/>
+		<item name="toolTAAmmoBoxes" loot_prob_template="ProbT2Cap"/>
+	</append>
+	<!-- Add Ammo Groups -->
+	<insertAfter xpath="/lootcontainers/lootgroup[@name='empty']">
+		<lootgroup name="groupPrimers" count="1,2">
+			<item name="ammoPrimerSml" count="5,15" />
+			<item name="ammoPrimerMed" count="5,10" />
+			<item name="resourceSmokelessPowder" count="6,36" />
+		</lootgroup>
+		<lootgroup name="groupCasings"  count="1,2">
+			<item name="ammoCasingSpentSml" count="5,15" />
+			<item name="ammoCasingSpentMed" count="5,10" />
+		</lootgroup>
+		<lootgroup name="groupBlocks">
+			<item name="partUpperDrawnSml" count="1" />
+			<item name="partUpperDrawnMed" count="1" />
+			<item name="partUpperDrawnLrg" count="1" />
+			<item name="partLowerDrawnSml" count="1" />
+			<item name="partLowerDrawnMed" count="1" />
+			<item name="partLowerDrawnLrg" count="1" />
+		</lootgroup>
+		<lootgroup name="groupBarrels">
+			<item name="partBarrelDrawnSml" count="1" />
+			<item name="partBarrelDrawnMed" count="1" />
+			<item name="partBarrelDrawnLrg" count="1" />
+		</lootgroup>
+		
+		
+		<lootgroup name="groupTALootammobenchtools1" count="1">
+			<item name="toolTASmokelessPowder" />
+		</lootgroup>
+		<lootgroup name="groupTALootammobenchtools2" count="1">
+			<item name="toolTATumbler"/>
+			<item name="toolTAPowderLoader"/>
+			<item name="toolTABoxFolder"/>
+		</lootgroup>
+		<lootgroup name="groupTALootammobenchtools3" count="1">
+			<item name="toolTAAmmoBoxes" />
+			<item name="toolTABulletPress"/>
+		</lootgroup>
+		<lootgroup name="groupTALootammobenchtools" count="1">
+			<item group="groupTALootammobenchtools1" loot_prob_template="ProbT1Cap"/>
+			<item group="groupTALootammobenchtools2" loot_prob_template="ProbT2Cap"/>
+			<item group="groupTALootammobenchtools3" loot_prob_template="ProbT3"/>
+		</lootgroup>
+
+		<lootgroup name="groupTALootgunbenchtools" count="1">
+			<item name="toolTAAssemblyMat" loot_prob_template="ProbT1Cap"/>
+			<item name="toolTAGunsmithKit" loot_prob_template="ProbT1Cap"/>
+			<item name="toolTAViceBlocks" loot_prob_template="ProbT2Cap"/>
+			<item name="toolTARiflingBroach" loot_prob_template="ProbT2Cap"/>
+			<item name="toolTARifleStand" loot_prob_template="ProbT3"/>
+			<item name="toolTAArmorerWrenches" loot_prob_template="ProbT3"/>
+		</lootgroup>
+		<lootgroup name="groupLatheTools" count="1">
+			<item name="toolTALatheDial" loot_prob_template="ProbT0"/>
+			<item name="toolTALatheCalipers" loot_prob_template="ProbT1Cap"/>
+			<item name="toolTALatheCuttingTool" loot_prob_template="ProbT2Cap"/>
+			<item name="resourceSteelCleaner" loot_prob_template="ProbT0"/>
+		</lootgroup>
+		<lootgroup name="groupMillingTools" count="1">
+			<item name="toolTAMillingBearings" loot_prob_template="ProbT0"/>
+			<item name="toolTAMillingChucks" loot_prob_template="ProbT1Cap"/>
+			<item name="toolTAMillingTerminal" loot_prob_template="ProbT2Cap"/>
+			<item name="resourceSteelCleaner" loot_prob_template="ProbT0"/>
+		</lootgroup>
+		<lootgroup name="groupTALootgunbench" count="all">
+			<item group="groupBlocks"  count="1" loot_prob_template="low"  />
+			<item group="groupBarrels"  count="0,1" loot_prob_template="low"  />
+			<item name="resourceGunLube"  count="1,2" loot_prob_template="low"  />
+			<item group="groupTALootgunbenchtools"  count="0,1" loot_prob_template="veryLow"  />
+		</lootgroup>
+		<lootgroup name="groupTALootammobench" count="all">
+			<item group="groupPrimers"  loot_prob_template="low"  />
+			<item group="groupCasings"  loot_prob_template="low"  />
+			<item group="groupTALootammobenchtools" count="0,1" loot_prob_template="veryLow"  />
+		</lootgroup>
+		<lootgroup name="groupTALootPowerHammer" count="1,2">
+			<item group="groupBlocks"  loot_prob_template="low"  />
+			<item group="groupBarrels"  loot_prob_template="low"  />
+			<item name="resourceBoraxPowder"  count="10,20" loot_prob_template="low"  />
+			<item name="resourceForgedIron" count="5,10" loot_prob_template="low"/>
+			<item name="resourceForgedSteel" count="5,10" loot_prob_template="low"/>
+		</lootgroup>
+		<lootgroup name="groupTALootMillingMachine" count="all">
+			<item name="resourceLeadIngot" count="1,5" loot_prob_template="medLow" />
+			<item name="resourceBrassIngot" count="1,5" loot_prob_template="medLow" />
+			<item group="groupBlocks" count="1" loot_prob_template="veryLow"  />
+			<item group="groupMillingTools" count="0,1" loot_prob_template="veryLow"  />
+		</lootgroup>
+		<lootgroup name="groupTALootLathingMachine" count="all">
+			<item name="resourceForgedIron" count="1,5" loot_prob_template="medLow" />
+			<item name="resourceMetalPipe" count="1,5" loot_prob_template="medLow" />
+			<item group="groupBarrels" count="0,1" loot_prob_template="low"  />
+			<item group="groupLatheTools" count="0,1" loot_prob_template="veryLow"  />
+		</lootgroup>
+		
+		<lootgroup name="groupCompletedAmmo" count="1,4">
+			<item name="ammo9mmBulletBall" count="50,75" loot_prob_template="ProbT0"/>
+			<item name="ammo762mmBulletBall" count="25,50" loot_prob_template="ProbT0"/>
+			<item name="ammoShotgunShell" count="15,30" loot_prob_template="ProbT0"/>
+			<item name="ammo45ACP" count="50,75" loot_prob_template="ProbT0"/>
+			<item name="ammo556" count="25,50" loot_prob_template="ProbT0"/>
+			<item name="ammo50ae" count="50,75" loot_prob_template="ProbT0"/>
+			<item name="ammo50BMG" count="5,10" loot_prob_template="ProbT1"/>
+		</lootgroup>
+		<lootgroup name="groupCompletedBulletParts" count="1,4">
+			<item name="ammo9mmCase" count="15,45" loot_prob_template="ProbT0"/>
+			<item name="ammo9mmTip" count="15,45" loot_prob_template="ProbT0"/>
+			<item name="ammo44MagCase" count="15,45" loot_prob_template="ProbT0"/>
+			<item name="ammo44MagTip" count="15,45" loot_prob_template="ProbT0"/>
+			<item name="ammo45ACPCase" count="15,45" loot_prob_template="ProbT0"/>
+			<item name="ammo45ACPTip" count="15,45" loot_prob_template="ProbT0"/>
+			<item name="ammo762Case" count="15,45" loot_prob_template="ProbT0"/>
+			<item name="ammo762Tip" count="15,45" loot_prob_template="ProbT0"/>
+			<item name="ammo556Case" count="15,45" loot_prob_template="ProbT0"/>
+			<item name="ammo556Tip" count="15,45" loot_prob_template="ProbT0"/>
+			<item name="ammo50aeCase" count="15,45" loot_prob_template="ProbT1Cap"/>
+			<item name="ammo50aeTip" count="15,45" loot_prob_template="ProbT1Cap"/>
+			<item name="ammo50BMGCase" count="5,15" loot_prob_template="ProbT1Cap"/>
+			<item name="ammo50BMGTip" count="5,15" loot_prob_template="ProbT1Cap"/>
+		</lootgroup>
+		<lootcontainer name="BrokenAmmoBench" count="1" size="7,4" sound_open="open_workbench" sound_close="close_workbench" loot_quality_template="qualBaseTemplate" buff="buffScavengingSkillXPTick">
+			<item group="groupTALootammobench" />
+		</lootcontainer>
+		<lootcontainer name="Brokengunbench" count="1" size="7,4" sound_open="open_workbench" sound_close="close_workbench" loot_quality_template="qualBaseTemplate" buff="buffScavengingSkillXPTick">
+			<item group="groupTALootgunbench" />
+		</lootcontainer>
+		<lootcontainer name="BrokenMillingMachine" count="1" size="7,4" sound_open="open_workbench" sound_close="close_workbench" loot_quality_template="qualBaseTemplate" buff="buffScavengingSkillXPTick">
+			<item group="groupTALootMillingMachine" />
+		</lootcontainer>
+		<lootcontainer name="BrokenLathingMachine" count="1" size="7,4" sound_open="open_workbench" sound_close="close_workbench" loot_quality_template="qualBaseTemplate" buff="buffScavengingSkillXPTick">
+			<item group="groupTALootLathingMachine" />
+		</lootcontainer>
+		<lootcontainer name="BrokenPowerHammer" count="1" size="7,4" sound_open="open_workbench" sound_close="close_workbench" loot_quality_template="qualBaseTemplate" buff="buffScavengingSkillXPTick">
+			<item group="groupTALootPowerHammer" />
+		</lootcontainer>
+	</insertAfter>
+	<append xpath="/lootcontainers/lootgroup[@name='groupResourceBulletCasingSmall']">
+		<item name="ammoPrimerSml" count="15,45" />
+		<item name="ammoPrimerMed" count="7,21" />
+		<item name="ammoCasingSpentSml" count="15,45" />
+		<item name="ammoCasingSpentMed" count="7,21" />
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='groupResourceBulletCasingMedium']">
+		<item name="ammoPrimerSml" count="30,90" />
+		<item name="ammoPrimerMed" count="14,42" />
+		<item name="ammoCasingSpentSml" count="30,90" />
+		<item name="ammoCasingSpentMed" count="14,42" />
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='groupResourceBulletCasingLarge']">
+		<item name="ammoPrimerSml" count="60,180" />
+		<item name="ammoPrimerMed" count="28,84" />
+		<item name="ammoCasingSpentSml" count="60,180" />
+		<item name="ammoCasingSpentMed" count="28,84" />
+	</append>
+	<setattribute xpath="//lootcontainer[@name='ammoPileSmall']" name="count">1,2</setattribute>
+	<setattribute xpath="//lootcontainer[@name='ammoPileMed']" name="count">2,3</setattribute>
+	<setattribute xpath="//lootcontainer[@name='ammoPileLarge']" name="count">3,4</setattribute>
+	<setattribute xpath="//lootcontainer[@name='ammoPileSmall']" name="unique_item">true</setattribute>
+	<setattribute xpath="//lootcontainer[@name='ammoPileMed']" name="unique_item">true</setattribute>
+	<setattribute xpath="//lootcontainer[@name='ammoPileLarge']" name="unique_item">true</setattribute>
+	<setattribute xpath="//lootcontainer[@name='reinforcedChestT1']" name="unique_item">true</setattribute>
+	<setattribute xpath="//lootcontainer[@name='reinforcedChestT2']" name="unique_item">true</setattribute>
+	<setattribute xpath="//lootcontainer[@name='reinforcedChestT3']" name="unique_item">true</setattribute>
+	<setattribute xpath="//lootcontainer[@name='hardenedChestT4']" name="unique_item">true</setattribute>
+	<setattribute xpath="//lootcontainer[@name='hardenedChestT5']" name="unique_item">true</setattribute>
+	<append xpath="//lootcontainer[@name='ammoPileSmall']">
+		<item group="groupPrimers" count="1"/>
+		<item group="groupCasings" count="1"/>
+		<item group="groupCompletedAmmo" count="1" loot_prob_template="veryLow"/>
+		<item group="groupCompletedBulletParts" count="1" loot_prob_template="veryLow"/>
+	</append>
+	<append xpath="//lootcontainer[@name='ammoPileMed']">
+		<item group="groupPrimers" count="1"/>
+		<item group="groupCasings" count="1"/>
+		<item group="groupCompletedAmmo" count="1" loot_prob_template="med"/>
+		<item group="groupCompletedBulletParts" count="1" loot_prob_template="med"/>
+	</append>
+	<append xpath="//lootcontainer[@name='ammoPileLarge']">
+		<item group="groupPrimers" count="1"/>
+		<item group="groupCasings" count="1"/>
+		<item group="groupCompletedAmmo" count="1" />
+		<item group="groupCompletedBulletParts" count="1,2"/>
+	</append>
+	<setattribute xpath="//lootcontainer[starts-with(@name,'munitions')]" name="count">3,4</setattribute>
+	<setattribute xpath="//lootcontainer[starts-with(@name,'munitions')]" name="unique_item">true</setattribute>
+	<append xpath="//lootcontainer[starts-with(@name,'munitions')]">
+		<item group="groupPrimers" count="1"/>
+		<item group="groupCompletedAmmo" count="1" />
+		<item group="groupCompletedBulletParts" count="1,2"/>
+	</append>
+</config>

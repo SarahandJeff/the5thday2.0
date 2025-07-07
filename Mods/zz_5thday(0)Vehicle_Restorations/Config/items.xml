@@ -1,0 +1,939 @@
+<HOH_Vehicle_Restorations>
+
+
+
+
+
+
+
+
+<append xpath="//item[@name='vehicleSnowMobilePlaceable']"><property name="TraderStageTemplate" value="vehicleTier4"/></append>
+<append xpath="//item[@name='vehicleWitosFAVPlaceable']"><property name="TraderStageTemplate" value="vehicleTier4"/></append>
+
+<!--<set xpath="//item[contains(@name,'carBodyKit')]/property[@name='Group']/@value">HOHVehicleParts</set>
+<set xpath="//item[contains(@name,'carDoors')]/property[@name='Group']/@value">HOHVehicleParts</set>
+<set xpath="//item[contains(@name,'carHood')]/property[@name='Group']/@value">HOHVehicleParts</set>
+<set xpath="//item[contains(@name,'carTrunk')]/property[@name='Group']/@value">HOHVehicleParts</set>
+<set xpath="//item[contains(@name,'carFender')]/property[@name='Group']/@value">HOHVehicleParts</set>
+<set xpath="//item[contains(@name,'carBumperFront')]/property[@name='Group']/@value">HOHVehicleParts</set>
+-->
+
+
+ 
+
+
+
+
+
+
+<append xpath="//item[@name='meleeToolSalvageT1Wrench']/property[@name='Tags']/@value">,meleeToolSalvageT1Wrench</append>
+<append xpath="//item[@name='meleeToolSalvageT2Ratchet']/property[@name='Tags']/@value">,meleeToolSalvageT2Ratchet</append>
+
+	<append xpath="//item[@name='resourceCement']">
+	<property name="CustomIcon" value="resourceCement"/>
+	</append>	
+	
+<append xpath="//item[@name='meleeToolSalvageT1Wrench']">
+	<effect_group tiered="false">
+		<requirement name="!HoldingItemHasTags" tags="meleeToolSalvageT1Wrench"/>
+			<passive_effect name="CraftingTime" operation="perc_add" value="-.333"/>
+			<display_value name="dCraftingTime" value=".5"/>
+	</effect_group>
+
+	</append>	
+
+
+<append xpath="//item[@name='meleeToolSalvageT2Ratchet']">
+	<effect_group tiered="false">
+		<requirement name="!HoldingItemHasTags" tags="meleeToolSalvageT2Ratchet"/>
+			<passive_effect name="CraftingTime" operation="perc_add" value="-.25"/>
+			<display_value name="dCraftingTime" value=".25"/>
+	</effect_group>
+
+	</append>	
+
+
+	<append xpath="/items">
+	  
+	<item name="toolHOHWireCutters">
+		<property name="DescriptionKey" value="toolHOHWireCuttersDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MmechanicalParts"/>
+		<property name="Stacknumber" value="5"/>
+		<property name="EconomicValue" value="50"/>
+		<property name="Group" value="Tools/Traps,HOHVehiclePartEssentials"/>
+		<property name="CustomIcon" value="toolHOHWireCutters"/>
+	</item>	 
+	
+	<item name="toolHOHCompressor">
+		<property name="DescriptionKey" value="toolHOHCompressorDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="Miron_scrap"/> 
+		<property name="Weight" value="2"/>
+		<property name="Stacknumber" value="5"/>
+		<property name="EconomicValue" value="250"/>
+		<property name="Group" value="Tools/Traps,HOHVehiclePartEssentials"/>
+		<property name="CustomIcon" value="toolHOHCompressor"/>
+	</item>	 
+	
+	<item name="toolHOHRollingToolBox">
+		<property name="DescriptionKey" value="toolHOHRollingToolBoxDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="Miron_scrap"/>
+		<property name="Weight" value="1"/>
+		<property name="Stacknumber" value="5"/>
+		<property name="EconomicValue" value="750"/>
+		<property name="Group" value="Tools/Traps,HOHVehiclePartEssentials"/>	
+		<property name="CustomIcon" value="toolHOHRollingToolBox"/>
+	</item>
+	
+	<item name="toolHOHEngineHoist">
+		<property name="DescriptionKey" value="toolHOHEngineHoistDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="Miron_scrap"/> 
+		<property name="Weight" value="10"/>
+		<property name="Stacknumber" value="5"/>
+		<property name="EconomicValue" value="500"/>
+		<property name="Group" value="Tools/Traps,HOHVehiclePartEssentials"/>
+		<property name="CustomIcon" value="toolHOHEngineHoist"/>
+	</item>
+
+	</append>
+
+<!-- HOH Vehicle Repair Redux-->	
+<!-- HOH Vehicle Repair Redux-->	
+<!-- HOH Vehicle Repair Redux-->	
+
+	<append xpath="/items">
+	  	
+<!-- Genenerics --> <!-- Genenerics --> <!-- Genenerics --> 
+
+	<item name="HOHBatteryCharger">
+		<property name="DescriptionKey" value="HOHBatteryChargerDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MelectricParts"/>
+		<property name="Stacknumber" value="5"/>
+		<property name="EconomicValue" value="200"/>
+		<property name="Group" value="Tools/Traps,HOHVehiclePartEssentials"/>
+		<property name="CustomIcon" value="HOHBatteryCharger"/>
+	</item>	 	  
+	  
+	<item name="HOHRatchetSet">
+		<property name="DescriptionKey" value="HOHRatchetSetDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MmechanicalParts"/>
+		<property name="Stacknumber" value="5"/>
+		<property name="EconomicValue" value="1375"/>
+		<property name="Group" value="Tools/Traps,HOHVehiclePartEssentials"/>
+		<property name="CustomIcon" value="HOHRatchetSet"/>
+	</item>	 	  
+	  
+
+	<item name="HOHVehicleBolts4">
+		<property name="DescriptionKey" value="HOHVehicleBolts4Desc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="Miron_scrap"/> 
+		<property name="Weight" value="50"/>
+		<property name="Stacknumber" value="50"/>
+		<property name="EconomicValue" value="50"/>
+		<property name="Group" value="Science,TCScience,HOHVehicleParts"/>
+		<property name="CustomIcon" value="HOHVehicleBolts4"/>
+	</item>	 	  
+
+	<item name="HOHVehicleBolts8">
+		<property name="DescriptionKey" value="HOHVehicleBolts8Desc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="Miron_scrap"/> 
+		<property name="Weight" value="100"/>
+		<property name="Stacknumber" value="25"/>
+		<property name="EconomicValue" value="100"/>
+		<property name="Group" value="Science,TCScience,HOHVehicleParts"/>
+		<property name="CustomIcon" value="HOHVehicleBolts8"/>
+	</item>	 	  
+
+<!-- Wheels --> <!-- Wheels --> <!-- Wheels --> 
+
+	<item name="HOHBikeRim">
+		<property name="DescriptionKey" value="HOHBikeRimDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="Miron_scrap"/> 
+		<property name="Weight" value="60"/>
+		<property name="Stacknumber" value="12"/>
+		<property name="EconomicValue" value="375"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartWheels"/>
+		<property name="CustomIcon" value="HOHBikeRim"/>
+	</item>	
+	
+	<item name="HOHBikeInnerTube">
+		<property name="DescriptionKey" value="HOHBikeInnerTubeDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MresourceScrapPolymers"/> 
+		<property name="Weight" value="8"/>
+		<property name="Stacknumber" value="24"/>
+		<property name="EconomicValue" value="20"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartWheels"/>
+		<property name="CustomIcon" value="HOHBikeInnerTube"/>
+	</item>	
+
+	<item name="HOHBikeTireBlown">
+		<property name="DescriptionKey" value="HOHBikeTireBlownDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MresourceScrapPolymers"/> 
+		<property name="Weight" value="20"/>
+		<property name="Stacknumber" value="12"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartWheels"/>
+		<property name="CustomIcon" value="HOHBikeTireBlown"/>
+	</item>	
+ 
+	<item name="HOHBikeTire">
+		<property name="DescriptionKey" value="HOHBikeTireDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MresourceScrapPolymers"/> 
+		<property name="Weight" value="30"/>
+		<property name="Stacknumber" value="12"/>
+		<property name="EconomicValue" value="75"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartWheels"/>
+		<property name="CustomIcon" value="HOHBikeTire"/>
+	</item>	
+
+	<item name="HOHBikeWheel">
+		<property name="DescriptionKey" value="HOHBikeWheelDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="Miron_scrap"/>
+		<property name="Stacknumber" value="6"/>
+		<property name="EconomicValue" value="625"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartWheels"/>
+		<property name="CustomIcon" value="HOHBikeWheel"/>
+	</item>	
+	
+	
+	<item name="HOHCarRim">
+		<property name="DescriptionKey" value="HOHCarRimDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="Miron_scrap"/> 
+		<property name="Weight" value="120"/>
+		<property name="Stacknumber" value="8"/>
+		<property name="EconomicValue" value="600"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartWheels"/>
+		<property name="CustomIcon" value="HOHCarRim"/>
+	</item>	 	  
+  		  
+	<item name="HOHCarInnerTube">
+		<property name="DescriptionKey" value="HOHCarInnerTubeDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MresourceScrapPolymers"/> 
+		<property name="Weight" value="16"/>
+		<property name="Stacknumber" value="16"/>
+		<property name="EconomicValue" value="110"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartWheels"/>
+		<property name="CustomIcon" value="HOHCarInnerTube"/>
+	</item>	 	  
+
+	<item name="HOHCarTireBlown">
+		<property name="DescriptionKey" value="HOHCarTireBlownDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MresourceScrapPolymers"/> 
+		<property name="Weight" value="40"/>
+		<property name="Stacknumber" value="8"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartWheels"/>
+		<property name="CustomIcon" value="HOHCarTireBlown"/>
+	</item>	 	  
+  
+	<item name="HOHCarTire">
+		<property name="DescriptionKey" value="HOHCarTireDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MresourceScrapPolymers"/> 
+		<property name="Weight" value="50"/>
+		<property name="Stacknumber" value="8"/>
+		<property name="EconomicValue" value="650"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartWheels"/>
+		<property name="CustomIcon" value="HOHCarTire"/>
+	</item>	 	  
+
+	<item name="HOHCarWheel">
+		<property name="DescriptionKey" value="HOHCarWheelDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="Miron_scrap"/>
+		<property name="Stacknumber" value="8"/>
+		<property name="EconomicValue" value="1000"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartWheels"/>
+		<property name="CustomIcon" value="HOHCarWheel"/>
+	</item>	 	  
+
+<!-- Engine --> <!-- Engine --> <!-- Engine --> 
+	  
+	<item name="HOHEngineRadiator">
+		<property name="DescriptionKey" value="HOHEngineRadiatorDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MresourceScrapBrassLarge"/> 
+		<property name="Weight" value="250"/>
+		<property name="Stacknumber" value="3"/>
+		<property name="EconomicValue" value="500"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartEngines"/>
+		<property name="CustomIcon" value="HOHEngineRadiator"/>
+	</item>		
+	  
+	<item name="HOHCarburetor">
+		<property name="DescriptionKey" value="HOHCarburetorDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MmechanicalParts"/> 
+		<property name="Weight" value="120"/>
+		<property name="Stacknumber" value="3"/>
+		<property name="EconomicValue" value="2000"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartEngines"/>
+		<property name="CustomIcon" value="HOHCarburetor"/>
+	</item>	
+	  
+	<item name="HOHBikeEngineComplete">
+		<property name="DescriptionKey" value="HOHEngineCompleteDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="Miron_scrap"/>
+		<property name="Stacknumber" value="1"/>
+		<property name="EconomicValue" value="15000"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartEngines"/>
+		<property name="CustomIcon" value="HOHBikeEngineComplete"/>
+	</item>	
+		  
+	<item name="HOHEngineComplete">
+		<property name="DescriptionKey" value="HOHEngineCompleteDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="Miron_scrap"/>
+		<property name="Stacknumber" value="1"/>
+		<property name="EconomicValue" value="15000"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartEngines"/>
+		<property name="CustomIcon" value="HOHEngineComplete"/>
+	</item>	
+	<item name="HOHTransferCase">
+		<property name="DescriptionKey" value="HOHTransferCaseDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="Miron_scrap"/>
+		<property name="Stacknumber" value="1"/>
+		<property name="EconomicValue" value="15000"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartEngines"/>
+		<property name="CustomIcon" value="HOHTransferCaseComplete"/>
+	</item>	
+	
+	<item name="HOHBikeEngineBroken">
+		<property name="DescriptionKey" value="HOHEngineBrokenDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="Miron_scrap"/>
+		<property name="Stacknumber" value="6"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartEngines"/>
+		<property name="CustomIcon" value="HOHBikeEngineBroken"/>
+		<property class="Action0">
+		<property name="Sound_start" value="open_garbage"/>
+		<property name="Class" value="OpenBundle"/>
+		<property name="Create_item" value="HOHBikeEngineHousing,HOHVehicleBolts4"/>
+		<property name="Create_item_count" value="1,1-2"/>
+		<property name="Random_item" value="HOHEnginePistons2,HOHEngineValves4,HOHBikeEngineHeader,HOHBikeTransmisionClutchPlate"/>
+		<property name="Random_item_count" value="1,1,1,0-1"/>
+		<property name="Random_count" value="2"/>
+		<property name="Unique_random_only" value="true"/>
+	</property>
+	</item>	
+		
+	<item name="HOHEngineBroken">
+		<property name="DescriptionKey" value="HOHEngineBrokenDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="Miron_scrap"/>
+		<property name="Stacknumber" value="3"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartEngines"/>
+		<property name="CustomIcon" value="HOHEngineBroken"/>
+		<property class="Action0">
+		<property name="Sound_start" value="open_garbage"/>
+		<property name="Class" value="OpenBundle"/>
+		<property name="Create_item" value="HOHEngineHousing,HOHVehicleBolts4"/>
+		<property name="Create_item_count" value="1,1-3"/>
+		<property name="Random_item" value="HOHEngineCrankshaft,HOHEnginePistons2,HOHEngineValves4,HOHEngineHeader"/>
+		<property name="Random_item_count" value="1,1-3,1-2,1"/>
+		<property name="Random_count" value="2"/>
+		<property name="Unique_random_only" value="true"/>
+	</property>
+	</item>	
+	  
+	<item name="HOHBikeEngineHousing">
+		<property name="DescriptionKey" value="HOHEngineHousingDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MresourceForgedSteel"/> 
+		<property name="Weight" value="200"/>
+		<property name="Stacknumber" value="6"/>
+		<property name="EconomicValue" value="500"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartEngines"/>
+		<property name="CustomIcon" value="HOHBikeEngineHousing"/>
+	</item>	
+	  
+	<item name="HOHEngineHousing">
+		<property name="DescriptionKey" value="HOHEngineHousingDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MresourceForgedSteel"/> 
+		<property name="Weight" value="200"/>
+		<property name="Stacknumber" value="3"/>
+		<property name="EconomicValue" value="500"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartEngines"/>
+		<property name="CustomIcon" value="HOHEngineHousing"/>
+	</item>	
+	  
+	<item name="HOHBikeEngineHeader">
+		<property name="DescriptionKey" value="HOHEngineHeaderDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="Miron_scrap"/> 
+		<property name="Weight" value="80"/>
+		<property name="Stacknumber" value="12"/>
+		<property name="EconomicValue" value="1500"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartEngines"/>
+		<property name="CustomIcon" value="HOHBikeEngineHeader"/>
+	</item>	
+			  
+	<item name="HOHEngineHeader">
+		<property name="DescriptionKey" value="HOHEngineHeaderDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="Miron_scrap"/> 
+		<property name="Weight" value="80"/>
+		<property name="Stacknumber" value="6"/>
+		<property name="EconomicValue" value="1500"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartEngines"/>
+		<property name="CustomIcon" value="HOHEngineHeader"/>
+	</item>	
+	  
+	<item name="HOHEngineCrankshaft">
+		<property name="DescriptionKey" value="HOHEngineCrankshaftDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MmechanicalParts"/> 
+		<property name="Weight" value="100"/>
+		<property name="Stacknumber" value="5"/>
+		<property name="EconomicValue" value="875"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartEngines"/>
+		<property name="CustomIcon" value="HOHEngineCrankshaft"/>
+	</item>	
+	  
+	<item name="HOHEnginePistons2">
+		<property name="DescriptionKey" value="HOHEnginePistons2Desc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MmechanicalParts"/> 
+		<property name="Weight" value="40"/>
+		<property name="Stacknumber" value="12"/>
+		<property name="EconomicValue" value="350"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartEngines"/>
+		<property name="CustomIcon" value="HOHEnginePistons2"/>
+	</item>		
+	  
+	<item name="HOHEngineValves8">
+		<property name="DescriptionKey" value="HOHEngineValves8Desc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MmechanicalParts"/> 
+		<property name="Weight" value="40"/>
+		<property name="Stacknumber" value="8"/>
+		<property name="EconomicValue" value="800"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartEngines"/>
+		<property name="CustomIcon" value="HOHEngineValves8"/>
+	</item>		
+	  
+	<item name="HOHEngineValves4">
+		<property name="DescriptionKey" value="HOHEngineValves4Desc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MmechanicalParts"/> 
+		<property name="Weight" value="20"/>
+		<property name="Stacknumber" value="10"/>
+		<property name="EconomicValue" value="400"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartEngines"/>
+		<property name="CustomIcon" value="HOHEngineValves4"/>
+	</item>		
+
+<!-- Transmission --> <!-- Transmission --> <!-- Transmission --> 
+	  
+	<item name="HOHTransmissionComplete">
+		<property name="DescriptionKey" value="HOHTransmissionCompleteDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="Miron_scrap"/>
+		<property name="Stacknumber" value="1"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartEngines,HOHVehiclePartEngines"/>
+		<property name="CustomIcon" value="HOHTransmissionComplete"/>
+	</item>		
+	  
+	<item name="HOHTransmissionBroken">
+		<property name="DescriptionKey" value="HOHTransmissionBrokenDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="Miron_scrap"/>
+		<property name="Stacknumber" value="3"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartEngines"/>
+		<property name="CustomIcon" value="HOHTransmissionBroken"/>		
+		<property class="Action0">
+		<property name="Sound_start" value="open_garbage"/>
+		<property name="Class" value="OpenBundle"/>
+		<property name="Create_item" value="HOHTransmissionHousing,HOHVehicleBolts4"/>
+		<property name="Create_item_count" value="1,1-3"/>
+		<property name="Random_item" value="HOHTransmissionShaft,HOHTransmissionCounterShaft,HOHTransmissionShaftGears,HOHTransmissionCounterGears,HOHTransmisionClutchPlate"/>
+		<property name="Random_item_count" value="1,1,1,1,1"/>
+		<property name="Random_count" value="2"/>
+		<property name="Unique_random_only" value="true"/>
+	</property>
+	</item>		
+	  
+	<item name="HOHTransmissionHousing">
+		<property name="DescriptionKey" value="HOHTransmissionHousingDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MresourceForgedSteel"/> 
+		<property name="Weight" value="80"/>
+		<property name="Stacknumber" value="3"/>
+		<property name="EconomicValue" value="500"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartEngines"/>
+		<property name="CustomIcon" value="HOHTransmissionHousing"/>
+	</item>		
+	  
+	<item name="HOHTransmissionCounterShaft">
+		<property name="DescriptionKey" value="HOHTransmissionCounterShaftDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MmechanicalParts"/> 
+		<property name="Weight" value="30"/>
+		<property name="Stacknumber" value="5"/>
+		<property name="EconomicValue" value="500"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartEngines"/>
+		<property name="CustomIcon" value="HOHTransmissionCounterShaft"/>
+	</item>		
+	  
+	<item name="HOHTransmissionCounterGears">
+		<property name="DescriptionKey" value="HOHTransmissionCounterGearsDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MmechanicalParts"/> 
+		<property name="Weight" value="30"/>
+		<property name="Stacknumber" value="5"/>
+		<property name="EconomicValue" value="900"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartEngines"/>
+		<property name="CustomIcon" value="HOHTransmissionCounterGears"/>
+	</item>		
+	  
+	<item name="HOHTransmissionShaft">
+		<property name="DescriptionKey" value="HOHTransmissionShaftDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MmechanicalParts"/> 
+		<property name="Weight" value="40"/>
+		<property name="Stacknumber" value="5"/>
+		<property name="EconomicValue" value="750"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartEngines"/>
+		<property name="CustomIcon" value="HOHTransmissionShaft"/>
+	</item>		
+	  
+	<item name="HOHTransmissionShaftGears">
+		<property name="DescriptionKey" value="HOHTransmissionShaftGearsDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MmechanicalParts"/> 
+		<property name="Weight" value="40"/>
+		<property name="Stacknumber" value="5"/>
+		<property name="EconomicValue" value="1200"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartEngines"/>
+		<property name="CustomIcon" value="HOHTransmissionShaftGears"/>
+	</item>		
+	  
+	<item name="HOHBikeTransmisionClutchPlate">
+		<property name="DescriptionKey" value="HOHBikeTransmisionClutchPlateDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MmechanicalParts"/> 
+		<property name="Weight" value="100"/>
+		<property name="Stacknumber" value="5"/>
+		<property name="EconomicValue" value="1250"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartEngines"/>
+		<property name="CustomIcon" value="HOHBikeTransmisionClutchPlate"/>
+	</item>		
+	  
+	<item name="HOHTransmisionClutchPlate">
+		<property name="DescriptionKey" value="HOHTransmisionClutchPlateDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MmechanicalParts"/> 
+		<property name="Weight" value="100"/>
+		<property name="Stacknumber" value="5"/>
+		<property name="EconomicValue" value="1250"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartEngines"/>
+		<property name="CustomIcon" value="HOHTransmisionClutchPlate"/>
+	</item>		
+
+<!-- Electricals --> <!-- Electricals --> <!-- Electricals --> 
+
+	<item name="HOHBikeBatteryDead">
+		<property name="DescriptionKey" value="HOHBikeBatteryDeadDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MelectricParts"/> 
+		<property name="Weight" value="6"/>
+		<property name="Stacknumber" value="10"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartElectricals"/>
+		<property name="CustomIcon" value="HOHBikeBatteryDead"/>
+	</item>	
+	
+	<item name="HOHBikeBattery">
+		<property name="DescriptionKey" value="HOHBikeBatteryDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MelectricParts"/> 
+		<property name="Weight" value="6"/>
+		<property name="Stacknumber" value="10"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartElectricals"/>
+		<property name="CustomIcon" value="HOHBikeBattery"/>
+	</item>	
+	
+	<item name="HOHCarBatteryDead">
+		<property name="DescriptionKey" value="HOHCarBatteryDeadDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MelectricParts"/> 
+		<property name="Weight" value="6"/>
+		<property name="Stacknumber" value="10"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartElectricals"/>
+		<property name="CustomIcon" value="HOHCarBatteryDead"/>
+	</item>	
+	
+	<item name="HOHCarBattery">
+		<property name="DescriptionKey" value="HOHCarBatteryDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MelectricParts"/> 
+		<property name="Weight" value="6"/>
+		<property name="Stacknumber" value="10"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartElectricals"/>
+		<property name="CustomIcon" value="HOHCarBattery"/>
+	</item>	
+
+	<item name="HOHAlternatorBroken">
+		<property name="DescriptionKey" value="HOHAlternatorBrokenDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MelectricParts"/> 
+		<property name="Weight" value="20"/>
+		<property name="Stacknumber" value="3"/>
+		<property name="EconomicValue" value="825"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartElectricals"/>
+		<property name="CustomIcon" value="HOHAlternatorBroken"/>
+	</item>		 
+
+	<item name="HOHAlternator">
+		<property name="DescriptionKey" value="HOHAlternatorDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MelectricParts"/> 
+		<property name="Weight" value="20"/>
+		<property name="Stacknumber" value="3"/>
+		<property name="EconomicValue" value="825"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartElectricals"/>
+		<property name="CustomIcon" value="HOHAlternator"/>
+	</item>		 
+
+	<item name="HOHSparkPlugs2">
+		<property name="DescriptionKey" value="HOHSparkPlugs2Desc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MelectricParts"/> 
+		<property name="Weight" value="7"/>
+		<property name="Stacknumber" value="10"/>
+		<property name="EconomicValue" value="200"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartElectricals"/>
+		<property name="CustomIcon" value="HOHSparkPlugs2"/>
+	</item>
+
+	<item name="HOHIgnitionBarrel">
+		<property name="DescriptionKey" value="HOHIgnitionBarrelDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MelectricParts"/> 
+		<property name="Weight" value="7"/>
+		<property name="Stacknumber" value="10"/>
+		<property name="EconomicValue" value="200"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartElectricals"/>
+		<property name="CustomIcon" value="HOHIgnitionBarrel"/>
+	</item>
+
+	<item name="HOHWiringBundle">
+		<property name="DescriptionKey" value="HOHWiringBundleDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MelectricParts"/> 
+		<property name="Weight" value="7"/>
+		<property name="Stacknumber" value="10"/>
+		<property name="EconomicValue" value="200"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartElectricals"/>
+		<property name="CustomIcon" value="HOHWiringBundle"/>
+	</item>
+	  
+	<item name="HOHWiringBlue">
+		<property name="DescriptionKey" value="HOHWiringBlueDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MelectricParts"/> 
+		<property name="Weight" value="2"/>
+		<property name="Stacknumber" value="25"/>
+		<property name="EconomicValue" value="50"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartElectricals"/>
+		<property name="CustomIcon" value="HOHWiringBlue"/>
+	</item>	 	  
+
+	<item name="HOHWiringRed">
+		<property name="DescriptionKey" value="HOHWiringRedDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MelectricParts"/> 
+		<property name="Weight" value="2"/>
+		<property name="Stacknumber" value="25"/>
+		<property name="EconomicValue" value="50"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartElectricals"/>
+		<property name="CustomIcon" value="HOHWiringRed"/>
+	</item>	
+	  
+	<item name="HOHWiringWhite">
+		<property name="DescriptionKey" value="HOHWiringWhiteDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MelectricParts"/> 
+		<property name="Weight" value="2"/>
+		<property name="Stacknumber" value="25"/>
+		<property name="EconomicValue" value="50"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartElectricals"/>
+		<property name="CustomIcon" value="HOHWiringWhite"/>
+	</item>	 	  
+
+	<item name="HOHWiringYellow">
+		<property name="DescriptionKey" value="HOHWiringYellowDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MelectricParts"/> 
+		<property name="Weight" value="2"/>
+		<property name="Stacknumber" value="25"/>
+		<property name="EconomicValue" value="50"/>
+		<property name="Group" value="Science,TCScience,HOHVehiclePartElectricals"/>
+		<property name="CustomIcon" value="HOHWiringYellow"/>
+	</item>	
+
+	</append>
+
+<!-- BDUB Vehicle Restoration Tools-->	
+<!-- BDUB Vehicle Restoration Tools-->	
+<!-- BDUB Vehicle Restoration Tools-->	
+
+	<append xpath="/items">
+	<item name="HOHMiniBikefluidKit">
+		<property name="DescriptionKey" value="HOHMiniBikefluidKit"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MresourceOil"/> 
+		<property name="Weight" value="6"/>
+		<property name="Stacknumber" value="10"/>
+		<property name="Group" value="HOHVehicleRestorers"/>
+		<property name="CustomIcon" value="HOHMiniBikefluidKit"/>
+	  </item>	
+	<item name="HOHBikefluidKit">
+		<property name="DescriptionKey" value="HOHBikefluidKit"/>
+		<property name="CustomIcon" value="HOHBikefluidKit"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MresourceOil"/> 
+		<property name="Weight" value="6"/>
+		<property name="Stacknumber" value="10"/>
+		<property name="Group" value="HOHVehicleRestorers"/>
+		
+	  </item>	
+	<item name="HOHJeepfluidKit">
+		<property name="DescriptionKey" value="HOHJeepfluidKit"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MresourceOil"/> 
+		<property name="Weight" value="6"/>
+		<property name="Stacknumber" value="10"/>
+		<property name="Group" value="HOHVehicleRestorers"/>
+		<property name="CustomIcon" value="HOHJeepfluidKit"/>
+	  </item>	
+	<item name="HOHTruckfluidKit">
+		<property name="DescriptionKey" value="HOHTruckfluidKit"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MresourceOil"/> 
+		<property name="Weight" value="6"/>
+		<property name="Stacknumber" value="10"/>
+		<property name="Group" value="HOHVehicleRestorers"/>
+		<property name="CustomIcon" value="HOHTruckfluidKit"/>
+	  </item>	
+	<item name="HOHCommercialTruckfluidKit">
+		<property name="DescriptionKey" value="HOHCommercialTruckfluidKit"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MresourceOil"/> 
+		<property name="Weight" value="6"/>
+		<property name="Stacknumber" value="10"/>
+		<property name="Group" value="HOHVehicleRestorers"/>
+		<property name="CustomIcon" value="HOHCommercialTruckfluidKit"/>
+	  </item>	
+
+	<item name="toolTirePlugKit">
+		<property name="DescriptionKey" value="toolTirePlugKit"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MmechanicalParts"/>
+		<property name="Stacknumber" value="50"/>
+		<property name="EconomicValue" value="50"/>
+		<property name="Group" value="Tools/Traps,HOHVehicleRestorers"/>
+		
+	</item>	
+	<item name="resourceTirePlug">
+		<property name="DescriptionKey" value="resourceTirePlug"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MmechanicalParts"/>
+		<property name="Stacknumber" value="50"/>
+		<property name="EconomicValue" value="50"/>
+		<property name="Group" value="Tools/Traps,HOHVehiclePartEssentials"/>
+		
+	</item>	
+	<item name="toolNeedleNosePliers">
+		<property name="DescriptionKey" value="toolNeedleNosePliers"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MmechanicalParts"/>
+		<property name="Stacknumber" value="50"/>
+		<property name="EconomicValue" value="50"/>
+		<property name="Group" value="Tools/Traps,HOHVehiclePartEssentials"/>
+		
+	</item>	
+	<item name="toolTirePlug">
+		<property name="DescriptionKey" value="toolTirePlug"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="Items/Misc/sackPrefab"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="Material" value="MmechanicalParts"/>
+		<property name="Stacknumber" value="5"/>
+		<property name="EconomicValue" value="50"/>
+		<property name="Group" value="Tools/Traps,HOHVehiclePartEssentials"/>
+		
+	</item>	
+	</append>
+
+
+
+
+
+<set xpath="//item[contains(@name,'vehicle') and (contains(@name,'Placeable'))]/property[@name='EconomicValue' and @value='6000']/@value">12999</set>
+
+
+
+
+<set xpath="//item[contains(@name,'vehicle') and (contains(@name,'Placeable'))]/property[@name='EconomicValue' and @value='10000']/@value">19999</set>
+
+
+<set xpath="//item[contains(@name,'vehicle') and (contains(@name,'Placeable'))]/property[@name='EconomicValue' and @value='30000']/@value">49999</set>
+<set xpath="//item[contains(@name,'vehicle') and (contains(@name,'Placeable'))]/property[@name='EconomicValue' and @value='50000']/@value">69999</set>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</HOH_Vehicle_Restorations>

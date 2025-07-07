@@ -1,0 +1,495 @@
+<configs>
+
+	<append xpath="/entity_classes">
+
+<!-- Green spit man -->
+<entity_class name="Grumm" extends="zombieMutatedFeral">
+	<property name="UserSpawnType" value="Menu"/>
+	<property name="Tags" value="entity,zombie,walker,feral,radiated,BossGrumm"/>
+	<property name="Mesh" value="@:Entities/Zombies/Mutated/ZMutatedRadiated.prefab"/>
+	<property name="SizeScale" value="1.6"/>
+	<property name="TimeStayAfterDeath" value="240"/>
+	<property name="LootListOnDeath" value="Grumm0"/>
+	<!--<property name="ParticleOnSpawn" value="ParticleEffects/RadiatedParticlesOnMesh" param1="SetShapeToMesh0"/>-->
+
+	<!-- Gameplay zombieMutatedRadiated -->
+	<property name="HandItem" value="meleeHandZombieCopFeral"/>
+	<property name="DismemberMultiplierHead" value=".4"/><property name="DismemberMultiplierArms" value=".4"/><property name="DismemberMultiplierLegs" value=".4"/><!-- Radiated -->
+	<property name="PainResistPerHit" value=".9"/><!-- Radiated -->
+	<property name="MoveSpeedAggro" value=".5, 1.35"/>
+	<property name="ExperienceGain" value="2500"/><!-- XP grunt radiated -->
+	<property name="LootDropEntityClass" value="EntityLootContainerBoss"/>
+	<property name="LootDropProb" value="0"/>
+	<property name="SoundRandom" value="Grumm0"/>
+	
+	<property name="AITask" value="
+	BreakBlock|
+	ApproachDistraction|
+	RangedAttackTarget itemType=1;cooldown=3;duration=5|
+	ApproachAndAttackTarget class=EntityPlayer,0,EntityBandit,0,EntityEnemyAnimal|
+	ApproachSpot|
+	Look|
+	Wander|
+	"/>
+
+	<effect_group name="Base Effects">
+		<passive_effect name="HealthMax" operation="base_set" value="1650"/>
+		<passive_effect name="PhysicalDamageResist" operation="base_set" value="25"/>
+		<!--<passive_effect name="EntityDamage" operation="perc_add" value="0"/>--> <!-- Feral damage -->
+		<triggered_effect trigger="onOtherDamagedSelf" action="ModifyCVar" target="self" cvar="RadiatedRegenAmount" operation="set" value="1.5"/>
+		<triggered_effect trigger="onOtherDamagedSelf" action="AddBuff" target="self" buff="buffRadiatedRegen"/>
+	</effect_group>
+</entity_class>
+
+<!-- Acid asshole -->
+<entity_class name="Acid Crawler" extends="zombieSteveCrawler">
+	<property name="UserSpawnType" value="Menu"/>
+	<property name="Tags" value="entity,BossCrawler,zombie,crawler,feral"/>
+	<property name="Mesh" value="@:Entities/Zombies/Crawler/ZCrawlerFeral.prefab"/>
+	<property name="SizeScale" value="2.1"/>
+	
+	<property name="AITask" value="
+	BreakBlock|
+	ApproachDistraction|
+	RangedAttackTarget itemType=1;cooldown=3;duration=3;minRange=1;maxRange=3;unreachableRange=18|
+	DestroyArea|
+	ApproachAndAttackTarget class=EntityPlayer,0,EntityBandit,0,EntityEnemyAnimal|
+	ApproachSpot|
+	Look|
+	Wander|
+	"/> 
+
+	<property name="DismemberMultiplierHead" value=".7"/><property name="DismemberMultiplierArms" value=".7"/><property name="DismemberMultiplierLegs" value=".7"/>
+	<property name="MoveSpeedAggro" value="1.2, 1.4"/>
+	<property name="PainResistPerHit" value=".7"/>
+	<property name="HandItem" value="meleeHandzombieMutatedFeral"/>
+	<property name="ExperienceGain" value="800"/>
+	<property name="LootDropProb" value=".03"/> 
+
+	<effect_group name="Base Effects">
+		<passive_effect name="HealthMax" operation="base_set" value="325"/>
+	</effect_group>
+</entity_class> 
+
+<!-- Burn man -->
+<entity_class name="Fire Devil" extends="zombieBurnt">
+	<property name="UserSpawnType" value="Menu"/>
+	<property name="Tags" value="entity,BossDevil,zombie,walker,feral"/>
+	<property name="Mesh" value="@:Entities/Zombies/Burnt/ZBurntFeral.prefab"/>
+	<property name="SoundSpawn" value="Ambient_Loops/a_fire_embersmoke_sm_lp"/>
+	<property name="SizeScale" value="1.3"/>
+	<property name="WalkType" value="1"/>
+	
+	<property name="AITask" value="
+	BreakBlock|
+	ApproachDistraction|
+	RangedAttackTarget itemType=1;cooldown=3;duration=5|
+	ApproachAndAttackTarget class=EntityPlayer,0,EntityBandit,0,EntityEnemyAnimal|
+	ApproachSpot|
+	Look|
+	Wander|
+	"/>
+
+	<!-- Gameplay zombieBurntFeral -->
+	<property name="DismemberMultiplierHead" value=".7"/><property name="DismemberMultiplierArms" value=".7"/><property name="DismemberMultiplierLegs" value=".7"/><!-- Feral -->
+	<property name="PainResistPerHit" value=".7"/><!-- Feral -->
+	<property name="MoveSpeedAggro" value="0.45, 1.3"/> 
+	<property name="JumpMaxDistance" value="4.6, 5"/>
+	<property name="HandItem" value="meleefirehand"/>
+	<property name="ExperienceGain" value="1400"/><!-- XP grunt feral -->
+	<property name="LootDropProb" value=".03"/> <!-- Feral -->
+
+	<effect_group name="Base Effects">
+		<passive_effect name="HealthMax" operation="base_set" value="650"/>
+		<passive_effect name="HealthMax" operation="perc_set" value="1,1.5"/>
+		<triggered_effect trigger="onOtherDamagedSelf" action="AddBuff" buff="buffExtinguishFire">
+		<requirement name="HasBuff" buff="buffIsOnFire"/> 
+		</triggered_effect>
+		
+	</effect_group>
+</entity_class>
+
+<!-- fatass from SOD2-->
+<entity_class name="Juggernaut" extends="zombieFatHawaiian">
+	<property name="UserSpawnType" value="Menu"/>
+	<property name="Tags" value="entity,BossJuggernaut,zombie,walker,feral"/>
+	<property name="SizeScale" value="1.5"/>
+	<property name="WalkType" value="2"/>
+	<property name="Mesh" value="@:Entities/Zombies/Hawaiian/ZHawaiianFeral.prefab"/>
+
+	<!-- Gameplay zombieFatHawaiianFeral -->
+	<property name="DismemberMultiplierHead" value=".7"/><property name="DismemberMultiplierArms" value=".7"/><property name="DismemberMultiplierLegs" value=".7"/><!-- Feral -->
+	<property name="PainResistPerHit" value=".7"/><!-- Feral -->
+	<property name="MoveSpeedAggro" value="0.6, 1.45"/> <!-- strong, feral -->
+	<property name="JumpMaxDistance" value="1.8, 2.5"/>
+	<property name="HandItem" value="meleeHandZombieCopFeral"/>
+	<property name="ExperienceGain" value="3000"/><!-- XP strong feral -->
+	<property name="LootDropEntityClass" value="EntityLootContainerStrong"/>
+	<property name="LootDropProb" value="0"/> <!-- Feral -->
+	<property name="TimeStayAfterDeath" value="240"/>
+	<property name="LootListOnDeath" value="Grumm0"/>
+
+	<effect_group name="Base Effects">
+		<passive_effect name="HealthMax" operation="base_set" value="3700"/>
+		<passive_effect name="HealthMax" operation="perc_set" value="1,1.5"/>
+		<!--<passive_effect name="EntityDamage" operation="perc_add" value="0"/>--> <!-- Feral damage -->
+	</effect_group>
+</entity_class> 
+
+<entity_class name="Hunter" extends="zombieSpiderFeral">
+	<property name="UserSpawnType" value="Menu"/>
+	<property name="Tags" value="entity,Hunter,zombie,feral,spider"/>
+	<property name="SizeScale" value="1.2"/>
+	<property name="Mesh" value="@:Entities/Zombies/Spider/ZSpiderFeral.prefab"/>
+	
+	<property name="AITask" value="
+	BreakBlock|
+	DestroyArea|
+	Territorial|
+	ApproachDistraction|
+	ApproachAndAttackTarget class=EntityPlayer,0,EntityBandit,0,EntityEnemyAnimal|
+	ApproachSpot|
+	Look|
+	Wander|
+	"/>
+	
+	<property name="WalkType" value="2"/>
+	<property name="DismemberMultiplierHead" value=".7"/><property name="DismemberMultiplierArms" value=".7"/><property name="DismemberMultiplierLegs" value=".7"/><!-- Feral -->
+	<property name="PainResistPerHit" value=".7"/><!-- Feral -->
+	<property name="MoveSpeedAggro" value="0.6, 1.45"/> <!-- slim, feral -->
+	<property name="JumpMaxDistance" value="11, 13"/>
+	<property name="HandItem" value="meleeHandZombie02Feral"/>
+	<property name="ExperienceGain" value="750"/><!-- XP grunt feral -->
+	<property name="LootDropProb" value=".03"/> <!-- Feral -->
+
+	<effect_group name="Base Effects">
+		<passive_effect name="HealthMax" operation="base_set" value="450"/>
+		<passive_effect name="HealthMax" operation="perc_set" value="1,1.5"/>
+		<!--<passive_effect name="EntityDamage" operation="perc_add" value="0"/>--> <!-- Feral damage -->
+	</effect_group>
+</entity_class>
+
+<entity_class name="Slow Hunter" extends="zombieSpider">
+	<property name="UserSpawnType" value="Menu"/>
+	<property name="Tags" value="entity,Hunter,zombie,spider"/>
+	<property name="Mesh" value="@:Entities/Zombies/Spider/ZSpiderFeral.prefab"/>
+	<property name="SizeScale" value="1.1"/>
+	<property name="WalkType" value="2"/>
+	<!--<property name="ParticleOnSpawn" value="ParticleEffects/RadiatedParticlesOnMesh" param1="SetShapeToMesh0"/>-->
+
+    <property name="AITask" value="
+	BreakBlock|
+	DestroyArea|
+	Territorial|
+	ApproachDistraction|
+	ApproachAndAttackTarget class=EntityPlayer,0,EntityBandit,0,EntityEnemyAnimal|
+	ApproachSpot|
+	Look|
+	Wander|
+	"/>
+
+	<!-- Gameplay zombieSpiderRadiated -->
+	<property name="DismemberMultiplierHead" value=".4"/><property name="DismemberMultiplierArms" value=".4"/><property name="DismemberMultiplierLegs" value=".4"/><!-- Radiated -->
+	<property name="PainResistPerHit" value=".7"/><!-- Nerd -->
+	<property name="HandItem" value="meleeHandZombie02"/>
+	<property name="ExperienceGain" value="400"/><!-- XP grunt radiated -->
+
+	<effect_group name="Base Effects">
+		<passive_effect name="HealthMax" operation="base_set" value="225"/>
+		<passive_effect name="HealthMax" operation="perc_set" value="1,1.5"/>
+	</effect_group>
+</entity_class>
+
+<entity_class name="Regenerator" extends="zombieSpiderRadiated">
+	<property name="UserSpawnType" value="Menu"/>
+	<property name="Tags" value="entity,BossRegenerator,zombie,feral,radiated,spider"/>
+	<property name="Mesh" value="@:Entities/Zombies/Spider/ZSpiderRadiated.prefab"/>
+	<property name="SizeScale" value="1.2"/>
+	<property name="WalkType" value="2"/>
+	<!--<property name="ParticleOnSpawn" value="ParticleEffects/RadiatedParticlesOnMesh" param1="SetShapeToMesh0"/>-->
+
+     <property name="AITask" value="
+	BreakBlock|
+	DestroyArea|
+	Territorial|
+	ApproachDistraction|
+	ApproachAndAttackTarget class=EntityPlayer,0,EntityBandit,0,EntityEnemyAnimal|
+	ApproachSpot|
+	Look|
+	Wander|
+	"/>
+
+	<!-- Gameplay zombieSpiderRadiated -->
+	<property name="DismemberMultiplierHead" value=".4"/><property name="DismemberMultiplierArms" value=".4"/><property name="DismemberMultiplierLegs" value=".4"/><!-- Radiated -->
+	<property name="PainResistPerHit" value=".9"/><!-- Radiated -->
+	<property name="ExperienceGain" value="1150"/><!-- XP grunt radiated -->
+
+	<effect_group name="Base Effects">
+		<passive_effect name="HealthMax" operation="base_set" value="700"/>
+		<passive_effect name="HealthMax" operation="perc_set" value="1,1.5"/>
+		<!--<passive_effect name="EntityDamage" operation="perc_add" value="0"/>--> <!-- Feral damage -->
+		<triggered_effect trigger="onOtherDamagedSelf" action="ModifyCVar" target="self" cvar="RadiatedRegenAmount" operation="set" value="20"/>
+		<triggered_effect trigger="onOtherDamagedSelf" action="AddBuff" target="self" buff="buffRadiatedRegen"/>
+	</effect_group>
+</entity_class>
+
+<entity_class name="Wight" extends="zombieWightFeral">
+	<property name="UserSpawnType" value="Menu"/>
+	<property name="SizeScale" value="1"/>
+	<property name="Tags" value="entity,zombie,walker"/>
+	<property name="Mesh" value="@:Entities/Zombies/Wight/ZWightFeral.prefab"/>
+	<property name="AltMats" value="@:Entities/Zombies/Boe/Materials/HD_Boe2.mat"/>
+	
+	<property name="DismemberMultiplierHead" value=".7"/><property name="DismemberMultiplierArms" value=".7"/><property name="DismemberMultiplierLegs" value=".7"/><!-- Feral -->
+	<property name="PainResistPerHit" value=".7"/><!-- Feral -->
+	<property name="MoveSpeedAggro" value=".4, 1.3"/>
+	<property name="JumpMaxDistance" value="4.6, 5"/>
+	<property name="HandItem" value="meleeHandZombieShort"/>
+	<property name="ExperienceGain" value="450"/>
+	<property name="LootDropProb" value=".03"/> 
+
+	<effect_group name="Base Effects">
+		<passive_effect name="HealthMax" operation="base_set" value="230"/>
+		<passive_effect name="HealthMax" operation="perc_set" value="1,1.5"/>
+	</effect_group>
+</entity_class>
+
+<!-- Don't get hit zombie -->
+<entity_class name="Plague Bearer" extends="zombieBurntFeral">
+	<property name="UserSpawnType" value="Menu"/>
+	<property name="Tags" value="entity,BossPlague,zombie,walker,feral,radiated"/>
+	<property name="Mesh" value="@:Entities/Zombies/Burnt/ZBurntRadiated.prefab"/>
+	<property name="SizeScale" value="1.1"/>
+	<!--<property name="ParticleOnSpawn" value="ParticleEffects/RadiatedParticlesOnMesh" param1="SetShapeToMesh0"/>-->
+
+     <property name="SoundRandom" value="demolitionzroam"/>
+	<property name="SoundAlert" value="demolitionzalert"/>
+	<property name="SoundAttack" value="demolitionzattack"/>
+	<property name="SoundHurt" value="demolitionzpain"/>
+	<property name="SoundDeath" value="demolitionzdeath"/>
+	<property name="SoundSense" value="demolitionzsense"/>
+	<property name="SoundFootstepModifier" value="bear_footstep"/>
+
+	<!-- Gameplay Super aids zommbie -->
+	<property name="HandItem" value="MeleeFuckyouhand"/>
+	<property name="DismemberMultiplierHead" value=".4"/><property name="DismemberMultiplierArms" value=".4"/><property name="DismemberMultiplierLegs" value=".4"/><!-- Radiated -->
+	<property name="PainResistPerHit" value=".9"/><!-- Radiated -->
+	<property name="ExperienceGain" value="1200"/><!-- XP grunt radiated -->
+
+	<effect_group name="Base Effects">
+		<passive_effect name="HealthMax" operation="base_set" value="500"/>
+		<passive_effect name="HealthMax" operation="perc_set" value="1,1.5"/>
+		<triggered_effect trigger="onOtherDamagedSelf" action="ModifyCVar" target="self" cvar="RadiatedRegenAmount" operation="set" value="2"/>
+		<triggered_effect trigger="onOtherDamagedSelf" action="AddBuff" target="self" buff="buffRadiatedRegen"/>
+	</effect_group>
+  </entity_class>
+
+<entity_class name="Devil Dog" extends="animalDireWolf">
+<property name="SizeScale" value="1.3"/>
+<property name="Prefab" value="@:Entities/Animals/DireWolf/animalDireWolfPrefab.prefab"/>
+<property name="ExperienceGain" value="400"/>
+<property name="HandItem" value="meleeHandAnimalZombieDog"/>
+
+    <drop event="Harvest" name="foodRawMeat" count="0" tool_category="Butcher"/>
+	<drop event="Harvest" name="foodRottingFlesh" tag="butcherHarvest" count="5"/> <!-- animalBoar -->
+	<drop event="Harvest" name="resourceLeather" tag="butcherHarvest" count="3"/>
+	<drop event="Harvest" name="resourceAnimalFat" tag="butcherHarvest" count="1"/>
+	<drop event="Harvest" name="resourceBone" tag="butcherHarvest" count="15"/>
+	<drop event="Harvest" name="resourceBone" tag="butcherHarvest" count="5"/>
+
+<effect_group name="Base Effects">
+		<passive_effect name="HealthMax" operation="base_set" value="250"/>
+		<passive_effect name="HealthMax" operation="perc_set" value="1,1.5"/>
+		<triggered_effect trigger="onOtherDamagedSelf" action="ModifyCVar" target="self" cvar="RadiatedRegenAmount" operation="set" value="1"/>
+		<triggered_effect trigger="onOtherDamagedSelf" action="AddBuff" target="self" buff="buffRadiatedRegen"/>
+	</effect_group>
+
+</entity_class>
+
+<entity_class name="Ghost" extends="zombieScreamerFeral"> 
+	<property name="WalkType" value="3"/>
+	<!-- Stealth -->
+	<property name="SightRange" value="90"/>
+
+	<!-- Gameplay  -->
+	<property name="DismemberMultiplierHead" value=".7"/><property name="DismemberMultiplierArms" value=".7"/><property name="DismemberMultiplierLegs" value=".7"/><!-- Feral -->
+	<property name="PainResistPerHit" value=".7"/><!-- Feral -->
+	<property name="MoveSpeedAggro" value=".5, 1.35"/>
+	<property name="HandItem" value="meleeHandZombieFeral"/>
+	<property name="ExperienceGain" value="450"/><!-- XP grunt feral -->
+	<property name="LootDropProb" value=".03"/> <!-- Feral -->
+
+	<property name="HandItem" value="meleeHandAnimalZombieVulture"/>
+	<property name="Immunity" value="sickness;disease;wellness"/> <!-- bleeding; -->
+
+	<effect_group name="Base Effects">
+		<passive_effect name="HealthMax" operation="base_set" value="60"/>
+		<passive_effect name="HealthMax" operation="perc_set" value="1,1.5"/>
+		<passive_effect name="BuffResistance" operation="base_set" value="5" tags="buffRadiationPool"/>
+	</effect_group>
+</entity_class>
+
+<entity_class name="zombieGhostQueen" extends="zombieScreamer"> 
+	<property name="WalkType" value="3"/>
+	<property name="SizeScale" value="1.8"/>
+	<property name="Tags" value="entity,BossGhost,zombie,walker"/>
+	<!-- Stealth -->
+	<property name="SightRange" value="90"/>
+
+	<!-- Gameplay  -->
+	<property name="AltMats" value="@:Entities/Zombies/Arlene/Materials/HD_Arlene2.mat,@:Entities/Zombies/Arlene/Materials/HD_Arlene3.mat"/>
+	<property name="DismemberMultiplierHead" value=".7"/><property name="DismemberMultiplierArms" value=".7"/><property name="DismemberMultiplierLegs" value=".7"/><!-- Feral -->
+	<property name="PainResistPerHit" value=".7"/><!-- Feral -->
+	<property name="MoveSpeedAggro" value="0.3, 1.35"/>
+	<property name="HandItem" value="meleeHandZombieFeral"/>
+	<property name="ExperienceGain" value="750"/><!-- XP grunt feral -->
+	<property name="LootDropProb" value=".03"/> <!-- Feral -->
+
+	<property name="HandItem" value="meleeHandzombieMutated"/>
+	<property name="Immunity" value="sickness;disease;wellness"/> <!-- bleeding; -->
+
+	<effect_group name="Base Effects">
+		<passive_effect name="HealthMax" operation="base_set" value="1500"/>
+		<passive_effect name="HealthMax" operation="perc_set" value="1,1.5"/>
+		<passive_effect name="BuffResistance" operation="base_set" value="5" tags="buffRadiationPool"/>
+	</effect_group>
+</entity_class>
+
+<entity_class name="Rotnier" extends="zombieFatCop">
+	<property name="UserSpawnType" value="Menu"/>
+	<property name="ParticleOnSpawn" value="ParticleEffects/RadiatedParticlesOnMesh" param1="SetShapeToMesh0"/> 
+
+	<property name="Tags" value="entity,BossRotnier,zombie,walker"/>
+	<property name="Mesh" value="@:Entities/Zombies/Mutated/ZMutatedRadiated.prefab"/>
+	<property name="AltMats" value="@:Entities/Zombies/Hazmat/Materials/HD_HazmatZ2.mat,@:Entities/Zombies/Hazmat/Materials/HD_HazmatZ3.mat"/> 
+	<property name="SizeScale" value="1.2"/>
+	<property name="ModelType" value="Standard"/>
+	<property name="WalkType" value="6"/>
+	<property name="TimeStayAfterDeath" value="5"/>
+	
+	<property name="SoundRandom" value="zombie_mutated_roam"/>
+	<property name="SoundAlert" value="zombie_mutated_alert"/>
+	<property name="SoundAttack" value="zombie_mutated_attack"/>
+	<property name="SoundHurt" value="zombie_mutated_pain"/>
+	<property name="SoundDeath" value="zombie_mutated_death"/>
+	<property name="SoundSense" value="zombie_mutated_sense"/>
+	<property name="SoundFootstepModifier" value="Animals/Bear/bear_footstep"/>
+
+  <property name="DismemberTag_L_HeadGore"/>
+  <property name="DismemberTag_L_LeftUpperLegGore" value=";" data="target=LeftUpLeg+scale=1,.5,1+type=blunt+stc=true;target=LeftUpLeg+scale=1,.5,1+type=blade+stc=true"/>
+  <property name="DismemberTag_L_LeftLowerLegGore" value=";" data="target=LeftLeg+type=blunt+atp=true+atb=true+rot=90,0,0;target=LeftLeg+type=blade+atp=true+atb=true+rot=90,0,0"/>
+  <property name="DismemberTag_L_RightUpperLegGore" value=";" data="target=RightUpLeg+scale=1,.5,1+type=blunt+stc=true;target=RightUpLeg+scale=1,.5,1+type=blade+stc=true"/>
+  <property name="DismemberTag_L_RightLowerLegGore" value=";" data="target=RightLeg+type=blunt+atp=true+atb=true+rot=90,0,0;target=RightLeg+type=blade+atp=true+atb=true+rot=90,0,0"/>
+  <property name="DismemberTag_L_LeftUpperArmGore"/>
+  <property name="DismemberTag_L_LeftLowerArmGore"/>
+  <property name="DismemberTag_L_RightUpperArmGore"/>
+  <property name="DismemberTag_L_RightLowerArmGore"/>
+
+  <property name="AITask" value="
+	BreakBlock|
+	RangedAttackTarget itemType=1;cooldown=4;duration=5|
+	ApproachDistraction|
+	ApproachAndAttackTarget class=EntityPlayer,0,EntityBandit,0,EntityEnemyAnimal|
+	ApproachSpot|
+	Look|
+	Wander|
+	"/>
+ 
+  <!-- Gameplay zombieMutated -->
+	<property name="HandItem" value="meleeRadsHand"/>
+	<property name="ExplodeHealthThreshold" value="0"/>
+    <property name="MoveSpeed" value="0.08"/>
+	<property name="MoveSpeedAggro" value="0.3, 1.35"/>
+	<property name="ExperienceGain" value="600"/>
+
+	<effect_group name="Base Effects">
+		<passive_effect name="HealthMax" operation="base_set" value="225"/>
+		<passive_effect name="HealthMax" operation="perc_set" value="1,1.5"/>
+	</effect_group>
+</entity_class>
+
+<entity_class name="Hazmat Joe" extends="zombieFatCop">
+	<property name="UserSpawnType" value="Menu"/>
+	<property name="Tags" value="entity,Hazmat,zombie,walker"/>
+	<property name="SoundRandom" value="Enemies/Base_Zombie_Male2/zombiemale2roam"/>
+	<property name="SoundAlert" value="Enemies/Base_Zombie_Male2/zombiemale2alert"/>
+	<property name="SoundAttack" value="Enemies/Base_Zombie_Male2/zombiemale2attack"/>
+	<property name="SoundHurt" value="Enemies/Base_Zombie_Male2/zombiemale2pain"/>
+	<property name="SoundDeath" value="Zroar"/>
+	<property name="SoundSense" value="Enemies/Base_Zombie_Male2/zombiemale2sense"/> <!-- <property name="AltMats" value="@:Entities/Zombies/Zombies/Materials/HD_HazmatZ2.mat,@:Entities/Zombies/Zombies/Materials/HD_HazmatZ3.mat"/>   -->
+	<property name="Mesh" value="@:Entities/Zombies/Hazmat/ZHazmat.prefab"/>
+	<property name="AltMats" value="@:Entities/Zombies/Hazmat/Materials/HD_HazmatZ2.mat,@:Entities/Zombies/Hazmat/Materials/HD_HazmatZ3.mat"/>
+	
+  
+	<property name="WalkType" value="5"/>
+	<property name="AINoiseSeekDist" value="6"/>
+	<property name="AIPathCostScale" value=".65, .9"/>
+
+    <property name="AITask" value="
+	BreakBlock|
+	ApproachDistraction|
+	RangedAttackTarget itemType=1;cooldown=6;duration=5|
+	ApproachAndAttackTarget class=EntityPlayer,0,EntityBandit,0,EntityEnemyAnimal|
+	ApproachSpot|
+	Look|
+	Wander|
+	"/>
+	
+	<!-- Gameplay Hazmat Joe rustle -->
+	<property name="Explosion.ParticleIndex" value="8"/>
+	<property name="Explosion.RadiusBlocks" value="5"/>
+	<property name="Explosion.RadiusEntities" value="6"/>
+	<property name="Explosion.BlockDamage" value="180"/>
+	<property name="Explosion.EntityDamage" value="100"/>
+	<property name="Explosion.DamageBonus.earth" value="5"/>    
+	
+	<property name="HandItem" value="meleeHandAcidJoe"/>
+
+	<property name="ExperienceGain" value="400"/>
+	<!-- XP grunt -->
+	<property name="LootDropProb" value=".03"/>
+	<!-- Feral -->
+	<property name="MoveSpeedAggro" value="0.3, 1.35"/>	
+	<effect_group name="Base Effects">
+			<passive_effect name="HealthMax" operation="base_set" value="100"/>
+			<passive_effect name="HealthMax" operation="perc_set" value="1,1.5"/>
+	</effect_group>
+                        
+</entity_class>
+
+<entity_class name="animalHellHound" extends="animalDireWolf">
+	<property name="UserSpawnType" value="Menu"/>
+	<property name="EntityFlags" value="animal,zombie"/>
+	<property name="Tags" value="entity,animal,zombie,BossHound,hostile,wolf,perkAT02,perkAT03"/>
+	<property name="PhysicsBody" value="AWolf"/>
+	<property name="Mass" value="180"/>
+	<property name="Prefab" value="@:Entities/Animals/DireWolf/animalDireWolfPrefab.prefab"/>
+	<property name="SizeScale" value="1.6"/>
+
+	<!-- Gameplay  -->
+	<property name="MoveSpeedAggro" value="1, 1.1"/>
+	<property name="JumpMaxDistance" value="5, 6"/>
+	<property name="HandItem" value="meleeHandAnimalWolf"/>
+	<property name="Immunity" value="sickness;disease;wellness"/> <!-- bleeding; -->
+	<property name="PainResistPerHit" value=".95"/>
+
+	<property name="ExperienceGain" value="600"/><!-- XP strong -->
+	<property name="DeadBodyHitPoints" value="450"/>
+	<drop event="Harvest" name="foodRawMeat" count="0" tool_category="Butcher"/>
+	<drop event="Harvest" name="foodRottingFlesh" tag="butcherHarvest" count="35"/> <!-- animalDireWolf -->
+	<drop event="Harvest" name="resourceLeather" tag="butcherHarvest" count="12"/>
+	<drop event="Harvest" name="resourceAnimalFat" tag="butcherHarvest" count="3"/>
+	<drop event="Harvest" name="resourceBone" tag="butcherHarvest" count="15"/>
+	<drop event="Harvest" name="resourceBone" tag="allToolsHarvest" count="5"/>
+
+	<effect_group name="Base Effects">
+		<passive_effect name="HealthMax" operation="base_set" value="425"/>
+		<passive_effect name="HealthMax" operation="perc_set" value="1,1.5"/>
+	</effect_group>
+	
+</entity_class>
+
+</append>
+</configs>
+
+  

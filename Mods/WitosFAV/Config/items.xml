@@ -1,0 +1,23 @@
+<Witos>
+	<append xpath="/items">
+	<item name="vehicleWitosFAVPlaceable">
+			<property name="Extends" value="vehicleMinibikePlaceable"/>
+			<property name="CreativeMode" value="Player"/>
+            <property name="DescriptionKey" value="vehiclefavPlaceableDesc"/>
+            <property name="CustomIcon" value="Fav"/>
+			<property name="Tags" value="vehicle,vengine,vfuel,vlight,vplow,vseat,canHaveCosmetic"/>
+			<property name="Meshfile" value="#@modfolder:Resources/FAV.unity3d?FAV"/>
+			<property name="EconomicValue" value="30000"/>
+			<property class="Action1">
+				<property name="Vehicle" value="vehicleWitosFAV"/>
+				<property name="VehicleSize" value="4.5, 3.1, 7"/>
+			</property>
+			<effect_group name="main" tiered="false">
+				<passive_effect name="ModSlots" operation="base_set" value="5"/>
+				<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+				<passive_effect name="DegradationMax" operation="base_set" value="30000"/>
+			</effect_group>
+		</item>
+		
+	</append>
+</Witos>

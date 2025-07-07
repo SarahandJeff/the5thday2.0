@@ -1,0 +1,365 @@
+<snj>
+
+<Remove xpath="/blocks/block[@name='decoCarMotorFlat']"/>
+<Remove xpath="/blocks/block[@name='decoCarMotorFlipped']"/>
+
+<append xpath="/blocks">
+	<block name="decoCarMotorFlat">
+		<property name="Extends" value="decoEntityMetalMaster" param1="RepairItems,CustomIcon"/>
+		<property name="DisplayType" value="blockMulti"/>
+		<property name="Model" value="#@modfolder:Assets/5dXtras.unity3d?Enigne_5D_P1"/>
+		<property name="MultiBlockDim" value="1,1,2"/>
+		<property name="WaterFlow" value="permitted"/>
+		<property name="Collide" value="melee,bullet,arrow,rocket,movement"/>
+		<drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+		<drop event="Destroy" name="HOHTransmissionComplete" count="0,1" prob="0.05" tool_category="Disassemble" />
+		<drop event="Destroy" name="HOHTransmissionBroken" count="0,1" prob="0.30" tool_category="Disassemble" />
+		<property name="DowngradeBlock" value="decoCarMotorFlat0"/>
+		<property name="SortOrder1" value="B262"/>
+		<property name="SortOrder2" value="0016"/>
+		<property name="FilterTags" value="MC_building,SC_automotive"/>
+		<property name="Tags" value="challenge_mech_parts,challenge_sinks"/>
+		<property name="IndexName" value="challenge_mech_parts"/>
+	 </block>
+
+	<block name="decoCarMotorFlat0">
+		<property name="Extends" value="decoEntityMetalMaster" param1="RepairItems,CustomIcon"/>
+		<property name="DisplayType" value="blockMulti"/>
+		<property name="Model" value="#@modfolder:Assets/5dXtras.unity3d?Enigne_5D_P0"/>
+		<property name="MultiBlockDim" value="1,1,2"/>
+		<property name="WaterFlow" value="permitted"/>
+		<property name="Collide" value="melee,bullet,arrow,rocket,movement"/>
+		<drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+		<drop event="Destroy" name="HOHEngineComplete" count="0,1" prob="0.05" tool_category="Disassemble" />
+		<drop event="Destroy" name="HOHEngineBroken" count="0,1" prob="0.30" tool_category="Disassemble" />
+
+		<drop event="Destroy" name="HOHEngineHousing" count="0,1" prob="0.10" tool_category="Disassemble" />
+		<drop event="Destroy" name="HOHEngineHeader" count="0,1" prob="0.101" tool_category="Disassemble" />
+		<drop event="Destroy" name="HOHEngineCrankshaft" count="0,1" prob="0.12" tool_category="Disassemble" />
+		<drop event="Destroy" name="HOHEnginePistons2" count="0,1" prob="0.16" tool_category="Disassemble" />
+		<drop event="Destroy" name="HOHEngineValves4" count="0,1" prob="0.16" tool_category="Disassemble" />
+		<drop event="Destroy" name="HOHCarburetor" count="0,1" prob="0.08" tool_category="Disassemble" />
+		
+		
+		<property name="SortOrder1" value="B262"/>
+		<property name="SortOrder2" value="0016"/>
+		<property name="FilterTags" value="MC_building,SC_automotive"/>
+		<property name="Tags" value="challenge_mech_parts,challenge_sinks"/>
+		<property name="IndexName" value="challenge_mech_parts"/>
+	  </block>
+	
+	<block name="decoCarMotorFlipped">
+		<property name="Extends" value="decoEntityMetalMaster" param1="RepairItems,CustomIcon"/>
+		<property name="DisplayType" value="blockMulti"/>
+		<property name="Model" value="#@modfolder:Assets/5dXtras.unity3d?Enigne_5D_Flipped_P1"/>
+		<property name="MultiBlockDim" value="1,1,2"/>
+		<property name="WaterFlow" value="permitted"/>
+		<property name="Collide" value="melee,bullet,arrow,rocket,movement"/>
+		<drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+		<drop event="Destroy" name="HOHTransmissionComplete" count="0,1" prob="0.05" tool_category="Disassemble" />
+		<drop event="Destroy" name="HOHTransmissionBroken" count="0,1" prob="0.30" tool_category="Disassemble" />
+		<property name="DowngradeBlock" value="decoCarMotorFlipped0"/>
+		<property name="SortOrder1" value="B262"/>
+		<property name="SortOrder2" value="0016"/>
+		<property name="FilterTags" value="MC_building,SC_automotive"/>
+		<property name="Tags" value="challenge_mech_parts,challenge_sinks"/>
+		<property name="IndexName" value="challenge_mech_parts"/>
+	 </block>
+	
+	<block name="decoCarMotorFlipped0">
+		<property name="Extends" value="decoEntityMetalMaster" param1="RepairItems,CustomIcon"/>
+		<property name="DisplayType" value="blockMulti"/>
+		<property name="Model" value="#@modfolder:Assets/5dXtras.unity3d?Enigne_5D_Flipped_P0"/>
+		<property name="MultiBlockDim" value="1,1,2"/>
+		<property name="WaterFlow" value="permitted"/>
+		<property name="Collide" value="melee,bullet,arrow,rocket,movement"/>
+		<drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+		<drop event="Destroy" name="HOHEngineComplete" count="0,1" prob="0.05" tool_category="Disassemble" />
+		<drop event="Destroy" name="HOHEngineBroken" count="0,1" prob="0.30" tool_category="Disassemble" />
+		<drop event="Destroy" name="HOHEngineHousing" count="0,1" prob="0.10" tool_category="Disassemble" />
+		<drop event="Destroy" name="HOHEngineHeader" count="0,1" prob="0.101" tool_category="Disassemble" />
+		<drop event="Destroy" name="HOHEngineCrankshaft" count="0,1" prob="0.12" tool_category="Disassemble" />
+		<drop event="Destroy" name="HOHEnginePistons2" count="0,1" prob="0.16" tool_category="Disassemble" />
+		<drop event="Destroy" name="HOHEngineValves4" count="0,1" prob="0.16" tool_category="Disassemble" />
+		<drop event="Destroy" name="HOHCarburetor" count="0,1" prob="0.08" tool_category="Disassemble" />
+		
+		<property name="SortOrder1" value="B262"/>
+		<property name="SortOrder2" value="0016"/>
+		<property name="FilterTags" value="MC_building,SC_automotive"/>
+		<property name="Tags" value="challenge_mech_parts,challenge_sinks"/>
+		<property name="IndexName" value="challenge_mech_parts"/>
+	 </block>
+</append>
+<include filename="includes/master_vehicles.xml"/>
+<include filename="includes/buggy.xml"/>
+<include filename="includes/riot.xml"/>
+<include filename="includes/motosc.xml"/>
+<include filename="includes/international.xml"/>
+
+
+<append xpath="/blocks">
+	<block name="Beetle_Static_blue_V1">
+		<property name="Extends" value="5D_Car_Master"/>
+		<property name="MaxDamage" value="600"/>
+		<property name="CustomIcon" value="Bug_White"/>
+		<property name="CreativeMode" value="Player"/>
+		<property name="LootList" value="cars"/>
+		<property name="Shape" value="ModelEntity"/>
+		<property name="Model" value="#@modfolder:Assets/VW_Bug.unity3d?Static_Beetle_Blue_V1"/>
+		<property name="DisplayType" value="blockMulti"/>
+		<property name="Material" value="Mmetal"/>
+		<property name="MultiBlockDim" value="3,2,5"/>
+		<property name="ModelOffset" value="0,0,0"/>
+		<property name="VerticalOffset" value="0"/>
+		<property name="Place" value="TowardsPlacerInverted"/>
+		<property name="PassThroughDamage" value="false"/>
+		<!-- Salvage -->
+		<drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+		<drop event="Harvest" name="HOHVehicleBolts4" count="6,10" prob="1" tag="salvageHarvest"/>
+		<drop event="Harvest" name="resourcescrapIron" count="30,120" prob=".85" tag="salvageHarvest"/>
+		<drop event="Harvest" name="5DVehicleChassis" count="1" prob=".15" tag="salvageHarvest"/>
+     </block>
+	<block name="Beetle_Static_blue_V2">
+		<property name="Extends" value="5D_Car_Master"/>
+		<property name="MaxDamage" value="600"/>
+		<property name="CustomIcon" value="Bug_White"/>
+		<property name="CreativeMode" value="Player"/>
+		<property name="LootList" value="cars"/>
+		<property name="Shape" value="ModelEntity"/>
+		<property name="Model" value="#@modfolder:Assets/VW_Bug.unity3d?Static_Beetle_Blue_V2"/>
+		<property name="DisplayType" value="blockMulti"/>
+		<property name="Material" value="Mmetal"/>
+		<property name="MultiBlockDim" value="3,2,5"/>
+		<property name="ModelOffset" value="0,0,0"/>
+		<property name="VerticalOffset" value="0"/>
+		<property name="Place" value="TowardsPlacerInverted"/>
+		<property name="PassThroughDamage" value="false"/>
+		<!-- Salvage -->
+		<drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+		<drop event="Harvest" name="HOHVehicleBolts4" count="6,10" prob="1" tag="salvageHarvest"/>
+		<drop event="Harvest" name="resourcescrapIron" count="30,120" prob=".85" tag="salvageHarvest"/>
+		<drop event="Harvest" name="5DVehicleChassis" count="1" prob=".15" tag="salvageHarvest"/>
+     </block>
+	<block name="Beetle_Static_Vandal_V1">
+		<property name="Extends" value="5D_Car_Master"/>
+		<property name="MaxDamage" value="600"/>
+		<property name="CustomIcon" value="Bug_White"/>
+		<property name="CreativeMode" value="Player"/>
+		<property name="LootList" value="cars"/>
+		<property name="Shape" value="ModelEntity"/>
+		<property name="Model" value="#@modfolder:Assets/VW_Bug.unity3d?Static_Beetle_Vandal_V1"/>
+		<property name="DisplayType" value="blockMulti"/>
+		<property name="Material" value="Mmetal"/>
+		<property name="MultiBlockDim" value="3,2,5"/>
+		<property name="ModelOffset" value="0,0,0"/>
+		<property name="VerticalOffset" value="0"/>
+		<property name="Place" value="TowardsPlacerInverted"/>
+		<property name="PassThroughDamage" value="false"/>
+		<!-- Salvage -->
+		<drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+		<drop event="Harvest" name="HOHVehicleBolts4" count="6,10" prob="1" tag="salvageHarvest"/>
+		<drop event="Harvest" name="resourcescrapIron" count="30,120" prob=".85" tag="salvageHarvest"/>
+		<drop event="Harvest" name="5DVehicleChassis" count="1" prob=".15" tag="salvageHarvest"/>
+     </block>
+	<block name="Beetle_Static_Vandal_V2">
+		<property name="Extends" value="5D_Car_Master"/>
+		<property name="MaxDamage" value="600"/>
+		<property name="CustomIcon" value="Bug_White"/>
+		<property name="CreativeMode" value="Player"/>
+		<property name="LootList" value="cars"/>
+		<property name="Shape" value="ModelEntity"/>
+		<property name="Model" value="#@modfolder:Assets/VW_Bug.unity3d?Static_Beetle_Vandal_V2"/>
+		<property name="DisplayType" value="blockMulti"/>
+		<property name="Material" value="Mmetal"/>
+		<property name="MultiBlockDim" value="3,2,5"/>
+		<property name="ModelOffset" value="0,0,0"/>
+		<property name="VerticalOffset" value="0"/>
+		<property name="Place" value="TowardsPlacerInverted"/>
+		<property name="PassThroughDamage" value="false"/>
+		<!-- Salvage -->
+		<drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+		<drop event="Harvest" name="HOHVehicleBolts4" count="6,10" prob="1" tag="salvageHarvest"/>
+		<drop event="Harvest" name="resourcescrapIron" count="30,120" prob=".85" tag="salvageHarvest"/>
+		<drop event="Harvest" name="5DVehicleChassis" count="1" prob=".15" tag="salvageHarvest"/>
+     </block>
+	<block name="Beetle_Static_White_V1">
+		<property name="Extends" value="5D_Car_Master"/>
+		<property name="MaxDamage" value="600"/>
+		<property name="CustomIcon" value="Bug_White"/>
+		<property name="CreativeMode" value="Player"/>
+		<property name="LootList" value="cars"/>
+		<property name="Shape" value="ModelEntity"/>
+		<property name="Model" value="#@modfolder:Assets/VW_Bug.unity3d?Static_Beetle_White_V1"/>
+		<property name="DisplayType" value="blockMulti"/>
+		<property name="Material" value="Mmetal"/>
+		<property name="MultiBlockDim" value="3,2,5"/>
+		<property name="ModelOffset" value="0,0,0"/>
+		<property name="VerticalOffset" value="0"/>
+		<property name="Place" value="TowardsPlacerInverted"/>
+		<property name="PassThroughDamage" value="false"/>
+		<!-- Salvage -->
+		<drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+		<drop event="Harvest" name="HOHVehicleBolts4" count="6,10" prob="1" tag="salvageHarvest"/>
+		<drop event="Harvest" name="resourcescrapIron" count="30,120" prob=".85" tag="salvageHarvest"/>
+		<drop event="Harvest" name="5DVehicleChassis" count="1" prob=".15" tag="salvageHarvest"/>
+     </block>
+	<block name="Beetle_Static_White_V2">
+		<property name="Extends" value="5D_Car_Master"/>
+		<property name="MaxDamage" value="600"/>
+		<property name="CustomIcon" value="Bug_White"/>
+		<property name="CreativeMode" value="Player"/>
+		<property name="LootList" value="cars"/>
+		<property name="Shape" value="ModelEntity"/>
+		<property name="Model" value="#@modfolder:Assets/VW_Bug.unity3d?Static_Beetle_White_V2"/>
+		<property name="DisplayType" value="blockMulti"/>
+		<property name="Material" value="Mmetal"/>
+		<property name="MultiBlockDim" value="3,2,5"/>
+		<property name="ModelOffset" value="0,0,0"/>
+		<property name="VerticalOffset" value="0"/>
+		<property name="Place" value="TowardsPlacerInverted"/>
+		<property name="PassThroughDamage" value="false"/>
+		<!-- Salvage -->
+		<drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+		<drop event="Harvest" name="HOHVehicleBolts4" count="6,10" prob="1" tag="salvageHarvest"/>
+		<drop event="Harvest" name="resourcescrapIron" count="30,120" prob=".85" tag="salvageHarvest"/>
+		<drop event="Harvest" name="5DVehicleChassis" count="1" prob=".15" tag="salvageHarvest"/>
+     </block>
+	<block name="Beetle_Static_Yellow_V1">
+		<property name="Extends" value="5D_Car_Master"/>
+		<property name="MaxDamage" value="600"/>
+		<property name="CustomIcon" value="Bug_White"/>
+		<property name="CreativeMode" value="Player"/>
+		<property name="LootList" value="cars"/>
+		<property name="Shape" value="ModelEntity"/>
+		<property name="Model" value="#@modfolder:Assets/VW_Bug.unity3d?Static_Beetle_Yellow_V1"/>
+		<property name="DisplayType" value="blockMulti"/>
+		<property name="Material" value="Mmetal"/>
+		<property name="MultiBlockDim" value="3,2,5"/>
+		<property name="ModelOffset" value="0,0,0"/>
+		<property name="VerticalOffset" value="0"/>
+		<property name="Place" value="TowardsPlacerInverted"/>
+		<property name="PassThroughDamage" value="false"/>
+		<!-- Salvage -->
+		<drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+		<drop event="Harvest" name="HOHVehicleBolts4" count="6,10" prob="1" tag="salvageHarvest"/>
+		<drop event="Harvest" name="resourcescrapIron" count="30,120" prob=".85" tag="salvageHarvest"/>
+		<drop event="Harvest" name="5DVehicleChassis" count="1" prob=".15" tag="salvageHarvest"/>
+     </block>
+	<block name="Beetle_Static_Yellow_V2">
+		<property name="Extends" value="5D_Car_Master"/>
+		<property name="MaxDamage" value="600"/>
+		<property name="CustomIcon" value="Bug_White"/>
+		<property name="CreativeMode" value="Player"/>
+		<property name="LootList" value="cars"/>
+		<property name="Shape" value="ModelEntity"/>
+		<property name="Model" value="#@modfolder:Assets/VW_Bug.unity3d?Static_Beetle_Yellow_V2"/>
+		<property name="DisplayType" value="blockMulti"/>
+		<property name="Material" value="Mmetal"/>
+		<property name="MultiBlockDim" value="3,2,5"/>
+		<property name="ModelOffset" value="0,0,0"/>
+		<property name="VerticalOffset" value="0"/>
+		<property name="Place" value="TowardsPlacerInverted"/>
+		<property name="PassThroughDamage" value="false"/>
+		<!-- Salvage -->
+		<drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+		<drop event="Harvest" name="HOHVehicleBolts4" count="6,10" prob="1" tag="salvageHarvest"/>
+		<drop event="Harvest" name="resourcescrapIron" count="30,120" prob=".85" tag="salvageHarvest"/>
+		<drop event="Harvest" name="5DVehicleChassis" count="1" prob=".15" tag="salvageHarvest"/>
+     </block>
+
+	
+ 
+
+
+
+         
+    <block name="5d_Humvee_Static">
+          <property name="Extends" value="cntPickupTruck01White"/>
+          <property name="MaxDamage" value="1000"/>
+          <property name="CustomIcon" value="vehicleTruck4x4Placeable"/>
+          <property name="CreativeMode" value="Player"/>
+          <property name="LootList" value="cars"/>
+          <property name="Shape" value="ModelEntity"/>
+          <property name="Model" value="#@modfolder:Assets/5d_Vehicles.unity3d?5D_Humvee"/>
+          <property name="DisplayType" value="blockMulti"/>
+          <property name="Material" value="Mmetal"/>
+          <property name="MultiBlockDim" value="3,3,5"/>
+          <property name="ModelOffset" value="0,0,0"/>
+          <property name="VerticalOffset" value="0"/>
+          <property name="Place" value="TowardsPlacer"/>
+       
+          <!-- Salvage -->
+          <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+          <drop event="Harvest" name="HOHVehicleBolts4" count="8" prob="1" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceElectricParts" count="4,8" prob="0.18" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHSparkPlugs2" count="2,4" prob="0.18" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceOil" count="4,8" prob="0.17" tag="salvageHarvest"/>
+          <drop event="Harvest" name="ammoGasCan" count="150,400" prob="0.3" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceMechanicalParts" count="6,12" prob="0.16" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHCarBatteryDead" count="1" prob="0.2" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHEngineRadiator" count="1" prob="0.25" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHAlternatorBroken" count="1" prob="0.20" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHCarburetor" count="1" prob="0.19" tag="salvageHarvest"/>
+          <drop event="Harvest" name="vehicleTruck4x4Chassis" count="1" prob="0.15" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHEngineBroken" count="1" prob="0.1" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHTransmissionBroken" count="1" prob="0.1" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHCarBattery" count="1" prob="0.1" tag="salvageHarvest"/>
+          <drop event="Harvest" name="carBattery" count="1" prob="0.15" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHWiringBlue" count="1,3" prob="0.24" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceElectricParts" count="2,4" prob="0.18" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHWiringRed" count="1,3" prob="0.23" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHIgnitionBarrel" count="1" prob="0.16" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHWiringWhite" count="1,3" prob="0.22" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceHeadlight" count="1,2" prob="0.14" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHWiringYellow" count="1,3" prob="0.21" tag="salvageHarvest"/>
+          <property name="PassThroughDamage" value="true"/>
+          </block>
+    <block name="5d_LMTV_Static">
+          <property name="Extends" value="cntPickupTruck01White"/>
+          <property name="MaxDamage" value="1000"/>
+          <property name="CustomIcon" value="vehicleTruck4x4Placeable"/>
+          <property name="CreativeMode" value="Player"/>
+          <property name="LootList" value="cars"/>
+          <property name="Shape" value="ModelEntity"/>
+          <property name="Model" value="#@modfolder:Assets/Drivable_JLTV.unity3d?LMTV_Placed"/>
+          <property name="DisplayType" value="blockMulti"/>
+          <property name="Material" value="Mmetal"/>
+          <property name="MultiBlockDim" value="3,3,5"/>
+          <property name="ModelOffset" value="0,0,0"/>
+          <property name="VerticalOffset" value="0"/>
+          <property name="Place" value="TowardsPlacer"/>
+       
+          <!-- Salvage -->
+          <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+          <drop event="Harvest" name="HOHVehicleBolts4" count="8" prob="1" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceElectricParts" count="4,8" prob="0.18" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHSparkPlugs2" count="2,4" prob="0.18" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceOil" count="4,8" prob="0.17" tag="salvageHarvest"/>
+          <drop event="Harvest" name="ammoGasCan" count="150,400" prob="0.3" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceMechanicalParts" count="6,12" prob="0.16" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHCarBatteryDead" count="1" prob="0.2" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHEngineRadiator" count="1" prob="0.25" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHAlternatorBroken" count="1" prob="0.20" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHCarburetor" count="1" prob="0.19" tag="salvageHarvest"/>
+          <drop event="Harvest" name="vehicleTruck4x4Chassis" count="1" prob="0.15" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHEngineBroken" count="1" prob="0.1" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHTransmissionBroken" count="1" prob="0.1" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHCarBattery" count="1" prob="0.1" tag="salvageHarvest"/>
+          <drop event="Harvest" name="carBattery" count="1" prob="0.15" tag="salvageHarvest"/>
+         <drop event="Harvest" name="HOHWiringBlue" count="1,3" prob="0.24" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceElectricParts" count="2,4" prob="0.18" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHWiringRed" count="1,3" prob="0.23" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHIgnitionBarrel" count="1" prob="0.16" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHWiringWhite" count="1,3" prob="0.22" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceHeadlight" count="1,2" prob="0.14" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHWiringYellow" count="1,3" prob="0.21" tag="salvageHarvest"/>
+          <property name="PassThroughDamage" value="true"/>
+      </block>
+	
+	
+</append>
+
+
+
+
+</snj>

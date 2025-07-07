@@ -1,0 +1,193 @@
+<Killerbunny>
+
+	
+	<!-- Jeffs Cows Mooo  --> 
+
+<append xpath="/entity_classes">
+
+<entity_class name="AnimalCow1" extends="animalTemplateHostile">
+	<property name="Tags" value="entity,animal,hostile,boar,perkAT02,perkAT03"/>
+	<property name="MapIcon" value="ui_game_symbol_tracking_pig"/>
+	<property name="TrackerIcon" value="ui_game_symbol_tracking_pig"/>
+	<property name="IsEntityAnimal" value="true"/>
+	<property name="IsEnemyEntity" value="false"/><!-- override hostile template setting so he can spawn in safe zones -->
+	<property name="AvatarController" value="AvatarAnimalController"/>
+	<property name="UserSpawnType" value="Menu"/>
+	<property name="Class" value="EntityEnemyAnimal"/>			
+	<property name="ModelType" value="Standard"/>
+	<property name="HasRagdoll" value="false"/>
+	<property name="HasDeathAnim" value="true"/>
+	<property name="RootMotion" value="false"/>
+	<property name="Mass" value="200"/>
+	<property name="Mesh" value="#@modfolder:Assets/JeffsCowsMooo.unity3d?Cow1_PBR"/>
+	<property name="RagdollOnDeathChance" value="0"/>
+	<property name="LookAtAngle" value="0"/>
+	<property name="CanBigHead" value="true" />	
+	<property name="SightRange" value="70"/>	
+	<property name="ExperienceGain" value="1250"/>
+    <property name="SoundRandom" value="Cow_Random"/>
+	<property name="SoundAlert" value="Cow_Pain"/>
+	<property name="SoundHurt" value="Cow_Pain"/>
+	<property name="SoundDeath" value="Cow_Death"/>	
+	<property name="SoundAttack" value="Cow_Attack"/>
+	<property name="SoundSense" value="Cow_Pain"/>
+	<property name="SoundGiveUp" value="Cow_Death"/>
+    <property name="SizeScale" value="1.0"/>
+		<!-- Gameplay -->
+	<property name="PainResistPerHit" value=".75"/>
+	<property name="MoveSpeed" value="0.2"/>
+	<property name="MoveSpeedAggro" value="1.25, 1.25"/>
+	<property name="MoveSpeedPanic" value="1.25"/>
+
+	<property name="HandItem" value="meleeHandAnimalWolf"/>
+	<property name="CanClimbLadders" value="false"/>	
+	
+	<drop event="Harvest" name="foodRawMeat" count="0" tool_category="Butcher"/>
+	<drop event="Harvest" name="foodRawMeat" tag="butcherHarvest" count="30"/> <!-- animalPig -->
+	<drop event="Harvest" name="resourceLeather" tag="butcherHarvest" count="14"/>
+	<drop event="Harvest" name="resourceAnimalFat" count="10" tag="butcherHarvest"/>
+	<drop event="Harvest" name="resourceBone" tag="butcherHarvest" count="30"/>
+	<drop event="Harvest" name="resourceBone" tag="allToolsHarvest" count="5"/>
+	<drop event="Harvest" name="animalCalf" tag="butcherHarvest" count="1"/>
+	
+	<drop event="Harvest" name="foodRawMeat" count="1" tag="WasteTreasuresCompleteHarvest"/>
+	<drop event="Harvest" name="resourceLeather" count="1" tag="WasteTreasuresCompleteHarvest"/>
+	<drop event="Harvest" name="resourceBone" count="1" tag="WasteTreasuresCompleteHarvest"/>
+
+	<effect_group name="Base Effects">
+		<passive_effect name="HealthMax" operation="base_set" value="500"/>
+	</effect_group>
+	
+	<property name="NavObject" value="twitch_spawn,twitch_spawn_other,animaltracking_boar,clear_sleeper" />
+</entity_class>
+
+<entity_class name="AnimalCow2" extends="animalTemplateHostile">
+	<property name="Tags" value="entity,animal,hostile,boar,perkAT02,perkAT03"/>
+	<property name="MapIcon" value="ui_game_symbol_tracking_pig"/>
+	<property name="TrackerIcon" value="ui_game_symbol_tracking_pig"/>
+	<property name="IsEntityAnimal" value="true"/>
+	<property name="IsEnemyEntity" value="false"/><!-- override hostile template setting so he can spawn in safe zones -->
+	<property name="AvatarController" value="AvatarAnimalController"/>
+	<property name="UserSpawnType" value="Menu"/>
+	<property name="Class" value="EntityEnemyAnimal"/>			
+	<property name="ModelType" value="Standard"/>
+	<property name="HasRagdoll" value="false"/>
+	<property name="HasDeathAnim" value="true"/>
+	<property name="RootMotion" value="false"/>
+	<property name="Mass" value="200"/>
+	<property name="Mesh" value="#@modfolder:Assets/JeffsCowsMooo.unity3d?Cow2_PBR"/>
+	<property name="RagdollOnDeathChance" value="0"/>
+	<property name="LookAtAngle" value="0"/>
+	<property name="CanBigHead" value="true" />	
+	<property name="SightRange" value="70"/>	
+	<property name="ExperienceGain" value="1250"/>
+   <property name="SoundRandom" value="Cow_Random"/>
+	<property name="SoundAlert" value="Cow_Pain"/>
+	<property name="SoundHurt" value="Cow_Pain"/>
+	<property name="SoundDeath" value="Cow_Death"/>	
+	<property name="SoundAttack" value="Cow_Attack"/>
+	<property name="SoundSense" value="Cow_Pain"/>
+	<property name="SoundGiveUp" value="Cow_Death"/>
+    <property name="SizeScale" value="1.0"/>
+		<!-- Gameplay -->
+	<property name="PainResistPerHit" value=".75"/>
+	<property name="MoveSpeed" value="0.2"/>
+	<property name="MoveSpeedAggro" value="1.25, 1.25"/>
+	<property name="MoveSpeedPanic" value="1.25"/>
+
+	<property name="HandItem" value="meleeHandAnimalWolf"/>
+	<property name="CanClimbLadders" value="false"/>	
+	
+	<drop event="Harvest" name="foodRawMeat" count="0" tool_category="Butcher"/>
+	<drop event="Harvest" name="foodRawMeat" tag="butcherHarvest" count="30"/> <!-- animalPig -->
+	<drop event="Harvest" name="resourceLeather" tag="butcherHarvest" count="14"/>
+	<drop event="Harvest" name="resourceAnimalFat" count="10" tag="butcherHarvest"/>
+	<drop event="Harvest" name="resourceBone" tag="butcherHarvest" count="30"/>
+	<drop event="Harvest" name="resourceBone" tag="allToolsHarvest" count="5"/>
+	<drop event="Harvest" name="animalCalf" tag="butcherHarvest" count="1"/>
+	<drop event="Harvest" name="foodRawMeat" count="1" tag="WasteTreasuresCompleteHarvest"/>
+	<drop event="Harvest" name="resourceLeather" count="1" tag="WasteTreasuresCompleteHarvest"/>
+	<drop event="Harvest" name="resourceBone" count="1" tag="WasteTreasuresCompleteHarvest"/>
+
+	<effect_group name="Base Effects">
+		<passive_effect name="HealthMax" operation="base_set" value="500"/>
+	</effect_group>
+	
+	<property name="NavObject" value="twitch_spawn,twitch_spawn_other,animaltracking_boar,clear_sleeper" />
+</entity_class>
+
+<entity_class name="AnimalCow3" extends="animalTemplateHostile">
+	<property name="Tags" value="entity,animal,hostile,boar,perkAT02,perkAT03"/>
+	<property name="MapIcon" value="ui_game_symbol_tracking_pig"/>
+	<property name="TrackerIcon" value="ui_game_symbol_tracking_pig"/>
+	<property name="IsEntityAnimal" value="true"/>
+	<property name="IsEnemyEntity" value="false"/><!-- override hostile template setting so he can spawn in safe zones -->
+	<property name="AvatarController" value="AvatarAnimalController"/>
+	<property name="UserSpawnType" value="Menu"/>
+	<property name="Class" value="EntityEnemyAnimal"/>			
+	<property name="ModelType" value="Standard"/>
+	<property name="HasRagdoll" value="false"/>
+	<property name="HasDeathAnim" value="true"/>
+	<property name="RootMotion" value="false"/>
+	<property name="Mass" value="200"/>
+	<property name="Mesh" value="#@modfolder:Assets/JeffsCowsMooo.unity3d?Cow3_PBR"/>
+	<property name="RagdollOnDeathChance" value="0"/>
+	<property name="LookAtAngle" value="0"/>
+	<property name="CanBigHead" value="true" />	
+	<property name="SightRange" value="70"/>	
+	<property name="ExperienceGain" value="1250"/>
+ <property name="SoundRandom" value="Cow_Random"/>
+	<property name="SoundAlert" value="Cow_Pain"/>
+	<property name="SoundHurt" value="Cow_Pain"/>
+	<property name="SoundDeath" value="Cow_Death"/>	
+	<property name="SoundAttack" value="Cow_Attack"/>
+	<property name="SoundSense" value="Cow_Pain"/>
+	<property name="SoundGiveUp" value="Cow_Death"/>
+    <property name="SizeScale" value="1.0"/>
+		<!-- Gameplay -->
+	<property name="PainResistPerHit" value=".75"/>
+	<property name="MoveSpeed" value="0.2"/>
+	<property name="MoveSpeedAggro" value="1.25, 1.25"/>
+	<property name="MoveSpeedPanic" value="1.25"/>
+
+	<property name="HandItem" value="meleeHandAnimalWolf"/>
+	<property name="CanClimbLadders" value="false"/>	
+	
+	<drop event="Harvest" name="foodRawMeat" count="0" tool_category="Butcher"/>
+	<drop event="Harvest" name="foodRawMeat" tag="butcherHarvest" count="30"/> <!-- animalPig -->
+	<drop event="Harvest" name="resourceLeather" tag="butcherHarvest" count="14"/>
+	<drop event="Harvest" name="resourceAnimalFat" count="10" tag="butcherHarvest"/>
+	<drop event="Harvest" name="resourceBone" tag="butcherHarvest" count="30"/>
+	<drop event="Harvest" name="resourceBone" tag="allToolsHarvest" count="5"/>
+	<drop event="Harvest" name="animalCalf" tag="butcherHarvest" count="1"/>
+	<drop event="Harvest" name="foodRawMeat" count="1" tag="WasteTreasuresCompleteHarvest"/>
+	<drop event="Harvest" name="resourceLeather" count="1" tag="WasteTreasuresCompleteHarvest"/>
+	<drop event="Harvest" name="resourceBone" count="1" tag="WasteTreasuresCompleteHarvest"/>
+
+	<effect_group name="Base Effects">
+		<passive_effect name="HealthMax" operation="base_set" value="500"/>
+	</effect_group>
+	
+	<property name="NavObject" value="twitch_spawn,twitch_spawn_other,animaltracking_boar,clear_sleeper" />
+</entity_class>
+
+
+</append>	
+	
+	
+	
+	
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+</Killerbunny>

@@ -1,0 +1,151 @@
+<snj>
+<append xpath="/windows">
+<!--#$-IGS BEGIN: Adding cursor area. -$#-->
+	<window name="craftingInfoPanelR" width="603" height="392" controller="CraftingInfoWindow" style="crafting.info.window" panel="Center" cursor_area="true" >
+	<!--#$-IGS END.-$#-->
+		<panel name="header" height="43" depth="1" backgroundspritename="ui_game_panel_header">
+			<sprite depth="2" name="windowIcon" style="icon32px" pos="4,-5" sprite="{itemgroupicon}"/>
+			<label style="header.name" text="{itemname}" />
+
+			<rect pos="350,0" name="requiredToolOverlay">
+				<sprite size="24,24" depth="2" name="requiredToolCheckmark" pos="0,-8" sprite="ui_game_symbol_check" color="[red]"/>
+				<label depth="2" pos="35,-8" name="requiredToolText" width="200" height="32" text="Required" text_key="xuiRequired" font_size="32" upper_case="true" justify="left"/>
+			</rect>
+		</panel>
+
+		<rect name="contentCraftingInfo" height="381" depth="1" pos="0,-46">
+			<sprite depth="5" name="backgroundMain" sprite="menu_empty3px" width="604" height="348" color="[black]" type="sliced" fillcenter="false" />
+			<rect depth="1" pos="3,-3" name="preview" width="147" height="169">
+				<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="153" height="175" color="[black]" type="sliced" fillcenter="false" />
+				<sprite depth="1" color="[darkGrey]" type="sliced" globalopacity="true" />
+				<sprite depth="12" name="itemPreview" width="110" height="110" atlas="ItemIconAtlas" sprite="{itemicon}" color="{itemicontint}" pos="74,-58" pivot="center" foregroundlayer="true"/>
+				<sprite depth="8" name="itemtypeicon" width="32" height="32" sprite="ui_game_symbol_{itemtypeicon}" pos="2,-2" foregroundlayer="true" visible="{hasitemtypeicon}" color="{itemtypeicontint}" />
+				<sprite depth="3" name="durabilityBackground" height="20" width="85" color="48,48,48,255" type="sliced" pos="31, -113" visible="{hasdurability}"/>
+				<filledsprite depth="4" name="durabilityBar" height="20" width="85" color="{durabilitycolor}" type="filled" pos="31, -113" fill="{durabilityfill}" visible="{hasdurability}" />
+				<label depth="12" name="durabilityValue" pos="0,-104" width="145" height="32" text="{durabilitytext}" font_size="30" justify="{durabilityjustify}" effect="outline" visible="false"/>
+
+				<sprite depth="3" name="clockIcon" size="24,24" sprite="ui_game_symbol_clock" pos="25, -142" type="sliced" color="[iconColor]" foregroundlayer="true" />
+				<!-- <label depth="3" name="TimeLabel" style="icon30px" pos="53, -119" text="TIME" text_key="xuiTime" font_size="22" /> -->
+				<label depth="3" name="craftingTime" width="100" height="32" pos="55, -143" text="{craftingtime}" font_size="26" color="[beige]"/>
+				<button depth="12" name="addQualityButton" style="icon22px, press" pos="132,-123" sprite="ui_game_symbol_arrow_menu" flip="Horizontally" pivot="center" sound="[paging_click]" visible="{hasdurability}" disabledcolor="[lightGrey]" enabled="{enableaddquality}" />
+				<button depth="12" name="subtractQualityButton" style="icon22px, press" pos="14,-123" sprite="ui_game_symbol_arrow_menu" pivot="center" sound="[paging_click]" visible="{hasdurability}" disabledcolor="[lightGrey]" enabled="{enablesubtractquality}" />
+			</rect>
+
+			<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="0,-174" width="153" height="173" color="[black]" type="sliced" fillcenter="false" />
+			<grid name="itemActions" rows="4" cols="1" pos="3,-176" width="148" cell_width="147" cell_height="42" controller="ItemActionList">
+				<rect depth="1" name="actions" width="147" height="225">
+					<sprite color="[mediumGrey]" type="sliced" height="45" />
+					<rect name="recipeCraftCountControl" width="120" height="210" pos="27,0" controller="RecipeCraftCount">
+						<button depth="2" name="countDown" style="icon30px, press, held" pos="-10,-20" sprite="ui_game_symbol_arrow_left" pivot="center" sound="[paging_click]" disabledcolor="[lightGrey]" enabled="{enablecountdown}"/>
+						<textfield name="count_input" depth="2" pos="7,-6" width="40" height="28" character_limit="4" validation="integer" virtual_keyboard_prompt="vkPromptCount" />
+						<button depth="2" name="countUp" style="icon30px, press, held" pos="64,-20" sprite="ui_game_symbol_arrow_right" pivot="center" sound="[paging_click]" disabledcolor="[lightGrey]" enabled="{enablecountup}"/>
+						<button depth="2" name="countMax" style="icon30px, press" pos="96,-20" sprite="ui_game_symbol_arrow_max" pivot="center" sound="[paging_click]" disabledcolor="[lightGrey]" enabled="{enablecountup}"/>
+					</rect>
+				</rect>
+				<item_action_entry />
+				<item_action_entry />
+				<item_action_entry />
+				<!-- <sprite depth="3" name="fillerBackground" height="22" color="[mediumGrey]" type="sliced"/> -->
+			</grid>
+
+			<rect depth="2" name="searchControls" width="449" height="43" pos="152,0">
+				<sprite depth="1" color="[mediumGrey]" type="sliced" globalopacity="true" />
+				<button depth="4" name="ingredientsButton" style="icon30px, press" pos="22,-22" sprite="ui_game_symbol_resource" pivot="center" tooltip_key="ingredient" sound="[paging_click]" selected="true" />
+				<button depth="4" name="descriptionButton" style="icon30px, press" pos="65,-22" sprite="ui_game_symbol_book" pivot="center" tooltip_key="lblBookDesc" sound="[paging_click]" />
+				<button depth="4" name="showunlocksButton" style="icon30px, press" pos="108,-22" sprite="ui_game_symbol_unlock" pivot="center" tooltip_key="xuiSkillUnlocks" sound="[paging_click]" visible="{showunlockedbytab}" />
+			</rect>
+
+
+			<rect depth="1" pos="153,-43" name="description" width="447" height="328" visible="{showdescription}">
+
+				<sprite depth="3" name="backgroundMain" sprite="menu_empty3px" pos="-3,0" width="453" height="303" color="[black]" type="sliced" fillcenter="false" />
+
+				<rect visible="true">
+					<sprite depth="1" color="[darkGrey]" type="sliced" globalopacity="true" height="301" />
+					<label depth="3" name="descriptionText" pos="6,-5" text="{itemdescription}"  width="440" height="294" parse_actions="true" />
+				</rect>
+
+			</rect>
+
+			<rect depth="1" pos="153,-45" name="ingredients" width="447" height="264" visible="{showingredients}">
+				<grid rows="6" width="447" height="231" cell_height="50" cell_width="447" controller="IngredientList" arrangement="vertical">
+					<ingredient_headerR name="0"/>
+					<ingredient_rowR name="1"/>
+					<ingredient_rowR name="2"/>
+					<ingredient_rowR name="3"/>
+					<ingredient_rowR name="4"/>
+					<ingredient_rowR name="5"/>
+				</grid>
+			</rect>
+
+			<rect depth="1" pos="153,-45" name="unlockedBy" width="447" height="264" visible="{showunlockedby}">
+				<grid rows="6" width="447" height="231" cell_height="50" cell_width="447" controller="UnlockByList" arrangement="vertical">
+					<unlocked_by_headerR name="0"/>
+					<unlocked_by_rowR name="1"/>
+					<unlocked_by_rowR name="2"/>
+					<unlocked_by_rowR name="3"/>
+					<unlocked_by_rowR name="4"/>
+					<unlocked_by_rowR name="5"/>
+				</grid>
+			</rect>
+		</rect>
+	</window>
+    <window name="windowCraftingListR"  width="420" height="688" controller="CraftingListInfo" panel="Left" cursor_area="true" >
+	<!--#$-IGS END.-$#-->
+
+		<panel name="header" height="43" depth="1" backgroundspritename="ui_game_panel_header">
+			<sprite pos="4,-5" depth="2" name="windowIcon" style="icon32px" sprite="Craft_Icon_Basics"/>
+			<label style="header.name" text="basics" text_key="xuiBasics" />
+
+			<!-- <label pos="387, -6" depth="2" name="unlockedCount" width="64" height="32" text="0/65" font_size="32" color="[lightGrey]" justify="right" pivot="topright"/> -->
+			<!-- <sprite pos="328, -5" depth="2" name="unlockedIcon" style="icon32px" sprite="ui_game_symbol_book" color="[lightGrey]" pivot="topright"/> -->
+		</panel>
+
+		<panel name="content" width="100%" height="650" depth="1" pos="0,-43" on_scroll="true" disableautobackground="true">
+
+			<rect depth="2" name="categorySelector" width="419" height="44" pos="3,-6">
+				<sprite name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="419" height="49" color="[black]" type="sliced" fillcenter="false" />
+				<sprite color="[mediumGrey]" type="sliced" />
+				<grid name="categories" pos="23,-21" rows="1" cols="9" width="419" height="43" cell_width="43" cell_height="43" repeat_content="true" controller="CategoryList">
+					<category_icon />
+				</grid>
+			</rect>
+
+			<rect depth="3" name="searchControls" width="419" height="44" pos="3,-52">
+				<sprite name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="419" height="49" color="[black]" type="sliced" fillcenter="false" />
+				<sprite color="[darkGrey]" type="sliced" />
+				<!--#$-IGS BEGIN: Increasing collider scale to improve snap responsiveness -$#-->
+				<button depth="4" name="favorites" style="icon30px, press" pos="18,-22" sprite="server_favorite" pivot="center" sound="[paging_click]" tooltip="Favorites" tooltip_key="lblFavorites" collider_scale="1.5" />
+				<!--*#$-IGS END.-$#-->
+
+				<!--#$-IGS BEGIN: Disabling an element for console builds. -$#-->
+				<panel pos="104,0" width="200" disableautobackground="true">
+				<!--*#$-IGS END.-$#-->
+					<sprite depth="4" name="searchIcon" style="icon30px" pos="0,-22" sprite="ui_game_symbol_search" pivot="center"/>
+					<textfield depth="5" name="searchInput" pos="22,-7" width="140" height="30" virtual_keyboard_prompt="vkPromptSearchTerm" search_field="true" close_group_on_tab="true" clear_button="true" />
+				</panel>
+
+				<panel pos="286,0" width="104" height="43" disableautobackground="true">
+					<pager name="pager" pos="4,-6" contents_parent="content"/>
+				</panel>
+			</rect>
+
+			<grid name="recipes" rows="10" cols="1" pos="3,-98" width="419" height="552" cell_width="390" cell_height="46" controller="RecipeList" repeat_content="true" arrangement="vertical" >
+				<recipe_entryR name="0"/>
+			</grid>
+		</panel>
+	</window>
+</append>
+
+
+    <set xpath="//window[@name='craftingInfoPanelR']/@width">1007</set>
+	<set xpath="//window[@name='craftingInfoPanelR']/rect[1]/sprite[1]/@width">1006</set>
+	<set xpath="//window[@name='craftingInfoPanelR']/rect[1]/rect[2]/@width">853</set>
+	<set xpath="//window[@name='craftingInfoPanelR']/rect[1]/rect[3]/@width">853</set>
+	<set xpath="//window[@name='craftingInfoPanelR']/rect[1]/rect[3]/sprite/@width">855</set>
+	<set xpath="//window[@name='craftingInfoPanelR']/rect[1]/rect[4]/grid/@width">1000</set>
+	<set xpath="//window[@name='craftingInfoPanelR']/rect[1]/rect[4]/@width">1000</set>
+	<set xpath="//window[@name='craftingInfoPanelR']/panel[1]/rect/label/@pos">135,-8</set>
+	<set xpath="//window[@name='craftingInfoPanelR']/panel[1]/rect/sprite/@pos">100,-8</set>
+	<set xpath="//window[@name='craftingInfoPanelR']/panel[1]/rect/@pos">670,0</set>
+</snj>

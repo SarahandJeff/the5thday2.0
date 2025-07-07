@@ -1,0 +1,134 @@
+<configs>
+
+<remove xpath="//item_modifier[@name='modRadiationReady']"/>
+
+	<append xpath="/item_modifiers">
+
+	
+
+
+		<item_modifier name="modAcidRain" installable_tags="head" modifier_tags="resistance" type="attachment" blocked_tags="clothing,noMods">
+			<property name="Extends" value="modGeneralMaster" param1="CustomIcon"/>
+			<property name="CustomIcon" value="modAcidRain"/>
+			<property name="DescriptionKey" value="modAcidRainDesc"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="AcidProt" operation="set" value="100"/>
+				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="AcidProt" operation="set" value="0"/>
+			</effect_group>
+			<property name="CreativeMode" value="Player"/>
+			<property name="DisplayType" value="HazmatT2"/>
+			<property name="Tags" value="HazT2"/>
+			<property name="Encumbrance" value=".03"/>
+			<property name="DegradationBreaksAfter" value="false"/>
+			<property name="Weight" value="1"/>
+			<property name="EconomicValue" value="500"/>
+			<property name="ShowQuality" value="false"/>
+			<property name="UnlockedBy" value="perkArmor"/>
+			<property name="Material" value="Mradium"/>
+			<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+			<property name="Stacknumber" value="1"/>
+			<property name="Group" value="Mods"/>
+			<property name="CustomIconTint" value="183,188,28"/>
+			<effect_group tiered="false">
+				<display_value name="dToxicResist" value="1"/>
+				<passive_effect name="HypothermalResist" operation="base_add" value="100"/>
+				<passive_effect name="ElementalDamageResist" operation="perc_add" value="1" tags="buffRadiationMain"/>
+			</effect_group>
+		</item_modifier>
+		<item_modifier name="modHeat" installable_tags="head" modifier_tags="temperature,buffHeatDmg" blocked_tags="noMods" type="attachment">
+			<property name="CreativeMode" value="Player"/>
+			<property name="Tags" value="modHeat"/>
+			<property name="DisplayType" value="HeatMod"/>
+			<property name="Extends" value="modGeneralMaster" param1="CustomIcon"/>
+			<property name="CustomIcon" value="modArmorCoolingMesh"/>
+			<property name="CustomIconTint" value="153, 51, 51"/>
+			<property name="DescriptionKey" value="buffHeatDmgDesc"/>
+			<property name="UnlockedBy" value="perkArmor"/>
+			<effect_group>
+				<display_value name="dHeatResist" value="1"/>
+				<passive_effect name="ElementalDamageResist" operation="perc_add" value="1" tags="buffHeatDmg,heat"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="AcidProt" operation="set" value="100"/>
+				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="AcidProt" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="DHProt" operation="set" value="100"/>
+				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="DHProt" operation="set" value="0"/>
+			</effect_group>
+			<effect_group tiered="false">
+			<passive_effect name="BuffResistance" operation="base_add" value="1" tags="buffDysenteryCatchDrink"/>
+			<triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="buffWaterPurifier"/>
+			<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="buffWaterPurifier"/>
+		</effect_group>
+		</item_modifier>
+		<item_modifier name="modCold" installable_tags="head" modifier_tags="thermal,buffColdDmg" blocked_tags="noMods" type="attachment">
+			<property name="CreativeMode" value="Player"/>
+			<property name="Tags" value="modCold"/>
+			<property name="DisplayType" value="ColdMod"/>
+			<property name="Extends" value="modGeneralMaster" param1="CustomIcon"/>
+			<property name="CustomIcon" value="modArmorInsulatedLiner"/>
+			<property name="CustomIconTint" value="51, 102, 255"/>
+			<property name="DescriptionKey" value="buffColdDmgDesc"/>
+			<property name="UnlockedBy" value="perkArmor"/>
+			<effect_group>
+				<display_value name="dColdResist" value="1"/>
+				<passive_effect name="ElementalDamageResist" operation="perc_add" value="1" tags="buffColdDmg,cold"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="AcidProt" operation="set" value="100"/>
+				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="AcidProt" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="FNProt" operation="set" value="100"/>
+				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="FNProt" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="DHProt" operation="set" value="100"/>
+				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="DHProt" operation="set" value="0"/>
+			</effect_group>
+			<effect_group tiered="false">
+			<passive_effect name="BuffResistance" operation="base_add" value="1" tags="buffDysenteryCatchDrink"/>
+			<triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="buffWaterPurifier"/>
+			<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="buffWaterPurifier"/>
+		</effect_group>
+		</item_modifier>
+	
+		<item_modifier name="modRad" installable_tags="head" modifier_tags="resistance" type="attachment" blocked_tags="clothing,noMods">
+			<property name="Extends" value="modGeneralMaster" param1="CustomIcon"/>
+			<property name="CustomIcon" value="modRad"/>
+			<property name="DescriptionKey" value="modRadDesc"/>
+			
+			<property name="CreativeMode" value="Player"/>
+			<property name="DisplayType" value="HazmatT1"/>
+			<property name="Tags" value="HazT1"/>
+			<property name="Encumbrance" value=".03"/>
+			<property name="DegradationBreaksAfter" value="false"/>
+			<property name="Weight" value="1"/>
+			<property name="EconomicValue" value="500"/>
+			<property name="ShowQuality" value="false"/>
+			<property name="UnlockedBy" value="perkArmor"/>
+			<property name="Material" value="Mradium"/>
+			<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+			<property name="Stacknumber" value="1"/>
+			<property name="Group" value="Mods"/>
+			<property name="CustomIconTint" value="0,153,51"/>
+			<effect_group tiered="false">
+				<display_value name="dRadiationResist" value="1"/>
+				<passive_effect name="HypothermalResist" operation="base_add" value="100"/>
+				<passive_effect name="ElementalDamageResist" operation="perc_add" value="1" tags="buffRadiationMain"/>
+			</effect_group>
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="FNProt" operation="set" value="100"/>
+				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="FNProt" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="DHProt" operation="set" value="100"/>
+				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="DHProt" operation="set" value="0"/>
+					<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="AcidProt" operation="set" value="100"/>
+				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="AcidProt" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="RadiationProt" operation="set" value="100"/>
+				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="RadiationProt" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfEquipStart" action="AddBuff" target="self" buff="buffmodRad"/>
+				<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" target="self" buff="buffmodRad"/>
+			</effect_group>
+			<effect_group tiered="false">
+			<passive_effect name="BuffResistance" operation="base_add" value="1" tags="buffDysenteryCatchDrink"/>
+			<triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="buffWaterPurifier"/>
+			<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="buffWaterPurifier"/>
+		</effect_group>
+		</item_modifier>
+	</append>
+</configs>

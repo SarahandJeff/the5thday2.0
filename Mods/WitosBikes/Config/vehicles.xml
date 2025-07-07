@@ -1,0 +1,336 @@
+<Witos>
+	<append xpath="/vehicles">
+	
+	<vehicle name="vehicleBMX">
+		<property name="cameraDistance" value="3, 4.5"/>
+		<property name="cameraTurnRate" value=".2, .35"/>
+		<property name="upAngleMax" value="70"/>
+		<property name="upForce" value="1"/>
+		<property name="steerAngleMax" value="28"/>
+		<property name="steerRate" value="130"/>
+		<property name="steerCenteringRate" value="90"/>
+		<property name="tiltAngleMax" value="20"/>
+		<property name="tiltThreshold" value="3"/>
+		<property name="tiltDampening" value=".22"/>
+		<property name="tiltDampenThreshold" value="8"/>
+		<property name="tiltUpForce" value="5"/>
+		<property name="motorTorque_turbo" value="700, 180, 1500, 180"/>
+		<property name="velocityMax_turbo" value="7, 4, 12, 4"/>
+		<property name="brakeTorque" value="3000"/>
+		<property name="hopForce" value="4, .05"/>
+		<property name="unstickForce" value=".2"/>
+		<property name="waterDrag_y_velScale_velMaxScale" value="1.7, .9, .2"/>
+		<property name="wheelPtlScale" value=".6"/>
+
+		<property name="hornSound" value="bicycle_horn"/>
+
+		<property class="chassis">
+			<property name="class" value="Chassis"/>
+			<property name="paint" value="M"/>
+		</property>
+
+		<property class="handlebars">
+			<property name="class" value="Steering"/>
+			<property name="transform" value="M/Forks"/>
+			<property name="steerAngle" value="0, 31, 0"/>
+			<property name="IKHandLPosition" value="-0.345, 0.362, 0.103"/>
+			<property name="IKHandLRotation" value="-0.532, 91.886, 24.957"/>
+			<property name="IKHandRPosition" value="0.362, 0.379, 0.086"/>
+			<property name="IKHandRRotation" value="0.994, 85.819, -152.804"/>
+			<property name="paint" value="M/Forks"/>
+		</property>
+
+		<property class="pedals">
+			<property name="class" value="Pedals"/>
+			<property name="transform" value="M/Crank"/>
+			<property name="IKFootLPosition" value="-.06, .1, -.05"/>
+			<property name="IKFootLRotation" value="0, 0, 0"/>
+			<property name="IKFootRPosition" value="0, 0.100, -0.050"/>
+			<property name="IKFootRRotation" value="0, 0, 0"/>
+			<property name="pedalSound" value="bicycle_pedal"/>
+			<property name="staminaDrain" value="0,0"/><!-- stamina drain walking/running. It now uses movement tags so regular passives apply -->
+			<property name="particleDamaged" value=""/>
+			<property name="particleBroken" value=""/>
+		</property>
+
+		<property class="seat0">
+			<property name="pose" value="1"/>
+			<property name="position" value="0, -0.052, 0.138"/>
+			<property name="rotation" value="0, 0, 0"/>
+			<property name="exit" value="-.8,0,0 ~ .8,0,0 ~ 0,0,-1.4 ~ 0,0,1.4 ~ 0,1.5,0"/>
+		</property>
+
+		<property class="wheel0">
+			<property name="tireTransform" value="M/Forks/Wheel0"/>
+			<property name="torqueScale_motor_brake" value=".15, .5"/>
+			<property name="bounceSound" value="bicycle_suspension"/>
+			<property name="slideSound" value="bicycle_brake"/>
+		</property>
+
+		<property class="wheel1">
+			<property name="tireTransform" value="Wheel1"/>
+			<property name="torqueScale_motor_brake" value="1, 1"/>
+			<property name="bounceSound" value="bicycle_suspension"/>
+			<property name="slideSound" value="bicycle_brake"/>
+		</property>
+
+		<property class="headlight">
+			<property name="class" value="Headlight"/>
+			<property name="bright" value=".75"/>
+
+		</property>
+
+		<property class="storage">
+			<property name="class" value="Storage"/>
+
+		</property>
+
+	</vehicle>
+	
+	<vehicle name="vehicleBMXET">
+		<property name="cameraDistance" value="3, 4.5"/>
+		<property name="cameraTurnRate" value=".2, .35"/>
+		<property name="upAngleMax" value="70"/>
+		<property name="upForce" value="1"/>
+		<property name="steerAngleMax" value="28"/>
+		<property name="steerRate" value="130"/>
+		<property name="steerCenteringRate" value="90"/>
+		<property name="tiltAngleMax" value="20"/>
+		<property name="tiltThreshold" value="3"/>
+		<property name="tiltDampening" value=".22"/>
+		<property name="tiltDampenThreshold" value="8"/>
+		<property name="tiltUpForce" value="5"/>
+
+		<property name="motorTorque_turbo" value="700, 180, 1500, 180"/>
+		<property name="velocityMax_turbo" value="7, 4, 12, 4"/>
+		<property name="brakeTorque" value="3000"/>
+		<property name="hopForce" value="4, .05"/>
+		<property name="unstickForce" value=".2"/>
+		<property name="waterDrag_y_velScale_velMaxScale" value="1.7, .9, .2"/>
+
+		<property name="wheelPtlScale" value=".6"/>
+
+		<property name="hornSound" value="bicycle_horn"/>
+
+		<property name="recipeName" value="vehicleBicyclePlaceable" />
+
+		<property class="chassis">
+			<property name="class" value="Chassis"/>
+			<property name="paint" value="M"/>
+		</property>
+
+		<property class="handlebars">
+			<property name="class" value="Steering"/>
+			<property name="transform" value="M/Forks"/>
+			<property name="steerAngle" value="0, 31, 0"/>
+			<property name="IKHandLPosition" value="-0.345, 0.362, 0.103"/>
+			<property name="IKHandLRotation" value="-0.532, 91.886, 24.957"/>
+			<property name="IKHandRPosition" value="0.362, 0.379, 0.086"/>
+			<property name="IKHandRRotation" value="0.994, 85.819, -152.804"/>
+			<property name="paint" value="M/Forks"/>
+		</property>
+
+		<property class="pedals">
+			<property name="class" value="Pedals"/>
+			<property name="transform" value="M/Crank"/>
+			<property name="IKFootLPosition" value="-.06, .1, -.05"/>
+			<property name="IKFootLRotation" value="0, 0, 0"/>
+			<property name="IKFootRPosition" value="0, 0.100, -0.050"/>
+			<property name="IKFootRRotation" value="0, 0, 0"/>
+			<property name="pedalSound" value="bicycle_pedal"/>
+			<property name="staminaDrain" value="0,0"/><!-- stamina drain walking/running. It now uses movement tags so regular passives apply -->
+			<property name="particleDamaged" value=""/>
+			<property name="particleBroken" value=""/>
+		</property>
+
+		<property class="seat0">
+			<property name="pose" value="1"/>
+			<property name="position" value="0, -0.052, 0.138"/>
+			<property name="rotation" value="0, 0, 0"/>
+			<property name="exit" value="-.8,0,0 ~ .8,0,0 ~ 0,0,-1.4 ~ 0,0,1.4 ~ 0,1.5,0"/>
+		</property>
+
+		<property class="motor0">
+				<property name="rpmAccel_min_max" value=".01, .038"/>
+				<property name="rpmMax" value="4"/>
+				<property name="rpmDrag" value=".993"/>
+				<property name="trigger" value="vel"/>
+				<property name="type" value="spin"/>
+				<property name="transform" value=""/>
+				<property name="axis" value="2"/>
+			</property>
+		<property class="motor1">
+				<property name="engine" value="engine"/>
+				<property name="engineOffPer" value=".05"/>
+				<property name="turbo" value="1.35"/>
+				<property name="rpmAccel_min_max" value="0.01, .04"/>
+				<property name="rpmMax" value="8"/>
+				<property name="rpmDrag" value=".993"/>
+				<property name="trigger" value="inputForward"/>
+				<property name="type" value="spin"/>
+				<property name="transform" value=""/>
+				<property name="axis" value="2"/>
+			</property>
+			
+		<property class="force0">
+				<property name="trigger" value="motor0"/>
+				<property name="type" value="relative"/>
+				<property name="force" value="0, .195, 0"/>
+				<property name="ceiling" value="260, 280"/>
+			</property>
+		<property class="force1">
+				<property name="trigger" value="motor1"/>
+				<property name="type" value="relative"/>
+				<property name="force" value="0, 0, .185"/>
+			</property>
+		<property class="force2">
+				<property name="trigger" value="inputForward"/>
+				<property name="type" value="relative"/>
+				<property name="force" value="0, 0.005, .00"/>
+			</property>
+		<property class="force3">
+				<property name="trigger" value="inputStrafe"/>
+				<property name="type" value="relativeTorque"/>
+				<property name="force" value="0, .007, 0"/>
+			</property>
+		<property class="force4">
+				<property name="trigger" value="inputUp"/>
+				<property name="type" value="relativeTorque"/>
+				<property name="force" value="-.012, 0, 0"/>
+			</property>
+		<property class="force5">
+				<property name="trigger" value="inputDown"/>
+				<property name="type" value="relativeTorque"/>
+				<property name="force" value=".012, 0, 0"/>
+			</property>
+		
+
+		<property class="wheel0">
+			<property name="tireTransform" value="M/Forks/Wheel0"/>
+			<property name="torqueScale_motor_brake" value=".15, .5"/>
+			<property name="bounceSound" value="bicycle_suspension"/>
+			<property name="slideSound" value="bicycle_brake"/>
+		</property>
+
+		<property class="wheel1">
+			<property name="tireTransform" value="Wheel1"/>
+			<property name="torqueScale_motor_brake" value="1, 1"/>
+			<property name="bounceSound" value="bicycle_suspension"/>
+			<property name="slideSound" value="bicycle_brake"/>
+		</property>
+
+		<property class="headlight">
+			<property name="class" value="Headlight"/>
+			<property name="bright" value=".75"/>
+		</property>
+
+		<property class="storage">
+			<property name="class" value="Storage"/>
+			<property name="transform" value="basket"/>
+		</property>
+
+	</vehicle>
+	
+	<vehicle name="vehicletricycle">
+
+		<property name="cameraDistance" value="3, 4.5"/>
+		<property name="cameraTurnRate" value=".2, .35"/>
+		<property name="upAngleMax" value="70"/>
+		<property name="upForce" value="1"/>
+		<property name="steerAngleMax" value="28"/>
+		<property name="steerRate" value="20"/>
+		<property name="steerCenteringRate" value="60"/>
+		<property name="tiltAngleMax" value="20"/>
+		<property name="tiltThreshold" value="3"/>
+		<property name="tiltDampening" value=".22"/>
+		<property name="tiltDampenThreshold" value="8"/>
+		<property name="tiltUpForce" value="5"/>
+		<property name="motorTorque_turbo" value="400, 180, 1500, 180"/>
+		<property name="velocityMax_turbo" value="4, 2, 8, 2"/>
+		<property name="brakeTorque" value="3000"/>
+		<property name="hopForce" value="4, .05"/>
+		<property name="unstickForce" value=".2"/>
+		<property name="waterDrag_y_velScale_velMaxScale" value="1.7, .9, .2"/>
+		<property name="wheelPtlScale" value=".3"/>
+		<property name="hornSound" value="bicycle_horn"/>
+
+
+		<property class="chassis">
+			<property name="class" value="Chassis"/>
+			<property name="paint" value="M"/>
+		</property>
+
+		<property class="handlebars">
+			<property name="class" value="Steering"/>
+			<property name="transform" value="M/Forks"/>
+			<property name="steerAngle" value="0, 15, 0"/>
+			<property name="IKHandLPosition" value="-0.365, 0.103, -0.056"/>
+			<property name="IKHandLRotation" value="-0.359, 91.9, 25"/>
+			<property name="IKHandRPosition" value="0.362, 0.103, -0.056"/>
+			<property name="IKHandRRotation" value="1, 85.8, 207"/>
+			<property name="paint" value="M/Forks"/>
+		</property>
+
+		<property class="pedals">
+			<property name="class" value="Pedals"/>
+			<property name="transform" value="M/Crank"/>
+			<property name="IKFootLPosition" value="-.06, .1, -.05"/>
+			<property name="IKFootLRotation" value="0, 0, 0"/>
+			<property name="IKFootRPosition" value="-.06, .1, -.05"/>
+			<property name="IKFootRRotation" value="0, 0, 0"/>
+			<property name="pedalSound" value="bicycle_pedal"/>
+			<property name="staminaDrain" value="0,0"/><!-- stamina drain walking/running. It now uses movement tags so regular passives apply -->
+			<property name="particleDamaged" value=""/>
+			<property name="particleBroken" value=""/>
+		</property>
+
+		<property class="seat0">
+			<property name="pose" value="1"/>
+			<property name="position" value="0, -0.431, 0.086"/>
+			<property name="rotation" value="0, 0, 0"/>
+			<property name="exit" value="-.8,0,0 ~ .8,0,0 ~ 0,0,-1.4 ~ 0,0,1.4 ~ 0,1.5,0"/>
+		</property>
+		
+
+		<property class="wheel0">
+			<property name="tireTransform" value="M/Forks/Wheel0"/>
+			<property name="torqueScale_motor_brake" value=".15, .5"/>
+			<property name="bounceSound" value="bicycle_suspension"/>
+			<property name="slideSound" value="bicycle_brake"/>
+			<property name="IKFootLPosition" value="-0.397,1.000, 0.707"/>
+			<property name="IKFootLRotation" value="297.9,0, 329.0"/>
+			<property name="IKFootRPosition" value="0.328,1.000, 0.707"/>
+			<property name="IKFootRRotation" value="301.0,15.5, 18.6"/>
+		</property>
+
+		<property class="wheel1">
+			<property name="tireTransform" value="Wheel1"/>
+			<property name="torqueScale_motor_brake" value="1, 1"/>
+			<property name="bounceSound" value="bicycle_suspension"/>
+			<property name="slideSound" value="bicycle_brake"/>
+		</property>
+		
+		<property class="wheel2">
+			<property name="tireTransform" value="Wheel2"/>
+			<property name="torqueScale_motor_brake" value="1, 1"/>
+			<property name="bounceSound" value="bicycle_suspension"/>
+			<property name="slideSound" value="bicycle_brake"/>
+		</property>
+
+		<property class="headlight">
+			<property name="class" value="Headlight"/>
+			<property name="bright" value=".75"/>
+
+		</property>
+
+		<property class="storage">
+			<property name="class" value="Storage"/>
+
+		</property>
+
+	</vehicle>
+
+
+	
+	</append>
+</Witos>

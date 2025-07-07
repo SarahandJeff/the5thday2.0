@@ -1,0 +1,209 @@
+<config>
+	<append xpath="/blocks">
+		<block name="HOHSupplyDropRadioAll">
+            <property name="CreativeMode" value="Player"/>
+            <property name="Class" value="GameEvent"/>
+            <property name="ActivateEvent" value="HOHSupplyDropAll"/>
+            <property name="CustomIcon" value="HOHSupplyDropRadio"/>
+            <property name="DescriptionKey" value="HOHSupplyDropRadio_Desc"/>
+            <property name="Material" value="Mmetal_medium"/>
+            <property name="Shape" value="ModelEntity"/>
+            <property name="WaterFlow" value="permitted"/>
+            <property name="Model" value="#@modfolder:Resources/ADradio.unity3d?HamRadioPlaced"/>
+            <property name="ModelOffset" value="0,0,0"/>
+            <property name="Texture" value="282"/>
+            <property name="IsTerrainDecoration" value="false"/>
+            <property name="EconomicValue" value="800"/>
+            <property name="EconomicBundleSize" value="1"/>
+            <drop event="Destroy" count="0"/>
+            <drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+            <property name="Group" value="Decor/Miscellaneous"/>
+            <property name="FilterTags" value="MC_building"/>
+            <property name="DestroyOnEvent" value="false" />
+            <property name="Tags" value="HOHSupplyDropRadio"/>
+		</block>
+		<block name="HOHSupplyDropRadioAmmo">
+            <property name="Extends" value="HOHSupplyDropRadioAll"/>
+            <property name="CustomIcon" value="HOHSupplyDropRadioAmmo"/>
+            <property name="DescriptionKey" value="HOHSupplyDropRadioAmmo_Desc"/>
+            <property name="EconomicValue" value="400"/>
+            <property name="ActivateEvent" value="HOHSupplyDropAmmo"/>
+            <property name="Tags" value="HOHSupplyDropRadio"/>
+		</block>
+		<block name="HOHSupplyDropRadioFood">
+            <property name="Extends" value="HOHSupplyDropRadioAll"/>
+            <property name="CustomIcon" value="HOHSupplyDropRadioFood"/>
+            <property name="DescriptionKey" value="HOHSupplyDropRadioFood_Desc"/>
+            <property name="EconomicValue" value="200"/>
+            <property name="ActivateEvent" value="HOHSupplyDropFood"/>
+            <property name="Tags" value="HOHSupplyDropRadio"/>
+		</block>
+		<block name="HOHSupplyDropRadioMedical">
+            <property name="Extends" value="HOHSupplyDropRadioAll"/>
+            <property name="CustomIcon" value="HOHSupplyDropRadioMedical"/>
+            <property name="DescriptionKey" value="HOHSupplyDropRadioMedical_Desc"/>
+            <property name="EconomicValue" value="100"/>
+            <property name="ActivateEvent" value="HOHSupplyDropMedical"/>
+            <property name="Tags" value="HOHSupplyDropRadio"/>
+		</block>
+		<block name="HOHSupplyDropRadioBooks">
+            <property name="Extends" value="HOHSupplyDropRadioAll"/>
+            <property name="CustomIcon" value="HOHSupplyDropRadioBooks"/>
+            <property name="DescriptionKey" value="HOHSupplyDropRadioBooks_Desc"/>
+            <property name="EconomicValue" value="300"/>
+            <property name="ActivateEvent" value="HOHSupplyDropBooks"/>
+            <property name="Tags" value="HOHSupplyDropRadio"/>
+		</block>
+		
+        <block name="HOHSupplyDropCall">
+            <property name="Extends" value="chimneyPOI"/>
+            <property name="CreativeMode" value="None"/>
+            <property name="Model" value="#@modfolder:Resources/ADradio.unity3d?HamRadioActive"/>
+            <property name="ModelOffset" value="0,0,0"/>
+            <property name="SortOrder1" value="B650"/>
+            <property name="SortOrder2" value="0000"/>
+            <property name="Tags" value="HOHSupplyDropCall"/>
+        </block>
+
+	</append>
+
+
+<append xpath="/blocks">
+				
+	<block name="C17CargoDropRadio">
+            <property name="CreativeMode" value="Player"/>
+            <property name="Class" value="GameEvent"/>
+            <property name="ActivateEvent" value="C17CargoDrop"/>
+            <property name="CustomIcon" value="CargoDropRadio"/>
+            <property name="DescriptionKey" value="C17CargoDropRadio_Desc"/>
+            <property name="Material" value="Mmetal_medium"/>
+            <property name="Shape" value="ModelEntity"/>
+            <property name="WaterFlow" value="permitted"/>
+            <property name="Model" value="Entities/Electrical/radioHamPrefab"/>
+            <property name="Texture" value="282"/>
+            <property name="IsTerrainDecoration" value="false"/>
+            <property name="EconomicValue" value="800"/>
+            <property name="EconomicBundleSize" value="1"/>
+            <drop event="Destroy" count="0"/>
+            <drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+            <property name="Group" value="Decor/Miscellaneous"/>
+            <property name="FilterTags" value="MC_building"/>
+            <property name="DestroyOnEvent" value="false" />
+            <property name="Tags" value="C17CargoDropRadio"/>
+		</block>
+		
+	<block name="C17AD">
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Material" value="Mwood"/>
+			<property name="Model" value="#@modfolder:Resources/C17Airdrops.unity3d?AirdropC17"/>
+			<property name="StabilitySupport" value="false"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="MultiBlockDim" value="1,1,1"/>
+			<property name="Path" value="solid"/>
+			<property name="Collide" value="movement,rockets,sight,melee"/>
+			<drop event="Destroy" count="0"/>
+		</block>
+	<block name="C17AD0">
+			<property name="Class" value="Loot"/>
+			<property name="DisplayType" value="blockMulti"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Material" value="Mmetal"/>
+			<property name="Model" value="#@modfolder:Resources/C17Airdrops.unity3d?AD1"/>
+			<property name="StabilitySupport" value="false"/>
+			<property name="Shape" value="ModelEntity"/>
+		    <property name="ImposterDontBlock" value="true"/>
+			<property name="ModelOffset" value="0,0,0"/>
+			<property name="MultiBlockDim" value="3,3,3"/>
+			<property name="Path" value="solid"/>
+			<property name="Collide" value="movement,rockets,sight,melee"/>
+			<property name="LootList" value="airDrop"/>
+			<drop event="Destroy" count="0"/>
+		</block>		
+		<block name="C17AD1">
+			<property name="Class" value="Loot"/>
+			<property name="DisplayType" value="blockMulti"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Material" value="Mmetal"/>
+			<property name="Model" value="#@modfolder:Resources/ADtest.unity3d?AD_1"/>
+			<property name="StabilitySupport" value="false"/>
+			<property name="Shape" value="ModelEntity"/>
+		    <property name="ImposterDontBlock" value="true"/>
+			<property name="ModelOffset" value="0,0,0"/>
+			<property name="MultiBlockDim" value="3,3,3"/>
+			<property name="Path" value="solid"/>
+			<property name="Collide" value="movement,rockets,sight,melee"/>
+			<property name="LootList" value="airDrop"/>
+			<drop event="Destroy" count="0"/>
+		</block>		
+	
+		<block name="C17AD2">
+			<property name="Class" value="Loot"/>
+			<property name="DisplayType" value="blockMulti"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Material" value="Mmetal"/>
+			<property name="Model" value="#@modfolder:Resources/ADtest.unity3d?AD_1"/>
+			<property name="StabilitySupport" value="false"/>
+			<property name="Shape" value="ModelEntity"/>
+		<property name="ImposterDontBlock" value="true"/>
+			<property name="ModelOffset" value="0,0,0"/>
+			<property name="MultiBlockDim" value="3,3,3"/>
+			<property name="Path" value="solid"/>
+			<property name="Collide" value="movement,rockets,sight,melee"/>
+			<property name="LootList" value="cntHOHSupplyDropAmmo"/>
+			<drop event="Destroy" count="0"/>
+		</block>		
+			
+		<block name="C17AD3">
+			<property name="Class" value="Loot"/>
+			<property name="DisplayType" value="blockMulti"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Material" value="Mmetal"/>
+			<property name="Model" value="#@modfolder:Resources/ADtest.unity3d?AD_1"/>
+			<property name="StabilitySupport" value="false"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="ImposterDontBlock" value="true"/>
+			<property name="ModelOffset" value="0,0,0"/>
+			<property name="MultiBlockDim" value="3,3,3"/>
+			<property name="Path" value="solid"/>
+			<property name="Collide" value="movement,rockets,sight,melee"/>
+			<property name="LootList" value="cntHOHSupplyDropFood"/>
+			<drop event="Destroy" count="0"/>
+		</block>
+		<block name="C17AD4">
+			<property name="Class" value="Loot"/>
+			<property name="DisplayType" value="blockMulti"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Material" value="Mmetal"/>
+			<property name="Model" value="#@modfolder:Resources/ADtest.unity3d?AD_1"/>
+			<property name="StabilitySupport" value="false"/>
+			<property name="Shape" value="ModelEntity"/>
+		<property name="ImposterDontBlock" value="true"/>
+			<property name="ModelOffset" value="0,0,0"/>
+			<property name="MultiBlockDim" value="3,3,3"/>
+			<property name="Path" value="solid"/>
+			<property name="Collide" value="movement,rockets,sight,melee"/>
+			<property name="LootList" value="cntHOHSupplyDropMedical"/>
+			<drop event="Destroy" count="0"/>
+		</block>
+		<block name="C17AD5">
+			<property name="Class" value="Loot"/>
+			<property name="DisplayType" value="blockMulti"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Material" value="Mmetal"/>
+			<property name="Model" value="#@modfolder:Resources/ADtest.unity3d?AD_1"/>
+			<property name="StabilitySupport" value="false"/>
+			<property name="Shape" value="ModelEntity"/>
+		<property name="ImposterDontBlock" value="true"/>
+			<property name="ModelOffset" value="0,0,0"/>
+			<property name="MultiBlockDim" value="3,3,3"/>
+			<property name="Path" value="solid"/>
+			<property name="Collide" value="movement,rockets,sight,melee"/>
+			<property name="LootList" value="cntHOHSupplyDropBooks"/>
+			<drop event="Destroy" count="0"/>
+		</block>
+		
+</append>
+
+
+
+</config>

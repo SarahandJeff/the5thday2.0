@@ -1,0 +1,23 @@
+<snj>
+<append xpath="/buffs">
+<buff name="GPSTrackerActivate" hidden="true" icon="ui_game_symbol_add" icon_color="255,0,0" icon_blink="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="GPSDisplay" operation="set" value="255"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="GPSDisplay" operation="set" value="255"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="GPSDisplay" operation="set" value="0"/>
+			</effect_group>
+		</buff>
+
+<buff name="WatchTrackerActivate" hidden="true" icon="ui_game_symbol_add" icon_color="255,0,0" icon_blink="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="WatchDisplay" operation="set" value="255"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="WatchDisplay" operation="set" value="255"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="WatchDisplay" operation="set" value="0"/>
+			</effect_group>
+		</buff>
+</append>
+</snj>

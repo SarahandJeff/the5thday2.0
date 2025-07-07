@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+ ######   ##   ##   ####    ####      ####    ######    ####    ####     ######    ####    ####
+     ##   ### ###  ##  ##   ## ##    ##  ##     ##     ##  ##   ## ##    ##       ##  ##   ## ##
+    ##    #######  ##  ##   ##  ##   ##         ##     ##  ##   ##  ##   ##       ##  ##   ##  ##
+   ##     ## # ##  ##  ##   ##  ##    ####      ##     ##  ##   ##  ##   #####    ######   ##  ##
+  ##      ## # ##  ##  ##   ##  ##       ##     ##     ##  ##   ##  ##   ##       ##  ##   ##  ##
+  ##      ##   ##  ##  ##   ## ##    ##  ##     ##     ##  ##   ## ##    ##       ##  ##   ## ##
+  ##      ##   ##   ####    ####       ###      ##      ####    ####     ######   ##  ##   ####
+
+  For more information, visit https://www.patreon.com/7modstodead
+  for the latest updates and more mods.
+
+  This mod adds the ability to loot static zombie bodies and the corpses of downed zombies, allowing players to find valuable loot among the remains of the undead.
+
+  This mod is a part of the 7ModsToDead collection. For more information, visit https://www.patreon.com/7modstodead
+
+  This mod is free to use and modify, but please credit the author and provide a link to the original source.
+
+  Version: 1.0.1
+-->
+<ModsToDead>
+
+
+	<!-- Zombie default -->
+	<append xpath="/entity_classes/entity_class[@name='zombieTemplateMale']" >
+		<property name="LootListOnDeath" value="groupZombies"/>
+	</append>
+	<!-- End Zombie default -->
+
+<!-- lumberjack -->
+	<append xpath="/entity_classes/entity_class[@name='zombieLumberjack']" >
+		<property name="LootListOnDeath" value="groupzombieLumberjack"/>
+	</append>
+
+	<append xpath="/entity_classes/entity_class[@name='zombieLumberjackFeral']" >
+		<property name="LootListOnDeath" value="groupZombiesLumberjackFeral"/>
+	</append>
+
+	<append xpath="/entity_classes/entity_class[@name='zombieLumberjackRadiated']" >
+		<property name="LootListOnDeath" value="groupZombieLumberjackRadiated"/>
+	</append>
+	<!-- End lumberjack -->
+
+	<!-- Cop -->
+	<append xpath="/entity_classes/entity_class[@name='zombieFatCop']" >
+		<property name="LootListOnDeath" value="groupZombiesCops"/>
+	</append>
+
+	<append xpath="/entity_classes/entity_class[@name='zombieFatCopFeral']" >
+		<property name="LootListOnDeath" value="groupZombiesCopsFeral"/>
+	</append>
+
+	<append xpath="/entity_classes/entity_class[@name='zombieFatCopRadiated']" >
+		<property name="LootListOnDeath" value="groupZombieFatCopRadiated"/>
+	</append>
+	<!-- End Cop -->
+
+
+
+	<!-- Soldier -->
+	<append xpath="/entity_classes/entity_class[@name='zombieSoldier']" >
+		<property name="LootListOnDeath" value="groupZombieSoldier"/>
+	</append>
+
+	<append xpath="/entity_classes/entity_class[@name='zombieSoldierFeral']" >
+		<property name="LootListOnDeath" value="groupZombieSoldierFeral"/>
+	</append>
+
+	<append xpath="/entity_classes/entity_class[@name='zombieSoldierRadiated']" >
+		<property name="LootListOnDeath" value="groupZombieSoldierRadiated"/>
+	</append>
+	<!-- End Soldier -->
+
+
+
+	<!-- Business man -->
+	<append xpath="/entity_classes/entity_class[@name='zombieBusinessMan']" >
+		<property name="LootListOnDeath" value="groupZombieBusinessMan"/>
+	</append>
+
+	<append xpath="/entity_classes/entity_class[@name='zombieBusinessManFeral']" >
+		<property name="LootListOnDeath" value="groupZombieBusinessManFeral"/>
+	</append>
+
+	<append xpath="/entity_classes/entity_class[@name='zombieBusinessManRadiated']" >
+		<property name="LootListOnDeath" value="groupZombieBusinessManRadiated"/>
+	</append>
+	<!-- End Business -->
+
+
+
+	<!-- Nurse -->
+	<append xpath="/entity_classes/entity_class[@name='zombieNurse']" >
+		<property name="LootListOnDeath" value="groupZombieNurse"/>
+	</append>
+
+	<append xpath="/entity_classes/entity_class[@name='zombieNurseFeral']" >
+		<property name="LootListOnDeath" value="groupZombieNurseFeral"/>
+	</append>
+
+	<append xpath="/entity_classes/entity_class[@name='zombieNurseRadiated']" >
+		<property name="LootListOnDeath" value="groupZombieNurseRadiated"/>
+	</append>
+	<!-- End Nurse -->
+
+
+
+
+
+	<!--
+	<set xpath="/entity_classes/entity_class[starts-with(@name, 'zombieTemplateMale')]/property[@name='TimeStayAfterDeath']/@value">360</set>
+	-->
+	<!-- Set the time a dead body stays in the world before despawning -->
+	<set xpath="/entity_classes/entity_class[@name='npcMeleeTemplate']/property[@name='TimeStayAfterDeath']/@value">180</set>
+	<set xpath="/entity_classes/entity_class[@name='zombieRegularTemplate']/property[@name='TimeStayAfterDeath']/@value">180</set>
+	<set xpath="/entity_classes/entity_class[@name='zombieTemplateMale']/property[@name='TimeStayAfterDeath']/@value">180</set>
+	<set xpath="/entity_classes/entity_class[@name='zombieTemplateMale']/property[@name='DeadBodyHitPoints']/@value">500</set>
+	
+</ModsToDead>

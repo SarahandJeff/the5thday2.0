@@ -1,0 +1,1226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configs>
+<append xpath="//item_modifier[@name='modGunSoundSuppressorSilencer']"><property name="Group" value="BarrelMods" /></append>
+<append  xpath="//item_modifier[@name='modGunChoke']"><property name="Group" value="BarrelMods" /></append>
+<append  xpath="//item_modifier[@name='modGunDuckbill']"><property name="Group" value="BarrelMods" /></append>
+<append  xpath="//item_modifier[@name='modShotgunSawedOffBarrel']"><property name="Group" value="BarrelMods" /></append>
+<append  xpath="//item_modifier[@name='modGunBarrelExtender']"><property name="Group" value="BarrelMods" /></append>
+<append  xpath="//item_modifier[@name='modGunShotgunTubeExtenderMagazine']"><property name="Group" value="BarrelMods" /></append>
+
+<append  xpath="//item_modifier[@name='modGunLaserSight']"><property name="Group" value="FirearmMods" /></append>
+<append  xpath="//item_modifier[@name='modGunFlashlight']"><property name="Group" value="FirearmMods" /></append>
+<append  xpath="//item_modifier[@name='modGunReflexSight']"><property name="Group" value="FirearmMods" /></append>
+<append  xpath="//item_modifier[@name='modGunScopeSmall']"><property name="Group" value="FirearmMods" /></append>
+<append  xpath="//item_modifier[@name='modGunScopeMedium']"><property name="Group" value="FirearmMods" /></append>
+<append  xpath="//item_modifier[@name='modGunScopeLarge']"><property name="Group" value="FirearmMods" /></append>
+<append  xpath="//item_modifier[@name='modGunTriggerGroupSemi']"><property name="Group" value="FirearmMods" /></append>
+<append  xpath="//item_modifier[@name='modGunTriggerGroupBurst3']"><property name="Group" value="FirearmMods" /></append>
+<append  xpath="//item_modifier[@name='modGunTriggerGroupAutomatic']"><property name="Group" value="FirearmMods" /></append>
+<append  xpath="//item_modifier[@name='modGunBipod']"><property name="Group" value="FirearmMods" /></append>
+<append  xpath="//item_modifier[@name='modGunForegrip']"><property name="Group" value="FirearmMods" /></append>
+<append  xpath="//item_modifier[@name='modGunRetractingStock']"><property name="Group" value="FirearmMods" /></append>
+<append  xpath="//item_modifier[@name='modGunMagazineExtender']"><property name="Group" value="FirearmMods" /></append>
+<append  xpath="//item_modifier[@name='modGunDrumMagazineExtender']"><property name="Group" value="FirearmMods" /></append>
+<append  xpath="//item_modifier[@name='modGunCrippleEm']"><property name="Group" value="FirearmMods" /></append>
+<append  xpath="//item_modifier[@name='modGunMeleeRadRemover']"><property name="Group" value="FirearmMods" /></append>
+<append  xpath="//item_modifier[@name='modGunMeleeTheHunter']"><property name="Group" value="FirearmMods" /></append>
+
+<append xpath="item_modifiers/item_modifier[@name='modGunChoke']">
+		<effect_group tiered="false">
+			<passive_effect name="MaxRange" operation="perc_add" value="1"/>
+		</effect_group>
+</append>
+
+
+		<append xpath="/item_modifiers">
+	
+	<item_modifier name="DualDrumMag" installable_tags="drumMagazine" modifier_tags="magazine" blocked_tags="pistol,shotgun,noDual" type="attachment">
+		<property name="Extends" value="modGunDrumMagazineExtender"/>
+		<property name="CustomIcon" value="DualDrumMag"/>
+		<property name="Stacknumber" value="1"/>
+		<property name="UnlockedBy" value="perkAutoWeaponsDrumMag"/>
+		<property name="Group" value="Mods,Tool/Weapon,FirearmMods"/>		
+		<effect_group tiered="false">
+			<passive_effect name="MagazineSize" operation="perc_add" value="2"/>
+			<passive_effect name="ReloadSpeedMultiplier" operation="perc_add" value="-.35"/>
+		</effect_group>
+	</item_modifier>
+	
+	<item_modifier name="TacticalForegrip" installable_tags="rifbtn1" modifier_tags="rifbtn1" type="attachment">
+		<property name="Stacknumber" value="1"/>
+		<property name="UnlockedBy" value="TacticalForegripSchematic"/>
+		<property name="Group" value="ModsTA"/>
+		<effect_group tiered="false">
+			<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="hang01"/>
+			<passive_effect name="IncrementalSpreadMultiplier" operation="perc_subtract" value="0.1"/>
+			<passive_effect name="SpreadMultiplierHip" operation="perc_add" value="-.1"/>
+			<passive_effect name="SpreadMultiplierWalking" operation="perc_add" value="-.1"/>
+			<passive_effect name="WeaponHandling" operation="perc_add" value="0.2"/>
+			<passive_effect name="KickDegreesVerticalMin" operation="perc_subtract" value="0.2"/>
+			<passive_effect name="KickDegreesVerticalMax" operation="perc_subtract" value="0.2"/>
+			<passive_effect name="KickDegreesHorizontalMin" operation="perc_subtract" value="0.3"/>
+			<passive_effect name="KickDegreesHorizontalMin" operation="perc_subtract" value="0.3"/>
+		</effect_group>
+		<property name="PickupJournalEntry" value="augmentGunsTip"/>
+	</item_modifier>
+
+	<item_modifier name="TacticalBipod" installable_tags="rifbtn2" modifier_tags="rifbtn2" type="attachment">
+		<property name="Stacknumber" value="1"/>
+		<property name="UnlockedBy" value="TacticalBipodSchematic"/>
+		<property name="Group" value="ModsTA"/>
+		<effect_group tiered="false">
+			<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="hang02"/>
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-0.2">
+				<requirement name="CVarCompare" cvar="_crouching" operation="NE" value="1"/>
+			</passive_effect>
+			<passive_effect name="SpreadMultiplierAiming" operation="perc_add" value="0.2">
+				<requirement name="CVarCompare" cvar="_crouching" operation="NE" value="1"/>
+			</passive_effect>
+			<passive_effect name="SpreadMultiplierAiming" operation="perc_add" value="-.1">
+				<requirement name="CVarCompare" cvar="_crouching" operation="NE" value="0"/>
+			</passive_effect>
+			<passive_effect name="IncrementalSpreadMultiplier" operation="perc_subtract" value="0.2">
+				<requirement name="CVarCompare" cvar="_crouching" operation="NE" value="0"/>
+			</passive_effect>
+			<passive_effect name="KickDegreesVerticalMin" operation="perc_subtract" value="0.5">
+				<requirement name="CVarCompare" cvar="_crouching" operation="NE" value="0"/>
+			</passive_effect>
+			<passive_effect name="KickDegreesVerticalMax" operation="perc_subtract" value="0.5">
+				<requirement name="CVarCompare" cvar="_crouching" operation="NE" value="0"/>
+			</passive_effect>
+			<passive_effect name="KickDegreesHorizontalMin" operation="perc_subtract" value="0.5">
+				<requirement name="CVarCompare" cvar="_crouching" operation="NE" value="0"/>
+			</passive_effect>
+			<passive_effect name="KickDegreesHorizontalMax" operation="perc_subtract" value="0.5">
+				<requirement name="CVarCompare" cvar="_crouching" operation="NE" value="0"/>
+			</passive_effect>
+			<passive_effect name="StaminaChangeOT" operation="perc_add" duration="0,9999" value="1.2,1.2" tags="crouching">
+			</passive_effect>
+		</effect_group>
+		<property name="PickupJournalEntry" value="augmentGunsTip"/>
+	</item_modifier>
+				
+		
+	<item_modifier name="Aimpoint_ACRO" installable_tags="pstscp1" modifier_tags="scope" type="attachment">
+		<property name="Stacknumber" value="1"/>
+		<property name="UnlockedBy" value="Aimpoint_ACROSchematic"/>
+		<property name="HoldType" value="1"/>
+		<property name="HandMeshfile" value="#@modfolder:Resources/alt.unity3d?ACROPrefab"/>
+		<property name="EconomicValue" value="270"/>
+		<property name="Group" value="ModsTA"/>
+		<item_property_overrides name="*">
+			<property name="Zoom_overlay" value=""/>
+			<property name="Zoom_max_out" value="50"/>
+			<property name="Zoom_max_in" value="50"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAMK23">
+			<property name="ScopeCameraOffset" value="-0.0006,-0.012,0.1"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAColt1911">
+			<property name="ScopeCameraOffset" value="0,-0.0125,0.1"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAUSP9">
+			<property name="ScopeCameraOffset" value="-0.0006,-0.007,0.1"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAP99">
+			<property name="ScopeCameraOffset" value="-0.0006,-0.007,0.12"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAP99S2">
+			<property name="ScopeCameraOffset" value="-0.0006,-0.007,0.12"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAP99S3">
+			<property name="ScopeCameraOffset" value="-0.0006,-0.007,0.12"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAP99S4">
+			<property name="ScopeCameraOffset" value="-0.0006,-0.007,0.12"/>
+		</item_property_overrides>
+		<item_property_overrides name="TABeretta93R">
+			<property name="ScopeCameraOffset" value="-0.0005,-0.015,0.1"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAGlock18c">
+			<property name="ScopeCameraOffset" value="-0.0005,0.01,0.1"/>
+		</item_property_overrides>
+		<item_property_overrides name="TADesertEagle">
+			<property name="ScopeCameraOffset" value="-0.0005,-0.013,0.1"/>
+		</item_property_overrides>
+		<item_property_overrides name="TARagingBull">
+			<property name="ScopeCameraOffset" value="-0.0004,0.0085,0.2"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM4Super90">
+			<property name="ScopeCameraOffset" value="0,-0.013,0.1"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASaiga12K">
+			<property name="ScopeCameraOffset" value="0,0.012,0.35"/>
+		</item_property_overrides>
+		<effect_group tiered="false">
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-0.05"/>
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="slot1"/>
+		</effect_group>
+	</item_modifier>
+	
+	<item_modifier name="RMRSight" installable_tags="pstscp1" modifier_tags="scope" type="attachment">
+		<property name="Stacknumber" value="1"/>
+		<property name="UnlockedBy" value="RMRSightSchematic"/>
+		<property name="HoldType" value="1"/>
+		<property name="HandMeshfile" value="#@modfolder:Resources/alt.unity3d?RMRSightPrefab"/>
+		<property name="EconomicValue" value="250"/>
+		<property name="Group" value="ModsTA"/>
+		<item_property_overrides name="*">
+			<property name="Zoom_overlay" value=""/>
+			<property name="Zoom_max_out" value="50"/>
+			<property name="Zoom_max_in" value="50"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAMK23">
+			<property name="ScopeCameraOffset" value="-0.0006,-0.012,0.1"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAColt1911">
+			<property name="ScopeCameraOffset" value="0,-0.0125,0.1"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAUSP9">
+			<property name="ScopeCameraOffset" value="-0.0006,-0.007,0.1"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAP99">
+			<property name="ScopeCameraOffset" value="-0.0006,-0.007,0.12"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAP99S2">
+			<property name="ScopeCameraOffset" value="-0.0006,-0.007,0.12"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAP99S3">
+			<property name="ScopeCameraOffset" value="-0.0006,-0.007,0.12"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAP99S4">
+			<property name="ScopeCameraOffset" value="-0.0006,-0.007,0.12"/>
+		</item_property_overrides>
+		<item_property_overrides name="TABeretta93R">
+			<property name="ScopeCameraOffset" value="-0.0005,-0.015,0.1"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAGlock18c">
+			<property name="ScopeCameraOffset" value="-0.0005,0.01,0.1"/>
+		</item_property_overrides>
+		<item_property_overrides name="TADesertEagle">
+			<property name="ScopeCameraOffset" value="-0.0005,-0.013,0.1"/>
+		</item_property_overrides>
+		<item_property_overrides name="TARagingBull">
+			<property name="ScopeCameraOffset" value="-0.0004,0.0085,0.2"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM4Super90">
+			<property name="ScopeCameraOffset" value="0,-0.0125,0.05"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASaiga12K">
+			<property name="ScopeCameraOffset" value="0,0.012,0.35"/>
+		</item_property_overrides>
+		<effect_group tiered="false">
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-0.05"/>
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="slot2"/>
+		</effect_group>
+		<property name="PickupJournalEntry" value="augmentGunsTip"/>
+	</item_modifier>
+		
+	<item_modifier name="Aimpoint_MicroT1" installable_tags="rifscp1" modifier_tags="scope,rifscp1" type="attachment">
+		<property name="Stacknumber" value="1"/>
+		<property name="UnlockedBy" value="Aimpoint_MicroT1Schematic"/>
+		<property name="HoldType" value="1"/>
+		<property name="HandMeshfile" value="#@modfolder:Resources/alt.unity3d?APMicroT1Prefab"/>
+		<property name="EconomicValue" value="600"/>
+		<property name="Group" value="ModsTA"/>
+		<item_property_overrides name="*">
+			<property name="Zoom_overlay" value=""/>
+			<property name="Zoom_max_out" value="50"/>
+			<property name="Zoom_max_in" value="50"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM4Super90">
+			<property name="ScopeCameraOffset" value="0,-0.017,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASaiga12K">
+			<property name="ScopeCameraOffset" value="0,0.008,0.3"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAMP5N">
+			<property name="ScopeCameraOffset" value="0,-0.0195,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAMP5SD">
+			<property name="ScopeCameraOffset" value="0,-0.0195,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAUMP">
+			<property name="ScopeCameraOffset" value="0,-0.0323,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAKRISS_Vector">
+			<property name="ScopeCameraOffset" value="0,-0.025,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM4A1">
+			<property name="ScopeCameraOffset" value="-0.001,0,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAHK416">
+			<property name="ScopeCameraOffset" value="0,-0.0222,.3"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAACR">
+			<property name="ScopeCameraOffset" value="-0.001,-0.0058,-0.024"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAAUG_A3">
+			<property name="ScopeCameraOffset" value="0,-0.017,0.35"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAG36KV">
+			<property name="ScopeCameraOffset" value="-0.0008,-0.0173,-0.01"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASCAR_L">
+			<property name="ScopeCameraOffset" value="0,-0.0105,0.32"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASCAR_LS2">
+			<property name="ScopeCameraOffset" value="0,-0.0105,0.32"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASCAR_LS3">
+			<property name="ScopeCameraOffset" value="0,-0.0105,0.32"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASCAR_LS4">
+			<property name="ScopeCameraOffset" value="0,-0.0105,0.32"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM16A4">
+			<property name="ScopeCameraOffset" value="-0.0008,0,0.01"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASCAR_H">
+			<property name="ScopeCameraOffset" value="0,-0.0385,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASA58OSW">
+			<property name="ScopeCameraOffset" value="0,-0.0123,0.31"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM249">
+			<property name="ScopeCameraOffset" value="0,-0.0265,0.25"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM60E4">
+			<property name="ScopeCameraOffset" value="0,-0.0421,0.26"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAKar98K">
+			<property name="ScopeCameraOffset" value="-0.0005,-0.0105,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM14EBR">
+			<property name="ScopeCameraOffset" value="0,-0.0165,0.22"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAMGL140">
+			<property name="ScopeCameraOffset" value="0,-0.042,0.25"/>
+		</item_property_overrides>
+		<effect_group tiered="false">
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="false" parent_transform="#HeldItemRoot" transform_path="SightG"/>
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="FSightG"/>
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-0.05"/>
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="slot5"/>
+		</effect_group>
+	</item_modifier>
+	
+	<item_modifier name="Aimpoint_CompM3" installable_tags="rifscp1" modifier_tags="scope,rifscp1" type="attachment">
+		<property name="Stacknumber" value="1"/>
+		<property name="UnlockedBy" value="Aimpoint_CompM3Schematic"/>
+		<property name="HoldType" value="1"/>
+		<property name="HandMeshfile" value="#@modfolder:Resources/alt.unity3d?APM3RPrefab"/>
+		<property name="EconomicValue" value="600"/>
+		<property name="Group" value="ModsTA"/>
+
+		<item_property_overrides name="*">
+			<property name="Zoom_max_out" value="50"/>
+			<property name="Zoom_max_in" value="50"/>
+			<property name="ScopeOffset" value="0,0,0.048"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM4Super90">
+			<property name="ScopeCameraOffset" value="0,-0.0365,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASaiga12K">
+			<property name="ScopeCameraOffset" value="0,-0.015,0.3"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAMP5N">
+			<property name="ScopeCameraOffset" value="0,-0.019,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAMP5SD">
+			<property name="ScopeCameraOffset" value="0,-0.019,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAUMP">
+			<property name="ScopeCameraOffset" value="0,-0.032,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAKRISS_Vector">
+			<property name="ScopeCameraOffset" value="0,-0.025,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM4A1">
+			<property name="ScopeCameraOffset" value="-0.0006,-0.001,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAHK416">
+			<property name="ScopeCameraOffset" value="0,-0.0222,.3"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAACR">
+			<property name="ScopeCameraOffset" value="-0.0006,-0.0067,-0.024"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAAUG_A3">
+			<property name="ScopeCameraOffset" value="0,-0.017,0.35"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAG36KV">
+			<property name="ScopeCameraOffset" value="-0.0005,-0.018,-0.01"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASCAR_L">
+			<property name="ScopeCameraOffset" value="0,-0.0105,0.32"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASCAR_LS2">
+			<property name="ScopeCameraOffset" value="0,-0.0105,0.32"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASCAR_LS3">
+			<property name="ScopeCameraOffset" value="0,-0.0105,0.32"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASCAR_LS4">
+			<property name="ScopeCameraOffset" value="0,-0.0105,0.32"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM16A4">
+			<property name="ScopeCameraOffset" value="-0.0008,-0.001,0.01"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASCAR_H">
+			<property name="ScopeCameraOffset" value="0,-0.0385,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASA58OSW">
+			<property name="ScopeCameraOffset" value="0,-0.0123,0.31"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM249">
+			<property name="ScopeCameraOffset" value="0,-0.0265,0.25"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM60E4">
+			<property name="ScopeCameraOffset" value="0,-0.0421,0.26"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAKar98K">
+			<property name="ScopeCameraOffset" value="-0.0005,-0.0325,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM14EBR">
+			<property name="ScopeCameraOffset" value="0,-0.0165,0.22"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAMGL140">
+			<property name="ScopeCameraOffset" value="0,-0.042,0.25"/>
+		</item_property_overrides>
+		
+		<effect_group tiered="false">
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="false" parent_transform="#HeldItemRoot" transform_path="SightG"/>
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="FSightG"/>
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-0.05"/>
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="slot7"/>
+		</effect_group>
+	</item_modifier>
+	
+	<item_modifier name="EOTech_EXPS3" installable_tags="rifscp1" modifier_tags="scope,rifscp1" type="attachment">
+		<property name="Stacknumber" value="1"/>
+		<property name="UnlockedBy" value="EOTech_EXPS3Schematic"/>
+		<property name="HoldType" value="1"/>
+		<property name="HandMeshfile" value="#@modfolder:Resources/alt.unity3d?EOTexps3Prefab"/>
+		<property name="EconomicValue" value="800"/>
+		<property name="Group" value="ModsTA"/>
+		<item_property_overrides name="*">
+			<property name="Zoom_overlay" value=""/>
+			<property name="Zoom_max_out" value="50"/>
+			<property name="Zoom_max_in" value="50"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM4Super90">
+			<property name="ScopeCameraOffset" value="0,-0.0395,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASaiga12K">
+			<property name="ScopeCameraOffset" value="0,-0.015,0.3"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAMP5N">
+			<property name="ScopeCameraOffset" value="0,-0.0196,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAMP5SD">
+			<property name="ScopeCameraOffset" value="0,-0.0196,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAUMP">
+			<property name="ScopeCameraOffset" value="0,-0.0325,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAKRISS_Vector">
+			<property name="ScopeCameraOffset" value="0,-0.0255,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM4A1">
+			<property name="ScopeCameraOffset" value="-0.0008,0,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAHK416">
+			<property name="ScopeCameraOffset" value="0,-0.0225,.3"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAACR">
+			<property name="ScopeCameraOffset" value="-0.0008,-0.0061,-0.024"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAAUG_A3">
+			<property name="ScopeCameraOffset" value="0,-0.0167,0.35"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAG36KV">
+			<property name="ScopeCameraOffset" value="-0.0008,-0.017,-0.01"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASCAR_L">
+			<property name="ScopeCameraOffset" value="0,-0.011,0.32"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASCAR_LS2">
+			<property name="ScopeCameraOffset" value="0,-0.011,0.32"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASCAR_LS3">
+			<property name="ScopeCameraOffset" value="0,-0.011,0.32"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASCAR_LS4">
+			<property name="ScopeCameraOffset" value="0,-0.011,0.32"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM16A4">
+			<property name="ScopeCameraOffset" value="-0.0008,-0.0001,0.01"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASCAR_H">
+			<property name="ScopeCameraOffset" value="0,-0.0385,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASA58OSW">
+			<property name="ScopeCameraOffset" value="0,-0.0123,0.31"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM249">
+			<property name="ScopeCameraOffset" value="0,-0.0267,0.25"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM60E4">
+			<property name="ScopeCameraOffset" value="0,-0.0422,0.26"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAKar98K">
+			<property name="ScopeCameraOffset" value="-0.0005,-0.033,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM14EBR">
+			<property name="ScopeCameraOffset" value="0,-0.0165,0.22"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAMGL140">
+			<property name="ScopeCameraOffset" value="0,-0.0442,0.25"/>
+		</item_property_overrides>
+		<effect_group tiered="false">
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="false" parent_transform="#HeldItemRoot" transform_path="SightG"/>
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="FSightG"/>
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-0.05"/>
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="slot6"/>
+		</effect_group>
+	</item_modifier>
+		
+	<item_modifier name="EOTech_G33" installable_tags="rifscp2" modifier_tags="rifscp2" type="attachment">
+		<property name="Stacknumber" value="1"/>
+		<property name="UnlockedBy" value="EOTech_G33Schematic"/>
+		<property name="HoldType" value="1"/>
+		<property name="Meshfile" value="#@modfolder:Resources/alt.unity3d?G33MagPrefab"/>
+		<property name="EconomicValue" value="800"/>
+		<property name="Material" value="Mmetal"/>
+		<property name="Group" value="ModsTA"/>
+		<item_property_overrides name="*">
+			<property name="Zoom_max_out" value="50"/>
+			<property name="Zoom_max_in" value="50"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM4A1">
+			<property name="ScopeCameraOffset" value="-0.0008,-0.001,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAHK416">
+			<property name="ScopeCameraOffset" value="0,-0.023,.3"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAACR">
+			<property name="ScopeCameraOffset" value="-0.0008,-0.0075,-0.024"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAAUG_A3">
+			<property name="ScopeCameraOffset" value="0,-0.0165,0.35"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAG36KV">
+			<property name="ScopeCameraOffset" value="-0.0008,-0.018,-0.01"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASCAR_L">
+			<property name="ScopeCameraOffset" value="0,-0.009,0.32"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASCAR_LS2">
+			<property name="ScopeCameraOffset" value="0,-0.009,0.32"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASCAR_LS3">
+			<property name="ScopeCameraOffset" value="0,-0.009,0.32"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASCAR_LS4">
+			<property name="ScopeCameraOffset" value="0,-0.009,0.32"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM16A4">
+			<property name="ScopeCameraOffset" value="0,-0.0126,0.01"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASCAR_H">
+			<property name="ScopeCameraOffset" value="0,-0.0385,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASA58OSW">
+			<property name="ScopeCameraOffset" value="0,-0.01025,0.31"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM14EBR">
+			<property name="ScopeCameraOffset" value="0,-0.014,0.22"/>
+		</item_property_overrides>
+		<effect_group tiered="false" >
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="slot21"/>
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="false" parent_transform="#HeldItemRoot" transform_path="SightG"/>
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="FSightG"/>
+		</effect_group>
+		<!--effect_group tiered="false">
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-0.05"/>
+			<passive_effect name="SpreadMultiplierAiming" operation="perc_add" value="-.15">
+				<requirement name="CVarCompare" cvar="_crouching" operation="NE" value="0"/>
+			</passive_effect>
+		</effect_group-->
+	</item_modifier>
+	
+
+	<item_modifier name="ACOG_TA01" installable_tags="rifscp1h" modifier_tags="scope,rifscp1,rifscp2,rifscp3" type="attachment">
+		<property name="Stacknumber" value="1"/>
+		<property name="UnlockedBy" value="ACOG_TA01Schematic"/>
+		<property name="HoldType" value="1"/>
+		<property name="Meshfile" value="#@modfolder:Resources/alt.unity3d?ACOGTA01Prefab"/>
+		<property name="EconomicValue" value="850"/>
+		<property name="Group" value="ModsTA"/>
+		<item_property_overrides name="*">
+			<property name="Zoom_overlay" value=""/>
+			<property name="Zoom_max_out" value="50"/>
+			<property name="Zoom_max_in" value="50"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM4A1">
+			<property name="ScopeCameraOffset" value="-0.0008,-0.018,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM16A4">
+			<property name="ScopeCameraOffset" value="-0.0008,-0.018,0.01"/>
+		</item_property_overrides>
+		<effect_group tiered="false">
+			<passive_effect name="SpreadMultiplierAiming" operation="perc_add" value="-.01"/>
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-0.05"/>
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="slot11"/>
+		</effect_group>
+	</item_modifier>
+		
+
+	<item_modifier name="AN/PVS22" installable_tags="rifscp3" modifier_tags="rifscp3" type="attachment">
+		<property name="Stacknumber" value="1"/>
+		<property name="CustomIcon" value="PVS22"/>
+		<property name="HoldType" value="1"/>
+		<property name="Meshfile" value="#@modfolder:Resources/alt.unity3d?PVS22Prefab"/>
+		<property name="EconomicValue" value="1200"/>
+		<property name="UnlockedBy" value="AN/PVS22Schematic"/>
+		<property name="Group" value="ModsTA"/>
+		<item_property_overrides name="*">
+			<property name="Zoom_max_out" value="55"/>
+			<property name="Zoom_max_in" value="55"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM4Super90">
+			<property name="ScopeCameraOffset" value="0,-0.047,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASaiga12K">
+			<property name="ScopeCameraOffset" value="0,-0.013,0.24"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAMP5N">
+			<property name="ScopeCameraOffset" value="0,-0.0284,0.15"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAMP5SD">
+			<property name="ScopeCameraOffset" value="0,-0.0284,0.15"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAUMP">
+			<property name="ScopeCameraOffset" value="0,-0.0443,0.15"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM4A1">
+			<property name="ScopeCameraOffset" value="-0.0008,-0.001,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAHK416">
+			<property name="ScopeCameraOffset" value="0,-0.023,.3"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAACR">
+			<property name="ScopeCameraOffset" value="-0.0008,-0.0075,-0.024"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAAUG_A3">
+			<property name="ScopeCameraOffset" value="0,-0.0165,0.35"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAG36KV">
+			<property name="ScopeCameraOffset" value="-0.0008,-0.018,-0.01"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASCAR_L">
+			<property name="ScopeCameraOffset" value="0,-0.009,0.32"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASCAR_LS2">
+			<property name="ScopeCameraOffset" value="0,-0.009,0.32"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASCAR_LS3">
+			<property name="ScopeCameraOffset" value="0,-0.009,0.32"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASCAR_LS4">
+			<property name="ScopeCameraOffset" value="0,-0.009,0.32"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM16A4">
+			<property name="ScopeCameraOffset" value="0,-0.0126,0.01"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASCAR_H">
+			<property name="ScopeCameraOffset" value="0,-0.0385,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASA58OSW">
+			<property name="ScopeCameraOffset" value="0,-0.01025,0.31"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM249">
+			<property name="ScopeCameraOffset" value="0,-0.00645,0.25"/>
+		</item_property_overrides>
+		<item_property_overrides name="M60">
+			<property name="ScopeCameraOffset" value="0,-0.0446,0.35"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM14EBR">
+			<property name="ScopeCameraOffset" value="0,-0.014,0.22"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM110">
+			<property name="ScopeCameraOffset" value="0,-0.0224,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM82a1">
+			<property name="ScopeCameraOffset" value="0,-0.0384,-0.02"/>
+		</item_property_overrides>
+		<item_property_overrides name="MGL140">
+			<property name="ScopeCameraOffset" value="0,-0.0442,0.25"/>
+		</item_property_overrides>
+		<effect_group tiered="false">
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-0.1"/>
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="slot20"/>
+			<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="true" parent_transform="Attachments/Sights/slot12" transform_path="NVSP"/>
+			<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="true" parent_transform="Attachments/Sights/slot13" transform_path="NVSP"/>
+			<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="true" parent_transform="Attachments/Sights/slot22" transform_path="NVSP"/>
+			<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="true" parent_transform="Attachments/Sights/slot23" transform_path="NVSP"/>
+			<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="false" parent_transform="Attachments" transform_path="CameraVision"/>
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="false" parent_transform="#HeldItemRoot" transform_path="SightG"/>
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="FSightG"/>
+		</effect_group>
+	</item_modifier>
+	
+	<item_modifier name="ACOG_TA31" installable_tags="rifscp1" modifier_tags="scope,rifscp1,rifscp2" type="attachment">
+		<property name="Stacknumber" value="1"/>
+		<property name="UnlockedBy" value="ACOG_TA31Schematic"/>
+		<property name="HoldType" value="1"/>
+		<property name="Meshfile" value="#@modfolder:Resources/alt.unity3d?ACOGTA31Prefab"/>
+		<property name="EconomicValue" value="880"/>
+		<property name="Group" value="ModsTA"/>
+		<item_property_overrides name="*">
+			<property name="Zoom_overlay" value=""/>
+			<property name="Zoom_max_out" value="50"/>
+			<property name="Zoom_max_in" value="50"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM4Super90">
+			<property name="ScopeCameraOffset" value="0,-0.047,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASaiga12K">
+			<property name="ScopeCameraOffset" value="0,-0.013,0.24"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAMP5N">
+			<property name="ScopeCameraOffset" value="0,-0.0218,-0.1"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAMP5SD">
+			<property name="ScopeCameraOffset" value="0,-0.0218,-0.1"/>
+		</item_property_overrides>
+		
+
+<item_property_overrides name="TAUMPS2">
+			<property name="Zoom_overlay" value="#@modfolder(A21IZYfirearmshotgunPV):Resources/blankXD2.tga" />
+      <property name="ScopeCameraOffset" value="-.00027,-.0156,-.055" />
+      <property name="Zoom_max_out" value="50" />
+      <property name="Zoom_max_in" value="50" />
+      <property name="CrosshairOnAim" value="false" />
+      <property name="CrosshairUpAfterShot" value="false" />
+		</item_property_overrides>
+
+<item_property_overrides name="TAUMPS3">
+		<property name="Zoom_overlay" value="#@modfolder(A21IZYfirearmshotgunPV):Resources/blankXD2.tga" />
+      <property name="ScopeCameraOffset" value="-.00027,-.0156,-.055" />
+      <property name="Zoom_max_out" value="50" />
+      <property name="Zoom_max_in" value="50" />
+      <property name="CrosshairOnAim" value="false" />
+      <property name="CrosshairUpAfterShot" value="false" />
+		</item_property_overrides>
+
+<item_property_overrides name="TAUMPS4">
+			<property name="ScopeCameraOffset" value="0,-0.035,-0.1"/>
+			<property name="zoomTriggerEffectPullDualsense" value="Pistol Trigger" />
+      		<property name="zoomTriggerEffectShootDualsense" value="PistolZoom2" />
+      		<property name="zoomTriggerEffectPullXb" value="PistolZoom" />
+		</item_property_overrides>
+
+
+
+
+
+
+
+
+
+		<item_property_overrides name="TAKRISS_Vector">
+			<property name="ScopeCameraOffset" value="0,-0.028,-0.1"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM4A1">
+			<property name="ScopeCameraOffset" value="-0.0008,0.0032,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAHK416">
+			<property name="ScopeCameraOffset" value="0,-0.0222,.3"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAACR">
+			<property name="ScopeCameraOffset" value="-0.0008,-0.0027,-0.024"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAAUG_A3">
+			<property name="ScopeCameraOffset" value="0,-0.0163,0.35"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAG36KV">
+			<property name="ScopeCameraOffset" value="-0.00075,-0.0138,-0.01"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASCAR_L">
+			<property name="ScopeCameraOffset" value="0,-0.0105,0.32"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM16A4">
+			<property name="ScopeCameraOffset" value="-0.0008,0.0032,0.01"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASCAR_H">
+			<property name="ScopeCameraOffset" value="0,-0.0383,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASA58OSW">
+			<property name="ScopeCameraOffset" value="0,-0.012,0.31"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM249">
+			<property name="ScopeCameraOffset" value="0,-0.0278,0.17"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM60E4">
+			<property name="ScopeCameraOffset" value="0,-0.0433,0.17"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAKar98K">
+			<property name="ScopeCameraOffset" value="-0.0005,-0.0343,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM14EBR">
+			<property name="ScopeCameraOffset" value="0,-0.016,0.22"/>
+		</item_property_overrides>
+		<effect_group tiered="false">
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="false" parent_transform="#HeldItemRoot" transform_path="SightG"/>
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="FSightG"/>
+			<passive_effect name="SpreadMultiplierAiming" operation="perc_add" value="-.01"/>
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-0.05"/>
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="slot12"/>
+		</effect_group>
+	</item_modifier>
+		
+	<item_modifier name="ACOG_ECOS" installable_tags="rifscp2" modifier_tags="scope,rifscp1,rifscp2" type="attachment">
+		<property name="Stacknumber" value="1"/>
+		<property name="UnlockedBy" value="ACOG_ECOSSchematic"/>
+		<property name="HoldType" value="1"/>
+		<property name="Meshfile" value="#@modfolder:Resources/alt.unity3d?ACOGECPrefab"/>
+		<property name="Group" value="ModsTA"/>
+		<item_property_overrides name="*">
+			<property name="Zoom_overlay" value=""/>
+			<property name="Zoom_max_out" value="50"/>
+			<property name="Zoom_max_in" value="50"/>
+		</item_property_overrides>		
+		<item_property_overrides name="TAM4A1">
+			<property name="Meshfile" value="#@modfolder:Resources/alt.unity3d?m4AEPrefab"/>
+			<property name="ScopeCameraOffset" value="-0.0008,0.0032,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAHK416">
+			<property name="Meshfile" value="#@modfolder:Resources/alt.unity3d?hk416AEPrefab"/>
+			<property name="ScopeCameraOffset" value="0,-0.0222,0.3"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAACR">
+			<property name="Meshfile" value="#@modfolder:Resources/alt.unity3d?acrAEPrefab"/>
+			<property name="ScopeCameraOffset" value="-0.0008,-0.0027,-0.024"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAAUG_A3">
+			<property name="Meshfile" value="#@modfolder:Resources/alt.unity3d?AUGA3AEPrefab"/>
+			<property name="ScopeCameraOffset" value="0,-0.0163,0.35"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAG36KV">
+			<property name="Meshfile" value="#@modfolder:Resources/alt.unity3d?G36KVAEPrefab"/>
+			<property name="ScopeCameraOffset" value="-0.00075,-0.0138,-0.01"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASCAR_L">
+			<property name="Meshfile" value="#@modfolder:Resources/alt.unity3d?scarLAEPrefab"/>
+			<property name="ScopeCameraOffset" value="0,-0.0105,0.32"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM16A4">
+			<property name="Meshfile" value="#@modfolder:Resources/alt.unity3d?M16A4AEPrefab"/>
+			<property name="ScopeCameraOffset" value="-0.0008,0.0032,0.01"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASCAR_H">
+			<property name="Meshfile" value="#@modfolder:Resources/alt.unity3d?scarHAEPrefab"/>
+			<property name="ScopeCameraOffset" value="0,-0.0383,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASA58OSW">
+			<property name="Meshfile" value="#@modfolder:Resources/alt.unity3d?SA58AEPrefab"/>
+			<property name="ScopeCameraOffset" value="0,-0.012,0.31"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM14EBR">
+			<property name="Meshfile" value="#@modfolder:Resources/alt.unity3d?M14EBRAEPrefab"/>
+			<property name="ScopeCameraOffset" value="0,-0.016,0.22"/>
+		</item_property_overrides>
+		<effect_group tiered="false">
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-0.05"/>
+		</effect_group>	
+		
+		<effect_group tiered="false">
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="false" parent_transform="#HeldItemRoot" transform_path="SightG"/>
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="FSightG"/>
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-0.05"/>
+			<passive_effect name="SpreadMultiplierAiming" operation="perc_add" value="-.15">
+				<requirement name="CVarCompare" cvar="_crouching" operation="NE" value="0"/>
+			</passive_effect>
+		</effect_group>
+	</item_modifier>
+
+		
+	<item_modifier name="Leupold_CQBSS" installable_tags="rifscp1,snpscp1" blocked_tags="shotgun,smg" modifier_tags="scope,rifscp1,rifscp2,snpscp1" type="attachment">
+		<property name="Stacknumber" value="1"/>
+		<property name="UnlockedBy" value="Leupold_CQBSSSchematic"/>
+		<property name="HoldType" value="1"/>
+		<property name="Meshfile" value="#@modfolder:Resources/alt.unity3d?cqbssPrefab"/>
+		<property name="EconomicValue" value="1000"/>
+		<property name="Group" value="ModsTA"/>
+		<item_property_overrides name="*">
+			<property name="ScopeOffset" value="0,0,0.048"/>
+			<property name="Zoom_overlay" value=""/>
+			<property name="Zoom_max_out" value="50"/>
+			<property name="Zoom_max_in" value="50"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM4A1">
+			<property name="ScopeCameraOffset" value="-0.0008,0.0055,0.05"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAHK416">
+			<property name="ScopeCameraOffset" value="0,-0.022,.35"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAACR">
+			<property name="ScopeCameraOffset" value="-0.0008,-0.0005,0.026"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAAUG_A3">
+			<property name="ScopeCameraOffset" value="0,-0.0163,0.4"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAG36KV">
+			<property name="ScopeCameraOffset" value="-0.0008,-0.0115,0.04"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASCAR_L">
+			<property name="ScopeCameraOffset" value="0,-0.0105,0.37"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM16A4">
+			<property name="ScopeCameraOffset" value="-0.0008,0.0055,0.06"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASCAR_H">
+			<property name="ScopeCameraOffset" value="0,-0.0384,0.05"/>
+		</item_property_overrides>
+		<item_property_overrides name="TASA58OSW">
+			<property name="ScopeCameraOffset" value="0,-0.0118,0.36"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM249">
+			<property name="ScopeCameraOffset" value="0,-0.0287,0.26"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM60E4">
+			<property name="ScopeCameraOffset" value="0,-0.0442,0.27"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAKar98K">
+			<property name="ScopeCameraOffset" value="-0.0005,-0.0353,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM14EBR">
+			<property name="ScopeCameraOffset" value="0,-0.016,0.27"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM110">
+			<property name="ScopeCameraOffset" value="0,-0.0224,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAAWP">
+			<property name="ScopeCameraOffset" value="0,-0.0151,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM82a1">
+			<property name="ScopeCameraOffset" value="0,-0.0384,-0.02"/>
+		</item_property_overrides>
+		<effect_group tiered="false">
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="slot13"/>
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="false" parent_transform="#HeldItemRoot" transform_path="SightG"/>
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="FSightG"/>
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="false" parent_transform="#HeldItemRoot" transform_path="Vscope"/>
+			<passive_effect name="SpreadMultiplierAiming" operation="perc_add" value="-0.01"/>
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-0.1"/>
+		</effect_group>
+	</item_modifier>
+				
+	<item_modifier name="CQBSS_ECOS" installable_tags="snpscp2" modifier_tags="scope,rifscp1,rifscp2,snpscp1,snpscp2" type="attachment">
+		<property name="Stacknumber" value="1"/>
+		<property name="UnlockedBy" value="Leupold_CQBSSSchematic"/>
+		<property name="HoldType" value="1"/>
+		<property name="Meshfile" value="#@modfolder:Resources/alt.unity3d?CQBECPrefab"/>
+		<property name="Group" value="ModsTA"/>
+		<item_property_overrides name="*">
+			<property name="Zoom_overlay" value=""/>
+			<property name="Zoom_max_out" value="50"/>
+			<property name="Zoom_max_in" value="50"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM110">
+			<property name="Meshfile" value="#@modfolder:Resources/alt.unity3d?m110ECPrefab"/>
+			<property name="ScopeCameraOffset" value="0,-0.0224,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAAWP">
+			<property name="Meshfile" value="#@modfolder:Resources/alt.unity3d?awpECPrefab"/>
+			<property name="ScopeCameraOffset" value="0,-0.0151,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM82a1">
+			<property name="Meshfile" value="#@modfolder:Resources/alt.unity3d?m82a1ECPrefab"/>
+			<property name="ScopeCameraOffset" value="0,-0.0384,-0.02"/>
+		</item_property_overrides>
+		<effect_group tiered="false">
+			<passive_effect name="SpreadMultiplierAiming" operation="perc_add" value="-0.02">
+				<requirement name="CVarCompare" cvar="_crouching" operation="NE" value="0"/>
+			</passive_effect>
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-0.1"/>
+			<triggered_effect trigger="onSelfAimingGunStart" action="SetTransformActive" active="true" parent_transform="CQBEC" transform_path="CameraVision"/>
+			<triggered_effect trigger="onSelfAimingGunStop" action="SetTransformActive" active="false" parent_transform="CQBEC" transform_path="CameraVision"/>
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="false" parent_transform="#HeldItemRoot" transform_path="SightG"/>
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="FSightG"/>
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="false" parent_transform="#HeldItemRoot" transform_path="Vscope"/>
+		</effect_group>
+	</item_modifier>
+	
+	
+	<item_modifier name="TAFlashLight(pistol)" installable_tags="pstsid2" modifier_tags="sideAttachments" type="attachment">
+		<property name="Stacknumber" value="1"/>
+		
+		<property name="CustomIcon" value="TAFlashLight" />
+		<property name="Material" value="Msteel"/>
+		<property name="LightValue" value="0.7"/>
+		<property name="EconomicValue" value="50"/>
+		<property name="Group" value="ModsTA"/>
+		<property class="Action1">
+			<property name="Class" value="Eat"/>
+			<property name="Delay" value="1.0"/>
+			<property name="Use_time" value="..."/>
+			<property name="Sound_start" value=""/>
+			<property name="Create_item" value="TAFlashLight(barrel)"/>
+		</property>
+		<effect_group tiered="false">
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-0.1"/>
+			<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="FlashLight"/>
+			<triggered_effect trigger="onSelfItemActivate" action="SetTransformActive" active="true" parent_transform="Attachment" transform_path="lightSource"/>
+			<triggered_effect trigger="onSelfItemDeactivate" action="SetTransformActive" active="false" parent_transform="Attachment" transform_path="lightSource"/>
+		</effect_group>
+	</item_modifier>
+	
+	<item_modifier name="TAFlashLight(barrel)" installable_tags="brl" modifier_tags="flb" type="attachment">
+		<property name="Stacknumber" value="1"/>
+		<property name="UnlockedBy" value="TAFlashLight(barrel)Schematic"/>
+		<property name="CustomIcon" value="TAFlashLight" />
+		<property name="Material" value="Msteel"/>
+		<property name="LightValue" value="0.7"/>
+		<property name="EconomicValue" value="80"/>
+		<property name="Group" value="ModsTA"/>
+		<property class="Action1">
+			<property name="Class" value="Eat"/>
+			<property name="Delay" value="1.0"/>
+			<property name="Use_time" value="..."/>
+			<property name="Sound_start" value=""/>
+			<property name="Create_item" value="TAFlashLight(pistol)"/>
+		</property>
+		<effect_group tiered="false">
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-0.1"/>
+			<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="FlashLight"/>
+			<triggered_effect trigger="onSelfItemActivate" action="SetTransformActive" active="true" parent_transform="Attachments" transform_path="lightSource"/>
+			<triggered_effect trigger="onSelfItemDeactivate" action="SetTransformActive" active="false" parent_transform="Attachments" transform_path="lightSource"/>
+		</effect_group>
+	</item_modifier>
+		
+	<item_modifier name="ANPEQ15" installable_tags="rifsid1" modifier_tags="rifsid1,topr" type="attachment">
+		<property name="Stacknumber" value="1"/>
+		<property name="UnlockedBy" value="ANPEQ15Schematic"/>
+		<property name="LightValue" value="0.7"/>
+		<property name="EconomicValue" value="570"/>
+		<property name="Group" value="ModsTA"/>
+		<effect_group tiered="false">
+			<passive_effect name="SpreadMultiplierHip" operation="perc_add" value="-.25"/>
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-0.1"/>
+			<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="side01"/>
+			<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="gun_laser"/>
+			<triggered_effect trigger="onSelfAimingGunStart" action="SetTransformChildrenActive" active="false" parent_transform="Attachments" transform_path="gun_laser"/>
+			<triggered_effect trigger="onSelfAimingGunStop" action="SetTransformChildrenActive" active="true" parent_transform="Attachments" transform_path="gun_laser"/>
+			<triggered_effect trigger="onSelfItemActivate" action="SetTransformActive" active="true" parent_transform="Attachments" transform_path="lightSource"/>
+			<triggered_effect trigger="onSelfItemDeactivate" action="SetTransformActive" active="false" parent_transform="Attachments" transform_path="lightSource"/>
+		</effect_group>
+	</item_modifier>
+
+	<item_modifier name="ANPEQ2" installable_tags="rifsid1" modifier_tags="rifsid1" type="attachment">
+		<property name="Stacknumber" value="1"/>
+		<property name="UnlockedBy" value="ANPEQ2Schematic"/>
+		<property name="LightValue" value="0.7"/>
+		<property name="EconomicValue" value="550"/>
+		<property name="Group" value="ModsTA"/>
+		<effect_group tiered="false">
+			<passive_effect name="SpreadMultiplierHip" operation="perc_add" value="-.25"/>
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-0.1"/>
+			<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="side02"/>
+			<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="gun_laser"/>
+			<triggered_effect trigger="onSelfAimingGunStart" action="SetTransformChildrenActive" active="false" parent_transform="Attachments" transform_path="gun_laser"/>
+			<triggered_effect trigger="onSelfAimingGunStop" action="SetTransformChildrenActive" active="true" parent_transform="Attachments" transform_path="gun_laser"/>
+			<triggered_effect trigger="onSelfItemActivate" action="SetTransformActive" active="true" parent_transform="Attachments" transform_path="lightSource"/>
+			<triggered_effect trigger="onSelfItemDeactivate" action="SetTransformActive" active="false" parent_transform="Attachments" transform_path="lightSource"/>
+		</effect_group>
+	</item_modifier>
+	
+		
+	<item_modifier name="LAM" installable_tags="pstsid1" blocked_tags="shotgun" modifier_tags="sideAttachments" type="attachment">
+		<property name="Stacknumber" value="1"/>
+		<property name="UnlockedBy" value="LAMSchematic"/>
+		<property name="Material" value="Msteel"/>
+		<property name="LightValue" value="0.7"/>
+		<property name="EconomicValue" value="150"/>
+		<property name="Group" value="ModsTA"/>
+		<effect_group tiered="false">
+			<passive_effect name="SpreadMultiplierHip" operation="perc_add" value="-.25"/>
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-0.1"/>
+			<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="gun_laser"/>
+			<triggered_effect trigger="onSelfItemActivate" action="SetTransformActive" active="true" parent_transform="Attachment" transform_path="lightSource"/>
+			<triggered_effect trigger="onSelfItemDeactivate" action="SetTransformActive" active="false" parent_transform="Attachment" transform_path="lightSource"/>
+			<triggered_effect trigger="onSelfAimingGunStart" action="SetTransformActive" active="false" parent_transform="Attachment" transform_path="Laserlight"/>
+			<triggered_effect trigger="onSelfAimingGunStop" action="SetTransformActive" active="true" parent_transform="Attachment" transform_path="Laserlight"/>
+		</effect_group>
+	</item_modifier>
+
+	<item_modifier name="TALaserSight(pistol)" installable_tags="pstsid2" modifier_tags="sideAttachments" type="attachment">
+		<property name="Stacknumber" value="1"/>
+		<property name="UnlockedBy" value="TALaserSight(pistol)Schematic"/>
+		<property name="CustomIcon" value="TALaserSight" />
+		<property name="Material" value="Msteel"/>
+		<property name="EconomicValue" value="120"/>
+		<property name="Group" value="ModsTA"/>
+		<property class="Action1">
+			<property name="Class" value="Eat"/>
+			<property name="Delay" value="1.0"/>
+			<property name="Use_time" value="..."/>
+			<property name="Sound_start" value=""/>
+			<property name="Create_item" value="TALaserSight(barrel)"/>
+		</property>
+		<effect_group tiered="false">
+			<passive_effect name="SpreadMultiplierHip" operation="perc_add" value="-.25"/>
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-0.1"/>
+			<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="gun_laserS"/>
+			<triggered_effect trigger="onSelfAimingGunStart" action="SetTransformActive" active="false" parent_transform="Attachment" transform_path="LaserlightS"/>
+			<triggered_effect trigger="onSelfAimingGunStop" action="SetTransformActive" active="true" parent_transform="Attachment" transform_path="LaserlightS"/>
+		</effect_group>
+	</item_modifier>
+
+	<item_modifier name="TALaserSight(barrel)" installable_tags="brl" modifier_tags="lsb" type="attachment">
+		<property name="Stacknumber" value="1"/>
+		<property name="UnlockedBy" value="TALaserSight(barrel)Schematic"/>
+		<property name="CustomIcon" value="TALaserSight" />
+		<property name="Material" value="Msteel"/>
+		<property name="EconomicValue" value="130"/>
+		<property name="Group" value="ModsTA"/>
+		<property class="Action1">
+			<property name="Class" value="Eat"/>
+			<property name="Delay" value="1.0"/>
+			<property name="Use_time" value="..."/>
+			<property name="Sound_start" value=""/>
+			<property name="Create_item" value="TALaserSight(pistol)"/>
+		</property>
+		<effect_group tiered="false">
+			<passive_effect name="SpreadMultiplierHip" operation="perc_add" value="-.25"/>
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-0.1"/>
+			<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="gun_laserS"/>
+			<triggered_effect trigger="onSelfAimingGunStart" action="SetTransformActive" active="false" parent_transform="Attachments" transform_path="LaserlightS"/>
+			<triggered_effect trigger="onSelfAimingGunStop" action="SetTransformActive" active="true" parent_transform="Attachments" transform_path="LaserlightS"/>
+		</effect_group>
+	</item_modifier>
+
+
+	<item_modifier name="pistolSuppressor" installable_tags="pstmzl0" modifier_tags="barrelAttachment,pstmzl0" type="attachment">
+		<property name="Stacknumber" value="1"/>
+		
+		<property name="EconomicValue" value="800"/>
+		<property name="CustomIcon" value="pistolSilencer"/>
+		<property name="Group" value="ModsTA"/>
+		<item_property_overrides name="*">
+			<property name="Sound_start" value="pistolsup_fire"/>
+			<property name="Sound_end" value=""/>
+		</item_property_overrides>
+		<item_property_overrides name="TAMK23">
+			<property name="Sound_start" value="mk23_s_fire"/>
+			<property name="Sound_end" value=""/>
+		</item_property_overrides>
+		<item_property_overrides name="TAColt1911">
+			<property name="Sound_start" value="pistolsil_fire"/>
+			<property name="Sound_end" value=""/>
+		</item_property_overrides>
+		<item_property_overrides name="TAGlock18c">
+			<property name="Sound_start" value="pistolsup_fire"/>
+			<property name="Sound_loop" value="pistolsup_fire"/>
+			<property name="Sound_end" value=""/>
+		</item_property_overrides>
+		<item_property_overrides name="TABeretta93R">
+			<property name="Sound_start" value="pistolsup_fire"/>
+			<property name="Sound_loop" value="pistolsup_fire"/>
+			<property name="Sound_end" value=""/>
+		</item_property_overrides>
+		<item_property_overrides name="TAMP5N">
+			<property name="Sound_start" value="smgsup_fire"/>
+			<property name="Sound_end" value=""/>
+		</item_property_overrides>
+		<item_property_overrides name="TAUMP">
+			<property name="Sound_start" value="smgsil_fire"/>
+			<property name="Sound_loop" value="smgsil_fire"/>
+			<property name="Sound_end" value=""/>
+		</item_property_overrides>
+		<item_property_overrides name="TAKRISS_Vector">
+			<property name="Sound_start" value="smgsil_fire"/>
+			<property name="Sound_loop" value="smgsil_fire"/>
+			<property name="Sound_end" value=""/>
+		</item_property_overrides>
+		<effect_group tiered="false">
+			<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="muzl01"/>
+			<triggered_effect trigger="onSelfEquipStart" action="SetTransformChildrenActive" active="false" parent_transform="#HeldItemRoot" transform_path="MuzzleFlash"/>
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-0.1"/>
+			<passive_effect name="DegradationPerUse" operation="perc_add" value="0.3"/>
+		</effect_group>
+	</item_modifier>
+		
+	<item_modifier name="rifleSuppressor" installable_tags="rifmzl0" modifier_tags="barrelAttachment,rifmzl0" type="attachment">
+		<property name="Stacknumber" value="1"/>
+		<property name="UnlockedBy" value="rifleSuppressorSchematic"/>
+		<property name="CustomIcon" value="rifleSilencer"/>
+		<property name="EconomicValue" value="950"/>
+		<property name="Group" value="ModsTA"/>
+		<item_property_overrides name="*">
+			<property name="Sound_start" value="556sup_fire"/>
+			<property name="Sound_loop" value="556sup_fire"/>
+			<property name="Sound_end" value=""/>
+			<property name="Particles_muzzle_fire" value="nozzleflashuzi"/>
+		</item_property_overrides>
+		<item_property_overrides name="TAM110">
+			<property name="Sound_start" value="762Nsup_fire"/>
+			<property name="Sound_loop" value="762Nsup_fire"/>
+			<property name="Sound_end" value=""/>
+		</item_property_overrides>
+		<item_property_overrides name="TASCAR_H">
+			<property name="Sound_start" value="762Nsup_fire"/>
+			<property name="Sound_loop" value="762Nsup_fire"/>
+			<property name="Sound_end" value=""/>
+		</item_property_overrides>
+		<item_property_overrides name="TASA58OSW">
+			<property name="Sound_start" value="762Nsup_fire"/>
+			<property name="Sound_loop" value="762Nsup_fire"/>
+			<property name="Sound_end" value=""/>
+		</item_property_overrides>
+
+		<effect_group tiered="false">
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="muzl01"/>
+			<triggered_effect trigger="onSelfEquipStart" action="SetTransformChildrenActive" active="false" parent_transform="#HeldItemRoot" transform_path="MuzzleFlash"/>
+			<passive_effect name="DamageFalloffRange" operation="perc_add" value="-.1"/>
+			<passive_effect name="MaxRange" operation="perc_add" value="-.1"/>
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-0.2"/>
+			<passive_effect name="DegradationPerUse" operation="perc_add" value="0.3"/>
+		</effect_group>
+		<property name="PickupJournalEntry" value="augmentGunsTip"/>
+	</item_modifier>
+
+	
+	<item_modifier name="modTApad" installable_tags="rifsid2" modifier_tags="rifsid2" type="attachment">
+		<property name="Stacknumber" value="1"/>
+		
+		<property name="HandMeshfile" value="#@modfolder:Resources/alt.unity3d?NVpadPrefab"/>
+		<property name="EconomicValue" value="300"/>
+		<property name="HoldType" value="1"/>
+		<property name="Group" value="ModsTA"/>
+		<effect_group tiered="false">
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-0.3"/>
+			<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="pad"/>
+			<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="false" parent_transform="#HeldItemRoot" transform_path="Heatsheld1"/>
+			<triggered_effect trigger="onSelfItemActivate" action="SetTransformActive" active="true" parent_transform="Attachments" transform_path="NVpadscreen2"/>
+			<triggered_effect trigger="onSelfItemActivate" action="SetTransformActive" active="false" parent_transform="Attachments" transform_path="NVpadscreen1"/>
+			<triggered_effect trigger="onSelfItemDeactivate" action="SetTransformActive" active="false" parent_transform="Attachments" transform_path="NVpadscreen2"/>
+			<triggered_effect trigger="onSelfItemDeactivate" action="SetTransformActive" active="true" parent_transform="Attachments" transform_path="NVpadscreen1"/>
+		</effect_group>
+	</item_modifier>
+	
+	<item_modifier name="ZeroingPart" installable_tags="gun" modifier_tags="None" blocked_tags="shotgun"  type="attachment">
+		<property name="Stacknumber" value="1"/>
+		<property name="Group" value="ModsTA"/>
+		<item_property_overrides name="*">
+			<property name="CrosshairOnAim" value="true"/>
+		</item_property_overrides>
+		<property name="Group" value="ModsTA"/>
+	</item_modifier>
+</append>
+
+
+
+
+</configs>
