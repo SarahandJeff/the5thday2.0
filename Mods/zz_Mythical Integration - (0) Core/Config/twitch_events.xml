@@ -1,0 +1,161 @@
+<MythicalIntegration>
+	<append xpath="/twitch_events">
+
+	<!-- Bit Events
+			
+		event_title - The title that shows in chat when the event fires.
+		event_name - The game event that is activated.
+		sp_add_amount - The amount of special points added when this is activated. (Bits already add SP by default based on number of bits.)
+		pp_add_amount - The amount of pimp points added when this is activated. (Bits already add SP by default based on number of bits.)
+		start_amount - The minimum amount to start the event.
+		end_amount - The maximum amount to start the event.
+		safe_allowed - If it's allowed to be used in safe zone, if not it queues.
+		cooldown_allowed - If it's allowed to be used during cooldown, if not it queues.
+		vote_allowed - If it's allowed to be used during vote event, if not it queues.
+		pimp_pot_add - Adds the amount to the pimp pot.
+
+	-->
+
+	<bit_event event_title="Party Girl 69 Bits" event_name="myth_bit_partygirl" start_amount="69" end_amount="69" 
+		safe_allowed="false" cooldown_allowed="false" vote_allowed="false" pimp_pot_add="5" />
+	<bit_event event_title="Demo Bits 1" event_name="spawn_demo" start_amount="200" end_amount="420" 
+		safe_allowed="false" cooldown_allowed="false" vote_allowed="false" pimp_pot_add="10" />
+	<!--<bit_event event_title="Wake and Bake Bits" event_name="myth_horde_wake_and_bake" start_amount="420" end_amount="420" 
+		safe_allowed="false" cooldown_allowed="false" vote_allowed="false" pimp_pot_add="10" />-->
+	<bit_event event_title="Demo Bits 2" event_name="spawn_demo" start_amount="421" end_amount="999" 
+		safe_allowed="false" cooldown_allowed="false" vote_allowed="false" pimp_pot_add="10" />
+	<bit_event event_title="Grace Bits" event_name="spawn_grace" start_amount="1000" 
+		safe_allowed="false" cooldown_allowed="false" vote_allowed="false" pimp_pot_add="20" />
+
+	<!-- Sub Events
+		
+		event_title - The title that shows in chat when the event fires.
+		event_name - The game event that is activated.
+		sp_add_amount - The amount of special points added when this is activated. (Subs already add SP by default based on number of subs.)
+		pp_add_amount - The amount of pimp points added when this is activated. (Subs already add SP by default based on number of subs.)
+		start_amount - The minimum amount of months you've been subbed to start the event.
+		end_amount - The maximum amount of months you've been subbed to start the event.
+		safe_allowed - If it's allowed to be used in safe zone, if not it queues.
+		cooldown_allowed - If it's allowed to be used during cooldown, if not it queues.
+		vote_allowed - If it's allowed to be used during vote event, if not it queues.
+		pimp_pot_add - Adds the amount to the pimp pot.
+		
+	-->
+
+	<sub_event event_title="Wolf Sub" event_name="spawn_wolf" start_amount="0" 
+			safe_allowed="false" cooldown_allowed="false" vote_allowed="false" pimp_pot_add="3" />
+
+	<!-- Gift Sub Events
+		
+		event_title - The title that shows in chat when the event fires.
+		event_name - The game event that is activated.
+		sp_add_amount - The amount of special points added when this is activated. (Gift Subs already add SP by default based on number of subs.)
+		pp_add_amount - The amount of pimp points added when this is activated. (Gift Subs already add SP by default based on number of subs.)
+		start_amount - The minimum amount of subs gifted to start the event.
+		end_amount - The maximum amount of subs gifted to start the event.
+		safe_allowed - If it's allowed to be used in safe zone, if not it queues.
+		cooldown_allowed - If it's allowed to be used during cooldown, if not it queues.
+		vote_allowed - If it's allowed to be used during vote event, if not it queues.
+		pimp_pot_add - Adds the amount to the pimp pot.
+		
+	-->
+
+	<gift_sub_event event_title="Bear Gift Sub" event_name="spawn_bear" start_amount="1" end_amount="3"
+		safe_allowed="false" cooldown_allowed="false" vote_allowed="false" />
+	<gift_sub_event event_title="2 Bear Gift Sub" event_name="myth_spawn_bear2" start_amount="4" end_amount="6"
+		safe_allowed="false" cooldown_allowed="false" vote_allowed="false" />
+	<gift_sub_event event_title="3 Bear Gift Sub" event_name="myth_spawn_bear3" start_amount="7" end_amount="19" 
+		safe_allowed="false" cooldown_allowed="false" vote_allowed="false" />
+	<gift_sub_event event_title="Yogi Gift Sub" event_name="myth_spawn_bossYogiBear" start_amount="10"  end_amount="19"
+		safe_allowed="false" cooldown_allowed="false" vote_allowed="false" />
+	<gift_sub_event event_title="JRodicusz Bear Master Gift Sub" event_name="myth_bossBigBearJrodicusz" start_amount="20" 
+		safe_allowed="false" cooldown_allowed="false" vote_allowed="false" />
+
+	<!-- Channel Point Events
+		
+		channel_point_title - The title of the channel point redemption.
+		event_title - The title that shows in chat when the event fires.
+		event_name - The game event that is activated.
+		sp_add_amount - The amount of special points added when this is activated.
+		pp_add_amount - The amount of pimp points added when this is activated.
+		safe_allowed - If it's allowed to be used in safe zone, if not it queues.
+		cooldown_allowed - If it's allowed to be used during cooldown, if not it queues.
+		vote_allowed - If it's allowed to be used during vote event, if not it queues.
+		pimp_pot_add - Adds the amount to the pimp pot.
+		
+	-->
+	
+
+	
+		<channel_point_event channel_point_title="7DTD: Murder Chicken" channel_point_title_key="TwitchEventChannelPointChickenTitle" 
+			event_title="Spawn Murder Chicken" event_title_key="TwitchEventChannelPointChicken" event_name="spawn_chicken" 
+			safe_allowed="false" vote_allowed="false" cooldown_add="60" global_cooldown="60" pimp_pot_add="10" cost="500" presets="casual,standard"/>
+	
+		<channel_point_event channel_point_title="7DTD: Bunnys From Hell" channel_point_title_key="TwitchEventChannelPointBunnyTitle" 
+			event_title="Spawn Bunnys from hell" event_title_key="TwitchEventChannelPointBunny" event_name="spawn_bunny" 
+			safe_allowed="false" vote_allowed="false" cooldown_allowed="false" cooldown_add="120" global_cooldown="120" pimp_pot_add="10" cost="500" presets="casual,standard"/>
+	
+		<!--<channel_point_event channel_point_title="7DTD: Mystery Supplies" channel_point_title_key="TwitchEventChannelPointMysteryTitle" 
+			event_title="Mystery Supplies" event_title_key="TwitchEventChannelPointMystery" event_name="mystery_channelpoint" 
+			safe_allowed="true" vote_allowed="true" cost="500" global_cooldown="900" presets="casual,standard" />-->
+		<channel_point_event channel_point_title="Vulture" event_title="Channel Point Vulture" event_name="spawn_vulture" 
+			safe_allowed="false" cooldown_allowed="false" vote_allowed="false" pimp_pot_add="3" cooldown_add="60" presets="casual,standard" cost="500"/>
+		
+		<channel_point_event channel_point_title="9mm Ammo" event_title="9mm Ammo Supply" event_name="myth_supply_ammo9mmBulletBall"  
+			safe_allowed="true" cooldown_allowed="true" vote_allowed="true" cooldown_add="60" cost="100" presets="casual,standard"/>
+		<channel_point_event channel_point_title="5.56mm Ammo" event_title="5.56mm Ammo Supply" event_name="myth_supply_ammo556mmBulletBall"  
+			safe_allowed="true" cooldown_allowed="true" vote_allowed="true" cooldown_add="60" cost="100" presets="casual,standard"/>
+		<channel_point_event channel_point_title="7.62mm Ammo" event_title="7.62mm Ammo Supply" event_name="myth_supply_ammo762mmBulletBall"  
+			safe_allowed="true" cooldown_allowed="true" vote_allowed="true" cooldown_add="60" cost="100" presets="casual,standard"/>
+		<channel_point_event channel_point_title="45 acp Ammo" event_title="45 acp Ammo Supply" event_name="myth_supply_ammo45BulletBall"  
+			safe_allowed="true" cooldown_allowed="true" vote_allowed="true" cooldown_add="60" cost="100" presets="casual,standard"/>
+		<channel_point_event channel_point_title="Shotgun Shell Ammo" event_title="Shotgun Shell Ammo Supply" event_name="myth_supply_ammoShotgunShell"  
+			safe_allowed="true" cooldown_allowed="true" vote_allowed="true" cooldown_add="60" cost="100" presets="casual,standard"/>
+		<channel_point_event channel_point_title="7 Days To Die: Get Out of The Safe Zone" event_title="Get Out of the Safe Zone" event_name="myth_channelNoSafe_11min" 
+			safe_allowed="true" cooldown_allowed="true" vote_allowed="true" pimp_pot_add="3" max_per_user_per_stream="1" cost="15000" presets="casual,standard"/> <!-- Flexx -->
+		<channel_point_event channel_point_title="7 Days To Die: No Guns Allowed!" event_title="Channel Points No Ranged" event_name="myth_buffNoRanged_20min" 
+			safe_allowed="true" cooldown_allowed="true" vote_allowed="true" pimp_pot_add="3" max_per_user_per_stream="1" cost="25000" presets="casual,standard"/> <!-- Flexx -->
+		
+	<!-- give pp away-->
+		<channel_point_event channel_point_title="Redeem SP: 1000" event_title="Channel Point SP" sp_add_amount="1000"   
+			safe_allowed="true" starting_cooldown_allowed="true" vote_allowed="true"  cost="750" max_per_user_per_stream="1"/>
+
+		<channel_point_event channel_point_title="Give Me The PP!" event_title="Channel Point 1000 PP" pp_add_amount="1000" 
+			safe_allowed="true" cooldown_allowed="true" vote_allowed="true" max_per_user_per_stream="1" cost="750" presets="casual,standard"/> <!-- Mobster -->
+		<channel_point_event channel_point_title="Make It A Large PP!!" event_title="Channel Point 3000 PP" pp_add_amount="2500" 
+			safe_allowed="true" cooldown_allowed="true" vote_allowed="true" max_per_user_per_stream="1" cost="4500" presets="casual,standard"/> 
+		<channel_point_event channel_point_title="Super Size That PP!!!" event_title="Channel Point 7500 PP" pp_add_amount="7500" 
+			safe_allowed="true" cooldown_allowed="true" vote_allowed="true" max_per_user_per_stream="1" cost="7000" presets="casual,standard"/> <!-- Mobster -->
+		
+		<!-- Raid Events
+			
+			event_title - The title that shows in chat when the event fires.
+			event_name - The game event that is activated.
+			start_amount - The minimum amount of viewers to start the event.
+			end_amount - The maximum amount of viewers to start the event.
+			sp_add_amount - The amount of special points added when this is activated.
+			pp_add_amount - The amount of pimp points added when this is activated.
+			safe_allowed - If it's allowed to be used in safe zone, if not it queues.
+			cooldown_allowed - If it's allowed to be used during cooldown, if not it queues.
+			vote_allowed - If it's allowed to be used during vote event, if not it queues.
+			pimp_pot_add - Adds the amount to the pimp pot.
+
+		-->
+
+		<raid_event event_title="Tiny Cop Raid" event_name="myth_cop_raid_1" start_amount="1" end_amount="4"
+		safe_allowed="true" cooldown_allowed="true" vote_allowed="false" pimp_pot_add="1000" sp_add_amount="1000" />
+		<raid_event event_title="Small Cop Raid" event_name="myth_cop_raid_2" start_amount="5" end_amount="9"
+		safe_allowed="true" cooldown_allowed="true" vote_allowed="false" pimp_pot_add="1000" sp_add_amount="1000" />
+		<raid_event event_title="Tiny Cop Raid" event_name="myth_cop_raid_3" start_amount="10" end_amount="14"
+		safe_allowed="true" cooldown_allowed="true" vote_allowed="false" pimp_pot_add="1000" sp_add_amount="1000" />
+		<raid_event event_title="Small Cop Raid" event_name="myth_cop_raid_4" start_amount="15" end_amount="19"
+		safe_allowed="true" cooldown_allowed="true" vote_allowed="false" pimp_pot_add="1000" sp_add_amount="1000" />
+		<raid_event event_title="Small Cop Raid" event_name="myth_cop_raid_4" start_amount="20" end_amount="24"
+		safe_allowed="true" cooldown_allowed="true" vote_allowed="false" pimp_pot_add="1000" sp_add_amount="1000" />
+		<raid_event event_title="Super Karen Raid" event_name="myth_boss_superKarenRaid" start_amount="25" 
+		safe_allowed="true" cooldown_allowed="true" vote_allowed="false" pimp_pot_add="1000" sp_add_amount="1000" />
+	
+	</append>
+	
+
+</MythicalIntegration>

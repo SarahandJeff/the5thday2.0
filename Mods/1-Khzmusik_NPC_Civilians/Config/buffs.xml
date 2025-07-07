@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configs>
+    <append xpath="/buffs">
+        <!-- Tells Civilian NPCs to crouch. -->
+        <buff name="buffCivilianCrouch" hidden="true" remove_on_death="true">
+            <stack_type value="ignore" />
+            <effect_group>
+                <triggered_effect trigger="onSelfBuffStart" action="AnimatorSetBool" property="IsCrouching" value="true" />
+                <triggered_effect trigger="onSelfBuffRemove" action="AnimatorSetBool" property="IsCrouching" value="false" />
+            </effect_group>
+        </buff>
+
+        <!-- Continuously checks whether a Civilian is on fire, and if so triggers animations and sounds. -->
+        <buff name="buffCivilianIsOnFireCheck" hidden="true">
+            <stack_type value="ignore" />
+            <update_rate value="0.5" />
+
+            <effect_group name="IsOnFire Adult Sounds">
+                <triggered_effect trigger="onSelfBuffUpdate" action="PlaySound" sound="civilian$OnFire" />
+                <requirement name="HasBuff" buff="buffIsOnFire" />
+                <requirement name="NotHasBuff" buff="buffCivilianSubadult" />
+            </effect_group>
+
+            <effect_group name="IsOnFire Subadult Sounds">
+                <triggered_effect trigger="onSelfBuffUpdate" action="PlaySound" sound="civilianYoung$OnFire" />
+                <requirement name="HasBuff" buff="buffIsOnFire" />
+                <requirement name="HasBuff" buff="buffCivilianSubadult" />
+            </effect_group>
+
+            <effect_group name="Add IsOnFire Animation Buff">
+                <triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffCivilianIsOnFireAnimations" />
+                <requirement name="HasBuff" buff="buffIsOnFire" />
+                <requirement name="NotHasBuff" buff="buffCivilianIsOnFireAnimations" />
+            </effect_group>
+
+            <effect_group name="Remove IsOnFire Animation Buff">
+                <triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffCivilianIsOnFireAnimations" />
+                <requirement name="NotHasBuff" buff="buffIsOnFire" />
+                <requirement name="HasBuff" buff="buffCivilianIsOnFireAnimations" />
+            </effect_group>
+
+            <effect_group name="Remove IsOnFire Animation Buff On Death">
+                <triggered_effect trigger="onSelfDied" action="RemoveBuff" buff="buffCivilianIsOnFireAnimations" />
+                <requirement name="HasBuff" buff="buffCivilianIsOnFireAnimations" />
+            </effect_group>
+        </buff>
+
+        <!-- Triggers animations when a Civilian is on fire. -->
+        <buff name="buffCivilianIsOnFireAnimations" hidden="true">
+            <stack_type value="ignore" />
+            <update_rate value="0.5" />
+
+            <effect_group name="Start IsOnFire Animation">
+                <triggered_effect trigger="onSelfBuffStart" action="AnimatorSetBool" property="IsOnFire" value="true" />
+                <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".CaughtFire" operation="set" value="1" />
+                <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".OnFireMotion" operation="set" value="randomint(1,4)" />
+            </effect_group>
+
+            <effect_group name="Random IsOnFire Animation">
+                <triggered_effect trigger="onSelfBuffUpdate" action="AnimatorSetFloat" property="OnFireBlend" value="0">
+                    <requirement name="CVarCompare" cvar=".OnFireMotion" operation="Equals" value="1" />
+                </triggered_effect>
+                <triggered_effect trigger="onSelfBuffUpdate" action="AnimatorSetFloat" property="OnFireBlend" value="0.25">
+                    <requirement name="CVarCompare" cvar=".OnFireMotion" operation="Equals" value="2" />
+                </triggered_effect>
+                <triggered_effect trigger="onSelfBuffUpdate" action="AnimatorSetFloat" property="OnFireBlend" value="0.5">
+                    <requirement name="CVarCompare" cvar=".OnFireMotion" operation="Equals" value="3" />
+                </triggered_effect>
+                <triggered_effect trigger="onSelfBuffUpdate" action="AnimatorSetFloat" property="OnFireBlend" value="0.75">
+                    <requirement name="CVarCompare" cvar=".OnFireMotion" operation="Equals" value="4" />
+                </triggered_effect>
+                <requirement name="CVarCompare" cvar=".OnFireMotion" operation="GT" value="0" />
+            </effect_group>
+            
+            <effect_group name="Remove IsOnFire Animation On Buff Removed">
+                <triggered_effect trigger="onSelfBuffRemove" action="AnimatorSetBool" property="IsOnFire" value="false" />
+                <triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".CaughtFire" operation="set" value="0" />
+                <triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".OnFireMotion" operation="set" value="0" />
+            </effect_group>
+
+            <effect_group name="Remove IsOnFire Animation On Death">
+                <triggered_effect trigger="onSelfDied" action="AnimatorSetBool" property="IsOnFire" value="false" />
+                <triggered_effect trigger="onSelfDied" action="ModifyCVar" cvar=".CaughtFire" operation="set" value="0" />
+                <triggered_effect trigger="onSelfDied" action="ModifyCVar" cvar=".OnFireMotion" operation="set" value="0" />
+            </effect_group>
+        </buff>
+
+        <!--
+            This buff indicates that the civilian NPC is a subadult.
+            It also adds a cvar called "subadult" to these NPCs.
+        -->
+        <buff name="buffCivilianSubadult" hidden="true" remove_on_death="true">
+            <stack_type value="ignore" />
+            <effect_group>
+                <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="subadult" operation="set" value="1" />
+            </effect_group>
+        </buff>
+    </append>
+
+    <!--
+        Recent versions of SCore introduced a "forgiveness" buff.
+        If a player hits an NPC, that NPC can decide whether to forgive the player immediately,
+        forgive the player after hitting them once, or not forigive the player at all.
+        This is done according to the player's relationship to the NPC's faction.
+
+        See the SCore buffs.xml file for details.
+
+        This is not enabled by default, because by default, neutral or higher NPCs can't be
+        damaged by players. NPCs that "dislike" or "hate" probably won't forgive the player at all,
+        so enabling this mechanic is not necessary.
+
+        But if you want to allow neutral characters to be damaged by players, you may want to also
+        enable the "forgiveness" mechanic. If so, just uncomment the XML below.
+
+        This will add the SCore "buffNPCForgiveness" buff to the NPC Core "buffNPCStatusCheck" buff,
+        which is automatically added to the base NPC template, and always runs in the background.
+
+        This affects all NPC Core human NPCs. If you want only certain NPCs to do this, then you
+        could also append "buffNPCForgiveness" to the "Buffs" property in each NPC's entity class.
+        This would have to be done in the entityclasses.xml file.
+        Also, despite the "Buffs" value in the vanilla "playerMale" entity class, buffs in the
+        "Buffs" property should be delimited by *semicolons* (";"), not commas.
+    -->
+    <!--     
+    <append xpath="//buff[@name='buffNPCStatusCheck']">
+        <effect_group name="NPCForgiveness">
+            <triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffNPCForgiveness" />
+            <triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffNPCForgiveness">
+                <requirement name="!HasBuff" buff="buffNPCForgiveness" />
+            </triggered_effect>
+        </effect_group>
+    </append>
+    -->
+</configs>

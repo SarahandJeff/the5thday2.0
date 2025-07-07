@@ -1,0 +1,141 @@
+<snj>
+	<remove xpath="/items/item[@name='modArmorStoragePocketSchematic']/effect_group"/>
+	<remove xpath="/items/item[@name='modArmorDoubleStoragePocketSchematic']/effect_group"/>
+	<remove xpath="/items/item[@name='modArmorTripleStoragePocketSchematic']/effect_group"/>
+	<set xpath="/items/item[@name='drugSteroids']/effect_group/display_value[@name='dCarryCapacity']/@value">70</set>
+
+
+<append xpath="/items">
+
+<!--
+<item name="MilitaryCivilianBackpack">
+			
+			<property name="Class" value="ItemClassArmor"/>
+			<property name="DescriptionKey" value="MilitaryCivilianBackpackDesc"/>
+	
+			<property name="DisplayType" value="modCarryWeight"/>
+			<property name="Group" value="Clothing,Tailor"/>
+			<property name="Tags" value="SophiticatedStorage"/>
+			<property name="UnlockedBy" value="perkArmor"/>
+			<property name="HoldType" value="45"/>
+			<property name="Meshfile" value="#@modfolder:Assets/HOH_Military_Backpacks.unity3d?MilitaryBackpackCivilian"/>
+			<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+			<property name="Material" value="Mcloth"/>
+			<property name="Weight" value="24"/>
+			<property name="Stacknumber" value="1"/>
+			<property name="FuelValue" value="6"/>
+			<property name="EconomicValue" value="1250"/>
+			<property name="SellableToTrader" value="true"/>
+			<property name="EquipSlot" value="WeatherKit"/>
+			<effect_group tiered="false">
+					<triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="MilitaryCivilianBackpackCheck"/>
+					<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="MilitaryCivilianBackpackCheck"/>
+					<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="MCB" operation="set" value="255"/>
+					<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="MCB" operation="set" value="0"/>
+			</effect_group>
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="MaxEncumbrancecvar" operation="set" value="500"/>
+				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="MaxEncumbrancecvar" operation="set" value="10"/>
+				<display_value name="dMobility" value="-0.01"/>
+			</effect_group>
+		 </item>
+
+<item name="MilitarysmallBackpack">
+			
+			<property name="Class" value="ItemClassArmor"/>
+			<property name="DescriptionKey" value="MilitarysmallBackpackDesc"/>
+	
+			<property name="DisplayType" value="modCarryWeight"/>
+			<property name="Group" value="Clothing,Tailor"/>
+			<property name="Tags" value="SophiticatedStorage"/>
+			<property name="UnlockedBy" value="perkArmor"/>
+			<property name="HoldType" value="45"/>
+			<property name="Meshfile" value="#@modfolder:Assets/HOH_Military_Backpacks.unity3d?MilitaryBackpackSmall"/>
+			<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+			<property name="Material" value="Mcloth"/>
+			<property name="Weight" value="24"/>
+			<property name="Stacknumber" value="1"/>
+			<property name="FuelValue" value="6"/>
+			<property name="EconomicValue" value="1250"/>
+			<property name="SellableToTrader" value="true"/>
+			<property name="EquipSlot" value="WeatherKit"/>
+			<effect_group tiered="false">
+				
+					<triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="MilitarysmallBackpackCheck"/>
+					<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="MilitarysmallBackpackCheck"/>
+					<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="MSB" operation="set" value="255"/>
+					<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="MSB" operation="set" value="0"/>
+			</effect_group>
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="MaxEncumbrancecvar" operation="set" value="1000"/>
+				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="MaxEncumbrancecvar" operation="set" value="10"/>
+				<display_value name="dMobility" value="-0.01"/>
+			</effect_group>
+		</item>
+
+<item name="MilitarymediumBackpack">
+			<property name="Class" value="ItemClassArmor"/>
+			<property name="DescriptionKey" value="MilitarymediumBackpackDesc"/>
+	
+			<property name="DisplayType" value="modCarryWeight"/>
+			<property name="Group" value="Clothing,Tailor"/>
+			<property name="Tags" value="SophiticatedStorage"/>
+			<property name="UnlockedBy" value="perkArmor"/>
+			<property name="HoldType" value="45"/>
+			<property name="Meshfile" value="#@modfolder:Assets/HOH_Military_Backpacks.unity3d?MilitaryBackpackSmall"/>
+			<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+			<property name="Material" value="Mcloth"/>
+			<property name="Weight" value="24"/>
+			<property name="Stacknumber" value="1"/>
+			<property name="FuelValue" value="6"/>
+			<property name="EconomicValue" value="1250"/>
+			<property name="SellableToTrader" value="true"/>
+			<property name="EquipSlot" value="WeatherKit"/>
+			<effect_group tiered="false">
+				
+					<triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="MilitaryMediumBackpackCheck"/>
+					<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="MilitaryMediumBackpackCheck"/>
+					<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="MMB" operation="set" value="255"/>
+					<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="MMB" operation="set" value="0"/>
+					
+			</effect_group>
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="MaxEncumbrancecvar" operation="set" value="2000"/>
+				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="MaxEncumbrancecvar" operation="set" value="10"/>
+				<display_value name="dMobility" value="-0.03"/>
+			</effect_group>
+		</item>
+<item name="MilitaryLargeBackpack">
+			<property name="Class" value="ItemClassArmor"/>
+			<property name="CustomIcon" value="MilitaryLargeBackpack"/>
+			<property name="DescriptionKey" value="MilitaryLargeBackpackDesc"/>
+	
+			<property name="DisplayType" value="clothing"/>
+			<property name="Group" value="Clothing,Tailor"/>
+			<property name="Tags" value="SophiticatedStorage,noMods"/>
+			<property name="UnlockedBy" value="perkArmor"/>
+			<property name="HoldType" value="45"/>
+			<property name="Meshfile" value="#@modfolder:Assets/HOH_Military_Backpacks.unity3d?MilitaryBackpackLarge"/>
+			<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+			<property name="Material" value="Mcloth"/>
+			<property name="Weight" value="24"/>
+			<property name="Stacknumber" value="1"/>
+			<property name="FuelValue" value="6"/>
+			<property name="EconomicValue" value="2250"/>
+			<property name="SellableToTrader" value="true"/>
+			<property name="EquipSlot" value="WeatherKit"/>
+			<effect_group tiered="false">
+				
+					<triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="MilitaryLargeBackpackCheck"/>
+					<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="MilitaryLargeBackpackCheck"/>
+					<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="MLB" operation="set" value="255"/>
+					<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="MLB" operation="set" value="0"/>
+			</effect_group>
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="MaxEncumbrancecvar" operation="set" value="3000"/>
+				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="MaxEncumbrancecvar" operation="set" value="10"/>
+				<display_value name="dMobility" value="-0.03"/>
+			</effect_group>
+		</item>-->
+		</append>
+</snj>

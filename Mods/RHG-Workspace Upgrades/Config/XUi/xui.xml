@@ -1,0 +1,39 @@
+<Workspace-Upgrades>
+
+<remove xpath="/xui//window_group[@name='workstation_cementMixer']"/>
+<remove xpath="/xui//window_group[@name='workstation_workbench']"/>
+<remove xpath="/xui//window_group[@name='workstation_chemistryStation']"/>
+
+<append xpath="/xui/ruleset[@name='default']">
+
+    <window_group name="workstation_cementMixer" controller="XUiC_WorkstationWindowGroup" open_backpack_on_open="true" close_compass_on_open="true">
+		<window name="windowCraftingList"/>
+		<window name="craftingInfoPanel"/>
+		<window name="windowCraftingQueue"/>
+		<window name="windowToolsMixer" />
+    	<window name="windowOutput" />
+		<window name="windowNonPagingHeader" />
+	</window_group>				
+		
+	<window_group name="workstation_workbench" controller="XUiC_WorkstationWindowGroup" open_backpack_on_open="true" close_compass_on_open="true">
+		<window name="windowCraftingList"/>
+		<window name="craftingInfoPanel"/>
+		<window name="windowCraftingQueue"/>
+        <window name="windowToolsBench"/>			
+		<window name="windowOutput" />
+		<window name="windowNonPagingHeader" />
+	</window_group>	
+	
+    <window_group name="workstation_chemistryStation" controller="XUiC_WorkstationWindowGroup" open_backpack_on_open="true" close_compass_on_open="true">
+		<window name="windowCraftingList"/>
+		<window name="craftingInfoPanel"/>
+		<window name="windowCraftingQueue"/>
+		<window name="windowToolsStation"/>
+		<window name="windowFuel" />
+		<window name="windowOutput" />
+		<window name="windowNonPagingHeader" />
+	</window_group>
+	
+</append>
+
+</Workspace-Upgrades>

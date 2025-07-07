@@ -1,0 +1,117 @@
+<config>
+	<!-- 
+	
+	- ``{tooltip}`` Displays the name of the item and the text that are in (true)	[example] tooltip_key="{tooltip}"
+
+	/* tooltip_area_name="true" tooltip_have_name="true" tooltip_unlearned_name="true" tooltip_isquest_name="true" tooltip_istracked_name="true"  hover_backpack_name="false" name_in_the_area="false" tooltip_ischallenge_name="true" */
+		
+		name_in_the_area="true" Show area name when you are present in the correct area., (in false prevents it from being displayed)
+
+		tooltip_area_name="true" (it will show the work area where each article is manufactured) /example (Crafted in: workbench)/
+
+		hover_backpack_name="false" (in false prevents the text (crafted in: backpack))
+
+		tooltip_ischallenge_name="true" (Show if a recipe is a challenge) /* example (Challenge needed to meet) */ (in false prevents the text to be displayed) 
+
+		tooltip_have_name="true" (Show if you already have resources to make item)  /* example (you have resources) */ (in false prevents the text to be displayed) 
+
+		tooltip_unlearned_name="true" (show if the recipe is still without learning) /* example (unlearned) */ (in false prevents the text to be displayed)
+
+		tooltip_isquest_name="true" (show if the recipe is from a mission) /* example (Objective needed to meet) */ (in false prevents the text to be displayed)
+
+		tooltip_istracked_name="true" (show if you are tracking this recipe) /* example (Tracking this recipe) */ (in false prevents the text to be displayed)
+	[More attributes]
+
+	quality_enough_color="54,255,0,90" enough_color="54,255,0,90" not_enough_color="255,28,17,70"
+
+	quality_enough_color 	(Background color), when you have resources for a quality item.
+	enough_color 			color green
+	not_enough_color 		color red
+
+	[bindings]
+
+	- ``{enoughcolor}´´		[type color] customizable with attributes: ```enough_color```  and ```quality_enough_color```
+	- ``{notenoughcolor}´´	[type color] customizable with attribute. ```not_enough_color```
+
+	- visible="{enough}" (it will show the (sprite) when you have sufficient resources and when item is unlocked) (I put a green color, you can customize)
+	- visible="{notenough}" (this is the reverse) (I put a red color, you can customize)
+
+	- ´´{itemtypemodicon}´´ [type sprite (sprite)] (Displays the icon to the mods, since the game did not have it in the recipe list)
+
+	- ``{itemIconAtlas}´´	[type atlas (sprite)]	The icon is gray of a recipe without learning. /* If you want to use only replace the atlas="ItemIconAtlas" of the Icon, [example] atlas="{itemIconAtlas}" */
+	
+	[These are optional, but you can use it without problem.]
+	- ``{durabilitycolor}´´	[type color] is quality color.
+	- ``{durabilityvalue}´´	[type text (label)] is quality number.
+	- ``{hasdurability}´´	[type visible (visible)] If the article has quality and is unlocked will be visible.
+
+	 -->
+
+	<!-- YOU CAN ENABLE IT AND DELETE THE PATCH BELOW IF YOU WISH -->
+	<!-- DEFAULT STYLE -->
+	
+	<set xpath="//recipe_entry">
+		<rect height="43" style="press, hover, scroll" controller="RecipeEntry" disabled_font_color="[disabledLabelColor]" enabled_font_color="[labelColor]" sound="[recipe_click]" sound_play_on_hover="[default_hover]" tooltip="{tooltip}" tooltip_area_name="true" tooltip_have_name="true" tooltip_unlearned_name="true" tooltip_isquest_name="true" tooltip_istracked_name="true"  hover_backpack_name="false" name_in_the_area="false" tooltip_ischallenge_name="true" quality_enough_color="54,255,0,90" enough_color="54,255,0,90" not_enough_color="255,28,17,70" tooltip_quality_item="false">
+			<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="396" height="49" color="[black]" type="sliced" fillcenter="false" />
+			<sprite depth="3" name="background" width="100%" height="45" pos="0,1" color="[darkGrey]" type="sliced" />
+			<sprite depth="8" name="itemmodicon" width="12" height="12" sprite="{itemtypemodicon}" pos="2,-2" foregroundlayer="true" />
+			<sprite depth="4" name="backgroundEnough" color="{enoughcolor}" type="sliced" pos="0,1" width="100%" height="45" visible="{enough}" />
+			<sprite depth="4" name="backgroundNotEnough" color="{notenoughcolor}" type="sliced" pos="0,1" width="100%" height="45" visible="{notenough}" />
+			<sprite depth="8" name="Icon" atlas="ItemIconAtlas" sprite="{recipeicon}" color="{recipeicontint}" size="40,40" pos="34,-22" pivot="center" foregroundlayer="true"/>
+			<sprite depth="12" name="itemtypeicon" width="12" height="12" sprite="ui_game_symbol_{itemtypeicon}" pos="2,-2" foregroundlayer="true" visible="{hasitemtypeicon}" color="{itemtypeicontint}" />
+			<label depth="8" name="Name" pos="200,-19" width="270" height="30" text="{recipename}" font_size="28" color="{hasingredientsstatecolor}" justify="center" pivot="center" effect="Outline" effect_color="20,20,20,255" effect_distance="1,1"/>
+			<sprite depth="9" name="Favorite" sprite="server_favorite" size="14,14" pos="6,-4" visible="{isfavorite}" foregroundlayer="true"/>
+			<sprite depth="8" name="Unlocked" sprite="{unlockicon}" size="24,24" pos="352,-10" visible="{isunlockable}" color="{unlockstatecolor}" foregroundlayer="true" />
+		</rect>
+	</set>
+
+	
+
+	<!-- ######################################################################################################################## -->
+
+	<!-- With Controller, just to customize the background sprite.-->
+	<!-- [EXAMPLE]
+
+		{
+
+		[If you want to use the controller, to change and modify the (sprite) that can not be modified]
+	
+		Replace the (sprite name="background") for this	```	<sprite depth="1" name="background" size="0,0" pos="0,0" color="0,0,0,0" type="sliced" visible="false"/>	```
+	
+		Add a (sprite) as a background, the one you like. [example] ```	<sprite depth="1" name="backgroundSprite" width="75" height="75" pos="1,-1" color="[darkGrey]" type="sliced" />	```
+	
+		Add a (sprite) with this name ```hoverSpriteOne``` and pitch color in 0 [example]```	<sprite depth="3" name="hoverSpriteOne" width="75" height="75" pos="0,1" type="sliced" color="0,0,0,0" />	```
+	
+		customizable with attributes: ```hover_sprite_color="[lightGrey]"```  and ```selected_sprite_color="140,131,100"```
+
+		The attributes (original_selected_sprite) and (original_nonselected_sprite) are just to change original sprite.
+
+		} 
+	-->
+
+	<!-- PERSONALIZED STYLE IN SQUARES -->
+
+	<!-- <set xpath="//recipe_entry">
+		<rect width="77" height="77" style="press, hover, scroll" controller="Ramos_ReadyToCrafting.YE_RecipeEntry, Ramos_ReadyToCrafting" disabled_font_color="[disabledLabelColor]" enabled_font_color="[labelColor]" sound="[recipe_click]" sound_play_on_hover="[default_hover]" tooltip="{tooltip}" tooltip_area_name="true" tooltip_have_name="true" tooltip_unlearned_name="true" tooltip_isquest_name="true" tooltip_ischallenge_name="true" tooltip_istracked_name="true" hover_backpack_name="false" name_in_the_area="false" selected_sprite_color="[selectedColor]" hover_sprite_color="[hoverColor]" original_selected_sprite="" original_nonselected_sprite="" quality_enough_color="54,255,0,90" enough_color="54,255,0,90" not_enough_color="255,28,17,70" visible="{hasrecipe}" >
+
+			<sprite depth="1" name="backgroundMain" sprite="menu_empty3px" pos="0,0" width="77" height="77" color="[black]" type="sliced" fillcenter="false" />
+			<sprite depth="2" name="background" size="0,0" pos="1,-1" color="0,0,0,0" type="sliced" visible="false"/>
+			<sprite depth="2" name="backgroundSprite" width="75" height="75" pos="1,-1" color="[darkGrey]" type="sliced" />
+			<sprite depth="3" name="hoverSpriteOne" width="75" height="75" pos="1,-1" color="0,0,0,0" type="sliced" sprite="menu_empty3px" fillcenter="false"  />
+			<sprite depth="8" name="itemmodicon" width="16" height="16" sprite="{itemtypemodicon}" pos="4,-4" foregroundlayer="true" />
+			<sprite depth="4" name="backgroundEnough" color="{enoughcolor}" type="sliced" pos="1,-1" width="74" height="74" visible="{enough}" />
+			<sprite depth="4" name="backgroundNotEnough" color="{notenoughcolor}" type="sliced" pos="1,-1" width="74" height="74" visible="{notenough}" />
+			<sprite depth="8" name="Icon" atlas="{itemIconAtlas}" sprite="{recipeicon}" color="{recipeicontint}" width="65" height="65" pos="38,-37" pivot="center" foregroundlayer="true"/>
+			<sprite depth="12" name="itemtypeicon" width="16" height="16" sprite="ui_game_symbol_{itemtypeicon}" pos="4,-4" foregroundlayer="true" visible="{hasitemtypeicon}" color="{itemtypeicontint}" />
+			<sprite depth="9" name="Favorite" sprite="server_favorite" width="16" height="16" pos="4,-4" visible="{isfavorite}" foregroundlayer="true"/>
+			<sprite depth="8" name="Unlocked" sprite="{unlockicon}" size="20,20" pos="52,-52" visible="{isunlockable}" color="{unlockstatecolor}" foregroundlayer="true" />
+			<sprite depth="3" name="durabilityBackground" height="10" width="70" sprite="menu_empty3px" color="[darkGrey]" type="sliced" pos="3, -62" foregroundlayer="true" visible="{hasdurability}" />
+			<sprite depth="6" name="durabilityBar" height="10" width="70" color="{durabilitycolor}" pos="3,-62" visible="{hasdurability}"/>
+			<label  depth="9" name="durabilityValue" height="28"  width="70" text="{durabilityvalue}" font_size="28" justify="center" pos="3,-45" visible="{hasdurability}" />
+		</rect>
+	</set> -->
+
+
+
+	<!-- IF YOU WANT TO CUSTOMIZE MORE, YOU CAN USE MY MOD 0-DCore (XMR_Core.dll), AND THIS INCLUDES ALL THE OPTIONS OF ALL MY MODS. -->
+</config>

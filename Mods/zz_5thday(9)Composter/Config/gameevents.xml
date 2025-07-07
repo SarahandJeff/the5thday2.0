@@ -1,0 +1,49 @@
+<snj>
+	<append xpath="/gameevents">
+		<action_sequence name="get_turd1">
+			<action class="BeltTooltip">
+				<property name="text_key" value="TurdAfterMeal" />
+				<property name="phase" value="1" />
+			</action>
+			<action class="Delay">
+				<property name="phase" value="1" />
+				<property name="time" value="30-60" />
+			</action>
+			<action class="PlaySound">
+				<property name="sound" value="UseActions/open_toilet" />
+				<property name="phase" value="2" />
+			</action>
+			<action class="BeltTooltip">
+				<property name="text_key" value="RefreshAfterTurd" />
+				<property name="phase" value="2" />
+			</action>
+			<action class="AddItems">
+				<property name="added_items" value="resourceTurd" />
+				<property name="added_item_counts" value="10" />
+				<property name="phase" value="3" />
+			</action>
+		</action_sequence>
+		
+		<action_sequence name="spawn_turd1">
+			<action class="SpawnContainer">
+				<property name="entity_names" value="TwitchAction_SupplyTurd1" />
+				<property name="spawn_count" value="1" param1="spawncount" />
+				<property name="min_distance" value="4" />
+				<property name="max_distance" value="8" />
+				<property name="safe_spawn" value="true" />
+			</action>
+			
+			<action class="PlaySound">
+				<property name="sound" value="twitch_good_spawn" />
+				<property name="phase" value="1" />
+			</action>
+			
+			<action class="PlaySound">
+				<property name="sound" value="UseActions/open_toilet" />
+				<property name="phase" value="1" />
+			</action>
+			
+		</action_sequence>
+	</append>
+	
+</snj>

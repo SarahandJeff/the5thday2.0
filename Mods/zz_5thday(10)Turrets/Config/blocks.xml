@@ -1,0 +1,441 @@
+<Turrets_5D>
+
+
+
+<append xpath="/blocks">
+
+	<block name="Wall_Turret_556_Right">
+		<property name="CustomIcon" value="Wall_Turret_556"/>
+		<property name="CreativeMode" value="Player"/>
+		<property name="Class" value="Ranged"/>
+		<property name="AmmoItem" value="ammo556"/>
+		<property name="TurnSpeed" value="22.2"/>
+		<property name="MaxDistance" value="30"/>
+		<property name="EntityDamage" value="65"/> 
+		<property name="BlockDamage" value="1"/>
+		<property name="RaySpread" value="2.6"/>  <!-- Spread 2.6deg: 1m cone (55% hit) @ 22m  AKA Accuracy -->
+		<property name="BurstRoundCount" value="30"/> <!-- magazine size before need to reload -->
+		<property name="BurstFireRate" value="0.15"/>  <!-- Firerate , lower number , shoots fatser -->
+		<property name="CooldownTime" value="2"/> <!-- Reload time -->
+		<property name="OvershootTime" value="0.4"/>
+		<property name="FallAsleepTime" value="10"/>
+		<property name="WakeUpTime" value=".5"/>
+		<property name="YawRange" value="90"/>
+		<property name="PitchRange" value="90"/>
+		<property name="ParticlesMuzzleFire" value="gunfire_shotgun"/>
+		<property name="ParticlesMuzzleSmoke" value="nozzlesmokeuzi"/>
+		<property name="DamageBonus.head" value="3"/>
+		<property name="DamageBonus.glass" value="1"/>
+		<property name="DamageBonus.wood" value="2"/>
+		<property name="DamageBonus.earth" value="0.1"/>
+		<property name="DamageBonus.stone" value="0.1"/>
+		<property name="DamageBonus.metal" value="0.1"/>
+		<property name="TargetingSound" value="turret_retarget_lp"/>
+		<property name="IdleSound" value="turret_idle_lp"/>
+		<property name="OverheatSound" value="turret_overheat_lp"/>
+		<property name="WakeUpSound" value="turret_windup"/>
+		<property name="IgnoreKeystoneOverlay" value="true"/>
+		<property name="FireSound" value="Pistol_Fire"/>
+		<property name="RequiredPower" value="10"/>
+		
+		<property name="DisplayType" value="blockElectricalHardened"/>
+		<property name="Stacknumber" value="10"/>
+		<property name="Material" value="Mmetal_medium"/>
+		<property name="Shape" value="ModelEntity"/>
+		<property name="Model" value="#@modfolder:Assets/Wall_Turrets.unity3d?Wall_Turret_556_Right"/>
+		<property name="ModelOffset" value="0,0,0"/>
+		<property name="MultiBlockDim" value="1,1,1"/>
+		<property name="ImposterExchange" value="imposterBlock" param1="109"/>
+		<property name="WaterFlow" value="permitted"/>
+		<property name="OnlySimpleRotations" value="true"/><!-- the targeting math will NOT work if it's not upright -->
+		<property name="Path" value="solid"/>
+		<property name="EconomicValue" value="4000"/>
+		<property name="EconomicBundleSize" value="1"/>
+		<property name="TraderStageTemplate" value="electricTier3"/>
+	
+	<property class="RepairItems">
+		<property name="resourceForgedSteel" value="20"/>
+		<property name="resourceMechanicalParts" value="8"/>
+		<property name="resourceElectricParts" value="8"/>
+	</property>
+	
+		<drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+		<drop event="Harvest" name="resourceMechanicalParts" count="1,4" tag="salvageHarvest"/>
+		<drop event="Harvest" name="resourceElectricParts" count="1,4" tag="salvageHarvest"/>
+		<drop event="Harvest" name="AssetscrapIron" count="10,40" tag="allHarvest"/>
+		<drop event="Destroy" count="0"/>
+		<property name="SortOrder1" value="B155"/>
+		<property name="SortOrder2" value="0022"/>
+		<property name="Group" value="Science,TCScience"/>
+		<property name="Tags" value="trapsSkill"/>
+		<property name="FilterTags" value="MC_playerBlocks,SC_electrical,SC_traps"/>
+
+	</block>
+	
+	<block name="Wall_Turret_556_Left">
+		<property name="CustomIcon" value="Wall_Turret_556"/>
+		<property name="CreativeMode" value="Player"/>
+		<property name="Class" value="Ranged"/>
+		<property name="AmmoItem" value="ammo556"/>
+		<property name="TurnSpeed" value="22.2"/>
+		<property name="MaxDistance" value="30"/>
+		<property name="EntityDamage" value="65"/> 
+		<property name="BlockDamage" value="0"/>
+		<property name="RaySpread" value="2.6"/>  <!-- Spread 2.6deg: 1m cone (55% hit) @ 22m  AKA Accuracy -->
+		<property name="BurstRoundCount" value="30"/> <!-- magazine size before need to reload -->
+		<property name="BurstFireRate" value="0.15"/>  <!-- Firerate , lower number , shoots fatser -->
+		<property name="CooldownTime" value="2"/> <!-- Reload time -->
+		<property name="OvershootTime" value="0.4"/>
+		<property name="FallAsleepTime" value="10"/>
+		<property name="WakeUpTime" value=".5"/>
+		<property name="YawRange" value="90"/>
+		<property name="PitchRange" value="90"/>
+		<property name="ParticlesMuzzleFire" value="gunfire_shotgun"/>
+		<property name="ParticlesMuzzleSmoke" value="nozzlesmokeuzi"/>
+		<property name="DamageBonus.head" value="3"/>
+		<property name="DamageBonus.glass" value="1"/>
+		<property name="DamageBonus.wood" value="2"/>
+		<property name="DamageBonus.earth" value="0.1"/>
+		<property name="DamageBonus.stone" value="0.1"/>
+		<property name="DamageBonus.metal" value="0.1"/>
+		<property name="TargetingSound" value="turret_retarget_lp"/>
+		<property name="IdleSound" value="turret_idle_lp"/>
+		<property name="OverheatSound" value="turret_overheat_lp"/>
+		<property name="WakeUpSound" value="turret_windup"/>
+		<property name="IgnoreKeystoneOverlay" value="true"/>
+		<property name="FireSound" value="Pistol_Fire"/>
+		<property name="RequiredPower" value="10"/>
+		
+		<property name="DisplayType" value="blockElectricalHardened"/>
+		<property name="Stacknumber" value="10"/>
+		<property name="Material" value="Mmetal_medium"/>
+		<property name="Shape" value="ModelEntity"/>
+		<property name="Model" value="#@modfolder:Assets/Wall_Turrets.unity3d?Wall_Turret_556_Left"/>
+		<property name="ModelOffset" value="0,0,0"/>
+		<property name="MultiBlockDim" value="1,1,1"/>
+		<property name="ImposterExchange" value="imposterBlock" param1="109"/>
+		<property name="WaterFlow" value="permitted"/>
+		<property name="OnlySimpleRotations" value="true"/><!-- the targeting math will NOT work if it's not upright -->
+		<property name="Path" value="solid"/>
+		<property name="EconomicValue" value="4000"/>
+		<property name="EconomicBundleSize" value="1"/>
+		<property name="TraderStageTemplate" value="electricTier3"/>
+	
+	<property class="RepairItems">
+		<property name="resourceForgedSteel" value="20"/>
+		<property name="resourceMechanicalParts" value="8"/>
+		<property name="resourceElectricParts" value="8"/>
+	</property>
+	
+		<drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+		<drop event="Harvest" name="resourceMechanicalParts" count="1,4" tag="salvageHarvest"/>
+		<drop event="Harvest" name="resourceElectricParts" count="1,4" tag="salvageHarvest"/>
+		<drop event="Harvest" name="AssetscrapIron" count="10,40" tag="allHarvest"/>
+		<drop event="Destroy" count="0"/>
+		<property name="SortOrder1" value="B155"/>
+		<property name="SortOrder2" value="0022"/>
+		<property name="Group" value="Science,TCScience"/>
+		<property name="Tags" value="trapsSkill"/>
+		<property name="FilterTags" value="MC_playerBlocks,SC_electrical,SC_traps"/>
+
+	</block>
+	
+	<block name="Wall_Turret_556_Ceiling">
+		<property name="CustomIcon" value="Wall_Turret_556"/>
+		<property name="CreativeMode" value="Player"/>
+		<property name="Class" value="Ranged"/>
+		<property name="AmmoItem" value="ammo556"/>
+		<property name="TurnSpeed" value="22.2"/>
+		<property name="MaxDistance" value="30"/>
+		<property name="EntityDamage" value="65"/> 
+		<property name="BlockDamage" value="1"/>
+		<property name="RaySpread" value="2.6"/>  <!-- Spread 2.6deg: 1m cone (55% hit) @ 22m  AKA Accuracy -->
+		<property name="BurstRoundCount" value="30"/> <!-- magazine size before need to reload -->
+		<property name="BurstFireRate" value="0.15"/>  <!-- Firerate , lower number , shoots fatser -->
+		<property name="CooldownTime" value="2"/> <!-- Reload time -->
+		<property name="OvershootTime" value="0.4"/>
+		<property name="FallAsleepTime" value="10"/>
+		<property name="WakeUpTime" value=".5"/>
+		<property name="YawRange" value="90"/>
+		<property name="PitchRange" value="90"/>
+		<property name="ParticlesMuzzleFire" value="gunfire_shotgun"/>
+		<property name="ParticlesMuzzleSmoke" value="nozzlesmokeuzi"/>
+		<property name="DamageBonus.head" value="3"/>
+		<property name="DamageBonus.glass" value="1"/>
+		<property name="DamageBonus.wood" value="2"/>
+		<property name="DamageBonus.earth" value="0.1"/>
+		<property name="DamageBonus.stone" value="0.1"/>
+		<property name="DamageBonus.metal" value="0.1"/>
+		<property name="TargetingSound" value="turret_retarget_lp"/>
+		<property name="IdleSound" value="turret_idle_lp"/>
+		<property name="OverheatSound" value="turret_overheat_lp"/>
+		<property name="WakeUpSound" value="turret_windup"/>
+		<property name="IgnoreKeystoneOverlay" value="true"/>
+		<property name="FireSound" value="Pistol_Fire"/>
+		<property name="RequiredPower" value="10"/>
+		
+		<property name="DisplayType" value="blockElectricalHardened"/>
+		<property name="Stacknumber" value="10"/>
+		<property name="Material" value="Mmetal_medium"/>
+		<property name="Shape" value="ModelEntity"/>
+		<property name="Model" value="#@modfolder:Assets/Wall_Turrets.unity3d?Wall_Turret_556_Ceiling"/>
+		<property name="ModelOffset" value="0,0,0"/>
+		<property name="MultiBlockDim" value="1,1,1"/>
+		<property name="ImposterExchange" value="imposterBlock" param1="109"/>
+		<property name="WaterFlow" value="permitted"/>
+		<property name="OnlySimpleRotations" value="true"/><!-- the targeting math will NOT work if it's not upright -->
+		<property name="Path" value="solid"/>
+		<property name="EconomicValue" value="4000"/>
+		<property name="EconomicBundleSize" value="1"/>
+		<property name="TraderStageTemplate" value="electricTier3"/>
+	
+	<property class="RepairItems">
+		<property name="resourceForgedSteel" value="20"/>
+		<property name="resourceMechanicalParts" value="8"/>
+		<property name="resourceElectricParts" value="8"/>
+	</property>
+	
+		<drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+		<drop event="Harvest" name="resourceMechanicalParts" count="1,4" tag="salvageHarvest"/>
+		<drop event="Harvest" name="resourceElectricParts" count="1,4" tag="salvageHarvest"/>
+		<drop event="Harvest" name="AssetscrapIron" count="10,40" tag="allHarvest"/>
+		<drop event="Destroy" count="0"/>
+		<property name="SortOrder1" value="B155"/>
+		<property name="SortOrder2" value="0022"/>
+		<property name="Group" value="Science,TCScience"/>
+		<property name="Tags" value="trapsSkill"/>
+		<property name="FilterTags" value="MC_playerBlocks,SC_electrical,SC_traps"/>
+
+	</block>
+
+	<block name="Wall_Turret_45_Right">
+		<property name="CustomIcon" value="Wall_Turret_556"/>
+		<property name="CreativeMode" value="Player"/>
+		<property name="Class" value="Ranged"/>
+		<property name="AmmoItem" value="ammo45ACP"/>
+		<property name="TurnSpeed" value="22.2"/>
+		<property name="MaxDistance" value="30"/>
+		<property name="EntityDamage" value="38"/> 
+		<property name="BlockDamage" value="0"/>
+		<property name="RaySpread" value="2.6"/>  <!-- Spread 2.6deg: 1m cone (55% hit) @ 22m  AKA Accuracy -->
+		<property name="BurstRoundCount" value="30"/> <!-- magazine size before need to reload -->
+		<property name="BurstFireRate" value="0.15"/>  <!-- Firerate , lower number , shoots fatser -->
+		<property name="CooldownTime" value="2"/> <!-- Reload time -->
+		<property name="OvershootTime" value="0.4"/>
+		<property name="FallAsleepTime" value="10"/>
+		<property name="WakeUpTime" value=".5"/>
+		<property name="YawRange" value="90"/>
+		<property name="PitchRange" value="90"/>
+		<property name="ParticlesMuzzleFire" value="gunfire_shotgun"/>
+		<property name="ParticlesMuzzleSmoke" value="nozzlesmokeuzi"/>
+		<property name="DamageBonus.head" value="3"/>
+		<property name="DamageBonus.glass" value="1"/>
+		<property name="DamageBonus.wood" value="2"/>
+		<property name="DamageBonus.earth" value="0.1"/>
+		<property name="DamageBonus.stone" value="0.1"/>
+		<property name="DamageBonus.metal" value="0.1"/>
+		<property name="TargetingSound" value="turret_retarget_lp"/>
+		<property name="IdleSound" value="turret_idle_lp"/>
+		<property name="OverheatSound" value="turret_overheat_lp"/>
+		<property name="WakeUpSound" value="turret_windup"/>
+		<property name="IgnoreKeystoneOverlay" value="true"/>
+		<property name="FireSound" value="Pistol_Fire"/>
+		<property name="RequiredPower" value="10"/>
+		
+		<property name="DisplayType" value="blockElectricalHardened"/>
+		<property name="Stacknumber" value="10"/>
+		<property name="Material" value="Mmetal_medium"/>
+		<property name="Shape" value="ModelEntity"/>
+		<property name="Model" value="#@modfolder:Assets/Wall_Turrets.unity3d?Wall_Turret_45_Right"/>
+		<property name="ModelOffset" value="0,0,0"/>
+		<property name="MultiBlockDim" value="1,1,1"/>
+		<property name="ImposterExchange" value="imposterBlock" param1="109"/>
+		<property name="WaterFlow" value="permitted"/>
+		<property name="OnlySimpleRotations" value="true"/><!-- the targeting math will NOT work if it's not upright -->
+		<property name="Path" value="solid"/>
+		<property name="EconomicValue" value="4000"/>
+		<property name="EconomicBundleSize" value="1"/>
+		<property name="TraderStageTemplate" value="electricTier3"/>
+	
+     <property class="RepairItems">
+		<property name="resourceForgedSteel" value="20"/>
+		<property name="resourceMechanicalParts" value="8"/>
+		<property name="resourceElectricParts" value="8"/>
+	 </property>
+	
+		<drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+		<drop event="Harvest" name="resourceMechanicalParts" count="1,4" tag="salvageHarvest"/>
+		<drop event="Harvest" name="resourceElectricParts" count="1,4" tag="salvageHarvest"/>
+		<drop event="Harvest" name="AssetscrapIron" count="10,40" tag="allHarvest"/>
+		<drop event="Destroy" count="0"/>
+		<property name="SortOrder1" value="B155"/>
+		<property name="SortOrder2" value="0022"/>
+		<property name="Group" value="Science,TCScience"/>
+		<property name="Tags" value="trapsSkill"/>
+		<property name="FilterTags" value="MC_playerBlocks,SC_electrical,SC_traps"/>
+
+	</block>
+	
+	<block name="Wall_Turret_45_Left">
+		<property name="CustomIcon" value="Wall_Turret_556"/>
+		<property name="CreativeMode" value="Player"/>
+		<property name="Class" value="Ranged"/>
+		<property name="AmmoItem" value="ammo45ACP"/>
+		<property name="TurnSpeed" value="22.2"/>
+		<property name="MaxDistance" value="30"/>
+		<property name="EntityDamage" value="38"/> 
+		<property name="BlockDamage" value="0"/>
+		<property name="RaySpread" value="2.6"/>  <!-- Spread 2.6deg: 1m cone (55% hit) @ 22m  AKA Accuracy -->
+		<property name="BurstRoundCount" value="30"/> <!-- magazine size before need to reload -->
+		<property name="BurstFireRate" value="0.15"/>  <!-- Firerate , lower number , shoots fatser -->
+		<property name="CooldownTime" value="2"/> <!-- Reload time -->
+		<property name="OvershootTime" value="0.4"/>
+		<property name="FallAsleepTime" value="10"/>
+		<property name="WakeUpTime" value=".5"/>
+		<property name="YawRange" value="90"/>
+		<property name="PitchRange" value="90"/>
+		<property name="ParticlesMuzzleFire" value="gunfire_shotgun"/>
+		<property name="ParticlesMuzzleSmoke" value="nozzlesmokeuzi"/>
+		<property name="DamageBonus.head" value="3"/>
+		<property name="DamageBonus.glass" value="1"/>
+		<property name="DamageBonus.wood" value="2"/>
+		<property name="DamageBonus.earth" value="0.1"/>
+		<property name="DamageBonus.stone" value="0.1"/>
+		<property name="DamageBonus.metal" value="0.1"/>
+		<property name="TargetingSound" value="turret_retarget_lp"/>
+		<property name="IdleSound" value="turret_idle_lp"/>
+		<property name="OverheatSound" value="turret_overheat_lp"/>
+		<property name="WakeUpSound" value="turret_windup"/>
+		<property name="IgnoreKeystoneOverlay" value="true"/>
+		<property name="FireSound" value="Pistol_Fire"/>
+		<property name="RequiredPower" value="10"/>
+		
+		<property name="DisplayType" value="blockElectricalHardened"/>
+		<property name="Stacknumber" value="10"/>
+		<property name="Material" value="Mmetal_medium"/>
+		<property name="Shape" value="ModelEntity"/>
+		<property name="Model" value="#@modfolder:Assets/Wall_Turrets.unity3d?Wall_Turret_45_Left"/>
+		<property name="ModelOffset" value="0,0,0"/>
+		<property name="MultiBlockDim" value="1,1,1"/>
+		<property name="ImposterExchange" value="imposterBlock" param1="109"/>
+		<property name="WaterFlow" value="permitted"/>
+		<property name="OnlySimpleRotations" value="true"/><!-- the targeting math will NOT work if it's not upright -->
+		<property name="Path" value="solid"/>
+		<property name="EconomicValue" value="4000"/>
+		<property name="EconomicBundleSize" value="1"/>
+		<property name="TraderStageTemplate" value="electricTier3"/>
+	
+	 <property class="RepairItems">
+		<property name="resourceForgedSteel" value="20"/>
+		<property name="resourceMechanicalParts" value="8"/>
+		<property name="resourceElectricParts" value="8"/>
+	 </property>
+	
+		<drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+		<drop event="Harvest" name="resourceMechanicalParts" count="1,4" tag="salvageHarvest"/>
+		<drop event="Harvest" name="resourceElectricParts" count="1,4" tag="salvageHarvest"/>
+		<drop event="Harvest" name="AssetscrapIron" count="10,40" tag="allHarvest"/>
+		<drop event="Destroy" count="0"/>
+		<property name="SortOrder1" value="B155"/>
+		<property name="SortOrder2" value="0022"/>
+		<property name="Group" value="Science,TCScience"/>
+		<property name="Tags" value="trapsSkill"/>
+		<property name="FilterTags" value="MC_playerBlocks,SC_electrical,SC_traps"/>
+
+	</block>
+	
+	<block name="Wall_Turret_45_Ceiling">
+		<property name="CustomIcon" value="Wall_Turret_556"/>
+		<property name="CreativeMode" value="Player"/>
+		<property name="Class" value="Ranged"/>
+		<property name="AmmoItem" value="ammo45ACP"/>
+		<property name="TurnSpeed" value="22.2"/>
+		<property name="MaxDistance" value="30"/>
+		<property name="EntityDamage" value="38"/> 
+		<property name="BlockDamage" value="0"/>
+		<property name="RaySpread" value="2.6"/>  <!-- Spread 2.6deg: 1m cone (55% hit) @ 22m  AKA Accuracy -->
+		<property name="BurstRoundCount" value="30"/> <!-- magazine size before need to reload -->
+		<property name="BurstFireRate" value="0.15"/>  <!-- Firerate , lower number , shoots fatser -->
+		<property name="CooldownTime" value="2"/> <!-- Reload time -->
+		<property name="OvershootTime" value="0.4"/>
+		<property name="FallAsleepTime" value="10"/>
+		<property name="WakeUpTime" value=".5"/>
+		<property name="YawRange" value="90"/>
+		<property name="PitchRange" value="90"/>
+		<property name="ParticlesMuzzleFire" value="gunfire_shotgun"/>
+		<property name="ParticlesMuzzleSmoke" value="nozzlesmokeuzi"/>
+		<property name="DamageBonus.head" value="3"/>
+		<property name="DamageBonus.glass" value="1"/>
+		<property name="DamageBonus.wood" value="2"/>
+		<property name="DamageBonus.earth" value="0.1"/>
+		<property name="DamageBonus.stone" value="0.1"/>
+		<property name="DamageBonus.metal" value="0.1"/>
+		<property name="TargetingSound" value="turret_retarget_lp"/>
+		<property name="IdleSound" value="turret_idle_lp"/>
+		<property name="OverheatSound" value="turret_overheat_lp"/>
+		<property name="WakeUpSound" value="turret_windup"/>
+		<property name="IgnoreKeystoneOverlay" value="true"/>
+		<property name="FireSound" value="Pistol_Fire"/>
+		<property name="RequiredPower" value="10"/>
+		
+		<property name="DisplayType" value="blockElectricalHardened"/>
+		<property name="Stacknumber" value="10"/>
+		<property name="Material" value="Mmetal_medium"/>
+		<property name="Shape" value="ModelEntity"/>
+		<property name="Model" value="#@modfolder:Assets/Wall_Turrets.unity3d?Wall_Turret_45_Ceiling"/>
+		<property name="ModelOffset" value="0,0,0"/>
+		<property name="MultiBlockDim" value="1,1,1"/>
+		<property name="ImposterExchange" value="imposterBlock" param1="109"/>
+		<property name="WaterFlow" value="permitted"/>
+		<property name="OnlySimpleRotations" value="true"/><!-- the targeting math will NOT work if it's not upright -->
+		<property name="Path" value="solid"/>
+		<property name="EconomicValue" value="4000"/>
+		<property name="EconomicBundleSize" value="1"/>
+		<property name="TraderStageTemplate" value="electricTier3"/>
+	
+	 <property class="RepairItems">
+		<property name="resourceForgedSteel" value="20"/>
+		<property name="resourceMechanicalParts" value="8"/>
+		<property name="resourceElectricParts" value="8"/>
+	 </property>
+	
+		<drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+		<drop event="Harvest" name="resourceMechanicalParts" count="1,4" tag="salvageHarvest"/>
+		<drop event="Harvest" name="resourceElectricParts" count="1,4" tag="salvageHarvest"/>
+		<drop event="Harvest" name="AssetscrapIron" count="10,40" tag="allHarvest"/>
+		<drop event="Destroy" count="0"/>
+		<property name="SortOrder1" value="B155"/>
+		<property name="SortOrder2" value="0022"/>
+		<property name="Group" value="Science,TCScience"/>
+		<property name="Tags" value="trapsSkill"/>
+		<property name="FilterTags" value="MC_playerBlocks,SC_electrical,SC_traps"/>
+
+	</block>
+<block name="Turret45VariantHelper">
+	<property name="Extends" value="Wall_Turret_45_Ceiling"/>
+	<property name="CustomIcon" value="Wall_Turret_556"/>
+	<property name="ItemTypeIcon" value="all_blocks"/>
+	<property name="DescriptionKey" value="blockVariantHelperGroupDesc"/>
+	<property name="SelectAlternates" value="true"/>
+	<property name="UnlockedBy" value="perkTraps"/>
+	<property name="PlaceAltBlockValue" value="Wall_Turret_45_Right,Wall_Turret_45_Left,Wall_Turret_45_Ceiling"/>
+	<property name="SortOrder1" value="U200"/>
+	<property name="FilterTags" value="MC_helpers,SC_residential,MC_playerBlocks,SC_playerHelpers"/>
+	<property name="TraderStageTemplate" value="electricTier3"/>
+</block>
+
+<block name="Turret556VariantHelper">
+	<property name="Extends" value="Wall_Turret_556_Ceiling"/>
+	<property name="CustomIcon" value="Wall_Turret_556"/>
+	<property name="ItemTypeIcon" value="all_blocks"/>
+	<property name="DescriptionKey" value="blockVariantHelperGroupDesc"/>
+	<property name="SelectAlternates" value="true"/>
+	<property name="UnlockedBy" value="perkTraps"/>
+	<property name="PlaceAltBlockValue" value="Wall_Turret_556_Right,Wall_Turret_556_Left,Wall_Turret_556_Ceiling"/>
+	<property name="SortOrder1" value="U200"/>
+	<property name="FilterTags" value="MC_helpers,SC_residential,MC_playerBlocks,SC_playerHelpers"/>
+	<property name="TraderStageTemplate" value="electricTier3"/>
+</block>
+</append>
+
+</Turrets_5D>

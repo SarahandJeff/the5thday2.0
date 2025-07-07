@@ -1,0 +1,101 @@
+<snj>
+
+	<append xpath="/items">
+		<item name="resourceTurd"> <!-- T1 demolitions -->
+			<property name="Tags" value="ammo,weapon,attPerception,perkDemolitionsExpert,explosivesSkill"/>
+			<property name="ItemTypeIcon" value="explosion"/>
+			<property name="CustomIcon" value="resourceTurd"/>
+			<property name="DisplayType" value="ammoGrenadeFire"/>
+			<property name="Class" value="ItemClassTimeBomb"/>
+			<property name="HoldType" value="54"/>
+			<property name="Meshfile" value="@:Other/Items/Crafting/rock_smallPrefab.prefab"/>
+			<property name="DropScale" value="4"/>
+			<property name="Material" value="MresourceClayLump"/>
+			<property name="ThrowableDecoy" value="true"/>
+			<property name="FusePrimeOnActivate" value="false"/>
+			<property name="Material" value="Morganic"/>
+			<property name="ThrowableDecoy" value="true"/>
+			<property name="Weight" value="0"/>
+			<property name="Stacknumber" value="6000"/>
+			<property name="AlwaysActive" value="true"/>
+			<property name="Explosion.ParticleIndex" value="7"/>
+			<property name="Explosion.Duration" value="8"/>
+			<property name="Explosion.RadiusBlocks" value="1"/>
+			<property name="Explosion.RadiusEntities" value="1"/>
+			<property name="Explosion.BlastPower" value="35"/>
+			<property name="Explosion.DamageBonus.stone" value="0"/>
+			<property name="Explosion.DamageBonus.metal" value="0"/>
+			<property name="Explosion.DamageBonus.earth" value="0"/>
+			<property name="Explosion.DamageBonus.water" value="6"/>
+			<property name="Explosion.DamageBonus.wood" value="0"/>
+			<property name="Explosion.Buff" value="buffDysenteryCatchDrink"/>
+			<property name="FuseTime" value="20000"/> <!-- theoretically redundant but I don't want to experiment on this -->
+			<property name="ExplodeOnHit" value="true"/>
+			<property name="StickPercent" value=".5"/>
+			<property name="EconomicValue" value="0"/>
+			<property name="TraderStageTemplate" value="baseTier1"/>
+			<property name="Group" value="Ammo/Weapons,Ammo"/>
+			<property name="UsableUnderwater" value="false" />
+			<property class="Action0">
+				<property name="Class" value="ThrowAway"/>
+				<!-- <property name="Hitmask_override" value="Arrow"/> unfortunately this cannot work without a serious rewrite of the hitmask system -->
+				<property name="Delay" value="1.2"/> <!-- obsolete if rounds per minute exists -->
+				<property name="Explosion.ParticleIndex" value="7"/>
+				<property name="Throw_strength_default" value="20"/>
+				<property name="Throw_strength_max" value="50"/>
+				<property name="Max_strain_time" value="1.25"/>
+				<property name="Sound_start" value="swoosh"/>
+				<requirement name="CVarCompare" cvar="_underwater" operation="LT" value=".98"/>
+					<property name="triggerEffectTriggerPullDualsense" value="RifleTrigger"/>
+					<property name="triggerEffectTriggerPullXbox" value="PistolTrigger"/>
+					<property name="triggerEffectTriggerShootDualsense" value="MGShoot"/>
+					<property name="triggerEffectTriggerShootXbox" value="PistolShoot"/>
+				</property>
+			<effect_group tiered="false">
+				<passive_effect name="EntityDamage" operation="base_set" value="50" tags="perkDemolitionsExpert"/>
+				<passive_effect name="BlockDamage" operation="base_set" value="0" tags="perkDemolitionsExpert"/>
+				<display_value name="dExRadius" value="3"/>
+				<display_value name="dDuration" value="16"/>
+			</effect_group>
+		</item>
+
+		<item name="resourceBioFuel">
+			<property name="CustomIcon" value="resourceBioFuel"/>
+			<property name="HoldType" value="45"/>
+			<property name="Meshfile" value="#Other/Items?Misc/sackPrefab.prefab"/>
+			<property name="DropMeshfile" value="#Other/Items?Misc/sack_droppedPrefab.prefab"/>
+			<property name="Material" value="Morganic"/>
+			<property name="Weight" value="10"/>
+			<property name="Stacknumber" value="100"/> <!-- STK resource -->
+			<property name="EconomicValue" value="10"/>
+			<property name="EconomicBundleSize" value="1"/>
+			<property name="Group" value="Chemicals"/>
+		</item>
+		<item name="resourceCompost">
+			<property name="HoldType" value="45"/>
+			<property name="Meshfile" value="#Other/Items?Misc/sackPrefab.prefab"/>
+			<property name="DropMeshfile" value="#Other/Items?Misc/sack_droppedPrefab.prefab"/>
+			<property name="Material" value="Morganic"/>
+			<property name="Weight" value="10"/>
+			<property name="Stacknumber" value="500"/> <!-- STK resource -->
+			<property name="EconomicValue" value="10"/>
+			<property name="EconomicBundleSize" value="1"/>
+			<property name="Group" value="Chemicals"/>
+		</item>
+		<item name="resourceChickenPoop">
+			<property name="HoldType" value="45"/>
+			<property name="Meshfile" value="#Other/Items?Misc/sackPrefab.prefab"/>
+			<property name="DropMeshfile" value="#Other/Items?Misc/sack_droppedPrefab.prefab"/>
+			<property name="Material" value="Morganic"/>
+			<property name="Weight" value="10"/>
+			<property name="Stacknumber" value="500"/> <!-- STK resource -->
+			<property name="EconomicValue" value="1"/>
+			<property name="EconomicBundleSize" value="1"/>
+			<property name="Group" value="Resources"/>
+		</item>
+
+
+
+	</append>
+
+</snj>

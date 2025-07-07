@@ -1,0 +1,67 @@
+<configs>
+
+
+
+	<append xpath="/entity_classes">
+
+         <!-- Sniper Soldier and Female Soldier character models, weapon models by Maksim Bugrimov purchased for use in NPC Mod -->
+
+            <entity_class name="npcMalePrepperSRifle" extends="npcAdvancedSRifleTemplate"> 
+			<property name="UserSpawnType" value="Menu"/><property name="Tags" value="entity,male,npc,walker,ranged,UMA2,DRMid"/>
+			<property name="Faction" value="whiteriver"/>
+                        <property name="LookAtAngle" value="0"/>
+			<property name="Names" value="John Smith" />				
+			<property name="Mesh" value="#@modfolder:Resources/Prepperz.unity3d?MalePrepperDark"/> 
+                        <property name="ItemsOnEnterGame.GameModeSurvival" value="PrepperRifle"/>
+			<property name="ItemsOnEnterGame.GameModeSurvivalSP" value="PrepperRifle"/>
+			<property name="ItemsOnEnterGame.GameModeSurvivalMP" value="PrepperRifle"/> 
+                        <property name="HireCurrency" value="ammo762mmBulletBall" />
+			<property name="HireCost" value="1000" />
+                        <property name="SoundHurt" value="JohnHurt"/>
+			<property name="SoundDeath" value="JohnDie"/>
+			<property name="SoundRandom" value="JohnRandom" />
+			<property name="SoundRandomTime" value="60"/>
+			<property name="SoundAlert" value="JohnAlert"/>
+			<property name="SoundSense" value="JohnSense"/>
+                       <effect_group name="Base Effects">
+		        <passive_effect name="HealthMax" operation="base_set" value="800"/>
+		        <passive_effect name="PhysicalDamageResist" operation="base_set" value="30"/>
+	               </effect_group>
+		</entity_class>	
+		
+                <entity_class name="npcFemalePrepperDPistol" extends="npcAdvancedDPistolTemplate"> 
+			<property name="UserSpawnType" value="Menu"/><property name="Tags" value="entity,female,npc,walker,ranged,UMA2,DRMid"/>
+			<property name="Faction" value="whiteriver"/>
+                        <property name="LookAtAngle" value="0"/>
+			<property name="Names" value="Riley Roo" />				
+			<property name="Mesh" value="#@modfolder:Resources/Prepperz.unity3d?FemalePrepperDark"/> 
+                        <property name="ItemsOnEnterGame.GameModeSurvival" value="PrepperPistol"/>
+			<property name="ItemsOnEnterGame.GameModeSurvivalSP" value="PrepperPistol"/>
+			<property name="ItemsOnEnterGame.GameModeSurvivalMP" value="PrepperPistol"/> 
+                        <property name="HireCurrency" value="resourceAcid" />
+			<property name="HireCost" value="50" />
+                        <property name="SoundHurt" value="RileyHurt"/>
+			<property name="SoundHurtSmall" value="Player_Female/player2painsm"/>
+			<property name="SoundDeath" value="RileyDie"/>
+			<property name="SoundStamina" value="Player_Female/player2stamina"/>
+			<property name="SoundDrownPain" value="Player_Female/player2drownpain"/>
+			<property name="SoundWaterSurface" value="Player_Female/player2drownsurface"/>
+			<property name="SoundDrownDeath" value="Player_Female/player2drowndeath"/>
+			<property name="SoundJump" value="Player_Male/player2Jump"/>
+			<property name="SoundLandSoft" value="Player_Male/player2LandSoft"/>
+			<property name="SoundLandHard" value="Player_Male/player2LandHard"/>
+			<property name="SoundPlayerLandThump" value="PlayerLandThump"/>
+			<property name="SoundRandom" value="RileyRandom" />
+			<property name="SoundRandomTime" value="60"/>
+			<property name="SoundAlert" value="RileyAlert"/>
+			<property name="SoundAttack" value="Player_Female/player2stamina"/>
+			<property name="SoundSense" value="RileySense"/>
+                       <effect_group name="Base Effects">
+		        <passive_effect name="HealthMax" operation="base_set" value="700"/>
+		        <passive_effect name="PhysicalDamageResist" operation="base_set" value="40"/>
+	               </effect_group>	
+		</entity_class>	
+
+    </append>			
+	
+</configs>

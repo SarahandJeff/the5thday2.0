@@ -1,0 +1,399 @@
+<Ohballz>
+
+	<append xpath="/items">
+
+	<item name="RandoGumball">
+		<property name="CustomIcon" value="RandoGumball"/>
+		<property name="DescriptionKey" value="RandoGumballDesc"/>
+ 		<property name="HoldType" value="3"/>
+		<property name="Meshfile" value="#@modfolder:Resources/Gumballs.unity3d?GumballPacked"/>
+		<property name="DropMeshfile" value="#@modfolder:Resources/Gumballs.unity3d?GumballPacked"/>
+		<property name="Material" value="Mplastics"/>
+		<property name="Stacknumber" value="100"/>
+		<property name="EconomicValue" value="2500"/>
+		<property name="EconomicBundleSize" value="1"/>
+		<property name="SellableToTrader" value="false"/>
+		<property name="CraftingIngredientTime" value="10"/>
+	<property class="Action0">
+		<property name="Sound_start" value="open_garbage"/>
+		<property name="Class" value="OpenBundle"/>
+		<property name="Random_item" value="GumballCandy,GumballSpeed,GumballRanged,GumballMedical,GumballResourceful,GumballBarter,GumballMining,GumballSilver,GumballGolden"/>
+		<property name="Random_item_count" value="1,1,1,1,1,1,1,1,1"/>
+	</property>
+		<property name="Group" value="Gumballs"/>
+	</item>
+
+	<item name="GumballGolden">
+		<property name="CustomIcon" value="GumballGolden"/>
+		<property name="DescriptionKey" value="GumballGoldenDesc"/>
+		<property name="Tags" value="Gumball"/>
+ 		<property name="HoldType" value="3"/>
+		<property name="Meshfile" value="#@modfolder:Resources/Gumballs.unity3d?GumballGolden"/>
+		<property name="DropMeshfile" value="#@modfolder:Resources/Gumballs.unity3d?GumballGolden"/>
+		<property name="Material" value="Mglass"/>
+		<property name="Stacknumber" value="10"/>
+		<property name="EconomicValue" value="1000"/>
+		<property name="EconomicBundleSize" value="5"/>
+		<property name="SellableToTrader" value="false"/>
+		<property class="Action0">
+		<property name="Sound_start" value="forge_smelt_click"/>
+		<property name="Class" value="OpenBundle"/>
+		<property name="Create_item" value="GumballCandy,resourceGoldNugget"/>
+		<property name="Create_item_count" value="1,1"/>
+	</property>
+		<property class="Action1">
+			<property name="Class" value="ThrowAway"/>
+			<property name="Delay" value="0.1"/>
+			<property name="Throw_strength_default" value="8"/>
+			<property name="Throw_strength_max" value="50"/>
+			<property name="Max_strain_time" value="1.25"/>
+			<property name="Sound_start" value="swoosh"/>
+		</property>
+		<property name="Group" value="Gumballs"/>
+	</item>
+	
+	<item name="GumballSilver">
+		<property name="CustomIcon" value="GumballSilver"/>
+		<property name="DescriptionKey" value="GumballSilverDesc"/>
+		<property name="Tags" value="Gumball"/>
+ 		<property name="HoldType" value="3"/>
+		<property name="Meshfile" value="#@modfolder:Resources/Gumballs.unity3d?GumballSilver"/>
+		<property name="DropMeshfile" value="#@modfolder:Resources/Gumballs.unity3d?GumballSilver"/>
+		<property name="Material" value="Mglass"/>
+		<property name="Stacknumber" value="10"/>
+		<property name="EconomicValue" value="1000"/>
+		<property name="EconomicBundleSize" value="5"/>
+		<property name="SellableToTrader" value="false"/>
+	<property class="Action0">
+		<property name="Sound_start" value="forge_smelt_click"/>
+		<property name="Class" value="OpenBundle"/>
+		<property name="Create_item" value="GumballCandy,resourceSilverNugget"/>
+		<property name="Create_item_count" value="1,1"/>
+	</property>
+		<property class="Action1">
+			<property name="Class" value="ThrowAway"/>
+			<property name="Delay" value="0.1"/>
+			<property name="Throw_strength_default" value="8"/>
+			<property name="Throw_strength_max" value="50"/>
+			<property name="Max_strain_time" value="1.25"/>
+			<property name="Sound_start" value="swoosh"/>
+		</property>
+		<property name="Group" value="Gumballs"/>
+	</item>
+
+	<item name="GumballCandy">
+		<property name="CustomIcon" value="GumballCandy"/>
+		<property name="DescriptionKey" value="GumballCandyDesc"/>
+		<property name="Tags" value="Gumball"/>
+		<property name="HoldType" value="3"/>
+		<property name="Meshfile" value="#@modfolder:Resources/Gumballs.unity3d?GumballCandy"/>
+		<property name="DropMeshfile" value="#@modfolder:Resources/Gumballs.unity3d?GumballCandy"/>
+		<property name="Material" value="Mglass"/>
+		<property name="Stacknumber" value="10"/>
+		<property name="EconomicValue" value="1950"/>
+		<property name="EconomicBundleSize" value="1"/>
+		<property name="SellableToTrader" value="false"/>
+		<property name="CraftingIngredientTime" value="10"/>
+		<property class="Action0">
+			<property name="Class" value="Eat"/>
+			<property name="Delay" value="0"/>
+			<property name="Sound_start" value="player_eating"/>
+		</property>
+		<property class="Action1">
+			<property name="Class" value="ThrowAway"/>
+			<property name="Delay" value="0.1"/>
+			<property name="Throw_strength_default" value="8"/>
+			<property name="Throw_strength_max" value="50"/>
+			<property name="Max_strain_time" value="1.25"/>
+			<property name="Sound_start" value="swoosh"/>
+		</property>
+		<effect_group tiered="false">
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="15" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables" />
+			<display_value name="dRunSpeed" value=".15"/>
+			<display_value name="dDuration" value="60"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffMegaCrushDuration" operation="add" value="60"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffMegaCrushDuration" operation="set" value="363">
+					<requirement name="CVarCompare" cvar="$buffMegaCrushDuration" operation="GT" value="363"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables,buffMegaCrush"/>
+			</effect_group>
+		<property name="Group" value="Gumballs"/>
+	</item>
+
+	<item name="GumballMining">
+		<property name="CustomIcon" value="GumballMining"/>
+		<property name="DescriptionKey" value="GumballMiningDesc"/>
+		<property name="Tags" value="Gumball"/>
+ 		<property name="HoldType" value="3"/>
+		<property name="Meshfile" value="#@modfolder:Resources/Gumballs.unity3d?GumballMining"/>
+		<property name="DropMeshfile" value="#@modfolder:Resources/Gumballs.unity3d?GumballMining"/>
+		<property name="Material" value="Mglass"/>
+		<property name="Stacknumber" value="10"/>
+		<property name="EconomicValue" value="1950"/>
+		<property name="EconomicBundleSize" value="1"/>
+		<property name="SellableToTrader" value="false"/>
+		<property name="CraftingIngredientTime" value="10"/>
+		<property class="Action0">
+			<property name="Class" value="Eat"/>
+			<property name="Delay" value="0"/>
+			<property name="Sound_start" value="player_eating"/>
+		</property>
+		<property class="Action1">
+			<property name="Class" value="ThrowAway"/>
+			<property name="Delay" value="0.1"/>
+			<property name="Throw_strength_default" value="8"/>
+			<property name="Throw_strength_max" value="50"/>
+			<property name="Max_strain_time" value="1.25"/>
+			<property name="Sound_start" value="swoosh"/>
+		</property>      
+		<effect_group tiered="false">
+                <display_value name="dGumballMining" value=".2"/>
+                <display_value name="dDuration" value="300"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffGumballMiningDuration" operation="add" value="300"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffGumballMiningDuration" operation="set" value="300">
+                    <requirement name="CVarCompare" cvar="$buffGumballMiningDuration" operation="GT" value="300"/></triggered_effect>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffGumballMining"/>
+
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="5"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
+            </effect_group>
+		<property name="Group" value="Gumballs"/>
+	</item>
+
+	<item name="GumballResourceful">
+		<property name="CustomIcon" value="GumballResourceful"/>
+		<property name="DescriptionKey" value="GumballResourcefulDesc"/>
+		<property name="Tags" value="Gumball"/>
+		<property name="HoldType" value="3"/>
+		<property name="Meshfile" value="#@modfolder:Resources/Gumballs.unity3d?GumballResourceful"/>
+		<property name="DropMeshfile" value="#@modfolder:Resources/Gumballs.unity3d?GumballResourceful"/>
+		<property name="Material" value="Mglass"/>
+		<property name="Stacknumber" value="10"/>
+		<property name="EconomicValue" value="1950"/>
+		<property name="EconomicBundleSize" value="1"/>
+		<property name="SellableToTrader" value="false"/>
+		<property name="CraftingIngredientTime" value="10"/>
+		<property class="Action0">
+			<property name="Class" value="Eat"/>
+			<property name="Delay" value="0"/>
+			<property name="Sound_start" value="player_eating"/>
+		</property>
+		<property class="Action1">
+			<property name="Class" value="ThrowAway"/>
+			<property name="Delay" value="0.1"/>
+			<property name="Throw_strength_default" value="8"/>
+			<property name="Throw_strength_max" value="50"/>
+			<property name="Max_strain_time" value="1.25"/>
+			<property name="Sound_start" value="swoosh"/>
+		</property>    
+		<effect_group tiered="false">
+                <display_value name="dGumballResourceful" value=".2"/>
+                <display_value name="dDuration" value="300"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDrugbuffGumballResourcefulDuration" operation="add" value="300"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDrugbuffGumballResourcefulDuration" operation="set" value="300">
+                    <requirement name="CVarCompare" cvar="$buffDrugBurnyDuration" operation="GT" value="300"/></triggered_effect>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffGumballResourceful"/>
+
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="5"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
+            </effect_group>
+		<property name="Group" value="Gumballs"/>
+	</item>
+
+	<item name="GumballMedical">
+		<property name="CustomIcon" value="GumballMedical"/>
+		<property name="DescriptionKey" value="GumballMedicalDesc"/>
+		<property name="Tags" value="Gumball"/>
+		<property name="HoldType" value="3"/>
+		<property name="Meshfile" value="#@modfolder:Resources/Gumballs.unity3d?GumballMedical"/>
+		<property name="DropMeshfile" value="#@modfolder:Resources/Gumballs.unity3d?GumballMedical"/>
+		<property name="Material" value="Mglass"/>
+		<property name="Stacknumber" value="10"/>
+		<property name="EconomicValue" value="1950"/>
+		<property name="EconomicBundleSize" value="1"/>
+		<property name="SellableToTrader" value="false"/>
+		<property name="CraftingIngredientTime" value="10"/>
+		<property class="Action0">
+			<property name="Class" value="Eat"/>
+			<property name="Delay" value="0"/>
+			<property name="Sound_start" value="player_eating"/>
+		</property>
+		<property class="Action1">
+			<property name="Class" value="ThrowAway"/>
+			<property name="Delay" value="0.1"/>
+			<property name="Throw_strength_default" value="8"/>
+			<property name="Throw_strength_max" value="50"/>
+			<property name="Max_strain_time" value="1.25"/>
+			<property name="Sound_start" value="swoosh"/>
+		</property>        
+		<effect_group tiered="false">
+                <display_value name="dGumballMedical" value=".2"/>
+                <display_value name="dDuration" value="10"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffGumballMedicalDuration" operation="add" value="10"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffGumballMedicalDuration" operation="set" value="10">
+                    <requirement name="CVarCompare" cvar="$buffDrugBurnyDuration" operation="GT" value="10"/></triggered_effect>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffGumballMedical"/>
+
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="5"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
+            </effect_group>
+		<property name="Group" value="Gumballs"/>
+	</item>
+
+	<item name="GumballSpeed">
+		<property name="CustomIcon" value="GumballSpeed"/>
+		<property name="DescriptionKey" value="GumballSpeedDesc"/>
+		<property name="Tags" value="Gumball"/>
+		<property name="HoldType" value="3"/>
+		<property name="Meshfile" value="#@modfolder:Resources/Gumballs.unity3d?GumballSpeed"/>
+		<property name="DropMeshfile" value="#@modfolder:Resources/Gumballs.unity3d?GumballSpeed"/>
+		<property name="Material" value="Mglass"/>
+		<property name="Stacknumber" value="10"/>
+		<property name="EconomicValue" value="1950"/>
+		<property name="EconomicBundleSize" value="1"/>
+		<property name="SellableToTrader" value="false"/>
+		<property name="CraftingIngredientTime" value="10"/>
+		<property class="Action0">
+			<property name="Class" value="Eat"/>
+			<property name="Delay" value="0"/>
+			<property name="Sound_start" value="player_eating"/>
+		</property>
+		<property class="Action1">
+			<property name="Class" value="ThrowAway"/>
+			<property name="Delay" value="0.1"/>
+			<property name="Throw_strength_default" value="8"/>
+			<property name="Throw_strength_max" value="50"/>
+			<property name="Max_strain_time" value="1.25"/>
+			<property name="Sound_start" value="swoosh"/>
+		</property>  
+        <effect_group tiered="false">
+                <display_value name="dGumballSpeed" value=".2"/>
+                <display_value name="dDuration" value="120"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffGumballSpeedDuration" operation="add" value="120"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffGumballSpeedDuration" operation="set" value="120">
+                    <requirement name="CVarCompare" cvar="$buffGumballSpeedDuration" operation="GT" value="120"/></triggered_effect>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffGumballSpeed"/>
+
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="5"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
+            </effect_group>
+		<property name="Group" value="Gumballs"/>
+	</item>
+
+	<item name="GumballBarter">
+		<!--
+		<property name="DisplayType" value="GumballBarter"/>
+		<property name="CustomIcon" value="GumballBarter"/>
+		<property name="DescriptionKey" value="GumballBarterDesc"/>
+		<property name="Tags" value="Gumball"/>
+		<property name="HoldType" value="3"/>
+		<property name="Meshfile" value="#@modfolder:Resources/Gumballs.unity3d?GumballBarter"/>
+		<property name="DropMeshfile" value="#@modfolder:Resources/Gumballs.unity3d?GumballBarter"/>
+		<property name="Material" value="Mglass"/>
+		<property name="Stacknumber" value="10"/>
+		<property name="EconomicValue" value="1950"/>
+		<property name="EconomicBundleSize" value="1"/>
+		<property name="SellableToTrader" value="false"/>
+		<property name="CraftingIngredientTime" value="10"/>
+		<property class="Action0">
+			<property name="Class" value="Eat"/>
+			<property name="Delay" value="0"/>
+			<property name="Sound_start" value="player_eating"/>
+		</property>	
+		<property class="Action1">
+			<property name="Class" value="ThrowAway"/>
+			<property name="Delay" value="0.1"/>
+			<property name="Throw_strength_default" value="8"/>
+			<property name="Throw_strength_max" value="50"/>
+			<property name="Max_strain_time" value="1.25"/>
+			<property name="Sound_start" value="swoosh"/>
+		</property>	
+		<effect_group tiered="false">
+                <display_value name="dGumballBarter" value=".2"/>
+                <display_value name="dBarteringSellBuy" value=".35"/>
+				<display_value name="dDuration" value="300"/>
+				
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="GumballBarteramount" operation="add" value=".5">
+					<requirement name="CVarCompare" cvar="GumballBarteramount" operation="LT" value=".99"/>
+				</triggered_effect>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffGumballBarterDuration" operation="add" value="300"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffGumballBarterDuration" operation="set" value="300">
+                    <requirement name="CVarCompare" cvar="$buffDrugBurnyDuration" operation="GT" value="300"/></triggered_effect>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffGumballBarter"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="5"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
+            </effect_group>
+		<property name="Group" value="Gumballs"/>-->
+
+		<property name="Extends" value="drugAtomJunkies"/>
+		
+		<property name="CustomIcon" value="GumballBarter"/>
+		<property name="DescriptionKey" value="GumballBarterDesc"/>
+		<property name="Tags" value="Gumball"/>
+		<property name="HoldType" value="3"/>
+		<property name="Meshfile" value="#@modfolder:Resources/Gumballs.unity3d?GumballBarter"/>
+		<property name="DropMeshfile" value="#@modfolder:Resources/Gumballs.unity3d?GumballBarter"/>
+		<property name="DisplayType" value="drugSugarButts"/>
+		<property name="SoundPickup" value="drug_sugarbutts_grab"/>
+		<property name="SoundPlace" value="drug_sugarbutts_place"/>
+		<effect_group tiered="false" name="Candy Tier 10">
+			<display_value name="dBarteringSellBuy" value=".35"/>
+			<display_value name="dDuration" value="300"/>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffGumballBarterDuration" operation="add" value="300"/>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffGumballBarterDuration" operation="set" value="300">
+				<requirement name="CVarCompare" cvar="$buffGumballBarterDuration" operation="GT" value="300"/></triggered_effect>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffGumballBarter"/>
+
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="5"/>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
+		</effect_group>
+	</item>
+
+	<item name="GumballRanged">
+		<property name="CustomIcon" value="GumballRanged"/>
+		<property name="DescriptionKey" value="GumballRangedDesc"/>
+		<property name="Tags" value="Gumball"/>
+		<property name="HoldType" value="3"/>
+		<property name="Meshfile" value="#@modfolder:Resources/Gumballs.unity3d?GumballRanged"/>
+		<property name="DropMeshfile" value="#@modfolder:Resources/Gumballs.unity3d?GumballRanged"/>
+		<property name="Material" value="Mglass"/>
+		<property name="Stacknumber" value="10"/>
+		<property name="EconomicValue" value="1950"/>
+		<property name="EconomicBundleSize" value="1"/>
+		<property name="SellableToTrader" value="false"/>
+		<property name="CraftingIngredientTime" value="10"/>
+		<property class="Action0">
+			<property name="Class" value="Eat"/>
+			<property name="Delay" value="0"/>
+			<property name="Sound_start" value="player_eating"/>
+		</property>
+		<property class="Action1">
+			<property name="Class" value="ThrowAway"/>
+			<property name="Delay" value="0.1"/>
+			<property name="Throw_strength_default" value="8"/>
+			<property name="Throw_strength_max" value="50"/>
+			<property name="Max_strain_time" value="1.25"/>
+			<property name="Sound_start" value="swoosh"/>
+		</property>
+		<effect_group tiered="false">
+                <display_value name="dGumballRanged" value=".2"/>
+                <display_value name="dDuration" value="180"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffGumballRangedDuration" operation="add" value="180"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffGumballRangedDuration" operation="set" value="180">
+                    <requirement name="CVarCompare" cvar="$buffDrugBurnyDuration" operation="GT" value="180"/></triggered_effect>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffGumballRanged"/>
+
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="5"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
+            </effect_group>
+		<property name="Group" value="Gumballs"/>
+	</item>
+
+	</append>
+
+
+
+
+
+</Ohballz>

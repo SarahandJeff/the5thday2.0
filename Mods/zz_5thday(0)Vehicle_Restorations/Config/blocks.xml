@@ -1,0 +1,1608 @@
+<?xml version="1.0"?>
+<HOH_Vehicle_Restorations>
+
+
+
+
+
+<remove xpath="/blocks/block[contains(@name,'decoCarMotor')]/drop[@name='resourceMechanicalParts']" />
+<remove xpath="/blocks/block[contains(@name,'decoCarMotor')]/drop[@name='resourceMetalPipe']" />
+<remove xpath="/blocks/block[contains(@name,'decoCarMotor')]/drop[@name='smallEngine']" />
+<remove xpath="/blocks/block[contains(@name,'decoCarMotor')]/drop[@name='resourceScrapIron']" />
+
+<insertafter xpath="//block[contains(@name,'Sedan')  or contains(@name,'Minivan') or contains(@name,'SUV') or contains(@name,'PickupTruck') or contains(@name,'FireTruck') or contains(@name,'BusSchool') or contains(@name,'PoliceCar') or contains(@name,'SemiTruck')]/drop[@name='terrStone']">
+
+    <drop event="Harvest" name="" count="0" tool_category="Disassemble" />
+		<drop event="Destroy" name="HOHEngineComplete" count="0,1" prob="0.25" tool_category="Disassemble" />
+    <drop event="Destroy" name="HOHTransmissionComplete" count="0,1" prob="0.25" tool_category="Disassemble" />
+    <drop event="Destroy" name="HOHEngineBroken" count="0,1" prob="0.25" tool_category="Disassemble" />
+    <drop event="Destroy" name="HOHTransmissionBroken" count="0,1" prob="0.25" tool_category="Disassemble" />
+</insertafter>
+
+
+
+
+
+      
+
+
+
+<remove xpath="/blocks/block[contains(@name,'decoCarRadiator')]/drop[@name='resourceRadiator']" />
+<append xpath="//block[contains(@name,'decoCarRadiator')]">
+  <drop event="Destroy" name="HOHEngineRadiator" count="1" tool_category="Disassemble" />
+</append>
+
+<remove xpath="/blocks/block[contains(@name,'decoCarSeat')]/drop[@name='resourceScrapPolymers']" />
+<append xpath="//block[contains(@name,'decoCarSeat')]">
+  <drop event="Destroy" name="decoCarSeatUpright" count="1" tool_category="Disassemble" />
+</append>
+
+<remove xpath="/blocks/block[contains(@name,'decoCarWheel')]/drop[@name='resourceScrapPolymers']" />
+<append xpath="//block[contains(@name,'decoCarWheel')]">
+  <drop event="Destroy" name="HOHCarWheel" prob=".3" count="0,1" tool_category="Disassemble" />
+  <drop event="Destroy" name="HOHCarRim" prob=".5" count="0,1" tool_category="Disassemble" />
+  <drop event="Destroy" name="HOHCarTire" prob=".3" count="0,1" tool_category="Disassemble" />
+</append>
+
+<remove xpath="/blocks/block[contains(@name,'decoCarTire')]/drop[@name='resourceScrapPolymers']" />
+<append xpath="//block[contains(@name,'decoCarTire')]">
+    <drop event="Destroy" name="HOHCarTire" prob=".5" count="0,1" tool_category="Disassemble" />
+    <drop event="Destroy" name="HOHCarTireBlown" prob=".5" count="0,1" tool_category="Disassemble" />
+</append>
+
+<append xpath="//block[contains(@name,'decoCarTireSmall')]">
+    <drop event="Destroy" name="HOHBikeTire" prob=".5" count="0,1" tool_category="Disassemble" />
+    <drop event="Destroy" name="HOHBikeTireBlown" prob=".5" count="0,1" tool_category="Disassemble" />
+</append>
+
+
+<append xpath="//block[contains(@name,'decoCarFrontDoor')]">
+  <drop event="Destroy" name="decoCarFrontDoorFlat" count="1" tool_category="Disassemble" />
+</append>
+<append xpath="//block[contains(@name,'decoCarBackDoor')]">
+  <drop event="Destroy" name="decoCarBackDoorFlat" count="1" tool_category="Disassemble" />
+</append>
+<remove xpath="/blocks/block[contains(@name,'Bumper')]/drop[@name='resourceScrapPolymers']" />
+<append xpath="//block[contains(@name,'Bumper')]">
+  <drop event="Destroy" name="decoCarFrontBumperFlat" count="1" tool_category="Disassemble" />
+</append>
+<remove xpath="/blocks/block[contains(@name,'decoCarHood')]/drop[@name='resourceScrapPolymers']" />
+<append xpath="//block[contains(@name,'decoCarHood')]">
+  <drop event="Destroy" name="decoCarHoodFlat" count="1" tool_category="Disassemble" />
+</append>
+<remove xpath="/blocks/block[contains(@name,'decoCarTrunk')]/drop[@name='resourceScrapPolymers']" />
+<append xpath="//block[contains(@name,'decoCarTrunk')]">
+  <drop event="Destroy" name="decoCarTrunkLidFlat" count="1" tool_category="Disassemble" />
+</append>
+<remove xpath="/blocks/block[contains(@name,'decoCarFender')]/drop[@name='resourceScrapPolymers']" />
+<append xpath="//block[contains(@name,'decoCarFender')]">
+  <drop event="Destroy" name="decoCarFenderFlat" count="1" tool_category="Disassemble" />
+</append>
+
+
+
+<!-- upgradeable vehicles-->
+
+  <!-- Garage -->
+  <append xpath="/blocks">
+    <block name="HOHRollingToolBox">
+      <property name="Extends" value="decoEntityMetalMaster" param1="RepairItems"/>
+      <property name="CustomIcon" value="toolHOHRollingToolBox"/>
+      <property name="CreativeMode" value="Player"/>
+      <property name="Shape" value="ModelEntity"/>
+      <property name="Model" value="#@modfolder:Resources/HOH_Vehicle_Restorations.unity3d?RollingToolbox"/>
+      <property name="ModelOffset" value="0,0,0"/>
+      <property name="MultiBlockDim" value="1,2,1"/>
+      <property name="ImposterExclude" value="true"/>
+      <property name="WaterFlow" value="permitted"/>
+      <property name="Place" value="TowardsPlacerInverted"/>
+      <property name="AllowAllRotations" value="true"/>
+      <property name="IsTerrainDecoration" value="true"/>
+      <property name="MaxDamage" value="500"/>
+      <property class="RepairItems">
+        <property name="resourceMechanicalParts" value="2"/>
+        <property name="resourceForgedIron" value="1"/>
+      </property>
+      <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+      <drop event="Harvest" name="resourceScrapIron" count="0" tag="allHarvest"/>
+      <drop event="Destroy" name="toolHOHRollingToolBox" count="1"/>
+      <property name="SortOrder1" value="B442"/>
+      <property name="SortOrder2" value="0000"/>
+      <property name="FilterTags" value="MC_building,SC_loot"/>
+      <property name="CanPickup" value="true" />
+      <property name="EconomicValue" value="98"/>
+    </block>
+    <block name="HOHEngineHoist">
+      <property name="Extends" value="HOHRollingToolBox" param1="RepairItems"/>
+      <property name="CustomIcon" value="toolHOHEngineHoist"/>
+      <property name="CreativeMode" value="Player"/>
+      <property name="Shape" value="ModelEntity"/>
+      <property name="Model" value="#@modfolder:Resources/EngineHoist.unity3d?enginehoist"/>
+      <property name="ModelOffset" value="0,0,0"/>
+      <property name="MultiBlockDim" value="1,2,1"/>
+      <property name="ImposterExclude" value="true"/>
+      <property name="WaterFlow" value="permitted"/>
+      <property name="Place" value="TowardsPlacerInverted"/>
+      <property name="AllowAllRotations" value="true"/>
+      <property name="IsTerrainDecoration" value="true"/>
+      <property name="MaxDamage" value="500"/>
+      <property class="RepairItems">
+        <property name="resourceMechanicalParts" value="2"/>
+        <property name="resourceForgedIron" value="1"/>
+      </property>
+      <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+      <drop event="Harvest" name="resourceScrapIron" count="0" tag="allHarvest"/>
+      <drop event="Destroy" name="toolHOHEngineHoist" count="1"/>
+      <property name="SortOrder1" value="B442"/>
+      <property name="SortOrder2" value="0000"/>
+      <property name="FilterTags" value="MC_building,SC_loot"/>
+      <property name="CanPickup" value="true" />
+      <property name="EconomicValue" value="98"/>
+    </block>
+    <block name="Workshop">
+      <property name="Extends" value="decoEntityMetalMaster" param1="RepairItems"/>
+      <property name="CustomIcon" value="Workshop"/>
+      <property name="DescriptionKey" value="WorkshopDesc"/>
+      <property name="UnlockedBy" value="craftingWorkstations"/>
+      <property name="Class" value="Workstation"/>
+      <property name="Material" value="Mmetal"/>
+      <property name="MaxDamage" value="1200"/>
+      <property name="StabilitySupport" value="false"/>
+      <property name="Shape" value="ModelEntity"/>
+      <property name="Model" value="#@modfolder:Resources/HOH_Vehicle_Restorations.unity3d?Workshop"/>
+      <property name="DisplayType" value="blockMulti"/>
+      <property name="ModelOffset" value="0,0,0"/>
+      <property name="MultiBlockDim" value="3,2,1"/>
+      <property name="ImposterDontBlock" value="true"/>
+      <property name="Place" value="TowardsPlacerInverted"/>
+      <property name="OnlySimpleRotations" value="true"/>
+      <property name="IsTerrainDecoration" value="true"/>
+      <property name="HeatMapStrength" value="6"/>
+      <property name="HeatMapTime" value="5000"/>
+      <property name="HeatMapFrequency" value="1000"/>
+      <property name="Stacknumber" value="100"/>
+      <property name="TakeDelay" value="5"/>
+      <property name="RequirePower" value="true"/>
+      <property class="Workstation">
+        <property name="Modules" value="output,tools"/>
+        <property name="CraftingAreaRecipes" value="Workshop"/>
+        <property name="ToolNames" value="1,2,3,4,5,6"/>
+      </property>
+      <property name="WorkstationIcon" value="ui_game_symbol_workbench"/>
+      <property name="OpenSound" value="open_workbench"/>
+      <property name="CloseSound" value="close_workbench"/>
+      <property name="WorkstationJournalTip" value="workbenchTip"/>
+      <property class="RepairItems">
+        <property name="resourceMechanicalParts" value="5"/>
+        <property name="resourceForgedSteel" value="5"/>
+        <property name="resourceSpring" value="5"/>
+      </property>
+      <drop event="Harvest" name="resourceForgedSteel" count="5" tag="allHarvest"/>
+      <drop event="Harvest" name="resourceMechanicalParts" count="50" tool_category="Disassemble"/>
+      <drop event="Harvest" name="resourceMechanicalParts" count="20" tag="salvageHarvest"/>
+      <drop event="Harvest" name="resourceForgedSteel" count="10" tag="salvageHarvest"/>
+      <drop event="Harvest" name="resourceSpring" count="5" tag="salvageHarvest"/>
+      <drop event="Destroy" count="0"/>
+      <drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+      <property name="TakeDelay" value="10"/>
+      <property name="EconomicValue" value="776"/>
+      <property name="Group" value="Basics,Building"/>
+      <property name="SellableToTrader" value="false"/>
+      <property name="FilterTags" value="fdecor,fother,ffurniture"/>
+      <property name="SortOrder1" value="70i0"/>
+    </block>
+    <block name="BrokenWorkshop">
+      <property name="CustomIcon" value="BrokenWorkshop"/>
+      <property name="DescriptionKey" value="BrokenWorkshopDesc"/>
+      <property name="Class" value="Loot"/>
+      <property name="LootList" value="collapsedWorkbench"/>
+      <property name="DisplayType" value="blockMulti"/>
+      <property name="Material" value="Mmetal"/>
+      <property name="Shape" value="ModelEntity"/>
+      <property name="Model" value="#@modfolder:Resources/HOH_Vehicle_Restorations.unity3d?BrokenWorkshop"/>
+      <property name="ModelOffset" value=".5,0,0"/>
+      <property name="MultiBlockDim" value="2,2,1"/>
+      <property name="ImposterDontBlock" value="true"/>
+      <property name="WaterFlow" value="permitted"/>
+      <property name="Place" value="TowardsPlacerInverted"/>
+      <property name="OnlySimpleRotations" value="true"/>
+      <property name="IsTerrainDecoration" value="true"/>
+      <property name="StabilitySupport" value="false"/>
+      <property name="MaxDamage" value="500"/>
+      <property name="SellableToTrader" value="false"/>
+      <property class="RepairItems">
+        <property name="resourceForgedIron" value="25"/>
+        <property name="resourceMechanicalParts" value="20"/>
+        <property name="resourceWood" value="50"/>
+      </property>
+      <drop event="Destroy" name="BrokenWorkshop" count="1"/>
+      <drop event="Fall" name="terrDestroyedWoodDebris" count="1" prob="0.75" stick_chance="1"/>
+      <property name="SortOrder1" value="B281"/>
+      <property name="SortOrder2" value="0301"/>
+      <property name="Group" value="Decor/Miscellaneous"/>
+      <property name="FilterTags" value="MC_building,SC_decor"/>
+    </block>
+
+
+</append>
+
+
+
+  <append xpath="/blocks">
+  <block name="cnMotoBikeMaster">
+	<property name="CreativeMode" value="Player"/>
+	<property name="Class" value="CarExplodeLoot"/>
+	<property name="IndexName" value="challenge_cars"/>
+	<property name="TerrainAlignment" value="Vehicle"/>
+	<property name="LootList" value="cars"/>
+	<property class="Explosion">
+		<property name="ParticleIndex" value="30"/> <!-- which prefab/particle is used -->
+		<property name="RadiusBlocks" value="3.5"/> <!-- damage radius for blocks -->
+		<property name="BlockDamage" value="500"/> <!-- damage for blocks in the center of the explosion -->
+		<property name="RadiusEntities" value="5"/> <!-- damage radius for entities -->
+		<property name="EntityDamage" value="250"/> <!-- damage for entities in the center of the explosion -->
+	</property>
+	<property name="CustomIconTint" value="CCCCCC"/>
+	<property name="ItemTypeIcon" value="explosion"/>
+	<property name="TintColor" value="A0A0A0"/>
+	<property name="DisplayType" value="blockMulti"/>
+	<property name="Material" value="Mmetal"/>
+	<property name="Shape" value="ModelEntity"/>
+	<property name="Model" value="@:Entities/Vehicles/PickupTruck/pickupTruckPrefab.prefab"/>
+	<property name="ModelOffset" value="-0.5,0,-0.5"/>
+	<property name="OversizedBounds" value="(-0.5,0.5,-0.5),(2,2,6)"/>
+	<property name="ImposterDontBlock" value="true"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="ParticleOnDeath" value="car_destruction_dmg1"/>  <!-- VFX putback in play-->
+	<property name="Place" value="TowardsPlacer"/>
+	<property name="PlacementDistance" value="6"/>
+	<property name="BigDecorationRadius" value="5"/>
+	<property name="IsTerrainDecoration" value="true"/>
+	<property name="CanDecorateOnSlopes" value="false"/>
+	<property name="MaxDamage" value="1000"/>
+	<property name="PassThroughDamage" value="true"/>
+	<drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+	
+	<drop event="Destroy" count="0"/>
+	<property name="ShowModelOnFall" value="false"/>
+	<property name="SortOrder1" value="B864"/>
+	<property name="SortOrder2" value="0000"/>
+	<property name="Tags" value="challenge_cars,challenge_elec_parts,challenge_mech_parts,challenge_sinks"/>
+	<property name="FilterTags" value="MC_building,SC_automotive"/>
+</block>
+  <!--hoh minibike-->
+        <block name="HOHVanillaMiniBikeSpawner">
+                <property name="Material" value="Mmetal"/>
+                <property name="CreativeMode" value="None"/>
+                <property name="Class" value="SpawnCube2SDX, SCore" />
+                <property name="Config" value="ec=vehicleMinibike" />
+                <property name="Shape" value="ModelEntity"/>
+                <property name="Model" value="#@modfolder:Resources/HOH_Vanilla_Breakables.unity3d?VanillaMiniBikeRepairable"/>
+                <property name="ModelOffset" value="0,0,0"/>
+                <property name="Place" value="TowardsPlacer"/>
+                <property name="Path" value="solid"/>
+                <property name="MultiBlockDim" value="1,1,2"/>
+              </block>
+        <block name="HOHVanillaMiniBikeBreakable6">
+                <!--New Wreck copies for repairing Custom vehicles -->
+                <property name="Extends" value="cnMotoBikeMaster"/>
+                <property name="MaxDamage" value="800"/>
+                <property name="CustomIcon" value="vehicleMinibikePlaceable"/>
+                <property name="CreativeMode" value="Player"/>
+                <property name="LootList" value="cars"/>
+                <property name="Shape" value="ModelEntity"/>
+                <property name="Model" value="#@modfolder:Resources/HOH_Vanilla_Breakables.unity3d?VanillaMiniBikeRepairable"/>
+                <property name="DisplayType" value="blockMulti"/>
+                <property name="Material" value="Mmetal"/>
+                <property name="MultiBlockDim" value="1,2,2"/>
+                <property name="ModelOffset" value="0,0,0"/>
+                <property name="VerticalOffset" value="0"/>
+                <property name="Place" value="TowardsPlacer"/>
+                <property class="RepairItems">
+			<property name="resourceRepairKit" value="1"/>
+		</property> 
+                  <property class="UpgradeBlock">
+                      <property name="ToBlock" value="HOHVanillaMiniBikeSpawner"/>
+                      <property name="Item" value="HOHMiniBikefluidKit"/>
+                      <property name="ItemCount" value="1"/>
+                      <property name="UpgradeHitCount" value="1"/>
+                    </property>
+                <!-- Salvage -->
+                <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+                <drop event="Harvest" name="resourceScrapIron" count="0" tag="allHarvest"/>
+                <drop event="Destroy" count="0"/>
+              </block>
+        <block name="HOHVanillaMiniBikeBreakable5">
+                <!--New Wreck copies for repairing Custom vehicles -->
+                <property name="Extends" value="cnMotoBikeMaster"/>
+                <property name="MaxDamage" value="800"/>
+                <property name="CustomIcon" value="vehicleMinibikePlaceable"/>
+                <property name="CreativeMode" value="Player"/>
+                <property name="LootList" value="cars"/>
+                <property name="Shape" value="ModelEntity"/>
+                <property name="Model" value="#@modfolder:Resources/HOH_Vanilla_Breakables.unity3d?VanillaMiniBikeRepairable"/>
+                <property name="DisplayType" value="blockMulti"/>
+                <property name="Material" value="Mmetal"/>
+                <property name="MultiBlockDim" value="1,2,2"/>
+                <property name="ModelOffset" value="0,0,0"/>
+                <property name="VerticalOffset" value="0"/>
+                <property name="Place" value="TowardsPlacer"/>
+                <property class="RepairItems">
+			<property name="resourceRepairKit" value="1"/>
+		</property> 
+                  <property class="UpgradeBlock">
+                      <property name="ToBlock" value="HOHVanillaMiniBikeBreakable6"/>
+                      <property name="Item" value="HOHBikeEngineComplete"/>
+                      <property name="ItemCount" value="1"/>
+                      <property name="UpgradeHitCount" value="1"/>
+                    </property>
+                <!-- Salvage -->
+                <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+                <drop event="Harvest" name="resourceScrapIron" count="0" tag="allHarvest"/>
+                <drop event="Destroy" count="0"/>
+              </block>
+        <block name="HOHVanillaMiniBikeBreakable4">
+                <!--New Wreck copies for repairing Custom vehicles -->
+                <property name="Extends" value="cnMotoBikeMaster"/>
+                <property name="MaxDamage" value="600"/>
+                <property name="CustomIcon" value="vehicleMinibikePlaceable"/>
+                <property name="CreativeMode" value="Player"/>
+                <property name="LootList" value="cars"/>
+                <property name="Shape" value="ModelEntity"/>
+                <property name="Model" value="#@modfolder:Resources/HOH_Vanilla_Breakables.unity3d?VanillaMiniBikeBreakableF"/>
+                <property name="DisplayType" value="blockMulti"/>
+                <property name="Material" value="Mmetal"/>
+                <property name="MultiBlockDim" value="1,2,2"/>
+                <property name="ModelOffset" value="0,0,0"/>
+                <property name="VerticalOffset" value="0"/>
+                <property name="Place" value="TowardsPlacer"/>
+                <property class="RepairItems">
+			<property name="resourceRepairKit" value="1"/>
+		</property> 
+                <property class="UpgradeBlock">
+                      <property name="ToBlock" value="HOHVanillaMiniBikeBreakable5"/>
+                      <property name="Item" value="HOHBikeBattery"/>
+                      <property name="ItemCount" value="1"/>
+                      <property name="UpgradeHitCount" value="1"/>
+                    </property>
+                <!-- Salvage -->
+                <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+                <drop event="Harvest" name="HOHVehicleBolts4" count="1" prob="1" tag="salvageHarvest"/>
+                <drop event="Harvest" name="HOHBikeInnerTube" count="2" prob="0.30" tag="salvageHarvest"/>
+                <drop event="Harvest" name="HOHBikeTireBlown" count="2" prob="0.20" tag="salvageHarvest"/>
+                <drop event="Harvest" name="HOHBikeRim" count="2" prob="0.15" tag="salvageHarvest"/>
+                <drop event="Harvest" name="HOHBikeTire" count="1,2" prob="0.1" tag="salvageHarvest"/>
+                <drop event="Harvest" name="HOHBikeWheel" count="1,2" prob="0.05" tag="salvageHarvest"/>
+                <property name="DowngradeBlock" value="HOHVanillaMiniBikeBreakable3"/>
+              </block>
+        <block name="HOHVanillaMiniBikeBreakable3">
+                <!--New Wreck copies for repairing Custom vehicles -->
+                <property name="Extends" value="cnMotoBikeMaster"/>
+                <property name="MaxDamage" value="600"/>
+                <property name="CustomIcon" value="vehicleMinibikePlaceable"/>
+                <property name="CreativeMode" value="Player"/>
+                <property name="LootList" value="cars"/>
+                <property name="Shape" value="ModelEntity"/>
+                <property name="Model" value="#@modfolder:Resources/HOH_Vanilla_Breakables.unity3d?VanillaMiniBikeBreakableH"/>
+                <property name="DisplayType" value="blockMulti"/>
+                <property name="Material" value="Mmetal"/>
+                <property name="MultiBlockDim" value="1,2,2"/>
+                <property name="ModelOffset" value="0,0,0"/>
+                <property name="VerticalOffset" value="0"/>
+                <property name="Place" value="TowardsPlacer"/>
+                <property class="RepairItems">
+			<property name="resourceRepairKit" value="1"/>
+		</property> 
+          <property class="UpgradeBlock">
+                      <property name="ToBlock" value="HOHVanillaMiniBikeBreakable4"/>
+                      <property name="Item" value="HOHBikeWheel"/>
+                      <property name="ItemCount" value="2"/>
+                      <property name="UpgradeHitCount" value="4"/>
+                    </property>
+                
+                <!-- Salvage -->
+                <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+                <drop event="Harvest" name="HOHVehicleBolts4" count="2" prob="1" tag="salvageHarvest"/>
+                <drop event="Harvest" name="resourceMechanicalParts" count="2,4" prob="0.20" tag="salvageHarvest"/>
+                <drop event="Harvest" name="HOHWiringBlue" count="1,3" prob="0.24" tag="salvageHarvest"/>
+                <drop event="Harvest" name="resourceElectricParts" count="2,4" prob="0.18" tag="salvageHarvest"/>
+                <drop event="Harvest" name="HOHWiringRed" count="1,3" prob="0.23" tag="salvageHarvest"/>
+                <drop event="Harvest" name="HOHIgnitionBarrel" count="1" prob="0.16" tag="salvageHarvest"/>
+                <drop event="Harvest" name="HOHWiringWhite" count="1,3" prob="0.22" tag="salvageHarvest"/>
+                <drop event="Harvest" name="resourceHeadlight" count="0,1" prob="0.14" tag="salvageHarvest"/>
+                <drop event="Harvest" name="HOHWiringYellow" count="1,3" prob="0.21" tag="salvageHarvest"/>
+                <drop event="Harvest" name="vehicleMinibikeHandlebars" count="1" prob="0.15" tag="salvageHarvest"/>
+                <!--<drop event="Harvest" name="HOHSparkPlugs2" count="1" prob="0.20" tag="salvageHarvest"/>
+                <drop event="Harvest" name="HOHBikeBatteryDead" count="1" prob="0.19" tag="salvageHarvest"/>
+                <drop event="Harvest" name="HOHEngineRadiator" count="1" prob="0.17" tag="salvageHarvest"/>
+                <drop event="Harvest" name="HOHAlternatorBroken" count="1" prob="0.15" tag="salvageHarvest"/>
+                <drop event="Harvest" name="HOHCarburetor" count="1" prob="0.13" tag="salvageHarvest"/>
+                <drop event="Harvest" name="HOHBikeBattery" count="1" prob="0.001" tag="salvageHarvest"/>
+                <drop event="Harvest" name="resourceOil" count="1,3" prob="0.10"  tag="salvageHarvest"/>
+                <drop event="Harvest" name="HOHBikeEngineBroken" count="1" prob="0.0123" tag="salvageHarvest"/>-->
+                <property name="DowngradeBlock" value="HOHVanillaMiniBikeBreakable2"/>
+              </block>
+        <block name="HOHVanillaMiniBikeBreakable2">
+                <!--New Wreck copies for repairing Custom vehicles -->
+                <property name="Extends" value="cnMotoBikeMaster"/>
+                <property name="MaxDamage" value="600"/>
+                <property name="CustomIcon" value="vehicleMinibikePlaceable"/>
+                <property name="TintColor" value="#8fe3a5"/>
+                <property name="CreativeMode" value="Player"/>
+                <property name="LootList" value="cars"/>
+                <property name="Shape" value="ModelEntity"/>
+                <property name="Model" value="#@modfolder:Resources/HOH_Vanilla_Breakables.unity3d?VanillaMiniBikeBreakableE"/>
+                <property name="DisplayType" value="blockMulti"/>
+                <property name="Material" value="Mmetal"/>
+                <property name="MultiBlockDim" value="1,2,2"/>
+                <property name="ModelOffset" value="0,0,0"/>
+                <property name="VerticalOffset" value="0"/>
+                <property name="Place" value="TowardsPlacer"/>
+                <property class="RepairItems">
+			<property name="resourceRepairKit" value="1"/>
+		</property> 
+                <property class="UpgradeBlock">
+                      <property name="ToBlock" value="HOHVanillaMiniBikeBreakable3"/>
+                      <property name="Item" value="vehicleMinibikeHandlebars"/>
+                      <property name="ItemCount" value="1"/>
+                      <property name="UpgradeHitCount" value="2"/>
+                    </property>
+                <!-- Salvage -->
+                <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+                <drop event="Harvest" name="HOHVehicleBolts4" count="3" prob="1" tag="salvageHarvest"/>
+                <drop event="Harvest" name="resourceElectricParts" count="2,4" prob="0.18" tag="salvageHarvest"/>
+                <drop event="Harvest" name="HOHSparkPlugs2" count="1" prob="0.18" tag="salvageHarvest"/>
+                <drop event="Harvest" name="resourceOil" count="2,6" prob="0.17" tag="salvageHarvest"/>
+                <drop event="Harvest" name="resourceMechanicalParts" count="4,8" prob="0.16" tag="salvageHarvest"/>
+                <drop event="Harvest" name="ammoGasCan" count="100,200" prob="0.3" tag="salvageHarvest"/>
+                <drop event="Harvest" name="HOHBikeBatteryDead" count="1" prob="0.16" tag="salvageHarvest"/>
+                <!--<drop event="Harvest" name="HOHEngineRadiator" count="1" prob="0.17" tag="salvageHarvest"/>
+                <drop event="Harvest" name="HOHAlternatorBroken" count="1" prob="0.15" tag="salvageHarvest"/>-->
+                <drop event="Harvest" name="HOHCarburetor" count="1" prob="0.15" tag="salvageHarvest"/>
+                <drop event="Harvest" name="vehicleMinibikeChassis" count="1" prob="0.15" tag="salvageHarvest"/>
+                <drop event="Harvest" name="HOHBikeEngineBroken" count="1" prob="0.12" tag="salvageHarvest"/>
+                <drop event="Harvest" name="HOHBikeBattery" count="1" prob="0.1" tag="salvageHarvest"/>
+              </block>
+        <block name="HOHVanillaMiniBikeBreakable1">
+                <!--New Wreck copies for repairing Custom vehicles -->
+                <property name="Extends" value="cnMotoBikeMaster"/>
+                <property name="MaxDamage" value="600"/>
+                <property name="CustomIcon" value="vehicleMinibikePlaceable"/>
+                <property name="CreativeMode" value="Player"/>
+                <property name="LootList" value="cars"/>
+                <property name="Shape" value="ModelEntity"/>
+                <property name="Model" value="#@modfolder:Resources/HOH_Vanilla_Breakables.unity3d?VanillaMiniBikeBreakableE"/>
+                <property name="DisplayType" value="blockMulti"/>
+                <property name="Material" value="Mmetal"/>
+                <property name="MultiBlockDim" value="1,2,2"/>
+                <property name="ModelOffset" value="0,0,0"/>
+                <property name="VerticalOffset" value="0"/>
+                <property name="Place" value="TowardsPlacer"/>
+                <property class="RepairItems">
+			<property name="resourceRepairKit" value="1"/>
+		</property> 
+                    <property class="UpgradeBlock">
+                      <property name="ToBlock" value="HOHVanillaMiniBikeBreakable2"/>
+                      <property name="Item" value="vehicleMinibikeChassis"/>
+                      <property name="ItemCount" value="1"/>
+                      <property name="UpgradeHitCount" value="2"/>
+                    </property>
+                <!-- Salvage -->
+                <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+                <drop event="Harvest" name="HOHVehicleBolts4" count="3" prob="1" tag="salvageHarvest"/>
+                <drop event="Harvest" name="resourceElectricParts" count="2,4" prob="0.18" tag="salvageHarvest"/>
+                <drop event="Harvest" name="HOHSparkPlugs2" count="1" prob="0.18" tag="salvageHarvest"/>
+                <drop event="Harvest" name="resourceOil" count="2,6" prob="0.17" tag="salvageHarvest"/>
+                <drop event="Harvest" name="resourceMechanicalParts" count="4,8" prob="0.16" tag="salvageHarvest"/>
+                <drop event="Harvest" name="ammoGasCan" count="100,200" prob="0.3" tag="salvageHarvest"/>
+                <drop event="Harvest" name="HOHBikeBatteryDead" count="1" prob="0.16" tag="salvageHarvest"/>
+                <!--<drop event="Harvest" name="HOHEngineRadiator" count="1" prob="0.17" tag="salvageHarvest"/>
+                <drop event="Harvest" name="HOHAlternatorBroken" count="1" prob="0.15" tag="salvageHarvest"/>-->
+                <drop event="Harvest" name="HOHCarburetor" count="1" prob="0.15" tag="salvageHarvest"/>
+                <drop event="Harvest" name="vehicleMinibikeChassis" count="1" prob="0.15" tag="salvageHarvest"/>
+                <drop event="Harvest" name="HOHBikeEngineBroken" count="1" prob="0.12" tag="salvageHarvest"/>
+                <drop event="Harvest" name="HOHBikeBattery" count="1" prob="0.1" tag="salvageHarvest"/>
+              </block>
+              <block name="HOHVanillaMiniBikeBreakable5_static">
+                <!--New Wreck copies for repairing Custom vehicles -->
+                <property name="Extends" value="cnMotoBikeMaster"/>
+                <property name="MaxDamage" value="800"/>
+                <property name="CustomIcon" value="vehicleMinibikePlaceable"/>
+                <property name="CreativeMode" value="Player"/>
+                <property name="LootList" value="cars"/>
+                <property name="Shape" value="ModelEntity"/>
+                <property name="Model" value="#@modfolder:Resources/HOH_Vanilla_Breakables.unity3d?VanillaMiniBikeRepairable"/>
+                <property name="DisplayType" value="blockMulti"/>
+                <property name="Material" value="Mmetal"/>
+                <property name="MultiBlockDim" value="1,2,2"/>
+                <property name="ModelOffset" value="0,0,0"/>
+                <property name="VerticalOffset" value="0"/>
+                <property name="Place" value="TowardsPlacer"/>
+             
+                <!-- Salvage -->
+                <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+                <drop event="Harvest" name="HOHVehicleBolts4" count="3" prob="1" tag="salvageHarvest"/>
+                <drop event="Harvest" name="resourceElectricParts" count="2,4" prob="0.18" tag="salvageHarvest"/>
+                <drop event="Harvest" name="HOHSparkPlugs2" count="1" prob="0.18" tag="salvageHarvest"/>
+                <drop event="Harvest" name="resourceOil" count="2,6" prob="0.17" tag="salvageHarvest"/>
+                <drop event="Harvest" name="resourceMechanicalParts" count="4,8" prob="0.16" tag="salvageHarvest"/>
+                <drop event="Harvest" name="ammoGasCan" count="100,200" prob="0.3" tag="salvageHarvest"/>
+                <drop event="Harvest" name="HOHBikeBatteryDead" count="1" prob="0.16" tag="salvageHarvest"/>
+                <!--<drop event="Harvest" name="HOHEngineRadiator" count="1" prob="0.17" tag="salvageHarvest"/>
+                <drop event="Harvest" name="HOHAlternatorBroken" count="1" prob="0.15" tag="salvageHarvest"/>-->
+                <drop event="Harvest" name="HOHCarburetor" count="1" prob="0.15" tag="salvageHarvest"/>
+                <drop event="Harvest" name="vehicleMinibikeChassis" count="1" prob="0.15" tag="salvageHarvest"/>
+                <drop event="Harvest" name="HOHBikeEngineBroken" count="1" prob="0.12" tag="salvageHarvest"/>
+                <drop event="Harvest" name="HOHBikeBattery" count="1" prob="0.1" tag="salvageHarvest"/>
+                <drop event="Harvest" name="resourceScrapIron" count="0" tag="allHarvest"/>
+                <drop event="Destroy" count="0"/>
+              </block>
+  <!--hoh motorcycle-->
+  <block name="HOHVanillaMotorcycleBreakable5_static">
+            <!--New Wreck copies for repairing Custom vehicles -->
+            <property name="Extends" value="cnMotoBikeMaster"/>
+            <property name="MaxDamage" value="1000"/>
+            <property name="CustomIcon" value="vehicleMotorcyclePlaceable"/>
+            <property name="CreativeMode" value="Player"/>
+            <property name="LootList" value="cars"/>
+            <property name="Shape" value="ModelEntity"/>
+            <property name="Model" value="#@modfolder:Resources/HOH_Vanilla_Breakables.unity3d?VanillaMotorcycleRepairable"/>
+            <property name="DisplayType" value="blockMulti"/>
+            <property name="Material" value="Mmetal"/>
+            <property name="MultiBlockDim" value="1,2,3"/>
+            <property name="ModelOffset" value="0,0,0"/>
+            <property name="VerticalOffset" value="0"/>
+            <property name="Place" value="TowardsPlacer"/>
+                 
+            <!-- Salvage -->
+            <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+            <drop event="Harvest" name="HOHVehicleBolts4" count="3" prob="1" tag="salvageHarvest"/>
+                <drop event="Harvest" name="resourceElectricParts" count="2,4" prob="0.18" tag="salvageHarvest"/>
+                <drop event="Harvest" name="HOHSparkPlugs2" count="1" prob="0.18" tag="salvageHarvest"/>
+                <drop event="Harvest" name="resourceOil" count="2,6" prob="0.17" tag="salvageHarvest"/>
+                <drop event="Harvest" name="resourceMechanicalParts" count="4,8" prob="0.16" tag="salvageHarvest"/>
+                <drop event="Harvest" name="ammoGasCan" count="100,200" prob="0.3" tag="salvageHarvest"/>
+                <drop event="Harvest" name="HOHBikeBatteryDead" count="1" prob="0.16" tag="salvageHarvest"/>
+                <!--<drop event="Harvest" name="HOHEngineRadiator" count="1" prob="0.17" tag="salvageHarvest"/>
+                <drop event="Harvest" name="HOHAlternatorBroken" count="1" prob="0.15" tag="salvageHarvest"/>-->
+                <drop event="Harvest" name="HOHCarburetor" count="1" prob="0.15" tag="salvageHarvest"/>
+                <drop event="Harvest" name="vehicleMinibikeChassis" count="1" prob="0.15" tag="salvageHarvest"/>
+                <drop event="Harvest" name="HOHBikeEngineBroken" count="1" prob="0.12" tag="salvageHarvest"/>
+                <drop event="Harvest" name="HOHBikeBattery" count="1" prob="0.1" tag="salvageHarvest"/>
+            <drop event="Harvest" name="resourceScrapIron" count="0" tag="allHarvest"/>
+            <drop event="Destroy" count="0"/>
+          </block>
+        
+        <block name="HOHVanillaMotorcycleBreakable6">
+            <!--New Wreck copies for repairing Custom vehicles -->
+            <property name="Extends" value="cnMotoBikeMaster"/>
+            <property name="MaxDamage" value="1000"/>
+            <property name="CustomIcon" value="vehicleMotorcyclePlaceable"/>
+            <property name="CreativeMode" value="Player"/>
+            <property name="LootList" value="cars"/>
+            <property name="Shape" value="ModelEntity"/>
+            <property name="Model" value="#@modfolder:Resources/HOH_Vanilla_Breakables.unity3d?VanillaMotorcycleRepairable"/>
+            <property name="DisplayType" value="blockMulti"/>
+            <property name="Material" value="Mmetal"/>
+            <property name="MultiBlockDim" value="1,2,3"/>
+            <property name="ModelOffset" value="0,0,0"/>
+            <property name="VerticalOffset" value="0"/>
+            <property name="Place" value="TowardsPlacer"/>
+                <property class="RepairItems">
+			<property name="resourceRepairKit" value="1"/>
+		</property> 
+                  <property class="UpgradeBlock">
+          <property name="ToBlock" value="HOHVanillaMotorcycleSpawner"/>
+          <property name="Item" value="HOHBikefluidKit"/>
+          <property name="ItemCount" value="1"/>
+          <property name="UpgradeHitCount" value="1"/>
+          </property>
+            <!-- Salvage -->
+            <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+            <drop event="Harvest" name="resourceScrapIron" count="0" tag="allHarvest"/>
+            <drop event="Destroy" count="0"/>
+          </block>
+        <block name="HOHVanillaMotorcycleBreakable5">
+            <!--New Wreck copies for repairing Custom vehicles -->
+            <property name="Extends" value="cnMotoBikeMaster"/>
+            <property name="MaxDamage" value="1000"/>
+            <property name="CustomIcon" value="vehicleMotorcyclePlaceable"/>
+            <property name="CreativeMode" value="Player"/>
+            <property name="LootList" value="cars"/>
+            <property name="Shape" value="ModelEntity"/>
+            <property name="Model" value="#@modfolder:Resources/HOH_Vanilla_Breakables.unity3d?VanillaMotorcycleRepairable"/>
+            <property name="DisplayType" value="blockMulti"/>
+            <property name="Material" value="Mmetal"/>
+            <property name="MultiBlockDim" value="1,2,3"/>
+            <property name="ModelOffset" value="0,0,0"/>
+            <property name="VerticalOffset" value="0"/>
+            <property name="Place" value="TowardsPlacer"/>
+                <property class="RepairItems">
+			<property name="resourceRepairKit" value="1"/>
+		</property> 
+                  <property class="UpgradeBlock">
+          <property name="ToBlock" value="HOHVanillaMotorcycleBreakable6"/>
+          <property name="Item" value="HOHBikeEngineComplete"/>
+          <property name="ItemCount" value="1"/>
+          <property name="UpgradeHitCount" value="1"/>
+          </property>
+            <!-- Salvage -->
+            <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+            <drop event="Harvest" name="resourceScrapIron" count="0" tag="allHarvest"/>
+            <drop event="Destroy" count="0"/>
+          </block>
+       
+
+
+        <block name="HOHVanillaMotorcycleBreakable4">
+            <!--New Wreck copies for repairing Custom vehicles -->
+            <property name="Extends" value="cnMotoBikeMaster"/>
+            <property name="MaxDamage" value="800"/>
+            <property name="CustomIcon" value="vehicleMotorcyclePlaceable"/>
+            <property name="CreativeMode" value="Player"/>
+            <property name="LootList" value="cars"/>
+            <property name="Shape" value="ModelEntity"/>
+            <property name="Model" value="#@modfolder:Resources/HOH_Vanilla_Breakables.unity3d?VanillaMotorcycleBreakableF"/>
+            <property name="DisplayType" value="blockMulti"/>
+            <property name="Material" value="Mmetal"/>
+            <property name="MultiBlockDim" value="1,2,3"/>
+            <property name="ModelOffset" value="0,0,0"/>
+            <property name="VerticalOffset" value="0"/>
+            <property name="Place" value="TowardsPlacer"/>
+                <property class="RepairItems">
+			<property name="resourceRepairKit" value="1"/>
+		</property> 
+              <property class="UpgradeBlock">
+          <property name="ToBlock" value="HOHVanillaMotorcycleBreakable5"/>
+          <property name="Item" value="HOHBikeBattery"/>
+          <property name="ItemCount" value="1"/>
+          <property name="UpgradeHitCount" value="1"/>
+          </property>
+            <!-- Salvage -->
+            <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+            <drop event="Harvest" name="HOHVehicleBolts4" count="1" prob="1" tag="salvageHarvest"/>
+            <drop event="Harvest" name="HOHBikeInnerTube" count="2" prob="0.30" tag="salvageHarvest"/>
+            <drop event="Harvest" name="HOHBikeTireBlown" count="2" prob="0.20" tag="salvageHarvest"/>
+            <drop event="Harvest" name="HOHBikeRim" count="2" prob="0.15" tag="salvageHarvest"/>
+            <drop event="Harvest" name="HOHBikeTire" count="1,2" prob="0.1" tag="salvageHarvest"/>
+            <drop event="Harvest" name="HOHBikeWheel" count="1,2" prob="0.05" tag="salvageHarvest"/>
+            <property name="DowngradeBlock" value="HOHVanillaMotorcycleBreakable3"/>
+          </block>
+        <block name="HOHVanillaMotorcycleBreakable3">
+            <!--New Wreck copies for repairing Custom vehicles -->
+            <property name="Extends" value="cnMotoBikeMaster"/>
+            <property name="MaxDamage" value="800"/>
+            <property name="CustomIcon" value="vehicleMotorcyclePlaceable"/>
+            <property name="CreativeMode" value="Player"/>
+            <property name="LootList" value="cars"/>
+            <property name="Shape" value="ModelEntity"/>
+            <property name="Model" value="#@modfolder:Resources/HOH_Vanilla_Breakables.unity3d?VanillaMotorcycleBreakableH"/>
+            <property name="DisplayType" value="blockMulti"/>
+            <property name="Material" value="Mmetal"/>
+            <property name="MultiBlockDim" value="1,2,3"/>
+            <property name="ModelOffset" value="0,0,0"/>
+            <property name="VerticalOffset" value="0"/>
+            <property name="Place" value="TowardsPlacer"/>
+                <property class="RepairItems">
+			<property name="resourceRepairKit" value="1"/>
+		</property> 
+            <property class="UpgradeBlock">
+          <property name="ToBlock" value="HOHVanillaMotorcycleBreakable4"/>
+          <property name="Item" value="HOHBikeWheel"/>
+          <property name="ItemCount" value="2"/>
+          <property name="UpgradeHitCount" value="4"/>
+         </property>
+            <!-- Salvage -->
+            <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+            <drop event="Harvest" name="HOHVehicleBolts4" count="2" prob="1" tag="salvageHarvest"/>
+            <drop event="Harvest" name="resourceMechanicalParts" count="2,4" prob="0.20" tag="salvageHarvest"/>
+            <drop event="Harvest" name="HOHWiringBlue" count="1,3" prob="0.24" tag="salvageHarvest"/>
+            <drop event="Harvest" name="resourceElectricParts" count="2,4" prob="0.18" tag="salvageHarvest"/>
+            <drop event="Harvest" name="HOHWiringRed" count="1,3" prob="0.23" tag="salvageHarvest"/>
+            <drop event="Harvest" name="HOHIgnitionBarrel" count="1" prob="0.16" tag="salvageHarvest"/>
+            <drop event="Harvest" name="HOHWiringWhite" count="1,3" prob="0.22" tag="salvageHarvest"/>
+            <drop event="Harvest" name="resourceHeadlight" count="0,1" prob="0.14" tag="salvageHarvest"/>
+            <drop event="Harvest" name="HOHWiringYellow" count="1,3" prob="0.21" tag="salvageHarvest"/>
+            <drop event="Harvest" name="vehicleMotorcycleHandlebars" count="1" prob="0.15" tag="salvageHarvest"/>
+            <!--<drop event="Harvest" name="HOHSparkPlugs2" count="1" prob="0.20" tag="salvageHarvest"/>
+            <drop event="Harvest" name="HOHBikeBatteryDead" count="1" prob="0.19" tag="salvageHarvest"/>
+            <drop event="Harvest" name="HOHEngineRadiator" count="1" prob="0.17" tag="salvageHarvest"/>
+            <drop event="Harvest" name="HOHAlternatorBroken" count="1" prob="0.15" tag="salvageHarvest"/>
+            <drop event="Harvest" name="HOHCarburetor" count="1" prob="0.13" tag="salvageHarvest"/>
+            <drop event="Harvest" name="HOHBikeBattery" count="1" prob="0.001" tag="salvageHarvest"/>
+            <drop event="Harvest" name="resourceOil" count="1,3" prob="0.10"  tag="salvageHarvest"/>
+            <drop event="Harvest" name="HOHBikeEngineBroken" count="1" prob="0.0123" tag="salvageHarvest"/>-->
+            <property name="DowngradeBlock" value="HOHVanillaMotorcycleBreakable2"/>
+          </block>
+        <block name="HOHVanillaMotorcycleBreakable2">
+            <!--New Wreck copies for repairing Custom vehicles -->
+            <property name="Extends" value="cnMotoBikeMaster"/>
+            <property name="MaxDamage" value="800"/>
+            <property name="CustomIcon" value="vehicleMotorcyclePlaceable"/>
+            <property name="TintColor" value="#8fe3a5"/>
+            <property name="CreativeMode" value="Player"/>
+            <property name="LootList" value="cars"/>
+            <property name="Shape" value="ModelEntity"/>
+            <property name="Model" value="#@modfolder:Resources/HOH_Vanilla_Breakables.unity3d?VanillaMotorcycleBreakableE"/>
+            <property name="DisplayType" value="blockMulti"/>
+            <property name="Material" value="Mmetal"/>
+            <property name="MultiBlockDim" value="1,2,3"/>
+            <property name="ModelOffset" value="0,0,0"/>
+            <property name="VerticalOffset" value="0"/>
+            <property name="Place" value="TowardsPlacer"/>
+                <property class="RepairItems">
+			<property name="resourceRepairKit" value="1"/>
+		</property> 
+            <property class="UpgradeBlock">
+          <property name="ToBlock" value="HOHVanillaMotorcycleBreakable3"/>
+          <property name="Item" value="vehicleMotorcycleHandlebars"/>
+          <property name="ItemCount" value="1"/>
+          <property name="UpgradeHitCount" value="3"/>
+          </property>
+            <!-- Salvage -->
+            <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+            <drop event="Harvest" name="HOHVehicleBolts4" count="3" prob="1" tag="salvageHarvest"/>
+            <drop event="Harvest" name="resourceElectricParts" count="2,4" prob="0.18" tag="salvageHarvest"/>
+            <drop event="Harvest" name="HOHSparkPlugs2" count="1" prob="0.18" tag="salvageHarvest"/>
+            <drop event="Harvest" name="resourceOil" count="2,6" prob="0.17" tag="salvageHarvest"/>
+            <drop event="Harvest" name="ammoGasCan" count="125,300" prob="0.2" tag="salvageHarvest"/>
+            <drop event="Harvest" name="resourceMechanicalParts" count="4,8" prob="0.16" tag="salvageHarvest"/>
+            <drop event="Harvest" name="HOHBikeBatteryDead" count="1" prob="0.16" tag="salvageHarvest"/>
+            <drop event="Harvest" name="HOHEngineRadiator" count="1" prob="0.21" tag="salvageHarvest"/>
+            <drop event="Harvest" name="HOHAlternatorBroken" count="1" prob="0.20" tag="salvageHarvest"/>
+            <drop event="Harvest" name="HOHCarburetor" count="1" prob="0.19" tag="salvageHarvest"/>
+            <drop event="Harvest" name="vehicleMotorcycleChassis" count="1" prob="0.15" tag="salvageHarvest"/>
+            <drop event="Harvest" name="HOHBikeEngineBroken" count="1" prob="0.12" tag="salvageHarvest"/>
+            <drop event="Harvest" name="HOHBikeBattery" count="1" prob="0.1" tag="salvageHarvest"/>
+          </block>
+        <block name="HOHVanillaMotorcycleBreakable1">
+            <!--New Wreck copies for repairing Custom vehicles -->
+            <property name="Extends" value="cnMotoBikeMaster"/>
+            <property name="MaxDamage" value="800"/>
+            <property name="CustomIcon" value="vehicleMotorcyclePlaceable"/>
+            <property name="CreativeMode" value="Player"/>
+            <property name="LootList" value="cars"/>
+            <property name="Shape" value="ModelEntity"/>
+            <property name="Model" value="#@modfolder:Resources/HOH_Vanilla_Breakables.unity3d?VanillaMotorcycleBreakableE"/>
+            <property name="DisplayType" value="blockMulti"/>
+            <property name="Material" value="Mmetal"/>
+            <property name="MultiBlockDim" value="1,2,3"/>
+            <property name="ModelOffset" value="0,0,0"/>
+            <property name="VerticalOffset" value="0"/>
+            <property name="Place" value="TowardsPlacer"/>
+                <property class="RepairItems">
+			<property name="resourceRepairKit" value="1"/>
+		</property> 
+            <property class="UpgradeBlock">
+          <property name="ToBlock" value="HOHVanillaMotorcycleBreakable2"/>
+          <property name="Item" value="vehicleMotorcycleChassis"/>
+          <property name="ItemCount" value="1"/>
+          <property name="UpgradeHitCount" value="3"/>
+         </property>
+            <!-- Salvage -->
+            <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+            <drop event="Harvest" name="HOHVehicleBolts4" count="3" prob="1" tag="salvageHarvest"/>
+            <drop event="Harvest" name="resourceElectricParts" count="2,4" prob="0.18" tag="salvageHarvest"/>
+            <drop event="Harvest" name="HOHSparkPlugs2" count="1" prob="0.18" tag="salvageHarvest"/>
+            <drop event="Harvest" name="resourceOil" count="2,6" prob="0.17" tag="salvageHarvest"/>
+            <drop event="Harvest" name="ammoGasCan" count="125,300" prob="0.2" tag="salvageHarvest"/>
+            <drop event="Harvest" name="resourceMechanicalParts" count="4,8" prob="0.16" tag="salvageHarvest"/>
+            <drop event="Harvest" name="HOHBikeBatteryDead" count="1" prob="0.16" tag="salvageHarvest"/>
+            <drop event="Harvest" name="HOHEngineRadiator" count="1" prob="0.21" tag="salvageHarvest"/>
+            <drop event="Harvest" name="HOHAlternatorBroken" count="1" prob="0.20" tag="salvageHarvest"/>
+            <drop event="Harvest" name="HOHCarburetor" count="1" prob="0.19" tag="salvageHarvest"/>
+            <drop event="Harvest" name="vehicleMotorcycleChassis" count="1" prob="0.15" tag="salvageHarvest"/>
+            <drop event="Harvest" name="HOHBikeEngineBroken" count="1" prob="0.12" tag="salvageHarvest"/>
+            <drop event="Harvest" name="HOHBikeBattery" count="1" prob="0.1" tag="salvageHarvest"/>
+          </block>
+        <block name="HOHVanillaMotorcycleSpawner">
+            <property name="Material" value="Mmetal"/>
+            <property name="CreativeMode" value="None"/>
+            <property name="Class" value="SpawnCube2SDX, SCore" />
+            <property name="Config" value="ec=vehicleMotorcycle" />
+            <property name="Shape" value="ModelEntity"/>
+            <property name="Model" value="#@modfolder:Resources/HOH_Vanilla_Breakables.unity3d?VanillaMotorcycleRepairable"/>
+            <property name="ModelOffset" value="0,0,0"/>
+            <property name="Place" value="TowardsPlacerInverted"/>
+            <property name="Path" value="solid"/>
+            <property name="MultiBlockDim" value="1,1,2"/>
+          </block>  
+  <!--hoh 4x4-->
+        <block name="HOHVanilla4x4Spawner">
+          <property name="Material" value="Mmetal"/>
+          <property name="CreativeMode" value="None"/>
+          <property name="Class" value="SpawnCube2SDX, SCore" />
+          <property name="Config" value="ec=vehicleTruck4x4" />
+          <property name="Shape" value="ModelEntity"/>
+          <property name="Model" value="#@modfolder:Resources/HOH_Vanilla_Breakables.unity3d?Vanilla4x4Repairable"/>
+          <property name="ModelOffset" value="0,0,0"/>
+          <property name="Place" value="TowardsPlacer"/>
+          <property name="Path" value="solid"/>
+          <property name="MultiBlockDim" value="1,1,2"/>
+        </block>
+        <block name="HOHVanilla4x4Breakable6">
+          <!--New Wreck copies for repairing Custom vehicles -->
+          <property name="Extends" value="cntPickupTruck01White"/>
+          <property name="MaxDamage" value="1200"/>
+          <property name="CustomIcon" value="vehicleTruck4x4Placeable"/>
+          <property name="CreativeMode" value="Player"/>
+          <property name="LootList" value="cars"/>
+          <property name="Shape" value="ModelEntity"/>
+          <property name="Model" value="#@modfolder:Resources/HOH_Vanilla_Breakables.unity3d?Vanilla4x4Repairable"/>
+          <property name="DisplayType" value="blockMulti"/>
+          <property name="Material" value="Mmetal"/>
+          <property name="MultiBlockDim" value="3,3,5"/>
+          <property name="ModelOffset" value="0,0,0"/>
+          <property name="VerticalOffset" value="0"/>
+          <property name="Place" value="TowardsPlacer"/>
+          <property class="RepairItems">
+			<property name="resourceRepairKit" value="1"/>
+		</property> 
+            <property class="UpgradeBlock">
+            <property name="ToBlock" value="HOHVanilla4x4Spawner"/>
+            <property name="Item" value="HOHTruckfluidKit"/>
+            <property name="ItemCount" value="1"/>
+            <property name="UpgradeHitCount" value="4"/>
+          </property>
+          
+          <!-- Salvage -->
+          <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+          <drop event="Harvest" name="resourceScrapIron" count="0" tag="allHarvest"/>
+          <drop event="Destroy" count="0"/>
+        </block>
+        <block name="HOHVanilla4x4Breakable5">
+          <!--New Wreck copies for repairing Custom vehicles -->
+          <property name="Extends" value="cntPickupTruck01White"/>
+          <property name="MaxDamage" value="1200"/>
+          <property name="CustomIcon" value="vehicleTruck4x4Placeable"/>
+          <property name="CreativeMode" value="Player"/>
+          <property name="LootList" value="cars"/>
+          <property name="Shape" value="ModelEntity"/>
+          <property name="Model" value="#@modfolder:Resources/HOH_Vanilla_Breakables.unity3d?Vanilla4x4Repairable"/>
+          <property name="DisplayType" value="blockMulti"/>
+          <property name="Material" value="Mmetal"/>
+          <property name="MultiBlockDim" value="3,3,5"/>
+          <property name="ModelOffset" value="0,0,0"/>
+          <property name="VerticalOffset" value="0"/>
+          <property name="Place" value="TowardsPlacer"/>
+          <property class="RepairItems">
+			<property name="resourceRepairKit" value="1"/>
+		</property> 
+            <property class="UpgradeBlock">
+            <property name="ToBlock" value="HOHVanilla4x4Breakable6"/>
+            <property name="Item" value="HOHEngineComplete"/>
+            <property name="ItemCount" value="1"/>
+            <property name="UpgradeHitCount" value="4"/>
+          </property>
+          
+          <!-- Salvage -->
+          <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+           <drop event="Harvest" name="HOHEngineBroken" count="1" prob="0.1" tag="salvageHarvest"/>
+          
+          <drop event="Harvest" name="resourceScrapIron" count="0" tag="allHarvest"/>
+          <drop event="Destroy" count="0"/>
+        </block>
+        <block name="HOHVanilla4x4Breakable4">
+          <!--New Wreck copies for repairing Custom vehicles -->
+          <property name="Extends" value="cntPickupTruck01White"/>
+          <property name="MaxDamage" value="1000"/>
+          <property name="CustomIcon" value="vehicleTruck4x4Placeable"/>
+          <property name="CreativeMode" value="Player"/>
+          <property name="LootList" value="cars"/>
+          <property name="Shape" value="ModelEntity"/>
+          <property name="Model" value="#@modfolder:Resources/HOH_Vanilla_Breakables.unity3d?Vanilla4x4breakableF"/>
+          <property name="DisplayType" value="blockMulti"/>
+          <property name="Material" value="Mmetal"/>
+          <property name="MultiBlockDim" value="3,3,5"/>
+          <property name="ModelOffset" value="0,0,0"/>
+          <property name="VerticalOffset" value="0"/>
+          <property name="Place" value="TowardsPlacer"/>
+          <property class="RepairItems">
+			<property name="resourceRepairKit" value="1"/>
+		</property> 
+            <property class="UpgradeBlock">
+            <property name="ToBlock" value="HOHVanilla4x4Breakable5"/>
+            <property name="Item" value="HOHTransmissionComplete"/>
+            <property name="ItemCount" value="2"/>
+            <property name="UpgradeHitCount" value="4"/>
+          </property>
+          <!-- Salvage -->
+          <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+          <drop event="Harvest" name="HOHVehicleBolts4" count="4" prob="1" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHCarInnerTube" count="2,4" prob="0.30" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHTransmissionBroken" count="1" prob="0.1" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHCarTireBlown" count="2,4" prob="0.20" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHCarRim" count="2,4" prob="0.15" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHCarTire" count="2,4" prob="0.1" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHCarWheel" count="2,4" prob="0.05" tag="salvageHarvest"/>
+          <property name="DowngradeBlock" value="HOHVanilla4x4Breakable3"/>
+        </block>
+        <block name="HOHVanilla4x4Breakable3">
+          <!--New Wreck copies for repairing Custom vehicles -->
+          <property name="Extends" value="cntPickupTruck01White"/>
+          <property name="MaxDamage" value="1000"/>
+          <property name="CustomIcon" value="vehicleTruck4x4Placeable"/>
+          <property name="CreativeMode" value="Player"/>
+          <property name="LootList" value="cars"/>
+          <property name="Shape" value="ModelEntity"/>
+          <property name="Model" value="#@modfolder:Resources/HOH_Vanilla_Breakables.unity3d?Vanilla4x4breakableH"/>
+          <property name="DisplayType" value="blockMulti"/>
+          <property name="Material" value="Mmetal"/>
+          <property name="MultiBlockDim" value="3,3,5"/>
+          <property name="ModelOffset" value="0,0,0"/>
+          <property name="VerticalOffset" value="0"/>
+          <property name="Place" value="TowardsPlacer"/>
+          <property class="RepairItems">
+			<property name="resourceRepairKit" value="1"/>
+		</property> 
+          <property class="UpgradeBlock">
+            <property name="ToBlock" value="HOHVanilla4x4Breakable4"/>
+            <property name="Item" value="HOHCarWheel"/>
+            <property name="ItemCount" value="2"/>
+            <property name="UpgradeHitCount" value="4"/>
+          </property>
+          <!-- Salvage -->
+          <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+          <drop event="Harvest" name="HOHVehicleBolts4" count="6" prob="1" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceMechanicalParts" count="2,4" prob="0.20" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHWiringBlue" count="1,3" prob="0.24" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceElectricParts" count="2,4" prob="0.18" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHWiringRed" count="1,3" prob="0.23" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHIgnitionBarrel" count="1" prob="0.16" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHWiringWhite" count="1,3" prob="0.22" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceHeadlight" count="1,2" prob="0.14" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHWiringYellow" count="1,3" prob="0.21" tag="salvageHarvest"/>
+          <!--<drop event="Harvest" name="HOHSparkPlugs2" count="1" prob="0.20" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHBikeBatteryDead" count="1" prob="0.19" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHEngineRadiator" count="1" prob="0.17" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHAlternatorBroken" count="1" prob="0.15" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHCarburetor" count="1" prob="0.13" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHBikeBattery" count="1" prob="0.001" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceOil" count="1,3" prob="0.10"  tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHBikeEngineBroken" count="1" prob="0.0123" tag="salvageHarvest"/>-->
+          <property name="DowngradeBlock" value="HOHVanilla4x4Breakable2"/>
+        </block>
+
+    <block name="HOHVanilla4x4Breakable2">
+          <!--New Wreck copies for repairing Custom vehicles -->
+          <property name="Extends" value="cntPickupTruck01White"/>
+          <property name="MaxDamage" value="1000"/>
+          <property name="CustomIcon" value="vehicleTruck4x4Placeable"/>
+          <property name="TintColor" value="#8fe3a5"/>
+          <property name="CreativeMode" value="Player"/>
+          <property name="LootList" value="cars"/>
+          <property name="Shape" value="ModelEntity"/>
+          <property name="Model" value="#@modfolder:Resources/HOH_Vanilla_Breakables.unity3d?Vanilla4x4breakableE"/>
+          <property name="DisplayType" value="blockMulti"/>
+          <property name="Material" value="Mmetal"/>
+          <property name="MultiBlockDim" value="3,3,5"/>
+          <property name="ModelOffset" value="0,0,0"/>
+          <property name="VerticalOffset" value="0"/>
+          <property name="Place" value="TowardsPlacer"/>
+          <property class="RepairItems">
+			<property name="resourceRepairKit" value="1"/>
+		</property> 
+          <property class="UpgradeBlock">
+            <property name="ToBlock" value="HOHVanilla4x4Breakable3"/>
+            <property name="Item" value="HOHCarWheel"/>
+            <property name="ItemCount" value="2"/>
+            <property name="UpgradeHitCount" value="4"/>
+          </property>
+          <!-- Salvage -->
+          <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+          <drop event="Harvest" name="HOHVehicleBolts4" count="8" prob="1" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceElectricParts" count="4,8" prob="0.18" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHSparkPlugs2" count="2,4" prob="0.18" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceOil" count="4,8" prob="0.17" tag="salvageHarvest"/>
+          <drop event="Harvest" name="ammoGasCan" count="150,400" prob="0.3" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceMechanicalParts" count="6,12" prob="0.16" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHCarBatteryDead" count="1" prob="0.2" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHEngineRadiator" count="1" prob="0.25" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHAlternatorBroken" count="1" prob="0.20" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHCarburetor" count="1" prob="0.19" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHCarBattery" count="1" prob="0.1" tag="salvageHarvest"/>
+          <drop event="Harvest" name="carBattery" count="1" prob="0.15" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHWiringBlue" count="1,3" prob="0.24" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceElectricParts" count="2,4" prob="0.18" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHWiringRed" count="1,3" prob="0.23" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHIgnitionBarrel" count="1" prob="0.16" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHWiringWhite" count="1,3" prob="0.22" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceHeadlight" count="1,2" prob="0.14" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHWiringYellow" count="1,3" prob="0.21" tag="salvageHarvest"/>
+          <property name="PassThroughDamage" value="true"/>
+        </block>
+    <block name="HOHVanilla4x4Breakable1">
+          <!--New Wreck copies for repairing Custom vehicles -->
+          <property name="Extends" value="cntPickupTruck01White"/>
+          <property name="MaxDamage" value="1000"/>
+          <property name="CustomIcon" value="vehicleTruck4x4Placeable"/>
+          <property name="CreativeMode" value="Player"/>
+          <property name="LootList" value="cars"/>
+          <property name="Shape" value="ModelEntity"/>
+          <property name="Model" value="#@modfolder:Resources/HOH_Vanilla_Breakables.unity3d?Vanilla4x4breakableE"/>
+          <property name="DisplayType" value="blockMulti"/>
+          <property name="Material" value="Mmetal"/>
+          <property name="MultiBlockDim" value="3,3,5"/>
+          <property name="ModelOffset" value="0,0,0"/>
+          <property name="VerticalOffset" value="0"/>
+          <property name="Place" value="TowardsPlacer"/>
+          <property class="RepairItems">
+			<property name="resourceRepairKit" value="1"/>
+		</property> 
+          <property class="UpgradeBlock">
+            <property name="ToBlock" value="HOHVanilla4x4Breakable2"/>
+            <property name="Item" value="vehicleTruck4x4Chassis"/>
+            <property name="ItemCount" value="1"/>
+            <property name="UpgradeHitCount" value="4"/>
+          </property>
+          <!-- Salvage -->
+          <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+          <drop event="Harvest" name="HOHVehicleBolts4" count="8" prob="1" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceElectricParts" count="4,8" prob="0.18" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHSparkPlugs2" count="2,4" prob="0.18" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceOil" count="4,8" prob="0.17" tag="salvageHarvest"/>
+          <drop event="Harvest" name="ammoGasCan" count="150,400" prob="0.3" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceMechanicalParts" count="6,12" prob="0.16" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHCarBatteryDead" count="1" prob="0.2" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHEngineRadiator" count="1" prob="0.25" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHAlternatorBroken" count="1" prob="0.20" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHCarburetor" count="1" prob="0.19" tag="salvageHarvest"/>
+          <drop event="Harvest" name="vehicleTruck4x4Chassis" count="1" prob="0.15" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHEngineBroken" count="1" prob="0.1" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHTransmissionBroken" count="1" prob="0.1" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHCarBattery" count="1" prob="0.1" tag="salvageHarvest"/>
+          <drop event="Harvest" name="carBattery" count="1" prob="0.15" tag="salvageHarvest"/>
+        <drop event="Harvest" name="HOHWiringBlue" count="1,3" prob="0.24" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceElectricParts" count="2,4" prob="0.18" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHWiringRed" count="1,3" prob="0.23" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHIgnitionBarrel" count="1" prob="0.16" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHWiringWhite" count="1,3" prob="0.22" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceHeadlight" count="1,2" prob="0.14" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHWiringYellow" count="1,3" prob="0.21" tag="salvageHarvest"/>
+          <property name="PassThroughDamage" value="true"/>
+        </block>
+    <block name="HOHVanilla4x4BreakableH_b">
+          <!--New Wreck copies for repairing Custom vehicles -->
+          <property name="Extends" value="cntPickupTruck01White"/>
+          <property name="MaxDamage" value="1000"/>
+          <property name="CustomIcon" value="vehicleTruck4x4Placeable"/>
+          <property name="CreativeMode" value="Player"/>
+          <property name="LootList" value="cars"/>
+          <property name="Shape" value="ModelEntity"/>
+          <property name="Model" value="#@modfolder:Resources/HOH_Vanilla_Breakables.unity3d?Vanilla4x4breakableH"/>
+          <property name="DisplayType" value="blockMulti"/>
+          <property name="Material" value="Mmetal"/>
+          <property name="MultiBlockDim" value="3,3,5"/>
+          <property name="ModelOffset" value="0,0,0"/>
+          <property name="VerticalOffset" value="0"/>
+          <property name="Place" value="TowardsPlacer"/>
+        
+          <!-- Salvage -->
+          <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+          <drop event="Harvest" name="HOHVehicleBolts4" count="6" prob="1" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceMechanicalParts" count="2,4" prob="0.20" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHWiringBlue" count="1,3" prob="0.24" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceElectricParts" count="2,4" prob="0.18" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHWiringRed" count="1,3" prob="0.23" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHIgnitionBarrel" count="1" prob="0.16" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHWiringWhite" count="1,3" prob="0.22" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceHeadlight" count="1,2" prob="0.14" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHWiringYellow" count="1,3" prob="0.21" tag="salvageHarvest"/>
+          <drop event="Harvest" name="vehicleTruck4x4Chassis" count="1" prob="0.15" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHEngineBroken" count="1" prob="0.1" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHTransmissionBroken" count="1" prob="0.1" tag="salvageHarvest"/>
+          <!--<drop event="Harvest" name="HOHSparkPlugs2" count="1" prob="0.20" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHBikeBatteryDead" count="1" prob="0.19" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHEngineRadiator" count="1" prob="0.17" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHAlternatorBroken" count="1" prob="0.15" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHCarburetor" count="1" prob="0.13" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHBikeBattery" count="1" prob="0.001" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceOil" count="1,3" prob="0.10"  tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHBikeEngineBroken" count="1" prob="0.0123" tag="salvageHarvest"/>-->
+          
+        </block>
+
+
+
+  <!--vm ambulance-->
+        <block name="HOHAmbulanceSpawner">
+          <property name="Material" value="Mmetal"/>
+          <property name="CreativeMode" value="None"/>
+          <property name="Class" value="SpawnCube2SDX, SCore" />
+          <property name="Config" value="ec=vehicleVMTruckAmbulance" />
+          <property name="Shape" value="ModelEntity"/>
+          <property name="Model" value="@:Entities/Vehicles/Truck/ambulanceTruck01Prefab.prefab"/>
+          <property name="ModelOffset" value="0,0,0"/>
+          <property name="Place" value="TowardsPlacer"/>
+          <property name="Path" value="solid"/>
+          <property name="MultiBlockDim" value="1,1,2"/>
+        </block>
+    <block name="HOHAmbulance6">
+          <!--New Wreck copies for repairing Custom vehicles -->
+          <property name="Extends" value="cntPickupTruck01White"/>
+          <property name="MaxDamage" value="1200"/>
+          <property name="CustomIcon" value="RepairableAmbulance"/>
+          <property name="CreativeMode" value="Player"/>
+          <property name="LootList" value="cars"/>
+          <property name="TintColor" value="#e82219"/>
+          <property name="Shape" value="ModelEntity"/>
+          <property name="Model" value="@:Entities/Vehicles/Truck/ambulanceTruck01Prefab.prefab"/>
+          <property name="DisplayType" value="blockMulti"/>
+          <property name="Material" value="Mmetal"/>
+          <property name="MultiBlockDim" value="3,3,5"/>
+          <property name="ModelOffset" value="0,0.5,0"/>
+          <property name="VerticalOffset" value="0"/>
+          <property name="Place" value="TowardsPlacer"/>
+                <property class="RepairItems">
+			<property name="resourceRepairKit" value="1"/>
+		</property> 
+            <property class="UpgradeBlock">
+            <property name="ToBlock" value="HOHAmbulanceSpawner"/>
+            <property name="Item" value="HOHCommercialTruckfluidKit"/>
+            <property name="ItemCount" value="1"/>
+            <property name="UpgradeHitCount" value="4"/>
+          </property>
+          
+          <!-- Salvage -->
+          <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+          <drop event="Harvest" name="resourceScrapIron" count="0" tag="allHarvest"/>
+          <drop event="Destroy" count="0"/>
+        </block>
+    <block name="HOHAmbulance5">
+          <!--New Wreck copies for repairing Custom vehicles -->
+          <property name="Extends" value="cntPickupTruck01White"/>
+          <property name="MaxDamage" value="1200"/>
+          <property name="CustomIcon" value="RepairableAmbulance"/>
+          <property name="CreativeMode" value="Player"/>
+          <property name="LootList" value="cars"/>
+          <property name="TintColor" value="#e82219"/>
+          <property name="Shape" value="ModelEntity"/>
+          <property name="Model" value="@:Entities/Vehicles/Truck/ambulanceTruck01Prefab.prefab"/>
+          <property name="DisplayType" value="blockMulti"/>
+          <property name="Material" value="Mmetal"/>
+          <property name="MultiBlockDim" value="3,3,5"/>
+          <property name="ModelOffset" value="0,0.5,0"/>
+          <property name="VerticalOffset" value="0"/>
+          <property name="Place" value="TowardsPlacer"/>
+                <property class="RepairItems">
+			<property name="resourceRepairKit" value="1"/>
+		</property> 
+            <property class="UpgradeBlock">
+            <property name="ToBlock" value="HOHAmbulance6"/>
+            <property name="Item" value="HOHCarBattery"/>
+            <property name="ItemCount" value="4"/>
+            <property name="UpgradeHitCount" value="4"/>
+          </property>
+          
+          <!-- Salvage -->
+          <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+          <drop event="Harvest" name="resourceScrapIron" count="0" tag="allHarvest"/>
+          <drop event="Destroy" count="0"/>
+        </block>
+    <block name="HOHAmbulance4">
+          <!--New Wreck copies for repairing Custom vehicles -->
+          <property name="Extends" value="cntPickupTruck01White"/>
+          <property name="MaxDamage" value="1000"/>
+          <property name="CustomIcon" value="RepairableAmbulance"/>
+          <property name="CreativeMode" value="Player"/>
+          <property name="TintColor" value="#19e8dd"/>
+          <property name="LootList" value="cars"/>
+          <property name="Shape" value="ModelEntity"/>
+          <property name="Model" value="@:Entities/Vehicles/Truck/ambulanceTruck01Prefab.prefab"/>
+          <property name="DisplayType" value="blockMulti"/>
+          <property name="Material" value="Mmetal"/>
+          <property name="MultiBlockDim" value="3,3,5"/>
+          <property name="ModelOffset" value="0,0.5,0"/>
+          <property name="VerticalOffset" value="0"/>
+          <property name="Place" value="TowardsPlacer"/>
+                <property class="RepairItems">
+			<property name="resourceRepairKit" value="1"/>
+		</property> 
+            <property class="UpgradeBlock">
+            <property name="ToBlock" value="HOHAmbulance5"/>
+            <property name="Item" value="HOHEngineComplete"/>
+            <property name="ItemCount" value="1"/>
+            <property name="UpgradeHitCount" value="4"/>
+          </property>
+          <!-- Salvage -->
+          <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+          <drop event="Harvest" name="HOHVehicleBolts4" count="4" prob="1" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHCarInnerTube" count="2,4" prob="0.30" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHCarTireBlown" count="2,4" prob="0.20" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHCarRim" count="2,4" prob="0.15" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHCarTire" count="2,4" prob="0.1" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHCarWheel" count="2,4" prob="0.05" tag="salvageHarvest"/>
+          <property name="DowngradeBlock" value="HOHAmbulance3"/>
+        </block>
+        <block name="HOHAmbulance3">
+          <!--New Wreck copies for repairing Custom vehicles -->
+          <property name="Extends" value="cntPickupTruck01White"/>
+          <property name="MaxDamage" value="1000"/>
+          <property name="CustomIcon" value="RepairableAmbulance"/>
+          <property name="CreativeMode" value="Player"/>
+          <property name="LootList" value="cars"/>
+          <property name="TintColor" value="#d3e819"/>
+          <property name="Shape" value="ModelEntity"/>
+          <property name="Model" value="@:Entities/Vehicles/Truck/ambulanceTruck01Prefab.prefab"/>
+          <property name="DisplayType" value="blockMulti"/>
+          <property name="Material" value="Mmetal"/>
+          <property name="MultiBlockDim" value="3,3,5"/>
+          <property name="ModelOffset" value="0,0.5,0"/>
+          <property name="VerticalOffset" value="0"/>
+          <property name="Place" value="TowardsPlacer"/>
+                <property class="RepairItems">
+			<property name="resourceRepairKit" value="1"/>
+		</property> 
+          <property class="UpgradeBlock">
+            <property name="ToBlock" value="HOHAmbulance4"/>
+            <property name="Item" value="HOHTransmissionComplete"/>
+            <property name="ItemCount" value="1"/>
+            <property name="UpgradeHitCount" value="4"/>
+          </property>
+          <!-- Salvage -->
+          <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+          <drop event="Harvest" name="HOHVehicleBolts4" count="6" prob="1" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceMechanicalParts" count="2,4" prob="0.20" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHWiringBlue" count="1,3" prob="0.24" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceElectricParts" count="2,4" prob="0.18" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHWiringRed" count="1,3" prob="0.23" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHIgnitionBarrel" count="1" prob="0.16" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHWiringWhite" count="1,3" prob="0.22" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceHeadlight" count="1,2" prob="0.14" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHWiringYellow" count="1,3" prob="0.21" tag="salvageHarvest"/>
+          <!--<drop event="Harvest" name="HOHSparkPlugs2" count="1" prob="0.20" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHBikeBatteryDead" count="1" prob="0.19" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHEngineRadiator" count="1" prob="0.17" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHAlternatorBroken" count="1" prob="0.15" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHCarburetor" count="1" prob="0.13" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHBikeBattery" count="1" prob="0.001" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceOil" count="1,3" prob="0.10"  tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHBikeEngineBroken" count="1" prob="0.0123" tag="salvageHarvest"/>-->
+          <property name="DowngradeBlock" value="HOHAmbulance2"/>
+        </block>
+
+    <block name="HOHAmbulance2">
+          <!--New Wreck copies for repairing Custom vehicles -->
+          <property name="Extends" value="cntPickupTruck01White"/>
+          <property name="MaxDamage" value="1000"/>
+          <property name="CustomIcon" value="RepairableAmbulance"/>
+          <property name="TintColor" value="#8fe3a5"/>
+          <property name="CreativeMode" value="Player"/>
+          <property name="LootList" value="cars"/>
+          <property name="Shape" value="ModelEntity"/>
+          <property name="Model" value="@:Entities/Vehicles/Truck/ambulanceTruck01Prefab.prefab"/>
+          <property name="DisplayType" value="blockMulti"/>
+          <property name="Material" value="Mmetal"/>
+          <property name="MultiBlockDim" value="3,3,5"/>
+          <property name="ModelOffset" value="0,0.5,0"/>
+          <property name="VerticalOffset" value="0"/>
+          <property name="Place" value="TowardsPlacer"/>
+                <property class="RepairItems">
+			<property name="resourceRepairKit" value="1"/>
+		</property> 
+          <property class="UpgradeBlock">
+            <property name="ToBlock" value="HOHAmbulance3"/>
+            <property name="Item" value="HOHCarWheel"/>
+            <property name="ItemCount" value="4"/>
+            <property name="UpgradeHitCount" value="4"/>
+          </property>
+          <!-- Salvage -->
+          <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+          <drop event="Harvest" name="HOHVehicleBolts4" count="8" prob="1" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceElectricParts" count="4,8" prob="0.18" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHSparkPlugs2" count="2,4" prob="0.18" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceOil" count="4,8" prob="0.17" tag="salvageHarvest"/>
+          <drop event="Harvest" name="ammoGasCan" count="150,400" prob="0.3" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceMechanicalParts" count="6,12" prob="0.16" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHCarBatteryDead" count="1" prob="0.2" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHEngineRadiator" count="1" prob="0.25" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHAlternatorBroken" count="1" prob="0.20" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHCarburetor" count="1" prob="0.19" tag="salvageHarvest"/>
+          <drop event="Harvest" name="vehicleTruck4x4Chassis" count="1" prob="0.15" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHEngineBroken" count="1" prob="0.1" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHTransmissionBroken" count="1" prob="0.1" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHCarBattery" count="1" prob="0.1" tag="salvageHarvest"/>
+          <drop event="Harvest" name="carBattery" count="1" prob="0.15" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHWiringBlue" count="1,3" prob="0.24" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceElectricParts" count="2,4" prob="0.18" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHWiringRed" count="1,3" prob="0.23" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHIgnitionBarrel" count="1" prob="0.16" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHWiringWhite" count="1,3" prob="0.22" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceHeadlight" count="1,2" prob="0.14" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHWiringYellow" count="1,3" prob="0.21" tag="salvageHarvest"/>
+          <property name="PassThroughDamage" value="true"/>
+        </block>
+    <block name="HOHAmbulance1">
+          <!--New Wreck copies for repairing Custom vehicles -->
+          <property name="Extends" value="cntPickupTruck01White"/>
+          <property name="MaxDamage" value="1000"/>
+          <property name="CustomIcon" value="RepairableAmbulance"/>
+          <property name="TintColor" value="#7f33ff"/>
+          <property name="CreativeMode" value="Player"/>
+          <property name="LootList" value="cars"/>
+          <property name="Shape" value="ModelEntity"/>
+          <property name="Model" value="@:Entities/Vehicles/Truck/ambulanceTruck01Prefab.prefab"/>
+          <property name="DisplayType" value="blockMulti"/>
+          <property name="Material" value="Mmetal"/>
+          <property name="MultiBlockDim" value="3,3,5"/>
+          <property name="ModelOffset" value="0,0.5,0"/>
+          <property name="VerticalOffset" value="0"/>
+          <property name="Place" value="TowardsPlacer"/>
+                <property class="RepairItems">
+			<property name="resourceRepairKit" value="1"/>
+		</property> 
+          <property class="UpgradeBlock">
+            <property name="ToBlock" value="HOHAmbulance2"/>
+            <property name="Item" value="vehicleBoxTruckchassis"/>
+            <property name="ItemCount" value="1"/>
+            <property name="UpgradeHitCount" value="4"/>
+          </property>
+          <!-- Salvage -->
+          <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+          <drop event="Harvest" name="HOHVehicleBolts4" count="8" prob="1" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceElectricParts" count="4,8" prob="0.18" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHSparkPlugs2" count="2,4" prob="0.18" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceOil" count="4,8" prob="0.17" tag="salvageHarvest"/>
+          <drop event="Harvest" name="ammoGasCan" count="150,400" prob="0.3" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceMechanicalParts" count="6,12" prob="0.16" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHCarBatteryDead" count="1" prob="0.2" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHEngineRadiator" count="1" prob="0.25" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHAlternatorBroken" count="1" prob="0.20" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHCarburetor" count="1" prob="0.19" tag="salvageHarvest"/>
+          <drop event="Harvest" name="vehicleBoxTruckchassis" count="1" prob="0.15" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHEngineBroken" count="1" prob="0.1" tag="salvageHarvest"/>
+          
+          <drop event="Harvest" name="HOHCarBattery" count="1" prob="0.1" tag="salvageHarvest"/>
+          <drop event="Harvest" name="carBattery" count="1" prob="0.15" tag="salvageHarvest"/>
+        <drop event="Harvest" name="HOHWiringBlue" count="1,3" prob="0.24" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceElectricParts" count="2,4" prob="0.18" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHWiringRed" count="1,3" prob="0.23" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHIgnitionBarrel" count="1" prob="0.16" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHWiringWhite" count="1,3" prob="0.22" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceHeadlight" count="1,2" prob="0.14" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHWiringYellow" count="1,3" prob="0.21" tag="salvageHarvest"/>
+          <property name="PassThroughDamage" value="true"/>
+        </block>
+        <block name="HOHAmbulance_static">
+          <!--New Wreck copies for repairing Custom vehicles -->
+          <property name="Extends" value="cntPickupTruck01White"/>
+          <property name="MaxDamage" value="1000"/>
+          <property name="CustomIcon" value="RepairableAmbulance"/>
+          <property name="TintColor" value="#7f33ff"/>
+          <property name="CreativeMode" value="Player"/>
+          <property name="LootList" value="cars"/>
+          <property name="Shape" value="ModelEntity"/>
+          <property name="Model" value="@:Entities/Vehicles/Truck/ambulanceTruck01Prefab.prefab"/>
+          <property name="DisplayType" value="blockMulti"/>
+          <property name="Material" value="Mmetal"/>
+          <property name="MultiBlockDim" value="3,3,5"/>
+          <property name="ModelOffset" value="0,0.5,0"/>
+          <property name="VerticalOffset" value="0"/>
+          <property name="Place" value="TowardsPlacer"/>
+        
+          <!-- Salvage -->
+          <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+          <drop event="Harvest" name="HOHVehicleBolts4" count="8" prob="1" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceElectricParts" count="4,8" prob="0.18" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHSparkPlugs2" count="2,4" prob="0.18" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceOil" count="4,8" prob="0.17" tag="salvageHarvest"/>
+          <drop event="Harvest" name="ammoGasCan" count="150,400" prob="0.3" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceMechanicalParts" count="6,12" prob="0.16" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHCarBatteryDead" count="1" prob="0.2" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHEngineRadiator" count="1" prob="0.25" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHAlternatorBroken" count="1" prob="0.20" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHCarburetor" count="1" prob="0.19" tag="salvageHarvest"/>
+          <drop event="Harvest" name="vehicleBoxTruckchassis" count="1" prob="0.15" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHEngineBroken" count="1" prob="0.1" tag="salvageHarvest"/>
+          
+          <drop event="Harvest" name="HOHCarBattery" count="1" prob="0.1" tag="salvageHarvest"/>
+          <drop event="Harvest" name="carBattery" count="1" prob="0.15" tag="salvageHarvest"/>
+        <drop event="Harvest" name="HOHWiringBlue" count="1,3" prob="0.24" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceElectricParts" count="2,4" prob="0.18" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHWiringRed" count="1,3" prob="0.23" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHIgnitionBarrel" count="1" prob="0.16" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHWiringWhite" count="1,3" prob="0.22" tag="salvageHarvest"/>
+          <drop event="Harvest" name="resourceHeadlight" count="1,2" prob="0.14" tag="salvageHarvest"/>
+          <drop event="Harvest" name="HOHWiringYellow" count="1,3" prob="0.21" tag="salvageHarvest"/>
+          <property name="PassThroughDamage" value="true"/>
+        </block>
+    
+
+  
+  </append>  
+ 
+
+
+<insertafter xpath="//block[contains(@name,'_b') and not(contains(@name,'Motorcycle'))  and not(contains(@name,'MiniBike'))]/property[@name='MaxDamage']">
+  <property name="Extends" value="cntPickupTruck01White"/>
+	<drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+	<drop event="Harvest" name="HOHVehicleBolts4" count="4" prob="1" tag="salvageHarvest"/>
+	<drop event="Harvest" name="HOHCarInnerTube" count="2,4" prob="0.30" tag="salvageHarvest"/>
+	<drop event="Harvest" name="HOHCarTireBlown" count="2,4" prob="0.20" tag="salvageHarvest"/>
+	<drop event="Harvest" name="HOHCarRim" count="2,4" prob="0.15" tag="salvageHarvest"/>
+	<drop event="Harvest" name="HOHCarTire" count="2,4" prob="0.1" tag="salvageHarvest"/>
+	<drop event="Harvest" name="HOHCarWheel" count="2,4" prob="0.05" tag="salvageHarvest"/>
+	 <drop event="Harvest" name="resourceElectricParts" count="4,8" prob="0.18" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHSparkPlugs2" count="2,4" prob="0.18" tag="salvageHarvest"/>
+      <drop event="Harvest" name="resourceOil" count="4,8" prob="0.17" tag="salvageHarvest"/>
+      <drop event="Harvest" name="ammoGasCan" count="150,400" prob="0.3" tag="salvageHarvest"/>
+      <drop event="Harvest" name="resourceMechanicalParts" count="6,12" prob="0.16" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarBatteryDead" count="1" prob="0.2" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHEngineRadiator" count="1" prob="0.25" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHAlternatorBroken" count="1" prob="0.20" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarburetor" count="1" prob="0.19" tag="salvageHarvest"/>
+      <drop event="Harvest" name="vehicleTruck4x4Chassis" count="1" prob="0.15" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHEngineBroken" count="1" prob="0.1" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHTransmissionBroken" count="1" prob="0.1" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarBattery" count="1" prob="0.1" tag="salvageHarvest"/>
+      <drop event="Harvest" name="carBattery" count="1" prob="0.15" tag="salvageHarvest"/>
+      <drop event="Destroy" count="0" />
+      <property name="Tags" value="Car,WrenchXPGain"/>
+</insertafter>
+
+<insertafter xpath="//block[contains(@name,'cntCar')]/drop[@name='terrStone']">
+      <drop event="Harvest" name="HOHVehicleBolts4" count="4" prob="1" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarInnerTube" count="2,4" prob="0.30" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarTireBlown" count="2,4" prob="0.20" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarRim" count="2,4" prob="0.15" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarTire" count="2,4" prob="0.1" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarWheel" count="2,4" prob="0.05" tag="salvageHarvest"/>
+      <drop event="Harvest" name="resourceElectricParts" count="4,8" prob="0.18" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHSparkPlugs2" count="2,4" prob="0.18" tag="salvageHarvest"/>
+      <drop event="Harvest" name="resourceOil" count="4,8" prob="0.17" tag="salvageHarvest"/>
+      <drop event="Harvest" name="ammoGasCan" count="150,400" prob="0.3" tag="salvageHarvest"/>
+      <drop event="Harvest" name="resourceMechanicalParts" count="6,12" prob="0.16" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarBatteryDead" count="1" prob="0.2" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHEngineRadiator" count="1" prob="0.25" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHAlternatorBroken" count="1" prob="0.20" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarburetor" count="1" prob="0.19" tag="salvageHarvest"/>
+      <drop event="Harvest" name="vehicleTruck4x4Chassis" count="1" prob="0.15" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHEngineBroken" count="1" prob="0.1" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHTransmissionBroken" count="1" prob="0.1" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarBattery" count="1" prob="0.1" tag="salvageHarvest"/>
+      <drop event="Harvest" name="carBattery" count="1" prob="0.15" tag="salvageHarvest"/>
+      <drop event="Destroy" count="0"/>
+</insertafter>
+<insertafter xpath="//block[contains(@name,'cntSedan')]/drop[@name='terrStone']">
+      <drop event="Harvest" name="HOHVehicleBolts4" count="4" prob="1" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarInnerTube" count="2,4" prob="0.30" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarTireBlown" count="2,4" prob="0.20" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarRim" count="2,4" prob="0.15" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarTire" count="2,4" prob="0.1" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarWheel" count="2,4" prob="0.05" tag="salvageHarvest"/>
+      <drop event="Harvest" name="resourceElectricParts" count="4,8" prob="0.18" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHSparkPlugs2" count="2,4" prob="0.18" tag="salvageHarvest"/>
+      <drop event="Harvest" name="resourceOil" count="4,8" prob="0.17" tag="salvageHarvest"/>
+      <drop event="Harvest" name="ammoGasCan" count="150,400" prob="0.3" tag="salvageHarvest"/>
+      <drop event="Harvest" name="resourceMechanicalParts" count="6,12" prob="0.16" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarBatteryDead" count="1" prob="0.2" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHEngineRadiator" count="1" prob="0.25" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHAlternatorBroken" count="1" prob="0.20" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarburetor" count="1" prob="0.19" tag="salvageHarvest"/>
+      <drop event="Harvest" name="vehicleTruck4x4Chassis" count="1" prob="0.15" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHEngineBroken" count="1" prob="0.1" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHTransmissionBroken" count="1" prob="0.1" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarBattery" count="1" prob="0.1" tag="salvageHarvest"/>
+      <drop event="Harvest" name="carBattery" count="1" prob="0.15" tag="salvageHarvest"/>
+      
+</insertafter>
+<!--<insertafter xpath="//block[contains(@name,'cntServiceTruck')]/drop[@name='terrStone']">
+      <drop event="Harvest" name="HOHVehicleBolts4" count="4" prob="1" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarInnerTube" count="2,4" prob="0.30" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarTireBlown" count="2,4" prob="0.20" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarRim" count="2,4" prob="0.15" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarTire" count="2,4" prob="0.1" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarWheel" count="2,4" prob="0.05" tag="salvageHarvest"/>
+      <drop event="Harvest" name="resourceElectricParts" count="4,8" prob="0.18" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHSparkPlugs2" count="2,4" prob="0.18" tag="salvageHarvest"/>
+      <drop event="Harvest" name="resourceOil" count="4,8" prob="0.17" tag="salvageHarvest"/>
+      <drop event="Harvest" name="ammoGasCan" count="150,400" prob="0.3" tag="salvageHarvest"/>
+      <drop event="Harvest" name="resourceMechanicalParts" count="6,12" prob="0.16" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarBatteryDead" count="1" prob="0.2" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHEngineRadiator" count="1" prob="0.25" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHAlternatorBroken" count="1" prob="0.20" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarburetor" count="1" prob="0.19" tag="salvageHarvest"/>
+      <drop event="Harvest" name="vehicleTruck4x4Chassis" count="1" prob="0.15" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHEngineBroken" count="1" prob="0.1" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHTransmissionBroken" count="1" prob="0.1" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarBattery" count="1" prob="0.1" tag="salvageHarvest"/>
+      <drop event="Harvest" name="carBattery" count="1" prob="0.15" tag="salvageHarvest"/>
+      
+</insertafter>-->
+<insertafter xpath="//block[contains(@name,'cntPickupTruck')]/drop[@name='terrStone']">
+      <drop event="Harvest" name="HOHVehicleBolts4" count="4" prob="1" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarInnerTube" count="2,4" prob="0.30" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarTireBlown" count="2,4" prob="0.20" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarRim" count="2,4" prob="0.15" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarTire" count="2,4" prob="0.1" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarWheel" count="2,4" prob="0.05" tag="salvageHarvest"/>
+      <drop event="Harvest" name="resourceElectricParts" count="4,8" prob="0.18" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHSparkPlugs2" count="2,4" prob="0.18" tag="salvageHarvest"/>
+      <drop event="Harvest" name="resourceOil" count="4,8" prob="0.17" tag="salvageHarvest"/>
+      <drop event="Harvest" name="ammoGasCan" count="150,400" prob="0.3" tag="salvageHarvest"/>
+      <drop event="Harvest" name="resourceMechanicalParts" count="6,12" prob="0.16" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarBatteryDead" count="1" prob="0.2" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHEngineRadiator" count="1" prob="0.25" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHAlternatorBroken" count="1" prob="0.20" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarburetor" count="1" prob="0.19" tag="salvageHarvest"/>
+      <drop event="Harvest" name="vehicleTruck4x4Chassis" count="1" prob="0.15" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHEngineBroken" count="1" prob="0.1" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHTransmissionBroken" count="1" prob="0.1" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarBattery" count="1" prob="0.1" tag="salvageHarvest"/>
+      <drop event="Harvest" name="carBattery" count="1" prob="0.15" tag="salvageHarvest"/>
+      
+</insertafter>
+<insertafter xpath="//block[contains(@name,'cntSUV')]/drop[@name='terrStone']">
+      <drop event="Harvest" name="HOHVehicleBolts4" count="4" prob="1" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarInnerTube" count="2,4" prob="0.30" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarTireBlown" count="2,4" prob="0.20" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarRim" count="2,4" prob="0.15" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarTire" count="2,4" prob="0.1" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarWheel" count="2,4" prob="0.05" tag="salvageHarvest"/>
+      <drop event="Harvest" name="resourceElectricParts" count="4,8" prob="0.18" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHSparkPlugs2" count="2,4" prob="0.18" tag="salvageHarvest"/>
+      <drop event="Harvest" name="resourceOil" count="4,8" prob="0.17" tag="salvageHarvest"/>
+      <drop event="Harvest" name="ammoGasCan" count="150,400" prob="0.3" tag="salvageHarvest"/>
+      <drop event="Harvest" name="resourceMechanicalParts" count="6,12" prob="0.16" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarBatteryDead" count="1" prob="0.2" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHEngineRadiator" count="1" prob="0.25" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHAlternatorBroken" count="1" prob="0.20" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarburetor" count="1" prob="0.19" tag="salvageHarvest"/>
+      <drop event="Harvest" name="vehicleTruck4x4Chassis" count="1" prob="0.15" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHEngineBroken" count="1" prob="0.1" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHTransmissionBroken" count="1" prob="0.1" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarBattery" count="1" prob="0.1" tag="salvageHarvest"/>
+      <drop event="Harvest" name="carBattery" count="1" prob="0.15" tag="salvageHarvest"/>
+      
+</insertafter>
+<insertafter xpath="//block[contains(@name,'cntMinivan')]/drop[@name='terrStone']">
+      <drop event="Harvest" name="HOHVehicleBolts4" count="4" prob="1" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarInnerTube" count="2,4" prob="0.30" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarTireBlown" count="2,4" prob="0.20" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarRim" count="2,4" prob="0.15" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarTire" count="2,4" prob="0.1" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarWheel" count="2,4" prob="0.05" tag="salvageHarvest"/>
+      <drop event="Harvest" name="resourceElectricParts" count="4,8" prob="0.18" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHSparkPlugs2" count="2,4" prob="0.18" tag="salvageHarvest"/>
+      <drop event="Harvest" name="resourceOil" count="4,8" prob="0.17" tag="salvageHarvest"/>
+      <drop event="Harvest" name="ammoGasCan" count="150,400" prob="0.3" tag="salvageHarvest"/>
+      <drop event="Harvest" name="resourceMechanicalParts" count="6,12" prob="0.16" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarBatteryDead" count="1" prob="0.2" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHEngineRadiator" count="1" prob="0.25" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHAlternatorBroken" count="1" prob="0.20" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarburetor" count="1" prob="0.19" tag="salvageHarvest"/>
+      <drop event="Harvest" name="vehicleTruck4x4Chassis" count="1" prob="0.15" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHEngineBroken" count="1" prob="0.1" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHTransmissionBroken" count="1" prob="0.1" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarBattery" count="1" prob="0.1" tag="salvageHarvest"/>
+      <drop event="Harvest" name="carBattery" count="1" prob="0.15" tag="salvageHarvest"/>
+      
+</insertafter>
+
+
+
+<insertAfter xpath="//block[contains(@name,'Minibike') or contains(@name,'Junker') or contains(@name,'Rat') or contains(@name,'HOHVanillaMotorcycle') or @name='GolfCart_b' or @name='DirtBike_b' or @name='Cruiser_b' or @name='Cruiser2_b' or @name='Junker2_b' or @name='DamagedMotoGuppy' or @name='RepairableMotorcycle' or @name='MotorcycleDamaged' or @name='MotorcycleHalfWreck' or @name='MotorcycleShell' or @name='DamagedVespa' or @name='DamagedBrownQuad' or @name='DamagedVespaKart']/property[@name='MaxDamage']">
+ <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+      <drop event="Harvest" name="HOHVehicleBolts4" count="3" prob="1" tag="salvageHarvest"/>
+      <drop event="Harvest" name="resourceElectricParts" count="2,4" prob="0.18" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHSparkPlugs2" count="1" prob="0.18" tag="salvageHarvest"/>
+      <drop event="Harvest" name="resourceOil" count="2,6" prob="0.17" tag="salvageHarvest"/>
+      <drop event="Harvest" name="ammoGasCan" count="125,300" prob="0.2" tag="salvageHarvest"/>
+      <drop event="Harvest" name="resourceMechanicalParts" count="4,8" prob="0.16" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHBikeBatteryDead" count="1" prob="0.16" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHEngineRadiator" count="1" prob="0.21" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHAlternatorBroken" count="1" prob="0.20" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHCarburetor" count="1" prob="0.19" tag="salvageHarvest"/>
+      <drop event="Harvest" name="vehicleMotorcycleChassis" count="1" prob="0.15" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHBikeEngineBroken" count="1" prob="0.12" tag="salvageHarvest"/>
+      <drop event="Harvest" name="HOHBikeBattery" count="1" prob="0.1" tag="salvageHarvest"/>
+      <drop event="Destroy" count="0"/>
+      </insertAfter>
+
+
+
+
+
+
+
+</HOH_Vehicle_Restorations>

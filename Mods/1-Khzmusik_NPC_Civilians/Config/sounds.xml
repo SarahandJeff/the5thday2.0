@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configs>
+    <append xpath="/Sounds">
+        <!--
+            Civilian sighs, used for SoundRandom.
+        -->
+        <SoundDataNode name="civilianplayer2sigh">
+            <AudioSource name="@:Sounds/Prefabs/AudioSource_Player.prefab" />
+            <Channel name="Mouth" />
+            <AudioClip ClipName="@:Sounds/Player_Female/player2stamina1.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Female/player2stamina2.wav"/>
+            <maxVoicesPerEntity value="1" />
+            <LocalCrouchVolumeScale value="1.0" />
+            <CrouchNoiseScale value="0.5" />
+            <NoiseScale value="1" />
+            <MaxVoices value="10" />
+            <MaxRepeatRate value="0.9" />
+        </SoundDataNode>
+        <SoundDataNode name="civilianplayer1sigh">
+            <AudioSource name="@:Sounds/Prefabs/AudioSource_Player.prefab" />
+            <Channel name="Mouth" />
+        	<AudioClip ClipName="@:Sounds/Player_Male/player1stamina2.wav"/>
+
+           	<AudioClip ClipName="@:Sounds/VO/Male_Hate/male_hate_roam_11.wav"/>
+	<AudioClip ClipName="@:Sounds/VO/Male_Hate/male_hate_roam_12.wav"/>
+            <maxVoicesPerEntity value="1" />
+            <LocalCrouchVolumeScale value="1.0" />
+            <CrouchNoiseScale value="0.5" />
+            <NoiseScale value="1" />
+            <MaxVoices value="10" />
+            <MaxRepeatRate value="0.9" />
+        </SoundDataNode>
+
+        <!--
+            Male civilan "sense" sounds.
+            These are the malehatesense sounds that aren't overtly hostile.
+        -->
+        <SoundDataNode name="civilianmalesense">
+            <AudioSource name="@:Sounds/Prefabs/AudioSource_VO_Announce.prefab" />
+            <Channel name="Mouth" />
+          	<AudioClip ClipName="@:Sounds/VO/Male_Hate/male_hate_sense_01.wav"/>
+	<AudioClip ClipName="@:Sounds/VO/Male_Hate/male_hate_sense_02.wav"/>
+	<AudioClip ClipName="@:Sounds/VO/Male_Hate/male_hate_sense_03.wav"/>
+	<AudioClip ClipName="@:Sounds/VO/Male_Hate/male_hate_sense_04.wav"/>
+	<AudioClip ClipName="@:Sounds/VO/Male_Hate/male_hate_sense_05.wav"/>
+	<AudioClip ClipName="@:Sounds/VO/Male_Hate/male_hate_sense_06.wav"/>
+	<AudioClip ClipName="@:Sounds/VO/Male_Hate/male_hate_sense_07.wav"/>
+	<AudioClip ClipName="@:Sounds/VO/Male_Hate/male_hate_sense_08.wav"/>
+	<AudioClip ClipName="@:Sounds/VO/Male_Hate/male_hate_sense_09.wav"/>
+	<AudioClip ClipName="@:Sounds/VO/Male_Hate/male_hate_sense_10.wav"/>
+	<AudioClip ClipName="@:Sounds/VO/Male_Hate/male_hate_sense_11.wav"/>
+            <LocalCrouchVolumeScale value="1.0" />
+            <CrouchNoiseScale value="0.5" />
+            <NoiseScale value="1" />
+            <MaxVoices value="10" />
+            <MaxRepeatRate value="0.9" />
+        </SoundDataNode>
+
+        <!--
+            Custom "painlg" sounds, modified to use the "Mouth" channel so they don't interfere
+            with the "on fire" sounds.
+        -->
+        <SoundDataNode name="civilianplayer1painlg">
+            <AudioSource name="@:Sounds/Prefabs/AudioSource_Player.prefab" />
+            <Channel name="Mouth" />
+            <Noise ID="0" noise="30" time="2" muffled_when_crouched="0.7" />
+         	<AudioClip ClipName="@:Sounds/Player_Male/player1painlg1.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Male/player1painlg2.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Male/player1painlg3.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Male/player1painlg4.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Male/player1painlg5.wav"/>
+            <maxVoicesPerEntity value="1" />
+            <LowestPitch name="0.95" />
+            <HighestPitch name="1.05" />
+            <LocalCrouchVolumeScale value="0.5" />
+            <CrouchNoiseScale value="0.5" />
+            <NoiseScale value="1" />
+            <MaxVoices value="3" />
+            <MaxRepeatRate value="0.9" />
+        </SoundDataNode>
+        <SoundDataNode name="civilianplayer2painlg">
+            <AudioSource name="@:Sounds/Prefabs/AudioSource_Player.prefab" />
+            <Channel name="Mouth" />
+            <Noise ID="0" noise="30" time="2" muffled_when_crouched="0.7" />
+          <AudioClip ClipName="@:Sounds/Player_Female/player2painlg1.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Female/player2painlg2.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Female/player2painlg3.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Female/player2painlg4.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Female/player2painlg5.wav"/>
+            <maxVoicesPerEntity value="1" />
+            <LowestPitch name="0.95" />
+            <HighestPitch name="1.05" />
+            <LocalCrouchVolumeScale value="0.5" />
+            <CrouchNoiseScale value="0.5" />
+            <NoiseScale value="1" />
+            <MaxVoices value="3" />
+            <MaxRepeatRate value="0.9" />
+        </SoundDataNode>
+
+        <!--
+            Higher-pitched versions of the player sounds, for young civilians.
+        -->
+        <SoundDataNode name="youngcivilianplayer2sigh">
+            <AudioSource name="@:Sounds/Prefabs/AudioSource_Player.prefab" />
+            <Channel name="Mouth" />
+            <AudioClip ClipName="@:Sounds/Player_Female/player2stamina1.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Female/player2stamina2.wav"/>
+            <maxVoicesPerEntity value="1" />
+            <LowestPitch name="1.1" />
+            <HighestPitch name="1.2" />
+            <LocalCrouchVolumeScale value="1.0" />
+            <CrouchNoiseScale value="0.5" />
+            <NoiseScale value="1" />
+            <MaxVoices value="10" />
+            <MaxRepeatRate value="0.9" />
+        </SoundDataNode>
+        <SoundDataNode name="youngcivilianplayer2powerattack">
+            <AudioSource name="@:Sounds/Prefabs/AudioSource_Player.prefabCombat" />
+            <Noise ID="0" noise="16" time="2" muffled_when_crouched="0.7" />
+            <Channel name="Mouth" />
+         <AudioClip ClipName="@:Sounds/Player_Female/player2powerattack1.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Female/player2powerattack2.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Female/player2powerattack3.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Female/player2powerattack4.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Female/player2powerattack5.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Female/player2powerattack6.wav"/>
+            <maxVoicesPerEntity value="1" />
+            <LowestPitch name="1.1" />
+            <HighestPitch name="1.2" />
+            <LocalCrouchVolumeScale value="1.0" />
+            <CrouchNoiseScale value="0.5" />
+            <NoiseScale value="1" />
+            <MaxVoices value="10" />
+            <MaxRepeatRate value="0.9" />
+        </SoundDataNode>
+        <SoundDataNode name="youngcivilianplayer2painlg">
+            <AudioSource name="@:Sounds/Prefabs/AudioSource_Player.prefab" />
+            <Noise ID="0" noise="30" time="2" muffled_when_crouched="0.7" />
+            <Channel name="Mouth" />
+            <AudioClip ClipName="@:Sounds/Player_Female/player2painlg1.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Female/player2painlg2.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Female/player2painlg3.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Female/player2painlg4.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Female/player2painlg5.wav"/>
+            <maxVoicesPerEntity value="1" />
+            <LowestPitch name="1.1" />
+            <HighestPitch name="1.2" />
+            <LocalCrouchVolumeScale value="0.5" />
+            <CrouchNoiseScale value="0.5" />
+            <NoiseScale value="1" />
+            <MaxVoices value="1" />
+            <MaxRepeatRate value="0.9" />
+        </SoundDataNode>
+        <SoundDataNode name="youngcivilianplayer2painsm">
+            <AudioSource name="@:Sounds/Prefabs/AudioSource_Player.prefab" />
+            <Noise ID="0" noise="11" time="2" muffled_when_crouched="0.5" />
+            <Channel name="Mouth" />
+           <AudioClip ClipName="@:Sounds/Player_Female/player2painsm1.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Female/player2painsm2.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Female/player2painsm3.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Female/player2painsm4.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Female/player2painsm5.wav"/>
+            <maxVoicesPerEntity value="1" />
+            <LowestPitch name="1.1" />
+            <HighestPitch name="1.2" />
+            <LocalCrouchVolumeScale value="1.0" />
+            <CrouchNoiseScale value="0.5" />
+            <NoiseScale value="1" />
+            <MaxVoices value="1" />
+            <MaxRepeatRate value="0.9" />
+        </SoundDataNode>
+
+        <SoundDataNode name="youngcivilianmalesense">
+            <AudioSource name="@:Sounds/Prefabs/AudioSource_VO_Announce.prefab" />
+            <Channel name="Mouth" />
+            <AudioClip ClipName="@:Sounds/VO/Male_Hate/male_hate_sense_01.wav"/>
+	<AudioClip ClipName="@:Sounds/VO/Male_Hate/male_hate_sense_02.wav"/>
+	<AudioClip ClipName="@:Sounds/VO/Male_Hate/male_hate_sense_03.wav"/>
+	
+	<AudioClip ClipName="@:Sounds/VO/Male_Hate/male_hate_sense_06.wav"/>
+            <LowestPitch name="1.1" />
+            <HighestPitch name="1.2" />
+            <LocalCrouchVolumeScale value="1.0" />
+            <CrouchNoiseScale value="0.5" />
+            <NoiseScale value="1" />
+            <MaxVoices value="10" />
+            <MaxRepeatRate value="0.9" />
+        </SoundDataNode>
+        <SoundDataNode name="youngcivilianplayer1sigh">
+            <AudioSource name="@:Sounds/Prefabs/AudioSource_Player.prefab" />
+            <Channel name="Mouth" />
+    
+	<AudioClip ClipName="@:Sounds/Player_Male/player1stamina2.wav"/>
+
+           	<AudioClip ClipName="@:Sounds/VO/Male_Hate/male_hate_roam_11.wav"/>
+	<AudioClip ClipName="@:Sounds/VO/Male_Hate/male_hate_roam_12.wav"/>
+            <maxVoicesPerEntity value="1" />
+            <LowestPitch name="1.1" />
+            <HighestPitch name="1.2" />
+            <LocalCrouchVolumeScale value="1.0" />
+            <CrouchNoiseScale value="0.5" />
+            <NoiseScale value="1" />
+            <MaxVoices value="10" />
+            <MaxRepeatRate value="0.9" />
+        </SoundDataNode>
+        <SoundDataNode name="youngcivilianplayer1powerattack">
+            <AudioSource name="@:Sounds/Prefabs/AudioSource_Player.prefabCombat" />
+            <Noise ID="0" noise="16" time="2" muffled_when_crouched="0.7" />
+            <Channel name="Mouth" />
+            <AudioClip ClipName="@:Sounds/Player_Male/player1powerattack1.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Male/player1powerattack2.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Male/player1powerattack3.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Male/player1powerattack4.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Male/player1powerattack5.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Male/player1powerattack6.wav"/>
+            <maxVoicesPerEntity value="1" />
+            <LowestPitch name="1.1" />
+            <HighestPitch name="1.2" />
+            <LocalCrouchVolumeScale value="1.0" />
+            <CrouchNoiseScale value="0.5" />
+            <NoiseScale value="1" />
+            <MaxVoices value="10" />
+            <MaxRepeatRate value="0.9" />
+        </SoundDataNode>
+        <SoundDataNode name="youngcivilianplayer1painlg">
+            <AudioSource name="@:Sounds/Prefabs/AudioSource_Player.prefab" />
+            <Noise ID="0" noise="30" time="2" muffled_when_crouched="0.7" />
+            <Channel name="Mouth" />
+            	<AudioClip ClipName="@:Sounds/Player_Male/player1painlg1.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Male/player1painlg2.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Male/player1painlg3.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Male/player1painlg4.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Male/player1painlg5.wav"/>
+            <maxVoicesPerEntity value="1" />
+            <LowestPitch name="1.15" />
+            <HighestPitch name="1.25" />
+            <LocalCrouchVolumeScale value="0.5" />
+            <CrouchNoiseScale value="0.5" />
+            <NoiseScale value="1" />
+            <MaxVoices value="1" />
+            <MaxRepeatRate value="0.9" />
+        </SoundDataNode>
+        <SoundDataNode name="youngcivilianplayer1painsm">
+            <AudioSource name="@:Sounds/Prefabs/AudioSource_Player.prefab" />
+            <Noise ID="0" noise="11" time="2" muffled_when_crouched="0.5" />
+            <Channel name="Mouth" />
+           <AudioClip ClipName="@:Sounds/Player_Male/player1painsm1.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Male/player1painsm2.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Male/player1painsm3.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Male/player1painsm4.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Male/player1painsm5.wav"/>
+            <maxVoicesPerEntity value="1" />
+            <LowestPitch name="1.1" />
+            <HighestPitch name="1.2" />
+            <LocalCrouchVolumeScale value="1.0" />
+            <CrouchNoiseScale value="0.5" />
+            <NoiseScale value="1" />
+            <MaxVoices value="1" />
+            <MaxRepeatRate value="0.9" />
+        </SoundDataNode>
+
+        <!-- On Fire sounds -->
+        <SoundDataNode name="civilianMaleOnFire">
+            <AudioSource name="@:Sounds/Prefabs/AudioSource_VO_Announce.prefab" />
+            <Noise ID="4" noise="60" time="2" heat_map_strength="0.2" heat_map_time="90" />
+            <Channel name="Mouth" />
+            <!-- Multiple death_09 sounds are intentional -->
+           <AudioClip ClipName="@:Sounds/VO/Male_Hate/male_hate_death_01.wav"/>
+	<AudioClip ClipName="@:Sounds/VO/Male_Hate/male_hate_death_02.wav"/>
+	<AudioClip ClipName="@:Sounds/VO/Male_Hate/male_hate_death_03.wav"/>
+	<AudioClip ClipName="@:Sounds/VO/Male_Hate/male_hate_death_04.wav"/>
+	<AudioClip ClipName="@:Sounds/VO/Male_Hate/male_hate_death_05.wav"/>
+	<AudioClip ClipName="@:Sounds/VO/Male_Hate/male_hate_death_06.wav"/>
+	<AudioClip ClipName="@:Sounds/VO/Male_Hate/male_hate_death_07.wav"/>
+	<AudioClip ClipName="@:Sounds/VO/Male_Hate/male_hate_death_08.wav"/>
+	<AudioClip ClipName="@:Sounds/VO/Male_Hate/male_hate_death_09.wav"/>
+	<AudioClip ClipName="@:Sounds/VO/Male_Hate/male_hate_death_10.wav"/>
+	<AudioClip ClipName="@:Sounds/VO/Male_Hate/male_hate_death_11.wav"/>
+	<AudioClip ClipName="@:Sounds/VO/Male_Hate/male_hate_death_12.wav"/>
+           	<AudioClip ClipName="@:Sounds/Player_Male/player1painlg1.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Male/player1painlg2.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Male/player1painlg3.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Male/player1painlg4.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Male/player1painlg5.wav"/>
+            <maxVoicesPerEntity value="1" />
+            <LowestPitch name="1.00" />
+            <HighestPitch name="1.10" />
+            <LocalCrouchVolumeScale value="1.0" />
+            <CrouchNoiseScale value="0.5" />
+            <NoiseScale value="1" />
+            <MaxVoices value="1" />
+            <MaxRepeatRate value="1.111" />
+        </SoundDataNode>
+        <SoundDataNode name="civilianFemaleOnFire">
+            <AudioSource name="@:Sounds/Prefabs/AudioSource_Player.prefabDeath" />
+            <Noise ID="4" noise="60" time="2" heat_map_strength="0.2" heat_map_time="90" />
+            <Channel name="Mouth" />
+        <AudioClip ClipName="@:Sounds/Player_Female/player2death3.wav"/>
+	
+	<AudioClip ClipName="@:Sounds/Player_Female/player2death6.wav"/>
+           	<AudioClip ClipName="@:Sounds/Player_Female/player2drownsurface4.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Female/player2drownsurface5.wav"/>
+            <AudioClip ClipName="@:Sounds/Player_Female/player2painlg3.wav"/>
+            <maxVoicesPerEntity value="1" />
+            <LowestPitch name="0.95" />
+            <HighestPitch name="1.05" />
+            <LocalCrouchVolumeScale value="1.0" />
+            <CrouchNoiseScale value="0.5" />
+            <NoiseScale value="1" />
+            <MaxVoices value="1" />
+            <MaxRepeatRate value="0.9" />
+        </SoundDataNode>
+
+        <SoundDataNode name="civilianYoungMaleOnFire">
+            <AudioSource name="@:Sounds/Prefabs/AudioSource_VO_Announce.prefab" />
+            <Noise ID="4" noise="60" time="2" heat_map_strength="0.2" heat_map_time="90" />
+            <Channel name="Mouth" />
+            <!-- Multiple death_09 sounds are intentional -->
+           	<AudioClip ClipName="@:Sounds/VO/Male_Hate/male_hate_death_09.wav"/>
+            <AudioClip ClipName="@:Sounds/VO/Male_Hate/male_hate_pain_09.wav"/>
+            
+            	<AudioClip ClipName="@:Sounds/VO/Male_Hate/male_hate_death_09.wav"/>
+          <AudioClip ClipName="@:Sounds/Player_Male/player1painlg1.wav"/>
+	
+	<AudioClip ClipName="@:Sounds/Player_Male/player1painlg4.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Male/player1painlg5.wav"/>
+            	<AudioClip ClipName="@:Sounds/VO/Male_Hate/male_hate_death_09.wav"/>
+            <maxVoicesPerEntity value="1" />
+            <LowestPitch name="1.15" />
+            <HighestPitch name="1.25" />
+            <LocalCrouchVolumeScale value="1.0" />
+            <CrouchNoiseScale value="0.5" />
+            <NoiseScale value="1" />
+            <MaxVoices value="1" />
+            <MaxRepeatRate value="1.111" />
+        </SoundDataNode>
+        <SoundDataNode name="civilianYoungFemaleOnFire">
+            <AudioSource name="@:Sounds/Prefabs/AudioSource_Player.prefabDeath" />
+            <Noise ID="4" noise="60" time="2" heat_map_strength="0.2" heat_map_time="90" />
+            <Channel name="Mouth" />
+           <AudioClip ClipName="@:Sounds/Player_Female/player2death3.wav"/>
+	
+	<AudioClip ClipName="@:Sounds/Player_Female/player2death6.wav"/>
+           	<AudioClip ClipName="@:Sounds/Player_Female/player2drownsurface4.wav"/>
+	<AudioClip ClipName="@:Sounds/Player_Female/player2drownsurface5.wav"/>
+            <AudioClip ClipName="@:Sounds/Player_Female/player2painlg3.wav"/>
+            <maxVoicesPerEntity value="1" />
+            <LowestPitch name="1.1" />
+            <HighestPitch name="1.2" />
+            <LocalCrouchVolumeScale value="1.0" />
+            <CrouchNoiseScale value="0.5" />
+            <NoiseScale value="1" />
+            <MaxVoices value="1" />
+            <MaxRepeatRate value="0.9" />
+        </SoundDataNode>
+    </append>
+</configs>

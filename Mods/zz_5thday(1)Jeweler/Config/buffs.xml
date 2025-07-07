@@ -1,0 +1,72 @@
+<snj>
+
+<insertAfter xpath="//buff[@name='buffStatusCheck01']/effect_group/passive_effect[@name='FoodMax']">
+		<triggered_effect trigger="onSelfBuffUpdate"   action="ModifyCVar" cvar="HOH_Jeweler_lvl" operation="set" value="@HOH_Jeweler_Perk_Tracker"/>
+</insertAfter>
+<append xpath="//buff[@name='HOH_Perk_Trackers']/effect_group[@name='Perk Tracking']">
+
+<passive_effect name="PerkLevel" operation="base_set" value="@HOH_Jeweler_lvl" tags="PerkHOHJeweler"/>
+</append>
+
+<insertafter xpath="//buff[@name='HOH_Constants']/effect_group[@name='BeginningShitFood']">
+<effect_group name="BeginningShitJeweler">
+				<requirement name="CVarCompare" cvar="HOH_Jeweler_XP" operation="Equals" value="0"/>
+				<requirement name="CVarCompare" cvar="HOH_Jeweler_lvl" operation="Equals" value="0"/>
+				<requirement name="CVarCompare" cvar="HOH_Jeweler_Perk_Tracker" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Jeweler_lvl" value="1"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Jeweler_lvl_Next_Needed" value="100"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Jeweler_Multiplier" operation="set" value="1.03"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Jeweler_Perk_Tracker" operation="set" value="1"/>
+			</effect_group>
+</insertafter>
+<append xpath="/buffs">
+<buff name="HOH_Level_Display_Jeweler" hidden="true" remove_on_death="false">
+			<update_rate value="0.1"/>
+			<stack_type value="ignore"/>
+			<effect_group name="HOH_Jeweler_Levelup">
+				<requirement name="CVarCompare" cvar="HOH_Jeweler_XP" operation="GTE" value="@HOH_Jeweler_lvl_Next_Needed"/>
+				<requirement name="CVarCompare" cvar="HOH_Jeweler_lvl" operation="LTE" value="50"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Jeweler_XP" operation="subtract" value="@HOH_Jeweler_lvl_Next_Needed"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Jeweler_lvl_Next_Needed" operation="multiply" value="@HOH_Jeweler_Multiplier"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Jeweler_lvl" operation="add" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddProgressionLevel" progression_name="perkJeweler" level="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Jeweler_Perk_Tracker" operation="add" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ShowToolbeltMessage" message="[804cba][I]Your Skill with Jeweler has increased!"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="PlaySound" sound="levelup"/>
+			</effect_group>
+			
+
+			<effect_group name="ringbase1">
+				<requirement name="CVarCompare" cvar="HOH_Jeweler_lvl" operation="LTE" value="50" />
+				<requirement name="CVarCompare" cvar="processedCount_jewelRingMetal" operation="LT" value="@_craftCount_jewelRingMetal" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_jewelRingMetal" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Jeweler_XP" operation="add" value=".9" />
+			</effect_group>
+			<effect_group name="ringbase2">
+				<requirement name="CVarCompare" cvar="HOH_Jeweler_lvl" operation="LTE" value="50" />
+				<requirement name="CVarCompare" cvar="processedCount_jewelRingSilver" operation="LT" value="@_craftCount_jewelRingSilver" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_jewelRingSilver" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Jeweler_XP" operation="add" value="1" />
+			</effect_group>
+			<effect_group name="ringbase3">
+				<requirement name="CVarCompare" cvar="HOH_Jeweler_lvl" operation="LTE" value="50" />
+				<requirement name="CVarCompare" cvar="processedCount_jewelRingGold" operation="LT" value="@_craftCount_jewelRingGold" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_jewelRingGold" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Jeweler_XP" operation="add" value="1.1" />
+			</effect_group>
+	
+
+
+
+			<effect_group name="HOH_Jeweler_Level_Progress">
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Jeweler_Xp_Total" operation="set" value="@HOH_Jeweler_XP"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Jeweler_Level_Next" operation="set" value="@HOH_Jeweler_lvl_Next_Needed"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Jeweler_Xp_Total" operation="divide" value="@HOH_Jeweler_Level_Next"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Jeweler_lvl_Next_Display" operation="set" value="@HOH_Jeweler_Xp_Total"/>
+			</effect_group>
+		</buff>
+</append>
+<insertAfter xpath="//buff[@name='buffStatusCheck01']/effect_group/triggered_effect[@buff='HOH_Level_Display_Questing']">
+		<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="self" buff="HOH_Level_Display_Jeweler"/>
+</insertAfter>
+</snj>

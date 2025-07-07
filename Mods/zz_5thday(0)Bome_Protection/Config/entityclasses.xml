@@ -1,0 +1,9 @@
+<configs>
+	<append xpath="//entity_class[contains(@name, 'Radiated')]/effect_group[@name='Base Effects']">
+		<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" buff="BuffRadiationCatch"/>
+	</append>
+	<append xpath="//entity_class[@name='playerMale']//property[@name='Buffs']/@value">,buffProtectionCheck</append>
+	<append xpath="//entity_class[@name='playerMale']//effect_group/triggered_effect[@trigger='onSelfRespawn']/@buff">,buffProtectionCheck</append>
+	<append xpath="//entity_class[@name='playerMale']//effect_group/triggered_effect[@trigger='onSelfEnteredGame']/@buff">,buffProtectionCheck</append>
+
+</configs>

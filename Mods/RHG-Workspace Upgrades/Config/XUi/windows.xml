@@ -1,0 +1,60 @@
+<Workspace-Upgrades>
+	
+<append xpath="/windows">
+	
+	<!-- windows ui symbols line 396 -->
+	
+	<window name="windowToolsMixer" depth="8" pos="-650,-100" width="228" height="198" panel="Centercenter" cursor_area="true" >
+	   <panel style="header.panel">
+			<sprite style="header.icon" sprite="ui_game_symbol_cement"/>
+			<label style="header.name" text="TOOLS" text_key="xuiTools" />
+		</panel>
+
+		<rect name="content" depth="8" pos="0,-46" height="75" disablefallthrough="true">
+
+			<grid name="inventory" rows="1" cols="3" pos="3,-3" cell_width="75" cell_height="75" controller="WorkstationToolGrid" repeat_content="true" 
+			required_tools="toolWSUSteelChain,toolWSUMixerFins,toolWSUCubeMould" required_tools_only="true">
+				<item_stack controller="RequiredItemStack" name="0"/>
+			</grid>
+		</rect>
+	</window>
+
+
+    <!-- Bench Upgrades -->
+
+<window name="windowToolsBench" depth="10" pos="-680,-110" width="228" height="198" panel="Centercenter" cursor_area="true" >
+	   <panel style="header.panel" pos="0,-20" height="20">
+			
+			<label style="header.name"  pos="10,-5" font_size="20" text="TOOLS" text_key="xuiTools" />
+		</panel>
+
+		<rect name="content" depth="8" pos="0,-46" height="75" disablefallthrough="true">
+
+			<grid name="inventory" rows="1" cols="4" pos="3,-3" cell_width="75" cell_height="75" controller="WorkstationToolGrid" repeat_content="true" 
+			required_tools="toolWSUVice,toolWSUSander,toolWSUDrill,toolWSUWelder" required_tools_only="true">
+				<item_stack controller="RequiredItemStack" name="0"/>
+			</grid>
+		</rect>
+	</window>
+	
+    <!-- Station Upgrades -->
+
+<window name="windowToolsStation" pos="0,-452" depth="30"  panel="Left" cursor_area="true">
+	
+	<panel style="header.panel">
+		  <label depth="5" name="descriptionname" font_size="20" color="[white]" width="200" height="18" text_key="xuiTools" pos="0,0" />
+	</panel>
+
+		<rect name="content" depth="0" pos="0,-25" height="70" disablefallthrough="true">
+			<grid name="inventory" rows="1" cols="3" pos="3,-3" cell_width="60" cell_height="60" controller="WorkstationToolGrid" repeat_content="true" 
+			required_tools="toolWSUBurner,toolWSUMeasures,toolWSUCFD" required_tools_only="true">
+				<item_stack controller="RequiredItemStack" name="0"/>
+			</grid>
+		</rect>
+	</window>
+
+
+</append>
+
+	
+</Workspace-Upgrades>

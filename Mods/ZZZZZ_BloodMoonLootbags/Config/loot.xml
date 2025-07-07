@@ -1,0 +1,43 @@
+<lootcontainers>
+<append xpath="/lootcontainers">
+
+<!-- *** Zpack_BloodMoon -->
+<lootgroup name="groupZpackBloodMoon01">
+	<item group="groupFoodUncommon" loot_prob_template="medHigh"/>
+	<item group="groupDrinksUncommon" loot_prob_template="low"/>
+	<item group="groupScrapUncommon" loot_prob_template="medHigh"/>
+	<item group="groupMedicalUncommon" loot_prob_template="med"/>
+</lootgroup>
+
+<lootgroup name="groupZpackBloodMoon02">
+	<item group="booksAllScaled" loot_prob_template="medHigh"/>
+	<item group="groupToolsTiered" loot_prob_template="medHigh"/>
+	<item group="groupArmorScaled" loot_prob_template="low"/>
+	<item group="groupCraftingRare" loot_prob_template="med"/>
+</lootgroup>
+
+<lootgroup name="groupZpackBloodMoon03">
+	<item group="groupRareToolsTiered" loot_prob_template="high"/>
+	<item group="booksRareOnlyScaled" loot_prob_template="med"/>
+	<item name="casinoCoin" count="200,800" loot_prob_template="low"/>
+	<!--<item name="oldCash" count="150,800" loot_prob_template="low"/>-->
+	<item group="groupMedicalRare" loot_prob_template="medHigh"/>
+	<item group="groupValuablesMed" loot_prob_template="low"/>
+</lootgroup>
+
+<lootgroup name="groupZpackBloodMoon" count="all">
+	<item group="groupAmmoLarge" count="4"/>
+	<item group="groupAmmoResourcesLarge" count="4"/>
+	<item group="groupZpackBloodMoon01" count="5"/>
+	<item group="groupZpackBloodMoon02" count="3"/>
+	<item group="groupZpackBloodMoon03" loot_prob_template="med" force_prob="true"/>
+</lootgroup>
+
+
+<!-- EntityLootContainerStrong, rare random drop off strong zombies -->
+<lootcontainer name="zPackBloodMoon" count="1" size="6,3" sound_open="UseActions/open_backpack" sound_close="UseActions/close_backpack" open_time="1" loot_quality_template="qualPlus1Template" ignore_loot_abundance="true">
+	<item group="groupZpackBloodMoon"/>
+</lootcontainer>
+
+</append>
+</lootcontainers>

@@ -1,0 +1,57 @@
+<AGF-QuickerQuestStart>
+<set xpath="/challenges/challenge[@name='gatherResources']/objective/@count">2</set>
+<set xpath="/challenges/challenge[@name='gatherResourcesStoneAxe']/objective/@count">2</set>
+<set xpath="/challenges/challenge[@name='craftStoneAxe']/objective/@type">Gather</set>
+<set xpath="/challenges/challenge[@name='gatherResourcesStoneAxe']/objective/@type">Gather</set>
+<set xpath="/challenges/challenge[@name='craftClothes']/objective/@type">Gather</set>
+<set xpath="/challenges/challenge[@name='wearClothes']/objective/@type">Gather</set>
+<set xpath="/challenges/challenge[@name='craftWoodClub']/objective/@type">Gather</set>
+<set xpath="/challenges/challenge[@name='craftBow']/objective/@type">Gather</set>
+<set xpath="/challenges/challenge[@name='craftArrows']/objective/@type">Gather</set>
+<set xpath="/challenges/challenge[@name='gathererWood']/objective/@item">woodLogPillar100</set>
+<set xpath="/challenges/challenge[@name='gathererIron']/objective/@type">Gather</set>
+
+<remove xpath="/challenges/challenge_group[@name='Basics']"/>
+
+<remove xpath="/challenges/challenge[@name='redeemChallenge']"/>
+<remove xpath="/challenges/challenge[@name='gatherResources']"/>
+<remove xpath="/challenges/challenge[@name='craftStoneAxe']"/>
+<remove xpath="/challenges/challenge[@name='gatherResourcesStoneAxe']"/>
+<remove xpath="/challenges/challenge[@name='craftClothes']"/>
+<remove xpath="/challenges/challenge[@name='wearClothes']"/>
+<remove xpath="/challenges/challenge[@name='craftWoodClub']"/>
+<remove xpath="/challenges/challenge[@name='craftBow']"/>
+<remove xpath="/challenges/challenge[@name='craftArrows']"/>
+<remove xpath="/challenges/challenge[@name='groupCompleteChallenge']"/>
+
+
+
+
+<remove xpath="/challenges/challenge[@name='spendSkillPoint']/objective"/>
+<remove xpath="/challenges/challenge[@name='readMagazines']/objective"/>
+<append xpath="/challenges/challenge[@name='spendSkillPoint']">
+		<objective type="Trader" is_buy="true" count="1"/>
+</append>
+<append xpath="/challenges/challenge[@name='readMagazines']">
+		<objective type="Gather" item="resourcePaper" count="500"/>
+</append>
+
+<append xpath="/challenges">
+  
+	<challenge_category name="aamCatBasics" title_key="aamCatBasics" icon="ui_game_symbol_blocks"/>
+ <challenge_group name="aamGroupWelcome" title_key="aamGroupWelcome" category="aamCatBasics" 
+	reward_text_key="aamChallengeRewardWelcome" reward_event="aam_challenge_group_reward_welcome" link_challenges="true"/>
+
+<challenge name="aamChallengeStarter1" title_key="aamChallengeStarter1" icon="ui_game_symbol_check" group="aamGroupWelcome"
+	hint="aamChallengeStarterHint"
+	short_description_key="aamChallengeStarterShort" description_key="aamChallengeStarter1Desc">
+		<objective type="QuestComplete" quest_tag="start1" count="1" quest_text_key="quest_start1"/>
+	</challenge>
+
+</append>
+
+
+
+
+
+</AGF-QuickerQuestStart>

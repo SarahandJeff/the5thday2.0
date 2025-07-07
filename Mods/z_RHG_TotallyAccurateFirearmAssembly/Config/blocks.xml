@@ -1,0 +1,423 @@
+<configs>
+
+<append xpath="/blocks">
+
+		<block name="BrokenPowerHammer">
+			<property name="DescriptionKey" value="BrokenPowerHammerDesc"/>
+			<property name="Class" value="Loot"/>
+			<property name="LootList" value="BrokenPowerHammer"/>
+			<property name="DisplayType" value="blockMulti"/>
+			<property name="Material" value="Mmetal"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Model" value="#@modfolder:Resources/IndustrialMachines.unity3d?TAFA_Broken_Bench_Power_Hammer"/>
+			<property name="DisplayType" value="blockMulti" />
+			<property name="ModelOffset" value=".5,0,0"/>
+	        <property name="MultiBlockDim" value="2,3,1"/>
+			<property name="ImposterDontBlock" value="true"/>
+			<property name="WaterFlow" value="permitted"/>
+			<property name="Place" value="TowardsPlacer"/>
+			<property name="OnlySimpleRotations" value="true"/>
+			<property name="IsTerrainDecoration" value="true"/>
+			<property name="StabilitySupport" value="false"/>
+			<property name="MaxDamage" value="500"/>
+			<property name="SellableToTrader" value="false"/>
+			<property class="RepairItems">
+				<property name="resourceForgedIron" value="25"/>
+				<property name="resourceMechanicalParts" value="20"/>
+				<property name="resourceWood" value="50"/>
+			</property>
+			<drop event="Harvest" name="" count="0" tool_category="Disassemble"></drop>
+			<drop event="Destroy" name="BrokenPowerHammer" count="1" tool_category="Disassemble"/>
+			<drop event="Fall" name="terrDestroyedWoodDebris" count="1" prob="0.75" stick_chance="1"/>
+			<property name="SortOrder1" value="B281"/>
+			<property name="SortOrder2" value="0301"/>
+			<property name="Group" value="Decor/Miscellaneous"/>
+			<property name="FilterTags" value="MC_building,SC_decor"/>
+			<property name="Tags" value="Car,WrenchXPGain"></property>
+		  </block>		
+
+		<block name="PowerHammer">
+			<property name="DescriptionKey" value="PowerHammerDesc"/>			
+			<property name="UnlockedBy" value="craftingWorkstations"/>
+			<property name="Class" value="Workstation"/>
+			<property name="Material" value="Mmetal"/>
+			<property name="MaxDamage" value="1200"/>
+			<property name="StabilitySupport" value="false"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Model" value="#@modfolder:Resources/IndustrialMachines.unity3d?TAFA_Bench_Power_Hammer"/>
+			<property name="DisplayType" value="blockMulti" />
+			<property name="ModelOffset" value="0,0,.5"/>
+	        <property name="MultiBlockDim" value="1,3,2"/>
+			<property name="ImposterDontBlock" value="true"/>
+			<property name="Place" value="TowardsPlacer"/>
+			<property name="OnlySimpleRotations" value="false"/>
+			<property name="IsTerrainDecoration" value="true"/>
+			<property name="HeatMapStrength" value="6"/>
+			<property name="HeatMapTime" value="5000"/>
+			<property name="HeatMapFrequency" value="1000"/>
+			<property name="RequirePower" value="true"/>
+			<property name="RequiredPower" value="7"/>
+			<property name="Stacknumber" value="5"/>
+			<property name="TakeDelay" value="5"/>
+			<property class="Workstation">
+				<property name="Modules" value="output"/>		
+				<property name="CraftingAreaRecipes" value="PowerHammer"/>
+			<property name="ToolNames" value="1,2,3"/>
+			</property>
+			<property name="WorkstationIcon" value="ui_game_symbol_workbench" />
+			<property name="OpenSound" value="crossbow2_fire" />
+			<property name="CloseSound" value="crossbow2_fire" />
+			<property name="WorkstationJournalTip" value="workbenchTip" />
+			<property class="RepairItems">
+				<property name="resourceMechanicalParts" value="5"/>
+				<property name="resourceForgedSteel" value="5"/>
+				<property name="resourceSpring" value="5"/>
+			</property>
+			<drop event="Harvest" name="resourceForgedSteel" count="5" tag="allHarvest"/>
+			<drop event="Harvest" name="resourceMechanicalParts" count="50" tool_category="Disassemble"/>
+			<drop event="Harvest" name="resourceMechanicalParts" count="20" tag="salvageHarvest"/>
+			<drop event="Harvest" name="resourceForgedSteel" count="10" tag="salvageHarvest"/>
+			<drop event="Harvest" name="resourceSpring" count="5" tag="salvageHarvest"/>
+			<drop event="Destroy" count="0"/>
+			<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+			<property name="TakeDelay" value="10"/>
+			<property name="EconomicValue" value="2000"/>
+			<property name="Group" value="Basics,Building"/>
+			<property name="SellableToTrader" value="true"/>	
+			<property name="FilterTags" value="fdecor,fother,ffurniture"/>
+			<property name="SortOrder1" value="70i0"/>
+		 </block>	
+
+		<block name="BrokenMillingMachine">
+			<property name="DescriptionKey" value="BrokenMillingMachineDesc"/>
+			<property name="Class" value="Loot"/>
+			<property name="LootList" value="BrokenMillingMachine"/>
+			<property name="DisplayType" value="blockMulti"/>
+			<property name="Material" value="Mmetal"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Model" value="#@modfolder:Resources/IndustrialMachines.unity3d?TAFA_Broken_Bench_Milling_Machine"/>
+			<property name="ModelOffset" value=".5,0,0"/>
+			<property name="MultiBlockDim" value="2,2,1"/>
+			<property name="ImposterDontBlock" value="true"/>
+			<property name="WaterFlow" value="permitted"/>
+			<property name="Place" value="TowardsPlacer"/>
+			<property name="OnlySimpleRotations" value="true"/>
+			<property name="IsTerrainDecoration" value="true"/>
+			<property name="StabilitySupport" value="false"/>
+			<property name="MaxDamage" value="500"/>
+			<property name="SellableToTrader" value="false"/>
+			<property class="RepairItems">
+				<property name="resourceForgedIron" value="25"/>
+				<property name="resourceMechanicalParts" value="20"/>
+				<property name="resourceWood" value="50"/>
+			</property>
+			<drop event="Harvest" name="" count="0" tool_category="Disassemble"></drop>
+			<drop event="Destroy" name="BrokenMillingMachine" count="1" tool_category="Disassemble"/>
+			<drop event="Fall" name="terrDestroyedWoodDebris" count="1" prob="0.75" stick_chance="1"/>
+			<property name="SortOrder1" value="B281"/>
+			<property name="SortOrder2" value="0301"/>
+			<property name="Group" value="Decor/Miscellaneous"/>
+			<property name="FilterTags" value="MC_building,SC_decor"/>
+			<property name="Tags" value="Car,WrenchXPGain"></property>
+	     </block>
+		
+		<block name="MillingMachine">
+			<property name="DescriptionKey" value="MillingMachineDesc"/>			
+			<property name="UnlockedBy" value="craftingWorkstations"/>
+			<property name="Class" value="Workstation"/>
+			<property name="Material" value="Mmetal"/>
+			<property name="MaxDamage" value="1200"/>
+			<property name="StabilitySupport" value="false"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Model" value="#@modfolder:Resources/IndustrialMachines.unity3d?TAFA_Bench_Milling_Machine"/>
+			<property name="DisplayType" value="blockMulti" />
+			<property name="ModelOffset" value="0,0,.5"/>
+	        <property name="MultiBlockDim" value="1,2,2"/>
+			<property name="ImposterDontBlock" value="true"/>
+			<property name="Place" value="TowardsPlacer"/>
+			<property name="OnlySimpleRotations" value="false"/>
+			<property name="IsTerrainDecoration" value="true"/>
+			<property name="HeatMapStrength" value="6"/>
+			<property name="HeatMapTime" value="5000"/>
+			<property name="HeatMapFrequency" value="1000"/>
+			<property name="RequirePower" value="true"/>
+			<property name="RequiredPower" value="7"/>
+			<property name="Stacknumber" value="100"/>
+			<property name="TakeDelay" value="5"/>
+			<property class="Workstation">
+				<property name="Modules" value="output,tools"/>		
+				<property name="CraftingAreaRecipes" value="MillingMachine"/>
+			<property name="ToolNames" value="1,2,3"/>
+			</property>
+			<property name="WorkstationIcon" value="ui_game_symbol_workbench" />
+			<property name="OpenSound" value="crossbow2_fire" />
+			<property name="CloseSound" value="crossbow2_fire" />
+			<property name="CraftSound" value="Milling"/>
+			<property name="CraftCompleteSound" value="Milling"/>
+			<property name="WorkstationJournalTip" value="workbenchTip" />
+			<property class="RepairItems">
+				<property name="resourceMechanicalParts" value="5"/>
+				<property name="resourceForgedSteel" value="5"/>
+				<property name="resourceSpring" value="5"/>
+			</property>
+			<drop event="Harvest" name="resourceForgedSteel" count="5" tag="allHarvest"/>
+			<drop event="Harvest" name="resourceMechanicalParts" count="50" tool_category="Disassemble"/>
+			<drop event="Harvest" name="resourceMechanicalParts" count="20" tag="salvageHarvest"/>
+			<drop event="Harvest" name="resourceForgedSteel" count="10" tag="salvageHarvest"/>
+			<drop event="Harvest" name="resourceSpring" count="5" tag="salvageHarvest"/>
+			<drop event="Destroy" count="0"/>
+			<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+			<property name="TakeDelay" value="10"/>
+			<property name="EconomicValue" value="3000"/>
+			<property name="Group" value="Basics,Building"/>
+			<property name="SellableToTrader" value="true"/>	
+			<property name="FilterTags" value="fdecor,fother,ffurniture"/>
+			<property name="SortOrder1" value="70i0"/>
+	    	</block>	
+
+		<block name="BrokenLathingMachine">
+			<property name="DescriptionKey" value="BrokenLathingMachineDesc"/>
+			<property name="Class" value="Loot"/>
+			<property name="LootList" value="BrokenLathingMachine"/>
+			<property name="DisplayType" value="blockMulti"/>
+			<property name="Material" value="Mmetal"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Model" value="#@modfolder:Resources/IndustrialMachines.unity3d?TAFA_Broken_Bench_Lathe"/>
+			<property name="ModelOffset" value=".5,0,0"/>
+			<property name="MultiBlockDim" value="2,2,1"/>
+			<property name="ImposterDontBlock" value="true"/>
+			<property name="WaterFlow" value="permitted"/>
+			<property name="Place" value="TowardsPlacerInverted"/>
+			<property name="OnlySimpleRotations" value="true"/>
+			<property name="IsTerrainDecoration" value="true"/>
+			<property name="StabilitySupport" value="false"/>
+			<property name="MaxDamage" value="500"/>
+			<property name="SellableToTrader" value="false"/>
+			<property class="RepairItems">
+				<property name="resourceForgedIron" value="25"/>
+				<property name="resourceMechanicalParts" value="20"/>
+				<property name="resourceWood" value="50"/>
+			</property>
+			<drop event="Harvest" name="" count="0" tool_category="Disassemble"></drop>
+			<drop event="Destroy" name="BrokenLathingMachine" count="1" tool_category="Disassemble"/>
+			<drop event="Fall" name="terrDestroyedWoodDebris" count="1" prob="0.75" stick_chance="1"/>
+			<property name="SortOrder1" value="B281"/>
+			<property name="SortOrder2" value="0301"/>
+			<property name="Group" value="Decor/Miscellaneous"/>
+			<property name="FilterTags" value="MC_building,SC_decor"/>
+			<property name="Tags" value="Car,WrenchXPGain"></property>
+	     </block>
+		
+		<block name="LathingMachine">
+			<property name="DescriptionKey" value="LathingMachineDesc"/>			
+			<property name="UnlockedBy" value="craftingWorkstations"/>
+			<property name="Class" value="Workstation"/>
+			<property name="Material" value="Mmetal"/>
+			<property name="MaxDamage" value="1200"/>
+			<property name="StabilitySupport" value="false"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Model" value="#@modfolder:Resources/IndustrialMachines.unity3d?TAFA_Bench_Lathe"/>
+			<property name="DisplayType" value="blockMulti" />
+			<property name="ModelOffset" value=".5,0,0"/>
+	        <property name="MultiBlockDim" value="2,2,1"/>
+			<property name="ImposterDontBlock" value="true"/>
+			<property name="Place" value="TowardsPlacerInverted"/>
+			<property name="OnlySimpleRotations" value="true"/>
+			<property name="IsTerrainDecoration" value="true"/>
+			<property name="HeatMapStrength" value="6"/>
+			<property name="HeatMapTime" value="5000"/>
+			<property name="HeatMapFrequency" value="1000"/>
+			<property name="RequirePower" value="true"/>
+			<property name="RequiredPower" value="7"/>
+			<property name="Stacknumber" value="5"/>
+	    	<property name="TakeDelay" value="5"/>
+			<property class="Workstation">
+				<property name="Modules" value="output,tools"/>		
+				<property name="CraftingAreaRecipes" value="LathingMachine"/>
+			</property>
+			<property name="WorkstationIcon" value="ui_game_symbol_workbench" />
+			<property name="OpenSound" value="crossbow2_fire" />
+			<property name="CloseSound" value="crossbow2_fire" />
+			<property name="WorkstationJournalTip" value="workbenchTip" />
+			<property class="RepairItems">
+				<property name="resourceMechanicalParts" value="5"/>
+				<property name="resourceForgedSteel" value="5"/>
+				<property name="resourceSpring" value="5"/>
+			</property>
+			<drop event="Harvest" name="resourceForgedSteel" count="5" tag="allHarvest"/>
+			<drop event="Harvest" name="resourceMechanicalParts" count="50" tool_category="Disassemble"/>
+			<drop event="Harvest" name="resourceMechanicalParts" count="20" tag="salvageHarvest"/>
+			<drop event="Harvest" name="resourceForgedSteel" count="10" tag="salvageHarvest"/>
+			<drop event="Harvest" name="resourceSpring" count="5" tag="salvageHarvest"/>
+			<drop event="Destroy" count="0"/>
+			<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+			<property name="TakeDelay" value="10"/>
+			<property name="EconomicValue" value="3000"/>
+			<property name="Group" value="Basics,Building"/>
+			<property name="SellableToTrader" value="true"/>	
+			<property name="FilterTags" value="fdecor,fother,ffurniture"/>
+			<property name="SortOrder1" value="70i0"/>
+	    	</block>	
+
+
+		<block name="BrokenAmmoBench">
+			<property name="DescriptionKey" value="BrokenAmmoBenchDesc"/>
+			<property name="Class" value="Loot" />
+			<property name="LootList" value="BrokenAmmoBench" />
+			<property name="Model" value="#@modfolder:Resources/FirearmStations.unity3d?TAFA_Broken_Bench_Ammo"/>
+        	<property name="ModelOffset" value="0,0,0"/>
+        	<property name="MultiBlockDim" value="1,1,1"/>
+			
+			<property name="DisplayType" value="blockMulti" />
+			<property name="Material" value="Mmetal" />
+			<property name="Shape" value="ModelEntity" />
+			
+			<property name="ImposterDontBlock" value="true" />
+			<property name="WaterFlow" value="permitted" />
+			<property name="Place" value="TowardsPlacerInverted" />
+			<property name="OnlySimpleRotations" value="true" />
+			<property name="IsTerrainDecoration" value="true" />
+			<property name="StabilitySupport" value="false" />
+			<property name="MaxDamage" value="500" />
+			<property name="SellableToTrader" value="false" />
+			<property name="SortOrder1" value="B281" />
+			<property name="SortOrder2" value="0301" />
+			<property name="Group" value="Decor/Miscellaneous" />
+			<property name="FilterTags" value="MC_building,SC_decor" />
+			<property name="Tags" value="Car,WrenchXPGain"></property>
+			<drop event="Harvest" name="" count="0" tool_category="Disassemble"></drop>
+			<drop event="Destroy" name="BrokenAmmoBench" count="1" tool_category="Disassemble"/>
+
+	    	</block>
+				
+		<block name="AmmoBench">
+			<property name="DescriptionKey" value="AmmoBenchDesc"/>			
+			<property name="Class" value="Workstation"/>
+			<property name="Material" value="Mmetal"/>
+			<property name="MaxDamage" value="1200"/>
+			<property name="StabilitySupport" value="false"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Model" value="#@modfolder:Resources/FirearmStations.unity3d?TAFA_Bench_Ammo"/>
+			<property name="DisplayType" value="blockMulti" />
+	        <property name="ModelOffset" value="0,0,0"/>
+	        <property name="MultiBlockDim" value="1,1,1"/>
+			<property name="ImposterDontBlock" value="true"/>
+			<property name="Place" value="TowardsPlacerInverted"/>
+			<property name="OnlySimpleRotations" value="true"/>
+			<property name="IsTerrainDecoration" value="true"/>
+			<property name="HeatMapStrength" value="6"/>
+			<property name="HeatMapTime" value="5000"/>
+			<property name="HeatMapFrequency" value="1000"/>
+			<property name="Stacknumber" value="100"/>
+		  <property name="TakeDelay" value="5"/>
+			<property class="Workstation">
+				<property name="Modules" value="output,tools"/>		
+				<property name="CraftingAreaRecipes" value="AmmoBench"/>
+			<property name="ToolNames" value="1,2,3,4,5,6"/>
+			</property>
+			<property name="WorkstationIcon" value="ui_game_symbol_workbench" />
+			<property name="OpenSound" value="open_workbench" />
+			<property name="CloseSound" value="close_workbench" />
+			<property name="WorkstationJournalTip" value="workbenchTip" />
+			<property class="RepairItems">
+				<property name="resourceMechanicalParts" value="5"/>
+				<property name="resourceForgedSteel" value="5"/>
+				<property name="resourceSpring" value="5"/>
+			</property>
+			<drop event="Harvest" name="resourceForgedSteel" count="5" tag="allHarvest"/>
+			<drop event="Harvest" name="resourceMechanicalParts" count="50" tool_category="Disassemble"/>
+			<drop event="Harvest" name="resourceMechanicalParts" count="20" tag="salvageHarvest"/>
+			<drop event="Harvest" name="resourceForgedSteel" count="10" tag="salvageHarvest"/>
+			<drop event="Harvest" name="resourceSpring" count="5" tag="salvageHarvest"/>
+			<drop event="Destroy" count="0"/>
+			<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+			<property name="TakeDelay" value="10"/>
+			<property name="EconomicValue" value="3000"/>
+			<property name="Group" value="Basics,Building"/>
+			<property name="SellableToTrader" value="true"/>	
+			<property name="FilterTags" value="fdecor,fother,ffurniture"/>
+			<property name="SortOrder1" value="70i0"/>
+	    	</block>
+
+		<block name="BrokenGunsmithingBench">
+			<property name="DescriptionKey" value="BrokenGunsmithingBenchDesc"/>		
+			<property name="CustomIcon" value="BrokenGunsmithingBench"/>
+			<property name="Class" value="Loot" />
+			<property name="LootList" value="Brokengunbench" />
+			<property name="DisplayType" value="blockMulti" />
+			<property name="ModelOffset" value=".5,0,0"/>
+			<property name="MultiBlockDim" value="2,2,1"/>
+			<property name="Material" value="Mmetal" />
+			<property name="Shape" value="ModelEntity" />
+			<property name="Model" value="#@modfolder:Resources/FirearmStations.unity3d?TAFA_Broken_Bench_Gunsmithing"/>
+			<property name="ImposterDontBlock" value="true" />
+			<property name="WaterFlow" value="permitted" />
+			<property name="Place" value="TowardsPlacerInverted" />
+			<property name="OnlySimpleRotations" value="true" />
+			<property name="IsTerrainDecoration" value="true" />
+			<property name="StabilitySupport" value="false" />
+			<property name="MaxDamage" value="500" />
+			<property name="SellableToTrader" value="false" />
+			<property name="SortOrder1" value="B281" />
+			<property name="SortOrder2" value="0301" />
+			<property name="Group" value="Decor/Miscellaneous" />
+			<property name="FilterTags" value="MC_building,SC_decor" />
+			<property name="Tags" value="Car,WrenchXPGain"></property>
+			<drop event="Harvest" name="" count="0" tool_category="Disassemble"></drop>
+			<drop event="Destroy" name="BrokenGunsmithingBench" count="1" tool_category="Disassemble"/>
+
+	    	</block>
+				
+		<block name="GunsmithingBench">
+			<property name="DescriptionKey" value="GunsmithingBenchDesc"/>	
+			<property name="Class" value="Workstation"/>
+			<property name="Material" value="Mmetal"/>
+			<property name="MaxDamage" value="500"/>
+			<property name="StabilitySupport" value="false"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Model" value="#@modfolder:Resources/FirearmStations.unity3d?TAFA_Bench_Gunsmithing"/>
+			<property name="DisplayType" value="blockMulti" />
+			<property name="ModelOffset" value=".5,0,0"/>
+			<property name="MultiBlockDim" value="2,2,1"/>
+			<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+			<property name="ImposterDontBlock" value="true"/>
+			<property name="Place" value="TowardsPlacerInverted"/>
+			<property name="OnlySimpleRotations" value="true"/>
+			<property name="IsTerrainDecoration" value="true"/>
+			<property name="HeatMapStrength" value="6"/>
+			<property name="HeatMapTime" value="5000"/>
+			<property name="HeatMapFrequency" value="1000"/>
+			<property name="Stacknumber" value="100"/>
+			<property class="Workstation">
+				<property name="Modules" value="output,tools"/>		
+				<property name="CraftingAreaRecipes" value="GunsmithingBench"/>
+	    	<property name="ToolNames" value="1,2,3,4,5,6"/>
+			</property>
+			<property name="WorkstationIcon" value="ui_game_symbol_workbench" />
+			<property name="OpenSound" value="open_workbench" />
+			<property name="CloseSound" value="close_workbench" />
+			<property name="WorkstationJournalTip" value="workbenchTip" />
+			<property class="RepairItems">
+				<property name="resourceMechanicalParts" value="5"/>
+				<property name="resourceForgedSteel" value="5"/>
+				<property name="resourceSpring" value="5"/>
+			</property>
+			<drop event="Harvest" name="resourceForgedSteel" count="5" tag="allHarvest"/>
+			<drop event="Harvest" name="resourceMechanicalParts" count="50" tool_category="Disassemble"/>
+			<drop event="Harvest" name="resourceMechanicalParts" count="20" tag="salvageHarvest"/>
+			<drop event="Harvest" name="resourceForgedSteel" count="10" tag="salvageHarvest"/>
+			<drop event="Harvest" name="resourceSpring" count="5" tag="salvageHarvest"/>
+			<drop event="Destroy" count="0"/>
+			<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+			<property name="TakeDelay" value="10"/>
+			<property name="EconomicValue" value="2000"/>
+			<property name="Group" value="Basics,Building"/>
+			<property name="SellableToTrader" value="true"/>	
+			<property name="FilterTags" value="fdecor,fother,ffurniture"/>
+			<property name="SortOrder1" value="70i0"/>
+	    	</block>
+
+</append>
+
+
+</configs>

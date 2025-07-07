@@ -1,0 +1,44 @@
+<configs>
+
+	<append xpath="/entity_classes">
+
+	
+			<!-- Journal writer -->
+<entity_class name="JournalWriter" extends="zombieTemplateMale">
+	<property name="UserSpawnType" value="Menu"/> <!-- Allows spawning in on horde nights manually by admins (F6 menu) -->
+	<property name="Tags" value="entity,zombie,feral"/> <!-- No walker tag by design -->
+	<property name="Mesh" value="@:Entities/Zombies/Prefabs/ZBoe.prefab"/>
+	<property name="SwapMats" value="@:Entities/Zombies/Zombies/Materials/HD_Moe3.mat"/> <!-- Swap mats is perm, alt mats is 50/50, you cannot have more than 1 mat in swap mats however -->
+	<property name="SizeScale" value="1.2"/>
+	<property name="HasRagdoll" value="true"/>
+	
+	<!-- AI decisions -->
+	<property name="AITask" value="
+	BreakBlock|
+	DestroyArea|
+	ApproachDistraction|
+	ApproachAndAttackTarget class=EntityPlayer,0,EntityBandit,0,EntityEnemyAnimal|
+	ApproachSpot|
+	Look|
+	Wander|
+	"/>
+
+	<!-- Gameplay Flood -->
+	<property name="HandItem" value="meleeHandZombieStrong"/>
+	<property name="DismemberMultiplierHead" value="0"/><property name="DismemberMultiplierArms" value="0"/><property name="DismemberMultiplierLegs" value="0"/> <!-- no limb loss -->
+	<property name="PainResistPerHit" value=".4"/>
+	<property name="MoveSpeed" value=".8"/>
+	<property name="ExperienceGain" value="1000"/> 
+	<property name="LootListOnDeath" value="JournalWriter"/>
+	<property name="TimeStayAfterDeath" value="300"/>
+	<property name="DeadBodyHitPoints" value="1000"/>
+
+	<effect_group name="Base Effects">
+		<passive_effect name="HealthMax" operation="base_set" value="1000"/> 
+		<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" target="self" buff="buffBossNavWriter"/>
+	</effect_group>
+</entity_class>
+
+	</append>
+
+</configs>

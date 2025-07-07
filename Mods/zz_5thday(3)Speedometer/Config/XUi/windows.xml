@@ -1,0 +1,60 @@
+<configs>
+	
+	<set xpath="/windows/window[@name='HUDRightStatBars']/rect[@name='hud']/@pos">-90,160</set>
+	<append xpath="/windows">
+		<window name="windowSpeedometerHud" pos="0,160" width="300" height="300" anchor="CenterBottom" controller="Quartz.HUDVehicle, Quartz" visible="{#invehicle and isdriver}">
+			<rect name="speedometer" depth="2" pos="0,0" width="300" height="300" panel="Centercenter" controller="Quartz.Speedometer, Quartz">
+				<sprite depth="3" pos="75,-75" height="300" width="300" name="background" sprite="ui_game_filled_circle" color="0,0,0,200" pivot="center" globalopacity="false"/>
+				<sprite name="Scale" depth="10" pos="75,-75" width="300" height="300" sprite="scaleWhite" pivot="center" globalopacitymod="1.9"/>
+				<sprite name="Arrow" depth="11" pos="75,-75" size="300,300" sprite="arrow" pivot="center" globalopacitymod="1.9" controller="Quartz.DialIndicator, Quartz" indicator_value="{currentforwardspeed}" start_angle="122" end_angle="240" range_min="0" range_max="160" limit_indicator_to_range="false" animation_duration="0.3"/>
+				<label depth="10" name="TextContent" pos="75,-130" font_size="32" color="255,255,255" justify="center" pivot="center" text="{#Floor(currentforwardspeed)}" width="250" height="30"/>
+			</rect>
+			<rect pos="275,0" width="75" height="75" controller="HUDStatBar" stat_type="VehicleFuel" visible="{statvisible}">
+				<sprite depth="8" height="77" width="77" name="border" sprite="ui_game_filled_circle" color="[black]" pivot="center" globalopacity="false"/>
+				<sprite depth="9" name="center" sprite="ui_game_filled_circle" color="115,115,115" pivot="center" globalopacity="false"/>
+				<sprite depth="10" height="69" width="69" name="border" sprite="ui_game_filled_circle" color="[black]" pivot="center" globalopacity="false"/>
+				<sprite depth="11" name="BarContent" color="0,54,255,255" sprite="ui_game_filled_circle" height="69" width="69" pivot="center" type="filled" fill="0" globalopacity="false" filldirection="Radial360"/>
+				<sprite depth="12" width="50" height="50" name="center" sprite="ui_game_filled_circle" color="90,90,90" pivot="center" globalopacity="false"/>
+				<label depth="15" pos="0,9" name="Fuel" width="45" height="42" pivot="center" justify="center" text="{statcurrentwithmax}" font_size="18"/>
+				<sprite depth="15" name="Icon" color="255,255,255" atlas="{staticonatlas|once}" sprite="{staticon|once}" size="20,20" pos="0,-10" pivot="center" foregroundlayer="true"/>
+			</rect>
+			<rect pos="-116,0" width="75" height="75" controller="HUDStatBar" stat_type="VehicleHealth" visible="{statvisible}">
+				<sprite depth="8" height="77" width="77" name="border" sprite="ui_game_filled_circle" color="[black]" pivot="center" globalopacity="false"/>
+				<sprite depth="9" name="center" sprite="ui_game_filled_circle" color="115,115,115" pivot="center" globalopacity="false"/>
+				<sprite depth="10" height="69" width="69" name="border" sprite="ui_game_filled_circle" color="[black]" pivot="center" globalopacity="false"/>
+				<sprite depth="11" name="BarContent" color="255,0,0,255" sprite="ui_game_filled_circle" height="69" width="69" pivot="center" type="filled" fill="0" globalopacity="false" filldirection="Radial360"/>
+				<sprite depth="12" width="50" height="50" name="center" sprite="ui_game_filled_circle" color="90,90,90" pivot="center" globalopacity="false"/>
+				<label depth="15" pos="0,9" name="Health" width="45" height="42" pivot="center" justify="center" text="{statcurrentwithmax}" font_size="18"/>
+				<sprite depth="15" name="Icon" color="255,255,255" atlas="{staticonatlas|once}" sprite="{staticon|once}" size="20,20" pos="0,-10" pivot="center" foregroundlayer="true"/>
+			</rect>
+			<rect pos="-116,-116" width="75" height="75" controller="HUDStatBar" stat_type="Health" visible="{statvisible}">
+				<sprite depth="8" height="77" width="77" name="border" sprite="ui_game_filled_circle" color="[black]" pivot="center" globalopacity="false"/>
+				<sprite depth="9" name="center" sprite="ui_game_filled_circle" color="115,115,115" pivot="center" globalopacity="false"/>
+				<sprite depth="10" height="69" width="69" name="border" sprite="ui_game_filled_circle" color="[black]" pivot="center" globalopacity="false"/>
+				<sprite depth="11" name="BarContent" color="255,0,0,180" sprite="ui_game_filled_circle" height="69" width="69" pivot="center" type="filled" fill="0" globalopacity="false" filldirection="Radial360"/>
+				<sprite depth="12" width="50" height="50" name="center" sprite="ui_game_filled_circle" color="90,90,90" pivot="center" globalopacity="false"/>
+				<label depth="15" pos="0,9" name="Health" width="45" height="42" pivot="center" justify="center" text="{statcurrentwithmax}" font_size="18"/>
+				<sprite depth="15" name="Icon" color="255,255,255" atlas="{staticonatlas|once}" sprite="{staticon|once}" size="20,20" pos="0,-10" pivot="center" foregroundlayer="true"/>
+			</rect>
+			<rect pos="275,-116" width="75" height="75" controller="HUDStatBar" stat_type="Stamina" visible="{statvisible}">
+				<sprite depth="8" height="77" width="77" name="border" sprite="ui_game_filled_circle" color="[black]" pivot="center" globalopacity="false"/>
+				<sprite depth="9" name="center" sprite="ui_game_filled_circle" color="115,115,115" pivot="center" globalopacity="false"/>
+				<sprite depth="10" height="69" width="69" name="border" sprite="ui_game_filled_circle" color="[black]" pivot="center" globalopacity="false"/>
+				<sprite depth="11" name="BarContent" color="51,86,255" sprite="ui_game_filled_circle" height="69" width="69" pivot="center" type="filled" fill="0" globalopacity="false" filldirection="Radial360"/>
+				<sprite depth="12" width="50" height="50" name="center" sprite="ui_game_filled_circle" color="90,90,90" pivot="center" globalopacity="false"/>
+				<label depth="15" pos="0,9" name="Health" width="45" height="42" pivot="center" justify="center" text="{statcurrentwithmax}" font_size="18"/>
+				<sprite depth="15" name="Icon" color="255,255,255" atlas="{staticonatlas|once}" sprite="{staticon|once}" size="20,20" pos="0,-10" pivot="center" foregroundlayer="true"/>
+			</rect>
+			
+		
+			<rect name="content" depth="5" pos="-300,25" height="40" controller="MapStats">
+			<sprite name="Scale" depth="5" pos="75,-75" width="150" height="150" sprite="altometer" pivot="center" globalopacitymod="1.9"/>
+				<label depth="6" name="elevLabel" pos="40,-60" width="250" height="28" text="{mapelevation} M[-]" color="[black]" font_size="48"/>
+				
+			
+        </rect>	
+			
+		
+		</window>
+	</append>
+</configs>

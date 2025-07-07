@@ -1,0 +1,243 @@
+<configs>
+<insertafter xpath="/items/item[@name='bookArtOfMiningLuckyStrike']/effect_group/triggered_effect[@progression_name='perkArtOfMiningLuckyStrike']">
+<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_BookRead_Mining1" operation="set" value="1" />
+</insertafter>
+
+<set xpath="//item[@name='biomeBadge1']/property[@name='AllowUnEquip']/@value">true</set>
+<set xpath="//item[@name='biomeBadge1']/property[@name='AutoEquip']/@value">false</set>
+<set xpath="//item[@name='biomeBadge1']/property[@name='IsCosmetic']/@value">true</set>
+
+
+<append xpath="/items">
+
+
+
+
+
+
+
+<item name="drugIodidePills">
+	<property name="Tags" value="medical,medicalSkill"/>
+	<property name="DisplayType" value="IodidePillsResist"/>
+	<property name="HoldType" value="16"/>
+	<property name="Meshfile" value="@:Other/Items/Health/painkillersPrefab.prefab"/>
+	<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+	<property name="DescriptionKey" value="drugIodidePillsDesc"/>
+	<property name="Material" value="Morganic"/>
+	<property name="CustomIcon" value="drugPainkillers"/>
+	<property name="CustomIconTint" value="4b0082"/>
+	<property name="EconomicValue" value="600"/>
+	<property name="CarryWeight" value="0.01"/>
+	<property name="Stacknumber" value="20"/> <!-- STK loot -->
+	<property name="UnlockedBy" value="craftingMedical"/>
+	<property name="Group" value="Science,CFChemicals,Medical,TCMedical"/>
+	<property name="TraderStageTemplate" value="baseTier2"/>
+	<property class="Action0">
+		<property name="Class" value="Eat"/>
+		<property name="Delay" value="1.0"/>
+		<property name="Use_time" value="..."/>
+		<property name="Sound_start" value="player_painkillers"/>
+	</property>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveBuff" buff="buffRadiationMain"/>
+		<display_value name="dRadiationResist" value="1"/>
+		<display_value name="$waterAmountAdd" value="-10"/>
+		<display_value name="dDuration" value="720"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDrugIodidePillsDuration" operation="add" value="723"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDrugIodidePillsDuration" operation="set" value="2163">
+			<requirement name="CVarCompare" cvar="$buffDrugIodidePillsDuration" operation="GT" value="2163"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffDrugIodidePills"/>
+
+
+	</effect_group>
+		<effect_group tiered="false">
+		<display_value name="dSideEffects" value=".05"/>
+        <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="5"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffHomeBrewEffectsDuration" operation="set" value="120"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffHomeBrewEffects"/>
+	</effect_group>	
+</item>
+
+
+	<item name="resourceUrainium"> <!-- scrap material -->
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="CustomIcon" value="resourceGoldNugget"/>
+		<property name="CustomIconTint" value="0,255,0"/>
+		<property name="DescriptionKey" value="resourceRadiumDesc"/>
+		<property name="Material" value="MresourceRadium"/>
+		<property name="Weight" value="20"/>
+		<property name="Stacknumber" value="25"/> <!-- stack size -->
+		<property name="EconomicValue" value="100"/>
+		<property name="Group" value="Resources"/>
+		<property name="RepairAmount" value="100"/>
+		<property name="LootExpValue" value="1"/>
+		<property name="CraftingIngredientTime" value=".5"/>
+	</item>
+	
+	<item name="resourceQuartz"> <!-- scrap material -->
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+
+		<property name="DescriptionKey" value="resourceRadiumDesc"/>
+		<property name="Material" value="MresourceRadium"/>
+		<property name="Weight" value="1"/>
+		<property name="Stacknumber" value="15000"/> <!-- stack size -->
+		<property name="EconomicValue" value="100"/>
+		<property name="Group" value="Resources"/>
+		<property name="RepairAmount" value="1"/>
+		<property name="LootExpValue" value="1"/>
+		<property name="CraftingIngredientTime" value=".5"/>
+	</item>
+
+	<item name="resourceBlackDiamond"> <!-- scrap material -->
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+
+		<property name="DescriptionKey" value="resourceRadiumDesc"/>
+		<property name="Material" value="MresourceRadium"/>
+		<property name="Weight" value="1"/>
+		<property name="Stacknumber" value="15000"/> <!-- stack size -->
+		<property name="EconomicValue" value="150"/>
+		<property name="Group" value="Resources"/>
+		<property name="RepairAmount" value="1"/>
+		<property name="LootExpValue" value="1"/>
+		<property name="CraftingIngredientTime" value=".5"/>
+	</item>
+	<item name="resourceRuby"> <!-- scrap material -->
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		
+		<property name="DescriptionKey" value="resourceRadiumDesc"/>
+		<property name="Material" value="MresourceRadium"/>
+		<property name="Weight" value="1"/>
+		<property name="Stacknumber" value="15000"/> <!-- stack size -->
+		<property name="EconomicValue" value="200"/>
+		<property name="Group" value="Resources"/>
+		<property name="RepairAmount" value="1"/>
+		<property name="LootExpValue" value="1"/>
+		<property name="CraftingIngredientTime" value=".5"/>
+	</item>
+	<item name="resourceBlueSaffire"> <!-- scrap material -->
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		
+		<property name="DescriptionKey" value="resourceRadiumDesc"/>
+		<property name="Material" value="MresourceRadium"/>
+		<property name="Weight" value="1"/>
+		<property name="Stacknumber" value="15000"/> <!-- stack size -->
+		<property name="EconomicValue" value="300"/>
+		<property name="Group" value="Resources"/>
+		<property name="RepairAmount" value="1"/>
+		<property name="LootExpValue" value="1"/>
+		<property name="CraftingIngredientTime" value=".5"/>
+	</item>
+
+ 
+
+	<item name="resourceForgedUrainium"> <!-- forged material -->
+		<property name="CustomIcon" value="resourceForgedIron"/>
+		<property name="CustomIconTint" value="0,255,0"/>
+		<property name="DescriptionKey" value="resourceForgedRadiumDesc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="Material" value="Mradium"/>
+		<property name="Stacknumber" value="500"/> <!-- stack size -->
+		<property name="EconomicValue" value="12"/>
+		<property name="CraftingIngredientTime" value="10"/>
+		<property name="RepairTime" value=".5"/>
+		<property name="RepairAmount" value="270"/>
+		<property name="Group" value="Resources,Chemicals"/>
+	</item>
+	<item name="biomePartbf">
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="Material" value="Morganic"/>
+		<property name="Weight" value="0"/>
+		<property name="Stacknumber" value="5"/> <!-- STK resource -->
+		<property name="EconomicValue" value="500"/>
+		<property name="EconomicBundleSize" value="1"/>
+	 </item>
+	<item name="biomePartds">
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="Material" value="Morganic"/>
+		<property name="Weight" value="0"/>
+		<property name="Stacknumber" value="5"/> <!-- STK resource -->
+		<property name="EconomicValue" value="500"/>
+		<property name="EconomicBundleSize" value="1"/>
+	 </item>
+	<item name="biomePartsn">
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="Material" value="Morganic"/>
+		<property name="Weight" value="0"/>
+		<property name="Stacknumber" value="5"/> <!-- STK resource -->
+		<property name="EconomicValue" value="500"/>
+		<property name="EconomicBundleSize" value="1"/>
+	 </item>
+	<item name="biomePartwl">
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="Material" value="Morganic"/>
+		<property name="Weight" value="0"/>
+		<property name="Stacknumber" value="5"/> <!-- STK resource -->
+		<property name="EconomicValue" value="500"/>
+		<property name="EconomicBundleSize" value="1"/>
+	 </item>
+</append>
+<append xpath="//item[@name='biomeBadge1']">
+			<effect_group>
+				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="AcidProt" operation="set" value="100"/>
+				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="AcidProt" operation="set" value="0"/>
+			</effect_group>
+</append>
+<append xpath="//item[@name='biomeBadge2']">
+			<effect_group>
+				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="AcidProt" operation="set" value="100"/>
+				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="AcidProt" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="DHProt" operation="set" value="100"/>
+				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="DHProt" operation="set" value="0"/>
+			</effect_group>
+</append>
+
+<append xpath="//item[@name='biomeBadge3']">
+			<effect_group>
+				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="AcidProt" operation="set" value="100"/>
+				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="AcidProt" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="FNProt" operation="set" value="100"/>
+				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="FNProt" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="DHProt" operation="set" value="100"/>
+				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="DHProt" operation="set" value="0"/>
+			</effect_group>
+</append>
+
+
+
+<append xpath="//item[@name='biomeBadge4']">
+	<effect_group tiered="false">
+				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="FNProt" operation="set" value="100"/>
+				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="FNProt" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="DHProt" operation="set" value="100"/>
+				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="DHProt" operation="set" value="0"/>
+					<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="AcidProt" operation="set" value="100"/>
+				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="AcidProt" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="RadiationProt" operation="set" value="100"/>
+				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="RadiationProt" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfEquipStart" action="AddBuff" target="self" buff="buffmodRad"/>
+				<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" target="self" buff="buffmodRad"/>
+			</effect_group>
+		
+</append>
+	
+</configs>

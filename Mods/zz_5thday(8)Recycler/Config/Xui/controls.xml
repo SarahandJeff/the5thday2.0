@@ -1,0 +1,180 @@
+<snj>
+<append xpath="/controls">
+<recipe_entryR>
+		<rect height="43" style="press, hover, scroll" controller="RecipeEntry" disabled_font_color="[disabledLabelColor]" enabled_font_color="[labelColor]" sound="[recipe_click]" sound_play_on_hover="[default_hover]" >
+			<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="419" height="49" color="[black]" type="sliced" fillcenter="false" />
+			<sprite depth="3" name="background" width="100%" height="45" pos="0,1" color="[darkGrey]" type="sliced" />
+			<sprite depth="4" name="Icon" atlas="ItemIconAtlas" sprite="{recipeicon}" color="{recipeicontint}" size="40,40" pos="34,-22" pivot="center" foregroundlayer="true"/>
+			<sprite depth="8" name="itemtypeicon" width="12" height="12" sprite="ui_game_symbol_{itemtypeicon}" pos="2,-2" foregroundlayer="true" visible="{hasitemtypeicon}" color="{itemtypeicontint}" />
+			<label depth="4" name="Name" pos="200,-19" width="270" height="30" text="{recipename}" font_size="28" color="{hasingredientsstatecolor}" justify="center" pivot="center"/>
+			<sprite depth="5" name="Favorite" sprite="server_favorite" size="14,14" pos="6,-4" visible="{isfavorite}" foregroundlayer="true"/>
+			<sprite depth="4" name="Unlocked" sprite="{unlockicon}" size="24,24" pos="352,-10" visible="{isunlockable}" color="{unlockstatecolor}" foregroundlayer="true" />
+		</rect>
+	</recipe_entryR>
+	<ingredient_headerR>
+		<rect name="header" width="447" height="50">
+			<rect depth="2" width="65" height="48">
+				<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="71" height="53" color="[black]" type="sliced" fillcenter="false" />
+				<sprite color="[darkGrey]" type="sliced" />
+				<label depth="3" text="ITEM" text_key="lblitem" pos="32,-23" height="26" font_size="26" justify="center" pivot="center"/>
+			</rect>
+			<rect depth="2" width="236" height="48" pos="68,0">
+				<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="242" height="53" color="[black]" type="sliced" fillcenter="false" />
+				<sprite color="[darkGrey]" type="sliced" />
+				<label depth="3" text="NAME" text_key="mmTextName" pos="117,-23" width="230" height="26" font_size="26" justify="center" pivot="center"/>
+			</rect>
+			<rect depth="2" width="140" height="48" pos="307,0">
+				<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="146" height="53" color="[black]" type="sliced" fillcenter="false" />
+				<sprite color="[darkGrey]" type="sliced" />
+				<label depth="3" text="COUNT" text_key="lblContextCraftCount" pos="70,-23" width="64" height="26" font_size="26" justify="center" pivot="center" />
+			</rect>
+		</rect>
+	</ingredient_headerR>
+
+	<ingredient_rowR>
+		<rect name="row" width="447" height="50" controller="IngredientEntry">
+			<rect depth="2" width="65" height="48">
+				<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="-3,2" width="71" height="53" color="[black]" type="sliced" fillcenter="false" />
+
+				<sprite color="[lightGrey]" type="sliced" />
+				<sprite depth="2" name="icon" width="40" height="40" atlas="ItemIconAtlas" sprite="{itemicon}" color="{itemicontint}" pos="30,-22" pivot="center" foregroundlayer="true"/>
+			</rect>
+			<rect depth="2" width="236" height="48" pos="68,0">
+				<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="-3,2" width="242" height="53" color="[black]" type="sliced" fillcenter="false" />
+				<sprite color="[lightGrey]" type="sliced" />
+				<label depth="3" name="name" pos="117,-23" width="230" height="26" font_size="26" color="[labelColor]" justify="center" pivot="center" text="{itemname}"/>
+			</rect>
+			<rect depth="2" width="140" height="48" pos="307,0">
+				<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="-3,2" width="146" height="53" color="[black]" type="sliced" fillcenter="false" />
+				<sprite color="[lightGrey]" type="sliced" />
+				<label depth="3" name="needCount" pos="70,-23" width="120" height="26" font_size="26" color="[labelColor]" justify="center" pivot="center" text="{haveneedcount}"/>
+			</rect>
+		</rect>
+	</ingredient_rowR>
+
+	<unlocked_by_headerR>
+		<rect name="header" width="447" height="50">
+			<rect depth="2" width="60" height="48">
+				<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="66" height="53" color="[black]" type="sliced" fillcenter="false" />
+				<sprite color="[darkGrey]" type="sliced" />
+				<label depth="3" text="TYPE" text_key="xuiType" pos="32,-23" height="26" font_size="26" justify="center" pivot="center"/>
+			</rect>
+			<rect depth="2" width="304" height="48" pos="63,0">
+				<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="310" height="53" color="[black]" type="sliced" fillcenter="false" />
+				<sprite color="[darkGrey]" type="sliced" />
+				<label depth="3" text="UNLOCKED BY" text_key="xuiUnlockedBy" pos="0,-13" height="26" font_size="26" justify="center" />
+			</rect>
+			<rect depth="2" width="82" height="48" pos="369,0">
+				<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="-2,3" width="83" height="53" color="[black]" type="sliced" fillcenter="false" />
+				<sprite color="[darkGrey]" type="sliced" />
+				<label depth="3" text="LEVEL" text_key="xuiLevel" pos="-3,-13" height="26" font_size="26" justify="center" />
+			</rect>
+		</rect>
+	</unlocked_by_headerR>
+
+	<unlocked_by_rowR>
+		<rect name="row" width="447" height="50" controller="UnlockByEntry">
+			<rect depth="2" width="60" height="48">
+				<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="-3,2" width="66" height="53" color="[black]" type="sliced" fillcenter="false" />
+
+				<sprite color="[lightGrey]" type="sliced" />
+				<sprite depth="2" name="icon" width="40" height="40" atlas="{itemiconatlas}" sprite="{itemicon}" pos="30,-22" pivot="center" foregroundlayer="true"/>
+			</rect>
+			<rect depth="2" width="304" height="48" pos="63,0">
+				<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="-3,2" width="310" height="53" color="[black]" type="sliced" fillcenter="false" />
+				<sprite color="[lightGrey]" type="sliced" />
+				<label depth="3" name="name" pos="0,-13" height="26" font_size="26" color="[labelColor]" justify="center" text="{name}"/>
+			</rect>
+			<rect depth="2" width="82" height="48" pos="369,0">
+				<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="-2,2" width="83" height="53" color="[black]" type="sliced" fillcenter="false" />
+				<sprite color="[lightGrey]" type="sliced" />
+				<label depth="3" name="name" pos="0,-13" height="26" font_size="26" color="[labelColor]" justify="center" text="{level}"/>
+			</rect>
+		</rect>
+	</unlocked_by_rowR>
+</append>
+
+
+    <set xpath="/controls/ingredient_headerR" >
+        <rect name="header" width="855" height="50">
+			<rect depth="2" width="67" height="48">
+				<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="72" height="53" color="[black]" type="sliced" fillcenter="false" />
+				<sprite color="[darkGrey]" type="sliced" />
+				<label depth="3" text="ITEM" text_key="lblitem" pos="32,-23" height="26" width="72" font_size="26" justify="center" pivot="center"/>
+			</rect>
+			<rect depth="2" width="385" height="48" pos="68,0">
+				<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="385" height="53" color="[black]" type="sliced" fillcenter="false" />
+				<sprite color="[darkGrey]" type="sliced" />
+				<label depth="3" text="NAME" text_key="mmTextName" pos="180,-23" width="385" height="26" font_size="26" justify="center" pivot="center"/>
+			</rect>
+			<rect depth="2" width="403" height="48" pos="450,0">
+				<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="405" height="53" color="[black]" type="sliced" fillcenter="false" />
+				<sprite color="[darkGrey]" type="sliced" />
+				<label depth="3" text="COUNT" text_key="lblContextCraftCount" pos="200,-23" width="405" height="26" font_size="26" justify="center" pivot="center" />
+			</rect>
+		</rect>
+    </set>
+
+	<set xpath="/controls/ingredient_rowR" >
+        <rect name="row" width="447" height="50" controller="IngredientEntry">
+			<rect depth="2" width="67" height="48">
+				<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="-3,2" width="71" height="53" color="[black]" type="sliced" fillcenter="false" />
+
+				<sprite color="[lightGrey]" type="sliced" />
+				<sprite depth="2" name="icon" width="40" height="40" atlas="ItemIconAtlas" sprite="{itemicon}" color="{itemicontint}" pos="30,-22" pivot="center" foregroundlayer="true"/>
+			</rect>
+			<rect depth="2" width="385" height="48" pos="68,0">
+				<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="-3,2" width="385" height="53" color="[black]" type="sliced" fillcenter="false" />
+				<sprite color="[lightGrey]" type="sliced" />
+				<label depth="3" name="name" pos="181,-23" width="385" height="26" font_size="26" color="[labelColor]" justify="center" pivot="center" text="{itemname}"/>
+			</rect>
+			<rect depth="2" width="545" height="48" pos="307,0">
+				<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="140,2" width="405" height="53" color="[black]" type="sliced" fillcenter="false" />
+				<sprite color="[lightGrey]" type="sliced" />
+				<label depth="3" name="needCount" pos="343,-23" width="405" height="26" font_size="26" color="[labelColor]" justify="center" pivot="center" text="{haveneedcount}"/>
+			</rect>
+		</rect>
+    </set>
+
+	<set xpath="/controls/unlocked_by_headerR" >
+        <rect name="header" width="447" height="50">
+			<rect depth="2" width="67" height="48">
+				<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="71" height="53" color="[black]" type="sliced" fillcenter="false" />
+				<sprite color="[darkGrey]" type="sliced" />
+				<label depth="3" text="TYPE" text_key="xuiType" pos="32,-23" height="26" font_size="26" justify="center" pivot="center"/>
+			</rect>
+			<rect depth="2" width="704" height="48" pos="70,0">
+				<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="705" height="53" color="[black]" type="sliced" fillcenter="false" />
+				<sprite color="[darkGrey]" type="sliced" />
+				<label depth="3" text="UNLOCKED BY" text_key="xuiUnlockedBy" pos="0,-13" height="26" font_size="26" justify="center" />
+			</rect>
+			<rect depth="2" width="82" height="48" pos="771,0">
+				<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="-2,3" width="83" height="53" color="[black]" type="sliced" fillcenter="false" />
+				<sprite color="[darkGrey]" type="sliced" />
+				<label depth="3" text="LEVEL" text_key="xuiLevel" pos="-3,-13" height="26" font_size="26" justify="center" />
+			</rect>
+		</rect>
+    </set>
+
+	<set xpath="/controls/unlocked_by_rowR" >
+        <rect name="row" width="447" height="50" controller="UnlockByEntry">
+			<rect depth="2" width="67" height="48">
+				<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="-3,2" width="71" height="53" color="[black]" type="sliced" fillcenter="false" />
+
+				<sprite color="[lightGrey]" type="sliced" />
+				<sprite depth="2" name="icon" width="40" height="40" atlas="{itemiconatlas}" sprite="{itemicon}" pos="30,-22" pivot="center" foregroundlayer="true"/>
+			</rect>
+			<rect depth="2" width="703" height="48" pos="70,0">
+				<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="-3,2" width="704" height="53" color="[black]" type="sliced" fillcenter="false" />
+				<sprite color="[lightGrey]" type="sliced" />
+				<label depth="3" name="name" pos="0,-13" height="26" font_size="26" color="[labelColor]" justify="center" text="{name}"/>
+			</rect>
+			<rect depth="2" width="82" height="48" pos="771,0">
+				<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="-2,2" width="83" height="53" color="[black]" type="sliced" fillcenter="false" />
+				<sprite color="[lightGrey]" type="sliced" />
+				<label depth="3" name="name" pos="0,-13" height="26" font_size="26" color="[labelColor]" justify="center" text="{level}"/>
+			</rect>
+		</rect>
+    </set>
+
+</snj>

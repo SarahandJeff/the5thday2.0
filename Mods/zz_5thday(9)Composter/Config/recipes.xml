@@ -1,0 +1,68 @@
+<snj>
+<remove xpath="//recipe[@name='farmPlotBlockVariantHelper']" />
+	<append xpath="/recipes">
+		<recipe name="Composter" count="1" craft_area="workbench">
+			<ingredient name="resourceScrapPolymers" count="30"/>
+			<ingredient name="resourceMetalPipe" count="3"/>
+			<ingredient name="resourceNail" count="50"/>
+			<ingredient name="resourceWood" count="50"/>
+		</recipe>
+
+		<recipe name="foodRottingFlesh" count="1" craft_area="composter">
+			<ingredient name="foodRawMeat" count="1"/>
+		</recipe>
+		<recipe name="resourceCompost" count="3" craft_area="composter">
+			<ingredient name="resourceTurd" count="1"/>
+			<ingredient name="resourceClayLump" count="5"/>
+			<ingredient name="foodScraps" count="5"/>
+			
+		</recipe>
+		<recipe name="resourceCompost" count="3" craft_area="composter">
+			<ingredient name="resourceChickenPoop" count="1"/>
+			<ingredient name="resourceClayLump" count="5"/>
+			<ingredient name="resourceYuccaFibers" count="5"/>
+			<ingredient name="foodCropPumpkin" count="5"/>
+		</recipe>
+		<recipe name="resourceCompost" count="3" craft_area="composter">
+			<ingredient name="resourceChickenPoop" count="1"/>
+			<ingredient name="resourceClayLump" count="5"/>
+			<ingredient name="resourceYuccaFibers" count="5"/>
+			<ingredient name="foodCropCorn" count="5"/>
+		</recipe>
+		<recipe name="resourceCompost" count="3" craft_area="composter">
+			<ingredient name="resourceChickenPoop" count="1"/>
+			<ingredient name="resourceClayLump" count="5"/>
+			<ingredient name="resourceYuccaFibers" count="5"/>
+			<ingredient name="foodRottingFlesh" count="5"/>
+		</recipe>
+		<recipe name="resourceCompost" count="3" craft_area="composter">
+			<ingredient name="resourceChickenPoop" count="1"/>
+			<ingredient name="resourceClayLump" count="5"/>
+			<ingredient name="resourceYuccaFibers" count="5"/>
+			<ingredient name="foodCharredMeat" count="5"/>
+		</recipe>
+		
+	</append>
+		
+	<append xpath="/recipes">
+		<recipe name="ammoGasCan" count="200" craft_time="100" craft_area="chemistryStation" tags="learnable,chemStationCrafting">
+			<ingredient name="resourceBioFuel" count="1"/>
+			<ingredient name="drinkJarBeer" count="1"/>
+		</recipe>
+		<recipe name="resourceBioFuel" count="1" craft_area="chemistryStation" tags="chemStationCrafting">
+			<ingredient name="resourceAnimalFat" count="1"/>
+		</recipe>
+		<recipe name="resourceBioFuel" count="1" craft_area="chemistryStation" tags="chemStationCrafting">
+			<ingredient name="resourceTurd" count="1"/>
+		</recipe>
+		<recipe name="farmPlotBlockVariantHelper" count="1" tags="PerkHOHFarming" craft_time="20">
+			<ingredient name="resourceWood" count="5"/>
+			<ingredient name="resourceCompost" count="50"/>
+			<effect_group>
+				<passive_effect name="CraftingIngredientCount" level="0,10,20,30,250" operation="perc_add" value="0,-.3,-.5,-.5,-.5" tags="resourceCompost"/>
+			</effect_group>
+		</recipe>
+	</append>	
+</snj>	
+
+
