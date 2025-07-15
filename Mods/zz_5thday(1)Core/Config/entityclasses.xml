@@ -1,25 +1,5 @@
 <configs>
 
-<!--<append xpath="/entity_classes/entity_class[@name='sc_General']">
-    <property name="Buffs" value="buffAirDropsummonTrigger"/>
-</append>-->
-<!--
-<set xpath="//entity_class[@name='npcMeleeAdvancedTemplate']//property[@name='LootListAlive']/@value">traderNPCSNJ</set>
-<set xpath="//entity_class[@name='npcRangedAdvancedTemplate']//property[@name='LootListAlive']/@value">traderNPCSNJ</set>
-<set xpath="//entity_class[@name='npcAdvancedEmptyHandTemplate']//property[@name='LootListAlive']/@value">traderNPCSNJ</set>
-<set xpath="//entity_class[@name='npcAdvancedClubTemplate']//property[@name='LootListAlive']/@value">traderNPCSNJ</set>
-<set xpath="//entity_class[@name='npcMeleeTemplate']//property[@name='LootListAlive']/@value">traderNPCSNJ</set>
-
-<set xpath="//entity_class[@name='npcAdvancedBatTemplate']//property[@name='LootListAlive']/@value">traderNPCSNJ</set>
-<set xpath="//entity_class[@name='npcAdvancedKnifeTemplate']//property[@name='LootListAlive']/@value">traderNPCSNJ</set>
-<set xpath="//entity_class[@name='npcAdvancedAxeTemplate']//property[@name='LootListAlive']/@value">traderNPCSNJ</set>
-<set xpath="//entity_class[@name='npcAdvancedSpearTemplate']//property[@name='LootListAlive']/@value">traderNPCSNJ</set>
-<set xpath="//entity_class[@name='npcAdvancedMacheteTemplate']//property[@name='LootListAlive']/@value">traderNPCSNJ</set>
-<set xpath="//entity_class[@name='npcAdvancedSRifleTemplate']//property[@name='LootListAlive']/@value">traderNPCSNJ</set>
-
-
-
--->
 <set xpath="//entity_class[starts-with(@name,'npcNurse')]//property[@name='Faction']/@value">Drunkasses</set>
 <set xpath="//entity_class[starts-with(@name,'npcBaker')]//property[@name='Faction']/@value">Drunkasses</set>
 <set xpath="//entity_class[starts-with(@name,'civilianNPC')]//property[@name='Faction']/@value">Drunkasses</set>
@@ -28,6 +8,30 @@
 <set xpath="//entity_class[starts-with(@name,'zombieSteveCrawler')]//property[@name='MoveSpeed']/@value">.5</set>
 <append xpath="//entity_class[starts-with(@name,'zombieBurnt')]//property[@name='Tags']/@value">,krispy</append>
 
+<append xpath="/entity_classes">
+	<entity_class name="EntityLootContainerBee">
+				<property name="SizeScale" value="1.3"/>
+				<property name="HideInSpawnMenu" value="true"/>
+				<property name="Mesh" value="@:Entities/LootContainers/zpackPrefab.prefab"/>
+				<property name="ModelType" value="Custom"/>
+				<property name="Prefab" value="Backpack"/>
+				<property name="Class" value="EntityLootContainer"/>
+				<property name="Parent" value="Backpack"/>
+				<property name="IsEnemyEntity" value="false"/>
+				<property name="TimeStayAfterDeath" value="2400"/>
+				<property name="LootListOnDeath" value="EntityLootContainerBeeBag"/>
+				<property name="Faction" value="none"/>
+			</entity_class>
+</append>
+
+
+
+
+
+<append xpath="//entity_class[starts-with(@name,'animalInsectSwarm')]">
+	<property name="LootDropEntityClass" value="EntityLootContainerBee"/>
+	<property name="LootDropProb" value=".5"/>
+</append>
 
 
 
@@ -59,7 +63,7 @@
 			<property name="UserSpawnType" value="Menu"/>
 			<property name="Tags" value="entity,npc,human,trader"/>
 			<property name="Mesh" value="#@modfolder:Resources/TraderKB.unity3d?TraderKB1"/>
-			<!--property name="Mesh" value="#@modfolder:Resources/NewTraderKB1.unity3d?TraderKB"/-->
+		
 			<property name="NPCID" value="traderKB"/>
 			<property name="DanceType" value="1" />
 			<property name="AvatarController" value="AvatarNpcController"/>
@@ -79,8 +83,7 @@
                 <property name="ExperienceGain" value="500"/>
                 <property name="HandItem" value="meleeHandDKBossSuperRadWight"/>
                 <property name="JumpMaxDistance" value="1.1, 1.8"/>
-                <!--<property name="LootDropEntityClass" value="EntityLootContainerWasteLandBoss"/>
-                <property name="LootDropProb" value="1"/>-->
+           
                 <effect_group name="Base Effects">
                     <passive_effect name="HealthMax" operation="base_set" value="2000"/>
                     <passive_effect name="HealthMax" operation="perc_set" value="1,1.5"/>
@@ -88,23 +91,8 @@
                     
                 </effect_group>
     </entity_class>	
-</append><!--
-<set xpath="/entity_classes/entity_class/property[@name='LootDropProb']/@value">0</set>
-<append xpath="/entity_classes/entity_class[@name='zombieTemplateMale']">
-		<property name="CorpseBlock" value="goreBlockHumanBones"/>
-		<property name="CorpseBlockChance" value="1"/>
-	</append>
-	<append xpath="/entity_classes/entity_class[starts-with(@name, 'zombieFemaleTutorial')]">
-		<property name="LootListOnDeath" value="zombieRegular"/>
-		<property name="CorpseBlock" value="goreBlockHumanBones"/>
-		<property name="CorpseBlockChance" value="1"/>
-	</append>
+</append>
 
 
-	<append xpath="/entity_classes/entity_class[@name='zombieRegularTemplate']">
-		<property name="CorpseBlock" value="goreBlockHumanBones"/>
-		<property name="CorpseBlockChance" value="1"/>
-	</append>
--->
 
 	</configs>

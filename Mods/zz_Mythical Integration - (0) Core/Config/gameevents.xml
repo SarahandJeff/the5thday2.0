@@ -4072,7 +4072,10 @@
 	chickening (M)
 	baconing (M)
 	dodge this -->
-	
+	<action_sequence name="myth_bit_partygirl" template="spawn_triple">
+			<variable name="zombiename" value="zombiePartyGirl" />
+			<variable name="alertsound" value="zombiefemalealert" />
+		</action_sequence>
 	<action_sequence name="spawn_bunny">			
 			<action class="SpawnEntity">
 				<property name="entity_names" value="animalBunnyHostile" />
@@ -4594,5 +4597,315 @@
 			<property name="phase" value="1" />
 			</action>
 		</action_sequence>
+
+<!-- mobby copy-->
+
+	<action_sequence name="action_SwimmingPool">
+		<requirement class="InVehicle">
+			<property name="invert" value="true" />
+		</requirement>
+
+		<requirement class="InSafeZone">
+			<property name="invert" value="true" />
+		</requirement>
+
+		<action class="PlaySound">
+			<property name="sound" value="twitch_bad_action" />
+			<property name="phase" value="1" />
+		</action>
+
+		<action class="PlaySound">
+			<property name="phase" value="1" />
+			<property name="sound" value="twitch_sinkhole" />
+			<property name="max_distance" value="15" />
+		</action>
+
+		<action class="AddBuff">
+			<property name="phase" value="1" />
+			<property name="buff_name" value="buffDontMove" />
+			<property name="duration" value="1.5" />
+		</action>
+
+		<action class="BlockReplace">
+			<property name="min_offset" value="-2,-1,-2" />
+			<property name="max_offset" value="2,3,2" />
+			<property name="block_to" value="air" />
+			<property name="allow_terrain" value="true" />
+			<property name="exclude_tags" value="twitchHordeStone" />
+			<property name="phase" value="2" />
+		</action>
+		<action class="Delay">
+			<property name="time" value="1" />
+			<property name="phase" value="3" />
+		</action>
+		<action class="BlockReplace">
+			<property name="min_offset" value="-3,-5,-3" />
+			<property name="max_offset" value="3,-2,3" />
+			<property name="block_to" value="air" />
+			<property name="allow_terrain" value="true" />
+			<property name="exclude_tags" value="twitchHordeStone" />
+			<property name="phase" value="3" />
+		</action>
+		<action class="Delay">
+			<property name="time" value="1" />
+			<property name="phase" value="4" />
+		</action>
+		<action class="FillArea">
+			<property name="phase" value="4" />
+			<property name="fill_type" value="Sphere" />
+			<!-- <property name="new_name" value="Filled by {viewer}" /> -->
+			<property name="block_tags" value="air,twitchReplace" />
+			<property name="exclude_block_tags" value="twitchHordeStone" />
+			<property name="block" value="terrWaterPOI" />
+			<property name="replace_all" value="false" />
+			<property name="allow_terrain" value="true" />
+			<property name="max_density" value="false" />
+		</action>
+		<!--<action class="Delay">
+			<property name="time" value="1" />
+			<property name="phase" value="3" />
+		</action>
+		<action class="BlockReplace">
+			<property name="min_offset" value="-3,-5,-3" />
+			<property name="max_offset" value="3,-2,3" />
+			<property name="block_to" value="terrWaterPOI" />
+			<property name="allow_terrain" value="true" />
+			<property name="exclude_tags" value="twitchHordeStone" />
+			<property name="phase" value="3" />
+		</action>
+		<action class="Delay">
+			<property name="time" value="1" />
+			<property name="phase" value="4" />
+		</action>
+		<action class="BlockReplace">
+			<property name="min_offset" value="-3,-5,-3" />
+			<property name="max_offset" value="3,-2,3" />
+			<property name="block_to" value="terrWaterPOI" />
+			<property name="allow_terrain" value="true" />
+			<property name="exclude_tags" value="twitchHordeStone" />
+			<property name="phase" value="4" />
+		</action>-->
+
+		<action class="Delay">
+			<property name="time" value="1" />
+			<property name="phase" value="5" />
+		</action>
+	 <!--	<action class="SpawnEntity">
+			<property name="entity_names" value="animalChickenHostile" param1="zombiename" />
+			<property name="spawn_count" value="5" param1="spawncount" />
+			<property name="air_spawn" value="false" param1="airspawn" />
+			<property name="phase" value="6" />
+		</action>-->
+
+		<action class="RemoveBuff">
+			<property name="buff_name" value="buffDontMove" />
+			<property name="phase" value="7" />
+		</action>
+	
+	</action_sequence>
+		<action_sequence name="buff_CementShoes" template="buff_template">
+		<variable name="buffsound" value="twitch_slow_debuff" />
+		<variable name="twitchsound" value="" />
+		<variable name="addbuff" value="twitch_buffCementShoes" />
+		<variable name="removebuff" value="twitch_buffFast" />
+		<variable name="twitch_negative" value="true" />
+	</action_sequence>
+
+
+    <action_sequence name="action_Dizzy">
+		<property name="category" value="twitch_actions" />
+
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="party" />
+		</action>
+
+		<action class="PlaySound">
+			<property name="sound" value="twitch_reverse" />
+			<property name="phase" value="1" />
+		</action>
+
+		<action class="FlipRotation">
+			<property name="phase" value="2" />
+			<property name="target_group" value="party" />
+		</action>
+		
+	</action_sequence>
+	<action_sequence name="action_homesweethome">
+		<property name="category" value="admin" />
+		<property name="single_instance" value="true" />
+
+		<action class="SetScreenEffect">
+			<property name="phase" value="0" />
+			<property name="screen_effect" value="FadeToBlack" />
+			<property name="intensity" value="1" />
+			<property name="fade_time" value="0.05" />
+		</action>
+
+		<action class="Delay">
+			<property name="time" value=".5" />
+			<property name="phase" value="2" />
+		</action>
+
+		<action class="TeleportToSpecial">
+			<property name="special_type" value="Bedroll" param1="special_type" />
+		</action>
+
+		<action class="SetScreenEffect">
+			<property name="phase" value="3" />
+			<property name="screen_effect" value="FadeToBlack" />
+			<property name="intensity" value="0" />
+			<property name="fade_time" value="0.1" />
+		</action>
+
+		<action class="PlaySound">
+			<property name="sound" value="twitch_pull" />
+		</action>
+	</action_sequence>
+	<action_sequence name="buff_teleportdejavu" template="buff_template_onlytarget">
+        <variable name="buffsound" value="" />
+        <variable name="twitchsound" value="twitch_bad_buff" />
+        <variable name="addbuff" value="twitch_buffTeleportDejaVu" />
+        <variable name="removebuff" value="" />
+        <variable name="twitch_negative" value="true" />
+    </action_sequence>
+	<action_sequence name="buff_teleportminidejavu" template="buff_template_onlytarget">
+        <variable name="buffsound" value="" />
+        <variable name="twitchsound" value="twitch_bad_buff" />
+        <variable name="addbuff" value="twitch_buffBabyPoof" />
+        <variable name="removebuff" value="" />
+        <variable name="twitch_negative" value="true" />
+    </action_sequence>
+	<action_sequence name="twitch_buffDizzy" template="buff_template_onlytarget">
+        <variable name="buffsound" value="" />
+        <variable name="twitchsound" value="twitch_bad_buff" />
+        <variable name="addbuff" value="twitch_buffDizzy" />
+        <variable name="removebuff" value="" />
+        <variable name="twitch_negative" value="true" />
+    </action_sequence>
+
+	<action_sequence name="action_nomansland">
+		<property name="category" value="twitch_actions" />
+
+		<requirement class="InQuestZone">
+			<property name="invert" value="true" />
+		</requirement>
+
+		<action class="PlaySound">
+			<property name="sound" value="twitch_pull" />
+		</action>
+
+		<action class="CloseWindow" />
+
+		<action class="RandomTeleport">
+			<property name="phase" value="1" />
+			<property name="min_distance" value="1000" />
+			<property name="max_distance" value="4000" />
+		</action>
+
+		<action class="SetScreenEffect">
+			<property name="phase" value="2" />
+			<property name="screen_effect" value="FadeToBlack" />
+			<property name="intensity" value="1" />
+			<property name="fade_time" value="0.05" />
+		</action>
+
+		<action class="Delay">
+			<property name="time" value="1" />
+			<property name="phase" value="3" />
+		</action>
+
+		<action class="SetScreenEffect">
+			<property name="phase" value="4" />
+			<property name="screen_effect" value="FadeToBlack" />
+			<property name="intensity" value="0" />
+			<property name="fade_time" value="0.1" />
+		</action>
+
+		
+
+		<action class="PlaySound">
+			<property name="phase" value="5" />
+			<property name="sound" value="twitch_bad_action" />
+		</action>
+	</action_sequence>
+	
+
+	
+	
+	<action_sequence name="action_johnwick">
+		
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="party" />
+			<property name="twitch_negative" value="false" />
+		</action>
+	
+		<action class="PlaySound">
+			<property name="sound" value="twitch_good_buff" />
+			<property name="phase" value="1" />
+			<property name="inside_head" value="true" />
+			<property name="target_group" value="party" />
+		</action>
+		
+		<action class="AddBuff">
+			<property name="phase" value="1" />
+			<property name="buff_name" value="Buff_johnwick" />
+			
+			<property name="target_group" value="party" />
+		</action>
+	</action_sequence>
+
+
+
+	
+	
+	<action_sequence name="myth_buffNoRanged_20min">
+			
+			<!-- <action class="AddEntitiesToGroup"> -->
+				<!-- <property name="phase" value="0" /> -->
+				<!-- <property name="group_name" value="targets" /> -->
+				<!-- <property name="entity_tags" value="zombie" /> -->
+				<!-- <property name="max_distance" value="20" /> -->
+			<!-- </action> -->
+			
+			<action class="PlaySound">
+				<property name="sound" value="twitch_bad_spawn"/>
+				<property name="phase" value="1"/>
+			</action>
+			<action class="PlaySound">
+				<property name="sound" value="stunbaton_hit5"/>
+				<property name="phase" value="1"/>
+			</action>
+					
+			<action class="AddBuff">
+				<property name="phase" value="1" />
+				<property name="buff_name" value="myth_buffNoRanged_20min" />
+			</action>
+		</action_sequence>
+		<action_sequence name="myth_channelNoSafe_10min">
+			
+			<!-- <action class="AddEntitiesToGroup"> -->
+				<!-- <property name="phase" value="0" /> -->
+				<!-- <property name="group_name" value="targets" /> -->
+				<!-- <property name="entity_tags" value="zombie" /> -->
+				<!-- <property name="max_distance" value="20" /> -->
+			<!-- </action> -->
+			
+			<action class="PlaySound">
+				<property name="sound" value="twitch_bad_spawn"/>
+				<property name="phase" value="1"/>
+			</action>
+			<action class="PlaySound">
+				<property name="sound" value="stunbaton_hit5"/>
+				<property name="phase" value="1"/>
+			</action>
+					
+			<action class="AddBuff">
+				<property name="phase" value="1" />
+				<property name="buff_name" value="myth_channelNoSafe_10min" />
+			</action>
+		</action_sequence>
+
 	</append>
 </MythicalIntegration>

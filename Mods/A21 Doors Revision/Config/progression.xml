@@ -1,0 +1,74 @@
+<LtDan>
+
+<remove xpath="/progression/crafting_skills/crafting_skill[@name='craftingWorkstations']"/>
+
+<remove xpath="/progression/crafting_skills/crafting_skill[@name='craftingElectrician']"/>
+
+<append xpath="/progression/crafting_skills">
+
+    <crafting_skill name="craftingWorkstations" max_level="75" parent="attCrafting" name_key="craftingWorkstationsName" desc_key="craftingWorkstationsDesc" long_desc_key="craftingWorkstationsLongDesc" icon="ui_game_symbol_workbench">
+
+		<display_entry icon="cntDewCollector,forge,resourceLockPick" name_key="workstationsT1-1,workstationsT1-2,workstationsT1-3" has_quality="false" unlock_level="2,5,8" >
+			<unlock_entry item="cntDewCollector" unlock_tier="1" />
+			<unlock_entry item="forge" unlock_tier="2" />
+            <unlock_entry item="resourceLockPick" unlock_tier="3" />
+		</display_entry>
+		<display_entry icon="workbench,tableSaw_LtD,toolBellows,toolAnvil" name_key="workstationsT2-1,workstationsT2-2,workstationsT2-3,workstationsT2-4" has_quality="false" unlock_level="10,15,20,25" >
+			<unlock_entry item="workbench" unlock_tier="1" />
+			<unlock_entry item="tableSaw_LtD" unlock_tier="2" />
+			<unlock_entry item="toolBellows" unlock_tier="3" />
+			<unlock_entry item="toolAnvil" unlock_tier="4" />
+		</display_entry>
+		<display_entry icon="cementMixer" name_key="workstationsT3-1" has_quality="false" unlock_level="30" >
+			<unlock_entry item="cementMixer" unlock_tier="1" />
+		</display_entry>
+		<display_entry icon="chemistryStation" name_key="workstationsT4" has_quality="false" unlock_level="50" >
+			<unlock_entry item="chemistryStation" unlock_tier="1" />
+		</display_entry>
+		<display_entry icon="toolForgeCrucible" name_key="workstationsT5" has_quality="false" unlock_level="75" >
+			<unlock_entry item="toolForgeCrucible" unlock_tier="1" />
+		</display_entry>
+
+		<effect_group>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="2,100" value="1" tags="cntDewCollector"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="5,100" value="1" tags="forge"/>
+            <passive_effect name="RecipeTagUnlocked" operation="base_set" level="8,100" value="1" tags="resourceLockPick"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="10,100" value="1" tags="workbench"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="tableSaw_LtD"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="20,100" value="1" tags="toolBellows"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="25,100" value="1" tags="toolAnvil"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="30,100" value="1" tags="cementMixer"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="50,100" value="1" tags="chemistryStation"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="75,100" value="1" tags="toolForgeCrucible"/>
+		</effect_group>
+	</crafting_skill>
+
+	<crafting_skill name="craftingElectrician" max_level="100" parent="attCrafting" name_key="craftingElectricianName" desc_key="craftingElectricianDesc" long_desc_key="craftingElectricianLongDesc" icon="ui_game_symbol_electric_generator">
+
+		<display_entry icon="generatorBankA" name_key="electricianT1" has_quality="false" unlock_level="25" >
+			<unlock_entry item="generatorbank,electricwirerelay,switch,tripwirepost,ceilingLight01_player,industrialLight01_player,industrialLight02_player,ceilingLight07_player" unlock_tier="1" />
+		</display_entry>
+		<display_entry icon="motionsensor" name_key="electricianT2" has_quality="false" unlock_level="50" >
+			<unlock_entry item="motionsensor,electrictimerrelay,pressureplate,pressureplateLong,spotlightPlayer,speaker" unlock_tier="1" />
+		</display_entry>
+		<display_entry icon="carBattery" name_key="electricianT3" has_quality="true" unlock_level="65,75,85,95,100" >
+			<unlock_entry item="carBattery" unlock_tier="1" />
+		</display_entry>
+		<display_entry icon="batterybank" name_key="electricianT4" has_quality="false" unlock_level="75" >
+			<unlock_entry item="batterybank,jailDoor_PoweredBlockVariantHelper_LtD,jailDoorDouble_PoweredBlockVariantHelper_LtD,vaultDoor01_Powered,vaultDoor01Double_Powered,vaultHatch01_Powered,ironGarageDoor_PoweredBlockVariantHelper_LtD,woodenGarageDoor3x3_PoweredBlockVariantHelper_LtD,woodenGarageDoor4x3_PoweredBlockVariantHelper_LtD,woodenGarageDoor5x3_PoweredBlockVariantHelper_LtD,steelGarageDoor3x3_PoweredBlockVariantHelper_LtD,steelGarageDoor4x3_PoweredBlockVariantHelper_LtD,steelGarageDoor5x3_PoweredBlockVariantHelper_LtD,metalReinforcedWoodDrawBridgePowered,rollUpDoor3x3_PoweredVariantHelper_LtD,rollUpDoor5x4_PoweredVariantHelper_LtD,rollUpDoor7x4_PoweredVariantHelper_LtD,rollUpGate3x3_PoweredWhite_LtD,rollUpGate4x3_PoweredWhite_LtD,rollUpGate4x3Diagonal_PoweredWhite_LtD,rollUpGate5x3_PoweredWhite_LtD" unlock_tier="1" />
+		</display_entry>
+
+		<effect_group>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="25,100" value="1" tags="generatorbank,electricwirerelay,switch,tripwirepost,ceilingLight01_player,industrialLight01_player,industrialLight02_player,ceilingLight07_player"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="50,100" value="1" tags="motionsensor,electrictimerrelay,pressureplate,pressureplateLong,spotlightPlayer,speaker"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="75,100" value="1" tags="batterybank,jailDoor_PoweredBlockVariantHelper_LtD,jailDoorDouble_PoweredBlockVariantHelper_LtD,elevatorDoor_Powered_LtD,elevatorDoorTenthBlock_Powered_LtD,elevatorDoorDouble_Powered_LtD,vaultDoor01_Powered,vaultDoor01Double_Powered,vaultHatch01_Powered,ironGarageDoor_PoweredBlockVariantHelper_LtD,woodenGarageDoor3x3_PoweredBlockVariantHelper_LtD,woodenGarageDoor4x3_PoweredBlockVariantHelper_LtD,woodenGarageDoor5x3_PoweredBlockVariantHelper_LtD,steelGarageDoor3x3_PoweredBlockVariantHelper_LtD,steelGarageDoor4x3_PoweredBlockVariantHelper_LtD,steelGarageDoor5x3_PoweredBlockVariantHelper_LtD,metalReinforcedWoodDrawBridgePowered,rollUpDoor3x3_PoweredVariantHelper_LtD,rollUpDoor5x4_PoweredVariantHelper_LtD,rollUpDoor7x4_PoweredVariantHelper_LtD,rollUpGate3x3_PoweredWhite_LtD,rollUpGate4x3_PoweredWhite_LtD,rollUpGate4x3Diagonal_PoweredWhite_LtD,rollUpGate5x3_PoweredWhite_LtD"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="65,100" value="1" tags="carBattery"/>
+
+			<passive_effect name="CraftingTier" operation="base_add" level="75,85,95,100" value="1,2,3,4" tags="carBattery"/>
+
+		</effect_group>
+	</crafting_skill>
+
+</append>
+
+</LtDan>

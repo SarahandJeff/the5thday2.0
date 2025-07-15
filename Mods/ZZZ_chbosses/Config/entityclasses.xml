@@ -10,7 +10,7 @@
 			<property name="HandItem" value="meleeHandForestBossSuperRadWight"/>
 			<property name="JumpMaxDistance" value="1.1, 1.8"/>
 			<property name="LootDropEntityClass" value="EntityLootContainerForestBoss"/>
-			<property name="LootDropProb" value="1"/>
+			<property name="LootDropProb" value=".75"/>
 			<effect_group name="Base Effects">
 				<passive_effect name="HealthMax" operation="base_set" value="3000"/>
 				<passive_effect name="HealthMax" operation="perc_set" value="1,1.5"/>
@@ -21,21 +21,22 @@
 			</effect_group>
 		</entity_class>	
 		
-		<entity_class name="R3dHot" extends="zombieBurnt">
+		<entity_class name="R3dHot" extends="zombieBurntFeral">
 			<property name="Tags" value="BurntBoss"/>
-			<property name="Mesh" value="@:Entities/Zombies/Prefabs/ZBurntFeral.prefab" />
+			<!--<property name="Mesh" value=" @:Entities/Zombies/Burnt/ZBurntFeral.prefab" />-->
 			<property name="SoundSpawn" value="Ambient_Loops/a_fire_embersmoke_sm_lp" />
 			<property name="WalkType" value="1" />
 			<property name="AITask" value="  BreakBlock|  ApproachDistraction|  RangedAttackTarget itemType=1;cooldown=3;duration=5|  ApproachAndAttackTarget class=EntityPlayer,0,EntityBandit,0,EntityEnemyAnimal|  ApproachSpot|  Look|  Wander|  " />
 			<property name="PainResistPerHit" value="1"/>
 			<property name="SizeScale" value="2.0"/>
-			<property name="ParticleOnSpawn" value="ParticleEffects/RadiatedParticlesOnMesh" param1="SetShapeToMesh0"/>
+			
+			<!--<property name="ParticleOnSpawn" value="ParticleEffects/RadiatedParticlesOnMesh" param1="SetShapeToMesh0"/>-->
 			<property name="ExperienceGain" value="5000"/>
 			<property name="HandItem" value="meleefirehand"/>
     		<property name="MoveSpeedAggro" value="0.45, 1.3" />
 			<property name="JumpMaxDistance" value="1.1, 1.8"/>
 			<property name="LootDropEntityClass" value="EntityLootContainerBurntForestBoss"/>
-			<property name="LootDropProb" value="1"/>
+			<property name="LootDropProb" value=".75"/>
 			<effect_group name="Base Effects">
 				<passive_effect name="HealthMax" operation="base_set" value="3000"/>
 				<passive_effect name="HealthMax" operation="perc_set" value="1,1.5"/>
@@ -57,7 +58,7 @@
 			<property name="ExperienceGain" value="5000"/>
 			<property name="HandItem" value="DesertBossVultureHands"/>
 			<property name="LootDropEntityClass" value="EntityLootContainerDesertBoss"/>
-			<property name="LootDropProb" value="1"/>
+			<property name="LootDropProb" value=".75"/>
 			<drop event="Harvest" name="foodRawMeat" count="0" tool_category="Butcher"/>
 			<drop event="Harvest" name="foodRottingFlesh" tag="butcherHarvest" count="10"/> <!-- animalZombieVulture -->
 			<drop event="Harvest" name="resourceFeather" tag="butcherHarvest" count="60"/>
@@ -87,7 +88,7 @@
 			<property name="HandItem" value="SnowBossPolarBearHands"/>
 			<property name="MoveSpeedAggro" value="1, 2.5"/>
 			<property name="ReplaceMaterial0" value="@:Entities/Zombies?Zombies/Materials/rad_eye.mat"/>
-			<property name="ParticleOnSpawn" value="ParticleEffects/RadiatedParticlesOnMesh" param1="SetShapeToMesh3"/>
+			<!--<property name="ParticleOnSpawn" value="ParticleEffects/RadiatedParticlesOnMesh" param1="SetShapeToMesh3"/>-->
 			<drop event="Harvest" name="foodRawMeat" count="0" tool_category="Butcher"/>
 			<drop event="Harvest" name="foodRawMeat" tag="butcherHarvest" count="50"/> <!-- animalBear -->
 			<drop event="Harvest" name="resourceLeather" tag="butcherHarvest" count="15"/>
@@ -105,7 +106,7 @@
 				<!--<triggered_effect trigger="onSelfFirstSpawn" target="self" action="AddBuff" buff="KarnageKimSpawnBuff"/>-->
 			</effect_group>
 			<property name="LootDropEntityClass" value="EntityLootContainerSnowBoss"/>
-			<property name="LootDropProb" value="1"/>
+			<property name="LootDropProb" value=".75"/>
 		</entity_class>
 		<entity_class name="PsychoSarah" extends="animalMountainLion">
 			<property name="SizeScale" value=".9"/>
@@ -116,7 +117,7 @@
 			<property name="HandItem" value="SnowBossPolarBearHands"/>
 			<property name="MoveSpeedAggro" value="1, 2.5"/>
 			<property name="ReplaceMaterial0" value="@:Entities/Zombies?Zombies/Materials/rad_eye.mat"/>
-			<property name="ParticleOnSpawn" value="ParticleEffects/RadiatedParticlesOnMesh" param1="SetShapeToMesh3"/>
+			<!--<property name="ParticleOnSpawn" value="ParticleEffects/RadiatedParticlesOnMesh" param1="SetShapeToMesh3"/>-->
 			<drop event="Harvest" name="foodRawMeat" count="0" tool_category="Butcher"/>
 			<drop event="Harvest" name="foodRawMeat" tag="butcherHarvest" count="50"/> <!-- animalBear -->
 			<drop event="Harvest" name="resourceLeather" tag="butcherHarvest" count="15"/>
@@ -142,7 +143,7 @@
 			<property name="Tags" value="entity,zombie,walker,feral"/>
 			<property name="PainResistPerHit" value="1"/>
 			<property name="SizeScale" value=".7"/>
-			<property name="ParticleOnSpawn" value="ParticleEffects/RadiatedParticlesOnMesh" param1="SetShapeToMesh0"/>
+			<!--<property name="ParticleOnSpawn" value="ParticleEffects/RadiatedParticlesOnMesh" param1="SetShapeToMesh0"/>-->
 			<property name="ExperienceGain" value="500"/>
 			<property name="HandItem" value="meleeHandForestBossSuperRadWight"/>
 			<property name="JumpMaxDistance" value="1.1, 1.8"/>
@@ -164,7 +165,7 @@
 			<property name="HandItem" value="meleeHandForestBossSuperRadWight"/>
 			<property name="JumpMaxDistance" value="1.1, 1.8"/>
 			<property name="LootDropEntityClass" value="EntityLootContainerWasteLandBoss"/>
-			<property name="LootDropProb" value="1"/>
+			<property name="LootDropProb" value=".75"/>
 			<effect_group name="Base Effects">
 				<passive_effect name="HealthMax" operation="base_set" value="8000"/>
 				<passive_effect name="HealthMax" operation="perc_set" value="1,1.5"/>
@@ -339,8 +340,88 @@
 				<property name="IsEnemyEntity" value="false"/>
 				<property name="TimeStayAfterDeath" value="2400"/>
 				<property name="LootListOnDeath" value="EntityLootContainerWasteLandBoss"/>
+				<property name="LootDropProb" value=".75"/>
 				<property name="Faction" value="none"/>
 			</entity_class>
+			
+<entity_class name="zombieleprechaun" extends="zombieLumberjackFeral">
+	<property name="Tags" value="entity,zombie,walker,feral,radiated,leprechaun"/>
+	<property name="Mesh" value="@:Entities/Zombies/Lumberjack/ZLumberjackRadiated.prefab"/>
+	
+	<property name="RandomSizes" value=".4,.69"/>
+	<property name="AITask-2" value="RangedAttackTarget" data="itemType=1;cooldown=4;duration=5"/>
+	
+	<property name="SoundRandom" value="hulkroam"/>
+	<property name="SoundAlert" value="hulkalert"/>
+	<property name="SoundAttack" value="hulkattack"/>
+	<property name="SoundHurt" value="hulkpain"/>
+	<property name="SoundDeath" value="hulkdeath"/>
+	<property name="SoundSense" value="hulksense"/>
+	
+
+	<!--<property name="ParticleOnSpawn" value="ParticleEffects/RadiatedParticlesOnMesh" param1="SetShapeToMesh0"/>-->
+
+	<!-- Gameplay zombieLumberjackRadiated -->
+	<property name="DismemberMultiplierHead" value=".4"/><property name="DismemberMultiplierArms" value=".4"/><property name="DismemberMultiplierLegs" value=".4"/><!-- Radiated -->
+	<property name="PainResistPerHit" value=".9"/><!-- Radiated -->
+	<property name="ExperienceGain" value="1500"/><!-- XP strong radiated -->
+	
+	<property name="HandItem" value="meleeHandZombieCop"/>
+
+	<effect_group name="Base Effects">
+		<passive_effect name="HealthMax" operation="base_set" value="500"/>
+		<!--<passive_effect name="EntityDamage" operation="perc_add" value="0"/>--> <!-- Feral damage -->
+		<triggered_effect trigger="onOtherDamagedSelf" action="ModifyCVar" target="self" cvar="RadiatedRegenAmount" operation="set" value="50"/>
+		<triggered_effect trigger="onOtherDamagedSelf" action="AddBuff" target="self" buff="buffRadiatedRegen"/>
+	</effect_group>
+	
+	<property name="Explosion.ParticleIndex" value="8"/>
+	<property name="Explosion.RadiusBlocks" value="5"/>
+	<property name="Explosion.RadiusEntities" value="6"/>
+	<property name="Explosion.BlockDamage" value="500"/>
+	<property name="Explosion.EntityDamage" value="150"/>
+	<property name="Explosion.DamageBonus.earth" value="0"/>
+</entity_class>
+<entity_class name="DaMobsta" extends="zombieBusinessManFeral">
+	<property name="Tags" value="entity,zombie,walker,feral,radiated,leprechaun"/>
+	<property name="Mesh" value="@:Entities/Zombies/Suit/ZSuitFeral.prefab"/>
+	
+	<property name="RandomSizes" value=".8,1.1"/>
+	<property name="AITask-2" value="RangedAttackTarget" data="itemType=1;cooldown=4;duration=5"/>
+	
+	<property name="SoundRandom" value="hulkroam"/>
+	<property name="SoundAlert" value="hulkalert"/>
+	<property name="SoundAttack" value="hulkattack"/>
+	<property name="SoundHurt" value="hulkpain"/>
+	<property name="SoundDeath" value="hulkdeath"/>
+	<property name="SoundSense" value="hulksense"/>
+	
+
+	<!--<property name="ParticleOnSpawn" value="ParticleEffects/RadiatedParticlesOnMesh" param1="SetShapeToMesh0"/>-->
+
+	<!-- Gameplay zombieLumberjackRadiated -->
+	<property name="DismemberMultiplierHead" value=".4"/><property name="DismemberMultiplierArms" value=".4"/><property name="DismemberMultiplierLegs" value=".4"/><!-- Radiated -->
+	<property name="PainResistPerHit" value=".9"/><!-- Radiated -->
+	<property name="ExperienceGain" value="1500"/><!-- XP strong radiated -->
+	
+	<property name="HandItem" value="meleeHandZombieShortFeral"/>
+
+	<effect_group name="Base Effects">
+		<passive_effect name="HealthMax" operation="base_set" value="1000"/>
+		<passive_effect name="HealthMax" operation="perc_set" value="1,1.5"/>
+		<!--<passive_effect name="EntityDamage" operation="perc_add" value="0"/>--> <!-- Feral damage -->
+		<triggered_effect trigger="onOtherDamagedSelf" action="ModifyCVar" target="self" cvar="RadiatedRegenAmount" operation="set" value="50"/>
+		<triggered_effect trigger="onOtherDamagedSelf" action="AddBuff" target="self" buff="buffRadiatedRegen"/>
+	</effect_group>
+	
+	<property name="Explosion.ParticleIndex" value="8"/>
+	<property name="Explosion.RadiusBlocks" value="5"/>
+	<property name="Explosion.RadiusEntities" value="6"/>
+	<property name="Explosion.BlockDamage" value="500"/>
+	<property name="Explosion.EntityDamage" value="150"/>
+	<property name="Explosion.DamageBonus.earth" value="0"/>
+</entity_class>
+
 	</append>
 
 </configs>

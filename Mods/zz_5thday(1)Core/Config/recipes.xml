@@ -29,8 +29,7 @@
 		<remove xpath="/recipes/recipe[contains(@name,'BMX')]"/>
 		
 		
-		
-		
+
 		
 		
 		
@@ -466,19 +465,24 @@
 	<ingredient name="foodCropPotato" count="2"/>
 	<ingredient name="foodCropCorn" count="2"/>
 	<ingredient name="drinkJarBoiledWater" count="1"/>
+	<ingredient name="foodMilk" count="1"/>
+	
 </recipe>
 <recipe name="foodPumpkinCheesecake" count="1" craft_area="WorkingStove" craft_tool="toolBakingPan" tags="perkCooking,learnable">
 	<ingredient name="foodCropPumpkin" count="1"/>
-	<ingredient name="foodEgg" count="1"/>
+	<ingredient name="foodEgg" count="3"/>
 	<ingredient name="foodCornMeal" count="1"/>
 	<ingredient name="resourceAnimalFat" count="1"/>
 	<ingredient name="drinkJarBeer" count="1"/>
+	<ingredient name="foodMilk" count="1"/>
 </recipe>
 
 <recipe name="foodPumpkinBread" count="1" craft_area="WorkingStove" craft_tool="toolBakingPan" tags="perkCooking,learnable">
 	<ingredient name="foodCropPumpkin" count="1"/>
 	<ingredient name="foodCornMeal" count="1"/>
 	<ingredient name="drinkJarBoiledWater" count="1"/>
+	<ingredient name="foodEgg" count="2"/>
+	<ingredient name="foodMilk" count="1"/>
 </recipe>
 
   
@@ -636,6 +640,35 @@
 	<ingredient name="resourceCropCoffeeBeans" count="1"/>
 	<ingredient name="drinkJarBoiledWater" count="1"/>
 </recipe>
+<recipe name="drinkJarBlackStrapCoffee" count="1" craft_time="10" craft_area="CharcoalGrill" craft_tool="kettle" tags="perkCooking,learnable">
+	<ingredient name="resourceCropCoffeeBeans" count="1"/>
+	<ingredient name="drinkJarBoiledWater" count="1"/>
+	<ingredient name="resourceGunPowder" count="5"/>
+	<effect_group>
+		<passive_effect name="CraftingIngredientCount" level="1,3" operation="base_add" value="-1,-2" tags="resourceGunPowder"/>
+	</effect_group>
+</recipe>
+
+<recipe name="FlatTarTrap" count="1" craft_area="workbench" tags="perkTraps,learnable">
+	<ingredient name="pressureplate" count="1"/>
+	<ingredient name="resourceOil" count="18"/>
+	<ingredient name="ammoGasCan" count="50"/>
+</recipe>
+
+
+
+<recipe name="FlatIronSpikes" count="1" craft_area="workbench" tags="perkTraps,learnable">
+	<ingredient name="pressureplate" count="1"/>
+	<ingredient name="smallIronSpike" count="18"/>
+	<ingredient name="HOHVehicleBolts4" count="5"/>
+</recipe>
+
+
+<recipe name="smallIronSpike" count="1" material_based="true" craft_area="forge" is_trackable="false" >
+	<ingredient name="unit_iron" count="25"/>
+	<ingredient name="unit_clay" count="5"/>
+</recipe>
+
 </append>
 
 

@@ -366,7 +366,48 @@
 				<property name="phase" value="2" />
 			</action>
 		</action_sequence>
+		<action_sequence name="spawn_leprechaun">
+			<action class="SpawnEntity">
+				<property name="entity_names" value="zombieleprechaun" />
+				<property name="spawn_count" value="1" />
+				<property name="add_to_group" value="leprechaun" />
+				<property name="min_distance" value="3" />
+				<property name="max_distance" value="5" />
+			</action>
 
+			<action class="PlaySound">
+				<property name="sound" value="zombiemalealert" />
+				<property name="phase" value="1" />
+			</action>
+			
+		<action class="SetEventFlag">
+			<property name="event_flag" value="Dancing" />
+			<property name="enable" value="true" />
+			<property name="duration" value="20-40" />
+			<property name="phase" value="2" />
+		</action>
+	</action_sequence>
+	<action_sequence name="spawn_mobby">
+			<action class="SpawnEntity">
+				<property name="entity_names" value="DaMobsta" />
+				<property name="spawn_count" value="1" />
+				<property name="add_to_group" value="mobsters" />
+				<property name="min_distance" value="5" />
+				<property name="max_distance" value="10" />
+			</action>
+
+			<action class="PlaySound">
+				<property name="sound" value="zombiemalealert" />
+				<property name="phase" value="1" />
+			</action>
+			
+		<action class="SetEventFlag">
+			<property name="event_flag" value="BigHead" />
+			<property name="enable" value="true" />
+			<property name="duration" value="200-300" />
+			<property name="phase" value="2" />
+		</action>
+	</action_sequence>
 </append>
 
 </configs>

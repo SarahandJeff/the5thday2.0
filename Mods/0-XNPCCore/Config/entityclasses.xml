@@ -207,36 +207,71 @@
 
 	<append xpath="/entity_classes">
 	
-	<!-- Human Melee Basic Templates, non-hirable, no interactable, default neutral faction , change faction on character -->
-
-		<entity_class name="npcMeleeTemplate"> 
-			<property name="Class" value="EntityAliveSDX, SCore" /> 
-			<property name="SleeperInstantAwake" value="true" /> <!-- needed to make sure NPCs fully initialized on spawning in all sleeper volumes  -->
-			<property name="EntityType" value="Player"/>
-			<property name="Tags" value="entity,male,npc,walker,melee"/> <!-- entity/sex/type/role/attacktype/name: Entity is required for code filtering, sex for sound filtering, type/role and Atype for buff filtering.  These DO NOT Extend! -->
-			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?NurseNancy_X"/>
-			<property name="AvatarController" value="AvatarZombieController"/>
-			<property name="EntityFlags" value="bandit,edible"/>
+			<entity_class name="zombieRegularTemplate"> <!-- This is for custom zombies -->
+			<property name="Class" value="EntityZombie"/>
 			<property name="UserSpawnType" value="None"/>
+			<property name="EntityFlags" value="zombie"/><!-- This decides for scoring -->
+			<property name="EntityType" value="Zombie"/>
+			<property name="Tags" value="entity,male,zombie,walker,melee,template"/>  <!-- entity/sex/type/role/attacktype: Entity is required for code filtering, sex for sound filtering, type/role and Atype for buff filtering.  These DO NOT Extend! -->
+			<property name="Prefab" value="NPC"/> 
+			<property name="Mesh" value="Zombies/zombieStandardBoeRagdoll"/>
+			<property name="AvatarController" value="AvatarZombieController"/>
 			<property name="ModelType" value="Standard"/>
 			<property name="HasRagdoll" value="true"/>
-			<property name="Prefab" value="NPC"/>
-			<property name="Parent" value="Players"/>
-			<property name="Mass" value="180"/>
-			<property name="Weight" value="70"/>			
-			<property name="PhysicsBody" value="mixamoConvertedStandard"/>
-			<property name="MapIcon" value="ui_game_symbol_enemy_dot" />  
-			<property name="CompassIcon" value="ui_game_symbol_enemy_dot" />  <!-- comment out these lines if you dont want to see the NPC name and location on map -->
+			<property name="RootMotion" value="true"/>
+			<property name="Parent" value="Enemies"/>
+			<property name="PhysicsBody" value="zombieStandard"/>
+			<property name="Mass" value="170"/>
+			<property name="Weight" value="70"/>
+			<property name="Faction" value="undead"/>
+			<property name="IsEnemyEntity" value="true"/>
+			<property name="CrouchType" value="1"/>
+			<property name="DanceType" value="1" />
+			<property name="WalkType" value="7"/>
+			<property name="HasDeathAnim" value="true"/>
+			<property name="ParticleOnDeath" value="blood_death"/>
+			<property name="SurfaceCategory" value="organic"/> 
+			
+				<!-- <property name="MapIcon" value="ui_game_symbol_enemy_dot" /> -->
+			<property name="CompassIcon" value="ui_game_symbol_enemy_dot" />
 			<property name="CompassUpIcon" value="ui_game_symbol_enemy_dot_up" />
 			<property name="CompassDownIcon" value="ui_game_symbol_enemy_dot_down" />
 			<property name="TrackerIcon" value="ui_game_symbol_run"/>
-		<!--<property name="AIFeralSense" value="1.5"/> -->  <!-- works but may make bandits very aggressive  -->
-			<property name="AINoiseSeekDist" value="30"/>	
-			<property name="AIPathCostScale" value="1, 1"/>
-			<property name="LookAtAngle" value="60"/> 
-			<property name="AttackTimeoutDay" value="0.025"/>  <!-- 0.05 * 20f = 1 seconds between attack -->
-            <property name="AttackTimeoutNight" value="0.025"/>
-			<property name="RightHandJointName" value="RightWeapon" />  <!-- I put melee weapons and pistol type ranged weapons on this child object -->
+			<property name="NavObject" value="twitch_spawn,twitch_spawn_other,clear_sleeper" />
+			
+						
+			<property name="SoundRandomTime" value="30"/> 
+			<property name="SoundRandom" value="zombiemaleroam"/>
+			<property name="SoundAlertTime" value="25"/> 
+			<property name="SoundAlert" value="zombiemalealert"/>
+			<property name="SoundSense" value="zombiemalesense"/>
+			<property name="SoundHurt" value="zombiemalepain"/>
+			<property name="SoundDeath" value="zombiemaledeath"/>
+			<property name="SoundAttack" value="zombiemaleattack"/>
+			<property name="SoundSleeperSense" value="sleepersense"/>
+			<property name="SoundSleeperBackToSleep" value="sleeperbacktosleep"/>		
+			
+			<property name="AIFeralSense" value="1.5"/>
+			<property name="AINoiseSeekDist" value="8"/>
+			<property name="AIPathCostScale" value=".15, .4"/>
+			
+			<property name="AITask" value="
+					BreakBlock|
+					DestroyArea|
+					Territorial|
+					ApproachDistraction|
+					ApproachAndAttackTarget class=EntityPlayer,0,EntityBandit,0,EntityNPC,0,EntityEnemyAnimal,0,EntityAnimal|
+					ApproachSpot|
+					Look|
+					Wander|
+					"/>
+					<property name="AITarget" value="
+					SetAsTargetIfHurt class=EntityPlayer,EntityBandit,EntityNPC,EntityEnemyAnimal|
+					BlockingTargetTask|
+					SetNearestCorpseAsTarget flags=edible|
+					SetNearestEntityAsTarget class=EntityPlayer,0,0,EntityNPC,0,0,EntityBandit,0,-10|
+					"/>
+			
 			<property class="FallLandBehavior">
 				<property name="1None" data="anim=None;height=0,1;weight=0.4"/>
 				<property name="1Land" data="anim=Land;height=0,1;weight=0.4"/>
@@ -248,6 +283,8 @@
 				<property name="MidStumbleAndRage" data="anim=Stumble;height=3,5;weight=0.3;ragePer=0.5,1.5;rageTime=1.0,2.0"/>
 				<property name="MidLandHard" data="anim=LandHard;height=3,5;weight=0.3"/>
 				<property name="MidLandHardAndRage" data="anim=LandHard;height=3,5;weight=0.3;ragePer=0.5,1.5;rageTime=1.0,2.0"/>
+				
+				<property name="HighStumbleAndRage" data="anim=Stumble;height=5,13;weight=0.13;ragePer=0.5,1.5;rageTime=2,8"/>
 				<property name="Ragdoll" data="anim=Ragdoll;height=3;weight=0.4"/>
 			</property>
 			<property class="DestroyBlockBehavior">
@@ -255,10 +292,118 @@
 				<property name="Stumble" data="weight=0.2"/>
 				<property name="Ragdoll" data="weight=0.2"/>
 			</property>
-			<property name="SwimSpeed" value="1.0"/>
-			<property name="SwimStrokeRate" value="1.1,1.5"/>
+
+			<property name="DismemberTag_L_HeadGore" value="Prefabs/HeadGore"/>
+			<property name="DismemberTag_L_LeftUpperLegGore" value="Prefabs/UpperLegGore"/>
+			<property name="DismemberTag_L_LeftLowerLegGore" value="Prefabs/LowerLegGore"/>
+			<property name="DismemberTag_L_RightUpperLegGore" value="Prefabs/UpperLegGore"/>
+			<property name="DismemberTag_L_RightLowerLegGore" value="Prefabs/LowerLegGore"/>
+			<property name="DismemberTag_L_LeftUpperArmGore" value="Prefabs/UpperArmGore"/>
+			<property name="DismemberTag_L_LeftLowerArmGore" value="Prefabs/LowerArmGore"/>
+			<property name="DismemberTag_L_RightUpperArmGore" value="Prefabs/UpperArmGore"/>
+			<property name="DismemberTag_L_RightLowerArmGore" value="Prefabs/LowerArmGore"/>			
+			<property name="DismemberMultiplierHead" value="1"/>
+			<property name="DismemberMultiplierArms" value="1"/>
+			<property name="DismemberMultiplierLegs" value="1"/>
+			<property name="LegCrippleScale" value="2"/> 
+			<property name="LegCrawlerThreshold" value="0"/> 
+			<property name="KnockdownProneDamageThreshold" value="0.5"/>
+			<property name="KnockdownProneStunDuration" value="0.5,1.8"/>
+			<property name="KnockdownProneRefillRate" value="0.045,0.045"/>
+			<property name="KnockdownKneelDamageThreshold" value="0.4"/>
+			<property name="KnockdownKneelStunDuration" value="0.5,1.8"/>
+			<property name="KnockdownKneelRefillRate" value="0.045,0.045"/>
+			<property name="LegsExplosionDamageMultiplier" value="1"/>
+			<property name="ArmsExplosionDamageMultiplier" value="1"/>
+			<property name="HeadExplosionDamageMultiplier" value="1"/>
+			<property name="ChestExplosionDamageMultiplier" value="1"/>
+			<property name="PainResistPerHit" value=".55"/>
+			
+			<property name="Buffs" value="zombieBuffStatusCheck01"/>
+		
+			<property name="HandItem" value="meleeHandZombie01"/>
+			<property name="HandItemCrawler" value="meleeHandZombie02"/> 
+			<property name="Immunity" value="sickness;disease;wellness"/> <!-- bleeding; -->
+
+			<property name="MaxTurnSpeed" value="250"/>
+			<property name="MoveSpeed" value="0.08"/> <!-- Just shambling around -->
+			<property name="MoveSpeedAggro" value="0.2, 1.25"/> <!-- Chasing a target min/max (like day or night)-->
+			<property name="MoveSpeedRand" value="-.2, .25"/> <!-- Rand added to min aggro speed -->
+			<property name="MoveSpeedPanic" value="0.55"/>
+			<property name="SwimSpeed" value="1"/>
+			<property name="SwimStrokeRate" value="1,1.5"/>
+			<property name="CanClimbLadders" value="true"/>
+			<property name="JumpMaxDistance" value="2.8, 3.9"/>
+
+			<property name="MaxViewAngle" value="180"/>
+			<property name="SightRange" value="30"/> <!-- distance in m -->
+			<property name="SightLightThreshold" value="-2,150"/> <!-- how well lit you have to be for the zombie to see you at min,max range -->
+			<property name="LookAtAngle" value="60"/> 
+
+			<property name="AttackTimeoutDay" value="1.5"/> <!-- 1.5 in s -->
+			<property name="AttackTimeoutNight" value="1.1"/>
+			
+			<property name="ExperienceGain" value="400"/> <!-- XP grunt -->
+			<property name="LootDropProb" value="0.04"/> <!-- Whether it drops a loot bag on death or not. -->
+			<!-- <property name="LootListOnDeath" value="45"/> -->
+			<property name="LootDropEntityClass" value="EntityLootContainerRegular"/>
+
+			<!-- <property name="CorpseBlock" value="air"/><property name="CorpseBlockChance" value="0"/> -->
+			<property name="TimeStayAfterDeath" value="30"/>
+			<property name="DeadBodyHitPoints" value="1000"/> <!-- For harvesting or resisting corpse destruction --> <!-- to adjust corpse destruction speed for the non-harvest zombie corpses. This property does not extend. -->
+					
+					
+			<property name="SleeperNoiseToSense" value="3,8"/> <!-- Indiv.Random. hearing capability - "I hear something" noise value -->
+			<property name="SleeperNoiseToSenseSoundChance" value=".5"/> <!-- the chance to play "SoundSleeperSense" -->
+			<property name="SleeperNoiseToWake" value="9,12"/>
+			<property name="SleeperSightToSenseMin" value="-10,0"/> <!-- same as wake -->
+			<property name="SleeperSightToSenseMax" value="200,300"/>
+			<property name="SleeperSightToWakeMin" value="-40,5"/> <!-- Indiv.Random. sight capability - "I see you" light value at point blank -->
+			<property name="SleeperSightToWakeMax" value="340,480"/> <!-- Indiv.Random. "I see you" light value at "SightRange" -->
+				
+			<effect_group> 
+				<passive_effect name="DistractionResistance" operation="base_set" value="0,0"/>
+				<passive_effect name="HealthMax" operation="base_set" value="^healthZombieTemplate"/>
+				
+				<passive_effect name="HealthMax" operation="perc_add" value="-.15,.15"/>
+				
+				<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" target="self" buff="buffEntitySpawnHeal"/>
+
+				<passive_effect name="StaminaMax" operation="base_set" value="100"/>
+				<passive_effect name="BuffResistance" operation="base_set" value="5" tags="buffFatiguedTrigger,buffArmSprainedCHTrigger,buffLegSprainedCHTrigger,buffLaceration,buffInfectionCatch,buffAbrasionCatch,buffInjuryStunned01CHTrigger,buffInjuryBleedingTwo,buffRadiationPool"/>
+				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" target="other" cvar="noTeethNoInfection" operation="set" value="0">
+					<requirement name="NotHasBuff" buff="buffBrawlerNoTeeth"/></triggered_effect>
+				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" target="other" cvar="noTeethNoInfection" operation="set" value="1">
+					<requirement name="HasBuff" buff="buffBrawlerNoTeeth"/></triggered_effect>																		 
+			</effect_group>
+		</entity_class>	
+	
+	
+	
+	
+	
+	<!-- Human Melee Basic Templates, non-hirable, no interactable, default neutral faction , change faction on character -->
+
+		<entity_class name="npcMeleeTemplate" extends="zombieRegularTemplate"> 
+			
+			<property name="Class" value="EntityAliveSDX, SCore" /> 
+			<property name="UserSpawnType" value="None"/>
+			<property name="EntityFlags" value="bandit,edible"/>
+			<property name="EntityType" value="Player"/>			
+			<property name="Tags" value="entity,male,npc,walker,melee"/> <!-- entity/sex/type/role/attacktype/name: Entity is required for code filtering, sex for sound filtering, type/role and Atype for buff filtering.  These DO NOT Extend! -->
+			<property name="Prefab" value="NPC"/>
+			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?NurseNancy_X"/>
+			<property name="Parent" value="Players"/>
+			<property name="PhysicsBody" value="mixamoConvertedStandard"/>
+			<property name="Faction" value="whiteriver"/>
+			<property name="IsEnemyEntity" value="false"/> 
+			
+			<property name="MapIcon" value="ui_game_symbol_enemy_dot" />  
+			<property name="CompassIcon" value="ui_game_symbol_enemy_dot" />  <!-- comment out these lines if you dont want to see the NPC name and location on map -->
+			<property name="CompassUpIcon" value="ui_game_symbol_enemy_dot_up" />
+			<property name="CompassDownIcon" value="ui_game_symbol_enemy_dot_down" />
+			<property name="TrackerIcon" value="ui_game_symbol_run"/>
 			<property name="NavObject" value="twitch_spawn,twitch_spawn_other,clear_sleeper" />
-			<property name="WalkType" value="7"/>
 			
 			<property name="SoundHurt" value="player1painlg"/>
 			<property name="SoundHurtSmall" value="player1painsm"/>
@@ -275,105 +420,39 @@
 			<property name="SoundSleeperBackToSleep" value="sleeperbacktosleep"/>
 			<property name="SoundAlertTime" value="25"/>
 			<property name="SoundRandomTime" value="200"/>
-			<property name="RootMotion" value="true"/>
-			<property name="HasDeathAnim" value="true"/>
-			<property name="ParticleOnDeath" value="blood_death"/>
-			<property name="SurfaceCategory" value="organic"/> 
-			  <!-- Must match gore dismemberment tags -->
-			  <!-- Override parts in the derrived class -->
-			  <!-- The first prefab in each list is the default -->
-			  <!-- It is a fallback and uses no data but can take a scale -->
-			  <!-- <property name="DismemberTag_L_HeadGore" value="Prefabs/HeadGore;Prefabs/RedSphereTest;Prefabs/BlueSphereTest" data =";scale=1,1,1+type=blunt;scale=1,1,1+rot=1,1,1+type=blade"/> -->
-		    <property name="DismemberTag_L_HeadGore" value="Prefabs/HeadGore"/>
-			<property name="DismemberTag_L_LeftUpperLegGore" value="Prefabs/UpperLegGore"/>
-			<property name="DismemberTag_L_LeftLowerLegGore" value="Prefabs/LowerLegGore"/>
-			<property name="DismemberTag_L_RightUpperLegGore" value="Prefabs/UpperLegGore"/>
-			<property name="DismemberTag_L_RightLowerLegGore" value="Prefabs/LowerLegGore"/>
-			<property name="DismemberTag_L_LeftUpperArmGore" value="Prefabs/UpperArmGore"/>
-			<property name="DismemberTag_L_LeftLowerArmGore" value="Prefabs/LowerArmGore"/>
-			<property name="DismemberTag_L_RightUpperArmGore" value="Prefabs/UpperArmGore"/>
-			<property name="DismemberTag_L_RightLowerArmGore" value="Prefabs/LowerArmGore"/> 
-			<property name="DismemberMultiplierHead" value="1"/>
+			<property name="SoundRandom" value="player1stamina"/>
+			<property name="SoundAlertTime" value="200"/> 
+			<property name="SoundAlert" value="player1stamina"/>
+			<property name="SoundSense" value="player1stamina"/>
+			<property name="SoundAttack" value="player1stamina"/>
+				
+			<!--<property name="AIFeralSense" value="1.5"/> -->  <!-- works but may make bandits very aggressive  -->
+			<property name="AINoiseSeekDist" value="30"/>	
+			<property name="AIPathCostScale" value="1, 1"/>
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+			
 			<property name="DismemberMultiplierArms" value="0"/><!-- 1 when fixed  -->
 			<property name="DismemberMultiplierLegs" value="0"/><!-- 1 when fixed  -->
 			<property name="LegCrippleScale" value="0"/> <!-- 1 when fixed  -->
 			<property name="LegCrawlerThreshold" value="0"/> <!-- 1 when fixed  -->
-			<property name="KnockdownProneDamageThreshold" value="0.4"/>
-			<property name="KnockdownProneStunDuration" value="0.5,0.5"/>
+			<property name="KnockdownProneDamageThreshold" value="0.5"/>
+			<property name="KnockdownProneStunDuration" value="0.5,1.8"/>
 			<property name="KnockdownProneRefillRate" value="0.045,0.045"/>
 			<property name="KnockdownKneelDamageThreshold" value="0.4"/>
-			<property name="KnockdownKneelStunDuration" value="0.5,0.5"/>
+			<property name="KnockdownKneelStunDuration" value="0.5,1.8"/>
 			<property name="KnockdownKneelRefillRate" value="0.045,0.045"/>
 			<property name="LegsExplosionDamageMultiplier" value="0"/><!-- 1 when fixed  -->
 			<property name="ArmsExplosionDamageMultiplier" value="0"/><!-- 1 when fixed  -->
 			<property name="HeadExplosionDamageMultiplier" value="1"/>
 			<property name="ChestExplosionDamageMultiplier" value="1"/>
-			<property name="PainResistPerHit" value="0"/> <!-- Added when hit. Caps at 3. Decay .2 per second. At 1 movement is not slowed by pain -->
-			<property name="MaxViewAngle" value="360"/> 
-			<property name="SightRange" value="60"/>
-			<property name="SightLightThreshold" value="-2,150"/> 
-			<property name="SleeperWakeupSightDetectionMin" value="-40,5"/> 
-			<property name="SleeperWakeupSightDetectionMax" value="340,480"/> 
-			<property name="SleeperSenseSightDetectionMin" value="-10,0"/> 
-			<property name="SleeperSenseSightDetectionMax" value="200,300"/>
-			<property name="SleeperNoiseSenseThreshold" value="3,8"/> 
-			<property name="SleeperNoiseWakeThreshold" value="9,12"/>
-			<property name="SleeperSmellSenseThreshold" value="20,50"/> 
-			<property name="SoundSleeperSenseChance" value=".5"/> 
-			<property name="SleeperSmellWakeThreshold" value="40,100"/>
-			<property name="NoiseAlertThreshold" value="30"/> 
-			<property name="SmellAlertThreshold" value="40"/> 
-			<property name="MaxTurnSpeed" value="359"/>
-			<property name="SwimSpeed" value="1"/>
-			<property name="SwimStrokeRate" value="1,1.5"/>
-			<property name="CanClimbLadders" value="true"/>
-			<property name="CanClimbVertical" value="false"/>
-			<property name="JumpMaxDistance" value="2.8, 3.9"/> 
-			<property name="Immunity" value="sickness;disease;wellness"/> 
-			<property name="ExperienceGain" value="600"/> 
-			<property name="LootDropProb" value="0.2" /> 
-			<property name="LootDropEntityClass" value="EntityNPCLootContainer" />
-			<property name="Names" value="" />
-			<property name="Titles" value="" />
-			<property name="Beds" value="mattressFlat" />
-			 <!-- This is the block it'll call home -->
-			<property name="HomeBlocks" value="cntNPCHomeBlock"/>
-			<property name="HireCurrency" value="casinoCoin" />
-			<property name="HireCost" value="1000" />
-			<property name="TimeStayAfterDeath" value="30"/>
-			<property name="DeadBodyHitPoints" value="1000"/>
-			<effect_group name="Base Effects">
-				<passive_effect name="DistractionResistance" operation="base_set" value="0,0"/>
-				<passive_effect name="HealthMax" operation="base_set" value="300"/>
-				<passive_effect name="HealthMax" operation="perc_set" value="1"/>
-				<passive_effect name="StaminaMax" operation="base_set" value="2000"/>
-				<passive_effect name="PhysicalDamageResist" operation="base_set" value="10" />
-				<passive_effect name="BuffResistance" operation="base_set" value="200" tags= "buffInfectionCatch,buffFatiguedTrigger,buffArmSprainedCHTrigger,buffLegSprainedCHTrigger,buffLaceration,buffInfectionCatch,buffAbrasionCatch,buffInjuryStunned01CHTrigger,buffInjuryBleedingTwo,buffInjuryBleedingBarbedWire,buffInjuryConcussion,buffArmBroken,buffInjuryUnconscious,buffStayDownKO,buffRadiationCatch,buffRadiation03,buffRadiationNew,buffRadiationNew2,buffRadiationWeak,buffRadiationStrong,buffBurningEnvironment,buffBurningEnvironmentHack,buffInjuryBleeding,buffInjuryBleedingZombie,buffPlayerFallingDamage,buffLegBroken,buffArmSprained"/> 
-				<!--	<passive_effect name="BuffResistance" operation="base_set" value="200" tags= "buffInfectionCatch,buffFatiguedTrigger,buffArmSprainedCHTrigger,buffLegSprainedCHTrigger,buffLaceration,buffInfectionCatch,buffAbrasionCatch,buffInjuryStunned01CHTrigger,buffInjuryBleedingTwo,buffInjuryBleedingBarbedWire,buffInjuryConcussion,buffArmBroken,buffInjuryStunned01,buffInjuryStunned02,buffInjuryStunned03,buffInjuryCrippled01,buffInjuryKnockdown01,buffInjuryKnockdown01,buffInjuryUnconscious,buffStayDownKO,buffRadiationCatch,buffRadiation03,buffRadiationNew,buffRadiationNew2,buffRadiationWeak,buffRadiationStrong,buffBurningEnvironment,buffBurningElement,buffBurningEnvironmentHack,buffInjuryBleeding,buffInjuryBleedingZombie,buffPlayerFallingDamage,buffLegSprained,buffLegBroken,buffArmSprained"/> -->	
-				
-				
-				
-				<passive_effect name="LandMineImmunity" operation="base_set" value="1"/> <!--  SCore add  -->
-			</effect_group>	
-			<effect_group name="IsNPC"> 
-				<!-- <triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" target="self" buff="IsHuman"/> Not needed except for Universal controllers -->
-				<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" target="self" buff="buffNPCStatusCheck"/> 
-				<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" target="self" buff="buffNPCStatusCheck"/> 
-				<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" target="self" buff="NPCHit"/>
-				<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" target="self" buff="WeaponUser"/>
-				<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" target="self" buff="buffEntitySpawnHeal"/>
-				<!-- <triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" target="self" buff="buffNPCPain0"/> -->
-			</effect_group>	
-			<property name="RotateToGround" value="false"/>	
-			<property name="PushFactor" value="1"/>	
-			<property name="DanceType" value="1" />
-			<!--	<property name="MaxTurnSpeed" value="250"/>
-				<property name="MoveSpeed" value="0.08"/> 
-				<property name="MoveSpeedAggro" value="0.2, 1.25"/> normal
-				<property name="MoveSpeedAggro" value="0.6, 1.45"/> slim/feral
-				<property name="MoveSpeedRand" value="-.2, .25"/> 
-				<property name="MoveSpeedPanic" value="0.55"/>
-				zombie defaults  -->
+			<property name="PainResistPerHit" value=".55"/> <!-- Added when hit. Caps at 3. Decay .2 per second. At 1 movement is not slowed by pain -->
+			
+			<property name="Buffs" value="zombieBuffStatusCheck01"/>
+			<property name="HandItem" value="meleeNPCEmptyHand"/> 
+			
+			<property name="MaxTurnSpeed" value="300"/>
 			<property name="MoveSpeed" value="0.3"/> 
 			<property name="MoveSpeedAggro" value="1.0, 1.0"/> 
 			<property name="MoveSpeedPanic" value="1.0"/>
@@ -393,11 +472,58 @@
 				<passive_effect name="JumpStrength" operation="base_set" value="0.16"/> 
 			</effect_group>
 			
+			<property name="MaxViewAngle" value="360"/> 
+			<property name="SightRange" value="60"/>
+			<property name="AttackTimeoutDay" value="0.05"/>  <!-- 0.05 * 20f = 1 seconds between attack -->
+            <property name="AttackTimeoutNight" value="0.05"/>
+
+			<property name="ExperienceGain" value="600"/> 
+			<property name="LootDropProb" value="0.2" /> 
+			<property name="LootDropEntityClass" value="EntityNPCLootContainer" />
+							
+			<!--  Customization properties for default, passive, basic characters  -->
+			<property name="LootListAlive" value=""/> 
+			<property name="NPCID" value=""/> 
+			<property name="NeverScaleAI" value="true" /> <!-- AI has a delay added when 8M away from a player, so dont do that sh*t on NPCs. -->
+			<property name="NoStorage" value="true" /> <!-- Cant put NPCs into containers -->
+			<property name="DisallowedKey" value="npcNoStorage" />	<!-- Cant put NPCs into containers -->					
+			<property name="SleeperInstantAwake" value="true" /> <!-- needed to make sure NPCs fully initialized on spawning in all sleeper volumes  -->
+			<property name="Hirable" value="false" /> <!--  This was added to all advanced tempates, Note: you still need the UAI Hired package  -->
+			<property name="IsQuestGiver" value="false" /> <!--  If you want quest giving, add this property set to true to that specific character  -->
+			<property name="RightHandJointName" value="RightWeapon" />  <!-- I put melee weapons and pistol type ranged weapons on this child object -->
+			<property name="Names" value="" />
+			<property name="Titles" value="" />
+			<property name="Beds" value="mattressFlat" />
+			<property name="HomeBlocks" value="cntNPCHomeBlock"/>
+			<property name="HireCurrency" value="casinoCoin" />
+			<property name="HireCost" value="1000" />
+			<property name="RotateToGround" value="false"/>	
+			<property name="PushFactor" value="1"/>	
+
+			<effect_group name="Base Effects">
+				<passive_effect name="DistractionResistance" operation="base_set" value="0,0"/>
+				<passive_effect name="HealthMax" operation="base_set" value="300"/>
+				<passive_effect name="HealthMax" operation="perc_set" value="1"/>
+				<passive_effect name="StaminaMax" operation="base_set" value="2000"/>
+				<passive_effect name="PhysicalDamageResist" operation="base_set" value="10" />
+				<passive_effect name="BuffResistance" operation="base_set" value="200" tags= "buffInfectionCatch,buffFatiguedTrigger,buffArmSprainedCHTrigger,buffLegSprainedCHTrigger,buffLaceration,buffInfectionCatch,buffAbrasionCatch,buffInjuryStunned01CHTrigger,buffInjuryBleedingTwo,buffInjuryBleedingBarbedWire,buffInjuryConcussion,buffArmBroken,buffInjuryUnconscious,buffStayDownKO,buffRadiationCatch,buffRadiation03,buffRadiationNew,buffRadiationNew2,buffRadiationWeak,buffRadiationStrong,buffBurningEnvironment,buffBurningEnvironmentHack,buffInjuryBleeding,buffInjuryBleedingZombie,buffPlayerFallingDamage,buffLegBroken,buffArmSprained"/> 
+				<passive_effect name="LandMineImmunity" operation="base_set" value="1"/> <!--  SCore add  -->
+			</effect_group>	
+			
+			<effect_group name="IsNPC"> 
+				<!-- <triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" target="self" buff="IsHuman"/> -->
+				<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" target="self" buff="buffNPCStatusCheck"/> 
+				<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" target="self" buff="buffNPCStatusCheck"/> 
+				<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" target="self" buff="NPCHit"/>
+				<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" target="self" buff="WeaponUser"/>
+				<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" target="self" buff="buffEntitySpawnHeal"/>
+			</effect_group>	
+			
 			<effect_group name="NPCMutualAidBuff"> <!--  damage one npc, others will respond to assist  -->
                 <triggered_effect trigger="onOtherDamagedSelf" action="AddBuff" target="other" buff="buffNPCModAttacking"/> 
             </effect_group> 
 			
-			<!-- SET FACTION CVARS : FuriousRamsay -->
+			<!-- SET FACTION CVARS -->
             <effect_group name="SetFactionCVars">
                 <triggered_effect trigger="onSelfFirstSpawn" action="ModifyCVar" cvar="respawn" operation="set" value="1"/>
                 <triggered_effect trigger="onSelfFirstSpawn" action="ModifyCVar" cvar="$varFactionBandit" operation="set" value="1">
@@ -515,20 +641,7 @@
 				<requirement name="EntityTagCompare" target="self" tags="DRHigh"/>
 					<passive_effect name="PhysicalDamageResist" operation="base_add" value="30"/>
 			</effect_group> 
-				
-			<!--  Customization properties for default, passive, basic characters  -->
-			<!-- removing these two properties removes the E when alive and on death but disables the inventory  -->	
-			<property name="LootListAlive" value=""/> 
-			<property name="NPCID" value=""/> 
-			<property name="NeverScaleAI" value="true" /> <!-- AI has a delay added when 8M away from a player, so dont do that sh*t on NPCs. -->
-			<property name="NoStorage" value="true" /> <!-- Cant put NPCs into containers -->
-			<property name="DisallowedKey" value="npcNoStorage" />	<!-- Cant put NPCs into containers -->					
-			
-			<!--  Defaults for basic, dumb characters  -->
-			<property name="Hirable" value="false" /> <!--  This was added to all advanced tempates, Note: you still need the UAI Hired package  -->
-			<property name="IsQuestGiver" value="false" /> <!--  If you want quest giving, add this property set to true to that specific character  -->
-			<property name="IsEnemyEntity" value="false"/> 
-			<property name="Faction" value="whiteriver"/>
+	
 		</entity_class>			
 		
 		<!--  Template converting the above melee template to Bloodmoon spawnable , change faction on character -->
@@ -1994,186 +2107,8 @@
 		</entity_class> 
 
 	
-		<!--  Zombie Templates	-->	
-		
-		<entity_class name="zombieRegularTemplate"> <!-- This is for custom zombies -->
-			<property name="Tags" value="entity,male,zombie,walker,melee,template"/>  <!-- entity/sex/type/role/attacktype: Entity is required for code filtering, sex for sound filtering, type/role and Atype for buff filtering.  These DO NOT Extend! -->
-			<property name="UserSpawnType" value="None"/>
-			<property name="EntityFlags" value="zombie"/><!-- This decides for scoring -->
-			<property name="EntityType" value="Zombie"/>
-			<property name="LookAtAngle" value="60"/> 
-			<property name="Mesh" value="Zombies/zombieStandardBoeRagdoll"/>
-			<property name="AvatarController" value="AvatarZombieController"/>
-			<property name="ModelType" value="Standard"/>
-			<property name="HasRagdoll" value="true"/>
-			<property name="Prefab" value="NPC"/> 
-			<property name="Class" value="EntityZombie"/>
-			<property name="Parent" value="Enemies"/>
-			<property name="Mass" value="120"/>
-			<property name="Weight" value="70"/>
-			<property name="PhysicsBody" value="zombieStandard"/>
-			<property name="Faction" value="undead"/>
-			<property name="IsEnemyEntity" value="true"/>
-			<!-- <property name="MapIcon" value="ui_game_symbol_enemy_dot" /> -->
-			<property name="CompassIcon" value="ui_game_symbol_enemy_dot" />
-			<property name="CompassUpIcon" value="ui_game_symbol_enemy_dot_up" />
-			<property name="CompassDownIcon" value="ui_game_symbol_enemy_dot_down" />
-			<property name="TrackerIcon" value="ui_game_symbol_run"/>
-			<property name="DanceType" value="1" />
-			<property name="AIFeralSense" value="1.5"/>
-			<property name="AINoiseSeekDist" value="8"/>
-			<property name="AIPathCostScale" value=".15, .4"/>
-			
-			<property name="AITask" value="
-			BreakBlock|
-			DestroyArea|
-			Territorial|
-			ApproachDistraction|
-			ApproachAndAttackTarget class=EntityPlayer,0,EntityBandit,0,EntityNPC,0,EntityEnemyAnimal,0,EntityAnimal|
-			ApproachSpot|
-			Look|
-			Wander|
-			"/>
-			<property name="AITarget" value="
-			SetAsTargetIfHurt class=EntityPlayer,EntityBandit,EntityNPC,EntityEnemyAnimal|
-			BlockingTargetTask|
-			SetNearestCorpseAsTarget flags=edible|
-			SetNearestEntityAsTarget class=EntityPlayer,0,0,EntityNPC,0,0,EntityBandit,0,-10|
-			"/>
-			
-		
-	<!--		<property name="AITask-1" value="BreakBlock"/>
-			<property name="AITask-2" value="DestroyArea"/>
-			<property name="AITask-3" value="Territorial"/>
-			<property name="AITask-4" value="ApproachDistraction"/>
-			<property name="AITask-5" value="ApproachAndAttackTarget" data="class=EntityNPC,0,EntityEnemyAnimal,0,EntityPlayer,0"/> 
-			<property name="AITask-6" value="ApproachSpot"/>
-			<property name="AITask-7" value="Look"/>
-			<property name="AITask-8" value="Wander"/>
-			<property name="AITarget-1" value="SetAsTargetIfHurt" data="class=EntityNPC,EntityEnemyAnimal,EntityPlayer"/>
-			<property name="AITarget-2" value="BlockingTargetTask"/>
-			<property name="AITarget-3" value="SetNearestCorpseAsTarget" data="class=EntityPlayer"/>
-			<property name="AITarget-4" value="SetNearestEntityAsTarget" data="class=EntityPlayer,0,0,EntityNPC,0,0"/> -->
-			
-			<property class="FallLandBehavior">
-				<property name="1None" data="anim=None;height=0,1;weight=0.4"/>
-				<property name="1Land" data="anim=Land;height=0,1;weight=0.4"/>
-				<property name="1LandLow" data="anim=LandLow;height=0,1;weight=0.15"/>
-				<property name="1Stumble" data="anim=Stumble;height=0,1;weight=0.05"/>
-				<property name="LowLand" data="anim=LandLow;height=1,3;weight=0.7"/>
-				<property name="LowStumble" data="anim=Stumble;height=1,3;weight=0.3"/>
-				<property name="MidStumble" data="anim=Stumble;height=3,5;weight=0.3"/>
-				<property name="MidStumbleAndRage" data="anim=Stumble;height=3,5;weight=0.3;ragePer=0.5,1.5;rageTime=1.0,2.0"/>
-				<property name="MidLandHard" data="anim=LandHard;height=3,5;weight=0.3"/>
-				<property name="MidLandHardAndRage" data="anim=LandHard;height=3,5;weight=0.3;ragePer=0.5,1.5;rageTime=1.0,2.0"/>
-				<property name="Ragdoll" data="anim=Ragdoll;height=3;weight=0.4"/>
-			</property>
-			<property class="DestroyBlockBehavior">
-				<property name="None" data="weight=0.0"/>
-				<property name="Stumble" data="weight=0.2"/>
-				<property name="Ragdoll" data="weight=0.2"/>
-			</property>
-			<property name="WalkType" value="7"/>
-			<property name="SoundRandomTime" value="30"/> <!-- Plays SoundRandom every 30/15 seconds -->
-			<property name="SoundRandom" value="zombiemaleroam"/>
-			<property name="SoundAlertTime" value="25"/> <!-- Delay sounds after SoundAlert for x/2 to x seconds -->
-			<property name="SoundAlert" value="zombiemalealert"/>
-			<property name="SoundSense" value="zombiemalesense"/>
-			<property name="SoundHurt" value="zombiemalepain"/>
-			<property name="SoundDeath" value="zombiemaledeath"/>
-			<property name="SoundAttack" value="zombiemaleattack"/>
-			<property name="SoundSleeperSense" value="sleepersense"/>
-			<property name="SoundSleeperBackToSleep" value="sleeperbacktosleep"/>			
-			<property name="RootMotion" value="true"/>
-			<property name="HasDeathAnim" value="true"/>
-			<property name="ParticleOnDeath" value="blood_death"/>
-			<property name="SurfaceCategory" value="organic"/> 
-			
-			  <!-- Must match gore dismemberment tags -->
-			  <!-- Override parts in the derrived class -->
-			  <!-- The first prefab in each list is the default -->
-			  <!-- It is a fallback and uses no data but can take a scale -->
-			  <!-- <property name="DismemberTag_L_HeadGore" value="Prefabs/HeadGore;Prefabs/RedSphereTest;Prefabs/BlueSphereTest" data =";scale=1,1,1+type=blunt;scale=1,1,1+rot=1,1,1+type=blade"/> -->
-		  
-		    <property name="DismemberTag_L_HeadGore" value="Prefabs/HeadGore"/>
-		    <property name="DismemberTag_L_LeftUpperLegGore" value="Prefabs/UpperLegGore"/>
-		    <property name="DismemberTag_L_LeftLowerLegGore" value="Prefabs/LowerLegGore"/>
-		    <property name="DismemberTag_L_RightUpperLegGore" value="Prefabs/UpperLegGore"/>
-		    <property name="DismemberTag_L_RightLowerLegGore" value="Prefabs/LowerLegGore"/>
-		    <property name="DismemberTag_L_LeftUpperArmGore" value="Prefabs/UpperArmGore"/>
-		    <property name="DismemberTag_L_LeftLowerArmGore" value="Prefabs/LowerArmGore"/>
-		    <property name="DismemberTag_L_RightUpperArmGore" value="Prefabs/UpperArmGore"/>
-		    <property name="DismemberTag_L_RightLowerArmGore" value="Prefabs/LowerArmGore"/>			
-			<property name="DismemberMultiplierHead" value="1"/>
-			<property name="DismemberMultiplierArms" value="1"/>
-			<property name="DismemberMultiplierLegs" value="1"/>
-			<property name="LegCrippleScale" value="2"/> <!-- Scales chance to cripple (percent of health that a hit does is the chance) -->
-			<property name="LegCrawlerThreshold" value="0"/> <!-- at like .175 nearly every zombie knocked down from a leg hit turns into a crawler -->
-			<property name="KnockdownProneDamageThreshold" value="0.5"/>
-			<property name="KnockdownProneStunDuration" value="0.5,1.8"/>
-			<property name="KnockdownProneRefillRate" value="0.045,0.045"/>
-			<property name="KnockdownKneelDamageThreshold" value="0.4"/>
-			<property name="KnockdownKneelStunDuration" value="0.5,1.8"/>
-			<property name="KnockdownKneelRefillRate" value="0.045,0.045"/>
-			<property name="LegsExplosionDamageMultiplier" value="1"/>
-			<property name="ArmsExplosionDamageMultiplier" value="1"/>
-			<property name="HeadExplosionDamageMultiplier" value="1"/>
-			<property name="ChestExplosionDamageMultiplier" value="1"/>
-			<property name="PainResistPerHit" value=".55"/>
-			<property name="MaxViewAngle" value="180"/>
-			<property name="SightRange" value="30"/> <!-- distance in m -->
-			<property name="SightLightThreshold" value="-2,150"/> <!-- how well lit you have to be for the zombie to see you at min,max range -->
-			<property name="SleeperWakeupSightDetectionMin" value="-40,5"/> <!-- Indiv.Random. sight capability - "I see you" light value at point blank -->
-			<property name="SleeperWakeupSightDetectionMax" value="340,480"/> <!-- Indiv.Random. "I see you" light value at "SightRange" -->
-			<property name="SleeperSenseSightDetectionMin" value="-10,0"/> <!-- same for groaning, not waking -->
-			<property name="SleeperSenseSightDetectionMax" value="200,300"/>
-			<property name="SleeperNoiseSenseThreshold" value="3,8"/> <!-- Indiv.Random. hearing capability - "I hear something" noise value -->
-			<property name="SleeperNoiseWakeThreshold" value="9,12"/>
-			<property name="SleeperSmellSenseThreshold" value="20,50"/> <!-- Indiv.Random. smell capability - "I smell something" player smell value -->
-			<property name="SoundSleeperSenseChance" value=".5"/> <!-- the chance to play "SoundSleeperSense" when "SleeperSmellSenseThreshold" is triggered -->
-			<property name="SleeperSmellWakeThreshold" value="40,100"/>
-			<property name="NoiseAlertThreshold" value="30"/> <!-- DEPRECATED; an awake zombie triggers instantly if touched by the sound range/volume -->
-			<property name="SmellAlertThreshold" value="40"/> <!-- for awake zombies -->
-			<property name="MaxTurnSpeed" value="250"/>
-			<property name="MoveSpeed" value="0.08"/> <!-- Just shambling around -->
-			<property name="MoveSpeedAggro" value="0.2, 1.25"/> <!-- Chasing a target min/max (like day or night)-->
-			<property name="MoveSpeedRand" value="-.2, .25"/> <!-- Rand added to min aggro speed -->
-			<property name="MoveSpeedPanic" value="0.55"/>
-			<property name="SwimSpeed" value="1"/>
-			<property name="SwimStrokeRate" value="1,1.5"/>
-			<property name="CanClimbLadders" value="true"/>
-			<property name="JumpMaxDistance" value="2.8, 3.9"/>
-			<property name="HandItem" value="meleeHandZombie01"/>
-			<!-- <property name="HandItem" value="meleeHandZombie001"/> -->
-			<property name="HandItemCrawler" value="meleeHandZombie02"/> 
-			<!-- <property name="HandItemCrawler" value="meleeHandZombie002"/> -->
-			<property name="AttackTimeoutDay" value="1.5"/> <!-- 1.5 in s -->
-			<property name="AttackTimeoutNight" value="1.1"/>
-			<property name="Immunity" value="sickness;disease;wellness"/> <!-- bleeding; -->
-			<property name="ExperienceGain" value="400"/> <!-- XP grunt -->
-			<property name="LootDropProb" value="0.02"/> <!-- Whether it drops a loot bag on death or not. -->
-			<!-- <property name="LootListOnDeath" value="45"/> -->
-			<property name="LootDropEntityClass" value="EntityLootContainerRegular"/>
-			<!-- <property name="CorpseBlock" value="air"/><property name="CorpseBlockChance" value="0"/> -->
-			<property name="TimeStayAfterDeath" value="30"/>
-			<property name="DeadBodyHitPoints" value="1000"/> <!-- For harvesting or resisting corpse destruction --> <!-- to adjust corpse destruction speed for the non-harvest zombie corpses. This property does not extend. -->
-
-			<property name="NavObject" value="twitch_spawn,twitch_spawn_other,clear_sleeper" />
-			<property name="Buffs" value="zombieBuffStatusCheck01"/>
-			<effect_group name="Base Effects"> 
-				<passive_effect name="DistractionResistance" operation="base_set" value="0,0"/>
-				<passive_effect name="HealthMax" operation="base_set" value="150"/>
-				<passive_effect name="HealthMax" operation="perc_add" value="-.2,.15"/>
-				<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" target="self" buff="buffEntitySpawnHeal"/>
-				<passive_effect name="StaminaMax" operation="base_set" value="100"/>
-				<passive_effect name="BuffResistance" operation="base_set" value="5" tags="buffFatiguedTrigger,buffArmSprainedCHTrigger,buffLegSprainedCHTrigger,buffLaceration,buffInfectionCatch,buffAbrasionCatch,buffInjuryStunned01CHTrigger,buffInjuryBleedingTwo"/>
-				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" target="other" cvar="noTeethNoInfection" operation="set" value="0">
-					<requirement name="NotHasBuff" buff="buffBrawlerNoTeeth"/></triggered_effect>
-				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" target="other" cvar="noTeethNoInfection" operation="set" value="1">
-					<requirement name="HasBuff" buff="buffBrawlerNoTeeth"/></triggered_effect>
-			</effect_group>
-		</entity_class>
-		
+		<!--  Other Zombie Templates	-->	
+				
 		<entity_class name="zombieRegularFemaleTemplate" extends="zombieRegularTemplate">
 			<property name="UserSpawnType" value="None"/>
 			<property name="Tags" value="entity,female,zombie,walker,template"/> 
@@ -2185,7 +2120,6 @@
 			<property name="SoundDeath" value="zombiefemaledeath"/>
 			<property name="SoundSense" value="zombiefemalesense"/>
 		</entity_class> 
-		
 		
 		<entity_class name="zombieRegularAltTemplate" extends="zombieRegularTemplate">
 			<property name="UserSpawnType" value="None"/>
@@ -2499,7 +2433,7 @@
 			<property name="NPCID" value="NPCGenericNurse"/> 
 			<property name="DanceType" value="2" />
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?NurseNancy_X"/>
-			<!--<property name="PickUpItem" value="nursePickUpNPC" />-->
+			<property name="PickUpItem" value="nursePickUpNPC" />
 			<property name="ItemsOnEnterGame.GameModeSurvival" value="meleeNPCEmptyHand,medicalFirstAidBandage"/> <!-- example for extra items on spawn  -->
 			<property name="ItemsOnEnterGame.GameModeSurvivalSP" value="meleeNPCEmptyHand,medicalFirstAidBandage"/>
 			<property name="ItemsOnEnterGame.GameModeSurvivalMP" value="meleeNPCEmptyHand,medicalFirstAidBandage"/> 
@@ -2530,7 +2464,7 @@
 			<property name="NPCID" value="NPCGenericNurse"/> 
 			<property name="DanceType" value="2" />
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?NurseNancy_X"/> 
-			<!--<property name="PickUpItem" value="nursePickUpNPC" />-->
+			<property name="PickUpItem" value="nursePickUpNPC" />
 			<property name="SoundHurt" value="player2painlg"/>
 			<property name="SoundHurtSmall" value="player2painsm"/>
 			<property name="SoundDeath" value="player2death"/>
@@ -2551,13 +2485,13 @@
 		
 		<entity_class name="npcNurseKnife" extends="npcAdvancedKnifeTemplate"> 
 			<property name="UserSpawnType" value="Menu"/> 
- <property name="Tags" value="entity,female,npc,walker,melee,cp,DRMid,Knife,Machete,ClubWood,BatWood,Axe,Spear,SMG,PipePistol,PipeShotgun,PipeRifle,PipeMG,M60,Pistol,DPistol,Ak47,TRifle,HRifle,SRifle,LBow,XBow,PShotgun,AShotgun,RocketL"/>
+			<property name="Tags" value="entity,female,npc,walker,melee,cp,DRMid,Knife,Machete,ClubWood,BatWood,Axe,Spear,SMG,PipePistol,PipeShotgun,PipeRifle,PipeMG,M60,Pistol,DPistol,Ak47,TRifle,HRifle,SRifle,LBow,XBow,PShotgun,AShotgun,RocketL"/>
 			<property name="Faction" value="whiteriver"/>
 			<property name="Names" value="Nancy,Nan,Nanny,Nanna,Ratchet,Nightingale" />	
 			<property name="NPCID" value="NPCGenericNurse"/> 
 			<property name="DanceType" value="2" />
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?NurseNancy_X"/> 
-			<!--<property name="PickUpItem" value="nursePickUpNPC" />-->
+			<property name="PickUpItem" value="nursePickUpNPC" />
 			<property name="SoundHurt" value="player2painlg"/>
 			<property name="SoundHurtSmall" value="player2painsm"/>
 			<property name="SoundDeath" value="player2death"/>
@@ -2584,7 +2518,7 @@
 			<property name="NPCID" value="NPCGenericNurse"/> 
 			<property name="DanceType" value="2" />
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?NurseNancy_X"/> 
-			<!--<property name="PickUpItem" value="nursePickUpNPC" />-->
+			<property name="PickUpItem" value="nursePickUpNPC" />
 			<property name="SoundHurt" value="player2painlg"/>
 			<property name="SoundHurtSmall" value="player2painsm"/>
 			<property name="SoundDeath" value="player2death"/>
@@ -2611,7 +2545,7 @@
 			<property name="NPCID" value="NPCGenericNurse"/> 
 			<property name="DanceType" value="2" />
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?NurseNancy_X"/> 
-			<!--<property name="PickUpItem" value="nursePickUpNPC" />-->
+			<property name="PickUpItem" value="nursePickUpNPC" />
 			<property name="SoundHurt" value="player2painlg"/>
 			<property name="SoundHurtSmall" value="player2painsm"/>
 			<property name="SoundDeath" value="player2death"/>
@@ -2639,7 +2573,7 @@
 			<property name="Titles" value="Batter,Smacker,Hitter" />
 			<property name="DanceType" value="2" />
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?NurseNancy_X"/> 
-			<!--<property name="PickUpItem" value="nursePickUpNPC" />-->
+			<property name="PickUpItem" value="nursePickUpNPC" />
 			<property name="SoundHurt" value="player2painlg"/>
 			<property name="SoundHurtSmall" value="player2painsm"/>
 			<property name="SoundDeath" value="player2death"/>
@@ -2666,7 +2600,7 @@
 			<property name="NPCID" value="NPCGenericNurse"/> 
 			<property name="DanceType" value="2" />
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?NurseNancy_X"/> 
-			<!--<property name="PickUpItem" value="nursePickUpNPC" />-->
+			<property name="PickUpItem" value="nursePickUpNPC" />
 			<property name="SoundHurt" value="player2painlg"/>
 			<property name="SoundHurtSmall" value="player2painsm"/>
 			<property name="SoundDeath" value="player2death"/>
@@ -2692,7 +2626,7 @@
 			<property name="Names" value="Nancy,Nan,Nanny,Nanna,Ratchet,Nightingale" />	
 			<property name="NPCID" value="NPCGenericNurse"/> 
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?NurseNancy_X"/> 
-			<!--<property name="PickUpItem" value="nursePickUpNPC" />-->
+			<property name="PickUpItem" value="nursePickUpNPC" />
 			<property name="DanceType" value="2" />
 			<property name="SoundHurt" value="player2painlg"/>
 			<property name="SoundHurtSmall" value="player2painsm"/>
@@ -2721,7 +2655,7 @@
 			<property name="NPCID" value="NPCGenericNurse"/> 
 			<property name="DanceType" value="2" />
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?NurseNancy_X"/>
-			<!--<property name="PickUpItem" value="nursePickUpNPC" />-->
+			<property name="PickUpItem" value="nursePickUpNPC" />
 			<property name="SoundHurt" value="player2painlg"/>
 			<property name="SoundHurtSmall" value="player2painsm"/>
 			<property name="SoundDeath" value="player2death"/>
@@ -2748,7 +2682,7 @@
 			<property name="NPCID" value="NPCGenericNurse"/> 
 			<property name="DanceType" value="2" />
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?NurseNancy_X"/>
-			<!--<property name="PickUpItem" value="nursePickUpNPC" />-->
+			<property name="PickUpItem" value="nursePickUpNPC" />
 			<property name="SoundHurt" value="player2painlg"/>
 			<property name="SoundHurtSmall" value="player2painsm"/>
 			<property name="SoundDeath" value="player2death"/>
@@ -2775,7 +2709,7 @@
 			<property name="NPCID" value="NPCGenericNurse"/> 
 			<property name="DanceType" value="2" />
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?NurseNancy_X"/>
-			<!--<property name="PickUpItem" value="nursePickUpNPC" />-->
+			<property name="PickUpItem" value="nursePickUpNPC" />
 			<property name="SoundHurt" value="player2painlg"/>
 			<property name="SoundHurtSmall" value="player2painsm"/>
 			<property name="SoundDeath" value="player2death"/>
@@ -2803,7 +2737,7 @@
 			<property name="NPCID" value="NPCGenericNurse"/> 
 			<property name="DanceType" value="2" />
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?NurseNancy_X"/>
-			<!--<property name="PickUpItem" value="nursePickUpNPC" />-->
+			<property name="PickUpItem" value="nursePickUpNPC" />
 			<property name="SoundHurt" value="player2painlg"/>
 			<property name="SoundHurtSmall" value="player2painsm"/>
 			<property name="SoundDeath" value="player2death"/>
@@ -2830,7 +2764,7 @@
 			<property name="NPCID" value="NPCGenericNurse"/> 
 			<property name="DanceType" value="2" />
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?NurseNancy_X"/>
-			<!--<property name="PickUpItem" value="nursePickUpNPC" />-->
+			<property name="PickUpItem" value="nursePickUpNPC" />
 			<property name="SoundHurt" value="player2painlg"/>
 			<property name="SoundHurtSmall" value="player2painsm"/>
 			<property name="SoundDeath" value="player2death"/>
@@ -2857,7 +2791,7 @@
 			<property name="NPCID" value="NPCGenericNurse"/> 
 			<property name="DanceType" value="2" />
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?NurseNancy_X"/>
-			<!--<property name="PickUpItem" value="nursePickUpNPC" />-->
+			<property name="PickUpItem" value="nursePickUpNPC" />
 			<property name="SoundHurt" value="player2painlg"/>
 			<property name="SoundHurtSmall" value="player2painsm"/>
 			<property name="SoundDeath" value="player2death"/>
@@ -2884,7 +2818,7 @@
 			<property name="NPCID" value="NPCGenericNurse"/> 
 			<property name="DanceType" value="2" />
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?NurseNancy_X"/>
-			<!--<property name="PickUpItem" value="nursePickUpNPC" />-->
+			<property name="PickUpItem" value="nursePickUpNPC" />
 			<property name="SoundHurt" value="player2painlg"/>
 			<property name="SoundHurtSmall" value="player2painsm"/>
 			<property name="SoundDeath" value="player2death"/>
@@ -2911,7 +2845,7 @@
 			<property name="NPCID" value="NPCGenericNurse"/> 
 			<property name="DanceType" value="2" />
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?NurseNancy_X"/>
-			<!--<property name="PickUpItem" value="nursePickUpNPC" />-->
+			<property name="PickUpItem" value="nursePickUpNPC" />
 			<property name="SoundHurt" value="player2painlg"/>
 			<property name="SoundHurtSmall" value="player2painsm"/>
 			<property name="SoundDeath" value="player2death"/>
@@ -2939,7 +2873,7 @@
 			<property name="NPCID" value="NPCGenericNurse"/> 
 			<property name="DanceType" value="2" />
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?NurseNancy_X"/>
-			<!--<property name="PickUpItem" value="nursePickUpNPC" />-->
+			<property name="PickUpItem" value="nursePickUpNPC" />
 			<property name="SoundHurt" value="player2painlg"/>
 			<property name="SoundHurtSmall" value="player2painsm"/>
 			<property name="SoundDeath" value="player2death"/>
@@ -2966,7 +2900,7 @@
 			<property name="NPCID" value="NPCGenericNurse"/> 
 			<property name="DanceType" value="2" />
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?NurseNancy_X"/>
-			<!--<property name="PickUpItem" value="nursePickUpNPC" />-->
+			<property name="PickUpItem" value="nursePickUpNPC" />
 			<property name="SoundHurt" value="player2painlg"/>
 			<property name="SoundHurtSmall" value="player2painsm"/>
 			<property name="SoundDeath" value="player2death"/>
@@ -2993,7 +2927,7 @@
 			<property name="NPCID" value="NPCGenericNurse"/> 
 			<property name="DanceType" value="2" />
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?NurseNancy_X"/>
-			<!--<property name="PickUpItem" value="nursePickUpNPC" />-->
+			<property name="PickUpItem" value="nursePickUpNPC" />
 			<property name="SoundHurt" value="player2painlg"/>
 			<property name="SoundHurtSmall" value="player2painsm"/>
 			<property name="SoundDeath" value="player2death"/>
@@ -3020,7 +2954,7 @@
 			<property name="NPCID" value="NPCGenericNurse"/> 
 			<property name="DanceType" value="2" />
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?NurseNancy_X"/>
-			<!--<property name="PickUpItem" value="nursePickUpNPC" />-->
+			<property name="PickUpItem" value="nursePickUpNPC" />
 			<property name="SoundHurt" value="player2painlg"/>
 			<property name="SoundHurtSmall" value="player2painsm"/>
 			<property name="SoundDeath" value="player2death"/>
@@ -3047,7 +2981,7 @@
 			<property name="NPCID" value="NPCGenericNurse"/> 
 			<property name="DanceType" value="2" />
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?NurseNancy_X"/>
-			<!--<property name="PickUpItem" value="nursePickUpNPC" />-->
+			<property name="PickUpItem" value="nursePickUpNPC" />
 			<property name="SoundHurt" value="player2painlg"/>
 			<property name="SoundHurtSmall" value="player2painsm"/>
 			<property name="SoundDeath" value="player2death"/>
@@ -3074,7 +3008,7 @@
 			<property name="NPCID" value="NPCGenericNurse"/> 
 			<property name="DanceType" value="2" />
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?NurseNancy_X"/>
-			<!--<property name="PickUpItem" value="nursePickUpNPC" />-->
+			<property name="PickUpItem" value="nursePickUpNPC" />
 			<property name="SoundHurt" value="player2painlg"/>
 			<property name="SoundHurtSmall" value="player2painsm"/>
 			<property name="SoundDeath" value="player2death"/>
@@ -3101,7 +3035,7 @@
 			<property name="NPCID" value="NPCGenericNurse"/> 
 			<property name="DanceType" value="2" />
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?NurseNancy_X"/> 
-			<!--<property name="PickUpItem" value="nursePickUpNPC" />-->
+			<property name="PickUpItem" value="nursePickUpNPC" />
 			<property name="SoundHurt" value="player2painlg"/>
 			<property name="SoundHurtSmall" value="player2painsm"/>
 			<property name="SoundDeath" value="player2death"/>
@@ -3128,7 +3062,7 @@
 			<property name="NPCID" value="NPCGenericNurse"/> 
 			<property name="DanceType" value="2" />
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?NurseNancy_X"/> 
-			<!--<property name="PickUpItem" value="nursePickUpNPC" />-->
+			<property name="PickUpItem" value="nursePickUpNPC" />
 			<property name="SoundHurt" value="player2painlg"/>
 			<property name="SoundHurtSmall" value="player2painsm"/>
 			<property name="SoundDeath" value="player2death"/>
@@ -3356,7 +3290,7 @@
 			<property name="SoundAttack" value="HarleyAttack"/>
 			<property name="SoundSense" value="HarleySense"/>
 			<property name="LootDropProb" value="0.2"/> 
-			<property name="AIPackages" value="NPCModCoreNoChat, NPCModHostileMeleeBasic, NPCModHostileRangedBasic"/>
+			<property name="AIPackages" value="NPCModCoreNoChat, NPCModHostileMeleeBasic, NPCModHostileRangedBasic"/> 
 			<property name="Class" value="EntityNPCBandit, SCore" /> 
 			<property name="AlwaysJiggle" value="true" />
 		</entity_class>	
@@ -3817,7 +3751,7 @@
 			<property name="Faction" value="whiteriver"/>
 			<property name="Names" value="Bob,Billy,Beau,Ben,Brody,Byron,Brian,Bruce" />				
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?Baker_X"/> 
-			<!--<property name="PickUpItem" value="bakerPickUpNPC" />-->
+			<property name="PickUpItem" value="bakerPickUpNPC" />
 			<effect_group name="HasBackpack"> <!-- This activates the backpack -->
 				<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" target="self" buff="HasBackpack"/>		
 			</effect_group>	
@@ -3834,7 +3768,7 @@
 			<property name="Faction" value="whiteriver"/> 
 			<property name="Names" value="Bob,Billy,Beau,Ben,Brody,Byron,Brian,Bruce" />				
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?Baker_X"/>
-			<!--<property name="PickUpItem" value="bakerPickUpNPC" />-->
+			<property name="PickUpItem" value="bakerPickUpNPC" />
 		</entity_class>
 		
 		<entity_class name="npcBakerKnife" extends="npcAdvancedKnifeTemplate"> 
@@ -3843,7 +3777,7 @@
 			<property name="Faction" value="whiteriver"/>
 			<property name="Names" value="Bob,Billy,Beau,Ben,Brody,Byron,Brian,Bruce" />				
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?Baker_X"/> 
-			<!--<property name="PickUpItem" value="bakerPickUpNPC" />-->
+			<property name="PickUpItem" value="bakerPickUpNPC" />
 		</entity_class>	
 		
 		<entity_class name="npcBakerBat" extends="npcAdvancedBatTemplate"> 
@@ -3852,7 +3786,7 @@
 			<property name="Faction" value="whiteriver"/>
 			<property name="Names" value="Bob,Billy,Beau,Ben,Brody,Byron,Brian,Bruce" />				
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?Baker_X"/> 
-			<!--<property name="PickUpItem" value="bakerPickUpNPC" />-->
+			<property name="PickUpItem" value="bakerPickUpNPC" />
 			<!-- <property name="CanCollideWithLeader" value="false" /> -->
 		</entity_class>				
 		
@@ -3862,7 +3796,7 @@
 			<property name="Faction" value="whiteriver"/>
 			<property name="Names" value="Bob,Billy,Beau,Ben,Brody,Byron,Brian,Bruce" />				
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?Baker_X"/> 
-			<!--<property name="PickUpItem" value="bakerPickUpNPC" />-->
+			<property name="PickUpItem" value="bakerPickUpNPC" />
 		</entity_class>	
 
 		<entity_class name="npcBakerAxe" extends="npcAdvancedAxeTemplate"> 
@@ -3871,7 +3805,7 @@
 			<property name="Faction" value="whiteriver"/>
 			<property name="Names" value="Bob,Billy,Beau,Ben,Brody,Byron,Brian,Bruce" />				
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?Baker_X"/> 
-			<!--<property name="PickUpItem" value="bakerPickUpNPC" />-->
+			<property name="PickUpItem" value="bakerPickUpNPC" />
 		</entity_class>				
 		
 		<entity_class name="npcBakerSpear" extends="npcAdvancedSpearTemplate"> 
@@ -3880,7 +3814,7 @@
 			<property name="Faction" value="whiteriver"/>
 			<property name="Names" value="Bob,Billy,Beau,Ben,Brody,Byron,Brian,Bruce" />				
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?Baker_X"/> 
-			<!--<property name="PickUpItem" value="bakerPickUpNPC" />-->
+			<property name="PickUpItem" value="bakerPickUpNPC" />
 		</entity_class>	
 		
 		<entity_class name="npcBakerPipePistol" extends="npcAdvancedPipePistolTemplate"> 
@@ -3889,7 +3823,7 @@
 			<property name="Faction" value="whiteriver"/>
 			<property name="Names" value="Bob,Billy,Beau,Ben,Brody,Byron,Brian,Bruce" />				
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?Baker_X"/> 
-			<!--<property name="PickUpItem" value="bakerPickUpNPC" />-->
+			<property name="PickUpItem" value="bakerPickUpNPC" />
 		</entity_class>		
 		
 		<entity_class name="npcBakerPipeRifle" extends="npcAdvancedPipeRifleTemplate"> 
@@ -3898,7 +3832,7 @@
 			<property name="Faction" value="whiteriver"/>
 			<property name="Names" value="Bob,Billy,Beau,Ben,Brody,Byron,Brian,Bruce" />				
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?Baker_X"/> 
-			<!--<property name="PickUpItem" value="bakerPickUpNPC" />-->
+			<property name="PickUpItem" value="bakerPickUpNPC" />
 		</entity_class>			
 		
 		<entity_class name="npcBakerPipeMG" extends="npcAdvancedPipeMGTemplate"> 
@@ -3907,7 +3841,7 @@
 			<property name="Faction" value="whiteriver"/>
 			<property name="Names" value="Bob,Billy,Beau,Ben,Brody,Byron,Brian,Bruce" />				
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?Baker_X"/> 
-			<!--<property name="PickUpItem" value="bakerPickUpNPC" />-->
+			<property name="PickUpItem" value="bakerPickUpNPC" />
 		</entity_class>			
 		
 		<entity_class name="npcBakerPipeShotgun" extends="npcAdvancedPipeShotgunTemplate"> 		
@@ -3916,7 +3850,7 @@
 			<property name="Faction" value="whiteriver"/>
 			<property name="Names" value="Bob,Billy,Beau,Ben,Brody,Byron,Brian,Bruce" />				
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?Baker_X"/> 
-			<!--<property name="PickUpItem" value="bakerPickUpNPC" />-->
+			<property name="PickUpItem" value="bakerPickUpNPC" />
 		</entity_class>			
 	
 		<entity_class name="npcBakerSMG" extends="npcAdvancedSMGTemplate"> 
@@ -3925,7 +3859,7 @@
 			<property name="Faction" value="whiteriver"/>
 			<property name="Names" value="Bob,Billy,Beau,Ben,Brody,Byron,Brian,Bruce" />				
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?Baker_X"/> 
-			<!--<property name="PickUpItem" value="bakerPickUpNPC" />-->
+			<property name="PickUpItem" value="bakerPickUpNPC" />
 		</entity_class>	
 		
 		<entity_class name="npcBakerM60" extends="npcAdvancedM60Template"> 
@@ -3934,7 +3868,7 @@
 			<property name="Faction" value="whiteriver"/>
 			<property name="Names" value="Bob,Billy,Beau,Ben,Brody,Byron,Brian,Bruce" />				
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?Baker_X"/> 
-			<!--<property name="PickUpItem" value="bakerPickUpNPC" />-->
+			<property name="PickUpItem" value="bakerPickUpNPC" />
 		</entity_class>	
 
 		<entity_class name="npcBakerPistol" extends="npcAdvancedPistolTemplate"> 
@@ -3943,7 +3877,7 @@
 			<property name="Faction" value="whiteriver"/> 
 			<property name="Names" value="Bob,Billy,Beau,Ben,Brody,Byron,Brian,Bruce" />				
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?Baker_X"/>
-			<!--<property name="PickUpItem" value="bakerPickUpNPC" />-->
+			<property name="PickUpItem" value="bakerPickUpNPC" />
 		</entity_class>				
 		
 		<entity_class name="npcBakerDPistol" extends="npcAdvancedDPistolTemplate"> 
@@ -3952,7 +3886,7 @@
 			<property name="Faction" value="whiteriver"/>
 			<property name="Names" value="Bob,Billy,Beau,Ben,Brody,Byron,Brian,Bruce" />				
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?Baker_X"/> 
-			<!--<property name="PickUpItem" value="bakerPickUpNPC" />-->
+			<property name="PickUpItem" value="bakerPickUpNPC" />
 		</entity_class>	
 		
 		<entity_class name="npcBakerAK47" extends="npcAdvancedAK47Template"> 
@@ -3961,7 +3895,7 @@
 			<property name="Faction" value="whiteriver"/>
 			<property name="Names" value="Bob,Billy,Beau,Ben,Brody,Byron,Brian,Bruce" />				
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?Baker_X"/> 
-			<!--<property name="PickUpItem" value="bakerPickUpNPC" />-->
+			<property name="PickUpItem" value="bakerPickUpNPC" />
 		</entity_class>
 		
 		<entity_class name="npcBakerTRifle" extends="npcAdvancedTRifleTemplate"> 
@@ -3970,7 +3904,7 @@
 			<property name="Faction" value="whiteriver"/>
 			<property name="Names" value="Bob,Billy,Beau,Ben,Brody,Byron,Brian,Bruce" />				
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?Baker_X"/> 
-			<!--<property name="PickUpItem" value="bakerPickUpNPC" />-->
+			<property name="PickUpItem" value="bakerPickUpNPC" />
 		</entity_class>		
 		
 		<entity_class name="npcBakerHRifle" extends="npcAdvancedHRifleTemplate"> 
@@ -3979,7 +3913,7 @@
 			<property name="Faction" value="whiteriver"/>
 			<property name="Names" value="Bob,Billy,Beau,Ben,Brody,Byron,Brian,Bruce" />				
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?Baker_X"/> 
-			<!--<property name="PickUpItem" value="bakerPickUpNPC" />-->
+			<property name="PickUpItem" value="bakerPickUpNPC" />
         </entity_class>    		
 		
 		<entity_class name="npcBakerSRifle" extends="npcAdvancedSRifleTemplate"> 
@@ -3988,7 +3922,7 @@
 			<property name="Faction" value="whiteriver"/>
 			<property name="Names" value="Bob,Billy,Beau,Ben,Brody,Byron,Brian,Bruce" />				
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?Baker_X"/> 
-			<!--<property name="PickUpItem" value="bakerPickUpNPC" />-->
+			<property name="PickUpItem" value="bakerPickUpNPC" />
         </entity_class>  
 		
 		<entity_class name="npcBakerPShotgun" extends="npcAdvancedPShotgunTemplate"> 
@@ -3997,7 +3931,7 @@
 			<property name="Faction" value="whiteriver"/>
 			<property name="Names" value="Bob,Billy,Beau,Ben,Brody,Byron,Brian,Bruce" />				
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?Baker_X"/> 
-			<!--<property name="PickUpItem" value="bakerPickUpNPC" />-->
+			<property name="PickUpItem" value="bakerPickUpNPC" />
 		</entity_class>
  		
 		<entity_class name="npcBakerAShotgun" extends="npcAdvancedAShotgunTemplate"> 
@@ -4006,7 +3940,7 @@
 			<property name="Faction" value="whiteriver"/>
 			<property name="Names" value="Bob,Billy,Beau,Ben,Brody,Byron,Brian,Bruce" />				
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?Baker_X"/> 
-			<!--<property name="PickUpItem" value="bakerPickUpNPC" />-->
+			<property name="PickUpItem" value="bakerPickUpNPC" />
 		</entity_class> 			
 
 		<entity_class name="npcBakerLBow" extends="npcAdvancedLBowTemplate"> 
@@ -4015,7 +3949,7 @@
 			<property name="Faction" value="whiteriver"/>
 			<property name="Names" value="Bob,Billy,Beau,Ben,Brody,Byron,Brian,Bruce" />				
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?Baker_X"/> 
-			<!--<property name="PickUpItem" value="bakerPickUpNPC" />-->
+			<property name="PickUpItem" value="bakerPickUpNPC" />
 		</entity_class> 		
 		
 		<entity_class name="npcBakerXBow" extends="npcAdvancedXBowTemplate"> 
@@ -4024,7 +3958,7 @@
 			<property name="Faction" value="whiteriver"/>
 			<property name="Names" value="Bob,Billy,Beau,Ben,Brody,Byron,Brian,Bruce" />				
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?Baker_X"/> 
-			<!--<property name="PickUpItem" value="bakerPickUpNPC" />-->
+			<property name="PickUpItem" value="bakerPickUpNPC" />
 		</entity_class>	 
 		
 		<entity_class name="npcBakerRocketL" extends="npcAdvancedRocketLTemplate"> 
@@ -4033,7 +3967,7 @@
 			<property name="Faction" value="whiteriver"/>
 			<property name="Names" value="Bob,Billy,Beau,Ben,Brody,Byron,Brian,Bruce" />	
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?Baker_X"/> 
-			<!--<property name="PickUpItem" value="bakerPickUpNPC" />-->
+			<property name="PickUpItem" value="bakerPickUpNPC" />
 		</entity_class> 
 
 	
@@ -4194,7 +4128,7 @@
 			<property name="IsEntityAnimal" value="true"/> 
 			<property name="IsEnemyEntity" value="false"/> 			
 			<property name="Mesh" value="#@modfolder:Resources/XythNPCs.unity3d?ArcticFox_X"/>
-			<!--<property name="PickUpItem" value="foxPickUpNPC" />-->
+			<property name="PickUpItem" value="foxPickUpNPC" />
 			<property name="HandItem" value="meleeHandAnimalFox"/>
 			<property name="RightHandJointName" value="articfox_Head_bone" />
 			<property name="ExperienceGain" value="300"/>
@@ -4362,6 +4296,7 @@
 			<property name="HasDeathAnim" value="true"/>			
 			<property name="WalkType" value="7"/>
 			<property name="Mass" value="150"/>
+			
 			<!--  Testing on custom zed, uses Steve body parts, would need to make custom prefabs per zed, ouch  -->
 			<!--			  <property name="DismemberTag_L_HeadGore" value="Prefabs/Dismemberment/ZombieSteve/Blunt/Head;Prefabs/Dismemberment/ZombieSteve/Blade/Head" data="target=Neck+scale=1,0,1+atp=true+type=blunt+detach=true;target=Neck+scale=1,0,1+atp=true+type=blade+detach=true" />
 			  <property name="DismemberTag_L_LeftUpperLegGore" value="Prefabs/Dismemberment/ZombieSteve/Blunt/LeftUpperLeg;Prefabs/Dismemberment/ZombieSteve/Blade/LeftUpperLeg" data="target=LeftUpLeg+scale=.8,.4,.8+type=blunt+detach=true;target=LeftUpLeg+scale=.5,.1,.5+atp=true+type=blade+detach=true" />

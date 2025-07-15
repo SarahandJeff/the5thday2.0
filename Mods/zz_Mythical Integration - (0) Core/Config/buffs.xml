@@ -415,6 +415,187 @@ jam_guns - give a debuff that randomly gives a short duration no_range.
 				<triggered_effect trigger="onSelfBuffFinish" action="RemoveBuff" buff="buffInjuryBleeding"/>
 			</effect_group>
 		</buff>
+		 <buff name="twitch_buffCementShoes" name_key="Cement Shoes" description_key="Catch me outside with my cement shoes on.. Come on guys.." icon="ui_game_symbol_twitch_slow" icon_color="255,175,175">
+		<stack_type value="replace"/>
+		<duration value="60"/>
+		<display_value value="duration"/>
+		<tags value="twitch_slow" />
+
+		<effect_group>
+			<!-- Blinks the display -->
+			<passive_effect name="BuffBlink" operation="base_set" value="2" duration="0,3" tags="twitch_buffCementShoes"/>
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="twitch_buffCementShoes"/>
+
+			<triggered_effect trigger="onSelfBuffFinish" action="PlaySound" sound="twitch_bad_buff_ended" play_in_head="true" />
+		</effect_group>
+
+		<effect_group>
+			<passive_effect name="Mobility" operation="base_add" value="-.5"/>
+			<passive_effect name="JumpStrength" operation="perc_subtract" value="0.18"/>
+			
+		</effect_group>
+	</buff>
+
+
+    <buff name="twitch_buffTeleportDejaVu" name_key="Deja Vu" description_key="Where are you going? Have you been here before?" icon="ui_game_symbol_compass" icon_color="215,28,10" icon_blink="true" remove_on_death="false">
+        <stack_type value="effect"/>
+        <duration value="60"/>
+        <display_value value="duration"/>
+        <update_rate value="3"/>
+        <tags value="twitch_bits" />
+
+        <effect_group>
+            <passive_effect name="BuffBlink" operation="base_set" value="2" duration="0,3" />
+            <triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="twitch_buffTeleportDejaVu"/>
+
+            <triggered_effect trigger="onSelfBuffFinish" action="PlaySound" sound="twitch_bad_buff_ended" play_in_head="true" />
+        </effect_group>
+
+        <effect_group>
+            <triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="action_teleport_long" duration="1" allow_client_call="true">
+                <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="30"/>
+            </triggered_effect>
+        </effect_group>
+    </buff>
+	<buff name="twitch_buffBabyPoof" name_key="Baby Poof" description_key="Where are you going? Have you been here before?" icon="ui_game_symbol_compass" icon_color="215,28,10" icon_blink="true" remove_on_death="false">
+        <stack_type value="effect"/>
+        <duration value="60"/>
+        <display_value value="duration"/>
+        <update_rate value="3"/>
+        <tags value="twitch_bits" />
+
+        <effect_group>
+            <passive_effect name="BuffBlink" operation="base_set" value="2" duration="0,3" />
+            <triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="twitch_buffBabyPoof"/>
+
+            <triggered_effect trigger="onSelfBuffFinish" action="PlaySound" sound="twitch_bad_buff_ended" play_in_head="true" />
+        </effect_group>
+
+        <effect_group>
+            <triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="action_teleport_short" duration="1" allow_client_call="true">
+                <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="30"/>
+            </triggered_effect>
+        </effect_group>
+    </buff>
+
+	<buff name="twitch_buffDizzy" name_key="Dizzy" description_key="Where are you going? Have you been here before?" icon="ui_game_symbol_compass" icon_color="215,28,10" icon_blink="true" remove_on_death="false">
+        <stack_type value="effect"/>
+        <duration value="30"/>
+        <display_value value="duration"/>
+        <update_rate value="1"/>
+        <tags value="twitch_bits" />
+
+        <effect_group>
+            <passive_effect name="BuffBlink" operation="base_set" value="2" duration="0,3" />
+            <triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="twitch_buffDizzy"/>
+
+            <triggered_effect trigger="onSelfBuffFinish" action="PlaySound" sound="twitch_bad_buff_ended" play_in_head="true" />
+        </effect_group>
+
+        <effect_group>
+            <triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="action_Dizzy" duration="1" allow_client_call="true">
+                <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="45"/>
+            </triggered_effect>
+        </effect_group>
+    </buff>
+
+ 
+	
+    <buff name="Buff_johnwick" name_key="myth_buff_instantReload" description_key="myth_buff_instantReloadDesc" icon="ui_game_symbol_backpack" icon_color="255,255,255">
+        <stack_type value="replace"/>
+        <duration value="60"/>
+        <display_value value=".MythFastDraw"/>
+        <display_value_format value="time"/>
+        
+        <effect_group>
+            <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".MythFastDraw" operation="set" value="60"/>
+            <triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".MythFastDraw" operation="set" value="60"/>
+            <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".MythFastDraw" operation="add" value="-1"/>
+            <triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".MythFastDraw" operation="set" value="0"/>
+            <triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="myth_buff_fastdraw"/>
+        </effect_group>
+        <effect_group>
+            <passive_effect name="ReloadSpeedMultiplier" operation="perc_add" value="3"/>
+            <passive_effect name="MagazineSize" operation="perc_add" value="1"/>
+            <passive_effect name="WalkSpeed" operation="base_set" value="1.5"/>
+			<passive_effect name="RunSpeed" operation="base_set" value="2"/>
+			<passive_effect name="StaminaChangeOT" operation="perc_add" value="1" tags="running"/>
+		</effect_group>
+    </buff>
+    <buff name="myth_buffNoRanged_20min" name_key="TwitchBuff_NoRange" description_key="TwitchBuff_NoRangeDesc" icon="ui_game_symbol_twitch_no_ranged" icon_color="255,175,175">
+		<stack_type value="replace"/>
+		<duration value="1200"/>
+		<display_value value=".TwitchNoRangedTimer"/>
+		<display_value_format value="time"/>
+
+		<effect_group>
+			<passive_effect name="BuffBlink" operation="base_set" value="2" duration="0,3" tags="twitch_buffNoRanged"/>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".TwitchNoRangedTimer" operation="set" value="1200"/>
+			<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".TwitchNoRangedTimer" operation="set" value="1200"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".TwitchNoRangedTimer" operation="add" value="-1"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".TwitchNoRangedTimer" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="twitch_buffNoRanged"/>
+
+			<triggered_effect trigger="onSelfBuffUpdate" action="PlaySound" sound="twitch_bad_buff_ended" play_in_head="true">
+				<requirement name="CVarCompare" cvar=".TwitchNoRangedTimer" operation="LTE" value="0"/>
+			</triggered_effect>
+		</effect_group>
+
+		<effect_group>
+			<!-- <passive_effect name="EntityDamage" operation="perc_add" value="-.75" tags="ranged"/> -->
+			<!-- <passive_effect name="BlockDamage" operation="perc_add" value="-.75" tags="ranged"/> -->
+			<passive_effect name="DisableItem" operation="base_set" value="1" tags="ranged" />
+			<passive_effect name="StaminaChangeOT" operation="base_add" value="2"/>
+		</effect_group>
+	</buff>
+		
+		<buff name="myth_channelNoSafe_10min" name_key="TwitchBuff_NoSafe" description_key="TwitchBuff_NoSafeDesc" icon="ui_game_symbol_brick" icon_color="255,175,175">
+			<stack_type value="replace"/>
+		<duration value="600"/>
+		<display_value value="duration"/>
+
+		<effect_group>
+			<!-- Blinks the display -->
+			<passive_effect name="BuffBlink" operation="base_set" value="2" duration="0,3" tags="twitch_buffNoSafe"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="twitch_buffNoHealingManagerMobby"/>
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="myth_channelNoSafe_10min"/>
+
+			<triggered_effect trigger="onSelfBuffFinish" action="PlaySound" sound="twitch_bad_buff_ended" play_in_head="true" />
+		</effect_group>
+
+		<effect_group>
+			<!-- Blinks the display if the player is in a safe zone-->
+			<requirement name="StatCompareCurrent" stat="Health" operation="GTE" value="4"/>
+			<requirement name="InSafeZone" />
+			<triggered_effect trigger="onSelfBuffStart" action="AddHealth" health="-2" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddHealth" health="-2" />
+			<passive_effect name="BuffBlink" operation="base_set" value="2" tags="twitch_buffNoSafe"/>
+		</effect_group>
+	</buff>
+    <buff name="twitch_buffNoHealingManagerMobby" name_key="TwitchBuff_NoHealingManager" description_key="TwitchBuff_NoHealingManagerDesc" icon="ui_game_symbol_twitch_keep_moving" hidden="true">
+		<stack_type value="ignore"/>
+		<update_rate value=".15"/>
+		<duration value="0"/>
+
+		<effect_group>
+			<!-- <passive_effect name="PerkLevel" operation="base_set" value="0" tags="perkHealingFactor"/> -->
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveCVar" cvar=".NoHealingManager"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="twitch_buffNoHealingManager">
+				
+				<requirement name="!HasBuff" buff="myth_channelNoSafe_10min"/>
+				
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffRemove" action="RemoveCVar" cvar=".NoHealingManager"/>
+		</effect_group>
+
+		<effect_group name="NoSafe condition">
+			<requirement name="HasBuff" buff="myth_channelNoSafe_10min"/>
+			<requirement name="InSafeZone" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".NoHealingManager" operation="set" value="1"/>
+		</effect_group>
+
+	</buff>
+
 	</append>
 </MythicalIntegration>
 

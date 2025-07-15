@@ -173,6 +173,11 @@
 	<setattribute xpath="/blocks/block[@name='cntCollapsedWorkbench']/property[@class='RepairItems']/property[@name='resourceWood']" name="value">8</setattribute>
 	<setattribute xpath="/blocks/block[@name='chemistryStation']/property[@class='RepairItems']/property[@name='resourceWood']" name="value">8</setattribute>
 	<setattribute xpath="/blocks/block[@name='cntCollapsedChemistryStation']/property[@class='RepairItems']/property[@name='resourceWood']" name="value">8</setattribute>
+
+	
+	<append xpath="//block[@name='diningTable01']">
+	<property name="Group" value="Decor/Miscellaneous"/>
+	</append>
 <!--<Set xpath="/blocks/block[@name='cntCollapsedChemistryStation']/property[@name='Model']/@value">#@modfolder:Resources/HOH_BrokenVanillaBenches.unity3d?BrokenChemistryStation</Set>-->
 <Set xpath="/blocks/block[@name='cntCollapsedChemistryStation']/property[@name='Model']/@value">#@modfolder:Assets/HOH_Vanilla_Chemistry.unity3d?BrokenChemistryStation</Set>
 	<append  xpath="/blocks/block[@name='cntCollapsedChemistryStation']">
@@ -204,7 +209,7 @@
 	<property name="CustomIcon" value="chemistryStation"/>
 	</append>
 
-	<setattribute xpath="/blocks/block[@name='workbench']/property[@class='Workstation']/property[@name='CraftingAreaRecipes']" name="value">workbench</setattribute>
+	<setattribute xpath="/blocks/block[@name='workbench']/property[@class='Workstation']/property[@name='CraftingAreaRecipes']" name="value">player,workbench</setattribute>
 	<remove xpath="/blocks/block[@name='workbench']/property[@class='RepairItems']"/>
 <append xpath="/blocks/block[@name='workbench']/property[@class='Workstation']">
 
@@ -958,6 +963,85 @@
 	<property name="Tags" value="challenge_elec_parts,challenge_mech_parts,challenge_sinks,Car,WrenchXPGain"/>
 	<property name="IndexName" value="challenge_sinks"/>
 </block>
+
+
+
+
+  <block name="Beehive">
+			<property name="Class" value="PlantGrowing"/>
+			<property name="DisplayType" value="blockMulti"/>
+			<property name="Material" value="Mwood"/>
+			<property name="CreativeMode" value="Player"/>
+			<property name="Group" value="Building,advBuilding"/>
+			<property name="DescriptionKey" value="BeehiveDesc"/>
+			<property name="Model" value="#@modfolder:Assets/Beehive.unity3d?Beehive"/>
+			<property name="Place" value="TowardsPlacerInverted"/>
+			<property name="StabilitySupport" value="true"/>
+			<property name="ModelOffset" value="0,0,0"/>
+            <property name="MultiBlockDim" value="1,2,1"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Path" value="solid"/>
+			<property name="EconomicValue" value="200"/>
+			<property name="Collide" value="movement,rockets,sight,melee"/>
+			<property name="CustomIconTint" value="C3D013"/>
+			<property name="local_scale" value=".5"/>
+			<property name="Stacknumber" value="10"/>
+			<property name="PlantGrowing.Next" value="BeehiveHarvest"/>
+			<property name="PlantGrowing.GrowthRate" value="20"/>
+			<property name="PlantGrowing.FertileLevel" value="0"/>
+			<property name="PlantGrowing.LightLevelGrow" value="0"/>
+			<property name="PlantGrowing.LightLevelStay" value="0"/>
+			<property name="PlantGrowing.IsRandom" value="false"/>
+		</block>
+		<block name="BeehiveHarvest">
+			<property name="Class" value="Loot"/>
+			<property name="DisplayType" value="blockMulti"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Material" value="Mwood"/>
+			<property name="RunningSound" value="Bees"/>
+			<property name="Model" value="#@modfolder:Assets/Beehive.unity3d?BeehiveReady"/>
+			<property name="StabilitySupport" value="true"/>
+			<property name="ModelOffset" value="0,0,0"/>
+            <property name="MultiBlockDim" value="1,2,1"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Path" value="solid"/>
+			<property name="Collide" value="movement,rockets,sight,melee"/>
+			<property name="LootList" value="Beehive"/>
+			<property name="CustomIcon" value="decoLargePetCage"/>
+			<property name="CustomIconTint" value="8080FF"/>
+			<property name="DowngradeBlock" value="BeehiveHarvested"/>
+			
+		</block>
+ 		<block name="BeehiveHarvested">
+			
+			<property name="DisplayType" value="blockMulti"/>
+			<property name="Material" value="Mwood"/>
+			<property name="CreativeMode" value="Player"/>
+			<property name="Group" value="Building,advBuilding"/>
+			<property name="DescriptionKey" value="BeehiveHarvestedDesc"/>
+			<property name="Model" value="#@modfolder:Assets/Beehive.unity3d?BeehiveHarvested"/>
+			<property name="Place" value="TowardsPlacerInverted"/>
+			<property name="StabilitySupport" value="true"/>
+			<property name="ModelOffset" value="0,0,0"/>
+            <property name="MultiBlockDim" value="1,1,1"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Path" value="solid"/>
+			<property name="EconomicValue" value="200"/>
+			<property name="Collide" value="movement,rockets,sight,melee"/>
+			<property name="CustomIconTint" value="C3D013"/>
+			<property name="local_scale" value=".5"/>
+			<property name="Stacknumber" value="10"/>
+	    	<property class="UpgradeBlock">
+				<property name="ToBlock" value="Beehive"/>
+				<property name="Item" value="SugarWater"/>
+				<property name="ItemCount" value="1"/>
+				<property name="UpgradeHitCount" value="1"/>
+			</property>
+		</block>
+
+
+
+
 	</append>
 
 

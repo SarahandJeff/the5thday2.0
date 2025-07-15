@@ -1,17 +1,6 @@
 <snj>
 	<append xpath="/buffs">
-		<buff name="GenericZombieSlowingBuff" hidden="true">
-			<stack_type value="ignore"/>
-			<!-- Can switch this to duration if you want the duration to stack -->
-			<duration value="10"/>
-			<!-- Can put whatever value you want -->
-			<effect_group>
-				<requirement name="EntityTagCompare" tags="zombie"/>
-				<!-- Only effects zombie entities -->
-				<passive_effect name="Mobility" operation="perc_subtract" value="0.5"/>
-				<!-- Can change this to whatever between 0-1 for percent reduction -->
-			</effect_group>
-		</buff>
+		
 		<buff name="buffShottyBonus" name_key="Aiming1" description_key="" tooltip_key="" icon="ui_game_symbol_all_blocks" hidden="true">
 			<stack_type value="replace"/>
 			<duration value="0"/>
@@ -7205,7 +7194,81 @@
 				
 			</effect_group>
 		</buff>
+<buff name="buffFireTrapSNJ" name_key="buffRadiation03Name" description_key="buffRadiation03Desc" icon="ui_game_symbol_radiation" icon_color="255,0,0" icon_blink="true">
+		<damage_type value="heat"/>
+		<stack_type value="replace"/>
+		<duration value="15"/>
+		<update_rate value="1"/>
 
+		<!-- Setup or clear duration -->
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="%buffBurningMolotovDuration" operation="add" value="-1"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="RemoveCVar" cvar="%buffBurningMolotovDuration"/>
+		</effect_group>
+
+		<!-- If duration is LT 16, set or stack the duration -->
+		<effect_group>
+			<requirement name="CVarCompare" cvar="%buffBurningMolotovDuration" operation="LT" value="16"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="%buffBurningMolotovDuration" operation="set" value="16"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar="%buffBurningMolotovDuration" operation="set" value="16"/>
+		</effect_group>
+
+		<!-- If duration LT 0, remove the buff and clear duration -->
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffFireTrapSNJ">
+				<requirement name="CVarCompare" cvar="%buffBurningMolotovDuration" operation="LTE" value="0"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffRemove" action="RemoveCVar" cvar="%buffBurningMolotovDuration"/>
+		</effect_group>
+		
+		<effect_group>
+			<!-- Start the burning cycle -->
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffIsOnFire"/>
+
+			<!-- If tag = player, reduce health based on a time curve -->
+			<passive_effect name="HealthChangeOT" operation="base_subtract" duration="0,8,14,18" value="1,5,11,13">
+				<requirement name="EntityTagCompare" tags="player"/>
+			</passive_effect>
+			<!-- Reduce water and adjust thermal resistance stats  -->
+			<passive_effect name="WaterChangeOT" operation="base_subtract" value="1.5"/>
+			<!-- <passive_effect name="HypothermalResist" operation="base_add" value="35"/> -->
+			<!-- <passive_effect name="HyperthermalResist" operation="base_add" value="-15"/> -->
+		</effect_group>
+		
+			<!-- Player damage outgoing
+			case 0: _strength = Mathf.RoundToInt(_strength * 2.0f);
+			case 1: _strength = Mathf.RoundToInt(_strength * 1.5f);
+			case 2: 1
+			case 3: _strength = Mathf.RoundToInt(_strength * 0.83f);
+			case 4: _strength = Mathf.RoundToInt(_strength * 0.66f);
+			case 5: _strength = Mathf.RoundToInt(_strength * 0.5f);
+
+			Player damage incoming
+			case 0: _strength = Mathf.RoundToInt(_strength * 0.5f);
+			case 1: _strength = Mathf.RoundToInt(_strength * 0.75f);
+			case 2: 1
+			case 3: _strength = Mathf.RoundToInt(_strength * 1.5f);
+			case 4: _strength = Mathf.RoundToInt(_strength * 2.0f);
+			case 5: _strength = Mathf.RoundToInt(_strength * 2.5f); -->
+
+			
+		<!-- If damage is towards a non-player, set the decrease health curve based on game difficulty -->
+		<effect_group>
+			<requirement name="!EntityTagCompare" tags="player"/>
+				<passive_effect name="HealthChangeOT" operation="base_subtract" duration="0,8,14,18" value="10,36,51,56">
+					<requirement name="CVarCompare" cvar="_difficulty" operation="Equals" value="0"/></passive_effect>
+				<passive_effect name="HealthChangeOT" operation="base_subtract" duration="0,8,14,18" value="7.5,27,38.2,42">
+					<requirement name="CVarCompare" cvar="_difficulty" operation="Equals" value="1"/></passive_effect>
+				<passive_effect name="HealthChangeOT" operation="base_subtract" duration="0,8,14,18" value="5,18,25.5,28">
+					<requirement name="CVarCompare" cvar="_difficulty" operation="Equals" value="2"/></passive_effect>
+				<passive_effect name="HealthChangeOT" operation="base_subtract" duration="0,8,14,18" value="4.2,14.9,21.1,23.2">
+					<requirement name="CVarCompare" cvar="_difficulty" operation="Equals" value="3"/></passive_effect>
+				<passive_effect name="HealthChangeOT" operation="base_subtract" duration="0,8,14,18" value="3.3,11.9,16.8,18.5">
+					<requirement name="CVarCompare" cvar="_difficulty" operation="Equals" value="4"/></passive_effect>
+				<passive_effect name="HealthChangeOT" operation="base_subtract" duration="0,8,14,18" value="2.5,9,12.7,14">
+					<requirement name="CVarCompare" cvar="_difficulty" operation="Equals" value="5"/></passive_effect>
+		</effect_group>
+	</buff>
 
 
 	</append>
@@ -7213,6 +7276,20 @@
 <append xpath="/buffs"><buff name="buffAirDropsummonTrigger" hidden="true"><stack_type value="ignore"/><duration value="10"/><effect_group><triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="buffAirDropsummon"/></effect_group></buff><buff name="buffAirDropsummon" hidden="true" remove_on_death="true"><stack_type value="ignore"/><duration value="60"/><effect_group name="Spawn Air Drop Zombies"><triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="zombieferalalert"/><triggered_effect trigger="onSelfBuffStart" action="SpawnEntitySDX, SCore" target="self" SpawnGroup="AirdropZombiesList" Cvar="AirDrop"/><triggered_effect trigger="onSelfBuffStart" action="SpawnEntitySDX, SCore" target="self" SpawnGroup="AirdropZombiesList" Cvar="AirDrop"/><triggered_effect trigger="onSelfBuffStart" action="SpawnEntitySDX, SCore" target="self" SpawnGroup="AirdropZombiesList" Cvar="AirDrop"/><triggered_effect trigger="onSelfBuffStart" action="SpawnEntitySDX, SCore" target="self" SpawnGroup="AirdropZombiesList" Cvar="AirDrop"/><triggered_effect trigger="onSelfBuffStart" action="SpawnEntitySDX, SCore" target="self" SpawnGroup="AirdropZombiesList" Cvar="AirDrop"/><triggered_effect trigger="onSelfBuffStart" action="SpawnEntitySDX, SCore" target="self" SpawnGroup="AirdropZombiesList" Cvar="AirDrop"/><triggered_effect trigger="onSelfBuffStart" action="SpawnEntitySDX, SCore" target="self" SpawnGroup="AirdropZombiesList" Cvar="AirDrop"/><triggered_effect trigger="onSelfBuffStart" action="SpawnEntitySDX, SCore" target="self" SpawnGroup="AirdropZombiesList" Cvar="AirDrop"/><triggered_effect trigger="onSelfBuffStart" action="SpawnEntitySDX, SCore" target="self" SpawnGroup="AirdropZombiesList" Cvar="AirDrop"/><triggered_effect trigger="onSelfBuffStart" action="SpawnEntitySDX, SCore" target="self" SpawnGroup="AirdropZombiesList" Cvar="AirDrop"/><triggered_effect trigger="onSelfBuffStart" action="SpawnEntitySDX, SCore" target="self" SpawnGroup="AirdropZombiesList" Cvar="AirDrop"/><triggered_effect trigger="onSelfBuffStart" action="SpawnEntitySDX, SCore" target="self" SpawnGroup="AirdropZombiesList" Cvar="AirDrop"/><triggered_effect trigger="onSelfBuffStart" action="SpawnEntitySDX, SCore" target="self" SpawnGroup="AirdropZombiesList" Cvar="AirDrop"/><triggered_effect trigger="onSelfBuffStart" action="SpawnEntitySDX, SCore" target="self" SpawnGroup="AirdropZombiesList" Cvar="AirDrop"/><triggered_effect trigger="onSelfBuffStart" action="SpawnEntitySDX, SCore" target="self" SpawnGroup="AirdropZombiesList" Cvar="AirDrop"/><triggered_effect trigger="onSelfBuffStart" action="SpawnEntitySDX, SCore" target="self" SpawnGroup="AirdropZombiesList" Cvar="AirDrop"/></effect_group></buff></append>
 -->
 
+<!--
+<append xpath="/buffs/buff[@name='buffStatusCheck01']">
+		<effect_group name="jigsaw">
+		   <triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="self" buff="BuffJigsaw">
+	
+	
+				
+			</triggered_effect>
+			 <triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" target="self" buff="BuffJigsaw">
+				<requirement name="!EntityHasMovementTag" tags="driving"/>
+			</triggered_effect>
+		</effect_group>	
+</append>
+-->
 <!--
 <append xpath="/buffs/buff[@name='buffStatusCheck01']">
 		<effect_group name="Vinbiomesnow">
@@ -7241,7 +7318,21 @@
 
 </append>
 -->
-
+<append xpath="buffs">
+	<buff name="buffTar" description_key="" tooltip_key="buffShockedTooltip" icon="" name_key="buffShockedName" icon_color="255,0,0">
+		<damage_type value="electrical"/>
+		<stack_type value="replace"/>
+		<duration value="4.5"/>
+		<effect_group>
+				<passive_effect name="BuffBlink" operation="base_set" value="2" duration="0,3" tags="buffTar"/>
+				<passive_effect name="HealthChangeOT" operation="base_add" value="0"/>
+				<passive_effect name="RunSpeed" operation="perc_subtract" value="0.4,0.2" duration="0,2.5"/>
+				<passive_effect name="WalkSpeed" operation="perc_subtract" value="0.4,0.2" duration="0,2.5"/>
+				<passive_effect name="CrouchSpeed" operation="perc_subtract" value="0.4,0.2" duration="0,2.5"/>
+				<passive_effect name="JumpStrength" operation="perc_subtract" value="0.4,0.2" duration="0,2.5"/>
+		</effect_group>
+	</buff>
+</append>
 
 
 

@@ -23,7 +23,7 @@ Detailed well as detailed as I can make it lit of changes.
   in your base. Starting with trader Rekt.
 * Time: time is a wonderful thing too bad you can't tell time. Waite loot a couch and see if you can find a blue cell phone.. Just 
   don't open it. you need it whole. Well atleast the first one.
-
+* Added 2 new traps. A mid-evil spike trap as well as a oil slick.
 Tons more alterations. Now i do not want to spoil anything or give to much away. In the real world you have to figure some things out on your own. I will tell you this thou... Yes there is alot of things you can loot. and yes you can make alot of coin and cash. But just about everything is needed in a recipe somewhere for something. So don't just go on a looting / selling spree.. you never know you just might need it for something.
 
 I am using alot of modlets from other people that I have gotten permission from. I'm not going to list them here. You will see when you load the mod.

@@ -34,6 +34,56 @@
 			<property name="target_group" value="zombies" />
 		</action>
 		</action_sequence>
+
+</append>
+<remove xpath="/gameevents/action_sequence[@name='action_lost']"/>
+<append xpath="/gameevents">
+
+		<action_sequence name="action_lost">
+		<property name="category" value="twitch_actions" />
+
+		<requirement class="InQuestZone">
+			<property name="invert" value="true" />
+		</requirement>
+
+		<action class="PlaySound">
+			<property name="sound" value="twitch_pull" />
+		</action>
+
+		<action class="CloseWindow" />
+
+		<action class="RandomTeleport">
+			<property name="phase" value="1" />
+			<property name="min_distance" value="700" />
+			<property name="max_distance" value="2000" />
+		</action>
+
+		<action class="SetScreenEffect">
+			<property name="phase" value="2" />
+			<property name="screen_effect" value="FadeToBlack" />
+			<property name="intensity" value="1" />
+			<property name="fade_time" value="0.05" />
+		</action>
+
+		<action class="Delay">
+			<property name="time" value="1" />
+			<property name="phase" value="3" />
+		</action>
+
+		<action class="SetScreenEffect">
+			<property name="phase" value="4" />
+			<property name="screen_effect" value="FadeToBlack" />
+			<property name="intensity" value="0" />
+			<property name="fade_time" value="0.1" />
+		</action>
+
+	
+
+		<action class="PlaySound">
+			<property name="phase" value="5" />
+			<property name="sound" value="twitch_bad_action" />
+		</action>
+	</action_sequence>
 </append>
 
 </configs>

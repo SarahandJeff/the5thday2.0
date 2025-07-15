@@ -5,6 +5,12 @@
 	<remove xpath="/recipes/recipe[@name='forge']"/>
 	<remove xpath="/recipes/recipe[@name='campfire']"/>
 	<remove xpath="/recipes/recipe[@name='woodLogPillar100']"/>
+	<remove xpath="/recipes/recipe[@name='endTableLamp']"/>
+	<remove xpath="/recipes/recipe[@name='cntWoodFurnitureBlockVariantHelper2']"/>
+	
+	
+	<setAttribute xpath="//recipe[contains(@name,'bed02') or contains(@name,'couch') or contains(@name,'Couch') or contains(@name,'cntCabinetPlayerBlockVariantHelper')	or contains(@name,'cntBookcasePlayer')	or contains(@name,'cntNightstandPlayer')	or contains(@name,'cntDeskWoodPlayer')	or contains(@name,'cntPillCasePlayer')	or contains(@name,'woodSignBlockVariantHelper')	or contains(@name,'pictureVariantHelper')]" name="craft_area">WorkingtableSaw</setAttribute>
+
 	
 	<append xpath="/recipes">
 	<recipe name="ChickenCoop" count="1" craft_time="60" >
@@ -97,9 +103,34 @@
 			<ingredient name="resourceYuccaFibers" count="500" />
 			<ingredient name="resourceWood" count="50" />
 			<ingredient name="resourceNail" count="250" />
-			
+		</recipe>
+		<recipe name="Beehive" count="1" craft_time="60" >
+			<ingredient name="animalBee" count="2" />
+			<ingredient name="resourcePaper" count="100" />
+			<ingredient name="resourceWood" count="50" />
+			<ingredient name="resourceNail" count="75" />
+		</recipe>
+		<recipe name="SugarWater" count="1" craft_time="15" >
+			<ingredient name="drinkJarRiverWater" count="1" />
+			<ingredient name="resourceCropGoldenrodPlant" count="1"/>
+			<ingredient name="resourceCropChrysanthemumPlant" count="1"/>
 		</recipe>
 
+		<recipe name="endTable" count="1" craft_area="WorkingtableSaw" tags="workbenchCrafting">
+			<ingredient name="resourceWood" count="10"/>
+			<ingredient name="resourceNail" count="15"/>
+		</recipe>
+		<recipe name="endTableLamp" count="1" craft_area="workbench" tags="workbenchCrafting">
+			<ingredient name="endTable" count="1"/>
+			<ingredient name="resourceHeadlight" count="1"/>
+			
+			<ingredient name="resourceDuctTape" count="4"/>
+			<ingredient name="resourceScrapPolymers" count="4"/>
+		</recipe>
+		<recipe name="diningTable01" count="1" craft_area="WorkingtableSaw" tags="workbenchCrafting">
+			<ingredient name="resourceWood" count="30"/>
+			<ingredient name="resourceNail" count="50"/>
+		</recipe>
 	</append>
 
 </snj>

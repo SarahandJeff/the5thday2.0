@@ -220,7 +220,7 @@
 		</item>
 	
 		<item name="meleeHandNPCMaster">
-			<property name="Tags" value="blunt,melee,light,perkFlurryOfBlows"/>
+			<property name="Tags" value="blunt,melee,light"/>
 			<property name="CreativeMode" value="None"/>
 			<property name="HoldType" value="13"/> 
 			<property name="Material" value="Morganic"/>
@@ -248,7 +248,10 @@
 			<effect_group name="meleeHandMaster" tiered="false">
 				<passive_effect name="ModSlots" operation="base_set" value="0"/>
 				<passive_effect name="DamageFalloffRange" operation="base_set" value="1.65"/>
-				<!--<passive_effect name="AttacksPerMinute" operation="base_set" value="120"/>  -->
+			</effect_group>
+			
+			<effect_group name="dont stun NPCs" tiered="false">
+				<requirement name="!EntityTagCompare" tags="npc"/>
 				<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" fireOneBuff="true" buff="buffFatiguedTrigger,buffArmSprainedCHTrigger,buffLegSprainedCHTrigger,buffLaceration,buffAbrasionCatch,buffInjuryStunned01CHTrigger,buffInjuryBleedingTwo"
 					weights=".11,.07,.07,.05,.29,.36,.11"/>
 			</effect_group>
@@ -261,7 +264,7 @@
 			<property name="HoldType" value="36"/>
 			<property name="HoldingItemHidden" value="true"/>
 			<property name="CreativeMode" value="None"/>
-			<property name="Tags" value="blunt,melee,grunting,light,perkFlurryOfBlows,attFortitude,perkBrawler"/>
+			<property name="Tags" value="blunt,melee,grunting,light"/>
 			<property name="DisplayType" value="melee"/>
 			<property name="Meshfile" value="@:Other/Items/Weapons/Melee/Knives/hunting_knifePrefab.prefab"/>
 			<property name="Material" value="Morganic"/>
@@ -331,7 +334,7 @@
 			<property name="Canhold" value="true" />
 			<property name="HoldType" value="36" />
 			<property name="CreativeMode" value="None" />
-			<property name="Tags" value="knife,melee,grunting,light,perkFlurryOfBlows,weapon,meleeWeapon,attAgility,perkDeepCuts,perkTheHuntsman,canHaveCosmetic" />
+			<property name="Tags" value="knife,melee,grunting,light,weapon,meleeWeapon,attAgility,perkDeepCuts,perkTheHuntsman,canHaveCosmetic" />
 			<property name="DisplayType" value="melee" />
 			<property name="Meshfile" value="@:Other/Items/Weapons/Melee/Knives/hunting_knifePrefab.prefab" />
 			<property name="Material" value="Mmetal" />
@@ -978,8 +981,7 @@
 				<property name="Sound_end" value="smg_fire_end"/>
 				<property name="Sound_empty" value="dryfire"/>
 				<property name="Sound_reload" value="Weapons/Ranged/MP5/mp5_reload" />
-				<property name="Particles_muzzle_fire" value="nozzleflash_ak" />
-				<property name="Particles_muzzle_smoke" value="nozzlesmokeuzi" />
+				<property name="Particles_muzzle_fire" value="gunfire_pistol_SMG"/>
 				<property name="DamageEntity" value="5"/> <!--  This is base damage per ray that hits) -->
 				<property name="DamageBlock" value="5"/>
 				<!--<requirement name="CVarCompare" cvar="_underwater" operation="LTE" value="0"/> -->
@@ -1102,133 +1104,7 @@
 				<property name="Sound_empty" value="dryfire"/>
 				<property name="Sound_reload" value="pistol_reload"/>
 				<property name="AutoReload" value="true"/>
-				<property name="Particles_muzzle_fire" value="gunfire_pistol"/>
-				<property name="Particles_muzzle_smoke" value="nozzlesmokeuzi" />
-				<property name="DamageEntity" value="5"/> 
-				<property name="DamageBlock" value="5"/> 
-			</property>
-			<effect_group name="gunHandgunT0PipePistol">
-				<passive_effect name="MaxRange" operation="base_set" value="15" tags="perkGunslinger,9mmGun"/>
-				<passive_effect name="DamageFalloffRange" operation="base_set" value="10" tags="perkGunslinger,9mmGun"/>
-				<passive_effect name="DamageFalloffRange" operation="perc_add" value="-.2,.2" tags="perkGunslinger,9mmGun"/> <!-- random effective rng -->
-
-				<passive_effect name="RoundsPerMinute" operation="base_set" value="126" tags="perkGunslinger"/>
-				<passive_effect name="BurstRoundCount" operation="base_set" value="1" tags="perkGunslinger"/>
-
-				<passive_effect name="ModSlots" operation="base_set" value="1,1,2,2,3,4" tier="1,2,3,4,5,6"/>
-				<passive_effect name="ModPowerBonus" operation="perc_add" value=".10" tags="EntityDamage,BlockDamage"/>
-				<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
-
-				<passive_effect name="BlockDamage" operation="base_add" value="-2.1" tags="perkGunslinger"/>  
-
-				<passive_effect name="BlockDamage" operation="perc_add" value=".1,.5" tier="2,6" tags="perkGunslinger"/> <!-- tier bonus -->
-
-				<passive_effect name="SpreadDegreesVertical" operation="base_set" value="10" tags="perkGunslinger"/>
-				<passive_effect name="SpreadDegreesHorizontal" operation="base_set" value="2" tags="perkGunslinger"/>
-				<passive_effect name="SpreadMultiplierAiming" operation="base_set" value=".4" tags="perkGunslinger"/>
-				<passive_effect name="SpreadMultiplierCrouching" operation="base_set" value=".8" tags="perkGunslinger"/>
-				<passive_effect name="SpreadMultiplierWalking" operation="base_set" value="1.5" tags="perkGunslinger"/>
-				<passive_effect name="SpreadMultiplierRunning" operation="base_set" value="2.2" tags="perkGunslinger"/>
-
-				<passive_effect name="KickDegreesVerticalMin" operation="base_set" value=".8" tags="perkGunslinger"/>
-				<passive_effect name="KickDegreesVerticalMax" operation="base_set" value=".9" tags="perkGunslinger"/>
-				<passive_effect name="KickDegreesHorizontalMin" operation="base_set" value="-.3" tags="perkGunslinger"/>
-				<passive_effect name="KickDegreesHorizontalMax" operation="base_set" value=".3" tags="perkGunslinger"/>
-
-				<passive_effect name="IncrementalSpreadMultiplier" operation="base_set" value="2.0" tags="perkGunslinger,9mmGun"/>
-				<passive_effect name="WeaponHandling" operation="base_set" value=".95" tags="perkGunslinger"/> <!-- crosshair reset speed -->
-				<passive_effect name="EntityPenetrationCount" operation="base_set" value="1"/> 
-				<passive_effect name="DegradationMax" operation="base_set" value="175,315" tier="1,6" tags="perkGunslinger,9mmGun"/>
-				<passive_effect name="DegradationPerUse" operation="base_set" value="0" tags="perkGunslinger,9mmGun"/>
-			</effect_group>
-			<effect_group name="WeaponType">
-                <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="WeaponType" operation="set" value="83"/>
-				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="WeaponTypeNeedsUpdate" operation="set" value="1"/>
-				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$Magsize" operation="set" value="6"/>
-				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$roundsinmag" operation="set" value="6"/>
-				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$Burstsize" operation="set" value="3"/>
-				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$burstrate" operation="set" value="3"/>
-				<triggered_effect trigger="onSelfEquipStart" action="AddBuff" target="self" buff="buffReload"/> 
-				<triggered_effect trigger="onSelfEquipStart" action="AddBuff" target="self" buff="buffBurst"/>
-			</effect_group>	
-			<effect_group name="Don't Show Arrow and Quiver">
-				<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="false" parent_transform="Hips" transform_path="Quiver"/>	
-				<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="false" parent_transform="Hips" transform_path="Arrow"/>	
-			</effect_group>	
-			<effect_group name="Launcher Fix">
-				<triggered_effect trigger="onSelfEquipStart" action="RemoveBuff" buff="RocketLUser" /> 
-				<requirement name="HasBuff" target="self" buff="RocketLUser"/>
-			</effect_group>
-			 <effect_group name="Melee pushback / knockdown">
-				<requirement name="!EntityTagCompare" target="other" tags="trader,animal,crawler"/>
-				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="33"/> 
-				<requirement name="IsPrimaryAttack" />
-				<triggered_effect trigger="onSelfDamagedOther" action="Ragdoll" target="other" duration=".1" force="25"/>
-			</effect_group> 
-		</item>				
-		
-		<item name="gunNPCPipePistol2">
-			<property name="Extends" value="gunNPCSMG5" />
-			<property name="CompatibleWeapon" value="gunHandgunT0PipePistol" />
-			<property name="RightHandJointName" value="PipePistol" />
-			<property name="Tags" value="weapon,ranged,holdBreathAiming,reloadPenalty4,gun,shortRange,revolver,barrelAttachments,sideAttachments,smallTopAttachments,attAgility,perkGunslinger,9mmGun,attachmentsIncluded,canHaveCosmetic" />
-			<property name="CreativeMode" value="None" />
-			<property name="HoldType" value="2" />
-			<property name="Stacknumber" value="1" />
-			<property name="Candrop" value="false" />
-			<property name="Meshfile" value="@:Other/Items/Weapons/Ranged/PipeRevolver/pipeRevolverPrefab.prefab" />
-			<property name="Material" value="MHandGunParts" />
-			<property name="Weight" value="6" />
-			<property name="TintColor" value="40, 40, 40" />
-			<property name="DegradationBreaksAfter" value="false"/>
-			<property name="SoundJammed" value="weapon_jam"/>
-			<property name="TintColor" value="255,255,255"/>
-			<property name="CrosshairOnAim" value="false"/> 
-			<property name="CrosshairUpAfterShot" value="false"/> 
-			<property name="Sound_Sight_In" value="smg_sight_in"/>
-			<property name="Sound_Sight_Out" value="smg_sight_out"/>
-			<property name="Group" value="Ammo/Weapons"/>
-			<property name="EconomicValue" value="0"/>
-			<property name="ShowQuality" value="false"/>
-			<property name="AutoReload" value="true"/>
-			<property name="CustomIcon" value="gunPistol"/>
-			<property name="SoundUnholster" value="weapon_unholster"/>
-			<property name="SoundHolster" value="weapon_holster"/>
-			<property class="Action0">
-				<property name="Class" value="Ranged" />
-				<property name="Range" value="15" />
-				<property name="Magazine_items" value="ammoNPC9mmBulletBall" />
-				<property name="Delay" value="0" />
-				<property name="Auto_fire" value="true" />
-				<property name="Reload_time" value="10" />
-				<property name="Infinite_ammo" value="true" />
-				<property name="Sound_start" value="pipe_pistol_fire"/>
-				<property name="Sound_loop" value="pipe_pistol_fire"/>
-				<property name="Sound_end" value=""/>
-				<property name="Sound_empty" value="dryfire"/>
-				<property name="Sound_reload" value="pistol_reload"/>
-				<property name="AutoReload" value="true"/>
-				<property name="Particles_muzzle_fire" value="gunfire_pistol"/>
-				<property name="Particles_muzzle_smoke" value="nozzlesmokeuzi" />
-				<property name="DamageEntity" value="12"/> 
-				<property name="DamageBlock" value="12"/> 
-			</property>
-			<property class="Action1">
-				<property name="Class" value="Ranged" />
-				<property name="Range" value="15" />
-				<property name="Magazine_items" value="ammoNPC9mmBulletBall" />
-				<property name="Delay" value="0" />
-				<property name="Auto_fire" value="true" />
-				<property name="Reload_time" value="10" />
-				<property name="Infinite_ammo" value="true" />
-				<property name="Sound_start" value="pipe_pistol_fire"/>
-				<property name="Sound_loop" value="pipe_pistol_fire"/>
-				<property name="Sound_end" value=""/>
-				<property name="Sound_empty" value="dryfire"/>
-				<property name="Sound_reload" value="pistol_reload"/>
-				<property name="AutoReload" value="true"/>
-				<property name="Particles_muzzle_fire" value="gunfire_pistol"/>
-				<property name="Particles_muzzle_smoke" value="nozzlesmokeuzi" />
+				<property name="Particles_muzzle_fire" value="gunfire_pistol_pipe"/>
 				<property name="DamageEntity" value="5"/> 
 				<property name="DamageBlock" value="5"/> 
 			</property>
@@ -1342,10 +1218,7 @@
 				<property name="Sound_repeat" value=""/>
 				<property name="Sound_end" value=""/>
 				<property name="Sound_empty" value="dryfire"/>
-				<property name="Particles_muzzle_fire" value="gunfire_shotgun"/>
-				<property name="Particles_muzzle_fire_fpv" value="gunfire_shotgun_fpv"/>
-				<property name="Particles_muzzle_smoke" value="gunfire_smoke"/>
-				<property name="Particles_muzzle_smoke_fpv" value="gunfire_smoke_fpv"/>
+				<property name="Particles_muzzle_fire" value="gunfire_SG_doublebarrel"/>
 				<property name="Buff" value="buffInjuryBleedingZombie"/>
 				<property name="DamageEntity" value="5"/> 
 				<property name="DamageBlock" value="10"/> 				
@@ -1464,7 +1337,7 @@
 				<property name="Sound_end" value=""/>
 				<property name="Sound_empty" value="dryfire"/>
 				<property name="Sound_reload" value="hunting_rifle_reload"/>
-				<property name="Particles_muzzle_fire" value="gunfire_pistol"/>
+				<property name="Particles_muzzle_fire" value="gunfire_pistol_magnum"/>
 				<property name="DamageEntity" value="10"/> 
 				<property name="DamageBlock" value="10"/> 				
 			</property>
@@ -1565,8 +1438,7 @@
 				<property name="Sound_empty" value="dryfire"/>
 				<property name="Sound_reload" value="ak47_reload"/>
 				<property name="Sound_end" value="ak47_fire_end"/>
-				<property name="Particles_muzzle_fire" value="nozzleflash_ak" />
-				<property name="Particles_muzzle_smoke" value="nozzlesmokeuzi" />
+				<property name="Particles_muzzle_fire" value="gunfire_MG_pipe"/>
 				<property name="DamageEntity" value="5"/> 
 				<property name="DamageBlock" value="5"/> 				
 			</property>
@@ -1687,8 +1559,7 @@
 				<property name="Sound_empty" value="dryfire"/>
 				<property name="Sound_reload" value="m60_reload"/>
 				<property name="Sound_end" value="m60_fire_end"/>
-				<property name="Particles_muzzle_fire" value="gunfire_m60"/>
-				<property name="Particles_muzzle_smoke" value="gunfire_smoke"/>
+				<property name="Particles_muzzle_fire" value="gunfire_MG_M60"/>
 				<property name="Buff" value="buffInjuryBleedingZombie"/>
 				<property name="DamageEntity" value="10"/> <!-- Per round that hits-->
 				<property name="DamageBlock" value="10"/>
@@ -1812,7 +1683,6 @@
 				<property name="Sound_reload" value="pistol_reload"/>
 				<property name="AutoReload" value="true"/>
 				<property name="Particles_muzzle_fire" value="gunfire_pistol"/>
-				<property name="Particles_muzzle_smoke" value="nozzlesmokeuzi" />
 				<property name="DamageEntity" value="5"/> <!--  This is base damage per ray that hits) -->
 				<property name="DamageBlock" value="5"/> 				
 			</property>
@@ -1935,8 +1805,7 @@
 				<passive_effect name="DegradationPerUse" operation="base_set" value="0" tags="perkGunslinger,9mmGun"/>
 			</effect_group> 
 			<effect_group name="MuzzleFlash">
-				<triggered_effect trigger="onSelfRangedBurstShotStart" action="AttachParticleEffectToEntity" particle="p_gunfire_pistol" local_offset="0,0,0" parent_transform="Gunjoint" />
-				<triggered_effect trigger="onSelfRangedBurstShotStart" action="AttachParticleEffectToEntity" particle="p_nozzlesmokeuzi" local_offset="0,.1,0" parent_transform="Gunjoint" />
+				<triggered_effect trigger="onSelfRangedBurstShotStart" action="AttachParticleEffectToEntity" particle="gunfire_pistol" local_offset="0,0,0" parent_transform="Gunjoint" />
 			</effect_group>
 		</item>	
 		
@@ -1965,7 +1834,6 @@
 				<property name="Sound_reload" value="pistol_reload"/>
 				<property name="AutoReload" value="true"/>
 				<property name="Particles_muzzle_fire" value="gunfire_pistol"/>
-				<property name="Particles_muzzle_smoke" value="nozzlesmokeuzi" />
 				<property name="DamageEntity" value="5"/> 
 				<property name="DamageBlock" value="5"/> 				
 			</property>
@@ -1986,7 +1854,6 @@
 				<property name="Sound_reload" value="pistol_reload"/>
 				<property name="AutoReload" value="true"/>
 				<property name="Particles_muzzle_fire" value="gunfire_pistol"/>
-				<property name="Particles_muzzle_smoke" value="nozzlesmokeuzi" />
 				<property name="DamageEntity" value="5"/> 
 				<property name="DamageBlock" value="5"/> 				
 			</property>
@@ -2021,8 +1888,7 @@
 				<passive_effect name="DegradationPerUse" operation="base_set" value="0" tags="perkGunslinger,9mmGun"/>
 			</effect_group> 
 			<effect_group name="MuzzleFlash">
-				<triggered_effect trigger="onSelfRangedBurstShotStart" action="AttachParticleEffectToEntity" particle="p_gunfire_pistol" local_offset="0,0,0" parent_transform="Gunjoint" />
-				<triggered_effect trigger="onSelfRangedBurstShotStart" action="AttachParticleEffectToEntity" particle="p_nozzlesmokeuzi" local_offset="0,.1,0" parent_transform="Gunjoint" />
+				<triggered_effect trigger="onSelfRangedBurstShotStart" action="AttachParticleEffectToEntity" particle="gunfire_pistol" local_offset="0,0,0" parent_transform="Gunjoint" />		
 			</effect_group>
 		</item>
 
@@ -2076,8 +1942,7 @@
 				<property name="Sound_end" value=""/>
 				<property name="Sound_empty" value="dryfire"/>
 				<property name="AutoReload" value="true"/>
-				<property name="Particles_muzzle_fire" value="gunfire_pistol"/>
-				<property name="Particles_muzzle_smoke" value="nozzlesmokeuzi" />
+				<property name="Particles_muzzle_fire" value="gunfire_pistol_desertvulture"/>
 				<property name="DamageEntity" value="5"/> 
 				<property name="DamageBlock" value="5"/> 				
 			</property>
@@ -2184,8 +2049,7 @@
 				<property name="Sound_empty" value="dryfire"/>
 				<property name="Sound_reload" value="ak47_reload"/>
 				<property name="Sound_end" value="ak47_fire_end"/>
-				<property name="Particles_muzzle_fire" value="nozzleflash_ak" />
-				<property name="Particles_muzzle_smoke" value="nozzlesmokeuzi" />
+				<property name="Particles_muzzle_fire" value="gunfire_MG_AK47"/>
 				<property name="DamageEntity" value="10"/> <!--  This is base damage per ray that hits) -->
 				<property name="DamageBlock" value="10"/> 				
 			</property>
@@ -2290,8 +2154,7 @@
 				<property name="Sound_start" value="tacticalar_fire"/>
 				<property name="Sound_loop" value="tacticalar_fire"/>
 				<property name="Sound_empty" value="dryfire"/>
-				<property name="Particles_muzzle_fire" value="nozzleflash_ak" />
-				<property name="Particles_muzzle_smoke" value="nozzlesmokeuzi" />
+				<property name="Particles_muzzle_fire" value="gunfire_MG_AR"/>
 				<property name="DamageEntity" value="10"/> 
 				<property name="DamageBlock" value="10"/> 				
 			</property>
@@ -2411,7 +2274,7 @@
 				<property name="Sound_end" value=""/>
 				<property name="Sound_empty" value="dryfire"/>
 				<property name="Sound_reload" value="hunting_rifle_reload"/>
-				<property name="Particles_muzzle_fire" value="gunfire_pistol"/>
+				<property name="Particles_muzzle_fire" value="gunfire_pistol_magnum"/>
 				<property name="DamageEntity" value="10"/> 
 				<property name="DamageBlock" value="10"/> 				
 			</property>
@@ -2530,8 +2393,7 @@
 				<property name="Sound_repeat" value=""/>
 				<property name="Sound_end" value=""/>
 				<property name="Sound_empty" value="dryfire"/>
-				<property name="Particles_muzzle_fire" value="gunfire_pistol"/>
-				<property name="Particles_muzzle_fire_fpv" value="gunfire_magnum_fpv"/>
+				<property name="Particles_muzzle_fire" value="gunfire_rifle_sniper"/>
 				<property name="DamageEntity" value="10"/> <!--  This is base damage per ray that hits) -->
 				<property name="DamageBlock" value="10"/> 				
 			</property>
@@ -2908,10 +2770,7 @@
 				<property name="Sound_repeat" value=""/>
 				<property name="Sound_end" value=""/>
 				<property name="Sound_empty" value="dryfire"/>
-				<property name="Particles_muzzle_fire" value="gunfire_shotgun"/>
-				<property name="Particles_muzzle_fire_fpv" value="gunfire_shotgun_fpv"/>
-				<property name="Particles_muzzle_smoke" value="gunfire_smoke"/>
-				<property name="Particles_muzzle_smoke_fpv" value="gunfire_smoke_fpv"/>
+				<property name="Particles_muzzle_fire" value="gunfire_SG_pump"/>
 				<property name="Buff" value="buffInjuryBleedingZombie"/>
 				<property name="DamageEntity" value="5"/> <!--  This is base damage per ray that hits) -->
 				<property name="DamageBlock" value="10"/> 				
@@ -3032,8 +2891,7 @@
 				<property name="Sound_repeat" value=""/>
 				<property name="Sound_end" value=""/>
 				<property name="Sound_empty" value="dryfire"/>
-				<property name="Particles_muzzle_fire" value="gunfire_m60"/>
-				<property name="Particles_muzzle_smoke" value="gunfire_smoke"/>
+				<property name="Particles_muzzle_fire" value="gunfire_SG_auto"/>
 				<property name="Buff" value="buffInjuryBleedingZombie"/> 
 				<property name="DamageEntity" value="5"/> <!--  This is base damage per ray that hits) -->
 				<property name="DamageBlock" value="10"/> 				

@@ -12,6 +12,8 @@
 		<category name="Hordes" display_name="MythTwitchActionCategory_Hordes" icon="ui_game_symbol_talk" />
 		<category name="Bosses" display_name="MythTwitchActionCategory_Bosses" icon="ui_game_symbol_boxer" />
 	</insertAfter>
+	 <remove xpath="/twitch/action[@name='twitch_Grow']"/>	
+	<remove xpath="/twitch/action[@name='twitch_Lost']"/>	
 	
 		<!-- Categories, groups, and templates -->
 	<!-- random groups -->
@@ -482,6 +484,36 @@
 			<property name="start_gamestage" value="225" />
 			<property name="event_name" value="hoh_boss_WasteLand" />
 			<property name="default_cost" value="10000" />
+	 		<property name="cooldown" value="3600"/>
+			<property name="enabled" value="true" />
+		</action>
+		<action name="myth_spawn_bossForrest" extends="myth_bosses_template" >
+			<property name="command" value="#forrest_boss"/>
+			<property name="title" value="Boss: Forrest " />
+			<property name="description" value="Jeff-fa-fa and minions" />
+			<property name="start_gamestage" value="25" />
+			<property name="event_name" value="hoh_boss_Forrest" />
+			<property name="default_cost" value="5000" />
+	 		<property name="cooldown" value="3600"/>
+			<property name="enabled" value="true" />
+		</action>
+		<action name="Boss_Mobsta" extends="myth_bosses_template" >
+			<property name="command" value="#mobsta_boss"/>
+			<property name="title" value="Boss: Mobsta " />
+			<property name="description" value="Mobsta coming for collections" />
+			<property name="start_gamestage" value="25" />
+			<property name="event_name" value="spawn_mobby" />
+			<property name="default_cost" value="2500" />
+	 		<property name="cooldown" value="3600"/>
+			<property name="enabled" value="true" />
+		</action>
+		<action name="Boss_Fryayee" extends="myth_bosses_template" >
+			<property name="command" value="#small_boss"/>
+			<property name="title" value="Boss: Fry da Leprechaun " />
+			<property name="description" value="I want your shiney gold coins. Hide your lucky charms." />
+			<property name="start_gamestage" value="25" />
+			<property name="event_name" value="spawn_leprechaun" />
+			<property name="default_cost" value="2500" />
 	 		<property name="cooldown" value="3600"/>
 			<property name="enabled" value="true" />
 		</action>
@@ -1590,6 +1622,157 @@
 			<property name="show_in_action_list" value="true" />
 		</action>
 
+
+		
+	<action name="twitch_SwimmingPool">
+		<property name="command" value="#swimmingpool" />
+		<property name="command_key" value="TwitchAction_ActionSwimmingPoolCommand" />
+		<property name="title_key" value="TwitchAction_ActionSwimmingPool" />
+		<property name="description_key" value="TwitchAction_ActionSwimmingPoolDesc" />
+		<property name="category" value="Blocks" />
+		<property name="presets" value="standard,hardcore" />
+		<property name="enabled" value="true" />
+		
+		<property name="start_gamestage" value="10" />
+		<property name="event_name" value="action_SwimmingPool" />
+		<property name="point_type" value="Bits" />
+		<property name="default_cost" value="1000" />
+		<property name="special_requirement" value="NotSafe,NotOnVehicle" />
+		<property name="is_positive" value="false" />
+		<property name="cooldown" value="300" />
+		<property name="cooldown_blocked" value="true" />
+	</action>
+	<action name="twitch_CementShoes">
+		<property name="command" value="#cementshoes" />
+		<property name="command_key" value="#cementshoes" />
+		<property name="title_key" value="Cement Shoes" />
+		<property name="description_key" value="Catch me outside with my cement shoes on.. Come on guys.." />
+		<property name="category" value="Blocks" />
+		<property name="presets" value="standard,hardcore" />
+		<property name="enabled" value="true" />
+		<property name="start_gamestage" value="10" />
+		<property name="event_name" value="buff_CementShoes" />
+		<property name="point_type" value="Bits" />
+		<property name="default_cost" value="450" />
+		<property name="is_positive" value="false" />
+		<property name="cooldown" value="180" />
+		<property name="cooldown_blocked" value="true" />
+		
+		
+		<cooldown_addition name="twitch_buffSlow" time="90" />
+		<cooldown_addition name="twitch_BombBlitz" time="90" />
+		<cooldown_addition name="twitch_ClumsyRunner" time="90" />
+		<cooldown_addition name="twitch_buffKeepMoving" time="90" />
+	</action>
+	<action name="twitch_Dizzy">
+		<property name="command" value="#dizzy" />
+		<property name="command_key" value="#dizzy" />
+		<property name="title" value="Dizzy" />
+		<property name="title_key" value="Dizzy" />
+		<property name="description_key" value="You spin me right round baby, right round baby, right round baby, right round baby ok i'm dizzy now." />
+		<property name="category" value="Special" />
+		<property name="start_gamestage" value="10" />
+		<property name="event_name" value="twitch_buffDizzy" />
+		<property name="point_type" value="Bits" />
+		<property name="default_cost" value="100" />
+		<property name="is_positive" value="false" />
+		<property name="cooldown" value="120" />
+		<property name="cooldown_blocked" value="true" />
+		<property name="presets" value="casual,standard,hardcore" />
+		<property name="enabled" value="true" />
+	</action>
+
+	<action name="twitch_Homesweethome">
+		<property name="command" value="#homesweethome" />
+		<property name="command_key" value="#homesweethome" />
+		<property name="title" value="Home Sweet Home" />
+		<property name="title_key" value="Home Sweet Home" />
+		<property name="description_key" value="There is no place like home." />
+		<property name="category" value="Special" />
+		<property name="start_gamestage" value="10" />
+		<property name="event_name" value="action_homesweethome" />
+		<property name="point_type" value="Bits" />
+		<property name="default_cost" value="300" />
+		<property name="is_positive" value="false" />
+		<property name="cooldown" value="120" />
+		<property name="cooldown_blocked" value="true" />
+		<property name="presets" value="casual,standard,hardcore" />
+		<property name="enabled" value="true" />
+	</action>
+	<action name="twitch_wtf">
+		<property name="command" value="#wtf" />
+		<property name="command_key" value="#wtf" />
+		<property name="title" value="WTF. Where am I" />
+		<property name="title_key" value="WTF. Where am I" />
+		<property name="description_key" value="Look my ass is houdini... Now you see me now you don't..." />
+		<property name="category" value="Special" />
+		<property name="start_gamestage" value="10" />
+		<property name="event_name" value="buff_teleportdejavu" />
+		<property name="point_type" value="Bits" />
+		<property name="default_cost" value="1500" />
+		<property name="is_positive" value="false" />
+		<property name="cooldown" value="120" />
+		<property name="cooldown_blocked" value="true" />
+		<property name="presets" value="casual,standard,hardcore" />
+		<property name="enabled" value="true" />
+	</action>
+	<action name="twitch_wth">
+		<property name="command" value="#wth" />
+		<property name="command_key" value="#wth" />
+		<property name="title" value="WTH. Where did you send me" />
+		<property name="title_key" value="WTH. Where did you send me" />
+		<property name="description_key" value="Damn I think I am a wizard Harry.Baby poof do do do. Baby poof do do do.. Now you see me now you don't..." />
+		<property name="category" value="Special" />
+		<property name="start_gamestage" value="10" />
+		<property name="event_name" value="buff_teleportminidejavu" />
+		<property name="point_type" value="Bits" />
+		<property name="default_cost" value="750" />
+		<property name="is_positive" value="false" />
+		<property name="cooldown" value="120" />
+		<property name="cooldown_blocked" value="true" />
+		<property name="presets" value="casual,standard,hardcore" />
+		<property name="enabled" value="true" />
+	</action>
+
+	
+	<action name="twitch_nomansland">
+		<property name="command" value="#nomansland" />
+		<property name="command_key" value="#nomansland" />
+		<property name="title" value="No Mans Land" />
+		<property name="title_key" value="No Mans Land" />
+		<property name="description_key" value="Well time for a nice long walk home.. Let me put on some walking shoes.. Damn you guys love to see me walk.." />
+		<property name="category" value="Special" />
+		<property name="start_gamestage" value="10" />
+		<property name="event_name" value="action_nomansland" />
+		<property name="point_type" value="Bits" />
+		<property name="default_cost" value="1000" />
+		<property name="is_positive" value="false" />
+		<property name="cooldown" value="120" />
+		<property name="cooldown_blocked" value="true" />
+		<property name="presets" value="casual,standard,hardcore" />
+		<property name="enabled" value="true" />
+	</action>
+
+
+
+
+	<action name="twitch_JohnWick" extends="myth_buffs_pp">
+		<property name="command" value="#johnwick" />
+		<property name="command_key" value="#johnwick" />
+		<property name="title" value="John Wick" />
+		<property name="title_key" value="John Wick" />
+		<property name="description" value="You killed my dog?!" />
+		<property name="description_key" value="You killed my dog?!" />
+		<property name="start_gamestage" value="23"/>
+		<property name="event_name" value="action_johnwick" />
+		<property name="point_type" value="Bits" />
+		<property name="default_cost" value="250" />
+		<property name="is_positive" value="true" />
+		<property name="cooldown" value="600" />
+		<property name="category" value="Special" />
+		<property name="enabled" value="true"/>
+		<property name="show_in_action_list" value="true" />
+	</action>
 	</append>
 
 </MythicalIntegration>

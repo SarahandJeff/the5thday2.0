@@ -10,5 +10,15 @@
 <remove xpath="/challenges/challenge_group[@name='Wasteland Survival']"/>
 
 <remove xpath="/challenges/challenge_category[@name='Biome Progression']"/>
+<remove xpath="/challenges/challenge[@name='harvestAnimals']"/>
+<insertAfter xpath="/challenges/challenge[@name='craftCharredMeat']">
+
+<challenge name="harvestAnimals" title_key="challengeHarvestAnimals"  icon="ui_game_symbol_challenge_adv_survival_harvest_meat" group="AdvancedSurvival"
+		short_description_key="challengeHarvestAnimalsShort" description_key="challengeHarvestAnimalsDesc"
+		reward_text_key="challenge_reward_500xp" reward_event="challenge_reward_500">
+		<objective type="Gather"  item="foodRawMeat" is_block="false" count="100"/>
+	</challenge>
+</insertAfter>
+
 
 </snj>

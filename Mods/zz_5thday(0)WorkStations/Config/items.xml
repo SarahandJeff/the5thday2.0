@@ -120,6 +120,19 @@
 	<property name="SellableToTrader" value="true"/>
 	<property name="DescriptionKey" value="animalCalfDesc"/>
 </item>
+<item name="animalBee">
+	
+	<property name="HoldType" value="45"/>
+	<property name="Meshfile" value="@:Other/Items?Misc/sackPrefab.prefab"/>
+	<property name="DropMeshfile" value="@:Other/Items?Misc/sack_droppedPrefab.prefab"/>
+	<property name="Material" value="Morganic"/>
+	<property name="Stacknumber" value="1"/>
+	<property name="Group" value="tools/Traps"/>
+	<property name="EconomicValue" value="1500"/>
+	<property name="SellableToTrader" value="true"/>
+	
+	<property name="DescriptionKey" value="animalBeeDesc"/>
+</item>
 <item name="AnimalChickenFeed">
 	<property name="CustomIcon" value="AnimalFeed"/>
 	<property name="HoldType" value="3"/>
@@ -196,6 +209,32 @@
 					<passive_effect name="DegradationPerUse" operation="base_set" value="0"/>
 				</effect_group>
 </item>
+
+
+<item name="SugarWater">
+	
+	<property name="HoldType" value="32"/>
+	<property name="Meshfile" value="#@modfolder:Assets/Beehive.unity3d?SugarWater"/>
+    <property name="DropMeshfile" value="#@modfolder:Assets/Beehive.unity3d?SugarWater"/>
+	<property name="Material" value="Morganic"/>
+	<property name="Stacknumber" value="500"/>
+	<property name="EconomicValue" value="0"/>
+	<property name="SellableToTrader" value="false"/>
+	<property name="Group" value="AnimalFood"/>
+	<property name="DescriptionKey" value="SugarWaterDesc"/>
+	<property class="Action1"> <!-- UseAction -->
+		<property name="Class" value="Repair"/>
+		<property name="Delay" value="1"/>
+		<property name="Upgrade_hit_offset" value="-1"/>
+		<property name="Allowed_upgrade_items" value="SugarWater"/>
+	</property>
+	<effect_group name="Base Effects" tiered="false">
+		<passive_effect name="ModSlots" operation="base_set" value="0"/>
+		<passive_effect name="MaxRange" operation="base_set" value="200"/>
+		<passive_effect name="DegradationMax" operation="base_set" value="6000"/>
+		<passive_effect name="DegradationPerUse" operation="base_set" value="0"/>
+	</effect_group>
+</item>
 <item name="foodMilk">
 	<property name="HoldType" value="45"/>
 	<property name="Meshfile" value="@:Other/Items?Misc/sackPrefab.prefab"/>
@@ -208,10 +247,10 @@
 </item>
 
 </append>
-	
 
+<set xpath="//item[@name='drinkJarEmpty']/property[@name='Meshfile']/@value">#@modfolder:Assets/EmptyJar.unity3d?EmptyJar</set>
+<set xpath="//item[@name='drinkJarEmpty']/property[@name='DropMeshfile']/@value">#@modfolder:Assets/EmptyJar.unity3d?EmptyJar</set>
 <!--recycler workstation-->
-
 <append xpath="//item[starts-with(@name, 'resourceScrapBrass')]/property[@name='Group']/@value">,Recycling</append>
 <append xpath="//item[starts-with(@name, 'resourceScrapIron')]/property[@name='Group']/@value">,Recycling</append>
 <append xpath="//item[starts-with(@name, 'resourceScrapLead')]/property[@name='Group']/@value">,Recycling</append>

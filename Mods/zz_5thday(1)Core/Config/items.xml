@@ -3308,16 +3308,34 @@
 	</append>
 
 
+<append xpath="//item[@name='meleeToolRepairT0StoneAxe']/property[@class='Action1']/property[@name='Allowed_upgrade_items']/@value">,ammoGasCan,resourceOil</append>
+<append xpath="//item[@name='meleeToolRepairT1ClawHammer']/property[@class='Action1']/property[@name='Allowed_upgrade_items']/@value">,ammoGasCan,resourceOil</append>
+<append xpath="//item[@name='meleeToolRepairT3Nailgun']/property[@class='Action1']/property[@name='Allowed_upgrade_items']/@value">,ammoGasCan,resourceOil</append>
+
 <set xpath="//item[@name='toolDewGatherer']/property[(@name='UnlockedBy')]/@value">perkCooking</set>
 <set xpath="//item[@name='toolDewTarp']/property[(@name='UnlockedBy')]/@value">perkCooking</set>
 <set xpath="//item[@name='toolDewFilter']/property[(@name='UnlockedBy')]/@value">perkCooking</set>
+<!--<append xpath="//item[@name='drinkJarBlackStrapCoffee']/property[(@name='UnlockedBy')]/@value">,perkArtOfMiningBlackStrap</append>-->
+
 
 <set xpath="//items/item[@name='drinkJarGrandpasAwesomeSauce']//property[@name='EconomicValue']/@value">500</set>
 
 
+<set xpath="/items/item[contains(@name,'Outfit') and not(contains(@name,'clothing'))]/effect_group/passive_effect[@name='ModSlots']/@value">2,2,3,4,5,6</set>
 
-
-
+<append xpath="/items">
+	
+		<item name="smallIronSpike">
+	<property name="HoldType" value="45"/>
+	<property name="Meshfile" value="@:Other/Items?Misc/sackPrefab.prefab"/>
+	<property name="DropMeshfile" value="@:Other/Items?Misc/sack_droppedPrefab.prefab"/>
+	<property name="Material" value="Miron"/>
+	<property name="Stacknumber" value="500"/>
+	<property name="EconomicValue" value="2"/>
+	<property name="SellableToTrader" value="true"/>
+	<property name="DescriptionKey" value="Small iron spike for trap"/>
+</item>
+</append>
 <include filename="items/item_weights.xml"/>
 <include filename="items/TAFA_changes.xml"/>
 
