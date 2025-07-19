@@ -1,36 +1,26 @@
 <config>
-
-<set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='AdvancedRecipes']/property[@name='ReadFromContainers']/@value">true</set>
-<set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='AdvancedLockpicking']/property[@name='AdvancedLocks']/@value">true</set>
-<set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='AdvancedLockpicking']/property[@name='LockPrefab']/@value">#@modfolder(Locks):Resources/Locks.unity3d?padlock01</set>
-<set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='AdvancedPlayerFeatures']/property[@name='VehicleNoTake']/@value">true</set>
-<set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='AdvancedZombieFeatures']/property[@name='RandomSize']/@value">true</set>
-<!--<set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='AdvancedNPCFeatures']/property[@name='MakeTraderVulnerable']/@value">true</set>-->
-<!--<set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='AdvancedItemFeatures']/property[@name='DurabilityAffectsDamage']/@value">false</set>-->
-<!--<set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='AdvancedNPCFeatures']/property[@name='MakeTraderVulnerable']/@value">true</set>-->
-
-
-<!--<append xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='AdvancedNPCFeatures']/property[@name='HumanTags']/@value">,zombie,animal</append>-->
-
-<set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='AdvancedWorkstationFeatures']/property[@name='EnablePoweredWorkstations']/@value">true</set>
-
-
-
-<set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='CropManagement']/property[@name='CropEnable']/@value">true</set>
-
-<set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='CropManagement']/property[@name='CheckInterval']/@value">120</set>
-
-<set xpath="/blocks/block[@name='cropsGrowingMaster']/property[@name='Class']/@value">PlantGrowingSDX, SCore</set>
-				<append xpath="/blocks/block[@name='cropsGrowingMaster']">
-					<property name="RequireWater" value="true" /> 
-					<property name="WaterRange" value="7" />  
-					<property name="Wilt" value="true" />
-				</append>
-
-
-
-
-
+	<set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='AdvancedRecipes']/property[@name='ReadFromContainers']/@value">true</set>
+	<set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='AdvancedLockpicking']/property[@name='AdvancedLocks']/@value">true</set>
+	<set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='AdvancedLockpicking']/property[@name='LockPrefab']/@value">#@modfolder(Locks):Resources/Locks.unity3d?padlock01</set>
+	<set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='AdvancedPlayerFeatures']/property[@name='VehicleNoTake']/@value">true</set>
+	<set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='AdvancedZombieFeatures']/property[@name='RandomSize']/@value">false</set>
+	<!--<set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='AdvancedNPCFeatures']/property[@name='MakeTraderVulnerable']/@value">true</set>-->
+	<!--<set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='AdvancedItemFeatures']/property[@name='DurabilityAffectsDamage']/@value">false</set>-->
+	<!--<set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='AdvancedNPCFeatures']/property[@name='MakeTraderVulnerable']/@value">true</set>-->
+	<!--<append xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='AdvancedNPCFeatures']/property[@name='HumanTags']/@value">,zombie,animal</append>-->
+	<set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='AdvancedWorkstationFeatures']/property[@name='EnablePoweredWorkstations']/@value">true</set>
+	<set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='CropManagement']/property[@name='CropEnable']/@value">true</set>
+	<set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='CropManagement']/property[@name='CheckInterval']/@value">120</set>
+	<set xpath="/blocks/block[@name='cropsGrowingMaster']/property[@name='Class']/@value">PlantGrowingSDX, SCore</set>
+	<append xpath="/blocks/block[@name='cropsGrowingMaster']">
+		<property name="RequireWater" value="true" />
+		<property name="WaterRange" value="7" />
+		<property name="Wilt" value="true" />
+	</append>
+	<!-- Sets wood to be tagged-->
+	<append xpath="//block[@name='modularFireWoodStackA']">
+		<property name="Tags" value="wood"/>
+	</append>
 	<!-- Sets stone to be tagged -->
 	<append xpath="//block[starts-with(@name, 'resourceRock')]">
 		<property name="Tags" value="Stone"/>
@@ -55,58 +45,26 @@
 	</append>
 	<insertAfter xpath="//block[contains(@name,'Ugly')]">
 		<property name="Tags" value="WrenchXPGain"/>
-		</insertAfter>
-<append xpath="//block[@name='oldWoodDoor']">
+	</insertAfter>
+	<append xpath="//block[@name='oldWoodDoor']">
 		<property name="EconomicValue" value="80"/>
 	</append>
-<append xpath="//block[@name='oldWoodDoorDouble']">
+	<append xpath="//block[@name='oldWoodDoorDouble']">
 		<property name="EconomicValue" value="80"/>
 	</append>
-
-<!--	<append xpath="//block[contains(@name,'cntCar')]/property[@name='Tags']/@value">,Car,WrenchXPGain</append>
-	<append xpath="//block[contains(@name,'cntSedan')]/property[@name='Tags']/@value">,Car,WrenchXPGain</append>
-	<append xpath="//block[contains(@name,'cntTruck')]/property[@name='Tags']/@value">,Car,WrenchXPGain</append>
-<append xpath="//block[contains(@name,'abandonedSUV')]/property[@name='Tags']/@value">,Car,WrenchXPGain</append>
-<append xpath="//block[contains(@name,'burntSedan')]/property[@name='Tags']/@value">,Car,WrenchXPGain</append>
-<append xpath="//block[contains(@name,'abandonedPickup')]/property[@name='Tags']/@value">,Car,WrenchXPGain</append>
-<append xpath="//block[contains(@name,'cntMinivan')]/property[@name='Tags']/@value">,Car,WrenchXPGain</append>
-<append xpath="//block[contains(@name,'cntSedan01White')]/property[@name='Tags']/@value">,Car,WrenchXPGain</append>
-
-<append xpath="//block[contains(@name,'cntSUV01White')]/property[@name='Tags']/@value">,Car,WrenchXPGain</append>
-<append xpath="//block[contains(@name,'cntMinivan01White')]/property[@name='Tags']/@value">,Car,WrenchXPGain</append>
-<append xpath="//block[contains(@name,'cntPickupTruck01White')]/property[@name='Tags']/@value">,Car,WrenchXPGain</append>
+	<!--	<append xpath="//block[contains(@name,'cntCar')]/property[@name='Tags']/@value">,Car,WrenchXPGain</append><append xpath="//block[contains(@name,'cntSedan')]/property[@name='Tags']/@value">,Car,WrenchXPGain</append><append xpath="//block[contains(@name,'cntTruck')]/property[@name='Tags']/@value">,Car,WrenchXPGain</append><append xpath="//block[contains(@name,'abandonedSUV')]/property[@name='Tags']/@value">,Car,WrenchXPGain</append><append xpath="//block[contains(@name,'burntSedan')]/property[@name='Tags']/@value">,Car,WrenchXPGain</append><append xpath="//block[contains(@name,'abandonedPickup')]/property[@name='Tags']/@value">,Car,WrenchXPGain</append><append xpath="//block[contains(@name,'cntMinivan')]/property[@name='Tags']/@value">,Car,WrenchXPGain</append><append xpath="//block[contains(@name,'cntSedan01White')]/property[@name='Tags']/@value">,Car,WrenchXPGain</append><append xpath="//block[contains(@name,'cntSUV01White')]/property[@name='Tags']/@value">,Car,WrenchXPGain</append><append xpath="//block[contains(@name,'cntMinivan01White')]/property[@name='Tags']/@value">,Car,WrenchXPGain</append><append xpath="//block[contains(@name,'cntPickupTruck01White')]/property[@name='Tags']/@value">,Car,WrenchXPGain</append>
 -->
-<append xpath="//block[contains(@name,'utilitySink')]/property[@name='Tags']/@value">,WrenchXPGain</append>
-
-<append xpath="//block/property[contains(@value, 'challenge_mech_parts')]/@value">,WrenchXPGain</append>
-<append xpath="//block/property[contains(@value, 'challenge_elec_parts')]/@value">,WrenchXPGain</append>
-<append xpath="//block/property[contains(@value, 'challenge_cars')]/@value">,Car,WrenchXPGain</append>
-<append xpath="//block/property[contains(@value, 'challenge_sinks')]/@value">,WrenchXPGain</append>
-<!--<append xpath="//block/property[contains(@value, 'challenge_lights')]/@value">,WrenchXPGain</append>
-<append xpath="//block/property[contains(@value, 'challenge_officechairs')]/@value">,WrenchXPGain</append>
-<append xpath="//block/property[contains(@value, 'challenge_vending')]/@value">,WrenchXPGain</append>-->
-
-
-
-
-
-
-
-
-
-
-
-
+	<append xpath="//block[contains(@name,'utilitySink')]/property[@name='Tags']/@value">,WrenchXPGain</append>
+	<append xpath="//block/property[contains(@value, 'challenge_mech_parts')]/@value">,WrenchXPGain</append>
+	<append xpath="//block/property[contains(@value, 'challenge_elec_parts')]/@value">,WrenchXPGain</append>
+	<append xpath="//block/property[contains(@value, 'challenge_cars')]/@value">,Car,WrenchXPGain</append>
+	<append xpath="//block/property[contains(@value, 'challenge_sinks')]/@value">,WrenchXPGain</append>
+	<!--<append xpath="//block/property[contains(@value, 'challenge_lights')]/@value">,WrenchXPGain</append><append xpath="//block/property[contains(@value, 'challenge_officechairs')]/@value">,WrenchXPGain</append><append xpath="//block/property[contains(@value, 'challenge_vending')]/@value">,WrenchXPGain</append>-->
 	<append xpath="//block[@name='cntATMInsecure']/property[@name='Tags']/@value">,WrenchXPGain</append>
 	<append xpath="//block[contains(@name,'Hatch')]/property[@name='Tags']/@value">,WrenchXPGain</append>
-	<!--<append xpath="//block[contains(@name,'IronDoor')]/property[@name='Tags']/@value">,WrenchXPGain</append>
-	<append xpath="//block[contains(@name,'VaultDoor')]/property[@name='Tags']/@value">,WrenchXPGain</append>-->
+	<!--<append xpath="//block[contains(@name,'IronDoor')]/property[@name='Tags']/@value">,WrenchXPGain</append><append xpath="//block[contains(@name,'VaultDoor')]/property[@name='Tags']/@value">,WrenchXPGain</append>-->
 	<append xpath="//block[contains(@name,'GarageDoor')]/property[@name='Tags']/@value">,WrenchXPGain</append>
 	<append xpath="//block[contains(@name,'rollUp')]/property[@name='Tags']/@value">,WrenchXPGain</append>
-
-
-
-
 	<append xpath="//block[@name='cntHardenedChestInsecure']/property[@name='Tags']/@value">,WrenchXPGain</append>
 	<append xpath="//block[@name='cntHardenedChestInsecure']/property[@name='Tags']/@value">,StealingBonus</append>
 	<append xpath="//block[@name='cntBuriedFoodStashChest']/property[@name='Tags']/@value">,StealingBonus</append>
@@ -125,17 +83,15 @@
 	<!--StealingBonus-->
 	<!-- Axes -->
 	<!--Shovels -->
-	<append xpath="//block[@name='terrDirt']/property[@name='Tags']/@value">,ShovelXPGain</append>
-	<append xpath="//block[@name='terrTopSoil']/property[@name='Tags']/@value">,ShovelXPGain</append>
-	<append xpath="//block[@name='terrForestGround']/property[@name='Tags']/@value">,ShovelXPGain</append>
+	<append xpath="//block[@name='terrDirt']/property[@name='Tags']/@value">,ShovelXPGain,worms</append>
+	<append xpath="//block[@name='terrTopSoil']/property[@name='Tags']/@value">,ShovelXPGain,worms</append>
+	<append xpath="//block[@name='terrForestGround']/property[@name='Tags']/@value">,ShovelXPGain,worms</append>
 	<append xpath="//block[@name='terrBurntForestGround']/property[@name='Tags']/@value">,ShovelXPGain</append>
 	<append xpath="//block[@name='terrDesertGround']/property[@name='Tags']/@value">,ShovelXPGain</append>
 	<insertAfter xpath="//block[@name='terrSand']/property[@name='Material']">
-	
 		<property name="Tags" value="ShovelXPGain" />
 	</insertAfter>
 	<append xpath="//block[@name='terrGravel']/property[@name='Tags']/@value">,ShovelXPGain</append>
-	
 	<append xpath="//block[starts-with(@name, 'palletBricks')]">
 		<property name="Tags" value="Stone"/>
 	</append>
@@ -149,23 +105,18 @@
 	<append xpath="//block[@name='garbage_decor3']">
 		<property name="CanPickup" value="true" param1="resourceBrokenGlass"/>
 	</append>
-
-
-<set xpath="//block/property[(@name='UnlockedBy') and (@value='craftingWorkstations')]/@value">perkWrenches</set>
-<set xpath="//block[@name='autoTurret']/property[(@name='Tags')]/@value">perkTraps</set>
-<set xpath="//block/property[(@name='UnlockedBy') and (@value='craftingTraps')]/@value">perkTraps</set>
-
+	<set xpath="//block/property[(@name='UnlockedBy') and (@value='craftingWorkstations')]/@value">perkWrenches</set>
+	<set xpath="//block[@name='autoTurret']/property[(@name='Tags')]/@value">perkTraps</set>
+	<set xpath="//block/property[(@name='UnlockedBy') and (@value='craftingTraps')]/@value">perkTraps</set>
 	<!--<remove xpath="/blocks/block[@name='forge']/property[@name='UnlockedBy']"/>-->
 	<!--<remove xpath="/blocks/block[@name='workbench']/property[@name='UnlockedBy']"/>-->
 	<remove xpath="/blocks/block[@name='cementMixer']/property[@name='UnlockedBy']"/>
-<set xpath="//block/property[(@name='UnlockedBy') and (@value='craftingElectrician')]/@value">perkWrenches</set>
-<append xpath="/blocks">
-
-<block name="HOH_Collection_workstations_Range">
+	<set xpath="//block/property[(@name='UnlockedBy') and (@value='craftingElectrician')]/@value">perkWrenches</set>
+	<append xpath="/blocks">
+		<block name="HOH_Collection_workstations_Range">
 			<!-- Class -->
 			<property name="Class" value="Campfire"/>
 			<property name="UnlockedBy" value="perkCooking"/>
-			
 			<property class="Workstation">
 				<property name="Modules" value="tools,output,input"/>
 				<property name="ToolNames" value="1,2,3"/>
@@ -264,18 +215,15 @@
 			<property name="CanPickup" value="true"/>
 			<property name="Stacknumber" value="1"/>
 			<property name="TakeDelay" value="5"/>
-	    	</block>
+		</block>
 		<block name="HOH_Collection_workstations_CoffeeMaker">
 			<!-- Class -->
 			<property name="Class" value="Campfire"/>
 			<property name="UnlockedBy" value="perkCooking"/>
-			
 			<property class="Workstation">
 				<property name="Modules" value="tools,output,input"/>
 				<property name="CraftingAreaRecipes" value="CoffeeMaker" />
 				<property name="Collide" value="melee,bullet,arrow,rocket"/></property>
-				
-			
 			<!--<property name="PoweredType" value="Constant"/>-->
 			<!-- UI_Info -->
 			<property name="CreativeMode" value="Player"/>
@@ -294,9 +242,8 @@
 			<!-- Visual -->
 			<property name="Material" value="Mmetal"/>
 			<property name="Shape" value="ModelEntity"/>
-			
 			<property name="Model" value="@:Entities/Appliances/coffeeMakerPrefab.prefab"/>
-				<property name="ModelOffset" value="0,0,0.5"/>
+			<property name="ModelOffset" value="0,0,0.5"/>
 			<property name="ImposterDontBlock" value="true"/>
 			<property name="WaterFlow" value="permitted"/>
 			<!--<property name="ParticleName" value="chemistryStation"/><property name="ParticleOffset" value ="0,0,0"/>-->
@@ -334,16 +281,13 @@
 			<property name="SortOrder2" value="0303"/>
 			<property name="Group" value="Basics,Food/Cooking,Building,advBuilding"/>
 			<property name="FilterTags" value="MC_playerBlocks,SC_decor,SC_electrical"/>
-			
 		</block>
-
-<block name="WorkingStove">
+		<block name="WorkingStove">
 			<property name="Class" value="Workstation"/>
 			<property class="Workstation">
 				<property name="Modules" value="tools,output,input"/>
 				<property name="CraftingAreaRecipes" value="campfire,WorkingStove" />
-				<property name="Collide" value="melee,bullet,arrow,rocket"/>
-			</property>
+				<property name="Collide" value="melee,bullet,arrow,rocket"/></property>
 			<property name="RequirePower" value="true"/>
 			<property name="CustomIcon" value="cntStoveModernVer1Closed"/>
 			<property name="Material" value="Mmetal"/>
@@ -369,8 +313,7 @@
 			<property name="WorkstationJournalTip" value="heatMapTip"/>
 			<property name="Stacknumber" value="1"/>
 			<property class="RepairItems">
-				<property name="resourceScrapIron" value="10"/>
-			</property>
+				<property name="resourceScrapIron" value="10"/></property>
 			<drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
 			<drop event="Harvest" name="resourceMechanicalParts" count="0,1" tag="salvageHarvest"/>
 			<drop event="Harvest" name="resourceMetalPipe" count="1,2" tag="salvageHarvest"/>
@@ -380,7 +323,6 @@
 			<property name="DescriptionKey" value="stoveWorkingDesc"/>
 			<property name="SellableToTrader" value="false"/>
 		</block>
-		
 		<block name="WorkingCharcoalGrill">
 			<property name="Class" value="Campfire"/>
 			<property name="CustomIcon" value="cntCharcoalGrillClosed"/>
@@ -398,9 +340,7 @@
 			<property class="Workstation">
 				<property name="Modules" value="tools,output,fuel,input"/>
 				<property name="CraftingAreaRecipes" value="CharcoalGrill" />
-				<property name="Collide" value="melee,bullet,arrow,rocket"/>
-			</property>
-			
+				<property name="Collide" value="melee,bullet,arrow,rocket"/></property>
 			<property name="WorkstationIcon" value="ui_game_symbol_campfire"/>
 			<property name="CraftActionName" value="lblContextActionCook"/>
 			<property name="CraftIcon" value="ui_game_symbol_spatula"/>
@@ -412,8 +352,7 @@
 			<property name="CraftCompleteSound" value="campfire_complete_item"/>
 			<property name="WorkstationJournalTip" value="heatMapTip"/>
 			<property class="RepairItems">
-				<property name="resourceScrapIron" value="10"/>
-			</property>
+				<property name="resourceScrapIron" value="10"/></property>
 			<drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
 			<drop event="Harvest" name="resourceMechanicalParts" count="0,1" tag="salvageHarvest"/>
 			<drop event="Harvest" name="toolCookingGrill" count="0,1" tag="salvageHarvest"/>
@@ -424,7 +363,6 @@
 			<property name="SellableToTrader" value="false"/>
 			<property name="StabilitySupport" value="false"/>
 		</block>
-		
 		<block name="WorkingGasGrill">
 			<property name="Class" value="Workstation"/>
 			<property name="CustomIcon" value="cntGasGrillClosed"/>
@@ -441,8 +379,7 @@
 			<property class="Workstation">
 				<property name="Modules" value="tools,output,fuel,input"/>
 				<property name="CraftingAreaRecipes" value="campfire" />
-				<property name="Collide" value="melee,bullet,arrow,rocket"/>
-			</property>
+				<property name="Collide" value="melee,bullet,arrow,rocket"/></property>
 			<property name="UnlockedBy" value="perkCooking"/>
 			<property name="WorkstationIcon" value="ui_game_symbol_campfire"/>
 			<property name="CraftActionName" value="lblContextActionCook"/>
@@ -455,8 +392,7 @@
 			<property name="CraftCompleteSound" value="campfire_complete_item"/>
 			<property name="WorkstationJournalTip" value="heatMapTip"/>
 			<property class="RepairItems">
-				<property name="resourceScrapIron" value="10"/>
-			</property>
+				<property name="resourceScrapIron" value="10"/></property>
 			<drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
 			<drop event="Harvest" name="resourceMechanicalParts" count="0,1" tag="salvageHarvest"/>
 			<drop event="Harvest" name="toolCookingGrill" count="0,1" tag="salvageHarvest"/>
@@ -467,55 +403,38 @@
 			<property name="SellableToTrader" value="false"/>
 			<property name="StabilitySupport" value="false"/>
 		</block>
-
-
-</append>
-
+	</append>
 	<remove xpath="/blocks/block[@name='cntCharcoalGrillRandomLootHelper']/drop"/>
 	<append xpath="/blocks/block[@name='cntCharcoalGrillRandomLootHelper']">
-		
 		<drop event="Destroy" name="cntCharcoalGrillOpen" count="1" tool_category="Disassemble"  prob="1" />
 		<drop event="Destroy" count="0" />
 		<property name="CanPickup" value="true" />
 	</append>
 	<remove xpath="/blocks/block[@name='cntGasGrillRandomLootHelper']/drop"/>
 	<append xpath="/blocks/block[@name='cntGasGrillRandomLootHelper']">
-<property name="EconomicValue" value="587"/>
-<property name="SellableToTrader" value="true" />
-		
+		<property name="EconomicValue" value="587"/>
+		<property name="SellableToTrader" value="true" />
 		<drop event="Destroy" name="cntGasGrillOpen" count="1" tool_category="Disassemble"  prob="1" />
 		<drop event="Destroy" count="0" />
-
 		<!--<property name="CanPickup" value="true" />-->
 	</append>
-	
-<remove xpath="/blocks/block[@name='cntStoveOldVer2Open']/drop"/>
+	<remove xpath="/blocks/block[@name='cntStoveOldVer2Open']/drop"/>
 	<append xpath="/blocks/block[@name='cntStoveOldVer2Open']">
 		<property name="Tags" value="Car,WrenchXPGain"/>
 		<drop event="Destroy" name="cntStoveModernVer2Open" count="1" tool_category="Disassemble"  prob="1" />
 		<drop event="Destroy" count="0" />
 		<property name="CanPickup" value="false" />
 	</append>
-<set xpath="//block[@name='cntStoveOldVer2Open']/property[@name='Tags']/@value">Car</set>
-
-<set xpath="//block[@name='cntGasGrillRandomLootHelper']/property[@name='Tags']/@value">Car</set>
-<set xpath="//block[@name='cntCharcoalGrillRandomLootHelper']/property[@name='Tags']/@value">Car</set>
-<append xpath="/blocks/block[@name='cntRetroFridgeVer2Open']">
-		
+	<set xpath="//block[@name='cntStoveOldVer2Open']/property[@name='Tags']/@value">Car</set>
+	<set xpath="//block[@name='cntGasGrillRandomLootHelper']/property[@name='Tags']/@value">Car</set>
+	<set xpath="//block[@name='cntCharcoalGrillRandomLootHelper']/property[@name='Tags']/@value">Car</set>
+	<append xpath="/blocks/block[@name='cntRetroFridgeVer2Open']">
 		<property name="CanPickup" value="true" />
 	</append>
 	<append xpath="/blocks/block[@name='cntFridgeStainlessSteelVer2Open']">
-		
 		<property name="CanPickup" value="true" />
 	</append>
-
-
-
-
-
-
-
-<!-- dead trees -->
+	<!-- dead trees -->
 	<remove xpath="/blocks/block[@name='treeDeadTree01']/drop[@name='resourceWood']"/>
 	<append xpath="/blocks/block[@name='treeDeadTree01']">
 		<drop event="Harvest" name="woodLogPillar100" count="3" tag="oreWoodHarvest"/>
@@ -721,142 +640,130 @@
 	<append xpath="/blocks/block[@name='plantHedge']">
 		<drop event="Harvest" name="woodBranch" count="5,15" tag="oreWoodHarvest"/>
 	</append>
-
-
-
-
-<!-- tree trimming-->
-
-<append xpath="/blocks/block[@name='treePlantedMountainPine1m']">
+	<!-- tree trimming-->
+	<append xpath="/blocks/block[@name='treePlantedMountainPine1m']">
 		<property name="FallOver" value="false" />
 	</append>
 	<append xpath="/blocks/block[@name='treePlantedMountainPine12m']">
 		<property name="FallOver" value="false" />
-			<property name="DowngradeBlock" value="treeStump"/>
+		<property name="DowngradeBlock" value="treeStump"/>
 	</append>
 	<append xpath="/blocks/block[@name='treePlantedMountainPine19m']">
 		<property name="FallOver" value="false" />
-			<property name="DowngradeBlock" value="treeStump"/>
+		<property name="DowngradeBlock" value="treeStump"/>
 	</append>
 	<append xpath="/blocks/block[@name='treePlantedMountainPine27m']">
 		<property name="FallOver" value="false" />
-			<property name="DowngradeBlock" value="treeStump"/>
+		<property name="DowngradeBlock" value="treeStump"/>
 	</append>
 	<append xpath="/blocks/block[@name='treePlantedMountainPine41m']">
 		<property name="FallOver" value="false" />
-			<property name="DowngradeBlock" value="treeStump"/>
+		<property name="DowngradeBlock" value="treeStump"/>
 	</append>
 	<append xpath="/blocks/block[@name='treePlantedOak1m']">
 		<property name="FallOver" value="false" />
 	</append>
 	<append xpath="/blocks/block[@name='treePlantedOak08m']">
 		<property name="FallOver" value="false" />
-			<property name="DowngradeBlock" value="treeStump"/>
+		<property name="DowngradeBlock" value="treeStump"/>
 	</append>
 	<append xpath="/blocks/block[@name='treePlantedOak16m']">
 		<property name="FallOver" value="false" />
-			<property name="DowngradeBlock" value="treeStump"/>
+		<property name="DowngradeBlock" value="treeStump"/>
 	</append>
 	<append xpath="/blocks/block[@name='treePlantedOak27m']">
 		<property name="FallOver" value="false" />
-			<property name="DowngradeBlock" value="treeStump"/>
+		<property name="DowngradeBlock" value="treeStump"/>
 	</append>
 	<append xpath="/blocks/block[@name='treePlantedOak41m']">
 		<property name="FallOver" value="false" />
-			<property name="DowngradeBlock" value="treeStump"/>
+		<property name="DowngradeBlock" value="treeStump"/>
 	</append>
 	<append xpath="/blocks/block[@name='treeMountainPine12m']">
 		<property name="FallOver" value="false" />
-			<property name="DowngradeBlock" value="treeStump"/>
+		<property name="DowngradeBlock" value="treeStump"/>
 	</append>
 	<append xpath="/blocks/block[@name='treeMountainPine19m']">
 		<property name="FallOver" value="false" />
-			<property name="DowngradeBlock" value="treeStump"/>
+		<property name="DowngradeBlock" value="treeStump"/>
 	</append>
 	<append xpath="/blocks/block[@name='treeMountainPine27m']">
 		<property name="FallOver" value="false" />
-			<property name="DowngradeBlock" value="treeStump"/>
+		<property name="DowngradeBlock" value="treeStump"/>
 	</append>
 	<append xpath="/blocks/block[@name='treeMountainPine31m']">
 		<property name="FallOver" value="false" />
-			<property name="DowngradeBlock" value="treeStump"/>
+		<property name="DowngradeBlock" value="treeStump"/>
 	</append>
 	<append xpath="/blocks/block[@name='treeMountainPine41m']">
 		<property name="FallOver" value="false" />
-			<property name="DowngradeBlock" value="treeStump"/>
+		<property name="DowngradeBlock" value="treeStump"/>
 	</append>
 	<append xpath="/blocks/block[@name='treeMountainPine48m']">
 		<property name="FallOver" value="false" />
-			<property name="DowngradeBlock" value="treeStump"/>
+		<property name="DowngradeBlock" value="treeStump"/>
 	</append>
 	<append xpath="/blocks/block[@name='treeMountainPineDry21m']">
 		<property name="FallOver" value="false" />
-			<property name="DowngradeBlock" value="treeStump"/>
+		<property name="DowngradeBlock" value="treeStump"/>
 	</append>
 	<append xpath="/blocks/block[@name='treeBurntMaple01']">
 		<property name="FallOver" value="false" />
-			<property name="DowngradeBlock" value="treeStump"/>
+		<property name="DowngradeBlock" value="treeStump"/>
 	</append>
 	<append xpath="/blocks/block[@name='treeBurntMaple02']">
 		<property name="FallOver" value="false" />
-			<property name="DowngradeBlock" value="treeStump"/>
+		<property name="DowngradeBlock" value="treeStump"/>
 	</append>
 	<append xpath="/blocks/block[@name='treeBurntMaple03']">
 		<property name="FallOver" value="false" />
-			<property name="DowngradeBlock" value="treeStump"/>
+		<property name="DowngradeBlock" value="treeStump"/>
 	</append>
-<append xpath="/blocks/block[contains(@name,'treePineBurnt')]">
+	<append xpath="/blocks/block[contains(@name,'treePineBurnt')]">
 		<property name="FallOver" value="false" />
-			<property name="DowngradeBlock" value="treeStump"/>
+		<property name="DowngradeBlock" value="treeStump"/>
 	</append>
-
-
-
-
-
-
-
 	<append xpath="/blocks/block[@name='treeOakSml01']">
 		<property name="FallOver" value="false" />
 	</append>
 	<append xpath="/blocks/block[@name='treeOakMed01']">
 		<property name="FallOver" value="false" />
-			<property name="DowngradeBlock" value="treeStump"/>
+		<property name="DowngradeBlock" value="treeStump"/>
 	</append>
 	<append xpath="/blocks/block[@name='treeOakMed02']">
 		<property name="FallOver" value="false" />
-			<property name="DowngradeBlock" value="treeStump"/>
+		<property name="DowngradeBlock" value="treeStump"/>
 	</append>
 	<append xpath="/blocks/block[@name='treeOakLrg01']">
 		<property name="FallOver" value="false" />
-			<property name="DowngradeBlock" value="treeStump"/>
+		<property name="DowngradeBlock" value="treeStump"/>
 	</append>
 	<append xpath="/blocks/block[@name='treeFirLrg01']">
 		<property name="FallOver" value="false" />
-			<property name="DowngradeBlock" value="treeStump"/>
+		<property name="DowngradeBlock" value="treeStump"/>
 	</append>
 	<append xpath="/blocks/block[@name='treeWinterEverGreen']">
 		<property name="FallOver" value="false" />
-			<property name="DowngradeBlock" value="treeStump"/>
+		<property name="DowngradeBlock" value="treeStump"/>
 	</append>
 	<append xpath="/blocks/block[@name='treeWinterPine13m']">
 		<property name="FallOver" value="false" />
-			<property name="DowngradeBlock" value="treeStump"/>
+		<property name="DowngradeBlock" value="treeStump"/>
 	</append>
 	<append xpath="/blocks/block[@name='treeWinterPine19m']">
 		<property name="FallOver" value="false" />
-			<property name="DowngradeBlock" value="treeStump"/>
+		<property name="DowngradeBlock" value="treeStump"/>
 	</append>
 	<append xpath="/blocks/block[@name='treeWinterPine28m']">
 		<property name="FallOver" value="false" />
-			<property name="DowngradeBlock" value="treeStump"/>
+		<property name="DowngradeBlock" value="treeStump"/>
 	</append>
 	<append xpath="/blocks/block[@name='treePlainsTree']">
 		<property name="FallOver" value="false" />
-			<property name="DowngradeBlock" value="treeStump"/>
+		<property name="DowngradeBlock" value="treeStump"/>
 	</append>
 	<append xpath="/blocks/block[@name='treePlainsTree2']">
-			<property name="DowngradeBlock" value="treeStump"/>
+		<property name="DowngradeBlock" value="treeStump"/>
 		<property name="FallOver" value="false" />
 	</append>
 	<append xpath="/blocks/block[@name='treeDeadPineLeaf']">
@@ -867,63 +774,53 @@
 	</append>
 	<append xpath="/blocks/block[@name='treeAzalea']">
 		<property name="FallOver" value="false" />
-		
 	</append>
 	<append xpath="/blocks/block[@name='treeJuniper4m']">
 		<property name="FallOver" value="false" />
-			<!--<property name="DowngradeBlock" value="treeStump"/>-->
+		<!--<property name="DowngradeBlock" value="treeStump"/>-->
 	</append>
 	<append xpath="/blocks/block[@name='treeDeadTree01']">
 		<property name="FallOver" value="false" />
-			<!--<property name="DowngradeBlock" value="treeStump"/>-->
+		<!--<property name="DowngradeBlock" value="treeStump"/>-->
 	</append>
 	<append xpath="/blocks/block[@name='treeDeadTree02']">
 		<property name="FallOver" value="false" />
-			<!--<property name="DowngradeBlock" value="treeStump"/>-->
+		<!--<property name="DowngradeBlock" value="treeStump"/>-->
 	</append>
 	<append xpath="/blocks/block[@name='treePlantedWinterPine1m']">
 		<property name="FallOver" value="false" />
-			<!--<property name="DowngradeBlock" value="treeStump"/>-->
+		<!--<property name="DowngradeBlock" value="treeStump"/>-->
 	</append>
 	<append xpath="/blocks/block[@name='treePlantedWinterPine6m']">
 		<property name="FallOver" value="false" />
-			<property name="DowngradeBlock" value="treeStump"/>
+		<property name="DowngradeBlock" value="treeStump"/>
 	</append>
 	<append xpath="/blocks/block[@name='treePlantedWinterPine13m']">
 		<property name="FallOver" value="false" />
-			<property name="DowngradeBlock" value="treeStump"/>
+		<property name="DowngradeBlock" value="treeStump"/>
 	</append>
 	<append xpath="/blocks/block[@name='treePlantedWinterPine19m']">
 		<property name="FallOver" value="false" />
-			<property name="DowngradeBlock" value="treeStump"/>
+		<property name="DowngradeBlock" value="treeStump"/>
 	</append>
 	<append xpath="/blocks/block[@name='treePlantedWinterPine28m']">
 		<property name="FallOver" value="false" />
-			<property name="DowngradeBlock" value="treeStump"/>
+		<property name="DowngradeBlock" value="treeStump"/>
 	</append>
-
-
-
-
-
 	<setattribute xpath="blocks/block[starts-with(@name, 'tree')]/drop[(@event='Destroy') and (@name='treePlantedMountainPine1m' or @name='treePlantedOak1m' or @name='treePlantedWinterPine1m')]" name="prob">0.03</setattribute>
 	<setattribute xpath="blocks/block[starts-with(@name, 'tree')]/drop[(@event='Destroy') and (@name='treePlantedMountainPine1m' or @name='treePlantedOak1m' or @name='treePlantedWinterPine1m')]" name="count">1</setattribute>
-
-
 	<set xpath="//block/property[(@name='UnlockedBy') and (@value='craftingSeeds')]/@value">PerkHOHFarming</set>
-
-<remove xpath="/blocks/block[@name='decoMannequinMilitaryCommando']"/>
-<append xpath="/blocks">
-<block name="decoMannequinMilitaryCommando">
-    <property name="Extends" value="decoMannequinMale" />
-    <property name="Model" value="@:Entities/Commercial/mannequinMilitaryCommandoPrefab.prefab"/>
-	<property name="Class" value="Loot"/>
-    <property name="LootList" value="militarymannequin"/>
-	<property name="SortOrder2" value="0004" />
-         
-  </block>
-  </append>
-  <append xpath="/blocks" >
+	<remove xpath="/blocks/block[@name='decoMannequinMilitaryCommando']"/>
+	<append xpath="/blocks">
+		<block name="decoMannequinMilitaryCommando">
+			<property name="Extends" value="decoMannequinMale" />
+			<property name="Model" value="@:Entities/Commercial/mannequinMilitaryCommandoPrefab.prefab"/>
+			<property name="Class" value="Loot"/>
+			<property name="LootList" value="militarymannequin"/>
+			<property name="SortOrder2" value="0004" />
+		</block>
+	</append>
+	<append xpath="/blocks" >
 		<block name="barrierMilitaryConcrete">
 			<property name="CreativeMode" value="Player"/>
 			<property name="EconomicValue" value="5"/>
@@ -947,13 +844,13 @@
 			<property name="SortOrder2" value="0000"/>
 			<property name="FilterTags" value="MC_building,SC_commercial,SC_construction,SC_decor,A21_NEW"/>
 		</block>
-</append>
-<append xpath="/blocks/block[@name='tankPropaneWhite']">
+	</append>
+	<append xpath="/blocks/block[@name='tankPropaneWhite']">
 		<property name="Class" value="Loot"/>
 		<property name='LootList' value='tankPropaneWhite'/>
 	</append>
-<append xpath="//block[starts-with(@name,'mine')]/property[@name='Tags']/@value">,PerkHOHTraps</append>
-<append xpath="//block[contains(@name,'spawnTrader')]/property[@name='SpawnClass']/@value">,npcTraderMilitary</append>
+	<append xpath="//block[starts-with(@name,'mine')]/property[@name='Tags']/@value">,PerkHOHTraps</append>
+	<append xpath="//block[contains(@name,'spawnTrader')]/property[@name='SpawnClass']/@value">,npcTraderMilitary</append>
 	<set xpath="/blocks/block[@name='manholeHatch']/property[@name='OnlySimpleRotations']/@value">false</set>
 	<set xpath="/blocks/block[@name='manholeHatch']/property[@name='Material']/@value">Mbedrock</set>
 	<append xpath="/blocks">
@@ -1191,7 +1088,6 @@
 			<property name="FilterTags" value="MC_building,SC_automotive,A21_NEW"/>
 			<property name="Collide" value="sight,movement,melee,bullet,arrow,rocket"/>
 		</block>
-		
 		<block name="d2rSpawningPlane">
 			<property name="CustomIcon" value="" />
 			<property name="Class" value="CarExplodeLoot"/>
@@ -1250,7 +1146,6 @@
 			<drop event="Destroy" count="0"/>
 			<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
 		</block>
-		
 		<block name="5DBedrockMaster">
 			<property name="CreativeMode" value="None"/>
 			<property name="Group" value="Building,advBuilding"/>
@@ -1395,7 +1290,6 @@
 			<property name="TintColor" value="A6A6A6"/>
 			<property name="SortOrder2" value="0108"/>
 		</block>
-	
 		<block name="PalletGold">
 			<property name="CreativeMode" value="Dev"/>
 			<property name="Class" value="Loot"/>
@@ -1578,7 +1472,8 @@
 			<drop event="Fall" name="scrapMetalPile" count="1" prob="0.6" stick_chance="1"/>
 			<property name="Group" value="Building"/>
 			<property name="Pickable" value="false"/>
-		</block><block name="Bank_Vault_Opening">
+		</block>
+		<block name="Bank_Vault_Opening">
 			<!-- Class -->
 			<property name="Class" value="DoorSecure"/>
 			<!-- UI_Info -->
@@ -1743,7 +1638,8 @@
 			<property name="UiBackgroundTexture" value="355"/>
 			<property name="CustomIconTint" value="2DAA17"/>
 			<property name="TintColor" value="7C7974"/>
-			<property name="BuffsWhenWalkedOn" value="buffBurningMolotov"/> <!--buffRadiatedRegenSNJ-->
+			<property name="BuffsWhenWalkedOn" value="buffBurningMolotov"/>
+			<!--buffRadiatedRegenSNJ-->
 			<property name="SortOrder1" value="S040"/>
 			<!-- SortOrder2 is assigned in code to keep all of the shapes in the same order for each material -->
 			<property name="Group" value="Building,advBuilding"/>
@@ -1940,17 +1836,16 @@
 			<property name="ModelOffset" value="0,0,0"/>
 		</block>
 		<block name="5D_LMTV">
-            <property name="CustomIcon" value="5D_LMTV"/>
-            <property name="TerrainAlignment" value="Vehicle"/>
-            <property name="Extends" value="5DCarMili"/>
-            <property name="CreativeMode" value="Player"/>
-            <property name="Class" value="CarExplodeLoot"/>
-            <property name="LootList" value="armyTruck"/>
-            <property name="Model" value="#@modfolder:Assets/5D_Surplus_2.unity3d?CF_LMTV"/>
-            <property name="MultiBlockDim" value="3,3,7"/>
-            <property name="ModelOffset" value="0,0,.1"/>
-        </block>
-
+			<property name="CustomIcon" value="5D_LMTV"/>
+			<property name="TerrainAlignment" value="Vehicle"/>
+			<property name="Extends" value="5DCarMili"/>
+			<property name="CreativeMode" value="Player"/>
+			<property name="Class" value="CarExplodeLoot"/>
+			<property name="LootList" value="armyTruck"/>
+			<property name="Model" value="#@modfolder:Assets/5D_Surplus_2.unity3d?CF_LMTV"/>
+			<property name="MultiBlockDim" value="3,3,7"/>
+			<property name="ModelOffset" value="0,0,.1"/>
+		</block>
 		<block name="5D_C17_Complete">
 			<property name="CustomIcon" value="5D_C17"/>
 			<property name="TerrainAlignment" value="Vehicle"/>
@@ -1959,10 +1854,10 @@
 			<property name="Class" value="CarExplodeLoot"/>
 			<property name="LootList" value="armyTruck"/>
 			<property name="Model" value="#@modfolder:Assets/5D_Planes.unity3d?CF_C17_Whole"/>
-			<property name="MultiBlockDim" value="20,2,5"/><!--52,18,56"/>-->
+			<property name="MultiBlockDim" value="20,2,5"/>
+			<!--52,18,56"/>-->
 			<property name="ModelOffset" value="0,1.3,0"/>
 		</block>
-
 		<block name="SNJsignNeonColdBeer">
 			<property name="Extends" value="ceilingLight01_player"/>
 			<property name="CreativeMode" value="Player"/>
@@ -1983,306 +1878,243 @@
 			<property name="FilterTags" value="MC_playerBlocks,SC_electrical"/>
 		</block>
 	</append>
-
-
-
-
-<append xpath="//block[@name='commercialQuadMeter']">
-	<drop event="Destroy" name="commercialQuadMeter" count="1"/>
-	<property name="EconomicValue" value="500"/>
-	<property name="EconomicBundleSize" value="1"/>
-</append>
-<set xpath="//block[@name='batterybank']/property[@name='Model']/@value">@:Entities/Industrial/electricalFuseBoxBuilding_06Prefab.prefab</set>
-<append xpath="//block[@name='batterybank']"><property name="CustomIcon" value="commercialQuadMeter"/><property name="Place" value="TowardsPlacerInverted"/></append>
-<remove xpath="/blocks/block[@name='batterybank']/property[@name='UnlockedBy']"/>
-<set xpath="//block[@name='electricwirerelay']/property[@name='Model']/@value">@:Entities/Industrial/singleHomeFuseBox_04Prefab.prefab</set>
-<append xpath="//block[@name='electricwirerelay']"><property name="CustomIcon" value="breakerBoxClosed"/><property name="Place" value="TowardsPlacerInverted"/></append>
-<set xpath="//block[@name='switch']/property[@name='Model']/@value">@:Entities/Doors/elevatorDoor/elevatorOutsideButtonPanelPrefab.prefab</set>
-
-
-<set xpath="//block[@name='electrictimerrelay']/property[@name='Model']/@value">@:Entities/Industrial/electricalFuseBoxBuilding_01Prefab.prefab</set>
-<append xpath="//block[@name='electrictimerrelay']"><property name="CustomIcon" value="commercialSingleMeterDisconnect"/><property name="WireOffset" value="0,0,-.5"/><property name="Place" value="TowardsPlacerInverted"/></append>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<append xpath="//block[@name='switch']">
-			<property name="CustomIcon" value="elevatorOutsideButtonPanel"/>
-			<property name="ModelOffset" value="0,-.5,-.5"/>
-			<property name="WireOffset" value="0,.1,-.5"/>
-</append>			
-
-
-
-<remove xpath="/blocks/block[@name='cntCollapsedGeneratorbank']/drop[@event='Harvest']"/>
-<remove xpath="/blocks/block[@name='cntCollapsedGeneratorbank']/drop[@event='Destroy']"/>
-<append xpath="/blocks/block[@name='cntCollapsedGeneratorbank']">
-	<drop event="Harvest" name="" count="0" tool_category="Disassemble"/>
-    <drop event="Destroy" name="cntCollapsedGeneratorbank" count="1" tool_category="Disassemble"/>
-    <drop event="Fall" name="cntCollapsedGeneratorbank" count="1" prob="0.5" stick_chance="1"/>
- </append>
-<set xpath="//block[@name='generatorbank']/property[@name='Model']/@value">@:Entities/Electrical/smallGeneratorPrefab.prefab</set>
+	<append xpath="//block[@name='commercialQuadMeter']">
+		<drop event="Destroy" name="commercialQuadMeter" count="1"/>
+		<property name="EconomicValue" value="500"/>
+		<property name="EconomicBundleSize" value="1"/>
+	</append>
+	<set xpath="//block[@name='batterybank']/property[@name='Model']/@value">@:Entities/Industrial/electricalFuseBoxBuilding_06Prefab.prefab</set>
+	<append xpath="//block[@name='batterybank']">
+		<property name="CustomIcon" value="commercialQuadMeter"/>
+		<property name="Place" value="TowardsPlacerInverted"/>
+	</append>
+	<remove xpath="/blocks/block[@name='batterybank']/property[@name='UnlockedBy']"/>
+	<set xpath="//block[@name='electricwirerelay']/property[@name='Model']/@value">@:Entities/Industrial/singleHomeFuseBox_04Prefab.prefab</set>
+	<append xpath="//block[@name='electricwirerelay']">
+		<property name="CustomIcon" value="breakerBoxClosed"/>
+		<property name="Place" value="TowardsPlacerInverted"/>
+	</append>
+	<set xpath="//block[@name='switch']/property[@name='Model']/@value">@:Entities/Doors/elevatorDoor/elevatorOutsideButtonPanelPrefab.prefab</set>
+	<set xpath="//block[@name='electrictimerrelay']/property[@name='Model']/@value">@:Entities/Industrial/electricalFuseBoxBuilding_01Prefab.prefab</set>
+	<append xpath="//block[@name='electrictimerrelay']">
+		<property name="CustomIcon" value="commercialSingleMeterDisconnect"/>
+		<property name="WireOffset" value="0,0,-.5"/>
+		<property name="Place" value="TowardsPlacerInverted"/>
+	</append>
+	<append xpath="//block[@name='switch']">
+		<property name="CustomIcon" value="elevatorOutsideButtonPanel"/>
+		<property name="ModelOffset" value="0,-.5,-.5"/>
+		<property name="WireOffset" value="0,.1,-.5"/>
+	</append>
+	<remove xpath="/blocks/block[@name='cntCollapsedGeneratorbank']/drop[@event='Harvest']"/>
+	<remove xpath="/blocks/block[@name='cntCollapsedGeneratorbank']/drop[@event='Destroy']"/>
+	<append xpath="/blocks/block[@name='cntCollapsedGeneratorbank']">
+		<drop event="Harvest" name="" count="0" tool_category="Disassemble"/>
+		<drop event="Destroy" name="cntCollapsedGeneratorbank" count="1" tool_category="Disassemble"/>
+		<drop event="Fall" name="cntCollapsedGeneratorbank" count="1" prob="0.5" stick_chance="1"/>
+	</append>
+	<set xpath="//block[@name='generatorbank']/property[@name='Model']/@value">@:Entities/Electrical/smallGeneratorPrefab.prefab</set>
 	<append xpath="/blocks/block[@name='solarbank']">
-	    <property name="UnlockedBy" value="PerkHOHWrenches"/>
+		<property name="UnlockedBy" value="PerkHOHWrenches"/>
 		<property name="MaxPower" value="1200"/>
-			<property name="OutputPerStack" value="200"/>
-    	<property name="Tags" value="workstationSkill"/>
-  </append>
-	
-<append xpath="/blocks">
-	<block name="MiliShelfSml">
-		<property name="CreativeMode" value="Player"/>
-		<property name="Class" value="SecureLootSigned"/>
-		<property name="LootList" value="HOHChestsml"/>
-		<property name="CustomIcon" value="cntShippingCrateSml"/>
-		<property name="DescriptionKey" value="cntStorageGenericSignedDesc"/>
-		<property name="Shape" value="ModelEntity"/>
-		<property name="Model" value="#@modfolder:Assets/Racking.unity3d?MilitaryRackingSml"/>
-		<property name="MultiBlockDim" value="1,1,1"/>
-		<property name="ModelOffset" value="0,0,0"/>
-		<property name="Material" value="Mplastics"/>
-		
-		<property name="Place" value="TowardsPlacer"/>
-		<property name="EconomicValue" value="6"/>
-		<property name="MaxDamage" value="1000"/>
-		<property class="RepairItems">
-			<property name="resourceScrapPolymers" value="10"/>
-		</property>
-		<drop event="Destroy" name="resourceScrapPolymers" count="25,50"/>
-		<property name="SortOrder1" value="B106"/>
-		<property name="SortOrder2" value="0010"/>
-		<property name="Group" value="Building,advBuilding"/>
-		<property name="Tags" value="timecharge"/>
-		<property name="FilterTags" value="MC_playerBlocks,SC_decor"/>
-	</block>
-
-	<block name="MiliShelfLrg">
-		<property name="CreativeMode" value="Player"/>
-		<property name="Class" value="SecureLootSigned"/>
-		<property name="LootList" value="HOHChestlrg"/>
-		<property name="CustomIcon" value="cntShippingCrateLrg"/>
-		<property name="DescriptionKey" value="cntStorageGenericSignedDesc"/>
-		<property name="Shape" value="ModelEntity"/>
-		<property name="Model" value="#@modfolder:Assets/Racking.unity3d?MilitaryRackingLrg"/>
-		<property name="MultiBlockDim" value="2,1,1"/>
-		
-		<property name="ModelOffset" value="-.5,0,0"/>
-		<property name="Material" value="Mplastics"/>
-		<property name="Place" value="TowardsPlacer"/>
-		<property name="EconomicValue" value="6"/>
-		<property name="MaxDamage" value="2000"/>
-		<property class="RepairItems">
-			<property name="resourceScrapPolymers" value="20"/>
-		</property>
-		<drop event="Destroy" name="resourceScrapPolymers" count="50,100"/>
-		<property name="SortOrder1" value="B106"/>
-		<property name="SortOrder2" value="0010"/>
-		<property name="Group" value="Building,advBuilding"/>
-		<property name="Tags" value="timecharge"/>
-		<property name="FilterTags" value="MC_playerBlocks,SC_decor"/>
-	</block>
-</append>
-<append xpath="//block[@name='terrGravel']/property[@name='Tags']">,ShovelXPGain</append>
-
-
-<remove xpath="//block[@name='MiliShelfSml']/drop"/>
- <append xpath="//block[@name='MiliShelfSml']">
-     <drop event="Destroy" name="MiliShelfSml" count="1" tool_category="Disassemble" />
-  </append>
- <remove xpath="//block[@name='MiliShelfLrg']/drop"/>
- <append xpath="//block[@name='MiliShelfLrg']">
-     <drop event="Destroy" name="MiliShelfLrg" count="1" tool_category="Disassemble" />
-  </append>
-
-
-<remove xpath="//block[@name='decoComputerMonitorKeyboardMouse']"/>
-<append xpath="/blocks">
-<block name="decoComputerMonitorKeyboardMouse">
-    <property name="Extends" value="decoEntityMetalMaster" param1="RepairItems,CustomIcon" />
-    
-	<property name="DisplayType" value="blockMulti" />
-    <property name="Model" value="@:Entities/Electrical/monitorKeyboardMousePrefab.Prefab"/>
-    <property name="ModelOffset" value=".5,.5,0" />
-    <property name="MultiBlockDim" value="2,1,1" />
-    <property name="SortOrder2" value="0002" />
-    <property name="Class" value="Loot">
-      <!--Element appended by: "SNJ-LootableChanges"-->
-    </property>
-    <property name="LootList" value="computer1">
-      <!--Element appended by: "SNJ-LootableChanges"-->
-    </property>
-	
-	
-	
-	
-    <property name="WaterFlow" value="permitted" />
-    <property name="Path" value="solid" />
-    <property class="RepairItems">
-      <property name="resourceScrapPolymers" value="4" />
-      <property name="resourceElectricParts" value="6" />
-      <property name="resourceForgedIron" value="1" />
-    </property>
-    <property name="SortOrder1" value="B163" />
-    <property name="SortOrder2" value="0001" />
-    <property name="FilterTags" value="MC_building,SC_electrical" />
-    <property name="Tags" value="challenge_elec_parts,WrenchXPGain">
-    
-    </property>
-    <property name="EconomicValue" value="350">
-    
-    </property>
-    <property name="Stacknumber" value="100">
-    
-    </property>
-    <property name="TakeDelay" value="10">
-    </property>
-	  <drop event="Destroy" name="decoComputerMonitorKeyboardMouse" count="1" tool_category="Disassemble" />
-  </block>
-
-
-
-<block name="FlatIronSpikes">
-	<property name="CreativeMode" value="Player"/>
-	<property name="Class" value="TrunkTip"/>
-<property name="UnlockedBy" value="perkTraps"/>
-	<property name="DisplayType" value="blockElectricalHardened"/>
-	<property name="Material" value="MtrapSpikesIron"/>
-	<property name="Shape" value="ModelEntity"/>
-	<property name="Model" value="#@modfolder:Assets/Traps.unity3d?SpikeTrap"/>
-	<property name="ModelOffset" value="0,0,0"/>
-	<property name="MultiBlockDim" value="1,1,1"/>
-	<property name="ImposterExchange" value="imposterPlate" param1="143"/>
-	<property name="WaterFlow" value="permitted"/>
-	<property name="HandleFace" value="Bottom"/>
-	<property name="AllowedRotations" value="Basic90"/>
-	<property name="EconomicValue" value="124"/>
-	<property name="SoundPickup" value="triggerplate_grab"/>
-	<property name="SoundPlace" value="triggerplate_place"/>
-	<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
-	<property name="Damage" value="33"/><!--ent-titty-->
-	<property name="Damage_received" value="15"/><!--block-->
-	<property name="DamageType" value="Special" />
-	<property name="MaxDamage" value="1000"/>
-		
-	<drop event="Destroy" count="0"/>
-	<property class="RepairItems">
-		<property name="resourceForgedIron" value="8"/>
-	</property>
-	<property name="SortOrder1" value="B155"/>
-	<property name="SortOrder2" value="0008"/>
-	<property name="Group" value="Tools/Traps"/>
-	<property name="BlockTag" value="Spike"/>
-	<property name="FilterTags" value="MC_building,SC_traps"/>
-</block>
-<block name="FlatTarTrap">
-	<property name="Material" value="MbarbedWire"/>
-	<property name="UnlockedBy" value="perkTraps"/>
-	<property name="Shape" value="ModelEntity" />
-	<property name="ModelOffset" value="0,0,0"/>
-	<property name="MultiBlockDim" value="1,1,1"/>
-	<property name="OnlySimpleRotations" value="true"/>
-	<property name="Model" value="#@modfolder:Assets/Traps.unity3d?OilTrap"/>
-
-	<property name="Group" value="Tools/Traps"/>	
-	    <property name="Class" value="Damage" />
-        <property name="Damage" value="1" />
-        <property name="Damage_received" value="5" />
-		<property name="MaxDamage" value="290"/>
-	<property name="BuffsWhenWalkedOn" value="buffInjuryKnockdown02"/>
-	<property name="DowngradeBlock" value="FlatTarTrapEmpty" />
-	<property class="RepairItems">
-		<property name="resourceOil" value="2"/>
-	</property>		
-</block>
-<block name="FlatTarTrapEmpty">
-	<property name="Material" value="MbarbedWire"/>
-	<property name="CustomIcon" value="tartrap"/>
-	<property name="TintColor" value="b37676"/>
-	<property name="Shape" value="ModelEntity" />
-	<property name="ModelOffset" value="0,0,0"/>
-	<property name="MultiBlockDim" value="1,1,1"/>
-	<property name="OnlySimpleRotations" value="true"/>
-	<property name="Model" value="#@modfolder:Assets/Traps.unity3d?OilTrap"/>
-	<property name="Group" value="Tools/Traps"/>	
-	   
-		<property name="MaxDamage" value="290"/>
-	
-	
-	<property class="RepairItems">
-		<property name="resourceForgedIron" value="5"/>
-	</property>	
-	<property class="UpgradeBlock">
-            <property name="ToBlock" value="FlatTarTrap" />
-            <property name="Item" value="resourceOil" />
-            <property name="ItemCount" value="5" />
-            <property name="UpgradeHitCount" value="1" />
-        </property>	
-</block>
-<block name="FlatFireTrap">
-	<property name="Material" value="MbarbedWire"/>
-	<property name="UnlockedBy" value="perkTraps"/>
-	<property name="Shape" value="ModelEntity" />
-	<property name="ModelOffset" value="0,0,0"/>
-	<property name="MultiBlockDim" value="1,1,1"/>
-	<property name="OnlySimpleRotations" value="true"/>
-	<property name="Model" value="#@modfolder:Assets/Traps.unity3d?OilTrap"/>
-	<property name="Group" value="Tools/Traps"/>	
-	    <property name="Class" value="Damage" />
-        <property name="Damage" value="1" />
-        <property name="Damage_received" value="5" />
-		<property name="MaxDamage" value="290"/>
-		
-	<property name="BuffsWhenWalkedOn" value="buffBurningMolotov"/>
-	<property name="DowngradeBlock" value="FlatFireTrapEmpty" />
-	<property class="RepairItems">
-		<property name="resourceForgedIron" value="5"/>
-	</property>		
-</block>
-<block name="FlatFireTrapEmpty">
-	<property name="Material" value="MbarbedWire"/>
-	<property name="CustomIcon" value="tartrap"/>
-	<property name="TintColor" value="b37676"/>
-	<property name="Shape" value="ModelEntity" />
-	<property name="ModelOffset" value="0,0,0"/>
-	<property name="MultiBlockDim" value="1,1,1"/>
-	<property name="OnlySimpleRotations" value="true"/>
-	<property name="Model" value="#@modfolder:Assets/Traps.unity3d?OilTrap"/>
-	<property name="Group" value="Tools/Traps"/>	
-	   
-		<property name="MaxDamage" value="290"/>
-	
-	
-	<property class="RepairItems">
-		<property name="resourceForgedIron" value="5"/>
-	</property>	
-	<property class="UpgradeBlock">
-            <property name="ToBlock" value="FlatFireTrap" />
-            <property name="Item" value="resourceOil" />
-            <property name="ItemCount" value="5" />
-            <property name="UpgradeHitCount" value="1" />
-        </property>	
-</block>
-  </append>
-
-
-
-
-
-<set xpath="//block/property[(@name='UnlockedBy') and (@value='perkLivingOffTheLand')]/@value">PerkHOHFarming</set>
-
-<include filename="Items/block_weights.xml"/>
-
-	</config>
-	
-
-	
+		<property name="OutputPerStack" value="200"/>
+		<property name="Tags" value="workstationSkill"/>
+	</append>
+	<append xpath="/blocks">
+		<block name="MiliShelfSml">
+			<property name="CreativeMode" value="Player"/>
+			<property name="Class" value="SecureLootSigned"/>
+			<property name="LootList" value="HOHChestsml"/>
+			<property name="CustomIcon" value="cntShippingCrateSml"/>
+			<property name="DescriptionKey" value="cntStorageGenericSignedDesc"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Model" value="#@modfolder:Assets/Racking.unity3d?MilitaryRackingSml"/>
+			<property name="MultiBlockDim" value="1,1,1"/>
+			<property name="ModelOffset" value="0,0,0"/>
+			<property name="Material" value="Mplastics"/>
+			<property name="Place" value="TowardsPlacer"/>
+			<property name="EconomicValue" value="6"/>
+			<property name="MaxDamage" value="1000"/>
+			<property class="RepairItems">
+				<property name="resourceScrapPolymers" value="10"/></property>
+			<drop event="Destroy" name="resourceScrapPolymers" count="25,50"/>
+			<property name="SortOrder1" value="B106"/>
+			<property name="SortOrder2" value="0010"/>
+			<property name="Group" value="Building,advBuilding"/>
+			<property name="Tags" value="timecharge"/>
+			<property name="FilterTags" value="MC_playerBlocks,SC_decor"/>
+		</block>
+		<block name="MiliShelfLrg">
+			<property name="CreativeMode" value="Player"/>
+			<property name="Class" value="SecureLootSigned"/>
+			<property name="LootList" value="HOHChestlrg"/>
+			<property name="CustomIcon" value="cntShippingCrateLrg"/>
+			<property name="DescriptionKey" value="cntStorageGenericSignedDesc"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Model" value="#@modfolder:Assets/Racking.unity3d?MilitaryRackingLrg"/>
+			<property name="MultiBlockDim" value="2,1,1"/>
+			<property name="ModelOffset" value="-.5,0,0"/>
+			<property name="Material" value="Mplastics"/>
+			<property name="Place" value="TowardsPlacer"/>
+			<property name="EconomicValue" value="6"/>
+			<property name="MaxDamage" value="2000"/>
+			<property class="RepairItems">
+				<property name="resourceScrapPolymers" value="20"/></property>
+			<drop event="Destroy" name="resourceScrapPolymers" count="50,100"/>
+			<property name="SortOrder1" value="B106"/>
+			<property name="SortOrder2" value="0010"/>
+			<property name="Group" value="Building,advBuilding"/>
+			<property name="Tags" value="timecharge"/>
+			<property name="FilterTags" value="MC_playerBlocks,SC_decor"/>
+		</block>
+	</append>
+	<append xpath="//block[@name='terrGravel']/property[@name='Tags']">,ShovelXPGain</append>
+	<remove xpath="//block[@name='MiliShelfSml']/drop"/>
+	<append xpath="//block[@name='MiliShelfSml']">
+		<drop event="Destroy" name="MiliShelfSml" count="1" tool_category="Disassemble" />
+	</append>
+	<remove xpath="//block[@name='MiliShelfLrg']/drop"/>
+	<append xpath="//block[@name='MiliShelfLrg']">
+		<drop event="Destroy" name="MiliShelfLrg" count="1" tool_category="Disassemble" />
+	</append>
+	<remove xpath="//block[@name='decoComputerMonitorKeyboardMouse']"/>
+	<append xpath="/blocks">
+		<block name="decoComputerMonitorKeyboardMouse">
+			<property name="Extends" value="decoEntityMetalMaster" param1="RepairItems,CustomIcon" />
+			<property name="DisplayType" value="blockMulti" />
+			<property name="Model" value="@:Entities/Electrical/monitorKeyboardMousePrefab.Prefab"/>
+			<property name="ModelOffset" value=".5,.5,0" />
+			<property name="MultiBlockDim" value="2,1,1" />
+			<property name="SortOrder2" value="0002" />
+			<property name="Class" value="Loot">
+				<!--Element appended by: "SNJ-LootableChanges"-->
+			</property>
+			<property name="LootList" value="computer1">
+				<!--Element appended by: "SNJ-LootableChanges"-->
+			</property>
+			<property name="WaterFlow" value="permitted" />
+			<property name="Path" value="solid" />
+			<property class="RepairItems">
+				<property name="resourceScrapPolymers" value="4" />
+				<property name="resourceElectricParts" value="6" />
+				<property name="resourceForgedIron" value="1" /></property>
+			<property name="SortOrder1" value="B163" />
+			<property name="SortOrder2" value="0001" />
+			<property name="FilterTags" value="MC_building,SC_electrical" />
+			<property name="Tags" value="challenge_elec_parts,WrenchXPGain"></property>
+			<property name="EconomicValue" value="350"></property>
+			<property name="Stacknumber" value="100"></property>
+			<property name="TakeDelay" value="10"></property>
+			<drop event="Destroy" name="decoComputerMonitorKeyboardMouse" count="1" tool_category="Disassemble" />
+		</block>
+		<block name="FlatIronSpikes">
+			<property name="CreativeMode" value="Player"/>
+			<property name="Class" value="TrunkTip"/>
+			<property name="UnlockedBy" value="perkTraps"/>
+			<property name="DisplayType" value="blockElectricalHardened"/>
+			<property name="Material" value="MtrapSpikesIron"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Model" value="#@modfolder:Assets/Traps.unity3d?SpikeTrap"/>
+			<property name="ModelOffset" value="0,0,0"/>
+			<property name="MultiBlockDim" value="1,1,1"/>
+			<property name="ImposterExchange" value="imposterPlate" param1="143"/>
+			<property name="WaterFlow" value="permitted"/>
+			<property name="HandleFace" value="Bottom"/>
+			<property name="AllowedRotations" value="Basic90"/>
+			<property name="EconomicValue" value="124"/>
+			<property name="SoundPickup" value="triggerplate_grab"/>
+			<property name="SoundPlace" value="triggerplate_place"/>
+			<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+			<property name="Damage" value="33"/>
+			<!--ent-titty-->
+			<property name="Damage_received" value="15"/>
+			<!--block-->
+			<property name="DamageType" value="Special" />
+			<property name="MaxDamage" value="1000"/>
+			<drop event="Destroy" count="0"/>
+			<property class="RepairItems">
+				<property name="resourceForgedIron" value="8"/></property>
+			<property name="SortOrder1" value="B155"/>
+			<property name="SortOrder2" value="0008"/>
+			<property name="Group" value="Tools/Traps"/>
+			<property name="BlockTag" value="Spike"/>
+			<property name="FilterTags" value="MC_building,SC_traps"/>
+		</block>
+		<block name="FlatTarTrap">
+			<property name="Material" value="MbarbedWire"/>
+			<property name="UnlockedBy" value="perkTraps"/>
+			<property name="Shape" value="ModelEntity" />
+			<property name="ModelOffset" value="0,0,0"/>
+			<property name="MultiBlockDim" value="1,1,1"/>
+			<property name="OnlySimpleRotations" value="true"/>
+			<property name="Model" value="#@modfolder:Assets/Traps.unity3d?OilTrap"/>
+			<property name="Group" value="Tools/Traps"/>
+			<property name="Class" value="Damage" />
+			<property name="Damage" value="1" />
+			<property name="Damage_received" value="5" />
+			<property name="MaxDamage" value="290"/>
+			<property name="BuffsWhenWalkedOn" value="buffInjuryKnockdown02"/>
+			<property name="DowngradeBlock" value="FlatTarTrapEmpty" />
+			<property class="RepairItems">
+				<property name="resourceOil" value="2"/></property>
+		</block>
+		<block name="FlatTarTrapEmpty">
+			<property name="Material" value="MbarbedWire"/>
+			<property name="CustomIcon" value="tartrap"/>
+			<property name="TintColor" value="b37676"/>
+			<property name="Shape" value="ModelEntity" />
+			<property name="ModelOffset" value="0,0,0"/>
+			<property name="MultiBlockDim" value="1,1,1"/>
+			<property name="OnlySimpleRotations" value="true"/>
+			<property name="Model" value="#@modfolder:Assets/Traps.unity3d?OilTrap"/>
+			<property name="Group" value="Tools/Traps"/>
+			<property name="MaxDamage" value="290"/>
+			<property class="RepairItems">
+				<property name="resourceForgedIron" value="5"/></property>
+			<property class="UpgradeBlock">
+				<property name="ToBlock" value="FlatTarTrap" />
+				<property name="Item" value="resourceOil" />
+				<property name="ItemCount" value="5" />
+				<property name="UpgradeHitCount" value="1" /></property>
+		</block>
+		<block name="FlatFireTrap">
+			<property name="Material" value="MbarbedWire"/>
+			<property name="UnlockedBy" value="perkTraps"/>
+			<property name="Shape" value="ModelEntity" />
+			<property name="ModelOffset" value="0,0,0"/>
+			<property name="MultiBlockDim" value="1,1,1"/>
+			<property name="OnlySimpleRotations" value="true"/>
+			<property name="Model" value="#@modfolder:Assets/Traps.unity3d?OilTrap"/>
+			<property name="Group" value="Tools/Traps"/>
+			<property name="Class" value="Damage" />
+			<property name="Damage" value="1" />
+			<property name="Damage_received" value="5" />
+			<property name="MaxDamage" value="290"/>
+			<property name="BuffsWhenWalkedOn" value="buffBurningMolotov"/>
+			<property name="DowngradeBlock" value="FlatFireTrapEmpty" />
+			<property class="RepairItems">
+				<property name="resourceForgedIron" value="5"/></property>
+		</block>
+		<block name="FlatFireTrapEmpty">
+			<property name="Material" value="MbarbedWire"/>
+			<property name="CustomIcon" value="tartrap"/>
+			<property name="TintColor" value="b37676"/>
+			<property name="Shape" value="ModelEntity" />
+			<property name="ModelOffset" value="0,0,0"/>
+			<property name="MultiBlockDim" value="1,1,1"/>
+			<property name="OnlySimpleRotations" value="true"/>
+			<property name="Model" value="#@modfolder:Assets/Traps.unity3d?OilTrap"/>
+			<property name="Group" value="Tools/Traps"/>
+			<property name="MaxDamage" value="290"/>
+			<property class="RepairItems">
+				<property name="resourceForgedIron" value="5"/></property>
+			<property class="UpgradeBlock">
+				<property name="ToBlock" value="FlatFireTrap" />
+				<property name="Item" value="resourceOil" />
+				<property name="ItemCount" value="5" />
+				<property name="UpgradeHitCount" value="1" /></property>
+		</block>
+	</append>
+	<set xpath="//block/property[(@name='UnlockedBy') and (@value='perkLivingOffTheLand')]/@value">PerkHOHFarming</set>
+	<include filename="Items/block_weights.xml"/>
+</config>

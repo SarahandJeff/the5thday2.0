@@ -21,11 +21,599 @@
 <remove xpath="//window[@name='windowEntering']"/>
 <remove xpath="//window[@name='windowLocation']"/>
 <remove xpath="//window[@name='windowSkillList']"/>
-
+<remove xpath="//window[@name='windowToolsForge']"/>
+<remove xpath="//window[@name='windowTrader']"/>
+<remove xpath="//window[@name='serviceInfoPanel']"/>
+<remove xpath="//window[@name='windowNonPagingHeader']"/>
+<remove xpath="//window[@name='windowCreative2']"/>
+<remove xpath="//window[@name='windowVehicle']"/>
+<remove xpath="//window[@name='windowAssemble']"/>
+<remove xpath="//window[@name='windowAssembleDrone']"/>
 
 
 
 <append xpath="/windows">
+<window name="windowVehicle" width="380" height="733" panel="Left" controller="VehicleFrameWindow" cursor_area="true" >
+		<rect pos="-100,0">
+		<panel name="header" pos="3,0" height="43" depth="1" backgroundspritename="ui_game_panel_header">
+			<sprite depth="2" name="windowIcon" style="icon32px" pos="5,-5" sprite="{vehicleicon}"/>
+			<label style="header.name" text="{vehiclenamequality}" />
+		</panel>
+
+		<panel name="content" depth="0" pos="0,-43" disableautobackground="true">
+			<!-- <sprite color="[darkGrey]" pos="3,-3" height="613" /> -->
+			<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="3,-3" width="380" height="224" color="[black]" type="sliced" fillcenter="false" on_press="true"  gamepad_selectable="false"/>
+			<rect depth="1" pos="3,-3" width="380" height="739">
+
+			<rect width="380" height="218">
+
+					<rect name="stats">
+						<rect pos="0,0" height="33">
+							<sprite depth="8" sprite="menu_empty3px" height="33" color="[black]" type="sliced" fillcenter="false" />
+							<sprite depth="1" color="[darkestGrey]" pos="0,-1" height="31" type="sliced" />
+							<label depth="3" pos="15,-3" width="350" font_size="26" text="{vehiclequalitytitle}" justify="left" color="[white]" />
+							<label depth="3" pos="15,-3" width="350" font_size="26" text="{vehiclequality}" justify="right" color="[selectedColor]" />
+						</rect>
+						<rect pos="0,-30" height="33">
+							<sprite depth="8" sprite="menu_empty3px" height="33"  color="[black]" type="sliced" fillcenter="false" />
+							<sprite depth="1" color="[darkGrey]" type="sliced" />
+							<label depth="3" pos="15,-3" width="350" font_size="26" text="{vehicledurabilitytitle}" justify="left" color="[white]" />
+							<label depth="3" pos="15,-3" width="350" font_size="26" text="{vehicledurability}" justify="right" color="[selectedColor]" />
+						</rect>
+						<rect pos="0,-60" height="33">
+							<sprite depth="8" sprite="menu_empty3px" height="33" color="[black]" type="sliced" fillcenter="false" />
+							<sprite depth="1" color="[darkestGrey]" pos="0,-1" height="31" type="sliced" />
+							<label depth="3" pos="15,-3" width="350" font_size="26" text="{speedtitle}" justify="left" color="[white]" />
+							<label depth="3" pos="15,-3" width="350" font_size="26" text="{speed}m/s ({speedtext})" justify="right" color="[selectedColor]" />
+						</rect>
+						<rect pos="0,-90" height="33">
+							<sprite depth="8" sprite="menu_empty3px" height="33"  color="[black]" type="sliced" fillcenter="false" />
+							<sprite depth="1" color="[darkGrey]" type="sliced" />
+							<label depth="3" pos="15,-3" width="350" font_size="26" text="{noisetitle}" justify="left" color="[white]" />
+							<label depth="3" pos="15,-3" width="350" font_size="26" text="{noise}" justify="right" color="[selectedColor]" />
+						</rect>
+						<rect pos="0,-120" height="33">
+							<sprite depth="8" sprite="menu_empty3px" height="33" color="[black]" type="sliced" fillcenter="false" />
+							<sprite depth="1" color="[darkestGrey]" pos="0,-1" height="31" type="sliced" />
+							<label depth="3" pos="15,-3" width="350" font_size="26" text="{protectiontitle}" justify="left" color="[white]" />
+							<label depth="3" pos="15,-3" width="350" font_size="26" text="{protection}" justify="right" color="[selectedColor]" />
+						</rect>
+						<rect pos="0,-150" height="33">
+							<sprite depth="8" sprite="menu_empty3px" height="33"  color="[black]" type="sliced" fillcenter="false" />
+							<sprite depth="1" color="[darkGrey]" type="sliced" />
+							<label depth="3" pos="15,-3" width="350" font_size="26" text="{passengerstitle}" justify="left" color="[white]" />
+							<label depth="3" pos="15,-3" width="350" font_size="26" text="{passengers}" justify="right" color="[selectedColor]" />
+						</rect>
+						<rect pos="0,-180" height="33">
+							<sprite depth="8" sprite="menu_empty3px" height="33" color="[black]" type="sliced" fillcenter="false" />
+							<sprite depth="1" color="[darkestGrey]" pos="0,-1" height="31" type="sliced" />
+							<label depth="3" pos="15,-3" width="350" font_size="26" text="{fueltitle}" justify="left" color="[white]" />
+							<label depth="3" pos="15,-3" width="350" font_size="26" text="{fuel}%" justify="right" color="[selectedColor]" />
+						</rect>
+					</rect>
+
+				</rect>
+
+
+
+				<rect name="btnRefuel" depth="3" pos="0, -211" height="34">
+					<sprite depth="4" name="backgroundMain" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" />
+					<!-- <sprite depth="2" name="background" pos="1,-3" sprite="menu_empty" width="379" height="32" color="[darkGrey]" type="sliced"/> -->
+					<rect depth="3" name="background" pos="3,-3" width="375" height="28">
+						<button name="clickable" sprite="menu_empty" defaultcolor="[mediumGrey]" disabledcolor="[mediumGrey]" hoversprite="ui_game_select_row" hovercolor="[white]" type="sliced" hoverscale="1.0" />
+						<sprite depth="2" name="windowIcon" width="24" height="24" pos="126,-2" sprite="ui_game_symbol_gas" color="[black_half_alpha]" visible="{showfuel}"/>
+						<sprite depth="2" name="windowIcon" width="24" height="24" pos="124,-2" sprite="ui_game_symbol_gas" color="[black_half_alpha]" visible="{showfuel}"/>
+
+						<sprite depth="2" name="windowIcon" width="24" height="24" pos="124,0" sprite="ui_game_symbol_gas" color="[black_half_alpha]" visible="{showfuel}"/>
+						<sprite depth="2" name="windowIcon" width="24" height="24" pos="126,0" sprite="ui_game_symbol_gas" color="[black_half_alpha]" visible="{showfuel}"/>
+
+						<sprite depth="2" name="windowIcon" width="24" height="24" pos="125,-1" sprite="ui_game_symbol_gas" visible="{showfuel}"/>
+						<label depth="2" name="windowName" pos="160,-1" width="212" justify="left" text="{refueltext}" font_size="28" />
+					</rect>
+				</rect>
+				<rect name="btnRepair" depth="3" pos="0, -242" height="34">
+					<sprite depth="4" name="backgroundMain" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" />
+					<!-- <sprite depth="2" name="background" pos="1,-3" sprite="menu_empty" width="379" height="32" color="[darkGrey]" type="sliced"/> -->
+					<rect depth="3" name="background" pos="3,-3" width="375" height="28">
+						<button name="clickable" sprite="menu_empty" defaultcolor="[mediumGrey]" hoversprite="ui_game_select_row" hovercolor="[white]" type="sliced" hoverscale="1.0" />
+						<sprite depth="2" name="windowIcon" width="24" height="24" pos="126,-2" sprite="ui_game_symbol_wrench" color="[black_half_alpha]"/>
+						<sprite depth="2" name="windowIcon" width="24" height="24" pos="124,-2" sprite="ui_game_symbol_wrench" color="[black_half_alpha]"/>
+
+						<sprite depth="2" name="windowIcon" width="24" height="24" pos="124,0" sprite="ui_game_symbol_wrench" color="[black_half_alpha]"/>
+						<sprite depth="2" name="windowIcon" width="24" height="24" pos="126,0" sprite="ui_game_symbol_wrench" color="[black_half_alpha]"/>
+
+						<sprite depth="2" name="windowIcon" width="24" height="24" pos="125,-1" sprite="ui_game_symbol_wrench"/>
+						<label depth="2" name="windowName" pos="160,-1" width="212" justify="left" text="REPAIR" text_key="xuiRepair" font_size="28" />
+					</rect>
+				</rect>
+
+				<panel name="header" pos="0,-286" height="43" depth="1" backgroundspritename="ui_game_panel_header">
+					<sprite depth="2" name="windowIcon" style="icon32px" pos="5,-5" sprite="ui_game_symbol_paint_bucket"/>
+					<label style="header.name" text_key="xuiCosmetics" />
+				</panel>
+
+				<grid name="cosmeticparts" rows="1" cols="1" pos="3,-335" cell_width="374" cell_height="60" repeat_content="true" controller="ItemCosmeticStackGrid" sound_play_on_hover="[default_hover]">
+					<item_part_slot controller="ItemCosmeticStack" empty_slot_text_key="xuiEmptyCosmeticSlot" />
+				</grid>
+
+				<panel name="header" pos="0,-406" height="43" depth="1" backgroundspritename="ui_game_panel_header">
+					<sprite depth="2" name="windowIcon" style="icon32px" pos="5,-5" sprite="ui_game_symbol_assemble"/>
+					<label style="header.name" text_key="xuiModifiers" />
+				</panel>
+
+				<grid name="parts" rows="8" cols="1" pos="3,-455" cell_width="374" cell_height="60" repeat_content="true" controller="VehiclePartStackGrid">
+					<vehicle_part_slot />
+				</grid>
+			</rect>
+
+		</panel>
+		</rect>
+	</window>
+<window name="windowAssemble" width="380" height="745" panel="Left" controller="AssembleWindow" cursor_area="true" >
+		<rect pos="-100,0">
+		<panel name="header" pos="3,0" height="43" depth="1" backgroundspritename="ui_game_panel_header">
+			<sprite depth="2" name="windowIcon" style="icon32px" pos="5,-5" sprite="ui_game_symbol_assemble"/>
+			<label style="header.name" text="{itemname}" />
+
+			<sprite depth="2" width="112" pos="260, -17" height="10" type="sliced" color="[black]" />
+			<sprite depth="2" width="110" pos="261, -18" height="8" type="sliced" color="[mediumGrey]" />
+			<sprite depth="2" name="sprQuality" width="110" pos="261, -18" height="8" type="filled" color="{itemqualitycolor}" fill="{itemqualityfill}" />
+		</panel>
+
+		<panel name="content" depth="0" pos="0,-43" disableautobackground="true">
+			<rect depth="1"  height="625">
+				<!-- <sprite color="[darkGrey]" pos="3,-3" height="613" /> -->
+				<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="3,-3" width="380" height="213" color="[black]" type="sliced" fillcenter="false" />
+				<rect depth="1" pos="3,-3" width="380" height="619">
+
+					<rect name="stats">
+						<rect pos="0,0" height="33">
+							<sprite depth="8" sprite="menu_empty3px" height="33" color="[black]" type="sliced" fillcenter="false" />
+							<sprite depth="1" color="[darkestGrey]" pos="0,-1" height="31" type="sliced" />
+							<label depth="3" pos="15,-3" width="350" font_size="26" text="{itemstattitle1}" justify="left" color="[white]" />
+							<label depth="3" pos="15,-3" width="350" font_size="26" text="{itemstat1}" justify="right" color="[selectedColor]" />
+						</rect>
+						<rect pos="0,-30" height="33">
+							<sprite depth="8" sprite="menu_empty3px" height="33"  color="[black]" type="sliced" fillcenter="false" />
+							<sprite depth="1" color="[darkGrey]" type="sliced" />
+							<label depth="3" pos="15,-3" width="350" font_size="26" text="{itemstattitle2}" justify="left" color="[white]" />
+							<label depth="3" pos="15,-3" width="350" font_size="26" text="{itemstat2}" justify="right" color="[selectedColor]" />
+						</rect>
+						<rect pos="0,-60" height="33">
+							<sprite depth="8" sprite="menu_empty3px" height="33" color="[black]" type="sliced" fillcenter="false" />
+							<sprite depth="1" color="[darkestGrey]" pos="0,-1" height="31" type="sliced" />
+							<label depth="3" pos="15,-3" width="350" font_size="26" text="{itemstattitle3}" justify="left" color="[white]" />
+							<label depth="3" pos="15,-3" width="350" font_size="26" text="{itemstat3}" justify="right" color="[selectedColor]" />
+						</rect>
+						<rect pos="0,-90" height="33">
+							<sprite depth="8" sprite="menu_empty3px" height="33"  color="[black]" type="sliced" fillcenter="false" />
+							<sprite depth="1" color="[darkGrey]" type="sliced" />
+							<label depth="3" pos="15,-3" width="350" font_size="26" text="{itemstattitle4}" justify="left" color="[white]" />
+							<label depth="3" pos="15,-3" width="350" font_size="26" text="{itemstat4}" justify="right" color="[selectedColor]" />
+						</rect>
+						<rect pos="0,-120" height="33">
+							<sprite depth="8" sprite="menu_empty3px" height="33" color="[black]" type="sliced" fillcenter="false" />
+							<sprite depth="1" color="[darkestGrey]" pos="0,-1" height="31" type="sliced" />
+							<label depth="3" pos="15,-3" width="350" font_size="26" text="{itemstattitle5}" justify="left" color="[white]" />
+							<label depth="3" pos="15,-3" width="350" font_size="26" text="{itemstat5}" justify="right" color="[selectedColor]" />
+						</rect>
+						<rect pos="0,-150" height="33">
+							<sprite depth="8" sprite="menu_empty3px" height="33"  color="[black]" type="sliced" fillcenter="false" />
+							<sprite depth="1" color="[darkGrey]" type="sliced" />
+							<label depth="3" pos="15,-3" width="350" font_size="26" text="{itemstattitle6}" justify="left" color="[white]" />
+							<label depth="3" pos="15,-3" width="350" font_size="26" text="{itemstat6}" justify="right" color="[selectedColor]" />
+						</rect>
+						<rect pos="0,-180" height="33">
+							<sprite depth="8" sprite="menu_empty3px" height="33" color="[black]" type="sliced" fillcenter="false" />
+							<sprite depth="1" color="[darkestGrey]" pos="0,-1" height="31" type="sliced" />
+							<label depth="3" pos="15,-3" width="350" font_size="26" text="{itemstattitle7}" justify="left" color="[white]" />
+							<label depth="3" pos="15,-3" width="350" font_size="26" text="{itemstat7}" justify="right" color="[selectedColor]" />
+						</rect>
+					</rect>
+
+					<panel name="header" pos="0,-230" height="43" depth="1" backgroundspritename="ui_game_panel_header">
+						<sprite depth="2" name="windowIcon" style="icon32px" pos="5,-5" sprite="ui_game_symbol_paint_bucket"/>
+						<label style="header.name" text_key="xuiCosmetics" />
+					</panel>
+
+					<grid name="cosmeticparts" rows="1" cols="1" pos="3,-279" cell_width="374" cell_height="60" repeat_content="true" controller="ItemCosmeticStackGrid" sound_play_on_hover="[default_hover]">
+						<item_part_slot controller="ItemCosmeticStack" empty_slot_text_key="xuiEmptyCosmeticSlot" />
+					</grid>
+
+					<panel name="header" pos="0,-355" height="43" depth="1" backgroundspritename="ui_game_panel_header">
+						<sprite depth="2" name="windowIcon" style="icon32px" pos="5,-5" sprite="ui_game_symbol_assemble"/>
+						<label style="header.name" text_key="xuiModifiers" />
+					</panel>
+
+					<grid name="parts" rows="6" cols="1" pos="3,-404" cell_width="374" cell_height="60" repeat_content="true" controller="ItemPartStackGrid">
+						<item_part_slot controller="ItemPartStack" empty_slot_text_key="xuiEmptyModifierSlot" />
+					</grid>
+				</rect>
+			</rect>
+		</panel>
+		</rect>
+	</window>
+
+  <window name="windowAssembleDrone" width="380" height="745" panel="Left" controller="AssembleDroneWindow" cursor_area="true" >
+   <rect pos="-100,0">
+    <panel name="header" pos="3,0" height="43" depth="1" backgroundspritename="ui_game_panel_header">
+      <sprite depth="2" name="windowIcon" style="icon32px" pos="5,-5" sprite="ui_game_symbol_assemble"/>
+      <label style="header.name" text="{itemname}" />
+
+      <sprite depth="2" width="112" pos="260, -17" height="10" type="sliced" color="[black]" />
+      <sprite depth="2" width="110" pos="261, -18" height="8" type="sliced" color="[mediumGrey]" />
+      <sprite depth="2" name="sprQuality" width="110" pos="261, -18" height="8" type="filled" color="{itemqualitycolor}" fill="{itemqualityfill}" />
+    </panel>
+
+    <panel name="content" depth="0" pos="0,-43" disableautobackground="true">
+      <rect depth="1"  height="625">
+        <!-- <sprite color="[darkGrey]" pos="3,-3" height="613" /> -->
+        <sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="3,-3" width="380" height="213" color="[black]" type="sliced" fillcenter="false" />
+        <rect depth="1" pos="3,-3" width="380" height="619">
+
+          <rect name="stats">
+            <rect pos="0,0" height="33">
+              <sprite depth="8" sprite="menu_empty3px" height="33" color="[black]" type="sliced" fillcenter="false" />
+              <sprite depth="1" color="[darkestGrey]" pos="0,-1" height="31" type="sliced" />
+              <label depth="3" pos="15,-3" width="350" font_size="26" text="{itemstattitle1}" justify="left" color="[white]" />
+              <label depth="3" pos="15,-3" width="350" font_size="26" text="{itemstat1}" justify="right" color="[selectedColor]" />
+            </rect>
+            <rect pos="0,-30" height="33">
+              <sprite depth="8" sprite="menu_empty3px" height="33"  color="[black]" type="sliced" fillcenter="false" />
+              <sprite depth="1" color="[darkGrey]" type="sliced" />
+              <label depth="3" pos="15,-3" width="350" font_size="26" text="{itemstattitle2}" justify="left" color="[white]" />
+              <label depth="3" pos="15,-3" width="350" font_size="26" text="{itemstat2}" justify="right" color="[selectedColor]" />
+            </rect>
+            <rect pos="0,-60" height="33">
+              <sprite depth="8" sprite="menu_empty3px" height="33" color="[black]" type="sliced" fillcenter="false" />
+              <sprite depth="1" color="[darkestGrey]" pos="0,-1" height="31" type="sliced" />
+              <label depth="3" pos="15,-3" width="350" font_size="26" text="{itemstattitle3}" justify="left" color="[white]" />
+              <label depth="3" pos="15,-3" width="350" font_size="26" text="{itemstat3}" justify="right" color="[selectedColor]" />
+            </rect>
+            <rect pos="0,-90" height="33">
+              <sprite depth="8" sprite="menu_empty3px" height="33"  color="[black]" type="sliced" fillcenter="false" />
+              <sprite depth="1" color="[darkGrey]" type="sliced" />
+              <label depth="3" pos="15,-3" width="350" font_size="26" text="{itemstattitle4}" justify="left" color="[white]" />
+              <label depth="3" pos="15,-3" width="350" font_size="26" text="{itemstat4}" justify="right" color="[selectedColor]" />
+            </rect>
+            <rect pos="0,-120" height="33">
+              <sprite depth="8" sprite="menu_empty3px" height="33" color="[black]" type="sliced" fillcenter="false" />
+              <sprite depth="1" color="[darkestGrey]" pos="0,-1" height="31" type="sliced" />
+              <label depth="3" pos="15,-3" width="350" font_size="26" text="{itemstattitle5}" justify="left" color="[white]" />
+              <label depth="3" pos="15,-3" width="350" font_size="26" text="{itemstat5}" justify="right" color="[selectedColor]" />
+            </rect>
+            <rect pos="0,-150" height="33">
+              <sprite depth="8" sprite="menu_empty3px" height="33"  color="[black]" type="sliced" fillcenter="false" />
+              <sprite depth="1" color="[darkGrey]" type="sliced" />
+              <label depth="3" pos="15,-3" width="350" font_size="26" text="{itemstattitle6}" justify="left" color="[white]" />
+              <label depth="3" pos="15,-3" width="350" font_size="26" text="{itemstat6}" justify="right" color="[selectedColor]" />
+            </rect>
+            <rect pos="0,-180" height="33">
+              <sprite depth="8" sprite="menu_empty3px" height="33" color="[black]" type="sliced" fillcenter="false" />
+              <sprite depth="1" color="[darkestGrey]" pos="0,-1" height="31" type="sliced" />
+              <label depth="3" pos="15,-3" width="350" font_size="26" text="{itemstattitle7}" justify="left" color="[white]" />
+              <label depth="3" pos="15,-3" width="350" font_size="26" text="{itemstat7}" justify="right" color="[selectedColor]" />
+            </rect>
+          </rect>
+
+          <panel name="header" pos="0,-230" height="43" depth="1" backgroundspritename="ui_game_panel_header">
+            <sprite depth="2" name="windowIcon" style="icon32px" pos="5,-5" sprite="ui_game_symbol_paint_bucket"/>
+            <label style="header.name" text_key="xuiCosmetics" />
+          </panel>
+
+          <grid name="cosmeticparts" rows="1" cols="1" pos="3,-279" cell_width="374" cell_height="60" repeat_content="true" controller="ItemCosmeticStackGrid" sound_play_on_hover="[default_hover]">
+            <item_part_slot controller="ItemCosmeticStack" empty_slot_text_key="xuiEmptyCosmeticSlot" />
+          </grid>
+
+          <panel name="header" pos="0,-355" height="43" depth="1" backgroundspritename="ui_game_panel_header">
+            <sprite depth="2" name="windowIcon" style="icon32px" pos="5,-5" sprite="ui_game_symbol_assemble"/>
+            <label style="header.name" text_key="xuiModifiers" />
+          </panel>
+
+          <grid name="parts" rows="6" cols="1" pos="3,-404" cell_width="374" cell_height="60" repeat_content="true" controller="ItemDronePartStackGrid">
+            <item_part_slot controller="ItemDronePartStack" empty_slot_text_key="xuiEmptyModifierSlot" />
+          </grid>
+        </rect>
+      </rect>
+    </panel>
+	</rect>
+  </window>
+<window name="windowCreative2" width="629" height="805" panel="Left" anchor_side="bottomright" normal_color="[iconColor]" cursor_area="true" controller="Creative2Window" >
+		<rect pos="-100,0">
+		<rect pos="0,-0" name="content">
+			<panel name="header" height="43" depth="0" disableautobackground="true">
+				<sprite depth="1" name="headerbackground" sprite="ui_game_panel_header"/>
+				<sprite depth="2" name="windowicon" style="icon32px" pos="4,-5" sprite="ui_game_symbol_lightbulb"/>
+				<label style="header.name" text="{filter_crumb}" width="400" />
+				<label depth="2" width="130" height="32" text="{#format(localization('lblTotalItems'), int(result_count))}" font_size="32"
+					justify="right" anchor_side="right" pivot="right" anchor_run_once="false" anchor_offset="-10,0"/>
+			</panel>
+
+			<rect depth="2" name="searchControls" width="522" height="43" pos="101,-49">
+				<sprite depth="1" name="background" color="[darkGrey]" type="sliced" pos="-1,0" width="524" height="49" />
+				<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="528" height="52" color="[black]" type="sliced" fillcenter="false"  />
+
+				<grid name="categoryButtons" depth="10" pos="25,-22" rows="1" cols="4" cell_width="50" arrangement="horizontal" repeat_content="false">
+					<button depth="4" name="simplepickup" style="icon30px, press, hover" sprite="ui_game_symbol_hand" defaultcolor="[disabledLabelColor]" pivot="center" tooltip_key="lblSimpleClick" sound="[paging_click]" />
+					<button depth="4" name="devblocks" style="icon30px, press, hover" sprite="ui_game_symbol_computer" defaultcolor="[disabledLabelColor]" pivot="center" tooltip_key="lblDevBlocks" sound="[paging_click]" visible="{allow_dev}" />
+					<button depth="4" name="favorites" style="icon30px, press" sprite="server_favorite" pivot="center" sound="[paging_click]" tooltip_key="lblFavorites" collider_scale="1.5" />
+					<button depth="4" name="hideshapes" style="icon30px, press" sprite="ui_game_symbol_sight" pivot="center" sound="[paging_click]" tooltip_key="lblHideShapes" collider_scale="1.5" />
+				</grid>
+
+				<panel pos="220,0" width="200" disableautobackground="true">
+					<sprite depth="4" name="searchIcon" style="icon30px" pos="0,-22" sprite="ui_game_symbol_search" pivot="center"/>
+					<textfield depth="5" pos="22,-7" width="140" height="30" name="searchInput" focus_on_open="true" search_field="true" close_group_on_tab="true" clear_button="true" />
+				</panel>
+
+				<panel pos="405,0" width="104" height="43" disableautobackground="true">
+					<pager name="pager" pos="4,-6"  contents_parent="content"/>
+				</panel>
+			</rect>
+
+			<rect depth="2" name="categoryBar" width="43" height="718" pos="3,-49">
+				<sprite depth="1" name="background" color="[darkGrey]" type="sliced" pos="-1,0" width="48" height="722" />
+				<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="52" height="727" color="[black]" type="sliced" fillcenter="false"  />
+
+				<grid depth="10" name="categories" pos="24,-22" rows="16" cols="1" width="43" height="675" cell_width="43" cell_height="43" arrangement="vertical" repeat_content="false" controller="CategoryList" allow_unselect="true">
+					<!-- Shapes -->
+					<category_icon_creative_filter filtertype="autoshapes" filtertext="woodShapes" spritename="ui_game_symbol_wood" />
+					<category_icon_creative_filter filtertype="autoshapes" filtertext="brickShapes" spritename="ui_game_symbol_brick" />
+					<category_icon_creative_filter filtertype="autoshapes" filtertext="corrugatedMetalShapes" spritename="ui_game_symbol_forge" />
+					<category_icon_creative_filter filtertype="autoshapes" filtertext="concreteShapes" spritename="ui_game_symbol_cement" />
+					<category_icon_creative_filter filtertype="autoshapes" filtertext="steelShapes" spritename="ui_game_symbol_ibeam" />
+					<category_icon_creative_filter filtertype="autoshapes" filtertext="awningShapes" spritename="ui_game_symbol_map_campsite" />
+					<category_icon_creative_filter filtertype="autoshapes" filtertext="bulletproofShapes" spritename="ui_game_symbol_windows" />
+					<category_icon_creative_filter filtertype="autoshapes" filtertext="$other" spritename="ui_game_symbol_all_blocks" displayname_key="xuiShapesOther" />
+					<!-- Non Shapes --><sprite sprite="ui_game_symbol_subtract" style="icon32px" pivot="center" width="50" height="8" color="0,0,0,255"/>
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="A21_NEW" categoryname="New" spritename="ui_game_symbol_coin" displayname_key="xuiPropsNew" /> -->
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="MC_building" categoryname="Building" spritename="ui_game_symbol_chair" displayname_key="xuiPropsBuilding" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="MC_outdoor" categoryname="Outdoor" spritename="ui_game_symbol_tree" displayname_key="xuiPropsOutdoor" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="MC_helpers" categoryname="LevelDesign" spritename="ui_game_symbol_tool_smithing" displayname_key="xuiHelpers" />
+					<!-- Player Blocks --><sprite sprite="ui_game_symbol_subtract" style="icon32px" pivot="center" width="50" height="8" color="0,0,0,255"/>
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="MC_playerBlocks" categoryname="PlayerBlocks" spritename="ui_game_symbol_player" displayname_key="xuiPlayerBlocks" />
+					<!-- Items --><!-- <sprite sprite="ui_game_symbol_subtract" style="icon32px" pivot="center" width="50" height="8" color="0,0,0,255"/> -->
+					<category_icon_creative_filter filtertype="itemgroups" filtertext="" categoryname="Items" spritename="ui_game_symbol_backpack" displayname_key="xuiItems"/>
+				</grid>
+			</rect>
+
+			<rect depth="2" name="categoryBar2" width="43" height="718" pos="52,-49">
+				<sprite depth="1" name="background" color="[darkGrey]" type="sliced" pos="-1,0" width="48" height="722" />
+				<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="52" height="727" color="[black]" type="sliced" fillcenter="false"  />
+
+				<grid depth="10" name="subCategoriesShapes" visible="{main_category_is_shapes}" pos="24,-22" rows="16" cols="1" width="43" height="675" cell_width="43" cell_height="43" arrangement="vertical" repeat_content="true" controller="CategoryList" allow_unselect="true" allow_key_paging="false">
+					<category_icon />
+				</grid>
+				<grid depth="10" name="subCategoriesProps" visible="{#main_category_name == 'Building'}" pos="24,-22" rows="16" cols="1" width="43" height="675" cell_width="43" cell_height="43" arrangement="vertical" controller="CategoryList" allow_unselect="true" allow_key_paging="false">
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_construction" spritename="ui_game_symbol_resource" displayname_key="xuifConstruction" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_destruction" spritename="ui_game_symbol_destruction" displayname_key="xuifDestruction" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_electrical" spritename="ui_game_symbol_electric_plugin" displayname_key="xuifElectrical" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_lighting" spritename="ui_game_symbol_lightbulb" displayname_key="xuifLighting" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_decor" spritename="ui_game_symbol_chair" displayname_key="xuifDecor" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_industrial" spritename="ui_game_symbol_shape_factory" displayname_key="xuifIndustrial" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_commercial" spritename="ui_game_symbol_map_trader" displayname_key="xuifCommercial" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_residential" spritename="ui_game_symbol_map_house" displayname_key="xuifResidential" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_loot" spritename="ui_game_symbol_loot_sack" displayname_key="xuifLoot" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_automotive" spritename="ui_game_symbol_service" displayname_key="xuifAutomotive" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_plumbing" spritename="ui_game_symbol_wrench" displayname_key="xuifPlumbing" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_doors" spritename="ui_game_symbol_door" displayname_key="xuifDoors" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_windows" spritename="ui_game_symbol_windows" displayname_key="xuifWindows" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_traps" spritename="ui_game_symbol_traps" displayname_key="xuifTraps" />
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+				</grid>
+				<grid depth="10" name="subCategoriesProps" visible="{#main_category_name == 'Outdoor'}" pos="24,-22" rows="16" cols="1" width="43" height="675" cell_width="43" cell_height="43" arrangement="vertical" controller="CategoryList" allow_unselect="true" allow_key_paging="false">
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_decor" spritename="ui_game_symbol_chair" displayname_key="xuifDecor" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_fences" spritename="ui_game_symbol_shape_outdoor_props" displayname_key="xuifFences" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_trees" spritename="ui_game_symbol_tree" displayname_key="xuifTrees" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_shrubbery" spritename="ui_game_symbol_foliage" displayname_key="xuifFoliage" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_crops" spritename="ui_game_symbol_crops" displayname_key="xuifCrops" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_terrain" spritename="ui_game_symbol_map_cave" displayname_key="xuifTerrain" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_signs" spritename="ui_game_symbol_signs" displayname_key="xuifSigns" />
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+				</grid>
+				<grid depth="10" name="subCategoriesLevelDesign" visible="{#main_category_name == 'LevelDesign'}" pos="24,-22" rows="16" cols="1" width="43" height="675" cell_width="43" cell_height="43" arrangement="vertical" controller="CategoryList" allow_unselect="true" allow_key_paging="false">
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_helperIndustrial" spritename="ui_game_symbol_shape_factory" displayname_key="xuifIndustrialHelpers" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_helperCommercial" spritename="ui_game_symbol_map_trader" displayname_key="xuifCommercialHelpers" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_helperResidential" spritename="ui_game_symbol_map_house" displayname_key="xuifResidentialHelpers" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_helperOutdoor" spritename="ui_game_symbol_tree" displayname_key="xuifOutdoorHelpers" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_helperElectrical" spritename="ui_game_symbol_electric_plugin" displayname_key="xuifElectricalHelpers" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_helperSleeper" spritename="ui_game_symbol_zombie" displayname_key="xuifSleeperHelpers" />
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_helperTerrain" spritename="ui_game_symbol_map_cave" displayname_key="xuifTerrainHelpers" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_design" spritename="ui_game_symbol_other" displayname_key="xuifDesign" /> -->
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_loot" spritename="ui_game_symbol_loot_sack" displayname_key="xuifLoot" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_treasureRoom" spritename="ui_game_symbol_treasure" displayname_key="xuifLootRoom" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_questblocks" spritename="ui_game_symbol_quest" displayname_key="xuifQuestBlocks" />
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+				</grid>
+				<grid depth="10" name="subCategoriesProps" visible="{#main_category_name == 'PlayerBlocks'}" pos="24,-22" rows="16" cols="1" width="43" height="675" cell_width="43" cell_height="43" arrangement="vertical" controller="CategoryList" allow_unselect="true" allow_key_paging="false">
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_electrical" spritename="ui_game_symbol_electric_plugin" displayname_key="xuifElectrical" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_traps" spritename="ui_game_symbol_traps" displayname_key="xuifTraps" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_decor" spritename="ui_game_symbol_chair" displayname_key="xuifDecor" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_playerHelpers" spritename="ui_game_symbol_pack_mule" displayname_key="xuifPlayerHelpers" />
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+				</grid>
+				<grid depth="10" name="subCategoriesItems" visible="{#main_category_name == 'Items'}" pos="24,-22" rows="16" cols="1" width="43" height="675" cell_width="43" cell_height="43" arrangement="vertical" controller="CategoryList" allow_unselect="true" allow_key_paging="false">
+					<category_icon_creative_filter filtertype="itemgroups" filtertext="Resources" spritename="ui_game_symbol_resource" displayname_key="lblCategoryResources" />
+					<category_icon_creative_filter filtertype="itemgroups" filtertext="Tools/Traps" spritename="ui_game_symbol_tool" displayname_key="lblCategoryTools" />
+					<category_icon_creative_filter filtertype="itemgroups" filtertext="Melee Weapons" spritename="ui_game_symbol_knife" displayname_key="lblCategoryMeleeWeapons" />
+					<category_icon_creative_filter filtertype="itemgroups" filtertext="Ranged Weapons" spritename="ui_game_symbol_rifle" displayname_key="lblCategoryRangeWeapons" />
+					<category_icon_creative_filter filtertype="itemgroups" filtertext="Tool/Weapon Mods" spritename="ui_game_symbol_assemble" displayname_key="lblCategoryToolWeaponMods" />
+					<category_icon_creative_filter filtertype="itemgroups" filtertext="Robotics" spritename="ui_game_symbol_junk_turret" displayname_key="lblCategoryRobotics" />
+					<category_icon_creative_filter filtertype="itemgroups" filtertext="Ammo" spritename="ui_game_symbol_shape_ammo" displayname_key="lblCategoryAmmo" />
+					<!-- <category_icon_creative_filter filtertype="itemgroups" filtertext="Clothing" spritename="ui_game_symbol_armor_iron" displayname_key="lblCategoryClothing" /> -->
+					<category_icon_creative_filter filtertype="itemgroups" filtertext="Armor" spritename="ui_game_symbol_armor_iron" displayname_key="lblCategoryArmor" />
+					<category_icon_creative_filter filtertype="itemgroups" filtertext="Food/Cooking" spritename="ui_game_symbol_fork" displayname_key="lblCategoryFoodCooking" />
+					<category_icon_creative_filter filtertype="itemgroups" filtertext="Science" spritename="ui_game_symbol_science" displayname_key="lblCategoryScience" />
+					<category_icon_creative_filter filtertype="itemgroups" filtertext="BooksOnly" spritename="ui_game_symbol_book" displayname_key="lblCategoryBooksOnly" />
+					<category_icon_creative_filter filtertype="itemgroups" filtertext="SchematicsOnly" spritename="ui_game_symbol_shape_schematics" displayname_key="lblCategorySchematicsOnly" />
+					<category_icon_creative_filter filtertype="itemgroups" filtertext="Special Items" spritename="ui_game_symbol_quest" displayname_key="lblCategorySpecialItems" />
+				</grid>
+
+			</rect>
+
+			<grid depth="10" name="queue" rows="9" cols="7" pos="101,-97" cell_width="75" cell_height="75" repeat_content="true" controller="Creative2StackGrid" >
+				<item_stack name="0" controller="Creative2Stack" on_scroll="true" allow_dropping="false" prefix_id="true" show_favorites="true" />
+			</grid>
+
+			<sprite depth="8" name="backgroundMain" pos="98,-97" width="528" height="675" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" on_press="true" gamepad_selectable="false" />
+		</rect>
+		</rect>
+	</window>
+<window name="windowNonPagingHeader" controller="WindowNonPagingHeader" style="nonpaging.window">
+		<rect pos="-100,0">
+		<sprite style="paging.window.background.border"/>
+		<sprite style="nonpaging.window.background"/>
+		<sprite style="nonpaging.window.name.background"/>
+		<sprite style="nonpaging.window.name.foreground"/>
+		<label style="nonpaging.window.name"/>
+		</rect>
+	</window>
+<window name="serviceInfoPanel" width="603" height="392" controller="ServiceInfoWindow" panel="Center" cursor_area="true" >
+		<rect pos="-100,0">
+		<panel name="header" height="43" depth="1" backgroundspritename="ui_game_panel_header">
+			<sprite depth="2" name="windowIcon" style="icon32px" pos="4,-5" sprite="{servicegroupicon}"/>
+			<label depth="2" name="windowName" pos="39,-6" width="500" height="32" text="{servicename}" font_size="32" />
+			<label depth="2" pos="350,-8" width="225" height="28" text="{pricelabel} {servicecost}" color="[mediumGrey]" justify="right" />
+			<sprite depth="4" name="costIcon" sprite="ui_game_symbol_coin" size="24,24" pos="577,-10" color="[white]" foregroundlayer="true" />
+		</panel>
+
+		<rect name="contentInfo" height="346" depth="1" pos="0,-46" >
+			<sprite depth="5" name="backgroundMain" sprite="menu_empty3px" width="603" height="345" color="[black]" type="sliced" fillcenter="false" />
+			<rect depth="1" pos="3,0" name="preview" width="147" height="150">
+				<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="-3,0" width="153" height="153" color="[black]" type="sliced" fillcenter="false" />
+				<sprite depth="1" color="[darkGrey]" pos="0,0" type="sliced" globalopacity="true" />
+				<sprite depth="2" name="servicePreview" width="83" height="83" atlas="UIAtlas" sprite="{serviceicon}" color="{serviceicontint}" pos="33,-30" foregroundlayer="true"/>
+			</rect>
+
+			<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="0,-150" width="153" height="196" color="[black]" type="sliced" fillcenter="false" />
+			<rect pos="3,-153" width="147" height="100%" >
+				<grid name="itemActions" rows="4" cols="1" pos="0,0" width="147" height="100%" cell_width="147" cell_height="42" controller="ItemActionList"
+					repeat_content="true" visible="false">
+					<item_action_entry />
+				</grid>
+			</rect>
+
+			<sprite depth="3" name="fillerBackground" pos="3,-321" height="22" width="147" color="[mediumGrey]" type="sliced"/>
+
+			<rect depth="1" pos="153,0" name="description" width="447" height="198">
+				<sprite depth="1" color="[mediumGrey]" type="sliced" globalopacity="true" />
+				<sprite depth="3" name="backgroundMain" sprite="menu_empty3px" pos="-3,0" width="453" height="201" color="[black]" type="sliced" fillcenter="false" />
+				<label depth="3" name="statText" pos="6,-2" width="254" height="100%" text="{servicestats}" />
+			</rect>
+
+			<rect depth="2" pos="153,-200" name="description" width="447" height="143">
+				<sprite depth="1" color="[darkGrey]" type="sliced" globalopacity="true" />
+				<sprite depth="5" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="453" height="148" color="[black]" type="sliced" fillcenter="false" />
+				<label depth="3" name="descriptionText" pos="6,-5" text="{servicedescription}"  width="440" height="137" />
+			</rect>
+
+		</rect>
+		</rect>
+	</window>
+<window name="windowTrader"  width="645" height="688" panel="Left" controller="TraderWindow" cursor_area="true" >
+      <rect pos="-100,0">
+		<panel name="header" height="43" depth="1" backgroundspritename="ui_game_panel_header">
+			<sprite pos="4,-5" depth="2" name="windowIcon" style="icon32px" sprite="ui_game_symbol_map_trader"/>
+			<player_name pos="42,0" width="350" height="32" />
+			<label depth="2" pos="340,-8" width="300" height="28" text="{restocklabel}: {timeleft}" justify="right" visible="{showrestock}" />
+
+			<label pos="600, -6" depth="2" name="availableMoney" width="64" height="32" text="{availablemoney}" font_size="32" justify="right" pivot="topright" visible="{isowner}"/>
+			<sprite pos="638, -5" depth="2" name="coinIcon" style="icon32px" sprite="ui_game_symbol_coin" pivot="topright" visible="{isowner}"/>
+		</panel>
+
+		<panel name="content" width="100%" height="650" depth="1" pos="0,-43" on_scroll="true" disableautobackground="true">
+
+			<rect depth="2" name="categorySelector" width="645" height="44" pos="3,-6">
+				<sprite name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="645" height="49" color="[black]" type="sliced" fillcenter="false" />
+				<sprite color="[mediumGrey]" type="sliced" width="639" />
+				<grid name="categories" pos="23,-21" rows="1" cols="15" width="390" height="43" cell_width="43" cell_height="43" repeat_content="true" controller="CategoryList">
+					<category_icon />
+				</grid>
+			</rect>
+
+			<rect depth="3" name="searchControls" width="645" height="44" pos="3,-52">
+				<sprite name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="645" height="49" color="[black]" type="sliced" fillcenter="false" />
+				<sprite color="[darkGrey]" type="sliced" width="639" />
+
+				<button depth="4" name="collect" style="icon30px, press" pos="22,-22" sprite="ui_game_symbol_coin" pivot="center" tooltip="COLLECT" tooltip_key="btnCollect" sound="[paging_click]" visible="{isownerorrentable}" />
+				<button depth="4" name="takeAll" style="icon30px, press" pos="65,-22" sprite="ui_game_symbol_hand" pivot="center" tooltip="TAKE ALL" tooltip_key="btnTakeAll" sound="[paging_click]" visible="{isownerorrentable}" />
+				<button depth="4" name="rent" style="icon30px, press" pos="108,-22" sprite="ui_game_symbol_vending" pivot="center" tooltip="RENT" tooltip_key="lblContextActionRent" sound="[paging_click]" visible="{isrentable|once}" />
+				
+				<button depth="4" name="showAll" style="icon30px, press, hover" pos="293,-22" sprite="ui_game_symbol_computer" defaultcolor="[disabledLabelColor]" pivot="center" tooltip_key="Show All" sound="[paging_click]" visible="{is_debug}" />
+
+				<label depth="5" pos="135,-8" width="180" height="28" text="{renttimeleft}" visible="{isrenter}" />
+
+				<panel pos="334,0" width="200" disableautobackground="true">
+					<sprite depth="4" name="searchIcon" style="icon30px" pos="0,-22" sprite="ui_game_symbol_search" pivot="center"/>
+					<textfield depth="5" name="searchInput" pos="22,-7" width="140" height="30" virtual_keyboard_prompt="vkPromptSearchTerm" search_field="true" close_group_on_tab="true" />
+				</panel>
+
+				<panel pos="516,0" width="104" height="43" disableautobackground="true">
+					<pager name="pager" pos="4,-6" contents_parent="content"/>
+				</panel>
+			</rect>
+
+			<rect name="tableHeader" pos="2,-98" width="642" height="43">
+				<sprite depth="1" name="background" color="[lightGrey]" type="sliced"/>
+
+				<rect depth="1" width="416" height="40">
+					<sprite depth="0" name="backgroundMain" sprite="menu_empty3px" pos="-2,3" width="421" height="46" color="[black]" type="sliced" fillcenter="false" />
+
+					<sprite depth="1" pos="3,-3" style="icon32px" sprite="ui_game_symbol_shopping_cart"/>
+					<label depth="1" pos="40,-5" text_key="xuiProductName" width="240"/>
+				</rect>
+
+				<rect depth="1" pos="419,0" width="120" height="40" >
+					<sprite depth="0" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="126" height="46" color="[black]" type="sliced" fillcenter="false" />
+
+					<sprite depth="1" pos="3,-3" style="icon32px" sprite="ui_game_symbol_diamond"/>
+					<label depth="1" pos="40,-5" text_key="xuiQuality" width="70"/>
+				</rect>
+
+				<rect depth="1" pos="542,0" width="97" height="40">
+					<sprite depth="0" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="104" height="46" color="[black]" type="sliced" fillcenter="false" />
+
+					<sprite depth="1" pos="3,-3" style="icon32px" sprite="ui_game_symbol_coin"/>
+					<label depth="1" pos="40,-5" text_key="xuiCost" width="55"/>
+				</rect>
+
+				<!-- <rect depth="1" pos="585,0" width="149" height="40">
+					<sprite depth="0" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="154" height="46" color="[black]" type="sliced" fillcenter="false" />
+
+					<sprite depth="1" pos="3,-3" style="icon32px, press, hover" sprite="ui_game_symbol_check"/>
+					<label depth="1" pos="42,-8" text="Required" text_key="xuiRequired" width="100"/>
+				</rect> -->
+			</rect>
+
+			<grid name="items" rows="13" cols="1" pos="3,-141" width="639" height="552" cell_width="390" cell_height="46" repeat_content="true" arrangement="vertical" controller="TraderItemList" >
+				<trader_item name="0"/>
+			</grid>
+		</panel>
+	</rect>
+	</window>
 <window name="windowLocation" pos="-259, -40" width="240" height="60" anchor="RightTop" depth="-20" controller="Location">
 		<sprite pos="0,6" name="Background" sprite="menu_empty" color="[darkestGrey]" height="46" width="250" type="sliced" />
 		<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="0,6" width="250" height="46" color="[black]" type="sliced" fillcenter="false" />
@@ -78,6 +666,7 @@
 
 <window name="windowLooting" width="{windowWidth}" height="378" controller="LootWindow" panel="Left" anchor_side="bottomright" visible="false" cursor_area="true" >
 	<!--#$-IGS END.-$#-->
+	<rect pos="-100,0">
 		<panel name="header" height="43" depth="0" disableautobackground="true" anchor_left="queue,0,0" anchor_right="queue,1,0" >
 			<sprite depth="1" name="headerbackground" color="0,0,0,1" anchor_left="queue,0,-3" anchor_right="queue,1,0" />
 			<sprite depth="3" name="windowIcon" style="icon32px" pivot="center" pos="21,-21" sprite="ui_game_symbol_loot_sack" />
@@ -110,11 +699,13 @@
 				<SNJ_item_stack name="0"/>
 			</grid>
 		</rect>
+	</rect>
 	</window>
 
 <!-- VENTANA DEL VEHICULO (STORAGE) BY DJTRIPL3XMR -->
 
 	<window name="windowVehicleStorage" width="{windowWidth}" height="262" depth="5" controller="VehicleContainer" panel="Left" anchor_side="bottomright" backgroundcolor="[black]" cursor_area="true" >
+	<rect pos="-100,0">
 		<panel name="header" height="43" depth="0" disableautobackground="true" anchor_left="queue,0,0" anchor_right="queue,1,0" >
 			<!-- <sprite depth="1" name="headerbackground" sprite="ui_game_panel_header" anchor_left="queue,0,-3" anchor_right="queue,1,0" /> -->
 			<sprite depth="3" name="windowIcon" style="icon32px" pivot="center" pos="21,-21" sprite="ui_game_symbol_loot_sack" />
@@ -144,11 +735,13 @@
 		<grid depth="2" name="queue" rows="10" cols="9" pos="-2,-49" cell_width="70" cell_height="70" repeat_content="true">
 			<AX_item_stack name="0"/>
 		</grid>
+		</rect>
 	</window>
 
 
 
 	<window name="windowOutputForge" depth="20" width="430" height="95" panel="Left" cursor_area="true" controller="WorkstationOutputWindow" >
+	<rect pos="-100,0">
 		<windowBackgroundNoHeader name="windowBackgroundNoHeader" depth="-3" pos="5,200" width="420" height="95" text_key="xuiOutput"/>
 		<panel style="header.panel" disableautobackground="true">
 			<sprite style="header.icon" sprite="ui_game_symbol_loot_sack" height="1" color="0,0,0,0"/>
@@ -166,10 +759,12 @@
 				<AX_item_stack name="0"/>
 			</grid>
 		</rect>
+		</rect>
 	</window>
 
 
 	<window name="windowToolsMixer" depth="20"  width="420" height="75" panel="Left" cursor_area="true" >
+	  <rect pos="-100,0">
 	   <windowBackgroundNoHeader name="windowBackgroundNoHeader" depth="-3" pos="5,395" width="420" height="75" text_key="xuiTools"/>
 	 		<rect name="content" depth="8" pos="0,-46" height="60" disablefallthrough="true">
 			<grid name="inventory" rows="1" cols="3" pos="10,420" cell_width="60" cell_height="60" controller="WorkstationToolGrid" repeat_content="true" 
@@ -177,8 +772,10 @@
 				<item_stack controller="RequiredItemStack" name="0"/>
 			</grid>
 		</rect>
+		</rect>
 	</window>
 	<window name="windowToolsBench" depth="20" width="430" height="75" panel="Left" cursor_area="true" >
+	   <rect pos="-100,0">
 	   <windowBackgroundNoHeader name="windowBackgroundNoHeader" depth="-3" pos="5,395" width="420" height="75" text_key="xuiTools"/>
 		<rect name="content" depth="8" pos="0,-46" height="60" disablefallthrough="true">
 			<grid name="inventory" rows="1" cols="4" pos="10,420" cell_width="60" cell_height="60" controller="WorkstationToolGrid" repeat_content="true" 
@@ -186,8 +783,10 @@
 				<item_stack controller="RequiredItemStack" name="0"/>
 			</grid>
 		</rect>
+		</rect>
 	</window>
 	<window name="windowOutputWorkbench" depth="20" width="430" height="95" panel="Left" cursor_area="true" controller="WorkstationOutputWindow" >
+		<rect pos="-100,0">
 		<windowBackgroundNoHeader name="windowBackgroundNoHeader" depth="-3" pos="5,100" width="420" height="95" text_key="xuiOutput"/>
 		<panel style="header.panel" disableautobackground="true">
 			<sprite style="header.icon" sprite="ui_game_symbol_loot_sack" height="1" color="0,0,0,0"/>
@@ -205,8 +804,10 @@
 				<AX_item_stack name="0"/>
 			</grid>
 		</rect>
+		</rect>
 	</window>
 <window name="windowBackpack" width="360" height="650" anchor="CenterCenter" panel="Right" controller="BackpackWindow" cursor_area="true" >
+		<rect pos="-100,0">
 		<rect name="windowbackground" pos="0,0" depth="-3">
 			<windowBackground name="windowBackground" depth="-3" pos="0,0" width="430" height="650"/>
 		</rect>
@@ -217,8 +818,8 @@
 			<sprite depth="3" name="windowIcon" style="icon22px" pivot="center" pos="21,-21" sprite="ui_game_symbol_backpack" />
 			<label depth="3" name="windowName" pos="42,-6" width="150" height="20" text="INVENTORY" text_key="xuiInventory" font_size="22" />
 
-			<rect pos="220,0" width="300" controller="ContainerStandardControls" move_start_bottom_left="true" is_backpack="true">
-				<button depth="20"  name="btnClearInventory" sprite="ui_game_symbol_trash" tooltip_key="lblClearInventory" hoverscale="1" pos="0,-6" style="icon22px, press, hover" sound="[paging_click]" visible="{creativewindowopen}" />
+			<rect pos="320,0" width="300" controller="ContainerStandardControls" move_start_bottom_left="true" is_backpack="true">
+				<button depth="20"  name="btnClearInventory" sprite="ui_game_symbol_trash" tooltip_key="lblClearInventory" hoverscale="1" pos="-100,-6" style="icon22px, press, hover" sound="[paging_click]" visible="{creativewindowopen}" />
 				
 				<rect pos="35, 0" visible="{lootingorvehiclestorage}">
 					<button   depth="3" name="btnMoveAll" sprite="ui_game_symbol_store_all_down" hoverscale="1" tooltip_key="lblStashAll" pos="0, -6" style="icon22px, press, hover" sound="[paging_click]" />
@@ -240,8 +841,10 @@
 				<AX_backpack_item_stack name="0"/>
 			</grid>
 		</panel>
+		</rect>
 	</window>
 <window name="emptyInfoPanel" width="340" height="650" anchor="CenterCenter" panel="Center" controller="EmptyInfoWindow" cursor_area="true" >
+	<rect pos="-100,0">
 		<windowBackground name="windowBackground" depth="-3" pos="0,0" width="340" height="650"/>
 		<panel name="header" height="43" depth="1" disableautobackground="true">
 			<sprite depth="2" name="windowIcon" style="icon2
@@ -254,9 +857,11 @@
 			<sprite color="[mediumGrey]" width="329" height="600" type="sliced" />
 			<label pos="5,-5" depth="3" name="descriptionText" width="320" height="695" text_key="xuiEmptyInfoPanelText" justify="center" font_size="22" spacing_y="10" />
 		</rect>
+	</rect>
 	</window>
 
 <window name="itemInfoPanel" width="340" height="650" controller="ItemInfoWindow" anchor="CenterCenter" panel="Center" cursor_area="true" >
+		<rect pos="-100,0">
 		<windowBackground name="windowBackground" depth="-3" pos="0,0" width="340" height="650"/>
 		<panel name="header" height="43" depth="1" disableautobackground="true">
 			<rect name="AXQuality" pos="0,0" visible="{hasdurability}">
@@ -352,10 +957,12 @@
 				<label depth="3" name="descriptionText" pos="0,-20" text_key="xuiCompareNoModded" justify="center" font_size="20" color="[selectedColor]" />
 			</rect>
 		</rect>
+		</rect>
 	</window>
 
 
 <window name="windowCraftingList" width="390" height="655" controller="CraftingListInfo" panel="Left" cursor_area="true" >
+	<rect pos="-100,0">
 		<windowBackground name="windowBackground" depth="-3" pos="50,0" width="390" height="650"/>
 		<panel name="header" height="30" depth="1" disableautobackground="true">
 			<sprite pos="54,-5" depth="2" name="windowIcon" style="icon22px" sprite="Craft_Icon_Basics"/>
@@ -393,6 +1000,7 @@
 				<recipe_entry name="0"/>
 			</grid>
 		</panel>
+	</rect>
 	</window>
 
 
@@ -404,6 +1012,7 @@
 
 
 	<window name="windowCraftingListWorkbench"  width="430" height="550" controller="CraftingListInfo" panel="Left" cursor_area="true" >
+		<rect pos="-100,0">
 		<windowBackground name="windowBackground" depth="-3" pos="0,0" width="430" height="650"/>
 		<panel name="header" height="43" depth="1" disableautobackground="true">
 			<sprite pos="4,-5" depth="2" name="windowIcon" style="icon32px" sprite="Craft_Icon_Basics"/>
@@ -441,9 +1050,11 @@
 				<recipe_entry name="0"/>
 			</grid>
 		</panel>
+		</rect>
 	</window>
 
 <window name="windowCraftingListMixer"  width="430" height="550" controller="CraftingListInfo" panel="Left" cursor_area="true" >
+		<rect pos="-100,0">
 		<windowBackground name="windowBackground" depth="-3" pos="0,0" width="430" height="650"/>
 		<panel name="header" height="43" depth="1" disableautobackground="true">
 			<sprite pos="4,-5" depth="2" name="windowIcon" style="icon32px" sprite="Craft_Icon_Basics"/>
@@ -481,8 +1092,10 @@
 				<recipe_entry name="0"/>
 			</grid>
 		</panel>
+		</rect>
 	</window>
 <window name="windowCraftingListAmmoWorkbench"  width="430" height="550" controller="CraftingListInfo" panel="Left" cursor_area="true" >
+	<rect pos="-100,0">
 		<windowBackground name="windowBackground" depth="-3" pos="0,0" width="430" height="650"/>
 		<panel name="header" height="43" depth="1" disableautobackground="true">
 			<sprite pos="4,-5" depth="2" name="windowIcon" style="icon32px" sprite="Craft_Icon_Basics"/>
@@ -520,8 +1133,10 @@
 				<recipe_entry name="0"/>
 			</grid>
 		</panel>
+		</rect>
 	</window>
 <window name="windowCraftingListGunWorkbench"  width="430" height="550" controller="CraftingListInfo" panel="Left" cursor_area="true" >
+	<rect pos="-100,0">
 		<windowBackground name="windowBackground" depth="-3" pos="0,0" width="430" height="650"/>
 		<panel name="header" height="43" depth="1" disableautobackground="true">
 			<sprite pos="4,-5" depth="2" name="windowIcon" style="icon32px" sprite="Craft_Icon_Basics"/>
@@ -559,12 +1174,14 @@
 				<recipe_entry name="0"/>
 			</grid>
 		</panel>
+		</rect>
 	</window>
 
 
 <!-- VENTANA DE LISTA DE RECETAS (FORGE) BY DJTRIPL3XMR -->
 
 	<window name="windowCraftingListForge"  width="420" height="340" controller="CraftingListInfo" panel="Left" cursor_area="true" >
+	<rect pos="-100,0">
 		<windowBackground name="windowBackground" depth="-3" pos="0,0" width="420" height="650"/>
 		<panel name="header" height="43" depth="1" disableautobackground="true">
 			<sprite pos="4,-5" depth="2" name="windowIcon" style="icon32px" sprite="Craft_Icon_Basics"/>
@@ -602,11 +1219,13 @@
 				<recipe_entry name="0"/>
 			</grid>
 		</panel>
+		</rect>
 	</window>
 
 <!-- VENTANA DE LISTA DE RECETAS (CAMPFIRE) BY DJTRIPL3XMR -->
 
-	<window name="windowCraftingListCampfire"  width="430" height="444" controller="CraftingListInfo" panel="Left" cursor_area="true" >
+	<window name="windowCraftingListCampfire" width="430" height="444" controller="CraftingListInfo" panel="Left" cursor_area="true" >
+		<rect  pos="-100,0" >
 		<windowBackground name="windowBackground" depth="-3" pos="0,0" width="430" height="650"/>
 		<panel name="header" height="43" depth="1" disableautobackground="true">
 			<sprite pos="4,-5" depth="2" name="windowIcon" style="icon32px" sprite="Craft_Icon_Basics"/>
@@ -644,11 +1263,13 @@
 				<recipe_entry name="0"/>
 			</grid>
 		</panel>
+		</rect>
 	</window>
 
 <!-- VENTANA DE LISTA DE RECETAS (CHEMISTRY) BY DJTRIPL3XMR -->
 
 	<window name="windowCraftingListChemistry"  width="430" height="550" controller="CraftingListInfo" panel="Left" cursor_area="true" >
+		<rect pos="-100,0">
 		<windowBackground name="windowBackground" depth="-3" pos="0,0" width="430" height="650"/>
 		<panel name="header" height="43" depth="1" disableautobackground="true">
 			<sprite pos="4,-5" depth="2" name="windowIcon" style="icon32px" sprite="Craft_Icon_Basics"/>
@@ -686,12 +1307,14 @@
 				<recipe_entry name="0"/>
 			</grid>
 		</panel>
+		</rect>
 	</window>
 
 
 
 
 <window name="windowToolsCampfire" depth="20" width="430" height="95" panel="Left" cursor_area="true" >
+		<rect pos="-100,0">
 		<windowBackgroundNoHeader name="windowBackgroundNoHeader" depth="-3" pos="5,100" width="420" height="95" text_key="xuiTools"/>
 		<panel style="header.panel" disableautobackground="true">
 			<sprite style="header.icon" sprite="ui_game_symbol_cookware" height="1" color="0,0,0,0"/>
@@ -704,8 +1327,10 @@
 				<AX_item_stack controller="RequiredItemStack" name="0"/>
 			</grid>
 		</rect>
+		</rect>
 	</window>
 <window name="windowToolsGrill" depth="20" width="430" height="95" panel="Left" cursor_area="true" >
+		<rect pos="-100,0">
 		<windowBackgroundNoHeader name="windowBackgroundNoHeader" depth="-3" pos="5,100" width="420" height="95" text_key="xuiTools"/>
 		<panel style="header.panel" disableautobackground="true">
 			<sprite style="header.icon" sprite="ui_game_symbol_cookware" height="1" color="0,0,0,0"/>
@@ -718,9 +1343,11 @@
 				<AX_item_stack controller="RequiredItemStack" name="0"/>
 			</grid>
 		</rect>
+		</rect>
 	</window>
 
 <window name="windowToolsStove" depth="20" width="430" height="95" panel="Left" cursor_area="true" >
+		<rect pos="-100,0">
 		<windowBackgroundNoHeader name="windowBackgroundNoHeader" depth="-3" pos="5,100" width="420" height="95" text_key="xuiTools"/>
 		<panel style="header.panel" disableautobackground="true">
 			<sprite style="header.icon" sprite="ui_game_symbol_cookware" height="1" color="0,0,0,0"/>
@@ -733,8 +1360,10 @@
 				<AX_item_stack controller="RequiredItemStack" name="0"/>
 			</grid>
 		</rect>
+		</rect>
 	</window>
 <window name="windowToolsCoffeeMaker" depth="20" width="430" height="95" panel="Left" cursor_area="true" >
+	<rect pos="-100,0">
 		<windowBackgroundNoHeader name="windowBackgroundNoHeader" depth="-3" pos="5,100" width="420" height="95" text_key="xuiTools"/>
 		<panel style="header.panel" disableautobackground="true">
 			<sprite style="header.icon" sprite="ui_game_symbol_cookware" height="1" color="0,0,0,0"/>
@@ -747,10 +1376,12 @@
 				<AX_item_stack controller="RequiredItemStack" name="0"/>
 			</grid>
 		</rect>
+		</rect>
 	</window>
 <!-- VENTANA DE GASOLINA (FUEL/wood) BY DJTRIPL3XMR -->
 
 <window name="windowForgeInput" depth="20" width="430" height="95" panel="Left" controller="WorkstationMaterialInputWindow" materials_accepted="iron,brass,lead,glass,stone,clay" valid_materials_color="[green]" invalid_materials_color="[red]" cursor_area="true" >
+	<rect pos="-100,0">
 		<windowBackgroundNoHeader name="windowBackgroundNoHeader" depth="-3" pos="5,90" width="420" height="95" text_key="xuiSmelting"/>
 		<panel style="header.panel" disableautobackground="true">
 			<sprite style="header.icon" sprite="ui_game_symbol_forge" height="1" color="0,0,0,0"/>
@@ -770,10 +1401,12 @@
 				<forge_material name="0"/>
 			</grid>
 		</rect>
+		</rect>
 	</window>
 
 
 	<window name="windowToolsForge" depth="20" width="430" height="95" panel="Left" cursor_area="true" >
+	<rect pos="-100,0">
 		<windowBackgroundNoHeader name="windowBackgroundNoHeader" depth="-3" pos="5,0" width="420" height="95" text_key="xuiTools"/>
 		<panel style="header.panel" disableautobackground="true">
 			<sprite style="header.icon" sprite="ui_game_symbol_wrench" height="1" color="0,0,0,0"/>
@@ -786,10 +1419,12 @@
 				<AX_item_stack controller="RequiredItemStack" name="0"/>
 			</grid>
 		</rect>
+		</rect>
 	</window>
 
 
 	<window name="windowFuel" depth="30" size="0,0" panel="Left" cursor_area="true">
+		<rect pos="-100,0">
 		<rect pos="0,-452">
 		<label depth="5" name="descriptionname" font_size="20" color="[white]" width="200" height="18" text_key="xuiFuel" pos="218,-5" />
 		<panel style="header.panel" disableautobackground="true">
@@ -827,6 +1462,7 @@
 				<label depth="2" name="onoff" pos="0,-6" justify="center" text="TURN ON" text_key="xuiTurnOn" font_size="18" />
 			</rect>
 		</panel>
+		</rect>
 		</rect>
 	</window>
 
@@ -986,7 +1622,7 @@
 
 
 
-			<rect pos="645,10" width="60" height="60" controller="HUDStatBar" stat_type="ActiveItem" visible="{statvisible}">
+			<rect pos="-181,70" width="60" height="60" controller="HUDStatBar" stat_type="ActiveItem" visible="{statvisible}">
              <sprite depth="1" pos="130,-40" height="60" width="60"  name="border" sprite="ui_game_filled_circle" color="[black]" pivot="center" globalopacity="true"/>
 			   <sprite depth="2" pos="130,-40" height="60" width="60"  name="border" sprite="ui_game_filled_circle" color="[black]" pivot="center" globalopacity="true"/>
 			     <sprite depth="3" name="Icon" atlas="{staticonatlas|once}" sprite="{staticon}" size="30,30" pos="110,-15" color="{staticoncolor}" foregroundlayer="true" />
@@ -1063,7 +1699,7 @@
 <append xpath="/windows/window[@name='windowBackpack']">
 
 <!-- hidden progression-->
-			<rect depth="30" name="hiddenshit" pos="-1000,-825" >
+			<rect depth="30" name="hiddenshit" pos="125,-810" >
 					<sprite depth="2" name="background" width="255" height="105" color="[white]" type="sliced" />
 					<sprite depth="3" name="background" width="254" height="104" color="[black]" />
 					
@@ -1119,40 +1755,48 @@
 
 <append xpath="/windows/window[@name='windowToolbelt']">
 			<rect name="TBDisplay" pos="-870,5">
-				<rect pos="875,-50">
-			<sprite depth="1" pos="818,50" width="45"  height="104" pivot="left" name="background" sprite="menu_empty" type="sliced" color="[black]" />
-					<filledsprite depth="2" pos="819,50" width="40" height="100" pivot="left" name="bar" color="[red]" fill="{cvar(weightfillcvar)}" filldirection="vertical" foregroundlayer="true" />
-					<label name="lblText"  depth="7" pos="845,37" height="30" font_size="20"  justify="center" pivot="top" text="{# Round(cvar('weightfillcvarDisplay'), 0)}%" />
-	</rect>
-				
-				<rect pos="875,-50">
-					<sprite depth="6" name="itemPreview" pos="838,75" width="50" height="50" atlas="ItemIconAtlas" sprite="MilitaryCivilianBackpack" color="{itemicontint}" pivot="center" visible="{cvar(MCB:true;false;false)}" foregroundlayer="true"/>
-					<!--<sprite depth="1" pos="818,50" width="45"  height="104" pivot="left" name="background" sprite="menu_empty" type="sliced" color="[black]" visible="{cvar(MCB:true;false;false)}"/>
-					<filledsprite depth="2" pos="819,50" width="40" height="100" pivot="left" name="bar" color="[red]" fill="{cvar(weightfillcvar)}" filldirection="vertical" foregroundlayer="true" visible="{cvar(MCB:true;false;false)}"/>
-					<label name="lblText"  depth="7" pos="845,37" height="30" font_size="20"  justify="center" pivot="top" text="{# Round(cvar('weightfillcvarDisplay'), 0)}%" color="255,255,255,{cvar(MCB)}"/>-->
+				<rect pos="-75,-10">
+					<rect pos="875,-50">
+						<sprite depth="1" pos="818,50" width="45"  height="104" pivot="left" name="background" sprite="menu_empty" type="sliced" color="[black]" />
+						<filledsprite depth="2" pos="819,50" width="40" height="100" pivot="left" name="bar" color="[red]" fill="{cvar(weightfillcvar)}" filldirection="vertical" foregroundlayer="true" />
+						<label name="lblText"  depth="7" pos="845,37" height="30" font_size="20"  justify="center" pivot="top" text="{# Round(cvar('weightfillcvarDisplay'), 0)}%" />
+					</rect>
+					
+					<rect pos="875,-50">
+						<sprite depth="6" name="itemPreview" pos="838,75" width="50" height="50" atlas="ItemIconAtlas" sprite="MilitaryCivilianBackpack" color="{itemicontint}" pivot="center" visible="{cvar(MCB:true;false;false)}" foregroundlayer="true"/>
+						<!--<sprite depth="1" pos="818,50" width="45"  height="104" pivot="left" name="background" sprite="menu_empty" type="sliced" color="[black]" visible="{cvar(MCB:true;false;false)}"/>
+						<filledsprite depth="2" pos="819,50" width="40" height="100" pivot="left" name="bar" color="[red]" fill="{cvar(weightfillcvar)}" filldirection="vertical" foregroundlayer="true" visible="{cvar(MCB:true;false;false)}"/>
+						<label name="lblText"  depth="7" pos="845,37" height="30" font_size="20"  justify="center" pivot="top" text="{# Round(cvar('weightfillcvarDisplay'), 0)}%" color="255,255,255,{cvar(MCB)}"/>-->
+					</rect>
+					<rect pos="875,-50">
+						<sprite depth="6" name="itemPreview" pos="838,75" width="50" height="50" atlas="ItemIconAtlas" sprite="MilitarysmallBackpack" color="{itemicontint}" pivot="center" visible="{cvar(MSB:true;false;false)}" foregroundlayer="true"/>
+						<!--<sprite depth="1" pos="818,50" width="45"  height="104" pivot="left" name="background" sprite="menu_empty" type="sliced" color="[black]" visible="{cvar(MSB:true;false;false)}"/>
+						<filledsprite depth="2" pos="819,50" width="40" height="100" pivot="left" name="bar" color="[red]" fill="{cvar(weightfillcvar)}" filldirection="vertical" foregroundlayer="true" visible="{cvar(MSB:true;false;false)}"/>
+						<label name="lblText"  depth="7" pos="845,37" height="30" font_size="20"  justify="center" pivot="top" text="{# Round(cvar('weightfillcvarDisplay'), 0)}%" color="255,255,255,{cvar(MSB)}"/>-->
+					</rect>
+					<rect pos="875,-50">
+						<sprite depth="6" name="itemPreview" pos="838,75" width="50" height="50" atlas="ItemIconAtlas" sprite="MilitarymediumBackpack" color="{itemicontint}" pivot="center" visible="{cvar(MMB:true;false;false)}" foregroundlayer="true"/>
+						<!--<sprite depth="1" pos="818,50" width="45"  height="104" pivot="left" name="background" sprite="menu_empty" type="sliced" color="[black]" visible="{cvar(MMB:true;false;false)}"/>
+						<filledsprite depth="2" pos="819,50" width="40" height="100" pivot="left" name="bar" color="[red]" fill="{cvar(weightfillcvar)}" filldirection="vertical" foregroundlayer="true" visible="{cvar(MMB:true;false;false)}"/>
+						<label name="lblText"  depth="7" pos="845,37" height="30" font_size="20"  justify="center" pivot="top" text="{# Round(cvar('weightfillcvarDisplay'), 0)}%" color="255,255,255,{cvar(MMB)}"/>-->
+					</rect>
+					<rect pos="875,-50">
+						<sprite depth="6" name="itemPreview" pos="838,75" width="50" height="50" atlas="ItemIconAtlas" sprite="MilitaryLargeBackpack" color="{itemicontint}" pivot="center" visible="{cvar(MLB:true;false;false)}" foregroundlayer="true"/>
+						<!--<sprite depth="1" pos="818,50" width="45"  height="104" pivot="left" name="background" sprite="menu_empty" type="sliced" color="[black]" visible="{cvar(MLB:true;false;false)}"/>
+						<filledsprite depth="2" pos="819,50" width="40" height="100" pivot="left" name="bar" color="[red]" fill="{cvar(weightfillcvar)}" filldirection="vertical" foregroundlayer="true" visible="{cvar(MLB:true;false;false)}"/>
+						<label name="lblText"  depth="7" pos="845,37" height="30" font_size="20"  justify="center" pivot="top" text="{# Round(cvar('weightfillcvarDisplay'), 0)}%" color="255,255,255,{cvar(MLB)}"/>-->
+					</rect>
 				</rect>
-				<rect pos="875,-50">
-					<sprite depth="6" name="itemPreview" pos="838,75" width="50" height="50" atlas="ItemIconAtlas" sprite="MilitarysmallBackpack" color="{itemicontint}" pivot="center" visible="{cvar(MSB:true;false;false)}" foregroundlayer="true"/>
-					<!--<sprite depth="1" pos="818,50" width="45"  height="104" pivot="left" name="background" sprite="menu_empty" type="sliced" color="[black]" visible="{cvar(MSB:true;false;false)}"/>
-					<filledsprite depth="2" pos="819,50" width="40" height="100" pivot="left" name="bar" color="[red]" fill="{cvar(weightfillcvar)}" filldirection="vertical" foregroundlayer="true" visible="{cvar(MSB:true;false;false)}"/>
-					<label name="lblText"  depth="7" pos="845,37" height="30" font_size="20"  justify="center" pivot="top" text="{# Round(cvar('weightfillcvarDisplay'), 0)}%" color="255,255,255,{cvar(MSB)}"/>-->
-				</rect>
-				<rect pos="875,-50">
-					<sprite depth="6" name="itemPreview" pos="838,75" width="50" height="50" atlas="ItemIconAtlas" sprite="MilitarymediumBackpack" color="{itemicontint}" pivot="center" visible="{cvar(MMB:true;false;false)}" foregroundlayer="true"/>
-					<!--<sprite depth="1" pos="818,50" width="45"  height="104" pivot="left" name="background" sprite="menu_empty" type="sliced" color="[black]" visible="{cvar(MMB:true;false;false)}"/>
-					<filledsprite depth="2" pos="819,50" width="40" height="100" pivot="left" name="bar" color="[red]" fill="{cvar(weightfillcvar)}" filldirection="vertical" foregroundlayer="true" visible="{cvar(MMB:true;false;false)}"/>
-					<label name="lblText"  depth="7" pos="845,37" height="30" font_size="20"  justify="center" pivot="top" text="{# Round(cvar('weightfillcvarDisplay'), 0)}%" color="255,255,255,{cvar(MMB)}"/>-->
-				</rect>
-				<rect pos="875,-50">
-					<sprite depth="6" name="itemPreview" pos="838,75" width="50" height="50" atlas="ItemIconAtlas" sprite="MilitaryLargeBackpack" color="{itemicontint}" pivot="center" visible="{cvar(MLB:true;false;false)}" foregroundlayer="true"/>
-					<!--<sprite depth="1" pos="818,50" width="45"  height="104" pivot="left" name="background" sprite="menu_empty" type="sliced" color="[black]" visible="{cvar(MLB:true;false;false)}"/>
-					<filledsprite depth="2" pos="819,50" width="40" height="100" pivot="left" name="bar" color="[red]" fill="{cvar(weightfillcvar)}" filldirection="vertical" foregroundlayer="true" visible="{cvar(MLB:true;false;false)}"/>
-					<label name="lblText"  depth="7" pos="845,37" height="30" font_size="20"  justify="center" pivot="top" text="{# Round(cvar('weightfillcvarDisplay'), 0)}%" color="255,255,255,{cvar(MLB)}"/>-->
-				</rect>
-
 				<!-- * * * * * Blade Kill Counters * * * * * -->
 				
-			
+		    	<rect pos="0,-33">
+					<sprite depth="1" name="itemPreview" pos="818,-4" width="40" height="40" atlas="ItemIconAtlas" sprite="5d_FishingRod" color="{itemicontint}" pivot="center" visible="{cvar(FishingDisplay:true;false;false)}" foregroundlayer="true"/>
+					<sprite depth="0" name="windowicon" style="icon32px" pos="818,-4" pivot="center" justify="center" width="57" height="57" fillcenter="true" sprite="ui_game_filled_circle" color="[darkestGrey]" visible="{cvar(FishingDisplay:true;false;false)}"/>
+					<sprite depth="-1" name="windowicon" style="icon32px" pos="818,-4" pivot="center" justify="center" width="60" height="60" fillcenter="false" sprite="ui_game_filled_circle" color="100,100,100,255" visible="{cvar(FishingDisplay:true;false;false)}"/>				
+					<sprite depth="-1" name="windowicon" style="icon32px" pos="818,-4" pivot="center" justify="center" width="60" height="60" type="filled" fill="{cvar(HOH_Fishing_lvl_Next_Display)}" filldirection="radial360" fillcenter="false" sprite="ui_game_filled_circle" color="0,255,0,255" visible="{cvar(FishingDisplay:true;false;false)}"/>	
+					<label depth="5" name="TextContent" pos="465,-10" font_size="15" color="255,255,255,{cvar(FishingDisplay)}" justify="center" pivot="topleft" text="{cvar(HOH_Fishing_lvl)}"/>				
+				</rect>
+
 				
 				<!-- Hunting Knife -->
 				
@@ -1784,7 +2428,7 @@
 					<label depth="5" name="TextContent" pos="465,-10" font_size="15" color="255,255,255,{cvar(DriverBlockDisplay)}" justify="center" pivot="topleft" text="{cvar(HOH_Wrenches_lvl)}"/>				
 				</rect>
 
-				<rect pos="-60,-33" name="Stealth">
+				<rect pos="-65,-33" name="Stealth">
 					<sprite depth="1" name="itemPreview" pos="818,-4" width="60" height="60" atlas="{staticonatlas|once}" size="40,40" sprite="ui_game_symbol_stealth" color="{itemicontint}" pivot="center" visible="{cvar(StealthBlockDisplay:true;false;false)}" foregroundlayer="true"/>
 					<sprite depth="0" name="windowicon" style="icon32px" pos="818,-4" pivot="center" justify="center" width="57" height="57" fillcenter="true" sprite="ui_game_filled_circle" color="[darkestGrey]" visible="{cvar(StealthBlockDisplay:true;false;false)}"/>
 					<sprite depth="-1" name="windowicon" style="icon32px" pos="818,-4" pivot="center" justify="center" width="60" height="60" fillcenter="false" sprite="ui_game_filled_circle" color="100,100,100,255" visible="{cvar(StealthBlockDisplay:true;false;false)}"/>				
@@ -1902,7 +2546,7 @@
 		<!--<label depth="2" name="questlevel" pos="825,40" width="125" height="28" text="Quest Level: {cvar(HOH_Questing_lvl)}" font_size="22"/>-->
 
 	</append>
-<append xpath="/windows/window[@name='windowTrader']/panel[@name='content']">
+<append xpath="/windows/window[@name='windowTrader']/rect/panel[@name='content']">
 	<rect pos="875,23" width="150" height="28" >
 		<sprite depth="0" pos="2,62" name="backgroundMain" sprite="menu_empty3px" height="24" width="125" color="182,182,182,300" type="sliced" fillcenter="true" />
 		<label depth="5" pos="5,62" name="TextContent" font_size="20" color="[black]" justify="left" pivot="topleft" text="Trader Rep: {cvar(HOH_Questing_lvl)}"/>
@@ -1914,7 +2558,7 @@
 	</append>
 <append xpath="/windows">
 <window name="windowCampFuel" depth="30" size="0,0" panel="Left" cursor_area="true">
-
+<rect pos="-100,0">
 		<rect pos="0,-452">
 		<label depth="5" name="descriptionname" font_size="20" color="[white]" width="200" height="18" text_key="xuiFuel" pos="218,95" />
 		<panel style="header.panel" disableautobackground="true">
@@ -1953,10 +2597,11 @@
 			</rect>
 		</panel>
 		</rect>
-			
+		</rect>	
 	</window>
 	
 <window name="windowCampOutput" depth="20" width="430" height="95" panel="Left" cursor_area="true" controller="WorkstationOutputWindow" >
+	<rect pos="-100,0">
 		<windowBackgroundNoHeader name="windowBackgroundNoHeader" depth="-3" pos="5,100" width="420" height="95" text_key="xuiOutput"/>
 		<panel style="header.panel" disableautobackground="true">
 			<sprite style="header.icon" sprite="ui_game_symbol_loot_sack" height="1" color="0,0,0,0"/>
@@ -1974,25 +2619,30 @@
 				<AX_item_stack name="0"/>
 			</grid>
 		</rect>
+		</rect>
 	</window>
 
 
 
 <window name="windowCraftingQueueCamp" depth="20" width="430" height="95" panel="Left" cursor_area="true" >
+		<rect pos="-100,0">
 		<windowBackgroundNoHeader name="windowBackgroundNoHeader" depth="-3" pos="5,110" width="420" height="95" text_key="xuiQueue"/>
 		<rect depth="0" pos="0,-25" width="430" controller="CraftingQueue">
 			<grid name="queue" rows="1" cols="6" pos="6,110" cell_width="70" cell_height="70" repeat_content="true">
 				<recipe_stack_camp name="0"/>
 			</grid>
 		</rect>
+		</rect>
 	</window>
 
 <window name="windowCraftingQueue" depth="20" width="370" height="95" panel="Left" cursor_area="true" >
+		<rect pos="-100,0">
 		<windowBackgroundNoHeader name="windowBackgroundNoHeader" depth="-3" pos="55,110" width="380" height="95" text_key="xuiQueue"/>
 		<rect depth="0" pos="0,-25" width="370" controller="CraftingQueue">
 			<grid name="queue" rows="1" cols="6" pos="66,110" cell_width="60" cell_height="60" repeat_content="true">
 				<recipe_stack name="0"/>
 			</grid>
+		</rect>
 		</rect>
 	</window>
 
@@ -2005,6 +2655,7 @@
 <remove xpath="/windows/window[@name='craftingInfoPanel']"/>
 <append xpath="/windows">
 <window name="craftingInfoPanel" width="340" height="600" controller="CraftingInfoWindow" style="crafting.info.window" anchor="CenterCenter" panel="Center" cursor_area="true" >
+		<rect pos="-100,0">
 		<windowBackground name="windowBackground" depth="-3" pos="0,0" width="340" height="600"/>
 		<panel name="header" height="43" depth="1" disableautobackground="true">
 			<rect name="AXQuality" pos="0,0" visible="{hasdurability}">
@@ -2103,11 +2754,13 @@
 				</rect>
 			</rect>
 		</rect>
+	</rect>
 	</window>
 
 
 
 	<window name="windowFuelElectric" depth="30" size="0,0" panel="Left" cursor_area="true" pos="140,100">
+		<rect pos="-100,0">
 		<rect pos="0,-452">
 		<!--<label depth="5" name="descriptionname" font_size="16" color="[white]" width="200" height="18" text_key="xuiFuel" pos="218,-30" />-->
 		<!--<panel style="header.panel" disableautobackground="true">-->
@@ -2139,8 +2792,10 @@
 			</rect>
 		</panel>
 		</rect>
+		</rect>
 	</window>
 	<window name="windowFuelElectricv2" depth="50" size="0,0" panel="Left" cursor_area="true" pos="70,0">
+		<rect pos="-100,0">
 		<rect pos="0,-452">
 		<label depth="5" name="descriptionname" font_size="20" color="[white]" width="200" height="18" text_key="xuiFuel" pos="218,-5" />
 		<panel style="header.panel" disableautobackground="true">
@@ -2178,8 +2833,10 @@
 			</rect>
 		</panel>
 		</rect>
+		</rect>
 	</window>
 	<window name="windowFuelPropane" depth="30" size="0,0" panel="Left" cursor_area="true">
+		<rect pos="-100,0">
 		<rect pos="10,-352">
 		<label depth="5" name="descriptionname" font_size="20" color="[white]" width="200" height="18" text_key="xuiFuel" pos="218,-5" />
 		<panel style="header.panel" disableautobackground="true">
@@ -2216,6 +2873,7 @@
 			</rect>
 		</panel>
 		</rect>
+		</rect>
 	</window>
 
 
@@ -2225,10 +2883,10 @@
 
 
 
-	<set xpath="/windows/window[@name='windowForgeInput']/rect[@name='content']/grid/@cols">3</set>
-<set xpath="/windows/window[@name='windowCraftingQueue']/rect/grid[@name='queue']/@cols">6</set>
+	<set xpath="/windows/window[@name='windowForgeInput']/rect/rect[@name='content']/grid/@cols">3</set>
+<set xpath="/windows/window[@name='windowCraftingQueue']/rect/rect/grid[@name='queue']/@cols">6</set>
 
-<append xpath="/windows/window[@name='windowBackpack']/panel[@name='header']/rect">
+<append xpath="/windows/window[@name='windowBackpack']/rect/panel[@name='header']/rect">
 		<rect pos="0, 0" visible="{notlootingorvehiclestorage}">
 			<!--<button depth="3" name="btnMoveQuickRestock" sprite="ui_game_symbol_Stockup" tooltip_key="lblStashQuickRestock" pos="25, -22" style="icon32px, press, hover" pivot="center" sound="[paging_click]"/>-->
 			<button depth="3" name="btnMoveQuickStack" sprite="ui_game_symbol_Putaway" tooltip_key="lblStashQuickStack" color="[green]" pos="75, -22" style="icon32px, press, hover" pivot="center" sound="[paging_click]"/>
@@ -2320,15 +2978,156 @@
 
 
 				-->
+<remove xpath="//window[@name='windowPowerSourceStats']"/>
+<remove xpath="//window[@name='windowPowerTriggerOptions']"/>
+<remove xpath="//window[@name='windowPowerSourceSlots']"/>
+<append xpath="/windows">
+	<window name="windowPowerSourceStats" width="228" height="312" panel="Left" controller="PowerSourceStats" >
+		<rect pos="-100,0">
+		<panel name="header" height="43" depth="1" backgroundspritename="ui_game_panel_header">
+			<sprite depth="2" name="windowIcon" style="icon32px" pos="5,-5" sprite="{powersourceicon}"/>
+			<label style="header.name.shrink" text="STATS" text_key="xuiStats" />
+		</panel>
+
+		<rect name="content" depth="0" pos="0,-46" height="234">
+			<sprite depth="4" name="backgroundMain" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" />
+			<sprite depth="1" color="[darkGrey]" type="sliced" width="228" height="197" pos="0,-3" />
+			<rect depth="2" pos="6,-5">
+				<grid name="stats" rows="5" cols="1" pos="3,-5" cell_width="223" cell_height="30" repeat_content="false" >
+					<panel height="30" width="340" disableautobackground="true" visible="{showfuel}">
+						<sprite depth="1" name="windowIcon" style="icon22px" pos="2,-2" sprite="ui_game_symbol_gas"/>
+						<label depth="1" width="110" pos="30,-2" name="lblSpeed" font_size="22" text="{fueltitle|once}: [DECEA3]{fuel}/{maxfuel}[-]" />
+
+						<sprite depth="2" width="70" pos="135, -7" height="10" type="sliced" color="[black]" visible="false"/>
+						<sprite depth="2" width="68" pos="136, -8" height="8" type="sliced" color="[mediumGrey]" visible="false"/>
+						<sprite depth="2" name="sprFillPotential" width="68" pos="136, -9" height="6" type="filled" color="[beige]" fill="{potentialfuelfill}" visible="false"/>
+						<sprite depth="2" name="sprFuelFill" width="68" pos="136, -8" height="8" type="filled" color="181,57,57" fill="{fuelfill}" visible="false" />
+					</panel>
+					<panel height="30" width="340" disableautobackground="true">
+						<sprite depth="1" name="windowIcon" style="icon22px" pos="2,-2" sprite="ui_game_symbol_electric_max_power"/>
+						<label depth="1" width="180" pos="30,-2" name="lblNoise" font_size="22" text="{maxoutputtitle|once}: [DECEA3]{maxoutput}w[-]" />
+					</panel>
+					<panel height="30" width="340" disableautobackground="true">
+						<sprite depth="1" name="windowIcon" style="icon22px" pos="2,-2" sprite="ui_game_symbol_electric_power"/>
+						<label depth="1" width="110" pos="30,-2" name="lblProtection" font_size="22" text="{powertitle|once}: [DECEA3]{power}w[-]" />
+
+						<sprite depth="2" width="70" pos="135, -7" height="10" type="sliced" color="[black]" />
+						<sprite depth="2" width="68" pos="136, -8" height="8" type="sliced" color="[mediumGrey]" />
+						<sprite depth="2" name="sprEnergyFill" width="68" pos="136, -8" height="8" type="filled" color="255,255,0" fill="{powerfill}" />
+					</panel>
+
+					<!--<panel height="30" width="340" disableautobackground="true">
+						<sprite depth="1" name="windowIcon" style="icon22px" pos="2,-2" sprite="ui_game_symbol_seats"/>
+						<label depth="1" width="180" pos="30,-2" name="lblPassengers" font_size="22" text="{passengersTitle}: [DECEA3]{passengers|once}[-]" />
+					</panel> -->
+				</grid>
+			</rect>
+			<rect name="btnOn" depth="3" pos="0, -198" height="36" >
+				<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" />
+				<sprite depth="2" name="background" pos="3,-3" sprite="menu_empty" width="224" height="32" color="[darkGrey]" type="sliced" />
+				<rect depth="3" pos="1,-3" width="224" height="31">
+					<button name="clickable" sprite="menu_empty" defaultcolor="[mediumGrey]" hoversprite="ui_game_select_row" hovercolor="[white]" type="sliced" hoverscale="1.0" />
+					<sprite depth="2" name="windowIcon" width="24" height="24" pos="11,-3" sprite="ui_game_symbol_electric_switch" color="[black_half_alpha]"/>
+					<sprite depth="2" name="windowIcon" width="24" height="24" pos="9,-3" sprite="ui_game_symbol_electric_switch" color="[black_half_alpha]"/>
+
+					<sprite depth="2" name="windowIcon" width="24" height="24" pos="9,-1" sprite="ui_game_symbol_electric_switch" color="[black_half_alpha]"/>
+					<sprite depth="2" name="windowIcon" width="24" height="24" pos="11,-1" sprite="ui_game_symbol_electric_switch" color="[black_half_alpha]"/>
+
+					<sprite depth="2" name="sprOnOff" width="24" height="24" pos="10,-2" color="[iconColor]" sprite="ui_game_symbol_electric_switch"/>
+					<label depth="2" name="lblOnOff" pos="40,-3" justify="left" text="TURN ON" text_key="xuiTurnOn" font_size="24" width="180" />
+				</rect>
+			</rect>
+			<rect name="btnRefuel" depth="3" pos="0, -231" height="36" visible="{showfuel}">
+				<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" />
+				<sprite depth="2" name="background" pos="3,-3" sprite="menu_empty" width="224" height="32" color="[darkGrey]" type="sliced" />
+				<rect depth="3" pos="1,-3" width="224" height="31">
+					<button name="clickable" sprite="menu_empty" defaultcolor="[mediumGrey]" hoversprite="ui_game_select_row" hovercolor="[white]" type="sliced" hoverscale="1.0" />
+					<sprite depth="2" name="windowIcon" width="24" height="24" pos="11,-3" sprite="ui_game_symbol_gas" color="[black_half_alpha]"/>
+					<sprite depth="2" name="windowIcon" width="24" height="24" pos="9,-3" sprite="ui_game_symbol_gas" color="[black_half_alpha]"/>
+
+					<sprite depth="2" name="windowIcon" width="24" height="24" pos="9,-1" sprite="ui_game_symbol_gas" color="[black_half_alpha]"/>
+					<sprite depth="2" name="windowIcon" width="24" height="24" pos="11,-1" sprite="ui_game_symbol_gas" color="[black_half_alpha]"/>
+
+					<sprite depth="2" name="windowIcon" width="24" height="24" pos="10,-2" color="[iconColor]" sprite="ui_game_symbol_gas"/>
+					<label depth="2" name="windowName" pos="40,-3" justify="left" text="REFUEL" text_key="xuiRefuel" font_size="24" width="180" />
+				</rect>
+			</rect>
+		</rect>
+		</rect>
+	</window>
+
+	<window name="windowPowerTriggerOptions" width="228" height="312" panel="Left" controller="PowerTriggerOptions" cursor_area="true" >
+		<rect pos="-100,0">
+		<panel name="header" height="43" depth="1" backgroundspritename="ui_game_panel_header">
+			<sprite depth="2" name="windowIcon" style="icon32px" pos="5,-5" sprite="ui_game_symbol_electric_power"/>
+			<label style="header.name.shrink" text="OPTIONS" text_key="btnOptions" />
+		</panel>
+
+		<rect name="content" depth="0" pos="0,-46" height="244" pivot="center">
+			<sprite depth="4" name="backgroundMain" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" />
+			<sprite depth="1" color="[darkGrey]" type="sliced" width="228" height="238" pos="0,-3" />
+
+			<grid name="stats" rows="5" cols="1" pos="3,0" cell_width="223" cell_height="60" repeat_content="false" >
+				<rect name="pnlTargeting">
+					<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="-3,0" width="228" height="52" color="[black]" type="sliced" fillcenter="false" gamepad_selectable="false"  />
+					<sprite depth="1" color="[mediumGrey]" type="sliced" width="225" height="49" pos="0,-3" />
+
+					<!-- <label justify="center" text="TARGETING" pos="3, -10" /> -->
+					<button depth="4" name="btnTargetSelf" style="icon30px, press, hover" pos="35,-25" sprite="ui_game_symbol_character" defaultcolor="[disabledLabelColor]" pivot="center" tooltip_key="xuiTargetSelf" sound="[paging_click]" />
+
+					<button depth="4" name="btnTargetAllies" style="icon30px, press, hover" pos="85,-25" sprite="ui_game_symbol_allies" defaultcolor="[disabledLabelColor]" pivot="center" tooltip_key="xuiTargetAllies" sound="[paging_click]" />
+
+					<button depth="4" name="btnTargetStrangers" style="icon30px, press, hover" pos="135,-25" sprite="ui_game_symbol_knife" defaultcolor="[disabledLabelColor]" pivot="center" tooltip_key="xuiTargetStrangers" sound="[paging_click]" />
+
+					<button depth="4" name="btnTargetZombies" style="icon30px, press, hover" pos="185,-25" sprite="ui_game_symbol_zombie" defaultcolor="[disabledLabelColor]" pivot="center" tooltip_key="xuiTargetZombies" sound="[paging_click]" />
+				</rect>
+				<option_selector name="optionSelector1" />
+				<option_selector name="optionSelector2" />
+
+			</grid>
+
+			<rect name="btnOn" depth="3" pos="0, -208" height="36" >
+				<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" />
+				<sprite depth="2" name="background" pos="3,-3" sprite="menu_empty" width="224" height="32" color="[darkGrey]" type="sliced" />
+				<rect depth="3" pos="1,-3" width="224" height="31">
+					<button name="clickable" sprite="menu_empty" defaultcolor="[mediumGrey]" hoversprite="ui_game_select_row" hovercolor="[white]" type="sliced" hoverscale="1.0" />
+					<sprite depth="2" name="windowIcon" width="24" height="24" pos="9,-3" sprite="ui_game_symbol_electric_switch" color="[black_half_alpha]"/>
+					<sprite depth="2" name="windowIcon" width="24" height="24" pos="11,-3" sprite="ui_game_symbol_electric_switch" color="[black_half_alpha]"/>
+
+					<sprite depth="2" name="windowIcon" width="24" height="24" pos="9,-1" sprite="ui_game_symbol_electric_switch" color="[black_half_alpha]"/>
+					<sprite depth="2" name="windowIcon" width="24" height="24" pos="11,-1" sprite="ui_game_symbol_electric_switch" color="[black_half_alpha]"/>
+
+					<sprite depth="2" name="sprOnOff" width="24" height="24" pos="10,-2" color="[iconColor]" sprite="ui_game_symbol_electric_switch"/>
+					<label depth="2" name="lblOnOff" pos="40,-3" justify="left" text="RESET" text_key="lblContextActionReset" font_size="24" width="180" />
+				</rect>
+			</rect>
+		</rect>
+	</rect>
+	</window>
+
+	<window name="windowPowerSourceSlots" width="150" height="198" anchor="CenterTop" panel="Left" cursor_area="true">
+		<rect pos="-100,0">
+		<panel style="header.panel">
+			<sprite depth="2" name="windowIcon" style="icon32px" pos="5,-5" sprite="ui_game_symbol_electric_power"/>
+			<label style="header.name.shrink" text="SLOTS" text_key="xuiSlots" />
+		</panel>
+
+
+		<rect name="content" depth="0" pos="0,-46" height="153" disablefallthrough="true" on_press="true" gamepad_selectable="false">
+			<sprite depth="2" name="background" sprite="menu_empty" color="[darkGrey]" type="sliced" />
+			<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" height="153" color="[black]" type="sliced" fillcenter="false" on_press="true" gamepad_selectable="false"/>
+				<grid depth="3" name="inventory" rows="2" cols="2" pos="3,-3" cell_width="75" cell_height="75" repeat_content="true" controller="PowerSourceSlots">
+					<item_stack controller="RequiredItemStack" name="0"/>
+				</grid>
+		</rect>
+		</rect>
+	</window>
+</append>
 
 
 
 
 
 
-
-
-<set xpath="/windows/window[@name='windowPowerSourceSlots']/rect[@name='content']/grid/@cols">2</set>
-<set xpath="/windows/window[@name='windowPowerSourceSlots']/rect[@name='content']/grid/@rows">2</set>
 <include filename="version_control.xml"/>
     </snj>

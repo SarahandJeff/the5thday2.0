@@ -3,6 +3,7 @@
 <!--#$-IGS BEGIN: Adding cursor area. -$#-->
 	<window name="craftingInfoPanelR" width="603" height="392" controller="CraftingInfoWindow" style="crafting.info.window" panel="Center" cursor_area="true" >
 	<!--#$-IGS END.-$#-->
+	<rect pos="-100,0">
 		<panel name="header" height="43" depth="1" backgroundspritename="ui_game_panel_header">
 			<sprite depth="2" name="windowIcon" style="icon32px" pos="4,-5" sprite="{itemgroupicon}"/>
 			<label style="header.name" text="{itemname}" />
@@ -89,10 +90,11 @@
 				</grid>
 			</rect>
 		</rect>
+	</rect>
 	</window>
     <window name="windowCraftingListR"  width="420" height="688" controller="CraftingListInfo" panel="Left" cursor_area="true" >
 	<!--#$-IGS END.-$#-->
-
+<rect pos="-100,0">
 		<panel name="header" height="43" depth="1" backgroundspritename="ui_game_panel_header">
 			<sprite pos="4,-5" depth="2" name="windowIcon" style="icon32px" sprite="Craft_Icon_Basics"/>
 			<label style="header.name" text="basics" text_key="xuiBasics" />
@@ -134,18 +136,54 @@
 				<recipe_entryR name="0"/>
 			</grid>
 		</panel>
+		</rect>
+	</window>
+	<window name="windowFuelElectricv3" depth="30" size="0,0" panel="Left" cursor_area="true" pos="140,100">
+		<rect pos="-100,375">
+		<rect pos="0,-452">
+		<!--<label depth="5" name="descriptionname" font_size="16" color="[white]" width="200" height="18" text_key="xuiFuel" pos="218,-30" />-->
+		<!--<panel style="header.panel" disableautobackground="true">-->
+			<!--<sprite style="header.icon" sprite="ui_game_symbol_fire" height="1" color="0,0,0,0"/>-->
+			<!--<label style="header.name" text="FUEL" text_key="xuiFuel"  height="1" color="0,0,0,0"/>-->
+			<!-- <label style="header.timer"/> -->
+			<!--<label name="burnTimeLeft" depth="3" width="70" height="26" text="00:00" pos="213,-45" font_size="16" justify="center" />-->
+		<!--</panel>-->
+
+		<rect name="content" depth="-5" pos="212,-22" height="2" >
+			<rect disablefallthrough="true">
+				<grid rows="1" cols="1"  cell_width="2" cell_height="2" controller="WorkstationFuelGrid" repeat_content="true">
+					<AX_item_stack name="0"/>
+				</grid>
+			</rect>
+			
+		</rect>
+
+		<!--<rect depth="0" pos="213,-25" width="60" height="60">
+			<sprite depth="0" name="backgroundMain" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" />
+			<sprite depth="0" pos="2,-2" width="55" height="55" color="[lightGrey]" type="sliced" />
+		</rect>-->
+
+		<panel name="buttonContent" depth="5" pos="213,-62" width="60" height="30" backgroundcolor="0,0,0,0" bordercolor="0,0,0,0">
+			<sprite depth="5" name="backgroundMain" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" />
+			<rect depth="1" pos="0,0" width="60" height="30">
+				<button name="button" sprite="menu_empty" defaultcolor="[mediumGrey]" disabledcolor="[mediumGrey]" hoversprite="ui_game_select_row" hovercolor="[white]" type="sliced" width="60"  hoverscale="1.0" />
+				<label depth="2" name="onoff" pos="0,-6" justify="center" text="TURN ON" text_key="xuiTurnOn" font_size="16" />
+			</rect>
+		</panel>
+		</rect>
+		</rect>
 	</window>
 </append>
 
 
     <set xpath="//window[@name='craftingInfoPanelR']/@width">1007</set>
-	<set xpath="//window[@name='craftingInfoPanelR']/rect[1]/sprite[1]/@width">1006</set>
-	<set xpath="//window[@name='craftingInfoPanelR']/rect[1]/rect[2]/@width">853</set>
-	<set xpath="//window[@name='craftingInfoPanelR']/rect[1]/rect[3]/@width">853</set>
-	<set xpath="//window[@name='craftingInfoPanelR']/rect[1]/rect[3]/sprite/@width">855</set>
-	<set xpath="//window[@name='craftingInfoPanelR']/rect[1]/rect[4]/grid/@width">1000</set>
-	<set xpath="//window[@name='craftingInfoPanelR']/rect[1]/rect[4]/@width">1000</set>
-	<set xpath="//window[@name='craftingInfoPanelR']/panel[1]/rect/label/@pos">135,-8</set>
-	<set xpath="//window[@name='craftingInfoPanelR']/panel[1]/rect/sprite/@pos">100,-8</set>
-	<set xpath="//window[@name='craftingInfoPanelR']/panel[1]/rect/@pos">670,0</set>
+	<set xpath="//window[@name='craftingInfoPanelR']/rect/rect[1]/sprite[1]/@width">1006</set>
+	<set xpath="//window[@name='craftingInfoPanelR']/rect/rect[1]/rect[2]/@width">853</set>
+	<set xpath="//window[@name='craftingInfoPanelR']/rect/rect[1]/rect[3]/@width">853</set>
+	<set xpath="//window[@name='craftingInfoPanelR']/rect/rect[1]/rect[3]/sprite/@width">855</set>
+	<set xpath="//window[@name='craftingInfoPanelR']/rect/rect[1]/rect[4]/grid/@width">1000</set>
+	<set xpath="//window[@name='craftingInfoPanelR']/rect/rect[1]/rect[4]/@width">1000</set>
+	<set xpath="//window[@name='craftingInfoPanelR']/rect/panel[1]/rect/label/@pos">135,-8</set>
+	<set xpath="//window[@name='craftingInfoPanelR']/rect/panel[1]/rect/sprite/@pos">100,-8</set>
+	<set xpath="//window[@name='craftingInfoPanelR']/rect/panel[1]/rect/@pos">670,0</set>
 </snj>

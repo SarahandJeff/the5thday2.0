@@ -152,6 +152,16 @@
 	<property name="Weight" value="1"/>
 </append>	
 <Append xpath="/items">
+<item name="brawlerlevelRedeem">
+			<property name="Extends" value="schematicMaster"/>
+			<property name="CreativeMode" value="Player"/>
+			<property name="CustomIcon" value="adminQuestTicketMaster"/>
+			<property name="CustomIconTint" value="FF0000"/>
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_Brawler_XP" operation="set" value="@HOH_Brawler_lvl_Next_Needed"/>
+				
+			</effect_group>
+		</item>
 <item name="foodlevelRedeem">
 			<property name="Extends" value="schematicMaster"/>
 			<property name="CreativeMode" value="Player"/>
@@ -2727,8 +2737,9 @@
 	<property name='Stacknumber' value='600'/>
 	</append>-->
 	
-
+   
 <append xpath="/items">
+
 		<item name="repairKitVehicle">
 			<property name="HoldType" value="45" />
 			<property name="Tags" value="junk" />

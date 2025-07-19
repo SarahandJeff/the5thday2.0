@@ -1,5 +1,14 @@
 <snj>
 <append xpath="/buffs">
+<buff name="5d_srTrackerActivate" hidden="true" icon="ui_game_symbol_add" icon_color="255,0,0" icon_blink="true">
+			<stack_type value="replace"/>
+			<duration value="0"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="5d_srDisplay" operation="set" value="255"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="5d_srDisplay" operation="set" value="255"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="5d_srDisplay" operation="set" value="0"/>
+			</effect_group>
+		</buff>
 <buff name="5d_m700TrackerActivate" hidden="true" icon="ui_game_symbol_add" icon_color="255,0,0" icon_blink="true">
 			<stack_type value="replace"/>
 			<duration value="0"/>
@@ -59,7 +68,15 @@
 			</effect_group>
 		</buff>
 
-
+	 <buff name="5thdayglockTrackerActivate" hidden="true" icon="ui_game_symbol_add" icon_color="255,0,0" icon_blink="true">
+			<stack_type value="replace"/>
+			<duration value="0"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="5thdayglockDisplay" operation="set" value="255"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="5thdayglockDisplay" operation="set" value="255"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="5thdayglockDisplay" operation="set" value="0"/>
+			</effect_group>
+		</buff>
     <buff name="5thdayMK23TrackerActivate" hidden="true" icon="ui_game_symbol_add" icon_color="255,0,0" icon_blink="true">
 			<stack_type value="replace"/>
 			<duration value="0"/>

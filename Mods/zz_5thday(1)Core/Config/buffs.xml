@@ -163,6 +163,12 @@
 				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" target="self" buff="HOH_Level_Display_pistols">
 					<requirement name="!HoldingItemHasTags" tags="PerkHOHPistols"/>
 				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="self" buff="HOH_Level_Display_Fishing">
+					<requirement name="HoldingItemHasTags" tags="PerkHOHFishing"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" target="self" buff="HOH_Level_Display_Fishing">
+					<requirement name="!HoldingItemHasTags" tags="PerkHOHFishing"/>
+				</triggered_effect>
 			</effect_group>
 		</buff>
 	</append>
@@ -432,6 +438,15 @@
 				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Food_Multiplier" operation="set" value="1.03"/>
 				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Food_Perk_Tracker" operation="set" value="0"/>
 			</effect_group>
+			<effect_group name="BeginningShitFishing">
+				<requirement name="CVarCompare" cvar="HOH_Fishing_XP" operation="Equals" value="0"/>
+				<requirement name="CVarCompare" cvar="HOH_Fishing_lvl" operation="Equals" value="0"/>
+				<requirement name="CVarCompare" cvar="HOH_Fishing_Perk_Tracker" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Fishing_lvl" value="1"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Fishing_lvl_Next_Needed" value="100"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Fishing_Multiplier" operation="set" value="1.03"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Fishing_Perk_Tracker" operation="set" value="1"/>
+			</effect_group>
 		</buff>
 		<buff name="ActionSkillReset" hidden="true">
 			<stack_type value="ignore"/>
@@ -585,6 +600,12 @@
 				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_HealthandBody_lvl" operation="set" value="1"/>
 				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_HealthandBody_lvl_Next_Needed" operation="set" value="100"/>
 				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_HealthandBody_Perk_Tracker" operation="set" value="1"/>
+			</effect_group>
+			<effect_group name="BeginningShitTraps">
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Fishing_XP" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Fishing_lvl" operation="set" value="1"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Fishing_lvl_Next_Needed" operation="set" value="50"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Fishing_Perk_Tracker" operation="set" value="1"/>
 			</effect_group>
 		</buff>
 		<buff name="ZombieKillCounter" hidden="true" remove_on_death="false">
@@ -1418,7 +1439,7 @@
 				<requirement name="CVarCompare" cvar="HOH_Pistols_lvl" operation="GTE" value="50"/>
 				<requirement name="CVarCompare" cvar="HOH_Shotguns_lvl" operation="GTE" value="50"/>
 				<requirement name="CVarCompare" cvar="HOH_Rifles_XP" operation="GTE" value="@HOH_Rifles_lvl_Next_Needed"/>
-				<requirement name="CVarCompare" cvar="HOH_Rifles_lvl" operation="LT" value="100"/>
+				<requirement name="CVarCompare" cvar="HOH_Rifles_lvl" operation="LT" value="101"/>
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Rifles_XP" operation="subtract" value="@HOH_Rifles_lvl_Next_Needed"/>
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Rifles_lvl_Next_Needed" operation="multiply" value="@HOH_Rifles_Multiplier"/>
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Rifles_lvl" operation="add" value="1"/>
@@ -2799,8 +2820,12 @@
 				<requirement name="!ItemHasTags" tags="smg"/>
 				<requirement name="ItemHasTags" tags="PerkHOHPistols"/>
 				<requirement name="IsAlive" target="other"/>
+			
+
+				
+				
 				<!-- Base Zombie xp (ONATTACKED, Pipe Brawler) -->
-				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_Pistols_XP_Temp" operation="add" value="8"/>
+				<!--<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_Pistols_XP_Temp" operation="add" value="8"/>-->
 				<!-- Headshot Modifier -->
 				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="HOH_Pistols_XP_Temp" operation="multiply" value="1.5">
 					<requirement name="HitLocation" body_parts="Head"/>
@@ -4531,6 +4556,15 @@
 	</append>
 	<append xpath="/buffs">
 		<!-- Weapon Kill Counters -->
+		<buff name="FishingTrackerActivate" hidden="true">
+			<stack_type value="replace"/>
+			<duration value="0"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="FishingDisplay" operation="set" value="255"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="FishingDisplay" operation="set" value="255"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="FishingDisplay" operation="set" value="0"/>
+			</effect_group>
+		</buff>
 		<!-- * * * * * Blades * * * * * -->
 		<!-- Bone Knife -->
 		<buff name="BoneKnifeKillTrackerActivate" hidden="true">
@@ -7269,27 +7303,62 @@
 					<requirement name="CVarCompare" cvar="_difficulty" operation="Equals" value="5"/></passive_effect>
 		</effect_group>
 	</buff>
+		<buff name="HOH_Level_Display_Fishing" hidden="true" remove_on_death="false">
+			<update_rate value="0.1"/>
+			<stack_type value="ignore"/>
+			<!-- Bow Progression -->
+			<effect_group name="HOH_Fishing_Levelup">
+				<requirement name="CVarCompare" cvar="HOH_Fishing_XP" operation="GTE" value="@HOH_Fishing_lvl_Next_Needed"/>
+				<requirement name="CVarCompare" cvar="HOH_Fishing_lvl" operation="LT" value="51"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Fishing_XP" operation="subtract" value="@HOH_Fishing_lvl_Next_Needed"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Fishing_lvl_Next_Needed" operation="multiply" value="@HOH_Fishing_Multiplier"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Fishing_lvl" operation="add" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddProgressionLevel" progression_name="PerkFishing" level="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddProgressionLevel" progression_name="PerkHOHFishing" level="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Fishing_Perk_Tracker" operation="add" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ShowToolbeltMessage" message="[804cba][I]Your Skill with Fishing has increased!"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="PlaySound" sound="levelup"/>
+			</effect_group>
+			<effect_group name="HOH_Fishing_Level_Progress">
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Fishing_Xp_Total" operation="set" value="@HOH_Fishing_XP"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Fishing_Level_Next" operation="set" value="@HOH_Fishing_lvl_Next_Needed"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Fishing_Xp_Total" operation="divide" value="@HOH_Fishing_Level_Next"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Fishing_lvl_Next_Display" operation="set" value="@HOH_Fishing_Xp_Total"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="HoldingItemHasTags" tags="PerkHOHFishing"/>
+				<!-- Night Time Multiplier -->
+				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_Fishing_XP_Temp" operation="multiply" value="1.5">
+					<requirement name="IsNight"/>
+				</triggered_effect>
+			</effect_group>
+			
+			<effect_group>
 
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Fishing_XP" operation="add" value="@HOH_Fishing_XP_Temp"/>
+			</effect_group>
+			<effect_group>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Fishing_XP_Temp" operation="set" value="0"/>
+			</effect_group>
+		</buff>
 
 	</append>
 	<!--
 <append xpath="/buffs"><buff name="buffAirDropsummonTrigger" hidden="true"><stack_type value="ignore"/><duration value="10"/><effect_group><triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="buffAirDropsummon"/></effect_group></buff><buff name="buffAirDropsummon" hidden="true" remove_on_death="true"><stack_type value="ignore"/><duration value="60"/><effect_group name="Spawn Air Drop Zombies"><triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="zombieferalalert"/><triggered_effect trigger="onSelfBuffStart" action="SpawnEntitySDX, SCore" target="self" SpawnGroup="AirdropZombiesList" Cvar="AirDrop"/><triggered_effect trigger="onSelfBuffStart" action="SpawnEntitySDX, SCore" target="self" SpawnGroup="AirdropZombiesList" Cvar="AirDrop"/><triggered_effect trigger="onSelfBuffStart" action="SpawnEntitySDX, SCore" target="self" SpawnGroup="AirdropZombiesList" Cvar="AirDrop"/><triggered_effect trigger="onSelfBuffStart" action="SpawnEntitySDX, SCore" target="self" SpawnGroup="AirdropZombiesList" Cvar="AirDrop"/><triggered_effect trigger="onSelfBuffStart" action="SpawnEntitySDX, SCore" target="self" SpawnGroup="AirdropZombiesList" Cvar="AirDrop"/><triggered_effect trigger="onSelfBuffStart" action="SpawnEntitySDX, SCore" target="self" SpawnGroup="AirdropZombiesList" Cvar="AirDrop"/><triggered_effect trigger="onSelfBuffStart" action="SpawnEntitySDX, SCore" target="self" SpawnGroup="AirdropZombiesList" Cvar="AirDrop"/><triggered_effect trigger="onSelfBuffStart" action="SpawnEntitySDX, SCore" target="self" SpawnGroup="AirdropZombiesList" Cvar="AirDrop"/><triggered_effect trigger="onSelfBuffStart" action="SpawnEntitySDX, SCore" target="self" SpawnGroup="AirdropZombiesList" Cvar="AirDrop"/><triggered_effect trigger="onSelfBuffStart" action="SpawnEntitySDX, SCore" target="self" SpawnGroup="AirdropZombiesList" Cvar="AirDrop"/><triggered_effect trigger="onSelfBuffStart" action="SpawnEntitySDX, SCore" target="self" SpawnGroup="AirdropZombiesList" Cvar="AirDrop"/><triggered_effect trigger="onSelfBuffStart" action="SpawnEntitySDX, SCore" target="self" SpawnGroup="AirdropZombiesList" Cvar="AirDrop"/><triggered_effect trigger="onSelfBuffStart" action="SpawnEntitySDX, SCore" target="self" SpawnGroup="AirdropZombiesList" Cvar="AirDrop"/><triggered_effect trigger="onSelfBuffStart" action="SpawnEntitySDX, SCore" target="self" SpawnGroup="AirdropZombiesList" Cvar="AirDrop"/><triggered_effect trigger="onSelfBuffStart" action="SpawnEntitySDX, SCore" target="self" SpawnGroup="AirdropZombiesList" Cvar="AirDrop"/><triggered_effect trigger="onSelfBuffStart" action="SpawnEntitySDX, SCore" target="self" SpawnGroup="AirdropZombiesList" Cvar="AirDrop"/></effect_group></buff></append>
 -->
 
-<!--
+
 <append xpath="/buffs/buff[@name='buffStatusCheck01']">
-		<effect_group name="jigsaw">
-		   <triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="self" buff="BuffJigsaw">
-	
-	
-				
-			</triggered_effect>
-			 <triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" target="self" buff="BuffJigsaw">
-				<requirement name="!EntityHasMovementTag" tags="driving"/>
-			</triggered_effect>
-		</effect_group>	
+		<effect_group>
+		<triggered_effect trigger="onSelfDestroyedBlock" action="CallGameEvent" event="GiveWorms" allow_client_call="true">	 
+				<requirement name="TriggerHasTags" tags="worms"/>
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,30" operation="GT" value="5"/> 
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,30" operation="LT" value="15"/>
+		</triggered_effect>
+	</effect_group>
 </append>
--->
+
 <!--
 <append xpath="/buffs/buff[@name='buffStatusCheck01']">
 		<effect_group name="Vinbiomesnow">

@@ -6,6 +6,8 @@
 <append xpath="//item_modifier[@name='modGunForegrip']/@blocked_tags">,noGrip</append>
 <append xpath="//item_modifier[@name='modGunReflexSight']/@installable_tags">,ReflexSight</append>
 
+<append xpath="//item_modifier[@name='modGunDrumMagazineExtender']/@blocked_tags">,noDrum</append>
+
 <append xpath="//item_modifier[@name='modMeleeClubMetalSpikes']/@blocked_tags">,noSpikes</append>
 <append xpath="//item_modifier[@name='modMeleeClubBarbedWire']/@blocked_tags">,noWire</append>
 <append xpath="//item_modifier[@name='modMeleeClubMetalChain']/@blocked_tags">,noChain</append>
@@ -83,6 +85,15 @@
       <requirement name="HoldingItemHasTags" tags="showStock" />
       <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="HANDLE_UMP_1_0" />
       <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="false" parent_transform="#HeldItemRoot" transform_path="stock_folded" />
+    </effect_group>
+</append>
+
+
+<append xpath="//item_modifier[@name='modGunMagazineExtender']">
+ <effect_group tiered="false" name="internal attachment prefab (A19)">
+      <requirement name="HoldingItemHasTags" tags="magazine" />
+      <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="Extended_Mag" />
+      <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="false" parent_transform="#HeldItemRoot" transform_path="Regular_mag" />
     </effect_group>
 </append>
 
@@ -208,6 +219,13 @@
             <property name="CrosshairOnAim" value="false"/>
             <property name="CrosshairUpAfterShot" value="false"/>
         </item_property_overrides>
+          <item_property_overrides name="5d_SniperRifle">
+			<property name="Zoom_max_in" value="30"/>
+            <property name="ScopeCameraOffset" value="0,-.0365,-.05"/>
+            <property name="Zoom_overlay" value="#@modfolder:Assets/HOH_Ranged_Weapons_Sights.unity3d?ARScope"/>
+            <property name="CrosshairOnAim" value="false"/>
+            <property name="CrosshairUpAfterShot" value="false"/>
+		</item_property_overrides>
         <item_property_overrides name="5d_m700">
 			<property name="ScopeOffset" value="-.0018,.075,.015"/>
 			<property name="ScopeScale" value="1,1,1"/>
@@ -272,10 +290,19 @@
 	            <property name="CrosshairOnAim" value="false"/>
     	        <property name="CrosshairUpAfterShot" value="false"/>
 		</item_property_overrides>
+         <item_property_overrides name="5d_SniperRifle">
+			<property name="ScopeOffset" value="-.0018,.075,.015"/>
+			<property name="ScopeScale" value="1,1,1"/>
+			<property name="ScopeCameraOffset" value="0,-.0238,0"/>
+             <property name="Zoom_overlay" value="#@modfolder:Assets/HOH_Ranged_Weapons_Sights.unity3d?SniperScope"/>
+	            <property name="CrosshairOnAim" value="false"/>
+    	        <property name="CrosshairUpAfterShot" value="false"/>
+		</item_property_overrides>
         
         <effect_group tiered="false">
             <requirement name="HoldingItemHasTags" tags="attachmentsIncluded"/>
                <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="5dscope"/>
+               <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="8x_scope"/>
         </effect_group>
     </append>
 

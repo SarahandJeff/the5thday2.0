@@ -1,0 +1,174 @@
+<snj>
+<append xpath="/buffs">
+     <buff name="buffFishing1" name_key="fishing1" tooltip_key="Here fishy fishy fishy" description_key="fishing1" icon="ui_game_symbol_speed" icon_color="215,28,10" icon_blink="true" remove_on_death="false">
+        <stack_type value="ignore"/>
+        <duration value="15"/>
+        <display_value value="duration"/>
+            <update_rate value="1"/>
+            
+                <effect_group>
+                    <passive_effect name="BuffBlink" operation="base_set" value="2" duration="0,3" />
+                    <triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="buffFishing1"/>
+                </effect_group>
+             <effect_group>
+                <triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="Fishy">
+                    <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="25"/>
+                </triggered_effect>
+                </effect_group>
+                <effect_group>
+                
+                    <triggered_effect trigger="onSelfBuffRemove" action="CallGameEvent" event="action_buffFishingBluegil" duration="1" allow_client_call="true">
+                        <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="10"/>
+                    </triggered_effect>
+                    <triggered_effect trigger="onSelfBuffRemove" action="CallGameEvent" event="action_buffFishingCatfish" duration="1" allow_client_call="true">
+                        <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="GT" value="10"/>
+                        <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LT" value="15"/>
+                    </triggered_effect>
+                    <triggered_effect trigger="onSelfBuffRemove" action="CallGameEvent" event="action_buffFishingPerch" duration="1" allow_client_call="true">
+                        <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="GT" value="15"/>
+                        <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LT" value="25"/>
+                    </triggered_effect>
+                    <triggered_effect trigger="onSelfBuffRemove" action="CallGameEvent" event="action_buffFishingCarp" duration="1" allow_client_call="true">
+                        <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="GTE" value="25"/>
+                        <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LT" value="35"/>
+                    </triggered_effect>
+                    <triggered_effect trigger="onSelfBuffRemove" action="CallGameEvent" event="action_buffFishingBass" duration="1" allow_client_call="true">
+                        <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="GTE" value="40"/>
+                        <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LT" value="50"/>
+                    </triggered_effect>
+                    <triggered_effect trigger="onSelfBuffRemove" action="CallGameEvent" event="action_buffFishingTreeSnake" duration="1" allow_client_call="true">
+                        <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="GTE" value="50"/>
+                        <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LT" value="65"/>
+                    </triggered_effect>
+                    <triggered_effect trigger="onSelfBuffRemove" action="CallGameEvent" event="action_buffFishingBoot" duration="1" allow_client_call="true">
+                        <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="GTE" value="65"/>
+                        <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LT" value="75"/>
+                    </triggered_effect>
+                    <triggered_effect trigger="onSelfBuffRemove" action="CallGameEvent" event="action_fishingHookReturn" duration="1" allow_client_call="true">
+                        <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LT" value="75"/>
+                    </triggered_effect>
+                    <triggered_effect trigger="onSelfBuffRemove" action="CallGameEvent" event="action_buffFishingnothing" duration="1" allow_client_call="true">
+                        <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="GTE" value="75"/>
+                    </triggered_effect>
+                    <triggered_effect trigger="onSelfBuffRemove" action="CallGameEvent" event="action_fishingHookReturn" duration="1" allow_client_call="true">
+                        <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="GTE" value="95"/>
+                    </triggered_effect>
+                </effect_group>
+        </buff>
+
+    <buff name="buffFishing2" name_key="fishing2" tooltip_key="Here big fishy big fishy big fishy" description_key="fishing2" icon="ui_game_symbol_speed" icon_color="215,28,10" icon_blink="true" remove_on_death="false">
+        <stack_type value="ignore"/>
+        <duration value="15"/>
+        <display_value value="duration"/>
+            <update_rate value="1"/>
+            
+                <effect_group>
+                    <passive_effect name="BuffBlink" operation="base_set" value="2" duration="0,3" />
+                    <triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="buffFishing2"/>
+                </effect_group>
+                 <effect_group>
+                <triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="Fishy">
+                    <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="25"/>
+                </triggered_effect>
+                </effect_group>
+                <effect_group>
+                    <triggered_effect trigger="onSelfBuffRemove" action="CallGameEvent" event="action_buffFishingCatfish" duration="1" allow_client_call="true">
+                        
+                        <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="25"/>
+                    </triggered_effect>
+                    <triggered_effect trigger="onSelfBuffRemove" action="CallGameEvent" event="action_buffFishingPerch" duration="1" allow_client_call="true">
+                        <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="GT" value="25"/>
+                        <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LT" value="35"/>
+                    </triggered_effect>
+                    <triggered_effect trigger="onSelfBuffRemove" action="CallGameEvent" event="action_buffFishingCarp" duration="1" allow_client_call="true">
+                        <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="GTE" value="35"/>
+                        <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LT" value="50"/>
+                    </triggered_effect>
+                    <triggered_effect trigger="onSelfBuffRemove" action="CallGameEvent" event="action_buffFishingBass" duration="1" allow_client_call="true">
+                        <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="GTE" value="50"/>
+                        <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LT" value="70"/>
+                    </triggered_effect>
+                    <triggered_effect trigger="onSelfBuffRemove" action="CallGameEvent" event="action_buffFishingTreeSnake" duration="1" allow_client_call="true">
+                        <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="GTE" value="70"/>
+                        <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LT" value="80"/>
+                    </triggered_effect>
+                    <triggered_effect trigger="onSelfBuffRemove" action="CallGameEvent" event="action_lureT2Return" duration="1" allow_client_call="true">
+                        <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LT" value="80"/>
+                    </triggered_effect>
+                    
+                    <triggered_effect trigger="onSelfBuffRemove" action="CallGameEvent" event="action_buffFishingnothing" duration="1" allow_client_call="true">
+                        <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="GTE" value="80"/>
+                    </triggered_effect>
+                    <triggered_effect trigger="onSelfBuffRemove" action="CallGameEvent" event="action_lureT2Return" duration="1" allow_client_call="true">
+                        <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="GT" value="90"/>
+                    </triggered_effect>
+                </effect_group>
+        </buff>
+
+    <buff name="buffFishing3" name_key="fishing3" tooltip_key="Gimme a large fishy" description_key="fishing3" icon="ui_game_symbol_speed" icon_color="215,28,10" icon_blink="true" remove_on_death="false">
+        <stack_type value="ignore"/>
+        <duration value="15"/>
+        <display_value value="duration"/>
+            <update_rate value="1"/>
+            
+                <effect_group>
+                    <passive_effect name="BuffBlink" operation="base_set" value="2" duration="0,3" />
+                    <triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="buffFishing3"/>
+                </effect_group>
+                <effect_group>
+                <triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="Fishy">
+                    <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="25"/>
+                </triggered_effect>
+                </effect_group>
+                <effect_group>
+                    <triggered_effect trigger="onSelfBuffRemove" action="CallGameEvent" event="action_buffFishingCatfish" duration="1" allow_client_call="true">
+                        <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="25"/>
+                    </triggered_effect>
+                    <triggered_effect trigger="onSelfBuffRemove" action="CallGameEvent" event="action_buffFishingPerch" duration="1" allow_client_call="true">
+                        <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="GT" value="25"/>
+                        <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LT" value="50"/>
+                    </triggered_effect>
+                    <triggered_effect trigger="onSelfBuffRemove" action="CallGameEvent" event="action_buffFishingBass" duration="1" allow_client_call="true">
+                        <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="GTE" value="50"/>
+                        <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LT" value="90"/>
+                    </triggered_effect>
+                   
+                    <triggered_effect trigger="onSelfBuffRemove" action="CallGameEvent" event="action_lureT3Return" duration="1" allow_client_call="true">
+                        <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LT" value="90"/>
+                    </triggered_effect>
+
+                    <triggered_effect trigger="onSelfBuffRemove" action="CallGameEvent" event="action_buffFishingnothing" duration="1" allow_client_call="true">
+                        <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="GTE" value="90"/>
+                    </triggered_effect>
+                    <triggered_effect trigger="onSelfBuffRemove" action="CallGameEvent" event="action_lureT3Return" duration="1" allow_client_call="true">
+                        <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="GT" value="95"/>
+                    </triggered_effect>
+                   
+                </effect_group>
+        </buff>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <buff name="bufffishyCoolDown" hidden="true">
+
+<stack_type value="ignore"/>
+<duration value="30"/>
+
+</buff>
+    </append>
+</snj>
