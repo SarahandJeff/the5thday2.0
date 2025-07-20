@@ -386,7 +386,7 @@
 	<set xpath="//item[@name='meleeWpnSledgeT3SteelSledgehammer']/property[@name='UnlockedBy']/@value">perkClubs</set>
 	<!-- Food -->
 	<set xpath="//item[starts-with(@name, 'food') and not (starts-with(@name, 'foodCharred'))]/property[@name='UnlockedBy']/@value">perkCooking</set>
-	<set xpath="//item[starts-with(@name, 'drink') and not (contains(@name, 'Empty')) and not (contains(@name, 'boiled')) and not (contains(@name, 'river'))]/property[@name='UnlockedBy']/@value">perkCooking</set>
+	<set xpath="//item[starts-with(@name, 'drink') and not (contains(@name, 'drinkJarBlackStrapCoffee')) and not (contains(@name, 'Empty')) and not (contains(@name, 'boiled')) and not (contains(@name, 'river'))]/property[@name='UnlockedBy']/@value">perkCooking</set>
 	<!-- Brawler -->
 	<set xpath="//item[@name='meleeWpnKnucklesT1IronKnuckles']/property[@name='UnlockedBy']/@value">perkBrawler</set>
 	<set xpath="//item[@name='meleeWpnKnucklesT3SteelKnuckles']/property[@name='UnlockedBy']/@value">perkBrawler</set>
@@ -3326,7 +3326,12 @@
 <set xpath="//item[@name='toolDewGatherer']/property[(@name='UnlockedBy')]/@value">perkCooking</set>
 <set xpath="//item[@name='toolDewTarp']/property[(@name='UnlockedBy')]/@value">perkCooking</set>
 <set xpath="//item[@name='toolDewFilter']/property[(@name='UnlockedBy')]/@value">perkCooking</set>
-<!--<append xpath="//item[@name='drinkJarBlackStrapCoffee']/property[(@name='UnlockedBy')]/@value">,perkArtOfMiningBlackStrap</append>-->
+<set xpath="//item/property[(@name='UnlockedBy') and (@value='craftingElectrician')]/@value">perkWrenches</set>
+
+
+
+
+<!--<append xpath="//item[@name='drinkJarBlackStrapCoffee']/property[(@name='UnlockedBy')]/@value">perkArtOfMiningBlackStrap</append>-->
 
 
 <set xpath="//items/item[@name='drinkJarGrandpasAwesomeSauce']//property[@name='EconomicValue']/@value">500</set>
@@ -3347,6 +3352,13 @@
 	<property name="DescriptionKey" value="Small iron spike for trap"/>
 </item>
 </append>
+
+<!--<append xpath="/items">
+	<item name="toyMoto">
+		<property name="Extends" value="toyCollectibleZombieBobbleheadsRegularTemplate"/>
+		<property name="Meshfile" value="#@modfolder:Assets/toys.unity3d?DirtBike_toy"/>
+	</item>
+</append>-->
 <include filename="items/item_weights.xml"/>
 <include filename="items/TAFA_changes.xml"/>
 

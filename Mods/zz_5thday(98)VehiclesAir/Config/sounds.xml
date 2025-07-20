@@ -1,0 +1,38 @@
+<configs>
+	<set xpath="/Sounds/SoundDataNode[@name='vwheel_bounce']/MaxRepeatRate/@value">10</set>
+	<set xpath="/Sounds/SoundDataNode[@name='vwheel_bounce']/Noise[@ID='0']/@noise">10</set>
+	<append xpath="/Sounds">
+	
+		<SoundDataNode name="Heli_Start">
+			<AudioSource name="@:Sounds/Prefabs/AudioSource_Vehicle.prefab"/>
+			<Noise ID="2" noise="11" time="3" muffled_when_crouched="0.5"/>
+			<AudioClip ClipName="#@modfolder:Resources/CH47.unity3d?CH47_Start"/>
+			<LocalCrouchVolumeScale value="1.0"/>
+			<CrouchNoiseScale value="0.5"/>
+			<NoiseScale value="1"/>
+			<MaxVoices value="10"/>
+			<MaxRepeatRate value="0.01"/>
+		</SoundDataNode>
+
+		<SoundDataNode name="Heli_Stop">
+			<AudioSource name="@:Sounds/Prefabs/AudioSource_Vehicle.prefab"/>
+			<Noise ID="2" noise="11" time="3" muffled_when_crouched="0.5"/>
+			<AudioClip ClipName="#@modfolder:Resources/CH47.unity3d?CH47_Stop"/>
+			<LocalCrouchVolumeScale value="1.0"/>
+			<CrouchNoiseScale value="0.5"/>
+			<NoiseScale value="1"/>
+			<MaxVoices value="10"/>
+			<MaxRepeatRate value="0.01"/>
+		</SoundDataNode>
+
+		<SoundDataNode name="Heli_Flying">
+			<AudioSource name="@:Sounds/Prefabs/AudioSource_Vehicle.prefab"/>
+			<AudioClip ClipName="#@modfolder:Resources/CH47.unity3d?CH47_Flying" Loop="true"/>
+			<LocalCrouchVolumeScale value="1.0"/>
+			<CrouchNoiseScale value="0.5"/>
+			<NoiseScale value="1"/>
+			<MaxVoices value="10"/>
+			<MaxRepeatRate value="0.01"/>
+		</SoundDataNode>
+</append>
+</configs>

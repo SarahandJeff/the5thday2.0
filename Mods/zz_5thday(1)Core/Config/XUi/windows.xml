@@ -29,10 +29,327 @@
 <remove xpath="//window[@name='windowVehicle']"/>
 <remove xpath="//window[@name='windowAssemble']"/>
 <remove xpath="//window[@name='windowAssembleDrone']"/>
-
+<remove xpath="//window[@name='CharacterFrameWindow']"/>
+<remove xpath="//window[@name='ActiveBuffsWindow']"/>
+<remove xpath="//window[@name='buffInfoPanel']"/>
+<remove xpath="//window[@name='windowQuestRewards']"/>
+<remove xpath="//window[@name='windowQuestTurnInRewards']"/>
+<remove xpath="//window[@name='windowQuestOffer']"/>
+<remove xpath="//window[@name='windowQuestTurnInDescription']"/>
 
 
 <append xpath="/windows">
+<window name="windowQuestTurnInDescription" width="653" height="312" panel="Left" cursor_area="true" controller="QuestTurnInDetailsWindow">
+		<rect pos='-100,0'>
+		<panel name="header" height="43" depth="1" backgroundspritename="ui_game_panel_header">
+			<sprite depth="2" name="windowIcon" style="icon32px" pos="4,-5" sprite="ui_game_symbol_quest"/>
+			<label style="header.name" text="{questtitle}" width="500" />
+			<!-- <label depth="2" pos="545,-8" width="100" height="28" text="{sharedbyname}" color="[lightGrey]" justify="right" upper_case="true" /> -->
+		</panel>
+		<rect name="content" pos="0,-46" width="150" height="266" depth="1">
+			<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="0,0" width="150" height="266" color="[black]" type="sliced" fillcenter="false" />
+			<sprite color="[lightGrey]" type="sliced" />
+			<sprite depth="8" name="portrait" pos="6,-6" width="138" height="138" sprite="{npcportrait}" type="sliced" />
+			<sprite depth="8" name="portrait" sprite="menu_empty3px" pos="6,-6" width="138" height="138" color="[black]" type="sliced" fillcenter="false" />
+
+			<label pos="6,-146" depth="3" name="traderName" width="100%" height="30" text="{npcname}" font_size="28" />
+			<!-- <label pos="6,-186" depth="3" name="traderRepTitle" width="100%" height="30" text="TRADER REP:" font_size="28" /> -->
+			<!-- <label pos="6,-213" depth="3" name="traderRep" width="100%" height="30" text="TRUSTED" font_size="28" /> -->
+		</rect>
+		<rect name="content" pos="147,-46" height="266" width="503" depth="1">
+			<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="0,0" width="503" height="266" color="[black]" type="sliced" fillcenter="false" />
+			<sprite color="[darkGrey]" type="sliced" />
+			<label depth="3" name="descriptionText" pos="8,-8" text="{questcompletetext}" width="480" height="205" font_size="28" overflow="resizeheight" />
+		</rect>
+		</rect>
+	</window>
+<window name="windowQuestOffer" width="603" height="413" pos="-300, 150" controller="QuestOfferWindow" anchor="CenterCenter" pivot="center" depth="15" cursor_area="true" >
+		<rect pos='-100,0'>
+		<panel name="header" height="43" depth="1" backgroundspritename="ui_game_panel_header" >
+			<sprite pos="4,-5" depth="2" name="windowIcon" style="icon32px" sprite="{questicon}"/>
+			<label style="header.name" text="{questname}" width="450" />
+			<label depth="2" pos="395,-10" width="200" height="28" text="{tieradd}" justify="right" upper_case="true" />
+			<sprite depth="2" name="windowIcon" style="icon32px" pos="565,-5" sprite="ui_game_symbol_quest_limited" color="[red]" visible="{tieraddlimited}" />
+			<!-- <button pos="550,-5" depth="2" name="closeButton" style="icon32px" sprite="ui_game_symbol_x" defaultcolor="[red]" /> -->
+		</panel>
+		<panel name="content" pos="0,-46" height="329" depth="1" backgroundcolor="[darkGrey]" bordercolor="[black]" borderthickness="3" pivot="center">
+			<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="0,0" width="603" height="329" color="[black]" type="sliced" fillcenter="false" />
+			<label depth="3" name="descriptionText" pos="6,-5" text="{questoffer}" width="590" height="320" font_size="30" />
+
+			<!-- <button pos="200,-220" depth="2" name="acceptButton" style="icon32px" sprite="ui_game_symbol_check" defaultcolor="[green]"/>
+			<button pos="400,-220" depth="2" name="declineButton" style="icon32px" sprite="ui_game_symbol_x" defaultcolor="[red]"/> -->
+		</panel>
+
+		<rect name="btnAccept" depth="3" pos="0, -378" height="36" disableautobackground="true">
+			<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" width="303" />
+			<sprite depth="2" name="background" pos="3,-3" sprite="menu_empty" width="224" height="32" color="[darkGrey]" type="sliced" />
+			<rect depth="3" pos="0,-3" width="303" height="31">
+				<button name="clickable" sprite="menu_empty" defaultcolor="[mediumGrey]" hoversprite="ui_game_select_row" hovercolor="[white]" type="sliced" hoverscale="1.0"/>
+				<sprite depth="2" name="windowIcon" width="24" height="24" pos="46,-3" sprite="ui_game_symbol_check" color="[black_half_alpha]"/>
+				<sprite depth="2" name="windowIcon" width="24" height="24" pos="44,-3" sprite="ui_game_symbol_check" color="[black_half_alpha]"/>
+
+				<sprite depth="2" name="windowIcon" width="24" height="24" pos="44,-1" sprite="ui_game_symbol_check" color="[black_half_alpha]"/>
+				<sprite depth="2" name="windowIcon" width="24" height="24" pos="46,-1" sprite="ui_game_symbol_check" color="[black_half_alpha]"/>
+
+				<sprite depth="2" name="windowIcon" width="24" height="24" pos="45,-2" color="[iconColor]" sprite="ui_game_symbol_check"/>
+				<label depth="2" name="windowName" pos="0,-2" justify="center" text="ACCEPT" text_key="xuiAccept" effect="outline" />
+			</rect>
+		</rect>
+		<rect name="btnDecline" depth="3" pos="300, -378" height="36" disableautobackground="true">
+			<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" width="303" />
+			<sprite depth="2" name="background" pos="3,-3" sprite="menu_empty" width="224" height="32" color="[darkGrey]" type="sliced" />
+			<rect depth="3" pos="0,-3" width="303" height="31">
+				<button name="clickable" sprite="menu_empty" defaultcolor="[mediumGrey]" hoversprite="ui_game_select_row" hovercolor="[white]" type="sliced" hoverscale="1.0"/>
+				<sprite depth="2" name="windowIcon" width="24" height="24" pos="46,-3" sprite="ui_game_symbol_x" color="[black_half_alpha]"/>
+				<sprite depth="2" name="windowIcon" width="24" height="24" pos="44,-3" sprite="ui_game_symbol_x" color="[black_half_alpha]"/>
+
+				<sprite depth="2" name="windowIcon" width="24" height="24" pos="44,-1" sprite="ui_game_symbol_x" color="[black_half_alpha]"/>
+				<sprite depth="2" name="windowIcon" width="24" height="24" pos="46,-1" sprite="ui_game_symbol_x" color="[black_half_alpha]"/>
+
+				<sprite depth="2" name="windowIcon" width="24" height="24" pos="45,-2" color="[iconColor]" sprite="ui_game_symbol_x"/>
+				<label depth="2" name="windowName" pos="0,-2" justify="center" text="DECLINE" text_key="xuiDecline" effect="outline" />
+			</rect>
+		</rect>
+		</rect>
+	</window>
+<window name="windowQuestTurnInRewards" width="653" height="454" panel="Left" cursor_area="true" controller="QuestTurnInRewardsWindow" > <!--item_format="{0}: [DECEA3]{1}[-]" item_bonus_format="{0}: [DECEA3]{1}[-] ([DECEA3]{2}[-] {3})"-->
+		<rect pos='-100,0'>
+		<panel name="header" height="43" depth="1" backgroundspritename="ui_game_panel_header">
+			<sprite depth="2" name="windowIcon" style="icon32px" pos="4,-5" sprite="ui_game_symbol_treasure"/>
+			<label style="header.name" text_key="xuiRewards" width="500" />
+			<label depth="2" pos="545,-8" width="100" height="28" text="{sharedbyname}" color="[lightGrey]" justify="right" upper_case="true" />
+		</panel>
+		<rect name="content" pos="0,-46" height="70" depth="1">
+			<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="0,0" width="653" height="418" color="[black]" type="sliced" fillcenter="false" />
+			<sprite color="[darkGrey]" type="sliced" />
+			<label pos="10,-6" depth="3" height="30" text="{questxptitle}: {questxpreward}" font_size="28" visible="{questhasxpreward}" />
+			<label pos="10,-32" depth="3" height="30" text="{questitemrewardstitle}: {questitemrewards}" font_size="28" visible="{questhasitemrewards}" />
+		</rect>
+
+		<rect pos="0,-111" height="50" depth="1">
+			<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="0,0" width="653" color="[black]" type="sliced" fillcenter="false" />
+			<sprite color="[lightGrey]" type="sliced" />
+			<label pos="10,-10" depth="3" text="{chosentitle}" font_size="28" />
+		</rect>
+
+		<rect name="rectOptions" height="150" width="653" depth="1">
+			<grid name="gridOptions" rows="5" cols="1" pos="0,-158" width="653" cell_height="47" cell_width="650" arrangement="vertical">
+				<quest_turnin_entry pos="0,0" />
+				<quest_turnin_entry pos="0,-50" />
+				<quest_turnin_entry pos="0,-92" />
+				<quest_turnin_entry pos="0,-142" />
+				<quest_turnin_entry pos="0,-192" />
+			</grid>
+		</rect>
+
+		<rect name="rectAccept" pos="0,-394" height="70" depth="1">
+			<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="0,0" width="653" color="[black]" type="sliced" fillcenter="false" />
+			<sprite color="[lightGrey]" type="sliced" />
+
+			<rect name="btnAccept" depth="3" pos="239,-17" width="175" height="36">
+				<button name="clickable" sprite="menu_empty" defaultcolor="[mediumGrey]" hoversprite="ui_game_select_row" hovercolor="[white]" type="sliced" hoverscale="1.0" />
+
+				<label depth="2" name="lblOnOff" pos="0,-6" justify="center" text="{acceptbuttontext}" font_size="24" /> <!-- text_key="xuiTurnOn" -->
+				<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" />
+			</rect>
+
+		</rect>
+		</rect>
+	</window>
+<window name="windowQuestRewards" width="653" height="199" panel="Center" controller="QuestRewardsWindow" cursor_area="true" >
+		<rect pos='-100,0'>
+		<panel name="header" height="43" depth="1" backgroundspritename="ui_game_panel_header">
+			<sprite depth="2" name="windowIcon" style="icon32px" pos="4,-5" sprite="ui_game_symbol_treasure"/>
+			<label style="header.name" text="REWARDS" text_key="xuiRewards" />
+			<label depth="2" pos="345,-8" width="300" height="28" text="{finishtime}" justify="right" upper_case="true" />
+		</panel>
+		<rect name="content" pos="0,-46" height="153" depth="1">
+			<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" />
+			<sprite color="[darkGrey]" type="sliced" />
+			<rect visible="{showquest}">
+				<!-- <grid name="rewardList" rows="5" cols="1" pos="12,-10" width="600" height="368" cell_width="300" cell_height="30" repeat_content="true" arrangement="vertical" controller="QuestRewardList"> -->
+					<!-- <quest_reward_entry2 name="0" /> -->
+				<!-- </grid> -->
+				<label pos="6,-6" depth="3" name="descriptionText" text="{commonrewards}
+				{chaintitle}{chainrewards}" font_size="28" width="648" height="145" />
+			</rect>
+			<rect visible="{showempty}">
+				<label pos="0,-70" depth="3" name="descriptionText" width="100%" height="145" text="REWARDS NOT AVAILABLE AT THIS TIME." text_key="xuiRewardsNotAvailable" justify="center" pivot="left" font_size="28" />
+			</rect>
+		</rect>
+		</rect>
+	</window>
+<window name="buffInfoPanel" width="340" height="790" controller="BuffInfoWindow" anchor="CenterCenter" panel="Center">
+		<rect pos="-100,0">
+		<windowBackground name="windowBackground" depth="-3" pos="0,0" width="340" height="790"/>
+		<panel name="header" height="43" depth="1" disableautobackground="true">
+			<sprite depth="2" name="windowIcon" style="icon32px" pos="4,-5" sprite="{bufficon|once}"/>
+			<label style="header.name" pos="39,-6" width="300" height="32" text="{buffname|once}" />
+			<label depth="2" name="status" pos="5,-756" width="330" height="30" font_size="30" justify="left" text="{buffstatus|once}" />
+		</panel>
+
+		<rect name="contentBuffInfo" height="346" depth="1" pos="5,-50">
+			<rect>
+				<rect depth="1" pos="0,0" name="iconpreview" width="175" height="220">
+					<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="0,0" width="175" height="220" color="[black]" type="sliced" fillcenter="false" />
+					<sprite depth="1" pos="0,0" name="preview" width="175" height="220" color="[darkGrey]" type="sliced"/>
+					<sprite depth="3" name="itemPreview" width="130" height="130" sprite="{bufficon|once}" color="{buffcolor}" pos="87,-110" pivot="center" foregroundlayer="true"/>
+				</rect>
+
+				<grid depth="10" name="itemActions" rows="5" cols="1" pos="180,0" width="150" height="220" cell_width="150" cell_height="44" controller="ItemActionList" repeat_content="true">
+					<item_action_entry />
+				</grid>
+
+				<rect depth="1" pos="0,-225" name="description" width="330" height="480">
+					<sprite depth="1" color="[darkGrey]" type="sliced" globalopacity="true" />
+					<sprite depth="3" name="backgroundMain" sprite="menu_empty3px" pos="0,0" width="330" height="480" color="[black]" type="sliced" fillcenter="false" />
+					<rect depth="4">
+						<label depth="3" name="descriptionText" pos="5,-5" text="{buffdescription}"  width="320" height="470" />
+					</rect>
+				</rect>
+
+			</rect>
+		</rect>
+		</rect>
+	</window>
+<window name="ActiveBuffsWindow" depth="30" width="327" height="125" panel="Left" cursor_area="true" >
+		<rect pos="-100,125">
+		<panel name="header" height="43" depth="5" disableautobackground="true">
+			<sprite depth="1" name="backgroundMain" pos="0,0" width="327" height="43" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" />
+			<sprite depth="0" color="[black]" pos="0,0" width="327" height="43" type="sliced" />
+			<sprite depth="2" name="windowIcon" style="icon32px" pos="10,-5" sprite="ui_game_symbol_medical"/>
+			<label depth="2" name="characterName" pos="45,-6" width="200" height="32" text="STATUS EFFECTS" text_key="xuiStatusEffects" font_size="32"/>
+		</panel>
+
+		<panel name="content" depth="0" pos="0,-45" disableautobackground="true">
+			<rect height="43">
+				<!-- <sprite depth="2" name="backgroundMain" pos="-5,50" width="360" height="43" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" />
+				<sprite color="[black]" pos="-5,50" width="360" height="43" type="sliced" /> -->
+				<panel pos="215,48" height="43" disableautobackground="true">
+					<pager name="pager" pos="4,-6"  contents_parent="content"/>
+				</panel>
+			</rect>
+			<grid depth="10" name="buffs" rows="1" cols="5" pos="6,0" cell_width="62" cell_height="62" repeat_content="true" controller="ActiveBuffList">
+				<active_buff_entry />
+			</grid>
+		</panel>
+		</rect>
+	</window>
+<window name="CharacterFrameWindow" width="327" height="704" panel="Left" controller="CharacterFrameWindow" defaultcolor="[white]" hoveredcolor="[selectedColor]" cursor_area="true" >
+		<rect pos="-100,0">
+		<panel name="header" height="43" depth="1" backgroundspritename="ui_game_panel_header">
+			<sprite depth="2" name="windowIcon" style="icon32px" pos="5,-5" sprite="ui_game_symbol_character"/>
+			<label depth="2" name="characterName" pos="42,-6" width="150" height="32" text="" font_size="32" />
+			<sprite depth="2" name="windowIcon" width="26" height="26" pos="200,-8" sprite="ui_game_symbol_trophy" />
+			<label depth="2" name="levelNumber" pos="240,-10" width="80" height="28" text="" />
+		</panel>
+
+		<rect depth="2" name="searchControls" width="327" height="43" pos="0,-46">
+		<sprite depth="6" name="backgroundMain" sprite="menu_empty3px" pos="0,0" width="327" height="43" color="[black]" type="sliced" fillcenter="false" />
+			<sprite depth="1" color="[mediumGrey]" type="sliced" globalopacity="true" />
+			<button depth="4" name="characterButton" style="icon30px, press" pos="22,-22" sprite="ui_game_symbol_character" pivot="center" tooltip="Description" tooltip_key="lblWornEquipment" sound="[paging_click]" selected="true" />
+			<button depth="4" name="statButton" style="icon30px, press" pos="65,-22" sprite="ui_game_symbol_ping" pivot="center" tooltip="Stats" sound="[paging_click]" tooltip_key="lblCharacterStats1" />
+			<button depth="4" name="coreStatButton" style="icon30px, press" pos="108,-22" sprite="ui_game_symbol_trophy" pivot="center" tooltip="Stats" sound="[paging_click]" tooltip_key="lblCharacterStats2" />
+			<rect depth="4" name="coreStatMovementModes" width="43" height="43" pos="305,0" visible="{showcore}">
+				<button depth="4" name="coreStatsMovementIdleButton" style="icon30px, press" pos="5,-22" sprite="ui_game_symbol_player" pivot="center" tooltip="Stats" sound="[paging_click]" tooltip_key="lblCharacterStatsMovementIdle" visible="{movementmodeidle}" />
+				<button depth="4" name="coreStatsMovementWalkingButton" style="icon30px, press" pos="5,-22" sprite="server_z_never_run" pivot="center" tooltip="Stats" sound="[paging_click]" tooltip_key="lblCharacterStatsMovementWalking" visible="{movementmodewalking}" />
+				<button depth="4" name="coreStatsMovementRunningButton" style="icon30px, press" pos="5,-22" sprite="server_z_always_run" pivot="center" tooltip="Stats" sound="[paging_click]" tooltip_key="lblCharacterStatsMovementRunning" visible="{movementmoderunning}" />
+			</rect>
+
+			<!-- <panel pos="220,0" width="104" height="43" disableautobackground="true"> -->
+				<!-- <button depth="4" name="pageDown" style="icon30px, press" pos="20,-22" sprite="ui_game_symbol_arrow_left" pivot="center" sound="[paging_click]"/> -->
+				<!-- <rect depth="4" name="background" pos="37,-7"> -->
+					<!-- <sprite name="background" style="icon30px" color="[black]" type="sliced" /> -->
+					<!-- <label depth="5" name="pageNumber" pos="0, -3" width="30" height="28" text="1" font_size="26" justify="center"/> -->
+				<!-- </rect> -->
+				<!-- <button depth="4" name="pageUp" style="icon30px, press" pos="84,-22" sprite="ui_game_symbol_arrow_right" pivot="center" sound="[paging_click]"/> -->
+			<!-- </panel> -->
+		</rect>
+		
+		<rect visible="{showcharactersdcs}">
+			<panel name="previewFrameSDCS" depth="0" pos="0,-86" width="327" on_press="true" on_hover="true" disableautobackground="true" snap="false" gamepad_selectable="false">
+				<rect>
+					<sprite depth="6" name="backgroundMain" sprite="menu_empty3px" pos="0,0" width="327" height="624" color="[black]" type="sliced" fillcenter="false" />
+					<sprite depth="1" color="[darkGrey]" type="sliced" width="327" height="624"/>
+					<!-- <sprite depth="1" color="[lightGrey]" type="sliced" pos="3,-3" width="381" height="739" />
+					<sprite depth="1" color="[darkGrey]" type="sliced" width="304" height="697" pos="6,-5"/> -->
+					<texture depth="2" name="playerPreviewSDCS" material="Materials/Transparent Colored" size="327,622" globalopacity="false"/>
+				</rect>
+				<rect pos="3,-3">
+					<equipment_weather_stack name="biomeBadgeSlot" />
+				</rect>
+				<rect name="btnCosmetic" pos="243,0" depth="3" height="83" width="83">
+					<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" width="83" color="[black]" type="sliced" fillcenter="false" />
+					<sprite depth="2" name="background" pos="3,-3" sprite="menu_empty" width="80" height="80" color="[darkGrey]" type="sliced" />
+					<rect depth="3" pos="3,-3" width="80" height="80">
+						<button name="clickable" sprite="menu_empty" defaultcolor="[mediumGrey]" tooltip_key="xuiCosmetics" hoversprite="ui_game_select_row" hovercolor="[white]" type="sliced" hoverscale="1.0" />
+
+						<!-- <sprite depth="2" name="sprOnOff" width="24" height="24" pos="25,-2" color="[iconColor]" sprite="ui_game_symbol_electric_switch"/> -->
+						
+						<sprite depth="8" name="btnCosmetic" width="64" height="64" sprite="ui_game_symbol_wardrobe" pos="6,-6" foregroundlayer="true" />
+					</rect>
+				</rect>
+			</panel>
+
+			<panel name="equipment" depth="10" pos="3, -710" width="292" height="70" disableautobackground="true" >
+				<grid name="inventory" rows="1" cols="4" cell_width="81" cell_height="70" controller="EquipmentStackGrid" repeat_content="true">
+					<equipment_stack_sdcs name="0"/>
+				</grid>
+			</panel>
+		</rect>
+
+		<grid visible="{showstats}" depth="0" pos="0,-86" width="327" cols="1" cell_height="30" repeat_content="false" arrangement="vertical">
+			<player_stats_entry backgroundcolor="[darkestGrey]" textcontent="{playerhealthtitle|once}" valuecontent="{playerhealth}/{playermaxhealth}" />
+			<player_stats_entry backgroundcolor="[darkGrey]"    textcontent="{playerstaminatitle|once}" valuecontent="{playerstamina}/{playermaxstamina}" />
+			<player_stats_entry backgroundcolor="[darkestGrey]" textcontent="{playerfoodtitle|once}" valuecontent="{playermodifiedcurrentfood}/{playerfoodmax}" />
+			<player_stats_entry backgroundcolor="[darkGrey]"    textcontent="{playerwatertitle|once}" valuecontent="{playermodifiedcurrentwater}/{playerwatermax}" />
+			<!-- <player_stats_entry backgroundcolor="[darkestGrey]" textcontent="{playercoretemptitle|once}" valuecontent="{playercoretemp}" /> -->
+			<player_stats_entry backgroundcolor="[darkestGrey]"    textcontent="{playerzombiekillstitle|once}" valuecontent="{playerzombiekills}" />
+			<player_stats_entry backgroundcolor="[darkGrey]" textcontent="{playerpvpkillstitle|once}" valuecontent="{playerpvpkills}" />
+			<player_stats_entry backgroundcolor="[darkestGrey]"    textcontent="{playerdeathstitle|once}" valuecontent="{playerdeaths}" />
+			<player_stats_entry backgroundcolor="[darkGrey]" textcontent="{playertravelledtitle|once}" valuecontent="{playertravelled}" />
+			<player_stats_entry backgroundcolor="[darkestGrey]"    textcontent="{playeritemscraftedtitle|once}" valuecontent="{playeritemscrafted}" />
+			<player_stats_entry backgroundcolor="[darkGrey]" textcontent="{playerlongestlifetitle|once}" valuecontent="{playerlongestlife}" />
+			<player_stats_entry backgroundcolor="[darkestGrey]"    textcontent="{playercurrentlifetitle|once}" valuecontent="{playercurrentlife}" />
+			<player_stats_entry backgroundcolor="[darkGrey]" textcontent="{playerxptonextleveltitle|once}" valuecontent="{playerxptonextlevel}" />
+			<player_stats_entry backgroundcolor="[darkestGrey]"    textcontent="{playergamestagetitle|once}" valuecontent="{playergamestage}" />
+			<player_stats_entry backgroundcolor="[darkGrey]" textcontent="{playerlootstagetitle|once}" valuecontent="{playerlootstage}" />
+			<player_stats_entry backgroundcolor="[darkestGrey]"    textcontent="" valuecontent="" />
+			<player_stats_entry backgroundcolor="[darkGrey]" textcontent="" valuecontent="" />
+			<player_stats_entry backgroundcolor="[darkestGrey]"    textcontent="" valuecontent="" />
+			<player_stats_entry backgroundcolor="[darkGrey]" textcontent="" valuecontent="" />
+			<player_stats_entry backgroundcolor="[darkestGrey]"    textcontent="" valuecontent="" />
+			<player_stats_entry backgroundcolor="[darkGrey]" textcontent="" valuecontent="" />
+			<player_stats_entry backgroundcolor="[darkestGrey]"    textcontent="" valuecontent="" />
+			<player_stats_entry backgroundcolor="[darkGrey]" textcontent="" valuecontent="" />
+		</grid>
+
+		<grid visible="{showcore}" depth="0" pos="0,-86" width="327" cols="1" cell_height="30" repeat_content="false" arrangement="vertical">
+			<player_stats_generic_entry backgroundcolor="[darkestGrey]" index="1" />
+			<player_stats_generic_entry backgroundcolor="[darkGrey]"    index="2" />
+			<player_stats_generic_entry backgroundcolor="[darkestGrey]" index="3" />
+			<player_stats_generic_entry backgroundcolor="[darkGrey]"    index="4" />
+			<player_stats_generic_entry backgroundcolor="[darkestGrey]" index="5" />
+			<player_stats_generic_entry backgroundcolor="[darkGrey]"    index="6" />
+			<player_stats_generic_entry backgroundcolor="[darkestGrey]" index="7" />
+			<player_stats_generic_entry backgroundcolor="[darkGrey]"    index="8" />
+			<player_stats_generic_entry backgroundcolor="[darkestGrey]" index="9" />
+			<player_stats_generic_entry backgroundcolor="[darkGrey]"    index="10" />
+			<player_stats_generic_entry backgroundcolor="[darkestGrey]" index="11" />
+			<player_stats_generic_entry backgroundcolor="[darkGrey]"    index="12" />
+			<player_stats_generic_entry backgroundcolor="[darkestGrey]" index="13" />
+			<player_stats_generic_entry backgroundcolor="[darkGrey]"    index="14" />
+			<player_stats_generic_entry backgroundcolor="[darkestGrey]" index="15" />
+			<player_stats_generic_entry backgroundcolor="[darkGrey]"    index="16" />
+			<player_stats_generic_entry backgroundcolor="[darkestGrey]" index="17" />
+			<player_stats_generic_entry backgroundcolor="[darkGrey]"    index="18" />
+			<player_stats_generic_entry backgroundcolor="[darkestGrey]" index="19" />
+			<player_stats_generic_entry backgroundcolor="[darkGrey]"    index="20" />
+			<player_stats_generic_entry backgroundcolor="[darkestGrey]" index="21" />
+			<player_stats_generic_entry backgroundcolor="[darkGrey]"    index="22" />
+		</grid>
+		</rect>
+	</window>
 <window name="windowVehicle" width="380" height="733" panel="Left" controller="VehicleFrameWindow" cursor_area="true" >
 		<rect pos="-100,0">
 		<panel name="header" pos="3,0" height="43" depth="1" backgroundspritename="ui_game_panel_header">
@@ -1323,7 +1640,7 @@
 
 		<rect name="content" depth="0" pos="0,-25" height="70" disablefallthrough="true">
 
-			<grid name="inventory" rows="1" cols="3" pos="6,100" cell_width="70" cell_height="70" controller="WorkstationToolGrid" repeat_content="true" required_tools="toolCookingPot,toolCookingGrill,toolBeaker" required_tools_only="true">
+			<grid name="inventory" rows="1" cols="3" pos="6,100" cell_width="70" cell_height="70" controller="WorkstationToolGrid" repeat_content="true" required_tools="toolCookingPot,toolCookingGrill,kettle" required_tools_only="true">
 				<AX_item_stack controller="RequiredItemStack" name="0"/>
 			</grid>
 		</rect>
@@ -1380,7 +1697,7 @@
 	</window>
 <!-- VENTANA DE GASOLINA (FUEL/wood) BY DJTRIPL3XMR -->
 
-<window name="windowForgeInput" depth="20" width="430" height="95" panel="Left" controller="WorkstationMaterialInputWindow" materials_accepted="iron,brass,lead,glass,stone,clay" valid_materials_color="[green]" invalid_materials_color="[red]" cursor_area="true" >
+<window name="windowForgeInput" depth="20" width="430" height="95" panel="Left" controller="WorkstationMaterialInputWindow" materials_accepted="iron,brass,lead,glass,clay" valid_materials_color="[green]" invalid_materials_color="[red]" cursor_area="true" >
 	<rect pos="-100,0">
 		<windowBackgroundNoHeader name="windowBackgroundNoHeader" depth="-3" pos="5,90" width="420" height="95" text_key="xuiSmelting"/>
 		<panel style="header.panel" disableautobackground="true">

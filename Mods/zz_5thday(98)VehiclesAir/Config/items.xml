@@ -1,0 +1,24 @@
+<configs>
+	<append xpath="/items">
+
+		<item name="vehicleCH47placeable">
+			<property name="Extends" value="vehicleGyrocopterPlaceable"/>
+			<property name="Tags" value="vehicle,vengine,vfuel,vseat,vlight,canHaveCosmetic"/>
+			<property name="CustomIcon" value="vehicleCH47"/>
+			<property name="Meshfile" value="#@modfolder:Resources/CH47.unity3d?5D_CH47.prefab"/>
+			<property name="EconomicValue" value="60000"/>
+			<property name="TraderStageTemplate" value="vehicleTier5"/>
+			<property class="Action1">
+				<property name="Vehicle" value="vehicleCH47"/>
+				<property name="VehicleSize" value="4.7, 4.8, 5"/>
+			</property>
+			<effect_group name="Base Effects" tiered="false">
+				<passive_effect name="ModSlots" operation="base_set" value="5"/>
+				<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+				<passive_effect name="DegradationMax" operation="base_set" value="5000"/>
+			</effect_group>
+		</item>
+
+
+</append>
+</configs>
