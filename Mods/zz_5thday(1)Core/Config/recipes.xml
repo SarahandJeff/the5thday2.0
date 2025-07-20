@@ -19,6 +19,7 @@
 		<remove xpath="//recipe[@name='batterybank']"/>
 		<remove xpath="//recipe[@name='generatorbank']"/>
 		<remove xpath="//recipe[@name='meleeWpnSledgeT0StoneSledgehammer']"/>
+		<remove xpath="//recipe[@name='meleeToolShovelT0StoneShovel']"/>
 
 		
 		<remove xpath="/recipes/recipe[starts-with(@name,'vehicleSnowMobile')]"/>
@@ -27,11 +28,16 @@
 		<remove xpath="/recipes/recipe[starts-with(@name,'Quadchassis')]"/>
 		<remove xpath="/recipes/recipe[starts-with(@name,'vehicleWitosFAVPlaceable')]"/>
 		<remove xpath="/recipes/recipe[contains(@name,'BMX')]"/>
-		
-		
+		<remove xpath="/recipes/recipe[@name='resourceRockSmall']"/>
+		<remove xpath="/recipes/recipe/ingredient[@name='unit_stone']"/>
+		<remove xpath="//recipe[starts-with(@name,'drug') and (@craft_area='campfire')]"/>
+		<remove xpath="//recipe[starts-with(@name,'medicalPlasterCast') and (@craft_area='campfire')]"/>
 
 		
+
+
 		
+
 		
 	<append xpath="/recipes">
 		<recipe name="resourceCrushedSandBundle" count="1" craft_time="10" tags="learnable">
@@ -411,6 +417,35 @@
     <ingredient name="foodGrilledChicken" count="2"/>
 	<ingredient name="foodBread" count="1"/>
 </recipe>
+
+	<recipe name="foodBakedCarp" count="1" craft_time="30" craft_exp_gain="0" craft_area="WorkingStove" craft_tool="fryingpan">
+			<ingredient name="foodRawFishCarp" count="1"/>
+			<ingredient name="resourcePaper" count="20"/>
+	</recipe>
+
+	<recipe name="foodBakedPerch" count="1" craft_time="30" craft_exp_gain="0" craft_area="WorkingStove" craft_tool="fryingpan">
+			<ingredient name="foodRawFishPerch" count="1"/>
+			<ingredient name="resourcePaper" count="20"/>
+	</recipe>
+	<recipe name="foodBakedCatfish" count="1" craft_time="30" craft_exp_gain="0" craft_area="WorkingStove" craft_tool="fryingpan">
+			<ingredient name="foodRawFishCatfish" count="1"/>
+			<ingredient name="resourcePaper" count="20"/>
+	</recipe>
+	<recipe name="foodBakedBass" count="1" craft_time="30" craft_exp_gain="0" craft_area="WorkingStove" craft_tool="fryingpan">
+			<ingredient name="foodRawFishBass" count="1"/>
+			<ingredient name="resourcePaper" count="20"/>
+	</recipe>
+	<recipe name="foodBakedBluegil" count="1" craft_time="30" craft_exp_gain="0" craft_area="WorkingStove" craft_tool="fryingpan">
+			<ingredient name="foodRawFishBlueGil" count="1"/>
+			<ingredient name="resourcePaper" count="20"/>
+	</recipe>
+
+
+
+
+
+
+
 <recipe name="foodSteakAndEggs" count="1"  craft_area="WorkingStove" craft_tool="fryingpan" tags="perkCooking,learnable">
     <ingredient name="foodGrilledMeat" count="1"/>
     <ingredient name="foodFriedEggs" count="4" />
@@ -631,8 +666,29 @@
   </recipe>
   <recipe name="foodPorkChop" count="1" craft_area="CharcoalGrill"  tags="perkCooking,learnable">
     <ingredient name="foodRawPorkMeat" count="1"/>
-	
-</recipe>
+  </recipe>
+  
+	<recipe name="foodBakedCarp" count="1" craft_time="30" craft_exp_gain="0" craft_area="CharcoalGrill">
+			<ingredient name="foodRawFishCarp" count="1"/>
+			<ingredient name="resourcePaper" count="20"/>
+	</recipe>
+
+	<recipe name="foodBakedPerch" count="1" craft_time="30" craft_exp_gain="0" craft_area="CharcoalGrill">
+			<ingredient name="foodRawFishPerch" count="1"/>
+			<ingredient name="resourcePaper" count="20"/>
+	</recipe>
+	<recipe name="foodBakedCatfish" count="1" craft_time="30" craft_exp_gain="0" craft_area="CharcoalGrill">
+			<ingredient name="foodRawFishCatfish" count="1"/>
+			<ingredient name="resourcePaper" count="20"/>
+	</recipe>
+	<recipe name="foodBakedBass" count="1" craft_time="30" craft_exp_gain="0" craft_area="CharcoalGrill">
+			<ingredient name="foodRawFishBass" count="1"/>
+			<ingredient name="resourcePaper" count="20"/>
+	</recipe>
+	<recipe name="foodBakedBluegil" count="1" craft_time="30" craft_exp_gain="0" craft_area="CharcoalGrill">
+			<ingredient name="foodRawFishBlueGil" count="1"/>
+			<ingredient name="resourcePaper" count="20"/>
+	</recipe>
 <recipe name="drinkJarBoiledWater" count="1" craft_time="5" craft_area="CharcoalGrill" craft_tool="kettle" tags="perkCooking,perkChefBoiledWater,boiledWater">
 	<ingredient name="drinkJarRiverWater" count="1"/>
   </recipe>
@@ -670,8 +726,7 @@
 </recipe>
 
 </append>
-
-
+<set xpath="//recipe[contains(@name,'drink') and (@craft_area='campfire')]/@craft_tool">kettle</set>
 
 
 

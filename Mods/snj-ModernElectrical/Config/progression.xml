@@ -1,0 +1,19 @@
+<configs>
+	<append xpath="/progression/crafting_skills/crafting_skill[@name='craftingElectrician']/display_entry[@icon='generatorBankA']/unlock_entry/@item">,SNJgeneratorbank,SNJelectricwirerelay,SNJelectricwireWallrelay</append>
+	<append xpath="/progression/crafting_skills/crafting_skill[@name='craftingElectrician']/display_entry[@icon='batterybank']/unlock_entry/@item">,SNJbatterybank,SNJRangeHood</append>
+	<append xpath="/progression/crafting_skills/crafting_skill[@name='craftingElectrician']/display_entry[@icon='motionsensor']/unlock_entry/@item">,SNJelectricwirerelaytimed,solarbank</append>
+	<append xpath="/progression/crafting_skills/crafting_skill[@name='craftingElectrician']/display_entry[@icon='carBattery']">
+		
+		<unlock_entry item="solarCell" unlock_tier="1"/>
+   </append>
+	<append xpath="/progression/crafting_skills/crafting_skill[@name='craftingElectrician']/effect_group/passive_effect[@level='25,100']/@tags">,SNJgeneratorbank,SNJpowerSwitch,SNJelectricwirerelay,SNJelectricwireWallrelay</append>
+	<append xpath="/progression/crafting_skills/crafting_skill[@name='craftingElectrician']/effect_group/passive_effect[contains(@tags,'batterybank')]/@tags">,SNJbatterybank,SNJRangeHood</append>
+	<append xpath="/progression/crafting_skills/crafting_skill[@name='craftingElectrician']/effect_group/passive_effect[@level='25,100']/@tags">,SNJelectricwirerelaytimed</append>
+	<append xpath="/progression/crafting_skills/crafting_skill[@name='craftingElectrician']/effect_group">
+		<passive_effect name="RecipeTagUnlocked" operation="base_set" level="50,100" value="1" tags="solarbank"/>
+		<passive_effect name="RecipeTagUnlocked" operation="base_set" level="65,100" value="1" tags="solarCell"/>
+		<passive_effect name="CraftingTier" operation="base_add" level="70,75,85,95,99,100" value="1,2,3,4,5,5" tags="solarCell"/>
+	</append>
+
+
+</configs>
