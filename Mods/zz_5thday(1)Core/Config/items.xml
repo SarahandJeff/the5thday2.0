@@ -335,8 +335,8 @@
 	<insertAfter xpath="//item[starts-with(@name, 'vehicle') and (contains(@name, 'Placeable'))]/property[@name='EconomicValue']">
 		<property name="UnlockedBy" value="perkWrenches"/>
 	</insertAfter>
-	<set xpath="//item[starts-with(@name,'medical')]/property[@name='UnlockedBy']/@value">PerkHealthandBody</set>
-	<set xpath="//item[starts-with(@name,'drug')]/property[@name='UnlockedBy']/@value">PerkHealthandBody</set>
+	<set xpath="//item[starts-with(@name,'medical')]/property[@name='UnlockedBy']/@value">perkHealthandBody</set>
+	<set xpath="//item[starts-with(@name,'drug')]/property[@name='UnlockedBy']/@value">perkHealthandBody</set>
 	<append xpath="//passive_effect[@tags='perkJavelinMaster']/@tags">,PerkHOHSpears</append>
 	
 	<!-- Bladded -->
@@ -356,6 +356,10 @@
 	<set xpath="//item[@name='meleeWpnBatonT2StunBaton']/property[@name='UnlockedBy']/@value">perkClubs</set>
 	<append xpath="//item[@name='meleeWpnBatonT0PipeBaton']">
 		<property name="UnlockedBy" value="perkClubs"/>
+	</append>
+
+	<append xpath="//item[@name='perkArtOfMiningPallets']">
+		<property name="UnlockedBy" value="resourceSmokelessPowderBundle"/>
 	</append>
 	<!-- Axes -->
 	<set xpath="//item[@name='meleeToolAxeT1IronFireaxe']/property[@name='UnlockedBy']/@value">perkAxes</set>
@@ -950,7 +954,7 @@
 			<triggered_effect trigger="onSelfSecondaryActionStart" action="ModifyCVar" cvar="HOH_Cooking_XP" operation="add" value=".1"/>
 		</effect_group>
 	</insertAfter >
-	<set xpath="//item[starts-with(@name,'medical')]/property[@name='UnlockedBy']/@value">PerkHealthandBody</set>
+	<set xpath="//item[starts-with(@name,'medical')]/property[@name='UnlockedBy']/@value">perkHealthandBody</set>
 	<set xpath="//item[@name='meleeToolRepairT1ClawHammer']/property[@name='UnlockedBy']/@value">perkWrenches</set>
 	<set xpath="//item[@name='meleeToolRepairT3Nailgun']/property[@name='UnlockedBy']/@value">perkWrenches</set>
 	<!--

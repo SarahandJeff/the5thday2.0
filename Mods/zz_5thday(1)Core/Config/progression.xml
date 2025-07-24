@@ -6,7 +6,7 @@
 	<remove xpath="/progression/crafting_skills"/>
 	<append xpath="/progression">
 		<level max_level="500" exp_to_level="10000" experience_multiplier="1.05" skill_points_per_level="0" clamp_exp_cost_at_level="60"/>
-		<attributes min_level="1" max_level="1" base_skill_point_cost="0" cost_multiplier_per_level="0">
+		<attributes min_level="0" max_level="0" base_skill_point_cost="0" cost_multiplier_per_level="0">
 			<attribute name="attActionSkills" name_key="attActionSkillsName" desc_key="attActionSkillsDesc" icon="ui_game_symbol_marksmanship"/>
 			<attribute name="attBooks" name_key="attBooks" desc_key="attBooks" icon="ui_game_symbol_book" min_level="0" max_level="0" base_skill_point_cost="0"/>
 			<attribute name="attCrafting" name_key="attCrafting" desc_key="attCrafting" icon="ui_game_symbol_hammer" min_level="0" max_level="0" base_skill_point_cost="0"/>
@@ -1047,11 +1047,11 @@
 			
 			<perk name="PerkHOHCooking" parent="skillActionSkills" max_level="100" base_skill_point_cost="0" name_key="Food Skills" desc_key="PerkHOHCookingDesc" icon="ui_game_symbol_cookware">
 				<effect_group>
-					<passive_effect name="WaterLossPerHealthPointGained" operation="perc_add" level="1,100" value="-.05,-.29"/>
-					<passive_effect name="WaterLossPerStaminaPointGained" operation="perc_add" level="1,100" value="-.05,-.29"/>
-					<passive_effect name="FoodLossPerStaminaPointGained" operation="perc_add" level="1,100" value="-.05,-.29"/>
+					<passive_effect name="WaterLossPerHealthPointGained" operation="perc_add" level="1,100" value="-.01,-.30"/>
+					<passive_effect name="WaterLossPerStaminaPointGained" operation="perc_add" level="1,100" value="-.01,-.30"/>
+					<passive_effect name="FoodLossPerStaminaPointGained" operation="perc_add" level="1,100" value="-.01,-.30"/>
 					<!-- fake crafting perk that is used to scale resources -->
-					<passive_effect name="CraftingTier" operation="base_set" level="0,100" value="0,3" tags="PerkHOHCooking"/>
+					<passive_effect name="CraftingTier" operation="base_set" level="1,100" value="0,3" tags="PerkHOHCooking"/>
 					<!-- Speed up cooking time of campfire recipes with each rank -->
 					<passive_effect name="CraftingTime" operation="perc_add" level="0,25,50,100" value="4,2,1,0" tags="PerkHOHCooking"/>
 					<!-- masterChef2 is a hard coded tag used in loot.xml that adds a chance to find food in dumpsters -->
@@ -1582,7 +1582,7 @@
 			<!-- *** ART_OF_MINING_VOLUME_05_BUNDLES -->
 			<book name="perkArtOfMiningPallets" parent="skillArtOfMining" max_level="1" base_skill_point_cost="0" name_key="bookArtOfMiningPallets" desc_key="perkArtOfMiningPalletsDesc" long_desc_key="perkArtOfMiningPalletsLongDesc">
 				<effect_group>
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="1" value="1" tags="resourceRockSmallBundle,resourceWoodBundle,resourceScrapIronBundle,resourceOilShaleBundle,resourcePotassiumNitratePowderBundle,resourceLeadBundle,resourceCoalBundle"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="1" value="1" tags="resourceRockSmallBundle,resourceWoodBundle,resourceScrapIronBundle,resourceOilShaleBundle,resourcePotassiumNitratePowderBundle,resourceLeadBundle,resourceCoalBundle,resourceSmokelessPowderBundle"/>
 				</effect_group>
 			</book>
 			<!-- *** ART_OF_MINING_VOLUME_06_AVALANCHE -->
@@ -2585,18 +2585,32 @@
 
 
 			<crafting_skill name="perkHealthandBody" max_level="100" parent="attCrafting" name_key="PerkHOHHealthandBody" desc_key="" long_desc_key="" icon="ui_game_symbol_tool">
-				<display_entry item="medicalFirstAidBandage" unlock_level="5" />
-				<display_entry item="drugFortBites" unlock_level="10" />
-				<display_entry item="medicalSplint" unlock_level="20" />
-				<display_entry item="drugHerbalAntibiotics" unlock_level="30" />
-				<display_entry item="drugRecog" unlock_level="40" />
-				<display_entry item="medicalFirstAidKit" unlock_level="50" />
-				<display_entry item="drinkJarGrandpasLearningElixir" unlock_level="50" />
-				<display_entry item="drugAntibiotics" unlock_level="60" />
-				<display_entry item="drugSteriods" unlock_level="75" />
+
+				<display_entry icon="medicalFirstAidBandage" name_key="Meds-Tier 1" has_quality="false" unlock_level="5,10,20" >
+					<unlock_entry item="medicalFirstAidBandage" unlock_tier="1" />
+					<unlock_entry item="drugFortBites" unlock_tier="2" />
+					<unlock_entry item="medicalSplint" unlock_tier="3" />
+					<unlock_entry item="medicalPlasterCast" unlock_tier="3" />
+				</display_entry>
+				<display_entry icon="drugHerbalAntibiotics" name_key="Meds-Tier 2" has_quality="false" unlock_level="30,40" >
+					<unlock_entry item="drugHerbalAntibiotics" unlock_tier="1" />
+					<unlock_entry item="drugRecog" unlock_tier="2" />
+				</display_entry>
+				<display_entry icon="medicalFirstAidKit" name_key="Meds-Tier 3" has_quality="false" unlock_level="50,60" >
+					<unlock_entry item="medicalFirstAidKit,drinkJarGrandpasLearningElixir" unlock_tier="1" />
+					<unlock_entry item="drugAntibiotics" unlock_tier="2" />
+				</display_entry>
+				<display_entry icon="drugSteroids" name_key="Meds-Tier 4" has_quality="false" unlock_level="75" >
+					<unlock_entry item="drugSteroids" unlock_tier="1" />
+				</display_entry>
+				
+				
+				
+				
 				<effect_group>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="5,100" value="1" tags="medicalFirstAidBandage"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="10,100" value="1" tags="drugFortBites"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="20,100" value="1" tags="medicalPlasterCast"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="20,100" value="1" tags="medicalSplint"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="30,100" value="1" tags="drugHerbalAntibiotics"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="40,100" value="1" tags="drugRecog"/>
@@ -2624,7 +2638,7 @@
 					<unlock_entry item="mineAirFilter" unlock_tier="1" />
 					<unlock_entry item="electricfencepost,dartTrap,bladeTrap" unlock_tier="1" />
 					<unlock_entry item="resourceGunPowderBundle" unlock_tier="2" />
-					<unlock_entry item="resourceSmokelessPowderBundle" unlock_tier="2" />
+					<!-- <unlock_entry item="resourceSmokelessPowderBundle" unlock_tier="2" /> -->
 					<unlock_entry item="thrownTimedCharge" unlock_tier="3" />
 					<unlock_entry item="FlatTarTrap" unlock_tier="3" />
 				</display_entry>
