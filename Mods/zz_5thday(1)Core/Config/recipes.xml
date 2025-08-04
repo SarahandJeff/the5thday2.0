@@ -26,7 +26,7 @@
 		<remove xpath="/recipes/recipe[starts-with(@name,'vehicleWitosQuadPlaceable')]"/>
 		<remove xpath="/recipes/recipe[starts-with(@name,'Quadbars')]"/>
 		<remove xpath="/recipes/recipe[starts-with(@name,'Quadchassis')]"/>
-		<remove xpath="/recipes/recipe[starts-with(@name,'vehicleWitosFAVPlaceable')]"/>
+		
 		<remove xpath="/recipes/recipe[contains(@name,'BMX')]"/>
 		<remove xpath="/recipes/recipe[@name='resourceRockSmall']"/>
 		<remove xpath="/recipes/recipe/ingredient[@name='unit_stone']"/>
@@ -732,9 +732,25 @@
 <recipe name="foodRawPorkMeat" count="3"  tags="perkCooking,learnable">
     <ingredient name="animalPiglet" count="1"/>
  </recipe>
+ <recipe name="resourceWoodandNails" count="1"  craft_time="1" tags="packMuleCrafting">
+    <ingredient name="resourceWood" count="6"/>
+	<ingredient name="resourceNail" count="12"/>
+ </recipe>
+
+
+
+
 </append>
 <set xpath="//recipe[contains(@name,'drink') and (@craft_area='campfire')]/@craft_tool">kettle</set>
+<append xpath="//recipe[@name='woodShapes:VariantHelper']">
+<ingredient name="resourceWoodandNails" count="1"/>
 
+</append>
+
+<append xpath="//recipe[@name='woodShapes:VariantHelper']/@tags">,learnable</append>
+<append xpath="//recipe[@name='cobblestoneShapes:VariantHelper']/@tags">,learnable</append>
+<append xpath="//recipe[@name='concreteShapes:VariantHelper']/@tags">,learnable</append>
+<append xpath="//recipe[@name='steelShapes:VariantHelper']/@tags">,learnable</append>
 
 
 </snj>

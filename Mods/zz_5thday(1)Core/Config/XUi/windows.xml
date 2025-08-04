@@ -157,7 +157,7 @@
 		</rect>
 	</window>
 <window name="windowQuestRewards" width="653" height="199" panel="Center" controller="QuestRewardsWindow" cursor_area="true" >
-		<rect pos='-100,0'>
+		<!-- <rect pos='-100,0'> -->
 		<panel name="header" height="43" depth="1" backgroundspritename="ui_game_panel_header">
 			<sprite depth="2" name="windowIcon" style="icon32px" pos="4,-5" sprite="ui_game_symbol_treasure"/>
 			<label style="header.name" text="REWARDS" text_key="xuiRewards" />
@@ -177,7 +177,7 @@
 				<label pos="0,-70" depth="3" name="descriptionText" width="100%" height="145" text="REWARDS NOT AVAILABLE AT THIS TIME." text_key="xuiRewardsNotAvailable" justify="center" pivot="left" font_size="28" />
 			</rect>
 		</rect>
-		</rect>
+		<!-- </rect> -->
 	</window>
 <window name="buffInfoPanel" width="340" height="790" controller="BuffInfoWindow" anchor="CenterCenter" panel="Center">
 		<rect pos="-100,0">
@@ -853,7 +853,7 @@
 <window name="windowTrader"  width="645" height="688" panel="Left" controller="TraderWindow" cursor_area="true" >
       <rect pos="-100,0">
 		<panel name="header" height="43" depth="1" backgroundspritename="ui_game_panel_header">
-			<sprite pos="4,-5" depth="2" name="windowIcon" style="icon32px" sprite="ui_game_symbol_map_trader"/>
+			<sprite pos="150,-5" depth="2" name="windowIcon" style="icon32px" sprite="ui_game_symbol_map_trader"/>
 			<player_name pos="42,0" width="350" height="32" />
 			<label depth="2" pos="340,-8" width="300" height="28" text="{restocklabel}: {timeleft}" justify="right" visible="{showrestock}" />
 
@@ -1213,8 +1213,8 @@
 			</rect>
 
 			<!-- <sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="0,-130" width="153" height="216" color="[black]" type="sliced" fillcenter="false" /> -->
-			<rect pos="180,0" width="150" height="220" visible="{shownormaloptions}" >
-				<grid name="itemActions" rows="5" cols="1" pos="0,0" width="150" height="220" cell_width="150" cell_height="44" controller="ItemActionList"
+			<rect pos="180,0" width="150" height="250" visible="{shownormaloptions}" >
+				<grid name="itemActions" rows="6" cols="1" pos="0,0" width="150" height="250" cell_width="150" cell_height="44" controller="ItemActionList"
 					repeat_content="true" visible="false">
 					<item_action_entry />
 				</grid>
@@ -1241,14 +1241,14 @@
 				<button depth="4" name="descriptionButton" style="icon30px, press" pos="40,-6" sprite="ui_game_symbol_book" hoverscale="1" tooltip="Description" tooltip_key="lblDescription" sound="[paging_click]" />
 			</rect>
 
-			<rect depth="1" pos="0,-280" name="description" width="330" height="423" visible="{# itemstattitle1 == ''}">
+			<rect depth="1" pos="0,-320" name="description" width="330" height="423" visible="{# itemstattitle1 == ''}">
 				<sprite depth="2" pos="1,-1" width="328" height="421" color="[darkGrey]" type="sliced" globalopacity="true" />
 				<sprite depth="1" name="backgroundMain" sprite="menu_empty3px" pos="0,0" width="330" height="423" color="[black]" type="sliced" fillcenter="false" />
 
 				<label depth="3" name="descriptionText" pos="5,-5" text="{itemdescription}" width="320" height="413" justify="center" font_size="22" parse_actions="true" />
 			</rect>
 
-			<rect depth="1" pos="0,-280" name="description" width="330" height="423" visible="{# itemstattitle1 != ''}">
+			<rect depth="1" pos="0,-320" name="description" width="330" height="423" visible="{# itemstattitle1 != ''}">
 				<AX_Item_Stat depth="5" pos="0,0" 		title="{itemstattitle1}" value="{itemstat1}" visible="{# itemstattitle1 != ''}" />
 				<AX_Item_Stat depth="5" pos="0,-28" 	title="{itemstattitle2}" value="{itemstat2}" visible="{# itemstattitle2 != ''}" />
 				<AX_Item_Stat depth="5" pos="0,-56" 	title="{itemstattitle3}" value="{itemstat3}" visible="{# itemstattitle3 != ''}" />
@@ -1266,10 +1266,10 @@
 				<AX_Item_Desc depth="5" pos="0,-196" 	text="{itemdescription}" height="227" visible="{# itemstattitle7 != ''}" />
 			</rect>
 
-			<grid name="parts" rows="1" cols="6" pos="3,-225" cell_width="55" cell_height="55" repeat_content="true" controller="PartList" visible="{isnotcomparing}">
+			<grid name="parts" rows="1" cols="6" pos="3,-265" cell_width="55" cell_height="55" repeat_content="true" controller="PartList" visible="{isnotcomparing}">
 				<AX_item_stack_mods name="0"/>
 			</grid>
-			<rect visible="{iscomparing}" pos="0,-225" width="330" height="52">
+			<rect visible="{iscomparing}" pos="0,-260" width="330" height="52">
 				<sprite depth="1" color="[mediumGrey]" type="sliced" globalopacity="true" />
 				<label depth="3" name="descriptionText" pos="0,-20" text_key="xuiCompareNoModded" justify="center" font_size="20" color="[selectedColor]" />
 			</rect>
@@ -1903,7 +1903,7 @@
 <set xpath="/windows/window[@name='windowToolbelt']/rect/rect/grid/@cell_height">60</set>
 <set xpath="/windows/window[@name='windowToolbelt']/@width">725</set>
 	<set xpath="/windows/window[@name='windowToolbelt']/@pos">-450, 70</set>
-	<set xpath="/windows/window[@name='ingameMenuSCore']/@pos">-820,-80</set>
+	<!-- <set xpath="/windows/window[@name='ingameMenuSCore']/@pos">-820,-80</set> -->
 	
 	<append xpath="/windows">
 		<window name="HUDLeftStatBars"  anchor="LeftBottom">
@@ -2714,7 +2714,21 @@
 					<label depth="5" name="TextContent" pos="465,-10" font_size="15" color="255,255,255,{cvar(TitaniumShovelBlockDisplay)}" justify="center" pivot="topleft" text="{cvar(HOH_Shovels_lvl)}"/>				
 				</rect>
 				<!-- * * * * * Wrench Block Counters * * * * * -->
-				
+				<rect pos="0,-33">
+					<sprite depth="1" name="itemPreview" pos="818,-4" width="40" height="40" atlas="ItemIconAtlas" sprite="meleeToolRepairT1ClawHammer" color="{itemicontint}" pivot="center" visible="{cvar(HammerBlockDisplay:true;false;false)}" foregroundlayer="true"/>
+					<sprite depth="0" name="windowicon" style="icon32px" pos="818,-4" pivot="center" justify="center" width="57" height="57" fillcenter="true" sprite="ui_game_filled_circle" color="[darkestGrey]" visible="{cvar(HammerBlockDisplay:true;false;false)}"/>
+					<sprite depth="-1" name="windowicon" style="icon32px" pos="818,-4" pivot="center" justify="center" width="60" height="60" fillcenter="false" sprite="ui_game_filled_circle" color="100,100,100,255" visible="{cvar(HammerBlockDisplay:true;false;false)}"/>				
+					<sprite depth="-1" name="windowicon" style="icon32px" pos="818,-4" pivot="center" justify="center" width="60" height="60" type="filled" fill="{cvar(HOH_Construction_lvl_Next_Display)}" filldirection="radial360" fillcenter="false" sprite="ui_game_filled_circle" color="0,255,0,255" visible="{cvar(HammerBlockDisplay:true;false;false)}"/>	
+					<label depth="2" name="TextContent" pos="465,-10" font_size="15" color="255,255,255,{cvar(HammerBlockDisplay)}" justify="center" pivot="topleft" text="{cvar(HOH_Construction_lvl)}"/>				
+				</rect>
+				<rect pos="0,-33">
+					<sprite depth="1" name="itemPreview" pos="818,-4" width="40" height="40" atlas="ItemIconAtlas" sprite="meleeToolRepairT3Nailgun" color="{itemicontint}" pivot="center" visible="{cvar(NailGunBlockDisplay:true;false;false)}" foregroundlayer="true"/>
+					<sprite depth="0" name="windowicon" style="icon32px" pos="818,-4" pivot="center" justify="center" width="57" height="57" fillcenter="true" sprite="ui_game_filled_circle" color="[darkestGrey]" visible="{cvar(NailGunBlockDisplay:true;false;false)}"/>
+					<sprite depth="-1" name="windowicon" style="icon32px" pos="818,-4" pivot="center" justify="center" width="60" height="60" fillcenter="false" sprite="ui_game_filled_circle" color="100,100,100,255" visible="{cvar(NailGunBlockDisplay:true;false;false)}"/>				
+					<sprite depth="-1" name="windowicon" style="icon32px" pos="818,-4" pivot="center" justify="center" width="60" height="60" type="filled" fill="{cvar(HOH_Construction_lvl_Next_Display)}" filldirection="radial360" fillcenter="false" sprite="ui_game_filled_circle" color="0,255,0,255" visible="{cvar(NailGunBlockDisplay:true;false;false)}"/>	
+					<label depth="2" name="TextContent" pos="465,-10" font_size="15" color="255,255,255,{cvar(NailGunBlockDisplay)}" justify="center" pivot="topleft" text="{cvar(HOH_Construction_lvl)}"/>				
+				</rect>
+
 				<!-- Wrench -->
 				
 				<rect pos="0,-33">
@@ -3441,6 +3455,21 @@
 	</window>
 </append>
 
+
+<!-- <append xpath="//window[@name='ingameMenu']">
+		<rect>
+			<panel name="header" pos="350,-100" width="620" height="43" depth="1" backgroundspritename="ui_game_panel_header" >
+				<label style="header.name" text="title"  text_key="noteSNJ01" width="620" />
+			</panel>
+			<rect name="content" pos="350,-150" width="620" height="450" depth="1" pivot="center">
+				<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="0,0" width="620" color="[black]" type="sliced" fillcenter="false" />
+				<sprite color="[darkGrey]" type="sliced" />
+				<label depth="3" name="descriptionText" pos="8,-8" text="noteSNJ01Desc" text_key="noteSNJ01Desc" width="620" height="465" font_size="20" />
+			</rect>
+		</rect>
+</append>		 -->
+			
+		
 
 
 

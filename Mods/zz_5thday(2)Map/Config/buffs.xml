@@ -1,4 +1,9 @@
 <snj>
+<insertAfter xpath="//buff[@name='buffStatusCheck01']/effect_group/triggered_effect[@buff='HOH_BackpackWeight']">
+		<triggered_effect trigger="onSelfEnteredGame" action="AddBuff" target="self" buff="WatchTrackerActivate">
+			<requirement name="CVarCompare" cvar="_5DWatchCheck" operation="Equals" value="1"/>
+		</triggered_effect>
+</insertAfter>
 <append xpath="/buffs">
 <buff name="GPSTrackerActivate" hidden="true" icon="ui_game_symbol_add" icon_color="255,0,0" icon_blink="true" remove_on_death="false">
 			<stack_type value="ignore"/>

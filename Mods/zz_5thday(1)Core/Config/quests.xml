@@ -388,7 +388,7 @@
     <reward type="Item" id="vehicleBicyclePlaceable" ischosen="true" value="1" />
 </insertAfter>
 
-<set xpath="//quest[contains(@id,'nexttrader')]/property[(@name='reward_choices_count')]/@value">4</set>
+<set xpath="//quest[contains(@id,'nexttrader')]/property[(@name='reward_choices_count')]/@value">5</set>
 <set xpath="//quest/reward[(@id='groupChallengeRewardSkillMagazinesAll')]/@id">groupQuestSchematics</set>
 
 
@@ -1172,7 +1172,26 @@
 		</quest>
 
 		
-		
+			<quest id="quest_Starting">
+			<property name="name_key" value="noteSNJ01"/>
+			<property name="subtitle_key" value="subtitle"/>
+			<property name="description_key" value="noteSNJ01Desc"/>
+			<property name="repeatable" value="false"/>
+			<property name="category_key" value="quest" />
+			<property name="offer_key" value="noteSNJ01Desc" />
+			<property name="difficulty" value="easy" />
+			<property name="shareable" value="false"/>
+
+			<action type="TrackQuest"/>
+
+			<action type="ShowMessageWindow">
+				<property name="title" value="noteSNJ01"/>
+				<property name="message" value="noteSNJ01Desc"/>
+				<property name="delay" value="2"/>
+			</action>
+			
+			
+		</quest>
 	</append>
 
 
@@ -1189,6 +1208,6 @@
     </action>
 </insertBefore>
 
-
+<!-- <remove xpath="//quest/objective/property[(@name='nav_object') and (@value='fetch_container')]"/> -->
 
 </snj>

@@ -8,6 +8,8 @@
             <property name="Material" value="Msteel"/>
 
             <effect_group>
+             <!-- <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="_5DGPSCheck" operation="set" value="1"/>
+             <triggered_effect trigger="onSelfEquipEnd" action="ModifyCVar" cvar="_5DGPSCheck" operation="set" value="0"/>   -->
 	                <triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="GPSTrackerActivate"/>
 		            <triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="GPSTrackerActivate"/>
             </effect_group>
@@ -20,6 +22,9 @@
             <property name="Material" value="Msteel"/>
 
             <effect_group>
+             <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="_5DWatchCheck" operation="set" value="1"/>
+             <triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="_5DWatchCheck" operation="set" value="0"/>
+                    
 	                <triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="WatchTrackerActivate"/>
 		            <triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="WatchTrackerActivate"/>
             </effect_group>

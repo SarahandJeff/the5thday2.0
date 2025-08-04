@@ -84,7 +84,7 @@
             <property name="CustomIcon" value="LMTV"/>
             <property name="Extends" value="vehicleTruck4x4Placeable"/>
             <property name="Tags" value="vehicle,vengine,vfuel,vlight,vplow,vseat,canHaveCosmetic"/>
-			<property name="Prefab" value="#@modfolder:Assets/Drivable_JLTV.unity3d?LMTV_Placed"/>
+			<property name="Prefab" value="#@modfolder:Assets/5d_Vehicles.unity3d?5D_LMTV"/>
 		    <property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
             <property name="EconomicValue" value="60000"/>
             <property name="TraderStageTemplate" value="vehicleTier4"/>
@@ -144,6 +144,7 @@
 	<item name="Vehicle_International_FullPlaceable">
 		<property name="CustomIcon" value="International_Full_Drivable"/>
 		<property name="Extends" value="vehicleTruck4x4Placeable"/>
+		<property name="CreativeMode" value="None" />
 		<property name="Tags" value="vehicle,vengine,vfuel,vlight,vplow,vseat,canHaveCosmetic"/>
 		<property name="Meshfile" value="#@modfolder:Assets/International4x4.unity3d?International_Full_Placed"/>
 		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
@@ -164,6 +165,7 @@
 	<item name="Vehicle_International_ToplessPlaceable">
 		<property name="CustomIcon" value="International_Topless_Drivable"/>
 		<property name="Extends" value="vehicleTruck4x4Placeable"/>
+		<property name="CreativeMode" value="None" />
 		<property name="Tags" value="vehicle,vengine,vfuel,vlight,vplow,vseat,canHaveCosmetic"/>
 		<property name="Meshfile" value="#@modfolder:Assets/International4x4.unity3d?International_Topless_Placed"/>
 		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
@@ -242,7 +244,7 @@
 		<property name="DisplayType" value="rangedRepairTool"/>
 		<property name="HoldType" value="74"/>
 		<property name="TintColor" value="CC9966"/>
-		<property name="Meshfile" value="@:Other/Items/Tools/impactDriverPrefab.prefab"/>
+		<property name="Meshfile" value="#@modfolder:Assets/5d_impactwrench.unity3d?impact_wrench"/>
 		<property name="Material" value="MMotorToolParts"/>
 		<property name="CustomIconTint" value="CC9966"/>
 		<property name="CustomIcon" value="meleeToolSalvageT3ImpactDriver"/>
@@ -338,6 +340,44 @@
 				<passive_effect name="DegradationMax" operation="base_set" value="4000"/>
 			</effect_group>
 		</item>
+		<item name="Vehicle_RedneckBeetlePlaceable">
+		<property name="CustomIcon" value="International_Topless_Drivable"/>
+		<property name="Extends" value="vehicleTruck4x4Placeable"/>
+		<property name="Tags" value="vehicle,vengine,vfuel,vlight,vplow,vseat,canHaveCosmetic"/>
+		<property name="Meshfile" value="#@modfolder:Assets/5d_Vehicles.unity3d?5D_RedneckBeetle"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="EconomicValue" value="60000"/>
+		<property name="TraderStageTemplate" value="vehicleTier2"/>
+		<property class="Action1">
+			<property name="Vehicle" value="Vehicle_RedneckBeetle"/>
+			<property name="VehicleSize" value=" 5, 2, 3"/>
+		</property>
+		<effect_group name="Base Effects">
+		<!-- <effect_group name="main" tiered="false"> works for different spawn method in vanilla -->
+			<passive_effect name="ModSlots" operation="base_set" value="6"/>
+			<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+			<passive_effect name="DegradationMax" operation="base_set" value="15000"/>
+		</effect_group>
+	</item>
+	<item name="Vehicle_SmallWorkTruckPlaceable">
+		<property name="CustomIcon" value="International_Topless_Drivable"/>
+		<property name="Extends" value="vehicleTruck4x4Placeable"/>
+		<property name="Tags" value="vehicle,vengine,vfuel,vlight,vplow,vseat,canHaveCosmetic"/>
+		<property name="Meshfile" value="#@modfolder:Assets/5d_Vehicles.unity3d?5D_SmallWorkTruck"/>
+		<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+		<property name="EconomicValue" value="60000"/>
+		<property name="TraderStageTemplate" value="vehicleTier2"/>
+		<property class="Action1">
+			<property name="Vehicle" value="Vehicle_SmallWorkTruck"/>
+			<property name="VehicleSize" value=" 6, 2, 3"/>
+		</property>
+		<effect_group name="Base Effects">
+		<!-- <effect_group name="main" tiered="false"> works for different spawn method in vanilla -->
+			<passive_effect name="ModSlots" operation="base_set" value="6"/>
+			<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+			<passive_effect name="DegradationMax" operation="base_set" value="15000"/>
+		</effect_group>
+	</item>
    </append>    
 <append xpath="/items">
 <item name="HOHCostumeJigsaw">
@@ -368,7 +408,25 @@
 		<property name="Group" value="HOHVehicleRestorers"/>
 		
 	</item>	
-
+	<item name="vehicle5dBMXPlaceable">
+			<property name="Extends" value="vehicleMinibikePlaceable"/>
+			<property name="CustomIcon" value="bmx"/>
+			<property name="Tags" value="vehicle,vlight,canHaveCosmetic"/>
+			<property name="DescriptionKey" value="vehicleBMXDesc"/>
+			<property name="Meshfile" value="#@modfolder:Assets/5d_bikes.unity3d?bmxbike"/>
+			<property name="EconomicValue" value="2500"/>
+			<property name="TraderStageTemplate" value="vehicleTier1"/><!-- vehicleBicyclePlaceable -->
+			<property name="SoundPickup" value="bike_grab"/>
+			<property name="SoundPlace" value="bike_place"/>
+			<property class="Action1">
+				<property name="Vehicle" value="vehicle5dBMX"/>
+			</property>
+			<effect_group name="vehicleBicyclePlaceable" tiered="false">
+				<passive_effect name="ModSlots" operation="base_set" value="2"/>
+				<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+				<passive_effect name="DegradationMax" operation="base_set" value="1500"/>
+			</effect_group>
+		</item>
 </append>
 
 

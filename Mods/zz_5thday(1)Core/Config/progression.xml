@@ -631,23 +631,23 @@
 
 				
 			</perk>
-			<perk name="perkHOHRifles" parent="skillActionSkills" max_level="100"   base_skill_point_cost="0" name_key="Rifle Skills" desc_key="Inhale sight exhle release" icon="ui_game_symbol_map_cursor">
+			<perk name="perkHOHRifles" parent="skillActionSkills" max_level="200"   base_skill_point_cost="0" name_key="Rifle Skills" desc_key="Inhale sight exhle release" icon="ui_game_symbol_map_cursor">
 				<effect_group>
 					
 					
-					<passive_effect name="SpreadMultiplierHip" operation="perc_add" level="1,100" value="-.1,-.25" tags="perkHOHRifles"/>
-					<passive_effect name="TargetArmor" operation="perc_add" level="1,100" value="-.10,-.2" tags="perkHOHRifles"/>
+					<passive_effect name="SpreadMultiplierHip" operation="perc_add" level="1,200" value="-.1,-.25" tags="perkHOHRifles"/>
+					<passive_effect name="TargetArmor" operation="perc_add" level="1,200" value="-.10,-.2" tags="perkHOHRifles"/>
 					<!-- Note: the 1 penetration effect is on <item name="ammo762mmBulletAP"> and other AP bullets -->
-					<passive_effect name="EntityPenetrationCount" operation="perc_add" level="75,100" value="1,3" tags="perkHOHRifles"/>
+					<passive_effect name="EntityPenetrationCount" operation="perc_add" level="75,200" value="1,3" tags="perkHOHRifles"/>
 					
 					
 					<!--	All AP ammo has 1 penetration -->
 				</effect_group>
 				<effect_group>
 				
-					<passive_effect name="EntityDamage" operation="perc_add" level="1,100" value=".1,.5" tags="perkHOHRifles"/>
-					<passive_effect name="WeaponHandling" operation="perc_add" level="1,100" value=".1,.60" tags="perkHOHRifles"/>
-					<passive_effect name="ReloadSpeedMultiplier" operation="perc_add" level="1,100" value="0.1,0.3" tags="perkHOHRifles"/>
+					<passive_effect name="EntityDamage" operation="perc_add" level="1,200" value=".1,.5" tags="perkHOHRifles"/>
+					<passive_effect name="WeaponHandling" operation="perc_add" level="1,200" value=".1,.60" tags="perkHOHRifles"/>
+					<passive_effect name="ReloadSpeedMultiplier" operation="perc_add" level="1,200" value="0.1,0.3" tags="perkHOHRifles"/>
 
 					<passive_effect name="LootProb" operation="base_set" level="1,250" value=".05" tags="perkHOHRifles">
 						<requirement name="CVarCompare" cvar="HOH_Shotguns_lvl" operation="LT" value="50"/>
@@ -656,15 +656,15 @@
 						<requirement name="CVarCompare" cvar="HOH_Shotguns_lvl" operation="GTE" value="50"/>
 					</passive_effect>
 					<!-- Increase the chance to find rifles and ammo with each perk rank -->
-					<passive_effect name="LootProb" operation="perc_add" level="1,100" value="2,10" tags="rifleSkill"/>
-					<passive_effect name="LootProb" operation="perc_add" level="1,100" value="2,10" tags="ammo762mm,ammo556"/>
+					<passive_effect name="LootProb" operation="perc_add" level="1,200" value="2,10" tags="rifleSkill"/>
+					<passive_effect name="LootProb" operation="perc_add" level="1,200" value="2,10" tags="ammo762mm,ammo556"/>
 					<!-- Increase the chance to find rifle crafting skill magazines with each perk rank up to crafting skill 100 -->
 					<!-- Increase the chance to find Sniper books until each book is read -->
-					<passive_effect name="LootProb" operation="perc_add" level="1,100" value="2,10" tags="sniperProb">
+					<passive_effect name="LootProb" operation="perc_add" level="1,200" value="2,10" tags="sniperProb">
 						<requirement name="ProgressionLevel" progression_name="perkSniperComplete" operation="LT" value="1"/>
 					</passive_effect>
 					<!-- When all Sniper books have been read, set the probability bonus of finding them to 0 -->
-					<passive_effect name="LootProb" operation="perc_add" level="1,100" value="0,0" tags="sniperProb">
+					<passive_effect name="LootProb" operation="perc_add" level="1,200" value="0,0" tags="sniperProb">
 						<requirement name="ProgressionLevel" progression_name="perkSniperComplete" operation="Equals" value="1"/>
 					</passive_effect>
       
@@ -751,6 +751,43 @@
 					</triggered_effect>
 				</effect_group>
 			</perk>
+			<perk name="perkHOHConstruction" parent="skillActionSkills" max_level="250" base_skill_point_cost="0" name_key="Construction Skills" desc_key="PerkHOHWrechesDesc" icon="ui_game_symbol_wrench">
+				<effect_group>
+					<passive_effect name="CraftingTime" operation="perc_add" level="1,250" value="-0.1,-.5" tags="salvageScrap"/>
+					<!-- Increase the chance to find salvage tools with each perk rank -->
+					<passive_effect name="LootProb" operation="perc_add" level="1,250" value="2,10" tags="salvagingSkill"/>
+					<!-- Increase the chance to find Wasteland Treasures books until each book is read -->
+					<passive_effect name="LootProb" operation="perc_add" level="1,250" value="2,10" tags="wastelandProb">
+						<requirement name="ProgressionLevel" progression_name="perkWasteTreasuresComplete" operation="LT" value="1"/>
+					</passive_effect>
+					<!-- When all Wasteland Treasures books have been read, set the probability bonus of finding them to 0 -->
+					<passive_effect name="LootProb" operation="perc_add" level="1,250" value="0,0" tags="wastelandProb">
+						<requirement name="ProgressionLevel" progression_name="perkWasteTreasuresComplete" operation="Equals" value="1"/>
+					</passive_effect>
+				</effect_group>
+				<!-- SALVAGE_OPERATIONS:SEXREX_REPLACEMENT -->
+				<effect_group>
+					<requirement name="ItemHasTags" tags="PerkHOHConstruction"/>
+					<passive_effect name="StaminaLoss" operation="perc_add" level="1,250" value="-.08,-.25"/>
+					<passive_effect name="StaminaLoss" operation="perc_add" level="1,250" value="-.07,-.25" tags="secondary"/>
+					<!-- fake crafting perk that is used to scale resources -->
+					<passive_effect name="CraftingTier" operation="base_set" level="1,250" value="0,5" tags="perkHOHConstruction"/>
+					<passive_effect name="CraftingTime" operation="perc_add" level="1,250" value="-0.2" tags="perkHOHConstruction"/>
+					<passive_effect name="CraftingTime" operation="perc_add" level="2,250" value="-0.2" tags="workbenchCrafting,cementMixerCrafting"/>
+					<passive_effect name="ElectricalTrapXP" operation="base_set" level="1,250" value=".15,.75"/>
+					<!-- Increase the chance to find electrical items with each perk rank -->
+					<passive_effect name="LootProb" operation="perc_add" level="1,250" value="2,10" tags="electricianSkill"/>
+					<!-- Increase the chance to find trap items with each perk rank -->
+					<passive_effect name="LootProb" operation="perc_add" level="1,250" value="2,10" tags="trapsSkill"/>
+					<!-- Increase the chance to find workstations with each perk rank -->
+					<passive_effect name="LootProb" operation="perc_add" level="1,250" value="2,10" tags="workstationSkill"/>
+					<!-- Increase the chance to find repair tools with each perk rank -->
+					<passive_effect name="LootProb" operation="perc_add" level="1,250" value="2,10" tags="repairingSkill"/>
+					<!-- Increase the chance to find electrical crafting skill magazines with each perk rank up to crafting skill 100 -->
+				</effect_group>
+				
+			</perk>
+			
 			<perk name="perkGreaseMonkey" parent="skillActionSkills" max_level="5" base_skill_point_cost="0" name_key="AutoMotive" desc_key="perkGreaseMonkeyDesc" icon="ui_game_symbol_service">
 					<effect_group>
 					<!-- fake crafting perk that is used to scale resources or quality like on carBattery -->
@@ -1045,11 +1082,11 @@
 				</effect_group>
 			</perk>
 			
-			<perk name="PerkHOHCooking" parent="skillActionSkills" max_level="100" base_skill_point_cost="0" name_key="Food Skills" desc_key="PerkHOHCookingDesc" icon="ui_game_symbol_cookware">
+			<perk name="PerkHOHCooking" parent="skillActionSkills" max_level="100" base_skill_point_cost="0" name_key="Cooking Skills" desc_key="PerkHOHCookingDesc" icon="ui_game_symbol_cookware">
 				<effect_group>
-					<passive_effect name="WaterLossPerHealthPointGained" operation="perc_add" level="1,100" value="-.01,-.30"/>
-					<passive_effect name="WaterLossPerStaminaPointGained" operation="perc_add" level="1,100" value="-.01,-.30"/>
-					<passive_effect name="FoodLossPerStaminaPointGained" operation="perc_add" level="1,100" value="-.01,-.30"/>
+					<passive_effect name="WaterLossPerHealthPointGained" operation="perc_add" level="1,100" value="-.01,-.10"/>
+					<passive_effect name="WaterLossPerStaminaPointGained" operation="perc_add" level="1,100" value="-.01,-.10"/>
+					<passive_effect name="FoodLossPerStaminaPointGained" operation="perc_add" level="1,100" value="-.01,-.10"/>
 					<!-- fake crafting perk that is used to scale resources -->
 					<passive_effect name="CraftingTier" operation="base_set" level="1,100" value="0,3" tags="PerkHOHCooking"/>
 					<!-- Speed up cooking time of campfire recipes with each rank -->
@@ -1057,25 +1094,16 @@
 					<!-- masterChef2 is a hard coded tag used in loot.xml that adds a chance to find food in dumpsters -->
 					<!-- Increase the chance to find food items with each perk rank -->
 					<passive_effect name="LootProb" operation="perc_add" level="1,100" value="2,10" tags="foodSkill"/>
-				
-
-
-							<!--
-							<passive_effect  action="ModifyCVar" cvar="$MetabolismResist" operation="perc_add" level="1,100" value="0,-5"/>
-
-							
-							<passive_effect  action="ModifyCVar" cvar="$MetabolismDuration" operation="perc_add"  level="1,100" value="1,.667"/>-->
-
-
-							<!-- Increase MetabolismResist with each level of the perk -->
-							<!--<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" cvar="$MetabolismResist" operation="set" value="0,-5"/>-->
-
-							<!-- Increase MetabolismDuration with each level of the perk -->
-							<!--<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" cvar="$MetabolismDuration" operation="set" value="1,.667"/>-->
-
-
-									</effect_group>
-								
+				</effect_group>
+			</perk>
+			<perk name="PerkHOHEating" parent="skillActionSkills" max_level="100" base_skill_point_cost="0" name_key="Food Skills" desc_key="Better Eating Skill" icon="ui_game_symbol_fork">
+				<effect_group>
+					<passive_effect name="WaterLossPerHealthPointGained" operation="perc_add" level="1,100" value="-.01,-.30"/>
+					<passive_effect name="WaterLossPerStaminaPointGained" operation="perc_add" level="1,100" value="-.01,-.30"/>
+					<passive_effect name="FoodLossPerStaminaPointGained" operation="perc_add" level="1,100" value="-.01,-.30"/>
+					
+					<passive_effect name="LootProb" operation="perc_add" level="1,100" value="2,10" tags="foodSkill"/>
+				</effect_group>
 			</perk>
 	<!-- *** PERK_BOOKS -->
 			<!-- *** THE_FIREMAN'S_ALMANAC_VOLUME_01_HEAT -->
@@ -1278,12 +1306,12 @@
 			</book>
 			<!-- *** MAGNUM_ENFORCER_VOLUME_04_INTIMIDATION -->
 			<book name="perkEnforcerIntimidation" parent="skillEnforcer" max_level="1" base_skill_point_cost="0" desc_key="perkEnforcerIntimidationDesc" long_desc_key="perkEnforcerIntimidationLongDesc">
-				<effect_group>
-					<requirement name="ItemHasTags" tags="revolver"/>
-					<passive_effect name="BarteringBuying" operation="base_add" level="1" value="0.05"/>
-					<passive_effect name="BarteringSelling" operation="base_add" level="1" value="0.05"/>
-				</effect_group>
-			</book>
+		<effect_group>
+			<requirement name="HoldingItemHasTags" tags="44enforcer"/>
+				<passive_effect name="BarteringBuying" operation="base_add" level="1" value="0.05"/>
+				<passive_effect name="BarteringSelling" operation="base_add" level="1" value="0.05"/>
+		</effect_group>
+	</book>
 			<!-- *** MAGNUM_ENFORCER_VOLUME_05_APAMMO -->
 			<book name="perkEnforcerAPAmmo" parent="skillEnforcer" max_level="1" base_skill_point_cost="0" name_key="bookEnforcerAPAmmo" desc_key="perkEnforcerAPAmmoDesc" long_desc_key="perkEnforcerAPAmmoLongDesc">
 				<effect_group>
@@ -2489,10 +2517,9 @@
 				
 			</crafting_skill>
 			<crafting_skill name="perkWrenches" max_level="250" parent="attCrafting" name_key="PerkHOHWrenches" desc_key="" long_desc_key="" icon="ui_game_symbol_tool">
-			    <display_entry icon="cntDewCollector" name_key="Wrenching-Tier1" has_quality="false" unlock_level="2,4,11" >
+			    <display_entry icon="cntDewCollector" name_key="Wrenching-Tier1" has_quality="false" unlock_level="2,4" >
 					<unlock_entry item="cntDewCollector" unlock_tier="1" />
 					<unlock_entry item="meleeToolSalvageT1Wrench" unlock_tier="2" />
-					
 				</display_entry>
 				<display_entry icon="workbench" name_key="Wrenching-Tier2" has_quality="false" unlock_level="25" >
 					<unlock_entry item="workbench,vehicleWheels,vehicleBicycleHandlebars,Workshop,generatorbank,electricwirerelay,switch,tripwirepost,ceilingLight01_player,industrialLight01_player,industrialLight02_player,ceilingLight07_player" unlock_tier="1" recipes="workbench,vehicleWheels,vehicleBicycleHandlebars,Workshop,generatorbank,electricwirerelay,switch,tripwirepost,ceilingLight01_player,industrialLight01_player,industrialLight02_player,ceilingLight07_player" />
@@ -2500,7 +2527,6 @@
 				<display_entry icon="meleeToolSalvageT2Ratchet" name_key="Wrenching-Tier3" has_quality="false" unlock_level="50" >
 					<unlock_entry item="meleeToolSalvageT2Ratchet,resourceOil,ammoGasCan,toolBellows,toolAnvil,meleeToolRepairT1ClawHammer,motionsensor,electrictimerrelay,pressureplate,pressureplateLong,spotlightPlayer,speaker" unlock_tier="1" recipes="meleeToolSalvageT2Ratchet,resourceOil,ammoGasCan,toolBellows,toolAnvil,meleeToolRepairT1ClawHammer,motionsensor,electrictimerrelay,pressureplate,pressureplateLong,spotlightPlayer,speaker" />
 				</display_entry>
-				
 				<display_entry icon="batterybank" name_key="Wrenching-Tier5" has_quality="false" unlock_level="75" >
 						<unlock_entry item="batterybank,gunBotT3JunkDrone,vaultDoor01_Powered,vaultDoor01Double_Powered,vaultHatch01_Powered,ironGarageDoor_PoweredBlockVariantHelper,woodenGarageDoor3x3_PoweredBlockVariantHelper,woodenGarageDoor4x3_PoweredBlockVariantHelper,woodenGarageDoor5x3_PoweredBlockVariantHelper,steelGarageDoor3x3_PoweredBlockVariantHelper,steelGarageDoor4x3_PoweredBlockVariantHelper,steelGarageDoor5x3_PoweredBlockVariantHelper,metalReinforcedWoodDrawBridgePowered,HOH_Wall_Gate_Powered,HOH_Car_Ramp_Powered" unlock_tier="1" />
 				</display_entry>
@@ -2522,7 +2548,7 @@
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="76,250" value="1" tags="gunBotT3JunkDrone"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="2,250" value="1" tags="cntDewCollector"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="25,250" value="1" tags="workbench,Workshop,generatorbank,electricwirerelay,switch,tripwirepost,ceilingLight01_player,industrialLight01_player,industrialLight02_player,ceilingLight07_player,MillingMachine,LathingMachine,AmmoBench,GunsmithingBench,PowerHammer"/>
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="50,250" value="1" tags="meleeToolSalvageT2Ratchet,resourceOil,ammoGasCan,fuelDiesil,toolBellows,toolAnvil,meleeToolRepairT1ClawHammer,motionsensor,electrictimerrelay,pressureplate,pressureplateLong,spotlightPlayer,speaker"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="50,250" value="1" tags="meleeToolSalvageT2Ratchet,resourceOil,ammoGasCan,fuelDiesil,toolBellows,toolAnvil,motionsensor,electrictimerrelay,pressureplate,pressureplateLong,spotlightPlayer,speaker"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="75,250" value="1" tags="batterybank,vaultDoor01_Powered,vaultDoor01Double_Powered,vaultHatch01_Powered,ironGarageDoor_PoweredBlockVariantHelper,woodenGarageDoor3x3_PoweredBlockVariantHelper,woodenGarageDoor4x3_PoweredBlockVariantHelper,woodenGarageDoor5x3_PoweredBlockVariantHelper,steelGarageDoor3x3_PoweredBlockVariantHelper,steelGarageDoor4x3_PoweredBlockVariantHelper,steelGarageDoor5x3_PoweredBlockVariantHelper,metalReinforcedWoodDrawBridgePowered,HOH_Wall_Gate_Powered,HOH_Car_Ramp_Powered"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="51,250" value="1" tags="carBattery"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="125,250" value="1" tags="toolForgeCrucible"/>
@@ -2530,10 +2556,33 @@
 
 					<passive_effect name="CraftingTier" operation="base_add" level="15,25,35,42,50,250" value="1,2,3,4,5,5" tags="meleeToolSalvageT1Wrench"/>
 					<passive_effect name="CraftingTier" operation="base_add" level="50,60,70,80,90,250" value="1,2,3,4,5,5" tags="meleeToolSalvageT2Ratchet"/>
-					<passive_effect name="CraftingTier" operation="base_add" level="95,110,125,135,250" value="1,2,3,4,5" tags="meleeToolSalvageT3ImpactDriver"/>
 					<passive_effect name="CraftingTier" operation="base_add" level="60,70,80,90,100" value="1,2,3,4,5" tags="carBattery"/>
-					
 					<passive_effect name="CraftingTier" operation="base_add" level="80,85,90,95,250" value="1,2,3,4,5" tags="gunBotT3JunkDrone"/>
+					<passive_effect name="CraftingTier" operation="base_add" level="95,110,125,135,250" value="1,2,3,4,5" tags="meleeToolSalvageT3ImpactDriver"/>
+					
+				</effect_group>
+			</crafting_skill>
+			<crafting_skill name="perkConstruction" max_level="250" parent="attCrafting" name_key="PerkHOHConstruction" desc_key="" long_desc_key="" icon="ui_game_symbol_tool">
+			    <display_entry icon="cobblestoneShapes:VariantHelper" name_key="Construction-Tier1 Shapes" has_quality="false" unlock_level="25,50,75,125" >
+					<unlock_entry item="woodShapes:VariantHelper" unlock_tier="1" />
+					<unlock_entry item="cobblestoneShapes:VariantHelper" unlock_tier="2" />
+					<unlock_entry item="concreteShapes:VariantHelper" unlock_tier="3" />
+					<unlock_entry item="steelShapes:VariantHelper" unlock_tier="4" />
+				</display_entry>
+				<display_entry icon="meleeToolRepairT1ClawHammer" name_key="Construction-Tier2 Tools" has_quality="true" unlock_level="50,91" >
+					<unlock_entry item="meleeToolRepairT1ClawHammer" unlock_tier="1" />
+					<unlock_entry item="meleeToolRepairT3Nailgun" unlock_tier="2" />
+				</display_entry>
+							
+				<effect_group>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="25,250" value="1" tags="woodShapes:VariantHelper"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="50,250" value="1" tags="cobblestoneShapes:VariantHelper"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="75,250" value="1" tags="concreteShapes:VariantHelper"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="125,250" value="1" tags="steelShapes:VariantHelper"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="50,250" value="1" tags="meleeToolRepairT1ClawHammer"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="91,250" value="1" tags="meleeToolRepairT3Nailgun"/>
+					<passive_effect name="CraftingTier" operation="base_add" level="60,70,80,90,100,250" value="1,2,3,4,5,5" tags="meleeToolRepairT3Nailgun"/>
+					<passive_effect name="CraftingTier" operation="base_add" level="95,110,125,135,250" value="1,2,3,4,5,5" tags="meleeToolRepairT3Nailgun"/>
 				</effect_group>
 			</crafting_skill>
 			<crafting_skill name="perkArmor" max_level="500" parent="attCrafting" name_key="PerkHOHArmor" desc_key="" long_desc_key="" icon="ui_game_symbol_tool">
@@ -2725,33 +2774,33 @@
 				<passive_effect name="RecipeTagUnlocked" operation="base_set" level="80,100" value="1" tags="drinkYuccaJuiceSmoothie,foodGumboStew"/>
 			</effect_group>
 			</crafting_skill>
-			<crafting_skill name="perkFarming" max_level="100" parent="attCrafting" name_key="PerkHOHFarming" desc_key="" long_desc_key="" icon="ui_game_symbol_tool"></crafting_skill>
-			<display_entry icon="plantedCotton1,plantedGoldenrod1,plantedCoffee1,plantedYucca1,plantedAloe1" name_key="seedsT1-1,seedsT1-2,seedsT1-3,seedsT1-4,seedsT1-5" has_quality="false" unlock_level="2,4,6,8,10" >
-				<unlock_entry item="plantedCotton1" unlock_tier="1" />
-				<unlock_entry item="plantedGoldenrod1,plantedChrysanthemum1" unlock_tier="2" />
-				<unlock_entry item="plantedCoffee1" unlock_tier="3" />
-				<unlock_entry item="plantedYucca1" unlock_tier="4" />
-				<unlock_entry item="plantedAloe1" unlock_tier="5" />
+			<crafting_skill name="perkFarming" max_level="100" parent="attCrafting" name_key="PerkHOHFarming" desc_key="" long_desc_key="" icon="ui_game_symbol_tool">
+			<display_entry icon="plantedGoldenrod1,plantedMushroom1,plantedCorn1,plantedPotato1" name_key="seedsT1-1,seedsT1-2,seedsT1-3,seedsT1-4" has_quality="false" unlock_level="10,15,20,25" >
+				<unlock_entry item="plantedGoldenrod1,plantedChrysanthemum1,plantedCotton1" unlock_tier="1" />
+				<unlock_entry item="plantedCorn1" unlock_tier="2" />
+				<unlock_entry item="plantedPotato1" unlock_tier="3" />
+				<unlock_entry item="plantedMushroom1" unlock_tier="4" />
 			</display_entry>
-			<display_entry icon="plantedBlueberry1,plantedPumpkin1,plantedMushroom1,plantedCorn1,plantedPotato1" name_key="seedsT2-1,seedsT2-2,seedsT2-3,seedsT2-4,seedsT2-5" has_quality="false" unlock_level="12,14,16,18,20" >
-				<unlock_entry item="plantedBlueberry1,plantedHop1" unlock_tier="1" />
-				<unlock_entry item="plantedPumpkin1" unlock_tier="2" />
-				<unlock_entry item="plantedMushroom1" unlock_tier="3" />
-				<unlock_entry item="plantedCorn1" unlock_tier="4" />
-				<unlock_entry item="plantedPotato1" unlock_tier="5" />
+			<display_entry icon="plantedAloe1,plantedBlueberry1,plantedPumpkin1,plantedCoffee1" name_key="seedsT2-1,seedsT2-2,seedsT2-3,seedsT2-4" has_quality="false" unlock_level="35,45,55,65" >
+				<unlock_entry item="plantedAloe1" unlock_tier="1" />
+				<unlock_entry item="plantedCoffee1" unlock_tier="2" />
+				<unlock_entry item="plantedBlueberry1,plantedHop1" unlock_tier="3" />
+				<unlock_entry item="plantedPumpkin1" unlock_tier="4" />
+				
 			</display_entry>
 			<effect_group>
-				<passive_effect name="RecipeTagUnlocked" operation="base_set" level="2,100" value="1" tags="plantedCotton1"/>
-				<passive_effect name="RecipeTagUnlocked" operation="base_set" level="4,100" value="1" tags="plantedGoldenrod1,plantedChrysanthemum1"/>
-				<passive_effect name="RecipeTagUnlocked" operation="base_set" level="6,100" value="1" tags="plantedCoffee1"/>
-				<passive_effect name="RecipeTagUnlocked" operation="base_set" level="8,100" value="1" tags="plantedYucca1"/>
-				<passive_effect name="RecipeTagUnlocked" operation="base_set" level="10,100" value="1" tags="plantedAloe1"/>
-				<passive_effect name="RecipeTagUnlocked" operation="base_set" level="12,100" value="1" tags="plantedBlueberry1,plantedHop1"/>
-				<passive_effect name="RecipeTagUnlocked" operation="base_set" level="14,100" value="1" tags="plantedPumpkin1"/>
-				<passive_effect name="RecipeTagUnlocked" operation="base_set" level="16,100" value="1" tags="plantedMushroom1"/>
-				<passive_effect name="RecipeTagUnlocked" operation="base_set" level="18,100" value="1" tags="plantedCorn1"/>
+				<passive_effect name="RecipeTagUnlocked" operation="base_set" level="10,100" value="1" tags="plantedGoldenrod1,plantedChrysanthemum1,plantedCotton1"/>
+				<passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="plantedCorn1"/>
 				<passive_effect name="RecipeTagUnlocked" operation="base_set" level="20,100" value="1" tags="plantedPotato1"/>
+				<passive_effect name="RecipeTagUnlocked" operation="base_set" level="25,100" value="1" tags="plantedMushroom1"/>
+
+				<passive_effect name="RecipeTagUnlocked" operation="base_set" level="35,100" value="1" tags="plantedAloe1"/>
+				<passive_effect name="RecipeTagUnlocked" operation="base_set" level="45,100" value="1" tags="plantedCoffee1"/>
+				<passive_effect name="RecipeTagUnlocked" operation="base_set" level="55,100" value="1" tags="plantedBlueberry1,plantedHop1"/>
+				<passive_effect name="RecipeTagUnlocked" operation="base_set" level="65,100" value="1" tags="plantedPumpkin1"/>
+				
 			</effect_group>
+			</crafting_skill>
 		</crafting_skills>
 	</insertafter>
 

@@ -1,7 +1,204 @@
 <snj>
+<append xpath="/lootcontainers/lootgroup[@name='workstationToolsScaled']">
+		<item name="toolTASmokelessPowder" loot_prob_template="ProbT1Cap"/>
+		<item name="toolTATumbler" loot_prob_template="ProbT1Cap"/>
+		<item name="toolTAPowderLoader" loot_prob_template="ProbT1Cap"/>
+		<item name="toolTABulletPress" loot_prob_template="ProbT2Cap"/>
+		<item name="toolTABoxFolder" loot_prob_template="ProbT2Cap"/>
+		<item name="toolTAAmmoBoxes" loot_prob_template="ProbT2Cap"/>
+	</append>
+	<!-- Add Ammo Groups -->
+	<insertAfter xpath="/lootcontainers/lootgroup[@name='empty']">
+		<lootgroup name="groupPrimers" count="1,2">
+			<item name="ammoPrimerSml" count="5,15" />
+			<item name="ammoPrimerMed" count="5,10" />
+			<item name="resourceSmokelessPowder" count="6,36" />
+		</lootgroup>
+		<lootgroup name="groupCasings"  count="1,2">
+			<item name="ammoCasingSpentSml" count="5,15" />
+			<item name="ammoCasingSpentMed" count="5,10" />
+		</lootgroup>
+		<lootgroup name="groupBlocks">
+			<item name="partUpperDrawnSml" count="1" />
+			<item name="partUpperDrawnMed" count="1" />
+			<item name="partUpperDrawnLrg" count="1" />
+			<item name="partLowerDrawnSml" count="1" />
+			<item name="partLowerDrawnMed" count="1" />
+			<item name="partLowerDrawnLrg" count="1" />
+		</lootgroup>
+		<lootgroup name="groupBarrels">
+			<item name="partBarrelDrawnSml" count="1" />
+			<item name="partBarrelDrawnMed" count="1" />
+			<item name="partBarrelDrawnLrg" count="1" />
+		</lootgroup>
+		
+		
+		<lootgroup name="groupTALootammobenchtools1" count="1">
+			<item name="toolTASmokelessPowder" />
+		</lootgroup>
+		<lootgroup name="groupTALootammobenchtools2" count="1">
+			<item name="toolTATumbler"/>
+			<item name="toolTAPowderLoader"/>
+			<item name="toolTABoxFolder"/>
+		</lootgroup>
+		<lootgroup name="groupTALootammobenchtools3" count="1">
+			<item name="toolTAAmmoBoxes" />
+			<item name="toolTABulletPress"/>
+		</lootgroup>
+		<lootgroup name="groupTALootammobenchtools" count="1">
+			<item group="groupTALootammobenchtools1" loot_prob_template="ProbT1Cap"/>
+			<item group="groupTALootammobenchtools2" loot_prob_template="ProbT2Cap"/>
+			<item group="groupTALootammobenchtools3" loot_prob_template="ProbT3"/>
+		</lootgroup>
 
-<append xpath="/lootcontainers/lootprobtemplates">
-<lootprobtemplate name="5thday">
+		<lootgroup name="groupTALootgunbenchtools" count="1">
+			<item name="toolTAAssemblyMat" loot_prob_template="ProbT1Cap"/>
+			<item name="toolTAGunsmithKit" loot_prob_template="ProbT1Cap"/>
+			<item name="toolTAViceBlocks" loot_prob_template="ProbT2Cap"/>
+			<item name="toolTARiflingBroach" loot_prob_template="ProbT2Cap"/>
+			<item name="toolTARifleStand" loot_prob_template="ProbT3"/>
+			<item name="toolTAArmorerWrenches" loot_prob_template="ProbT3"/>
+		</lootgroup>
+		<lootgroup name="groupLatheTools" count="1">
+			<item name="toolTALatheDial" loot_prob_template="ProbT0"/>
+			<item name="toolTALatheCalipers" loot_prob_template="ProbT1Cap"/>
+			<item name="toolTALatheCuttingTool" loot_prob_template="ProbT2Cap"/>
+			<item name="resourceSteelCleaner" loot_prob_template="ProbT0"/>
+		</lootgroup>
+		<lootgroup name="groupMillingTools" count="1">
+			<item name="toolTAMillingBearings" loot_prob_template="ProbT0"/>
+			<item name="toolTAMillingChucks" loot_prob_template="ProbT1Cap"/>
+			<item name="toolTAMillingTerminal" loot_prob_template="ProbT2Cap"/>
+			<item name="resourceSteelCleaner" loot_prob_template="ProbT0"/>
+		</lootgroup>
+		<lootgroup name="groupTALootgunbench" count="all">
+			<item group="groupBlocks"  count="1" loot_prob_template="low"  />
+			<item group="groupBarrels"  count="0,1" loot_prob_template="low"  />
+			<item name="resourceGunLube"  count="1,2" loot_prob_template="low"  />
+			<item group="groupTALootgunbenchtools"  count="0,1" loot_prob_template="veryLow"  />
+		</lootgroup>
+		<lootgroup name="groupTALootammobench" count="all">
+			<item group="groupPrimers"  loot_prob_template="low"  />
+			<item group="groupCasings"  loot_prob_template="low"  />
+			<item group="groupTALootammobenchtools" count="0,1" loot_prob_template="veryLow"  />
+		</lootgroup>
+		<lootgroup name="groupTALootPowerHammer" count="1,2">
+			<item group="groupBlocks"  loot_prob_template="low"  />
+			<item group="groupBarrels"  loot_prob_template="low"  />
+			<item name="resourceBoraxPowder"  count="10,20" loot_prob_template="low"  />
+			<item name="resourceForgedIron" count="5,10" loot_prob_template="low"/>
+			<item name="resourceForgedSteel" count="5,10" loot_prob_template="low"/>
+		</lootgroup>
+		<lootgroup name="groupTALootMillingMachine" count="all">
+			<item name="resourceLeadIngot" count="1,5" loot_prob_template="medLow" />
+			<item name="resourceBrassIngot" count="1,5" loot_prob_template="medLow" />
+			<item group="groupBlocks" count="1" loot_prob_template="veryLow"  />
+			<item group="groupMillingTools" count="0,1" loot_prob_template="veryLow"  />
+		</lootgroup>
+		<lootgroup name="groupTALootLathingMachine" count="all">
+			<item name="resourceForgedIron" count="1,5" loot_prob_template="medLow" />
+			<item name="resourceMetalPipe" count="1,5" loot_prob_template="medLow" />
+			<item group="groupBarrels" count="0,1" loot_prob_template="low"  />
+			<item group="groupLatheTools" count="0,1" loot_prob_template="veryLow"  />
+		</lootgroup>
+		
+		<lootgroup name="groupCompletedAmmo" count="1,4">
+			<item name="ammo9mmBulletBall" count="50,75" loot_prob_template="ProbT0"/>
+			<item name="ammo762mmBulletBall" count="25,50" loot_prob_template="ProbT0"/>
+			<item name="ammoShotgunShell" count="15,30" loot_prob_template="ProbT0"/>
+			<item name="ammo45ACP" count="50,75" loot_prob_template="ProbT0"/>
+			<item name="ammo556" count="25,50" loot_prob_template="ProbT0"/>
+			<item name="ammo50ae" count="50,75" loot_prob_template="ProbT0"/>
+			<item name="ammo50BMG" count="5,10" loot_prob_template="ProbT1"/>
+		</lootgroup>
+		<lootgroup name="groupCompletedBulletParts" count="1,4">
+			<item name="ammo9mmCase" count="15,45" loot_prob_template="ProbT0"/>
+			<item name="ammo9mmTip" count="15,45" loot_prob_template="ProbT0"/>
+			<item name="ammo44MagCase" count="15,45" loot_prob_template="ProbT0"/>
+			<item name="ammo44MagTip" count="15,45" loot_prob_template="ProbT0"/>
+			<item name="ammo45ACPCase" count="15,45" loot_prob_template="ProbT0"/>
+			<item name="ammo45ACPTip" count="15,45" loot_prob_template="ProbT0"/>
+			<item name="ammo762Case" count="15,45" loot_prob_template="ProbT0"/>
+			<item name="ammo762Tip" count="15,45" loot_prob_template="ProbT0"/>
+			<item name="ammo556Case" count="15,45" loot_prob_template="ProbT0"/>
+			<item name="ammo556Tip" count="15,45" loot_prob_template="ProbT0"/>
+			<item name="ammo50aeCase" count="15,45" loot_prob_template="ProbT1Cap"/>
+			<item name="ammo50aeTip" count="15,45" loot_prob_template="ProbT1Cap"/>
+			<item name="ammo50BMGCase" count="5,15" loot_prob_template="ProbT1Cap"/>
+			<item name="ammo50BMGTip" count="5,15" loot_prob_template="ProbT1Cap"/>
+		</lootgroup>
+		<lootcontainer name="BrokenAmmoBench" count="1" size="7,4" sound_open="open_workbench" sound_close="close_workbench" loot_quality_template="qualBaseTemplate" buff="buffScavengingSkillXPTick">
+			<item group="groupTALootammobench" />
+		</lootcontainer>
+		<lootcontainer name="Brokengunbench" count="1" size="7,4" sound_open="open_workbench" sound_close="close_workbench" loot_quality_template="qualBaseTemplate" buff="buffScavengingSkillXPTick">
+			<item group="groupTALootgunbench" />
+		</lootcontainer>
+		<lootcontainer name="BrokenMillingMachine" count="1" size="7,4" sound_open="open_workbench" sound_close="close_workbench" loot_quality_template="qualBaseTemplate" buff="buffScavengingSkillXPTick">
+			<item group="groupTALootMillingMachine" />
+		</lootcontainer>
+		<lootcontainer name="BrokenLathingMachine" count="1" size="7,4" sound_open="open_workbench" sound_close="close_workbench" loot_quality_template="qualBaseTemplate" buff="buffScavengingSkillXPTick">
+			<item group="groupTALootLathingMachine" />
+		</lootcontainer>
+		<lootcontainer name="BrokenPowerHammer" count="1" size="7,4" sound_open="open_workbench" sound_close="close_workbench" loot_quality_template="qualBaseTemplate" buff="buffScavengingSkillXPTick">
+			<item group="groupTALootPowerHammer" />
+		</lootcontainer>
+	</insertAfter>
+	<append xpath="/lootcontainers/lootgroup[@name='groupResourceBulletCasingSmall']">
+		<item name="ammoPrimerSml" count="15,45" />
+		<item name="ammoPrimerMed" count="7,21" />
+		<item name="ammoCasingSpentSml" count="15,45" />
+		<item name="ammoCasingSpentMed" count="7,21" />
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='groupResourceBulletCasingMedium']">
+		<item name="ammoPrimerSml" count="30,90" />
+		<item name="ammoPrimerMed" count="14,42" />
+		<item name="ammoCasingSpentSml" count="30,90" />
+		<item name="ammoCasingSpentMed" count="14,42" />
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='groupResourceBulletCasingLarge']">
+		<item name="ammoPrimerSml" count="60,180" />
+		<item name="ammoPrimerMed" count="28,84" />
+		<item name="ammoCasingSpentSml" count="60,180" />
+		<item name="ammoCasingSpentMed" count="28,84" />
+	</append>
+	<setattribute xpath="//lootcontainer[@name='ammoPileSmall']" name="count">1,2</setattribute>
+	<setattribute xpath="//lootcontainer[@name='ammoPileMed']" name="count">2,3</setattribute>
+	<setattribute xpath="//lootcontainer[@name='ammoPileLarge']" name="count">3,4</setattribute>
+	<setattribute xpath="//lootcontainer[@name='ammoPileSmall']" name="unique_item">true</setattribute>
+	<setattribute xpath="//lootcontainer[@name='ammoPileMed']" name="unique_item">true</setattribute>
+	<setattribute xpath="//lootcontainer[@name='ammoPileLarge']" name="unique_item">true</setattribute>
+	<setattribute xpath="//lootcontainer[@name='reinforcedChestT1']" name="unique_item">true</setattribute>
+	<setattribute xpath="//lootcontainer[@name='reinforcedChestT2']" name="unique_item">true</setattribute>
+	<setattribute xpath="//lootcontainer[@name='reinforcedChestT3']" name="unique_item">true</setattribute>
+	<setattribute xpath="//lootcontainer[@name='hardenedChestT4']" name="unique_item">true</setattribute>
+	<setattribute xpath="//lootcontainer[@name='hardenedChestT5']" name="unique_item">true</setattribute>
+	<append xpath="//lootcontainer[@name='ammoPileSmall']">
+		<item group="groupPrimers" count="1"/>
+		<item group="groupCasings" count="1"/>
+		<item group="groupCompletedAmmo" count="1" loot_prob_template="veryLow"/>
+		<item group="groupCompletedBulletParts" count="1" loot_prob_template="veryLow"/>
+	</append>
+	<append xpath="//lootcontainer[@name='ammoPileMed']">
+		<item group="groupPrimers" count="1"/>
+		<item group="groupCasings" count="1"/>
+		<item group="groupCompletedAmmo" count="1" loot_prob_template="med"/>
+		<item group="groupCompletedBulletParts" count="1" loot_prob_template="med"/>
+	</append>
+	<append xpath="//lootcontainer[@name='ammoPileLarge']">
+		<item group="groupPrimers" count="1"/>
+		<item group="groupCasings" count="1"/>
+		<item group="groupCompletedAmmo" count="1" />
+		<item group="groupCompletedBulletParts" count="1,2"/>
+	</append>
+	<setattribute xpath="//lootcontainer[starts-with(@name,'munitions')]" name="count">3,4</setattribute>
+	<setattribute xpath="//lootcontainer[starts-with(@name,'munitions')]" name="unique_item">true</setattribute>
+	<append xpath="//lootcontainer[starts-with(@name,'munitions')]">
+		<item group="groupPrimers" count="1"/>
+		<item group="groupCompletedAmmo" count="1" />
+		<item group="groupCompletedBulletParts" count="1,2"/>
+	</append>
+  <append xpath="/lootcontainers/lootprobtemplates">
+    <lootprobtemplate name="5thday">
       <loot level="0,1" prob="0.03" />
       <loot level="3,4" prob="0.06" />
       <loot level="5,7" prob="0.13" />
@@ -18,7 +215,6 @@
       <loot level="32,33" prob="0.81" />
       <loot level="34,36" prob="0.87" />
       <loot level="37,38" prob="0.94" />
-
       <loot level="39,40" prob="1" />
       <loot level="41,43" prob="0.83" />
       <loot level="44,45" prob="0.88" />
@@ -32,9 +228,48 @@
       <loot level="63,64" prob="0.22" />
       <loot level="65,67" prob="0.23" />
       <loot level="68,108" prob="0.24" />
-      </lootprobtemplate>
-	<lootprobtemplate name="DB2">
-	  <loot level="109,110" prob="0.26" />
+    </lootprobtemplate>
+    <lootprobtemplate name="5thdayPistol1">
+      <loot level="0,1" prob="0.03" />
+      <loot level="3,4" prob="0.06" />
+      <loot level="5,7" prob="0.13" />
+      <loot level="8,9" prob="0.15" />
+      <loot level="10,12" prob="0.22" />
+      <loot level="13,14" prob="0.25" />
+      <loot level="15,16" prob="0.33" />
+      <loot level="17,19" prob="0.37" />
+      <loot level="20,21" prob="0.47" />
+      <loot level="22,24" prob="0.52" />
+      <loot level="25,108" prob="0.62" />
+    </lootprobtemplate>
+    <lootprobtemplate name="5thdayPistol2">
+      <loot level="0,25" prob="0" />
+      <loot level="25,26" prob="0.62" />
+      <loot level="27,28" prob="0.68" />
+      <loot level="29,31" prob="0.75" />
+      <loot level="32,33" prob="0.81" />
+      <loot level="34,36" prob="0.87" />
+      <loot level="37,38" prob="0.94" />
+      <loot level="39,40" prob="1" />
+      <loot level="41,43" prob="0.83" />
+      <loot level="44,45" prob="0.88" />
+      <loot level="46,49" prob="0.71" />
+      <loot level="50,108" prob="0.75" />
+    </lootprobtemplate>
+    <lootprobtemplate name="5thdayPistol3">
+      <loot level="0,50" prob="0" />
+      <loot level="51,52" prob="0.79" />
+      <loot level="53,55" prob="0.59" />
+      <loot level="56,57" prob="0.62" />
+      <loot level="58,60" prob="0.41" />
+      <loot level="61,62" prob="0.44" />
+      <loot level="63,64" prob="0.22" />
+      <loot level="65,67" prob="0.23" />
+      <loot level="68,108" prob="0.24" />
+    </lootprobtemplate>
+    <lootprobtemplate name="DB2">
+      <loot level="0,108" prob="0" />
+      <loot level="109,110" prob="0.26" />
       <loot level="111,112" prob="0.28" />
       <loot level="113,115" prob="0.3" />
       <loot level="116,117" prob="0.31" />
@@ -52,8 +287,8 @@
       <loot level="145,146" prob="0.69" />
       <loot level="147,148" prob="0.77" />
       <loot level="149,151" prob="0.81" />
-	  </lootprobtemplate>
-	<lootprobtemplate name="DB3">
+    </lootprobtemplate>
+    <lootprobtemplate name="DB3">
       <loot level="152,153" prob="0.84" />
       <loot level="154,156" prob="0.87" />
       <loot level="157,158" prob="0.9" />
@@ -91,263 +326,298 @@
       <loot level="233,235" prob="0.64" />
       <loot level="236,999999" prob="1" />
     </lootprobtemplate>
-
-</append>
-
-
-
-<insertBefore xpath="/lootcontainers/lootgroup[@name='groupGunSafeSecure']">
-<lootgroup name="groupGunSafeTAFA1" count="all" loot_quality_template="QLTemplateT1">
-		<item name="5thday_Glock9mm"/>
-		<item name="5thday_MK23"/>
-        <item name="5d_m700" />
-        <item name="5d_SniperRifle" />
-        <item name="5thdayAR15"/>
-	</lootgroup>
-<lootgroup name="groupGunSafeTAFA2" count="all" loot_quality_template="QLTemplateT1">
-		<item name="5thdayAR15"/>
-        <item name="5thday_SPAS12" />
-        <item name="5d_m700" />
-        <item name="5d_SniperRifle" />
-		<item name="5thday_Scar_L" loot_prob_template="low"/>
-        <item name="5thday_Shotgun_Auto" loot_prob_template="low"/>
-		<item name="5thday_Scar_H" loot_prob_template="low"/>
-	
-	</lootgroup>
-	<lootgroup name="groupGunSafeTAFA3" count="all" loot_quality_template="QLTemplateT1">
-		<item name="5thday_DesertEagle"/>
-		  <item name="5d_m700" />
-        <item name="5d_SniperRifle" />
-        <item name="RiddicUlak"/>
-        <item name="KillerBunnyElectricKnuckles"/>
-       
-	</lootgroup>
-
-	<lootgroup name="groupGunSafeTAFA" count="0,2" quality="1">
-		<item group="groupGunSafeTAFA1" loot_prob_template="5thday"/>
-        <item group="groupGunSafeTAFA2" loot_prob_template="DB2"/>
-        <item group="groupGunSafeTAFA3" loot_prob_template="DB3"/>
-	</lootgroup>
-
-	<lootgroup name="groupGunCopTAFA"  count="1" loot_quality_template="QLTemplateT2">
-		<item name="5thday_Glock9mm"  quality="1"/>
-		<item name="5thday_MK23"  quality="1" />
-		
-	</lootgroup>
-	<lootgroup name="groupGunSoldierTAFA0"   loot_quality_template="QLTemplateT2">
-		<item name="5thday_Glock9mm"  quality="1"/>
-		  <item name="5d_m700" />
-        <item name="5d_SniperRifle" />
-	</lootgroup>
-	
-	<lootgroup name="groupGunSoldierTAFA1"  loot_quality_template="QLTemplateT1">
-		<item name="5thday_Glock9mm"  quality="1"/>
-		<item name="5thday_MK23"        quality="1"/>
-		<item name="5thdayAR15"       />
-	</lootgroup>
-	
- 	<lootgroup name="groupPistolSoldier_T0" count="1" >
-		<item name="PistolBundleGlock"/>
-		<item name="PistolBundleMK23"/>
-        <item name="PistolBundleDeagle"/>
-	</lootgroup>
-	<lootgroup name="groupSubSoldier_T0" count="all" loot_quality_template="QLTemplateT2">
-		<item name="5thday_Vector"/>
-	</lootgroup>
-	<lootgroup name="groupSubSoldier_T1" count="all" loot_quality_template="QLTemplateT3">
-		<item name="5thday_Ump"/>
-	</lootgroup>
-
-
-<lootgroup name="groupShottySoldier_T0" count="all" loot_quality_template="QLTemplateT0">
-		<item name="5d_doubleBarrelShotgun"/>
-	</lootgroup>
-	<lootgroup name="groupRifleSoldier_T0" count="all" loot_quality_template="QLTemplateT1">
-		<item name="5thdayAR15"/>
-	</lootgroup>
-	<lootgroup name="groupRifleSoldier_T1" count="all" loot_quality_template="QLTemplateT1">
-		<item name="5thday_Scar_L"/>
-	</lootgroup>
-	<lootgroup name="groupRifleSoldier_T3" count="all" loot_quality_template="QLTemplateT3">
-		<item name="5thday_Scar_H"/>
-	</lootgroup>
-	<lootgroup name="groupRifleSoldier_T2" count="all" loot_quality_template="QLTemplateT2">
-		  <item name="5d_m700" />
-        <item name="5d_SniperRifle" />
-	</lootgroup>
-
-
-
-	<lootgroup name="GroupSoldiers" count="1">
-	
-	
-    <item group="groupShottySoldier_T0" count="1" loot_prob_template="ProbT0"/>
-	<item group="groupPistolSoldier_T0" count="1" loot_prob_template="ProbT1"/>
-	<item group="groupRifleSoldier_T0" loot_prob_template="ProbT1"/>
-	<item group="groupRifleSoldier_T1" loot_prob_template="ProbT1"/>
-	<item group="groupRifleSoldier_T2" loot_prob_template="ProbT2"/>
-    <item group="groupRifleSoldier_T3" loot_prob_template="ProbT3"/>
-	<!--<item group="groupSubSoldier_T0" loot_prob_template="ProbT3"/>
-	<item group="groupSubSoldier_T1" loot_prob_template="ProbT3"/>-->
-	
-		<!--<item group="groupGunSoldierTAFA0" loot_prob_template="5thday"/>
-		<item group="groupGunSoldierTAFA1" loot_prob_template="5thday1"/>
-		<item group="groupGunSoldierTAFA2" loot_prob_template="5thday2"/>
-		<item group="groupGunSoldierTAFA3" loot_prob_template="5thday3"/>-->
-	</lootgroup>
-    <lootgroup name="GroupSoldiers2" count="1">
-	<item group="groupPistolSoldier_T0" loot_prob_template="ProbT1"/>
-	<item group="groupRifleSoldier_T0" loot_prob_template="ProbT1"/>
-	<item group="groupRifleSoldier_T1" loot_prob_template="ProbT1"/>
-	<item group="groupRifleSoldier_T2" loot_prob_template="ProbT2"/>
-	<item group="groupSubSoldier_T0" loot_prob_template="ProbT3"/>
-	<item group="groupSubSoldier_T1" loot_prob_template="ProbT3"/>
-	<item group="groupRifleSoldier_T3" loot_prob_template="ProbT3"/>
-		<!--<item group="groupGunSoldierTAFA0" loot_prob_template="5thday"/>
-		<item group="groupGunSoldierTAFA1" loot_prob_template="5thday1"/>
-		<item group="groupGunSoldierTAFA2" loot_prob_template="5thday2"/>
-		<item group="groupGunSoldierTAFA3" loot_prob_template="5thday3"/>-->
-	</lootgroup>
-</insertBefore>
-
-
-
-	<append xpath="/lootcontainers/lootgroup[@name='groupGunSafeSecure']">
-        <item group="GroupSoldiers" count="1" loot_prob_template="5thday"/>
-		<item group="groupCompletedAmmo" count="2" loot_prob_template="5thday"/>
-		
-		
-    </append>
-
-	<append xpath="/lootcontainers/lootcontainer[contains(@name,'groupZombiesCops')]">
-        <item group="groupPistolSoldier_T0" count="1" loot_prob_template="veryLow"/>
-    </append>
-<insertAfter xpath="//lootgroup[@name='groupSoldier']//item[@group='groupAmmoLarge']">
-	
-        <item group="GroupSoldiers" count="1" loot_prob_template="5thday"/>
-		
-    </insertAfter>
-
-	<append xpath="/lootcontainers/lootgroup[@name='groupReinforcedChestT1']">
-        <item group="GroupSoldiers" count="1" loot_prob_template="5thday"/>
-    </append>
-
-<append xpath="/lootcontainers/lootgroup[@name='groupReinforcedChestT2']">
-        <item group="GroupSoldiers" count="1" loot_prob_template="5thday"/>
-    </append>
-
-<append xpath="/lootcontainers/lootgroup[@name='groupReinforcedChestT3']">
-        <item group="GroupSoldiers" count="1" loot_prob_template="5thday"/>
-    </append>
-
-<append xpath="/lootcontainers/lootgroup[@name='groupHardenedChestT4']">
-        <item group="GroupSoldiers2" count="1" loot_prob_template="5thday2"/>
-    </append>
-
-<append xpath="/lootcontainers/lootgroup[@name='groupHardenedChestT5']">
-        <item group="GroupSoldiers2" count="2" loot_prob_template="5thday2"/>
-    </append>
-
-
-<append xpath="/lootcontainers/lootgroup[@name='groupSmallSafeLoot03']">
-        <item group="groupPistolSoldier_T0" count="1" loot_prob_template="5thday2"/>
-    </append>
-
-
-
-<!--add new repair kits to loot tables and then remove the normal repairkits
--->
-
-<append xpath="/lootcontainers/lootgroup[@name='groupCarWeaponsTools']">
-        <item name="repairKitWeapon" count="1,2" />
-</append>
-<append xpath="/lootcontainers/lootgroup[@name='groupUtilityItems']">
-        <item name="repairKitWeapon" count="1,2" />
-        
-</append>
-<append xpath="/lootcontainers/lootgroup[@name='groupQuestResourcesT1']">
-        <item name="resourceRepairKit" count="5" />
-</append>
-<append xpath="/lootcontainers/lootgroup[@name='groupBackpacks02']">
-        <item name="resourceRepairKit" count="1,2" loot_prob_template="low" />
-</append>
-<set xpath="/lootcontainers/lootgroup/item[@name='ammo44MagnumBulletBall']/@name">ammo45ACP</set>
-<append xpath="/lootcontainers/lootgroup[@name='twitch_pistol']">
-        <item name="5thday_Glock9mm"/>
-</append>
-<append xpath="/lootcontainers/lootgroup[@name='twitch_AK47']">
-        <item name="5thdayAR15"/>
-        <item name="ammo9mmBulletBall" count="25,50"/>
-</append>
-<append xpath="/lootcontainers/lootgroup[@name='twitch_doubleshotgun']">
-        <item name="5d_doubleBarrelShotgun"/>
-</append>
-<append xpath="/lootcontainers/lootgroup[@name='twitch_huntingrifle']">
-        <item name="5d_m700"/>
-</append>
-<append xpath="/lootcontainers/lootgroup[@name='twitch_SMG']">
-        <item name="5thdayAR15"/>
-</append>
-<append xpath="/lootcontainers/lootgroup[@name='twitch_magnum']">
-        <item name="5thday_MK23"/>
-</append>
-<append xpath="/lootcontainers/lootgroup[@name='twitch_TacticalAR']">
-        <item name="5thday_Scar_L"/>
-        <item name="ammo556" count="25,50"/>
-</append>
-
-<append xpath="/lootcontainers/lootgroup[@name='twitch_pumpshotgun']">
-        <item name="5thday_SPAS12"/>
-</append>
-<append xpath="/lootcontainers/lootgroup[@name='twitch_leveractionrifle']">
-          <item name="5d_m700" />
-        <item name="5d_SniperRifle" />
-</append>
-<append xpath="/lootcontainers/lootgroup[@name='twitch_desertVulture']">
-        <item name="5thday_DesertEagle"/>
-        <item name="ammo50ae" count="25,50"/>
-</append>
-<append xpath="/lootcontainers/lootgroup[@name='twitch_M60']">
-        <item name="5thday_Scar_H"/>
-</append>
-<append xpath="/lootcontainers/lootgroup[@name='twitch_autoshotgun']">
-        <item name="5thday_Shotgun_Auto"/>
-</append>
-<append xpath="/lootcontainers/lootgroup[@name='twitch_sniperrifle']">
-        <item name="5thday_M82"/>
-        <item name="ammo50BMG" count="25,50"/>
-</append>
-<set xpath="/lootcontainers/lootgroup/item[@name='gunExplosivesT3RocketLauncher']/@name">GrenadeLauncher</set>
-<set xpath="/lootcontainers/lootgroup/item[@name='ammoRocketFrag']/@name">ammo40mmG</set>
-<set xpath="/lootcontainers/lootgroup/item[@name='ammoRocketHE']/@name">ammo40mmHE</set>
-
-<set xpath="/lootcontainers/lootgroup/item[@name='ammo44MagnumBulletHP']/@name">ammoHP45ACP</set>
-<set xpath="/lootcontainers/lootgroup/item[@name='ammo44MagnumBulletAP']/@name">ammoAP45ACP</set>
-
-<insertAfter xpath="/lootcontainers/lootgroup[@name='twitch_bicycleMajor']">
-    <lootgroup name="twitch_bicycleComplete" count="1">
-        <item name="vehicleBicyclePlaceable" count="1"/>
+  </append>
+  <insertBefore xpath="/lootcontainers/lootgroup[@name='groupGunSafeSecure']">
+    <lootgroup name="groupGunSafeTAFA1" count="all" loot_quality_template="QLTemplateT1">
+      <item name="5thday_Glock9mm"/>
+      <item name="5thday_MK23"/>
+      <item name="5d_m700" />
+      <item name="5d_SniperRifle" />
+      <item name="5thdayAR15"/>
     </lootgroup>
-</insertAfter>
-<append xpath="/lootcontainers/lootcontainer[@name='twitch_bicycle']">
-        <item group="twitch_bicycleComplete"/>
-        
-</append>
- <append xpath="/lootcontainers/lootgroup[@name='groupFarmTruck03']">
-        
-        <item name="sickle" min="3" max="5" weight="0.05"/> <!-- 5% chance -->
-    </append>
-
-    <append xpath="/lootcontainers/lootgroup[@name='groupFarmTruck04']">
-        
-        <item name="sickle" min="3" max="5" weight="0.05"/> <!-- 5% chance -->
-    </append>
-<set xpath="//lootgroup/item[@name='meleeToolRepairT0StoneAxe']/@name">HOHMilitaryaxe</set>
-<set xpath="//lootgroup/item[@name='meleeToolShovelT0StoneShovel']/@name">HOHMilitaryShovel</set>
-<set xpath="//lootgroup/item[@name='meleeWpnSledgeT0StoneSledgehammer']/@name">5d_MiniSledge</set>
-<remove xpath="/lootcontainers/lootgroup/item[@name='meleeWpnBladeT0BoneKnife']"/>
-<set xpath="//lootgroup[@name='groupPassNGas01']/item[@name='meleeToolSalvageT3ImpactDriver5d']/@loot_prob_template">lowDelayed</set>
-
-
-
+    <lootgroup name="groupGunSafeTAFA2" count="all" loot_quality_template="QLTemplateT1">
+      <item name="5thdayAR15"/>
+      <item name="5thday_SPAS12" />
+      <item name="5d_m700" />
+      <item name="5d_SniperRifle" />
+      <item name="5thday_Scar_L" loot_prob_template="low"/>
+      <item name="5thday_Shotgun_Auto" loot_prob_template="low"/>
+      <item name="5thday_Scar_H" loot_prob_template="low"/>
+    </lootgroup>
+    <lootgroup name="groupGunSafeTAFA3" count="all" loot_quality_template="QLTemplateT1">
+      <item name="5thday_DesertEagle"/>
+      <item name="5d_m700" />
+      <item name="5d_SniperRifle" />
+      <item name="RiddicUlak"/>
+      <item name="KillerBunnyElectricKnuckles"/>
+    </lootgroup>
+    <lootgroup name="groupGunSafeTAFA" count="0,2" quality="1">
+      <item group="groupGunSafeTAFA1" loot_prob_template="5thday"/>
+      <item group="groupGunSafeTAFA2" loot_prob_template="DB2"/>
+      <item group="groupGunSafeTAFA3" loot_prob_template="DB3"/>
+    </lootgroup>
+    <lootgroup name="groupGunCopTAFA"  count="1" loot_quality_template="QLTemplateT2">
+      <item name="5thday_Glock9mm"  quality="1"/>
+      <item name="5thday_MK23"  quality="1" />
+    </lootgroup>
+    <lootgroup name="groupGunSoldierTAFA0"   loot_quality_template="QLTemplateT2">
+      <item name="5thday_Glock9mm"  quality="1"/>
+      <item name="5d_m700" />
+      <item name="5d_SniperRifle" />
+    </lootgroup>
+    <lootgroup name="groupGunSoldierTAFA1"  loot_quality_template="QLTemplateT1">
+      <item name="5thday_Glock9mm"  quality="1"/>
+      <item name="5thday_MK23"        quality="1"/>
+      <item name="5thdayAR15"       />
+    </lootgroup>
+    <lootgroup name="groupPistolSoldier_T0" count="1" >
+      <item name="PistolBundle38" loot_prob_template="5thdayPistol1"/>
+      <item name="PistolBundleGlock" loot_prob_template="5thdayPistol1"/>
+      <item name="PistolBundleMK23" loot_prob_template="5thdayPistol2"/>
+      <item name="PistolBundleDeagle" loot_prob_template="DB2"/>
+    </lootgroup>
+    <lootgroup name="groupSubSoldier_T0" count="all" loot_quality_template="QLTemplateT2">
+      <item name="5thday_Vector"/>
+    </lootgroup>
+    <lootgroup name="groupSubSoldier_T1" count="all" loot_quality_template="QLTemplateT3">
+      <item name="5thday_Ump"/>
+    </lootgroup>
+    <lootgroup name="groupShottySoldier_T0" count="all" loot_quality_template="QLTemplateT0">
+      
+      <item name="5d_LeverActionShotgun" prob=".5"/>
+      <item name="5d_doubleBarrelShotgun"  prob=".5"/>
+    </lootgroup>
+    <lootgroup name="groupRifleSoldier_T0" count="all" loot_quality_template="QLTemplateT1">
+      <item name="5thdayAR15"/>
+      <item name="5thdayAR15_556"/>
+    </lootgroup>
+    <lootgroup name="groupRifleSoldier_T1" count="all" loot_quality_template="QLTemplateT1">
+      <item name="5thday_Scar_L"/>
+    </lootgroup>
+    <lootgroup name="groupRifleSoldier_T3" count="all" loot_quality_template="QLTemplateT3">
+      <item name="5thday_Scar_H"/>
+    </lootgroup>
+    <lootgroup name="groupRifleSoldier_T2" count="all" loot_quality_template="QLTemplateT2">
+      <item name="5d_m700" />
+      <item name="5d_SniperRifle" />
+    </lootgroup>
+    <lootgroup name="GroupSoldiers" count="1">
+      <item group="groupPistolSoldier_T0" count="1" loot_prob_template="5thday"/>
+      <item group="groupShottySoldier_T0" count="1" loot_prob_template="ProbT0"/>
+      <item group="groupRifleSoldier_T0" loot_prob_template="ProbT1"/>
+      <item group="groupRifleSoldier_T1" loot_prob_template="ProbT1"/>
+      <item group="groupRifleSoldier_T2" loot_prob_template="ProbT2"/>
+      <item group="groupRifleSoldier_T3" loot_prob_template="ProbT3"/>
+    </lootgroup>
+    <lootgroup name="GroupSoldiers2" count="1">
+      <item group="groupPistolSoldier_T0" loot_prob_template="5thday"/>
+      <item group="groupRifleSoldier_T0" loot_prob_template="ProbT1"/>
+      <item group="groupRifleSoldier_T1" loot_prob_template="ProbT1"/>
+      <item group="groupRifleSoldier_T2" loot_prob_template="ProbT2"/>
+      <item group="groupSubSoldier_T0" loot_prob_template="ProbT3"/>
+      <item group="groupSubSoldier_T1" loot_prob_template="ProbT3"/>
+      <item group="groupRifleSoldier_T3" loot_prob_template="ProbT3"/>
+    </lootgroup>
+  </insertBefore>
+  <append xpath="/lootcontainers/lootgroup[@name='groupGunSafeSecure']">
+    <item group="GroupSoldiers" count="1" loot_prob_template="5thday"/>
+    <item group="groupCompletedAmmo" count="2" loot_prob_template="5thday"/>
+  </append>
+  <append xpath="/lootcontainers/lootcontainer[contains(@name,'groupZombiesCops')]">
+    <item group="groupPistolSoldier_T0" count="1" loot_prob_template="veryLow"/>
+  </append>
+  <insertAfter xpath="//lootgroup[@name='groupSoldier']//item[@group='groupAmmoLarge']">
+    <item group="GroupSoldiers" count="1" loot_prob_template="5thday"/>
+  </insertAfter>
+  <append xpath="/lootcontainers/lootgroup[@name='groupReinforcedChestT1']">
+    <item group="GroupSoldiers" count="1" loot_prob_template="5thday"/>
+  </append>
+  <append xpath="/lootcontainers/lootgroup[@name='groupReinforcedChestT2']">
+    <item group="GroupSoldiers" count="1" loot_prob_template="5thday"/>
+  </append>
+  <append xpath="/lootcontainers/lootgroup[@name='groupReinforcedChestT3']">
+    <item group="GroupSoldiers" count="1" loot_prob_template="5thday"/>
+  </append>
+  <append xpath="/lootcontainers/lootgroup[@name='groupHardenedChestT4']">
+    <item group="GroupSoldiers2" count="1" loot_prob_template="DB2"/>
+  </append>
+  <append xpath="/lootcontainers/lootgroup[@name='groupHardenedChestT5']">
+    <item group="GroupSoldiers2" count="2" loot_prob_template="DB2"/>
+  </append>
+  <append xpath="/lootcontainers/lootgroup[@name='groupSmallSafeLoot03']">
+    <item group="groupPistolSoldier_T0" count="1" loot_prob_template="DB2"/>
+  </append>
+  <!--add new repair kits to loot tables and then remove the normal repairkits
+-->
+  <append xpath="/lootcontainers/lootgroup[@name='groupCarWeaponsTools']">
+    <item name="repairKitWeapon" count="1,2" />
+  </append>
+  <append xpath="/lootcontainers/lootgroup[@name='groupUtilityItems']">
+    <item name="repairKitWeapon" count="1,2" />
+  </append>
+  <append xpath="/lootcontainers/lootgroup[@name='groupQuestResourcesT1']">
+    <item name="resourceRepairKit" count="5" />
+  </append>
+  <append xpath="/lootcontainers/lootgroup[@name='groupBackpacks02']">
+    <item name="resourceRepairKit" count="1,2" loot_prob_template="low" />
+  </append>
+  <set xpath="/lootcontainers/lootgroup/item[@name='ammo44MagnumBulletBall']/@name">ammo45ACP</set>
+  <append xpath="/lootcontainers/lootgroup[@name='twitch_pistol']">
+    <item name="5thday_Glock9mm"/>
+  </append>
+  <append xpath="/lootcontainers/lootgroup[@name='twitch_AK47']">
+    <item name="5thdayAR15"/>
+    <item name="ammo9mmBulletBall" count="25,50"/>
+  </append>
+  <append xpath="/lootcontainers/lootgroup[@name='twitch_doubleshotgun']">
+    <item name="5d_LeverActionShotgun" prob=".5"/>
+    <item name="5d_doubleBarrelShotgun" prob=".5"/>
+  </append>
+  <append xpath="/lootcontainers/lootgroup[@name='twitch_huntingrifle']">
+    <item name="5d_22r"  prob=".5"/>
+    <item name="5d_m700"  prob=".5"/>
+  </append>
+  <append xpath="/lootcontainers/lootgroup[@name='twitch_SMG']">
+    <item name="5thdayAR15"/>
+  </append>
+  <append xpath="/lootcontainers/lootgroup[@name='twitch_magnum']">
+    <item name="5thday_MK23"/>
+  </append>
+  <append xpath="/lootcontainers/lootgroup[@name='twitch_TacticalAR']">
+    <item name="5thday_Scar_L"/>
+    <item name="ammo556" count="25,50"/>
+  </append>
+  <append xpath="/lootcontainers/lootgroup[@name='twitch_pumpshotgun']">
+    <item name="5thday_SPAS12"/>
+  </append>
+  <append xpath="/lootcontainers/lootgroup[@name='twitch_leveractionrifle']">
+    <item name="5d_22r"  prob=".33"/>
+    <item name="5d_m700" prob=".33"/>
+    <item name="5d_SniperRifle" prob=".33"/>
+  </append>
+  <append xpath="/lootcontainers/lootgroup[@name='twitch_desertVulture']">
+    <item name="5thday_DesertEagle"/>
+    <item name="ammo50ae" count="25,50"/>
+  </append>
+  <append xpath="/lootcontainers/lootgroup[@name='twitch_M60']">
+    <item name="5thday_Scar_H"/>
+  </append>
+  <append xpath="/lootcontainers/lootgroup[@name='twitch_autoshotgun']">
+    <item name="5thday_Shotgun_Auto"/>
+  </append>
+  <append xpath="/lootcontainers/lootgroup[@name='twitch_sniperrifle']">
+    <item name="5thday_M82"/>
+    <item name="ammo50BMG" count="25,50"/>
+  </append>
+  <set xpath="/lootcontainers/lootgroup/item[@name='gunExplosivesT3RocketLauncher']/@name">GrenadeLauncher</set>
+  <set xpath="/lootcontainers/lootgroup/item[@name='ammoRocketFrag']/@name">ammo40mmG</set>
+  <set xpath="/lootcontainers/lootgroup/item[@name='ammoRocketHE']/@name">ammo40mmHE</set>
+  <set xpath="/lootcontainers/lootgroup/item[@name='ammo44MagnumBulletHP']/@name">ammoHP45ACP</set>
+  <set xpath="/lootcontainers/lootgroup/item[@name='ammo44MagnumBulletAP']/@name">ammoAP45ACP</set>
+  <insertAfter xpath="/lootcontainers/lootgroup[@name='twitch_bicycleMajor']">
+    <lootgroup name="twitch_bicycleComplete" count="1">
+      <item name="vehicleBicyclePlaceable" count="1"/>
+    </lootgroup>
+  </insertAfter>
+  <!-- <append xpath="/lootcontainers/lootcontainer[@name='twitch_bicycle']"><item group="twitch_bicycleComplete"/></append><append xpath="/lootcontainers/lootgroup[@name='groupFarmTruck03']"><item name="sickle" min="3" max="5" weight="0.05"/></append><append xpath="/lootcontainers/lootgroup[@name='groupFarmTruck04']"><item name="sickle" min="3" max="5" weight="0.05"/></append> -->
+  <set xpath="//lootgroup/item[@name='meleeToolRepairT0StoneAxe']/@name">HOHMilitaryaxe</set>
+  <set xpath="//lootgroup/item[@name='meleeToolShovelT0StoneShovel']/@name">HOHMilitaryShovel</set>
+  <set xpath="//lootgroup/item[@name='meleeWpnSledgeT0StoneSledgehammer']/@name">5d_MiniSledge</set>
+  <remove xpath="/lootcontainers/lootgroup/item[@name='meleeWpnBladeT0BoneKnife']"/>
+  <set xpath="//lootgroup[@name='groupPassNGas01']/item[@name='meleeToolSalvageT3ImpactDriver5d']/@loot_prob_template">lowDelayed</set>
+  <insertBefore xpath="//lootgroup[@name='group762mmSmall']">
+    <lootgroup name="group410Small">
+      <item name="ammo410" count="5,7" loot_stage_count_mod="0.01" loot_prob_template="ProbT0" />
+      <item name="ammo410Slug" count="5,7" loot_stage_count_mod="0.01" loot_prob_template="ProbT1" />
+    </lootgroup>
+    <lootgroup name="group410Medium">
+      <item name="ammo410" count="8,15" loot_stage_count_mod="0.01" loot_prob_template="ProbT0" />
+      <item name="ammo410Slug" count="8,15" loot_stage_count_mod="0.01" loot_prob_template="ProbT1" />
+    </lootgroup>
+    <lootgroup name="group410Large">
+      <item name="ammo410" count="20,30" loot_stage_count_mod="0.01" loot_prob_template="ProbT0" />
+      <item name="ammo410Slug" count="20,30" loot_stage_count_mod="0.01" loot_prob_template="ProbT1" />
+    </lootgroup>
+    <lootgroup name="group22mmSmall">
+      <item name="ammo2229G" count="5,7" loot_stage_count_mod="0.01" loot_prob_template="ProbT0" />
+      <item name="ammo2240G" count="5,7" loot_stage_count_mod="0.01" loot_prob_template="ProbT1" />
+    </lootgroup>
+    <lootgroup name="group22mmMedium">
+      <item name="ammo2229G" count="8,15" loot_stage_count_mod="0.01" loot_prob_template="ProbT0" />
+      <item name="ammo2240G" count="8,15" loot_stage_count_mod="0.01" loot_prob_template="ProbT1" />
+    </lootgroup>
+    <lootgroup name="group22mmLarge">
+      <item name="ammo2229G" count="20,30" loot_stage_count_mod="0.01" loot_prob_template="ProbT0" />
+      <item name="ammo2240G" count="20,30" loot_stage_count_mod="0.01" loot_prob_template="ProbT1" />
+    </lootgroup>
+    <lootgroup name="group38mmSmall">
+      <item name="ammo38" count="5,7" loot_stage_count_mod="0.01" loot_prob_template="ProbT0" />
+      <item name="ammo38Hollow" count="5,7" loot_stage_count_mod="0.01" loot_prob_template="ProbT1" />
+    </lootgroup>
+    <lootgroup name="group38mmMedium">
+      <item name="ammo38" count="8,15" loot_stage_count_mod="0.01" loot_prob_template="ProbT0" />
+      <item name="ammo38Hollow" count="8,15" loot_stage_count_mod="0.01" loot_prob_template="ProbT1" />
+    </lootgroup>
+    <lootgroup name="group38mmLarge">
+      <item name="ammo38" count="20,30" loot_stage_count_mod="0.01" loot_prob_template="ProbT0" />
+      <item name="ammo38Hollow" count="20,30" loot_stage_count_mod="0.01" loot_prob_template="ProbT1" />
+    </lootgroup>
+    <lootgroup name="group556mmSmall">
+      <item name="ammo556" count="5,7" loot_stage_count_mod="0.01" loot_prob_template="ProbT0" />
+      <item name="ammo556HP" count="5,7" loot_stage_count_mod="0.01" loot_prob_template="ProbT1" />
+      <item name="ammo556AP" count="5,7" loot_stage_count_mod="0.01" loot_prob_template="ProbT2Cap" />
+    </lootgroup>
+    <lootgroup name="group556mmMedium">
+      <item name="ammo556" count="8,15" loot_stage_count_mod="0.01" loot_prob_template="ProbT0" />
+      <item name="ammo556HP" count="8,15" loot_stage_count_mod="0.01" loot_prob_template="ProbT1" />
+      <item name="ammo556AP" count="8,15" loot_stage_count_mod="0.01" loot_prob_template="ProbT2Cap" />
+    </lootgroup>
+    <lootgroup name="group556mmLarge">
+      <item name="ammo556" count="20,30" loot_stage_count_mod="0.01" loot_prob_template="ProbT0" />
+      <item name="ammo556HP" count="20,30" loot_stage_count_mod="0.01" loot_prob_template="ProbT1" />
+      <item name="ammo556AP" count="20,30" loot_stage_count_mod="0.01" loot_prob_template="ProbT2Cap" />
+    </lootgroup>
+  </insertBefore>
+  <insertAfter xpath="//lootgroup/item[@group='group9mmSmall']">
+    <item group="group556mmSmall"/>
+  </insertAfter>
+  <insertAfter xpath="//lootgroup/item[@group='group9mmMedium']">
+    <item group="group556mmMedium"/>
+  </insertAfter>
+  <insertAfter xpath="//lootgroup/item[@group='group9mmLarge']">
+    <item group="group556mmLarge"/>
+  </insertAfter>
+  <insertAfter xpath="//lootgroup/item[@group='group9mmSmall']">
+    <item group="group38mmSmall"/>
+  </insertAfter>
+  <insertAfter xpath="//lootgroup/item[@group='group9mmMedium']">
+    <item group="group38mmMedium"/>
+  </insertAfter>
+  <insertAfter xpath="//lootgroup/item[@group='group9mmLarge']">
+    <item group="group38mmLarge"/>
+  </insertAfter>
+  <insertAfter xpath="//lootgroup/item[@group='group9mmSmall']">
+    <item group="group22mmSmall"/>
+  </insertAfter>
+  <insertAfter xpath="//lootgroup/item[@group='group9mmMedium']">
+    <item group="group22mmMedium"/>
+  </insertAfter>
+  <insertAfter xpath="//lootgroup/item[@group='group9mmLarge']">
+    <item group="group22mmLarge"/>
+  </insertAfter>
+  <insertAfter xpath="//lootgroup/item[@group='group9mmSmall']">
+    <item group="group410Small"/>
+  </insertAfter>
+  <insertAfter xpath="//lootgroup/item[@group='group9mmMedium']">
+    <item group="group410Medium"/>
+  </insertAfter>
+  <insertAfter xpath="//lootgroup/item[@group='group9mmLarge']">
+    <item group="group410Large"/>
+  </insertAfter>
+  <insertBefore xpath="//lootgroup[@name='groupCompletedAmmo']/item[@name='ammo9mmBulletBall']">
+    <item name="ammo38" count="50,75" loot_prob_template="ProbT0"/>
+  </insertBefore>
+  <insertBefore xpath="//lootgroup[@name='groupCompletedAmmo']/item[@name='ammo9mmBulletBall']">
+    <item name="ammo410" count="50,75" loot_prob_template="ProbT0"/>
+  </insertBefore>
 </snj>

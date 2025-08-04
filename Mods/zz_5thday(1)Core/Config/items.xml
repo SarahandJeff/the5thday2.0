@@ -168,7 +168,7 @@
 			<property name="CustomIcon" value="adminQuestTicketMaster"/>
 			<property name="CustomIconTint" value="FF0000"/>
 			<effect_group tiered="false">
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_Cooking_XP" operation="set" value="@HOH_Cooking_lvl_Next_Needed"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_Eating_XP" operation="set" value="@HOH_Eating_lvl_Next_Needed"/>
 				
 			</effect_group>
 		</item>
@@ -222,6 +222,8 @@
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_Pistols_lvl" operation="set" value="1"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_Pistols_lvl_Next_Needed" operation="set" value="100"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_Pistols_Perk_Tracker" operation="set" value="1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_MachineGun_Unlocked" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_Shotguns_Unlocked" operation="set" value="0"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkPistols" level="1"/>
 			</effect_group>
 		</item>
@@ -295,7 +297,7 @@
 	<append xpath="/items/item[@name='foodHoney']">
 		<effect_group name="Action Skills" tiered="false">
 			<triggered_effect trigger="onSelfPrimaryActionStart" action="ModifyCVar" cvar="HOH_HealthandBody_XP" operation="add" value="20"/>
-			<triggered_effect trigger="onSelfPrimaryActionStart" action="ModifyCVar" cvar="HOH_Cooking_XP" operation="add" value="10"/>
+			<triggered_effect trigger="onSelfPrimaryActionStart" action="ModifyCVar" cvar="HOH_Eating_XP" operation="add" value="10"/>
 		</effect_group>
 	</append>
 	<append xpath="/items/item[starts-with(@name,'medical')]">
@@ -313,22 +315,22 @@
 	</append>
 	<append xpath="/items/item[starts-with(@name,'food')]">
 		<effect_group name="goodeatingxpfood" tiered="false">
-			<triggered_effect trigger="onSelfPrimaryActionStart" action="ModifyCVar" cvar="HOH_Cooking_XP" operation="add" value="10"/>
+			<triggered_effect trigger="onSelfPrimaryActionStart" action="ModifyCVar" cvar="HOH_Eating_XP" operation="add" value="10"/>
 		</effect_group>
 	</append>
 	<append xpath="/items/item[starts-with(@name,'MRE')]">
 		<effect_group name="goodeatingxpmre" tiered="false">
-			<triggered_effect trigger="onSelfPrimaryActionStart" action="ModifyCVar" cvar="HOH_Cooking_XP" operation="add" value="10"/>
+			<triggered_effect trigger="onSelfPrimaryActionStart" action="ModifyCVar" cvar="HOH_Eating_XP" operation="add" value="10"/>
 		</effect_group>
 	</append>
 	<append xpath="/items/item[starts-with(@name,'drink')]">
 		<effect_group name="goodeatingxpdrink" tiered="false">
-			<triggered_effect trigger="onSelfPrimaryActionStart" action="ModifyCVar" cvar="HOH_Cooking_XP" operation="add" value="10"/>
+			<triggered_effect trigger="onSelfPrimaryActionStart" action="ModifyCVar" cvar="HOH_Eating_XP" operation="add" value="10"/>
 		</effect_group>
 	</append>
 	<append xpath="/items/item[starts-with(@name,'MtnDew')]">
 		<effect_group name="goodeatingxpmtd" tiered="false">
-			<triggered_effect trigger="onSelfPrimaryActionStart" action="ModifyCVar" cvar="HOH_Cooking_XP" operation="add" value="10"/>
+			<triggered_effect trigger="onSelfPrimaryActionStart" action="ModifyCVar" cvar="HOH_Eating_XP" operation="add" value="10"/>
 		</effect_group>
 	</append>
 	<!-- Sets all vehicles to be unlocked by perkHOHWrenches -->
@@ -358,9 +360,7 @@
 		<property name="UnlockedBy" value="perkClubs"/>
 	</append>
 
-	<append xpath="//item[@name='resourceSmokelessPowderBundle']">
-		<property name="UnlockedBy" value="perkArtOfMiningPallets"/>
-	</append>
+
 	<!-- Axes -->
 	<set xpath="//item[@name='meleeToolAxeT1IronFireaxe']/property[@name='UnlockedBy']/@value">perkAxes</set>
 	<set xpath="//item[@name='meleeToolAxeT2SteelAxe']/property[@name='UnlockedBy']/@value">perkAxes</set>
@@ -950,8 +950,8 @@
 	
 <insertAfter  xpath="//item/property[contains(@name,'Tags') and contains(@value,'food')]">
 		<effect_group name="Action Skills" tiered="false">
-			<triggered_effect trigger="onSelfPrimaryActionStart" action="ModifyCVar" cvar="HOH_Cooking_XP" operation="add" value=".1"/>
-			<triggered_effect trigger="onSelfSecondaryActionStart" action="ModifyCVar" cvar="HOH_Cooking_XP" operation="add" value=".1"/>
+			<triggered_effect trigger="onSelfPrimaryActionStart" action="ModifyCVar" cvar="HOH_Eating_XP" operation="add" value=".1"/>
+			<triggered_effect trigger="onSelfSecondaryActionStart" action="ModifyCVar" cvar="HOH_Eating_XP" operation="add" value=".1"/>
 		</effect_group>
 	</insertAfter >
 	<set xpath="//item[starts-with(@name,'medical')]/property[@name='UnlockedBy']/@value">perkHealthandBody</set>
@@ -2363,8 +2363,8 @@
     <property name="ItemTypeIcon" value="bundle" />
     <property name="DescriptionKey" value="questRewardPipePistolBundleDesc" />
     <property class="Action0">
-      <property name="Create_item" value="5thday_Glock9mm,ammo9mmBulletBall" />
-      <property name="Create_item_count" value="2-3,600" />
+      <property name="Create_item" value="5thday_Glock9mm,ammo9mmBulletBall,ammo38" />
+      <property name="Create_item_count" value="2-3,25,100-300" />
     </property>
   </item>
 
@@ -2377,9 +2377,9 @@
     <property name="DescriptionKey" value="questRewardFoodBundleDesc" />
     <property class="Action0">
       <property name="Create_item" value="drinkJarPureMineralWater" />
-      <property name="Create_item_count" value="3,2" />
-      <property name="Random_item" value="foodShamChowder,foodHoboStew,foodChiliDog,foodFishTacos" />
-      <property name="Random_item_count" value="10,10,10,10" />
+      <property name="Create_item_count" value="2-5" />
+      <property name="Random_item" value="MREBeefStewCase,MREBreakfastCase" />
+      <property name="Random_item_count" value="1,1" />
       <property name="Random_count" value="1" />
       <property name="Unique_random_only" value="true" />
     </property>
@@ -2393,8 +2393,8 @@
     <property name="ItemTypeIcon" value="bundle" />
     <property name="DescriptionKey" value="questRewardFoodBundleDesc" />
     <property class="Action0">
-      <property name="Create_item" value="resourceWood,resourceCobblestones,woodShapes:VariantHelper,meleeToolRepairT1ClawHammer" />
-      <property name="Create_item_count" value="500,500,100,1" />
+      <property name="Create_item" value="resourceWood,resourceCobblestones,woodShapes:VariantHelper,meleeToolRepairT1ClawHammer,resourceWoodandNails" />
+      <property name="Create_item_count" value="500,500,100,1-3,250" />
     </property>
   </item>
  <item name="questRewardHordeNightBundle">
@@ -2405,10 +2405,10 @@
     <property name="ItemTypeIcon" value="bundle" />
     <property name="DescriptionKey" value="questRewardFoodBundleDesc" />
     <property class="Action0">
-      <property name="Create_item" value="ammo9mmBulletBall" />
-      <property name="Create_item_count" value="100,300" />
-      <property name="Random_item" value="thrownAmmoPipeBomb,thrownGrenadeContact,ammo9mmBulletBall" />
-      <property name="Random_item_count" value="10,10,600" />
+      <property name="Create_item" value="ammo9mmBulletBall,ammo38" />
+      <property name="Create_item_count" value="10-100,50-300" />
+      <property name="Random_item" value="thrownAmmoPipeBomb,thrownGrenadeContact,ammo9mmBulletBall,ammo38" />
+      <property name="Random_item_count" value="10,10,50-300,50-300" />
       <property name="Random_count" value="1" />
       <property name="Unique_random_only" value="true" />
     </property>
@@ -2466,112 +2466,7 @@
 	</append>
 
 
-<append xpath="//item[starts-with(@name,'partLower')]">
-    <property name="CraftingIngredientTime" value=".2" />
-    <property name="MeltTimePerUnit" value=".5" />
-    <property name="MeltTimePerUnit" value=".5" />
-    <property name="EconomicValue" value="17" />
-</append>
-<append xpath="//item[starts-with(@name,'partUpper')]">
-    <property name="CraftingIngredientTime" value=".2" />
-    <property name="MeltTimePerUnit" value=".5" />
-    <property name="EconomicValue" value="17" />
-</append>
-<append xpath="//item[starts-with(@name,'partBarrel')]">
-    <property name="CraftingIngredientTime" value=".2" />
-    <property name="MeltTimePerUnit" value=".5" />
-    <property name="EconomicValue" value="17" />
-</append>
-<append xpath="//item[starts-with(@name,'partRail')]">
-    <property name="CraftingIngredientTime" value=".2" />
-    <property name="MeltTimePerUnit" value=".5" />
-    <property name="EconomicValue" value="17" />
-</append>
-<append xpath="//item[starts-with(@name,'partGrip')]">
-    <property name="CraftingIngredientTime" value=".2" />
-    <property name="MeltTimePerUnit" value=".5" />
-    <property name="EconomicValue" value="17" />
-</append>
 
-<append xpath="//item[starts-with(@name,'partFrame')]">
-    <property name="CraftingIngredientTime" value=".2" />
-    <property name="MeltTimePerUnit" value=".5" />
-    <property name="EconomicValue" value="17" />
-</append>
-
-<set xpath="//item[starts-with(@name,'partLower')]/property[@name='Material']/@value">MresourceScrapIron</set>
-<set xpath="//item[starts-with(@name,'partUpper')]/property[@name='Material']/@value">MresourceScrapIron</set>
-<set xpath="//item[starts-with(@name,'partBarrel')]/property[@name='Material']/@value">MresourceScrapIron</set>
-<set xpath="//item[starts-with(@name,'partRail')]/property[@name='Material']/@value">MresourceScrapIron</set>
-<set xpath="//item[starts-with(@name,'partGrip')]/property[@name='Material']/@value">MresourceScrapIron</set>
-<set xpath="//item[starts-with(@name,'partFrame')]/property[@name='Material']/@value">MresourceScrapIron</set>
-
-<set xpath="//item[starts-with(@name,'partLower')]/property[@name='SellableToTrader']/@value">true</set>
-<set xpath="//item[starts-with(@name,'partUpper')]/property[@name='SellableToTrader']/@value">true</set>
-<set xpath="//item[starts-with(@name,'partBarrel')]/property[@name='SellableToTrader']/@value">true</set>
-<set xpath="//item[starts-with(@name,'partRail')]/property[@name='SellableToTrader']/@value">true</set>
-<set xpath="//item[starts-with(@name,'partGrip')]/property[@name='SellableToTrader']/@value">true</set>
-<set xpath="//item[starts-with(@name,'partFrame')]/property[@name='SellableToTrader']/@value">true</set>
-
-<set xpath="//item[starts-with(@name,'ammo9mmTip')]/property[@name='Material']/@value">Mlead_scrap</set>
-<set xpath="//item[starts-with(@name,'ammo44MagTip')]/property[@name='Material']/@value">MresourceScrapLeadSmall</set>
-<set xpath="//item[starts-with(@name,'ammo762Tip')]/property[@name='Material']/@value">MresourceScrapLeadMedium</set>
-<set xpath="//item[starts-with(@name,'ammo556Tip')]/property[@name='Material']/@value">MresourceScrapLeadMedium</set>
-<set xpath="//item[starts-with(@name,'ammo45ACPTip')]/property[@name='Material']/@value">MresourceScrapLeadSmall</set>
-<set xpath="//item[starts-with(@name,'ammo50aeTip')]/property[@name='Material']/@value">MresourceScrapLeadSmall</set>
-<set xpath="//item[starts-with(@name,'ammo50BMGTip')]/property[@name='Material']/@value">MresourceScrapLeadMedium</set>
-<set xpath="//item[starts-with(@name,'ammo3006Tip')]/property[@name='Material']/@value">MresourceScrapLeadMedium</set>
-<set xpath="//item[starts-with(@name,'ammo338Tip')]/property[@name='Material']/@value">MresourceScrapLeadMedium</set>
-
-
-<set xpath="//item[starts-with(@name,'ammo9mmCase')]/property[@name='Material']/@value">MresourceScrapBrassSmall</set>
-<set xpath="//item[starts-with(@name,'ammo44MagCase')]/property[@name='Material']/@value">MresourceScrapBrassSmall</set>
-<set xpath="//item[starts-with(@name,'ammo762Case')]/property[@name='Material']/@value">MresourceScrapBrassMedium</set>
-<set xpath="//item[starts-with(@name,'ammo45ACPCase')]/property[@name='Material']/@value">MresourceScrapBrassSmall</set>
-<set xpath="//item[starts-with(@name,'ammo50aeCase')]/property[@name='Material']/@value">MresourceScrapBrassSmall</set>
-<set xpath="//item[starts-with(@name,'ammo556Case')]/property[@name='Material']/@value">MresourceScrapBrassMedium</set>
-<set xpath="//item[starts-with(@name,'ammo3006Case')]/property[@name='Material']/@value">MresourceScrapBrassMedium</set>
-<set xpath="//item[starts-with(@name,'ammo50BMGCase')]/property[@name='Material']/@value">MresourceScrapBrassMedium</set>
-<set xpath="//item[starts-with(@name,'ammo338Case')]/property[@name='Material']/@value">MresourceScrapBrassMedium</set>
-
-
-
-<append xpath="//item[starts-with(@name,'ammo9mm')]">
-    <property name="Weight" value="1" />
-    <property name="MeltTimePerUnit" value="1" />
-</append>
-<append xpath="//item[starts-with(@name,'ammo44')]">
-    <property name="Weight" value="1" />
-    <property name="MeltTimePerUnit" value="1" />
-</append>
-<append xpath="//item[starts-with(@name,'ammo45')]">
-    <property name="Weight" value="1" />
-    <property name="MeltTimePerUnit" value="3" />
-</append>
-<append xpath="//item[starts-with(@name,'ammo762')]">
-    <property name="Weight" value="2" />
-    <property name="MeltTimePerUnit" value="2" />
-</append>
-<append xpath="//item[starts-with(@name,'ammo50ae')]">
-   <property name="Weight" value="1" />
-    <property name="MeltTimePerUnit" value="1" />
-</append>
-<append xpath="//item[starts-with(@name,'ammo556')]">
-    <property name="Weight" value="2" />
-    <property name="MeltTimePerUnit" value="2" />
-</append>
-<append xpath="//item[starts-with(@name,'ammo3006')]">
-    <property name="Weight" value="2" />
-    <property name="MeltTimePerUnit" value="2" />
-</append>
-<append xpath="//item[starts-with(@name,'ammo50BMG')]">
-    <property name="Weight" value="3" />
-    <property name="MeltTimePerUnit" value="3" />
-</append>
-<append xpath="//item[starts-with(@name,'ammo338')]">
-    <property name="Weight" value="3" />
-    <property name="MeltTimePerUnit" value="3" />
-</append>
 
 
 <set xpath="//item[@name='ammo9mmBulletAP']/property[@name='UnlockedBy']/@value">perkPistolPeteAPAmmo</set>
@@ -2930,7 +2825,13 @@
 
  <set xpath="//item[starts-with(@name, 'armor') and (contains(@name, 'Master'))]/property[@name='RepairTools']/@value">repairKitArmor</set>
  <set xpath="//item[starts-with(@name, 'meleeTool') and not (contains(@name,'Stone'))]/property[@name='RepairTools']/@value">repairKitTools</set>
- <set xpath="//item[starts-with(@name, 'meleeWpn') and not (contains(@name,'Stone'))]/property[@name='RepairTools']/@value">repairKitWeapon</set>
+ <set xpath="//item[starts-with(@name, 'meleeWpn') and not (contains(@name,'meleeWpnClubT0WoodenClub')) and not (contains(@name,'Spear')) and not (contains(@name,'Stone'))]/property[@name='RepairTools']/@value">repairKitWeapon</set>
+<set xpath="//item[starts-with(@name, 'meleeWpn') and not (contains(@name,'Stone')) and (contains(@name, 'Spear'))]/property[@name='RepairTools']/@value">repairKitTools</set>
+<set xpath="//item[starts-with(@name, 'meleeWpn') and (contains(@name, 'Blade'))]/property[@name='RepairTools']/@value">repairKitTools</set>
+<set xpath="//item[starts-with(@name, 'meleeWpn') and (contains(@name, 'Club'))]/property[@name='RepairTools']/@value">repairKitTools</set>
+<set xpath="//item[starts-with(@name, 'meleeWpn') and (contains(@name, 'Baton'))]/property[@name='RepairTools']/@value">repairKitTools</set>
+<set xpath="//item[starts-with(@name, 'meleeWpn') and (contains(@name, 'Sledge'))]/property[@name='RepairTools']/@value">repairKitTools</set>
+<set xpath="//item[starts-with(@name, 'meleeWpn') and (contains(@name, 'Knuckles'))]/property[@name='RepairTools']/@value">repairKitTools</set>
 
 <append xpath="/items/item[@name='resourceRepairKit']">
 		<property name="CustomIcon" value="repairKitVehicle"/>
@@ -3117,7 +3018,7 @@
 <item name="clothingHelmet">
 	<property name="Extends" value="armorMediumMaster" param1="CustomIcon"/>
 	<property name="CustomIcon" value="armorScavengerHelmet"/>
-	<property name="CustomIconTint" value="FF00FF"/>
+	<property name="CustomIconTint" value="0099ff"/>
 	<property name="DescriptionKey" value="armorScavengerHelmetDesc"/>
 	<property name="DisplayType" value="armorScavengerHelmet"/>
 	<!--<property name="ArmorGroup" value="groupScavenger"/>-->
@@ -3153,7 +3054,7 @@
 <item name="clothingOutfit">
 	<property name="Extends" value="armorMediumMaster" param1="CustomIcon"/>
 	<property name="CustomIcon" value="armorScavengerOutfit"/>
-	<property name="CustomIconTint" value="FF00FF"/>
+	<property name="CustomIconTint" value="0099ff"/>
 	<property name="DescriptionKey" value="armorScavengerOutfitDesc"/>
 	<property name="DisplayType" value="armorScavengerOutfit"/>
 	<!--<property name="ArmorGroup" value="groupScavenger"/>-->
@@ -3190,7 +3091,7 @@
 <item name="clothingGloves">
 	<property name="Extends" value="armorMediumMaster" param1="CustomIcon"/>
 	<property name="CustomIcon" value="armorScavengerGloves"/>
-	<property name="CustomIconTint" value="FF00FF"/>
+	<property name="CustomIconTint" value="0099ff"/>
 	<property name="DescriptionKey" value="armorScavengerGlovesDesc"/>
 	<property name="DisplayType" value="armorScavengerGloves"/>
 	<!--<property name="ArmorGroup" value="groupScavenger"/>-->
@@ -3227,7 +3128,7 @@
 <item name="clothingBoots">
 	<property name="Extends" value="armorMediumMaster" param1="CustomIcon"/>
 	<property name="CustomIcon" value="armorScavengerBoots"/>
-	<property name="CustomIconTint" value="FF00FF"/>
+	<property name="CustomIconTint" value="0099ff"/>
 	<property name="DescriptionKey" value="armorScavengerBootsDesc"/>
 	<property name="DisplayType" value="armorScavengerBoots"/>
 	<!--<property name="ArmorGroup" value="groupScavenger"/>-->
@@ -3312,14 +3213,14 @@
 </append>		
 			
 <append xpath="//item[@name='meleeToolRepairT1ClawHammer']/effect_group[@name='meleeToolRepairT1ClawHammer']">
-		<triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="WrenchBlockTrackerActivate"/>
-		<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="WrenchBlockTrackerActivate"/>
-		<triggered_effect trigger="onSelfDestroyedBlock" action="ModifyCVar" cvar="WrenchBlockCounter" operation="add" value="1"/>
+		<triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="HammerBlockTrackerActivate"/>
+		<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="HammerBlockTrackerActivate"/>
+		<triggered_effect trigger="onSelfDestroyedBlock" action="ModifyCVar" cvar="HammerBlockCounter" operation="add" value="1"/>
 	</append>
 <append xpath="//item[@name='meleeToolRepairT3Nailgun']/effect_group[@name='meleeToolRepairT3Nailgun']">
-		<triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="WrenchBlockTrackerActivate"/>
-		<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="WrenchBlockTrackerActivate"/>
-		<triggered_effect trigger="onSelfDestroyedBlock" action="ModifyCVar" cvar="WrenchBlockCounter" operation="add" value="1"/>
+		<triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="NailGunBlockTrackerActivate"/>
+		<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="NailGunBlockTrackerActivate"/>
+		<triggered_effect trigger="onSelfDestroyedBlock" action="ModifyCVar" cvar="NailGunBlockCounter" operation="add" value="1"/>
 	</append>
 
 
@@ -3330,7 +3231,7 @@
 <set xpath="//item[@name='toolDewGatherer']/property[(@name='UnlockedBy')]/@value">perkCooking</set>
 <set xpath="//item[@name='toolDewTarp']/property[(@name='UnlockedBy')]/@value">perkCooking</set>
 <set xpath="//item[@name='toolDewFilter']/property[(@name='UnlockedBy')]/@value">perkCooking</set>
-<set xpath="//item/property[(@name='UnlockedBy') and (@value='craftingElectrician')]/@value">perkWrenches</set>
+<!-- <set xpath="//item/property[(@name='UnlockedBy') and (@value='craftingElectrician')]/@value">perkWrenches</set> -->
 
 
 
@@ -3355,16 +3256,81 @@
 	<property name="SellableToTrader" value="true"/>
 	<property name="DescriptionKey" value="Small iron spike for trap"/>
 </item>
-</append>
 
+<item name="resourceWoodandNails">
+	<property name="CreativeMode" value="Player"/>
+	<property name="HoldType" value="45"/>
+	<property name="Material" value="Miron"/>
+	<property name="Meshfile" value="@:Other/Items?Misc/sackPrefab.prefab"/>
+	<property name="DropMeshfile" value="@:Other/Items?Misc/sack_droppedPrefab.prefab"/>
+	<property name="ItemTypeIcon" value="bundle"/>
+	<property name="Stacknumber" value="500"/>
+	<property name="DescriptionKey" value="Wood n Nails for upgrading frame shapes"/>
+	<property class="Action0">
+	<property name="Class" value="OpenBundle"/>
+			<property name="Delay" value="0"/>
+			<property name="Use_time" value="0"/>
+		<property name="Create_item" value="resourceWood,resourceNail"/>
+		<property name="Create_item_count" value="5,5"/>
+	</property>
+</item>
+<item name="noteSNJ01">
+	<property name="Extends" value="treasureQuestMaster"/>
+	<property name="SoundPickup" value="map_grab"/>
+	<property name="SoundPlace" value="map_place"/>
+	<property class="Action0">
+		<property name="QuestGiven" value="quest_Starting"/>
+	</property>
+</item>
+</append>
+<append xpath="//item[starts-with(@name, 'meleeToolRepair')]/property[@class='Action1']/property[@name='Allowed_upgrade_items']/@value">,resourceWoodandNails</append>
+
+<append xpath="//item[@name='meleeToolRepairT1ClawHammer']/property[@name='Tags']/@value">,PerkHOHConstruction</append>
+<append xpath="//item[@name='meleeToolRepairT3Nailgun']/property[@name='Tags']/@value">,PerkHOHConstruction</append>
 <!--<append xpath="/items">
 	<item name="toyMoto">
 		<property name="Extends" value="toyCollectibleZombieBobbleheadsRegularTemplate"/>
 		<property name="Meshfile" value="#@modfolder:Assets/toys.unity3d?DirtBike_toy"/>
 	</item>
 </append>-->
-<include filename="items/item_weights.xml"/>
-<include filename="items/TAFA_changes.xml"/>
+<append xpath="//item[contains(@name,'Gumball')		                                    ]"><property name="ItemWeight" value="2"/></append>
+<append xpath="//item[contains(@name,'casinoCoin')		                                ]"><property name="ItemWeight" value=".5"/></append>
+<append xpath="//item[contains(@name,'oldCash')		                                    ]"><property name="ItemWeight" value=".5"/></append>
+<append xpath="//item[contains(@name,'ammo')		                                    ]"><property name="ItemWeight" value="10"/></append>
+<append xpath="//item[contains(@name,'planted')		                                    ]"><property name="ItemWeight" value=".1"/></append>
+<append xpath="//item[starts-with(@name, 'resource') and not (contains(@name, 'Bundle'))]"><property name="ItemWeight" value="5"/></append>
+<append xpath="//item[contains(@name,'fuelDiesil')		                                    ]"><property name="ItemWeight" value="10"/></append>
+
+
+<append xpath="//item[@name='resourceClayLumpBundle'		                            ]"><property name="ItemWeight" value="2500"/></append>
+<append xpath="//item[@name='resourceScrapIronBundle'		                            ]"><property name="ItemWeight" value="2500"/></append>
+<append xpath="//item[@name='resourceLeadBundle'		                                ]"><property name="ItemWeight" value="2500"/></append>
+
+<append xpath="//item[@name='resourceRockSmallBundle'		                            ]"><property name="ItemWeight" value="2500"/></append>
+<append xpath="//item[@name='resourceCrushedSandBundle'		                            ]"><property name="ItemWeight" value="2500"/></append>
+<append xpath="//item[contains(@name,'resourceLockPick')		                        ]"><property name="ItemWeight" value="2"/></append>
+
+<append xpath="//item[contains(@name,'toolHOH')		                        ]"><property name="ItemWeight" value="10"/></append>
+<append xpath="//item[contains(@name,'HOH') and contains(@name,'Battery')		                        ]"><property name="ItemWeight" value="25"/></append>
+<append xpath="//item[contains(@name,'toolHOHRollingTool')		                        ]"><property name="ItemWeight" value="250"/></append>
+<append xpath="//item[contains(@name,'toolHOHEngine')		                        ]"><property name="ItemWeight" value="500"/></append>
+<append xpath="//item[contains(@name,'HOH') and contains(@name,'Bolts')		                        ]"><property name="ItemWeight" value="2"/></append>
+<append xpath="//item[contains(@name,'HOH') and contains(@name,'Rim')		                        ]"><property name="ItemWeight" value="10"/></append>
+<append xpath="//item[contains(@name,'HOH') and contains(@name,'Tire')		                        ]"><property name="ItemWeight" value="20"/></append>
+<append xpath="//item[contains(@name,'HOH') and contains(@name,'Wheel')		                        ]"><property name="ItemWeight" value="50"/></append>
+<append xpath="//item[contains(@name,'HOH') and contains(@name,'Engine')                            ]"><property name="ItemWeight" value="500"/></append>
+<append xpath="//item[contains(@name,'HOH') and contains(@name,'Valve')                            ]"><property name="ItemWeight" value="20"/></append>
+<append xpath="//item[contains(@name,'HOH') and contains(@name,'Piston')                            ]"><property name="ItemWeight" value="20"/></append>
+<append xpath="//item[contains(@name,'HOHTransmissionBroken')                            ]"><property name="ItemWeight" value="500"/></append>
+<append xpath="//item[contains(@name,'HOHTransmissionHousing')                            ]"><property name="ItemWeight" value="200"/></append>
+<append xpath="//item[contains(@name,'HOHTransmissionComplete')                            ]"><property name="ItemWeight" value="500"/></append>
+<append xpath="//item[@name='fishingWorm'                            ]"><property name="ItemWeight" value="1"/></append>
+<append xpath="//item[@name='fishingHook'                            ]"><property name="ItemWeight" value="1"/></append>
+<append xpath="//item[@name='lureT1'                            ]"><property name="ItemWeight" value="1"/></append>
+<append xpath="//item[@name='lureT2'                            ]"><property name="ItemWeight" value="1"/></append>
+<append xpath="//item[@name='lureT3'                            ]"><property name="ItemWeight" value="1"/></append>
+
+
 
 
 

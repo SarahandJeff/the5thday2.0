@@ -30,30 +30,92 @@
 	<remove xpath="//trader_item_group/item[contains(@name, 'modArmorAgility')]"/>
 	<remove xpath="//trader_item_group/item[contains(@name, 'modArmorIntellect')]"/>
 
-
-
-
-
-
-	<!--<remove xpath="//trader_item_group/item[(contains(@name, 'Chassis')) and (contains(@name, 'vehicle'))]"/>
-	<remove xpath="//trader_item_group/item[(contains(@name, 'chassis')) and (contains(@name, 'vehicle'))]"/>-->
-	<remove xpath="//trader_item_group/item[(contains(@name, 'melee')) and (contains(@name, 'Stone'))]"/>
+	<remove xpath="//trader_item_group/item[contains(@name, 'resourceBulletCasing')]"/>
+	<remove xpath="//trader_item_group/item[contains(@name, 'resourceBulletTip')]"/>
+	<remove xpath="//trader_item_group/item[contains(@name, 'resourceBuckshot')]"/>
+	<remove xpath="//trader_item_group/item[contains(@name, 'resourcePaint')]"/>
 	
+
+
+
+	<remove xpath="//trader_item_group/item[contains(@name, 'gunShotgunT0PipeShotgun')]"/>
+	<remove xpath="//trader_item_group/item[contains(@name, 'gunRifleT0PipeRifle')]"/>
+	<remove xpath="//trader_item_group/item[contains(@name, 'gunMGT0PipeMachineGun')]"/>
+
+	<!--REMOVE UNUSED ARMORS-->
+	<!-- <remove xpath="//trader_item_group/item[contains(@name, 'armorPreacher')]"/>
+	<remove xpath="//trader_item_group/item[contains(@name, 'armorRogue')]"/>
+	<remove xpath="//trader_item_group/item[contains(@name, 'armorAthletic')]"/>
+	<remove xpath="//trader_item_group/item[contains(@name, 'armorRanger')]"/>
+	<remove xpath="//trader_item_group/item[contains(@name, 'armorNomad')]"/>
+	<remove xpath="//trader_item_group/item[contains(@name, 'armorNerd')]"/>
+	<remove xpath="//trader_item_group/item[contains(@name, 'armorRaider')]"/> -->
+
+	<remove xpath="//trader_item_group/item[(contains(@name, 'melee')) and (contains(@name, 'Stone'))]"/>
 	<remove xpath="//trader_item_group/item[(contains(@name, 'gunHandgun')) and (contains(@name, 'Pistol'))]"/>
-	<!--<remove xpath="//trader_item_group/item[(contains(@name, 'gunHandgun')) and (contains(@name, 'Pipe'))]"/>-->
 	<remove xpath="//trader_item_group/item[(contains(@name, 'gunRifleT2LeverActionRifle'))]"/>
 	<remove xpath="//trader_item_group/item[(contains(@name, 'ammo44MagnumBullet'))]"/>
 	<remove xpath="//trader_item_group/item[(contains(@name, 'gunExplosivesT3RocketLauncher'))]"/>
-	<append xpath="//trader_item_group[@name='groupRangedAll']">
-		   <item name="TAMGL140" quality="1,5" />
-	
-</append>
 
 
+	<remove xpath="//trader_item_group[contains(@name, 'groupArmorLight')]"/>
+	<remove xpath="//trader_item_group[contains(@name, 'groupArmorMedium')]"/>
+	<remove xpath="//trader_item_group[contains(@name, 'groupArmorHeavy')]"/>
+
+<insertBefore xpath="//trader_item_group[@name='groupDyeMods']">
+	<trader_item_group name="groupArmorLight">
+	  <item name="armorFarmerHelmet" quality="1,5" />
+      <item name="armorFarmerOutfit" quality="1,5" />
+      <item name="armorFarmerGloves" quality="1,5" />
+      <item name="armorFarmerBoots" quality="1,5" />
+      <item name="armorLumberjackHelmet" quality="1,5" />
+      <item name="armorLumberjackOutfit" quality="1,5" />
+      <item name="armorLumberjackGloves" quality="1,5" />
+      <item name="armorLumberjackBoots" quality="1,5" />
+	  <item name="armorMinerHelmet" quality="1,5" />
+      <item name="armorMinerOutfit" quality="1,5" />
+      <item name="armorMinerGloves" quality="1,5" />
+      <item name="armorMinerBoots" quality="1,5" />
+    
+    </trader_item_group>
+    <!-- *** LIGHT_ARMORS -->
+    <trader_item_group name="groupArmorMedium">
+      <item name="armorBikerHelmet" quality="1,5" />
+      <item name="armorBikerOutfit" quality="1,5" />
+      <item name="armorBikerGloves" quality="1,5" />
+      <item name="armorBikerBoots" quality="1,5" />
+      <item name="armorScavengerHelmet" quality="1,5" />
+      <item name="armorScavengerOutfit" quality="1,5" />
+      <item name="armorScavengerGloves" quality="1,5" />
+      <item name="armorScavengerBoots" quality="1,5" />
+    </trader_item_group>
+    <!-- *** HEAVY_ARMORS-->
+    <trader_item_group name="groupArmorHeavy">
+      <item name="armorCommandoHelmet" quality="1,5" />
+      <item name="armorCommandoOutfit" quality="1,5" />
+      <item name="armorCommandoGloves" quality="1,5" />
+      <item name="armorCommandoBoots" quality="1,5" />
+	  <item name="armorEnforcerHelmet" quality="1,5" />
+      <item name="armorEnforcerOutfit" quality="1,5" />
+      <item name="armorEnforcerGloves" quality="1,5" />
+      <item name="armorEnforcerBoots" quality="1,5" />
+	  <item name="armorAssassinHelmet" quality="1,5" />
+      <item name="armorAssassinOutfit" quality="1,5" />
+      <item name="armorAssassinGloves" quality="1,5" />
+      <item name="armorAssassinBoots" quality="1,5" />
+    </trader_item_group>
+</insertBefore>
 
 
 	<remove xpath="/traders/trader_item_groups/trader_item_group[starts-with(@name,'skillMagazines')]"/>
 	<remove xpath="/traders/trader_info/trader_items/item[starts-with(@group,'skillMagazines')]"/>
+
+
+
+
+
+
+
 <append xpath="//trader_item_group[@name='traderAlways']">
 	<item name="GunsmithDriver" count="3,5"/>
 	<item name="resourceGunLube" count="3,5"/>
@@ -66,7 +128,6 @@
 		<item name="ChickenCoop" count="1"/>
 		<item name="PigPenPlaceable" count="1"/>
 		<item name="MilkingStationPlaceable" count="1"/>
-		
 		<item name="5d_FishingRod_NoBaite" count="1" prob="0.5"/>
 	
 	</trader_item_group>
@@ -74,20 +135,90 @@
 	 	<item name="vehicleMinibikePlaceable"/>
 		<item name="vehicleWitosQuadPlaceable"/>
 		<item name="vehicleMotorcyclePlaceable"/>
-
-		
-	 	
-		
-		 
-	 
 		<item name="vehicleSnowMobilePlaceable"/>
 		<item name="vehicleTruck4x4Placeable"/>
-		<item name="vehicleWitosFAVPlaceable"/>
-	
 		
 	 </trader_item_group>
 </append>
+<!-- <append xpath="/traders/trader_item_groups/trader_item_group[@name='rareTools']">
+			<item name="toolWSUCubeMould" />
+			<item name="toolWSUDrill" />
+			<item name="toolWSUCFD" />
+</append> -->
 
+<!-- <append xpath="/traders/trader_item_groups/trader_item_group[@name='tools']">
+			<item name="toolWSUSteelChain" prob="0.7"/>
+			<item name="toolWSUMixerFins" prob="0.4"/>
+			<item name="toolWSUVice" prob="0.8"/>
+			<item name="toolWSUSander" prob="0.5"/>
+			<item name="toolWSUWelder" prob="0.4"/>
+			<item name="toolWSUBurner" prob="0.3"/>
+			<item name="toolWSUMeasures" prob="0.3"/>
+</append> -->
+			
+<append xpath="/traders/trader_item_groups/trader_item_group[@name='rareBooks']">
+			<item name="toolWSUSteelChainSchematic" prob="0.3"/>
+			<item name="toolWSUMixerFinsSchematic" prob="0.05"/>
+			<item name="toolWSUCubeMouldSchematic" prob="0.1"/>
+			
+			<item name="toolWSUViceSchematic" prob="0.3"/>
+			<item name="toolWSUSanderSchematic" prob="0.2"/>
+			<item name="toolWSUDrillSchematic" prob="0.1"/>
+			<item name="toolWSUWelderSchematic" prob="0.03"/>
+
+			<item name="toolWSUBurnerSchematic" prob="0.3"/>
+			<item name="toolWSUMeasuresSchematic" prob="0.2"/>
+			<item name="toolWSUCFDSchematic" prob="0.1"/>
+</append>
+
+<!-- <append xpath="/traders/trader_item_groups/trader_item_group[@name='rareTools']">
+			<item name="toolWSUCubeMould" />
+			<item name="toolWSUDrill" />
+			<item name="toolWSUCFD" />
+</append> -->
+
+<insertAfter xpath="//trader_item_group[@name='groupRangedAll']">
+ 	<trader_item_group name="groupWeaponsRekt">
+      <item name="gunBowT0PrimitiveBow" quality="2,5" />
+      <item name="gunBowT1WoodenBow" quality="1,5" />
+      <item name="gunBotT1JunkSledge" quality="1,5" />
+      <item name="gunBowT1IronCrossbow" quality="1,5" />
+      <item name="gunBowT3CompoundBow" quality="1,2" />
+      <item name="gunBotT2JunkTurret" quality="1,3" />
+      <item name="gunBowT3CompoundCrossbow" quality="1,2" />
+      <item name="gunBotT3JunkDrone" quality="1,2" />
+      <item name="5thday_Glock9mm" quality="1,5"/>
+      <item name="5d_doubleBarrelShotgun" quality="1,5"/>
+      <item name="5thdayAR15" quality="1,3"/>
+      <item name="5thday_MK23" quality="1,3"/>
+      <item name="5thday_SPAS12" quality="1,2"/>
+      <item name="5thdayAR15_556" quality="1,4"/>
+      <item name="5d_SniperRifle" quality="1,2"/>
+    </trader_item_group>
+</insertAfter>
+		<append xpath="/traders/trader_item_groups/trader_item_group[@name='tools']">
+			<item name="toolTATumbler"  count="1"  prob="0.6"/>
+			<item name="toolTASmokelessPowder" count="1"  prob="0.3"/>
+			<item name="toolTAPowderLoader"  count="1"  prob="0.1"/>
+
+			<item name="toolTAMillingBearings"  count="1"  prob="0.2"/>
+			
+			<item name="toolTALatheDial" count="1"  prob="0.2"/>
+			<item name="toolTAGunsmithKit" count="1"  prob="0.2"/>
+			<item name="toolTAViceBlocks" count="1"  prob="0.2"/>
+		</append>
+
+		<append xpath="/traders/trader_item_groups/trader_item_group[@name='rareTools']">
+			<item name="toolTABulletPress"  count="1"/>
+			<item name="toolTABoxFolder"  count="1"/>
+			<item name="toolTAAmmoBoxes"  count="1"/>
+			<item name="toolTAMillingChucks"  count="1"/>
+			<item name="toolTAMillingTerminal"  count="1"/>
+			<item name="toolTALatheCalipers"  count="1"/>
+			<item name="toolTALatheCuttingTool"  count="1"/>
+			<item name="toolTARifleStand"  count="1"/>
+			<item name="toolTAArmorerWrenches"  count="1"/>
+		</append>
 
 	
 	<!--<remove xpath="/traders/trader_info[@id='1']"/>
@@ -101,18 +232,17 @@
 			<trader_items count="all">
 				<item group="groupArmorMods" unique_only="true" count="4,6"/>
 				<item group="groupArmorLight" unique_only="true" count="8"/>
-				<item group="groupArmorMedium" unique_only="true" count="8"/>
-				<item group="groupArmorHeavy" unique_only="true" count="8"/>
 				<item name="armorParts" count="3,5"/>
 				<item name="resourceSewingKit" count="3,5"/>
-				
-				<item group="books" unique_only="true" count="3,4"/>
+				<item group="books" unique_only="true" count="1,2"/>
 				<item group="tools" unique_only="true" count="10"/>
 				<item name="toolDewGatherer" count="1,3"/>
 				<item name="toolDewTarp" count="1,3"/>
 				<item name="toolDewFilter" count="1,3"/>
 				<item name="toolCookingPot" count="1,3"/>
 				<item name="toolCookingGrill" count="1,3"/>
+				<item name="HOH_Propane_Tank" count="1" prob="0.2" unique_only="true"/>
+			    <item name="HOH_Portable_Gas_Stove" count="1" prob="0.1" unique_only="true"/>
 				<item group="groupDyeMods" count="5"/>
 			</trader_items>
 			
@@ -125,7 +255,7 @@
 				<item group="tools" unique_only="true" count="10"/>
 				<item group="rareTools" unique_only="true" count="2,3"/>
 				<item group="groupMeleeAll" count="5,7"/>
-				<item group="groupRangedAll" count="5,7"/>
+				<item group="groupWeaponsRekt" count="5,7"/>
 				<item group="weaponsGunParts" count="2,4"/>
 				<item group="traderElectrical" unique_only="true" count="5,10"/>
 				<item group="traderSolarCells" count="2,4"/>

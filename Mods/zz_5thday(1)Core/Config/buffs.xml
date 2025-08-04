@@ -43,17 +43,22 @@
 	<remove xpath="/buffs/buff[@name='buffAnimalTracker']"/>
 	<remove xpath="/buffs/buff[@name='buffAnimalTrackerAcquired']"/>
 	<remove xpath="/buffs/buff[@name='buffCrouching']"/>
-	<set xpath="//buff[@name='buffStatusCheck02']/effect_group/triggered_effect/requirement[@progression_name='perkHealingFactor']/@progression_name">PerkHOHCooking</set>
+	<set xpath="//buff[@name='buffStatusCheck02']/effect_group/triggered_effect/requirement[@progression_name='perkHealingFactor']/@progression_name">PerkHOHEating</set>
 	<set xpath="//buff[@name='buffStatusCheck02']/effect_group/triggered_effect/requirement[@progression_name='perkPhysician']/@progression_name">PerkHOHHealthandBody</set>
 	<!--<set xpath="//buff[@name='buffPerkAbilityUpdate']/effect_group/triggered_effect/requirement[@progression_name='perkSlowMetabolism']/@progression_name">PerkHOHCooking</set><set xpath="//buff[@name='buffPerkAbilityUpdate']/effect_group/triggered_effect/requirement[@progression_name='perkPhysician']/@progression_name">PerkHOHHealthandBody</set><set xpath="//buff[@name='buffPerkAbilityUpdate']/effect_group/triggered_effect/requirement[@progression_name='perkParkour']/@progression_name">PerkHOHOlympics</set>-->
 	<set xpath="//buff/effect_group/triggered_effect/requirement[@progression_name='perkPhysician']/@progression_name">PerkHOHHealthandBody</set>
 	<!--<set xpath="//buff/effect_group/triggered_effect/requirement[@progression_name='perkHealingFactor']/@progression_name">PerkHOHCooking</set>-->
 	<insertAfter xpath="//buff[@name='buffStatusCheck01']/effect_group/passive_effect[@name='FoodMax']">
+	    
+		<triggered_effect trigger="onSelfEnteredGame" action="ModifyCVar" cvar=".dukeNoteRead" operation="set" value="1">
+			<requirement name="CVarCompare" cvar=".dukeNoteRead" operation="Equals" value="0"/>
+		</triggered_effect>
 		<triggered_effect trigger="onSelfEnteredGame" action="AddBuff" target="self" buff="ZombieKillCounter"/>
 		<triggered_effect trigger="onSelfEnteredGame" action="AddBuff" target="self" buff="HOH_Constants"/>
 		<triggered_effect trigger="onSelfEnteredGame" action="AddBuff" target="self" buff="HOH_HeadShot_Bonus"/>
 		<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="self" buff="ActionSkillStart"/>
 		<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="self" buff="HOH_Level_Display_Cooking"/>
+		<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="self" buff="HOH_Level_Display_Eating"/>
 		<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="self" buff="HOH_Level_Display_Farming"/>
 		<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="self" buff="HOH_Level_Display_Traps"/>
 		<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="self" buff="HOH_Level_Display_HealthandBody"/>
@@ -96,6 +101,12 @@
 				</triggered_effect>
 				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" target="self" buff="HOH_Level_Display_Wrenches">
 					<requirement name="!HoldingItemHasTags" tags="PerkHOHWrenches"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="self" buff="HOH_Level_Display_Construction">
+					<requirement name="HoldingItemHasTags" tags="PerkHOHConstruction"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" target="self" buff="HOH_Level_Display_Construction">
+					<requirement name="!HoldingItemHasTags" tags="PerkHOHConstruction"/>
 				</triggered_effect>
 				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="self" buff="HOH_Level_Display_rifles">
 					<requirement name="HoldingItemHasTags" tags="PerkHOHRifles"/>
@@ -239,6 +250,15 @@
 				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Wrenches_Multiplier" operation="set" value="1.03"/>
 				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Wrenches_Perk_Tracker" operation="set" value="0"/>
 			</effect_group>
+			<effect_group name="BeginningShitConstruction">
+				<requirement name="CVarCompare" cvar="HOH_Construction_XP" operation="Equals" value="0"/>
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="Equals" value="0"/>
+				<requirement name="CVarCompare" cvar="HOH_Construction_Perk_Tracker" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Construction_lvl" value="0"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Construction_lvl_Next_Needed" value="100"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Construction_Multiplier" operation="set" value="1.03"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Construction_Perk_Tracker" operation="set" value="0"/>
+			</effect_group>
 			<effect_group name="BeginningShitRifles">
 				<requirement name="CVarCompare" cvar="HOH_Rifles_XP" operation="Equals" value="0"/>
 				<requirement name="CVarCompare" cvar="HOH_Rifles_lvl" operation="Equals" value="0"/>
@@ -347,6 +367,16 @@
 				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Cooking_lvl_Next_Needed" value="50"/>
 				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Cooking_Multiplier" operation="set" value="1.03"/>
 				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Cooking_Perk_Tracker" operation="set" value="0"/>
+			</effect_group>
+			<effect_group name="BeginningShitEating">
+				<requirement name="CVarCompare" cvar="HOH_Eating_XP" operation="Equals" value="0"/>
+				<requirement name="CVarCompare" cvar="HOH_Eating_lvl" operation="Equals" value="0"/>
+				<requirement name="CVarCompare" cvar="HOH_Eating_Perk_Tracker" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Eating_lvl" value="0"/>
+				<!-- <triggered_effect trigger="onSelfBuffUpdate" action="AddProgressionLevel" progression_name="perkCooking" level="1"/> -->
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Eating_lvl_Next_Needed" value="50"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Eating_Multiplier" operation="set" value="1.03"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Eatking_Perk_Tracker" operation="set" value="0"/>
 			</effect_group>
 			<effect_group name="BeginningShitFarming">
 				<requirement name="CVarCompare" cvar="HOH_Farming_XP" operation="Equals" value="0"/>
@@ -475,6 +505,12 @@
 				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Wrenches_lvl_Next_Needed" operation="set" value="100"/>
 				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Wrenches_Perk_Tracker" operation="set" value="0"/>
 			</effect_group>
+			<effect_group name="BeginningShitConstruction">
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Construction_XP" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Construction_lvl" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Construction_lvl_Next_Needed" operation="set" value="100"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Construction_Perk_Tracker" operation="set" value="0"/>
+			</effect_group>
 			<effect_group name="BeginningShitRifles">
 				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Rifles_XP" operation="set" value="0"/>
 				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Rifles_lvl" operation="set" value="0"/>
@@ -540,6 +576,12 @@
 				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Cooking_lvl" operation="set" value="0"/>
 				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Cooking_lvl_Next_Needed" operation="set" value="50"/>
 				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Cooking_Perk_Tracker" operation="set" value="0"/>
+			</effect_group>
+			<effect_group name="BeginningShitEating">
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Eating_XP" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Eating_lvl" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Eating_lvl_Next_Needed" operation="set" value="50"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Eating_Perk_Tracker" operation="set" value="0"/>
 			</effect_group>
 			<effect_group name="BeginningShitFarming">
 				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Farming_XP" operation="set" value="0"/>
@@ -1306,48 +1348,7 @@
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_resourceBrassIngot" operation="add" value="1" />
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Wrenches_XP" operation="add" value="1" />
 			</effect_group>
-			<effect_group name="resourceCement">
-				<requirement name="CVarCompare" cvar="HOH_Wrenches_lvl" operation="LT" value="250" />
-				<requirement name="CVarCompare" cvar="processedCount_resourceCement" operation="LT" value="@_craftCount_resourceCement" />
-				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_resourceCement" operation="add" value="1" />
-				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Wrenches_XP" operation="add" value="1" />
-			</effect_group>
-			<effect_group name="resourceMetalPipe">
-				<requirement name="CVarCompare" cvar="HOH_Wrenches_lvl" operation="LT" value="250" />
-				<requirement name="CVarCompare" cvar="processedCount_resourceMetalPipe" operation="LT" value="@_craftCount_resourceMetalPipe" />
-				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_resourceMetalPipe" operation="add" value="1" />
-				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Wrenches_XP" operation="add" value="1" />
-			</effect_group>
-			<effect_group name="resourceCobblestones">
-				<requirement name="CVarCompare" cvar="HOH_Wrenches_lvl" operation="LT" value="250" />
-				<requirement name="CVarCompare" cvar="processedCount_resourceCobblestones" operation="LT" value="@_craftCount_resourceCobblestones" />
-				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_resourceCobblestones" operation="add" value="1" />
-				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Wrenches_XP" operation="add" value="1" />
-			</effect_group>
-			<effect_group name="resourceConcreteMix">
-				<requirement name="CVarCompare" cvar="HOH_Wrenches_lvl" operation="LT" value="250" />
-				<requirement name="CVarCompare" cvar="processedCount_resourceConcreteMix" operation="LT" value="@_craftCount_resourceConcreteMix" />
-				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_resourceConcreteMix" operation="add" value="1" />
-				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Wrenches_XP" operation="add" value="1" />
-			</effect_group>
-			<effect_group name="concreteShapes:VariantHelper">
-				<requirement name="CVarCompare" cvar="HOH_Wrenches_lvl" operation="LT" value="250" />
-				<requirement name="CVarCompare" cvar="processedCount_concreteShapes:VariantHelper" operation="LT" value="@_craftCount_concreteShapes:VariantHelper" />
-				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_concreteShapes:VariantHelper" operation="add" value="1" />
-				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Wrenches_XP" operation="add" value="1" />
-			</effect_group>
-			<effect_group name="cobblestoneShapes:VariantHelper">
-				<requirement name="CVarCompare" cvar="HOH_Wrenches_lvl" operation="LT" value="250" />
-				<requirement name="CVarCompare" cvar="processedCount_cobblestoneShapes:VariantHelper" operation="LT" value="@_craftCount_cobblestoneShapes:VariantHelper" />
-				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_cobblestoneShapes:VariantHelper" operation="add" value="1" />
-				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Wrenches_XP" operation="add" value="1" />
-			</effect_group>
-			<effect_group name="frameShapes:VariantHelper">
-				<requirement name="CVarCompare" cvar="HOH_Wrenches_lvl" operation="LT" value="250" />
-				<requirement name="CVarCompare" cvar="processedCount_frameShapes:VariantHelper" operation="LT" value="@_craftCount_frameShapes:VariantHelper" />
-				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_frameShapes:VariantHelper" operation="add" value="1" />
-				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Wrenches_XP" operation="add" value="1" />
-			</effect_group>
+			
 			<effect_group name="meleeToolSalvageT1Wrench">
 				<requirement name="CVarCompare" cvar="HOH_Wrenches_lvl" operation="LT" value="250" />
 				<requirement name="CVarCompare" cvar="processedCount_meleeToolSalvageT1Wrench" operation="LT" value="@_craftCount_meleeToolSalvageT1Wrench" />
@@ -1366,18 +1367,7 @@
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_meleeToolSalvageT2Ratchet" operation="add" value="1" />
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Wrenches_XP" operation="add" value="75" />
 			</effect_group>
-			<effect_group name="meleeToolRepairT1ClawHammer">
-				<requirement name="CVarCompare" cvar="HOH_Wrenches_lvl" operation="LT" value="250" />
-				<requirement name="CVarCompare" cvar="processedCount_meleeToolRepairT1ClawHammer" operation="LT" value="@_craftCount_meleeToolRepairT1ClawHammer" />
-				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_meleeToolRepairT1ClawHammer" operation="add" value="1" />
-				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Wrenches_XP" operation="add" value="50" />
-			</effect_group>
-			<effect_group name="meleeToolRepairT3Nailgun">
-				<requirement name="CVarCompare" cvar="HOH_Wrenches_lvl" operation="LT" value="250" />
-				<requirement name="CVarCompare" cvar="processedCount_meleeToolRepairT3Nailgun" operation="LT" value="@_craftCount_meleeToolRepairT3Nailgun" />
-				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_meleeToolRepairT3Nailgun" operation="add" value="1" />
-				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Wrenches_XP" operation="add" value="75" />
-			</effect_group>
+			
 			<effect_group name="ammoGasCan">
 				<requirement name="CVarCompare" cvar="HOH_Wrenches_lvl" operation="LT" value="250" />
 				<requirement name="CVarCompare" cvar="processedCount_ammoGasCan" operation="LT" value="@_craftCount_ammoGasCan" />
@@ -1390,35 +1380,7 @@
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_fuelDiesil" operation="add" value="1" />
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Wrenches_XP" operation="add" value=".05" />
 			</effect_group>
-			<effect_group>
-				<requirement name="HoldingItemHasTags" tags="repairTool" />
-				<!-- Default XP Gain (DamagedBlock, StoneAxe) -->
-				<triggered_effect trigger="onSelfRepairBlock" action="ModifyCVar" cvar="HOH_Wrenches_XP_Temp" operation="add" value="3" />
-				<!-- Tool Modifier -->
-				<triggered_effect trigger="onSelfRepairBlock" action="ModifyCVar" cvar="HOH_Wrenches_XP_Temp" operation="multiply" value="1">
-					<requirement name="HoldingItemHasTags" tags="stoneaxe" />
-				</triggered_effect>
-				<triggered_effect trigger="onSelfRepairBlock" action="ModifyCVar" cvar="HOH_Wrenches_XP_Temp" operation="multiply" value="2">
-					<requirement name="!HoldingItemHasTags" tags="stoneaxe" />
-				</triggered_effect>
-				<!-- Night Time Multiplier -->
-				<triggered_effect trigger="onSelfRepairBlock" action="ModifyCVar" cvar="HOH_Wrenches_XP_Temp" operation="multiply" value="1.5">
-					<requirement name="IsNight" />
-				</triggered_effect>
-			</effect_group>
-			<effect_group>
-				<requirement name="HoldingItemHasTags" tags="repairTool" />
-				<triggered_effect trigger="onSelfUpgradedBlock" action="ModifyCVar" cvar="HOH_Wrenches_XP" operation="add" value="3">
-					<requirement name="HoldingItemHasTags" tags="stoneaxe" />
-				</triggered_effect>
-				<triggered_effect trigger="onSelfUpgradedBlock" action="ModifyCVar" cvar="HOH_Wrenches_XP" operation="add" value="6">
-					<requirement name="!HoldingItemHasTags" tags="stoneaxe" />
-				</triggered_effect>
-				<!-- Night Time Multiplier -->
-				<triggered_effect trigger="onSelfUpgradedBlock" action="ModifyCVar" cvar="HOH_Wrenches_XP" operation="add" value="2">
-					<requirement name="IsNight" />
-				</triggered_effect>
-			</effect_group>
+			
 			<effect_group>
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Wrenches_XP" operation="add" value="@HOH_Wrenches_XP_Temp_Break"/>
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Wrenches_XP_Temp_Break" operation="set" value="0"/>
@@ -1426,20 +1388,376 @@
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Wrenches_XP_Temp" operation="set" value="0"/>
 			</effect_group>
 		</buff>
+		<buff name="HOH_Level_Display_Construction" hidden="true" remove_on_death="false">
+			<update_rate value="0.1"/>
+			<stack_type value="ignore"/>
+			<!-- Wrench Progression -->
+			<effect_group name="HOH_Construction_Levelup">
+				<requirement name="CVarCompare" cvar="HOH_Construction_XP" operation="GTE" value="@HOH_Construction_lvl_Next_Needed"/>
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="subtract" value="@HOH_Construction_lvl_Next_Needed"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_lvl_Next_Needed" operation="multiply" value="@HOH_Construction_Multiplier"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_lvl" operation="add" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddProgressionLevel" progression_name="perkConstruction" level="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_Perk_Tracker" operation="add" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="addProgressionLevel" progression_name="PerkHOHConstruction" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ShowToolbeltMessage" message="[804cba][I]Your Skill with Construction has increased!"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="PlaySound" sound="levelup"/>
+			</effect_group>
+			
+			<effect_group name="HOH_Construction_Level_Progress">
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_Xp_Total" operation="set" value="@HOH_Construction_XP"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_Level_Next" operation="set" value="@HOH_Construction_lvl_Next_Needed"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_Xp_Total" operation="divide" value="@HOH_Construction_Level_Next"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_lvl_Next_Display" operation="set" value="@HOH_Construction_Xp_Total"/>
+			</effect_group>
+			
+			
+			<effect_group name="resourceCement">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_resourceCement" operation="LT" value="@_craftCount_resourceCement" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_resourceCement" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="1" />
+			</effect_group>
+			<effect_group name="resourceMetalPipe">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_resourceMetalPipe" operation="LT" value="@_craftCount_resourceMetalPipe" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_resourceMetalPipe" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="1" />
+			</effect_group>
+			<effect_group name="resourceCobblestones">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_resourceCobblestones" operation="LT" value="@_craftCount_resourceCobblestones" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_resourceCobblestones" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="1" />
+			</effect_group>
+			<effect_group name="resourceConcreteMix">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_resourceConcreteMix" operation="LT" value="@_craftCount_resourceConcreteMix" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_resourceConcreteMix" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="1" />
+			</effect_group>
+			<effect_group name="concreteShapes">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_concreteShapes" operation="LT" value="@_craftCount_concreteShapes" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_concreteShapes" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="1" />
+			</effect_group>
+			<effect_group name="cobblestoneShapes">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_cobblestoneShapes" operation="LT" value="@_craftCount_cobblestoneShapes" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_cobblestoneShapes" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="1" />
+			</effect_group>
+			<effect_group name="frameShapes">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_frameShapes:VariantHelper" operation="LT" value="@_craftCount_frameShapes:VariantHelper" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_frameShapes:VariantHelper" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value=".25" />
+			</effect_group>
+			
+			<effect_group name="meleeToolRepairT1ClawHammer">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_meleeToolRepairT1ClawHammer" operation="LT" value="@_craftCount_meleeToolRepairT1ClawHammer" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_meleeToolRepairT1ClawHammer" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="50" />
+			</effect_group>
+			<effect_group name="meleeToolRepairT3Nailgun">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_meleeToolRepairT3Nailgun" operation="LT" value="@_craftCount_meleeToolRepairT3Nailgun" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_meleeToolRepairT3Nailgun" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="75" />
+			</effect_group>
+			<effect_group name="cntWoodWritableCrate">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_cntWoodWritableCrate" operation="LT" value="@_craftCount_cntWoodWritableCrate" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_cntWoodWritableCrate" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="10" />
+			</effect_group>
+
+			<effect_group name="cntNightstandPlayer">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_cntNightstandPlayer" operation="LT" value="@_craftCount_cntNightstandPlayer" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_cntNightstandPlayer" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="10" />
+			</effect_group>
+
+			<effect_group name="cntBookcasePlayer">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_cntBookcasePlayer" operation="LT" value="@_craftCount_cntBookcasePlayer" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_cntBookcasePlayer" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="10" />
+			</effect_group>
+
+			<effect_group name="cntPillCasePlayer">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_cntPillCasePlayer" operation="LT" value="@_craftCount_cntPillCasePlayer" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_cntPillCasePlayer" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="10" />
+			</effect_group>
+
+			<effect_group name="closetDoorBlockVariantHelper_LtD">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_closetDoorBlockVariantHelper_LtD" operation="LT" value="@_craftCount_closetDoorBlockVariantHelper_LtD" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_closetDoorBlockVariantHelper_LtD" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="5" />
+			</effect_group>
+
+			<effect_group name="closetDoorDoubleBlockVariantHelper_LtD">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_closetDoorDoubleBlockVariantHelper_LtD" operation="LT" value="@_craftCount_closetDoorDoubleBlockVariantHelper_LtD" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_closetDoorDoubleBlockVariantHelper_LtD" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="5" />
+			</effect_group>
+
+			<effect_group name="exteriorHouseDoorBlockVariantHelper_LtD">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_exteriorHouseDoorBlockVariantHelper_LtD" operation="LT" value="@_craftCount_exteriorHouseDoorBlockVariantHelper_LtD" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_exteriorHouseDoorBlockVariantHelper_LtD" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="5" />
+			</effect_group>
+
+			<effect_group name="exteriorHouseDoorDoubleBlockVariantHelper_LtD">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_exteriorHouseDoorDoubleBlockVariantHelper_LtD" operation="LT" value="@_craftCount_exteriorHouseDoorDoubleBlockVariantHelper_LtD" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_exteriorHouseDoorDoubleBlockVariantHelper_LtD" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="5" />
+			</effect_group>
+
+			<effect_group name="exteriorHouseDoorSideLightSingleBlockVariantHelper_LtD">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_exteriorHouseDoorSideLightSingleBlockVariantHelper_LtD" operation="LT" value="@_craftCount_exteriorHouseDoorSideLightSingleBlockVariantHelper_LtD" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_exteriorHouseDoorSideLightSingleBlockVariantHelper_LtD" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="5" />
+			</effect_group>
+
+			<effect_group name="exteriorHouseDoorSideLightBlockVariantHelper_LtD">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_exteriorHouseDoorSideLightBlockVariantHelper_LtD" operation="LT" value="@_craftCount_exteriorHouseDoorSideLightBlockVariantHelper_LtD" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_exteriorHouseDoorSideLightBlockVariantHelper_LtD" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="5" />
+			</effect_group>
+
+			<effect_group name="exteriorHouseDoorOldBlockVariantHelper_LtD">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_exteriorHouseDoorOldBlockVariantHelper_LtD" operation="LT" value="@_craftCount_exteriorHouseDoorOldBlockVariantHelper_LtD" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_exteriorHouseDoorOldBlockVariantHelper_LtD" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="5" />
+			</effect_group>
+
+			<effect_group name="exteriorHouseDoorDoubleOldBlockVariantHelper_LtD">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_exteriorHouseDoorDoubleOldBlockVariantHelper_LtD" operation="LT" value="@_craftCount_exteriorHouseDoorDoubleOldBlockVariantHelper_LtD" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_exteriorHouseDoorDoubleOldBlockVariantHelper_LtD" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="5" />
+			</effect_group>
+
+			<effect_group name="interiorHouseDoorBlockVariantHelper_LtD">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_interiorHouseDoorBlockVariantHelper_LtD" operation="LT" value="@_craftCount_interiorHouseDoorBlockVariantHelper_LtD" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_interiorHouseDoorBlockVariantHelper_LtD" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="5" />
+			</effect_group>
+
+			<effect_group name="interiorHouseDoorDoubleBlockVariantHelper_LtD">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_interiorHouseDoorDoubleBlockVariantHelper_LtD" operation="LT" value="@_craftCount_interiorHouseDoorDoubleBlockVariantHelper_LtD" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_interiorHouseDoorDoubleBlockVariantHelper_LtD" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="5" />
+			</effect_group>
+
+			<effect_group name="interiorDoorOldBlockVariantHelper_LtD">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_interiorDoorOldBlockVariantHelper_LtD" operation="LT" value="@_craftCount_interiorDoorOldBlockVariantHelper_LtD" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_interiorDoorOldBlockVariantHelper_LtD" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="5" />
+			</effect_group>
+
+			<effect_group name="interiorDoorOldDoubleBlockVariantHelper_LtD">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_interiorDoorOldDoubleBlockVariantHelper_LtD" operation="LT" value="@_craftCount_interiorDoorOldDoubleBlockVariantHelper_LtD" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_interiorDoorOldDoubleBlockVariantHelper_LtD" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="5" />
+			</effect_group>
+
+			<effect_group name="pantryDoorBlockVariantHelper_LtD">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_pantryDoorBlockVariantHelper_LtD" operation="LT" value="@_craftCount_pantryDoorBlockVariantHelper_LtD" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_pantryDoorBlockVariantHelper_LtD" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="5" />
+			</effect_group>
+
+			<effect_group name="woodenGarageDoor3x3BlockVariantHelper_LtD">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_woodenGarageDoor3x3BlockVariantHelper_LtD" operation="LT" value="@_craftCount_woodenGarageDoor3x3BlockVariantHelper_LtD" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_woodenGarageDoor3x3BlockVariantHelper_LtD" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="10" />
+			</effect_group>
+
+			<effect_group name="woodenGarageDoor4x3BlockVariantHelper_LtD">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_woodenGarageDoor4x3BlockVariantHelper_LtD" operation="LT" value="@_craftCount_woodenGarageDoor4x3BlockVariantHelper_LtD" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_woodenGarageDoor4x3BlockVariantHelper_LtD" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="10" />
+			</effect_group>
+
+			<effect_group name="woodenGarageDoor5x3BlockVariantHelper_LtD">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_woodenGarageDoor5x3BlockVariantHelper_LtD" operation="LT" value="@_craftCount_woodenGarageDoor5x3BlockVariantHelper_LtD" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_woodenGarageDoor5x3BlockVariantHelper_LtD" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="10" />
+			</effect_group>
+
+			<effect_group name="frenchDoorBlockVariantHelper_LtD">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_frenchDoorBlockVariantHelper_LtD" operation="LT" value="@_craftCount_frenchDoorBlockVariantHelper_LtD" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_frenchDoorBlockVariantHelper_LtD" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="5" />
+			</effect_group>
+
+			<effect_group name="frenchDoorDoubleBlockVariantHelper_LtD">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_frenchDoorDoubleBlockVariantHelper_LtD" operation="LT" value="@_craftCount_frenchDoorDoubleBlockVariantHelper_LtD" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_frenchDoorDoubleBlockVariantHelper_LtD" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="5" />
+			</effect_group>
+
+			<effect_group name="oldWoodDoor_LtD">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_oldWoodDoor_LtD" operation="LT" value="@_craftCount_oldWoodDoor_LtD" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_oldWoodDoor_LtD" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="5" />
+			</effect_group>
+
+			<effect_group name="oldWoodDoorDouble_LtD">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_oldWoodDoorDouble_LtD" operation="LT" value="@_craftCount_oldWoodDoorDouble_LtD" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_oldWoodDoorDouble_LtD" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="5" />
+			</effect_group>
+
+			<effect_group name="cntWoodFurnitureBlockVariantHelper">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_cntWoodFurnitureBlockVariantHelper" operation="LT" value="@_craftCount_cntWoodFurnitureBlockVariantHelper" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_cntWoodFurnitureBlockVariantHelper" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="5" />
+			</effect_group>
+
+			<effect_group name="MilkingStationPlaceable">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_MilkingStationPlaceable" operation="LT" value="@_craftCount_MilkingStationPlaceable" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_MilkingStationPlaceable" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="50" />
+			</effect_group>
+
+			<effect_group name="PigPenPlaceable">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_PigPenPlaceable" operation="LT" value="@_craftCount_PigPenPlaceable" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_PigPenPlaceable" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="50" />
+			</effect_group>
+
+			<effect_group name="ChickenCoop">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_ChickenCoop" operation="LT" value="@_craftCount_ChickenCoop" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_ChickenCoop" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="50" />
+			</effect_group>
+
+			<effect_group name="Beehive">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_Beehive" operation="LT" value="@_craftCount_Beehive" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_Beehive" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="50" />
+			</effect_group>
+
+
+
+			<!--Crafting workstations-->
+			<effect_group name="workbench">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_workbench" operation="LT" value="@_craftCount_workbench" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_workbench" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="100" />
+			</effect_group>
+			<effect_group name="cementMixer">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_cementMixer" operation="LT" value="@_craftCount_cementMixer" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_cementMixer" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="100" />
+			</effect_group>
+			<effect_group name="WorkingtableSaw">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_WorkingtableSaw" operation="LT" value="@_craftCount_WorkingtableSaw" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_WorkingtableSaw" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="100" />
+			</effect_group>
+			<effect_group name="WoodenPlanks">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_WorkingtableSaw" operation="LT" value="@_craftCount_WorkingtableSaw" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_WorkingtableSaw" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="100" />
+			</effect_group>
+			<effect_group name="woodandnails">
+				<requirement name="CVarCompare" cvar="HOH_Construction_lvl" operation="LT" value="250" />
+				<requirement name="CVarCompare" cvar="processedCount_resourceWoodandNails" operation="LT" value="@_craftCount_resourceWoodandNails" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_resourceWoodandNails" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value=".25" />
+			</effect_group>
+
+
+
+			
+			<effect_group>
+				<requirement name="HoldingItemHasTags" tags="repairTool" />
+				<!-- Default XP Gain (DamagedBlock, StoneAxe) -->
+				<triggered_effect trigger="onSelfRepairBlock" action="ModifyCVar" cvar="HOH_Construction_XP_Temp" operation="add" value="3" />
+				<!-- Tool Modifier -->
+				<triggered_effect trigger="onSelfRepairBlock" action="ModifyCVar" cvar="HOH_Construction_XP_Temp" operation="multiply" value="1">
+					<requirement name="HoldingItemHasTags" tags="stoneaxe" />
+				</triggered_effect>
+				<triggered_effect trigger="onSelfRepairBlock" action="ModifyCVar" cvar="HOH_Construction_XP_Temp" operation="multiply" value="2">
+					<requirement name="!HoldingItemHasTags" tags="stoneaxe" />
+				</triggered_effect>
+				<!-- Night Time Multiplier -->
+				<triggered_effect trigger="onSelfRepairBlock" action="ModifyCVar" cvar="HOH_Construction_XP_Temp" operation="multiply" value="1.5">
+					<requirement name="IsNight" />
+				</triggered_effect>
+			</effect_group>
+			<effect_group>
+				<requirement name="HoldingItemHasTags" tags="repairTool" />
+				<triggered_effect trigger="onSelfUpgradedBlock" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="3">
+					<requirement name="HoldingItemHasTags" tags="stoneaxe" />
+				</triggered_effect>
+				<triggered_effect trigger="onSelfUpgradedBlock" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="6">
+					<requirement name="!HoldingItemHasTags" tags="stoneaxe" />
+				</triggered_effect>
+				<!-- Night Time Multiplier -->
+				<triggered_effect trigger="onSelfUpgradedBlock" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="2">
+					<requirement name="IsNight" />
+				</triggered_effect>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="@HOH_Construction_XP_Temp_Break"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP_Temp_Break" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP" operation="add" value="@HOH_Construction_XP_Temp"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Construction_XP_Temp" operation="set" value="0"/>
+			</effect_group>
+		</buff>
 		<buff name="HOH_Level_Display_rifles" hidden="true" remove_on_death="false">
 			<update_rate value="0.1"/>
 			<stack_type value="ignore"/>
 			<effect_group>
-				<requirement name="ItemHasTags" tags="PerkHOHRifles"/>
+				<requirement name="ItemHasTags" tags="perkHOHRifles"/>
 				<requirement name="CVarCompare" cvar="HOH_Shotguns_lvl" operation="LT" value="50"/>
-				<passive_effect name="EntityDamage" operation="base_set" value="50"/>
+				<passive_effect name="EntityDamage" operation="base_set" value="0"/>
 			</effect_group>
 			<!-- Rifle Progression -->
 			<effect_group name="HOH_Rifles_Levelup">
 				<requirement name="CVarCompare" cvar="HOH_Pistols_lvl" operation="GTE" value="50"/>
 				<requirement name="CVarCompare" cvar="HOH_Shotguns_lvl" operation="GTE" value="50"/>
 				<requirement name="CVarCompare" cvar="HOH_Rifles_XP" operation="GTE" value="@HOH_Rifles_lvl_Next_Needed"/>
-				<requirement name="CVarCompare" cvar="HOH_Rifles_lvl" operation="LT" value="101"/>
+				<requirement name="CVarCompare" cvar="HOH_Rifles_lvl" operation="LT" value="200"/>
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Rifles_XP" operation="subtract" value="@HOH_Rifles_lvl_Next_Needed"/>
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Rifles_lvl_Next_Needed" operation="multiply" value="@HOH_Rifles_Multiplier"/>
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Rifles_lvl" operation="add" value="1"/>
@@ -1448,6 +1766,10 @@
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Rifles_Perk_Tracker" operation="add" value="1"/>
 				<triggered_effect trigger="onSelfBuffUpdate" action="ShowToolbeltMessage" message="[804cba][I]Your Skill with Rifles has increased!"/>
 				<triggered_effect trigger="onSelfBuffUpdate" action="PlaySound" sound="levelup"/>
+			</effect_group>
+			<effect_group name="fix my shit">
+					<requirement name="ProgressionLevel" progression_name="perkRifles" operation="LT" value="@HOH_Rifles_Perk_Tracker"/>
+					<triggered_effect trigger="onSelfBuffUpdate" action="AddProgressionLevel" progression_name="perkRifles" level="1"/>
 			</effect_group>
 			<effect_group name="HOH_Rifles_Level_Progress">
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Rifles_Xp_Total" operation="set" value="@HOH_Rifles_XP"/>
@@ -1459,7 +1781,7 @@
 			<effect_group>
 				<requirement name="CVarCompare" cvar="HOH_Pistols_lvl" operation="GTE" value="50"/>
 				<requirement name="CVarCompare" cvar="HOH_Shotguns_lvl" operation="GTE" value="50"/>
-				<requirement name="ItemHasTags" tags="PerkHOHRifles"/>
+				<requirement name="ItemHasTags" tags="perkHOHRifles"/>
 				<requirement name="IsAlive" target="other"/>
 				<!-- Base Zombie xp (ONATTACKED, Pipe Rifle) -->
 				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_Rifles_XP_Temp" operation="add" value="10"/>
@@ -1520,6 +1842,7 @@
 				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_Rifles_XP_Temp" operation="multiply" value="1.5">
 					<requirement name="IsNight"/>
 				</triggered_effect>
+
 				<!-- Conditional Modifiers 
 					<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_Rifles_XP_Temp" operation="multiply" value="@NightRiflesMultiplierValue"><requirement name="IsNight"/></triggered_effect>
 					-->
@@ -1528,7 +1851,7 @@
 			<effect_group>
 				<requirement name="CVarCompare" cvar="HOH_Pistols_lvl" operation="GTE" value="50"/>
 				<requirement name="CVarCompare" cvar="HOH_Shotguns_lvl" operation="GTE" value="50"/>
-				<requirement name="ItemHasTags" tags="PerkHOHRifles"/>
+				<requirement name="ItemHasTags" tags="perkHOHRifles"/>
 				<!-- Base Zombie xp (ONATTACKED, Pipe Rifle) -->
 				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="HOH_Rifles_XP_Temp_Killed" operation="add" value="30"/>
 				<!-- Headshot Modifier -->
@@ -1589,6 +1912,14 @@
 					<requirement name="IsNight"/>
 				</triggered_effect>
 			</effect_group>
+			<effect_group>
+			<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_Rifles_XP_Temp" operation="multiply" value=".5">
+				<requirement name="ItemHasTags" tags="22r"/>
+				</triggered_effect>
+			<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="HOH_Rifles_XP_Temp_Killed" operation="multiply" value=".5">
+				<requirement name="ItemHasTags" tags="22r"/>
+				</triggered_effect>
+			</effect_group>
 			<!-- adds temp xp to main xp -->
 			<effect_group>
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Rifles_XP" operation="add" value="@HOH_Rifles_XP_Temp"/>
@@ -1616,11 +1947,16 @@
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_MachineGun_XP" operation="subtract" value="@HOH_MachineGun_lvl_Next_Needed"/>
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_MachineGun_lvl_Next_Needed" operation="multiply" value="@HOH_MachineGun_Multiplier"/>
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_MachineGun_lvl" operation="add" value="1"/>
-				<!-- <triggered_effect trigger="onSelfBuffUpdate" action="AddProgressionLevel" progression_name="perkMachineGun" level="1"/> -->
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddProgressionLevel" progression_name="perkMachineGun" level="1"/>
 				<triggered_effect trigger="onSelfBuffUpdate" action="AddProgressionLevel" progression_name="PerkHOHMachineGuns" level="1"/>
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_MachineGun_Perk_Tracker" operation="add" value="1"/>
+
 				<triggered_effect trigger="onSelfBuffUpdate" action="ShowToolbeltMessage" message="[804cba][I]Your Skill with Machine Guns has increased!"/>
 				<triggered_effect trigger="onSelfBuffUpdate" action="PlaySound" sound="levelup"/>
+			</effect_group>
+			<effect_group name="fix my shit">
+					<requirement name="ProgressionLevel" progression_name="perkMachineGun" operation="LT" value="@HOH_MachineGun_Perk_Tracker"/>
+					<triggered_effect trigger="onSelfBuffUpdate" action="AddProgressionLevel" progression_name="perkMachineGun" level="1"/>
 			</effect_group>
 			<effect_group name="HOH_smg_Levelup50">
 				<requirement name="CVarCompare" cvar="HOH_MachineGun_lvl" operation="EQ" value="50"/>
@@ -2134,6 +2470,7 @@
 				<requirement name="ItemHasTags" tags="PerkHOHShotguns"/>
 				<requirement name="CVarCompare" cvar="HOH_Pistols_lvl" operation="LT" value="50"/>
 				<passive_effect name="EntityDamage" operation="base_set" value="0"/>
+				 <passive_effect name="DamageModifier" operation="base_add" value="0" tags="head" />
 			</effect_group>
 			<!-- Shotgun Progression -->
 			<effect_group name="HOH_Shotguns_Levelup">
@@ -2151,6 +2488,8 @@
 				<triggered_effect trigger="onSelfBuffUpdate" action="CVarLogValue" cvar="HOH_Shotguns_XP"/>
 				<triggered_effect trigger="onSelfBuffUpdate" action="CVarLogValue" cvar="HOH_Shotguns_lvl_Next_Needed"/>
 			</effect_group>
+			
+			
 			<effect_group name="HOH_Shotguns_Level_Progress">
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Shotguns_Xp_Total" operation="set" value="@HOH_Shotguns_XP"/>
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Shotguns_Level_Next" operation="set" value="@HOH_Shotguns_lvl_Next_Needed"/>
@@ -2176,7 +2515,23 @@
 				  <requirement name="!ItemHasTags" tags="spread"/>
 				</triggered_effect>
 				<!-- Base Zombie xp -->
-				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="HOH_Shotguns_XP_Temp_Killed" operation="add" value="12"/>
+
+				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_Shotguns_XP_Temp_Killed" operation="add" value="5">
+					<requirement name="ItemHasTags" tags="5d_LeverActionShotgun"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_Shotguns_XP_Temp_Killed" operation="add" value="10">
+					<requirement name="ItemHasTags" tags="5d_doubleBarrelShotgun"/>
+					<requirement name="CVarCompare" cvar="HOH_Shotguns_lvl" operation="GTE" value="25"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_Shotguns_XP_Temp_Killed" operation="add" value="15">
+					<requirement name="ItemHasTags" tags="5thday_SPAS12"/>
+					<requirement name="CVarCompare" cvar="HOH_Shotguns_lvl" operation="GTE" value="50"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_Shotguns_XP_Temp_Killed" operation="add" value="20">
+					<requirement name="ItemHasTags" tags="5thday_Shotgun_Auto"/>
+					<requirement name="CVarCompare" cvar="HOH_Shotguns_lvl" operation="GTE" value="75"/>
+				</triggered_effect>
+				<!-- <triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="HOH_Shotguns_XP_Temp_Killed" operation="add" value="12"/> -->
 				<!-- Headshot Modifier -->
 				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="HOH_Shotguns_XP_Temp_Killed" operation="multiply" value="2">
 					<requirement name="HitLocation" body_parts="Head"/>
@@ -2205,14 +2560,14 @@
 					<requirement name="TriggerHasTags" tags="superradiated"/>
 				</triggered_effect>
 				<!-- Weapon Modifier -->
-				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="HOH_Shotguns_XP_Temp_Killed" operation="multiply" value="1.25">
+				<!-- <triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="HOH_Shotguns_XP_Temp_Killed" operation="multiply" value="1.25">
 					<requirement name="ItemHasTags" tags="pumpshotgun"/>
 				</triggered_effect>
 				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="HOH_Shotguns_XP_Temp_Killed" operation="multiply" value="1.5">
 					<requirement name="ItemHasTags" tags="autoshotgun"/>
-				</triggered_effect>
+				</triggered_effect> -->
 				<!-- Night Time Multiplier -->
-				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="HOH_Shotguns_XP_Temp_Killed" operation="multiply" value="1.25">
+				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="HOH_Shotguns_XP_Temp_Killed" operation="multiply" value="1.1">
 					<requirement name="IsNight"/>
 				</triggered_effect>
 			</effect_group>
@@ -2792,9 +3147,18 @@
 				<triggered_effect trigger="onSelfBuffUpdate" action="ShowToolbeltMessage" message="[804cba][I]Your Skill with Pistols has increased!"/>
 				<triggered_effect trigger="onSelfBuffUpdate" action="PlaySound" sound="levelup"/>
 			</effect_group>
+			<effect_group>
+			<!-- <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Pistols_Unlocked" operation="set" value="1">
+				<requirement name="CVarCompare" cvar="HOH_Pistols_lvl" operation="EQ" value="50"/>
+				<requirement name="CVarCompare" cvar="HOH_Pistols_Unlocked" operation="LT" value="1"/>
+			</triggered_effect> -->
+
+			</effect_group>
+
 			<effect_group name="HOH_Pistols_Levelup50">
 				<requirement name="CVarCompare" cvar="HOH_Pistols_lvl" operation="EQ" value="50"/>
 				<requirement name="CVarCompare" cvar="HOH_MachineGun_lvl" operation="LT" value="1"/>
+				<requirement name="CVarCompare" cvar="HOH_MachineGun_Unlocked" operation="LT" value="1"/>
 				<!-- <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_MachineGun_XP" operation="set" value="@HOH_MachineGun_lvl_Next_Needed"/> -->
 			
 				 <triggered_effect trigger="onSelfBuffUpdate" action="AddProgressionLevel" progression_name="perkHOHMachineGuns" level="1"/>
@@ -2802,16 +3166,19 @@
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_MachineGun_Perk_Tracker" operation="add" value="1"/> -->
 				<triggered_effect trigger="onSelfBuffUpdate" action="ShowToolbeltMessage" message="[804cba][I]Your Skill with Machinegun is ready!"/>
 				<triggered_effect trigger="onSelfBuffUpdate" action="PlaySound" sound="levelup"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_MachineGun_Unlocked" operation="set" value="1"/>
 			</effect_group>
 			<effect_group name="HOH_Pistols_Levelup502">
 				<requirement name="CVarCompare" cvar="HOH_Pistols_lvl" operation="EQ" value="50"/>
 				<requirement name="CVarCompare" cvar="HOH_Shotguns_lvl" operation="LT" value="1"/>
+				<requirement name="CVarCompare" cvar="HOH_Shotguns_Unlocked" operation="LT" value="1"/>
 				<!-- <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Shotguns_XP" operation="set" value="@HOH_Shotguns_lvl_Next_Needed"/> -->
 				<triggered_effect trigger="onSelfBuffUpdate" action="AddProgressionLevel" progression_name="perkHOHShotguns" level="1"/>
 				<!--<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Shotguns_lvl" operation="add" value="1"/>
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Shotguns_Perk_Tracker" operation="add" value="1"/> -->
 				<triggered_effect trigger="onSelfBuffUpdate" action="ShowToolbeltMessage" message="[804cba][I]Your Skill with Shotguns is ready!"/>
 				<triggered_effect trigger="onSelfBuffUpdate" action="PlaySound" sound="levelup"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Shotguns_Unlocked" operation="set" value="1"/>
 			</effect_group>
 			<effect_group name="HOH_Pistols_Level_Progress">
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Pistols_Xp_Total" operation="set" value="@HOH_Pistols_XP"/>
@@ -2825,12 +3192,26 @@
 				<requirement name="IsAlive" target="other"/>
 			
 
-				
+				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_Pistols_XP_Temp_Killed" operation="add" value="5">
+					<requirement name="ItemHasTags" tags="38Special"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_Pistols_XP_Temp_Killed" operation="add" value="10">
+					<requirement name="ItemHasTags" tags="glock9"/>
+					<requirement name="CVarCompare" cvar="HOH_Pistols_lvl" operation="GTE" value="25"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_Pistols_XP_Temp_Killed" operation="add" value="15">
+					<requirement name="ItemHasTags" tags="mk23"/>
+					<requirement name="CVarCompare" cvar="HOH_Pistols_lvl" operation="GTE" value="50"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_Pistols_XP_Temp_Killed" operation="add" value="20">
+					<requirement name="ItemHasTags" tags="deagle"/>
+					<requirement name="CVarCompare" cvar="HOH_Pistols_lvl" operation="GTE" value="75"/>
+				</triggered_effect>
 				
 				<!-- Base Zombie xp (ONATTACKED, Pipe Brawler) -->
-				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_Pistols_XP_Temp" operation="add" value="8"/>
+				<!-- <triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_Pistols_XP_Temp" operation="add" value="8"/> -->
 				<!-- Headshot Modifier -->
-				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="HOH_Pistols_XP_Temp" operation="multiply" value="1.5">
+				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_Pistols_XP_Temp" operation="multiply" value="1.5">
 					<requirement name="HitLocation" body_parts="Head"/>
 				</triggered_effect>
 				<!-- Biome Modifier -->
@@ -2876,12 +3257,32 @@
 				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_Pistols_XP_Temp" operation="multiply" value="2">
 					<requirement name="TargetRange" target="other" operation="GTE" value="20"/>
 				</triggered_effect>
+				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_Pistols_XP_Temp" operation="add" value="1.25">
+					<requirement name="IsNight"/>
+				</triggered_effect>
 			</effect_group>
 			<effect_group>
 				<requirement name="!ItemHasTags" tags="smg"/>
 				<requirement name="ItemHasTags" tags="PerkHOHPistols"/>
+				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="HOH_Pistols_XP_Temp_Killed" operation="add" value="5">
+					<requirement name="ItemHasTags" tags="38Special"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="HOH_Pistols_XP_Temp_Killed" operation="add" value="10">
+					<requirement name="ItemHasTags" tags="glock9"/>
+					<requirement name="CVarCompare" cvar="HOH_Pistols_lvl" operation="GTE" value="25"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="HOH_Pistols_XP_Temp_Killed" operation="add" value="15">
+					<requirement name="ItemHasTags" tags="mk23"/>
+					<requirement name="CVarCompare" cvar="HOH_Pistols_lvl" operation="GTE" value="50"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="HOH_Pistols_XP_Temp_Killed" operation="add" value="20">
+					<requirement name="ItemHasTags" tags="deagle"/>
+					<requirement name="CVarCompare" cvar="HOH_Pistols_lvl" operation="GTE" value="75"/>
+				</triggered_effect>
+				
+
 				<!-- Base Zombie xp -->
-				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="HOH_Pistols_XP_Temp_Killed" operation="add" value="12"/>
+				<!-- <triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="HOH_Pistols_XP_Temp_Killed" operation="add" value="12"/> -->
 				<!-- Headshot Modifier -->
 				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="HOH_Pistols_XP_Temp_Killed" operation="multiply" value="1.5">
 					<requirement name="HitLocation" body_parts="Head"/>
@@ -2928,6 +3329,9 @@
 				</triggered_effect>
 				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="HOH_Pistols_XP_Temp_Killed" operation="multiply" value="2">
 					<requirement name="TargetRange" target="other" operation="GTE" value="20"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="HOH_Pistols_XP_Temp_Killed" operation="add" value="1.25">
+					<requirement name="IsNight"/>
 				</triggered_effect>
 			</effect_group>
 			<effect_group>
@@ -3090,7 +3494,7 @@
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$MetabolismDuration" operation="add" value="-0.00333"/>
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$MetabolismResist" operation="add" value="-0.05"/>
 				<!--<triggered_effect trigger="onSelfBuffUpdate" action="CVarLogValue" cvar="$MetabolismDuration"/><triggered_effect trigger="onSelfBuffUpdate" action="CVarLogValue" cvar="$MetabolismResist"/>-->
-				<triggered_effect trigger="onSelfBuffUpdate" action="ShowToolbeltMessage" message="[804cba][I]Your Skill with Food Skills has increased!"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ShowToolbeltMessage" message="[804cba][I]Your Skill with Cooking Food Skills has increased!"/>
 				<triggered_effect trigger="onSelfBuffUpdate" action="PlaySound" sound="levelup"/>
 			</effect_group>
 			<effect_group name="HOH_Cooking_Level_Progress">
@@ -3351,6 +3755,32 @@
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_foodSundayChickenDinner" operation="add" value="1" />
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Cooking_XP" operation="add" value="15" />
 			</effect_group>
+		</buff>
+		<buff name="HOH_Level_Display_Eating" hidden="true" remove_on_death="false">
+			<update_rate value="0.1"/>
+			<stack_type value="ignore"/>
+			<effect_group name="HOH_Eating_Levelup">
+				<requirement name="CVarCompare" cvar="HOH_Eating_XP" operation="GTE" value="@HOH_Eating_lvl_Next_Needed"/>
+				<requirement name="CVarCompare" cvar="HOH_Eating_lvl" operation="LT" value="100"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Eating_XP" operation="subtract" value="@HOH_Eating_lvl_Next_Needed"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Eating_lvl_Next_Needed" operation="multiply" value="@HOH_Eating_Multiplier"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Eating_lvl" operation="add" value="1"/>
+				<!-- <triggered_effect trigger="onSelfBuffUpdate" action="AddProgressionLevel" progression_name="perkEating" level="1"/> -->
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddProgressionLevel" progression_name="PerkHOHEating" level="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Eating_Perk_Tracker" operation="add" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$MetabolismDuration" operation="add" value="-0.00333"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$MetabolismResist" operation="add" value="-0.05"/>
+				<!--<triggered_effect trigger="onSelfBuffUpdate" action="CVarLogValue" cvar="$MetabolismDuration"/><triggered_effect trigger="onSelfBuffUpdate" action="CVarLogValue" cvar="$MetabolismResist"/>-->
+				<triggered_effect trigger="onSelfBuffUpdate" action="ShowToolbeltMessage" message="[804cba][I]Your Skill with Eating Food Skills has increased!"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="PlaySound" sound="levelup"/>
+			</effect_group>
+			<effect_group name="HOH_Eating_Level_Progress">
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Eating_Xp_Total" operation="set" value="@HOH_Eating_XP"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Eating_Level_Next" operation="set" value="@HOH_Eating_lvl_Next_Needed"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Eating_Xp_Total" operation="divide" value="@HOH_Eating_Level_Next"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Eating_lvl_Next_Display" operation="set" value="@HOH_Eating_Xp_Total"/>
+			</effect_group>
+			
 		</buff>
 		<buff name="HOH_Level_Display_Farming" hidden="true" remove_on_death="false">
 			<update_rate value="0.1"/>
@@ -4373,7 +4803,31 @@
 				<triggered_effect trigger="onSelfBuffUpdate" action="ShowToolbeltMessage" message="[804cba][I]Your Skill with Questing has increased!"/>
 				<triggered_effect trigger="onSelfBuffUpdate" action="PlaySound" sound="levelup"/>
 			</effect_group>
-			<effect_group name="armorbonus">
+
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Questing_XP_Temp" operation="set" value="0">
+					<requirement name="InBiome" biome="08" />
+					<requirement name="CVarCompare" cvar="HOH_Questing_lvl" operation="GTE" value="12"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Questing_XP_Temp" operation="set" value="0">
+					<requirement name="InBiome" biome="09" />
+					<requirement name="CVarCompare" cvar="HOH_Questing_lvl" operation="GTE" value="22"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Questing_XP_Temp" operation="set" value="0">					<requirement name="InBiome" biome="05" />
+					<requirement name="CVarCompare" cvar="HOH_Questing_lvl" operation="GTE" value="32"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Questing_XP_Temp" operation="set" value="0">
+					<requirement name="InBiome" biome="01" />
+					<requirement name="CVarCompare" cvar="HOH_Questing_lvl" operation="GTE" value="41"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Questing_XP_Temp" operation="set" value="0">
+					<requirement name="InBiome" biome="08" />
+					<requirement name="CVarCompare" cvar="HOH_Questing_lvl" operation="GTE" value="40"/>
+				</triggered_effect>
+			</effect_group>
+
+
+			<effect_group name="Questing">
 				<passive_effect name="BarteringBuying" operation="base_add" value=".1">
 					<requirement name="HasBuff" buff="buffEnforcerSetBonus"/>
 				</passive_effect>
@@ -4520,6 +4974,7 @@
 				<passive_effect name="PerkLevel" operation="base_set" value="@HOH_Pickaxes_lvl" tags="PerkHOHPickaxes"/>
 				<passive_effect name="PerkLevel" operation="base_set" value="@HOH_Shovels_lvl" tags="PerkHOHShovels"/>
 				<passive_effect name="PerkLevel" operation="base_set" value="@HOH_Wrenches_lvl" tags="PerkHOHWrenches"/>
+				<passive_effect name="PerkLevel" operation="base_set" value="@HOH_Construction_lvl" tags="PerkHOHConstruction"/>
 				<passive_effect name="PerkLevel" operation="base_set" value="@HOH_Rifles_lvl" tags="PerkHOHRifles"/>
 				<passive_effect name="PerkLevel" operation="base_set" value="@HOH_MachineGun_lvl" tags="PerkHOHMachineGuns"/>
 				<passive_effect name="PerkLevel" operation="base_set" value="@HOH_Brawler_lvl" tags="PerkHOHBrawler"/>
@@ -5623,6 +6078,24 @@
 		</buff>
 		<!-- * * * * * Wrenches * * * * * -->
 		<!-- Wrench -->
+		<buff name="NailGunBlockTrackerActivate" hidden="true" icon="ui_game_symbol_add" icon_color="255,0,0" icon_blink="true">
+			<stack_type value="replace"/>
+			<duration value="0"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="NailGunBlockDisplay" operation="set" value="255"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="NailGunBlockDisplay" operation="set" value="255"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="NailGunBlockDisplay" operation="set" value="0"/>
+			</effect_group>
+		</buff>
+		<buff name="HammerBlockTrackerActivate" hidden="true" icon="ui_game_symbol_add" icon_color="255,0,0" icon_blink="true">
+			<stack_type value="replace"/>
+			<duration value="0"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HammerBlockDisplay" operation="set" value="255"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HammerBlockDisplay" operation="set" value="255"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="HammerBlockDisplay" operation="set" value="0"/>
+			</effect_group>
+		</buff>
 		<buff name="WrenchBlockTrackerActivate" hidden="true" icon="ui_game_symbol_add" icon_color="255,0,0" icon_blink="true">
 			<stack_type value="replace"/>
 			<duration value="0"/>
@@ -5632,7 +6105,7 @@
 				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="WrenchBlockDisplay" operation="set" value="0"/>
 			</effect_group>
 		</buff>
-		<!-- Ratchet -->
+				<!-- Ratchet -->
 		<buff name="RatchetBlockTrackerActivate" hidden="true" icon="ui_game_symbol_add" icon_color="255,0,0" icon_blink="true">
 			<stack_type value="replace"/>
 			<duration value="0"/>
@@ -6155,13 +6628,7 @@
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Quest_Xp_Total" operation="divide" value="@HOH_Quest_Level_Next"/>
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Quest_lvl_Next_Display" operation="set" value="@HOH_Quest_Xp_Total"/>
 			</effect_group>
-			<!--<effect_group>
-				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Wrenches_XP" operation="add" value="@HOH_Wrenches_XP_Temp_Break"/>
-				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Wrenches_XP_Temp_Break" operation="set" value="0"/>
-				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Wrenches_XP" operation="add" value="@HOH_Wrenches_XP_Temp"/>
-				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Wrenches_XP_Temp" operation="set" value="0"/>
-			</effect_group>-->
-		</buff>
+				</buff>
 		<!-- *** buffAnimalTracker -->
 		<!-- TRIGGERED_BY: Progression = PerkHOHHunting -->
 		<!-- Handler to test if tracking -->
@@ -7066,6 +7533,7 @@
 		<triggered_effect trigger="onSelfBuffUpdate"   action="ModifyCVar" cvar="HOH_Pickaxes_lvl" operation="set" value="@HOH_Pickaxes_Perk_Tracker"/>
 		<triggered_effect trigger="onSelfBuffUpdate"   action="ModifyCVar" cvar="HOH_Shovels_lvl" operation="set" value="@HOH_Shovels_Perk_Tracker"/>
 		<triggered_effect trigger="onSelfBuffUpdate"   action="ModifyCVar" cvar="HOH_Wrenches_lvl" operation="set" value="@HOH_Wrenches_Perk_Tracker"/>
+		<triggered_effect trigger="onSelfBuffUpdate"   action="ModifyCVar" cvar="HOH_Construction_lvl" operation="set" value="@HOH_Construction_Perk_Tracker"/>
 		<triggered_effect trigger="onSelfBuffUpdate"   action="ModifyCVar" cvar="HOH_Brawler_lvl" operation="set" value="@HOH_Brawler_Perk_Tracker"/>
 		<triggered_effect trigger="onSelfBuffUpdate"   action="ModifyCVar" cvar="HOH_Spears_lvl" operation="set" value="@HOH_Spears_Perk_Tracker"/>
 		<triggered_effect trigger="onSelfBuffUpdate"   action="ModifyCVar" cvar="HOH_Clubs_lvl" operation="set" value="@HOH_Clubs_Perk_Tracker"/>
@@ -7086,8 +7554,7 @@
 		<triggered_effect trigger="onSelfBuffUpdate"   action="ModifyCVar" cvar="HOH_Stealing_lvl" operation="set" value="@HOH_Stealing_Perk_Tracker"/>
 		<triggered_effect trigger="onSelfBuffUpdate"   action="ModifyCVar" cvar="HOH_Armor_lvl" operation="set" value="@HOH_Armor_Perk_Tracker"/>
 		<triggered_effect trigger="onSelfBuffUpdate"   action="ModifyCVar" cvar="HOH_Food_lvl" operation="set" value="@HOH_Food_Perk_Tracker"/>
-		<!--<triggered_effect trigger="onSelfEnteredGame"   action="ModifyCVar" cvar="HOH_Axes_lvl" operation="set" value=".perkAxes"/><triggered_effect trigger="onSelfEnteredGame"   action="ModifyCVar" cvar="HOH_Pickaxes_lvl" operation="set" value=".perkPickaxes"/><triggered_effect trigger="onSelfEnteredGame"   action="ModifyCVar" cvar="HOH_Shovels_lvl" operation="set" value=".perkShovels"/><triggered_effect trigger="onSelfEnteredGame"   action="ModifyCVar" cvar="HOH_Wrenches_lvl" operation="set" value=".perkWrenches"/><triggered_effect trigger="onSelfEnteredGame"   action="ModifyCVar" cvar="HOH_Rifles_lvl" operation="set" value=".perkRifles"/><triggered_effect trigger="onSelfEnteredGame"   action="ModifyCVar" cvar="HOH_MachineGun_lvl" operation="set" value=".perkMachineGun"/><triggered_effect trigger="onSelfEnteredGame"   action="ModifyCVar" cvar="HOH_Brawler_lvl" operation="set" value=".perkBrawler"/><triggered_effect trigger="onSelfEnteredGame"   action="ModifyCVar" cvar="HOH_Spears_lvl" operation="set" value=".perkSpears"/><triggered_effect trigger="onSelfEnteredGame"   action="ModifyCVar" cvar="HOH_Shotguns_lvl" operation="set" value=".perkShotguns"/><triggered_effect trigger="onSelfEnteredGame"   action="ModifyCVar" cvar="HOH_Clubs_lvl" operation="set" value=".perkClubs"/><triggered_effect trigger="onSelfEnteredGame"   action="ModifyCVar" cvar="HOH_Knifes_lvl" operation="set" value=".perkKnifes"/><triggered_effect trigger="onSelfEnteredGame"   action="ModifyCVar" cvar="HOH_Bows_lvl" operation="set" value=".perkBows"/><triggered_effect trigger="onSelfEnteredGame"   action="ModifyCVar" cvar="HOH_SMG_lvl" operation="set" value=".perkSMG"/><triggered_effect trigger="onSelfEnteredGame"   action="ModifyCVar" cvar="HOH_Cooking_lvl" operation="set" value=".perkCooking"/><triggered_effect trigger="onSelfEnteredGame"   action="ModifyCVar" cvar="HOH_Farming_lvl" operation="set" value=".perkFarming"/><triggered_effect trigger="onSelfEnteredGame"   action="ModifyCVar" cvar="HOH_Olympics_lvl" operation="set" value=".perkOlympics"/><triggered_effect trigger="onSelfEnteredGame"   action="ModifyCVar" cvar="HOH_Stealth_lvl" operation="set" value=".perkStealth"/><triggered_effect trigger="onSelfEnteredGame"   action="ModifyCVar" cvar="HOH_HealthandBody_lvl" operation="set" value=".perkHealthandBody"/><triggered_effect trigger="onSelfEnteredGame"   action="ModifyCVar" cvar="HOH_Traps_lvl" operation="set" value=".perkTraps"/><triggered_effect trigger="onSelfEnteredGame"   action="ModifyCVar" cvar="HOH_Questing_lvl" operation="set" value=".perkQuest"/><triggered_effect trigger="onSelfEnteredGame"   action="ModifyCVar" cvar="HOH_Stealing_lvl" operation="set" value=".perkStealing"/><triggered_effect trigger="onSelfEnteredGame"   action="ModifyCVar" cvar="HOH_Hunting_lvl" operation="set" value=".perkHunting"/><triggered_effect trigger="onSelfEnteredGame"   action="ModifyCVar" cvar="HOH_Armor_lvl" operation="set" value=".perkArmor"/>-->
-		<!--	<triggered_effect trigger="onSelfBuffUpdate"   action="CVarLogValue" cvar="HOH_Pistols_lvl"/><triggered_effect trigger="onSelfBuffUpdate"   action="CVarLogValue" cvar="HOH_Pistols_Perk_Tracker"/>-->
+		
 	</insertAfter>
 	<insertAfter xpath="//buff[@name='buffStatusCheck01']">
 		<buff name="buffPerkFix" hidden="false">

@@ -1,4 +1,71 @@
 <snj>
+<append xpath="//item_modifier[@name='modGunSoundSuppressorSilencer']"><property name="Group" value="BarrelMods" /></append>
+<append  xpath="//item_modifier[@name='modGunChoke']"><property name="Group" value="BarrelMods" /></append>
+<append  xpath="//item_modifier[@name='modGunDuckbill']"><property name="Group" value="BarrelMods" /></append>
+<append  xpath="//item_modifier[@name='modShotgunSawedOffBarrel']"><property name="Group" value="BarrelMods" /></append>
+<append  xpath="//item_modifier[@name='modGunBarrelExtender']"><property name="Group" value="BarrelMods" /></append>
+<append  xpath="//item_modifier[@name='modGunShotgunTubeExtenderMagazine']"><property name="Group" value="BarrelMods" /></append>
+
+<append  xpath="//item_modifier[@name='modGunLaserSight']"><property name="Group" value="FirearmMods" /></append>
+<append  xpath="//item_modifier[@name='modGunFlashlight']"><property name="Group" value="FirearmMods" /></append>
+<append  xpath="//item_modifier[@name='modGunReflexSight']"><property name="Group" value="FirearmMods" /></append>
+<append  xpath="//item_modifier[@name='modGunScopeSmall']"><property name="Group" value="FirearmMods" /></append>
+<append  xpath="//item_modifier[@name='modGunScopeMedium']"><property name="Group" value="FirearmMods" /></append>
+<append  xpath="//item_modifier[@name='modGunScopeLarge']"><property name="Group" value="FirearmMods" /></append>
+<append  xpath="//item_modifier[@name='modGunTriggerGroupSemi']"><property name="Group" value="FirearmMods" /></append>
+<append  xpath="//item_modifier[@name='modGunTriggerGroupBurst3']"><property name="Group" value="FirearmMods" /></append>
+<append  xpath="//item_modifier[@name='modGunTriggerGroupAutomatic']"><property name="Group" value="FirearmMods" /></append>
+<append  xpath="//item_modifier[@name='modGunBipod']"><property name="Group" value="FirearmMods" /></append>
+<append  xpath="//item_modifier[@name='modGunForegrip']"><property name="Group" value="FirearmMods" /></append>
+<append  xpath="//item_modifier[@name='modGunRetractingStock']"><property name="Group" value="FirearmMods" /></append>
+<append  xpath="//item_modifier[@name='modGunMagazineExtender']"><property name="Group" value="FirearmMods" /></append>
+<append  xpath="//item_modifier[@name='modGunDrumMagazineExtender']"><property name="Group" value="FirearmMods" /></append>
+<append  xpath="//item_modifier[@name='modGunCrippleEm']"><property name="Group" value="FirearmMods" /></append>
+<append  xpath="//item_modifier[@name='modGunMeleeRadRemover']"><property name="Group" value="FirearmMods" /></append>
+<append  xpath="//item_modifier[@name='modGunMeleeTheHunter']"><property name="Group" value="FirearmMods" /></append>
+
+<append xpath="item_modifiers/item_modifier[@name='modGunChoke']">
+		<effect_group tiered="false">
+			<passive_effect name="MaxRange" operation="perc_add" value="1"/>
+		</effect_group>
+</append>
+
+
+		<append xpath="/item_modifiers">
+	
+	<item_modifier name="DualDrumMag" installable_tags="drumMagazine" modifier_tags="magazine" blocked_tags="pistol,shotgun,noDual" type="attachment">
+		<property name="Extends" value="modGunDrumMagazineExtender"/>
+		<property name="CustomIcon" value="DualDrumMag"/>
+		<property name="Stacknumber" value="1"/>
+		<property name="UnlockedBy" value="perkAutoWeaponsDrumMag"/>
+		<property name="Group" value="Mods,Tool/Weapon,FirearmMods"/>		
+		<effect_group tiered="false">
+			<passive_effect name="MagazineSize" operation="perc_add" value="2"/>
+			<passive_effect name="ReloadSpeedMultiplier" operation="perc_add" value="-.35"/>
+		</effect_group>
+	</item_modifier>
+	
+	<item_modifier name="TacticalForegrip" installable_tags="rifbtn1" modifier_tags="rifbtn1" type="attachment">
+		<property name="Stacknumber" value="1"/>
+		<property name="UnlockedBy" value="TacticalForegripSchematic"/>
+		<property name="Group" value="ModsTA"/>
+		<effect_group tiered="false">
+			<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="hang01"/>
+			<passive_effect name="IncrementalSpreadMultiplier" operation="perc_subtract" value="0.1"/>
+			<passive_effect name="SpreadMultiplierHip" operation="perc_add" value="-.1"/>
+			<passive_effect name="SpreadMultiplierWalking" operation="perc_add" value="-.1"/>
+			<passive_effect name="WeaponHandling" operation="perc_add" value="0.2"/>
+			<passive_effect name="KickDegreesVerticalMin" operation="perc_subtract" value="0.2"/>
+			<passive_effect name="KickDegreesVerticalMax" operation="perc_subtract" value="0.2"/>
+			<passive_effect name="KickDegreesHorizontalMin" operation="perc_subtract" value="0.3"/>
+			<passive_effect name="KickDegreesHorizontalMin" operation="perc_subtract" value="0.3"/>
+		</effect_group>
+		<property name="PickupJournalEntry" value="augmentGunsTip"/>
+	</item_modifier>
+
+	
+</append>
+
 
 <!--<passive_effect name="DisableItem" operation="base_set" value="1" level="1,5" tags="PerkOOGKnifes,PerkOOGBows,PerkOOGRifles,PerkOOGPistols,PerkOOGMachineGuns,PerkOOGSpears"/>-->
 <append xpath="//item_modifier[@name='modGunMuzzleBrake']/@blocked_tags">,noExtender</append>
@@ -18,6 +85,14 @@
 	<set xpath="//item_modifier[@name='modGunFlashlight']/@blocked_tags">noflashlight</set>
 
 <append xpath="/item_modifiers">
+<item_modifier name="modSpeedLoader" installable_tags="SpeedLoader" modifier_tags="specialDamage" blocked_tags="noMods" type="attachment">
+		<property name="Extends" value="modGeneralMaster" param1="CustomIcon"/>
+		<property name="UnlockedBy" value="modGunMuzzleBrakeSchematic"/>
+		<property name="TraderStageTemplate" value="modsTier1"/>
+		<effect_group tiered="false">
+			<passive_effect name="ReloadSpeedMultiplier" operation="perc_add" value=".25"/>
+		</effect_group>			
+	</item_modifier>
 <item_modifier name="modMeleeMetalBatBolts" installable_tags="metalBat" modifier_tags="shaft" blocked_tags="noMods" type="attachment">
 		<property name="Extends" value="modGeneralMaster" param1="CustomIcon"/>
 		<!--<property name="UnlockedBy" value="modmodMeleeMetalBatBoltsSchematic"/>-->
@@ -303,6 +378,32 @@
             <requirement name="HoldingItemHasTags" tags="attachmentsIncluded"/>
                <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="5dscope"/>
                <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="8x_scope"/>
+        </effect_group>
+    </append>
+    <append xpath="/item_modifiers/item_modifier[@name='modGunScopeSmall']">
+        <item_property_overrides name="5d_AutoCrossBow">
+			<property name="ScopeOffset" value="-.0018,.075,.015"/>
+			<property name="ScopeScale" value="1,1,1"/>
+			<property name="ScopeCameraOffset" value="0,-.0238,0"/>
+            <property name="Zoom_overlay" value="#@modfolder:Assets/HOH_Ranged_Weapons_Sights.unity3d?SniperScope"/>
+	            <property name="CrosshairOnAim" value="false"/>
+    	        <property name="CrosshairUpAfterShot" value="false"/>
+		</item_property_overrides>
+       
+        
+        <effect_group tiered="false">
+            
+            <requirement name="HoldingItemHasTags" tags="attachmentsIncluded"/>
+               <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="scope"/>
+               <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="false" parent_transform="#HeldItemRoot" transform_path="Sight">
+                <requirement name="!IsFPV"/>
+            </triggered_effect>    
+             <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="false" parent_transform="#HeldItemRoot" transform_path="Sight">
+                <requirement name="IsFPV"/>
+            </triggered_effect>        
+            <!-- <triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="Sight">
+                <requirement name="!IsFPV"/>
+            </triggered_effect> -->
         </effect_group>
     </append>
 

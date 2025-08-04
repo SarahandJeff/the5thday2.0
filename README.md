@@ -1,5 +1,5 @@
 # 5thDay
-5th Day mod for V1.4 of 7 Days to Die
+5th Day mod for V2.1 of 7 Days to Die
 
 Jeff had this weird thought that he should take the idea from Crystal Hell mod (Thanks Shavick) and build upon the learn by doing system. Then along the way was like. ok I don't like the workbechs let's make our own and change how you craft them, Then out of the blue was like I don't like the weapons and how you craft ammo let's change that too, etc.
 
@@ -17,8 +17,8 @@ Detailed well as detailed as I can make it lit of changes.
 * We added a weighted backpack system thanks to s-core. there are 4 backpacks. Civilian aka starter. Small, Medium & Large military 
   backpacks each level increases your carrying capacity. These are crafted by leveling your armor skills. Leveling armor can be done a few ways. By crafting cloth, letting your armor take damage and lastly by crafting armor mods.
 * Biome protection is a thing. Each biome has a so called biome boss. They are tied to your trader reputation. While in the forrest 
-  biome when you reach level 10 or higher you have a 3% chance every 5 minutes to spawn the forrest boss.
-  Each biome has a special ore. Forrest and burnt forrest is Nitrate. Desert is Oil shale and Snow is Iron. Make sure to read AOM V1.
+  biome when you reach level 10 or higher you have a 5% chance every 5 minutes to spawn the forrest boss.
+  Each biome has a special ore. Forrest iron and burnt forrest is Nitrate. Desert is Oil shale and Snow is coal Make sure to read AOM V1.
 * Speaking of trader rep. when you reach level 10 you also now have the ability to craft a trader Purchacing vending machine to place 
   in your base. Starting with trader Rekt.
 * Time: time is a wonderful thing too bad you can't tell time. Waite loot a couch and see if you can find a blue cell phone.. Just 

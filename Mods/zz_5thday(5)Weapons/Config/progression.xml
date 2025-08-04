@@ -39,6 +39,13 @@
        <passive_effect name="CraftingTier" operation="base_add" level="55,61,69,75,85,200" value="1,2,3,4,5,5" tags="5d_MiniSledge"/>
       </effect_group>
 </append>
+<append xpath="/progression/crafting_skills/crafting_skill[@name='perkBows']">
+	<display_entry item="5d_AutoCrossBow" unlock_level="250,260,270,280,290,300" />
+	<effect_group>
+        <passive_effect name="RecipeTagUnlocked" operation="base_set" level="250,500" value="1" tags="5d_AutoCrossBow"/>
+       <passive_effect name="CraftingTier" operation="base_add" level="260,270,280,290,300,500" value="1,2,3,4,5,5" tags="5d_AutoCrossBow"/>
+      </effect_group>
+</append>
 <append xpath="/progression/crafting_skills/crafting_skill[@name='perkMachineGun']">
 				
 				<display_entry item="5thdayAR15" unlock_level="2,10,20,30,40,60" />
@@ -57,8 +64,10 @@
 				</effect_group>
 </append>
 <append xpath="/progression/crafting_skills/crafting_skill[@name='perkShotguns']">
-			     <display_entry icon="5d_doubleBarrelShotgun" name_key="Double Barrel" has_quality="true" unlock_level="2,15,25,35,45,55">
-					<unlock_entry item="5d_doubleBarrelShotgun" unlock_tier="1" recipes="5d_doubleBarrelShotgun" />
+			     <display_entry item="5d_LeverActionShotgun" unlock_level="2,6,15,25,35,45" />
+				 <display_entry icon="5d_doubleBarrelShotgun" name_key="Double Barrel" has_quality="true" unlock_level="10,15,25,35,45,55">
+					
+					<unlock_entry item="5d_doubleBarrelShotgun" unlock_tier="3" recipes="5d_doubleBarrelShotgun" />
 				</display_entry>
 				<display_entry icon="5thday_SPAS12" name_key="SSpas 12" has_quality="true" unlock_level="51,60,70,80,90,110">
 					<unlock_entry item="5thday_SPAS12" unlock_tier="1" recipes="5thday_SPAS12" />
@@ -68,28 +77,32 @@
 				</display_entry>
 	           
 				<effect_group>
-				
-      			    <passive_effect name="RecipeTagUnlocked" operation="base_set" level="2,150" value="1" tags="5d_doubleBarrelShotgun" />
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="1,150" value="1" tags="5d_LeverActionShotgun" />
+      			    <passive_effect name="RecipeTagUnlocked" operation="base_set" level="25,150" value="1" tags="5d_doubleBarrelShotgun" />
         			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="51,150" value="1" tags="5thday_SPAS12"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="101,150" value="1" tags="5thday_Shotgun_Auto"/>
-					<passive_effect name="CraftingTier" operation="base_add" level="6,15,25,35,45,150" value="1,2,3,4,5,5" tags="5d_doubleBarrelShotgun" />
+					<passive_effect name="CraftingTier" operation="base_add" level="6,15,25,35,45,150" value="1,2,3,4,5,5" tags="5d_LeverActionShotgun" />
+					<passive_effect name="CraftingTier" operation="base_add" level="30,35,45,55,60,150" value="1,2,3,4,5,5" tags="5d_doubleBarrelShotgun" />
 					<passive_effect name="CraftingTier" operation="base_add" level="60,70,80,90,110,150" value="1,2,3,4,5,5" tags="5thday_SPAS12"/>
 					<passive_effect name="CraftingTier" operation="base_add" level="110,120,130,140,150" value="1,2,3,4,5" tags="5thday_Shotgun_Auto"/>
 				</effect_group>
 </append>
 
 <append xpath="/progression/crafting_skills/crafting_skill[@name='perkRifles']">
-			<display_entry item="5d_m700" unlock_level="2,10,30,45,50,100" />
-				<display_entry item="5d_SniperRifle" unlock_level="27,35,43,51,65,100" />
-				<display_entry item="5thday_M82" unlock_level="61,68,76,84,92,100" />
+				<display_entry item="5d_22r" unlock_level="2,10,30,45,50,60" />
+				<display_entry item="5d_m700" unlock_level="50,60,70,80,90,100" />
+				<display_entry item="5d_SniperRifle" unlock_level="90,100,110,130,150,160" />
+				<display_entry item="5thday_M82" unlock_level="130,140,150,160,170,180" />
 				
 				<effect_group>
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="2,100" value="1" tags="5d_m700"/>
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="27,100" value="1" tags="5d_SniperRifle"/>
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="61,100" value="1" tags="5thday_M82"/>
-					<passive_effect name="CraftingTier" operation="base_add" level="10,30,45,50,100" value="1,2,3,4,5" tags="5d_m700"/>
-					<passive_effect name="CraftingTier" operation="base_add" level="35,43,51,65,100" value="1,2,3,4,5" tags="5d_SniperRifle"/>
-					<passive_effect name="CraftingTier" operation="base_add" level="68,76,84,92,100" value="1,2,3,4,5" tags="5thday_M82"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="2,200" value="1" tags="5d_22r"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="50,200" value="1" tags="5d_m700"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="90,200" value="1" tags="5d_SniperRifle"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="130,200" value="1" tags="5thday_M82"/>
+					<passive_effect name="CraftingTier" operation="base_add" level="10,30,45,50,60,200" value="1,2,3,4,5,5" tags="5d_22r"/>
+					<passive_effect name="CraftingTier" operation="base_add" level="60,70,80,90,100,200" value="1,2,3,4,5,5" tags="5d_m700"/>
+					<passive_effect name="CraftingTier" operation="base_add" level="100,110,130,150,160,200" value="1,2,3,4,5,5" tags="5d_SniperRifle"/>
+					<passive_effect name="CraftingTier" operation="base_add" level="140,150,160,170,180,200" value="1,2,3,4,5,5" tags="5thday_M82"/>
 				</effect_group>
 </append>
 

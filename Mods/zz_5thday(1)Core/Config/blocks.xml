@@ -809,7 +809,7 @@
 	</append>
 	<setattribute xpath="blocks/block[starts-with(@name, 'tree')]/drop[(@event='Destroy') and (@name='treePlantedMountainPine1m' or @name='treePlantedOak1m' or @name='treePlantedWinterPine1m')]" name="prob">0.03</setattribute>
 	<setattribute xpath="blocks/block[starts-with(@name, 'tree')]/drop[(@event='Destroy') and (@name='treePlantedMountainPine1m' or @name='treePlantedOak1m' or @name='treePlantedWinterPine1m')]" name="count">1</setattribute>
-	<set xpath="//block/property[(@name='UnlockedBy') and (@value='craftingSeeds')]/@value">PerkHOHFarming</set>
+	<set xpath="//block/property[(@name='UnlockedBy') and (@value='craftingSeeds')]/@value">perkFarming</set>
 	<remove xpath="/blocks/block[@name='decoMannequinMilitaryCommando']"/>
 	<append xpath="/blocks">
 		<block name="decoMannequinMilitaryCommando">
@@ -2116,7 +2116,37 @@
 		</block>
 	</append>
 	<set xpath="//block/property[(@name='UnlockedBy') and (@value='perkLivingOffTheLand')]/@value">PerkHOHFarming</set>
-	
 
-	<include filename="Items/block_weights.xml"/>
+	<append xpath="//block[@name='woodShapes']"><property name='UnlockedBy' value="perkConstruction"/></append>
+	<append xpath="//block[@name='cobblestoneShapes']"><property name='UnlockedBy' value="perkConstruction"/></append>
+	<append xpath="//block[@name='concreteShapes']"><property name='UnlockedBy' value="perkConstruction"/></append>
+	<append xpath="//block[@name='steelShapes']"><property name='UnlockedBy' value="perkConstruction"/></append>
+
+	<!-- <append xpath="//block[@name='frameShapes']/property[@class='UpgradeBlock']/property[@name='Item']/@value">,resourceNail</append>
+	<append xpath="//block[@name='frameShapes']/property[@class='UpgradeBlock']/property[@name='ItemCount']/@value">,5</append> -->
+<set xpath="//block[@name='frameShapes']/property[@class='UpgradeBlock']/property[@name='Item']/@value">resourceWoodandNails</set>
+ <set xpath="//block[@name='frameShapes']/property[@class='UpgradeBlock']/property[@name='ItemCount']/@value">1</set>
+	
+	
+<append xpath="//block[contains(@name,'tv')		                                  ]"><property name="ItemWeight" value="500"/></append>
+<append xpath="//block[contains(@name,'frameShapes')		                      ]"><property name="ItemWeight" value="25"/></append>
+<append xpath="//block[contains(@name,'woodShapes')		                          ]"><property name="ItemWeight" value="50"/></append>
+<append xpath="//block[contains(@name,'cobblestoneShapes')		                  ]"><property name="ItemWeight" value="75"/></append>
+<append xpath="//block[contains(@name,'concreteShapes')		                      ]"><property name="ItemWeight" value="100"/></append>
+<append xpath="//block[contains(@name,'steelShapes')		                      ]"><property name="ItemWeight" value="125"/></append>
+
+<append xpath="//block[contains(@name,'planted')		                              ]"><property name="ItemWeight" value=".5"/></append>
+
+
+<append xpath="//block[contains(@name,'MillingMachine')                            ]"><property name="ItemWeight" value="1500"/></append>
+<append xpath="//block[contains(@name,'workbench')                            ]"><property name="ItemWeight" value="1500"/></append>
+<append xpath="//block[contains(@name,'AmmoBench')                            ]"><property name="ItemWeight" value="500"/></append>
+<append xpath="//block[contains(@name,'CementMixer')                            ]"><property name="ItemWeight" value="500"/></append>
+<append xpath="//block[contains(@name,'CoffeeMaker')                            ]"><property name="ItemWeight" value="200"/></append>
+<!--<append xpath="//block[contains(@name,'DishWasher')                            ]"><property name="ItemWeight" value="500"/></append>-->
+<append xpath="//block[contains(@name,'Oven')                            ]"><property name="ItemWeight" value="500"/></append>
+<append xpath="//block[contains(@name,'Fridge')                            ]"><property name="ItemWeight" value="500"/></append>
+<append xpath="//block[contains(@name,'chandelier')                            ]"><property name="ItemWeight" value="100"/></append>
+<append xpath="//block[contains(@name,'adiator')                            ]"><property name="ItemWeight" value="100"/></append>
+
 </config>
