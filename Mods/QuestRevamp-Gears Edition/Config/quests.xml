@@ -1,5 +1,5 @@
 <configs>
-<set xpath="/quests/@quests_per_tier">10</set>
+<set xpath="/quests/@quests_per_tier">6</set>
 <!-- Skip Intro Quest (other part in dialogs) -->
 	<!-- <conditional>
 		<if cond="mod_loaded('Gears') == 'true' and modsetting('QuestRevamp', 'global', 'General.NoIntro.NQ1') == 'Yes'">
@@ -75,6 +75,7 @@
 			<objective type="RallyPoint">
 				<property name="phase" value="2"/>
 				<property name="nav_object" value="rally"/>
+				<property name="rally_marker_type" value="questRallyMarkerClear"/>
 			</objective>
 			<objective type="ClearSleepers">
 				<property name="phase" value="3"/>
@@ -88,21 +89,22 @@
 				<property name="phase" value="4"/>
 			</action>
 			<objective type="ReturnToNPC">
-				<property name="phase" value="5"/>
-				<property name="nav_object" value="return_to_trader"/>
-			</objective>
-			<objective type="InteractWithNPC">
-				<property name="phase" value="5"/>
-				<property name="nav_object" value="return_to_trader"/>
-			</objective>
+			<property name="phase" value="4"/>
+			<property name="nav_object" value="return_to_trader"/>
+		</objective>
+
+		<objective type="InteractWithNPC">
+			<property name="phase" value="4"/>
+			<property name="nav_object" value="return_to_trader"/>
+		</objective>
 			<reward type="Exp" value="1000"/>
 			<reward type="Item" id="casinoCoin" value="200"/>
 			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="2"/>
 			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="2"/>
 			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="2"/>
-			<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+			<reward type="LootItem" id="groupQuestSteel01" ischosen="true"/>
 			<reward type="LootItem" id="groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="2"/>
-			<reward type="LootItem" id="groupQuestAmmo,groupQuestSchematics,groupQuestMods,groupQuestT1SkillMagazineBundle" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="2"/>
 		</quest>
 		<quest id="tier3_clear_superinfested" template="tier2_clear_superinfested">
 			<variable name="name" value="quest_tier3_superinfested_clear"/>
@@ -122,8 +124,8 @@
 			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="3"/>
 			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="3"/>
 			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="3"/>
-			<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
-			<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+			<reward type="LootItem" id="groupQuestSteel01" ischosen="true"/>
+			
 		</quest>
 		<quest id="tier4_clear_superinfested" template="tier2_clear_superinfested">
 			<variable name="name" value="quest_tier4_superinfested_clear"/>
@@ -143,8 +145,8 @@
 			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="4"/>
 			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="4"/>
 			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="4"/>
-			<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
-			<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+			<reward type="LootItem" id="groupQuestSteel01" ischosen="true"/>
+			
 		</quest>
 		<quest id="tier5_clear_superinfested" template="tier2_clear_superinfested">
 			<variable name="name" value="quest_tier5_superinfested_clear"/>
@@ -164,8 +166,8 @@
 			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="5"/>
 			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="5"/>
 			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="5"/>
-			<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
-			<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+			<reward type="LootItem" id="groupQuestSteel01" ischosen="true"/>
+			
 		</quest>
 		<quest id="tier6_clear_superinfested" template="tier2_clear_superinfested">
 			<variable name="name" value="quest_tier6_superinfested_clear"/>
@@ -185,8 +187,8 @@
 			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="6"/>
 			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="6"/>
 			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="6"/>
-			<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
-			<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+			<reward type="LootItem" id="groupQuestSteel01" ischosen="true"/>
+			
 		</quest>
 		<!-- *** Ultra Infested Quests -->
 		<quest id="tier2_clear_ultrainfested">
@@ -217,6 +219,7 @@
 			<objective type="RallyPoint">
 				<property name="phase" value="2"/>
 				<property name="nav_object" value="rally"/>
+				<property name="rally_marker_type" value="questRallyMarkerClear"/>
 			</objective>
 			<objective type="ClearSleepers">
 				<property name="phase" value="3"/>
@@ -242,9 +245,9 @@
 			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="2"/>
 			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="2"/>
 			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="2"/>
-			<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+			<reward type="LootItem" id="groupQuestSteel01" ischosen="true"/>
 			<reward type="LootItem" id="groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="2"/>
-			<reward type="LootItem" id="groupQuestAmmo,groupQuestSchematics,groupQuestMods,groupQuestT1SkillMagazineBundle" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="2"/>
 		</quest>
 		<quest id="tier3_clear_ultrainfested" template="tier2_clear_ultrainfested">
 			<variable name="name" value="quest_tier3_ultrainfested_clear"/>
@@ -264,8 +267,8 @@
 			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="3"/>
 			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="3"/>
 			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="3"/>
-			<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
-			<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+			<reward type="LootItem" id="groupQuestSteel01" ischosen="true"/>
+			
 		</quest>
 		<quest id="tier4_clear_ultrainfested" template="tier2_clear_ultrainfested">
 			<variable name="name" value="quest_tier4_ultrainfested_clear"/>
@@ -285,8 +288,8 @@
 			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="4"/>
 			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="4"/>
 			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="4"/>
-			<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
-			<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+			<reward type="LootItem" id="groupQuestSteel01" ischosen="true"/>
+			
 		</quest>
 		<quest id="tier5_clear_ultrainfested" template="tier5_clear_ultrainfested">
 			<variable name="name" value="quest_tier5_ultrainfested_clear"/>
@@ -306,8 +309,8 @@
 			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="5"/>
 			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="5"/>
 			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="5"/>
-			<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
-			<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+			<reward type="LootItem" id="groupQuestSteel01" ischosen="true"/>
+			
 		</quest>
 		<quest id="tier6_clear_ultrainfested" template="tier2_clear_ultrainfested">
 			<variable name="name" value="quest_tier6_ultrainfested_clear"/>
@@ -327,8 +330,8 @@
 			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="6"/>
 			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="6"/>
 			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="6"/>
-			<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
-			<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+			<reward type="LootItem" id="groupQuestSteel01" ischosen="true"/>
+			
 		</quest>
 		<!-- *** Nightmare QUESTS -->
 		<quest id="tier2_clear_nightmare">
@@ -359,6 +362,7 @@
 			<objective type="RallyPoint">
 				<property name="phase" value="2"/>
 				<property name="nav_object" value="rally"/>
+				<property name="rally_marker_type" value="questRallyMarkerClear"/>
 			</objective>
 			<objective type="ClearSleepers">
 				<property name="phase" value="3"/>
@@ -384,9 +388,9 @@
 			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="3"/>
 			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="3"/>
 			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="3"/>
-			<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+			<reward type="LootItem" id="groupQuestSteel01" ischosen="true"/>
 			<reward type="LootItem" id="groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="3"/>
-			<reward type="LootItem" id="groupQuestAmmo,groupQuestSchematics,groupQuestMods,groupQuestT1SkillMagazineBundle" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="3"/>
 		</quest>
 		<quest id="tier3_clear_nightmare" template="tier2_clear_nightmare">
 			<variable name="name" value="quest_tier3_nightmare_clear"/>
@@ -406,8 +410,8 @@
 			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="4"/>
 			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="4"/>
 			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="4"/>
-			<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
-			<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+			<reward type="LootItem" id="groupQuestSteel01" ischosen="true"/>
+			
 		</quest>
 		<quest id="tier4_clear_nightmare" template="tier2_clear_nightmare">
 			<variable name="name" value="quest_tier4_nightmare_clear"/>
@@ -427,8 +431,8 @@
 			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="5"/>
 			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="5"/>
 			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="5"/>
-			<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
-			<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+			<reward type="LootItem" id="groupQuestSteel01" ischosen="true"/>
+			
 		</quest>
 		<quest id="tier5_clear_nightmare" template="tier2_clear_nightmare">
 			<variable name="name" value="quest_tier5_nightmare_clear"/>
@@ -448,8 +452,8 @@
 			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="6"/>
 			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="6"/>
 			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="6"/>
-			<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
-			<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+			<reward type="LootItem" id="groupQuestSteel01" ischosen="true"/>
+			
 		</quest>
 		<quest id="tier6_clear_nightmare" template="tier2_clear_nightmare">
 			<variable name="name" value="quest_tier6_nightmare_clear"/>
@@ -469,8 +473,8 @@
 			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="6"/>
 			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="6"/>
 			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="6"/>
-			<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
-			<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+			<reward type="LootItem" id="groupQuestSteel01" ischosen="true"/>
+			
 		</quest>
 	</insertAfter>
 

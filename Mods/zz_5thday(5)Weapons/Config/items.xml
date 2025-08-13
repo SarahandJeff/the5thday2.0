@@ -6309,8 +6309,7 @@
 		<property name="Repair_amount" value="400"/>
 		<property name="Upgrade_hit_offset" value="-2"/>
 		<property name="Sound_start" value="repair_block"/>
-		<property name="Allowed_upgrade_items" value="resourceWood,resourceClayLump,resourceSnowBall,resourceScrapIron,resourceForgedIron,resourceForgedSteel,resourceConcreteMix,resourceCobblestones,ironDoorBlockVariantHelper,ironDoorDoubleBlockVariantHelper,vaultDoor01,vaultDoor01Double,ironHatchBlockVariantHelper,vaultHatch01,cellarDoorDoubleIron,cellarDoorDoubleSteel,shuttersIronBlockVariantHelper,shuttersSteelBlockVariantHelper,resourceYuccaFibers,resourceCloth,resourceScrapPolymers,resourceNail,glassBulletproofBlockVariantHelper"/>
-		<property name="UsePowerAttackAnimation" value="false"/>
+		<property name="Allowed_upgrade_items" value="resourceWood,resourceClayLump,resourceSnowBall,resourceScrapIron,resourceForgedIron,resourceForgedSteel,resourceConcreteMix,resourceCobblestones,ironDoorBlockVariantHelper,ironDoorDoubleBlockVariantHelper,vaultDoor01,vaultDoor01Double,ironHatchBlockVariantHelper,vaultHatch01,cellarDoorDoubleIron,cellarDoorDoubleSteel,shuttersIronBlockVariantHelper,shuttersSteelBlockVariantHelper,resourceYuccaFibers,resourceCloth,resourceScrapPolymers,resourceNail,glassBulletproofBlockVariantHelper,resourceWoodandNails"/>		<property name="UsePowerAttackAnimation" value="false"/>
 	</property>
 	<effect_group name="meleeToolRepairT1ClawHammer">
 		<passive_effect name="AttacksPerMinute" operation="base_set" value="70" tags="perkMiner69r"/>
@@ -6467,7 +6466,7 @@
 	<property name="Meshfile" value="#@modfolder:Assets/ElectricKnuckle.unity3d?ElectricKnuckleRight.prefab"/>	
 	<property name="HoldType" value="61"/>
 	<property name="DescriptionKey" value="meleeWpnTier4ElectricKnucklesDesc"/>
-	<property name="RepairTools" value="repairKitWeapon"/>
+	<property name="RepairTools" value="repairKitTools"/>
 	<property name="DegradationBreaksAfter" value="false"/>
 	<property name="SoundJammed" value="ItemNeedsRepair"/>
 	<property name="SoundDestroy" value="wooddestroy1"/>
@@ -6614,7 +6613,7 @@
 	<property name="Meshfile" value="#@modfolder:Assets/HOH_Melee_Weapons.unity3d?Ulak_Right.prefab"/>	
 	<property name="HoldType" value="61"/>
 	<property name="DescriptionKey" value="meleeWpnTier4ElectricKnucklesDesc"/>
-	<property name="RepairTools" value="repairKitWeapon"/>
+	<property name="RepairTools" value="repairKitTools"/>
 	<property name="DegradationBreaksAfter" value="false"/>
 	<property name="SoundJammed" value="ItemNeedsRepair"/>
 	<property name="SoundDestroy" value="wooddestroy1"/>
@@ -9014,10 +9013,10 @@
 
 <append xpath="//items/item[@name='gunRifleT2LeverActionRifle']//property[@name='Group']/@value">,RifleCraft</append>
 
-<set xpath="//item[@name='KillerBunnyElectricKnuckles']/property[@name='RepairTools']/@value">repairKitWeapon</set>
-<set xpath="//item[@name='RiddicUlak']/property[@name='RepairTools']/@value">repairKitWeapon</set>
-<set xpath="//item[@name='RiddicPickaxe']/property[@name='RepairTools']/@value">repairKitWeapon</set>
-<set xpath="//item[@name='RiddickDagger']/property[@name='RepairTools']/@value">repairKitWeapon</set>
+<set xpath="//item[@name='KillerBunnyElectricKnuckles']/property[@name='RepairTools']/@value">repairKitTools</set>
+<set xpath="//item[@name='RiddicUlak']/property[@name='RepairTools']/@value">repairKitTools</set>
+<set xpath="//item[@name='RiddicPickaxe']/property[@name='RepairTools']/@value">repairKitTools</set>
+<set xpath="//item[@name='RiddickDagger']/property[@name='RepairTools']/@value">repairKitTools</set>
 <set xpath="//item[@name='5thdayAR15']/property[@name='RepairTools']/@value">repairKitWeapon</set>
 
 <set xpath="//item[@name='5thday_Scar_H']/property[@name='RepairTools']/@value">repairKitWeapon</set>
@@ -9035,6 +9034,8 @@
 <set xpath="//item[@name='gunExplosivesT3RocketLauncher']/property[@name='RepairTools']/@value">repairKitWeapon</set>
 <set xpath="//item[starts-with(@name,'gunBow')]/property[@name='RepairTools']/@value">repairKitWeapon</set>
 
+<set xpath="//item[@name='meleeWpnClubT0WoodenClub']/property[@name='RepairTools']/@value">resourceWood</set>
+<set xpath="//item[@name='meleeWpnClubT1BaseballBat']/property[@name='RepairTools']/@value">resourceWood</set>
 
 
 
@@ -9300,9 +9301,9 @@
 	<property name="DisplayType" value="meleeKnife"/>
 	<property name="HoldType" value="36"/>
 	<property name="Meshfile" value="#@modfolder:Assets/HOH_Melee_Tools.unity3d?tanto"/>
-	<property name="Material" value="MresourceBone"/>
+	<property name="Material" value="Mmetal"/>
 	<property name="ScrapTimeOverride" value="10.0"/>
-	<property name="RepairTools" value="resourceBone"/>
+	<property name="RepairTools" value="repairKitTools"/>
 	<property name="EconomicValue" value="200"/>
 	<property name="TraderStageTemplate" value="baseTier0"/><!-- meleeWpnBladeT0BoneKnife -->
 	<property name="SellableToTrader" value="false"/>
@@ -9719,7 +9720,7 @@
 		<property name="DisplayType" value="rangedLauncher"/>
 		<property name="Meshfile" value="#@modfolder:Assets/HOH_Ranged_Weapons_GrenadeLauncher.unity3d?GrenadeLauncher" />
 		<property name="Material" value="MRocketLauncherParts"/> <property name="Weight" value="5"/>
-		<property name="RepairTools" value="resourceRepairKit"/>
+		<property name="RepairTools" value="repairKitWeapon"/>
 		<property name="HoldType" value="48" />
 		<property name="DegradationBreaksAfter" value="false" />
 		<property name="SoundJammed" value="weapon_jam" />
@@ -9789,7 +9790,7 @@
 	<property name="TintColor" value="178, 144, 92"/>
 	<property name="Weight" value="7"/>
 	<property name="ScrapTimeOverride" value="10.0"/>
-	<property name="RepairTools" value="resourceRepairKit"/>
+	<property name="RepairTools" value="repairKitWeapon"/>
 	<property name="EconomicValue" value="5000"/>
 	<property name="TraderStageTemplate" value="bowsTier3"/><!-- gunBowT3CompoundCrossbow -->
 	<property name="DegradationBreaksAfter" value="false"/>
@@ -9891,7 +9892,7 @@
 	<property name="TintColor" value="80, 80, 80"/>
 	<property name="Weight" value="4"/>
 	<property name="ScrapTimeOverride" value="10.0"/>
-	<property name="RepairTools" value="resourceRepairKit"/>
+	<property name="RepairTools" value="repairKitWeapon"/>
 	<property name="DegradationBreaksAfter" value="false"/>
 	<property name="SoundJammed" value="weapon_jam"/>
 	<property name="Attachments" value="meleeToolFlashlight02"/>
@@ -9995,7 +9996,7 @@
 	<property name="TintColor" value="98, 117, 132"/>
 	<property name="Weight" value="4"/>
 	<property name="ScrapTimeOverride" value="10.0"/>
-	<property name="RepairTools" value="resourceRepairKit"/>
+	<property name="RepairTools" value="repairKitWeapon"/>
 	<property name="DegradationBreaksAfter" value="false"/>
 	<property name="SoundJammed" value="weapon_jam"/>
 	<property name="Attachments" value="meleeToolFlashlight02"/>

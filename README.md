@@ -28,4 +28,4 @@ Tons more alterations. Now i do not want to spoil anything or give to much away.
 
 I am using alot of modlets from other people that I have gotten permission from. I'm not going to list them here. You will see when you load the mod.
 
-Found a bug and wish to let us know?  Head to https://discord.gg/WuEVwMqj8e and let me know.
+Found a bug and wish to let us know?  Head to https://discord.gg/4Cqg59Hhka and let me know.
