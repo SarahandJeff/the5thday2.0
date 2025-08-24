@@ -1,0 +1,53 @@
+<Config>
+
+<append xpath="/entity_classes">
+
+
+
+<!--###Weapon Test-->
+<entity_class name="ZombieINC_MiniBossPipeMachineGun" extends="zombieTomClark">
+	<property name="UserSpawnType" value="Menu"/>
+	<property name="Tags" value="entity,zombie,walker,feral,MiniBossPipeMachineGun"/>
+	<property name="Mesh" value="@:Entities/Zombies/TomClark/ZTomClarkFeral.prefab"/>
+
+	<!-- Gameplay zombieTomClarkFeral -->
+	<property name="DismemberMultiplierHead" value=".7"/><property name="DismemberMultiplierArms" value=".7"/><property name="DismemberMultiplierLegs" value=".7"/><!-- Feral -->
+	<property name="PainResistPerHit" value=".7"/><!-- Feral -->
+	<property name="MoveSpeedAggro" value="0.6, 1.1"/> <!-- slim, feral -->
+	<property name="JumpMaxDistance" value="4.6, 5"/>
+	<property name="HandItem" value="meleeHandZombieShortFeral"/>
+	<property name="ExperienceGain" value="750"/><!-- XP grunt feral -->
+	<property name="LootDropProb" value="1"/> <!-- Feral -->
+	<property name="LootDropEntityClass" value="ZombieINC_PipeMachineGun_LootDrop"/>
+	<property name="NavObject" value="zombie" />
+	
+	<effect_group name="Base Effects">
+		<passive_effect name="HealthMax" operation="base_set" value="300"/>
+		<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" target="self" buff="ZombieINC_MiniBossPipeMachineGun_AttachPrefabBuff"/>
+	</effect_group>
+</entity_class>
+
+
+
+
+
+
+
+<entity_class name="ZombieINC_PipeMachineGun_LootDrop">
+	<property name="Class" value="EntityLootContainer"/>
+	<property name="UserSpawnType" value="Console"/>
+	<property name="Mesh" value="@:Entities/LootContainers/zpackRedPrefab.prefab"/>
+	<property name="ModelType" value="Custom"/>
+	<property name="Prefab" value="Backpack"/>
+	<property name="Parent" value="Backpack"/>
+	<property name="IsEnemyEntity" value="false"/>
+	<property name="TimeStayAfterDeath" value="3600"/>
+	<property name="LootListOnDeath" value="ZombieINC_PipeMachineGun_LootDropTable"/>
+	<property name="Faction" value="none"/>
+	<property name="NavObject" value="ZombieINC_supply,ZombieINC_supply_other" />
+</entity_class>
+
+
+</append>
+
+</Config>

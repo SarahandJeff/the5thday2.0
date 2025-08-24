@@ -1,0 +1,365 @@
+<Config>
+
+	<append xpath="/entity_classes">
+	
+	<entity_class name="ZombieINC_ND_Anchor_npcTraderTemplate">
+					<property name="Class" value="EntityTrader"/>
+					<property name="UserSpawnType" value="Menu"/>
+					<property name="Tags" value="entity,npc,human"/>
+					<property name="EntityType" value="Player"/>
+					<property name="Faction" value="none"/>
+					
+					<property name="Mesh" value="Player/Male/player_maleRagdoll"/>
+					<property name="AvatarController" value="AvatarNpcController"/>
+					<property name="ModelType" value="Npc"/>
+					<property name="HasRagdoll" value="false"/>
+					<property name="Prefab" value="NPC"/>
+					<property name="Parent" value="Players"/>
+					<property name="PhysicsBody" value="zombieINCEmpty_ND"/>
+					<property name="Weight" value="9000"/>
+					<property name="Mass" value="9000"/>
+					<property name="PushFactor" value="9000"/>
+					<property name="LookAtAngle" value="0"/>
+
+					<property name="NPCID" value="traderric"/>
+					<property name="IsEnemyEntity" value="true"/>
+					<property name="WalkType" value="7"/>
+					<property name="SurfaceCategory" value="organic"/>
+					<property name="ParticleOnDeath" value="blood_death"/>
+					<property name="HasDeathAnim" value="true"/>
+					<property name="SoundRandomTime" value="200"/>
+					<property name="Archetype" value="TraderJoel"/>
+					<property name="SoundHurt" value=""/>
+					<property name="SoundHurtSmall" value=""/>
+					<property name="SoundDeath" value=""/>
+					<property name="SoundStamina" value=""/>
+					<property name="SoundDrownPain" value=""/>
+					<property name="SoundWaterSurface" value=""/>
+					<property name="SoundDrownDeath" value=""/>
+					<property name="SoundJump" value=""/>
+					<property name="SoundLandSoft" value=""/>
+					<property name="SoundLandHard" value=""/>
+					<property name="SoundPlayerLandThump" value=""/>
+					<!-- <property name="CorpseBlock" value="air"/><property name="CorpseBlockChance" value="0"/> -->
+
+					<!-- Stealth -->
+					<property name="MaxViewAngle" value="180"/>
+
+					<!-- Gameplay  -->
+					<property name="LootListAlive" value="traderNPC"/>
+
+					<property name="MoveSpeed" value="0.75"/>
+					<property name="MoveSpeedAggro" value="1.15, 1.15"/>
+					<property name="MoveSpeedPanic" value="1.35"/>
+					<property name="CanClimbLadders" value="true"/>
+
+					<property name="Buffs" value="god"/> 
+
+					<property name="ExperienceGain" value="130"/>
+					<property name="TimeStayAfterDeath" value="30"/>
+					<property name="DeadBodyHitPoints" value="251"/>
+
+					<property name="NavObject" value="" />
+					
+					
+					<property name="AITask" value="
+					"/>
+					
+					<effect_group name="Base Effects">
+						
+						<passive_effect name="HealthMax" operation="base_set" value="100000"/>
+						<passive_effect name="BuffResistance" operation="base_set" value="1" tags="buffFatiguedTrigger,buffArmSprainedCHTrigger,buffLegSprainedCHTrigger,buffLaceration,buffInfectionCatch,buffAbrasionCatch,buffInjuryStunned01CHTrigger,buffInjuryBleedingOne,buffInjuryBleedingTwo,buffInjuryBleeding,buffBurningZombie,buffBurningElement,buffBurningEnvironment,buffBurningEnvironmentHack,buffBurningFlamingArrow,buffBurningMolotov,buffIsOnFire,buffShocked,buffRadiationPool"/>
+					</effect_group>
+				</entity_class>
+					
+					<entity_class name="ZombieINC_ND_RallyPointHuntPlaceHolder" extends="ZombieINC_ND_Anchor_npcTraderTemplate">
+						<property name="Class" value="EntityZombie"/>
+						<property name="UserSpawnType" value="Menu"/>
+						<property name="Tags" value="entity,RallyPointHunt,Anchor"/>
+						<property name="SizeScale" value="0.3"/>
+						<property name="Mesh" value="@:Entities/Traders/Prefabs/TraderHugh.prefab"/>
+						<property name="DanceType" value="1" />
+						<property name="HasRagdoll" value="true"/>
+						<!--<property name="NPCID" value="traderdefenseanchor"/>-->
+						<property name="Buffs" value="ZombieINC_ND_RallyPointHuntPlaceHolder_AttachPrefabBuff"/>
+						<property name="LootListAlive" value=""/>
+						
+						<effect_group name="Base Effects">
+							<passive_effect name="GeneralDamageResist" operation="base_set" value="1"/>
+							<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" target="self" buff="ZombieINC_ND_RallyPointHuntPlaceHolder_AttachPrefabBuff"/>	
+						</effect_group>
+					</entity_class>
+		<!--###Nest Demolition-->
+	<entity_class name="ZombieINC_ND_Bomb" extends="zombieTomClark">
+	<property name="UserSpawnType" value="Menu"/>
+	<property name="Tags" value="entity,zombie,walker,Bomb"/>
+	<property name="SizeScale" value="0.66"/>
+	<property name="SoundRandom" value=""/>
+	<property name="SoundAlert" value=""/>
+	<property name="SoundAttack" value=""/>
+	<property name="SoundHurt" value=""/>
+	<property name="SoundDeath" value=""/>
+	<property name="SoundSense" value=""/>
+	<!--<property name="PhysicsBody" value="zombieINCEmpty_ND"/>-->
+	<property name="PhysicsBody" value="zombieStandard"/>
+	<property name="ModelType" value="Standard"/>
+	<property name="PainResistPerHit" value="1"/>
+	<property name="WalkType" value="40"/>
+	<property name="Mass" value="5000"/>
+	<property name="Weight" value="700"/>
+	<property name="RootMotion" value="false"/>
+	<property name="CorpseBlock" value="air"/>
+	<property name="CorpseBlockChance" value="0"/>
+	<property name="TimeStayAfterDeath" value="0"/>
+	<property name="DeadBodyHitPoints" value="1"/>
+	<property name="PushFactor" value="100"/>
+	<property name="AIPathCostScale" value="0.1, 0.1"/>
+	<property name="SurfaceCategory" value="metal"/>
+	<property name="HasRagdoll" value="false"/>
+	<property name="DanceType" value="2" />
+	<property name="NavObject" value="" />
+	<property name="LootDropProb" value="0"/>
+	<property name="MaxTurnSpeed" value="1"/>
+	<property name="MoveSpeed" value="1"/> 
+	<property name="MoveSpeedAggro" value="1,1"/> 
+	<property name="MoveSpeedRand" value="1,1"/> 
+	<property name="MoveSpeedPanic" value="1"/>
+	<property name="SwimSpeed" value="0"/>
+	<property name="SwimStrokeRate" value="0,0"/>
+	<property name="CanClimbLadders" value="false"/>
+	<property name="JumpMaxDistance" value="0,0"/>
+	<property name="DismemberMultiplierLegs" value="0"/>
+	<property name="DismemberMultiplierHead" value="0"/>
+	<property name="DismemberMultiplierArms" value="0"/>
+	<property name="HasDeathAnim" value="false"/>
+	<property name="ParticleOnDeath" value=""/>
+	<property name="DismemberTag_L_HeadGore" value=""/>
+	<property name="DismemberTag_L_LeftUpperLegGore" value=""/>
+	<property name="DismemberTag_L_LeftLowerLegGore" value=""/>
+	<property name="DismemberTag_L_RightUpperLegGore" value=""/>
+	<property name="DismemberTag_L_RightLowerLegGore" value=""/>
+	<property name="DismemberTag_L_LeftUpperArmGore" value=""/>
+	<property name="DismemberTag_L_LeftLowerArmGore" value=""/>
+	<property name="DismemberTag_L_RightUpperArmGore" value=""/>
+	<property name="DismemberTag_L_RightLowerArmGore" value=""/>
+	
+	<property name="NavObject" value="ZombieINC_ND_Bomb" />
+	
+	<property name="AITask" value="
+	"/>
+	
+	<effect_group name="Base Effects">
+		<passive_effect name="HealthMax" operation="base_set" value="10000"/>	
+			
+	</effect_group>
+</entity_class>
+
+<entity_class name="ZombieINC_ND_Bomb_NPC_T5" extends="ZombieINC_ND_Bomb">
+	<property name="UserSpawnType" value="Menu"/>
+	<property name="Tags" value="entity,zombie,walker,Bomb"/>
+	<!--<property name="Class" value="EntityTrader"/>
+	<property name="Faction" value="none"/>
+	<property name="NPCID" value="traderndbomb"/>
+	<property name="LootListAlive" value="traderNPC"/>-->
+	<property name="Buffs" value="ZombieINC_ND_Bomb_T5"/>
+	
+	<effect_group name="Base Effects">
+		<passive_effect name="HealthMax" operation="base_set" value="10000"/>
+		<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="ZombieINC_ND_Bomb_T5"/>
+	</effect_group>
+</entity_class>
+<entity_class name="ZombieINC_ND_Bomb_NPC_T6" extends="ZombieINC_ND_Bomb">
+	<property name="UserSpawnType" value="Menu"/>
+	<property name="Tags" value="entity,zombie,walker,Bomb"/>
+	<!--<property name="Class" value="EntityTrader"/>
+	<property name="Faction" value="none"/>
+	<property name="NPCID" value="traderndbomb"/>
+	<property name="LootListAlive" value="traderNPC"/>-->
+	<property name="Buffs" value="ZombieINC_ND_Bomb_T6"/>
+	
+	<effect_group name="Base Effects">
+		<passive_effect name="HealthMax" operation="base_set" value="10000"/>
+		<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="ZombieINC_ND_Bomb_T6"/>
+	</effect_group>
+</entity_class>
+	
+<entity_class name="ZombieINC_Objective_ND" extends="zombieTomClark">
+	<property name="UserSpawnType" value="Menu"/>
+	<property name="Tags" value="entity,zombie,walker,Objective"/>
+	<property name="SizeScale" value="1"/>
+	<property name="SoundRandom" value=""/>
+	<property name="SoundAlert" value=""/>
+	<property name="SoundAttack" value=""/>
+	<property name="SoundHurt" value=""/>
+	<property name="SoundDeath" value=""/>
+	<property name="SoundSense" value=""/>
+	<!--<property name="PhysicsBody" value="zombieINCEmpty_ND"/>-->
+	<property name="PhysicsBody" value="zombieStandard"/>
+	<property name="ModelType" value="Standard"/>
+	<property name="PainResistPerHit" value="1"/>
+	<property name="WalkType" value="40"/>
+	<property name="Mass" value="5000"/>
+	<property name="Weight" value="700"/>
+	<property name="RootMotion" value="false"/>
+	<property name="CorpseBlock" value="air"/>
+	<property name="CorpseBlockChance" value="0"/>
+	<property name="TimeStayAfterDeath" value="0"/>
+	<property name="DeadBodyHitPoints" value="1"/>
+	<property name="PushFactor" value="100"/>
+	<property name="AIPathCostScale" value="0.1, 0.1"/>
+	<property name="SurfaceCategory" value="metal"/>
+	<property name="HasRagdoll" value="false"/>
+	<property name="DanceType" value="2" />
+	<property name="NavObject" value="" />
+	<property name="LootDropProb" value="0"/>
+	<property name="MaxTurnSpeed" value="1"/>
+	<property name="MoveSpeed" value="1"/> 
+	<property name="MoveSpeedAggro" value="1,1"/> 
+	<property name="MoveSpeedRand" value="1,1"/> 
+	<property name="MoveSpeedPanic" value="1"/>
+	<property name="SwimSpeed" value="0"/>
+	<property name="SwimStrokeRate" value="0,0"/>
+	<property name="CanClimbLadders" value="false"/>
+	<property name="JumpMaxDistance" value="0,0"/>
+	<property name="DismemberMultiplierLegs" value="0"/>
+	<property name="DismemberMultiplierHead" value="0"/>
+	<property name="DismemberMultiplierArms" value="0"/>
+	<property name="HasDeathAnim" value="false"/>
+	<property name="ParticleOnDeath" value=""/>
+	<property name="DismemberTag_L_HeadGore" value=""/>
+	<property name="DismemberTag_L_LeftUpperLegGore" value=""/>
+	<property name="DismemberTag_L_LeftLowerLegGore" value=""/>
+	<property name="DismemberTag_L_RightUpperLegGore" value=""/>
+	<property name="DismemberTag_L_RightLowerLegGore" value=""/>
+	<property name="DismemberTag_L_LeftUpperArmGore" value=""/>
+	<property name="DismemberTag_L_LeftLowerArmGore" value=""/>
+	<property name="DismemberTag_L_RightUpperArmGore" value=""/>
+	<property name="DismemberTag_L_RightLowerArmGore" value=""/>
+	<property name="Buffs" value="ZombieINC_ND_Objective_Buff"/>
+	<property name="NavObject" value="ZombieINC_Objective" />
+	
+	<property name="AITask" value="
+	"/>
+	
+	<effect_group name="Base Effects">
+		<passive_effect name="HealthMax" operation="base_set" value="500"/>	
+		<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="ZombieINC_ND_Objective_Buff"/>
+		<passive_effect name="GeneralDamageResist" operation="base_set" value="1"/>
+		<!--<passive_effect name="GeneralDamageResist" operation="base_set" value="0.90"/>
+		<passive_effect name="ExplosionIncomingDamage" operation="base_set" value="1"/>-->
+		<!--<triggered_effect trigger="onOtherKilledSelf" action="CallGameEvent" target="other" event="ZombieINC_ND_AddOneBombCounter" allow_client_call="true"/>-->
+		<!--<triggered_effect trigger="onOtherAttackedSelf" action="AddBuff" target="positionAOE" target_tags="player" range="10" buff="ZombieINC_ND_Player_AddOneCounter_Buff" />-->
+			<!--<requirement name="HasBuff" target="other" buff="ZombieINC_ND_DamageOnObjective_Buff"/>
+		</triggered_effect>-->
+		<!--<triggered_effect trigger="onOtherAttackedSelf" action="AddBuff" target="self" buff="ZombieINC_ND_ObjectiveDamaged_Buff" />-->
+			
+		<!--<triggered_effect trigger="onOtherDamagedSelf" action="CallGameEvent" target="self" event="ZombieINC_Objective_KillSelf" allow_client_call="false"/>-->	
+	</effect_group>
+</entity_class>		
+	
+	<entity_class name="ZombieINC_entityJunkDrone_Radar">
+		<property name="Class" value="EntityDrone"/>
+		<property name="UserSpawnType" value="Menu"/>
+		<property name="Tags" value="drone,deployed,noMedBuffs,radar,droneradar"/>
+		<property name="Parent" value="NPC"/>
+		<property name="Mesh" value="@:Other/Items/Weapons/Ranged/Junk Drone/junkDrone_Prefab.prefab"/>
+		<property name="Prefab" value="NPC"/>
+		<property name="ModelType" value="Custom"/>
+		<property name="SurfaceCategory" value="metal"/>
+		<property name="SizeScale" value="0.35"/>
+
+		<property name="LootListAlive" value="ZINCroboticDroneRadar"/>	<!-- used to determine container X/Y size -->
+		<property name="TimeStayAfterDeath" value="3600"/>	<!-- player death backpacks will go poof after this many seconds. 0 means 0, not infinite. -->
+		<property name="IsEnemyEntity" value="false"/>
+		<property name="Faction" value="none"/>
+		<property name="NPCID" value="NPCjunkDroneRadar"/>
+		<property name="MapIcon" value="ui_game_symbol_map_player_arrow"/>
+		<property name="NavObject" value="NOJunkDrone" />
+		<!-- <property name="TrackerIcon" value="ui_game_symbol_drone"/> *Handled by NavObject -->
+
+		<property name="MaxDistance" value="15"/>
+		<property name="RaySpread" value="5"/>
+		<!--- <property name="RayCount" value="1"/> -->
+		<property name="BurstRoundCount" value="3"/>
+		<property name="BurstFireRate" value="0.2"/>
+		<property name="CooldownTime" value="1"/>
+		<property name="EntityDamage" value="5"/>
+
+		<property name="StunActionTime" value="1"/>
+		<property name="StunCooldown" value="14"/>
+		<property name="HealActionTime" value="2"/>
+		<property name="HealCooldown" value="15"/>
+		<property name="HealDamageThreshold" value="50"/>
+		
+		<property name="Buffs" value="ZombieINC_DroneRadar_Naive"/>
+
+		
+		<effect_group>
+			<passive_effect name="HealthMax" operation="base_set" value="100"/>
+			<passive_effect name="StaminaMax" operation="base_set" value="100"/>
+			<passive_effect name="WaterMax" operation="base_set" value="100"/>
+			<passive_effect name="BuffResistance" operation="base_set" value="1" tags="buffFatiguedTrigger,buffArmSprainedCHTrigger,buffLegSprainedCHTrigger,buffLaceration,buffInfectionCatch,buffAbrasionCatch,buffInjuryStunned01CHTrigger,buffInjuryBleedingOne,buffInjuryBleedingTwo,buffInjuryBleeding,buffBurningZombie,buffBurningElement,buffBurningEnvironment,buffBurningEnvironmentHack,buffBurningFlamingArrow,buffBurningMolotov,buffIsOnFire,buffShocked,buffPerkCharismaticNature,buffRadiationPool"/>
+			<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="ZombieINC_DroneRadar_Naive"/>	
+		</effect_group>
+	  
+	</entity_class>
+	<!--Nest Demolition-->
+	<!--##Nest Demolition-->
+<entity_class name="ZombieINC_vehicleMinibikeBomber">
+	<property name="Class" value="EntityMinibike"/>
+	<property name="Tags" value="vehicle,usesGas,bikerSetBonus,ZINCMinibikeQuestND,ZINCNDVEHICLE"/>
+	<property name="Prefab" value="@:Entities/Vehicles/VBikeMini/VBikeMiniP.prefab"/>
+	<property name="ModelType" value="Standard"/>
+	<property name="SurfaceCategory" value="metal"/>
+	<property name="IgnoreTrigger" value="true"/>
+	<property name="LootListAlive" value="vehicleMinibike"/>
+	<property name="IsEnemyEntity" value="false"/>
+	<property name="Explosion.ParticleIndex" value="26"/>
+	<property name="Explosion.RadiusBlocks" value="3"/>
+	<property name="Explosion.RadiusEntities" value="3"/>
+	<property name="Explosion.BlockDamage" value="20"/>
+	<property name="Explosion.EntityDamage" value="20"/>
+	<property name="RotateToGround" value="true"/>
+	<property name="Faction" value="none"/>
+	<property name="MapIcon" value="ui_game_symbol_minibike"/>
+	<property name="NavObject" value="ZombieINC_minibike" />
+	
+	<property name="Buffs" value="ZombieINC_ND_MinibikeAttachPrefab_Buff" />
+	
+	<effect_group name="Base Effects">
+		<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="ZombieINC_ND_MinibikeAttachPrefab_Buff"/>	
+	</effect_group>
+</entity_class>
+	
+<entity_class name="ZombieINC_vehicle4x4TruckBomber">
+	<property name="Class" value="EntityVJeep"/>
+	<property name="Tags" value="vehicle,usesGas,ZINCTruckQuestND,ZINCNDVEHICLE"/>
+	<!--<property name="Tags" value="vehicle,usesGas,zinctruckquest"/>-->
+	<property name="Prefab" value="@:Entities/Vehicles/VTruck4x4/VTruck4x4P.prefab"/>
+	<property name="ModelType" value="Standard"/>
+	<property name="SurfaceCategory" value="metal"/>
+	<property name="IgnoreTrigger" value="true"/>
+	<property name="LootListAlive" value="vehicle4x4Truck"/>
+	<property name="IsEnemyEntity" value="false"/>
+	<property name="Explosion.ParticleIndex" value="29"/>
+	<property name="Explosion.RadiusBlocks" value="5"/>
+	<property name="Explosion.RadiusEntities" value="5"/>
+	<property name="Explosion.BlockDamage" value="100"/>
+	<property name="Explosion.EntityDamage" value="100"/>
+	<property name="RotateToGround" value="true"/>
+	<property name="Faction" value="none"/>
+	<property name="MapIcon" value="ui_game_symbol_4x4"/>
+	<property name="NavObject" value="ZombieINC_4x4" />
+	
+	<property name="Buffs" value="ZombieINC_ND_JeepAttachPrefab_Buff" />
+	
+	<effect_group name="Base Effects">
+		<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="ZombieINC_ND_JeepAttachPrefab_Buff"/>	
+	</effect_group>
+</entity_class>
+<!--Nest Demolition-->
+	
+	
+	</append>
+
+</Config>

@@ -1,0 +1,2364 @@
+<Config>
+<append xpath="/gameevents">
+<!--###Survival-->
+	
+	<!--<action_sequence name="ZombieINC_Survival_AddQuest_Template">
+
+		<action class="AddQuest">
+			<property name="quest" value="" param1="questadd" />
+			<property name="phase" value="1" />			
+		</action>			
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_RemoveQuestForce_Template">	
+		<action class="FailQuest">
+			<property name="quest" value="" param1="questfail" />
+			<property name="remove_quest" value="true" />			
+		</action>		
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_Survival_AddQuest_Tier3_Part1" >
+		<requirement class="HasBuff">
+			<property name="buff_name" value="TEST1234"/> 
+		</requirement>	
+		<action class="Delay">
+			<property name="time" value="3" />
+			<property name="phase" value="1" />
+		</action>
+			
+		<action class="AddQuest">
+			<property name="quest" value="ZINCSurvival3Part2" />
+			<property name="phase" value="2" />			
+		</action>
+
+		<action class="RemoveBuff">
+			<property name="buff_name" value="TEST1234" />
+			<property name="phase" value="3" />				
+		</action>
+		
+		<action class="AddChatMessage">							
+				<property name="text" value="TEST1234" />
+				<property name="phase" value="3"  />
+			</action>
+	</action_sequence>
+	
+	<action_sequence name="TEST123" >
+			
+		<action class="AddBuff">
+			<property name="buff_name" value="TEST1234" />
+			<property name="check_already_exists" value="false" />
+		</action>	
+	</action_sequence>-->
+	
+	<!--<action_sequence name="ZombieINC_Survival_RemoveQuestForce_Tier3_Part1" template="ZombieINC_Survival_RemoveQuestForce_Template">	
+		<variable name="questfail" value="zincsurvival3"/>	
+	</action_sequence>
+	<action_sequence name="ZombieINC_Survival_AddQuest_Tier3_Part1" template="ZombieINC_Survival_AddQuest_Template">	
+		<variable name="questadd" value="zincsurvival3part2"/>	
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_RemoveQuestForce_Tier4_Part1" template="ZombieINC_Survival_RemoveQuestForce_Template">	
+		<variable name="questfail" value="zincsurvival4"/>	
+	</action_sequence>
+	<action_sequence name="ZombieINC_Survival_AddQuest_Tier4_Part1" template="ZombieINC_Survival_AddQuest_Template">	
+		<variable name="questadd" value="zincsurvival4part2"/>	
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_RemoveQuestForce_Tier5_Part1" template="ZombieINC_Survival_RemoveQuestForce_Template">	
+		<variable name="questfail" value="zincsurvival5"/>	
+	</action_sequence>
+	<action_sequence name="ZombieINC_Survival_AddQuest_Tier5_Part1" template="ZombieINC_Survival_AddQuest_Template">	
+		<variable name="questadd" value="zincsurvival5part2"/>	
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_RemoveQuestForce_Tier6_Part1" template="ZombieINC_Survival_RemoveQuestForce_Template">	
+		<variable name="questfail" value="zincsurvival6"/>	
+	</action_sequence>
+	<action_sequence name="ZombieINC_Survival_AddQuest_Tier6_Part1" template="ZombieINC_Survival_AddQuest_Template">	
+		<variable name="questadd" value="zincsurvival6part2"/>	
+	</action_sequence>-->
+
+
+<!--##Tier1-->	
+	
+	<action_sequence name="ZombieINC_Survival_tier1_VehicleBlockerEvent">
+		<requirement class="InVehicle"/>					
+			<action class="EjectFromVehicle"/>
+			<action class="AddChatMessage">
+				<property name="buff_name" value="ZombieINC_Survival_Tier1_Part1_Spawner" />
+			</action>
+			<action class="BeltTooltip">  								
+				<property name="text" value="You CAN't Drive a vehicle"  />
+				<property name="text_key" value="ZombieINC_Survival_VehicleBlockerEvent_BeltTooltip"  />
+			</action>						      			    
+			<action class="AddChatMessage">							
+				<property name="text" value="| [FF6600]Player's Mind:[-] I can't drive a vehicle" />
+				<property name="text_key" value="ZombieINC_Survival_VehicleBlockerEvent_Chat"  />
+			</action>
+			<action class="AddBuff">
+				<property name="buff_name" value="ZombieINC_Survival_tier1_VehicleBlockerCounter" />
+				<property name="check_already_exists" value="false" />
+			</action>			
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_FailMissionSurvivalT1">						
+		<action class="FailQuest">
+			<property name="quest" value="zincsurvival1" />
+			<property name="remove_quest" value="false" />			
+		</action>
+		<action class="CallGameEvent">
+			<property name="game_events" value="ZombieINC_SurvivalT1_RemoveAllBuffs" />	
+		</action>		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_FailMissionSurvivalT1_VehicleBlocker">	
+		<action class="FailQuest">
+			<property name="quest" value="zincsurvival1" />
+			<property name="remove_quest" value="true" />			
+		</action>
+		<action class="CallGameEvent">
+			<property name="game_events" value="ZombieINC_SurvivalT1_RemoveAllBuffs" />	
+		</action>
+	
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_SurvivalT1_RemoveAllBuffs">	
+		
+		<action class="RemoveBuff">
+			<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_Survival_tier1_VehicleBlockerBuff"/> 
+			</requirement>
+			<property name="buff_name" value="ZombieINC_Survival_tier1_VehicleBlockerBuff" />	
+		</action>
+		<action class="RemoveBuff">
+			<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_SurvivalT1_IsInDoorsChecker"/> 
+			</requirement>
+			<property name="buff_name" value="ZombieINC_SurvivalT1_IsInDoorsChecker" />	
+		</action>
+		<action class="RemoveBuff">
+			<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_Survival_Tier1_Part1_Spawner"/> 
+			</requirement>
+			<property name="buff_name" value="ZombieINC_Survival_Tier1_Part1_Spawner" />	
+		</action>
+		<action class="RemoveBuff">
+			<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_Survival_Tier1_Part1_SpawnerEffects"/> 
+			</requirement>
+			<property name="buff_name" value="ZombieINC_Survival_Tier1_Part1_SpawnerEffects" />	
+		</action>
+		
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_Survival_tier1_Start">	
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Survival_Tier1_Part1_Spawner" />	
+			<property name="check_already_exists" value="false" />
+		</action>
+		<!--<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Survival_T1_NotHiddenCheckerEvent_Buff" />		
+			<property name="check_already_exists" value="false" />
+		</action>-->
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_Survival_tier1_VehicleBlocker">	
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Survival_tier1_VehicleBlockerBuff" />	
+			<property name="check_already_exists" value="false" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_Survival_tier1_VehicleBlockerRemover">	
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_Survival_tier1_VehicleBlockerBuff" />		
+		</action>
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_Survival_tier1_IsInDoorsChecker">		
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_SurvivalT1_IsInDoorsChecker" />	
+			<property name="check_already_exists" value="false" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_Survival_tier1_IsInDoorsCheckerRemover">		
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_SurvivalT1_IsInDoorsChecker" />		
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_tier1_Wave_InPOI">
+		<property name="action_type" value="Game" />
+		<property name="target_type" value="POI" />
+			
+		<action class="SpawnEntity">				    
+			<property name="entity_names" value="zombieArlene,zombieBurnt,zombieLab,zombieMarlene,zombieDarlene,zombiePartyGirl,zombieNurse,zombieSkateboarder,zombieTomClark,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieUtilityWorker" />
+			<!--<property name="entity_group" value="ZombieINCWeakNormal" />-->	
+			<property name="spawn_count" value="2"  />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff"/>
+			<property name="safe_spawn" value="true" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="max_distance" value="20"  />
+			<property name="min_distance" value="15"  />
+			<property name="air_spawn" value="false" />
+			<property name="phase" value="1" />			
+		</action>	
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_tier1_Wave_OpenSpace">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincsurvival1"/>
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="spawnedEnemies" />
+			<property name="entity_tags" value="entity" />
+			<property name="max_distance" value="20"/>
+		</action>
+		
+		<decision class="If">
+			<property name="condition_type" value="All"/>
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="spawnedEnemies"/>
+				<property name="operation" value="LessThan"/> 
+				<property name="count" value="6"/>	
+			</requirement>
+			<requirement class="InPOI">
+				<property name="invert" value="true" />
+			</requirement>
+			
+			<action class="CallGameEvent">	
+				<property name="game_events" value="ZombieINC_Wave_Weak_Normal_Survival_tier1_1" />
+				<property name="phase" value="1" />
+			</action>
+		</decision>
+		<decision class="If">
+			<property name="condition_type" value="All"/>
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="spawnedEnemies"/>
+				<property name="operation" value="LessThan"/> 
+				<property name="count" value="4"/>	
+			</requirement>
+			<requirement class="InPOI"/>
+				
+			<action class="CallGameEvent">	
+				<property name="game_events" value="ZombieINC_Survival_tier1_Wave_InPOI" />
+				<property name="phase" value="1" />
+			</action>
+		</decision>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_tier1_Wave_OpenSpace_Spawner" template="ZombieINC_Wave_Weak_Normal">
+		<variable name="zombiename" value="zombieArlene,zombieBurnt,zombieLab,zombieMarlene,zombieDarlene,zombiePartyGirl,zombieNurse"/>
+		<variable name="spawncount" value="2"/>
+		<variable name="maxdist" value="20"/>
+		<variable name="mindist" value="15"/>	
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Wave_Weak_Normal_Survival_tier1_1">
+	     <action class="SpawnEntity">	    
+			<property name="entity_names" value="zombieArlene,zombieBurnt,zombieLab,zombieMarlene,zombieDarlene,zombiePartyGirl,zombieNurse,zombieSkateboarder,zombieTomClark,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieUtilityWorker" param1="zombiename" />
+			<!--<property name="entity_group" value="ZombieINCWeakNormal" />-->
+			<property name="spawn_count" value="2" param1="spawncount" />
+			<property name="max_distance" value="20" param1="maxdist" />
+			<property name="min_distance" value="15" param1="mindist" />
+			<property name="air_spawn" value="false" param1="airspawn" />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />	
+		</action>	
+	</action_sequence>
+	
+<!--### NEW SPAWN WAVE EVENTES 7 DAYS TO DIE 2.1-->	
+	
+	<action_sequence name="ZombieINC_Survival_NewWave_Event_T1">
+		<property name="refund_inactivity" value="false" />
+		<action class="Delay">
+			<property name="time" value="15" />
+			<property name="phase" value="0" />
+		</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />
+					<!--<property name="spawn_type" value="WanderingHorde" />-->
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />
+					<!--<property name="spawn_type" value="WanderingHorde" />-->
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />
+					<!--<property name="spawn_type" value="WanderingHorde" />-->
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />
+					<!--<property name="spawn_type" value="WanderingHorde" />-->
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+		<loop class="While">
+			<property name="phase" value="1" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_Survival_Tier1_Part1_Spawner" />
+			</requirement>		
+			<decision class="If">
+				<requirement class="GroupLiveCount">
+					<property name="target_group" value="spawnedEnemies"/>
+					<property name="operation" value="LTE"/> 
+					<property name="count" value="4"/>			
+				</requirement>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<!--<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />-->
+					<!--<property name="air_spawn" value="false" />-->
+					<property name="spawn_type" value="WanderingHorde" />
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<!--<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />-->
+					<!--<property name="air_spawn" value="false" />-->
+					<property name="spawn_type" value="WanderingHorde" />
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="Delay">
+					<property name="time" value="5-10" />
+				</action>
+			</decision>
+		</loop>		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_NewWave_Event_T2">
+		<property name="refund_inactivity" value="false" />
+		<action class="Delay">
+			<property name="time" value="15" />
+			<property name="phase" value="0" />
+		</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />
+					<!--<property name="spawn_type" value="WanderingHorde" />-->
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />
+					<!--<property name="spawn_type" value="WanderingHorde" />-->
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />
+					<!--<property name="spawn_type" value="WanderingHorde" />-->
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />
+					<!--<property name="spawn_type" value="WanderingHorde" />-->
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+		<loop class="While">
+			<property name="phase" value="1" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_Survival_Tier2_Part1_Spawner" />
+			</requirement>		
+			<decision class="If">
+				<requirement class="GroupLiveCount">
+					<property name="target_group" value="spawnedEnemies"/>
+					<property name="operation" value="LTE"/> 
+					<property name="count" value="6"/>			
+				</requirement>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<!--<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />-->
+					<property name="spawn_type" value="WanderingHorde" />
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>	
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<!--<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />-->
+					<property name="spawn_type" value="WanderingHorde" />
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="Delay">
+					<property name="time" value="5-9" />
+				</action>
+			</decision>
+		</loop>		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_NewWave_Event_T3">
+		<property name="refund_inactivity" value="false" />
+		<action class="Delay">
+			<property name="time" value="15" />
+			<property name="phase" value="0" />
+		</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />
+					<!--<property name="spawn_type" value="WanderingHorde" />-->
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />
+					<!--<property name="spawn_type" value="WanderingHorde" />-->
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />
+					<!--<property name="spawn_type" value="WanderingHorde" />-->
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />
+					<!--<property name="spawn_type" value="WanderingHorde" />-->
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+		<loop class="While">
+			<property name="phase" value="1" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_Survival_Tier3_Part1_Spawner" />
+			</requirement>		
+			<decision class="If">
+				<requirement class="GroupLiveCount">
+					<property name="target_group" value="spawnedEnemies"/>
+					<property name="operation" value="LTE"/> 
+					<property name="count" value="7"/>			
+				</requirement>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<!--<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />-->
+					<property name="spawn_type" value="WanderingHorde" />
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>	
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<!--<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />-->
+					<property name="spawn_type" value="WanderingHorde" />
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="Delay">
+					<property name="time" value="3-7" />
+				</action>
+			</decision>
+		</loop>		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_NewWave_Event_T4">
+		<property name="refund_inactivity" value="false" />
+		<action class="Delay">
+			<property name="time" value="15" />
+			<property name="phase" value="0" />
+		</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />
+					<!--<property name="spawn_type" value="WanderingHorde" />-->
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />
+					<!--<property name="spawn_type" value="WanderingHorde" />-->
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />
+					<!--<property name="spawn_type" value="WanderingHorde" />-->
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />
+					<!--<property name="spawn_type" value="WanderingHorde" />-->
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+		<loop class="While">
+			<property name="phase" value="1" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_Survival_Tier4_Part1_Spawner" />
+			</requirement>		
+			<decision class="If">
+				<requirement class="GroupLiveCount">
+					<property name="target_group" value="spawnedEnemies"/>
+					<property name="operation" value="LTE"/> 
+					<property name="count" value="8"/>			
+				</requirement>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<!--<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />-->
+					<property name="spawn_type" value="WanderingHorde" />
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>	
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<!--<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />-->
+					<property name="spawn_type" value="WanderingHorde" />
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="Delay">
+					<property name="time" value="2-6" />
+				</action>
+			</decision>
+		</loop>		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_NewWave_Event_T5">
+		<property name="refund_inactivity" value="false" />
+		<action class="Delay">
+			<property name="time" value="15" />
+			<property name="phase" value="0" />
+		</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />
+					<!--<property name="spawn_type" value="WanderingHorde" />-->
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />
+					<!--<property name="spawn_type" value="WanderingHorde" />-->
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />
+					<!--<property name="spawn_type" value="WanderingHorde" />-->
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />
+					<!--<property name="spawn_type" value="WanderingHorde" />-->
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />
+					<!--<property name="spawn_type" value="WanderingHorde" />-->
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />
+					<!--<property name="spawn_type" value="WanderingHorde" />-->
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />
+					<!--<property name="spawn_type" value="WanderingHorde" />-->
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />
+					<!--<property name="spawn_type" value="WanderingHorde" />-->
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+		<loop class="While">
+			<property name="phase" value="1" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_Survival_Tier5_Part1_Spawner" />
+			</requirement>		
+			<decision class="If">
+				<requirement class="GroupLiveCount">
+					<property name="target_group" value="spawnedEnemies"/>
+					<property name="operation" value="LTE"/> 
+					<property name="count" value="10"/>			
+				</requirement>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<!--<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />-->
+					<property name="spawn_type" value="WanderingHorde" />
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>	
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<!--<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />-->
+					<property name="spawn_type" value="WanderingHorde" />
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<!--<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />-->
+					<property name="spawn_type" value="WanderingHorde" />
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="Delay">
+					<property name="time" value="1-3" />
+				</action>
+			</decision>
+		</loop>		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_NewWave_Event_T6">
+		<property name="refund_inactivity" value="false" />
+		<action class="Delay">
+			<property name="time" value="15" />
+			<property name="phase" value="0" />
+		</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />
+					<!--<property name="spawn_type" value="WanderingHorde" />-->
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />
+					<!--<property name="spawn_type" value="WanderingHorde" />-->
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />
+					<!--<property name="spawn_type" value="WanderingHorde" />-->
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />
+					<!--<property name="spawn_type" value="WanderingHorde" />-->
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />
+					<!--<property name="spawn_type" value="WanderingHorde" />-->
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />
+					<!--<property name="spawn_type" value="WanderingHorde" />-->
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />
+					<!--<property name="spawn_type" value="WanderingHorde" />-->
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />
+					<!--<property name="spawn_type" value="WanderingHorde" />-->
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />
+					<!--<property name="spawn_type" value="WanderingHorde" />-->
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />
+					<!--<property name="spawn_type" value="WanderingHorde" />-->
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />
+					<!--<property name="spawn_type" value="WanderingHorde" />-->
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />
+					<!--<property name="spawn_type" value="WanderingHorde" />-->
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+		<loop class="While">
+			<property name="phase" value="1" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_Survival_Tier6_Part1_Spawner" />
+			</requirement>		
+			<decision class="If">
+				<requirement class="GroupLiveCount">
+					<property name="target_group" value="spawnedEnemies"/>
+					<property name="operation" value="LTE"/> 
+					<property name="count" value="12"/>			
+				</requirement>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<!--<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />-->
+					<property name="spawn_type" value="WanderingHorde" />
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<!--<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />-->
+					<property name="spawn_type" value="WanderingHorde" />
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<!--<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />-->
+					<property name="spawn_type" value="WanderingHorde" />
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="SpawnEntity">				    
+					<property name="entity_group" value="ZombieGhostTownHorde" />
+					<property name="spawn_count" value="1" />
+					<!--<property name="max_distance" value="15" />
+					<property name="min_distance" value="25" />
+					<property name="air_spawn" value="false" />-->
+					<property name="spawn_type" value="WanderingHorde" />
+					<property name="add_to_group" value="spawnedEnemies" />
+					<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />		
+				</action>
+				<action class="Delay">
+					<property name="time" value="1-2" />
+				</action>
+			</decision>
+		</loop>		
+	</action_sequence>
+<!--### NEW GAME EVENTS 7 days to die 2.1-->	
+	<action_sequence name="ZombieINC_Survival_NewQuestFinished_Event_T1">
+		<action class="RemoveBuffsByTag">
+			<property name="buff_tag" value="ZINC_SURVIVAL_BUFFS" />
+			<property name="phase" value="1"/>				
+		</action>		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_NewRemoveAllBuffsWhenFail_T1">
+		<property name="refund_inactivity" value="false" />					
+		<action class="Delay">
+			<property name="phase" value="1" />
+			<property name="time" value="15" />
+		</action>
+		<wait class="While">
+			<property name="phase" value="2" />
+			<property name="condition_type" value="Any" />
+			<requirement class="OnQuest">
+				<property name="quest" value="zincsurvival1"/>
+			</requirement>			
+		</wait>
+		<action class="RemoveBuffsByTag">
+			<property name="buff_tag" value="ZINC_SURVIVAL_BUFFS" />
+			<property name="phase" value="3"/>				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_NewQuestFinished_Event_T2">
+		<action class="RemoveBuffsByTag">
+			<property name="buff_tag" value="ZINC_SURVIVAL_BUFFS" />
+			<property name="phase" value="1"/>				
+		</action>		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_NewRemoveAllBuffsWhenFail_T2">
+		<property name="refund_inactivity" value="false" />					
+		<action class="Delay">
+			<property name="phase" value="1" />
+			<property name="time" value="15" />
+		</action>
+		<wait class="While">
+			<property name="phase" value="2" />
+			<property name="condition_type" value="Any" />
+			<requirement class="OnQuest">
+				<property name="quest" value="zincsurvival2"/>
+			</requirement>			
+		</wait>
+		<action class="RemoveBuffsByTag">
+			<property name="buff_tag" value="ZINC_SURVIVAL_BUFFS" />
+			<property name="phase" value="3"/>				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_NewQuestFinished_Event_T3">
+		<action class="RemoveBuffsByTag">
+			<property name="buff_tag" value="ZINC_SURVIVAL_BUFFS" />
+			<property name="phase" value="1"/>				
+		</action>		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_NewRemoveAllBuffsWhenFail_T3">
+		<property name="refund_inactivity" value="false" />					
+		<action class="Delay">
+			<property name="phase" value="1" />
+			<property name="time" value="15" />
+		</action>
+		<wait class="While">
+			<property name="phase" value="2" />
+			<property name="condition_type" value="Any" />
+			<requirement class="OnQuest">
+				<property name="quest" value="zincsurvival3"/>
+			</requirement>			
+		</wait>
+		<action class="RemoveBuffsByTag">
+			<property name="buff_tag" value="ZINC_SURVIVAL_BUFFS" />
+			<property name="phase" value="3"/>				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_NewQuestFinished_Event_T4">
+		<action class="RemoveBuffsByTag">
+			<property name="buff_tag" value="ZINC_SURVIVAL_BUFFS" />
+			<property name="phase" value="1"/>				
+		</action>		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_NewRemoveAllBuffsWhenFail_T4">
+		<property name="refund_inactivity" value="false" />					
+		<action class="Delay">
+			<property name="phase" value="1" />
+			<property name="time" value="15" />
+		</action>
+		<wait class="While">
+			<property name="phase" value="2" />
+			<property name="condition_type" value="Any" />
+			<requirement class="OnQuest">
+				<property name="quest" value="zincsurvival4"/>
+			</requirement>			
+		</wait>
+		<action class="RemoveBuffsByTag">
+			<property name="buff_tag" value="ZINC_SURVIVAL_BUFFS" />
+			<property name="phase" value="3"/>				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_NewQuestFinished_Event_T5">
+		<action class="RemoveBuffsByTag">
+			<property name="buff_tag" value="ZINC_SURVIVAL_BUFFS" />
+			<property name="phase" value="1"/>				
+		</action>		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_NewRemoveAllBuffsWhenFail_T5">
+		<property name="refund_inactivity" value="false" />					
+		<action class="Delay">
+			<property name="phase" value="1" />
+			<property name="time" value="15" />
+		</action>
+		<wait class="While">
+			<property name="phase" value="2" />
+			<property name="condition_type" value="Any" />
+			<requirement class="OnQuest">
+				<property name="quest" value="zincsurvival5"/>
+			</requirement>			
+		</wait>
+		<action class="RemoveBuffsByTag">
+			<property name="buff_tag" value="ZINC_SURVIVAL_BUFFS" />
+			<property name="phase" value="3"/>				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_NewQuestFinished_Event_T6">
+		<action class="RemoveBuffsByTag">
+			<property name="buff_tag" value="ZINC_SURVIVAL_BUFFS" />
+			<property name="phase" value="1"/>				
+		</action>		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_NewRemoveAllBuffsWhenFail_T6">
+		<property name="refund_inactivity" value="false" />					
+		<action class="Delay">
+			<property name="phase" value="1" />
+			<property name="time" value="15" />
+		</action>
+		<wait class="While">
+			<property name="phase" value="2" />
+			<property name="condition_type" value="Any" />
+			<requirement class="OnQuest">
+				<property name="quest" value="zincsurvival6"/>
+			</requirement>			
+		</wait>
+		<action class="RemoveBuffsByTag">
+			<property name="buff_tag" value="ZINC_SURVIVAL_BUFFS" />
+			<property name="phase" value="3"/>				
+		</action>
+	</action_sequence>
+<!--Tier1-->	
+<!--##Tier2-->	
+	
+	<action_sequence name="ZombieINC_Survival_tier2_Start">	
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Survival_Tier2_Part1_Spawner" />	
+			<property name="check_already_exists" value="false" />
+			<property name="phase" value="1" />
+		</action>
+		<!--<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Survival_T2_NotHiddenCheckerEvent_Buff" />		
+			<property name="check_already_exists" value="false" />
+		</action>-->
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_Survival_tier2_VehicleBlockerEvent">
+		<requirement class="InVehicle"/>					
+			<action class="EjectFromVehicle"/>
+			<action class="AddChatMessage">
+				<property name="buff_name" value="ZombieINC_Survival_Tier2_Part1_Spawner" />
+			</action>
+			<action class="BeltTooltip">  								
+				<property name="text" value="You CAN't Drive a vehicle"  />
+				<property name="text_key" value="ZombieINC_Survival_VehicleBlockerEvent_BeltTooltip"  />
+			</action>						      			    
+			<action class="AddChatMessage">							
+				<property name="text" value="| [FF6600]Player's Mind:[-] I can't drive a vehicle" />
+				<property name="text_key" value="ZombieINC_Survival_VehicleBlockerEvent_Chat"  />
+			</action>
+			<action class="AddBuff">
+				<property name="buff_name" value="ZombieINC_Survival_tier2_VehicleBlockerCounter" />	
+				<property name="check_already_exists" value="false" />
+			</action>			
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_FailMissionSurvivalT2">						
+		<action class="FailQuest">
+			<property name="quest" value="zincsurvival2" />
+			<property name="remove_quest" value="true" />			
+		</action>
+		<action class="CallGameEvent">
+			<property name="game_events" value="ZombieINC_SurvivalT2_RemoveAllBuffs" />	
+		</action>		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_FailMissionSurvivalT2_VehicleBlocker">	
+		<action class="FailQuest">
+			<property name="quest" value="zincsurvival2" />
+			<property name="remove_quest" value="true" />			
+		</action>
+		<action class="CallGameEvent">
+			<property name="game_events" value="ZombieINC_SurvivalT2_RemoveAllBuffs" />	
+		</action>
+	
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_SurvivalT2_RemoveAllBuffs">	
+		
+		<action class="RemoveBuff">
+			<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_Survival_tier2_VehicleBlockerBuff"/> 
+			</requirement>
+			<property name="buff_name" value="ZombieINC_Survival_tier2_VehicleBlockerBuff" />	
+		</action>
+		<action class="RemoveBuff">
+			<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_SurvivalT2_IsInDoorsChecker"/> 
+			</requirement>
+			<property name="buff_name" value="ZombieINC_SurvivalT2_IsInDoorsChecker" />	
+		</action>
+		<action class="RemoveBuff">
+			<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_Survival_Tier2_Part1_Spawner"/> 
+			</requirement>
+			<property name="buff_name" value="ZombieINC_Survival_Tier2_Part1_Spawner" />	
+		</action>
+		<action class="RemoveBuff">
+			<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_Survival_Tier2_Part1_SpawnerEffects"/> 
+			</requirement>
+			<property name="buff_name" value="ZombieINC_Survival_Tier2_Part1_SpawnerEffects" />	
+		</action>
+		
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_Survival_tier2_VehicleBlocker">	
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Survival_tier2_VehicleBlockerBuff" />	
+			<property name="check_already_exists" value="false" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_Survival_tier2_VehicleBlockerRemover">	
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_Survival_tier2_VehicleBlockerBuff" />		
+		</action>
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_Survival_tier2_IsInDoorsChecker">		
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_SurvivalT2_IsInDoorsChecker" />		
+			<property name="check_already_exists" value="false" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_Survival_tier2_IsInDoorsCheckerRemover">		
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_SurvivalT2_IsInDoorsChecker" />		
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_tier2_Wave_InPOI">
+		<property name="action_type" value="Game" />
+		<property name="target_type" value="POI" />
+			
+		<action class="SpawnEntity">				    
+			<property name="entity_names" value="zombieArlene,zombieBurnt,zombieLab,zombieMarlene,zombieDarlene,zombiePartyGirl,zombieNurse,zombieSkateboarder,zombieTomClark,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieUtilityWorker,zombieMoe,zombieJanitor,zombieBiker,zombieFatHawaiian,zombieLumberjack,zombieFemaleFat,zombieSoldier,zombieMaleHazmat,zombieSpider,zombieSteveCrawler,animalZombieDog,zombieFatCop" />
+			<property name="spawn_count" value="2"  />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff"/>
+			<property name="safe_spawn" value="true" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="max_distance" value="20"  />
+			<property name="min_distance" value="15"  />
+			<property name="air_spawn" value="false" />
+			<property name="phase" value="1" />			
+		</action>	
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_tier2_Wave_OpenSpace">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincsurvival2"/>
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="spawnedEnemies" />
+			<property name="entity_tags" value="entity" />
+			<property name="target_only" value="true" />
+		</action>
+		
+		<decision class="If">
+			<property name="condition_type" value="All"/>
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="spawnedEnemies"/>
+				<property name="operation" value="LessThan"/> 
+				<property name="count" value="8"/>	
+			</requirement>
+			<requirement class="InPOI">
+				<property name="invert" value="true" />
+			</requirement>
+			
+			<action class="CallGameEvent">	
+				<property name="game_events" value="ZombieINC_Wave_Weak_Normal_Survival_tier2_1" />
+				<property name="phase" value="1" />
+			</action>
+		</decision>
+		<decision class="If">
+			<property name="condition_type" value="All"/>
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="spawnedEnemies"/>
+				<property name="operation" value="LessThan"/> 
+				<property name="count" value="8"/>	
+			</requirement>
+			<requirement class="InPOI"/>
+				
+			<action class="CallGameEvent">	
+				<property name="game_events" value="ZombieINC_Survival_tier2_Wave_InPOI" />
+				<property name="phase" value="1" />
+			</action>
+		</decision>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_tier2_Wave_OpenSpace_Spawner" template="ZombieINC_Wave_Weak_Normal">
+		<variable name="zombiename" value="zombieArlene,zombieBurnt,zombieLab,zombieMarlene,zombieDarlene,zombiePartyGirl,zombieNurse"/>
+		<variable name="spawncount" value="2"/>
+		<variable name="maxdist" value="20"/>
+		<variable name="mindist" value="15"/>	
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Wave_Weak_Normal_Survival_tier2_1">
+	     <action class="SpawnEntity">	    
+			<property name="entity_names" value="zombieArlene,zombieBurnt,zombieLab,zombieMarlene,zombieDarlene,zombiePartyGirl,zombieNurse,zombieSkateboarder,zombieTomClark,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieUtilityWorker,zombieMoe,zombieJanitor,zombieBiker,zombieFatHawaiian,zombieLumberjack,zombieFemaleFat,zombieSoldier,zombieMaleHazmat,zombieSpider,zombieSteveCrawler,animalZombieDog,zombieFatCop" param1="zombiename" />
+			<property name="spawn_count" value="3" param1="spawncount" />
+			<property name="max_distance" value="20" param1="maxdist" />
+			<property name="min_distance" value="15" param1="mindist" />
+			<property name="air_spawn" value="false" param1="airspawn" />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />	
+		</action>	
+	</action_sequence>
+	
+<!--Tier2-->
+<!--##Tier3-->
+<action_sequence name="ZombieINC_Survival_tier3_Start">	
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Survival_Tier3_Part1_Spawner" />	
+			<property name="check_already_exists" value="false" />
+			<property name="phase" value="1" />
+		</action>
+		<!--<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Survival_T3_NotHiddenCheckerEvent_Buff" />		
+			<property name="check_already_exists" value="false" />
+		</action>-->
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_Survival_tier3_VehicleBlockerEvent">
+		<requirement class="InVehicle"/>					
+			<action class="EjectFromVehicle"/>
+			<action class="AddChatMessage">
+				<property name="buff_name" value="ZombieINC_Survival_Tier3_Part1_Spawner" />
+			</action>
+			<action class="BeltTooltip">  								
+				<property name="text" value="You CAN't Drive a vehicle"  />
+				<property name="text_key" value="ZombieINC_Survival_VehicleBlockerEvent_BeltTooltip"  />
+			</action>						      			    
+			<action class="AddChatMessage">							
+				<property name="text" value="| [FF6600]Player's Mind:[-] I can't drive a vehicle" />
+				<property name="text_key" value="ZombieINC_Survival_VehicleBlockerEvent_Chat"  />
+			</action>
+			<action class="AddBuff">
+				<property name="buff_name" value="ZombieINC_Survival_tier3_VehicleBlockerCounter" />	
+				<property name="check_already_exists" value="false" />
+			</action>			
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_FailMissionSurvivalT3">						
+		<action class="FailQuest">
+			<property name="quest" value="zincsurvival3" />
+			<property name="remove_quest" value="true" />			
+		</action>
+		<action class="CallGameEvent">
+			<property name="game_events" value="ZombieINC_SurvivalT3_RemoveAllBuffs" />	
+		</action>		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_FailMissionSurvivalT3_VehicleBlocker">	
+		<action class="FailQuest">
+			<property name="quest" value="zincsurvival3" />
+			<property name="remove_quest" value="true" />			
+		</action>
+		<action class="CallGameEvent">
+			<property name="game_events" value="ZombieINC_SurvivalT3_RemoveAllBuffs" />	
+		</action>
+	
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_SurvivalT3_RemoveAllBuffs">	
+		
+		<action class="RemoveBuff">
+			<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_Survival_tier3_VehicleBlockerBuff"/> 
+			</requirement>
+			<property name="buff_name" value="ZombieINC_Survival_tier3_VehicleBlockerBuff" />	
+		</action>
+		<action class="RemoveBuff">
+			<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_SurvivalT3_IsInDoorsChecker"/> 
+			</requirement>
+			<property name="buff_name" value="ZombieINC_SurvivalT3_IsInDoorsChecker" />	
+		</action>
+		<action class="RemoveBuff">
+			<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_Survival_Tier3_Part1_Spawner"/> 
+			</requirement>
+			<property name="buff_name" value="ZombieINC_Survival_Tier3_Part1_Spawner" />	
+		</action>
+		<action class="RemoveBuff">
+			<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_Survival_Tier3_Part1_SpawnerEffects"/> 
+			</requirement>
+			<property name="buff_name" value="ZombieINC_Survival_Tier3_Part1_SpawnerEffects" />	
+		</action>
+		
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_Survival_tier3_VehicleBlocker">	
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Survival_tier3_VehicleBlockerBuff" />
+			<property name="check_already_exists" value="false" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_Survival_tier3_VehicleBlockerRemover">	
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_Survival_tier3_VehicleBlockerBuff" />		
+		</action>
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_Survival_tier3_IsInDoorsChecker">		
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_SurvivalT3_IsInDoorsChecker" />	
+			<property name="check_already_exists" value="false" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_Survival_tier3_IsInDoorsCheckerRemover">		
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_SurvivalT3_IsInDoorsChecker" />		
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_tier3_Wave_InPOI">
+		<property name="action_type" value="Game" />
+		<property name="target_type" value="POI" />
+			
+		<action class="SpawnEntity">				    
+			<property name="entity_names" value="zombieArlene,zombieBurnt,zombieLab,zombieMarlene,zombieDarlene,zombiePartyGirl,zombieNurse,zombieSkateboarder,zombieTomClark,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieUtilityWorker,zombieMoe,zombieJanitor,zombieBiker,zombieFatHawaiian,zombieLumberjack,zombieFemaleFat,zombieSoldier,zombieMaleHazmat,zombieSpider,zombieSteveCrawler,animalZombieDog,zombieFatCop,zombieArleneFeral,zombieBurntFeral,zombieLabFeral,zombieMarleneFeral,zombieDarleneFeral,zombiePartyGirlFeral,zombieNurseFeral" />
+			<property name="spawn_count" value="2"  />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff"/>
+			<property name="safe_spawn" value="true" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="max_distance" value="20"  />
+			<property name="min_distance" value="15"  />
+			<property name="air_spawn" value="false" />
+			<property name="phase" value="1" />			
+		</action>	
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_tier3_Wave_OpenSpace">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincsurvival3"/>
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="spawnedEnemies" />
+			<property name="entity_tags" value="entity" />
+			<property name="target_only" value="true" />
+		</action>
+		
+		<decision class="If">
+			<property name="condition_type" value="All"/>
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="spawnedEnemies"/>
+				<property name="operation" value="LessThan"/> 
+				<property name="count" value="10"/>	
+			</requirement>
+			<requirement class="InPOI">
+				<property name="invert" value="true" />
+			</requirement>
+			
+			<action class="CallGameEvent">	
+				<property name="game_events" value="ZombieINC_Wave_Weak_Normal_Survival_tier3_1" />
+				<property name="phase" value="1" />
+			</action>
+		</decision>
+		<decision class="If">
+			<property name="condition_type" value="All"/>
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="spawnedEnemies"/>
+				<property name="operation" value="LessThan"/> 
+				<property name="count" value="10"/>	
+			</requirement>
+			<requirement class="InPOI"/>
+				
+			<action class="CallGameEvent">	
+				<property name="game_events" value="ZombieINC_Survival_tier3_Wave_InPOI" />
+				<property name="phase" value="1" />
+			</action>
+		</decision>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_tier3_Wave_OpenSpace_Spawner" template="ZombieINC_Wave_Weak_Normal">
+		<variable name="zombiename" value="zombieArlene,zombieBurnt,zombieLab,zombieMarlene,zombieDarlene,zombiePartyGirl,zombieNurse"/>
+		<variable name="spawncount" value="2"/>
+		<variable name="maxdist" value="20"/>
+		<variable name="mindist" value="15"/>	
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Wave_Weak_Normal_Survival_tier3_1">
+	     <action class="SpawnEntity">	    
+			<property name="entity_names" value="zombieArlene,zombieBurnt,zombieLab,zombieMarlene,zombieDarlene,zombiePartyGirl,zombieNurse,zombieSkateboarder,zombieTomClark,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieUtilityWorker,zombieMoe,zombieJanitor,zombieBiker,zombieFatHawaiian,zombieLumberjack,zombieFemaleFat,zombieSoldier,zombieMaleHazmat,zombieSpider,zombieSteveCrawler,animalZombieDog,zombieFatCop,zombieArleneFeral,zombieBurntFeral,zombieLabFeral,zombieMarleneFeral,zombieDarleneFeral,zombiePartyGirlFeral,zombieNurseFeral" param1="zombiename" />
+			<property name="spawn_count" value="3" param1="spawncount" />
+			<property name="max_distance" value="20" param1="maxdist" />
+			<property name="min_distance" value="15" param1="mindist" />
+			<property name="air_spawn" value="false" param1="airspawn" />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />	
+		</action>	
+	</action_sequence>
+
+<!--Tier3-->
+<!--##Tier4-->
+
+<action_sequence name="ZombieINC_Survival_tier4_Start">	
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Survival_Tier4_Part1_Spawner" />		
+			<property name="check_already_exists" value="false" />
+			<property name="phase" value="1" />
+		</action>
+		<!--<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Survival_T4_NotHiddenCheckerEvent_Buff" />	
+			<property name="check_already_exists" value="false" />
+		</action>-->
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_Survival_tier4_VehicleBlockerEvent">
+		<requirement class="InVehicle"/>					
+			<action class="EjectFromVehicle"/>
+			<action class="AddChatMessage">
+				<property name="buff_name" value="ZombieINC_Survival_Tier4_Part1_Spawner" />
+			</action>
+			<action class="BeltTooltip">  								
+				<property name="text" value="You CAN't Drive a vehicle"  />
+				<property name="text_key" value="ZombieINC_Survival_VehicleBlockerEvent_BeltTooltip"  />
+			</action>						      			    
+			<action class="AddChatMessage">							
+				<property name="text" value="| [FF6600]Player's Mind:[-] I can't drive a vehicle" />
+				<property name="text_key" value="ZombieINC_Survival_VehicleBlockerEvent_Chat"  />
+			</action>
+			<action class="AddBuff">
+				<property name="buff_name" value="ZombieINC_Survival_tier4_VehicleBlockerCounter" />
+				<property name="check_already_exists" value="false" />
+			</action>			
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_FailMissionSurvivalT4">						
+		<action class="FailQuest">
+			<property name="quest" value="zincsurvival4" />
+			<property name="remove_quest" value="true" />			
+		</action>
+		<action class="CallGameEvent">
+			<property name="game_events" value="ZombieINC_SurvivalT4_RemoveAllBuffs" />	
+		</action>		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_FailMissionSurvivalT4_VehicleBlocker">	
+		<action class="FailQuest">
+			<property name="quest" value="zincsurvival4" />
+			<property name="remove_quest" value="true" />			
+		</action>
+		<action class="CallGameEvent">
+			<property name="game_events" value="ZombieINC_SurvivalT4_RemoveAllBuffs" />	
+		</action>
+	
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_SurvivalT4_RemoveAllBuffs">	
+		
+		<action class="RemoveBuff">
+			<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_Survival_tier4_VehicleBlockerBuff"/> 
+			</requirement>
+			<property name="buff_name" value="ZombieINC_Survival_tier4_VehicleBlockerBuff" />	
+		</action>
+		<action class="RemoveBuff">
+			<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_SurvivalT4_IsInDoorsChecker"/> 
+			</requirement>
+			<property name="buff_name" value="ZombieINC_SurvivalT4_IsInDoorsChecker" />	
+		</action>
+		<action class="RemoveBuff">
+			<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_Survival_Tier4_Part1_Spawner"/> 
+			</requirement>
+			<property name="buff_name" value="ZombieINC_Survival_Tier4_Part1_Spawner" />	
+		</action>
+		<action class="RemoveBuff">
+			<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_Survival_Tier4_Part1_SpawnerEffects"/> 
+			</requirement>
+			<property name="buff_name" value="ZombieINC_Survival_Tier4_Part1_SpawnerEffects" />	
+		</action>
+		
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_Survival_tier4_VehicleBlocker">	
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Survival_tier4_VehicleBlockerBuff" />	
+			<property name="check_already_exists" value="false" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_Survival_tier4_VehicleBlockerRemover">	
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_Survival_tier4_VehicleBlockerBuff" />		
+		</action>
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_Survival_tier4_IsInDoorsChecker">		
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_SurvivalT4_IsInDoorsChecker" />	
+			<property name="check_already_exists" value="false" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_Survival_tier4_IsInDoorsCheckerRemover">		
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_SurvivalT4_IsInDoorsChecker" />		
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_tier4_Wave_InPOI">
+		<property name="action_type" value="Game" />
+		<property name="target_type" value="POI" />
+			
+		<action class="SpawnEntity">				    
+			<property name="entity_names" value="zombieArlene,zombieBurnt,zombieLab,zombieMarlene,zombieDarlene,zombiePartyGirl,zombieNurse,zombieSkateboarder,zombieTomClark,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieUtilityWorker,zombieArleneFeral,zombieBurntFeral,zombieLabFeral,zombieMarleneFeral,zombieDarleneFeral,zombiePartyGirlFeral,zombieNurseFeral,zombieSkateboarderFeral,zombieTomClarkFeral,zombieBoeFeral,zombieJoeFeral,zombieSteveFeral,zombieYoFeral,zombieBusinessManFeral,zombieUtilityWorkerFeral,animalZombieDog,zombieFatCopFeral,animalZombieVulture" />
+			<property name="spawn_count" value="2"  />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff"/>
+			<property name="safe_spawn" value="true" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="max_distance" value="20"  />
+			<property name="min_distance" value="15"  />
+			<property name="air_spawn" value="false" />
+			<property name="phase" value="1" />			
+		</action>	
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_tier4_Wave_OpenSpace">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincsurvival4"/>
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="spawnedEnemies" />
+			<property name="entity_tags" value="entity" />
+			<property name="target_only" value="true" />
+		</action>
+		
+		<decision class="If">
+			<property name="condition_type" value="All"/>
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="spawnedEnemies"/>
+				<property name="operation" value="LessThan"/> 
+				<property name="count" value="12"/>	
+			</requirement>
+			<requirement class="InPOI">
+				<property name="invert" value="true" />
+			</requirement>
+			
+			<action class="CallGameEvent">	
+				<property name="game_events" value="ZombieINC_Wave_Weak_Normal_Survival_tier4_1" />
+				<property name="phase" value="1" />
+			</action>
+		</decision>
+		<decision class="If">
+			<property name="condition_type" value="All"/>
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="spawnedEnemies"/>
+				<property name="operation" value="LessThan"/> 
+				<property name="count" value="12"/>	
+			</requirement>
+			<requirement class="InPOI"/>
+				
+			<action class="CallGameEvent">	
+				<property name="game_events" value="ZombieINC_Survival_tier4_Wave_InPOI" />
+				<property name="phase" value="1" />
+			</action>
+		</decision>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_tier4_Wave_OpenSpace_Spawner" template="ZombieINC_Wave_Weak_Normal">
+		<variable name="zombiename" value="zombieArlene,zombieBurnt,zombieLab,zombieMarlene,zombieDarlene,zombiePartyGirl,zombieNurse"/>
+		<variable name="spawncount" value="2"/>
+		<variable name="maxdist" value="20"/>
+		<variable name="mindist" value="15"/>	
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Wave_Weak_Normal_Survival_tier4_1">
+	     <action class="SpawnEntity">	    
+			<property name="entity_names" value="zombieArlene,zombieBurnt,zombieLab,zombieMarlene,zombieDarlene,zombiePartyGirl,zombieNurse,zombieSkateboarder,zombieTomClark,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieUtilityWorker,zombieArleneFeral,zombieBurntFeral,zombieLabFeral,zombieMarleneFeral,zombieDarleneFeral,zombiePartyGirlFeral,zombieNurseFeral,zombieSkateboarderFeral,zombieTomClarkFeral,zombieBoeFeral,zombieJoeFeral,zombieSteveFeral,zombieYoFeral,zombieBusinessManFeral,zombieUtilityWorkerFeral,animalZombieDog,zombieFatCopFeral,animalZombieVulture" param1="zombiename" />
+			<property name="spawn_count" value="3" param1="spawncount" />
+			<property name="max_distance" value="20" param1="maxdist" />
+			<property name="min_distance" value="15" param1="mindist" />
+			<property name="air_spawn" value="false" param1="airspawn" />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />	
+		</action>	
+	</action_sequence>
+
+<!--Tier4-->
+<!--##Tier5-->
+
+<action_sequence name="ZombieINC_Survival_tier5_Start">	
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Survival_Tier5_Part1_Spawner" />	
+			<property name="check_already_exists" value="false" />
+			<property name="phase" value="1" />
+		</action>
+	<!--	<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Survival_T5_NotHiddenCheckerEvent_Buff" />	
+			<property name="check_already_exists" value="false" />
+		</action>-->
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_Survival_tier5_VehicleBlockerEvent">
+		<requirement class="InVehicle"/>					
+			<action class="EjectFromVehicle"/>
+			<action class="AddChatMessage">
+				<property name="buff_name" value="ZombieINC_Survival_Tier5_Part1_Spawner" />
+			</action>
+			<action class="BeltTooltip">  								
+				<property name="text" value="You CAN't Drive a vehicle"  />
+				<property name="text_key" value="ZombieINC_Survival_VehicleBlockerEvent_BeltTooltip"  />
+			</action>						      			    
+			<action class="AddChatMessage">							
+				<property name="text" value="| [FF6600]Player's Mind:[-] I can't drive a vehicle" />
+				<property name="text_key" value="ZombieINC_Survival_VehicleBlockerEvent_Chat"  />
+			</action>
+			<action class="AddBuff">
+				<property name="buff_name" value="ZombieINC_Survival_tier5_VehicleBlockerCounter" />	
+				<property name="check_already_exists" value="false" />
+			</action>			
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_FailMissionSurvivalT5">						
+		<action class="FailQuest">
+			<property name="quest" value="zincsurvival5" />
+			<property name="remove_quest" value="true" />			
+		</action>
+		<action class="CallGameEvent">
+			<property name="game_events" value="ZombieINC_SurvivalT5_RemoveAllBuffs" />	
+		</action>		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_FailMissionSurvivalT5_VehicleBlocker">	
+		<action class="FailQuest">
+			<property name="quest" value="zincsurvival5" />
+			<property name="remove_quest" value="true" />			
+		</action>
+		<action class="CallGameEvent">
+			<property name="game_events" value="ZombieINC_SurvivalT5_RemoveAllBuffs" />	
+		</action>
+	
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_SurvivalT5_RemoveAllBuffs">	
+		
+		<action class="RemoveBuff">
+			<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_Survival_tier5_VehicleBlockerBuff"/> 
+			</requirement>
+			<property name="buff_name" value="ZombieINC_Survival_tier5_VehicleBlockerBuff" />	
+		</action>
+		<action class="RemoveBuff">
+			<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_SurvivalT5_IsInDoorsChecker"/> 
+			</requirement>
+			<property name="buff_name" value="ZombieINC_SurvivalT5_IsInDoorsChecker" />	
+		</action>
+		<action class="RemoveBuff">
+			<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_Survival_Tier5_Part1_Spawner"/> 
+			</requirement>
+			<property name="buff_name" value="ZombieINC_Survival_Tier5_Part1_Spawner" />	
+		</action>
+		<action class="RemoveBuff">
+			<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_Survival_Tier5_Part1_SpawnerEffects"/> 
+			</requirement>
+			<property name="buff_name" value="ZombieINC_Survival_Tier5_Part1_SpawnerEffects" />	
+		</action>
+		
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_Survival_tier5_VehicleBlocker">	
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Survival_tier5_VehicleBlockerBuff" />		
+			<property name="check_already_exists" value="false" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_Survival_tier5_VehicleBlockerRemover">	
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_Survival_tier5_VehicleBlockerBuff" />		
+		</action>
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_Survival_tier5_IsInDoorsChecker">		
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_SurvivalT5_IsInDoorsChecker" />	
+			<property name="check_already_exists" value="false" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_Survival_tier5_IsInDoorsCheckerRemover">		
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_SurvivalT5_IsInDoorsChecker" />		
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_tier5_Wave_InPOI">
+		<property name="action_type" value="Game" />
+		<property name="target_type" value="POI" />
+			
+		<action class="SpawnEntity">				    
+			<property name="entity_names" value="zombieArleneFeral,zombieBurntFeral,zombieLabFeral,zombieMarleneFeral,zombieDarleneFeral,zombiePartyGirlFeral,zombieNurseFeral,zombieSkateboarderFeral,zombieTomClarkFeral,zombieBoeFeral,zombieJoeFeral,zombieSteveFeral,zombieYoFeral,zombieBusinessManFeral,zombieUtilityWorkerFeral,zombieMoeFeral,zombieJanitorFeral,zombieBikerFeral,zombieFatHawaiianFeral,zombieLumberjackFeral,zombieFemaleFatFeral,zombieSoldierFeral,zombieMaleHazmatFeral,zombieWightFeral,zombieArleneRadiated,zombieBurntRadiated,zombieLabRadiated,zombieMarleneRadiated,zombieDarleneRadiated,zombiePartyGirlRadiated,zombieNurseRadiated" />
+			<property name="spawn_count" value="2"  />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff"/>
+			<property name="safe_spawn" value="true" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="max_distance" value="20"  />
+			<property name="min_distance" value="15"  />
+			<property name="air_spawn" value="false" />
+			<property name="phase" value="1" />			
+		</action>	
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_tier5_Wave_OpenSpace">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincsurvival5"/>
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="spawnedEnemies" />
+			<property name="entity_tags" value="entity" />
+			<property name="target_only" value="true" />
+		</action>
+		
+		<decision class="If">
+			<property name="condition_type" value="All"/>
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="spawnedEnemies"/>
+				<property name="operation" value="LessThan"/> 
+				<property name="count" value="14"/>	
+			</requirement>
+			<requirement class="InPOI">
+				<property name="invert" value="true" />
+			</requirement>
+			
+			<action class="CallGameEvent">	
+				<property name="game_events" value="ZombieINC_Wave_Weak_Normal_Survival_tier5_1" />
+				<property name="phase" value="1" />
+			</action>
+		</decision>
+		<decision class="If">
+			<property name="condition_type" value="All"/>
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="spawnedEnemies"/>
+				<property name="operation" value="LessThan"/> 
+				<property name="count" value="14"/>	
+			</requirement>
+			<requirement class="InPOI"/>
+				
+			<action class="CallGameEvent">	
+				<property name="game_events" value="ZombieINC_Survival_tier5_Wave_InPOI" />
+				<property name="phase" value="1" />
+			</action>
+		</decision>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_tier5_Wave_OpenSpace_Spawner" template="ZombieINC_Wave_Weak_Normal">
+		<variable name="zombiename" value="zombieArlene,zombieBurnt,zombieLab,zombieMarlene,zombieDarlene,zombiePartyGirl,zombieNurse"/>
+		<variable name="spawncount" value="2"/>
+		<variable name="maxdist" value="20"/>
+		<variable name="mindist" value="15"/>	
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Wave_Weak_Normal_Survival_tier5_1">
+	     <action class="SpawnEntity">	    
+			<property name="entity_names" value="zombieArleneFeral,zombieBurntFeral,zombieLabFeral,zombieMarleneFeral,zombieDarleneFeral,zombiePartyGirlFeral,zombieNurseFeral,zombieSkateboarderFeral,zombieTomClarkFeral,zombieBoeFeral,zombieJoeFeral,zombieSteveFeral,zombieYoFeral,zombieBusinessManFeral,zombieUtilityWorkerFeral,zombieMoeFeral,zombieJanitorFeral,zombieBikerFeral,zombieFatHawaiianFeral,zombieLumberjackFeral,zombieFemaleFatFeral,zombieSoldierFeral,zombieMaleHazmatFeral,zombieWightFeral,zombieArleneRadiated,zombieBurntRadiated,zombieLabRadiated,zombieMarleneRadiated,zombieDarleneRadiated,zombiePartyGirlRadiated,zombieNurseRadiated" param1="zombiename" />
+			<property name="spawn_count" value="3" param1="spawncount" />
+			<property name="max_distance" value="20" param1="maxdist" />
+			<property name="min_distance" value="15" param1="mindist" />
+			<property name="air_spawn" value="false" param1="airspawn" />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />	
+		</action>	
+	</action_sequence>
+
+<!--Tier5-->
+<!--##Tier6-->
+
+<action_sequence name="ZombieINC_Survival_tier6_Start">	
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Survival_Tier6_Part1_Spawner" />	
+			<property name="check_already_exists" value="false" />
+			<property name="phase" value="1" />
+		</action>
+		<!--<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Survival_T6_NotHiddenCheckerEvent_Buff" />	
+			<property name="check_already_exists" value="false" />
+		</action>-->
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_Survival_tier6_VehicleBlockerEvent">
+		<requirement class="InVehicle"/>					
+			<action class="EjectFromVehicle"/>
+			<action class="AddChatMessage">
+				<property name="buff_name" value="ZombieINC_Survival_Tier6_Part1_Spawner" />
+			</action>
+			<action class="BeltTooltip">  								
+				<property name="text" value="You CAN't Drive a vehicle"  />
+				<property name="text_key" value="ZombieINC_Survival_VehicleBlockerEvent_BeltTooltip"  />
+			</action>						      			    
+			<action class="AddChatMessage">							
+				<property name="text" value="| [FF6600]Player's Mind:[-] I can't drive a vehicle" />
+				<property name="text_key" value="ZombieINC_Survival_VehicleBlockerEvent_Chat"  />
+			</action>
+			<action class="AddBuff">
+				<property name="buff_name" value="ZombieINC_Survival_tier6_VehicleBlockerCounter" />	
+				<property name="check_already_exists" value="false" />
+			</action>			
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_FailMissionSurvivalT6">						
+		<action class="FailQuest">
+			<property name="quest" value="zincsurvival6" />
+			<property name="remove_quest" value="true" />			
+		</action>
+		<action class="CallGameEvent">
+			<property name="game_events" value="ZombieINC_SurvivalT6_RemoveAllBuffs" />	
+		</action>		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_FailMissionSurvivalT6_VehicleBlocker">	
+		<action class="FailQuest">
+			<property name="quest" value="zincsurvival6" />
+			<property name="remove_quest" value="true" />			
+		</action>
+		<action class="CallGameEvent">
+			<property name="game_events" value="ZombieINC_SurvivalT6_RemoveAllBuffs" />	
+		</action>
+	
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_SurvivalT6_RemoveAllBuffs">	
+		
+		<action class="RemoveBuff">
+			<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_Survival_tier6_VehicleBlockerBuff"/> 
+			</requirement>
+			<property name="buff_name" value="ZombieINC_Survival_tier6_VehicleBlockerBuff" />	
+		</action>
+		<action class="RemoveBuff">
+			<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_SurvivalT6_IsInDoorsChecker"/> 
+			</requirement>
+			<property name="buff_name" value="ZombieINC_SurvivalT6_IsInDoorsChecker" />	
+		</action>
+		<action class="RemoveBuff">
+			<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_Survival_Tier6_Part1_Spawner"/> 
+			</requirement>
+			<property name="buff_name" value="ZombieINC_Survival_Tier6_Part1_Spawner" />	
+		</action>
+		<action class="RemoveBuff">
+			<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_Survival_Tier6_Part1_SpawnerEffects"/> 
+			</requirement>
+			<property name="buff_name" value="ZombieINC_Survival_Tier6_Part1_SpawnerEffects" />	
+		</action>
+		
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_Survival_tier6_VehicleBlocker">	
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Survival_tier6_VehicleBlockerBuff" />		
+			<property name="check_already_exists" value="false" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_Survival_tier6_VehicleBlockerRemover">	
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_Survival_tier6_VehicleBlockerBuff" />		
+		</action>
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_Survival_tier6_IsInDoorsChecker">		
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_SurvivalT6_IsInDoorsChecker" />		
+			<property name="check_already_exists" value="false" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_Survival_tier6_IsInDoorsCheckerRemover">		
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_SurvivalT6_IsInDoorsChecker" />		
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_tier6_Wave_InPOI">
+		<property name="action_type" value="Game" />
+		<property name="target_type" value="POI" />
+			
+		<action class="SpawnEntity">				    
+			<property name="entity_names" value="zombieArleneRadiated,zombieBurntRadiated,zombieLabRadiated,zombieMarleneRadiated,zombieDarleneRadiated,zombiePartyGirlRadiated,zombieNurseRadiated,zombieSkateboarderRadiated,zombieTomClarkRadiated,zombieBoeRadiated,zombieJoeRadiated,zombieSteveRadiated,zombieYoRadiated,zombieBusinessManRadiated,zombieUtilityWorkerRadiated,zombieMoeRadiated,zombieJanitorRadiated,zombieBikerRadiated,zombieFatHawaiianRadiated,zombieLumberjackRadiated,zombieFemaleFatRadiated,zombieSoldierRadiated,zombieMaleHazmatRadiated,zombieWightRadiated,animalZombieDog,zombieFatCopRadiated,animalZombieVultureRadiated" />
+			<property name="spawn_count" value="2"  />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff"/>
+			<property name="safe_spawn" value="true" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="max_distance" value="20"  />
+			<property name="min_distance" value="15"  />
+			<property name="air_spawn" value="false" />
+			<property name="phase" value="1" />			
+		</action>	
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_tier6_Wave_OpenSpace">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincsurvival6"/>
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="spawnedEnemies" />
+			<property name="entity_tags" value="entity" />
+			<property name="target_only" value="true" />
+		</action>
+		
+		<decision class="If">
+			<property name="condition_type" value="All"/>
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="spawnedEnemies"/>
+				<property name="operation" value="LessThan"/> 
+				<property name="count" value="16"/>	
+			</requirement>
+			<requirement class="InPOI">
+				<property name="invert" value="true" />
+			</requirement>
+			
+			<action class="CallGameEvent">	
+				<property name="game_events" value="ZombieINC_Wave_Weak_Normal_Survival_tier6_1" />
+				<property name="phase" value="1" />
+			</action>
+		</decision>
+		<decision class="If">
+			<property name="condition_type" value="All"/>
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="spawnedEnemies"/>
+				<property name="operation" value="LessThan"/> 
+				<property name="count" value="16"/>	
+			</requirement>
+			<requirement class="InPOI"/>
+				
+			<action class="CallGameEvent">	
+				<property name="game_events" value="ZombieINC_Survival_tier6_Wave_InPOI" />
+				<property name="phase" value="1" />
+			</action>
+		</decision>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Survival_tier6_Wave_OpenSpace_Spawner" template="ZombieINC_Wave_Weak_Normal">
+		<variable name="zombiename" value="zombieArlene,zombieBurnt,zombieLab,zombieMarlene,zombieDarlene,zombiePartyGirl,zombieNurse"/>
+		<variable name="spawncount" value="2"/>
+		<variable name="maxdist" value="20"/>
+		<variable name="mindist" value="15"/>	
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Wave_Weak_Normal_Survival_tier6_1">
+	     <action class="SpawnEntity">	    
+			<property name="entity_names" value="zombieArleneRadiated,zombieBurntRadiated,zombieLabRadiated,zombieMarleneRadiated,zombieDarleneRadiated,zombiePartyGirlRadiated,zombieNurseRadiated,zombieSkateboarderRadiated,zombieTomClarkRadiated,zombieBoeRadiated,zombieJoeRadiated,zombieSteveRadiated,zombieYoRadiated,zombieBusinessManRadiated,zombieUtilityWorkerRadiated,zombieMoeRadiated,zombieJanitorRadiated,zombieBikerRadiated,zombieFatHawaiianRadiated,zombieLumberjackRadiated,zombieFemaleFatRadiated,zombieSoldierRadiated,zombieMaleHazmatRadiated,zombieWightRadiated,animalZombieDog,zombieFatCopRadiated,animalZombieVultureRadiated" param1="zombiename" />
+			<property name="spawn_count" value="3" param1="spawncount" />
+			<property name="max_distance" value="25" param1="maxdist" />
+			<property name="min_distance" value="15" param1="mindist" />
+			<property name="air_spawn" value="false" param1="airspawn" />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff" />	
+		</action>	
+	</action_sequence>
+	
+	<!--###General Use-->
+	<action_sequence name="ZombieINC_GeneralUse_NoVehicleBuffAdd_Event">
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_GeneralUse_NoVehicle_Buff" />
+			<property name="check_already_exists" value="false" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_GeneralUse_EjectVehicle_Event">
+		<action class="EjectFromVehicle"/>
+	</action_sequence>
+	<action_sequence name="ZombieINC_GeneralUse_NoVehicleBuffRemover_Event">
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_GeneralUse_NoVehicle_Buff" />
+		</action>
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_SurvivalT1_NotHiddenCheckerBuffRemover_Event">
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_Survival_T1_NotHiddenCheckerEvent_Buff" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SurvivalT2_NotHiddenCheckerBuffRemover_Event">
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_Survival_T2_NotHiddenCheckerEvent_Buff" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SurvivalT3_NotHiddenCheckerBuffRemover_Event">
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_Survival_T3_NotHiddenCheckerEvent_Buff" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SurvivalT4_NotHiddenCheckerBuffRemover_Event">
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_Survival_T4_NotHiddenCheckerEvent_Buff" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SurvivalT5_NotHiddenCheckerBuffRemover_Event">
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_Survival_T5_NotHiddenCheckerEvent_Buff" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SurvivalT6_NotHiddenCheckerBuffRemover_Event">
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_Survival_T6_NotHiddenCheckerEvent_Buff" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_GeneralUse_NotHiddenChecker_Event">
+		
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="spawnedEnemies" />
+			<property name="entity_tags" value="entity" />
+			<property name="target_only" value="true" />
+			<property name="max_distance" value="40"/>
+		</action>
+		
+		<decision class="If">
+			<property name="condition_type" value="All"/>
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="spawnedEnemies"/>
+				<property name="operation" value="GTE"/> 
+				<property name="count" value="1"/>
+			</requirement>
+			
+			<!--<action class="AddBuff">
+				<property name="buff_name" value="ZombieINC_GeneralUse_ZombieAlerted_Buff" />
+				<property name="check_already_exists" value="false" />
+				<property name="target_group" value="spawnedEnemies"/>
+			</action>-->
+			
+			<action class="ModifyCVar">
+				<property name="cvar" value="zincnozombies" />
+				<property name="value" value="0" />
+				<property name="operation" value="Set" />
+			</action>
+			
+		</decision>
+		
+		<decision class="If">
+			<property name="condition_type" value="All"/>
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="spawnedEnemies"/>
+				<property name="operation" value="Equals"/> 
+				<property name="count" value="0"/>	
+			</requirement>
+			
+			<action class="ModifyCVar">
+				<property name="cvar" value="zincnozombies" />
+				<property name="value" value="1" />
+				<property name="operation" value="Add" />
+			</action>
+			
+		</decision>
+		
+		
+	</action_sequence>
+	
+	<!--General Use-->	
+	<!--Survival-->
+	<action_sequence name="ZombieINC_Survival_wave_">
+	        			    
+		<action class="SpawnEntity">	    
+			<property name="entity_names" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse" />
+			<property name="spawn_count" value="5"  />
+			<property name="max_distance" value="35" />
+			<property name="min_distance" value="25" />
+			<property name="add_to_group" value="targets" />
+			<property name="phase" value="0" />		
+		</action>
+	
+	</action_sequence>
+	
+	<!--Survival-->
+	<!--###Waves-->
+	<action_sequence name="ZombieINC_Wave_Weak_Normal">
+	     <action class="SpawnEntity">	    
+			<property name="entity_names" value="zombieArlene,zombieBurnt,zombieLab,zombieMarlene,zombieDarlene,zombiePartyGirl,zombieNurse" param1="zombiename" />
+			<property name="spawn_count" value="1" param1="spawncount" />
+			<property name="max_distance" value="35" param1="maxdist" />
+			<property name="min_distance" value="25" param1="mindist" />
+			<property name="air_spawn" value="false" param1="airspawn" />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />	
+		</action>	
+	</action_sequence>
+	<action_sequence name="ZombieINC_Wave_Mid_Normal">	     			    
+		<action class="SpawnEntity">	    
+			<property name="entity_names" value="zombieSkateboarder,zombieTomClark,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieUtilityWorker" param1="zombiename" />
+			<property name="spawn_count" value="1" param1="spawncount" />
+			<property name="max_distance" value="35" param1="maxdist" />
+			<property name="min_distance" value="25" param1="mindist" />
+			<property name="air_spawn" value="false" param1="airspawn" />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />	
+		</action>	
+	</action_sequence>
+	<action_sequence name="ZombieINC_Wave_Strong_Normal">	        			    
+		<action class="SpawnEntity">	    
+			<property name="entity_names" value="zombieMoe,zombieJanitor,zombieBiker,zombieFatHawaiian,zombieLumberjack,zombieFemaleFat,zombieSoldier,zombieMaleHazmat" param1="zombiename" />
+			<property name="spawn_count" value="1" param1="spawncount" />
+			<property name="max_distance" value="35" param1="maxdist" />
+			<property name="min_distance" value="25" param1="mindist" />
+			<property name="air_spawn" value="false" param1="airspawn" />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />	
+		</action>
+	</action_sequence>		
+	<action_sequence name="ZombieINC_Wave_SpecialWeak_Normal">	        			    
+		<action class="SpawnEntity">	    
+			<property name="entity_names" value="zombieSpider,zombieSteveCrawler,zombieScreamer" param1="zombiename" />
+			<property name="spawn_count" value="1" param1="spawncount" />
+			<property name="max_distance" value="35" param1="maxdist" />
+			<property name="min_distance" value="25" param1="mindist" />
+			<property name="air_spawn" value="false" param1="airspawn" />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />	
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_Wave_SpecialStrong_Normal">	        			    
+		<action class="SpawnEntity">	    
+			<property name="entity_names" value="animalZombieDog,zombieFatCop" param1="zombiename" />
+			<property name="spawn_count" value="1" param1="spawncount" />
+			<property name="max_distance" value="35" param1="maxdist" />
+			<property name="min_distance" value="25" param1="mindist" />
+			<property name="air_spawn" value="false" param1="airspawn" />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />	
+		</action>
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_Wave_Weak_Feral">  			    
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArleneFeral,zombieBurntFeral,zombieLabFeral,zombieMarleneFeral,zombieDarleneFeral,zombiePartyGirlFeral,zombieNurseFeral" param1="zombiename" />
+			<property name="spawn_count" value="1" param1="spawncount" />
+			<property name="max_distance" value="35" param1="maxdist" />
+			<property name="min_distance" value="25" param1="mindist" />
+			<property name="air_spawn" value="false" param1="airspawn" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+		</action>	
+	</action_sequence>	
+	<action_sequence name="ZombieINC_Wave_Mid_Feral">
+		<action class="SpawnEntity">	    
+			<property name="entity_names" value="zombieSkateboarderFeral,zombieTomClarkFeral,zombieBoeFeral,zombieJoeFeral,zombieSteveFeral,zombieYoFeral,zombieBusinessManFeral,zombieUtilityWorkerFeral" param1="zombiename" />
+			<property name="spawn_count" value="1" param1="spawncount" />
+			<property name="max_distance" value="35" param1="maxdist" />
+			<property name="min_distance" value="25" param1="mindist" />
+			<property name="air_spawn" value="false" param1="airspawn" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+		</action>
+	</action_sequence>		
+	<action_sequence name="ZombieINC_Wave_Strong_Feral">
+		<action class="SpawnEntity">	    
+			<property name="entity_names" value="zombieMoeFeral,zombieJanitorFeral,zombieBikerFeral,zombieFatHawaiianFeral,zombieLumberjackFeral,zombieFemaleFatFeral,zombieSoldierFeral,zombieMaleHazmatFeral,zombieWightFeral" param1="zombiename" />
+			<property name="spawn_count" value="1" param1="spawncount" />
+			<property name="max_distance" value="35" param1="maxdist" />
+			<property name="min_distance" value="25" param1="mindist" />
+			<property name="air_spawn" value="false" param1="airspawn" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+		</action>
+	</action_sequence>	
+	<action_sequence name="ZombieINC_Wave_SpecialWeak_Feral">	        			    
+		<action class="SpawnEntity">	    
+			<property name="entity_names" value="zombieSpiderFeral,zombieSteveCrawlerFeral,zombieScreamerFeral" param1="zombiename" />
+			<property name="spawn_count" value="1" param1="spawncount" />
+			<property name="max_distance" value="35" param1="maxdist" />
+			<property name="min_distance" value="25" param1="mindist" />
+			<property name="air_spawn" value="false" param1="airspawn" />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />	
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_Wave_SpecialStrong_Feral">	        			    
+		<action class="SpawnEntity">	    
+			<property name="entity_names" value="animalZombieDog,zombieFatCopFeral" param1="zombiename" />
+			<property name="spawn_count" value="1" param1="spawncount" />
+			<property name="max_distance" value="35" param1="maxdist" />
+			<property name="min_distance" value="25" param1="mindist" />
+			<property name="air_spawn" value="false" param1="airspawn" />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />		
+		</action>
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_Wave_Weak_Radiated">	        			    
+		<action class="SpawnEntity">	    
+			<property name="entity_names" value="zombieArleneRadiated,zombieBurntRadiated,zombieLabRadiated,zombieMarleneRadiated,zombieDarleneRadiated,zombiePartyGirlRadiated,zombieNurseRadiated" param1="zombiename" />
+			<property name="spawn_count" value="1" param1="spawncount" />
+			<property name="max_distance" value="35" param1="maxdist" />
+			<property name="min_distance" value="25" param1="mindist" />
+			<property name="air_spawn" value="false" param1="airspawn" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+		</action>	
+	</action_sequence>	   
+	<action_sequence name="ZombieINC_Wave_Mid_Radiated">	        			    
+		<action class="SpawnEntity">	   
+			<property name="entity_names" value="zombieSkateboarderRadiated,zombieTomClarkRadiated,zombieBoeRadiated,zombieJoeRadiated,zombieSteveRadiated,zombieYoRadiated,zombieBusinessManRadiated,zombieUtilityWorkerRadiated" param1="zombiename" />
+			<property name="spawn_count" value="1" param1="spawncount" />
+			<property name="max_distance" value="35" param1="maxdist" />
+			<property name="min_distance" value="25" param1="mindist" />
+			<property name="air_spawn" value="false" param1="airspawn" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />	
+		</action>	
+	</action_sequence>	
+	<action_sequence name="ZombieINC_Wave_Strong_Radiated">	        			    
+		<action class="SpawnEntity"> 
+			<property name="entity_names" value="zombieMoeRadiated,zombieJanitorRadiated,zombieBikerRadiated,zombieFatHawaiianRadiated,zombieLumberjackRadiated,zombieFemaleFatRadiated,zombieSoldierRadiated,zombieMaleHazmatRadiated,zombieWightRadiated" param1="zombiename" />
+			<property name="spawn_count" value="1" param1="spawncount" />
+			<property name="max_distance" value="35" param1="maxdist" />
+			<property name="min_distance" value="25" param1="mindist" />
+			<property name="air_spawn" value="false" param1="airspawn" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+		</action>
+	</action_sequence>	
+	<action_sequence name="ZombieINC_Wave_SpecialWeak_Radiated">	        			    
+		<action class="SpawnEntity">	    
+			<property name="entity_names" value="zombieSpiderRadiated,zombieScreamerRadiated" param1="zombiename" />
+			<property name="spawn_count" value="1" param1="spawncount" />
+			<property name="max_distance" value="35" param1="maxdist" />
+			<property name="min_distance" value="25" param1="mindist" />
+			<property name="air_spawn" value="false" param1="airspawn" />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />	
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_Wave_SpecialStrong_Radiated">	        			    
+		<action class="SpawnEntity">	    
+			<property name="entity_names" value="animalZombieDog,zombieFatCopRadiated" param1="zombiename" />
+			<property name="spawn_count" value="1" param1="spawncount" />
+			<property name="max_distance" value="35" param1="maxdist" />
+			<property name="min_distance" value="25" param1="mindist" />
+			<property name="air_spawn" value="false" param1="airspawn" />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />	
+		</action>
+	</action_sequence>
+	</append>
+<!--Waves-->	
+</Config>

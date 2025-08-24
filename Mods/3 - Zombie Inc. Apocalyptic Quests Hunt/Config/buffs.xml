@@ -1,0 +1,2320 @@
+<Config>
+<conditional>
+	<if cond="mod_loaded('mateusjobsmain') == 'false'">
+		<append xpath="/buffs">
+			
+			<buff name="ZombieINC_EnemyDotBuff">
+				<stack_type value="ignore"/>
+				<effect_group>	
+					<triggered_effect trigger="onSelfBuffStart" action="SetNavObject" nav_object="ZombieINC_EnemyDot" add="true" />	
+				</effect_group>
+			</buff>
+		
+			
+		</append>
+	</if>
+</conditional>
+<append xpath="/buffs">
+	<buff name="ZombieINC_Hunt_BlockDamageV1_Buff"  >
+		<stack_type value="replace"/>
+		<effect_group>
+			<passive_effect name="BlockDamage" operation="base_add" value="300"/>	    
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Hunt_BlockDamageV2_Buff"  >
+		<stack_type value="replace"/>
+		<effect_group>
+			<passive_effect name="BlockDamage" operation="base_add" value="600"/>	    
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Hunt_BlockDamageV3_Buff"  >
+		<stack_type value="replace"/>
+		<effect_group>
+			<passive_effect name="BlockDamage" operation="base_add" value="900"/>	    
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Hunt_BlockDamageV4_Buff"  >
+		<stack_type value="replace"/>
+		<effect_group>
+			<passive_effect name="BlockDamage" operation="base_add" value="1200"/>	    
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Hunt_BlockDamageV5_Buff"  >
+		<stack_type value="replace"/>
+		<effect_group>
+			<passive_effect name="BlockDamage" operation="base_add" value="1500"/>	    
+		</effect_group>
+	</buff>
+			<buff name="ZombieINC_Hunt_EnemyDotBuff">
+				<stack_type value="ignore"/>
+				<effect_group>	
+					<triggered_effect trigger="onSelfBuffStart" action="SetNavObject" nav_object="ZombieINC_Hunt_EnemyDot" add="true" />	
+				</effect_group>
+			</buff>
+
+<!--##Fatal Errors Protectors--> <!--Not Used Anymore-->
+	<buff name="ZombieINC_Hunt_BossDog_FatalErrorProtector_Buff" remove_on_death="true" hidden="true" icon="ui_game_symbol_infection" icon_color="10,180,15">		
+		<stack_type value="replace"/>
+		<duration value="1200"/>
+		<effect_group>		                                                                                                                   			
+			<triggered_effect trigger="onSelfLeaveGame" action="CallGameEvent" target="self" event="ZombieINC_Hunt_BossDog_FailQuest_Event" allow_client_call="true" />
+			<triggered_effect trigger="onSelfEnteredGame" action="CallGameEvent" target="self" event="ZombieINC_Hunt_BossDog_FailQuest_Event" allow_client_call="true" />
+			<!--<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" target="self" event="ZombieINC_Defense_T1_FatalErrorProtectorBuff_Event" allow_client_call="true"/>-->
+		</effect_group>	
+	</buff>
+
+<buff name="ZombieINC_Hunt_RallyPointHuntPlaceHolder_AttachPrefabBuff"  >
+				<!--<duration value="3"/>-->
+				<!--<update_rate value="0.05"/>-->
+				<stack_type value="replace"/>
+				<effect_group>
+					<passive_effect name="LightMultiplier" operation="perc_add" value="-1"/>
+					<passive_effect name="NoiseMultiplier" operation="perc_add" value="-1"/>
+					<!--<triggered_effect trigger="onSelfBuffStart" action="SetNavObject" nav_object="ZombieINC_Objective" add="true" />-->
+					<!--<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="FeralEye"/>
+					<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD0"/>
+					<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD1"/>
+					<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD2"/>
+					<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="NormalEye"/>
+					<triggered_effect trigger="onSelfBuffStack" action="SetTransformActive" active="false" transform_path="FeralEye"/>
+					<triggered_effect trigger="onSelfBuffStack" action="SetTransformActive" active="false" transform_path="LOD0"/>
+					<triggered_effect trigger="onSelfBuffStack" action="SetTransformActive" active="false" transform_path="LOD1"/>
+					<triggered_effect trigger="onSelfBuffStack" action="SetTransformActive" active="false" transform_path="LOD2"/>
+					<triggered_effect trigger="onSelfBuffStack" action="SetTransformActive" active="false" transform_path="NormalEye"/>-->
+				
+				</effect_group>
+				<effect_group>
+					<triggered_effect trigger="onSelfBuffStack" action="SetTransformActive" active="false" transform_path="Body"/>
+					<triggered_effect trigger="onSelfBuffStack" action="SetTransformActive" active="false" transform_path="Hair"/>
+					<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="Body"/>
+					<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="Hair"/>
+					<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="Body"/>
+					<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="Hair"/>
+				</effect_group>
+			</buff>
+
+<!--###Hunt-->
+<!--##Hunt Hot Fix 1-->
+	<buff name="ZombieINC_Hunt_BossKilled" hidden="true">
+		<duration value="30"/>	
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="selfOtherPlayers" target_tags="ally,party" range="100" buff="ZombieINC_Hunt_BossKilledChecker" />
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_Hunt_BossKilled" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_Hunt_BossKilled" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Hunt_BossKilledChecker" hidden="true">
+		<duration value="5"/>	
+		<stack_type value="ignore"/>
+		<effect_group>
+			<requirement name="!HasBuff" buff="ZombieINC_Hunt_BossKilled"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" target="self" event="ZombieINC_Hunt_SpawnBossAllTags_Event" allow_client_call="false" />
+			<!--<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="ZombieINC_Hunt_BossKiller" />-->
+			
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_Hunt_BossKilledChecker" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_Hunt_BossKilledChecker" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Hunt_BossKiller" hidden="true">
+		<duration value="30"/>	
+		<update_rate value="2"/>	
+		<stack_type value="ignore"/>
+		<effect_group>
+			<!--<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="ZINCBossAllTags" range="100" buff="ZombieINC_Hunt_BossKillerAction" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="positionAOE" target_tags="ZINCBossAllTags" range="100" buff="ZombieINC_Hunt_BossKillerAction" />-->
+			
+			<!--<triggered_effect trigger="onOtherAttackedSelf" action="ModifyStats" stat="Health" operation="subtract" value="99999999" target="other" target_tags="ZINCBossAllTags"/>-->
+			<triggered_effect trigger="onOtherAttackedSelf" action="AddBuff" buff="ZombieINC_Hunt_BossKillerAction" target="other" target_tags="ZINCBossAllTags"/>
+			
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_Hunt_BossKiller" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_Hunt_BossKiller" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Hunt_BossKillerAction" hidden="true">
+		<duration value="4"/>	
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyStats" stat="Health" operation="subtract" value="99999999"/>
+			
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_Hunt_BossKillerAction" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_Hunt_BossKillerAction" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Hunt_AllBossesTags_InvisibleBuff"  >
+		<duration value="3"/>
+		<update_rate value="0.05"/>
+		<stack_type value="ignore"/>
+		<effect_group>
+			<!--<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="FeralEye"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD0"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD1"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD2"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="NormalEye"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="FeralEye"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="LOD0"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="LOD1"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="LOD2"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="NormalEye"/>-->
+		</effect_group>
+	</buff>
+<!--Hunt Hot Fix 1-->
+<!--##Hunt Bags-->
+	<buff name="ZombieINC_Hunt_RegBagLoot_Buff">
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_Hunt_RegBagLoot_Event" allow_client_call="false"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Hunt_StrongBagLoot_Buff">
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_Hunt_StrongBagLoot_Event" allow_client_call="false"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Hunt_BossBagLoot_Buff">
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_Hunt_BossBagLoot_Event" allow_client_call="false"/>
+		</effect_group>
+	</buff>
+<!--Hunt Bags-->
+
+<!--##BossCraven-->
+
+    <buff name="ZombieINC_SpawnMinionCravenBuff" remove_on_death="false" hidden="true">
+		<stack_type value="ignore"/>
+
+		<effect_group>
+			
+			<triggered_effect trigger="onOtherDamagedSelf" action="AddBuff" target="other" target_tags="player" buff="ZombieINC_SpawnMinionCravenActionBuff"/>
+			
+		</effect_group>
+		<!--<effect_group>
+			<triggered_effect trigger="onSelfDied" action="CallGameEvent" event="ZombieINC_Hunt_RegBagLoot_Event" allow_client_call="true"/>
+		</effect_group>-->
+	</buff>
+	
+	<buff name="ZombieINC_SpawnMinionCravenActionBuff" hidden="true">
+		
+		<duration value="1"/>
+		
+		<stack_type value="ignore"/>
+
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self" event="ZombieINC_SpawnMinionCraven" allow_client_call="false" />
+		
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_KillBossCravenBuff" hidden="false" icon="ui_game_symbol_skull" icon_color="185,120,15">
+		<stack_type value="duration"/>
+		<duration value="1200"/>
+		<update_rate value="65"/>
+				
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_KillBossCravenEvent" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_KillBossCravenEvent" allow_client_call="false" />
+		</effect_group>
+	</buff>
+	
+<!--BossCraven-->
+<!--##BossCravenInfested-->
+	<buff name="ZombieINC_SpawnMinionCravenInfestedBuff" remove_on_death="false" hidden="true">
+		<stack_type value="ignore"/>
+		<update_rate value="1"/>
+		<effect_group>
+			<triggered_effect trigger="onOtherDamagedSelf" action="ModifyCVar"  cvar=".ZINCCraven" operation="add" value="1"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar"  cvar=".ZINCCraven" operation="subtract" value="0.5">
+				<requirement name="CVarCompare" cvar=".ZINCCraven" operation="GTE" value="1"/>
+			</triggered_effect>
+		</effect_group>
+		<effect_group>
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="ZombieINC_Hunt_CravenInfestedFlame">
+			<requirement name="CVarCompare" cvar=".ZINCCraven" operation="GTE" value="20"/></triggered_effect>
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="ZombieINC_Hunt_CravenInfestedFlame">
+			<requirement name="CVarCompare" cvar=".ZINCCraven" operation="LTE" value="15"/></triggered_effect>
+		</effect_group>
+		<effect_group>
+			<requirement name="CVarCompare" cvar=".ZINCCraven" operation="GTE" value="25"/>
+			<triggered_effect trigger="onOtherDamagedSelf" action="AddBuff" target="other" target_tags="player" buff="ZombieINC_SpawnMinionCravenInfestedActionBuff"/>
+			<triggered_effect trigger="onOtherDamagedSelf" action="ModifyCVar"  cvar=".ZINCCraven" operation="set" value="0"/>
+		</effect_group>
+		<!--<effect_group>
+			<triggered_effect trigger="onSelfDied" action="CallGameEvent" event="ZombieINC_Hunt_RegBagLoot_Event" allow_client_call="true"/>
+		</effect_group>-->
+	</buff>
+	<buff name="ZombieINC_Hunt_CravenInfestedFlame">
+		<stack_type value="replace"/>
+		<duration value="15"/>
+		<update_rate value="1"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="positionAOE" range="10" target_tags="player" buff="ZombieINC_Hunt_buffRadiation01"/>
+		</effect_group>
+		<effect_group>
+			<!--<passive_effect name="NegateDamageSelf" operation="base_set" value="1"/>
+			<passive_effect name="DismemberSelfChance" operation="base_set" value="0" />
+			
+			<passive_effect name="WalkSpeed" operation="perc_add" value="-0.5"/>
+			<passive_effect name="RunSpeed" operation="perc_add" value="-0.5"/>-->
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="RadiatedParticlesOnMesh" parent_transform="LOD0" shape_mesh="true"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="RemoveParticleEffectFromEntity" particle="RadiatedParticlesOnMesh"/>
+			<triggered_effect trigger="onSelfDied" action="RemoveParticleEffectFromEntity" particle="RadiatedParticlesOnMesh"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_SpawnMinionCravenInfestedActionBuff" hidden="true" >
+		<duration value="2"/>
+		<stack_type value="ignore"/>
+		<update_rate value="1"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self" event="ZombieINC_SpawnMinionCravenInfested" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff"  buff="ZombieINC_SpawnMinionCravenInfestedActionBuff_Screen"  />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_SpawnMinionCravenInfestedActionBuff_Screen" hidden="false" name_key="ZombieINC_MinionCravenInfestedActionBuff_Name" description_key="ZombieINC_MinionCravenInfestedActionBuff_Desc" tooltip_key="ZombieINC_MinionCravenInfestedActionBuff_Tooltip" icon="ui_game_symbol_radiation" icon_color="255,0,0" icon_blink="true">
+		<duration value="5"/>
+		<stack_type value="replace"/>
+		<update_rate value="1"/>
+		
+		<effect_group>
+			<passive_effect name="HealthChangeOT" operation="base_subtract" value="2"/>
+			
+
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="RadiationSignal" operation="add" value="1"/>
+
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveCVar" cvar="RadiationSignal">
+				<requirement name="CVarCompare" cvar="RadiationSignal" operation="Equals" value="2"/>
+			</triggered_effect>
+
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveCVar" cvar="RadiationSignal"/>
+
+			<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="a_radiated_strong_lp"/>
+
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" intensity="1" fade=".7" effect_name="Hot">
+				<requirement name="CVarCompare" cvar="RadiationSignal" operation="Equals" value="1"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" intensity="0" fade=".7" effect_name="Hot">
+				<requirement name="CVarCompare" cvar="RadiationSignal" operation="Equals" value="0"/>
+			</triggered_effect>
+
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" intensity="0" fade="1" effect_name="Hot"/>
+			
+
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" effect_name="Radiation" intensity=".6" fade="2"/>
+			<triggered_effect trigger="onSelfDied" action="ModifyScreenEffect" effect_name="Radiation" intensity="0" fade="0"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" effect_name="Radiation" intensity="0" fade="2"/>
+		</effect_group>
+	
+	</buff>
+	
+	<buff name="ZombieINC_Hunt_buffRadiation01" name_key="buffRadiation01Name" icon="ui_game_symbol_radiation" icon_color="255,128,0" icon_blink="true">
+		<damage_type value="radiation"/>
+		<stack_type value="replace"/>
+		<duration value="3"/>
+		<update_rate value="1"/>
+
+		<effect_group>
+			<passive_effect name="HealthChangeOT" operation="base_subtract" value="1,1"/>
+
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="RadiationSignal" operation="add" value="1"/>
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveCVar" cvar="RadiationSignal">
+				<requirement name="CVarCompare" cvar="RadiationSignal" operation="Equals" value="1"/>
+			</triggered_effect>
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveCVar" cvar="RadiationSignal"/>
+
+			<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="a_radiated_weak_lp"/>
+
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" intensity="1" fade=".4" effect_name="Hot">
+				<requirement name="CVarCompare" cvar="RadiationSignal" operation="Equals" value="1"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" intensity="0" fade=".4" effect_name="Hot">
+				<requirement name="CVarCompare" cvar="RadiationSignal" operation="Equals" value="0"/>
+			</triggered_effect>
+
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" intensity="0" fade="1" effect_name="Hot"/>
+			
+
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" effect_name="Radiation" intensity=".6" fade="2"/>
+			<triggered_effect trigger="onSelfDied" action="ModifyScreenEffect" effect_name="Radiation" intensity="0" fade="0"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" effect_name="Radiation" intensity="0" fade="2"/>
+		</effect_group>
+	</buff>
+<!--BossCravenInfested-->
+
+<!--##BossDog-->
+	<buff name="ZombieINC_BossDogInQuestZone" hidden="true" icon="ui_game_symbol_infection" icon_color="255,175,175">
+		
+		<duration value="600"/>
+		<stack_type value="ignore"/>
+
+	</buff>
+	
+	<buff name="ZombieINC_SpawnMinionDogBuff"  >
+		
+		<stack_type value="ignore"/>
+		<update_rate value="1"/>
+		<duration value="1"/>
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="positionAOE" target_tags="player" range="100" buff="ZombieINC_SpawnMinionDogActionBuff"/>							
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Melee/Axe/fireaxe_ironPrefab.prefab" local_offset="-0.17,-0.1,-0.01" local_rotation="1.044,116.632,61.07" local_scale="0.5,0.5,0.5" parent_transform="Head" />						
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Melee/Spear/spear_stone_Prefab.prefab" local_offset="-0.225,-0.201,0.143" local_rotation="358.681,13.424,313.437" local_scale="0.5,0.5,0.5" parent_transform="LowerBack" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_SpawnMinionDogActionBuff" hidden="true" icon="ui_game_symbol_infection" icon_color="255,175,175" >
+		
+		<stack_type value="ignore"/>		
+		<duration value="1"/>
+		
+		<effect_group>		    		  
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self" event="ZombieINC_SpawnMinionDog" allow_client_call="false"/>										
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_BaitEventHandle" hidden="true" icon="ui_game_symbol_infection" icon_color="255,175,175" >
+		<stack_type value="ignore"/>		
+		<duration value="60"/>
+		
+		<effect_group>		    		  
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self" event="ZombieINC_KillBossDog" allow_client_call="false"/>										
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_BossDog_Alternative_Buff"  >
+		<stack_type value="replace"/>
+		<effect_group>
+			<passive_effect name="BlockDamage" operation="base_add" value="3000"/>	    
+		</effect_group>
+	</buff>
+<!--BossDog-->
+<!--#BossDogInfested-->
+	<buff name="ZombieINC_SpawnMinionDogInfestedBuff" hidden="true" icon="ui_game_symbol_infection" icon_color="255,175,175" >
+		<stack_type value="ignore"/>		
+		<update_rate value="40"/>
+		
+		<effect_group>	
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="ZombieINC_Hunt_DogInfested_RunBuff"/>	
+			<!--<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self" event="ZombieINC_SpawnMinionDogInfestedEvent" allow_client_call="false"/>	-->									
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Hunt_DogInfested_RunBuff" hidden="true" icon="ui_game_symbol_infection" icon_color="255,175,175" >
+		<stack_type value="ignore"/>		
+		<duration value="10"/>
+		
+		<effect_group>	
+			<passive_effect name="WalkSpeed" operation="perc_add" value="2"/>
+			<passive_effect name="RunSpeed" operation="perc_add" value="2"/>
+			<passive_effect name="BlockDamage" operation="base_add" value="1000"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_AttachPrefabDogInfestedBuff" hidden="true" icon="ui_game_symbol_infection" icon_color="255,175,175" >
+		<stack_type value="ignore"/>		
+			
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="DireWolfHair"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Melee/Spear/spear_stone_Prefab.prefab" local_offset="-0.225,-0.201,0.143" local_rotation="358.681,13.424,313.437" local_scale="0.5,0.5,0.5" parent_transform="LowerBack" />									
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Melee/Spear/spear_steel_Prefab.prefab" local_offset="0.32538,-0.11734,0.09041" local_rotation="5.48,0,62.198" local_scale="0.231,0.231,0.231" parent_transform="Spine" />
+		</effect_group>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/outdoordecor/wildWestWagonWheelFrontPrefab.prefab" local_offset="-0.02923,-0.01173,0.36085" local_rotation="81.285,180,180" local_scale="0.385,0.385,0.385" parent_transform="Neck" />
+			<!--<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/outdoordecor/modularRopeNoosePrefab.prefab" local_offset="0.00385,-0.17613,0.14888" local_rotation="351.285,180,180" local_scale="0.769,0.615,0.769" parent_transform="Neck" />-->
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/outdoordecor/ironWroughtFenceWallDamageFallenSpike_02Prefab.prefab" local_offset="0,-0.0673,0.37776" local_rotation="9.911,0,0" local_scale="0.385,0.385,0.115" parent_transform="Neck" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/outdoordecor/ironWroughtFenceWallDamageFallenSpike_01Prefab.prefab" local_offset="0.04462,0.04152,0.033" local_rotation="353.428,179.02,175.32" local_scale="0.385,0.385,0.385" parent_transform="Neck" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/outdoordecor/ironWroughtFenceWallDamageFallen_03Prefab.prefab" local_offset="0.02692,-0.01586,0.19991" local_rotation="317.956,180,180" local_scale="0.385,0.385,0.173" parent_transform="Neck" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/outdoordecor/ironWroughtFenceWallDamageFallen_02Prefab.prefab" local_offset="0.04154,0.00025,-0.07778" local_rotation="354.393,184.85,251.693" local_scale="0.308,0.308,0.192" parent_transform="Neck" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/outdoordecor/ironWroughtFenceWallDamageFallen_01Prefab.prefab" local_offset="-0.01077,0.04538,0.10501" local_rotation="342.238,175.635,109.554" local_scale="0.385,0.385,0.385" parent_transform="Neck" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/outdoordecor/ironWroughtFenceWallBrokenRight_03Prefab.prefab" local_offset="0.16615,0.07117,0.31753" local_rotation="302.261,273.349,76.896" local_scale="0.346,0.269,0.346" parent_transform="Neck" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/outdoordecor/ironWroughtFenceWallBrokenRight_02Prefab.prefab" local_offset="-0.06823,0.07185,0.39281" local_rotation="329.676,101.941,109.445" local_scale="0.346,0.192,0.346" parent_transform="Neck" />
+		</effect_group>
+	</buff>
+
+<!--BossDogInfested-->
+
+
+<!--##BossBiker-->
+	
+	<buff name="ZombieINC_KillBossBikerBuff" hidden="false" icon="ui_game_symbol_skull" icon_color="185,120,15">
+		<stack_type value="duration"/>
+		<duration value="1200"/>
+		<update_rate value="65"/>
+				
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_KillBossBikerEvent" allow_client_call="true"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_KillBossBikerEvent" allow_client_call="true"/>
+		</effect_group>
+	</buff>
+
+	<buff name="ZombieINC_AttachPrefabBikerBuff"  >
+		
+		<stack_type value="ignore"/>
+		
+		<duration value="6000"/>
+		<effect_group>
+		                                                                                                                     <!--X = Right+ and Left-  Y = UP+ and Down-   Z = Toward+ and Back-  -->
+		  <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Melee/Spear/spear_stone_Prefab.prefab" local_offset="0,0.4,-0.9" local_rotation="110,0,0" local_scale="1,1,1" parent_transform="Spine3"/>
+			
+		</effect_group>
+	</buff>
+
+	<buff name="ZombieINC_SpawnMinionBikerBuff"  >
+		
+		<stack_type value="ignore"/>
+		<update_rate value="1"/>
+		<duration value="1"/>
+		
+		<effect_group>		    
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self" event="ZombieINC_SpawnMinionBiker" allow_client_call="false"/>									
+		</effect_group>
+	</buff>
+	
+<!--BossBiker-->
+<!--##BossBikerInfested-->
+	
+	<buff name="ZombieINC_KillBossBikerInfestedBuff" hidden="false" icon="ui_game_symbol_skull" icon_color="185,120,15">
+		<stack_type value="duration"/>
+		<duration value="1200"/>
+		<update_rate value="65"/>
+				
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_KillBossBikerInfestedEvent" allow_client_call="true"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_KillBossBikerInfestedEvent" allow_client_call="true"/>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_AttachPrefabBikerInfestedBuff"  >
+		<stack_type value="ignore"/>
+		<update_rate value="1"/>
+		<effect_group>	                                                                                                                     <!--X = Right+ and Left-  Y = UP+ and Down-   Z = Toward+ and Back-  -->
+		    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Melee/Axe/fireaxe_ironPrefab.prefab" local_offset="0.242,0.206,0.073" local_rotation="17.15,-44.4,-251.535" local_scale="0.7,0.7,0.7" parent_transform="Head"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Melee/Axe/steelAxePrefab.prefab" local_offset="0.161,-0.205,0.16" local_rotation="-117.62,-134.075,147.41" local_scale="0.8,0.8,0.8" parent_transform="RightArm"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Melee/Chainsaw/chainsawPrefab.prefab" local_offset="0.22,-0.163,0.391" local_rotation="-20.33,-144.78,-5.65" local_scale="0.7,0.7,0.7" parent_transform="Spine2"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Melee/Knives/machetePrefab.prefab" local_offset="-0.062,0.013,0.224" local_rotation="50.239,268.589,76.978" local_scale="0.7,0.7,0.7" parent_transform="LeftHand"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Melee/Knives/hunting_knifePrefab.prefab" local_offset="-0.108,-0.333,0.21" local_rotation="-7.38,92.335,-90.314" local_scale="1,1,1" parent_transform="LeftUpLeg"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Melee/ClubIron/clubIronPrefab.prefab" local_offset="0.193,-0.257,0.381" local_rotation="-85.24,0,11.975" local_scale="0.7,0.7,0.7" parent_transform="RightUpLeg"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/BanditProps/Barbedwire/barbedwire_spindle2Prefab.prefab" local_offset="-0.046,-0.553,-0.02" local_rotation="0,-87.536,-25.71" local_scale="0.11,0.23,0.23" parent_transform="RightLeg"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Melee/Knives/boneShivPrefab.prefab" local_offset="-0.196,-0.075,0.214" local_rotation="-99.313,0,-23.25" local_scale="0.7,0.7,0.7" parent_transform="Spine2"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Melee/Spear/spear_steel_Prefab.prefab" local_offset="-0.221,-0.057,-0.809" local_rotation="98.82,-85.471,-96.90" local_scale="0.7,0.7,0.7" parent_transform="Spine2"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Melee/Spear/spear_iron_Prefab.prefab" local_offset="-0.178,0.243,-0.884" local_rotation="104.27,0,-8.921" local_scale="0.7,0.7,0.7" parent_transform="Spine2"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Melee/Spear/spear_stone_Prefab.prefab" local_offset="0.225,0.049,-0.917" local_rotation="-15.873,-94.77,-99.47" local_scale="0.7,0.7,0.7" parent_transform="Spine2"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Melee/Spear/spear_steel_Prefab.prefab" local_offset="0.332,0.692,-0.62" local_rotation="136.177,-10.19,11.278" local_scale="0.7,0.7,0.7" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Melee/Spear/spear_iron_Prefab.prefab" local_offset="0.168,0.353,-0.856" local_rotation="110,0,10.345" local_scale="0.7,0.7,0.7" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Melee/Spear/spear_stone_Prefab.prefab" local_offset="-0.484,0.368,-0.689" local_rotation="-12.607,-51.482,-107.765" local_scale="0.7,0.7,0.7" parent_transform="Spine3"/>
+			
+			<!--<triggered_effect trigger="onSelfBuffUpdate" action="AttachParticleEffectToEntity" particle="p_blood_impact" local_offset="0.217,-0.156,0.1" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="Spine2"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_fire_arrow_flaming_cloth" local_offset="0.217,-0.156,0.379" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="Spine2"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_flaming_bat" local_offset="0.217,-0.156,0.379" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="Spine2"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_generator" local_offset="0.217,-0.156,0.379" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="Spine2"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_forgeWorkstation" local_offset="0.217,-0.156,0.379" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="Spine2"/>-->
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Player_BikerInfestedBuff" hidden="true" icon="ui_game_symbol_skull" icon_color="185,120,15">
+		<stack_type value="replace"/>
+		<duration value="30"/>		
+		<effect_group>
+			<triggered_effect trigger="onSelfExplosionDamagedOther" action="ModifyCVar" target="other" target_tags="BossBikerInfested" cvar=".ZINCBiker" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfExplosionDamagedOther" action="AddBuff" target="other" target_tags="BossBikerInfested" buff="ZombieINC_BikerInfested_Chainsaw_Buff"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_BikerInfestedBuff" hidden="false" icon="ui_game_symbol_skull" icon_color="185,120,15">
+		<update_rate value="30"/>			
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="player" range="40" buff="ZombieINC_Player_BikerInfestedBuff"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="positionAOE" target_tags="player" range="40" buff="ZombieINC_Player_BikerInfestedBuff"/>
+			<triggered_effect trigger="onOtherDamagedSelf" action="ModifyCVar" target="self" cvar=".ZINCBiker" operation="add" value="1"/>
+			<triggered_effect trigger="onOtherDamagedSelf" action="AddBuff" target="self" buff="ZombieINC_BikerInfested_Chainsaw_Buff">
+				<requirement name="CVarCompare" cvar=".ZINCBiker" operation="GTE" value="30"/></triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_BikerInfested_Chainsaw_Buff" hidden="false" icon="ui_game_symbol_skull" icon_color="185,120,15">
+		<stack_type value="ignore"/>
+		<duration value="10"/>			
+		<effect_group>
+			<requirement name="NotHasBuff" buff="ZombieINC_PEMGrenade_BossBuff"/>
+		
+			<passive_effect name="WalkSpeed" operation="base_set" value="0.8"/>
+			<passive_effect name="RunSpeed" operation="base_set" value="0.8"/>
+			<passive_effect name="HealthChangeOT" operation="base_add" value="-20"/>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" target="self" cvar=".ZINCBiker" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="ZombieINC_chainsaw_fire_start"/>
+			<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="ZombieINC_chainsaw_fire_lp"/>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="positionAOE" range="40" target_tags="player" event="ZombieINC_SpawnMinionBikerInfested" allow_client_call="true"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_fire_flaming_arrow" local_offset="0.217,-0.156,0.379" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="Spine2"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_blood_eat" local_offset="0.217,-0.156,0.05" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="Spine2"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="RemoveParticleEffectFromEntity" particle="p_fire_flaming_arrow" parent_transform="Spine2"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="RemoveParticleEffectFromEntity" particle="p_blood_eat" parent_transform="Spine2"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="PlaySound" sound="ZombieINC_chainsaw_fire_end"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="StopSound" sound="ZombieINC_chainsaw_fire_lp"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="ModifyCVar" target="self" cvar=".ZINCBiker" operation="set" value="0"/>
+		</effect_group>
+	</buff>
+<!--BossBikerInfested-->
+<!--##BossMultiply-->
+	<buff name="ZombieINC_KillBossMultiplyBuff" hidden="false" icon="ui_game_symbol_skull" icon_color="185,120,15">
+		<stack_type value="duration"/>
+		<duration value="1200"/>
+		<update_rate value="65"/>
+				
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_KillBossMultiplyEvent" allow_client_call="true"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_KillBossMultiplyEvent" allow_client_call="true"/>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_SpawnMinionMultiply"  >
+		
+		<stack_type value="ignore"/>
+		<update_rate value="1"/>
+		<duration value="1"/>
+		
+		<effect_group>		    		  
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self" event="ZombieINC_SpawnMinionMultiplyAmmo" allow_client_call="true"/>						
+		</effect_group>
+	</buff>	
+	    
+<!--BossMultiply-->
+<!--##BossMultiplyInfested-->
+	<buff name="ZombieINC_AttachPrefabBossMultiplyInfested"  >	
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Electrical/power_switchPrefab.prefab" local_offset="0.03,0.172,-0.369" local_rotation="-163,8.815,-24.721" local_scale="1,1,1" parent_transform="RightShoulder"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Electrical/power_switchPrefab.prefab" local_offset="-0.033,-0.164,0.372" local_rotation="17,8.815,24.721" local_scale="1,1,1" parent_transform="LeftShoulder"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Electrical/utilityTransformerHangingPrefab.prefab" local_offset="0,-0.139,-0.741" local_rotation="0,180,0" local_scale="0.8,0.8,0.8" parent_transform="Spine3"/>
+			
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="satelliteUnitLargePrefab" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="satelliteUnitLargePrefab" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Electrical/satelliteUnitLargePrefab.prefab" local_offset="0,0.253,-0.652" local_rotation="0,-180,0" local_scale="0.2,0.2,0.2" parent_transform="Spine3"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_AttachParticlesBossMultiplyInfested"  >
+		<duration value="3"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_electric_shock" local_offset="-0.003,0.427,-0.575" local_rotation="-180,0,0" local_scale="1,1,1" parent_transform="Spine3"/>
+		    <triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_electric_shock_small" local_offset="0.204,0.097,0" local_rotation="-180,0,0" local_scale="1,1,1" parent_transform="RightShoulder"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_electric_shock_small" local_offset="-0.22,-0.144,0.036" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="LeftShoulder"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="RemoveParticleEffectFromEntity" particle="p_electric_shock"  parent_transform="Spine3"/>
+		    <triggered_effect trigger="onSelfBuffFinish" action="RemoveParticleEffectFromEntity" particle="p_electric_shock_small" parent_transform="RightShoulder"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="RemoveParticleEffectFromEntity" particle="p_electric_shock_small" parent_transform="LeftShoulder"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_66Check_BossMultiplyInfested"  >
+		<update_rate value="5"/>
+		<effect_group>
+			<requirement name="StatComparePercCurrentToMax" stat="health" operation="LTE" value=".66"/>
+			<requirement name="StatComparePercCurrentToMax" stat="health" operation="GTE" value=".34"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="ZombieINC_66_BossMultiplyInfested"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_33Check_BossMultiplyInfested"  >
+		<update_rate value="5"/>
+		<effect_group>
+			<requirement name="StatComparePercCurrentToMax" stat="health" operation="LTE" value=".33"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="ZombieINC_33_BossMultiplyInfested"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_66_BossMultiplyInfested"  >
+		<duration value="4"/>
+		<update_rate value="0.5"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="ZombieINC_66Check_BossMultiplyInfested"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetScale" scale="1.5"/>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".MultiplyInfested" operation="set" value="25"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_33_BossMultiplyInfested"  >
+		<duration value="3"/>
+		<update_rate value="1.6"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="ZombieINC_33Check_BossMultiplyInfested"/>		
+			<triggered_effect trigger="onSelfBuffStart" action="SetScale" scale="1.8"/>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".MultiplyInfested" operation="set" value="50"/>
+		</effect_group>
+	</buff>
+	
+	
+	<buff name="ZombieINC_MultiplyInfestedBuff"  >
+		<effect_group>
+			<passive_effect name="PhysicalDamageResist" operation="base_add" value="@.MultiplyInfested"/>
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="AddBuff" buff="ZombieINC_AttachParticlesBossMultiplyInfested">
+				<requirement name="NotHasBuff" buff="ZombieINC_PEMGrenade_BossBuff"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="CallGameEvent" target="positionAOE" range="40" target_tags="player" event="ZombieINC_SpawnMinionMultiplyInfestedGS" allow_client_call="true"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MultiplyMinionMain"  >
+		<duration value="5"/>
+		<effect_group>		    		  
+			<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_electric_shock" parent_transform="Spine1" local_offset="0,-.2,0">
+				<requirement name="!HasParticle" particle="p_electric_shock" />
+			</triggered_effect>
+			<triggered_effect trigger="onSelfEnteredGame" action="AttachParticleEffectToEntity" particle="p_electric_shock" parent_transform="Spine1" local_offset="0,-.2,0">
+				<requirement name="!HasParticle" particle="p_electric_shock" />
+			</triggered_effect>
+			<triggered_effect trigger="onSelfDied" action="RemoveParticleEffectFromEntity" particle="p_electric_shock"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="RemoveParticleEffectFromEntity" particle="p_electric_shock"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="RemoveParticleEffectFromEntity" particle="p_electric_shock"/>
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveParticleEffectFromEntity" particle="p_electric_shock"/>
+			<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="electric_fence_impact"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="FadeOutSound" sound="electric_fence_impact"/>
+			<triggered_effect trigger="onSelfLeaveGame" action="StopSound" sound="electric_fence_impact"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="ETrapHit" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfDied" action="RemoveBuff" buff="ZombieINC_MultiplyMinionMain" />
+			
+			<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" target_tags="player" buff="ZombieINC_buffElementElectric" />
+		</effect_group>
+	</buff>
+	
+<!--BossMultiplyInfested-->	
+<!--##BossFire-->
+	<buff name="ZombieINC_FireMinions_InvisibleBuff"  >
+		<duration value="3"/>
+		<update_rate value="1"/>
+		<stack_type value="ignore"/>
+		<effect_group>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="FeralEye"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD0"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD1"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD2"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="NormalEye"/>
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="true" transform_path="FeralEye"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="true" transform_path="LOD0"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="true" transform_path="LOD1"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="true" transform_path="LOD2"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="true" transform_path="NormalEye"/>
+		</effect_group>
+		
+	</buff>
+	<buff name="ZombieINC_KillBossFireBuff" hidden="false" icon="ui_game_symbol_skull" icon_color="185,120,15">
+		<stack_type value="duration"/>
+		<duration value="1200"/>
+		<update_rate value="65"/>
+				
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_KillBossFireEvent" allow_client_call="true"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_KillBossFireEvent" allow_client_call="true"/>
+		</effect_group>
+	</buff>
+
+    <buff name="ZombieINC_MinionFireMaleSpawning" hidden="true">
+		<duration value="1.5"/>
+		<update_rate value="0.5"/>
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:ParticleEffects/p_flame_hazard.prefab" local_offset="1.45,-1.2,0" local_rotation="0,0,90" parent_transform="Spine"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="RemovePrefabFromEntity" prefab="@:ParticleEffects/p_flame_hazard.prefab" parent_transform="Spine"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_twitch_smokePuff" />
+			<!--<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="Prefabs/prefabExplosion13" local_offset="0,0.,0" local_rotation="0,0,0" local_scale="0.5,0.5,0.5" parent_transform=""/>
+			<triggered_effect trigger="onSelfBuffStart" action="StopSound" sound="explosion#"/>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_ExplosionSpawn" allow_client_call="true"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_onFire" local_scale="0.25,0.25,0.25" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetScale" scale="1"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="RemoveParticleEffectFromEntity" particle="p_onFire" />	
+			<triggered_effect trigger="onSelfBuffRemove" action="RemoveParticleEffectFromEntity" particle="p_onFire" />-->
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_MinionFireWomanSpawning" hidden="true">
+		<duration value="1.5"/>
+		<update_rate value="0.5"/>
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:ParticleEffects/p_flame_hazard.prefab" local_offset="1.45,-1.2,0" local_rotation="0,0,90" local_scale="3,3,3" parent_transform="Spine"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="RemovePrefabFromEntity" prefab="@:ParticleEffects/p_flame_hazard.prefab" parent_transform="Spine"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_twitch_smokePuff" />
+			<!--<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="Prefabs/prefabExplosion13" local_offset="0,0.,0" local_rotation="0,0,0" local_scale="0.5,0.5,0.5" parent_transform="Spine"/>
+			<triggered_effect trigger="onSelfBuffStart" action="StopSound" sound="explosion#"/>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_ExplosionSpawn" allow_client_call="true"/>
+		    <triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_onFire" local_scale="0.25,0.25,0.25" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetScale" scale="0.9"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="RemoveParticleEffectFromEntity" particle="p_onFire" />
+			<triggered_effect trigger="onSelfBuffRemove" action="RemoveParticleEffectFromEntity" particle="p_onFire" />-->
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_MinionFireKidSpawning" hidden="true">
+		<duration value="1.5"/>
+		<update_rate value="0.5"/>
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:ParticleEffects/p_flame_hazard.prefab" local_offset="1.45,-1.2,0" local_rotation="0,0,90" local_scale="3,3,3" parent_transform="Spine"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="RemovePrefabFromEntity" prefab="@:ParticleEffects/p_flame_hazard.prefab" parent_transform="Spine"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_twitch_smokePuff" />
+			<!--<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="Prefabs/prefabExplosion13" local_offset="0,0.,0" local_rotation="0,0,0" local_scale="0.5,0.5,0.5" parent_transform="Spine"/>
+			<triggered_effect trigger="onSelfBuffStart" action="StopSound" sound="explosion#"/>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_ExplosionSpawn" allow_client_call="true"/>
+		    <triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_onFire"  local_scale="0.25,0.25,0.25" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetScale" scale="0.65"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="RemoveParticleEffectFromEntity" particle="p_onFire" />
+			<triggered_effect trigger="onSelfBuffRemove" action="RemoveParticleEffectFromEntity" particle="p_onFire" />-->
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_MinionFireKid2Spawning" hidden="true">	
+		<duration value="1.5"/>
+		<update_rate value="0.5"/>
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:ParticleEffects/p_flame_hazard.prefab" local_offset="1.45,-1.2,0" local_rotation="0,0,90" local_scale="3,3,3" parent_transform="Spine"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="RemovePrefabFromEntity" prefab="@:ParticleEffects/p_flame_hazard.prefab" parent_transform="Spine"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_twitch_smokePuff" />
+			<!--<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_ExplosionSpawn" allow_client_call="true"/>
+		    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="Prefabs/prefabExplosion13" local_offset="0,0.,0" local_rotation="0,0,0" local_scale="0.5,0.5,0.5" parent_transform="Spine"/>
+		    <triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_onFire" local_offset="0,0.,0" local_rotation="0,0,0" local_scale="0.5,0.5,0.5" parent_transform="Spine"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetScale" scale="0.6"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="RemoveParticleEffectFromEntity" particle="p_onFire" />
+			<triggered_effect trigger="onSelfBuffRemove" action="RemoveParticleEffectFromEntity" particle="p_onFire" />-->
+		</effect_group>
+	</buff>
+
+
+
+	<buff name="ZombieINC_SpawnMinionFireBuff" hidden="true">
+		<update_rate value="20"/>
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self" event="ZombieINC_SpawnMinionFirePhase1" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" target="self" event="ZombieINC_SpawnMinionFirePhase1" allow_client_call="false">
+				<requirement name="IsAlive"/></triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" target="self" event="ZombieINC_SpawnMinionFirePhase2" allow_client_call="false">
+				<requirement name="StatComparePercCurrentToMax" stat="health" operation="LTE" value=".7"/>
+				<requirement name="IsAlive"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" target="self" event="ZombieINC_SpawnMinionFirePhase3" allow_client_call="false">
+				<requirement name="StatComparePercCurrentToMax" stat="health" operation="LTE" value=".3"/>
+				<requirement name="IsAlive"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	
+<!--BossFire-->
+<!--##BossFireInfested-->
+
+	<buff name="ZombieINC_SpawnMinionFireInfestedBuff" hidden="true">
+		<update_rate value="15"/>
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self" event="ZombieINC_SpawnMinionFireInfestedPhase1" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" target="self" event="ZombieINC_SpawnMinionFireInfestedPhase1" allow_client_call="false">
+				<requirement name="IsAlive"/></triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" target="self" event="ZombieINC_SpawnMinionFireInfestedPhase2" allow_client_call="false">
+				<requirement name="StatComparePercCurrentToMax" stat="health" operation="LTE" value=".7"/>
+				<requirement name="IsAlive"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" target="self" event="ZombieINC_SpawnMinionFireInfestedPhase3" allow_client_call="false">
+				<requirement name="StatComparePercCurrentToMax" stat="health" operation="LTE" value=".3"/>
+				<requirement name="IsAlive"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_AttachPrefabFireInfestedBuff" hidden="true">
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="AddBuff" buff="ZombieINC_FireInfested_Shot"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_FireInfested_Shot" hidden="true">
+		<duration value="0.6"/>
+		<stack_type value="duration"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_onFire" shape_mesh="true"/>
+			<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="flametrap_lp"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="RemoveParticleEffectFromEntity" particle="p_onFire"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_flame_hazard" local_offset="0,-0.4,0.041" local_rotation="0,-90,-11" local_scale="1,1,1" parent_transform="Head"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="RemoveParticleEffectFromEntity" particle="p_flame_hazard" parent_transform="Head"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="StopSound" sound="flametrap_lp"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_BossFireInfestedBuff" hidden="true">
+		<stack_type value="ignore"/>
+		<update_rate value="10"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" target="self" event="ZombieINC_SpawnFireInfestedPhase1" allow_client_call="false">
+				<requirement name="IsAlive"/></triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" target="self" event="ZombieINC_SpawnFireInfestedPhase2" allow_client_call="false">
+				<requirement name="StatComparePercCurrentToMax" stat="health" operation="LTE" value=".7"/>
+				<requirement name="IsAlive"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" target="self" event="ZombieINC_SpawnFireInfestedPhase3" allow_client_call="false">
+				<requirement name="StatComparePercCurrentToMax" stat="health" operation="LTE" value=".3"/>
+				<requirement name="IsAlive"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_FireExplosions_AttachPrefabBuff"  >
+		<duration value="10"/>
+		<update_rate value="0.5"/>
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:ParticleEffects/p_flame_hazard.prefab" local_offset="1.45,-1.2,0" local_rotation="0,0,90" local_scale="10,10,10" parent_transform="Spine"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="RemovePrefabFromEntity" prefab="@:ParticleEffects/p_flame_hazard.prefab" parent_transform="Spine"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="FeralEye"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD0"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD1"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD2"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="NormalEye"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="FeralEye"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="LOD0"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="LOD1"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="LOD2"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="NormalEye"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="positionAOE" target_tags="player" range="2" buff="buffBurningZombie"/>
+			<!--<triggered_effect trigger="onSelfDied" action="CallGameEvent" event="ZombieINC_Bomb_Event" allow_client_call="true" />-->
+			<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" event="ZombieINC_KillSelf" allow_client_call="false"/>
+		</effect_group>
+	</buff>
+<!--BossFireInfested-->
+<!--##BossScientist-->
+	
+	<buff name="ZombieINC_KillBossScientistBuff" hidden="false" icon="ui_game_symbol_skull" icon_color="185,120,15">
+		<stack_type value="duration"/>
+		<duration value="1200"/>
+		<update_rate value="65"/>
+				
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_KillBossScientistEvent" allow_client_call="true"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_KillBossScientistEvent" allow_client_call="true"/>
+		</effect_group>
+	</buff>
+	
+    <buff name="ZombieINC_AttachPrefabScientistBuff" hidden="true">	
+		<duration value="6000"/>
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/barrelRadiatedPrefab.prefab" local_offset="0.17,-0.05,-0.25" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="Spine3"/>
+			
+		</effect_group>
+	</buff>
+
+    <buff name="ZombieINC_SpawnMinionScientistBuff" hidden="true">	
+		<duration value="6000"/>	
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self" event="ZombieINC_SpawnMinionScientistGroup6" allow_client_call="false"/>
+			
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_MinionScientist1Buff" hidden="true">	
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onOtherKilledSelf" action="AddBuff" target="positionAOE" target_tags="BossScientist" range="15" buff="ZomvieINC_MinionScientist1SelfReviveBuff"/>		
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_MinionScientist2Buff" hidden="true">	
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onOtherKilledSelf" action="AddBuff" target="positionAOE" target_tags="BossScientist" range="15" buff="ZomvieINC_MinionScientist2SelfReviveBuff"/>		
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_MinionScientist3Buff" hidden="true">	
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onOtherKilledSelf" action="AddBuff" target="positionAOE" target_tags="BossScientist" range="15" buff="ZomvieINC_MinionScientist3SelfReviveBuff"/>	
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_MinionScientist4Buff" hidden="true">	
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onOtherKilledSelf" action="AddBuff" target="positionAOE" target_tags="BossScientist" range="15" buff="ZomvieINC_MinionScientist4SelfReviveBuff"/>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_MinionScientist5Buff" hidden="true">
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onOtherKilledSelf" action="AddBuff" target="positionAOE" target_tags="BossScientist" range="15" buff="ZomvieINC_MinionScientist5SelfReviveBuff"/>	
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_MinionScientist6Buff" hidden="true">	
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onOtherKilledSelf" action="AddBuff" target="positionAOE" target_tags="BossScientist" range="15" buff="ZomvieINC_MinionScientist6SelfReviveBuff"/>		
+		</effect_group>
+	</buff>
+	
+	<buff name="ZomvieINC_MinionScientist1SelfReviveBuff" hidden="true">	
+		<duration value="25"/>
+	    <update_rate value="20"/>
+		<stack_type value="ignore"/>
+
+		<effect_group>	
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" target="self" event="ZombieINC_SpawnMinionScientist1" allow_client_call="false">
+			<requirement name="IsAlive"/></triggered_effect>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZomvieINC_MinionScientist2SelfReviveBuff" hidden="true">
+		<duration value="25"/>
+	    <update_rate value="20"/>
+		<stack_type value="ignore"/>
+		<effect_group>	
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" target="self" event="ZombieINC_SpawnMinionScientist2" allow_client_call="false">
+			<requirement name="IsAlive"/></triggered_effect>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZomvieINC_MinionScientist3SelfReviveBuff" hidden="true">
+		<duration value="25"/>
+	    <update_rate value="20"/>
+		<stack_type value="ignore"/>
+		<effect_group>	
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" target="self" event="ZombieINC_SpawnMinionScientist3" allow_client_call="false">
+			<requirement name="IsAlive"/></triggered_effect>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZomvieINC_MinionScientist4SelfReviveBuff" hidden="true">
+		<duration value="25"/>
+	    <update_rate value="20"/>
+		<stack_type value="ignore"/>
+		<effect_group>	
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" target="self" event="ZombieINC_SpawnMinionScientist4" allow_client_call="false">
+			<requirement name="IsAlive"/></triggered_effect>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZomvieINC_MinionScientist5SelfReviveBuff" hidden="true">
+		<duration value="25"/>
+	    <update_rate value="20"/>
+		<stack_type value="ignore"/>
+		<effect_group>	
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" target="self" event="ZombieINC_SpawnMinionScientist5" allow_client_call="false">
+			<requirement name="IsAlive"/></triggered_effect>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZomvieINC_MinionScientist6SelfReviveBuff" hidden="true">	
+		<duration value="25"/>
+	    <update_rate value="20"/>
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" target="self" event="ZombieINC_SpawnMinionScientist6" allow_client_call="false">
+			<requirement name="IsAlive"/></triggered_effect>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_MinionScientistRegenBuff" hidden="true">
+		<update_rate value="0.5"/>
+		<stack_type value="ignore"/>
+		<effect_group>	
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddHealth" target="positionAOE" target_tags="BossScientist" range="10" health="8"/>	
+		</effect_group>
+	</buff>
+		
+	
+<!--BossScientist-->
+<!--##BossScientistInfested-->
+											<!-- BOSS-->
+  <buff name="ZombieINC_Hunt_ScientistInfestedBuff" remove_on_death="false" hidden="true">
+		<stack_type value="replace"/>
+		<effect_group>
+			<triggered_effect trigger="onOtherKilledSelf" action="AddBuff" target="positionAOE" target_tags="ZINCScientistNurse1" range="40" buff="ZombieINC_Hunt_ScientistInfestedNurseBuffFlame_1"/>	
+			<triggered_effect trigger="onOtherKilledSelf" action="CallGameEvent" target="self" event="ZombieINC_ReviveBoss1" allow_client_call="false" >
+				<requirement name="NotHasBuff" buff="ZombieINC_Hunt_ScientistInfestedNurseReviverDeadBuff"/>  
+				<requirement name="NotHasBuff" buff="ZombieINC_Hunt_ScientistInfestedBossRevived1"/>  
+			</triggered_effect>
+			<triggered_effect trigger="onOtherKilledSelf" action="CallGameEvent" target="self" event="ZombieINC_ReviveBoss2" allow_client_call="false" >
+				<requirement name="NotHasBuff" buff="ZombieINC_Hunt_ScientistInfestedNurseReviverDeadBuff"/>  
+				<requirement name="HasBuff" buff="ZombieINC_Hunt_ScientistInfestedBossRevived1"/>  
+				<requirement name="NotHasBuff" buff="ZombieINC_Hunt_ScientistInfestedBossRevived2"/>  
+			</triggered_effect>	
+			<triggered_effect trigger="onOtherKilledSelf" action="CallGameEvent" target="self" event="ZombieINC_ReviveBoss3" allow_client_call="false" >
+				<requirement name="NotHasBuff" buff="ZombieINC_Hunt_ScientistInfestedNurseReviverDeadBuff"/>  
+				<requirement name="HasBuff" buff="ZombieINC_Hunt_ScientistInfestedBossRevived2"/>  
+				<requirement name="NotHasBuff" buff="ZombieINC_Hunt_ScientistInfestedBossRevived3"/>  
+			</triggered_effect>	
+			<triggered_effect trigger="onOtherKilledSelf" action="CallGameEvent" target="self" event="ZombieINC_ReviveBoss4" allow_client_call="false" >
+				<requirement name="NotHasBuff" buff="ZombieINC_Hunt_ScientistInfestedNurseReviverDeadBuff"/> 
+				<requirement name="HasBuff" buff="ZombieINC_Hunt_ScientistInfestedBossRevived3"/>
+				<requirement name="NotHasBuff" buff="ZombieINC_Hunt_ScientistInfestedBossRevived4"/>  
+			</triggered_effect>
+			<triggered_effect trigger="onOtherKilledSelf" action="CallGameEvent" target="self" event="ZombieINC_ReviveBoss5" allow_client_call="false" >
+				<requirement name="NotHasBuff" buff="ZombieINC_Hunt_ScientistInfestedNurseReviverDeadBuff"/>  
+				<requirement name="HasBuff" buff="ZombieINC_Hunt_ScientistInfestedBossRevived4"/>  
+			</triggered_effect>	
+		</effect_group>
+  </buff>	
+  <buff name="ZombieINC_Hunt_AttachPrefabScientistInfestedBuff" remove_on_death="false" hidden="true">	
+		<stack_type value="replace"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/barrelRadiatedPrefab.prefab" local_offset="0.17,-0.05,-0.25" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="Spine3"/>
+		</effect_group>
+	</buff>
+	 <buff name="ZombieINC_Hunt_SpawnMinionScientistInfestedBuff" remove_on_death="false" hidden="true">	
+		<stack_type value="replace"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self" event="ZombieINC_SpawnMinionScientistInfestedGroup" allow_client_call="false">
+				<requirement name="NotHasBuff" buff="ZombieINC_recent_rez_boss"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Hunt_ScientistInfestedBossRevived1" remove_on_death="false">
+		<stack_type value="replace"/>
+
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="ZINCSIFM" range="100" buff="ZombieINC_Hunt_ScientistInfestedBuffMinions_1"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetScale" scale="1.3"/>
+		
+			<passive_effect name="HealthMax" operation="perc_add" value="-0.50"/>
+			<passive_effect name="EntityDamage" operation="perc_add" value="0.25"/>
+			<passive_effect name="BlockDamage" operation="perc_add" value="1.0"/>
+			<passive_effect name="LootDropProb" operation="perc_add" value="-1"/>
+			<passive_effect name="ExperienceGain" operation="base_set" value="0"/>
+			<passive_effect name="WalkSpeed" operation="perc_add" value="-0.1"/>
+			<passive_effect name="RunSpeed" operation="perc_add" value="-0.1"/>
+			
+			
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Hunt_ScientistInfestedBuffMinions_1" remove_on_death="false">
+		<stack_type value="ignore"/>
+		<effect_group>
+			<passive_effect name="EntityDamage" operation="perc_add" value="0.1"/>
+			<passive_effect name="BlockDamage" operation="perc_add" value="1.0"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Hunt_ScientistInfestedBossRevived2" remove_on_death="false">
+		<stack_type value="ignore"/>
+
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="ZINCSIFM" range="100" buff="ZombieINC_Hunt_ScientistInfestedBuffMinions_2"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetScale" scale="1.4"/>
+			<passive_effect name="EntityDamage" operation="perc_add" value="0.25"/>
+			<passive_effect name="BlockDamage" operation="perc_add" value="1.0"/>
+			
+			<passive_effect name="WalkSpeed" operation="perc_add" value="-0.1"/>
+			<passive_effect name="RunSpeed" operation="perc_add" value="-0.1"/>	
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Hunt_ScientistInfestedBuffMinions_2" remove_on_death="false">
+		<stack_type value="ignore"/>
+		<effect_group>
+			<passive_effect name="EntityDamage" operation="perc_add" value="0.1"/>
+			<passive_effect name="BlockDamage" operation="perc_add" value="1.0"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Hunt_ScientistInfestedBossRevived3" remove_on_death="false">
+		<stack_type value="ignore"/>
+
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="ZINCSIFM" range="100" buff="ZombieINC_Hunt_ScientistInfestedBuffMinions_3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetScale" scale="1.5"/>
+			<passive_effect name="EntityDamage" operation="perc_add" value="0.25"/>
+			<passive_effect name="BlockDamage" operation="perc_add" value="1.0"/>
+			
+			<passive_effect name="WalkSpeed" operation="perc_add" value="-0.1"/>
+			<passive_effect name="RunSpeed" operation="perc_add" value="-0.1"/>	
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Hunt_ScientistInfestedBuffMinions_3" remove_on_death="false">
+		<stack_type value="ignore"/>
+		<effect_group>
+			<passive_effect name="EntityDamage" operation="perc_add" value="0.1"/>
+			<passive_effect name="BlockDamage" operation="perc_add" value="1.0"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Hunt_ScientistInfestedBossRevived4" remove_on_death="false">
+		<stack_type value="ignore"/>
+
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="ZINCSIFM" range="100" buff="ZombieINC_Hunt_ScientistInfestedBuffMinions_4"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetScale" scale="1.6"/>
+			<passive_effect name="EntityDamage" operation="perc_add" value="0.25"/>
+			<passive_effect name="BlockDamage" operation="perc_add" value="1.0"/>
+			
+			<passive_effect name="WalkSpeed" operation="perc_add" value="-0.1"/>
+			<passive_effect name="RunSpeed" operation="perc_add" value="-0.1"/>	
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Hunt_ScientistInfestedBuffMinions_4" remove_on_death="false">
+		<stack_type value="ignore"/>
+		<effect_group>
+			<passive_effect name="EntityDamage" operation="perc_add" value="0.1"/>
+			<passive_effect name="BlockDamage" operation="perc_add" value="1.0"/>
+		</effect_group>
+	</buff>
+	
+											<!-- BOSS-->	
+											<!-- MINION 1-->	
+											
+	<buff name="ZombieINC_Hunt_ScientistInfestedNurseBuff_1" remove_on_death="false" hidden="true">	
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onOtherKilledSelf" action="AddBuff" target="positionAOE" target_tags="ZINCSIF" range="100" buff="ZombieINC_Hunt_ScientistInfestedNurseReviverDeadBuff"/>		
+			<!--<triggered_effect trigger="onOtherKilledSelf" action="CallGameEvent" target="self" event="ZombieINC_ReviveMinionNurse1" allow_client_call="false" />	-->	
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Hunt_ScientistInfestedNurseReviverDeadBuff" remove_on_death="false" hidden="true">	
+		<stack_type value="ignore"/>
+		<effect_group>	
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Hunt_ScientistInfestedNurseBuffFlame_1" remove_on_death="false">
+		<stack_type value="replace"/>
+		<duration value="2.5"/>
+		<update_rate value="1"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="positionAOE" range="10" target_tags="player" buff="ZombieINC_Hunt_buffRadiation01"/>
+		</effect_group>
+		<effect_group>
+			<passive_effect name="NegateDamageSelf" operation="base_set" value="1"/>
+			<passive_effect name="DismemberSelfChance" operation="base_set" value="0" />
+			
+			<passive_effect name="WalkSpeed" operation="perc_add" value="-1"/>
+			<passive_effect name="RunSpeed" operation="perc_add" value="-1"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="a_radiated_strong_lp"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="RadiatedParticlesOnMesh" parent_transform="LOD0" shape_mesh="true"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="RemoveParticleEffectFromEntity" particle="RadiatedParticlesOnMesh"/>
+			<triggered_effect trigger="onSelfDied" action="RemoveParticleEffectFromEntity" particle="RadiatedParticlesOnMesh"/>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Hunt_ScientistInfestedBuffFlame_Generic" remove_on_death="false">
+		<stack_type value="replace"/>
+		<duration value="2.5"/>
+		<update_rate value="1"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="positionAOE" range="10" target_tags="player" buff="ZombieINC_Hunt_buffRadiation01"/>
+		</effect_group>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="a_radiated_strong_lp"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="RadiatedParticlesOnMesh" parent_transform="LOD0" shape_mesh="true"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="RemoveParticleEffectFromEntity" particle="RadiatedParticlesOnMesh"/>
+			<!--<triggered_effect trigger="onSelfDied" action="RemoveParticleEffectFromEntity" particle="RadiatedParticlesOnMesh"/>-->
+		</effect_group>
+	</buff>
+											<!-- MINION 1-->	
+											<!-- MINION 2-->	
+											
+	<buff name="ZombieINC_Hunt_ScientistInfestedNurseBuff_2" remove_on_death="false" hidden="true">	
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onOtherKilledSelf" action="AddBuff" target="positionAOE" target_tags="ZINCScientistNurse1" range="40" buff="ZombieINC_Hunt_ScientistInfestedNurseBuffFlame_1"/>	
+		
+			
+			<triggered_effect trigger="onOtherKilledSelf" action="AddBuff" target="self" buff="ZombieINC_Hunt_ScientistInfestedNurseReviveBuff_2"/>
+			<triggered_effect trigger="onOtherKilledSelf" action="CallGameEvent" target="self" event="ZombieINC_ReviveMinionNurse2" allow_client_call="false" >
+				  <requirement name="NotHasBuff" buff="ZombieINC_Hunt_ScientistInfestedNurseReviverDeadBuff"/>  
+			</triggered_effect>		
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Hunt_ScientistInfestedNurseReviveBuff_2" remove_on_death="false" hidden="true">	
+		<duration value="5"/>
+		<stack_type value="ignore"/>
+
+		<effect_group>	
+				
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Hunt_ScientistInfestedNurseReviveBuff_2_TEST" remove_on_death="false" hidden="true">	
+		<duration value="1"/>
+		<stack_type value="ignore"/>
+
+		<effect_group>	
+			<triggered_effect trigger="onSelfBuffFinish" action="RemoveBuff" target="positionAOE" range="40" buff="ZombieINC_Hunt_ScientistInfestedNurseReviveBuff_2">
+				<requirement name="EntityTagCompare" target="other" tags="ZINCScientistNurse2"/>
+			</triggered_effect>
+				
+		</effect_group>
+	</buff>
+	
+											<!-- MINION 2-->	
+											<!-- MINION 3-->
+	
+	<buff name="ZombieINC_Hunt_ScientistInfestedNurseBuff_3" remove_on_death="false" hidden="true">	
+		<stack_type value="ignore"/>
+		<effect_group>
+			
+			<triggered_effect trigger="onOtherKilledSelf" action="AddBuff" target="positionAOE" target_tags="ZINCScientistNurse1" range="40" buff="ZombieINC_Hunt_ScientistInfestedNurseBuffFlame_1"/>	
+			<triggered_effect trigger="onOtherKilledSelf" action="AddBuff" target="positionAOE" target_tags="BossScientistInfested" range="60" buff="ZombieINC_Hunt_ScientistInfestedNurseReviveBuff_3"/>
+			<triggered_effect trigger="onOtherKilledSelf" action="CallGameEvent" target="self" event="ZombieINC_ReviveMinionNurse3" allow_client_call="false" >
+				<requirement name="NotHasBuff" buff="ZombieINC_Hunt_ScientistInfestedNurseReviverDeadBuff"/>  
+			</triggered_effect>	
+		</effect_group>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_twitch_zombie_radiation_right" parent_transform="RightHand"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_twitch_zombie_radiation_left" parent_transform="LeftHand"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="RemoveParticleEffectFromEntity" particle="p_twitch_zombie_radiation_left"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="RemoveParticleEffectFromEntity" particle="p_twitch_zombie_radiation_right"/>
+			<triggered_effect trigger="onSelfDied" action="RemoveParticleEffectFromEntity" particle="p_twitch_zombie_radiation_left"/>
+			<triggered_effect trigger="onSelfDied" action="RemoveParticleEffectFromEntity" particle="p_twitch_zombie_radiation_right"/>
+		</effect_group>
+		<effect_group>
+			<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" buff="ZombieINC_Hunt_RadiationStrong"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Hunt_ScientistInfestedNurseReviveBuff_3" remove_on_death="false" hidden="true">	
+		<duration value="5"/>
+		<stack_type value="ignore"/>
+
+		<effect_group>	
+			
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Hunt_RadiationStrong" hidden="false" name_key="buffRadiation03Name" icon="ui_game_symbol_radiation" icon_color="255,0,0" icon_blink="true">
+		<duration value="5"/>
+		<stack_type value="replace"/>
+		<update_rate value="1"/>
+		
+		<effect_group>
+			<passive_effect name="HealthChangeOT" operation="base_subtract" value="2"/>
+			
+
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="RadiationSignal" operation="add" value="1"/>
+
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveCVar" cvar="RadiationSignal">
+				<requirement name="CVarCompare" cvar="RadiationSignal" operation="Equals" value="2"/>
+			</triggered_effect>
+
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveCVar" cvar="RadiationSignal"/>
+
+			<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="a_radiated_strong_lp"/>
+
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" intensity="1" fade=".7" effect_name="Hot">
+				<requirement name="CVarCompare" cvar="RadiationSignal" operation="Equals" value="1"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" intensity="0" fade=".7" effect_name="Hot">
+				<requirement name="CVarCompare" cvar="RadiationSignal" operation="Equals" value="0"/>
+			</triggered_effect>
+
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" intensity="0" fade="1" effect_name="Hot"/>
+			
+
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" effect_name="Radiation" intensity=".6" fade="2"/>
+			<triggered_effect trigger="onSelfDied" action="ModifyScreenEffect" effect_name="Radiation" intensity="0" fade="0"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" effect_name="Radiation" intensity="0" fade="2"/>
+		</effect_group>
+	
+	</buff>
+											<!-- MINION 3-->	
+											<!-- MINION 4-->
+											
+	<buff name="ZombieINC_Hunt_ScientistInfestedLabBuff_1" remove_on_death="false" hidden="true">	
+		<stack_type value="ignore"/>
+		<effect_group>
+			
+			<triggered_effect trigger="onOtherKilledSelf" action="AddBuff" target="positionAOE" target_tags="ZINCScientistNurse1" range="40" buff="ZombieINC_Hunt_ScientistInfestedNurseBuffFlame_1"/>	
+			<triggered_effect trigger="onOtherKilledSelf" action="CallGameEvent" target="self" event="ZombieINC_ReviveMinionLab1" allow_client_call="false" >
+				<requirement name="NotHasBuff" buff="ZombieINC_Hunt_ScientistInfestedNurseReviverDeadBuff"/> 
+			</triggered_effect>	
+		</effect_group>
+	</buff>										
+											
+											<!-- MINION 4-->	
+											
+	<buff name="ZombieINC_recent_rez" remove_on_death="false">
+		<stack_type value="replace"/>
+
+		<effect_group>
+			<passive_effect name="HealthMax" operation="perc_add" value="-0.50"/>
+			<passive_effect name="EntityDamage" operation="perc_add" value="-0.25"/>
+			<passive_effect name="BlockDamage" operation="perc_add" value="-0.25"/>
+			<passive_effect name="LootDropProb" operation="perc_add" value="-1"/>
+			<passive_effect name="ExperienceGain" operation="base_set" value="0"/>
+			<passive_effect name="WalkSpeed" operation="perc_add" value="-0.25"/>
+			<passive_effect name="RunSpeed" operation="perc_add" value="-0.25"/>	
+		</effect_group>
+	</buff>
+	
+<!--BossScientistInfested-->
+<!--##BossTwins-->
+	<buff name="ZombieINC_KillBossTwinsBlueBuff" hidden="false" icon="ui_game_symbol_skull" icon_color="185,120,15">
+		<stack_type value="duration"/>
+		<duration value="1200"/>
+		<update_rate value="65"/>
+				
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_KillBossTwinsBlueEvent" allow_client_call="true"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_KillBossTwinsBlueEvent" allow_client_call="true"/>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_KillBossTwinsRedBuff" hidden="false" icon="ui_game_symbol_skull" icon_color="185,120,15">
+		<stack_type value="duration"/>
+		<duration value="1200"/>
+		<update_rate value="65"/>
+				
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_KillBossTwinsRedEvent" allow_client_call="true"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_KillBossTwinsRedEvent" allow_client_call="true"/>
+		</effect_group>
+	</buff>
+	
+	
+	<buff name="ZombieINC_BossTwinsBlueBuff" hidden="true">		
+		<stack_type value="ignore"/>
+		<effect_group>			
+			<triggered_effect trigger="onSelfDied" action="AddBuff" target="positionAOE" target_tags="BossTwinsRed" range="40" buff="ZombieINC_BossTwinsBlueOthersBuff"/>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_BossTwinsBlueOthersBuff" hidden="true">		
+		<stack_type value="ignore"/>
+		<effect_group>
+			<passive_effect name="WalkSpeed" operation="base_set" value="1.1"/>
+			<passive_effect name="RunSpeed" operation="base_set" value="1.3"/>
+			<passive_effect name="EntityDamage" operation="perc_add" value="0.2" />	 
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_BossTwinsRedBuff" hidden="true">				
+		<stack_type value="ignore"/>
+		<effect_group>		
+			<triggered_effect trigger="onSelfDied" action="AddBuff" target="positionAOE" target_tags="BossTwinsBlue" range="40" buff="ZombieINC_BossTwinsRedOthersBuff"/>	
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_BossTwinsRedOthersBuff" hidden="true">
+		<stack_type value="ignore"/>
+		<effect_group>
+			<passive_effect name="GeneralDamageResist" operation="base_add" value="0.5"/>	 
+		</effect_group>
+	</buff>
+	
+	
+	
+	<buff name="ZombieINC_BossTwinsBlueAttachPrefabBuff" hidden="true">
+		<stack_type value="ignore"/>
+
+		<effect_group>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/shippingContainerSideBluePrefab.prefab" local_offset="0.317,0.251,-0.155" local_rotation="90,0,0" local_scale="0.25,0.15,0.8" parent_transform="RightForeArm"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/pipeSmallJointPrefab.prefab" local_offset="0.23,-0.113,-0.025" local_rotation="180,90,180" local_scale="0.3,0.2,0.3" parent_transform="RightForeArm"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Melee/TaserBaton/TaserBatonPrefab.prefab" local_offset="0.39,-0.088,-0.056" local_rotation="-180,180,90" local_scale="1,1,1" parent_transform="RightForeArm"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_electric_shock_small" local_offset="1.2,-0.1,0" local_rotation="0,0,90" parent_transform="RightForeArm"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AddPart" part="Sparks2" prefab="@:ParticleEffects/p_electric_shock_small.prefab" parentTransform="RightForeArm" localPos="1.2,-0.1,0" localRot="0,0,90"/>
+			<triggered_effect trigger="onSelfAttackedOther" action="PlaySound" sound="stunbaton_hit1"/>
+			
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="pipeSmallJointPrefab" parent_transform="RightForeArm" />
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="pipeSmallJointPrefab" parent_transform="RightForeArm" />
+			
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_BossTwinsRedAttachPrefabBuff" hidden="true">
+		<stack_type value="ignore"/>
+
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/shippingContainerSideGreenPrefab.prefab" local_offset="-0.288,0.524,-0.142" local_rotation="90,0,0" local_scale="0.25,0.15,0.8" parent_transform="LeftForeArm"/>	
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/pipeSmallJointPrefab.prefab" local_offset="-0.23,0.117,0" local_rotation="-180,90,0" local_scale="0.3,0.2,0.3" parent_transform="LeftForeArm"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Melee/Knives/machetePrefab.prefab" local_offset="-0.4,0.11,0" local_rotation="0,0,90" local_scale="1,1,1" parent_transform="LeftForeArm"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_fire_flaming_arrow" local_offset="-0.8,0.1,0" local_rotation="0,0,0" parent_transform="LeftForeArm"/>
+			
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="pipeSmallJointPrefab" parent_transform="LeftForeArm" />
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="pipeSmallJointPrefab" parent_transform="LeftForeArm" />
+		</effect_group>
+	</buff>
+
+<!--BossTwins-->
+<!--##BossTwinsInfested-->
+		
+	<buff name="ZombieINC_KillBossTwinsBlueInfestedBuff" hidden="false" icon="ui_game_symbol_skull" icon_color="185,120,15">
+		<stack_type value="duration"/>
+		<duration value="1200"/>
+		<update_rate value="65"/>
+				
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_KillBossTwinsBlueInfestedEvent" allow_client_call="true"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_KillBossTwinsBlueInfestedEvent" allow_client_call="true"/>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_KillBossTwinsRedInfestedBuff" hidden="false" icon="ui_game_symbol_skull" icon_color="185,120,15">
+		<stack_type value="duration"/>
+		<duration value="1200"/>
+		<update_rate value="65"/>
+				
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_KillBossTwinsRedInfestedEvent" allow_client_call="true"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_KillBossTwinsRedInfestedEvent" allow_client_call="true"/>
+		</effect_group>
+	</buff>
+		
+	<!--<buff name="ZombieINC_buffElementFreezing" name_key="buffElementFreezingName" description_key="buffElementFreezingDesc" tooltip_key="buffElementFreezingTooltip" icon="ui_game_symbol_cold" icon_color="255,0,0" icon_blink="true">
+		<duration value="1"/>
+		<update_rate value="1"/>
+		<damage_type value="cold"/>
+		<stack_type value="duration"/>
+
+		<effect_group>
+			
+			<passive_effect name="HealthChangeOT" operation="base_add" value="-2"/>
+			<passive_effect name="Mobility" operation="base_add" value="-.25"/>
+			<passive_effect name="JumpStrength" operation="perc_subtract" value="0.3"/>
+			
+			<passive_effect name="BuffBlink" operation="base_set" value="2" duration="0,3" tags="buffElementFreezing"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffElementCold"/>
+			
+			<passive_effect name="FoodChangeOT" operation="perc_add" value=".6"/>
+			<passive_effect name="FoodChangeOT" operation="perc_add" value="-.09">
+				<requirement name="ProgressionLevel" progression_name="perkWellInsulated" operation="Equals" value="1"/></passive_effect>
+			<passive_effect name="FoodChangeOT" operation="perc_add" value="-.18">
+				<requirement name="ProgressionLevel" progression_name="perkWellInsulated" operation="GTE" value="2"/></passive_effect>
+			
+			<passive_effect name="FoodLossPerStaminaPointGained" operation="perc_add" value="2"/>
+			<passive_effect name="FoodLossPerStaminaPointGained" operation="perc_add" value="-.3">
+				<requirement name="ProgressionLevel" progression_name="perkWellInsulated" operation="Equals" value="1"/></passive_effect>
+			<passive_effect name="FoodLossPerStaminaPointGained" operation="perc_add" value="-.6">
+				<requirement name="ProgressionLevel" progression_name="perkWellInsulated" operation="GTE" value="2"/></passive_effect>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" intensity="1" fade="3" effect_name="Cold2"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" intensity="0" fade="3" effect_name="Cold2"/>
+		</effect_group>
+	</buff>-->
+	
+	<buff name="ZombieINC_buffElementElectric" description_key="buffShockedDesc" tooltip_key="buffShockedTooltip" icon="ui_game_symbol_electric_power" name_key="buffShockedName" icon_color="255,0,0">
+		<damage_type value="electrical"/>
+		<stack_type value="duration"/>
+		<duration value="2"/>
+
+		<effect_group>
+			<passive_effect name="RunSpeed" operation="perc_subtract" value="0.2" />
+			<passive_effect name="WalkSpeed" operation="perc_subtract" value="0.2" />
+			<passive_effect name="CrouchSpeed" operation="perc_subtract" value="0.2" />
+			<passive_effect name="JumpStrength" operation="perc_subtract" value="0.2" />
+			
+			
+
+			<passive_effect name="HealthChangeOT" operation="base_add" value="-3">
+				<requirement name="EntityTagCompare" tags="player"/>
+			</passive_effect>
+
+			<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_electric_shock" parent_transform="Spine1" local_offset="0,-.2,0">
+				<requirement name="!HasParticle" particle="p_electric_shock" />
+			</triggered_effect>
+
+			<triggered_effect trigger="onSelfEnteredGame" action="AttachParticleEffectToEntity" particle="p_electric_shock" parent_transform="Spine1" local_offset="0,-.2,0">
+				<requirement name="!HasParticle" particle="p_electric_shock" />
+			</triggered_effect>
+
+			<triggered_effect trigger="onSelfDied" action="RemoveParticleEffectFromEntity" particle="p_electric_shock"/>
+
+			<triggered_effect trigger="onSelfBuffFinish" action="RemoveParticleEffectFromEntity" particle="p_electric_shock"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="RemoveParticleEffectFromEntity" particle="p_electric_shock"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="ETrapHit" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveParticleEffectFromEntity" particle="p_electric_shock"/>
+
+			<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="electric_fence_impact"/>
+		
+
+			<triggered_effect trigger="onSelfBuffRemove" action="FadeOutSound" sound="electric_fence_impact"/>
+			<triggered_effect trigger="onSelfLeaveGame" action="StopSound" sound="electric_fence_impact"/>
+			<triggered_effect trigger="onSelfDied" action="RemoveBuff" buff="ZombieINC_buffElementElectric" />
+
+			<passive_effect name="HealthMaxBlockage" operation="base_add" value="10"/>
+		</effect_group>
+	</buff>
+	
+	
+	<buff name="ZombieINC_buffRadiation01" name_key="buffRadiation01Name" icon="ui_game_symbol_radiation" icon_color="255,128,0" icon_blink="true">
+		<damage_type value="radiation"/>
+		<stack_type value="duration"/>
+		<duration value="3"/>
+		<update_rate value="1"/>
+
+		<effect_group>
+					
+						<!--ZombieINC Additions-->
+			<passive_effect name="HealthChangeOT" operation="base_subtract" value="2"/>
+						<!--ZombieINC Additions-->
+						
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="RadiationSignal" operation="add" value="1"/>
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="RadiationSignal" operation="set" value="0">
+				<requirement name="CVarCompare" cvar="RadiationSignal" operation="Equals" value="1"/>
+			</triggered_effect>
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="RadiationSignal" operation="set" value="0"/>
+
+			<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="a_radiated_weak_lp"/>
+
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" intensity="1" fade=".4" effect_name="Hot">
+				<requirement name="CVarCompare" cvar="RadiationSignal" operation="Equals" value="1"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" intensity="0" fade=".4" effect_name="Hot">
+				<requirement name="CVarCompare" cvar="RadiationSignal" operation="Equals" value="0"/>
+			</triggered_effect>
+
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" intensity="0" fade="1" effect_name="Hot"/>
+			
+
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" effect_name="Radiation" intensity=".6" fade="2"/>
+			<triggered_effect trigger="onSelfDied" action="ModifyScreenEffect" effect_name="Radiation" intensity="0" fade="0"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" effect_name="Radiation" intensity="0" fade="2"/>
+		</effect_group>
+	</buff>
+	
+	
+
+	<buff name="ZombieINC_BossTwinsBlueInfestedBuff" hidden="true">		
+		<stack_type value="ignore"/>
+		<effect_group>			
+			<triggered_effect trigger="onSelfDied" action="AddBuff" target="positionAOE" target_tags="BossTwinsRedInfested" range="40" buff="ZombieINC_BossTwinsBlueOthersInfestedBuff"/>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_BossTwinsBlueOthersInfestedBuff" hidden="true">		
+		<stack_type value="ignore"/>
+		<effect_group>
+			<passive_effect name="WalkSpeed" operation="base_set" value="1.1"/>
+			<passive_effect name="RunSpeed" operation="base_set" value="1.3"/>
+			<passive_effect name="EntityDamage" operation="perc_add" value="0.2" />	 
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_BossTwinsRedInfestedBuff" hidden="true">				
+		<stack_type value="ignore"/>
+		<effect_group>		
+			<triggered_effect trigger="onSelfDied" action="AddBuff" target="positionAOE" target_tags="BossTwinsBlueInfested" range="40" buff="ZombieINC_BossTwinsRedOthersInfestedBuff"/>	
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_BossTwinsRedOthersInfestedBuff" hidden="true">
+		<stack_type value="ignore"/>
+		<effect_group>
+			<passive_effect name="GeneralDamageResist" operation="base_add" value="0.5"/>	 
+		</effect_group>
+	</buff>
+
+
+	
+	<buff name="ZombieINC_BossTwinsBlueInfestedAttachPrefabBuff" hidden="true">
+		<stack_type value="ignore"/>
+
+		<effect_group>
+			
+			<!--<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/shippingContainerSideBluePrefab.prefab" local_offset="0.317,0.251,-0.155" local_rotation="90,0,0" local_scale="0.25,0.15,0.8" parent_transform="RightForeArm"/>-->
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/pipeSmallJointPrefab.prefab" local_offset="0.23,-0.113,-0.025" local_rotation="180,90,180" local_scale="0.3,0.2,0.3" parent_transform="RightForeArm"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Melee/TaserBaton/TaserBatonPrefab.prefab" local_offset="0.39,-0.105,-0.03" local_rotation="-180,180,90" local_scale="1,1,1" parent_transform="RightForeArm"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_electric_shock_small" local_offset="1.2,-0.1,0" local_rotation="0,0,90" parent_transform="RightForeArm"/>
+			
+			<!--<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/shippingContainerSideBluePrefab.prefab" local_offset="-0.317,-0.251,0.155" local_rotation="-90,0,0" local_scale="0.25,0.15,0.8" parent_transform="LeftForeArm"/>-->
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/pipeSmallJointPrefab.prefab" local_offset="-0.23,0.113,0.025" local_rotation="-180,90,0" local_scale="0.3,0.2,0.3" parent_transform="LeftForeArm"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Melee/TaserBaton/TaserBatonPrefab.prefab" local_offset="-0.39,0.105,0.03" local_rotation="180,-180,-90" local_scale="1,1,1" parent_transform="LeftForeArm"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_electric_shock_small" local_offset="-1.2,0.1,0" local_rotation="0,0,-90" parent_transform="LeftForeArm"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/barrelPlasticPrefab.prefab" local_offset="0.201,-0.221,-0.242" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/pipeSmallWall_1x1Prefab.prefab" local_offset="0.206,-0.135,-0.322" local_rotation="-50,90,0" local_scale="0.3,0.3,0.6" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/pipeSmallCornerPrefab.prefab" local_offset="0.481,0.013,-0.469" local_rotation="0,0,-90" local_scale="0.6,0.6,0.4" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/pipeSmallWallCenterBridgePrefab.prefab" local_offset="0.481,0.256,-0.217" local_rotation="0,0,0" local_scale="0.6,0.6,0.4" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Electrical/smallGeneratorPrefab.prefab" local_offset="-0.025,0.326,-0.514" local_rotation="0,0,0" local_scale="0.4,0.4,0.4" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Electrical/satelliteUnitLargePrefab.prefab" local_offset="0,0.338,-0.523" local_rotation="0,-180,0" local_scale="0.2,0.2,0.2" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Electrical/power_switchPrefab.prefab" local_offset="0.1106,0.414,-0.394" local_rotation="0,0,0" local_scale="0.3,0.3,0.3" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/JunkTurret/junkTurret_Prefab.prefab" local_offset="0.483,-0.286,0.13" local_rotation="0,0,0" local_scale="0.7,0.7,0.7" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false"  parent_transform="Spine3" transform_path="BaseMesh"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false"  parent_transform="Spine3" transform_path="turret_cone"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false"  parent_transform="Spine3" transform_path="DiscMesh"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false"  parent_transform="Spine3" transform_path="turret_laser"/>
+			<triggered_effect trigger="onSelfAttackedOther" action="PlaySound" sound="stunbaton_hit1"/>
+			
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="satelliteUnitLargePrefab" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="satelliteUnitLargePrefab" parent_transform="Spine3" />
+			
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="pipeSmallWallCenterBridgePrefab" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="pipeSmallCornerPrefab" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="pipeSmallWall_1x1Prefab" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="barrelPlasticPrefab" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="pipeSmallWallCenterBridgePrefab" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="pipeSmallCornerPrefab" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="pipeSmallWall_1x1Prefab" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="barrelPlasticPrefab" parent_transform="Spine3" />
+			
+			
+			
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="pipeSmallJointPrefab" parent_transform="LeftForeArm" />
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="pipeSmallJointPrefab" parent_transform="RightForeArm" />
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="pipeSmallJointPrefab" parent_transform="RightForeArm" />			
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="pipeSmallJointPrefab" parent_transform="LeftForeArm" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_BossTwinsRedInfestedAttachPrefabBuff" hidden="true">
+		<stack_type value="ignore"/>
+
+		<effect_group>
+			<!--<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/shippingContainerSideGreenPrefab.prefab" local_offset="-0.288,0.524,-0.142" local_rotation="90,0,0" local_scale="0.25,0.15,0.8" parent_transform="LeftForeArm"/>	-->
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/pipeSmallJointPrefab.prefab" local_offset="-0.23,0.117,0" local_rotation="-180,90,0" local_scale="0.3,0.2,0.3" parent_transform="LeftForeArm"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Melee/Knives/machetePrefab.prefab" local_offset="-0.4,0.11,0" local_rotation="0,0,90" local_scale="1,1,1" parent_transform="LeftForeArm"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_fire_flaming_arrow" local_offset="-0.8,0.1,0" local_rotation="0,0,0" parent_transform="LeftForeArm"/>
+			
+			<!--<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/shippingContainerSideGreenPrefab.prefab" local_offset="0.288,-0.524,0.142" local_rotation="-90,0,0" local_scale="0.25,0.15,0.8" parent_transform="RightForeArm"/>-->	
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/pipeSmallJointPrefab.prefab" local_offset="0.23,-0.117,0" local_rotation="180,90,180" local_scale="0.3,0.2,0.3" parent_transform="RightForeArm"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Melee/Knives/machetePrefab.prefab" local_offset="0.4,-0.11,0" local_rotation="0,0,-90" local_scale="1,1,1" parent_transform="RightForeArm"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_fire_flaming_arrow" local_offset="0.8,-0.1,0" local_rotation="0,0,90" parent_transform="RightForeArm"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/barrelAcidPrefab.prefab" local_offset="0.19,-0.215,-0.265" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/pipeSmallWall_1x1Prefab.prefab" local_offset="-0.206,-0.135,-0.322" local_rotation="50,90,0" local_scale="0.3,0.3,0.6" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/pipeSmallCornerPrefab.prefab" local_offset="-0.481,0.013,-0.469" local_rotation="0,0,90" local_scale="0.6,0.6,0.4" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/pipeSmallWallCenterBridgePrefab.prefab" local_offset="-0.481,0.256,-0.217" local_rotation="0,0,0" local_scale="0.6,0.6,0.4" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Electrical/smallGeneratorPrefab.prefab" local_offset="-0.025,0.326,-0.514" local_rotation="0,0,0" local_scale="0.4,0.4,0.4" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Electrical/satelliteUnitLargePrefab.prefab" local_offset="0,0.338,-0.523" local_rotation="0,-180,0" local_scale="0.2,0.2,0.2" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Electrical/power_switchPrefab.prefab" local_offset="0.1106,0.414,-0.394" local_rotation="0,0,0" local_scale="0.3,0.3,0.3" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/JunkTurret/junkTurret_Prefab.prefab" local_offset="-0.483,-0.286,0.13" local_rotation="0,0,0" local_scale="0.7,0.7,0.7" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false"  parent_transform="Spine3" transform_path="BaseMesh"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false"  parent_transform="Spine3" transform_path="turret_cone"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false"  parent_transform="Spine3" transform_path="DiscMesh"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false"  parent_transform="Spine3" transform_path="turret_laser"/>
+			
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="satelliteUnitLargePrefab" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="satelliteUnitLargePrefab" parent_transform="Spine3" />
+			
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="pipeSmallWallCenterBridgePrefab" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="pipeSmallCornerPrefab" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="pipeSmallWall_1x1Prefab" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="barrelAcidPrefab" parent_transform="Spine3" />		
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="pipeSmallWallCenterBridgePrefab" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="pipeSmallCornerPrefab" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="pipeSmallWall_1x1Prefab" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="barrelAcidPrefab" parent_transform="Spine3" />
+			
+			
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="pipeSmallJointPrefab" parent_transform="LeftForeArm" />
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="pipeSmallJointPrefab" parent_transform="RightForeArm" />
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="pipeSmallJointPrefab" parent_transform="RightForeArm" />			
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="pipeSmallJointPrefab" parent_transform="LeftForeArm" />
+			
+		</effect_group>
+	</buff>
+	
+	
+<!--BossTwinsInfested-->
+<!--##BossBomber-->
+	<buff name="ZombieINC_KillBossBomberBuff" hidden="false" icon="ui_game_symbol_skull" icon_color="185,120,15">
+		<stack_type value="duration"/>
+		<duration value="1200"/>
+		<update_rate value="65"/>
+				
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_KillBossBomberEvent" allow_client_call="true"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_KillBossBomberEvent" allow_client_call="true"/>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_ActionBomberBuff" >
+		
+		<stack_type value="ignore"/>
+		<update_rate value="22"/>
+		
+		<effect_group>
+		    <requirement name="NotHasBuff" buff="ZombieINC_PEMGrenade_BossBuff"/>                                                                                                                
+			<triggered_effect trigger="onSelfBuffStart" action="AnimatorFireTrigger" property="SpecialAttack" value="true"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="player" range="30" buff="ZombieINC_MinionBomberSpawnOnPlayer"/>
+			<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="hulkvomitwarning"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AnimatorFireTrigger" property="SpecialAttack" value="true"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="positionAOE" target_tags="player" range="30" buff="ZombieINC_MinionBomberSpawnOnPlayer"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="PlaySound" sound="hulkvomitwarning"/>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_MinionBomberSpawnOnPlayer" >
+		<duration value="1"/>
+		<stack_type value="ignore"/>
+				
+		<effect_group>		                                                                                                                    			
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_SpawnMinionBomberToPlayer1" allow_client_call="false"/>			
+		</effect_group>
+	</buff>
+
+
+	<buff name="ZombieINC_AttachPrefabBomberBuff" >
+		<stack_type value="ignore"/>
+		<duration value="6000"/>
+		<update_rate value="1"/>	
+		<effect_group>
+		                                                                                                                     <!--X = Right+ and Left-  Y = UP+ and Down-   Z = Toward+ and Back-  -->				
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/TimedCharge/timedChargePrefab.prefab" local_offset="0,0.08,0" local_rotation="-80,180,0" local_scale="1,1,1" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/LootContainers/weapon_bags_largePrefab.prefab" local_offset="0.03,-0.33,-0.42" local_rotation="-5,0,0" local_scale="0.8,0.8,0.8" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/Dynamite/dynamitePrefab.prefab" local_offset="0.1,0.33,-0.37" local_rotation="-22.3,0,-10.74" local_scale="1,1,1" parent_transform="Spine3"/>	
+		</effect_group>
+	</buff>
+
+	<buff name="ZombieINC_ZombieExplode">
+		<duration value="20"/>
+        <update_rate value="1.5"/>
+		<effect_group>	
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/TimedCharge/timedChargePrefab.prefab" local_offset="-.06,.2,0.1" local_rotation="-80,180,0" local_scale="1,1,1" parent_transform="Spine1">
+				<requirement name="!HasAttachedPrefab" prefab="@:Other/Items/Weapons/Ranged/TimedCharge/timedChargePrefab.prefab" parent_transform="Spine1" />
+			</triggered_effect>
+						
+			
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="timedChargePrefab" parent_transform="Spine1" />
+			<triggered_effect trigger="onSelfBuffFinish" action="RemovePrefabFromEntity" prefab="timedChargePrefab" parent_transform="Spine1" />
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyStats" stat="Health" operation="subtract" value="50"/>
+			
+			
+			
+			
+		</effect_group>
+		<effect_group>	
+		<requirement name="NotHasBuff" buff="ZombieINC_PEMGrenade_BossBuff"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="PlaySound" sound="ZombieINC_demolitionz_beep"/>
+			<triggered_effect trigger="onSelfAttackedOther" action="ModifyStats" stat="Health" operation="set" value="0" />
+			<triggered_effect trigger="onSelfDamagedBlock" action="ModifyStats" stat="Health" operation="set" value="0" />
+			<triggered_effect trigger="onSelfDied" action="Explode" blast_power="0" block_damage="200" block_radius="3" entity_damage="30" entity_radius="4"  />
+			<triggered_effect trigger="onSelfBuffFinish" action="Explode" blast_power="0" block_damage="200" block_radius="3" entity_damage="40" entity_radius="4" />
+			<triggered_effect trigger="onSelfDamagedBlock" action="Explode" blast_power="0" block_damage="700" block_radius="4" entity_damage="30" entity_radius="4" />
+			<triggered_effect trigger="onSelfAttackedOther" action="Explode" blast_power="0" block_damage="300" block_radius="3" entity_damage="50" entity_radius="4" />
+			<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" event="ZombieINC_KillSelf" allow_client_call="false"/>
+		</effect_group>
+	</buff>
+
+<!--BossBomber-->
+<!--##BossBomberInfested-->
+
+	<buff name="ZombieINC_Bomb_BossBomberInfested_SpawnerBuff"  >
+		<duration value="10"/>
+		<update_rate value="1"/>
+		<stack_type value="ignore"/>
+		<effect_group>			
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_Bomb_BossBomberInfested_SpawnerEvent" allow_client_call="false" >
+			<requirement name="!IsIndoors"/></triggered_effect>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_ActionBomberInfestedBuff" >		
+		<stack_type value="ignore"/>
+		<update_rate value="45"/>	
+		<effect_group>
+		<requirement name="NotHasBuff" buff="ZombieINC_PEMGrenade_BossBuff"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AnimatorFireTrigger" property="SpecialAttack" value="true"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="player" range="30" buff="ZombieINC_MinionBomberSpawnOnPlayerInfested"/>
+			<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="demolitionzalert1"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AnimatorFireTrigger" property="SpecialAttack" value="true"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="positionAOE" target_tags="player" range="30" buff="ZombieINC_MinionBomberSpawnOnPlayerInfested"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="PlaySound" sound="demolitionzalert1"/>
+			<triggered_effect trigger="onSelfDied" action="Explode" blast_power="2000" block_damage="50000" block_radius="12" entity_damage="300" entity_radius="12" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_ActionBomberInfested2Buff" >	
+		<stack_type value="ignore"/>
+		<update_rate value="25"/>	
+		<effect_group>	                                                                                                                    		
+			<!--<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="player" range="40" buff="ZombieINC_Bomb_BossBomberInfested_SpawnerBuff"/>-->	
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="positionAOE" target_tags="player" range="40" buff="ZombieINC_Bomb_BossBomberInfested_SpawnerBuff"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff"  buff="ZombieINC_BomberInfested_Lights"/>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_BomberInfested_Lights" >	
+		<stack_type value="ignore"/>
+		<duration value="10"/>
+		<effect_group>
+			<!--<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_BomberInfested_Flare" allow_client_call="true"/>-->	
+			<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="alarm1"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="StopSound" sound="alarm1"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="true" parent_transform="Spine3" transform_path="MainLight"/>
+			<triggered_effect trigger="onSelfBuffStart" action="RemovePrefabFromEntity" prefab="@:Entities/Electrical/lightIndustrialMountedWallPrefab.prefab"  parent_transform="Spine3"/>	
+			<triggered_effect trigger="onSelfBuffFinish" action="RemovePrefabFromEntity" prefab="@:Entities/Electrical/lightIndustrialMountedWallRedPrefab.prefab"  parent_transform="Spine3"/>	
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Electrical/lightIndustrialMountedWallRedPrefab.prefab" local_offset="-0.327,0.346,0.235" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="Spine3"/>	
+			<!--<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="Prefabs/prefabExplosion14" local_offset="-0.344,0.526,-0.292" local_rotation="-39,0,1" local_scale="0.3,0.3,0.3" parent_transform="Spine3"/>-->
+			<triggered_effect trigger="onSelfBuffFinish" action="AttachPrefabToEntity" prefab="@:Entities/Electrical/lightIndustrialMountedWallPrefab.prefab" local_offset="-0.327,0.346,0.235" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="Spine3"/>	
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_MinionBomberSpawnOnPlayerInfested" >
+		<duration value="1"/>
+		<stack_type value="ignore"/>			
+		<effect_group>		                                                                                                                    			
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_SpawnMinionBomberToPlayerInfested1" allow_client_call="false"/>			
+		</effect_group>
+	</buff>
+
+	<buff name="ZombieINC_AttachPrefabBomberInfestedBuff" >
+		<stack_type value="ignore"/>
+		<update_rate value="1"/>
+		<effect_group>                                                                                                       <!--X = Right+ and Left-  Y = UP+ and Down-   Z = Toward+ and Back-  -->		              				
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/TimedCharge/timedChargePrefab.prefab" local_offset="0,0.08,0" local_rotation="-80,180,0" local_scale="1,1,1" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Appliances/heaterHotWaterPrefab.prefab" local_offset="-0.334,0.077,-0.357" local_rotation="0,0,0" local_scale="0.3,0.3,0.3" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Electrical/lightIndustrialMountedWallPrefab.prefab" local_offset="-0.327,0.346,0.235" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="Spine3"/>	
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Electrical/satelliteUnitLargePrefab.prefab" local_offset="-0.325,0.474,-0.381" local_rotation="0,-22.253,0" local_scale="0.2,0.2,0.2" parent_transform="Spine3"/>	
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/tankPropanePrefab.prefab" local_offset="0,-0.082,-0.093" local_rotation="0,-90,90" local_scale="0.23,0.35,0.35" parent_transform="Spine3"/>	
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="satelliteUnitLargePrefab" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="satelliteUnitLargePrefab" parent_transform="Spine3" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ZombieExplodeFlying">
+		<duration value="13"/>
+        <update_rate value="1.5"/>
+		<effect_group>
+			<requirement name="NotHasBuff" buff="ZombieINC_PEMGrenade_BossBuff"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="PlaySound" sound="ZombieINC_demolitionz_beep"/>			
+			<triggered_effect trigger="onSelfAttackedOther" action="Explode" blast_power="0" block_damage="300" block_radius="5" entity_damage="70" entity_radius="4"  />
+			<triggered_effect trigger="onSelfAttackedOther" action="ModifyStats" stat="Health" operation="set" value="0" />
+			<triggered_effect trigger="onSelfDamagedBlock" action="Explode" blast_power="0" block_damage="700" block_radius="4" entity_damage="40" entity_radius="4" />
+			<triggered_effect trigger="onSelfDamagedBlock" action="ModifyStats" stat="Health" operation="set" value="0" />
+			<triggered_effect trigger="onSelfDied" action="Explode" blast_power="0" block_damage="200" block_radius="3" entity_damage="40" entity_radius="4"  />
+			<triggered_effect trigger="onSelfBuffFinish" action="Explode" blast_power="0" block_damage="200" block_radius="3" entity_damage="40" entity_radius="4"  />
+			<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" event="ZombieINC_KillSelf" allow_client_call="false"/>
+		</effect_group>
+	</buff>
+<!--BossBomberInfested-->
+<!--##BossDemolition-->
+	
+	<buff name="ZombieINC_KillBossDemolitionBuff" hidden="false" icon="ui_game_symbol_skull" icon_color="185,120,15">
+		<stack_type value="duration"/>
+		<duration value="1200"/>
+		<update_rate value="65"/>
+				
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_KillBossDemolitionEvent" allow_client_call="true"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_KillBossDemolitionEvent" allow_client_call="true"/>
+		</effect_group>
+	</buff>
+	
+<buff name="ZombieINC_AttachPrefabDemolitionBuff"  >
+		
+		<stack_type value="ignore"/>
+		<update_rate value="3"/>
+		<duration value="6000"/>
+		<effect_group>
+		                                                                                                                     <!--X = Right+ and Left-  Y = UP+ and Down-   Z = Toward+ and Back-  -->
+		    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/RocketLauncher/rocketlauncherPrefab.prefab" local_offset="-0.11,0.16,0.14" local_rotation="-8,0,0" local_scale="1,1,1" parent_transform="LeftShoulder"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Electrical/smallGeneratorPrefab.prefab" local_offset="0,-0.02,-0.49" local_rotation="0,90,-90" local_scale="1,0.8,0.9" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Electrical/power_switchPrefab.prefab" local_offset="0,0.47,-0.1" local_rotation="0,0,0" local_scale="0.5,0.5,0.5" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Electrical/satelliteUnitLargePrefab.prefab" local_offset="0.131,0.266,-0.325" local_rotation="0,55.5,0" local_scale="0.2,0.2,0.2" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="AttachParticleEffectToEntity" particle="p_electric_shock_small" local_offset="0,0.45,-0.32" local_rotation="0,0,0" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="PlaySound" sound="stunbaton_hit5"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveParticleEffectFromEntity" particle="p_electric_shock_small" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false"  transform_path="Detonator"/>
+			
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="satelliteUnitLargePrefab" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="satelliteUnitLargePrefab" parent_transform="Spine3" />
+		</effect_group>
+	</buff>
+
+<!--BossDemolition-->
+<!--##BossDemolitionInfested-->
+
+	<buff name="ZombieINC_KillBossDemolitionInfestedBuff" hidden="false" icon="ui_game_symbol_skull" icon_color="185,120,15">
+		<stack_type value="duration"/>
+		<duration value="1200"/>
+		<update_rate value="65"/>
+				
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_KillBossDemolitionInfestedEvent" allow_client_call="true"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_KillBossDemolitionInfestedEvent" allow_client_call="true"/>
+		</effect_group>
+	</buff>
+
+<buff name="ZombieINC_AttachPrefabDemolitionInfestedBuff"  >
+		
+		<stack_type value="ignore"/>
+		<update_rate value="3"/>
+		<duration value="6000"/>
+		<effect_group>
+		                                                                                                                     <!--X = Right+ and Left-  Y = UP+ and Down-   Z = Toward+ and Back-  -->
+		    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/RocketLauncher/rocketlauncherPrefab.prefab" local_offset="-0.17,0.2,0.0" local_rotation="-8,0,0" local_scale="1,1,1" parent_transform="LeftShoulder"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/RocketLauncher/rocketlauncherPrefab.prefab" local_offset="0.17,-0.2,-0.0" local_rotation="8,180,180" local_scale="1,1,1" parent_transform="RightShoulder"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Electrical/smallGeneratorPrefab.prefab" local_offset="0,-0.02,-0.49" local_rotation="0,90,-90" local_scale="1,0.8,0.9" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Electrical/power_switchPrefab.prefab" local_offset="0,0.47,-0.1" local_rotation="0,0,0" local_scale="0.5,0.5,0.5" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Electrical/satelliteUnitLargePrefab.prefab" local_offset="0.131,0.266,-0.325" local_rotation="0,55.5,0" local_scale="0.2,0.2,0.2" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="AttachParticleEffectToEntity" particle="p_electric_shock_small" local_offset="0,0.45,-0.32" local_rotation="0,0,0" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="PlaySound" sound="stunbaton_hit5"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveParticleEffectFromEntity" particle="p_electric_shock_small" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false"  transform_path="Detonator"/>
+			
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="satelliteUnitLargePrefab" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="satelliteUnitLargePrefab" parent_transform="Spine3" />
+		</effect_group>
+	</buff>
+<!--BossDemolitionInfested-->
+<!--##BossDroneInfested-->
+	<buff name="ZombieINC_AttachPrefabBossDroneInfestedMinionBuff"  >	
+		<update_rate value="1"/>
+		<effect_group>
+		    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/Junk Drone/junkDrone_Prefab.prefab" local_offset="0,0.2,-0.043" local_rotation="0,0,0" local_scale="0.362,0.362,0.362" parent_transform="Origin" />
+		    <triggered_effect trigger="onSelfBuffUpdate" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/Junk Drone/junkDrone_Prefab.prefab" local_offset="0,0.2,-0.043" local_rotation="0,0,0" local_scale="0.362,0.362,0.362" parent_transform="Origin" />
+			<!--<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/Junk Drone/junkDrone_Prefab.prefab" local_offset="0,0,0" local_rotation="-6,0,-17" local_scale="1.5,1.5,1.5" parent_transform="Spine3"/>   -->                                                                                                              <!--X = Right+ and Left-  Y = UP+ and Down-   Z = Toward+ and Back-  -->		
+			<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="drone_idle_hover" loop="true"/>
+			<!--<triggered_effect trigger="onSelfRangedBurstShotStart" action="AddBuff" target="self" buff="ZombieINC_DroneInfestedCoolDown"/>-->
+			<!--<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD0"/>-->
+			<!--<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD1"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD2"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD4"/>-->
+			<!--<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="LOD0"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="FeralEye"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="FeralEye"/>-->
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="junkDrone_Prefab" parent_transform="Origin"/>
+			
+		</effect_group>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="bodyMesh"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="bodyMesh"/>
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="LeftWingFeathers"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LeftWingFeathers"/>
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="RightWingFeathers"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="RightWingFeathers"/>
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="tailFeathersMesh"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="tailFeathersMesh"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_AttachPrefabBossDroneInfestedBuff"  >	
+		<update_rate value="1"/>
+		<effect_group>
+		    <!--<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/Junk Drone/junkDrone_Prefab.prefab" local_offset="0,0,0" local_rotation="-6,0,-17" local_scale="1.5,1.5,1.5" parent_transform="Spine3"/> -->     
+			<!--X = Right+ and Left-  Y = UP+ and Down-   Z = Toward+ and Back-  -->		
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/Junk Drone/junkDrone_Prefab.prefab" local_offset="0,0.2,-0.043" local_rotation="0,0,0" local_scale="0.362,0.362,0.362" parent_transform="Origin" />
+		    <triggered_effect trigger="onSelfBuffUpdate" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/Junk Drone/junkDrone_Prefab.prefab" local_offset="0,0.2,-0.043" local_rotation="0,0,0" local_scale="0.362,0.362,0.362" parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="drone_idle_hover" loop="true"/>
+			<!--<triggered_effect trigger="onSelfRangedBurstShotStart" action="AddBuff" target="self" buff="ZombieINC_DroneInfestedCoolDown"/>-->
+			<!--<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD0"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="FeralEye"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="LOD0"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="FeralEye"/>-->
+			<!--<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD1"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD2"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD4"/>-->
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="true" transform_path="armor"/>
+			<!--<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="true" transform_path="armor_LOD0"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="true" transform_path="armor_LOD1"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="true" transform_path="armor_LOD2"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="true" transform_path="freightBox"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="true" transform_path="freightBox_LOD0"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="true" transform_path="freightBox_LOD1"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="true" transform_path="freightBox_LOD2"/>-->
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="true" transform_path="machineGun"/>		
+			<!--<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="true" transform_path="machineGun_LOD0"/>		
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="true" transform_path="machineGun_LOD1"/>		
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="true" transform_path="machineGun_LOD2"/>-->
+
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="true" transform_path="armor"/>
+			<!--<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="true" transform_path="armor_LOD0"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="true" transform_path="armor_LOD1"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="true" transform_path="armor_LOD2"/>-->
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="true" transform_path="freightBox"/>
+			<!--<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="true" transform_path="freightBox_LOD0"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="true" transform_path="freightBox_LOD1"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="true" transform_path="freightBox_LOD2"/>-->
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="true" transform_path="machineGun"/>		
+			<!--<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="true" transform_path="machineGun_LOD0"/>		
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="true" transform_path="machineGun_LOD1"/>		
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="true" transform_path="machineGun_LOD2"/>-->
+			
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="junkDrone_Prefab" parent_transform="Origin"/>
+			<!--<triggered_effect trigger="onSelfDied" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/Junk Drone/junkDroneHeld_Prefab.prefab" local_offset="0,0,0" local_rotation="-6,0,-17" local_scale="1.5,1.5,1.5" parent_transform="Origin"/>-->
+			<triggered_effect trigger="onSelfDied" action="Explode" blast_power="30" block_damage="300" block_radius="1" entity_damage="30" entity_radius="4" damage_type="Special" />
+		</effect_group>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="junkDroneArmRight"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="junkDroneArmRight"/>
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="bodyMesh"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="bodyMesh"/>
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="LeftWingFeathers"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LeftWingFeathers"/>
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="RightWingFeathers"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="RightWingFeathers"/>
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="tailFeathersMesh"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="tailFeathersMesh"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_DroneInfestedCoolDown"  >
+		<stack_type value="ignore"/>
+		<duration value="25"/>
+		<effect_group>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_BossDroneInfestedBuff"  >
+		<effect_group>
+			<triggered_effect trigger="onOtherDamagedSelf" action="AddBuff" target="other" buff="ZombieINC_BossDroneInfestedSpawnBuff" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_BossDroneInfestedSpawnBuff"  >
+		<stack_type value="ignore"/>
+		<duration value="1"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self" event="ZombieINC_SpawnDroneInfestedMinions" allow_client_call="false" >
+			<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="25"/></triggered_effect>
+		</effect_group>
+	</buff>
+<!--BossDroneInfested-->
+<!--##BossCart-->
+	<buff name="ZombieINC_AttachPrefabBossCartBuff"  >
+		<stack_type value="ignore"/>
+		<update_rate value="1"/>
+		<effect_group>
+			<!--<triggered_effect trigger="onSelfRangedBurstShotStart" action="AnimatorFireTrigger" property="SpecialAttack" value="false"/>
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="AnimatorSetBool" property="SpecialAttack" value="false" duration="10" />-->
+		    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/liftHydraulicPrefab.prefab" local_offset="0,-0.267,-0.194" local_rotation="0,0,0" local_scale="0.3,0.4,0.4" parent_transform="Spine3"/>                                                                                                                 <!--X = Right+ and Left-  Y = UP+ and Down-   Z = Toward+ and Back-  -->		
+		    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Electrical/satelliteUnitLargePrefab.prefab" local_offset="0.092,-0.4032,-0.2591" local_rotation="-90,0,0" local_scale="0.1,0.1,0.1" parent_transform="Spine3"/>
+		    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Electrical/motionSensorStraightPOIPrefab.prefab" local_offset="0,0.903,-0.147" local_rotation="-90,0,0" local_scale="0.4,0.4,0.4" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="satelliteUnitLargePrefab" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="satelliteUnitLargePrefab" parent_transform="Spine3" />
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/pipeSmall_1x1Prefab.prefab" local_offset="0,0.588,-0.288" local_rotation="0,0,0" local_scale="0.3,0.3,0.103" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="pipeSmall_1x1Prefab" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="pipeSmall_1x1Prefab" parent_transform="Spine3" />
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/pipeSmallValve02SwitchPrefab.prefab" local_offset="-0.072,-0.5,0.064" local_rotation="-25.172,32.42,0" local_scale="0.2,0.2,0.2" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="pipeSmallValve02SwitchPrefab" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="pipeSmallValve02SwitchPrefab" parent_transform="Spine3" />
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/pipeSmallValvePrefab.prefab" local_offset="0.1,-0.409,0.034" local_rotation="-25.516,-33.123,0" local_scale="0.2,0.2,0.2" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="pipeSmallValvePrefab" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="pipeSmallValvePrefab" parent_transform="Spine3" />
+			
+			<!--<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/IronCrossBow/ironCrossBowPrefab.prefab" local_offset="0,0.115,-0.372" local_rotation="-90,0,0" local_scale="1.3,1.3,1.3" parent_transform="Spine3"/>-->
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/IronCrossBow/ironCrossBowPrefab.prefab" local_offset="0,0.115,-0.372" local_rotation="-90,0,0" local_scale="1.3,1.3,1.3" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Electrical/smallGeneratorPrefab.prefab" local_offset="-0.0952,-0.3872,-0.3571" local_rotation="0,90,-90" local_scale="0.2,0.2,0.2" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Melee/Spear/spear_stone_Prefab.prefab" local_offset="0,0.13,-0.458" local_rotation="0,0,0" local_scale="0.7,0.7,0.7" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="RemovePrefabFromEntity" prefab="spear_stone_Prefab" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Melee/Spear/spear_stone_Prefab.prefab" local_offset="0,0.13,-0.458" local_rotation="0,0,0" local_scale="0.7,0.7,0.7" parent_transform="Spine3"/>
+			
+			<!--<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" parent_transform="Spine3" transform_path="smallGeneratorLight"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" parent_transform="Spine3/smallGeneratorPrefab" transform_path="smallGeneratorLight"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" parent_transform="Spine3" transform_path="smallGeneratorPrefab/smallGeneratorLight"/>-->
+			<!--<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" parent_transform="Spine3" transform_path="smallGeneratorPrefab/OffState"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" parent_transform="Spine3/smallGeneratorPrefab" transform_path="OffState"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" parent_transform="Spine3" transform_path="OffState"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" parent_transform="Spine3" transform_path="smallGeneratorPrefab/OnState"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" parent_transform="Spine3/smallGeneratorPrefab" transform_path="OnState"/>-->
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" parent_transform="Spine3" transform_path="OnState"/>
+			<!--<triggered_effect trigger="onSelfBuffUpdate" action="AttachPrefabToEntity" prefab="@:ParticleEffects/p_generator.prefab" local_offset="-0.0952,-0.3872,-0.3571" local_rotation="0,90,-90"  parent_transform="Spine3"/>-->
+		</effect_group>
+	</buff>
+
+<!--BossCart-->
+<!--##BossCartInfested-->
+
+<buff name="ZombieINC_AttachPrefabBossCartInfestedBuff"  >
+		<stack_type value="ignore"/>
+		<update_rate value="1"/>
+		<effect_group>
+		    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/liftHydraulicPrefab.prefab" local_offset="0,-0.267,-0.194" local_rotation="0,0,0" local_scale="0.3,0.4,0.4" parent_transform="Spine3"/>                                                                                                                 <!--X = Right+ and Left-  Y = UP+ and Down-   Z = Toward+ and Back-  -->		
+		    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Electrical/satelliteUnitLargePrefab.prefab" local_offset="0.092,-0.4032,-0.2591" local_rotation="-90,0,0" local_scale="0.1,0.1,0.1" parent_transform="Spine3"/>
+		    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Electrical/motionSensorStraightPOIPrefab.prefab" local_offset="0,0.903,-0.147" local_rotation="-90,0,0" local_scale="0.4,0.4,0.4" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="satelliteUnitLargePrefab" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="satelliteUnitLargePrefab" parent_transform="Spine3" />
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/pipeSmall_1x1Prefab.prefab" local_offset="0,0.588,-0.288" local_rotation="0,0,0" local_scale="0.3,0.3,0.103" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="pipeSmall_1x1Prefab" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="pipeSmall_1x1Prefab" parent_transform="Spine3" />
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/pipeSmallValve02SwitchPrefab.prefab" local_offset="-0.072,-0.5,0.064" local_rotation="-25.172,32.42,0" local_scale="0.2,0.2,0.2" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="pipeSmallValve02SwitchPrefab" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="pipeSmallValve02SwitchPrefab" parent_transform="Spine3" />
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/pipeSmallValvePrefab.prefab" local_offset="0.1,-0.409,0.034" local_rotation="-25.516,-33.123,0" local_scale="0.2,0.2,0.2" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="pipeSmallValvePrefab" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="pipeSmallValvePrefab" parent_transform="Spine3" />
+						
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/RocketLauncher/rocketlauncherPrefab.prefab" local_offset="0,0.189,-0.524" local_rotation="-90,0,0" local_scale="1.5,1.5,1.5" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Electrical/smallGeneratorPrefab.prefab" local_offset="-0.0952,-0.3872,-0.3571" local_rotation="0,90,-90" local_scale="0.2,0.2,0.2" parent_transform="Spine3"/>
+								
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" parent_transform="Spine3" transform_path="OnState"/>			
+		</effect_group>
+	</buff>
+<!--BossCartInfested-->
+<!--###New Hunt Spawn Method-->
+	<buff name="ZombieINC_Anchor_KillBossCraven_Buff"  >
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_KillBossCravenNew_Anchor" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyStats" stat="Health" target="self"  operation="subtract" value="100000" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Anchor_KillBossCravenInfested_Buff"  >
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_KillBossCravenInfestedNew_Anchor" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyStats" stat="Health" target="self"  operation="subtract" value="100000" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Anchor_KillBossCart_Buff"  >
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_KillBossCartNew_Anchor" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyStats" stat="Health" target="self"  operation="subtract" value="100000" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Anchor_KillBossCartInfested_Buff"  >
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_KillBossCartInfestedNew_Anchor" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyStats" stat="Health" target="self"  operation="subtract" value="100000" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Anchor_KillBossBiker_Buff"  >
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_KillBossBikerNew_Anchor" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyStats" stat="Health" target="self"  operation="subtract" value="100000" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Anchor_KillBossBikerInfested_Buff"  >
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_KillBossBikerInfestedNew_Anchor" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyStats" stat="Health" target="self"  operation="subtract" value="100000" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Anchor_KillBossMultiply_Buff"  >
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_KillBossMultiplyNew_Anchor" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyStats" stat="Health" target="self"  operation="subtract" value="100000" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Anchor_KillBossMultiplyInfested_Buff"  >
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_KillBossMultiplyInfestedNew_Anchor" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyStats" stat="Health" target="self"  operation="subtract" value="100000" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Anchor_KillBossFire_Buff"  >
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_KillBossFireNew_Anchor" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyStats" stat="Health" target="self"  operation="subtract" value="100000" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Anchor_KillBossFireInfested_Buff"  >
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_KillBossFireInfestedNew_Anchor" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyStats" stat="Health" target="self"  operation="subtract" value="100000" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Anchor_KillBossScientist_Buff"  >
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_KillBossScientistNew_Anchor" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyStats" stat="Health" target="self"  operation="subtract" value="100000" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Anchor_KillBossScientistInfested_Buff"  >
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_KillBossScientistInfestedNew_Anchor" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyStats" stat="Health" target="self"  operation="subtract" value="100000" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Anchor_KillBossBomber_Buff"  >
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_KillBossBomberNew_Anchor" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyStats" stat="Health" target="self"  operation="subtract" value="100000" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Anchor_KillBossBomberInfested_Buff"  >
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_KillBossBomberInfestedNew_Anchor" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyStats" stat="Health" target="self"  operation="subtract" value="100000" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Anchor_KillBossDemolition_Buff"  >
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_KillBossDemolitionNew_Anchor" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyStats" stat="Health" target="self"  operation="subtract" value="100000" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Anchor_KillBossDemolitionInfested_Buff"  >
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_KillBossDemolitionInfestedNew_Anchor" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyStats" stat="Health" target="self"  operation="subtract" value="100000" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Anchor_KillBossDroneInfested_Buff"  >
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_KillBossDroneInfestedNew_Anchor" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyStats" stat="Health" target="self"  operation="subtract" value="100000" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Anchor_KillBossTwins_Buff"  >
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_KillBossTwinsNew_Anchor" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyStats" stat="Health" target="self"  operation="subtract" value="100000" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Anchor_KillBossTwinsInfested_Buff"  >
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_KillBossTwinsInfestedNew_Anchor" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyStats" stat="Health" target="self"  operation="subtract" value="100000" />
+		</effect_group>
+	</buff>
+	<!--New Hunt Spawn Method-->
+	
+	<buff name="ZombieINC_Bomb_AttachPrefabBuff"  >
+		<duration value="3"/>
+		<update_rate value="0.05"/>
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/Grenade/GrenadePrefab.prefab" local_offset="0.0,-1.261,0.0" local_rotation="0,0,0" local_scale="3,3,3" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="RemovePrefabFromEntity" prefab="GrenadePrefab" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="FeralEye"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD0"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD1"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD2"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="NormalEye"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="FeralEye"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="LOD0"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="LOD1"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="LOD2"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="NormalEye"/>
+			<triggered_effect trigger="onSelfDied" action="CallGameEvent" event="ZombieINC_Bomb_Event" allow_client_call="true"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" event="ZombieINC_Bomb_Event" allow_client_call="true" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Bomb_SpawnerBuff"  >
+		<duration value="10"/>
+		<update_rate value="1"/>
+		<stack_type value="ignore"/>
+		<effect_group>			
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_Bomb_SpawnerEvent" allow_client_call="false" />
+		</effect_group>
+	</buff>
+</append>
+</Config>

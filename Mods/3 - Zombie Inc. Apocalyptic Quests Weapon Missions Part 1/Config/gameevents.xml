@@ -1,0 +1,779 @@
+<Config>
+
+	<append xpath="/gameevents">
+	
+	<action_sequence name="ZombieINC_InMissionWSPart1_AddBuffEvent">	
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTestPart1_InMissionBuff" />			
+		</action>	
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_WS_TacticalAR_FailQuest_Event">
+		<property name="allow_user_trigger" value="true" />
+		<requirement class="OnQuest">
+			<property name="quest" value="zincar"/>
+		</requirement>
+		<action class="FailQuest">	   
+			<property name="quest" value="zincar" />
+			<property name="remove_quest" value="true"  />		
+		</action>
+		<action class="Delay">			
+			<property name="phase" value="1" />		
+			<property name="time" value="2" />			
+		</action>
+		<action class="AddQuest">
+			<property name="phase" value="2" />
+			<property name="quest" value="ZINCAR" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_WS_TacticalAR_FEPBuff_Event">			
+	    <action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_WS_TacticalAR_FEP_Buff" />				
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_WS_TacticalAR_RemoveFEPBuff_Event">			
+	    <action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_WS_TacticalAR_FEP_Buff" />				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_WS_AK47_FailQuest_Event">
+		<property name="allow_user_trigger" value="true" />
+		<!--<requirement class="OnQuest">
+			<property name="quest" value="zincak47"/>
+		</requirement>-->
+		<action class="FailQuest">	   
+			<property name="quest" value="zincak47" />
+			<property name="remove_quest" value="true"  />		
+		</action>
+		<!--<action class="Delay">			
+			<property name="phase" value="1" />		
+			<property name="time" value="2" />			
+		</action>
+		<action class="AddQuest">
+			<property name="phase" value="2" />
+			<property name="quest" value="ZINCAK47" />
+		</action>-->
+	</action_sequence>
+	<action_sequence name="ZombieINC_WS_AK47_FEPBuff_Event">			
+	    <action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_WS_AK47_FEP_Buff" />				
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_WS_AK47_RemoveFEPBuff_Event">			
+	    <action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_WS_AK47_FEP_Buff" />				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_WS_M60_FailQuest_Event">
+		<property name="allow_user_trigger" value="true" />
+		<!--<requirement class="OnQuest">
+			<property name="quest" value="zincm60"/>
+		</requirement>-->
+		<action class="FailQuest">	   
+			<property name="quest" value="zincm60" />
+			<property name="remove_quest" value="true"  />		
+		</action>
+		<!--<action class="Delay">			
+			<property name="phase" value="1" />		
+			<property name="time" value="2" />			
+		</action>
+		<action class="AddQuest">
+			<property name="phase" value="2" />
+			<property name="quest" value="ZINCM60" />
+		</action>-->
+	</action_sequence>
+	<action_sequence name="ZombieINC_WS_M60_FEPBuff_Event">			
+	    <action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_WS_M60_FEP_Buff" />				
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_WS_M60_RemoveFEPBuff_Event">			
+	    <action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_WS_M60_FEP_Buff" />				
+		</action>
+	</action_sequence>
+<!--Fatal Errors Protectors-->	
+	<!--##Pistol-->
+	<action_sequence name="ZombieINC_MainPistol_AddBuffEvent">					  
+		<action class="AddBuff">	
+			<property name="buff_name" value="ZombieINC_PlayerPistol_GiverHiddenBuff" />				
+		</action>
+		<action class="AddBuff">
+			<property name="phase" value="1" />
+			<property name="buff_name" value="ZombieINC_PlayerPistol_HiddenCheckerBuff" />				
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_TimerPistol_AddBuffEvent">					  
+		<action class="AddBuff">	
+			<property name="buff_name" value="ZombieINC_PlayerPistol_TimerBuff" />				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_MainPistol_RemoveBuffEvent">					  
+		<action class="RemoveBuff">	
+			<property name="buff_name" value="ZombieINC_PlayerPistol_GiverHiddenBuff" />				
+		</action>
+		<action class="RemoveBuff">
+			<property name="phase" value="1" />
+			<property name="buff_name" value="ZombieINC_PlayerPistol_HiddenCheckerBuff" />				
+		</action>
+		<action class="RemoveBuff">
+			<property name="phase" value="2" />
+			<property name="buff_name" value="ZombieINC_PlayerPistol_HiddenBuff" />				
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_TimerPistol_RemoveBuffEvent">					  
+		<action class="RemoveBuff">	
+			<property name="buff_name" value="ZombieINC_PlayerPistol_TimerBuff" />				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Pistol_FailMissionEvent">	
+		<property name="allow_while_dead" value="true" />
+		<action class="FailQuest">
+			<property name="quest" value="zincpistol" />
+			<property name="remove_quest" value="false" />			
+		</action>
+		<action class="CallGameEvent">
+			<property name="phase" value="1" />
+			<property name="game_events" value="ZombieINC_MainPistol_RemoveBuffEvent" />
+		</action>
+		<action class="CallGameEvent">
+			<property name="phase" value="2" />
+			<property name="game_events" value="ZombieINC_Pistol_RemoveItemEvent" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Pistol_AddItemEvent">
+		<action class="AddItems">
+			<property name="added_items" value="ZombieINC_Mission_gunHandgunT0PipePistol" />
+			<property name="added_item_counts" value="1" />			 
+		</action>
+		<action class="AddItems">
+			<property name="added_items" value="ammo9mmBulletBall" />
+			<property name="added_item_counts" value="30" />			 
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Pistol_RemoveItemEvent">		
+	    <property name="allow_while_dead" value="true" />
+		<action class="RemoveItems">
+			<property name="items_location" value="Toolbelt,Backpack"  />
+			<property name="items_tags" value="PipePistolMission" />
+		</action>	
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_RemoveSuppliesPistol_AddBuffEvent">					  
+		<action class="AddBuff">	
+			<property name="buff_name" value="ZombieINC_NearTraderPistol_RemoverItemBuff" />				
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_SuppliesPistol_RemoveItemEvent">
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="trader" />
+			<property name="group_name" value="Trader" />
+			<property name="max_distance" value="10" />
+		</action>
+		
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="GroupLiveCount">
+					<property name="target_group" value="Trader"/>
+					<property name="operation" value="Equals"/> 
+					<property name="count" value="1"/>
+			</requirement>
+	
+		<action class="RemoveItems">
+			<property name="phase" value="1" />
+			<property name="items_location" value="Backpack,Toolbelt,Held" />
+			<property name="items_tags" value="PipePistolMission" />
+		</action>
+		
+		<action class="RemoveBuff">	
+			<property name="phase" value="1" />
+			<property name="buff_name" value="ZombieINC_NearTraderPistol_RemoverItemBuff" />				
+		</action>
+		</decision>
+	</action_sequence>
+	<!--Pistol-->
+	<!--##TacticalAR-->
+	<action_sequence name="ZombieINC_TacticalAR_AddSpawnerMiniBossBuff_Event">					  
+		<action class="AddBuff">	
+			<property name="buff_name" value="ZombieINC_PlayerTacticalAR_KillCounterBuff" />				
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_TacticalAR_AddSpawnerZombiesBuff_Event">					  
+		<action class="AddBuff">	
+			<property name="buff_name" value="ZombieINC_TacticalAR_SpawnerZombies_Buff" />				
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_TacticalAR_RemoveSpawnerZombiesBuff_Event">					  
+		<action class="RemoveBuff">	
+			<property name="buff_name" value="ZombieINC_TacticalAR_SpawnerZombies_Buff" />				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_RemoveSuppliesTacticalAR_AddBuffEvent">					  
+		<action class="AddBuff">	
+			<property name="buff_name" value="ZombieINC_NearTraderTacticalAR_RemoverItemBuff" />				
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_SuppliesTacticalAR_RemoveItemEvent">
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="trader" />
+			<property name="group_name" value="Trader" />
+			<property name="max_distance" value="10" />
+		</action>
+		
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="GroupLiveCount">
+					<property name="target_group" value="Trader"/>
+					<property name="operation" value="Equals"/> 
+					<property name="count" value="1"/>
+			</requirement>
+	
+		<action class="RemoveItems">
+			<property name="phase" value="1" />
+			<property name="items_location" value="Backpack,Toolbelt,Held" />
+			<property name="items_tags" value="WeaponMissionPartsRemover" />
+		</action>
+		
+		<action class="RemoveBuff">	
+			<property name="phase" value="1" />
+			<property name="buff_name" value="ZombieINC_NearTraderTacticalAR_RemoverItemBuff" />				
+		</action>
+		</decision>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_CopTacticalAR_SpawnEvent">
+	    <requirement class="OnQuest">
+			<property name="quest" value="zincar"/>
+		</requirement> 
+		<action class="SpawnEntity">    
+			<property name="entity_names" value="ZombieINC_zombieFatCop_TacticalAR"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="12" />
+			<property name="min_distance" value="7" />
+			<property name="air_spawn" value="true" />
+			<property name="phase" value="1" />			
+		</action>
+				
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_TacticalAR_SpawnerMiniBoss_Buff" />
+			<property name="phase" value="2"/>				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_TacticalAR_SpawnZombiesInside_Event"> 
+		<requirement class="OnQuest">
+			<property name="quest" value="zincar"/>
+		</requirement>
+		<action class="SpawnEntity">    
+			<property name="entity_names" value="zombieFatCop,zombieSoldier"  />
+			<property name="spawn_count" value="2"  />
+			<property name="spawn_type" value="NearPosition" />
+			<property name="safe_spawn" value="true" />
+			<property name="air_spawn" value="true" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />		
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_TacticalAR_SpawnZombiesOutSide_Event">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincar"/>
+		</requirement>
+		<action class="SpawnEntity">    
+			<property name="entity_names" value="zombieFatCop,zombieSoldier"  />
+			<property name="spawn_count" value="2"  />
+			<property name="max_distance" value="25" />
+			<property name="min_distance" value="15" />
+			<property name="air_spawn" value="true" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />		
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_TacticalAR_SpawnZombies_InPOI">
+		<property name="action_type" value="Game" />
+		<property name="target_type" value="POI" />
+			
+		<action class="SpawnEntity">				    
+			<property name="entity_names" value="zombieFatCop,zombieSoldier" />
+			<property name="spawn_count" value="2"  />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff"/>
+			<property name="safe_spawn" value="true" />
+			<!--<property name="spawn_type" value="WanderingHorde" />-->
+			<property name="max_distance" value="20"  />
+			<property name="min_distance" value="15"  />
+			<property name="air_spawn" value="false" />
+			<property name="phase" value="1" />			
+		</action>	
+	</action_sequence>
+	<action_sequence name="ZombieINC_TacticalAR_SpawnZombiesGeneral_Event">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincar"/>
+		</requirement>
+	 <action class="AddEntitiesToGroup">
+	 	<property name="group_name" value="Cops" />
+	  	<property name="entity_tags" value="zombieCop,zombieSoldier" />
+	 	<property name="max_distance" value="40" />		 	
+	 </action>
+	 <decision class="If">
+		<requirement class="InPOI">
+				<property name="invert" value="true" />
+			</requirement>
+		<requirement class="GroupLiveCount">
+			<property name="target_group" value="Cops"/>
+			<property name="operation" value="LTE"/> 
+			<property name="count" value="10"/>
+		</requirement>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieFatCop,zombieSoldier"  />
+			<property name="spawn_count" value="2"  />
+			<property name="max_distance" value="35" />		
+			<property name="min_distance" value="25" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff"/>
+			<property name="air_spawn" value="true" />
+			<property name="safe_spawn" value="true" />
+			<property name="phase" value="1" />	
+		</action>		
+	</decision>
+	<decision class="If">
+		<requirement class="InPOI"/>		
+		<requirement class="GroupLiveCount">
+			<property name="target_group" value="Cops"/>
+			<property name="operation" value="LTE"/> 
+			<property name="count" value="10"/>
+		</requirement>
+		<action class="CallGameEvent">
+			<property name="game_events" value="ZombieINC_TacticalAR_SpawnZombies_InPOI" />
+			<property name="phase" value="1" />
+		</action>
+	</decision>
+	</action_sequence>
+	
+	<!--TacticalAR-->
+	<!--##AK47-->
+	<action_sequence name="ZombieINC_AK47_AddSpawnerZombiesBuff_Event">					  
+		<action class="AddBuff">	
+			<property name="buff_name" value="ZombieINC_AK47_SpawnerZombies_Buff" />				
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_AK47_RemoveSpawnerZombiesBuff_Event">					  
+		<action class="RemoveBuff">	
+			<property name="buff_name" value="ZombieINC_AK47_SpawnerZombies_Buff" />				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_RemoveSuppliesAK47_AddBuffEvent">					  
+		<action class="AddBuff">	
+			<property name="buff_name" value="ZombieINC_NearTraderAK47_RemoverItemBuff" />				
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_SuppliesAK47_RemoveItemEvent">
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="trader" />
+			<property name="group_name" value="Trader" />
+			<property name="max_distance" value="10" />
+		</action>
+		
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="GroupLiveCount">
+					<property name="target_group" value="Trader"/>
+					<property name="operation" value="Equals"/> 
+					<property name="count" value="1"/>
+			</requirement>
+	
+		<action class="RemoveItems">
+			<property name="phase" value="1" />
+			<property name="items_location" value="Backpack,Toolbelt,Held" />
+			<property name="items_tags" value="WeaponMissionPartsRemover" />
+		</action>
+		
+		<action class="RemoveBuff">	
+			<property name="phase" value="1" />
+			<property name="buff_name" value="ZombieINC_NearTraderAK47_RemoverItemBuff" />				
+		</action>
+		</decision>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_TerroristAK47_SpawnInSide_Event">
+	    <requirement class="OnQuest">
+			<property name="quest" value="zincak47"/>
+		</requirement>
+		<action class="SpawnEntity">    
+			<property name="entity_names" value="ZombieINC_Terrorist_AK47"  />
+			<property name="spawn_count" value="1"  />
+			<property name="spawn_type" value="NearPosition" />
+			<property name="safe_spawn" value="true" />
+			<property name="air_spawn" value="true" />
+			<property name="phase" value="1" />			
+		</action>	
+	</action_sequence>
+	<action_sequence name="ZombieINC_TerroristAK47_SpawnOutSide_Event">
+	    <requirement class="OnQuest">
+			<property name="quest" value="zincak47"/>
+		</requirement>
+		<action class="SpawnEntity">    
+			<property name="entity_names" value="ZombieINC_Terrorist_AK47"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="25" />
+			<property name="min_distance" value="15" />
+			<property name="safe_spawn" value="true" />
+			<property name="air_spawn" value="true" />
+			<property name="phase" value="1" />			
+		</action>	
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_AK47_SpawnZombiesInSide_Event"> 
+		<requirement class="OnQuest">
+			<property name="quest" value="zincak47"/>
+		</requirement>
+		<action class="SpawnEntity">    
+			<property name="entity_names" value="zombieSkateboarder"  />
+			<property name="spawn_count" value="2"  />
+			<property name="spawn_type" value="NearPosition" />
+			<property name="safe_spawn" value="true" />
+			<property name="air_spawn" value="true" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />		
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_AK47_SpawnZombiesOutSide_Event">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincak47"/>
+		</requirement>
+		<action class="SpawnEntity">    
+			<property name="entity_names" value="zombieSkateboarder"  />
+			<property name="spawn_count" value="2"  />
+			<property name="max_distance" value="25" />
+			<property name="min_distance" value="15" />
+			<property name="air_spawn" value="true" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />		
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_AK47_SpawnZombiesBomberInSide_Event"> 
+		<requirement class="OnQuest">
+			<property name="quest" value="zincak47"/>
+		</requirement>
+		<action class="SpawnEntity">    
+			<property name="entity_names" value="zombieSkateboarder"  />
+			<property name="spawn_count" value="2"  />
+			<property name="spawn_type" value="NearPosition" />
+			<property name="safe_spawn" value="true" />
+			<property name="air_spawn" value="true" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_ZombieExplode" />		
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_AK47_SpawnZombiesBomberOutSide_Event">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincak47"/>
+		</requirement>
+		<action class="SpawnEntity">    
+			<property name="entity_names" value="zombieSkateboarder"  />
+			<property name="spawn_count" value="2"  />
+			<property name="max_distance" value="25" />
+			<property name="min_distance" value="15" />
+			<property name="air_spawn" value="true" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_ZombieExplode" />		
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_AK47_SpawnZombies_InPOI">
+		<property name="action_type" value="Game" />
+		<property name="target_type" value="POI" />
+			
+		<action class="SpawnEntity">				    
+			<property name="entity_names" value="zombieSkateboarder" />
+			<property name="spawn_count" value="2"  />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff"/>
+			<property name="safe_spawn" value="true" />
+			<!--<property name="spawn_type" value="WanderingHorde" />-->
+			<property name="max_distance" value="20"  />
+			<property name="min_distance" value="15"  />
+			<property name="air_spawn" value="false" />
+			<property name="phase" value="1" />			
+		</action>	
+	</action_sequence>
+	<action_sequence name="ZombieINC_AK47_SpawnZombiesGeneral_Event">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincak47"/>
+		</requirement>
+	 <action class="AddEntitiesToGroup">
+	 	<property name="group_name" value="Cops" />
+	  	<property name="entity_tags" value="zombie" />
+	 	<property name="max_distance" value="40" />		 	
+	 </action>
+	 <decision class="If">
+		<requirement class="InPOI">
+				<property name="invert" value="true" />
+			</requirement>
+		<requirement class="GroupLiveCount">
+			<property name="target_group" value="Cops"/>
+			<property name="operation" value="LTE"/> 
+			<property name="count" value="10"/>
+		</requirement>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieSkateboarder"  />
+			<property name="spawn_count" value="2"  />
+			<property name="max_distance" value="35" />		
+			<property name="min_distance" value="25" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff"/>
+			<property name="air_spawn" value="true" />
+			<property name="safe_spawn" value="true" />
+			<property name="phase" value="1" />	
+		</action>		
+	</decision>
+	<decision class="If">
+		<requirement class="InPOI"/>		
+		<requirement class="GroupLiveCount">
+			<property name="target_group" value="Cops"/>
+			<property name="operation" value="LTE"/> 
+			<property name="count" value="10"/>
+		</requirement>
+		<action class="CallGameEvent">
+			<property name="game_events" value="ZombieINC_AK47_SpawnZombies_InPOI" />
+			<property name="phase" value="1" />
+		</action>
+	</decision>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_AK47_SpawnZombiesBomber_InPOI">
+		<property name="action_type" value="Game" />
+		<property name="target_type" value="POI" />
+			
+		<action class="SpawnEntity">				    
+			<property name="entity_names" value="zombieSkateboarder" />
+			<property name="spawn_count" value="2"  />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff,ZombieINC_ZombieExplode"/>
+			<property name="safe_spawn" value="true" />
+			<!--<property name="spawn_type" value="WanderingHorde" />-->
+			<property name="max_distance" value="20"  />
+			<property name="min_distance" value="15"  />
+			<property name="air_spawn" value="false" />
+			<property name="phase" value="1" />			
+		</action>	
+	</action_sequence>
+	<action_sequence name="ZombieINC_AK47_SpawnZombiesBomberGeneral_Event">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincak47"/>
+		</requirement>
+	 <decision class="If">
+		<requirement class="InPOI">
+				<property name="invert" value="true" />
+			</requirement>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieSkateboarder"  />
+			<property name="spawn_count" value="2"  />
+			<property name="max_distance" value="35" />		
+			<property name="min_distance" value="25" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff,ZombieINC_ZombieExplode"/>
+			<property name="air_spawn" value="true" />
+			<property name="safe_spawn" value="true" />
+			<property name="phase" value="1" />	
+		</action>		
+	</decision>
+	<decision class="If">
+		<requirement class="InPOI"/>		
+		<action class="CallGameEvent">
+			<property name="game_events" value="ZombieINC_AK47_SpawnZombiesBomber_InPOI" />
+			<property name="phase" value="1" />
+		</action>
+	</decision>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_AK47_SpawnZombiesTerrorist_InPOI">
+		<property name="action_type" value="Game" />
+		<property name="target_type" value="POI" />
+			
+		<action class="SpawnEntity">				    
+			<property name="entity_names" value="ZombieINC_Terrorist_AK47" />
+			<property name="spawn_count" value="2"  />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_Survival_BlockDamageV1_Buff"/>
+			<property name="safe_spawn" value="true" />
+			<!--<property name="spawn_type" value="WanderingHorde" />-->
+			<property name="max_distance" value="20"  />
+			<property name="min_distance" value="15"  />
+			<property name="air_spawn" value="false" />
+			<property name="phase" value="1" />			
+		</action>	
+	</action_sequence>
+	<action_sequence name="ZombieINC_TerroristAK47_SpawnGeneral_Event">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincak47"/>
+		</requirement>
+	 <decision class="If">
+		<requirement class="InPOI">
+				<property name="invert" value="true" />
+			</requirement>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_Terrorist_AK47"  />
+			<property name="spawn_count" value="2"  />
+			<property name="max_distance" value="35" />		
+			<property name="min_distance" value="25" />
+			<property name="add_buffs" value="ZombieINC_Survival_BlockDamageV1_Buff"/>
+			<property name="air_spawn" value="true" />
+			<property name="safe_spawn" value="true" />
+			<property name="phase" value="1" />	
+		</action>		
+	</decision>
+	<decision class="If">
+		<requirement class="InPOI"/>		
+		<action class="CallGameEvent">
+			<property name="game_events" value="ZombieINC_AK47_SpawnZombiesTerrorist_InPOI" />
+			<property name="phase" value="1" />
+		</action>
+	</decision>
+	</action_sequence>
+	<!--AK47-->
+	<!--##M60-->
+	<action_sequence name="ZombieINC_RemoveSuppliesM60_AddBuffEvent">					  
+		<action class="AddBuff">	
+			<property name="buff_name" value="ZombieINC_NearTraderM60_RemoverItemBuff" />				
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_M60_AddSpawnerZombiesBuff_Event">					  
+		<action class="AddBuff">	
+			<property name="buff_name" value="ZombieINC_M60_SpawnerZombies_Buff" />				
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_M60_RemoveSpawnerZombiesBuff_Event">					  
+		<action class="RemoveBuff">	
+			<property name="buff_name" value="ZombieINC_M60_SpawnerZombies_Buff" />				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_M60_SpawnZombiesInSide_Event"> 
+		<requirement class="OnQuest">
+			<property name="quest" value="zincm60"/>
+		</requirement>
+		<action class="SpawnEntity">    
+			<property name="entity_names" value="ZombieINC_zombieSkateboarder_Turret1"  />
+			<property name="spawn_count" value="2"  />
+			<property name="spawn_type" value="NearPosition" />
+			<property name="safe_spawn" value="true" />
+			<property name="air_spawn" value="true" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />		
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_M60_SpawnZombiesOutSide_Event">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincm60"/>
+		</requirement>
+		<action class="SpawnEntity">    
+			<property name="entity_names" value="ZombieINC_zombieSkateboarder_Turret1"  />
+			<property name="spawn_count" value="2"  />
+			<property name="max_distance" value="25" />
+			<property name="min_distance" value="15" />
+			<property name="air_spawn" value="true" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />		
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SuppliesM60_RemoveItemEvent">
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="trader" />
+			<property name="group_name" value="Trader" />
+			<property name="max_distance" value="10" />
+		</action>
+		
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="GroupLiveCount">
+					<property name="target_group" value="Trader"/>
+					<property name="operation" value="Equals"/> 
+					<property name="count" value="1"/>
+			</requirement>
+	
+		<action class="RemoveItems">
+			<property name="phase" value="1" />
+			<property name="items_location" value="Backpack,Toolbelt,Held" />
+			<property name="items_tags" value="WeaponMissionPartsRemover" />
+		</action>
+		
+		<action class="RemoveBuff">	
+			<property name="phase" value="1" />
+			<property name="buff_name" value="ZombieINC_NearTraderM60_RemoverItemBuff" />				
+		</action>
+		</decision>
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_M60_SpawnZombies_InPOI">
+		<property name="action_type" value="Game" />
+		<property name="target_type" value="POI" />
+			
+		<action class="SpawnEntity">				    
+			<property name="entity_names" value="ZombieINC_zombieSkateboarder_Turret1" />
+			<property name="spawn_count" value="2"  />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff"/>
+			<property name="safe_spawn" value="true" />
+			<!--<property name="spawn_type" value="WanderingHorde" />-->
+			<property name="max_distance" value="20"  />
+			<property name="min_distance" value="15"  />
+			<property name="air_spawn" value="false" />
+			<property name="phase" value="1" />			
+		</action>	
+	</action_sequence>
+	<action_sequence name="ZombieINC_M60_SpawnZombiesGeneral_Event">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincm60"/>
+		</requirement>
+	 <action class="AddEntitiesToGroup">
+	 	<property name="group_name" value="Cops" />
+	  	<property name="entity_tags" value="zombieTurret" />
+	 	<property name="max_distance" value="40" />		 	
+	 </action>
+	 <decision class="If">
+		<requirement class="InPOI">
+				<property name="invert" value="true" />
+			</requirement>
+		<requirement class="GroupLiveCount">
+			<property name="target_group" value="Cops"/>
+			<property name="operation" value="LTE"/> 
+			<property name="count" value="5"/>
+		</requirement>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_zombieSkateboarder_Turret1"  />
+			<property name="spawn_count" value="2"  />
+			<property name="max_distance" value="35" />		
+			<property name="min_distance" value="25" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff"/>
+			<property name="air_spawn" value="true" />
+			<property name="safe_spawn" value="true" />
+			<property name="phase" value="1" />	
+		</action>		
+	</decision>
+	<decision class="If">
+		<requirement class="InPOI"/>		
+		<requirement class="GroupLiveCount">
+			<property name="target_group" value="Cops"/>
+			<property name="operation" value="LTE"/> 
+			<property name="count" value="5"/>
+		</requirement>
+		<action class="CallGameEvent">
+			<property name="game_events" value="ZombieINC_M60_SpawnZombies_InPOI" />
+			<property name="phase" value="1" />
+		</action>
+	</decision>
+	</action_sequence>
+	<!--M60-->
+
+</append>
+
+</Config>

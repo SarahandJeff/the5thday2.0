@@ -1,0 +1,1168 @@
+<Config>
+	<append xpath="/items">
+	
+	
+	<!--###The Cult-->
+	
+	<item name="ZombieINC_Quest_BoneKnife">
+		<property name="Extends" value="questMaster"/>
+		<property name="CreativeMode" value="Dev"/>
+		<property name="DescriptionKey" value="ZombieINC_Quest_BoneKnife_Desc"/>
+		<property name="EconomicValue" value="2000"/>
+		<property name="Stacknumber" value="1"/>
+		<property name="TraderStageTemplate" value="ZINCWeaponPart2T0"/>
+		<property name="Group" value="Ammo/Weapons,Ranged Weapons"/>
+		<property class="Action0">
+			<property name="QuestGiven" value="zincboneknife"/>
+		</property>
+	</item>
+	
+	<item name="ZombieINC_meleeWpnBladeT0BoneKnife">
+	<property name="Tags" value="knife,melee,grunting,light,perkFlurryOfAgility,weapon,meleeWeapon,attAgility,perkDeepCuts,perkTheHuntsman,canHaveCosmetic,bladeSkill,corpseRemoval"/>
+	<property name="DisplayType" value="meleeKnife"/>
+	<property name="HoldType" value="36"/>
+	<property name="Meshfile" value="@:Other/Items/Weapons/Melee/Knives/boneShivPrefab.prefab"/>
+	<property name="Material" value="MresourceBone"/>
+	<property name="TintColor" value="236, 219, 182"/>
+	<property name="CustomIcon" value="meleeWpnBladeT0BoneKnife"/>
+	<property name="CustomIconTint" value="0,0,0"/>
+	<property name="DescriptionKey" value="ZombieINC_meleeWpnBladeT0BoneKnifeDesc"/>			
+	<property name="ItemTypeIcon" value="star"/>
+	<property name="RepairTools" value="resourceBone"/>
+	<property name="EconomicValue" value="175"/>
+	<property name="SellableToTrader" value="false"/>
+	<property name="SoundDestroy" value="wooddestroy1"/>
+	<property name="ShowQuality" value="true"/>
+	<property name="Group" value="Ammo/Weapons,Melee Weapons"/>
+	<property name="SoundUnholster" value="weapon_unholster"/>
+	<property name="SoundHolster" value="weapon_holster"/>
+
+	<property class="Action0">
+		<property name="Class" value="DynamicMelee"/>
+		<property name="Damage_type" value="Piercing"/>
+		<property name="Sphere" value=".1"/>
+		<property name="Sound_start" value="knife_bone_swinglight"/>
+		<property name="ToolCategory.harvestingTools" value="1" param1="1"/>
+			<!-- value = harvest event multiplier, param1 = damage multiplier if matching harvest event present on the block -->
+			<!-- cars explode when destroyed by a tool without harvest settings -->
+		<property name="ToolCategory.Butcher" value="0" param1="4.5"/>
+			<!-- value = old harvest multiplier; param1= corpse damage multiplier; zombie (non-harvest) corpses have very high hit points to not instagib from auto-fire guns -->
+		<property name="UseGrazingHits" value="false"/>
+		<property name="GrazeStart" value=".25"/>
+		<property name="GrazeEnd" value=".35"/>
+		<property name="SwingDegrees" value="90"/>
+		<property name="SwingAngle" value="90"/>
+		<property class="HitSounds">
+			<property name="Override0" value="organic" param1="metalstaborganic"/>
+		</property>
+		<property class="GrazeSounds">
+			<property name="Override0" value="organic" param1="metalgrazeorganic"/>
+		</property>
+	</property>
+	<property class="Action1">
+		<property name="Class" value="DynamicMelee"/>
+		<property name="Damage_type" value="Piercing"/>
+		<property name="Sphere" value=".1"/>
+		<property name="Sound_start" value="knife_bone_swingheavy"/>
+		<property name="ToolCategory.harvestingTools" value="1" param1="1"/>
+		<property name="ToolCategory.Butcher" value="0" param1="4.5"/>
+		<property name="UsePowerAttackAnimation" value="true"/>
+		<property name="UseGrazingHits" value="false"/>
+		<property name="GrazeStart" value=".2"/>
+		<property name="GrazeEnd" value=".3"/>
+		<property name="SwingDegrees" value="80"/>
+		<property name="SwingAngle" value="140"/>
+		<property class="HitSounds">
+			<property name="Override0" value="organic" param1="metalstaborganic"/>
+		</property>
+		<property class="GrazeSounds">
+			<property name="Override0" value="organic" param1="metalgrazeorganic"/>
+		</property>
+	</property>
+	<effect_group name="meleeWpnBladeT0BoneKnife" tiered="false">
+		<passive_effect name="AttacksPerMinute" operation="base_set" value="120" tags="perkDeepCuts,perkFlurryOfAgility"/>
+		<passive_effect name="StaminaLoss" operation="base_set" value="7.3" tags="primary"/>
+		<passive_effect name="DegradationMax" operation="base_set" value="250" tags="perkDeepCuts"/>
+		<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="perkDeepCuts"/>
+		<passive_effect name="MaxRange" operation="base_set" value="2.0" tags="perkDeepCuts"/>
+		<passive_effect name="BlockRange" operation="base_set" value="2.5" tags="perkDeepCuts"/>
+		<passive_effect name="ModSlots" operation="base_set" value="0" />
+		<passive_effect name="ModPowerBonus" operation="perc_add" value=".10" tags="EntityDamage,BlockDamage"/>
+		<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+		<passive_effect name="EntityDamage" operation="base_set" value="16" tags="perkDeepCuts,knife"/> <!-- meleeWpnBladeT0BoneKnife -->
+		
+		<passive_effect name="BlockDamage" operation="base_set" value="4" tags="perkDeepCuts"/>
+		
+		<passive_effect name="DamageModifier" operation="perc_add" value="-.8" tags="earth"/>
+		<passive_effect name="DamageModifier" operation="perc_add" value="-.8" tags="stone"/>
+		<passive_effect name="DamageModifier" operation="perc_add" value="-.8" tags="metal"/>
+		<passive_effect name="DamageModifier" operation="perc_add" value=".6" tags="organic"/>
+		<passive_effect name="HarvestCount" operation="base_set" value="1" tags="butcherHarvest"/>
+		<!--<passive_effect name="BlockDamage" operation="perc_add" value="4" tags="blockButcher"/>-->
+	</effect_group>
+	<effect_group name="Power Attack" tiered="false">
+		<passive_effect name="EntityDamage" operation="base_add" value="5.1" tags="secondary"/>
+		<passive_effect name="EntityDamage" operation="perc_add" value="1" tags="secondary"/>
+		<passive_effect name="BlockDamage" operation="perc_add" value="1" tags="secondary"/>
+		<passive_effect name="AttacksPerMinute" operation="base_add" value="-60" tags="secondary"/>
+		<passive_effect name="StaminaLoss" operation="base_set" value="10.9" tags="secondary"/> <!-- using perc_add here increases StaminaOT for no obvious reason -->
+		<triggered_effect trigger="onSelfSecondaryActionStart" action="AddJournalEntry" journal="powerAttackTip"/>
+	</effect_group>
+	<effect_group name="sneak damage bonus" tiered="false">
+		<requirement name="CVarCompare" cvar="_crouching" operation="Equals" value="1"/>
+		<requirement name="CVarCompare" cvar="_notAlerted" operation="GT" value="0" target="other"/>
+			<passive_effect name="DamageBonus" operation="base_add" value="4"/>
+			<passive_effect name="EntityDamage" operation="perc_add" value="4" tags="perkDeepCuts"/>
+			<display_value name="dEntityDamageSneak" value="4"/>
+	</effect_group>
+	<effect_group name="ZombieINC" tiered="false">
+																																										<!--X +Front -Back /Y +Medial -Lateral /Z -Up  +Down-->
+			<!--<triggered_effect trigger="onSelfPrimaryActionUpdate" action="AttachPrefabToEntity" prefab="@:Entities/OutdoorDecor/driftwood_01Prefab.prefab" parent_transform="RightHand" local_offset="0.105,0.0,-0.1" local_rotation="-90,0,0" local_scale="0.06,0.06,0.06">
+				<requirement name="IsFPV"/></triggered_effect>
+			<triggered_effect trigger="onSelfPrimaryActionUpdate" action="AttachPrefabToEntity" prefab="@:Entities/OutdoorDecor/driftwood_02Prefab.prefab" parent_transform="RightHand" local_offset="0.105,0.0,-0.1" local_rotation="-90,0,0" local_scale="0.06,0.06,0.06">
+				<requirement name="IsFPV"/></triggered_effect>
+			<triggered_effect trigger="onSelfPrimaryActionUpdate" action="AttachPrefabToEntity" prefab="@:Entities/OutdoorDecor/driftwood_03Prefab.prefab" parent_transform="RightHand" local_offset="0.105,0.0,-0.1" local_rotation="-90,-30,0" local_scale="0.06,0.06,0.06">
+				<requirement name="IsFPV"/></triggered_effect>--><!--Old Positions-->
+			<triggered_effect trigger="onSelfPrimaryActionUpdate" action="AttachPrefabToEntity" prefab="@:Entities/OutdoorDecor/driftwood_01Prefab.prefab" parent_transform="RightHand" local_offset="0.075,0.0,0." local_rotation="-190,0,0" local_scale="0.1,0.1,0.1">
+				<requirement name="IsFPV"/></triggered_effect>
+			<triggered_effect trigger="onSelfPrimaryActionUpdate" action="AttachPrefabToEntity" prefab="@:Entities/OutdoorDecor/driftwood_02Prefab.prefab" parent_transform="RightHand" local_offset="0.075,0.0,0." local_rotation="-90,0,0" local_scale="0.1,0.1,0.1">
+				<requirement name="IsFPV"/></triggered_effect>
+			<triggered_effect trigger="onSelfPrimaryActionUpdate" action="AttachPrefabToEntity" prefab="@:Entities/OutdoorDecor/driftwood_03Prefab.prefab" parent_transform="RightHand" local_offset="0.075,0.0,0." local_rotation="-90,-30,0" local_scale="0.1,0.1,0.1">
+				<requirement name="IsFPV"/></triggered_effect>	
+			<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="driftwood_01Prefab"/>
+			<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="driftwood_02Prefab"/>
+			<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="driftwood_03Prefab"/>
+			
+			<triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="ZombieINC_BoneKnifeBlood2_Buff"/>
+			<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="ZombieINC_BoneKnifeBlood2_Buff"/>
+	</effect_group>	
+</item>
+
+<item name="ZombieINC_meleeWpnBladeT0BoneKnife_Inactive">
+	<property name="Tags" value="knife,melee,grunting,light,perkFlurryOfAgility,weapon,meleeWeapon,attAgility,perkDeepCuts,perkTheHuntsman,canHaveCosmetic,bladeSkill,corpseRemoval,BoneKnifeInactive"/>
+	<property name="DisplayType" value="meleeKnife"/>
+	<property name="HoldType" value="36"/>
+	<property name="Meshfile" value="@:Other/Items/Weapons/Melee/Knives/boneShivPrefab.prefab"/>
+	<property name="Material" value="MresourceBone"/>
+	<property name="TintColor" value="236, 219, 182"/>
+	<property name="CustomIcon" value="meleeWpnBladeT0BoneKnife"/>
+	<property name="CustomIconTint" value="0,0,0"/>
+	<property name="DescriptionKey" value="ZombieINC_meleeWpnBladeT0BoneKnifeDesc"/>			
+	<property name="ItemTypeIcon" value="quest"/>
+	<property name="RepairTools" value=""/>
+	<property name="DegradationBreaksAfter" value="true"/>
+	<property name="EconomicValue" value="175"/>
+	<property name="SellableToTrader" value="false"/>
+	<property name="SoundDestroy" value="wooddestroy1"/>
+	<property name="ShowQuality" value="true"/>
+	<property name="Group" value="Ammo/Weapons,Melee Weapons"/>
+	<property name="SoundUnholster" value="weapon_unholster"/>
+	<property name="SoundHolster" value="weapon_holster"/>
+
+	<property class="Action0">
+		<property name="Class" value="DynamicMelee"/>
+		<property name="Damage_type" value="Piercing"/>
+		<property name="Sphere" value=".1"/>
+		<property name="Sound_start" value="knife_bone_swinglight"/>
+		<property name="ToolCategory.harvestingTools" value="1" param1="1"/>
+			<!-- value = harvest event multiplier, param1 = damage multiplier if matching harvest event present on the block -->
+			<!-- cars explode when destroyed by a tool without harvest settings -->
+		<property name="ToolCategory.Butcher" value="0" param1="4.5"/>
+			<!-- value = old harvest multiplier; param1= corpse damage multiplier; zombie (non-harvest) corpses have very high hit points to not instagib from auto-fire guns -->
+		<property name="UseGrazingHits" value="false"/>
+		<property name="GrazeStart" value=".25"/>
+		<property name="GrazeEnd" value=".35"/>
+		<property name="SwingDegrees" value="90"/>
+		<property name="SwingAngle" value="90"/>
+		<requirement name="HasBuff" buff="ZombieINC_WeaponTest_InMissionBuff" />
+		<property class="HitSounds">
+			<property name="Override0" value="organic" param1="metalstaborganic"/>
+		</property>
+		<property class="GrazeSounds">
+			<property name="Override0" value="organic" param1="metalgrazeorganic"/>
+		</property>
+	</property>
+	<property class="Action1">
+		<property name="Class" value="DynamicMelee"/>
+		<property name="Damage_type" value="Piercing"/>
+		<property name="Sphere" value=".1"/>
+		<property name="Sound_start" value="knife_bone_swingheavy"/>
+		<property name="ToolCategory.harvestingTools" value="1" param1="1"/>
+		<property name="ToolCategory.Butcher" value="0" param1="4.5"/>
+		<property name="UsePowerAttackAnimation" value="true"/>
+		<property name="UseGrazingHits" value="false"/>
+		<property name="GrazeStart" value=".2"/>
+		<property name="GrazeEnd" value=".3"/>
+		<property name="SwingDegrees" value="80"/>
+		<property name="SwingAngle" value="140"/>
+		<requirement name="HasBuff" buff="ZombieINC_WeaponTest_InMissionBuff" />
+		<property class="HitSounds">
+			<property name="Override0" value="organic" param1="metalstaborganic"/>
+		</property>
+		<property class="GrazeSounds">
+			<property name="Override0" value="organic" param1="metalgrazeorganic"/>
+		</property>
+	</property>
+	<effect_group name="meleeWpnBladeT0BoneKnife" tiered="false">
+		<passive_effect name="AttacksPerMinute" operation="base_set" value="120" tags="perkDeepCuts,perkFlurryOfAgility"/>
+		<passive_effect name="StaminaLoss" operation="base_set" value="7.3" tags="primary"/>
+		<passive_effect name="DegradationMax" operation="base_set" value="250" tags="perkDeepCuts"/>
+		<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="perkDeepCuts"/>
+		<passive_effect name="MaxRange" operation="base_set" value="2.0" tags="perkDeepCuts"/>
+		<passive_effect name="BlockRange" operation="base_set" value="2.5" tags="perkDeepCuts"/>
+		<passive_effect name="ModSlots" operation="base_set" value="0" />
+		<passive_effect name="ModPowerBonus" operation="perc_add" value=".10" tags="EntityDamage,BlockDamage"/>
+		<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+		<passive_effect name="EntityDamage" operation="base_set" value="6" tags="perkDeepCuts,knife"/> <!-- meleeWpnBladeT0BoneKnife -->
+		
+		<passive_effect name="BlockDamage" operation="base_set" value="4" tags="perkDeepCuts"/>
+		
+		<passive_effect name="DamageModifier" operation="perc_add" value="-.8" tags="earth"/>
+		<passive_effect name="DamageModifier" operation="perc_add" value="-.8" tags="stone"/>
+		<passive_effect name="DamageModifier" operation="perc_add" value="-.8" tags="metal"/>
+		<passive_effect name="DamageModifier" operation="perc_add" value=".6" tags="organic"/>
+		<passive_effect name="HarvestCount" operation="base_set" value="1" tags="butcherHarvest"/>
+		<!--<passive_effect name="BlockDamage" operation="perc_add" value="4" tags="blockButcher"/>-->
+	</effect_group>
+	<effect_group name="Power Attack" tiered="false">
+		<passive_effect name="EntityDamage" operation="base_add" value="5.1" tags="secondary"/>
+		<passive_effect name="EntityDamage" operation="perc_add" value="1" tags="secondary"/>
+		<passive_effect name="BlockDamage" operation="perc_add" value="1" tags="secondary"/>
+		<passive_effect name="AttacksPerMinute" operation="base_add" value="-60" tags="secondary"/>
+		<passive_effect name="StaminaLoss" operation="base_set" value="10.9" tags="secondary"/> <!-- using perc_add here increases StaminaOT for no obvious reason -->
+		<triggered_effect trigger="onSelfSecondaryActionStart" action="AddJournalEntry" journal="powerAttackTip"/>
+	</effect_group>
+	<effect_group name="sneak damage bonus" tiered="false">
+		<requirement name="CVarCompare" cvar="_crouching" operation="Equals" value="1"/>
+		<requirement name="CVarCompare" cvar="_notAlerted" operation="GT" value="0" target="other"/>
+			<passive_effect name="DamageBonus" operation="base_add" value="4"/>
+			<passive_effect name="EntityDamage" operation="perc_add" value="4" tags="perkDeepCuts"/>
+			<display_value name="dEntityDamageSneak" value="4"/>
+	</effect_group>
+</item>
+	<item name="ZombieINC_Mission_meleeWpnBladeT0BoneKnife">
+	<property name="Tags" value="knife,melee,grunting,light,perkFlurryOfAgility,weapon,meleeWeapon,attAgility,perkDeepCuts,perkTheHuntsman,canHaveCosmetic,bladeSkill,corpseRemoval,BoneKnifeMission"/>
+	<property name="DisplayType" value="meleeKnife"/>
+	<property name="HoldType" value="36"/>
+	<property name="Meshfile" value="@:Other/Items/Weapons/Melee/Knives/boneShivPrefab.prefab"/>
+	<property name="Material" value="MresourceBone"/>
+	<property name="TintColor" value="236, 219, 182"/>
+	<property name="CustomIcon" value="meleeWpnBladeT0BoneKnife"/>
+	<property name="CustomIconTint" value="0,0,0"/>
+	<property name="DescriptionKey" value="ZombieINC_meleeWpnBladeT0BoneKnifeDesc"/>			
+	<property name="ItemTypeIcon" value="quest"/>
+	<property name="RepairTools" value=""/>
+	<property name="DegradationBreaksAfter" value="true"/>
+	<property name="EconomicValue" value="175"/>
+	<property name="SellableToTrader" value="false"/>
+	<property name="SoundDestroy" value="wooddestroy1"/>
+	<property name="ShowQuality" value="true"/>
+	<property name="Group" value="Ammo/Weapons,Melee Weapons"/>
+	<property name="SoundUnholster" value="weapon_unholster"/>
+	<property name="SoundHolster" value="weapon_holster"/>
+
+	<property class="Action0">
+		<property name="Class" value="DynamicMelee"/>
+		<property name="Damage_type" value="Piercing"/>
+		<property name="Sphere" value=".1"/>
+		<property name="Sound_start" value="knife_bone_swinglight"/>
+		<property name="ToolCategory.harvestingTools" value="1" param1="1"/>
+			<!-- value = harvest event multiplier, param1 = damage multiplier if matching harvest event present on the block -->
+			<!-- cars explode when destroyed by a tool without harvest settings -->
+		<property name="ToolCategory.Butcher" value="0" param1="4.5"/>
+			<!-- value = old harvest multiplier; param1= corpse damage multiplier; zombie (non-harvest) corpses have very high hit points to not instagib from auto-fire guns -->
+		<property name="UseGrazingHits" value="false"/>
+		<property name="GrazeStart" value=".25"/>
+		<property name="GrazeEnd" value=".35"/>
+		<property name="SwingDegrees" value="90"/>
+		<property name="SwingAngle" value="90"/>
+		<property class="HitSounds">
+			<property name="Override0" value="organic" param1="metalstaborganic"/>
+		</property>
+		<property class="GrazeSounds">
+			<property name="Override0" value="organic" param1="metalgrazeorganic"/>
+		</property>
+		<requirement name="HasBuff" buff="ZombieINC_WeaponTest_InMissionBuff" />
+	</property>
+	<property class="Action1">
+		<property name="Class" value="DynamicMelee"/>
+		<property name="Damage_type" value="Piercing"/>
+		<property name="Sphere" value=".1"/>
+		<property name="Sound_start" value="knife_bone_swingheavy"/>
+		<property name="ToolCategory.harvestingTools" value="1" param1="1"/>
+		<property name="ToolCategory.Butcher" value="0" param1="4.5"/>
+		<property name="UsePowerAttackAnimation" value="true"/>
+		<property name="UseGrazingHits" value="false"/>
+		<property name="GrazeStart" value=".2"/>
+		<property name="GrazeEnd" value=".3"/>
+		<property name="SwingDegrees" value="80"/>
+		<property name="SwingAngle" value="140"/>
+		<property class="HitSounds">
+			<property name="Override0" value="organic" param1="metalstaborganic"/>
+		</property>
+		<property class="GrazeSounds">
+			<property name="Override0" value="organic" param1="metalgrazeorganic"/>
+		</property>
+		<requirement name="HasBuff" buff="ZombieINC_WeaponTest_InMissionBuff" />
+	</property>
+	<effect_group name="meleeWpnBladeT0BoneKnife" tiered="false">
+		<passive_effect name="AttacksPerMinute" operation="base_set" value="120" tags="perkDeepCuts,perkFlurryOfAgility"/>
+		<passive_effect name="StaminaLoss" operation="base_set" value="7.3" tags="primary"/>
+		<passive_effect name="DegradationMax" operation="base_set" value="550" tags="perkDeepCuts"/>
+		<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="perkDeepCuts"/>
+		<passive_effect name="MaxRange" operation="base_set" value="2.0" tags="perkDeepCuts"/>
+		<passive_effect name="BlockRange" operation="base_set" value="2.5" tags="perkDeepCuts"/>
+		<passive_effect name="ModSlots" operation="base_set" value="0" />
+		<passive_effect name="ModPowerBonus" operation="perc_add" value=".10" tags="EntityDamage,BlockDamage"/>
+		<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+		<passive_effect name="EntityDamage" operation="base_set" value="16" tags="perkDeepCuts,knife"/> <!-- meleeWpnBladeT0BoneKnife -->
+		
+		<passive_effect name="BlockDamage" operation="base_set" value="4" tags="perkDeepCuts"/>
+		
+		<passive_effect name="DamageModifier" operation="perc_add" value="-.8" tags="earth"/>
+		<passive_effect name="DamageModifier" operation="perc_add" value="-.8" tags="stone"/>
+		<passive_effect name="DamageModifier" operation="perc_add" value="-.8" tags="metal"/>
+		<passive_effect name="DamageModifier" operation="perc_add" value=".6" tags="organic"/>
+		<passive_effect name="HarvestCount" operation="base_set" value="1" tags="butcherHarvest"/>
+		<!--<passive_effect name="BlockDamage" operation="perc_add" value="4" tags="blockButcher"/>-->
+	</effect_group>
+	<effect_group name="Power Attack" tiered="false">
+		<passive_effect name="EntityDamage" operation="base_add" value="5.1" tags="secondary"/>
+		<passive_effect name="EntityDamage" operation="perc_add" value="1" tags="secondary"/>
+		<passive_effect name="BlockDamage" operation="perc_add" value="1" tags="secondary"/>
+		<passive_effect name="AttacksPerMinute" operation="base_add" value="-60" tags="secondary"/>
+		<passive_effect name="StaminaLoss" operation="base_set" value="10.9" tags="secondary"/> <!-- using perc_add here increases StaminaOT for no obvious reason -->
+		<triggered_effect trigger="onSelfSecondaryActionStart" action="AddJournalEntry" journal="powerAttackTip"/>
+	</effect_group>
+	<effect_group name="sneak damage bonus" tiered="false">
+		<requirement name="CVarCompare" cvar="_crouching" operation="Equals" value="1"/>
+		<requirement name="CVarCompare" cvar="_notAlerted" operation="GT" value="0" target="other"/>
+			<passive_effect name="DamageBonus" operation="base_add" value="4"/>
+			<passive_effect name="EntityDamage" operation="perc_add" value="4" tags="perkDeepCuts"/>
+			<display_value name="dEntityDamageSneak" value="4"/>
+	</effect_group>
+	<effect_group name="ZombieINC" tiered="false">
+																																										<!--X +Front -Back /Y +Medial -Lateral /Z -Up  +Down-->
+			<triggered_effect trigger="onSelfPrimaryActionUpdate" action="AttachPrefabToEntity" prefab="@:Entities/OutdoorDecor/driftwood_01Prefab.prefab" parent_transform="RightHand" local_offset="0.075,0.0,0." local_rotation="-190,0,0" local_scale="0.1,0.1,0.1">
+				<requirement name="IsFPV"/></triggered_effect>
+			<triggered_effect trigger="onSelfPrimaryActionUpdate" action="AttachPrefabToEntity" prefab="@:Entities/OutdoorDecor/driftwood_02Prefab.prefab" parent_transform="RightHand" local_offset="0.075,0.0,0." local_rotation="-90,0,0" local_scale="0.1,0.1,0.1">
+				<requirement name="IsFPV"/></triggered_effect>
+			<triggered_effect trigger="onSelfPrimaryActionUpdate" action="AttachPrefabToEntity" prefab="@:Entities/OutdoorDecor/driftwood_03Prefab.prefab" parent_transform="RightHand" local_offset="0.075,0.0,0." local_rotation="-90,-30,0" local_scale="0.1,0.1,0.1">
+				<requirement name="IsFPV"/></triggered_effect>
+			<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="driftwood_01Prefab"/>
+			<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="driftwood_02Prefab"/>
+			<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="driftwood_03Prefab"/>
+			<triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="ZombieINC_BoneKnifeBlood_Buff"/>
+			<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="ZombieINC_BoneKnifeBlood_Buff"/>
+	</effect_group>	
+</item>
+	
+	<!--#Armor and Items-->
+	
+	<item name="ZombieINC_armorRaiderHelmet">
+	<property name="Extends" value="armorHeavyMaster" param1="CustomIcon"/>
+	<property name="CustomIcon" value="armorRaiderHelmet"/>
+		<property name="CustomIconTint" value="ff9f9f"/>
+		<property name="ItemTypeIcon" value="star"/>
+	<property name="DescriptionKey" value="ZombieINC_armorRaiderHelmetDesc"/>
+	<property name="DisplayType" value="ZINC_armorPreacherHelmet"/>
+	<property name="ArmorGroup" value="groupTheCultPreacherH"/>
+	<property name="Tags" value="head,armor,armorHead,heavyArmor,heavyArmorPenalty,canHaveCosmetic,heavyArmorDeg,armorHeavySkill,TheCult,TheCultHeavy,TheCultPreacher"/>
+	<property name="EquipSlot" value="Head"/>
+	<property name="SoundPickup" value="headwear_metal_grab"/>
+	<property name="SoundPlace" value="headwear_metal_place"/>
+	<effect_group name="RaiderHelmet">
+		<passive_effect name="ModSlots" operation="base_set" value="1,1,2,2,3,4" tier="1,2,3,4,5,6"/>
+		<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+		<passive_effect name="PhysicalDamageResist" operation="base_add" value="18,21" tier="1,6"/>
+		<passive_effect name="PhysicalDamageResist" operation="base_add" value="-.2,.2"/>
+		<passive_effect name="ElementalDamageResist" operation="base_add" value="18,21" tier="1,6" tags="heat,electrical"/>
+		<passive_effect name="ElementalDamageResist" operation="base_add" value="-.2,.2"/>
+		<passive_effect name="BuffResistance" operation="base_add" value="0.061,0.076" tags="buffFatiguedTrigger,buffArmSprainedCHTrigger,buffLegSprainedCHTrigger,buffAbrasionCatch,buffLaceration,buffInfectionCatch,buffInjuryStunned01CHTrigger,buffInjuryBleedingTwo,buffInjuryBleedingBarbedWire"/>
+		<passive_effect name="DegradationMax" operation="base_set" value="250,500" tier="1,6"/>
+		<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="heavyArmorDeg"/>
+		<passive_effect name="HypothermalResist" operation="base_add" value="20"/>
+		<passive_effect name="HyperthermalResist" operation="base_add" value="20"/>
+		
+		<passive_effect name="Mobility" operation="perc_add" value="-.075"/>
+		<passive_effect name="StaminaChangeOT" operation="perc_add" value="-.045" tags="walking"/>
+		<passive_effect name="StaminaChangeOT" operation="perc_add" value="-.09" tags="running"/>
+		<display_value name="dStaminaChangeOT" value="-.9"/>
+		<passive_effect name="NoiseMultiplier" operation="perc_add" value=".2"/>
+		<display_value name="dNoiseMultiplier" value=".2"/>
+		
+		<passive_effect name="BuffResistance" operation="base_add" value=".1,.2,.3,.4,.5,1" tier="1,2,3,4,5,6" tags="buffInjuryStunned01"/>
+		<display_value name="dStunResist" value=".1,.2,.3,.4,.5,1" tier="1,2,3,4,5,6"/>
+		
+		<display_value name="dBartering" value=".02,.04,.06,.08,.1,.2" tier="1,2,3,4,5,6"/>
+	</effect_group>
+
+	<effect_group>
+		<passive_effect name="BarteringBuying" operation="base_add" value=".02,.04,.06,.08,.1,.2" tier="1,2,3,4,5,6"/>
+	</effect_group>
+	
+	<effect_group name="RaiderHelmetDECO">
+		<triggered_effect trigger="onSelfEquipStart" action="AddPartTPV" part="Head" prefab="@:Entities/decor/horseshoe_01Prefab.prefab" parentTransform="Head" localPos="0,0.679,0.038" localRot="270,180,0"/>
+		<triggered_effect trigger="onSelfEquipUpdate" action="AddPartTPV" part="Head" prefab="@:Entities/decor/horseshoe_01Prefab.prefab" parentTransform="Head" localPos="0,0.679,0.038" localRot="270,180,0"/>
+		
+		<triggered_effect trigger="onSelfEquipStop" action="RemovePart" part="Head"/>
+		<triggered_effect trigger="onSelfEnteredGame" action="RemovePart" part="Head"/>
+		<triggered_effect trigger="onSelfLeaveGame" action="RemovePart" part="Head"/>
+		<triggered_effect trigger="onSelfDied" action="RemovePart" part="Head"/>
+		
+		<!--<triggered_effect trigger="onSelfEquipStart" action="AttachPrefabToEntity" prefab="@:Entities/decor/horseshoe_01Prefab.prefab" local_offset="0,0.679,0.038" local_rotation="270,180,0" local_scale="1,1,1" parent_transform="Head" />
+		<triggered_effect trigger="onSelfEquipUpdate" action="AttachPrefabToEntity" prefab="@:Entities/decor/horseshoe_01Prefab.prefab" local_offset="0,0.679,0.038" local_rotation="270,180,0" local_scale="1,1,1" parent_transform="Head" />
+		
+		<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="@:Entities/decor/horseshoe_01Prefab.prefab" parent_transform="Head" />
+		<triggered_effect trigger="onSelfEnteredGame" action="RemovePrefabFromEntity" prefab="@:Entities/decor/horseshoe_01Prefab.prefab" parent_transform="Head" />
+		<triggered_effect trigger="onSelfLeaveGame" action="RemovePrefabFromEntity" prefab="@:Entities/decor/horseshoe_01Prefab.prefab" parent_transform="Head" />
+		<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="@:Entities/decor/horseshoe_01Prefab.prefab" parent_transform="Head" />-->
+	
+	</effect_group>
+	<property class="SDCS">
+		<property name="Prefab" value="Entities/Player/*/Gear/Prefabs/gear*RaiderPrefab"/>
+		<property name="TransformName" value="head"/>
+		<property name="Excludes" value="head"/>
+		<property name="HairMaskType" value="None"/>
+		<property name="FacialHairMaskType" value="None"/>
+	</property>
+</item>
+	
+	<item name="ZombieINC_armorPreacherOutfit"> 
+	<property name="Extends" value="armorHeavyMaster" param1="CustomIcon"/>
+	<property name="CustomIcon" value="armorPreacherOutfit"/>
+		<property name="CustomIconTint" value="ff9f9f"/>
+		<property name="ItemTypeIcon" value="star"/>
+	<property name="DescriptionKey" value="ZombieINC_armorPreacherOutfitDesc"/>
+	<property name="DisplayType" value="ZINC_armorPreacherOutfit"/>
+	<property name="ArmorGroup" value="groupTheCultPreacherH"/>
+	<property name="Tags" value="upperbody,chest,armor,armorChest,heavyArmor,heavyArmorPenalty,canHaveCosmetic,heavyArmorDeg,armorHeavySkill,TheCult,TheCultHeavy,TheCultPreacher"/>
+	<property name="EquipSlot" value="Chest"/>
+	<property name="SoundPickup" value="outfit_cloth_grab"/>
+	<property name="SoundPlace" value="outfit_cloth_place"/>
+	<effect_group name="PreacherOutfit">
+		<passive_effect name="ModSlots" operation="base_set" value="1,1,2,2,3,4" tier="1,2,3,4,5,6"/>
+		<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+		<passive_effect name="PhysicalDamageResist" operation="base_add" value="8,12.3" tier="1,6"/>
+		<passive_effect name="PhysicalDamageResist" operation="base_add" value="-.2,.2"/>
+		<passive_effect name="ElementalDamageResist" operation="base_add" value="8,12.3" tier="1,6" tags="heat,electrical"/>
+		<passive_effect name="ElementalDamageResist" operation="base_add" value="-.2,.2"/>
+		<passive_effect name="BuffResistance" operation="base_add" value="0.041" tags="buffFatiguedTrigger,buffArmSprainedCHTrigger,buffLegSprainedCHTrigger,buffAbrasionCatch,buffLaceration,buffInfectionCatch,buffInjuryStunned01CHTrigger,buffInjuryBleedingTwo,buffInjuryBleedingBarbedWire"/>
+		<passive_effect name="DegradationMax" operation="base_set" value="250,500" tier="1,6"/>
+		<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="heavyArmorDeg"/>
+		<passive_effect name="HypothermalResist" operation="base_add" value="20"/>
+		<passive_effect name="HyperthermalResist" operation="base_add" value="20"/>
+		
+		<display_value name="dDamageResist" value=".02,.04,.06,.08,.1,.15" tier="1,2,3,4,5,6"/>
+		
+		<passive_effect name="Mobility" operation="perc_add" value="-.075"/>
+		<passive_effect name="StaminaChangeOT" operation="perc_add" value="-.045" tags="walking"/>
+		<passive_effect name="StaminaChangeOT" operation="perc_add" value="-.09" tags="running"/>
+		<display_value name="dStaminaChangeOT" value="-.9"/>
+		<passive_effect name="NoiseMultiplier" operation="perc_add" value=".2"/>
+		<display_value name="dNoiseMultiplier" value=".2"/>
+	</effect_group>
+
+	<effect_group>
+		<requirement name="EntityTagCompare" target="other" tags="zombie"/>
+			<passive_effect name="PhysicalDamageResist" operation="perc_add" value=".02,.04,.06,.08,.1,.15" tier="1,2,3,4,5,6"/>
+	</effect_group>
+	<effect_group>
+		<triggered_effect trigger="onSelfEquipStart" action="AttachPrefabToEntity" prefab="@:Entities/outdoordecor/churchBellPrefab.prefab" local_offset="0.182,-0.157,-0.28" local_rotation="0,0,0" local_scale="0.35,0.35,0.35" parent_transform="Spine3" />
+		<triggered_effect trigger="onSelfEquipUpdate" action="AttachPrefabToEntity" prefab="@:Entities/outdoordecor/churchBellPrefab.prefab" local_offset="0.182,-0.157,-0.28" local_rotation="0,0,0" local_scale="0.35,0.35,0.35" parent_transform="Spine3" >
+			<requirement name="!HasAttachedPrefab" prefab="@:Entities/outdoordecor/churchBellPrefab.prefab" parent_transform="Spine3" />
+		</triggered_effect>
+	
+		<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="@:Entities/outdoordecor/churchBellPrefab.prefab" parent_transform="Spine3" />
+		<triggered_effect trigger="onSelfEnteredGame" action="RemovePrefabFromEntity" prefab="@:Entities/outdoordecor/churchBellPrefab.prefab" parent_transform="Spine3" />
+		<triggered_effect trigger="onSelfLeaveGame" action="RemovePrefabFromEntity" prefab="@:Entities/outdoordecor/churchBellPrefab.prefab" parent_transform="Spine3" />
+		<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="@:Entities/outdoordecor/churchBellPrefab.prefab" parent_transform="Spine3" />
+	</effect_group>
+	<property class="SDCS">
+		<property name="Prefab" value="Entities/Player/*/Gear/Prefabs/gear*PreacherPrefab"/>
+		<property name="TransformName" value="body"/>
+		<property name="Excludes" value="body"/>
+	</property>
+</item>
+
+		<!-- *** PREACHER_GLOVES -->
+<item name="ZombieINC_armorPreacherGloves">
+	<property name="Extends" value="armorHeavyMaster" param1="CustomIcon"/>
+	<property name="CustomIcon" value="armorPreacherGloves"/>
+		<property name="CustomIconTint" value="ff9f9f"/>
+		<property name="ItemTypeIcon" value="star"/>
+	<property name="DescriptionKey" value="ZombieINC_armorPreacherGlovesDesc"/>
+	<property name="DisplayType" value="ZINC_armorPreacherGloves"/>
+	<property name="ArmorGroup" value="groupTheCultPreacherH"/>
+	<property name="Tags" value="upperbody,hands,armor,armorHands,heavyArmor,heavyArmorPenalty,canHaveCosmetic,heavyArmorDeg,armorHeavySkill,TheCult,TheCultHeavy,TheCultPreacher"/>
+	<property name="EquipSlot" value="Hands"/>
+	<property name="SoundPickup" value="gloves_cloth_grab"/>
+	<property name="SoundPlace" value="gloves_cloth_place"/>
+	<effect_group name="PreacherGloves">
+		<passive_effect name="ModSlots" operation="base_set" value="1,1,2,2,3,4" tier="1,2,3,4,5,6"/>
+		<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+		<passive_effect name="PhysicalDamageResist" operation="base_add" value="8,12.3" tier="1,6"/>
+		<passive_effect name="PhysicalDamageResist" operation="base_add" value="-.2,.2"/>
+		<passive_effect name="ElementalDamageResist" operation="base_add" value="8,12.3" tier="1,6" tags="heat,electrical"/>
+		<passive_effect name="ElementalDamageResist" operation="base_add" value="-.2,.2"/>
+		<passive_effect name="BuffResistance" operation="base_add" value="0.041" tags="buffFatiguedTrigger,buffArmSprainedCHTrigger,buffLegSprainedCHTrigger,buffAbrasionCatch,buffLaceration,buffInfectionCatch,buffInjuryStunned01CHTrigger,buffInjuryBleedingTwo,buffInjuryBleedingBarbedWire"/>
+		<passive_effect name="DegradationMax" operation="base_set" value="250,500" tier="1,6"/>
+		<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="heavyArmorDeg"/>
+		<passive_effect name="HypothermalResist" operation="base_add" value="20"/>
+		<passive_effect name="HyperthermalResist" operation="base_add" value="20"/>
+		
+		<display_value name="dEntityDamage" value=".15,.25,.40,.50,.65,.75" tier="1,2,3,4,5,6"/>
+		
+		<passive_effect name="Mobility" operation="perc_add" value="-.075"/>
+		<passive_effect name="StaminaChangeOT" operation="perc_add" value="-.045" tags="walking"/>
+		<passive_effect name="StaminaChangeOT" operation="perc_add" value="-.09" tags="running"/>
+		<display_value name="dStaminaChangeOT" value="-.9"/>
+		<passive_effect name="NoiseMultiplier" operation="perc_add" value=".2"/>
+		<display_value name="dNoiseMultiplier" value=".2"/>
+	</effect_group>
+
+	<effect_group>
+		<passive_effect name="EntityDamage" operation="perc_add" value=".15,.25,.40,.50,.65,.75" tier="1,2,3,4,5,6"/>
+			<requirement name="EntityTagCompare" target="other" tags="zombie"/>
+	</effect_group>
+	<effect_group>
+		<triggered_effect trigger="onSelfEquipStart" action="AttachPrefabToEntity" prefab="@:Entities/Traps/woodSpikesTrapBloodPrefab.prefab" local_offset="0.0968,-0.0331,-0.0223" local_rotation="123.351,-156.957,14.67" local_scale="0.13,0.13,0.13" parent_transform="RightHand"/>
+		<triggered_effect trigger="onSelfEquipStart" action="AttachPrefabToEntity" prefab="@:Entities/StreetSigns/1_wood_post.prefab" local_offset="-0.041,-0.07,-0.004" local_rotation="-4.125,96.214,1.302" local_scale="0.45,0.45,0.15" parent_transform="RightHand"/>
+		<triggered_effect trigger="onSelfEquipStart" action="AttachPrefabToEntity" prefab="@:Entities/OutdoorDecor/woodPlanksStackPrefab.prefab" local_offset="0.052,-0.067,-0.076" local_rotation="1.299,6.308,4.126" local_scale="0.035,0.03,0.07" parent_transform="RightHand"/>
+	
+		<triggered_effect trigger="onSelfEquipUpdate" action="AttachPrefabToEntity" prefab="@:Entities/Traps/woodSpikesTrapBloodPrefab.prefab" local_offset="0.0968,-0.0331,-0.0223" local_rotation="123.351,-156.957,14.67" local_scale="0.13,0.13,0.13" parent_transform="RightHand">
+			<requirement name="!HasAttachedPrefab" prefab="@:Entities/Traps/woodSpikesTrapBloodPrefab.prefab" parent_transform="RightHand" />
+		</triggered_effect>
+		<triggered_effect trigger="onSelfEquipUpdate" action="AttachPrefabToEntity" prefab="@:Entities/StreetSigns/1_wood_post.prefab" local_offset="-0.041,-0.07,-0.004" local_rotation="-4.125,96.214,1.302" local_scale="0.45,0.45,0.15" parent_transform="RightHand">
+			<requirement name="!HasAttachedPrefab" prefab="@:Entities/StreetSigns/1_wood_post.prefab" parent_transform="RightHand" />
+		</triggered_effect>
+		<triggered_effect trigger="onSelfEquipUpdate" action="AttachPrefabToEntity" prefab="@:Entities/OutdoorDecor/woodPlanksStackPrefab.prefab" local_offset="0.052,-0.067,-0.076" local_rotation="1.299,6.308,4.126" local_scale="0.035,0.03,0.07" parent_transform="RightHand">
+			<requirement name="!HasAttachedPrefab" prefab="@:Entities/OutdoorDecor/woodPlanksStackPrefab.prefab" parent_transform="RightHand" />
+		</triggered_effect>
+		
+		<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="@:Entities/Traps/woodSpikesTrapBloodPrefab.prefab"  parent_transform="RightHand"/>
+		<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="@:Entities/StreetSigns/1_wood_post.prefab"  parent_transform="RightHand"/>
+		<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="@:Entities/OutdoorDecor/woodPlanksStackPrefab.prefab"  parent_transform="RightHand"/>
+		
+		<triggered_effect trigger="onSelfLeaveGame" action="RemovePrefabFromEntity" prefab="@:Entities/Traps/woodSpikesTrapBloodPrefab.prefab"  parent_transform="RightHand"/>
+		<triggered_effect trigger="onSelfLeaveGame" action="RemovePrefabFromEntity" prefab="@:Entities/StreetSigns/1_wood_post.prefab"  parent_transform="RightHand"/>
+		<triggered_effect trigger="onSelfLeaveGame" action="RemovePrefabFromEntity" prefab="@:Entities/OutdoorDecor/woodPlanksStackPrefab.prefab"  parent_transform="RightHand"/>
+		
+		<triggered_effect trigger="onSelfEnteredGame" action="RemovePrefabFromEntity" prefab="@:Entities/Traps/woodSpikesTrapBloodPrefab.prefab"  parent_transform="RightHand"/>
+		<triggered_effect trigger="onSelfEnteredGame" action="RemovePrefabFromEntity" prefab="@:Entities/StreetSigns/1_wood_post.prefab"  parent_transform="RightHand"/>
+		<triggered_effect trigger="onSelfEnteredGame" action="RemovePrefabFromEntity" prefab="@:Entities/OutdoorDecor/woodPlanksStackPrefab.prefab"  parent_transform="RightHand"/>
+		
+		<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="@:Entities/Traps/woodSpikesTrapBloodPrefab.prefab"  parent_transform="RightHand"/>
+		<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="@:Entities/StreetSigns/1_wood_post.prefab"  parent_transform="RightHand"/>
+		<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="@:Entities/OutdoorDecor/woodPlanksStackPrefab.prefab"  parent_transform="RightHand"/>
+	</effect_group>
+
+	<property class="SDCS">
+		<property name="Prefab" value="Entities/Player/*/Gear/Prefabs/gear*PreacherPrefab"/>
+		<property name="TransformName" value="hands"/>
+		<property name="Excludes" value="hands"/>
+	</property>
+</item>
+
+		<!-- *** PREACHER_BOOTS -->
+<item name="ZombieINC_armorPreacherBoots">
+	<property name="Extends" value="armorHeavyMaster" param1="CustomIcon"/>
+	<property name="CustomIcon" value="armorPreacherBoots"/>
+		<property name="CustomIconTint" value="ff9f9f"/>
+		<property name="ItemTypeIcon" value="star"/>
+	<property name="DescriptionKey" value="ZombieINC_armorPreacherBootsDesc"/>
+	<property name="DisplayType" value="ZINC_armorPreacherBoots"/>
+	<property name="ArmorGroup" value="groupTheCultPreacherH"/>
+	<property name="Tags" value="lowerbody,feet,armor,armorFeet,heavyArmor,heavyArmorPenalty,canHaveCosmetic,heavyArmorDeg,armorHeavySkill,TheCult,TheCultHeavy,TheCultPreacher"/>
+	<property name="EquipSlot" value="Feet"/>
+	<property name="SoundPickup" value="footwear_leather_grab"/>
+	<property name="SoundPlace" value="footwear_leather_place"/>
+	<effect_group name="PreacherBoots">
+		<passive_effect name="ModSlots" operation="base_set" value="1,1,2,2,3,4" tier="1,2,3,4,5,6"/>
+		<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+		<passive_effect name="PhysicalDamageResist" operation="base_add" value="8,12.3" tier="1,6"/>
+		<passive_effect name="PhysicalDamageResist" operation="base_add" value="-.2,.2"/>
+		<passive_effect name="ElementalDamageResist" operation="base_add" value="8,12.3" tier="1,6" tags="heat,electrical"/>
+		<passive_effect name="ElementalDamageResist" operation="base_add" value="-.2,.2"/>
+		<passive_effect name="BuffResistance" operation="base_add" value="0.041" tags="buffFatiguedTrigger,buffArmSprainedCHTrigger,buffLegSprainedCHTrigger,buffAbrasionCatch,buffLaceration,buffInfectionCatch,buffInjuryStunned01CHTrigger,buffInjuryBleedingTwo,buffInjuryBleedingBarbedWire"/>
+		<passive_effect name="DegradationMax" operation="base_set" value="250,500" tier="1,6"/>
+		<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="heavyArmorDeg"/>
+		<passive_effect name="HypothermalResist" operation="base_add" value="20"/>
+		<passive_effect name="HyperthermalResist" operation="base_add" value="20"/>
+		
+		<display_value name="dTreatedCritHealing" value=".02,.04,.06,.08,.1,.2" tier="1,2,3,4,5,6"/>
+		<triggered_effect trigger="onSelfEquipUpdate" action="ModifyCVar" cvar="$treatedPreacher" operation="set" value=".02,.04,.06,.08,.1,.2"/>
+		
+		<passive_effect name="Mobility" operation="perc_add" value="-.075"/>
+		<passive_effect name="StaminaChangeOT" operation="perc_add" value="-.045" tags="walking"/>
+		<passive_effect name="StaminaChangeOT" operation="perc_add" value="-.09" tags="running"/>
+		<display_value name="dStaminaChangeOT" value="-.9"/>
+		<passive_effect name="NoiseMultiplier" operation="perc_add" value=".2"/>
+		<display_value name="dNoiseMultiplier" value=".2"/>
+		
+		<passive_effect name="TrapDoorTriggerDelay" operation="base_add" value="0.2,0.4,0.6,0.8,1.0,1.2" tier="1,2,3,4,5,6" />
+		<display_value name="dTrapDoorTriggerDelay" value="0.2,0.4,0.6,0.8,1.0,1.2" tier="1,2,3,4,5,6" />
+		<passive_effect name="LandMineTriggerDelay" operation="base_add" value="0.2,0.4,0.6,0.8,1.0,1.2" tier="1,2,3,4,5,6" />
+		<display_value name="dLandMineTriggerDelay" value="0.2,0.4,0.6,0.8,1.0,1.2" tier="1,2,3,4,5,6"/>
+		<passive_effect name="TrapIncomingDamage" operation="perc_add" value="-0.025,-0.050,-0.075,-0.100,-0.125,-0.150" tier="1,2,3,4,5,6" />
+		<display_value name="dTrapIncomingDamage" value="-0.025,-0.050,-0.075,-0.100,-0.125,-0.150" tier="1,2,3,4,5,6"/>
+	</effect_group>
+
+	<effect_group>
+		<triggered_effect trigger="onSelfEquipStop" action="RemoveCVar" cvar="$treatedPreacher"/>
+	</effect_group>
+
+	<property class="SDCS">
+		<property name="Prefab" value="Entities/Player/*/Gear/Prefabs/gear*PreacherPrefab"/>
+		<property name="TransformName" value="feet"/>
+		<property name="Excludes" value="feet"/>
+	</property>
+</item>
+	
+	<!--Armor and Items-->
+	<!--#Quests-->
+	<item name="ZombieINC_Ritual_Item_Test">
+		<property name="CustomIcon" value="goreBlockAnimal"/>
+		<property name="CustomIconTint" value="ff9f9f"/>
+		<property name="DescriptionKey" value="ZombieINC_Ritual_Item_Desc"/>
+		<property name="Tags" value="TheCultRitualItemTest"/>
+		<property name="HoldType" value="25"/>
+		<property name="DisplayType" value="foodRaw"/>
+		<!--<property name="Meshfile" value="@:Other/Items/Misc/parcelPrefab.prefab"/>-->
+		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="DropScale" value="1.5"/>
+		<property name="Material" value="MfoodRawMeat"/>
+		<property name="Stacknumber" value="1"/> 	
+		<property name="EconomicValue" value="20"/>
+		<property name="SellableToTrader" value="false"/>
+		<property name="CraftingIngredientTime" value="3"/>
+		<property name="ThrowableDecoy" value="true"/>
+		<property name="Smell" value="ExLargeSmell"/>
+		<property name="Group" value="Food/Cooking,CFFood/Cooking"/>
+	
+		<property class="Action0"> 
+			<property name="Class" value="Activate"/>
+			<property name="Delay" value="1"/> 
+		</property>
+
+	<effect_group tiered="false" name="BossBaitAction">
+		<triggered_effect trigger="onSelfItemActivate" action="AddBuff" buff="ZombieINC_RitualHandleTest_Buff" />
+	</effect_group>
+	</item>
+	
+	<!--<property name="Model" value="Entities/Gore/animalRemainsGorePrefab"/>-->
+	
+	<item name="ZombieINC_RitualTestPlaceable">
+	<property name="Tags" value="vehicle,vengine,vfuel,vlight,vseat,canHaveCosmetic,ZombieINCVehicleRemover"/>
+	<property name="DescriptionKey" value="vehiclePlaceableGroupDesc"/>
+	<property name="HoldType" value="7"/>
+	<property name="HoldingItemHidden" value="true"/>
+	<property name="Meshfile" value="@:Entities/Vehicles/VBikeMini/VBikeMiniP.prefab"/>
+	<!--<property name="Meshfile" value="@:Entities/Gore/animalRemainsGorePrefab.prefab"/>-->
+	<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+	<property name="CustomIcon" value="goreBlockAnimal"/>
+	<property name="CustomIconTint" value="0,0,0"/>
+	<property name="DescriptionKey" value="ZombieINC_vehicleMinibikePlaceableDesc"/>			
+	<property name="ItemTypeIcon" value="star"/>
+	<property name="Material" value="Mmetal"/>
+	<property name="Weight" value="0"/>
+	<property name="Stacknumber" value="1"/>
+	<property name="EconomicValue" value="6000"/>
+	<property name="SellableToTrader" value="false"/>
+	<property name="Group" value="Science,TCScience"/>
+	<property name="SoundPickup" value="minibike_grab"/>
+	<property name="SoundPlace" value="minibike_place"/>
+	<property class="Action1">
+		<property name="Class" value="SpawnVehicle"/>
+		<property name="Vehicle" value="ZombieINC_RitualTest"/>
+	</property>
+	<effect_group name="vehicleMinibikePlaceable" tiered="false">
+		<passive_effect name="ModSlots" operation="base_set" value="0"/>
+		<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+		<passive_effect name="DegradationMax" operation="base_set" value="10000" />		
+	</effect_group>
+</item>
+	
+	<item name="ZombieINC_Ritual_Item">
+		<property name="CustomIcon" value="goreBlockAnimal"/>
+		<property name="CustomIconTint" value="ff9f9f"/>
+		<property name="DescriptionKey" value="ZombieINC_Ritual_Item_Desc"/>
+		<property name="Tags" value="TheCultRitualItem"/>
+		<property name="HoldType" value="25"/>
+		<property name="DisplayType" value="foodRaw"/>
+		<!--<property name="Meshfile" value="@:Other/Items/Misc/parcelPrefab.prefab"/>-->
+		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="DropScale" value="1.5"/>
+		<property name="Material" value="MfoodRawMeat"/>
+		<property name="Stacknumber" value="1"/> 	
+		<property name="EconomicValue" value="20"/>
+		<property name="SellableToTrader" value="false"/>
+		<property name="CraftingIngredientTime" value="3"/>
+		<property name="ThrowableDecoy" value="true"/>
+		<property name="Smell" value="ExLargeSmell"/>
+		<property name="Group" value="Food/Cooking,CFFood/Cooking"/>
+	
+		<property class="Action0"> 
+			<property name="Class" value="Activate"/>
+			<property name="Delay" value="1"/> 
+		</property>
+
+	<effect_group tiered="false" name="BossBaitAction">
+		<triggered_effect trigger="onSelfItemActivate" action="AddBuff" buff="ZombieINC_RitualHandle_Buff" />
+	</effect_group>
+	</item>
+	<item name="ZombieINC_Ritual_ItemNorth">
+		<property name="CustomIcon" value="goreBlockAnimal"/>
+		<property name="CustomIconTint" value="ff9f9f"/>
+		<property name="DescriptionKey" value="ZombieINC_Ritual_Item_Desc"/>
+		<property name="Tags" value="TheCultRitualP1Item"/>
+		<property name="HoldType" value="25"/>
+		<property name="DisplayType" value="foodRaw"/>
+		<!--<property name="Meshfile" value="@:Other/Items/Misc/parcelPrefab.prefab"/>-->
+		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="DropScale" value="1.5"/>
+		<property name="Material" value="MfoodRawMeat"/>
+		<property name="Stacknumber" value="1"/> 	
+		<property name="EconomicValue" value="20"/>
+		<property name="SellableToTrader" value="false"/>
+		<property name="CraftingIngredientTime" value="3"/>
+		<property name="ThrowableDecoy" value="true"/>
+		<property name="Smell" value="ExLargeSmell"/>
+		<property name="Group" value="Food/Cooking,CFFood/Cooking"/>
+	
+		<property class="Action0"> 
+			<property name="Class" value="Activate"/>
+			<property name="Delay" value="1"/> 
+		</property>
+
+	<effect_group tiered="false" name="BossBaitAction">
+		<triggered_effect trigger="onSelfItemActivate" action="AddBuff" buff="ZombieINC_RitualNorthHandle_Buff" />
+	</effect_group>
+	</item>
+	<item name="ZombieINC_Ritual_ItemSideA">
+		<property name="CustomIcon" value="goreBlockAnimal"/>
+		<property name="CustomIconTint" value="ff9f9f"/>
+		<property name="DescriptionKey" value="ZombieINC_Ritual_Item_Desc"/>
+		<property name="Tags" value="TheCultRitualP2Item"/>
+		<property name="HoldType" value="25"/>
+		<property name="DisplayType" value="foodRaw"/>
+		<!--<property name="Meshfile" value="@:Other/Items/Misc/parcelPrefab.prefab"/>-->
+		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="DropScale" value="1.5"/>
+		<property name="Material" value="MfoodRawMeat"/>
+		<property name="Stacknumber" value="1"/> 	
+		<property name="EconomicValue" value="20"/>
+		<property name="SellableToTrader" value="false"/>
+		<property name="CraftingIngredientTime" value="3"/>
+		<property name="ThrowableDecoy" value="true"/>
+		<property name="Smell" value="ExLargeSmell"/>
+		<property name="Group" value="Food/Cooking,CFFood/Cooking"/>
+	
+		<property class="Action0"> 
+			<property name="Class" value="Activate"/>
+			<property name="Delay" value="1"/> 
+		</property>
+
+	<effect_group tiered="false" name="BossBaitAction">
+		<triggered_effect trigger="onSelfItemActivate" action="AddBuff" buff="ZombieINC_RitualSideAHandle_Buff" />
+	</effect_group>
+	</item>
+	<item name="ZombieINC_Ritual_ItemSideB">
+		<property name="CustomIcon" value="goreBlockAnimal"/>
+		<property name="CustomIconTint" value="ff9f9f"/>
+		<property name="DescriptionKey" value="ZombieINC_Ritual_Item_Desc"/>
+		<property name="Tags" value="TheCultRitualP3Item"/>
+		<property name="HoldType" value="25"/>
+		<property name="DisplayType" value="foodRaw"/>
+		<!--<property name="Meshfile" value="@:Other/Items/Misc/parcelPrefab.prefab"/>-->
+		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="DropScale" value="1.5"/>
+		<property name="Material" value="MfoodRawMeat"/>
+		<property name="Stacknumber" value="1"/> 	
+		<property name="EconomicValue" value="20"/>
+		<property name="SellableToTrader" value="false"/>
+		<property name="CraftingIngredientTime" value="3"/>
+		<property name="ThrowableDecoy" value="true"/>
+		<property name="Smell" value="ExLargeSmell"/>
+		<property name="Group" value="Food/Cooking,CFFood/Cooking"/>
+	
+		<property class="Action0"> 
+			<property name="Class" value="Activate"/>
+			<property name="Delay" value="1"/> 
+		</property>
+
+	<effect_group tiered="false" name="BossBaitAction">
+		<triggered_effect trigger="onSelfItemActivate" action="AddBuff" buff="ZombieINC_RitualSideBHandle_Buff" />
+	</effect_group>
+	</item>
+	<item name="ZombieINC_Ritual_ItemBottomA">
+		<property name="CustomIcon" value="goreBlockAnimal"/>
+		<property name="CustomIconTint" value="ff9f9f"/>
+		<property name="DescriptionKey" value="ZombieINC_Ritual_Item_Desc"/>
+		<property name="Tags" value="TheCultRitualP4Item"/>
+		<property name="HoldType" value="25"/>
+		<property name="DisplayType" value="foodRaw"/>
+		<!--<property name="Meshfile" value="@:Other/Items/Misc/parcelPrefab.prefab"/>-->
+		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="DropScale" value="1.5"/>
+		<property name="Material" value="MfoodRawMeat"/>
+		<property name="Stacknumber" value="1"/> 	
+		<property name="EconomicValue" value="20"/>
+		<property name="SellableToTrader" value="false"/>
+		<property name="CraftingIngredientTime" value="3"/>
+		<property name="ThrowableDecoy" value="true"/>
+		<property name="Smell" value="ExLargeSmell"/>
+		<property name="Group" value="Food/Cooking,CFFood/Cooking"/>
+	
+		<property class="Action0"> 
+			<property name="Class" value="Activate"/>
+			<property name="Delay" value="1"/> 
+		</property>
+
+	<effect_group tiered="false" name="BossBaitAction">
+		<triggered_effect trigger="onSelfItemActivate" action="AddBuff" buff="ZombieINC_RitualBottomAHandle_Buff" />
+	</effect_group>
+	</item>
+	<item name="ZombieINC_Ritual_ItemBottomB">
+		<property name="CustomIcon" value="goreBlockAnimal"/>
+		<property name="CustomIconTint" value="ff9f9f"/>
+		<property name="DescriptionKey" value="ZombieINC_Ritual_Item_Desc"/>
+		<property name="Tags" value="TheCultRitualP5Item"/>
+		<property name="HoldType" value="25"/>
+		<property name="DisplayType" value="foodRaw"/>
+		<!--<property name="Meshfile" value="@:Other/Items/Misc/parcelPrefab.prefab"/>-->
+		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="DropScale" value="1.5"/>
+		<property name="Material" value="MfoodRawMeat"/>
+		<property name="Stacknumber" value="1"/> 	
+		<property name="EconomicValue" value="20"/>
+		<property name="SellableToTrader" value="false"/>
+		<property name="CraftingIngredientTime" value="3"/>
+		<property name="ThrowableDecoy" value="true"/>
+		<property name="Smell" value="ExLargeSmell"/>
+		<property name="Group" value="Food/Cooking,CFFood/Cooking"/>
+	
+		<property class="Action0"> 
+			<property name="Class" value="Activate"/>
+			<property name="Delay" value="1"/> 
+		</property>
+
+	<effect_group tiered="false" name="BossBaitAction">
+		<triggered_effect trigger="onSelfItemActivate" action="AddBuff" buff="ZombieINC_RitualBottomBHandle_Buff" />
+	</effect_group>
+	</item>
+	<!--<item name="ZombieINC_Ritual_Item">
+		<property name="Extends" value="questMaster"/>
+		<property name="CreativeMode" value="Dev"/>
+		<property name="DescriptionKey" value="ZombieINC_Quest_Priest_Desc"/>
+		<property name="Stacknumber" value="1"/>
+		<property name="CustomIcon" value="cntBookPile08"/>
+		<!{1}**<property name="CustomIconTint" value="ff9f9f"/>**{1}>
+		<property name="EconomicValue" value="1000"/>
+		<property name="TraderStageTemplate" value="midTier1"/>
+		<property name="Group" value="Books"/>
+		<property class="Action0">
+			<property name="QuestGiven" value="ZINCPriest"/>
+		</property>
+	</item>-->
+	<item name="ZombieINC_Quest_Priest">
+		<property name="Extends" value="questMaster"/>
+		<property name="CreativeMode" value="Dev"/>
+		<property name="DescriptionKey" value="ZombieINC_Quest_Priest_Desc"/>
+		<property name="Stacknumber" value="1"/>
+		<property name="CustomIcon" value="cntBookPile08"/>
+		<!--<property name="CustomIconTint" value="ff9f9f"/>-->
+		<property name="EconomicValue" value="1000"/>
+		<property name="TraderStageTemplate" value="midTier1"/>
+		<property name="Group" value="Books"/>
+		<property name="Unlocks" value="ZombieINC_spawnRitual_1_TheCult"/>
+		<property class="Action0">
+			<property name="QuestGiven" value="ZINCRitual"/>
+		</property>
+		
+		<effect_group tiered="false" name="BossBaitAction">
+			<!--<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="ZombieINC_Ritual_Item" operation="set" value="1"/>-->
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="ZombieINC_spawnRitual_1_TheCult" operation="set" value="1"/>
+		</effect_group>
+	</item>
+	<item name="ZombieINC_Quest_MotherInfested">
+		<property name="Extends" value="questMaster"/>
+		<property name="CreativeMode" value="Dev"/>
+		<property name="DescriptionKey" value="ZombieINC_Quest_MotherInfested_Desc"/>
+		<property name="Stacknumber" value="1"/>
+		<property name="CustomIcon" value="cntBookPile08"/>
+		<!--<property name="CustomIconTint" value="ff9f9f"/>-->
+		<!--<property name="EconomicValue" value="5000"/>
+		<property name="TraderStageTemplate" value="midTier1"/>
+		<property name="Group" value="Ammo/Weapons,Ranged Weapons"/>-->
+		<!--<property class="Action0">
+			<property name="QuestGiven" value="ZINCMotherInfested"/>
+		</property>-->
+		<property class="Action0"> 
+			<property name="Class" value="Activate"/>
+			<property name="Delay" value="1"/> 
+		</property>
+	</item>
+	<item name="ZombieINC_Quest_PenitenceInfested">
+		<property name="Extends" value="questMaster"/>
+		<property name="CreativeMode" value="Dev"/>
+		<property name="DescriptionKey" value="ZombieINC_Quest_PenitenceInfested_Desc"/>
+		<property name="Stacknumber" value="1"/>
+		<property name="CustomIcon" value="cntBookPile08"/>
+		<!--<property name="CustomIconTint" value="ff9f9f"/>-->
+		<!--<property name="EconomicValue" value="5000"/>
+		<property name="TraderStageTemplate" value="midTier1"/>
+		<property name="Group" value="Ammo/Weapons,Ranged Weapons"/>-->
+		<!--<property class="Action0">
+			<property name="QuestGiven" value="ZINCPenitenceInfested"/>
+		</property>-->
+		<property class="Action0"> 
+			<property name="Class" value="Activate"/>
+			<property name="Delay" value="1"/> 
+		</property>
+	</item>
+	<item name="ZombieINC_Quest_FarmerInfested">
+		<property name="Extends" value="questMaster"/>
+		<property name="CreativeMode" value="Dev"/>
+		<property name="DescriptionKey" value="ZombieINC_Quest_FarmerInfested_Desc"/>
+		<property name="Stacknumber" value="1"/>
+		<property name="CustomIcon" value="cntBookPile08"/>
+		<!--<property name="CustomIconTint" value="ff9f9f"/>-->
+		<!--<property name="EconomicValue" value="5000"/>
+		<property name="TraderStageTemplate" value="midTier1"/>
+		<property name="Group" value="Ammo/Weapons,Ranged Weapons"/>-->
+		<!--<property class="Action0">
+			<property name="QuestGiven" value="ZINCFarmerInfested"/>
+		</property>-->
+		<property class="Action0"> 
+			<property name="Class" value="Activate"/>
+			<property name="Delay" value="1"/> 
+		</property>
+	</item>
+	<item name="ZombieINC_Quest_FatherInfested">
+		<property name="Extends" value="questMaster"/>
+		<property name="CreativeMode" value="Dev"/>
+		<property name="DescriptionKey" value="ZombieINC_Quest_FatherInfested_Desc"/>
+		<property name="Stacknumber" value="1"/>
+		<property name="CustomIcon" value="cntBookPile08"/>
+		<!--<property name="CustomIconTint" value="ff9f9f"/>-->
+		<!--<property name="EconomicValue" value="5000"/>
+		<property name="TraderStageTemplate" value="midTier1"/>
+		<property name="Group" value="Ammo/Weapons,Ranged Weapons"/>-->
+		<!--<property class="Action0">
+			<property name="QuestGiven" value="ZINCFatherInfested"/>
+		</property>-->
+		<property class="Action0"> 
+			<property name="Class" value="Activate"/>
+			<property name="Delay" value="1"/> 
+		</property>
+	</item>
+	<!--Quests-->
+	<!--#Drinks-->
+<item name="ZombieINC_drinkJarRedTea_Priest">
+	<property name="Tags" value="ZINCBossSpawner"/>
+	<property name="HoldType" value="3"/>
+	<property name="DisplayType" value="waterRedTea"/>
+	<property name="Meshfile" value="@:Other/Items/Food/bottled_waterPrefab.prefab"/>
+	<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+	<property name="DescriptionKey" value="ZombieINC_drinkJarRedTea_Priest_Desc"/>
+	<property name="Material" value="Mglass"/>
+	<property name="CustomIcon" value="drinkJarRedTea"/>
+	<property name="CustomIconTint" value="ff9f9f"/>
+	<!-- <property name="Weight" value="10"/> -->
+	<property name="Stacknumber" value="10"/> <!-- STK drink -->
+	<property name="EconomicValue" value="48"/>
+	<property class="Action0">
+		<property name="Class" value="Eat"/>
+		<property name="Delay" value="1.0"/>
+		<property name="Sound_start" value="player_drinking"/>
+		<!-- <property name="Create_item" value="drinkJarEmpty"/> -->
+	</property>
+	<property name="Group" value="Food/Cooking,CFDrink/Cooking"/>
+
+	<effect_group tiered="false" name="GameEvent">
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="24"/>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="CallGameEvent" event="ZombieINC_BossPriest_ItemActivation" allow_client_call="true" />
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" range="40" target="positionAOE" target_tags="player" buff="ZombieINC_TheCult_PriestFightBuff"/>
+	</effect_group>
+
+</item>
+<item name="ZombieINC_drinkJarRedTea_Mother">
+	<property name="Tags" value="ZINCBossSpawner"/>
+	<property name="HoldType" value="3"/>
+	<property name="DisplayType" value="waterRedTea"/>
+	<property name="Meshfile" value="@:Other/Items/Food/bottled_waterPrefab.prefab"/>
+	<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+	<property name="DescriptionKey" value="ZombieINC_drinkJarRedTea_Mother_Desc"/>
+	<property name="Material" value="Mglass"/>
+	<property name="CustomIcon" value="drinkJarRedTea"/>
+	<property name="CustomIconTint" value="ff9f9f"/>
+	<!-- <property name="Weight" value="10"/> -->
+	<property name="Stacknumber" value="10"/> <!-- STK drink -->
+	<property name="EconomicValue" value="48"/>
+	<property class="Action0">
+		<property name="Class" value="Eat"/>
+		<property name="Delay" value="1.0"/>
+		<property name="Sound_start" value="player_drinking"/>
+		<!-- <property name="Create_item" value="drinkJarEmpty"/> -->
+	</property>
+	<property name="Group" value="Food/Cooking,CFDrink/Cooking"/>
+
+	<effect_group tiered="false" name="GameEvent">
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="24"/>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="CallGameEvent" event="ZombieINC_BossMother_ItemActivation" allow_client_call="true" />
+			<!--<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables,buffRedTea"/>-->
+	</effect_group>
+
+</item>
+<item name="ZombieINC_drinkJarRedTea_Penitence">
+	<property name="Tags" value="ZINCBossSpawner"/>
+	<property name="HoldType" value="3"/>
+	<property name="DisplayType" value="waterRedTea"/>
+	<property name="Meshfile" value="@:Other/Items/Food/bottled_waterPrefab.prefab"/>
+	<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+	<property name="DescriptionKey" value="ZombieINC_drinkJarRedTea_Penitence_Desc"/>
+	<property name="Material" value="Mglass"/>
+	<property name="CustomIcon" value="drinkJarRedTea"/>
+	<property name="CustomIconTint" value="ff9f9f"/>
+	<!-- <property name="Weight" value="10"/> -->
+	<property name="Stacknumber" value="10"/> <!-- STK drink -->
+	<property name="EconomicValue" value="48"/>
+	<property class="Action0">
+		<property name="Class" value="Eat"/>
+		<property name="Delay" value="1.0"/>
+		<property name="Sound_start" value="player_drinking"/>
+		<!-- <property name="Create_item" value="drinkJarEmpty"/> -->
+	</property>
+	<property name="Group" value="Food/Cooking,CFDrink/Cooking"/>
+
+	<effect_group tiered="false" name="GameEvent">
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="24"/>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="CallGameEvent" event="ZombieINC_BossPenitence_ItemActivation" allow_client_call="true" />
+			<!--<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables,buffRedTea"/>-->
+	</effect_group>
+
+</item>
+<item name="ZombieINC_drinkJarRedTea_Farmer">
+	<property name="Tags" value="ZINCBossSpawner"/>
+	<property name="HoldType" value="3"/>
+	<property name="DisplayType" value="waterRedTea"/>
+	<property name="Meshfile" value="@:Other/Items/Food/bottled_waterPrefab.prefab"/>
+	<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+	<property name="DescriptionKey" value="ZombieINC_drinkJarRedTea_Farmer_Desc"/>
+	<property name="Material" value="Mglass"/>
+	<property name="CustomIcon" value="drinkJarRedTea"/>
+	<property name="CustomIconTint" value="ff9f9f"/>
+	<!-- <property name="Weight" value="10"/> -->
+	<property name="Stacknumber" value="10"/> <!-- STK drink -->
+	<property name="EconomicValue" value="48"/>
+	<property class="Action0">
+		<property name="Class" value="Eat"/>
+		<property name="Delay" value="1.0"/>
+		<property name="Sound_start" value="player_drinking"/>
+		<!-- <property name="Create_item" value="drinkJarEmpty"/> -->
+	</property>
+	<property name="Group" value="Food/Cooking,CFDrink/Cooking"/>
+
+	<effect_group tiered="false" name="GameEvent">
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="24"/>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="CallGameEvent" event="ZombieINC_BossFarmer_ItemActivation" allow_client_call="true" />
+			<!--<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables,buffRedTea"/>-->
+	</effect_group>
+
+</item>
+<item name="ZombieINC_drinkJarRedTea_Father">
+	<property name="Tags" value="ZINCBossSpawner"/>
+	<property name="HoldType" value="3"/>
+	<property name="DisplayType" value="waterRedTea"/>
+	<property name="Meshfile" value="@:Other/Items/Food/bottled_waterPrefab.prefab"/>
+	<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+	<property name="DescriptionKey" value="ZombieINC_drinkJarRedTea_Father_Desc"/>
+	<property name="Material" value="Mglass"/>
+	<property name="CustomIcon" value="drinkJarRedTea"/>
+	<property name="CustomIconTint" value="ff9f9f"/>
+	<!-- <property name="Weight" value="10"/> -->
+	<property name="Stacknumber" value="10"/> <!-- STK drink -->
+	<property name="EconomicValue" value="48"/>
+	<property class="Action0">
+		<property name="Class" value="Eat"/>
+		<property name="Delay" value="1.0"/>
+		<property name="Sound_start" value="player_drinking"/>
+		<!-- <property name="Create_item" value="drinkJarEmpty"/> -->
+	</property>
+	<property name="Group" value="Food/Cooking,CFDrink/Cooking"/>
+
+	<effect_group tiered="false" name="GameEvent">
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="24"/>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="CallGameEvent" event="ZombieINC_BossFather_ItemActivation" allow_client_call="true" />
+			<!--<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables,buffRedTea"/>-->
+	</effect_group>
+
+</item>	
+	<!--##BossFather-->
+	<item name="ZombieINC_Father_meleeHandZombie01">
+	<property name="Extends" value="meleeHandMaster"/>
+	<property name="CreativeMode" value="None"/>
+	<property class="Action0">
+		<property name="DamageEntity" value="40"/>
+		<property name="DamageBlock" value="8"/>
+		<property name="Range" value="1.6"/>
+		<property name="Sphere" value="1"/>
+	</property>
+	<effect_group name="meleeHandZombie01" tiered="false">
+		
+		<passive_effect name="ModSlots" operation="base_set" value="0"/>
+		<passive_effect name="EntityDamage" operation="base_set" value="40"/>
+		
+		<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" fireOneBuff="true"
+			buff="buffFatiguedTrigger,buffArmSprainedCHTrigger,buffLegSprainedCHTrigger,buffLaceration,buffAbrasionCatch,buffInjuryStunned01CHTrigger,buffInjuryBleedingTwo"
+			weights=".11,.07,.07,.05,.29,.36,.11"/>
+			
+		<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" buff="buffBurningZombie">
+			<requirement name="HasBuff" target="self" buff="ZombieINC_BossFather_Phases_Fire_Buff"></requirement>
+		</triggered_effect>
+		
+		
+		<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" target="other" cvar="infectionCounter" operation="add" value="10"><!--InfectionRegular-->
+			<requirement name="CVarCompare" target="other" cvar="infectionCounter" operation="GT" value="0"/></triggered_effect>
+		<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" target="other" cvar="abrasionZombieHit" operation="set" value="1800"/><!--AbrasionRegular-->
+	</effect_group>
+</item>
+	
+	<!--BossFather-->
+	<!--##BossFarmer-->
+	<item name="ZombieINC_meleeHandAnimalSnake">
+	<property name="Extends" value="meleeHandMaster"/>
+	<property name="CreativeMode" value="None"/>
+	<property name="HoldType" value="55"/>
+	<property class="Action0">
+		<property name="Delay" value="2.5"/>
+		<property name="Range" value="3"/>
+		<property name="DamageEntity" value="50"/>
+		<property name="DamageBlock" value="1000"/>
+	</property>
+	<effect_group name="meleeHandAnimalSnake" tiered="false">
+		<passive_effect name="ModSlots" operation="base_set" value="0"/>
+		<!--<passive_effect name="AttacksPerMinute" operation="base_set" value="75"/> A16 .8 -->
+		<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" fireOneBuff="true"
+			buff="buffFatiguedTrigger,buffArmSprainedCHTrigger,buffLegSprainedCHTrigger,buffLaceration,buffAbrasionCatch,buffInjuryStunned01CHTrigger,buffInjuryBleedingTwo"
+			weights=".11,.07,.07,.05,.29,.36,.11"/>
+	</effect_group>
+</item>
+	
+	<!--BossFarmer-->
+	<!--##BossPenitence-->
+	<!--BossPenitence-->
+<!--The Cult-->	
+	
+	
+	</append>
+
+</Config>

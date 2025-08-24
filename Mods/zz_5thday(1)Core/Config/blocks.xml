@@ -1,5 +1,6 @@
 <config>
 	<set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='AdvancedRecipes']/property[@name='ReadFromContainers']/@value">true</set>
+	<set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='AdvancedRecipes']/property[@name='Distance']/@value">5</set>
 	<set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='AdvancedLockpicking']/property[@name='AdvancedLocks']/@value">true</set>
 	<set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='AdvancedLockpicking']/property[@name='LockPrefab']/@value">#@modfolder(Locks):Resources/Locks.unity3d?padlock01</set>
 	<set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='AdvancedPlayerFeatures']/property[@name='VehicleNoTake']/@value">true</set>
@@ -17,6 +18,11 @@
 		<property name="WaterRange" value="7" />
 		<property name="Wilt" value="true" />
 	</append>
+
+<append xpath="//block[@name='rollUpGate3x3White']">
+		<property name="Pickable" value="false" />
+	</append>
+
 	<!-- Sets wood to be tagged-->
 	<append xpath="//block[@name='modularFireWoodStackA']">
 		<property name="Tags" value="wood"/>
@@ -52,6 +58,12 @@
 	<append xpath="//block[@name='oldWoodDoorDouble']">
 		<property name="EconomicValue" value="80"/>
 	</append>
+
+<!-- <set xpath="//block[@name='autoTurret']/property[@name='AmmoItem']/@value">ammo9mmBulletBall,ammo9mmBulletAP</set> -->
+		
+
+
+
 	<!--	<append xpath="//block[contains(@name,'cntCar')]/property[@name='Tags']/@value">,Car,WrenchXPGain</append><append xpath="//block[contains(@name,'cntSedan')]/property[@name='Tags']/@value">,Car,WrenchXPGain</append><append xpath="//block[contains(@name,'cntTruck')]/property[@name='Tags']/@value">,Car,WrenchXPGain</append><append xpath="//block[contains(@name,'abandonedSUV')]/property[@name='Tags']/@value">,Car,WrenchXPGain</append><append xpath="//block[contains(@name,'burntSedan')]/property[@name='Tags']/@value">,Car,WrenchXPGain</append><append xpath="//block[contains(@name,'abandonedPickup')]/property[@name='Tags']/@value">,Car,WrenchXPGain</append><append xpath="//block[contains(@name,'cntMinivan')]/property[@name='Tags']/@value">,Car,WrenchXPGain</append><append xpath="//block[contains(@name,'cntSedan01White')]/property[@name='Tags']/@value">,Car,WrenchXPGain</append><append xpath="//block[contains(@name,'cntSUV01White')]/property[@name='Tags']/@value">,Car,WrenchXPGain</append><append xpath="//block[contains(@name,'cntMinivan01White')]/property[@name='Tags']/@value">,Car,WrenchXPGain</append><append xpath="//block[contains(@name,'cntPickupTruck01White')]/property[@name='Tags']/@value">,Car,WrenchXPGain</append>
 -->
 	<append xpath="//block[contains(@name,'utilitySink')]/property[@name='Tags']/@value">,WrenchXPGain</append>
@@ -608,11 +620,13 @@
 	</append>
 	<remove xpath="/blocks/block[@name='treeStump']/drop[@name='resourceWood']"/>
 	<append xpath="/blocks/block[@name='treeStump']">
-		<drop event="Harvest" name="woodLogPillar100" count="1" tag="oreWoodHarvest"/>
+		<!-- <drop event="Harvest" name="woodLogPillar100" count="1" tag="oreWoodHarvest"/> -->
+		<drop event="Destroy" name="woodLogPillar100" count="1" tag="oreWoodHarvest"/>
 	</append>
 	<remove xpath="/blocks/block[@name='treeStumpPOI']/drop[@name='resourceWood']"/>
 	<append xpath="/blocks/block[@name='treeStumpPOI']">
-		<drop event="Harvest" name="woodLogPillar100" count="1" tag="oreWoodHarvest"/>
+		<!-- <drop event="Harvest" name="woodLogPillar100" count="1" tag="oreWoodHarvest"/> -->
+		<drop event="Destroy" name="woodLogPillar100" count="1" tag="oreWoodHarvest"/>
 	</append>
 	<!-- bushes -->
 	<!--<remove xpath="/blocks/block[@name='treePlainsTree']/drop event[@event='Fall']"/>-->
@@ -2115,6 +2129,13 @@
 				<property name="UpgradeHitCount" value="1" /></property>
 		</block>
 	</append>
+	<set xpath="//block[@name='cntHardenedChestSecure']/property[@name='Material']/@value">Mbedrock</set>
+	
+    <append xpath="//block[contains(@name,'ironGarageDoor_PoweredBlockVariantHelper')]">
+		<property name="UnlockedBy" value="perkWrenches"/>
+	</append>
+
+
 	<set xpath="//block/property[(@name='UnlockedBy') and (@value='perkLivingOffTheLand')]/@value">PerkHOHFarming</set>
 
 	<append xpath="//block[@name='woodShapes']"><property name='UnlockedBy' value="perkConstruction"/></append>
@@ -2148,5 +2169,9 @@
 <append xpath="//block[contains(@name,'Fridge')                            ]"><property name="ItemWeight" value="500"/></append>
 <append xpath="//block[contains(@name,'chandelier')                            ]"><property name="ItemWeight" value="100"/></append>
 <append xpath="//block[contains(@name,'adiator')                            ]"><property name="ItemWeight" value="100"/></append>
+<append xpath="//block[contains(@name,'generator')]"><property name="ItemWeight" value="7525"/></append>
+<append xpath="//block[starts-with(@name,'tv')]"><property name="ItemWeight" value="925"/></append>
+
+
 
 </config>

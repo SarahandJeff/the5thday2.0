@@ -29,8 +29,16 @@
 	
 	-->
 	<append xpath="/dialogs/dialog[@id='trader']/statement[@id='start']" >
-		<response_entry id="resetquests" />
+		<response_entry id="resetquestssnj" />
 	</append>
+
+	<insertAfter xpath="/dialogs/dialog[@id='trader']/statement[@id='start']" >
+			<response id="resetquestssnj" text="dialog_trader_response_resetquests">
+				<requirement type="HasCVarSDX, Score" requirementtype="Hide" operator="GTE" value="5" id="HOH_Questing_lvl" Hash="Requirement_232902562"/>
+				<action type="Trader" id="reset_quests" />
+			</response>
+	</insertAfter>
+
 
 	<!--<remove xpath="/dialogs/dialog/statement/response_entry[@id='Pickup']"/>
 	<remove xpath="/dialogs/dialog/statement/response[@id='Pickup']"/>-->

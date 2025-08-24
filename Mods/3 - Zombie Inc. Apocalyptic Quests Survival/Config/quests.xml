@@ -1,0 +1,946 @@
+<Config>
+	<conditional>
+		<if cond="mod_loaded('mateusjobsmain')">
+			<insertAfter xpath="/quests/quest[@id='tier2_buried_supplies']">
+				<quest id="ZombieINC_WorkAround_Survival_Reward_T1">
+					<property name="name_key" value="ZombieINC_WorkAround_Survival_Reward_name" param1="name"/>
+					<property name="subtitle_key" value="ZombieINC_WorkAround_Survival_Reward_subtitle" param1="subtitle"/>
+					<property name="description_key" value="ZombieINC_WorkAround_Survival_Reward_desc" param1="description"/>
+					<property name="icon" value="ui_game_symbol_quest"/>
+					<property name="repeatable" value="true"/>
+					<property name="category_key" value="challenge"/>
+					<property name="add_to_tier_complete" value="false"/>
+					<property name="difficulty_tier" value="0" />
+					<property name="allow_remove" value="false" />
+					<property name="reward_choices_count" value="0"/>
+					<property name="extra_tags" value="ZINCSurvival,ZINCSurvivalT1" param1="tags"  />
+					<property name="completiontype" value="AutoComplete"/>
+				</quest>
+				<quest id="ZombieINC_WorkAround_Survival_Reward_T2" template="ZombieINC_WorkAround_Survival_Reward_T1">
+					<variable name="tags" value="ZINCSurvival,ZINCSurvivalT2"/>	
+				</quest>
+				<quest id="ZombieINC_WorkAround_Survival_Reward_T3" template="ZombieINC_WorkAround_Survival_Reward_T1">
+					<variable name="tags" value="ZINCSurvival,ZINCSurvivalT3"/>	
+				</quest>
+				<quest id="ZombieINC_WorkAround_Survival_Reward_T4" template="ZombieINC_WorkAround_Survival_Reward_T1">
+					<variable name="tags" value="ZINCSurvival,ZINCSurvivalT4"/>	
+				</quest>
+				<quest id="ZombieINC_WorkAround_Survival_Reward_T5" template="ZombieINC_WorkAround_Survival_Reward_T1">
+					<variable name="tags" value="ZINCSurvival,ZINCSurvivalT5"/>	
+				</quest>
+				<quest id="ZombieINC_WorkAround_Survival_Reward_T6" template="ZombieINC_WorkAround_Survival_Reward_T1">
+					<variable name="tags" value="ZINCSurvival,ZINCSurvivalT6"/>	
+				</quest>
+				<!--###-->
+			</insertAfter>
+		</if>
+	</conditional>
+<insertAfter xpath="/quests/quest[@id='tier2_buried_supplies']">
+
+
+	
+
+<!--###Survival-->	
+	<quest id="ZINCSurvival1">
+		    <property name="name_key" value="ZombieINC_challenge_tier1_Survival_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_tier1_Survival_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_tier1_Survival_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="false"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="1"/>
+		    <property name="offer_key" value="ZombieINC_challenge_tier1_Survival_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_tier1_Survival_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_tier1_Survival_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<!--<property name="extra_tags" value="ZINCSurvival,ZINCSurvivalT1"  />-->
+			<property name="extra_tags" value=""  />
+			<property name="shareable" value="true"/>
+			
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_tier1_Survival_completion"/>
+			
+				
+			<objective type="RandomPOIGoto" phase="1">
+				<property name="biome_filter_type" value="SameBiome" param1="biome_filter_type" />
+				<property name="biome_filter" value="burnt_forest" param1="biome_filter" />
+				<property name="nav_object" value="quest" />
+				<property name="poi_tier" value="1"  />
+			</objective>
+
+			<objective type="RallyPoint" phase="2">
+				<property name="nav_object" value="rally" />
+				<property name="rally_marker_type" value="questRallyMarkerInfestation"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_Survival_NewRemoveAllBuffsWhenFail_T1" phase="3"/>
+			<action type="GameEvent" id="ZombieINC_GeneralUse_NoVehicleBuffAdd_Event" phase="3"/>
+			<action type="GameEvent" id="ZombieINC_Survival_tier1_Start" phase="3"/>
+			
+			<objective type="Time" phase="3">
+				<property name="time" value="180"/>
+			</objective>
+	
+			<objective type="POIStayWithin" phase="3">
+				<property name="radius" value="20"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_Survival_NewQuestFinished_Event_T1" phase="4"/>
+			
+			<objective type="ReturnToNPC" phase="4">
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+			
+			<objective type="InteractWithNPC" phase="5">
+				<property name="nav_object" value="return_to_trader" />						
+			</objective>
+
+               
+			<reward type="Exp" value="4000"/>
+			<reward type="Item" id="casinoCoin" value="700"/>
+			
+			<reward type="LootItem" id="groupQuestFood,groupQuestAmmo,groupQuestSchematics" ischosen="true" value="1"/>
+		<reward type="LootItem" id="groupQuestFood,groupQuestAmmo,groupQuestSchematics" ischosen="true" value="1"/>
+		<reward type="LootItem" id="groupQuestFood,groupQuestAmmo,groupQuestSchematics" ischosen="true" value="1"/>
+		<reward type="LootItem" id="groupQuestFood,groupQuestAmmo,groupQuestSchematics" ischosen="true" value="1"/>
+		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics" ischosen="true" value="1"/>
+		<reward type="LootItem" id="groupQuestResourcesT0" ischosen="true" value="1"/>
+		<reward type="LootItem" id="groupQuestResourcesT0,groupQuestT1SkillMagazineBundle" ischosen="true" value="1"/>
+		
+	</quest>
+	
+	
+	
+	<quest id="ZINCSurvival2">
+		    <property name="name_key" value="ZombieINC_challenge_tier2_Survival_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_tier2_Survival_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_tier2_Survival_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="false"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="2"/>
+		    <property name="offer_key" value="ZombieINC_challenge_tier2_Survival_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_tier2_Survival_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_tier2_Survival_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<!--<property name="extra_tags" value="ZINCSurvival,ZINCSurvivalT2"  />-->
+			<property name="extra_tags" value=""  />
+			<property name="shareable" value="true"/>
+			
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_tier2_Survival_completion"/>
+			
+			<objective type="RandomPOIGoto" phase="1">
+				<property name="biome_filter_type" value="SameBiome" param1="biome_filter_type" />
+				<property name="biome_filter" value="burnt_forest" param1="biome_filter" />
+				<property name="nav_object" value="quest" />
+				<property name="poi_tier" value="1"  />
+			</objective>
+
+			<objective type="RallyPoint" phase="2">
+				<property name="nav_object" value="rally" />
+				<property name="rally_marker_type" value="questRallyMarkerInfestation"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_Survival_NewRemoveAllBuffsWhenFail_T2" phase="3"/>
+			<action type="GameEvent" id="ZombieINC_GeneralUse_NoVehicleBuffAdd_Event" phase="3"/>
+			<action type="GameEvent" id="ZombieINC_Survival_tier2_Start" phase="3"/>
+			
+			<objective type="Time" phase="3">
+				<property name="time" value="240"/>
+			</objective>
+	
+			<objective type="POIStayWithin" phase="3">
+				<property name="radius" value="20"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_Survival_NewQuestFinished_Event_T2" phase="4"/>
+
+			<objective type="ReturnToNPC" phase="4">
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+								
+			<objective type="InteractWithNPC" phase="5">
+				<property name="nav_object" value="return_to_trader" />						
+			</objective>
+
+               
+			<reward type="Exp" value="6060"/>
+		<reward type="Item" id="casinoCoin" value="900"/>
+		
+		<reward type="LootItem" id="groupQuestFood,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="2"/>
+		<reward type="LootItem" id="groupQuestFood,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="2"/>
+		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="1"/>
+		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="1"/>
+		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="2"/>
+		<reward type="LootItem" id="groupQuestResourcesT0,seedsNoFlowers" ischosen="true"/>
+		<reward type="LootItem" id="groupQuestResourcesT0,groupQuestT1SkillMagazineBundle" ischosen="true"/>
+	</quest>
+	
+	
+	<quest id="ZINCSurvival3">
+		    <property name="name_key" value="ZombieINC_challenge_tier3_Survival_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_tier3_Survival_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_tier3_Survival_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="false"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="3"/>
+		    <property name="offer_key" value="ZombieINC_challenge_tier3_Survival_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_tier3_Survival_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_tier3_Survival_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+		<!--	<property name="extra_tags" value="ZINCSurvival,ZINCSurvivalT3"  />-->
+			<property name="extra_tags" value=""  />
+			<property name="shareable" value="true"/>
+			
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_tier3_Survival_completion"/>
+			
+			<property name="return_to_quest_giver" value="true" />
+			<property name="add_to_tier_complete" value="true" />
+			
+			<objective type="RandomPOIGoto" phase="1">
+				<property name="biome_filter_type" value="SameBiome" param1="biome_filter_type" />
+				<property name="biome_filter" value="burnt_forest" param1="biome_filter" />
+				<property name="nav_object" value="quest" />
+				<property name="poi_tier" value="1"  />
+			</objective>
+
+			<objective type="RallyPoint" phase="2">
+				<property name="nav_object" value="rally" />
+				<property name="rally_marker_type" value="questRallyMarkerInfestation"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_Survival_NewRemoveAllBuffsWhenFail_T3" phase="3"/>
+			<action type="GameEvent" id="ZombieINC_GeneralUse_NoVehicleBuffAdd_Event" phase="3"/>
+			<action type="GameEvent" id="ZombieINC_Survival_tier3_Start" phase="3"/>
+			
+			<objective type="Time" phase="3">
+				<property name="time" value="300"/>
+			</objective>
+	
+			<objective type="POIStayWithin" phase="3">
+				<property name="radius" value="20"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_Survival_NewQuestFinished_Event_T3" phase="4"/>
+			
+			<objective type="ReturnToNPC" phase="4">
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+			
+			<objective type="InteractWithNPC" phase="5">
+				<property name="nav_object" value="return_to_trader" />						
+			</objective>
+
+               
+			<reward type="Exp" value="10750"/>
+		<reward type="Item" id="casinoCoin" value="1200"/>
+		
+		<reward type="LootItem" id="groupQuestFood,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="3"/>
+		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="2"/>
+		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="2"/>
+		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="3"/>
+		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="3"/>
+		<reward type="LootItem" id="groupQuestResourcesT0,seedsNoFlowers,groupQuestSteel01" ischosen="true"/>
+		<reward type="LootItem" id="groupQuestResourcesT1,groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		
+	</quest>
+	
+	
+	<!--<quest id="ZINCSurvival3Part2">
+		    <property name="name_key" value="ZombieINC_challenge_tier3_Survival_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_tier3_Survival_Phase2_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_tier3_Survival_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="false"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="3"/>
+		    <property name="offer_key" value="ZombieINC_challenge_tier3_Survival_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_tier3_Survival_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_tier3_Survival_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value=""  />
+			<property name="shareable" value="true"/>
+			
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_tier3_Survival_completion"/>
+			
+			<action type="TrackQuest"/>	
+			
+			<action type="GameEvent" id="ZombieINC_Survival_tier3_Start" phase="1"/>
+			<action type="GameEvent" id="ZombieINC_Survival_tier3_VehicleBlocker" phase="1"/>
+			<action type="GameEvent" id="ZombieINC_Survival_tier3_IsInDoorsChecker" phase="1"/>
+			
+			
+			<objective type="RandomPOIGoto" phase="1">
+				<property name="biome_filter_type" value="SameBiome" param1="biome_filter_type" />
+				<property name="biome_filter" value="burnt_forest" param1="biome_filter" />
+				<property name="nav_object" value="quest" />
+				<property name="poi_tier" value="2"  />
+			</objective>
+
+			<objective type="RallyPoint" phase="2">
+				<property name="nav_object" value="rally" />
+				<property name="rally_marker_type" value="questRallyMarkerInfestation"/>
+			</objective>
+
+			<action type="GameEvent" id="ZombieINC_SurvivalT3_RemoveAllBuffs" phase="3"/>
+
+			<objective type="FetchFromContainer" phase="3">
+				<property name="quest_item_ID" value="1"/>
+				<property name="item_count" value="1"/>
+				<property name="default_container" value="cntFetchQuestSatchel"/>
+				<property name="nav_object" value="fetch_container" />
+			</objective>
+	
+			
+			<objective type="Time" phase="4">
+				<property name="time" value="5"/>
+			</objective>
+	
+			<objective type="StayWithin" phase="4">
+				<property name="radius" value="100"/>
+			</objective>
+			
+			<objective type="Time" phase="5">
+				<property name="time" value="60"/>
+			</objective>
+	
+			<objective type="StayWithin" phase="5">
+				<property name="radius" value="100"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_Survival_tier3_Start" phase="5"/>
+			<action type="GameEvent" id="ZombieINC_Survival_tier3_IsInDoorsChecker" phase="5"/>
+			
+			<objective type="ReturnToNPC" phase="6">
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+			<action type="GameEvent" id="ZombieINC_Survival_tier3_VehicleBlocker" phase="6"/>
+			
+			
+			
+			<action type="GameEvent" id="ZombieINC_SurvivalT3_RemoveAllBuffs" phase="7"/>
+			
+			<objective type="InteractWithNPC" phase="7">
+				<property name="nav_object" value="return_to_trader" />						
+			</objective>
+
+               
+			<reward type="Exp" value="10750"/>
+		<reward type="Item" id="casinoCoin" value="3000"/>
+
+		<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="3"/>
+		<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="3"/>
+		<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="3"/>
+		<reward type="LootItem" id="groupQuestTools" ischosen="true" value="3"/>
+		<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="3"/>
+		<reward type="LootItem" id="groupQuestMods" ischosen="true" value="3"/>
+		<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+		<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		
+	</quest>-->
+	
+	
+	<quest id="ZINCSurvival4">
+		    <property name="name_key" value="ZombieINC_challenge_tier4_Survival_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_tier4_Survival_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_tier4_Survival_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="false"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="4"/>
+		    <property name="offer_key" value="ZombieINC_challenge_tier4_Survival_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_tier4_Survival_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_tier4_Survival_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<!--<property name="extra_tags" value="ZINCSurvival,ZINCSurvivalT4"  />-->
+			<property name="extra_tags" value=""  />
+			<property name="shareable" value="true"/>
+			
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_tier4_Survival_completion"/>
+			
+			<objective type="RandomPOIGoto" phase="1">
+				<property name="biome_filter_type" value="SameBiome" param1="biome_filter_type" />
+				<property name="biome_filter" value="burnt_forest" param1="biome_filter" />
+				<property name="nav_object" value="quest" />
+				<property name="poi_tier" value="2"  />
+			</objective>
+
+			<objective type="RallyPoint" phase="2">
+				<property name="nav_object" value="rally" />
+				<property name="rally_marker_type" value="questRallyMarkerInfestation"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_Survival_NewRemoveAllBuffsWhenFail_T4" phase="3"/>
+			<action type="GameEvent" id="ZombieINC_GeneralUse_NoVehicleBuffAdd_Event" phase="3"/>
+			<action type="GameEvent" id="ZombieINC_Survival_tier4_Start" phase="3"/>
+			
+			<objective type="Time" phase="3">
+				<property name="time" value="300"/>
+			</objective>
+	
+			<objective type="POIStayWithin" phase="3">
+				<property name="radius" value="20"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_Survival_NewQuestFinished_Event_T4" phase="4"/>
+			
+			<objective type="ReturnToNPC" phase="4">
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+			
+			<objective type="InteractWithNPC" phase="5">
+				<property name="nav_object" value="return_to_trader" />						
+			</objective>
+
+               
+			<reward type="Exp" value="12400"/>
+		<reward type="Item" id="casinoCoin" value="2300"/>
+		
+		<reward type="LootItem" id="groupQuestFood,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="4"/>
+		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="3"/>
+		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="3"/>
+		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="4"/>
+		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="4"/>
+		<reward type="LootItem" id="groupQuestResourcesT1,groupQuestSteel01" ischosen="true"/>
+		<reward type="LootItem" id="groupQuestResourcesT1,groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		
+	</quest>
+	
+	
+	<!--<quest id="ZINCSurvival4Part2">
+		    <property name="name_key" value="ZombieINC_challenge_tier4_Survival_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_tier4_Survival_Phase2_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_tier4_Survival_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="false"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="4"/>
+		    <property name="offer_key" value="ZombieINC_challenge_tier4_Survival_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_tier4_Survival_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_tier4_Survival_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value=""  />
+			<property name="shareable" value="true"/>
+			
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_tier4_Survival_completion"/>
+			
+			<action type="TrackQuest"/>	
+			
+			<action type="GameEvent" id="ZombieINC_Survival_tier4_Start" phase="1"/>
+			<action type="GameEvent" id="ZombieINC_Survival_tier4_VehicleBlocker" phase="1"/>
+			<action type="GameEvent" id="ZombieINC_Survival_tier4_IsInDoorsChecker" phase="1"/>
+			
+			<objective type="RandomGotoNPC" phase="1">
+				<property name="completion_distance" value="20"/>
+				<property name="distance" value="350-600"/>
+				<property name="nav_object" value="quest" />
+			</objective>
+
+			<objective type="RallyPoint" phase="2">
+				<property name="start_mode" value="Create"/>
+				<property name="nav_object" value="rally" />
+				<property name="rally_marker_type" value="questRallyMarkerInfestation"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_SurvivalT4_RemoveAllBuffs" phase="3"/>
+			
+			<objective type="StayWithin" phase="3">
+				<property name="radius" value="30"/>
+			</objective>
+			
+			<objective type="TreasureChest">
+				<property name="phase" value="3" />
+				<property name="block" value="cntBuriedFoodStashChest" param1="container"/>
+				<property name="default_radius" value="5" param1="radius"/>
+				<property name="container_type" value="Supplies"/>
+				<property name="nav_object" value="treasure" />
+				<property name="direct_nav_object" value="treasure_direct" />
+				<property name="blocks_per_reduction" value="1" />
+				<property name="radius_reduction_sound" value="ui_radius_shrink" />
+				<property name="use_nearby" value="true" />
+				<property name="explosion_event" value="quest_treasure_explosion_horde" />
+			</objective>
+
+			<event type="TreasureRadiusReduction">
+				<property name="chance" value="1" param1="spawn_chance" />
+				<action type="SpawnGSEnemy">
+					<property name="gamestage_list" value="SleeperGSList" />
+					<property name="count" value="4-6" param1="spawn_count" />
+				</action>
+			</event>
+
+			<objective type="FetchFromTreasure">
+				<property name="phase" value="3" />
+				<property name="block" value="cntBuriedFoodStashChest" param1="container" />
+				<property name="quest_item_ID" value="1"/>
+				<property name="item_count" value="1"/>
+			</objective>
+	
+			
+			<objective type="Time" phase="4">
+				<property name="time" value="10"/>
+			</objective>
+			
+			<objective type="StayWithin" phase="4">
+				<property name="radius" value="100"/>
+			</objective>
+			
+			<objective type="Time" phase="5">
+				<property name="time" value="60"/>
+			</objective>
+	
+			<objective type="StayWithin" phase="5">
+				<property name="radius" value="100"/>
+			</objective>
+	
+			<action type="GameEvent" id="ZombieINC_Survival_tier4_Start" phase="5"/>
+			<action type="GameEvent" id="ZombieINC_Survival_tier4_IsInDoorsChecker" phase="5"/>
+			
+			<objective type="ReturnToNPC" phase="6">
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+			<action type="GameEvent" id="ZombieINC_Survival_tier4_VehicleBlocker" phase="6"/>
+			
+			
+			
+			<action type="GameEvent" id="ZombieINC_SurvivalT4_RemoveAllBuffs" phase="7"/>
+			
+			<objective type="InteractWithNPC" phase="7">
+				<property name="nav_object" value="return_to_trader" />						
+			</objective>
+
+               
+			<reward type="Exp" value="12400"/>
+		<reward type="Item" id="casinoCoin" value="5300"/>
+
+		<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="4"/>
+		<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="4"/>
+		<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="4"/>
+		<reward type="LootItem" id="groupQuestTools" ischosen="true" value="4"/>
+		<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="4"/>
+		<reward type="LootItem" id="groupQuestMods" ischosen="true" value="4"/>
+		<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+		<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		
+	</quest>-->
+	
+	
+	<quest id="ZINCSurvival5">
+		    <property name="name_key" value="ZombieINC_challenge_tier5_Survival_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_tier5_Survival_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_tier5_Survival_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="false"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="5"/>
+		    <property name="offer_key" value="ZombieINC_challenge_tier5_Survival_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_tier5_Survival_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_tier5_Survival_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<!--<property name="extra_tags" value="ZINCSurvival,ZINCSurvivalT5"  />-->
+			<property name="extra_tags" value=""  />
+			<property name="shareable" value="true"/>
+			
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_tier5_Survival_completion"/>
+			
+			<objective type="RandomPOIGoto" phase="1">
+				<property name="biome_filter_type" value="SameBiome" param1="biome_filter_type" />
+				<property name="biome_filter" value="burnt_forest" param1="biome_filter" />
+				<property name="nav_object" value="quest" />
+				<property name="poi_tier" value="2"  />
+			</objective>
+
+			<objective type="RallyPoint" phase="2">
+				<property name="nav_object" value="rally" />
+				<property name="rally_marker_type" value="questRallyMarkerInfestation"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_Survival_NewRemoveAllBuffsWhenFail_T5" phase="3"/>
+			<action type="GameEvent" id="ZombieINC_GeneralUse_NoVehicleBuffAdd_Event" phase="3"/>
+			<action type="GameEvent" id="ZombieINC_Survival_tier5_Start" phase="3"/>
+			
+			<objective type="Time" phase="3">
+				<property name="time" value="360"/>
+			</objective>
+	
+			<objective type="POIStayWithin" phase="3">
+				<property name="radius" value="20"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_Survival_NewQuestFinished_Event_T5" phase="4"/>
+			
+			<objective type="ReturnToNPC" phase="4">
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+			
+			<objective type="InteractWithNPC" phase="5">
+				<property name="nav_object" value="return_to_trader" />						
+			</objective>
+			
+               
+			<reward type="Exp" value="25400"/>
+			<reward type="Item" id="casinoCoin" value="4000"/>
+			
+			<reward type="LootItem" id="groupQuestArmorResources" ischosen="true" value="1"/>
+		<reward type="LootItem" id="groupQuestFood,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="4"/>
+		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="4"/>
+		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="5"/>
+		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="5"/>
+		<reward type="LootItem" id="groupQuestGas,groupQuestSteel02" ischosen="true"/>
+		<reward type="LootItem" id="groupQuestResourcesT1,groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		
+	</quest>
+	
+	
+	<!--<quest id="ZINCSurvival5Part2">
+		    <property name="name_key" value="ZombieINC_challenge_tier5_Survival_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_tier5_Survival_Phase2_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_tier5_Survival_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="false"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="5"/>
+		    <property name="offer_key" value="ZombieINC_challenge_tier5_Survival_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_tier5_Survival_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_tier5_Survival_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value=""  />
+			<property name="shareable" value="true"/>
+			
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_tier5_Survival_completion"/>
+			
+			<action type="TrackQuest"/>	
+			
+			<action type="GameEvent" id="ZombieINC_Survival_tier5_Start" phase="1"/>
+			<action type="GameEvent" id="ZombieINC_Survival_tier5_VehicleBlocker" phase="1"/>
+			<action type="GameEvent" id="ZombieINC_Survival_tier5_IsInDoorsChecker" phase="1"/>
+			
+			<objective type="RandomPOIGoto" phase="1">
+				<property name="biome_filter_type" value="SameBiome" param1="biome_filter_type" />
+				<property name="biome_filter" value="burnt_forest" param1="biome_filter" />
+				<property name="nav_object" value="quest" />
+				<property name="poi_tier" value="3"  />
+			</objective>
+
+			<objective type="RallyPoint" phase="2">
+				<property name="nav_object" value="rally" />
+				<property name="rally_marker_type" value="questRallyMarkerInfestation"/>
+			</objective>
+			
+			
+			<action type="GameEvent" id="ZombieINC_Survival_tier5_VehicleBlockerRemover" phase="3"/>		
+			<action type="GameEvent" id="ZombieINC_Survival_tier5_IsInDoorsCheckerRemover" phase="3"/>
+			
+			<objective type="FetchFromContainer" phase="3">
+				<property name="quest_item_ID" value="1"/>
+				<property name="item_count" value="1"/>
+				<property name="default_container" value="cntFetchQuestSatchel"/>
+				<property name="nav_object" value="fetch_container" />
+			</objective>
+	
+			<objective type="Time" phase="4">
+				<property name="time" value="10"/>
+			</objective>
+			
+			<objective type="StayWithin" phase="4">
+				<property name="radius" value="100"/>
+			</objective>
+			
+			<objective type="Time" phase="5">
+				<property name="time" value="60"/>
+			</objective>
+	
+			<objective type="StayWithin" phase="5">
+				<property name="radius" value="100"/>
+			</objective>
+	
+			
+			<action type="GameEvent" id="ZombieINC_Survival_tier5_IsInDoorsChecker" phase="5"/>
+			
+			<objective type="ReturnToNPC" phase="6">
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+			<action type="GameEvent" id="ZombieINC_Survival_tier5_VehicleBlocker" phase="6"/>
+					
+			<action type="GameEvent" id="ZombieINC_SurvivalT5_RemoveAllBuffs" phase="7"/>
+			
+			<objective type="InteractWithNPC" phase="7">
+				<property name="nav_object" value="return_to_trader" />						
+			</objective>
+
+               
+			<reward type="Exp" value="25400"/>
+			<reward type="Item" id="casinoCoin" value="12300"/>
+
+			<reward type="LootItem" id="groupQuestTools" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+			<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		
+	</quest>-->
+	
+	
+	<quest id="ZINCSurvival6">
+		    <property name="name_key" value="ZombieINC_challenge_tier6_Survival_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_tier6_Survival_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_tier6_Survival_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="false"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="6"/>
+		    <property name="offer_key" value="ZombieINC_challenge_tier6_Survival_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_tier6_Survival_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_tier6_Survival_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+		<!--	<property name="extra_tags" value="ZINCSurvival,ZINCSurvivalT6"  />-->
+			<property name="extra_tags" value=""  />
+			<property name="shareable" value="true"/>
+			
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_tier6_Survival_completion"/>
+			
+			<objective type="RandomPOIGoto" phase="1">
+				<property name="biome_filter_type" value="SameBiome" param1="biome_filter_type" />
+				<property name="biome_filter" value="burnt_forest" param1="biome_filter" />
+				<property name="nav_object" value="quest" />
+				<property name="poi_tier" value="3"  />
+			</objective>
+
+			<objective type="RallyPoint" phase="2">
+				<property name="nav_object" value="rally" />
+				<property name="rally_marker_type" value="questRallyMarkerInfestation"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_Survival_NewRemoveAllBuffsWhenFail_T6" phase="3"/>
+			<action type="GameEvent" id="ZombieINC_GeneralUse_NoVehicleBuffAdd_Event" phase="3"/>
+			<action type="GameEvent" id="ZombieINC_Survival_tier6_Start" phase="3"/>
+			
+			<objective type="Time" phase="3">
+				<property name="time" value="600"/>
+			</objective>
+	
+			<objective type="POIStayWithin" phase="3">
+				<property name="radius" value="20"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_Survival_NewQuestFinished_Event_T6" phase="4"/>
+			
+			<objective type="ReturnToNPC" phase="4">
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+			
+			<objective type="InteractWithNPC" phase="5">
+				<property name="nav_object" value="return_to_trader" />						
+			</objective>
+
+               
+			<reward type="Exp" value="67500"/>
+			<reward type="Item" id="casinoCoin" value="8000"/>
+			
+			<reward type="Item" id="resourceLegendaryParts" ischosen="true" isfixed="true" value="1"/>
+		<reward type="LootItem" id="groupQuestFood,groupQuestAmmo,groupQuestSchematics" ischosen="true" value="6"/>
+		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics" ischosen="true" value="6"/>
+		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics" ischosen="true" value="6"/>
+		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics" ischosen="true" value="6"/>
+		<reward type="LootItem" id="groupQuestGas" ischosen="true" value="1"/>
+		<reward type="LootItem" id="groupQuestResourcesT1,groupQuestT1SkillMagazineBundle" ischosen="true" value="6"/>
+		
+	</quest>
+	
+	
+	<!--<quest id="ZINCSurvival6Part2">
+		    <property name="name_key" value="ZombieINC_challenge_tier6_Survival_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_tier6_Survival_Phase2_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_tier6_Survival_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="false"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="6"/>
+		    <property name="offer_key" value="ZombieINC_challenge_tier6_Survival_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_tier6_Survival_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_tier6_Survival_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value=""  />
+			<property name="shareable" value="true"/>
+			
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_tier6_Survival_completion"/>
+			
+			<action type="TrackQuest"/>	
+	
+			<action type="GameEvent" id="ZombieINC_Survival_tier6_Start" phase="1"/>
+			<action type="GameEvent" id="ZombieINC_Survival_tier6_VehicleBlocker" phase="1"/>
+			<action type="GameEvent" id="ZombieINC_Survival_tier6_IsInDoorsChecker" phase="1"/>
+			
+			<objective type="RandomPOIGoto" phase="1">
+				<property name="biome_filter_type" value="SameBiome" param1="biome_filter_type" />
+				<property name="biome_filter" value="burnt_forest" param1="biome_filter" />
+				<property name="nav_object" value="quest" />
+				<property name="poi_tier" value="3"  />
+			</objective>
+
+			<objective type="RallyPoint" phase="2">
+				<property name="nav_object" value="rally" />
+				<property name="rally_marker_type" value="questRallyMarkerInfestation"/>
+			</objective>
+			
+			
+			<action type="GameEvent" id="ZombieINC_Survival_tier6_VehicleBlockerRemover" phase="3"/>		
+			<action type="GameEvent" id="ZombieINC_Survival_tier6_IsInDoorsCheckerRemover" phase="3"/>
+			
+			<objective type="FetchFromContainer" phase="3">
+				<property name="quest_item_ID" value="1"/>
+				<property name="item_count" value="1"/>
+				<property name="default_container" value="cntFetchQuestSatchel"/>
+				<property name="nav_object" value="fetch_container" />
+			</objective>
+	
+			<objective type="Time" phase="4">
+				<property name="time" value="10"/>
+			</objective>
+			
+			<objective type="StayWithin" phase="4">
+				<property name="radius" value="100"/>
+			</objective>
+			
+			<objective type="Time" phase="5">
+				<property name="time" value="60"/>
+			</objective>
+	
+			<objective type="StayWithin" phase="5">
+				<property name="radius" value="100"/>
+			</objective>
+	
+			
+			<action type="GameEvent" id="ZombieINC_Survival_tier6_IsInDoorsChecker" phase="5"/>
+			
+			<objective type="ReturnToNPC" phase="6">
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+			<action type="GameEvent" id="ZombieINC_Survival_tier6_VehicleBlocker" phase="6"/>
+					
+			<action type="GameEvent" id="ZombieINC_SurvivalT6_RemoveAllBuffs" phase="7"/>
+			
+			<objective type="InteractWithNPC" phase="7">
+				<property name="nav_object" value="return_to_trader" />						
+			</objective>
+
+               
+			<reward type="Exp" value="67500"/>
+			<reward type="Item" id="casinoCoin" value="100000"/>
+			
+
+			<reward type="LootItem" id="groupQuestWeapons" ischosen="true" isfixed="true" value="6"/>
+			<reward type="LootItem" id="groupQuestTools" ischosen="true" isfixed="true" value="6"/>
+			<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+			<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		
+	</quest>-->
+	
+	<!--Survival-->
+</insertAfter>
+<append xpath="/quests/quest_list[@id='trader_rekt_quests']">	
+		<quest id="ZINCSurvival1"/>
+		<quest id="ZINCSurvival2"/>
+		<quest id="ZINCSurvival3"/>
+		<quest id="ZINCSurvival4"/>
+		<quest id="ZINCSurvival5"/>
+		<quest id="ZINCSurvival6"/>
+	</append>
+	<append xpath="/quests/quest_list[@id='trader_jen_quests']">	
+		<quest id="ZINCSurvival1"/>
+		<quest id="ZINCSurvival2"/>
+		<quest id="ZINCSurvival3"/>
+		<quest id="ZINCSurvival4"/>
+		<quest id="ZINCSurvival5"/>
+		<quest id="ZINCSurvival6"/>
+	</append>
+	<append xpath="/quests/quest_list[@id='trader_bob_quests']">	
+		<quest id="ZINCSurvival1"/>
+		<quest id="ZINCSurvival2"/>
+		<quest id="ZINCSurvival3"/>
+		<quest id="ZINCSurvival4"/>
+		<quest id="ZINCSurvival5"/>
+		<quest id="ZINCSurvival6"/>	
+	</append>
+	<append xpath="/quests/quest_list[@id='trader_hugh_quests']">
+		<quest id="ZINCSurvival1"/>
+		<quest id="ZINCSurvival2"/>
+		<quest id="ZINCSurvival3"/>
+		<quest id="ZINCSurvival4"/>
+		<quest id="ZINCSurvival5"/>
+		<quest id="ZINCSurvival6"/>	
+	</append>
+	<append xpath="/quests/quest_list[@id='trader_joel_quests']">	
+		<quest id="ZINCSurvival1"/>
+		<quest id="ZINCSurvival2"/>
+		<quest id="ZINCSurvival3"/>
+		<quest id="ZINCSurvival4"/>
+		<quest id="ZINCSurvival5"/>
+		<quest id="ZINCSurvival6"/>	
+	</append>
+	<conditional>
+		<if cond="mod_loaded('mateusjobsmain')">
+			<append xpath="/quests/quest[@id='ZINCSurvival1']">
+				<reward type="LootItem" id="ZINCMagazineSurvival" ischosen="true" value="1"/>
+				<reward type="Quest" id="ZombieINC_WorkAround_Survival_Reward_T1" />
+			</append>
+			<append xpath="/quests/quest[@id='ZINCSurvival2']">
+				<reward type="LootItem" id="ZINCMagazineSurvival" ischosen="true" value="2"/>
+				<reward type="Quest" id="ZombieINC_WorkAround_Survival_Reward_T2" />
+			</append>
+			<append xpath="/quests/quest[@id='ZINCSurvival3']">
+				<reward type="LootItem" id="ZINCMagazineSurvival" ischosen="true" value="3"/>
+				<reward type="Quest" id="ZombieINC_WorkAround_Survival_Reward_T3" />
+			</append>
+			<append xpath="/quests/quest[@id='ZINCSurvival4']">
+				<reward type="LootItem" id="ZINCMagazineSurvival" ischosen="true" value="4"/>
+				<reward type="Quest" id="ZombieINC_WorkAround_Survival_Reward_T4" />
+			</append>
+			<append xpath="/quests/quest[@id='ZINCSurvival5']">
+				<reward type="LootItem" id="ZINCMagazineSurvival" ischosen="true" value="5"/>
+				<reward type="Quest" id="ZombieINC_WorkAround_Survival_Reward_T5" />
+			</append>
+			<append xpath="/quests/quest[@id='ZINCSurvival6']">
+				<reward type="LootItem" id="ZINCMagazineSurvival" ischosen="true" value="6"/>
+				<reward type="Quest" id="ZombieINC_WorkAround_Survival_Reward_T6" />
+			</append>
+		</if>
+	</conditional>
+</Config>

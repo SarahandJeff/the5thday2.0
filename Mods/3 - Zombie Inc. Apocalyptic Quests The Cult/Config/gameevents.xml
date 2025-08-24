@@ -1,0 +1,4647 @@
+<Config>
+
+	<conditional>
+		<if cond="mod_loaded('mateusjobstheritualremovescenarios')">
+			<append xpath="/gameevents">	
+				<action_sequence name="ZombieINC_Activate_Event_Ritual_AnchorBuried">
+					<property name="action_type" value="Game" />
+					<property name="allow_while_dead" value="false" />
+					<action class="PlaySound">
+						<property name="phase" value="1" />
+						<property name="sound" value="entityhitsground" />
+						<property name="max_distance" value="15" />
+					</action>
+					<action class="BlockReplace">
+						<property name="min_offset" value="-5,-1,-5" />
+						<property name="max_offset" value="5,3,5" />
+						<property name="block_to" value="terrDirt" />
+						<property name="block_tags" value="terrAsphalt" />
+						<property name="allow_terrain" value="true" />
+						<property name="phase" value="1" />
+					</action>
+				</action_sequence>
+				<action_sequence name="ZombieINC_Activate_Event_Ritual_AnchorBuried_TreeReplacer">
+					<property name="action_type" value="Game" />
+					<property name="allow_while_dead" value="false" />
+					<action class="PlaySound">
+						<property name="phase" value="1" />
+						<property name="sound" value="entityhitsground" />
+						<property name="max_distance" value="15" />
+					</action>
+					<action class="BlockReplace">
+						<property name="min_offset" value="-5,-1,-5" />
+						<property name="max_offset" value="5,3,5" />
+						<property name="block_to" value="terrDirt" />
+						<property name="block_tags" value="terrAsphalt" />
+						<property name="allow_terrain" value="true" />
+						<property name="phase" value="1" />
+					</action>
+				</action_sequence>
+				
+				
+				
+				<action_sequence name="ZombieINC_BossPriest_ItemActivation">
+					<property name="target_type" value="Entity" /> 
+					<property name="refund_inactivity" value="true" /> 
+					<property name="allow_user_trigger" value="true" /> 
+					<property name="allow_while_dead" value="true" /> 
+					
+					<action class="AddPartyToGroup">  								
+						<property name="group_name" value="party"/>
+						<property name="phase" value="0"/>
+					</action>
+					<action class="AddBuff">
+						<property name="buff_name" value="ZombieINC_RitualScreen_In_Buff" />
+						<property name="target_group" value="party" />
+						<property name="check_already_exists" value="false" />
+						<property name="phase" value="1" />
+					</action>	
+					<action class="Delay">
+						<property name="time" value="4" />
+						<property name="phase" value="2" />
+					</action>
+					<action class="Delay">
+						<property name="time" value="4" />
+						<property name="phase" value="3" />
+					</action>
+					<action class="CallGameEvent">		
+						<property name="phase" value="4" />
+						<property name="game_events" value="ZombieINC_BossPriestSpawn" />
+					</action>
+					<action class="AddBuff">
+						<property name="buff_name" value="ZombieINC_PlayerInRitual_Buff" />
+						<property name="target_group" value="party" />
+						<property name="check_already_exists" value="false" />
+						<property name="phase" value="5" />
+					</action>	
+				</action_sequence>
+				
+				<action_sequence name="ZombieINC_BossMother_ItemActivation">
+					<property name="refund_inactivity" value="false" /> 
+					<action class="AddPartyToGroup">  								
+						<property name="group_name" value="party"/>
+						<property name="phase" value="0"/>
+					</action>
+					<action class="AddBuff">
+						<property name="buff_name" value="ZombieINC_RitualScreen_In_Buff" />
+						<property name="target_group" value="party" />
+						<property name="check_already_exists" value="false" />
+						<property name="phase" value="1" />
+					</action>
+					<action class="Delay">
+						<property name="time" value="4" />
+						<property name="phase" value="2" />
+					</action>
+					<action class="Delay">
+						<property name="time" value="4" />
+						<property name="phase" value="3" />
+					</action>
+					<action class="CallGameEvent">		
+						<property name="phase" value="4" />
+						<property name="game_events" value="ZombieINC_BossMotherSpawn" />
+					</action>
+					<action class="AddBuff">
+						<property name="buff_name" value="ZombieINC_PlayerInRitual_Buff" />
+						<property name="target_group" value="party" />
+						<property name="check_already_exists" value="false" />
+						<property name="phase" value="5" />
+					</action>
+					
+				</action_sequence>
+				
+				<action_sequence name="ZombieINC_BossPenitence_ItemActivation">
+					<property name="refund_inactivity" value="false" /> 
+					<action class="AddPartyToGroup">  								
+						<property name="group_name" value="party"/>
+						<property name="phase" value="0"/>
+					</action>
+					<action class="AddBuff">
+						<property name="buff_name" value="ZombieINC_RitualScreen_In_Buff" />
+						<property name="target_group" value="party" />
+						<property name="check_already_exists" value="false" />
+						<property name="phase" value="1" />
+					</action>
+					<action class="Delay">
+						<property name="time" value="4" />
+						<property name="phase" value="2" />
+					</action>
+					
+					<action class="Delay">
+						<property name="time" value="4" />
+						<property name="phase" value="3" />
+					</action>
+					<action class="CallGameEvent">		
+						<property name="phase" value="4" />
+						<property name="game_events" value="ZombieINC_BossPenitenceSpawn" />
+					</action>
+					
+					<action class="AddBuff">
+						<property name="buff_name" value="ZombieINC_PlayerInRitual_Buff" />
+						<property name="target_group" value="party" />
+						<property name="check_already_exists" value="false" />
+						<property name="phase" value="5" />
+					</action>
+				</action_sequence>
+				
+				<action_sequence name="ZombieINC_BossFarmer_ItemActivation">
+					<property name="refund_inactivity" value="false" /> 
+					<action class="AddPartyToGroup">  								
+						<property name="group_name" value="party"/>
+						<property name="phase" value="0"/>
+					</action>
+					
+					<action class="AddBuff">
+						<property name="buff_name" value="ZombieINC_RitualScreen_In_Buff" />
+						<property name="target_group" value="party" />
+						<property name="check_already_exists" value="false" />
+						<property name="phase" value="1" />
+					</action>	
+					
+					<action class="Delay">
+						<property name="time" value="4" />
+						<property name="phase" value="2" />
+					</action>
+					
+					<action class="Delay">
+						<property name="time" value="4" />
+						<property name="phase" value="3" />
+					</action>
+					<action class="CallGameEvent">		
+						<property name="phase" value="4" />
+						<property name="game_events" value="ZombieINC_BossFarmerSpawn" />
+					</action>
+					
+					<action class="AddBuff">
+						<property name="buff_name" value="ZombieINC_PlayerInRitual_Buff" />
+						<property name="target_group" value="party" />
+						<property name="check_already_exists" value="false" />
+						<property name="phase" value="5" />
+					</action>	
+				</action_sequence>
+				
+				<action_sequence name="ZombieINC_BossFather_ItemActivation">
+					<property name="refund_inactivity" value="false" /> 
+					<action class="AddPartyToGroup">  								
+						<property name="group_name" value="party"/>
+						<property name="phase" value="0"/>
+					</action>
+					<action class="AddBuff">
+						<property name="buff_name" value="ZombieINC_RitualScreen_In_Buff" />
+						<property name="target_group" value="party" />
+						<property name="check_already_exists" value="false" />
+						<property name="phase" value="1" />
+					</action>
+					<action class="Delay">
+						<property name="time" value="4" />
+						<property name="phase" value="2" />
+					</action>
+					<action class="Delay">
+						<property name="time" value="4" />
+						<property name="phase" value="3" />
+					</action>
+					<action class="CallGameEvent">		
+						<property name="phase" value="4" />
+						<property name="game_events" value="ZombieINC_BossFatherSpawn" />
+					</action>
+					<action class="AddBuff">
+						<property name="buff_name" value="ZombieINC_PlayerInRitual_Buff" />
+						<property name="target_group" value="party" />
+						<property name="check_already_exists" value="false" />
+						<property name="phase" value="5" />
+					</action>	
+				</action_sequence>
+			</append>
+		</if>
+		
+		<else>
+			<append xpath="/gameevents">
+				<action_sequence name="ZombieINC_Activate_Event_Ritual_AnchorBuried">
+					<property name="allow_while_dead" value="false" />
+					<action class="AddBuff">
+						<property name="buff_name" value="ZombieINC_PlayerInRitual_CallDirt" />
+						<property name="check_already_exists" value="false" />
+						<property name="phase" value="1"/>				
+					</action>
+				</action_sequence>
+				<action_sequence name="ZombieINC_Activate_Event_Ritual_AnchorBuried_TreeReplacer">
+					<property name="allow_while_dead" value="false" />
+					<action class="AddBuff">
+						<property name="buff_name" value="ZombieINC_PlayerInRitual_CallDirt_TreeReplacer" />
+						<property name="check_already_exists" value="false" />
+						<property name="phase" value="1"/>				
+					</action>
+				</action_sequence>
+				
+				<action_sequence name="ZombieINC_BossPriest_ItemActivation">
+					<property name="target_type" value="Entity" /> 
+					<property name="refund_inactivity" value="true" /> 
+					<property name="allow_user_trigger" value="true" /> 
+					<property name="allow_while_dead" value="true" /> 
+					
+					<action class="AddPartyToGroup">  								
+						<property name="group_name" value="party"/>
+						<property name="phase" value="0"/>
+					</action>
+					
+					<action class="AddBuff">
+						<property name="buff_name" value="ZombieINC_RitualScreen_In_Buff" />
+						<property name="target_group" value="party" />
+						<property name="check_already_exists" value="false" />
+						<property name="phase" value="1" />
+					</action>	
+					
+					<action class="Delay">
+						<property name="time" value="4" />
+						<property name="phase" value="2" />
+					</action>
+					<action class="CallGameEvent">		
+						<property name="phase" value="3" />
+						<property name="game_events" value="ZombieINC_BossPriest_Scenario_Event" />
+					</action>
+					<action class="Delay">
+						<property name="time" value="4" />
+						<property name="phase" value="4" />
+					</action>
+					<action class="CallGameEvent">		
+						<property name="phase" value="5" />
+						<property name="game_events" value="ZombieINC_BossPriestSpawn" />
+					</action>
+				
+					<action class="AddBuff">
+						<property name="buff_name" value="ZombieINC_PlayerInRitual_Buff" />
+						<property name="target_group" value="party" />
+						<property name="check_already_exists" value="false" />
+						<property name="phase" value="6" />
+					</action>	
+				</action_sequence>
+				
+				<action_sequence name="ZombieINC_BossMother_ItemActivation">
+					<property name="refund_inactivity" value="false" /> 
+					<action class="AddPartyToGroup">  								
+						<property name="group_name" value="party"/>
+						<property name="phase" value="0"/>
+					</action>
+					<action class="AddBuff">
+						<property name="buff_name" value="ZombieINC_RitualScreen_In_Buff" />
+						<property name="target_group" value="party" />
+						<property name="check_already_exists" value="false" />
+						<property name="phase" value="1" />
+					</action>
+					<action class="Delay">
+						<property name="time" value="4" />
+						<property name="phase" value="2" />
+					</action>
+					
+					
+					<action class="CallGameEvent">		
+						<property name="phase" value="3" />
+						<property name="game_events" value="ZombieINC_BossMotherInfested_Scenario_Event" />
+					</action>
+					<action class="Delay">
+						<property name="time" value="4" />
+						<property name="phase" value="4" />
+					</action>
+					<action class="CallGameEvent">		
+						<property name="phase" value="5" />
+						<property name="game_events" value="ZombieINC_BossMotherSpawn" />
+					</action>
+					<action class="AddBuff">
+						<property name="buff_name" value="ZombieINC_PlayerInRitual_Buff" />
+						<property name="target_group" value="party" />
+						<property name="check_already_exists" value="false" />
+						<property name="phase" value="6" />
+					</action>
+					
+				</action_sequence>
+				
+				<action_sequence name="ZombieINC_BossPenitence_ItemActivation">
+					<property name="refund_inactivity" value="false" /> 
+					<action class="AddPartyToGroup">  								
+						<property name="group_name" value="party"/>
+						<property name="phase" value="0"/>
+					</action>
+					<action class="AddBuff">
+						<property name="buff_name" value="ZombieINC_RitualScreen_In_Buff" />
+						<property name="target_group" value="party" />
+						<property name="check_already_exists" value="false" />
+						<property name="phase" value="1" />
+					</action>
+					<action class="Delay">
+						<property name="time" value="4" />
+						<property name="phase" value="2" />
+					</action>
+					<action class="CallGameEvent">		
+						<property name="phase" value="3" />
+						<property name="game_events" value="ZombieINC_BossPenitenceInfested_Scenario_Event" />
+					</action>
+					<action class="Delay">
+						<property name="time" value="4" />
+						<property name="phase" value="4" />
+					</action>
+					<action class="CallGameEvent">		
+						<property name="phase" value="5" />
+						<property name="game_events" value="ZombieINC_BossPenitenceSpawn" />
+					</action>
+					
+					<action class="AddBuff">
+						<property name="buff_name" value="ZombieINC_PlayerInRitual_Buff" />
+						<property name="target_group" value="party" />
+						<property name="check_already_exists" value="false" />
+						<property name="phase" value="6" />
+					</action>
+				</action_sequence>
+				
+				<action_sequence name="ZombieINC_BossFarmer_ItemActivation">
+					<property name="refund_inactivity" value="false" /> 
+					<action class="AddPartyToGroup">  								
+						<property name="group_name" value="party"/>
+						<property name="phase" value="0"/>
+					</action>
+					
+					<action class="AddBuff">
+						<property name="buff_name" value="ZombieINC_RitualScreen_In_Buff" />
+						<property name="target_group" value="party" />
+						<property name="check_already_exists" value="false" />
+						<property name="phase" value="1" />
+					</action>	
+					
+					<action class="Delay">
+						<property name="time" value="4" />
+						<property name="phase" value="2" />
+					</action>
+					
+					<action class="CallGameEvent">		
+						<property name="phase" value="3" />
+						<property name="game_events" value="ZombieINC_FarmBlocks_BossFarmerInfested_Event" />
+					</action>
+					<action class="Delay">
+						<property name="time" value="4" />
+						<property name="phase" value="4" />
+					</action>
+					<action class="CallGameEvent">		
+						<property name="phase" value="5" />
+						<property name="game_events" value="ZombieINC_BossFarmerSpawn" />
+					</action>
+					
+					<action class="AddBuff">
+						<property name="buff_name" value="ZombieINC_PlayerInRitual_Buff" />
+						<property name="target_group" value="party" />
+						<property name="check_already_exists" value="false" />
+						<property name="phase" value="6" />
+					</action>	
+				</action_sequence>
+				
+				<action_sequence name="ZombieINC_BossFather_ItemActivation">
+					<property name="refund_inactivity" value="false" /> 
+					<action class="AddPartyToGroup">  								
+						<property name="group_name" value="party"/>
+						<property name="phase" value="0"/>
+					</action>
+					<action class="AddBuff">
+						<property name="buff_name" value="ZombieINC_RitualScreen_In_Buff" />
+						<property name="target_group" value="party" />
+						<property name="check_already_exists" value="false" />
+						<property name="phase" value="1" />
+					</action>
+					<action class="Delay">
+						<property name="time" value="4" />
+						<property name="phase" value="2" />
+					</action>
+					<action class="CallGameEvent">	
+						<property name="phase" value="3" />
+						<property name="game_events" value="ZombieINC_BossFatherCandle_Trees" />
+					</action>
+					<action class="CallGameEvent">		
+						<property name="phase" value="4" />
+						<property name="game_events" value="ZombieINC_BossFatherCandle" />
+					</action>
+					<action class="Delay">
+						<property name="time" value="4" />
+						<property name="phase" value="5" />
+					</action>
+					<action class="CallGameEvent">		
+						<property name="phase" value="6" />
+						<property name="game_events" value="ZombieINC_BossFatherSpawn" />
+					</action>
+					<action class="AddBuff">
+						<property name="buff_name" value="ZombieINC_PlayerInRitual_Buff" />
+						<property name="target_group" value="party" />
+						<property name="check_already_exists" value="false" />
+						<property name="phase" value="7" />
+					</action>	
+				</action_sequence>
+			</append>
+		</else>
+	</conditional>
+	<conditional>
+		<if cond="mod_loaded('mateusjobstheritualtraderalternative')">
+			
+		</if>
+		
+		<else>
+			<append xpath="/gameevents">
+				<action_sequence name="ZombieINC_TheCult_ActiveTrader1_Event">
+					<property name="allow_user_trigger" value="true" />
+					<property name="action_type" value="Game" />
+					<property name="target_type" value="Block"/>
+					
+					<action class="AddEntitiesToGroup">
+						<property name="phase" value="1" />
+						<property name="entity_tags" value="ritual1" />
+						<property name="group_name" value="ritual" />
+						<property name="max_distance" value="10" />
+					</action>
+					<action class="BeltTooltip">
+						<requirement class="GroupLiveCount">
+							<property name="target_group" value="ritual"/>
+							<property name="operation" value="GTE"/> 
+							<property name="count" value="1"/>
+						</requirement>
+						<property name="text_key" value="ZombieINC_RitualAlreadyHere_BeltTooltip" />
+						<property name="phase" value="2" />
+					</action>
+					<action class="BeltTooltip">
+						<requirement class="GroupLiveCount">
+							<property name="target_group" value="ritual"/>
+							<property name="operation" value="Equals"/> 
+							<property name="count" value="0"/>
+						</requirement>
+						<property name="text_key" value="ZombieINC_RitualCalled_BeltTooltip" />
+						<property name="phase" value="2" />
+					</action>	
+					<action class="SpawnEntity">
+						<requirement class="GroupLiveCount">
+							<property name="target_group" value="ritual"/>
+							<property name="operation" value="Equals"/> 
+							<property name="count" value="0"/>
+						</requirement>
+						<property name="entity_names" value="ZombieINC_NPC_Ritual_1_TheCult" />
+						<property name="spawn_count" value="1"  />
+						<property name="safe_spawn" value="true" />
+						<property name="max_distance" value="1"  />
+						<property name="min_distance" value="1"  />
+						<property name="add_to_group" value="ritual" />
+						<property name="air_spawn" value="false" />
+						<property name="phase" value="3" />
+					</action>
+				</action_sequence>
+				<action_sequence name="ZombieINC_TheCult_ActiveTrader2_Event">
+					<property name="allow_user_trigger" value="true" />
+					<property name="action_type" value="Game" />
+					<property name="target_type" value="Block"/>
+					
+					<action class="AddEntitiesToGroup">
+						<property name="phase" value="1" />
+						<property name="entity_tags" value="ritual2" />
+						<property name="group_name" value="ritual" />
+						<property name="max_distance" value="10" />
+					</action>
+					<action class="BeltTooltip">
+						<requirement class="GroupLiveCount">
+							<property name="target_group" value="ritual"/>
+							<property name="operation" value="GTE"/> 
+							<property name="count" value="1"/>
+						</requirement>
+						<property name="text_key" value="ZombieINC_RitualAlreadyHere_BeltTooltip" />
+						<property name="phase" value="2" />
+					</action>
+					<action class="BeltTooltip">
+						<requirement class="GroupLiveCount">
+							<property name="target_group" value="ritual"/>
+							<property name="operation" value="Equals"/> 
+							<property name="count" value="0"/>
+						</requirement>
+						<property name="text_key" value="ZombieINC_RitualCalled_BeltTooltip" />
+						<property name="phase" value="2" />
+					</action>	
+					<action class="SpawnEntity">
+						<requirement class="GroupLiveCount">
+							<property name="target_group" value="ritual"/>
+							<property name="operation" value="Equals"/> 
+							<property name="count" value="0"/>
+						</requirement>
+						<property name="entity_names" value="ZombieINC_NPC_Ritual_2_TheCult" />
+						<property name="spawn_count" value="1"  />
+						<property name="safe_spawn" value="true" />
+						<property name="max_distance" value="1"  />
+						<property name="min_distance" value="1"  />
+						<property name="add_to_group" value="ritual" />
+						<property name="air_spawn" value="false" />
+						<property name="phase" value="3" />
+					</action>
+				</action_sequence>
+				<action_sequence name="ZombieINC_TheCult_ActiveTrader3_Event">
+					<property name="allow_user_trigger" value="true" />
+					<property name="action_type" value="Game" />
+					<property name="target_type" value="Block"/>
+					
+					<action class="AddEntitiesToGroup">
+						<property name="phase" value="1" />
+						<property name="entity_tags" value="ritual3" />
+						<property name="group_name" value="ritual" />
+						<property name="max_distance" value="10" />
+					</action>
+					<action class="BeltTooltip">
+						<requirement class="GroupLiveCount">
+							<property name="target_group" value="ritual"/>
+							<property name="operation" value="GTE"/> 
+							<property name="count" value="1"/>
+						</requirement>
+						<property name="text_key" value="ZombieINC_RitualAlreadyHere_BeltTooltip" />
+						<property name="phase" value="2" />
+					</action>
+					<action class="BeltTooltip">
+						<requirement class="GroupLiveCount">
+							<property name="target_group" value="ritual"/>
+							<property name="operation" value="Equals"/> 
+							<property name="count" value="0"/>
+						</requirement>
+						<property name="text_key" value="ZombieINC_RitualCalled_BeltTooltip" />
+						<property name="phase" value="2" />
+					</action>	
+					<action class="SpawnEntity">
+						<requirement class="GroupLiveCount">
+							<property name="target_group" value="ritual"/>
+							<property name="operation" value="Equals"/> 
+							<property name="count" value="0"/>
+						</requirement>
+						<property name="entity_names" value="ZombieINC_NPC_Ritual_3_TheCult" />
+						<property name="spawn_count" value="1"  />
+						<property name="safe_spawn" value="true" />
+						<property name="max_distance" value="1"  />
+						<property name="min_distance" value="1"  />
+						<property name="add_to_group" value="ritual" />
+						<property name="air_spawn" value="false" />
+						<property name="phase" value="3" />
+					</action>
+				</action_sequence>
+				<action_sequence name="ZombieINC_TheCult_ActiveTrader4_Event">
+					<property name="allow_user_trigger" value="true" />
+					<property name="action_type" value="Game" />
+					<property name="target_type" value="Block"/>
+					
+					<action class="AddEntitiesToGroup">
+						<property name="phase" value="1" />
+						<property name="entity_tags" value="ritual4" />
+						<property name="group_name" value="ritual" />
+						<property name="max_distance" value="10" />
+					</action>
+					<action class="BeltTooltip">
+						<requirement class="GroupLiveCount">
+							<property name="target_group" value="ritual"/>
+							<property name="operation" value="GTE"/> 
+							<property name="count" value="1"/>
+						</requirement>
+						<property name="text_key" value="ZombieINC_RitualAlreadyHere_BeltTooltip" />
+						<property name="phase" value="2" />
+					</action>
+					<action class="BeltTooltip">
+						<requirement class="GroupLiveCount">
+							<property name="target_group" value="ritual"/>
+							<property name="operation" value="Equals"/> 
+							<property name="count" value="0"/>
+						</requirement>
+						<property name="text_key" value="ZombieINC_RitualCalled_BeltTooltip" />
+						<property name="phase" value="2" />
+					</action>	
+					<action class="SpawnEntity">
+						<requirement class="GroupLiveCount">
+							<property name="target_group" value="ritual"/>
+							<property name="operation" value="Equals"/> 
+							<property name="count" value="0"/>
+						</requirement>
+						<property name="entity_names" value="ZombieINC_NPC_Ritual_4_TheCult" />
+						<property name="spawn_count" value="1"  />
+						<property name="safe_spawn" value="true" />
+						<property name="max_distance" value="1"  />
+						<property name="min_distance" value="1"  />
+						<property name="add_to_group" value="ritual" />
+						<property name="air_spawn" value="false" />
+						<property name="phase" value="3" />
+					</action>
+				</action_sequence>
+				<action_sequence name="ZombieINC_TheCult_ActiveTrader5_Event">
+					<property name="allow_user_trigger" value="true" />
+					<property name="action_type" value="Game" />
+					<property name="target_type" value="Block"/>
+					
+					<action class="AddEntitiesToGroup">
+						<property name="phase" value="1" />
+						<property name="entity_tags" value="ritual5" />
+						<property name="group_name" value="ritual" />
+						<property name="max_distance" value="10" />
+					</action>
+					<action class="BeltTooltip">
+						<requirement class="GroupLiveCount">
+							<property name="target_group" value="ritual"/>
+							<property name="operation" value="GTE"/> 
+							<property name="count" value="1"/>
+						</requirement>
+						<property name="text_key" value="ZombieINC_RitualAlreadyHere_BeltTooltip" />
+						<property name="phase" value="2" />
+					</action>
+					<action class="BeltTooltip">
+						<requirement class="GroupLiveCount">
+							<property name="target_group" value="ritual"/>
+							<property name="operation" value="Equals"/> 
+							<property name="count" value="0"/>
+						</requirement>
+						<property name="text_key" value="ZombieINC_RitualCalled_BeltTooltip" />
+						<property name="phase" value="2" />
+					</action>	
+					<action class="SpawnEntity">
+						<requirement class="GroupLiveCount">
+							<property name="target_group" value="ritual"/>
+							<property name="operation" value="Equals"/> 
+							<property name="count" value="0"/>
+						</requirement>
+						<property name="entity_names" value="ZombieINC_NPC_Ritual_5_TheCult" />
+						<property name="spawn_count" value="1"  />
+						<property name="safe_spawn" value="true" />
+						<property name="max_distance" value="1"  />
+						<property name="min_distance" value="1"  />
+						<property name="add_to_group" value="ritual" />
+						<property name="air_spawn" value="false" />
+						<property name="phase" value="3" />
+					</action>
+				</action_sequence>
+				<action_sequence name="ZombieINC_TheCult_ActiveTrader6_Event">
+					<property name="allow_user_trigger" value="true" />
+					<property name="action_type" value="Game" />
+					<property name="target_type" value="Block"/>
+					
+					<action class="AddEntitiesToGroup">
+						<property name="phase" value="1" />
+						<property name="entity_tags" value="ritual6" />
+						<property name="group_name" value="ritual" />
+						<property name="max_distance" value="10" />
+					</action>
+					<action class="BeltTooltip">
+						<requirement class="GroupLiveCount">
+							<property name="target_group" value="ritual"/>
+							<property name="operation" value="GTE"/> 
+							<property name="count" value="1"/>
+						</requirement>
+						<property name="text_key" value="ZombieINC_RitualAlreadyHere_BeltTooltip" />
+						<property name="phase" value="2" />
+					</action>
+					<action class="BeltTooltip">
+						<requirement class="GroupLiveCount">
+							<property name="target_group" value="ritual"/>
+							<property name="operation" value="Equals"/> 
+							<property name="count" value="0"/>
+						</requirement>
+						<property name="text_key" value="ZombieINC_RitualCalled_BeltTooltip" />
+						<property name="phase" value="2" />
+					</action>	
+					<action class="SpawnEntity">
+						<requirement class="GroupLiveCount">
+							<property name="target_group" value="ritual"/>
+							<property name="operation" value="Equals"/> 
+							<property name="count" value="0"/>
+						</requirement>
+						<property name="entity_names" value="ZombieINC_NPC_Ritual_6_TheCult" />
+						<property name="spawn_count" value="1"  />
+						<property name="safe_spawn" value="true" />
+						<property name="max_distance" value="1"  />
+						<property name="min_distance" value="1"  />
+						<property name="add_to_group" value="ritual" />
+						<property name="air_spawn" value="false" />
+						<property name="phase" value="3" />
+					</action>
+				</action_sequence>
+			</append>
+		</else>
+	</conditional>
+
+
+	
+
+	<append xpath="/gameevents">
+	
+		<!--###The Cult-->
+	<!--##BossWitch-->
+	
+	<action_sequence name="ZombieINC_BossWitchDisarmEvent2">
+		 <property name="allow_while_dead" value="false" />         		
+		<requirement class="HasHeld" />
+		
+		<action class="PlaySound">
+			 <property name="sound" value="zombiefemalescoutalert" />
+			<!--<property name="inside_head" value="true" />-->
+			 <property name="phase" value="1" />
+		 </action>
+		
+		<action class="DropHeldItem">
+			<property name="phase" value="1"/>
+			<property name="drop_sound" value="itemdropped" />
+		</action>		
+			
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_KillBossWitchEvent">
+	<property name="refund_inactivity" value="false" />   
+		<requirement class="CVar">
+			<property name="cvar" value="ZombieINCBossSpawn"/>
+			<property name="operation" value="Equals"/>
+			<property name="value" value="0"/>
+		</requirement>	
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="party" />	
+		</action>
+		
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="target_group" value="party" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="1" />
+		</action>
+		
+		<action class="SpawnEntity">
+			<property name="safe_spawn" value="true" />		
+			<property name="entity_names" value="ZombieINC_BossWitch"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="9" />
+			<property name="min_distance" value="5" />
+			<property name="phase" value="2" />	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossWitch">					  
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="0" />
+		</action>
+		
+		<action class="Delay">
+			<property name="time" value="1-10" />
+			<property name="phase" value="2" />
+		</action>
+		
+		 <action class="CallGameEvent">
+			<requirement class="CVar">
+				<property name="cvar" value="ZombieINCBossSpawn"/>
+				<property name="operation" value="Equals"/>
+				<property name="value" value="0"/>
+			</requirement>	
+			<property name="phase" value="3" />
+			<property name="game_events" value="ZombieINC_KillBossWitchEvent" />
+		</action>
+	</action_sequence>
+	<!--BossWitch-->
+	<!--##BossWitchInfested-->
+	
+	
+	<action_sequence name="ZombieINC_KillBossWitchInfestedEvent">
+	<property name="refund_inactivity" value="false" />   
+		<requirement class="CVar">
+			<property name="cvar" value="ZombieINCBossSpawn"/>
+			<property name="operation" value="Equals"/>
+			<property name="value" value="0"/>
+		</requirement>	
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="party" />	
+		</action>
+		
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="target_group" value="party" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="1" />
+		</action>
+		
+		
+		<action class="SpawnEntity">
+			<property name="safe_spawn" value="true" />			
+			<property name="entity_names" value="ZombieINC_BossWitchInfested"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="9" />
+			<property name="min_distance" value="5" />
+			<property name="phase" value="2" />	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossWitchInfested">					  
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="0" />
+		</action>
+		
+		<action class="Delay">
+			<property name="time" value="1-10" />
+			<property name="phase" value="2" />
+		</action>
+		
+		 <action class="CallGameEvent">
+			<requirement class="CVar">
+				<property name="cvar" value="ZombieINCBossSpawn"/>
+				<property name="operation" value="Equals"/>
+				<property name="value" value="0"/>
+			</requirement>	
+			<property name="phase" value="3" />
+			<property name="game_events" value="ZombieINC_KillBossWitchInfestedEvent" />
+		</action>
+	</action_sequence>
+	
+	
+	
+	
+	<action_sequence name="ZombieINC_BossWitchRandomEvent">
+		 <property name="allow_while_dead" value="false" /> 
+		
+		<action class="PlaySound">
+			<property name="sound" value="zombiefemalescoutalert" />
+			<!--<property name="inside_head" value="true" />-->
+			<property name="phase" value="1" />
+		 </action>
+		
+		<action class="Delay">
+			<property name="time" value="1" />
+			<property name="phase" value="1" />
+		</action>
+		
+		 <action class="CallGameEvent">
+			<property name="phase" value="2" />
+			<property name="game_events" value="ZombieINC_BossWitchDisarmEvent,ZombieINC_BossWitchBlindEvent,ZombieINC_BossWitchBleedEvent,ZombieINC_BossWitchSlowEvent,ZombieINC_BossWitchHungryEvent,ZombieINC_BossWitchThirstEvent,ZombieINC_BossWitchFlipEvent,ZombieINC_BossWitchRagdollEvent,ZombieINC_BossWitchBrakeWeaponEvent,ZombieINC_BossWitchSpawnMinionEvent,ZombieINC_BossWitchDisableWeaponEvent" />
+		</action>
+				
+		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_BossWitchDisarmEvent">
+		 <property name="allow_while_dead" value="false" />         		
+		<requirement class="HasHeld" />
+					
+		<action class="DropHeldItem">
+			<property name="drop_sound" value="itemdropped" />
+		</action>		
+			
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_BossWitchBlindEvent">
+		<property name="allow_while_dead" value="false" />         		
+		
+
+		
+		<action class="SetScreenEffect">
+			<property name="phase" value="1" />
+			<property name="screen_effect" value="FadeToBlack" />
+			<property name="intensity" value="1" />
+			<property name="fade_time" value="0.25" />
+		</action>	
+
+		<action class="Delay">
+			<property name="time" value="3" />
+			<property name="phase" value="2" />
+		</action>
+		
+		<action class="SetScreenEffect">
+			<property name="phase" value="3" />
+			<property name="screen_effect" value="FadeToBlack" />
+			<property name="intensity" value="0" />
+			<property name="fade_time" value="0.5" />
+		</action>
+		
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_BossWitchBleedEvent">
+		<property name="allow_while_dead" value="false" />         		
+	
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_BossWitchBleedBuff" />	
+			<property name="check_already_exists" value="false" />
+		</action>
+		
+		<action class="SetScreenEffect">
+			<property name="screen_effect" value="Drunk" />
+			<property name="intensity" value="1" />
+			<property name="fade_time" value="0.5" />
+		</action>
+		
+		<action class="Delay">
+			<property name="time" value="3" />
+			<property name="phase" value="1" />
+		</action>
+		
+		<action class="SetScreenEffect">
+			<property name="phase" value="2" />
+			<property name="screen_effect" value="Drunk" />
+			<property name="intensity" value="0" />
+			<property name="fade_time" value="0.5" />
+		</action>
+		
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_BossWitchSlowEvent">
+		<property name="allow_while_dead" value="false" />
+
+		<action class="ModifyEntityStat">
+			<property name="stat" value="Stamina" />
+			<property name="value" value="200" />
+			<property name="operation" value="Subtract" />	
+		</action>
+		
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_BossWitchSlowBuff" />
+			<property name="check_already_exists" value="false" />
+		</action>
+
+		<action class="SetScreenEffect">
+			<property name="screen_effect" value="Blur" />
+			<property name="intensity" value="1" />
+			<property name="fade_time" value="0.5" />
+		</action>
+		
+		<action class="Delay">
+			<property name="time" value="3" />
+			<property name="phase" value="1" />
+		</action>
+		
+		<action class="SetScreenEffect">
+			<property name="phase" value="2" />
+			<property name="screen_effect" value="Blur" />
+			<property name="intensity" value="0" />
+			<property name="fade_time" value="0.5" />
+		</action>
+			
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_BossWitchHungryEvent">
+		<property name="allow_while_dead" value="false" /> 
+		
+		<action class="ModifyEntityStat">
+			<property name="stat" value="Food" />
+			<property name="value" value="200" />
+			<property name="operation" value="Subtract" />	
+		</action>		
+		
+		<action class="SetScreenEffect">
+			<property name="screen_effect" value="Blur" />
+			<property name="intensity" value="1" />
+			<property name="fade_time" value="0.5" />
+		</action>
+		
+		<action class="Delay">
+			<property name="time" value="3" />
+			<property name="phase" value="1" />
+		</action>
+		
+		<action class="SetScreenEffect">
+			<property name="phase" value="2" />
+			<property name="screen_effect" value="Blur" />
+			<property name="intensity" value="0" />
+			<property name="fade_time" value="0.5" />
+		</action>
+		
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_BossWitchThirstEvent">
+		<property name="allow_while_dead" value="false" />         		
+		<action class="ModifyEntityStat">
+			<property name="stat" value="Water" />
+			<property name="value" value="200" />
+			<property name="operation" value="Subtract" />	
+		</action>			
+		
+		<action class="SetScreenEffect">
+			<property name="screen_effect" value="Blur" />
+			<property name="intensity" value="1" />
+			<property name="fade_time" value="0.5" />
+		</action>
+		
+		<action class="Delay">
+			<property name="time" value="3" />
+			<property name="phase" value="1" />
+		</action>
+		
+		<action class="SetScreenEffect">
+			<property name="phase" value="2" />
+			<property name="screen_effect" value="Blur" />
+			<property name="intensity" value="0" />
+			<property name="fade_time" value="0.5" />
+		</action>
+		
+	</action_sequence>
+	
+	
+	
+	
+	<action_sequence name="ZombieINC_BossWitchFlipEvent">
+		<property name="allow_while_dead" value="false" />
+		
+		<action class="FlipRotation"/>
+		
+		<action class="SetScreenEffect">
+			<property name="screen_effect" value="Distortion" />
+			<property name="intensity" value="1" />
+			<property name="fade_time" value="0.5" />
+		</action>
+		
+		<action class="Delay">
+			<property name="time" value="3" />
+			<property name="phase" value="1" />
+		</action>
+		
+		<action class="SetScreenEffect">
+			<property name="phase" value="2" />
+			<property name="screen_effect" value="Distortion" />
+			<property name="intensity" value="0" />
+			<property name="fade_time" value="0.5" />
+		</action>
+		
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_BossWitchRagdollEvent">
+		<property name="allow_while_dead" value="false" /> 
+		
+		<action class="Ragdoll"/>
+		
+		<action class="SetScreenEffect">
+			<property name="screen_effect" value="Distortion" />
+			<property name="intensity" value="1" />
+			<property name="fade_time" value="0.5" />
+		</action>
+		
+		<action class="Delay">
+			<property name="time" value="4" />
+			<property name="phase" value="1" />
+		</action>
+		
+		<action class="SetScreenEffect">
+			<property name="phase" value="2" />
+			<property name="screen_effect" value="Distortion" />
+			<property name="intensity" value="0" />
+			<property name="fade_time" value="0.5" />
+		</action>
+		
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_BossWitchBrakeWeaponEvent">
+		<property name="allow_while_dead" value="false" />         		
+		<requirement class="HasHeld" />
+		
+		<action class="AddItemDurability">
+			<property name="items_location" value="Held" />
+			<property name="items_tags" value="weapon" />		
+			<property name="amount" value="1.0" />
+			<property name="is_negative" value="true" />
+			<property name="is_percent" value="true" />
+		</action>		
+			
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_BossWitchSpawnMinionEvent">
+		<property name="allow_while_dead" value="false" />
+		
+		<action class="SetScreenEffect">
+			<property name="screen_effect" value="Blur" />
+			<property name="intensity" value="1" />
+			<property name="fade_time" value="0.5" />
+		</action>
+		
+		<action class="SetScreenEffect">
+			<property name="screen_effect" value="Distortion" />
+			<property name="intensity" value="1" />
+			<property name="fade_time" value="0.5" />
+		</action>
+		
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_BossWitchMinionInfested" />
+			<property name="spawn_count" value="4" />
+			<property name="phase" value="1" />
+			<property name="add_to_group" value="zombies" />
+			<property name="safe_spawn" value="true" />
+			<property name="air_spawn" value="true" />
+			<property name="min_distance" value="8" />
+			<property name="max_distance" value="12" />
+		</action>
+		
+		<action class="Delay">
+			<property name="time" value="3" />
+			<property name="phase" value="1" />
+		</action>
+		
+		<action class="SetScreenEffect">
+			<property name="phase" value="2" />
+			<property name="screen_effect" value="Blur" />
+			<property name="intensity" value="0" />
+			<property name="fade_time" value="0.5" />
+		</action>
+		
+		<action class="SetScreenEffect">
+			<property name="phase" value="2" />
+			<property name="screen_effect" value="Distortion" />
+			<property name="intensity" value="0" />
+			<property name="fade_time" value="0.5" />
+		</action>
+		
+	</action_sequence>
+	
+	
+	
+	
+	<action_sequence name="ZombieINC_BossWitchDisableWeaponEvent">
+		<property name="allow_while_dead" value="false" /> 
+		
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_BossWitchDisableWeaponBuff" />
+			<property name="check_already_exists" value="false" />
+		</action>
+		
+		<action class="SetScreenEffect">
+			<property name="screen_effect" value="Distortion" />
+			<property name="intensity" value="1" />
+			<property name="fade_time" value="0.5" />
+		</action>
+		
+		<action class="Delay">
+			<property name="time" value="3" />
+			<property name="phase" value="1" />
+		</action>
+		
+		<action class="SetScreenEffect">
+			<property name="phase" value="2" />
+			<property name="screen_effect" value="Distortion" />
+			<property name="intensity" value="0" />
+			<property name="fade_time" value="0.5" />
+		</action>
+		
+	</action_sequence>
+	<!--BossWitchInfested-->
+	<action_sequence name="ZombieINC_TC_RecipeSetCvar_Event">
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="cvar" value="ZombieINC_spawnRitual_1_TheCult" />
+			<property name="operation" value="Set" />
+			<property name="value" value="1" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_RitualStartHandle_Event">
+	<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="fire" />
+			<property name="group_name" value="pentagramonly" />
+			<property name="max_distance" value="50" />
+		</action>
+	<requirement class="GroupLiveCount">
+				<property name="target_group" value="pentagramonly"/>
+				<property name="operation" value="Equals"/> 
+				<property name="count" value="5"/>	
+			</requirement>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_RitualHandleTest_Event">
+		<property name="allow_user_trigger" value="true" />	
+		
+		
+		<action class="SpawnEntity">		
+			<property name="safe_spawn" value="true" />	
+			<property name="entity_names" value="ZombieINC_RitualTest"  />
+			<!--<property name="add_buffs" value="ZombieINC_TheCult_RitualToPlayer_Buff" />-->
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="1" />
+			<property name="min_distance" value="0" />
+			<property name="air_spawn" value="false" />
+			<property name="phase" value="1" />
+		</action>
+		
+		<action class="RemoveItems">
+			<property name="items_location" value="Toolbelt,Backpack"  />
+			<property name="items_tags" value="TheCultRitualItemTest"  />
+			<property name="count" value="1" />			
+			<property name="phase" value="2" />	
+		</action>
+	</action_sequence>
+	
+	<!--<action_sequence name="ZombieINC_RitualHandle_Event">
+		<property name="allow_user_trigger" value="true" />	
+		
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="fire" />
+			<property name="group_name" value="ritualonly" />
+			<property name="max_distance" value="100" />
+		</action>
+		
+		<decision class="If">
+			<requirement class="NearbyEntities">
+				<property name="entity_tags" value="ritualonly" />
+				<property name="max_distance" value="100" />
+			</requirement>
+		</decision>
+		<decision class="If">
+		<requirement class="IsIndoors">
+			<property name="invert" value="true" />
+		</requirement>
+		<requirement class="GroupLiveCount">
+			<property name="target_group" value="ritualonly"/>
+			<property name="operation" value="Equals"/> 
+			<property name="count" value="0"/>	
+		</requirement>
+		<action class="SpawnEntity">		
+			<property name="safe_spawn" value="true" />	
+			<property name="entity_names" value="ZombieINC_NPC_Ritual_1_TheCult"  />
+			<!{1}**<property name="add_buffs" value="ZombieINC_TheCult_RitualToPlayer_Buff" />**{1}>
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="1" />
+			<property name="min_distance" value="0" />
+			<property name="air_spawn" value="false" />
+			<property name="phase" value="1" />
+		</action>
+		
+		<action class="RemoveItems">
+			<property name="items_location" value="Toolbelt,Backpack"  />
+			<property name="items_tags" value="TheCultRitualItem"  />
+			<property name="count" value="1" />			
+			<property name="phase" value="2" />	
+		</action>	
+		</decision>
+	</action_sequence>-->
+	<action_sequence name="ZombieINC_RitualHandle_Event">
+		<!--<property name="target_type" value="Block" />-->
+		<property name="target_type" value="Entity" />
+		
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="ritualonly" />
+			<property name="group_name" value="ritualonly" />
+			<property name="max_distance" value="100" />
+		</action>
+		
+		<decision class="If">
+			<requirement class="NearbyEntities">
+				<property name="entity_tags" value="ritualonly" />
+				<property name="max_distance" value="100" />
+			</requirement>
+		</decision>
+		<decision class="If">
+		<requirement class="IsIndoors">
+			<property name="invert" value="true" />
+		</requirement>
+		<requirement class="GroupLiveCount">
+			<property name="target_group" value="ritualonly"/>
+			<property name="operation" value="Equals"/> 
+			<property name="count" value="0"/>	
+		</requirement>
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_IsStandingOnRitual_Buff" />
+		</requirement>
+		<action class="SpawnEntity">		
+			<property name="safe_spawn" value="true" />	
+			<property name="entity_names" value="ZombieINC_NPC_Ritual_1_TheCult"  />
+			<!--<property name="add_buffs" value="ZombieINC_TheCult_RitualToPlayer_Buff" />-->
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="0" />
+			<property name="min_distance" value="0" />
+			<property name="air_spawn" value="false" />
+			<property name="phase" value="1" />
+		</action>
+		
+		<!--<action class="RemoveItems">
+			<property name="items_location" value="Toolbelt,Backpack"  />
+			<property name="items_tags" value="TheCultRitualItem"  />
+			<property name="count" value="1" />			
+			<property name="phase" value="2" />	
+		</action>	-->
+		</decision>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_RitualNorthHandle_Event">
+		<property name="allow_user_trigger" value="true" />	
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="ritualonly" />
+			<property name="group_name" value="ritualonly" />
+			<property name="max_distance" value="100" />
+		</action>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="pentagramonly" />
+			<property name="group_name" value="ritualonly" />
+			<property name="max_distance" value="100" />
+		</action>
+		<decision class="If">
+		</decision>
+		<decision class="If">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="ritualonly" />
+			<property name="max_distance" value="12" />
+		</requirement>
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="pentagramonly" />
+			<property name="max_distance" value="13" />
+		</requirement>
+		
+		<action class="SpawnEntity">		
+			<property name="safe_spawn" value="true" />	
+			<property name="entity_names" value="ZombieINC_NPC_Ritual_Pentagram1_TheCult"  />
+		<!--	<property name="add_buffs" value="ZombieINC_TheCult_RitualToPlayer_Buff" />-->
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="1" />
+			<property name="min_distance" value="0" />
+			<property name="air_spawn" value="false" />
+			<property name="phase" value="1" />
+		</action>
+		
+		<action class="RemoveItems">
+			<property name="items_location" value="Toolbelt,Backpack"  />
+			<property name="items_tags" value="TheCultRitualP1Item"  />
+			<property name="count" value="1" />			
+			<property name="phase" value="2" />	
+		</action>		
+		</decision>
+	</action_sequence>
+	<action_sequence name="ZombieINC_RitualSideAHandle_Event">
+		<property name="allow_user_trigger" value="true" />	
+		<decision class="If">
+		</decision>
+		<decision class="If">
+		<action class="SpawnEntity">		
+			<property name="safe_spawn" value="true" />	
+			<property name="entity_names" value="ZombieINC_NPC_Ritual_Pentagram2_TheCult"  />
+			<!--<property name="add_buffs" value="ZombieINC_TheCult_RitualToPlayer_Buff" />-->
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="1" />
+			<property name="min_distance" value="0" />
+			<property name="air_spawn" value="false" />
+			<property name="phase" value="1" />
+		</action>
+		
+		<action class="RemoveItems">
+			<property name="items_location" value="Toolbelt,Backpack"  />
+			<property name="items_tags" value="TheCultRitualP2Item"  />
+			<property name="count" value="1" />			
+			<property name="phase" value="2" />	
+		</action>	
+		</decision>		
+	</action_sequence>
+	<action_sequence name="ZombieINC_RitualSideBHandle_Event">
+		<property name="allow_user_trigger" value="true" />	
+		<decision class="If">
+		</decision>
+		<decision class="If">
+		<action class="SpawnEntity">		
+			<property name="safe_spawn" value="true" />	
+			<property name="entity_names" value="ZombieINC_NPC_Ritual_Pentagram3_TheCult"  />
+			<!--<property name="add_buffs" value="ZombieINC_TheCult_RitualToPlayer_Buff" />-->
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="1" />
+			<property name="min_distance" value="0" />
+			<property name="air_spawn" value="false" />
+			<property name="phase" value="1" />
+		</action>
+		
+		<action class="RemoveItems">
+			<property name="items_location" value="Toolbelt,Backpack"  />
+			<property name="items_tags" value="TheCultRitualP3Item"  />
+			<property name="count" value="1" />			
+			<property name="phase" value="2" />	
+		</action>		
+		</decision>
+	</action_sequence>
+	<action_sequence name="ZombieINC_RitualBottomAHandle_Event">
+		<property name="allow_user_trigger" value="true" />	
+		<decision class="If">
+		</decision>
+		<decision class="If">
+		<action class="SpawnEntity">		
+			<property name="safe_spawn" value="true" />	
+			<property name="entity_names" value="ZombieINC_NPC_Ritual_Pentagram4_TheCult"  />
+			<!--<property name="add_buffs" value="ZombieINC_TheCult_RitualToPlayer_Buff" />-->
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="1" />
+			<property name="min_distance" value="0" />
+			<property name="air_spawn" value="false" />
+			<property name="phase" value="1" />
+		</action>
+		
+		<action class="RemoveItems">
+			<property name="items_location" value="Toolbelt,Backpack"  />
+			<property name="items_tags" value="TheCultRitualP4Item"  />
+			<property name="count" value="1" />			
+			<property name="phase" value="2" />	
+		</action>	
+		</decision>
+	</action_sequence>
+	<action_sequence name="ZombieINC_RitualBottomBHandle_Event">
+		<property name="allow_user_trigger" value="true" />	
+		<decision class="If">
+		</decision>
+		<decision class="If">
+		
+		<action class="SpawnEntity">		
+			<property name="safe_spawn" value="true" />	
+			<property name="entity_names" value="ZombieINC_NPC_Ritual_Pentagram5_TheCult"  />
+			<!--<property name="add_buffs" value="ZombieINC_TheCult_RitualToPlayer_Buff" />-->
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="1" />
+			<property name="min_distance" value="0" />
+			<property name="air_spawn" value="false" />
+			<property name="phase" value="1" />
+		</action>
+		
+		<action class="RemoveItems">
+			<property name="items_location" value="Toolbelt,Backpack"  />
+			<property name="items_tags" value="TheCultRitualP5Item"  />
+			<property name="count" value="1" />			
+			<property name="phase" value="2" />	
+		</action>
+		</decision>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_TheCult_PickRitual1_Event">
+		<!--<property name="refund_inactivity" value="false" />-->
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="ritual1" />
+			<property name="max_distance" value="6" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="ritual1" />
+			<property name="group_name" value="ritual" />
+			<property name="max_distance" value="6" />
+		</action>
+		
+		<action class="RemoveEntities">
+			<property name="phase" value="1" />
+			<property name="target_group" value="ritual" />
+		</action>
+		
+		<action class="BlockReplace">
+			<property name="min_offset" value="-6,-6,-6" />
+			<property name="max_offset" value="6,6,6" />
+			<property name="block_to" value="air" />
+			<property name="block_tags" value="ZINCRITUAL1" />
+			<property name="phase" value="1" />	
+		</action>
+		<!--<action class="Kill">
+			<property name="phase" value="1" />
+			<property name="target_group" value="ritual" />
+		</action>-->
+		
+		<action class="AddItems">
+			<property name="phase" value="2" />
+			<property name="added_items" value="ZombieINC_spawnRitual_1_TheCult" />
+			<property name="added_item_counts" value="1" />			
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_TheCult_PickRitual2_Event">
+		<!--<property name="refund_inactivity" value="false" />-->
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="ritual2" />
+			<property name="max_distance" value="6" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="ritual2" />
+			<property name="group_name" value="ritual" />
+			<property name="max_distance" value="6" />
+		</action>
+		
+		<action class="RemoveEntities">
+			<property name="phase" value="1" />
+			<property name="target_group" value="ritual" />
+		</action>
+		
+		<action class="BlockReplace">
+			<property name="min_offset" value="-6,-6,-6" />
+			<property name="max_offset" value="6,6,6" />
+			<property name="block_to" value="air" />
+			<property name="block_tags" value="ZINCRITUAL2" />
+			<property name="phase" value="1" />	
+		</action>
+		<!--<action class="Kill">
+			<property name="phase" value="1" />
+			<property name="target_group" value="ritual" />
+		</action>-->
+		
+		<action class="AddItems">
+			<property name="phase" value="2" />
+			<property name="added_items" value="ZombieINC_spawnRitual_2_TheCult" />
+			<property name="added_item_counts" value="1" />			
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_TheCult_PickRitual3_Event">
+		<!--<property name="refund_inactivity" value="false" />-->
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="ritual3" />
+			<property name="max_distance" value="6" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="ritual3" />
+			<property name="group_name" value="ritual" />
+			<property name="max_distance" value="6" />
+		</action>
+		
+		<action class="RemoveEntities">
+			<property name="phase" value="1" />
+			<property name="target_group" value="ritual" />
+		</action>
+		
+		<action class="BlockReplace">
+			<property name="min_offset" value="-6,-6,-6" />
+			<property name="max_offset" value="6,6,6" />
+			<property name="block_to" value="air" />
+			<property name="block_tags" value="ZINCRITUAL3" />
+			<property name="phase" value="1" />	
+		</action>
+		<!--<action class="Kill">
+			<property name="phase" value="1" />
+			<property name="target_group" value="ritual" />
+		</action>-->
+		
+		<action class="AddItems">
+			<property name="phase" value="2" />
+			<property name="added_items" value="ZombieINC_spawnRitual_3_TheCult" />
+			<property name="added_item_counts" value="1" />			
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_TheCult_PickRitual4_Event">
+		<!--<property name="refund_inactivity" value="false" />-->
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="ritual4" />
+			<property name="max_distance" value="6" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="ritual4" />
+			<property name="group_name" value="ritual" />
+			<property name="max_distance" value="6" />
+		</action>
+		
+		<action class="RemoveEntities">
+			<property name="phase" value="1" />
+			<property name="target_group" value="ritual" />
+		</action>
+		
+		<action class="BlockReplace">
+			<property name="min_offset" value="-6,-6,-6" />
+			<property name="max_offset" value="6,6,6" />
+			<property name="block_to" value="air" />
+			<property name="block_tags" value="ZINCRITUAL4" />
+			<property name="phase" value="1" />	
+		</action>
+		<!--<action class="Kill">
+			<property name="phase" value="1" />
+			<property name="target_group" value="ritual" />
+		</action>-->
+		
+		<action class="AddItems">
+			<property name="phase" value="2" />
+			<property name="added_items" value="ZombieINC_spawnRitual_4_TheCult" />
+			<property name="added_item_counts" value="1" />			
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_TheCult_PickRitual5_Event">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="ritual5" />
+			<property name="max_distance" value="6" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="ritual5" />
+			<property name="group_name" value="ritual" />
+			<property name="max_distance" value="6" />
+		</action>	
+		<action class="RemoveEntities">
+			<property name="phase" value="1" />
+			<property name="target_group" value="ritual" />
+		</action>	
+		<action class="BlockReplace">
+			<property name="min_offset" value="-6,-6,-6" />
+			<property name="max_offset" value="6,6,6" />
+			<property name="block_to" value="air" />
+			<property name="block_tags" value="ZINCRITUAL5" />
+			<property name="phase" value="1" />	
+		</action>
+		<action class="AddItems">
+			<property name="phase" value="2" />
+			<property name="added_items" value="ZombieINC_spawnRitual_5_TheCult" />
+			<property name="added_item_counts" value="1" />			
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_TheCult_PickRitual6_Event">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="ritual6" />
+			<property name="max_distance" value="6" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="ritual6" />
+			<property name="group_name" value="ritual" />
+			<property name="max_distance" value="6" />
+		</action>	
+		<action class="RemoveEntities">
+			<property name="phase" value="1" />
+			<property name="target_group" value="ritual" />
+		</action>	
+		<action class="BlockReplace">
+			<property name="min_offset" value="-6,-6,-6" />
+			<property name="max_offset" value="6,6,6" />
+			<property name="block_to" value="air" />
+			<property name="block_tags" value="ZINCRITUAL6" />
+			<property name="phase" value="1" />	
+		</action>
+		<action class="AddItems">
+			<property name="phase" value="2" />
+			<property name="added_items" value="ZombieINC_spawnRitual_6_TheCult" />
+			<property name="added_item_counts" value="1" />			
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_TheCult_UpgradeRitual1_Event">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="ritual1" />
+			<property name="max_distance" value="6" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="ritual1" />
+			<property name="group_name" value="ritual" />
+			<property name="max_distance" value="6" />
+		</action>
+		<action class="BlockReplace">
+			<property name="min_offset" value="-6,-6,-6" />
+			<property name="max_offset" value="6,6,6" />
+			<property name="block_to" value="ZombieINC_spawnRitual_2_TheCult" />
+			<property name="block_tags" value="ZINCRITUAL1" />
+			<property name="phase" value="0" />	
+		</action>
+		<action class="ReplaceEntities">
+			<property name="time" value="5" />
+			<property name="phase" value="1" />	
+			<property name="entity_names" value="ZombieINC_NPC_Ritual_2_TheCult" />
+			<property name="single_choice" value="true" />
+			<property name="target_group" value="ritual" />
+		</action>	
+		<!--
+		<action class="SpawnEntity">		
+			<property name="safe_spawn" value="true" />	
+			<property name="entity_names" value="ZombieINC_NPC_Ritual_2_TheCult"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="0" />
+			<property name="min_distance" value="0" />
+			<property name="air_spawn" value="false" />
+			<property name="target_group" value="ritual" />
+			<property name="phase" value="1" />
+		</action>
+		
+		<action class="RemoveEntities">
+			<property name="phase" value="2" />
+			<property name="target_group" value="ritual" />
+		</action>
+		
+		
+		-->
+		
+	</action_sequence>
+	<action_sequence name="TEST_ZombieINC_TheCult_UpgradeRitual1_Event">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="ritual1" />
+			<property name="max_distance" value="6" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="ritual1" />
+			<property name="group_name" value="ritual" />
+			<property name="max_distance" value="6" />
+		</action>
+		<action class="BlockReplace">
+			<property name="min_offset" value="-6,-6,-6" />
+			<property name="max_offset" value="6,6,6" />
+			<property name="block_to" value="ZombieINC_spawnRitual_2_TheCult" />
+			<property name="block_tags" value="ZINCRITUAL1" />
+			<property name="phase" value="0" />	
+		</action>
+		
+		
+		<action class="SpawnEntity">		
+			<property name="safe_spawn" value="true" />	
+			<property name="entity_names" value="ZombieINC_NPC_Ritual_2_TheCult"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="0" />
+			<property name="min_distance" value="0" />
+			<property name="air_spawn" value="false" />
+			<property name="target_group" value="ritual" />
+			<property name="phase" value="1" />
+		</action>
+		
+		<action class="RemoveEntities">
+			<property name="phase" value="2" />
+			<property name="target_group" value="ritual" />
+		</action>
+		
+		
+		
+		
+	</action_sequence>
+	<action_sequence name="ZombieINC_TheCult_UpgradeRitual2_Event">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="ritual2" />
+			<property name="max_distance" value="6" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="ritual2" />
+			<property name="group_name" value="ritual" />
+			<property name="max_distance" value="6" />
+		</action>
+		<action class="BlockReplace">
+			<property name="min_offset" value="-6,-6,-6" />
+			<property name="max_offset" value="6,6,6" />
+			<property name="block_to" value="ZombieINC_spawnRitual_3_TheCult" />
+			<property name="block_tags" value="ZINCRITUAL2" />
+			<property name="phase" value="0" />	
+		</action>
+		<action class="ReplaceEntities">
+			<property name="time" value="5" />
+			<property name="phase" value="1" />	
+			<property name="entity_names" value="ZombieINC_NPC_Ritual_3_TheCult" />
+			<property name="single_choice" value="true" />
+			<property name="target_group" value="ritual" />
+		</action>		
+	</action_sequence>
+	<action_sequence name="ZombieINC_TheCult_UpgradeRitual3_Event">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="ritual3" />
+			<property name="max_distance" value="6" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="ritual3" />
+			<property name="group_name" value="ritual" />
+			<property name="max_distance" value="6" />
+		</action>	
+		<action class="BlockReplace">
+			<property name="min_offset" value="-6,-6,-6" />
+			<property name="max_offset" value="6,6,6" />
+			<property name="block_to" value="ZombieINC_spawnRitual_4_TheCult" />
+			<property name="block_tags" value="ZINCRITUAL3" />
+			<property name="phase" value="0" />	
+		</action>
+		<action class="ReplaceEntities">
+			<property name="time" value="5" />
+			<property name="phase" value="1" />	
+			<property name="entity_names" value="ZombieINC_NPC_Ritual_4_TheCult" />
+			<property name="single_choice" value="true" />
+			<property name="target_group" value="ritual" />
+		</action>	
+	</action_sequence>
+	<action_sequence name="ZombieINC_TheCult_UpgradeRitual4_Event">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="ritual4" />
+			<property name="max_distance" value="6" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="ritual4" />
+			<property name="group_name" value="ritual" />
+			<property name="max_distance" value="6" />
+		</action>
+		<action class="BlockReplace">
+			<property name="min_offset" value="-6,-6,-6" />
+			<property name="max_offset" value="6,6,6" />
+			<property name="block_to" value="ZombieINC_spawnRitual_5_TheCult" />
+			<property name="block_tags" value="ZINCRITUAL4" />
+			<property name="phase" value="0" />	
+		</action>
+		<action class="ReplaceEntities">
+			<property name="time" value="5" />
+			<property name="phase" value="1" />	
+			<property name="entity_names" value="ZombieINC_NPC_Ritual_5_TheCult" />
+			<property name="single_choice" value="true" />
+			<property name="target_group" value="ritual" />
+		</action>	
+	</action_sequence>
+	<action_sequence name="ZombieINC_TheCult_UpgradeRitual5_Event">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="ritual5" />
+			<property name="max_distance" value="6" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="ritual5" />
+			<property name="group_name" value="ritual" />
+			<property name="max_distance" value="6" />
+		</action>
+		<action class="BlockReplace">
+			<property name="min_offset" value="-6,-6,-6" />
+			<property name="max_offset" value="6,6,6" />
+			<property name="block_to" value="ZombieINC_spawnRitual_6_TheCult" />
+			<property name="block_tags" value="ZINCRITUAL5" />
+			<property name="phase" value="0" />	
+		</action>
+		<action class="ReplaceEntities">
+			<property name="time" value="5" />
+			<property name="phase" value="1" />	
+			<property name="entity_names" value="ZombieINC_NPC_Ritual_6_TheCult" />
+			<property name="single_choice" value="true" />
+			<property name="target_group" value="ritual" />
+		</action>	
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_TheCult_DowngradeRitual2_Event">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="ritual2" />
+			<property name="max_distance" value="6" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="ritual2" />
+			<property name="group_name" value="ritual" />
+			<property name="max_distance" value="6" />
+		</action>
+		<action class="BlockReplace">
+			<property name="min_offset" value="-6,-6,-6" />
+			<property name="max_offset" value="6,6,6" />
+			<property name="block_to" value="ZombieINC_spawnRitual_1_TheCult" />
+			<property name="block_tags" value="ZINCRITUAL2" />
+			<property name="phase" value="0" />	
+		</action>
+		<action class="ReplaceEntities">
+			<property name="time" value="5" />
+			<property name="phase" value="1" />	
+			<property name="entity_names" value="ZombieINC_NPC_Ritual_1_TheCult" />
+			<property name="single_choice" value="true" />
+			<property name="target_group" value="ritual" />
+		</action>		
+	</action_sequence>
+	<action_sequence name="ZombieINC_TheCult_DowngradeRitual3_Event">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="ritual3" />
+			<property name="max_distance" value="6" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="ritual3" />
+			<property name="group_name" value="ritual" />
+			<property name="max_distance" value="6" />
+		</action>	
+		<action class="BlockReplace">
+			<property name="min_offset" value="-6,-6,-6" />
+			<property name="max_offset" value="6,6,6" />
+			<property name="block_to" value="ZombieINC_spawnRitual_2_TheCult" />
+			<property name="block_tags" value="ZINCRITUAL3" />
+			<property name="phase" value="0" />	
+		</action>
+		<action class="ReplaceEntities">
+			<property name="time" value="5" />
+			<property name="phase" value="1" />	
+			<property name="entity_names" value="ZombieINC_NPC_Ritual_2_TheCult" />
+			<property name="single_choice" value="true" />
+			<property name="target_group" value="ritual" />
+		</action>	
+	</action_sequence>
+	<action_sequence name="ZombieINC_TheCult_DowngradeRitual4_Event">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="ritual4" />
+			<property name="max_distance" value="6" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="ritual4" />
+			<property name="group_name" value="ritual" />
+			<property name="max_distance" value="6" />
+		</action>
+		<action class="BlockReplace">
+			<property name="min_offset" value="-6,-6,-6" />
+			<property name="max_offset" value="6,6,6" />
+			<property name="block_to" value="ZombieINC_spawnRitual_3_TheCult" />
+			<property name="block_tags" value="ZINCRITUAL4" />
+			<property name="phase" value="0" />	
+		</action>
+		<action class="ReplaceEntities">
+			<property name="time" value="5" />
+			<property name="phase" value="1" />	
+			<property name="entity_names" value="ZombieINC_NPC_Ritual_3_TheCult" />
+			<property name="single_choice" value="true" />
+			<property name="target_group" value="ritual" />
+		</action>	
+	</action_sequence>
+	<action_sequence name="ZombieINC_TheCult_DowngradeRitual5_Event">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="ritual5" />
+			<property name="max_distance" value="6" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="ritual5" />
+			<property name="group_name" value="ritual" />
+			<property name="max_distance" value="6" />
+		</action>
+		<action class="BlockReplace">
+			<property name="min_offset" value="-6,-6,-6" />
+			<property name="max_offset" value="6,6,6" />
+			<property name="block_to" value="ZombieINC_spawnRitual_4_TheCult" />
+			<property name="block_tags" value="ZINCRITUAL5" />
+			<property name="phase" value="0" />	
+		</action>
+		<action class="ReplaceEntities">
+			<property name="time" value="5" />
+			<property name="phase" value="1" />	
+			<property name="entity_names" value="ZombieINC_NPC_Ritual_4_TheCult" />
+			<property name="single_choice" value="true" />
+			<property name="target_group" value="ritual" />
+		</action>	
+	</action_sequence>
+	<action_sequence name="ZombieINC_TheCult_DowngradeRitual6_Event">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="ritual6" />
+			<property name="max_distance" value="6" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="ritual6" />
+			<property name="group_name" value="ritual" />
+			<property name="max_distance" value="6" />
+		</action>
+		<action class="BlockReplace">
+			<property name="min_offset" value="-6,-6,-6" />
+			<property name="max_offset" value="6,6,6" />
+			<property name="block_to" value="ZombieINC_spawnRitual_5_TheCult" />
+			<property name="block_tags" value="ZINCRITUAL6" />
+			<property name="phase" value="0" />	
+		</action>
+		<action class="ReplaceEntities">
+			<property name="time" value="5" />
+			<property name="phase" value="1" />	
+			<property name="entity_names" value="ZombieINC_NPC_Ritual_5_TheCult" />
+			<property name="single_choice" value="true" />
+			<property name="target_group" value="ritual" />
+		</action>	
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_TheCult_PickRitualP1_Event">
+		<!--<property name="refund_inactivity" value="false" />-->
+
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="pentagram1" />
+			<property name="group_name" value="pentagram1" />
+			<property name="max_distance" value="6" />
+		</action>
+		
+		<action class="RemoveEntities">
+			<property name="phase" value="1" />
+			<property name="target_group" value="pentagram1" />
+		</action>
+		<!--<action class="Kill">
+			<property name="phase" value="1" />
+			<property name="target_group" value="ritual" />
+		</action>-->
+		
+		<action class="AddItems">
+			<property name="phase" value="2" />
+			<property name="added_items" value="ZombieINC_Ritual_ItemNorth" />
+			<property name="added_item_counts" value="1" />			
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_TheCult_PickRitualP2_Event">
+		<!--<property name="refund_inactivity" value="false" />-->
+
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="pentagram2" />
+			<property name="group_name" value="pentagram2" />
+			<property name="max_distance" value="6" />
+		</action>
+		
+		<action class="RemoveEntities">
+			<property name="phase" value="1" />
+			<property name="target_group" value="pentagram2" />
+		</action>
+		<!--<action class="Kill">
+			<property name="phase" value="1" />
+			<property name="target_group" value="ritual" />
+		</action>-->
+		
+		<action class="AddItems">
+			<property name="phase" value="2" />
+			<property name="added_items" value="ZombieINC_Ritual_ItemSideA" />
+			<property name="added_item_counts" value="1" />			
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_TheCult_PickRitualP3_Event">
+		<!--<property name="refund_inactivity" value="false" />-->
+
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="pentagram3" />
+			<property name="group_name" value="pentagram3" />
+			<property name="max_distance" value="6" />
+		</action>
+		
+		<action class="RemoveEntities">
+			<property name="phase" value="1" />
+			<property name="target_group" value="pentagram3" />
+		</action>
+		<!--<action class="Kill">
+			<property name="phase" value="1" />
+			<property name="target_group" value="ritual" />
+		</action>-->
+		
+		<action class="AddItems">
+			<property name="phase" value="2" />
+			<property name="added_items" value="ZombieINC_Ritual_ItemSideB" />
+			<property name="added_item_counts" value="1" />			
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_TheCult_PickRitualP4_Event">
+		<!--<property name="refund_inactivity" value="false" />-->
+
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="pentagram4" />
+			<property name="group_name" value="pentagram4" />
+			<property name="max_distance" value="6" />
+		</action>
+		
+		<action class="RemoveEntities">
+			<property name="phase" value="1" />
+			<property name="target_group" value="pentagram4" />
+		</action>
+		<!--<action class="Kill">
+			<property name="phase" value="1" />
+			<property name="target_group" value="ritual" />
+		</action>-->
+		
+		<action class="AddItems">
+			<property name="phase" value="2" />
+			<property name="added_items" value="ZombieINC_Ritual_ItemBottomA" />
+			<property name="added_item_counts" value="1" />			
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_TheCult_PickRitualP5_Event">
+		<!--<property name="refund_inactivity" value="false" />-->
+
+		<action class="AddEntitiesToGroup"> <!--HERE-->
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="pentagram5" />
+			<property name="group_name" value="pentagram5" />
+			<property name="max_distance" value="6" />
+		</action>
+		
+		<action class="RemoveEntities">
+			<property name="phase" value="1" />
+			<property name="target_group" value="pentagram5" />
+		</action>
+		<!--<action class="Kill">
+			<property name="phase" value="1" />
+			<property name="target_group" value="ritual" />
+		</action>-->
+		
+		<action class="AddItems">
+			<property name="phase" value="2" />
+			<property name="added_items" value="ZombieINC_Ritual_ItemBottomB" />
+			<property name="added_item_counts" value="1" />			
+		</action>
+	</action_sequence>
+	<!--#All Quests-->
+	<action_sequence name="ZombieINC_BossFatherInfested_PartyFail_Cvar">
+	<property name="refund_inactivity" value="false" /> 
+		<action class="AddPartyToGroup">  								
+			<property name="group_name" value="party"/>
+			<property name="phase" value="0"/>
+		</action>
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="cvar" value="ZINCCULTPARTY" />
+			<property name="target_group" value="party"/>
+			<property name="operation" value="Add" />
+			<property name="value" value="1" />
+		</action>
+		<wait class="While">
+			<property name="phase" value="2" />
+			<requirement class="OnQuest">
+				<property name="quest" value="zincfatherinfested" />
+			</requirement>			
+		</wait>
+		<action class="CallGameEvent">	
+			<property name="phase" value="3" />
+			<property name="game_events" value="ZombieINC_TheCult_PartyFail_QuestZone" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_BossMotherInfested_PartyFail_Cvar">
+	<property name="refund_inactivity" value="false" /> 
+		<action class="AddPartyToGroup">  								
+			<property name="group_name" value="party"/>
+			<property name="phase" value="0"/>
+		</action>
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="cvar" value="ZINCCULTPARTY" />
+			<property name="target_group" value="party"/>
+			<property name="operation" value="Add" />
+			<property name="value" value="1" />
+		</action>
+		<wait class="While">
+			<property name="phase" value="2" />
+			<requirement class="OnQuest">
+				<property name="quest" value="zincmotherinfested" />
+			</requirement>			
+		</wait>
+		<action class="CallGameEvent">	
+			<property name="phase" value="3" />
+			<property name="game_events" value="ZombieINC_TheCult_PartyFail_QuestZone" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_BossFarmerInfested_PartyFail_Cvar">
+	<property name="refund_inactivity" value="false" /> 
+		<action class="AddPartyToGroup">  								
+			<property name="group_name" value="party"/>
+			<property name="phase" value="0"/>
+		</action>
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="cvar" value="ZINCCULTPARTY" />
+			<property name="target_group" value="party"/>
+			<property name="operation" value="Add" />
+			<property name="value" value="1" />
+		</action>
+		<wait class="While">
+			<property name="phase" value="2" />
+			<requirement class="OnQuest">
+				<property name="quest" value="zincfarmerinfested" />
+			</requirement>			
+		</wait>
+		<action class="CallGameEvent">	
+			<property name="phase" value="3" />
+			<property name="game_events" value="ZombieINC_TheCult_PartyFail_QuestZone" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_BossPenitenceInfested_PartyFail_Cvar">
+	<property name="refund_inactivity" value="false" /> 
+		<action class="AddPartyToGroup">  								
+			<property name="group_name" value="party"/>
+			<property name="phase" value="0"/>
+		</action>
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="cvar" value="ZINCCULTPARTY" />
+			<property name="target_group" value="party"/>
+			<property name="operation" value="Add" />
+			<property name="value" value="1" />
+		</action>
+		<wait class="While">
+			<property name="phase" value="2" />
+			<requirement class="OnQuest">
+				<property name="quest" value="zincpenitenceinfested" />
+			</requirement>			
+		</wait>
+		<action class="CallGameEvent">	
+			<property name="phase" value="3" />
+			<property name="game_events" value="ZombieINC_TheCult_PartyFail_QuestZone" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_BossRitual_AlreadyDead">
+		<property name="target_type" value="Entity" />
+		<property name="refund_inactivity" value="true" />
+		<!--<property name="single_instance" value="false" />-->
+		<property name="allow_while_dead" value="true" />
+		
+		<action class="CallGameEvent">
+			<property name="phase" value="1" />
+			<property name="game_events" value="ZombieINC_RitualScreen_Out" />
+		</action>
+		<action class="Delay">
+			<property name="time" value="2" />
+			<property name="phase" value="2" />
+		</action>
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_PlayerInRitual_Buff" />
+			<property name="check_already_exists" value="false" />
+			<property name="phase" value="2" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_BossRitual_WaitForDead_Quest">
+		<property name="target_type" value="Entity" />
+		<property name="refund_inactivity" value="true" />
+		<!--<property name="single_instance" value="true" />-->
+		<property name="allow_while_dead" value="true" />
+			
+		<action class="CallGameEvent">
+			<property name="phase" value="1" />
+			<property name="game_events" value="ZombieINC_RitualScreen_Out" />
+		</action>
+		<action class="Delay">
+			<property name="time" value="2" />
+			<property name="phase" value="2" />
+		</action>
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_PlayerInRitual_Buff" />
+			<property name="check_already_exists" value="false" />
+			<property name="phase" value="2" />
+		</action>
+	</action_sequence>
+	
+	<!--All Quests-->
+	<!--#General Use-->
+	<action_sequence name="ZombieINC_TheCult_BellGameEvent_Priest">
+	<property name="target_type" value="Entity" />
+	<property name="allow_user_trigger" value="true" />
+	<decision class="If">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincpriest" />
+			<property name="invert" value="false" />
+		</requirement>
+		<!--<action class="AddClosestEntityToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="Player" />
+			<property name="entity_tags" value="player" />
+			<property name="max_distance" value="10" />
+		</action>-->
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_TheCult_BellEffect_Buff" />
+			<property name="phase" value="1"/>
+			<property name="check_already_exists" value="false" />
+			<!--<property name="target_group" value="Player"/>		-->		
+		</action>
+		<action class="SpawnEntity">			
+			<property name="entity_names" value="ZombieINC_Bell_Lure2"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="1" />
+			<property name="min_distance" value="1" />
+			<property name="phase" value="1" />	
+		</action>
+		<action class="BlockReplace">	
+			<property name="min_offset" value="-4,-4,-4" />
+			<property name="max_offset" value="4,4,4" />
+			<property name="block_to" value="ZombieINC_churchBell1x2x1Inactive" />
+			<property name="block_tags" value="ZINCBELLActive" />
+			<property name="phase" value="2" />	
+		</action>
+		</decision>
+	</action_sequence>
+	<action_sequence name="ZombieINC_TheCult_BellGameEvent_Mother">
+	<decision class="If">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincmotherinfested" />
+			<property name="invert" value="false" />
+		</requirement>
+		<!--<action class="AddClosestEntityToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="Player" />
+			<property name="entity_tags" value="player" />
+			<property name="max_distance" value="10" />
+		</action>-->
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_TheCult_BellEffect_Buff" />
+			<property name="phase" value="1"/>	
+			<property name="check_already_exists" value="false" />
+			<!--<property name="target_group" value="Player"/>	-->			
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_TheCult_BellEffectMother_Buff" />
+			<property name="phase" value="1"/>	
+			<property name="check_already_exists" value="false" />
+			<!--<property name="target_group" value="Player"/>	-->			
+		</action>
+		<action class="BlockReplace">
+			<property name="min_offset" value="1,1,1" />
+			<property name="max_offset" value="1,1,1" />
+			<property name="block_to" value="ZombieINC_churchBell1x2x1Inactive" />
+			<property name="block_tags" value="ZINCBELLActive" />
+			<property name="phase" value="2" />	
+		</action>
+		</decision>
+	</action_sequence>
+	<action_sequence name="ZombieINC_TheCult_BellGameEvent_Penitence">
+	<decision class="If">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincpenitenceinfested" />
+			<property name="invert" value="false" />
+		</requirement>
+		<!--<action class="AddClosestEntityToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="Player" />
+			<property name="entity_tags" value="player" />
+			<property name="max_distance" value="10" />
+		</action>-->
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_TheCult_BellEffect_Buff" />
+			<property name="phase" value="1"/>	
+			<property name="check_already_exists" value="false" />
+		<!--	<property name="target_group" value="Player"/>	-->			
+		</action>
+		<action class="AddEntitiesToGroup">
+			<requirement class="NearbyEntities">
+				<property name="entity_tags" value="totens" />
+				<property name="max_distance" value="20" />
+			</requirement>
+			<property name="phase" value="1" />
+			<property name="entity_tags" value="totens" />
+			<property name="group_name" value="NearbyTotens" />
+			<property name="max_distance" value="20"/>			
+		</action>
+		<action class="BlockReplace">
+			<property name="min_offset" value="15,10,15" />
+			<property name="max_offset" value="15,10,15" />
+			<property name="block_to" value="air" />
+			<property name="block_tags" value="ZINCTraps" />
+			<property name="phase" value="1" />	
+		</action>
+		<action class="RemoveEntities">
+			<requirement class="NearbyEntities">
+				<property name="entity_tags" value="totens" />
+				<property name="max_distance" value="20" />
+			</requirement>
+			<property name="phase" value="2" />
+			<property name="target_group" value="NearbyTotens" />			
+		</action>	
+		<action class="BlockReplace">
+			<property name="min_offset" value="1,1,1" />
+			<property name="max_offset" value="1,1,1" />
+			<property name="block_to" value="ZombieINC_churchBell1x2x1Inactive" />
+			<property name="block_tags" value="ZINCBELLActive" />
+			<property name="phase" value="3" />	
+		</action>
+		</decision>
+	</action_sequence>
+	<action_sequence name="ZombieINC_TheCult_BellGameEvent_Farmer">
+	<decision class="If">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincfarmerinfested" />
+			<property name="invert" value="false" />
+		</requirement>
+		<!--<action class="AddClosestEntityToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="Player" />
+			<property name="entity_tags" value="player" />
+			<property name="max_distance" value="10" />
+		</action>-->
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_TheCult_BellEffect_Buff" />
+			<property name="phase" value="1"/>
+			<property name="check_already_exists" value="false" />
+			<!--<property name="target_group" value="Player"/>	-->			
+		</action>
+		<action class="SpawnEntity">			
+			<property name="entity_names" value="ZombieINC_animalMountainLion"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="1" />
+			<property name="min_distance" value="1" />
+			<property name="phase" value="1" />	
+		</action>
+		<action class="BlockReplace">
+			<property name="min_offset" value="1,1,1" />
+			<property name="max_offset" value="1,1,1" />
+			<property name="block_to" value="ZombieINC_churchBell1x2x1Inactive" />
+			<property name="block_tags" value="ZINCBELLActive" />
+			<property name="phase" value="2" />	
+		</action>
+		</decision>
+	</action_sequence>
+	<action_sequence name="ZombieINC_TheCult_BellGameEvent_Father">
+	<decision class="If">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincfatherinfested" />
+			<property name="invert" value="false" />
+		</requirement>
+		<!--<action class="AddClosestEntityToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="Player" />
+			<property name="entity_tags" value="player" />
+			<property name="max_distance" value="10" />
+		</action>-->
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_TheCult_BellEffect_Buff" />
+			<property name="phase" value="1"/>	
+			<property name="check_already_exists" value="false" />
+			<!--<property name="target_group" value="Player"/>	-->			
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_BossFather_BELLEFFECT_Buff" />
+			<property name="phase" value="1"/>		
+			<property name="check_already_exists" value="false" />
+			<!--<property name="target_group" value="Player"/>	-->			
+		</action>
+		<action class="BlockReplace">
+			<property name="min_offset" value="1,1,1" />
+			<property name="max_offset" value="1,1,1" />
+			<property name="block_to" value="ZombieINC_churchBell1x2x1Inactive" />
+			<property name="block_tags" value="ZINCBELLActive" />
+			<property name="phase" value="2" />	
+		</action>
+	</decision>
+	</action_sequence>
+	<action_sequence name="ZombieINC_TheCult_BellGameEvent">
+		
+		<decision class="If">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincpriest" />
+			<property name="invert" value="false" />
+		</requirement>
+		<action class="CallGameEvent">	
+			<property name="phase" value="1" />
+			<property name="game_events" value="ZombieINC_TheCult_BellGameEvent_Priest" />
+		</action>
+		</decision>
+		<decision class="If">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincmotherinfested" />
+			<property name="invert" value="false" />
+		</requirement>
+		<action class="CallGameEvent">	
+			<property name="phase" value="1" />
+			<property name="game_events" value="ZombieINC_TheCult_BellGameEvent_Mother" />
+		</action>
+		</decision>
+		<decision class="If">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincpenitenceinfested" />
+			<property name="invert" value="false" />
+		</requirement>
+		<action class="CallGameEvent">	
+			<property name="phase" value="1" />
+			<property name="game_events" value="ZombieINC_TheCult_BellGameEvent_Penitence" />
+		</action>
+		</decision>
+		<decision class="If">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincfarmerinfested" />
+			<property name="invert" value="false" />
+		</requirement>
+		<action class="CallGameEvent">	
+			<property name="phase" value="1" />
+			<property name="game_events" value="ZombieINC_TheCult_BellGameEvent_Farmer" />
+		</action>
+		</decision>	
+		<decision class="If">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincfatherinfested" />
+			<property name="invert" value="false" />
+		</requirement>
+		<action class="CallGameEvent">	
+			<property name="phase" value="1" />
+			<property name="game_events" value="ZombieINC_TheCult_BellGameEvent_Father" />
+		</action>
+		</decision>
+		<decision class="If">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincpriest" />
+			<property name="invert" value="true" />
+		</requirement>
+		<requirement class="OnQuest">
+			<property name="quest" value="zincfatherinfested" />
+			<property name="invert" value="true" />
+		</requirement>
+		<requirement class="OnQuest">
+			<property name="quest" value="zincmotherinfested" />
+			<property name="invert" value="true" />
+		</requirement>
+		<requirement class="OnQuest">
+			<property name="quest" value="zincfarmerinfested" />
+			<property name="invert" value="true" />
+		</requirement>
+		<requirement class="OnQuest">
+			<property name="quest" value="zincpenitenceinfested" />
+			<property name="invert" value="true" />
+		</requirement>
+		<action class="BlockReplace">
+			<property name="min_offset" value="-100,-10,-100" />
+			<property name="max_offset" value="100,20,100" />
+			<property name="block_to" value="air" />
+			<property name="block_tags" value="BossFatherCandle,BossFatherRemover,BossPenitenceRemover,BossFarmRemover,BossMotherRemover,BossPriestRemover,TheCultRemover" />
+			<property name="phase" value="1" />	
+		</action>
+		<action class="RemoveSpawnedBlocks">
+			<property name="phase" value="1" />
+		</action>
+		</decision>
+	</action_sequence>
+	<action_sequence name="ZombieINC_TheCult_PartyFail_QuestZone">
+		<action class="AddPartyToGroup">  								
+			<property name="group_name" value="party"/>
+			<property name="phase" value="0"/>
+		</action>
+		<decision class="If">
+		<requirement class="CVar">
+			<property name="cvar" value="ZINCCULTPARTY"/>
+			<property name="operation" value="LTE"/>
+			<property name="value" value="1"/>
+		</requirement>
+		<action class="SetScreenEffect">
+			<property name="phase" value="1" />
+			<property name="target_group" value="party"/>
+			<property name="screen_effect" value="Drunk" />
+			<property name="intensity" value="1" />
+			<property name="fade_time" value="3" />
+		</action>
+		<action class="SetScreenEffect">
+			<property name="phase" value="1" />
+			<property name="target_group" value="party"/>
+			<property name="screen_effect" value="FadeToBlack" />
+			<property name="intensity" value="1" />
+			<property name="fade_time" value="3" />
+		</action>
+		<action class="Delay">
+			<property name="time" value="3" />
+			<property name="phase" value="2" />
+		</action>
+		<action class="CallGameEvent">	
+			<property name="phase" value="3" />
+			<property name="game_events" value="ZombieINC_TheCult_RemoveScenarioEvent" />
+		</action>
+		<action class="Delay">
+			<property name="time" value="2" />
+			<property name="phase" value="3" />
+		</action>
+		<action class="SetScreenEffect">
+			<property name="phase" value="4" />
+			<property name="target_group" value="party"/>
+			<property name="screen_effect" value="Drunk" />
+			<property name="intensity" value="0" />
+			<property name="fade_time" value="1.5" />
+		</action>
+		<action class="SetScreenEffect">
+			<property name="phase" value="4" />
+			<property name="target_group" value="party"/>
+			<property name="screen_effect" value="FadeToBlack" />
+			<property name="intensity" value="0" />
+			<property name="fade_time" value="2" />
+		</action>
+		</decision>
+		<decision class="If">
+		<requirement class="CVar">
+			<property name="cvar" value="ZINCCULTPARTY"/>
+			<property name="operation" value="GT"/>
+			<property name="value" value="1"/>
+		</requirement>
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="cvar" value="ZINCCULTPARTY" />
+			<property name="target_group" value="party"/>
+			<property name="operation" value="Subtract" />
+			<property name="value" value="1" />
+		</action>
+		</decision>
+	</action_sequence>
+	<!--General Use-->
+	<!--##BossFatherInfested-->
+	<action_sequence name="ZombieINC_BossFatherSpawn">
+		<property name="refund_inactivity" value="false" /> 
+		<action class="SpawnEntity">			
+			<property name="entity_names" value="ZombieINC_BossFatherInfested"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="30" />
+			<property name="min_distance" value="15" />
+			<!--<property name="add_buffs" value="ZombieINC_BossFather_Phase1_Buff"/>-->
+			<property name="phase" value="1" />	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_BossFatherCandle_Trees">
+		<action class="BlockReplace">
+			<property name="inner_offset" value="0" />
+			<property name="min_offset" value="-50,-10,-50" />
+			<property name="max_offset" value="50,10,50" />
+			<property name="spacing" value="0" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value="1" />
+			<property name="block_to" value="ZombieINC_treeDeadTree01_TreeReplace,ZombieINC_treeDeadTree02_TreeReplace,ZombieINC_treeBurntMaple01_TreeReplace" />
+			<property name="block_tags" value="ZombieINCTreeTag" />
+			
+		</action>
+		<action class="BlockReplace">
+			<property name="phase" value="0" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-50,-10,-50" />
+			<property name="max_offset" value="50,10,50" />
+			<property name="spacing" value="0" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value="1" />
+			<property name="block_to" value="air" />
+			<property name="block_tags" value="ZombieINCcropsGrowingTag,ZombieINCcropsHarvestableTag,ZombieINCplantHedgeTag" />
+			
+		</action>
+		<action class="BlockReplace">
+			<property name="phase" value="0" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-50,-10,-50" />
+			<property name="max_offset" value="50,10,50" />
+			<property name="spacing" value="0" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value=".5" />
+			<property name="block_to" value="air" />
+			<property name="block_tags" value="ZombieINCGrassTag" />
+			
+		</action>
+		<action class="BlockReplace">
+			<property name="phase" value="1" />
+			<property name="inner_offset" value="0" />
+			<property name="min_offset" value="-50,-10,-50" />
+			<property name="max_offset" value="50,10,50" />
+			<property name="spacing" value="0" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value="1" />
+			<property name="block_to" value="ZombieINC_treeDeadPineLeaf" />
+			<property name="block_tags" value="ZombieINCGrassTag" />
+			
+		</action>
+		<action class="BlockReplace">
+			<property name="phase" value="2" />
+			<property name="inner_offset" value="0" />
+			<property name="min_offset" value="-50,-10,-50" />
+			<property name="max_offset" value="50,10,50" />
+			<property name="spacing" value="16" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value="0.5" />
+			<property name="block_to" value="ZombieINC_treeBurntMaple02,ZombieINC_treeBurntMaple03" />
+			<property name="block_tags" value="air,ZombieINCGrassTag" />
+			
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_BossFatherCandle">
+
+		<!--<action class="BlockReplace">
+			<property name="min_offset" value="-10,-3,-10" />
+			<property name="max_offset" value="10,10,10" />
+			<property name="spacing" value="2" />
+			<property name="random_chance" value=".5" />
+			<property name="inner_offset" value="1" />
+			<property name="block_to" value="ZombieINC_candleTableLightPlayer" />
+			<property name="empty_only" value="true" />
+		</action>-->
+		<!--<action class="BlockReplace">
+			<property name="phase" value="0" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-40,-10,-40" />
+			<property name="max_offset" value="40,10,40" />
+			<property name="spacing" value="1" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value=".7" />
+			<property name="block_to" value="air" />
+			<property name="block_tags" value="ZombieINCGrassTag" />
+			
+		</action>-->
+		<action class="BlockReplace">
+			<property name="phase" value="1" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-30,-10,-30" />
+			<property name="max_offset" value="30,10,30" />
+			<property name="spacing" value="12" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value=".4" />
+			<property name="block_to" value="ZombieINC_churchBell1x2x1_5" />
+			<property name="block_tags" value="air,ZombieINCGrassTag" />
+			
+		</action>
+		<action class="BlockReplace">
+			<property name="phase" value="2" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-30,-10,-30" />
+			<property name="max_offset" value="30,10,30" />
+			<property name="spacing" value="3" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value=".1" />
+			<property name="block_to" value="ZombieINC_goreBlockHumanCorpse,ZombieINC_goreBlockHumanCorpse1,ZombieINC_goreBlockHumanCorpse2,ZombieINC_goreBlockHumanCorpse3" />
+			<property name="block_tags" value="air,ZombieINCGrassTag" />
+			
+		</action>
+		<action class="BlockReplace">
+			<property name="phase" value="2" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-30,-10,-30" />
+			<property name="max_offset" value="30,10,30" />
+			<property name="spacing" value="2" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value=".4" />
+			<property name="block_to" value="ZombieINC_goreBlockAnimal,ZombieINC_goreBlockHumanBones,ZombieINC_goreHumanSkull" />
+			<property name="block_tags" value="air,ZombieINCGrassTag" />
+			
+		</action>
+		<action class="BlockReplace">
+			<property name="phase" value="2" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-30,-10,-30" />
+			<property name="max_offset" value="30,10,30" />
+			<property name="spacing" value="4" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value=".6" />
+			<property name="block_to" value="ZombieINC_graveStone01,ZombieINC_graveStone02,ZombieINC_graveStone03,ZombieINC_graveStone04,ZombieINC_graveStone05,ZombieINC_graveStone06,ZombieINC_graveStone07,ZombieINC_graveStone08" />
+			<property name="block_tags" value="air,ZombieINCGrassTag" />
+			
+		</action>
+		<action class="BlockReplace">
+			<property name="phase" value="3" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-30,-10,-30" />
+			<property name="max_offset" value="30,10,30" />
+			<property name="spacing" value="2" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value=".7" />
+			<property name="block_to" value="ZombieINC_candleTableLightPlayer" />
+			<property name="block_tags" value="air,ZombieINCGrassTag" />
+			
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_BossFatherCandle_RemoveCandlesEvent">
+		<action class="BlockReplace">
+			<property name="min_offset" value="-50,-10,-50" />
+			<property name="max_offset" value="50,20,50" />
+			<property name="block_to" value="air" />
+			<property name="block_tags" value="BossFatherCandle,BossFatherRemover" />
+			<property name="phase" value="1" />	
+		</action>
+		
+		<action class="RemoveSpawnedBlocks">
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_FogNormalWeather_Long">	
+	<property name="allow_user_trigger" value="true" />
+		<action class="Delay">
+			<property name="time" value="1" />
+		</action>	
+		<!--<action class="SetWeather">
+			<property name="weather_group" value="ZombieINC_fog" />
+			<property name="time" value="900" />
+		</action>-->		
+	</action_sequence>
+	<action_sequence name="ZombieINC_FogNormalWeather_FatherInfestedEvent">
+		<!--<requirement class="OnQuest">
+			<property name="quest" value="zincboneknife"/>
+		</requirement>-->
+		<!--<action class="SetWeather">
+			<property name="weather_group" value="ZombieINC_fog" />
+			<property name="time" value="65" />
+		</action>-->		
+	</action_sequence>
+	<action_sequence name="ZombieINC_FogIntenseWeather_FatherInfestedEvent">
+		<!--<requirement class="OnQuest">
+			<property name="quest" value="zincboneknife"/>
+		</requirement>-->
+		<!--<action class="SetWeather">
+			<property name="weather_group" value="ZombieINC_Superfog" />
+			<property name="time" value="65" />
+		</action>-->		
+	</action_sequence>
+	<action_sequence name="ZombieINC_DefaultWeather_FatherInfestedEvent">
+		<!--<requirement class="OnQuest">
+			<property name="quest" value="zincboneknife"/>
+		</requirement>-->
+		<!--<action class="SetWeather">
+			<property name="weather_group" value="default" />
+			<property name="time" value="300" />
+		</action>	-->	
+	</action_sequence>
+	<action_sequence name="ZombieINC_ExplosiveMinionFleshEvent">		
+		<action class="ExplodeTarget">
+			<property name="blast_power" value="30" />
+			<property name="block_damage" value="0" />
+			<property name="block_radius" value="1" />
+			<property name="entity_damage" value="15" />
+			<property name="entity_radius" value="5" />
+			<property name="particle_index" value="8" />
+			<property name="phase" value="0" />
+		</action>
+		<action class="Kill"><property name="phase" value="1" /></action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ExplosiveMinionFleshNoBlastEvent">		
+		<action class="ExplodeTarget">
+			<property name="blast_power" value="0" />
+			<property name="block_damage" value="0" />
+			<property name="block_radius" value="1" />
+			<property name="entity_damage" value="15" />
+			<property name="entity_radius" value="2" />
+			<property name="particle_index" value="8" />
+			<property name="phase" value="0" />
+		</action>
+		<action class="AddEntitiesToGroup">
+			<requirement class="NearbyEntities">
+				<property name="entity_tags" value="BossFatherInfested" />
+				<property name="max_distance" value="2" />
+			</requirement>
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="BossFatherInfested" />
+			<property name="group_name" value="boss" />
+			<property name="max_distance" value="2" />
+		</action>
+		<action class="AddBuff">
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="BossFatherInfested"/>
+				<property name="operation" value="GTE"/> 
+				<property name="count" value="1"/>
+			</requirement>
+			<property name="buff_name" value="ZombieINC_BossFather_Phases_HealSelf_Buff" />
+			<property name="phase" value="1" />
+			<property name="target_group" value="boss" />
+			<property name="check_already_exists" value="false" />
+		</action>
+		<action class="Kill">
+			<property name="phase" value="2" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_FogIntenseSpawnEyes_FatherInfestedEvent">	
+		<loop class="While" >
+			<property name="phase" value="1" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_BossFather_Phase2_WeatherOnPlayer_Buff" />
+			</requirement>
+			<decision class="If">	
+				<requirement class="GroupLiveCount">
+					<property name="target_group" value="zombies"/>
+					<property name="operation" value="LessThan"/> 
+					<property name="count" value="4"/>
+				</requirement>
+				<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_BossFather_Phase2_WeatherOnPlayer_Buff" />
+				</requirement>
+			<!--	<action class="SpawnEntity">
+					<property name="entity_names" value="ZombieINC_MinionInvisibleFatherInfested"  />
+					<property name="spawn_count" value="1"  />
+					<property name="air_spawn" value="false" />
+					<property name="min_distance" value="20" />
+					<property name="max_distance" value="30" />
+					<property name="add_to_group" value="zombies" />
+					<property name="attack_target" value="true" />
+					<property name="is_aggressive" value="true" />
+					<property name="safe_spawn" value="true" />
+				</action>-->
+				<action class="SpawnEntity">
+					<property name="entity_names" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse"  />
+					<property name="spawn_count" value="2"  />
+					<property name="max_distance" value="35" />		
+					<property name="min_distance" value="15" />
+					<property name="add_buffs" value="ZombieINC_Cultists1BoneKnife_AttachPrefabBuff" />
+					<property name="air_spawn" value="true" />
+					<property name="add_to_group" value="zombies" />
+					<property name="attack_target" value="true" />
+					<property name="is_aggressive" value="true" />
+					<property name="safe_spawn" value="true" />
+					<property name="phase" value="0" />
+				</action>
+				<action class="Delay">
+					<property name="time" value="4" />
+				</action>		
+			</decision>	
+		</loop>	
+	</action_sequence>
+	<action_sequence name="ZombieINC_FrenzyHorde_Father_Event">	
+		<loop class="While" >
+			<property name="phase" value="1" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_BossFather_FrenzyHordeOnPlayer_Phase3_Buff" />
+			</requirement>
+			<decision class="If">	
+				<requirement class="GroupLiveCount">
+					<property name="target_group" value="zombies"/>
+					<property name="operation" value="LessThan"/> 
+					<property name="count" value="4"/>
+				</requirement>
+				<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_BossFather_FrenzyHordeOnPlayer_Phase3_Buff" />
+				</requirement>
+				<action class="SpawnEntity">
+					<property name="entity_names" value="zombieArleneFeral,zombieMarleneFeral,zombieSkateboarderFeral,zombieTomClarkFeral,zombieMoeFeral,zombieBoeFeral,zombieJoeFeral,zombieSteveFeral,zombieYoFeral,zombieBusinessManFeral,zombieDarleneFeral,zombiePartyGirlFeral,zombieJanitorFeral,zombieNurseFeral"  />
+					<property name="spawn_count" value="4"  />
+					<property name="max_distance" value="35" />		
+					<property name="min_distance" value="25" />
+					<property name="add_buffs" value="ZombieINC_Cultists2BoneKnife_AttachPrefabBuff" />
+					<property name="air_spawn" value="true" />
+					<property name="add_to_group" value="zombies" />
+					<property name="attack_target" value="true" />
+					<property name="is_aggressive" value="true" />
+					<property name="safe_spawn" value="true" />
+					<property name="phase" value="0" />
+				</action>
+				<action class="RageZombies">
+					<property name="phase" value="1" />
+					<property name="time" value="30" />
+					<property name="speed_percent" value="1" />
+					<property name="target_group" value="zombies" />
+				</action>
+				<action class="Delay">
+					<property name="time" value="20" />
+					<property name="phase" value="1" />
+				</action>
+				<action class="ExplodeTarget">
+					<property name="blast_power" value="30" />
+					<property name="block_damage" value="0" />
+					<property name="block_radius" value="1" />
+					<property name="entity_damage" value="15" />
+					<property name="entity_radius" value="5" />
+					<property name="particle_index" value="8" />
+					<property name="target_group" value="zombies"/>
+					<property name="phase" value="2" />
+				</action>
+				<action class="Kill">
+					<property name="phase" value="2" />
+					<property name="target_group" value="zombies"/>
+				</action>
+			</decision>	
+		</loop>	
+	</action_sequence>
+	<action_sequence name="ZombieINC_SpawnFood_FatherInfestedEvent">	
+	
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="BossFatherInfested" />
+			<property name="group_name" value="boss" />
+			<property name="exclude_target" value="false" />
+			<property name="max_distance" value="20" />
+		</action>
+	
+		<loop class="While" >
+			<property name="phase" value="1" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_BossFather_Phases_Eat_Particles_Buff" />
+			</requirement>
+			<decision class="If">	
+				<requirement class="GroupLiveCount">
+					<property name="target_group" value="zombies"/>
+					<property name="operation" value="LessThan"/> 
+					<property name="count" value="1"/>
+				</requirement>
+				<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_BossFather_Phases_Eat_Particles_Buff" />
+				</requirement>
+				<action class="SpawnEntity">
+					<property name="entity_names" value="ZombieINC_Heal_zombieScreamer"  />
+					<property name="spawn_count" value="1"  />
+					<property name="max_distance" value="25" />		
+					<property name="min_distance" value="15" />
+					<!--<property name="add_buffs" value="ZombieINC_Cultists2BoneKnife_AttachPrefabBuff" />-->
+					<property name="air_spawn" value="true" />
+					<property name="add_to_group" value="zombies" />
+					<property name="target_group" value="boss" />
+					<property name="attack_target" value="false" />
+					
+					<property name="safe_spawn" value="true" />
+					<property name="is_aggressive" value="false" />
+					<property name="phase" value="0" />
+				</action>	
+				<action class="Delay">
+					<property name="time" value="1" />
+					<property name="phase" value="1" />
+				</action>
+			</decision>	
+		</loop>	
+	</action_sequence>
+	<!--BossFatherInfested-->
+	<!--##BossFarmerInfested-->
+	<action_sequence name="ZombieINC_TheCult_Farmer_MinionsPhase1_Event">
+		<property name="refund_inactivity" value="false" /> 
+		<loop class="While" >
+			<property name="phase" value="1" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_BossFarmer_Phase1_Buff" />
+			</requirement>
+			<decision class="If">	
+				<requirement class="GroupLiveCount">
+					<property name="target_group" value="zombies"/>
+					<property name="operation" value="LessThan"/> 
+					<property name="count" value="8"/>
+				</requirement>
+				<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_BossFarmer_Phase1_Buff" />
+				</requirement>
+				<action class="SpawnEntity">
+					<property name="entity_names" value="ZombieINC_animalRabbit,ZombieINC_animalChickenHostile"  />
+					<property name="spawn_count" value="2"  />
+					<property name="air_spawn" value="false" />
+					<property name="min_distance" value="10" />
+					<property name="max_distance" value="20" />
+					<property name="add_to_group" value="zombies" />
+					<property name="safe_spawn" value="true" />
+				</action>
+				<action class="Delay">
+					<property name="time" value="10" />
+				</action>
+			</decision>	
+		</loop>
+	</action_sequence>
+	<action_sequence name="ZombieINC_TheCult_Farmer_MinionsPhase2_Event">
+		<property name="refund_inactivity" value="false" /> 
+		<loop class="While" >
+			<property name="phase" value="1" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_BossFarmer_Phase2_Buff" />
+			</requirement>
+			<decision class="If">	
+				<requirement class="GroupLiveCount">
+					<property name="target_group" value="zombies"/>
+					<property name="operation" value="LessThan"/> 
+					<property name="count" value="6"/>
+				</requirement>
+				<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_BossFarmer_Phase2_Buff" />
+				</requirement>
+				<action class="SpawnEntity">
+					<property name="entity_names" value="ZombieINC_animalBoar,ZombieINC_animalSnake,ZombieINC_animalCoyote,ZombieINC_animalBearSmall,ZombieINC_animalWolf,ZombieINC_animalZombieVulture"  />
+					<property name="spawn_count" value="2"  />
+					<property name="air_spawn" value="false" />
+					<property name="min_distance" value="10" />
+					<property name="max_distance" value="20" />
+					<property name="add_to_group" value="zombies" />
+					<property name="safe_spawn" value="true" />
+				</action>
+				<action class="Delay">
+					<property name="time" value="15" />
+				</action>
+			</decision>	
+		</loop>
+	</action_sequence>
+	<action_sequence name="ZombieINC_TheCult_Farmer_MinionsPhase3_Event">
+		<property name="refund_inactivity" value="false" /> 
+		<loop class="While" >
+			<property name="phase" value="1" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_BossFarmer_Phase3_Buff" />
+			</requirement>
+			<decision class="If">	
+				<requirement class="GroupLiveCount">
+					<property name="target_group" value="zombies"/>
+					<property name="operation" value="LessThan"/> 
+					<property name="count" value="8"/>
+				</requirement>
+				<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_BossFarmer_Phase3_Buff" />
+				</requirement>
+				<action class="SpawnEntity">
+				<requirement class="GroupLiveCount">
+					<property name="target_group" value="weak"/>
+					<property name="operation" value="LessThan"/> 
+					<property name="count" value="5"/>
+				</requirement>
+					<property name="entity_names" value="ZombieINC_animalZombieDog"  />
+					<property name="spawn_count" value="1"  />
+					<property name="air_spawn" value="false" />
+					<property name="min_distance" value="15" />
+					<property name="max_distance" value="20" />
+					<property name="add_to_group" value="zombies,weak" />
+					<property name="safe_spawn" value="true" />
+				</action>
+				<action class="SpawnEntity">
+				<requirement class="GroupLiveCount">
+					<property name="target_group" value="fly"/>
+					<property name="operation" value="LessThan"/> 
+					<property name="count" value="1"/>
+				</requirement>
+					<property name="entity_names" value="ZombieINC_animalZombieVultureRadiated"  />
+					<property name="spawn_count" value="1"  />
+					<property name="air_spawn" value="true" />
+					<property name="min_distance" value="10" />
+					<property name="max_distance" value="20" />
+					<property name="add_to_group" value="zombies,fly" />
+					<property name="safe_spawn" value="true" />
+				</action>
+				<action class="SpawnEntity">
+				<requirement class="GroupLiveCount">
+					<property name="target_group" value="strong"/>
+					<property name="operation" value="LessThan"/> 
+					<property name="count" value="1"/>
+				</requirement>
+					<property name="entity_names" value="ZombieINC_animalBear"  />
+					<property name="spawn_count" value="1"  />
+					<property name="air_spawn" value="false" />
+					<property name="min_distance" value="20" />
+					<property name="max_distance" value="30" />
+					<property name="add_to_group" value="zombies,strong" />
+					<property name="safe_spawn" value="true" />
+				</action>
+				<action class="Delay">
+					<property name="time" value="15" />
+				</action>
+			</decision>	
+		</loop>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_TheCult_Farmer_BossPhase4_Eating_Event">
+		<requirement class="NearbyEntities">
+			<property name="max_distance" value="20" />
+			<property name="entity_state" value="Dead" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<requirement class="NearbyEntities">
+				<property name="entity_tags" value="player" />
+				<property name="max_distance" value="4" />
+			</requirement>
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="player" />
+			<property name="group_name" value="players" />
+			<property name="max_distance" value="4" />
+			<property name="allow_player" value="true" />
+		</action>
+		<action class="AddBuff">
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="players"/>
+				<property name="operation" value="GTE"/> 
+				<property name="count" value="1"/>
+			</requirement>
+			<property name="buff_name" value="ZombieINC_BossFarmer_Phase4_player_Buff" />
+			<property name="check_already_exists" value="false" />
+			<property name="target_group" value="players" />
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_TheCult_Farmer_BossPhase1_Event">
+		<property name="refund_inactivity" value="false" /> 
+		
+		<action class="ModifyCVar">
+			<property name="cvar" value="TheCultRandomRollEvent"  />
+			<property name="value" value="0-100" />
+			<property name="operation" value="Set"  />
+		</action>
+		
+		<action class="SpawnEntity">
+		<requirement class="CVar">
+			<property name="cvar" value="TheCultRandomRollEvent"/>
+			<property name="operation" value="LTE"/>
+			<property name="value" value="50"/>
+		</requirement>
+			<property name="entity_names" value="ZombieINC_MiniBoss_animalChickenHostile" />
+			<property name="spawn_count" value="1" />
+			<property name="min_distance" value="10" />
+			<property name="max_distance" value="20" />
+			<property name="phase" value="1" />
+			<property name="add_to_group" value="MiniBoss" />
+			<property name="add_buffs" value="ZombieINC_Giver_immortal_FarmerBoss,ZombieINC_Giver_Phase2_FarmerBoss" />
+			<property name="safe_spawn" value="true" />
+		</action>
+		<action class="SpawnEntity">
+		<requirement class="CVar">
+			<property name="cvar" value="TheCultRandomRollEvent"/>
+			<property name="operation" value="GTE"/>
+			<property name="value" value="51"/>
+		</requirement>
+			<property name="entity_names" value="ZombieINC_MiniBoss_animalRabbit" />
+			<property name="spawn_count" value="1" />
+			<property name="min_distance" value="10" />
+			<property name="max_distance" value="20" />
+			<property name="phase" value="1" />
+			<property name="add_to_group" value="MiniBoss" />
+			<property name="add_buffs" value="ZombieINC_Giver_immortal_FarmerBoss,ZombieINC_Giver_Phase2_FarmerBoss" />
+			<property name="safe_spawn" value="true" />
+		</action>
+		
+		<action class="AddEntitiesToGroup">
+			<requirement class="NearbyEntities">
+				<property name="entity_tags" value="BossFarmerInfested" />
+				<property name="max_distance" value="100" />
+			</requirement>
+			<property name="phase" value="2" />
+			<property name="entity_tags" value="BossFarmerInfested" />
+			<property name="group_name" value="Boss" />
+			<property name="max_distance" value="100" />
+			<property name="exclude_target" value="false" />
+		</action>
+		
+		<action class="AddBuff">
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="BossFarmerInfested"/>
+				<property name="operation" value="GTE"/> 
+				<property name="count" value="1"/>
+			</requirement>
+			<property name="buff_name" value="ZombieINC_immortal_FarmerBoss" />
+			<property name="phase" value="3" />
+			<property name="target_group" value="Boss" />
+			<property name="check_already_exists" value="false" />
+		</action>
+		
+		<action class="WaitForDead">
+			<property name="target_group" value="MiniBoss" />
+			<property name="phase_on_despawn" value="10" />
+			<property name="phase" value="4" />
+		</action>
+		
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_immortal_FarmerBoss" />
+			<property name="phase" value="5" />
+			<property name="target_group" value="Boss" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_BossFarmer_Phase2_Buff" />
+			<property name="phase" value="6" />
+			<property name="target_group" value="Boss" />
+			<property name="check_already_exists" value="false" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_TheCult_Farmer_BossPhase2_Event">
+		<property name="refund_inactivity" value="false" /> 
+		
+		<action class="ModifyCVar">
+			<property name="cvar" value="TheCultRandomRollEvent"  />
+			<property name="value" value="0-100" />
+			<property name="operation" value="Set"  />
+		</action>
+		
+		<action class="SpawnEntity">
+		<requirement class="CVar">
+			<property name="cvar" value="TheCultRandomRollEvent"/>
+			<property name="operation" value="LTE"/>
+			<property name="value" value="50"/>
+		</requirement>
+			<property name="entity_names" value="ZombieINC_animalBossGrace" />
+			<property name="spawn_count" value="1" />
+			<property name="min_distance" value="10" />
+			<property name="max_distance" value="20" />
+			<property name="phase" value="1" />
+			<property name="add_to_group" value="MiniBoss" />
+			<property name="add_buffs" value="ZombieINC_Giver_immortal_FarmerBoss,ZombieINC_Giver_Phase3_FarmerBoss" />
+			<property name="safe_spawn" value="true" />
+		</action>
+		<action class="SpawnEntity">
+		<requirement class="CVar">
+			<property name="cvar" value="TheCultRandomRollEvent"/>
+			<property name="operation" value="GTE"/>
+			<property name="value" value="51"/>
+		</requirement>
+			<property name="entity_names" value="ZombieINC_MiniBoss_animalSnake" />
+			<property name="spawn_count" value="1" />
+			<property name="min_distance" value="10" />
+			<property name="max_distance" value="20" />
+			<property name="phase" value="1" />
+			<property name="add_to_group" value="MiniBoss" />
+			<property name="add_buffs" value="ZombieINC_Giver_immortal_FarmerBoss,ZombieINC_Giver_Phase3_FarmerBoss" />
+			<property name="safe_spawn" value="true" />
+		</action>
+		
+		<action class="AddEntitiesToGroup">
+			<requirement class="NearbyEntities">
+				<property name="entity_tags" value="BossFarmerInfested" />
+				<property name="max_distance" value="100" />
+			</requirement>
+			<property name="phase" value="2" />
+			<property name="entity_tags" value="BossFarmerInfested" />
+			<property name="group_name" value="Boss" />
+			<property name="max_distance" value="100" />
+			<property name="exclude_target" value="false" />
+		</action>
+		
+		<action class="AddBuff">
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="BossFarmerInfested"/>
+				<property name="operation" value="GTE"/> 
+				<property name="count" value="1"/>
+			</requirement>
+			<property name="buff_name" value="ZombieINC_immortal_FarmerBoss" />
+			<property name="phase" value="3" />
+			<property name="target_group" value="Boss" />
+			<property name="check_already_exists" value="false" />
+		</action>
+		
+		<action class="WaitForDead">
+			<property name="target_group" value="MiniBoss" />
+			<property name="phase_on_despawn" value="10" />
+			<property name="phase" value="4" />
+		</action>
+		
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_immortal_FarmerBoss" />
+			<property name="phase" value="5" />
+			<property name="target_group" value="Boss" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_BossFarmer_Phase3_Buff" />
+			<property name="phase" value="6" />
+			<property name="target_group" value="Boss" />
+			<property name="check_already_exists" value="false" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_TheCult_Farmer_BossPhase3_Event">
+		<property name="refund_inactivity" value="false" /> 
+		
+		<action class="ModifyCVar">
+			<property name="cvar" value="TheCultRandomRollEvent"  />
+			<property name="value" value="0-100" />
+			<property name="operation" value="Set"  />
+		</action>
+		
+		<action class="SpawnEntity">
+		<requirement class="CVar">
+			<property name="cvar" value="TheCultRandomRollEvent"/>
+			<property name="operation" value="LTE"/>
+			<property name="value" value="50"/>
+		</requirement>
+			<property name="entity_names" value="ZombieINC_animalDireWolf" />
+			<property name="spawn_count" value="1" />
+			<property name="min_distance" value="10" />
+			<property name="max_distance" value="20" />
+			<property name="phase" value="1" />
+			<property name="add_to_group" value="MiniBoss" />
+			<property name="add_buffs" value="ZombieINC_Giver_immortal_FarmerBoss,ZombieINC_Giver_Phase4_FarmerBoss" />
+			<property name="safe_spawn" value="true" />
+		</action>
+		<action class="SpawnEntity">
+		<requirement class="CVar">
+			<property name="cvar" value="TheCultRandomRollEvent"/>
+			<property name="operation" value="GTE"/>
+			<property name="value" value="51"/>
+		</requirement>
+			<property name="entity_names" value="ZombieINC_animalZombieBear" />
+			<property name="spawn_count" value="1" />
+			<property name="min_distance" value="10" />
+			<property name="max_distance" value="20" />
+			<property name="phase" value="1" />
+			<property name="add_to_group" value="MiniBoss" />
+			<property name="add_buffs" value="ZombieINC_Giver_immortal_FarmerBoss,ZombieINC_Giver_Phase4_FarmerBoss" />
+			<property name="safe_spawn" value="true" />
+		</action>
+		
+		<action class="AddEntitiesToGroup">
+			<requirement class="NearbyEntities">
+				<property name="entity_tags" value="BossFarmerInfested" />
+				<property name="max_distance" value="100" />
+			</requirement>
+			<property name="phase" value="2" />
+			<property name="entity_tags" value="BossFarmerInfested" />
+			<property name="group_name" value="Boss" />
+			<property name="max_distance" value="100" />
+			<property name="exclude_target" value="false" />
+		</action>
+		
+		<action class="AddBuff">
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="BossFarmerInfested"/>
+				<property name="operation" value="GTE"/> 
+				<property name="count" value="1"/>
+			</requirement>
+			<property name="buff_name" value="ZombieINC_immortal_FarmerBoss" />
+			<property name="phase" value="3" />
+			<property name="target_group" value="Boss" />
+			<property name="check_already_exists" value="false" />
+		</action>
+		
+		<action class="WaitForDead">
+			<property name="target_group" value="MiniBoss" />
+			<property name="phase_on_despawn" value="10" />
+			<property name="phase" value="4" />
+		</action>
+		
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_immortal_FarmerBoss" />
+			<property name="phase" value="5" />
+			<property name="target_group" value="Boss" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_BossFarmer_Phase4_Buff" />
+			<property name="phase" value="6" />
+			<property name="target_group" value="Boss" />
+			<property name="check_already_exists" value="false" />
+		</action>
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_BossFarmerSpawn">
+		<property name="refund_inactivity" value="false" /> 
+		<action class="SpawnEntity">			
+			<property name="entity_names" value="ZombieINC_BossFarmerInfested"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="30" />
+			<property name="min_distance" value="15" />
+			<property name="phase" value="1" />	
+		</action>
+	</action_sequence>
+	
+	
+	<!--#Scenario-->
+	<action_sequence name="ZombieINC_TheCult_RemoveScenarioEvent">
+		<action class="BlockReplace">
+			<property name="min_offset" value="-100,-15,-100" />
+			<property name="max_offset" value="100,15,100" />
+			<property name="block_to" value="air" />
+			<property name="block_tags" value="BossFarmRemover,BossFatherRemover,BossFatherCandle,BossPenitenceRemover,TheCultRemover" />
+			<property name="phase" value="1" />	
+		</action>
+		
+	</action_sequence>
+	<action_sequence name="ZombieINC_FarmBlocks_BossFarmerInfested_Event">
+		<!--<action class="BlockReplace">
+			<property name="phase" value="1" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-40,-10,-40" />
+			<property name="max_offset" value="40,10,40" />
+			<property name="spacing" value="7" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value=".2" />
+			<property name="block_to" value="ZombieINC_tractorRed,ZombieINC_tractorGreen,ZombieINC_tractorBlue" />
+			<property name="block_tags" value="air,ZombieINCGrassTag" />
+			
+		</action>
+		<action class="BlockReplace">
+			<property name="phase" value="2" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-40,-10,-40" />
+			<property name="max_offset" value="40,10,40" />
+			<property name="spacing" value="7" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value=".2" />
+			<property name="block_to" value="ZombieINC_abandonedPickupTruck01Brown,ZombieINC_cntFarmTruckClosed" />
+			<property name="block_tags" value="air,ZombieINCGrassTag" />
+			
+		</action>
+		<action class="BlockReplace">
+			<property name="phase" value="3" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-40,-10,-40" />
+			<property name="max_offset" value="40,10,40" />
+			<property name="spacing" value="7" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value=".2" />
+			<property name="block_to" value="ZombieINC_decoWildWestWagon" />
+			<property name="block_tags" value="air,ZombieINCGrassTag" />
+			
+		</action>
+		<action class="BlockReplace">
+			<property name="phase" value="4" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-40,-10,-40" />
+			<property name="max_offset" value="40,10,40" />
+			<property name="spacing" value="2" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value=".4" />
+			<property name="block_to" value="ZombieINC_plantedCornDeadSmall,ZombieINC_plantedCornDeadMedium,ZombieINC_plantedCornDead" />
+			<property name="block_tags" value="air,ZombieINCGrassTag" />
+			
+		</action>
+		<action class="BlockReplace">
+			<property name="phase" value="5" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-40,-10,-40" />
+			<property name="max_offset" value="40,10,40" />
+			<property name="spacing" value="2" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value=".4" />
+			<property name="block_to" value="ZombieINC_hayBaleSquare,ZombieINC_hayBaleRound" />
+			<property name="block_tags" value="air,ZombieINCGrassTag" />
+			
+		</action>
+		<action class="BlockReplace">
+			<property name="phase" value="6" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-40,-10,-40" />
+			<property name="max_offset" value="40,10,40" />
+			<property name="spacing" value="5" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value=".4" />
+			<property name="block_to" value="ZombieINC_cntTroughPigFull,ZombieINC_cntTroughPigEmpty" />
+			<property name="block_tags" value="air,ZombieINCGrassTag" />
+			
+		</action>
+		<action class="BlockReplace">
+			<property name="phase" value="7" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-40,-10,-40" />
+			<property name="max_offset" value="40,10,40" />
+			<property name="spacing" value="4" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value=".4" />
+			<property name="block_to" value="ZombieINC_wineBarrelPlain,ZombieINC_decoWildWestWagonWheelFront,ZombieINC_decoWildWestWagonWheelBack" />
+			<property name="block_tags" value="air,ZombieINCGrassTag" />
+			
+		</action>
+		<action class="BlockReplace">
+			<property name="phase" value="8" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-40,-10,-40" />
+			<property name="max_offset" value="40,10,40" />
+			<property name="spacing" value="4" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value=".4" />
+			<property name="block_to" value="ZombieINC_modularFireWoodStackC,ZombieINC_modularFireWoodStackB,ZombieINC_modularFireWoodStackA" />
+			<property name="block_tags" value="air,ZombieINCGrassTag" />
+			
+		</action>
+		<action class="BlockReplace">
+			<property name="phase" value="9" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-40,-10,-40" />
+			<property name="max_offset" value="40,10,40" />
+			<property name="spacing" value="6" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value=".4" />
+			<property name="block_to" value="ZombieINC_driftwood3,ZombieINC_driftwood2,ZombieINC_driftwood" />
+			<property name="block_tags" value="air,ZombieINCGrassTag" />
+			
+		</action>
+		<action class="BlockReplace">
+			<property name="phase" value="10" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-40,-10,-40" />
+			<property name="max_offset" value="40,10,40" />
+			<property name="spacing" value="7" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value=".4" />
+			<property name="block_to" value="ZombieINC_decoPicnicTable" />
+			<property name="block_tags" value="air,ZombieINCGrassTag" />
+			
+		</action>
+		<action class="BlockReplace">
+			<property name="phase" value="11" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-40,-10,-40" />
+			<property name="max_offset" value="40,10,40" />
+			<property name="spacing" value="3" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value=".4" />
+			<property name="block_to" value="ZombieINC_palletBagCowFeedBaseFull,ZombieINC_palletBagCowFeedTile,ZombieINC_palletBagCowFeedBaseMed,ZombieINC_palletBagCowFeedCapMed,ZombieINC_palletBagCowFeedCapSml,ZombieINC_palletBagCowFeedSingleBent,ZombieINC_palletBagCowFeedSingleFlat" />
+			<property name="block_tags" value="air,ZombieINCGrassTag" />
+			
+		</action>
+		<action class="BlockReplace">
+			<property name="phase" value="12" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-40,-10,-40" />
+			<property name="max_offset" value="40,10,40" />
+			<property name="spacing" value="3" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value=".4" />
+			<property name="block_to" value="ZombieINC_palletBagFertilizerBaseFull,ZombieINC_palletBagFertilizerTile,ZombieINC_palletBagFertilizerBaseMed,ZombieINC_palletBagFertilizerCapMed,ZombieINC_palletBagFertilizerCapSml,ZombieINC_palletBagFertilizerSingleBent,ZombieINC_palletBagFertilizerSingleFlat" />
+			<property name="block_tags" value="air,ZombieINCGrassTag" />
+			
+		</action>-->
+		<action class="BlockReplace">
+			<property name="phase" value="0" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-40,-10,-40" />
+			<property name="max_offset" value="40,10,40" />
+			<property name="spacing" value="1" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value=".8" />
+			<property name="block_to" value="air" />
+			<property name="block_tags" value="ZombieINCGrassTag" />
+			
+		</action>
+		<action class="BlockReplace">
+			<property name="phase" value="0" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-40,-10,-40" />
+			<property name="max_offset" value="40,10,40" />
+			<property name="spacing" value="0" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value="1" />
+			<property name="block_to" value="ZombieINC_hayBaleSquare_TreeReplacer,ZombieINC_hayBaleRound_TreeReplacer" />
+			<property name="block_tags" value="ZombieINCTreeTag" />
+			
+		</action>
+		<action class="BlockReplace">
+			<property name="phase" value="1" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-40,-10,-40" />
+			<property name="max_offset" value="40,10,40" />
+			<property name="spacing" value="12" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value=".2" />
+			<property name="block_to" value="ZombieINC_churchBell1x2x1_4" />
+			<property name="block_tags" value="air,ZombieINCGrassTag" />
+			
+		</action>
+		<action class="BlockReplace">
+			<property name="phase" value="1" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-40,-10,-40" />
+			<property name="max_offset" value="40,10,40" />
+			<property name="spacing" value="15" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value=".2" />
+			<property name="block_to" value="ZombieINC_tractorGreen,ZombieINC_abandonedPickupTruck01Brown,ZombieINC_cntFarmTruckClosed,ZombieINC_decoWildWestWagon,ZombieINC_decoPicnicTable" />
+			<property name="block_tags" value="air,ZombieINCGrassTag" />
+			
+		</action>
+		<action class="BlockReplace">
+			<property name="phase" value="2" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-40,-10,-40" />
+			<property name="max_offset" value="40,10,40" />
+			<property name="spacing" value="10" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value=".35" />
+			<property name="block_to" value="ZombieINC_hayBaleSquare,ZombieINC_hayBaleRound" />
+			<property name="block_tags" value="air,ZombieINCGrassTag" />
+			
+		</action>
+		<action class="BlockReplace">
+			<property name="phase" value="3" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-40,-10,-40" />
+			<property name="max_offset" value="40,10,40" />
+			<property name="spacing" value="4" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value=".5" />
+			<property name="block_to" value="ZombieINC_plantedCornDeadMedium,ZombieINC_plantedCornDead" />
+			<property name="block_tags" value="air,ZombieINCGrassTag" />
+			
+		</action>
+		<action class="BlockReplace">
+			<property name="phase" value="3" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-40,-10,-40" />
+			<property name="max_offset" value="40,10,40" />
+			<property name="spacing" value="1" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value=".4" />
+			<property name="block_to" value="ZombieINC_plantedCornDeadSmall" />
+			<property name="block_tags" value="air,ZombieINCGrassTag" />
+			
+		</action>
+		<action class="BlockReplace">
+			<property name="phase" value="4" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-40,-10,-40" />
+			<property name="max_offset" value="40,10,40" />
+			<property name="spacing" value="10" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value=".2" />
+			<property name="block_to" value="ZombieINC_palletBagCowFeedBaseFull,ZombieINC_palletBagCowFeedTile,ZombieINC_palletBagCowFeedBaseMed,ZombieINC_palletBagCowFeedCapMed,ZombieINC_palletBagCowFeedCapSml,ZombieINC_palletBagCowFeedSingleBent,ZombieINC_palletBagCowFeedSingleFlat,ZombieINC_palletBagFertilizerBaseFull,ZombieINC_palletBagFertilizerTile,ZombieINC_palletBagFertilizerBaseMed,ZombieINC_palletBagFertilizerCapMed,ZombieINC_palletBagFertilizerCapSml,ZombieINC_palletBagFertilizerSingleBent,ZombieINC_palletBagFertilizerSingleFlat" />
+			<property name="block_tags" value="air,ZombieINCGrassTag" />
+			
+		</action>
+		<action class="BlockReplace">
+			<property name="phase" value="5" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-40,-10,-40" />
+			<property name="max_offset" value="40,10,40" />
+			<property name="spacing" value="8" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value=".3" />
+			<property name="block_to" value="ZombieINC_driftwood3,ZombieINC_driftwood2,ZombieINC_driftwood,ZombieINC_modularFireWoodStackC,ZombieINC_modularFireWoodStackB,ZombieINC_modularFireWoodStackA,ZombieINC_wineBarrelPlain,ZombieINC_decoWildWestWagonWheelFront,ZombieINC_decoWildWestWagonWheelBack,ZombieINC_cntTroughPigFull,ZombieINC_cntTroughPigEmpty" />
+			<property name="block_tags" value="air,ZombieINCGrassTag" />
+			
+		</action>
+	</action_sequence>
+	<!--Scenario-->
+	<!--BossFarmerInfested-->
+	<!--##BossPenitenceInfested-->
+	
+	
+	
+	<action_sequence name="ZombieINC_BossPenitenceSpawn">
+		<property name="refund_inactivity" value="false" /> 
+		<action class="SpawnEntity">			
+			<property name="entity_names" value="ZombieINC_BossPenitenceInfested"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="30" />
+			<property name="min_distance" value="15" />
+			<!--<property name="add_buffs" value="ZombieINC_BossPenitence_Phase1_Buff" />-->
+			<property name="phase" value="1" />	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_BossPenitence_TotemEffect1">
+		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_BossPenitence_TotemEffect2">
+		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_BossPenitence_TotemEffect3">
+		
+	</action_sequence>
+	
+	<!--#Scenario-->
+	
+	<action_sequence name="ZombieINC_BossPenitenceInfested_Scenario_Event">
+		<action class="BlockReplace">
+			<property name="phase" value="0" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-40,-10,-40" />
+			<property name="max_offset" value="40,10,40" />
+			<property name="spacing" value="1" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value=".8" />
+			<property name="block_to" value="air" />
+			<property name="block_tags" value="air,ZombieINCGrassTag" />
+			
+		</action>
+		<action class="BlockReplace">
+			<property name="phase" value="1" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-40,-10,-40" />
+			<property name="max_offset" value="40,10,40" />
+			<property name="spacing" value="12" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value=".2" />
+			<property name="block_to" value="ZombieINC_churchBell1x2x1_3" />
+			<property name="block_tags" value="air,ZombieINCGrassTag" />
+			
+		</action>
+		<action class="BlockReplace">
+			<property name="phase" value="2" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-40,-10,-40" />
+			<property name="max_offset" value="40,10,40" />
+			<property name="spacing" value="8" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value=".3" />
+			<property name="block_to" value="ZombieINC_burningBarrel" />
+			<property name="block_tags" value="air,ZombieINCGrassTag" />
+			
+		</action>
+		<action class="BlockReplace">
+			<property name="phase" value="3" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-40,-10,-40" />
+			<property name="max_offset" value="40,10,40" />
+			<property name="spacing" value="4" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value=".3" />
+			<property name="block_to" value="ZombieINC_trapSpikesIronDmg0,ZombieINC_trapSpikesIronDmg1,ZombieINC_trapSpikesIronDmg2,ZombieINC_trapSpikesWoodDmg0,ZombieINC_trapSpikesWoodDmg1,ZombieINC_trapSpikesWoodDmg2" />
+			<property name="block_tags" value="air,ZombieINCGrassTag" />
+			
+		</action>
+		<action class="BlockReplace">
+			<property name="phase" value="3" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-40,-10,-40" />
+			<property name="max_offset" value="40,10,40" />
+			<property name="spacing" value="5" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value=".4" />
+			<property name="block_to" value="ZombieINC_emberPileDeco1,ZombieINC_emberPileDeco2,ZombieINC_emberPileDeco3,ZombieINC_emberPileDeco4,ZombieINC_emberPileDeco5,ZombieINC_emberPileDeco6,ZombieINC_emberPileDeco7,ZombieINC_emberPileDeco8,ZombieINC_emberPileLightPOI1,ZombieINC_emberPileLightPOI2" />
+			<property name="block_tags" value="air,ZombieINCGrassTag" />
+			
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_TotemSpike_GameEvent_Penitence">
+		<action class="BlockReplaceAttack">
+			<property name="phase" value="1" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-5,-3,-5" />
+			<property name="max_offset" value="5,5,5" />
+			<property name="spacing" value="1" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value=".4" />
+			<property name="block_to" value="trapSpikesIronDmg0,trapSpikesWoodDmg0" />
+			<property name="block_tags" value="air,ZombieINCGrassTag" />
+			<property name="time_alive" value="30" />
+		</action>	
+	</action_sequence>
+	<action_sequence name="ZombieINC_SpawnTotemFire_Penitence">	
+		<action class="SpawnEntity">				    
+			<property name="entity_names" value="ZombieINC_PenitenceZombie1" />
+			<property name="spawn_count" value="1"  />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_BossPenitence_TotemEffect1_Buff"/>
+			<property name="safe_spawn" value="true" />
+			<property name="yOffset" value="15" />
+			<property name="max_distance" value="20"  />
+			<property name="min_distance" value="15"  />
+			<property name="air_spawn" value="true" />
+			<property name="phase" value="1" />			
+		</action>	
+	</action_sequence>
+	<action_sequence name="ZombieINC_SpawnTotemSpike_Penitence">	
+		<action class="SpawnEntity">				    
+			<property name="entity_names" value="ZombieINC_PenitenceZombie2" />
+			<property name="spawn_count" value="1"  />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_BossPenitence_TotemEffect2_Buff"/>
+			<property name="safe_spawn" value="true" />
+			<property name="yOffset" value="15" />
+			<property name="max_distance" value="20"  />
+			<property name="min_distance" value="15"  />
+			<property name="air_spawn" value="true" />
+			<property name="phase" value="1" />			
+		</action>	
+	</action_sequence>
+	<!--BossPenitenceInfested-->
+	<!--##BossMotherInfested-->
+	
+	
+	<action_sequence name="ZombieINC_BossMotherSpawn">
+		<property name="refund_inactivity" value="false" /> 
+		<action class="SpawnEntity">			
+			<property name="entity_names" value="ZombieINC_BossWitchInfested"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="30" />
+			<property name="min_distance" value="15" />
+			<property name="phase" value="1" />	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_BossMotherInfested_Scenario_Event">
+		<action class="BlockReplace">
+			<property name="phase" value="0" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-40,-10,-40" />
+			<property name="max_offset" value="40,10,40" />
+			<property name="spacing" value="1" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value=".8" />
+			<property name="block_to" value="air" />
+			<property name="block_tags" value="air,ZombieINCGrassTag" />
+			
+		</action>
+		<action class="BlockReplace">
+			<property name="phase" value="1" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-40,-10,-40" />
+			<property name="max_offset" value="40,10,40" />
+			<property name="spacing" value="12" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value=".2" />
+			<property name="block_to" value="ZombieINC_churchBell1x2x1_2" />
+			<property name="block_tags" value="air,ZombieINCGrassTag" />
+			
+		</action>
+	</action_sequence>
+	<!--BossMotherInfested-->
+	<!--##BossPriest-->
+	
+	
+	
+	<action_sequence name="ZombieINC_RitualSelector">
+		<property name="refund_inactivity" value="false" />	
+				<decision class="If">
+					<requirement class="OnQuest">
+						<property name="quest" value="zincpriest" />
+					</requirement>
+					<action class="CallGameEvent">
+						<property name="game_events" value="ZombieINC_BossPriestInQuestWait" />
+					</action>
+				</decision>
+				<decision class="If">
+					<requirement class="OnQuest">
+						<property name="quest" value="ZINCMotherInfested" />    
+					</requirement>
+					<action class="CallGameEvent">
+						<property name="game_events" value="ZombieINC_BossMotherInQuestWait" />
+					</action>
+				</decision>
+				<decision class="If">
+					<requirement class="OnQuest">
+						<property name="quest" value="ZINCPenitenceInfested" />
+					</requirement>
+					<action class="CallGameEvent">
+						<property name="game_events" value="ZombieINC_BossPenitenceInQuestWait" />
+					</action>
+				</decision>
+				<decision class="If">
+					<requirement class="OnQuest">
+						<property name="quest" value="ZINCFarmerInfested" />
+					</requirement>
+					<action class="CallGameEvent">
+						<property name="game_events" value="ZombieINC_BossFarmerInQuestWait" />
+					</action>
+				</decision>
+				<decision class="If">
+					<requirement class="OnQuest">
+						<property name="quest" value="ZINCFatherInfested" />
+					</requirement>
+					<action class="CallGameEvent">
+						<property name="game_events" value="ZombieINC_BossFatherInQuestWait" />
+					</action>
+				</decision>
+	</action_sequence>
+	<action_sequence name="ZombieINC_BossPriestInQuestWait">
+		<property name="refund_inactivity" value="false" />	
+		<!--<property name="single_instance" value="true" />	-->
+		
+		<action class="Delay">
+			<property name="time" value="10"/>
+			<property name="phase" value="0" />
+		</action>
+		<loop class="While">
+			<property name="phase" value="1" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_PlayerInRitual_Buff" />
+			</requirement>
+				<decision class="If">
+					<requirement class="OnQuest">
+						<property name="quest" value="zincpriest" />
+					</requirement>
+					<action class="Delay">
+						<property name="time" value="1"/>
+					</action>
+					<action class="AddBuff">
+						<property name="buff_name" value="ZombieINC_RitualInQuestWaitConfirm_Buff" />	
+						<property name="check_already_exists" value="false" />	
+					</action>
+				</decision>
+				<decision class="If">
+					<requirement class="OnQuest">
+						<property name="quest" value="zincpriest" />
+						<property name="invert" value="true" />
+					</requirement>
+					<action class="Delay">
+						<property name="time" value="1"/>
+					</action>
+					<action class="RemoveBuff">
+						<property name="buff_name" value="ZombieINC_PlayerInRitual_Buff" />	
+					</action>
+					<action class="CallGameEvent">
+						<property name="game_events" value="ZombieINC_RitualScreen_Out" />
+					</action>
+				</decision>	
+		</loop>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_BossMotherInQuestWait">
+		<property name="refund_inactivity" value="false" />	
+		<!--<property name="single_instance" value="true" />	-->
+		
+		<action class="Delay">
+			<property name="time" value="10"/>
+			<property name="phase" value="0" />
+		</action>
+		<loop class="While">
+			<property name="phase" value="1" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_PlayerInRitual_Buff" />
+			</requirement>
+				<decision class="If">
+					<requirement class="OnQuest">
+						<property name="quest" value="zincmotherinfested" />
+					</requirement>
+					<action class="Delay">
+						<property name="time" value="1"/>
+					</action>
+					<action class="AddBuff">
+						<property name="buff_name" value="ZombieINC_RitualInQuestWaitConfirm_Buff" />	
+						<property name="check_already_exists" value="false" />	
+					</action>
+				</decision>
+				<decision class="If">
+					<requirement class="OnQuest">
+						<property name="quest" value="zincmotherinfested" />
+						<property name="invert" value="true" />
+					</requirement>
+					<action class="Delay">
+						<property name="time" value="1"/>
+					</action>
+					<action class="RemoveBuff">
+						<property name="buff_name" value="ZombieINC_PlayerInRitual_Buff" />	
+					</action>
+					<action class="CallGameEvent">
+						<property name="game_events" value="ZombieINC_RitualScreen_Out" />
+					</action>
+				</decision>	
+		</loop>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_BossPenitenceInQuestWait">
+		<property name="refund_inactivity" value="false" />	
+		<!--<property name="single_instance" value="true" />	-->
+		
+		<action class="Delay">
+			<property name="time" value="10"/>
+			<property name="phase" value="0" />
+		</action>
+		<loop class="While">
+			<property name="phase" value="1" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_PlayerInRitual_Buff" />
+			</requirement>
+				<decision class="If">
+					<requirement class="OnQuest">
+						<property name="quest" value="zincpenitenceinfested" />
+					</requirement>
+					<action class="Delay">
+						<property name="time" value="1"/>
+					</action>
+					<action class="AddBuff">
+						<property name="buff_name" value="ZombieINC_RitualInQuestWaitConfirm_Buff" />	
+						<property name="check_already_exists" value="false" />	
+					</action>
+				</decision>
+				<decision class="If">
+					<requirement class="OnQuest">
+						<property name="quest" value="zincpenitenceinfested" />
+						<property name="invert" value="true" />
+					</requirement>
+					<action class="Delay">
+						<property name="time" value="1"/>
+					</action>
+					<action class="RemoveBuff">
+						<property name="buff_name" value="ZombieINC_PlayerInRitual_Buff" />	
+					</action>
+					<action class="CallGameEvent">
+						<property name="game_events" value="ZombieINC_RitualScreen_Out" />
+					</action>
+				</decision>	
+		</loop>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_BossFarmerInQuestWait">
+		<property name="refund_inactivity" value="false" />	
+		<!--<property name="single_instance" value="true" />	-->
+		
+		<action class="Delay">
+			<property name="time" value="10"/>
+			<property name="phase" value="0" />
+		</action>
+		<loop class="While">
+			<property name="phase" value="1" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_PlayerInRitual_Buff" />
+			</requirement>
+				<decision class="If">
+					<requirement class="OnQuest">
+						<property name="quest" value="zincfarmerinfested" />
+					</requirement>
+					<action class="Delay">
+						<property name="time" value="1"/>
+					</action>
+					<action class="AddBuff">
+						<property name="buff_name" value="ZombieINC_RitualInQuestWaitConfirm_Buff" />	
+						<property name="check_already_exists" value="false" />	
+					</action>
+				</decision>
+				<decision class="If">
+					<requirement class="OnQuest">
+						<property name="quest" value="zincfarmerinfested" />
+						<property name="invert" value="true" />
+					</requirement>
+					<action class="Delay">
+						<property name="time" value="1"/>
+					</action>
+					<action class="RemoveBuff">
+						<property name="buff_name" value="ZombieINC_PlayerInRitual_Buff" />	
+					</action>
+					<action class="CallGameEvent">
+						<property name="game_events" value="ZombieINC_RitualScreen_Out" />
+					</action>
+				</decision>	
+		</loop>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_BossFatherInQuestWait">
+		<property name="refund_inactivity" value="false" />	
+		<!--<property name="single_instance" value="true" />	-->
+		
+		<action class="Delay">
+			<property name="time" value="10"/>
+			<property name="phase" value="0" />
+		</action>
+		<loop class="While">
+			<property name="phase" value="1" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_PlayerInRitual_Buff" />
+			</requirement>
+				<decision class="If">
+					<requirement class="OnQuest">
+						<property name="quest" value="zincfatherinfested" />
+					</requirement>
+					<action class="Delay">
+						<property name="time" value="1"/>
+					</action>
+					<action class="AddBuff">
+						<property name="buff_name" value="ZombieINC_RitualInQuestWaitConfirm_Buff" />	
+						<property name="check_already_exists" value="false" />	
+					</action>
+				</decision>
+				<decision class="If">
+					<requirement class="OnQuest">
+						<property name="quest" value="zincfatherinfested" />
+						<property name="invert" value="true" />
+					</requirement>
+					<action class="Delay">
+						<property name="time" value="1"/>
+					</action>
+					<action class="RemoveBuff">
+						<property name="buff_name" value="ZombieINC_PlayerInRitual_Buff" />	
+					</action>
+					<action class="CallGameEvent">
+						<property name="game_events" value="ZombieINC_RitualScreen_Out" />
+					</action>
+				</decision>	
+		</loop>
+	</action_sequence>
+	<action_sequence name="ZombieINC_RitualScreen_In">
+		<property name="refund_inactivity" value="true" />	
+		<!--<property name="single_instance" value="false" />-->
+		<property name="allow_while_dead" value="true" /> 
+		
+		<action class="PlaySound">
+			<property name="phase" value="1" />
+			<property name="sound" value="ZombieINC_door_rollup_large_close" />
+			<!--<property name="inside_head" value="true" />-->
+			<property name="delay" value="0"  />
+		</action>
+		<action class="CallGameEvent">		
+			<property name="phase" value="1" />
+			<property name="game_events" value="ZombieINC_FogNormalWeather_Long" />
+		</action>
+		<action class="SetScreenEffect">
+			<property name="phase" value="1" />	
+			<property name="screen_effect" value="Drunk" />
+			<property name="intensity" value="1" />
+			<property name="fade_time" value="2" />
+		</action>
+		<action class="SetScreenEffect">
+			<property name="phase" value="1" />
+			<property name="screen_effect" value="FadeToBlack" />
+			<property name="intensity" value="1" />
+			<property name="fade_time" value="3" />
+		</action>
+		<action class="Delay">
+			<property name="time" value="4" />
+			<property name="phase" value="2" />
+		</action>
+		
+		<action class="Delay">
+			<property name="time" value="4" />
+			<property name="phase" value="3" />
+		</action>
+		<action class="SetScreenEffect">
+			<property name="phase" value="4" />
+			<property name="screen_effect" value="Drunk" />
+			<property name="intensity" value="0" />
+			<property name="fade_time" value="1.5" />
+		</action>
+		<action class="SetScreenEffect">
+			<property name="phase" value="4" />
+			<property name="screen_effect" value="FadeToBlack" />
+			<property name="intensity" value="0" />
+			<property name="fade_time" value="2" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_RitualScreen_Out">
+		<property name="refund_inactivity" value="true" />	
+		<!--<property name="single_instance" value="true" />-->
+		<property name="allow_while_dead" value="true" /> 
+		
+		<action class="PlaySound">
+			<property name="phase" value="1" />
+			<property name="sound" value="ZombieINC_door_rollup_large_close" />
+			<!--<property name="inside_head" value="true" />-->
+			<property name="delay" value="0"  />
+		</action>
+	
+		<action class="SetScreenEffect">
+			<property name="phase" value="1" />	
+			<property name="screen_effect" value="Drunk" />
+			<property name="intensity" value="1" />
+			<property name="fade_time" value="2" />
+		</action>
+		<action class="SetScreenEffect">
+			<property name="phase" value="1" />
+			<property name="screen_effect" value="FadeToBlack" />
+			<property name="intensity" value="1" />
+			<property name="fade_time" value="3" />
+		</action>
+		<action class="Delay">
+			<property name="time" value="4" />
+			<property name="phase" value="2" />
+		</action>
+		
+		<action class="Delay">
+			<property name="time" value="4" />
+			<property name="phase" value="3" />
+		</action>
+		<action class="SetScreenEffect">
+			<property name="phase" value="4" />
+			<property name="screen_effect" value="Drunk" />
+			<property name="intensity" value="0" />
+			<property name="fade_time" value="1.5" />
+		</action>
+		<action class="SetScreenEffect">
+			<property name="phase" value="4" />
+			<property name="screen_effect" value="FadeToBlack" />
+			<property name="intensity" value="0" />
+			<property name="fade_time" value="2" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_BossPriestSpawn">
+		<property name="refund_inactivity" value="false" /> 
+		<action class="SpawnEntity">			
+			<property name="entity_names" value="ZombieINC_BossWitch"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="30" />
+			<property name="min_distance" value="15" />
+			<property name="phase" value="1" />	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_BossPriest_Scenario_Event">
+		<action class="BlockReplace">
+			<property name="phase" value="0" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-40,-10,-40" />
+			<property name="max_offset" value="40,10,40" />
+			<property name="spacing" value="1" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value=".8" />
+			<property name="block_to" value="air" />
+			<property name="block_tags" value="ZombieINCGrassTag" />
+			
+		</action>
+		<action class="BlockReplace">
+			<property name="phase" value="1" />
+			<property name="inner_offset" value="1" />
+			<property name="min_offset" value="-40,-10,-40" />
+			<property name="max_offset" value="40,10,40" />
+			<property name="spacing" value="12" />
+			<property name="safe_allowed" value="false" />
+			<property name="random_chance" value=".2" />
+			<property name="block_to" value="ZombieINC_churchBell1x2x1_1" />
+			<property name="block_tags" value="air,ZombieINCGrassTag" />
+			
+		</action>
+	</action_sequence>
+	<!--BossPriest-->
+	<!--###New Ritual Spawn Method-->
+		
+		
+		<action_sequence name="ZombieINC_DirtPlacementByBuff">
+		<action class="PlaySound">
+				<property name="phase" value="1" />
+				<property name="sound" value="entityhitsground" />
+				<property name="max_distance" value="15" />
+			</action>
+		<action class="BlockReplace">
+				<property name="min_offset" value="-5,-1,-5" />
+				<property name="max_offset" value="5,3,5" />
+				<property name="block_to" value="terrDirt" />
+				<property name="block_tags" value="terrAsphalt" />
+				<property name="allow_terrain" value="true" />
+				<property name="phase" value="1" />
+			</action>
+		</action_sequence>
+		<action_sequence name="ZombieINC_OneAnchorPlacementByBuff">
+			<property name="target_type" value="Entity" />
+			<property name="allow_while_dead" value="true" />
+			<!--<property name="single_instance" value="true" />-->
+			<property name="refund_inactivity" value="false" />
+			
+			<action class="BlockReplace">
+				<property name="min_offset" value="2,-10,1" />
+				<property name="max_offset" value="2,10,1" />
+				<property name="block_to" value="ZombieINC_Ritual_Anchor_Block" />
+				<property name="block_tags" value="air,ZombieINCGrassTag,ZombieINCTreeTag,ZombieINCplantHedgeTag,ZombieINCcropsGrowingTag,ZombieINCcropsHarvestableTag" />
+				<property name="allow_terrain" value="true" />
+				<property name="phase" value="1" />
+			</action>
+		</action_sequence>
+		<action_sequence name="ZombieINC_TreeReplacer_OneAnchorPlacementByBuff">
+			<property name="target_type" value="Entity" />
+			<property name="allow_while_dead" value="true" />
+			<!--<property name="single_instance" value="true" />-->
+			<property name="refund_inactivity" value="false" />
+			
+			<action class="BlockReplace">
+				<property name="min_offset" value="2,-10,1" />
+				<property name="max_offset" value="2,10,1" />
+				<property name="block_to" value="ZombieINC_Ritual_Anchor_TreeReplacer_Block" />
+				<property name="block_tags" value="air,ZombieINCGrassTag,ZombieINCTreeTag,ZombieINCplantHedgeTag,ZombieINCcropsGrowingTag,ZombieINCcropsHarvestableTag" />
+				<property name="allow_terrain" value="true" />
+				<property name="phase" value="1" />
+			</action>
+		</action_sequence>
+		<action_sequence name="ZombieINC_RitualChecker_BlockAnchorRemoveScene">
+			<property name="target_type" value="Entity" />	
+			<property name="allow_while_dead" value="true" />	
+			<!--<property name="single_instance" value="true" />-->
+	
+			<action class="BlockReplace">
+				<property name="min_offset" value="-100,-15,-100" />
+				<property name="max_offset" value="100,15,100" />
+				<property name="block_to" value="treeShortGrass,treeTallGrassDiagonal" />
+				<property name="block_tags" value="BossFarmRemover,BossFatherRemover,BossFatherCandle,BossPenitenceRemover,TheCultRemover" />
+				<property name="phase" value="1" />	
+			</action>
+			<action class="RemoveBuff">
+				<property name="buff_name" value="ZombieINC_BlockAnchor_Ritual_Buff" />
+				<property name="phase" value="2"/>				
+			</action>
+		</action_sequence>
+		<action_sequence name="ZombieINC_RitualChecker_TreeReplace_BlockAnchorRemoveScene">
+			<property name="target_type" value="Entity" />	
+			<property name="allow_while_dead" value="true" />	
+			<!--<property name="single_instance" value="true" />-->
+	
+			<action class="BlockReplace">
+				<property name="min_offset" value="-100,-15,-100" />
+				<property name="max_offset" value="100,15,100" />
+				<property name="block_to" value="treeOakMed01,treeOakMed02,treeOakLrg01,treeMountainPine12m,treeMountainPine27m,treeMountainPine31m" />
+				<property name="block_tags" value="ZombieINCTreeReplace" />
+				<property name="phase" value="1" />	
+			</action>
+			<action class="BlockReplace">
+				<property name="min_offset" value="-100,-15,-100" />
+				<property name="max_offset" value="100,15,100" />
+				<property name="block_to" value="treeShortGrass,treeTallGrassDiagonal" />
+				<property name="block_tags" value="BossFarmRemover,BossFatherRemover,BossFatherCandle,BossPenitenceRemover,TheCultRemover" />
+				<property name="phase" value="2" />	
+			</action>
+			<action class="RemoveBuff">
+				<property name="buff_name" value="ZombieINC_BlockAnchor_TreeReplacer_Ritual_Buff" />
+				<property name="phase" value="3"/>				
+			</action>
+		</action_sequence>
+		
+<!--New Ritual Spawn Method-->	
+<!--##Bone Knife-->
+	
+	<action_sequence name="ZombieINC_RemoveKnifeBoneKnife_AddBuffEvent">					  
+		<action class="AddBuff">	
+			<property name="buff_name" value="ZombieINC_NearTraderBoneKnife_RemoverItemBuff" />	
+			<property name="check_already_exists" value="false" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_BoneKnife_RemoveKnifeEvent">
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="trader" />
+			<property name="group_name" value="Trader" />
+			<property name="max_distance" value="10" />
+		</action>
+		
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="GroupLiveCount">
+					<property name="target_group" value="Trader"/>
+					<property name="operation" value="Equals"/> 
+					<property name="count" value="1"/>
+			</requirement>
+	
+		<action class="RemoveItems">
+			<property name="phase" value="1" />
+			<property name="items_location" value="Backpack,Toolbelt,Held" />
+			<property name="items_tags" value="BoneKnifeMission" />
+		</action>
+		
+		<action class="RemoveBuff">	
+			<property name="phase" value="1" />
+			<property name="buff_name" value="ZombieINC_NearTraderBoneKnife_RemoverItemBuff" />				
+		</action>
+		</decision>
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_BoneKnife_ReplaceKnifeEvent">	
+		<action class="ReplaceItems">
+			<property name="items_location" value="Backpack,Toolbelt,Held" />
+			<property name="replaced_by_item" value="ZombieINC_Mission_meleeWpnBladeT0BoneKnife" />
+			<property name="items_tags" value="BoneKnifeInactive" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_MiniBossBoneKnife_AddSpawnerBuffEvent">					  
+		<action class="AddBuff">	
+			<property name="buff_name" value="ZombieINC_MiniBossBoneKnife_SpawnerBuff" />
+			<property name="check_already_exists" value="false" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Cultist1BoneKnife_RemoveSpawnerBuffEvent">					  
+		<action class="RemoveBuff">	
+			<property name="buff_name" value="ZombieINC_CultistBoneKnife_SpawnerBuff" />				
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_Cultist2BoneKnife_RemoveSpawnerBuffEvent">					  
+		<action class="RemoveBuff">	
+			<property name="buff_name" value="ZombieINC_Cultist2BoneKnife_SpawnerBuff" />				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Cultist1BoneKnife_AddSpawnerBuffEvent">					  
+		<action class="AddBuff">	
+			<property name="buff_name" value="ZombieINC_CultistBoneKnife_SpawnerBuff" />	
+			<property name="check_already_exists" value="false" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_Cultist2BoneKnife_AddSpawnerBuffEvent">					  
+		<action class="AddBuff">	
+			<property name="buff_name" value="ZombieINC_Cultist2BoneKnife_SpawnerBuff" />	
+			<property name="check_already_exists" value="false" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_FogBoneKnife_AddBuffEvent">					  
+		<action class="AddBuff">	
+			<property name="buff_name" value="ZombieINC_FogBoneKnife_SetWeatherBuff" />		
+			<property name="check_already_exists" value="false" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_FogBoneKnife_RemoveBuffEvent">					  
+		<action class="RemoveBuff">	
+			<property name="buff_name" value="ZombieINC_FogBoneKnife_SetWeatherBuff" />				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_BoneKnife_AddItemEvent">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincboneknife"/>
+		</requirement>
+		<action class="AddItems">
+			<property name="added_items" value="ZombieINC_meleeWpnBladeT0BoneKnife_Inactive" />
+			<property name="added_item_counts" value="1" />			 
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_MiniBossBoneKnife_SpawnEvent">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincboneknife"/>
+		</requirement>
+	   <action class="Delay">
+			<property name="phase" value="1" />
+			<property name="time" value="1-2" />
+		</action>
+		
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="2" />
+			<property name="entity_tags" value="boss" />
+			<property name="group_name" value="bossgroup" />
+			<property name="max_distance" value="40" />
+		</action>
+		
+		<action class="SpawnEntity">
+				<requirement class="GroupLiveCount">
+					<property name="target_group" value="bossgroup"/>
+					<property name="operation" value="Equals"/> 
+					<property name="count" value="0"/>
+				</requirement>
+	    
+			<property name="entity_names" value="ZombieINC_MiniBossBoneKnife"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="20" />
+			<property name="min_distance" value="15" />
+			<property name="air_spawn" value="true" />
+			<property name="safe_spawn" value="true" />
+		
+			<property name="phase" value="3" />
+		</action>
+		<action class="AddPartyToGroup">
+			<property name="phase" value="4" />
+			<property name="group_name" value="player" />
+		</action>		
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_MiniBossBoneKnife_SpawnerBuff" />
+			<property name="target_group" value="player" />
+			<property name="phase" value="5"/>				
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_CultistBoneKnife_SpawnEvent">
+		<requirement class="OnQuest">
+		<!--	<property name="quest" value="zincboneknife"/>-->
+			<property name="quest" value="zincpriest"/>
+		</requirement>
+	 <action class="AddEntitiesToGroup">
+	 	<property name="group_name" value="MinionCount" />
+	  	<property name="entity_tags" value="zombie" />
+	 	<property name="max_distance" value="20" />		 	
+	 </action>
+	 
+	 <decision class="If">
+		<requirement class="IsIndoors">
+			<property name="invert" value="true" />
+		</requirement>
+		<requirement class="GroupLiveCount">
+			<property name="target_group" value="MinionCount"/>
+			<property name="operation" value="LTE"/> 
+			<property name="count" value="5"/>
+		</requirement>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="35" />		
+			<property name="min_distance" value="25" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Cultists1BoneKnife_AttachPrefabBuff" />
+			<property name="air_spawn" value="true" />
+			<property name="phase" value="1" />
+		</action>	
+		
+	</decision>
+	
+	<decision class="If">
+		<requirement class="IsIndoors"/>
+		<requirement class="GroupLiveCount">
+			<property name="target_group" value="MinionCount"/>
+			<property name="operation" value="LTE"/> 
+			<property name="count" value="5"/>
+		</requirement>		
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="15" />		
+			<property name="min_distance" value="8" />
+			<property name="air_spawn" value="true" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Cultists1BoneKnife_AttachPrefabBuff" />
+			<property name="phase" value="1" />
+		</action>
+	
+	</decision>
+	
+	</action_sequence>
+	<action_sequence name="ZombieINC_Cultist2BoneKnife_SpawnEvent">
+		<requirement class="OnQuest">
+			<!--<property name="quest" value="zincboneknife"/>-->
+			<property name="quest" value="zincpriest"/>
+		</requirement>
+	 <action class="AddEntitiesToGroup">
+	 	<property name="group_name" value="MinionCount" />
+	  	<property name="entity_tags" value="zombie" />
+	 	<property name="max_distance" value="20" />		 	
+	 </action>
+	 
+	 <decision class="If">
+		<requirement class="IsIndoors">
+			<property name="invert" value="true" />
+		</requirement>
+		<requirement class="GroupLiveCount">
+			<property name="target_group" value="MinionCount"/>
+			<property name="operation" value="LTE"/> 
+			<property name="count" value="5"/>
+		</requirement>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="35" />		
+			<property name="min_distance" value="25" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Cultists2BoneKnife_AttachPrefabBuff" />
+			<property name="air_spawn" value="true" />
+			<property name="phase" value="1" />
+		</action>	
+		
+	</decision>
+	
+	<decision class="If">
+		<requirement class="IsIndoors"/>
+		<requirement class="GroupLiveCount">
+			<property name="target_group" value="MinionCount"/>
+			<property name="operation" value="LTE"/> 
+			<property name="count" value="5"/>
+		</requirement>		
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="15" />		
+			<property name="min_distance" value="8" />
+			<property name="air_spawn" value="true" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Cultists2BoneKnife_AttachPrefabBuff" />
+			<property name="phase" value="1" />
+		</action>
+	
+	</decision>
+	
+	</action_sequence>
+	<action_sequence name="ZombieINC_FogBoneKnife_SetWeatherEvent">
+		<requirement class="OnQuest">
+			<!--<property name="quest" value="zincboneknife"/>-->
+			<property name="quest" value="zincpriest"/>
+		</requirement>
+		<!--<action class="SetWeather">
+			<property name="weather_group" value="ZombieINC_Superfog" />
+			<property name="time" value="60" />
+		</action>	-->	
+	</action_sequence>
+	<action_sequence name="ZombieINC_DefaultBoneKnife_SetWeatherEvent">
+		<requirement class="OnQuest">
+		<!--	<property name="quest" value="zincboneknife"/>-->
+			<property name="quest" value="zincpriest"/>
+		</requirement>
+		<!--<action class="SetWeather">
+			<property name="weather_group" value="default" />
+			<property name="time" value="300" />
+		</action>	-->	
+	</action_sequence>
+	<!--Bone Knife-->
+<action_sequence name="ZombieINC_WS_BoneKnife_FailQuest_Event">
+		<property name="allow_user_trigger" value="true" />
+		<!--<requirement class="OnQuest">
+			<property name="quest" value="zincboneknife"/>
+		</requirement>-->
+		<action class="FailQuest">	   
+			<property name="quest" value="zincboneknife" />
+			<property name="remove_quest" value="true"  />		
+		</action>
+		<!--<action class="Delay">			
+			<property name="phase" value="1" />		
+			<property name="time" value="2" />			
+		</action>
+		<action class="AddQuest">
+			<property name="phase" value="2" />	
+			<property name="quest" value="ZINCBoneKnife" />
+		</action>-->
+	</action_sequence>
+	<action_sequence name="ZombieINC_WS_BoneKnife_FEPBuff_Event">			
+	    <action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_WS_BoneKnife_FEP_Buff" />		
+			<property name="check_already_exists" value="false" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_WS_BoneKnife_RemoveFEPBuff_Event">			
+	    <action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_WS_BoneKnife_FEP_Buff" />				
+		</action>
+	</action_sequence>
+	</append>
+</Config>

@@ -1,0 +1,1260 @@
+<Config>
+	<append xpath="/items">
+	
+	<!--###WeaponTest-->
+	<item name="ZombieINC_meleeHandMiniBossTurret">
+	<property name="Tags" value="blunt,melee,light,perkFlurryOfFortitude"/>
+	<property name="CreativeMode" value="None"/>
+	<property name="HoldType" value="9"/>
+	<property name="Material" value="Morganic"/>
+	<property name="Canhold" value="false"/>
+	<property name="Stacknumber" value="1"/>
+	<property name="Candrop" value="false"/>
+	<property name="CustomIcon" value="missingIcon"/>
+	<property class="Action1">
+		<property name="Class" value="Vomit"/>
+		<property name="Hitmask_override" value="Arrow"/>
+		<property name="Delay" value="0.2"/>
+		<property name="AnimType" value="3"/>
+		<property name="Range" value="200"/>
+		<property name="Infinite_ammo" value="true"/>
+		<property name="Magazine_items" value="ZombieINC_TurretAmmo"/>
+		<property name="Sound_warning" value="demolitionzexplodewarning"/>
+		<property name="Sound_start" value="m136_fire"/>
+		<property name="Sound_repeat" value=""/>
+		<property name="Sound_end" value=""/>
+		<property name="Sound_empty" value=""/>
+		<property name="Sound_reload" value="m136_reload"/>
+		
+	</property>
+	<effect_group name="meleeHandZombieStrong" tiered="false">
+		<passive_effect name="ModSlots" operation="base_set" value="0"/>
+		<passive_effect name="DamageFalloffRange" operation="base_set" value="50"/>
+		<passive_effect name="MaxRange" operation="base_set" value="100"/>
+		<passive_effect name="MagazineSize" operation="base_set" value="30"/>
+		<passive_effect name="BurstRoundCount" operation="base_set" value="2"/>
+		<passive_effect name="SpreadDegreesVertical" operation="base_set" value="1"/>
+		<passive_effect name="SpreadDegreesHorizontal" operation="base_set" value="5"/>
+		<passive_effect name="SpreadMultiplierIdle" operation="base_set" value="1"/>
+		
+		<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" fireOneBuff="true"
+			buff="buffFatiguedTrigger,buffArmSprainedCHTrigger,buffLegSprainedCHTrigger,buffLaceration,buffAbrasionCatch,buffInjuryStunned01CHTrigger,buffInjuryBleedingTwo"
+			weights=".11,.07,.07,.05,.29,.36,.11"/>		   
+	</effect_group>
+</item>
+<item name="ZombieINC_TurretAmmo">
+	<property name="Meshfile" value="@:Other/Items/Tools/nailProjectilePrefab.prefab"/>
+	<property name="HoldType" value="45"/>
+	<property name="HandMeshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+	<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+	<property name="Material" value="MresourceScrapIron"/>
+	<property name="Stacknumber" value="1000"/> <!-- STK resource -->
+	<property name="EconomicValue" value="10"/>
+	<property name="EconomicBundleSize" value="10"/>
+	<property name="Tags" value="ammo,ranged,attStrength,perkMiner69r"/>
+	<property name="Group" value="Resources"/>
+	<property class="Action1">
+		<property name="Class" value="Projectile"/>
+		<property name="Explosion.ParticleIndex" value="0"/>
+		<property name="FlyTime" value="1"/>
+		<property name="LifeTime" value=".75"/>
+		<property name="Velocity" value="20"/>
+		<property name="Gravity" value="0"/>
+	</property>
+	<effect_group name="resourceNail" tiered="false"> <!-- nail -->
+		<passive_effect name="EntityDamage" operation="base_set" value="5"/>
+		<passive_effect name="BlockDamage" operation="base_set" value=".1"/>
+		<passive_effect name="DamageModifier" operation="perc_set" value="0" tags="earth,metal,cloth"/>
+		<passive_effect name="DamageModifier" operation="perc_set" value=".1" tags="wood"/>
+		<passive_effect name="ProjectileVelocity" operation="base_set" value="20"/>
+		<passive_effect name="ProjectileStickChance" operation="perc_set" value="0"/>
+	</effect_group>
+</item>
+	<!--WeaponTest-->
+	
+		<!--Weapon Test-->
+	
+	<item name="ZombieINC_Supplies_AK47">
+		<property name="CreativeMode" value="Dev"/>
+		<property name="Tags" value="ZombieINCWeaponMissionParts,WeaponMissionPartsRemover"/>
+		<property name="CustomIcon" value="cntToolBoxClosedWhite"/>
+		<property name="CustomIconTint" value="999999"/>
+		<property name="ItemTypeIcon" value="quest"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="DescriptionKey" value="ZombieINC_Supplies_AK47_Desc"/>
+		<property name="EconomicValue" value="0"/>
+		<property name="Stacknumber" value="10"/>
+		<property name="Material" value="Morganic"/>
+		<property name="SellableToTrader" value="false"/>
+	</item>
+	<item name="ZombieINC_Supplies_TacticalAR">
+		<property name="CreativeMode" value="Dev"/>
+		<property name="Tags" value="ZombieINCWeaponMissionParts,WeaponMissionPartsRemover"/>
+		<property name="CustomIcon" value="cntToolBoxClosedWhite"/>
+		<property name="CustomIconTint" value="999999"/>
+		<property name="ItemTypeIcon" value="quest"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="DescriptionKey" value="ZombieINC_Supplies_TacticalAR_Desc"/>
+		<property name="EconomicValue" value="0"/>
+		<property name="Stacknumber" value="1"/>
+		<property name="Material" value="Morganic"/>
+		<property name="SellableToTrader" value="false"/>
+	</item>
+	<item name="ZombieINC_Supplies_M60">
+		<property name="CreativeMode" value="Dev"/>
+		<property name="Tags" value="ZombieINCWeaponMissionParts,WeaponMissionPartsRemover"/>
+		<property name="CustomIcon" value="cntToolBoxClosedWhite"/>
+		<property name="CustomIconTint" value="999999"/>
+		<property name="ItemTypeIcon" value="quest"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="DescriptionKey" value="ZombieINC_Supplies_M60_Desc"/>
+		<property name="EconomicValue" value="0"/>
+		<property name="Stacknumber" value="20"/>
+		<property name="Material" value="Morganic"/>
+		<property name="SellableToTrader" value="false"/>
+	</item>
+	<!--Weapon Test-->
+		
+	
+	<item name="ZombieINC_resourceRepairKit">
+		<property name="HoldType" value="45"/>
+		<property name="Tags" value="junk,ZINCWTP1RepairKit"/>
+		<property name="CustomIcon" value="resourceRepairKit"/>
+		<property name="CustomIconTint" value="ff9f9f"/>
+		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="Material" value="Msteel"/>
+		<property name="Stacknumber" value="25"/> <!-- STK resourceRepairKit -->
+		<property name="EconomicValue" value="1000"/>
+		<property name="SellableToTrader" value="false"/>
+		<property name="TraderStageTemplate" value="ZINCWeaponPart1T1"/>
+		<property name="RepairTime" value="3"/>
+		<property name="RepairAmount" value="32000"/>
+		<property name="Group" value="Resources"/>
+	</item>
+	
+	<item name="ZombieINC_Quest_AK47">
+		<property name="Extends" value="questMaster"/>
+		<property name="CreativeMode" value="Dev"/>
+		<property name="DescriptionKey" value="ZombieINC_Quest_AK47_Desc"/>
+		<property name="EconomicValue" value="8000"/>
+		<property name="Stacknumber" value="1"/>
+		<property name="TraderStageTemplate" value="ZINCWeaponPart1T2"/>
+		<property name="Group" value="Ammo/Weapons,Ranged Weapons"/>
+		<property class="Action0">
+			<property name="QuestGiven" value="zincak47"/>
+		</property>
+	</item>
+	
+	<item name="ZombieINC_Quest_Pistol">
+		<property name="Extends" value="questMaster"/>
+		<property name="CreativeMode" value="Dev"/>
+		<property name="DescriptionKey" value="ZombieINC_Quest_Pistol_Desc"/>
+		<property name="EconomicValue" value="4000"/>
+		<property name="Stacknumber" value="1"/>
+		<property name="TraderStageTemplate" value="ZINCWeaponPart1T1"/>
+		<property name="Group" value="Ammo/Weapons,Ranged Weapons"/>
+		<property class="Action0">
+			<property name="QuestGiven" value="zincpistol"/>
+		</property>
+	</item>
+
+	<item name="ZombieINC_Quest_AR">
+		<property name="Extends" value="questMaster"/>
+		<property name="CreativeMode" value="Dev"/>
+		<property name="DescriptionKey" value="ZombieINC_Quest_AR_Desc"/>
+		<property name="EconomicValue" value="10000"/>
+		<property name="Stacknumber" value="1"/>
+		<property name="TraderStageTemplate" value="ZINCWeaponPart1T2"/>
+		<property name="Group" value="Ammo/Weapons,Ranged Weapons"/>
+		<property class="Action0">
+			<property name="QuestGiven" value="zincar"/>
+		</property>
+	</item>
+	
+	<item name="ZombieINC_Quest_M60">
+		<property name="Extends" value="questMaster"/>
+		<property name="CreativeMode" value="Dev"/>
+		<property name="DescriptionKey" value="ZombieINC_Quest_M60_Desc"/>
+		<property name="EconomicValue" value="30000"/>
+		<property name="Stacknumber" value="1"/>
+		<property name="TraderStageTemplate" value="ZINCWeaponPart1T3"/>
+		<property name="Group" value="Ammo/Weapons,Ranged Weapons"/>
+		<property class="Action0">
+			<property name="QuestGiven" value="zincm60"/>
+		</property>
+	</item>
+	
+	
+	<item name="ZombieINC_gunHandgunT1Pistol">
+	<property name="Tags" value="weapon,ranged,holdBreathAiming,reloadPenalty,gun,shortRange,pistol,barrelAttachments,sideAttachments,smallTopAttachments,magazine,firingMode,attAgility,perkGunslinger,9mmGun,attachmentsIncluded,canHaveCosmetic,handgunSkill,ZINCWeaponPart1"/>
+	<property name="DisplayType" value="rangedGun"/>
+	<property name="HoldType" value="1"/>
+	<property name="Meshfile" value="@:Other/Items/Weapons/Ranged/Pistol/PistolPrefab.prefab"/>
+	<property name="Material" value="MHandGunParts"/>
+	<property name="TintColor" value="148, 0, 211"/>
+	<property name="CustomIcon" value="gunHandgunT1Pistol"/>
+	<property name="CustomIconTint" value="0,0,0"/>
+	<property name="DescriptionKey" value="ZombieINC_gunHandgunT1PistolDesc"/>			
+	<property name="ItemTypeIcon" value="star"/>
+	<property name="Weight" value="1"/>
+	<property name="RepairTools" value="ZombieINC_resourceRepairKit"/>
+	<property name="DegradationBreaksAfter" value="false"/>
+	<property name="SoundJammed" value="weapon_jam"/>
+	<property name="Attachments" value="meleeToolFlashlight02"/>
+	<property name="CrosshairOnAim" value="true"/> <!-- aimTest -->
+	<property name="CrosshairUpAfterShot" value="true"/> <!-- aimTest -->
+	<property name="Sound_Sight_In" value="pistol_sight_in"/>
+	<property name="Sound_Sight_Out" value="pistol_sight_out"/>
+	<property name="LightSource" value="lightSource"/> <!-- Start: Needed for the attachment flashlight -->
+	<property name="ActivateObject" value="Attachments/flashlight/lightSource"/>
+	<property name="AttachmentFlashlight" value="flashlight02"/> <!-- End: Needed for the attachment flashlight -->
+	<property name="Group" value="Ammo/Weapons,Ranged Weapons"/>
+	<property name="RepairExpMultiplier" value="10.8"/>
+	<property name="LightValue" value=".45"/>
+	<property name="EconomicValue" value="500"/>
+	<property name="SellableToTrader" value="false"/>
+    <property name="ShowQuality" value="true"/>
+    <property name="SoundUnholster" value="weapon_unholster"/>
+	<property name="SoundHolster" value="weapon_holster"/>
+
+	<property class="Action0">
+		<property name="Class" value="Ranged"/>
+		<property name="Magazine_items" value="ammo9mmBulletBall,ammo9mmBulletHP,ammo9mmBulletAP"/>
+		
+		<property name="Sound_loop" value="pistol_s_fire"/>
+		<property name="Sound_end" value=""/>
+		<property name="Sound_empty" value="dryfire"/>
+		<property name="Sound_reload" value="pistol_reload"/>
+		<property name="Sound_start" value="pistol_s_fire"/>
+		<property name="BarrelOffset" value="0,-.006,.127"/>
+		<property name="BarrelScale" value="1,1,1"/>
+		<property name="AutoReload" value="false"/>
+		<property name="Particles_muzzle_fire" value="gunfire_pistol"/>
+		<property name="Particles_muzzle_fire_fpv" value="gunfire_pistol_fpv"/>
+		<requirement name="CVarCompare" cvar="_underwater" operation="LT" value=".98"/>
+        	<property name="triggerEffectTriggerPullDualsense" value="PistolTrigger"/>
+        	<property name="triggerEffectTriggerPullXbox" value="PistolTrigger"/>
+        	<property name="triggerEffectShootDualsense" value="PistolShoot"/>
+        	<property name="triggerEffectShootXbox" value="PistolShoot"/>
+	</property>
+	<property class="Action1">
+		<property name="Class" value="Zoom"/>
+		<property name="Zoom_max_out" value="55"/>
+		<property name="Zoom_max_in" value="55"/>
+		<!--<property name="ScopeCameraOffset" value="0,.0008,0"/>-->
+		<property name="ScopeOffset" value="0,.072,.11"/>
+		<property name="ScopeScale" value=".7,.7,.7"/>
+		<property name="ScopeCameraOffset" value="0,-.013,-.2"/>
+        	<property name="zoomTriggerEffectPullDualsense" value="PistolZoom"/>
+        	<property name="zoomTriggerEffectPullXb" value="PistolZoom"/>
+	</property>
+	<effect_group name="gunHandgunT1Pistol" tiered="false">
+		<passive_effect name="MaxRange" operation="base_set" value="100" tags="perkGunslinger,9mmGun"/>
+		<passive_effect name="DamageFalloffRange" operation="base_set" value="40" tags="perkGunslinger,9mmGun"/>
+		
+		<passive_effect name="RoundsPerMinute" operation="base_set" value="100" tags="perkGunslinger"/>
+		<passive_effect name="BurstRoundCount" operation="base_set" value="1" tags="perkGunslinger"/>
+		<passive_effect name="MagazineSize" operation="base_set" value="7" tags="perkGunslinger"/>
+		 <!--<passive_effect name="ReloadSpeedMultiplier" operation="base_set" value="1" tags="perkGunslinger"/> 2s -->
+		<passive_effect name="ModSlots" operation="base_set" value="0" />
+		<passive_effect name="ModPowerBonus" operation="perc_add" value=".10" tags="EntityDamage,BlockDamage"/>
+		<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+		<passive_effect name="EntityDamage" operation="base_add" value="60" tags="perkGunslinger,ZINCWeaponPart1"/> <!-- damage offset -->
+		
+		
+		<passive_effect name="BlockDamage" operation="base_add" value="5" tags="perkGunslinger"/> 
+	
+		
+		<passive_effect name="WeaponHandling" operation="perc_add" value="-.5,.5" tags="perkGunslinger"/> <!-- random WeaponHandling -->
+
+		<passive_effect name="SpreadDegreesVertical" operation="base_set" value="1.5" tags="perkGunslinger"/>
+		<passive_effect name="SpreadDegreesHorizontal" operation="base_set" value="1.5" tags="perkGunslinger"/>
+		<passive_effect name="SpreadMultiplierAiming" operation="base_set" value=".4" tags="perkGunslinger"/>
+		<passive_effect name="SpreadMultiplierCrouching" operation="base_set" value=".8" tags="perkGunslinger"/>
+		<passive_effect name="SpreadMultiplierWalking" operation="base_set" value="1.5" tags="perkGunslinger"/>
+		<passive_effect name="SpreadMultiplierRunning" operation="base_set" value="2.2" tags="perkGunslinger"/>
+
+		<passive_effect name="KickDegreesVerticalMin" operation="base_set" value=".7" tags="perkGunslinger"/>
+		<passive_effect name="KickDegreesVerticalMax" operation="base_set" value=".8" tags="perkGunslinger"/>
+		<passive_effect name="KickDegreesHorizontalMin" operation="base_set" value="-.25" tags="perkGunslinger"/>
+		<passive_effect name="KickDegreesHorizontalMax" operation="base_set" value=".25" tags="perkGunslinger"/>
+
+		<passive_effect name="IncrementalSpreadMultiplier" operation="base_set" value="2.0" tags="perkGunslinger,9mmGun"/>
+		<passive_effect name="WeaponHandling" operation="base_set" value=".5" tags="perkGunslinger"/> <!-- crosshair reset speed -->
+
+		<passive_effect name="DegradationMax" operation="base_set" value="800" tags="perkGunslinger,9mmGun,ZINCWeaponPart1"/>
+		<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="perkGunslinger,9mmGun,ZINCWeaponPart1"/>
+		
+		<triggered_effect trigger="onSelfPrimaryActionUpdate" action="AttachPrefabToEntity" prefab="@:Entities/Electrical/signNeonColdBeerPrefab.prefab" local_offset="-0.0594,0.0535,-0.0234" local_rotation="0,-90,0" local_scale="0.08,0.08,0.08" parent_transform="Handle"/>
+		<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="signNeonColdBeerPrefab" parent_transform="Handle" />
+		
+		<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="true" parent_transform="Handle/signNeonColdBeerPrefab" transform_path="MainLight"/>
+		<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="silencer"/>
+		<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="gunlaser"/>
+		<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="holosight"/>
+		
+		<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="false" parent_transform="Handle/signNeonColdBeerPrefab" transform_path="MainLight"/>
+		<!--<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="false" transform_path="silencer"/>
+		<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="false" transform_path="gunlaser"/>
+		<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="false" transform_path="holosight"/>-->
+		
+		<triggered_effect trigger="onSelfItemActivate" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="gunlaser/gunlaser"/>
+		<triggered_effect trigger="onSelfItemDeactivate" action="SetTransformActive" active="false" parent_transform="#HeldItemRoot" transform_path="gunlaser/gunlaser"/>
+		<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="false" parent_transform="#HeldItemRoot" transform_path="gunlaser/gunlaser"/>
+	</effect_group>
+	<effect_group name="sneak damage bonus" tiered="false">
+		<requirement name="CVarCompare" cvar="_crouching" operation="Equals" value="1"/>
+		<requirement name="CVarCompare" cvar="_notAlerted" operation="GT" value="0" target="other"/>
+			<passive_effect name="EntityDamage" operation="perc_add" value="2" />
+			<display_value name="dEntityDamageSneak" value="2"/>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="ZombieINC_WeaponPart1_WithWeapon" />
+		<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="ZombieINC_WeaponPart1_WithWeapon" />
+	</effect_group>
+</item>
+	
+	
+	
+	<item name="ZombieINC_gunMGT1AK47">
+	<property name="Tags" value="weapon,ranged,holdBreathAiming,reloadPenalty,gun,barrelAttachments,sideAttachments,smallTopAttachments,mediumTopAttachments,stock,magazine,drumMagazine,firingMode,bottomAttachments,attFortitude,perkMachineGunner,perkBookAutoWeapons,attachmentsIncluded,canHaveCosmetic,machinegunSkill,ZINCWeaponPart1"/>
+	<property name="DisplayType" value="rangedGun"/>
+	<property name="HoldType" value="48"/>
+	<property name="Meshfile" value="@:Other/Items/Weapons/Ranged/AK47/ak47Prefab.prefab"/>
+	<property name="Material" value="MMachineGunParts"/>
+	<property name="TintColor" value="151, 81, 63"/>
+	<property name="CustomIcon" value="gunMGT1AK47"/>
+	<property name="CustomIconTint" value="0,0,0"/>
+	<property name="DescriptionKey" value="ZombieINC_gunMGT1AK47Desc"/>			
+	<property name="ItemTypeIcon" value="star"/>
+	<property name="Weight" value="1"/>
+	<property name="CrosshairOnAim" value="true"/> <!-- aimTest -->
+	<property name="CrosshairUpAfterShot" value="true"/> <!-- aimTest -->
+	<property name="RepairTools" value="ZombieINC_resourceRepairKit"/>
+	<property name="DegradationBreaksAfter" value="false"/>
+	<property name="SoundJammed" value="weapon_jam"/>
+	<property name="Sound_Sight_In" value="rifle_sight_in"/>
+	<property name="Sound_Sight_Out" value="rifle_sight_out"/>
+	<property name="RepairExpMultiplier" value="10.8"/>
+	<property name="EconomicValue" value="500"/>
+	<property name="SellableToTrader" value="false"/>
+	<property name="ShowQuality" value="true"/>
+	<property name="Group" value="Ammo/Weapons,Ranged Weapons"/>
+	<property name="SoundUnholster" value="weapon_unholster"/>
+	<property name="SoundHolster" value="weapon_holster"/>
+
+	<property class="Action0">
+		<property name="Class" value="Ranged"/>
+		<property name="Delay" value=".150"/> <!-- obsolete if rounds per minute exists -->
+		<property name="Magazine_items" value="ammo762mmBulletBall,ammo762mmBulletHP,ammo762mmBulletAP"/>
+		<property name="Sound_start" value="ak47_fire"/>
+		<property name="Sound_loop" value="ak47_fire"/>
+		<property name="Sound_empty" value="dryfire"/>
+		<property name="Sound_reload" value="ak47_reload"/>
+		<property name="Sound_end" value="ak47_fire_end"/>
+		<property name="AutoReload" value="false"/>
+		<property name="Particles_muzzle_fire" value="gunfire_AK47"/>
+		<property name="Particles_muzzle_fire_fpv" value="gunfire_AK47_fpv"/>
+		<requirement name="CVarCompare" cvar="_underwater" operation="LT" value=".98"/>
+                <property name="triggerEffectTriggerPullDualsense" value="RifleTrigger"/>
+                <property name="triggerEffectTriggerPullXbox" value="PistolTrigger"/>
+                <property name="triggerEffectTriggerShootDualsense" value="MGShoot"/>
+                <property name="triggerEffectTriggerShootXbox" value="PistolShoot"/>
+	</property>
+	<property class="Action1">
+		<property name="Class" value="Zoom"/>
+		<property name="Zoom_max_out" value="55"/>
+		<property name="Zoom_max_in" value="55"/>
+		<property name="ScopeCameraOffset" value="-.00062,0,.055"/>
+                <property name="zoomTriggerEffectTriggerPullDualsense" value="PistolZoom"/>
+                <property name="zoomTriggerEffectTriggerPullXbox" value="PistolZoom"/>
+	</property>
+	<effect_group name="gunMGT1AK47" tiered="false">
+		<passive_effect name="MaxRange" operation="base_set" value="90" tags="perkMachineGunner"/>
+		<passive_effect name="DamageFalloffRange" operation="base_set" value="41" tags="perkMachineGunner"/>
+		<passive_effect name="BlockDamage" operation="base_add" value="-3" tags="perkMachineGunner"/> <!-- damage offset -->
+		<passive_effect name="EntityDamage" operation="base_add" value="46" tags="perkMachineGunner,ZINCWeaponPart1"/> <!-- damage offset -->
+		<passive_effect name="EntityDamage" operation="perc_add" value="-.2,.2" tags="perkMachineGunner"/> <!-- random EntityDmg -->
+		<passive_effect name="BlockDamage" operation="perc_add" value="-.08,.08" tags="perkMachineGunner"/> <!-- random BlockDmg -->
+		<passive_effect name="WeaponHandling" operation="perc_add" value="-.08,.08" tags="perkMachineGunner"/> <!-- random WeaponHandling -->
+		<passive_effect name="RoundsPerMinute" operation="base_set" value="460" tags="perkMachineGunner"/>
+		<passive_effect name="BurstRoundCount" operation="base_set" value="1000" tags="perkMachineGunner"/>
+		<passive_effect name="MagazineSize" operation="base_set" value="45" tags="perkMachineGunner"/>
+		<passive_effect name="ReloadSpeedMultiplier" operation="base_set" value="1" tags="perkMachineGunner"/> <!-- 2.85s -->
+
+		<passive_effect name="SpreadDegreesVertical" operation="base_set" value="2.8" tags="perkMachineGunner"/>
+		<passive_effect name="SpreadDegreesHorizontal" operation="base_set" value="2.8" tags="perkMachineGunner"/>
+		<passive_effect name="SpreadMultiplierAiming" operation="base_set" value=".22" tags="perkMachineGunner"/>
+		<passive_effect name="SpreadMultiplierCrouching" operation="base_set" value=".8" tags="perkMachineGunner"/>
+		<passive_effect name="SpreadMultiplierWalking" operation="base_set" value="1.5" tags="perkMachineGunner"/>
+		<passive_effect name="SpreadMultiplierRunning" operation="base_set" value="2.2" tags="perkMachineGunner"/>
+
+		<passive_effect name="KickDegreesVerticalMin" operation="base_set" value="-.5" tags="perkMachineGunner"/>
+		<passive_effect name="KickDegreesVerticalMax" operation="base_set" value="1" tags="perkMachineGunner"/>
+		<passive_effect name="KickDegreesHorizontalMin" operation="base_set" value="-1" tags="perkMachineGunner"/>
+		<passive_effect name="KickDegreesHorizontalMax" operation="base_set" value="1" tags="perkMachineGunner"/>
+
+		<passive_effect name="IncrementalSpreadMultiplier" operation="base_set" value="1.6" tags="perkMachineGunner"/>
+		<passive_effect name="WeaponHandling" operation="base_set" value=".7" tags="perkMachineGunner"/> <!-- ak47 -->
+
+		<passive_effect name="DegradationMax" operation="base_set" value="800" tags="perkMachineGunner,perkBookAutoWeapons,ZINCWeaponPart1"/>
+		<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="perkMachineGunner,perkBookAutoWeapons,ZINCWeaponPart1"/>
+
+		<passive_effect name="ModSlots" operation="base_set" value="0" />
+		<passive_effect name="ModPowerBonus" operation="perc_add" value=".10" tags="EntityDamage,BlockDamage"/>
+		<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+		
+		<triggered_effect trigger="onSelfPrimaryActionUpdate" action="AttachPrefabToEntity" prefab="@:Entities/OutdoorDecor/cowSkullPrefab.prefab" parent_transform="Handle" local_offset="-0.05,0.048,-0.0385" local_rotation="50.021,-90,0" local_scale="0.06,0.06,0.06"/>
+		<triggered_effect trigger="onSelfPrimaryActionUpdate" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Melee/Knives/hunting_knifePrefab.prefab" parent_transform="Handle" local_offset="0.0,0.009373,0.43502" local_rotation="-96.521,180,0" local_scale="0.7,0.5,0.75"/>
+		<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="hunting_knifePrefab" parent_transform="Handle"/>
+		<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="cowSkullPrefab" parent_transform="Handle"/>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="ZombieINC_WeaponPart1_WithWeapon" />
+		<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="ZombieINC_WeaponPart1_WithWeapon" />
+	</effect_group>
+</item>
+
+
+
+
+<item name="ZombieINC_gunMGT2TacticalAR">
+	<property name="Tags" value="weapon,ranged,holdBreathAiming,reloadPenalty,gun,barrelAttachments,sideAttachments,smallTopAttachments,mediumTopAttachments,stock,magazine,drumMagazine,firingMode,bottomAttachments,attFortitude,perkMachineGunner,perkBookAutoWeapons,canHaveCosmetic,attachmentsIncluded,machinegunSkill,ZINCWeaponPart1"/><!-- attachmentsIncluded -->
+	<property name="DisplayType" value="rangedGun"/>
+	<property name="HoldType" value="71"/>
+	<property name="Meshfile" value="@:Other/Items/Weapons/Ranged/Tactical Assault Rifle/tacticalAssaultRiflePrefab.prefab"/>
+	<property name="Material" value="MMachineGunParts"/>
+	<property name="TintColor" value="102, 102, 51"/>
+	<property name="CustomIcon" value="gunMGT2TacticalAR"/>
+	<property name="CustomIconTint" value="0,0,0"/>
+	<property name="DescriptionKey" value="ZombieINC_gunMGT2TacticalARDesc"/>			
+	<property name="ItemTypeIcon" value="star"/>
+	<property name="Weight" value="1"/>
+	<property name="CrosshairOnAim" value="true"/> <!-- aimTest -->
+	<property name="CrosshairUpAfterShot" value="true"/> <!-- aimTest -->
+	<property name="RepairTools" value="ZombieINC_resourceRepairKit"/>
+	<property name="DegradationBreaksAfter" value="false"/>
+	<property name="SoundJammed" value="weapon_jam"/>
+	<property name="Sound_Sight_In" value="rifle_sight_in"/>
+	<property name="Sound_Sight_Out" value="rifle_sight_out"/>
+	<property name="RepairExpMultiplier" value="10.8"/>
+	<property name="EconomicValue" value="1000"/>
+	<property name="SellableToTrader" value="false"/>
+	<property name="ShowQuality" value="true"/>
+	<property name="Group" value="Ammo/Weapons,Ranged Weapons"/>
+	<property name="SoundUnholster" value="weapon_unholster"/>
+	<property name="SoundHolster" value="weapon_holster"/>
+
+	<property class="Action0">
+		<property name="Class" value="Ranged"/>
+		<property name="Delay" value=".150"/> <!-- obsolete if rounds per minute exists -->
+		<property name="Magazine_items" value="ammo762mmBulletBall,ammo762mmBulletHP,ammo762mmBulletAP"/>
+		<property name="Sound_start" value="ak47_s_fire"/>
+		<property name="Sound_end" value="silencefiller"/>
+		<property name="Sound_loop" value="ak47_s_fire"/>
+		<property name="BarrelOffset" value="0,.005,.275"/>
+		<property name="BarrelScale" value="1,1,1"/>
+		<property name="SideOffset" value="0,0.021,0.258"/>
+		<property name="SideScale" value="1,1,1"/>
+		<property name="Sound_empty" value="dryfire"/>
+		<property name="AutoReload" value="false"/>
+		<property name="Particles_muzzle_fire" value="gunfire_assault_rifle"/>
+		<property name="Particles_muzzle_fire_fpv" value="gunfire_assault_rifle_fpv"/>
+		<requirement name="CVarCompare" cvar="_underwater" operation="LT" value=".98"/>
+                <property name="triggerEffectTriggerPullDualsense" value="RifleTrigger"/>
+                <property name="triggerEffectTriggerPullXbox" value="PistolTrigger"/>
+                <property name="triggerEffectTriggerShootDualsense" value="MGShoot"/>
+                <property name="triggerEffectTriggerShootXbox" value="PistolShoot"/>
+	</property>
+	<property class="Action1">
+		<property name="Class" value="Zoom"/>
+		<property name="Zoom_max_out" value="55"/>
+		<property name="Zoom_max_in" value="55"/>
+		<property name="ScopeOffset" value="-.00099,0.0972,-0.098"/>
+		<property name="ScopeScale" value=".63,.63,.63"/>
+		<property name="ScopeCameraOffset" value="0,.000,0.0016"/>
+		
+                <property name="zoomTriggerEffectTriggerPullDualsense" value="RifleZoom"/>
+                <property name="zoomTriggerEffectTriggerPullXbox" value="PistolZoom"/>
+	</property>
+
+	<effect_group name="gunMGT2TacticalAR" tiered="false">
+		<passive_effect name="MaxRange" operation="base_set" value="90" tags="perkMachineGunner"/>
+		<passive_effect name="DamageFalloffRange" operation="base_set" value="60" tags="perkMachineGunner"/>
+
+		<passive_effect name="BlockDamage" operation="base_add" value="-2" tags="perkMachineGunner"/> <!-- damage offset -->
+		<passive_effect name="EntityDamage" operation="base_add" value="46" tags="perkMachineGunner,ZINCWeaponPart1"/> <!-- damage offset -->
+		<passive_effect name="EntityDamage" operation="perc_add" value="-.2,.2" tags="perkMachineGunner"/> <!-- random EntityDmg -->
+
+		<passive_effect name="BlockDamage" operation="perc_add" value="-.08,.08" tags="perkMachineGunner"/> <!-- random BlockDmg -->
+	
+		
+		<!-- <passive_effect name="RoundsPerMinute" operation="perc_add" value="-.05,.05" tags="perkMachineGunner"/> --> <!-- random APM -->
+		<!-- <passive_effect name="MagazineSize" operation="perc_add" value="-.122,.122"/> --> <!-- random MagazineSize -->
+		<passive_effect name="RoundsPerMinute" operation="base_set" value="405" tags="perkMachineGunner"/>
+		<passive_effect name="BurstRoundCount" operation="base_set" value="20" tags="perkMachineGunner"/>
+		<passive_effect name="MagazineSize" operation="base_set" value="20" tags="perkMachineGunner"/>
+		<passive_effect name="ReloadSpeedMultiplier" operation="base_set" value=".7" tags="perkMachineGunner"/> <!-- 3.8s -->
+
+		<passive_effect name="SpreadDegreesVertical" operation="base_set" value="1.5" tags="perkMachineGunner"/>
+		<passive_effect name="SpreadDegreesHorizontal" operation="base_set" value="1.5" tags="perkMachineGunner"/>
+		<passive_effect name="SpreadMultiplierAiming" operation="base_set" value=".22" tags="perkMachineGunner"/>
+		<passive_effect name="SpreadMultiplierCrouching" operation="base_set" value=".8" tags="perkMachineGunner"/>
+		<passive_effect name="SpreadMultiplierWalking" operation="base_set" value="1.0" tags="perkMachineGunner"/>
+		<passive_effect name="SpreadMultiplierRunning" operation="base_set" value="1.5" tags="perkMachineGunner"/>
+
+		<passive_effect name="KickDegreesVerticalMin" operation="base_set" value="-.5" tags="perkMachineGunner"/>
+		<passive_effect name="KickDegreesVerticalMax" operation="base_set" value="1" tags="perkMachineGunner"/>
+		<passive_effect name="KickDegreesHorizontalMin" operation="base_set" value="-1" tags="perkMachineGunner"/>
+		<passive_effect name="KickDegreesHorizontalMax" operation="base_set" value="1" tags="perkMachineGunner"/>
+
+		<passive_effect name="IncrementalSpreadMultiplier" operation="base_set" value="1.1" tags="perkMachineGunner"/>
+		<passive_effect name="WeaponHandling" operation="base_set" value=".5" tags="perkMachineGunner"/> <!-- ak47 -->
+
+		<passive_effect name="DegradationMax" operation="base_set" value="900" tags="perkMachineGunner,perkBookAutoWeapons,ZINCWeaponPart1"/>
+		<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="perkMachineGunner,perkBookAutoWeapons,ZINCWeaponPart1"/>
+
+		<passive_effect name="ModSlots" operation="base_set" value="0" />
+		<passive_effect name="ModPowerBonus" operation="perc_add" value=".10" tags="EntityDamage,BlockDamage"/>
+		<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+		
+		<triggered_effect trigger="onSelfPrimaryActionUpdate" action="AttachPrefabToEntity" prefab="@:Entities/Commercial/WoodenBearPrefab.prefab" parent_transform="Handle" local_offset="-0.0315,-0.0062,-0.0340" local_rotation="0,-90,0" local_scale="0.05,0.05,0.05"/>
+		<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="WoodenBearPrefab" parent_transform="Handle" />
+		
+		<!--<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="true" transform_path="silencer"/>
+		<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="true" transform_path="gunlaser"/>
+		<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="true" transform_path="holosight"/>-->
+		<!--<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="true" transform_path="flashlight"/>-->
+		
+		<!--<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="false" transform_path="silencer"/>
+		<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="false" transform_path="gunlaser"/>
+		<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="false" transform_path="holosight"/>-->
+		<!--<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="false" transform_path="flashlight"/>-->
+		
+		<!--<triggered_effect trigger="onSelfItemActivate" action="SetTransformActive" active="true" parent_transform="gunlaser" transform_path="gunlaser"/>
+		<triggered_effect trigger="onSelfItemDeactivate" action="SetTransformActive" active="false" parent_transform="gunlaser" transform_path="gunlaser"/>
+		<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="false" parent_transform="gunlaser" transform_path="gunlaser"/>-->
+		
+		<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="silencer"/>
+		<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="gunlaser"/>
+		<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="holosight"/>
+		<!--<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="true" transform_path="flashlight"/>-->
+		
+		<!--<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="false" transform_path="silencer"/>
+		<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="false" transform_path="gunlaser"/>
+		<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="false" transform_path="holosight"/>-->
+		<!--<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="false" transform_path="flashlight"/>-->
+		
+		<triggered_effect trigger="onSelfItemActivate" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="gunlaser/gunlaser"/>
+		<triggered_effect trigger="onSelfItemDeactivate" action="SetTransformActive" active="false" parent_transform="#HeldItemRoot" transform_path="gunlaser/gunlaser"/>
+		<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="false" parent_transform="#HeldItemRoot" transform_path="gunlaser/gunlaser"/>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="ZombieINC_WeaponPart1_WithWeapon" />
+		<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="ZombieINC_WeaponPart1_WithWeapon" />
+	</effect_group>
+</item>
+
+<item name="ZombieINC_gunMGT3M60">
+	<property name="Tags" value="weapon,ranged,holdBreathAiming,reloadPenalty,gun,barrelAttachments,sideAttachments,smallTopAttachments,bottomAttachments,mediumTopAttachments,attFortitude,perkMachineGunner,perkBookAutoWeapons,attachmentsIncluded,canHaveCosmetic,machinegunSkill,ZINCWeaponPart1"/>
+	<property name="DisplayType" value="rangedGun"/>
+	<property name="HoldType" value="60"/>
+	<property name="Meshfile" value="@:Other/Items/Weapons/Ranged/MachineGun/m60MachinegunPrefab.prefab"/>
+	<property name="Material" value="MMachineGunParts"/>
+	<property name="TintColor" value="71, 84, 59"/>
+	<property name="CustomIcon" value="gunMGT3M60"/>
+	<property name="CustomIconTint" value="0,0,0"/>
+	<property name="DescriptionKey" value="ZombieINC_gunMGT3M60Desc"/>			
+	<property name="ItemTypeIcon" value="star"/>
+	<property name="Weight" value="1"/>
+	<property name="CrosshairOnAim" value="true"/> <!-- aimTest -->
+	<property name="CrosshairUpAfterShot" value="true"/> <!-- aimTest -->
+	<property name="RepairTools" value="ZombieINC_resourceRepairKit"/>
+	<property name="DegradationBreaksAfter" value="false"/>
+	<property name="SoundJammed" value="weapon_jam"/>
+	<property name="Sound_Sight_In" value="rifle_sight_in"/>
+	<property name="Sound_Sight_Out" value="rifle_sight_out"/>
+	<property name="RepairExpMultiplier" value="10.8"/>
+	<property name="EconomicValue" value="1500"/>
+	<property name="SellableToTrader" value="false"/>
+	<property name="ShowQuality" value="true"/>
+	<property name="Group" value="Ammo/Weapons,Ranged Weapons"/>
+	<property name="SoundUnholster" value="weapon_unholster"/>
+	<property name="SoundHolster" value="weapon_holster"/>
+
+	<property class="Action0">
+		<property name="Class" value="Ranged"/>
+		<property name="Delay" value=".150"/> <!-- obsolete if rounds per minute exists -->
+		<property name="Magazine_items" value="ammo762mmBulletBall,ammo762mmBulletHP,ammo762mmBulletAP"/>
+		<property name="Sound_start" value="m60_fire"/>
+		<property name="Sound_loop" value="m60_fire"/>
+		<property name="Sound_empty" value="dryfire"/>
+		<property name="Sound_reload" value="m60_reload"/>
+		<property name="Sound_end" value="m60_fire_end"/>
+		<property name="AutoReload" value="false"/>
+		<property name="Particles_muzzle_fire" value="gunfire_m60"/>
+		<property name="Particles_muzzle_smoke" value="gunfire_smoke"/>
+		<property name="Particles_muzzle_fire_fpv" value="gunfire_m60_fpv"/>
+		<property name="Particles_muzzle_smoke_fpv" value="gunfire_smoke_fpv"/>
+		<requirement name="CVarCompare" cvar="_underwater" operation="LT" value=".98"/>
+                <property name="triggerEffectTriggerPullDualsense" value="RifleTrigger"/>
+                <property name="triggerEffectTriggerPullXbox" value="PistolTrigger"/>
+                <property name="triggerEffectTriggerShootDualsense" value="MGShoot"/>
+                <property name="triggerEffectTriggerShootXbox" value="PistolShoot"/>
+	</property>
+	<property class="Action1">
+		<property name="Class" value="Zoom"/>
+		<property name="Zoom_max_out" value="55"/>
+		<property name="Zoom_max_in" value="55"/>
+		<property name="ScopeCameraOffset" value="-.00062,0,.055"/>
+                <property name="zoomTriggerEffectTriggerPullDualsense" value="RifleZoom"/>
+                <property name="zoomTriggerEffectTriggerPullXbox" value="PistolZoom"/>
+	</property>
+	<effect_group name="gunMGT3M60" tiered="false">
+		<passive_effect name="MaxRange" operation="base_set" value="90" tags="perkMachineGunner"/>
+		<passive_effect name="DamageFalloffRange" operation="base_set" value="58" tags="perkMachineGunner"/>
+		<passive_effect name="DamageFalloffRange" operation="perc_add" value="-.1,.05" tags="perkMachineGunner"/> <!-- random effective rng -->
+		<passive_effect name="BlockDamage" operation="base_add" value="-2" tags="perkMachineGunner"/> <!-- damage offset -->
+		<passive_effect name="EntityDamage" operation="base_add" value="70" tags="perkMachineGunner,ZINCWeaponPart1"/> <!-- damage offset -->
+		<passive_effect name="BlockDamage" operation="perc_add" value="-.08,.08" tags="perkMachineGunner"/> <!-- random BlockDmg -->
+		<passive_effect name="MagazineSize" operation="perc_add" value="-.33,.33"/> <!-- random MagazineSize -->
+		<passive_effect name="WeaponHandling" operation="perc_add" value="-.08,.08" tags="perkMachineGunner"/> <!-- random WeaponHandling -->
+		<passive_effect name="RoundsPerMinute" operation="base_set" value="400" tags="perkMachineGunner"/>
+		<passive_effect name="BurstRoundCount" operation="base_set" value="1000" tags="perkMachineGunner"/>
+		<passive_effect name="MagazineSize" operation="base_set" value="180" tags="perkMachineGunner"/>
+		<passive_effect name="ReloadSpeedMultiplier" operation="base_set" value="0.65" tags="perkMachineGunner"/>
+
+		<passive_effect name="SpreadDegreesVertical" operation="base_set" value="3.8" tags="perkMachineGunner"/>
+		<passive_effect name="SpreadDegreesHorizontal" operation="base_set" value="3.8" tags="perkMachineGunner"/>
+		<passive_effect name="SpreadMultiplierAiming" operation="base_set" value=".33" tags="perkMachineGunner"/>
+		<passive_effect name="SpreadMultiplierCrouching" operation="base_set" value=".8" tags="perkMachineGunner"/>
+		<passive_effect name="SpreadMultiplierWalking" operation="base_set" value="1.5" tags="perkMachineGunner"/>
+		<passive_effect name="SpreadMultiplierRunning" operation="base_set" value="2.2" tags="perkMachineGunner"/>
+
+		<passive_effect name="KickDegreesVerticalMin" operation="base_set" value="-.4" tags="perkMachineGunner"/>
+		<passive_effect name="KickDegreesVerticalMax" operation="base_set" value="1.1" tags="perkMachineGunner"/>
+		<passive_effect name="KickDegreesHorizontalMin" operation="base_set" value="-1" tags="perkMachineGunner"/>
+		<passive_effect name="KickDegreesHorizontalMax" operation="base_set" value="1" tags="perkMachineGunner"/>
+
+		<passive_effect name="IncrementalSpreadMultiplier" operation="base_set" value="1.5" tags="perkMachineGunner"/>
+		<passive_effect name="WeaponHandling" operation="base_set" value=".83" tags="perkMachineGunner"/> <!-- M60 -->
+
+		<passive_effect name="DegradationMax" operation="base_set" value="2000" tags="perkMachineGunner,perkBookAutoWeapons,ZINCWeaponPart1"/>
+		<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="perkMachineGunner,perkBookAutoWeapons,ZINCWeaponPart1"/>
+		
+		<passive_effect name="Mobility" operation="perc_subtract" value=".55"/>
+		
+		<passive_effect name="ModSlots" operation="base_set" value="3" tags="perkMachineGunner"/>	
+		<passive_effect name="ModPowerBonus" operation="perc_add" value=".10" tags="EntityDamage,BlockDamage"/>
+		<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+		
+		<triggered_effect trigger="onSelfPrimaryActionUpdate" action="AttachPrefabToEntity" prefab="@:Entities/LootContainers/munitionsBox_01Prefab.prefab" local_offset="-0.0487,-0.0461,0.1607" local_rotation="0,0,0" local_scale="0.15,0.3,0.25" parent_transform="Handle"/>
+		<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="munitionsBox_01Prefab" parent_transform="Handle" />
+		
+		<triggered_effect trigger="onSelfPrimaryActionUpdate" action="AttachPrefabToEntity" prefab="@:Entities/Plumbing/pipe_cornerPrefab.prefab" local_offset="-0.0804,-0.1055,-0.1024" local_rotation="-90,0,-90" local_scale="0.03,0.1,0.03" parent_transform="Handle"/>
+		<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="pipe_cornerPrefab" parent_transform="Handle" />
+		
+		<triggered_effect trigger="onSelfPrimaryActionUpdate" action="AttachPrefabToEntity" prefab="@:Entities/Plumbing/pipe_straight_longPrefab.prefab" local_offset="-0.0797,-0.1052,-0.0123" local_rotation="0,0,0" local_scale="0.1,0.03,0.05" parent_transform="Handle"/>
+		<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="pipe_straight_longPrefab" parent_transform="Handle" />
+		
+		<triggered_effect trigger="onSelfPrimaryActionUpdate" action="AttachPrefabToEntity" prefab="@:Entities/Plumbing/pipe_straightPrefab.prefab" local_offset="-0.0804,-0.0777,-0.1024" local_rotation="90,0,0" local_scale="0.1,0.03,0.026" parent_transform="Handle"/>
+		<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="pipe_straightPrefab" parent_transform="Handle" />
+		
+		<triggered_effect trigger="onSelfPrimaryActionUpdate" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/pipeSmallJointPrefab.prefab" local_offset="-0.0017,-0.0753,0.1711" local_rotation="0,0,0" local_scale="0.2,0.2,0.2" parent_transform="Handle"/>
+		<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="pipeSmallJointPrefab" parent_transform="Handle" />
+		
+		<triggered_effect trigger="onSelfPrimaryActionUpdate" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/pipeSmallCornerPrefab.prefab" local_offset="0.0033,-0.0777,-0.0354" local_rotation="-90,0,0" local_scale="0.2,0.2,0.2" parent_transform="Handle"/>
+		<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="pipeSmallCornerPrefab" parent_transform="Handle" />
+		
+		
+		
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="ZombieINC_WeaponPart1_WithWeapon" />
+		<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="ZombieINC_WeaponPart1_WithWeapon" />
+	</effect_group>
+</item>
+	
+	
+	<item name="ZombieINC_Mission_gunHandgunT0PipePistol">
+	<property name="Tags" value="weapon,ranged,holdBreathAiming,reloadPenalty,gun,shortRange,revolver,barrelAttachments,sideAttachments,smallTopAttachments,attAgility,perkGunslinger,9mmGun,attachmentsIncluded,canHaveCosmetic,handgunSkill,PipePistolMission"/>
+	<property name="DisplayType" value="rangedGun"/>
+	<property name="HoldType" value="83"/>
+	<property name="Meshfile" value="@:Other/Items/Weapons/Ranged/PipeRevolver/pipeRevolverPrefab.prefab"/>
+	<property name="Material" value="Mmetal"/>
+	<property name="DescriptionKey" value="ZombieINC_Mission_gunHandgunT0PipePistolDesc"/>	
+	<property name="TintColor" value="40, 40, 40"/>
+	<property name="CustomIcon" value="gunHandgunT0PipePistol"/>
+	<property name="CustomIconTint" value="0,0,0"/>
+	<property name="ItemTypeIcon" value="quest"/>
+	<property name="RepairTools" value=""/>
+	<property name="DegradationBreaksAfter" value="true"/>
+	<property name="SoundJammed" value="weapon_jam"/>
+	<property name="Attachments" value="meleeToolFlashlight02"/>
+	<property name="CrosshairOnAim" value="true"/> <!-- aimTest -->
+	<property name="CrosshairUpAfterShot" value="true"/> <!-- aimTest -->
+	<property name="Sound_Sight_In" value="pistol_sight_in"/>
+	<property name="Sound_Sight_Out" value="pistol_sight_out"/>
+	<property name="LightSource" value="lightSource"/> <!-- Start: Needed for the attachment flashlight -->
+	<property name="ActivateObject" value="Attachments/flashlight/lightSource"/>
+	<property name="AttachmentFlashlight" value="flashlight02"/> <!-- End: Needed for the attachment flashlight -->
+	<property name="Group" value="Ammo/Weapons,Ranged Weapons"/>
+	<property name="RepairExpMultiplier" value="10.8"/>
+	<property name="LightValue" value=".45"/>
+	<property name="EconomicValue" value="100"/>
+	<property name="ShowQuality" value="true"/>
+	<property name="SoundUnholster" value="weapon_unholster"/>
+	<property name="SoundHolster" value="weapon_holster"/>
+
+	<property class="Action0">
+		<property name="Class" value="Ranged"/>
+		<property name="Magazine_items" value="ammo9mmBulletBall,ammo9mmBulletHP,ammo9mmBulletAP"/>
+		<property name="Sound_loop" value="pistol_s_fire"/>
+		<property name="Sound_end" value=""/>
+		<property name="Sound_empty" value="dryfire"/>
+		<property name="Sound_reload" value="pistol_reload"/>
+		<property name="Sound_start" value="pistol_s_fire"/>
+		<property name="AutoReload" value="false"/>
+		<property name="Particles_muzzle_fire" value="gunfire_pistol"/>
+		<property name="Particles_muzzle_fire_fpv" value="gunfire_magnum_fpv"/>
+		<requirement name="HasBuff" buff="ZombieINC_WeaponTestPart1_InMissionBuff" />
+		<requirement name="CVarCompare" cvar="_underwater" operation="LT" value=".98"/>
+        	<property name="triggerEffectTriggerPullDualsense" value="PistolTrigger"/>
+        	<property name="triggerEffectTriggerPullXbox" value="PistolTrigger"/>
+        	<property name="triggerEffectShootDualsense" value="PistolShoot"/>
+        	<property name="triggerEffectShootXbox" value="PistolShoot"/>
+	</property>
+	<property class="Action1">
+		<requirement name="HasBuff" buff="ZombieINC_WeaponTestPart1_InMissionBuff" />
+		<property name="Class" value="Zoom"/>
+		<property name="Zoom_max_out" value="55"/>
+		<property name="Zoom_max_in" value="55"/>
+		<property name="ScopeCameraOffset" value="0,.0008,0"/>
+        	<property name="zoomTriggerEffectPullDualsense" value="PistolZoom"/>
+        	<property name="zoomTriggerEffectPullXb" value="PistolZoom"/>
+	</property>
+	<effect_group name="gunHandgunT0PipePistol" tiered="false">
+		<passive_effect name="MaxRange" operation="base_set" value="50" tags="perkGunslinger,9mmGun"/>
+		<passive_effect name="DamageFalloffRange" operation="base_set" value="50" tags="perkGunslinger,9mmGun"/>
+		<passive_effect name="RoundsPerMinute" operation="base_set" value="126" tags="perkGunslinger"/>
+		<passive_effect name="BurstRoundCount" operation="base_set" value="1" tags="perkGunslinger"/>
+		<passive_effect name="MagazineSize" operation="base_set" value="6" tags="perkGunslinger"/>
+		 <!--<passive_effect name="ReloadSpeedMultiplier" operation="base_set" value="1" tags="perkGunslinger"/> 2s -->
+		
+		<passive_effect name="ModPowerBonus" operation="perc_add" value=".10" tags="EntityDamage,BlockDamage"/>
+		<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+		<passive_effect name="EntityDamage" operation="base_add" value="-10" tags="perkGunslinger"/> <!-- damage offset -->
+		<passive_effect name="BlockDamage" operation="base_add" value="-2.1" tags="perkGunslinger"/> <!-- damage offset -->
+		
+
+		<passive_effect name="SpreadDegreesVertical" operation="base_set" value="1.5" tags="perkGunslinger"/>
+		<passive_effect name="SpreadDegreesHorizontal" operation="base_set" value="1.5" tags="perkGunslinger"/>
+		<passive_effect name="SpreadMultiplierAiming" operation="base_set" value=".4" tags="perkGunslinger"/>
+		<passive_effect name="SpreadMultiplierCrouching" operation="base_set" value=".8" tags="perkGunslinger"/>
+		<passive_effect name="SpreadMultiplierWalking" operation="base_set" value="1.5" tags="perkGunslinger"/>
+		<passive_effect name="SpreadMultiplierRunning" operation="base_set" value="2.2" tags="perkGunslinger"/>
+
+		<passive_effect name="KickDegreesVerticalMin" operation="base_set" value=".8" tags="perkGunslinger"/>
+		<passive_effect name="KickDegreesVerticalMax" operation="base_set" value=".9" tags="perkGunslinger"/>
+		<passive_effect name="KickDegreesHorizontalMin" operation="base_set" value="-.3" tags="perkGunslinger"/>
+		<passive_effect name="KickDegreesHorizontalMax" operation="base_set" value=".3" tags="perkGunslinger"/>
+
+		<passive_effect name="IncrementalSpreadMultiplier" operation="base_set" value="2.0" tags="perkGunslinger,9mmGun"/>
+		<passive_effect name="WeaponHandling" operation="base_set" value=".95" tags="perkGunslinger"/> <!-- crosshair reset speed -->
+
+		<passive_effect name="DegradationMax" operation="base_set" value="400" tags="perkGunslinger,9mmGun"/>
+		<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="perkGunslinger,9mmGun"/>
+		
+		<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="silencer"/>
+		
+		
+		<!--<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="true" transform_path="silencer"/>-->
+		<!--<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="false" transform_path="silencer"/>-->
+		
+		
+	</effect_group>
+	<effect_group name="sneak damage bonus" tiered="false">
+		<requirement name="CVarCompare" cvar="_crouching" operation="Equals" value="1"/>
+		<requirement name="CVarCompare" cvar="_notAlerted" operation="GT" value="0" target="other"/>
+			<passive_effect name="EntityDamage" operation="perc_add" value="2" />
+			<display_value name="dEntityDamageSneak" value="2"/>
+	</effect_group>
+</item>
+	
+	<item name="ZombieINC_Mission_gunHandgunT1Pistol">
+	<property name="Tags" value="weapon,ranged,holdBreathAiming,reloadPenalty,gun,shortRange,pistol,barrelAttachments,sideAttachments,smallTopAttachments,magazine,firingMode,attAgility,perkGunslinger,9mmGun,attachmentsIncluded,canHaveCosmetic,handgunSkill"/>
+	<property name="DisplayType" value="rangedGun"/>
+	<property name="HoldType" value="1"/>
+	<property name="Meshfile" value="@:Other/Items/Weapons/Ranged/Pistol/PistolPrefab.prefab"/>
+	<property name="Material" value="MHandGunParts"/>
+	<property name="TintColor" value="207, 184, 56"/>
+	<property name="CustomIcon" value="gunHandgunT1Pistol"/>
+	<property name="CustomIconTint" value="0,0,0"/>
+	<property name="DescriptionKey" value="ZombieINC_gunHandgunT1PistolDesc"/>			
+	<property name="ItemTypeIcon" value="star"/>
+	<property name="Weight" value="1"/>
+	<property name="RepairTools" value=""/>
+	<property name="DegradationBreaksAfter" value="true"/>
+	<property name="SoundJammed" value="weapon_jam"/>
+	<property name="Attachments" value="meleeToolFlashlight02"/>
+	<property name="CrosshairOnAim" value="true"/> <!-- aimTest -->
+	<property name="CrosshairUpAfterShot" value="true"/> <!-- aimTest -->
+	<property name="Sound_Sight_In" value="pistol_sight_in"/>
+	<property name="Sound_Sight_Out" value="pistol_sight_out"/>
+	<property name="LightSource" value="lightSource"/> <!-- Start: Needed for the attachment flashlight -->
+	<property name="ActivateObject" value="Attachments/flashlight/lightSource"/>
+	<property name="AttachmentFlashlight" value="flashlight02"/> <!-- End: Needed for the attachment flashlight -->
+	<property name="Group" value="Ammo/Weapons,Ranged Weapons"/>
+	<property name="RepairExpMultiplier" value="10.8"/>
+	<property name="LightValue" value=".45"/>
+	<property name="EconomicValue" value="500"/>
+	<property name="SellableToTrader" value="false"/>
+    <property name="ShowQuality" value="true"/>
+    <property name="SoundUnholster" value="weapon_unholster"/>
+	<property name="SoundHolster" value="weapon_holster"/>
+
+	<property class="Action0">
+		<property name="Class" value="Ranged"/>
+		<property name="Magazine_items" value="ammo9mmBulletBall,ammo9mmBulletHP,ammo9mmBulletAP"/>
+		
+		<property name="Sound_loop" value="pistol_s_fire"/>
+		<property name="Sound_end" value=""/>
+		<property name="Sound_empty" value="dryfire"/>
+		<property name="Sound_reload" value="pistol_reload"/>
+		<property name="Sound_start" value="pistol_s_fire"/>
+		<property name="BarrelOffset" value="0,-.006,.127"/>
+		<property name="BarrelScale" value="1,1,1"/>
+		<property name="AutoReload" value="false"/>
+		<property name="Particles_muzzle_fire" value="gunfire_pistol"/>
+		<property name="Particles_muzzle_fire_fpv" value="gunfire_pistol_fpv"/>
+		<requirement name="HasBuff" buff="ZombieINC_WeaponTestPart1_InMissionBuff" />
+		<requirement name="CVarCompare" cvar="_underwater" operation="LT" value=".98"/>
+        	<property name="triggerEffectTriggerPullDualsense" value="PistolTrigger"/>
+        	<property name="triggerEffectTriggerPullXbox" value="PistolTrigger"/>
+        	<property name="triggerEffectShootDualsense" value="PistolShoot"/>
+        	<property name="triggerEffectShootXbox" value="PistolShoot"/>
+	</property>
+	<property class="Action1">
+		<property name="Class" value="Zoom"/>
+		<property name="Zoom_max_out" value="55"/>
+		<property name="Zoom_max_in" value="55"/>
+		<!--<property name="ScopeCameraOffset" value="0,.0008,0"/>-->
+		<property name="ScopeOffset" value="0,.072,.11"/>
+		<property name="ScopeScale" value=".7,.7,.7"/>
+		<property name="ScopeCameraOffset" value="0,-.013,-.2"/>
+        	<property name="zoomTriggerEffectPullDualsense" value="PistolZoom"/>
+        	<property name="zoomTriggerEffectPullXb" value="PistolZoom"/>
+		<requirement name="HasBuff" buff="ZombieINC_WeaponTestPart1_InMissionBuff" />
+	</property>
+	<effect_group name="gunHandgunT1Pistol" tiered="false">
+		<passive_effect name="MaxRange" operation="base_set" value="100" tags="perkGunslinger,9mmGun"/>
+		<passive_effect name="DamageFalloffRange" operation="base_set" value="30" tags="perkGunslinger,9mmGun"/>
+		
+		<passive_effect name="RoundsPerMinute" operation="base_set" value="100" tags="perkGunslinger"/>
+		<passive_effect name="BurstRoundCount" operation="base_set" value="1" tags="perkGunslinger"/>
+		<passive_effect name="MagazineSize" operation="base_set" value="7" tags="perkGunslinger"/>
+		 <!--<passive_effect name="ReloadSpeedMultiplier" operation="base_set" value="1" tags="perkGunslinger"/> 2s -->
+		<passive_effect name="ModSlots" operation="base_set" value="0" />
+		<passive_effect name="ModPowerBonus" operation="perc_add" value=".10" tags="EntityDamage,BlockDamage"/>
+		<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+		<passive_effect name="EntityDamage" operation="base_add" value="60" tags="perkGunslinger"/> <!-- damage offset -->
+		
+		
+		<passive_effect name="BlockDamage" operation="base_add" value="5" tags="perkGunslinger"/> 
+	
+		
+		<passive_effect name="WeaponHandling" operation="perc_add" value="-.5,.5" tags="perkGunslinger"/> <!-- random WeaponHandling -->
+
+		<passive_effect name="SpreadDegreesVertical" operation="base_set" value="1.5" tags="perkGunslinger"/>
+		<passive_effect name="SpreadDegreesHorizontal" operation="base_set" value="1.5" tags="perkGunslinger"/>
+		<passive_effect name="SpreadMultiplierAiming" operation="base_set" value=".4" tags="perkGunslinger"/>
+		<passive_effect name="SpreadMultiplierCrouching" operation="base_set" value=".8" tags="perkGunslinger"/>
+		<passive_effect name="SpreadMultiplierWalking" operation="base_set" value="1.5" tags="perkGunslinger"/>
+		<passive_effect name="SpreadMultiplierRunning" operation="base_set" value="2.2" tags="perkGunslinger"/>
+
+		<passive_effect name="KickDegreesVerticalMin" operation="base_set" value=".7" tags="perkGunslinger"/>
+		<passive_effect name="KickDegreesVerticalMax" operation="base_set" value=".8" tags="perkGunslinger"/>
+		<passive_effect name="KickDegreesHorizontalMin" operation="base_set" value="-.25" tags="perkGunslinger"/>
+		<passive_effect name="KickDegreesHorizontalMax" operation="base_set" value=".25" tags="perkGunslinger"/>
+
+		<passive_effect name="IncrementalSpreadMultiplier" operation="base_set" value="1.2" tags="perkGunslinger,9mmGun"/>
+		<passive_effect name="WeaponHandling" operation="base_set" value=".5" tags="perkGunslinger"/> <!-- crosshair reset speed -->
+
+		<passive_effect name="DegradationMax" operation="base_set" value="800" tags="perkGunslinger,9mmGun"/>
+		<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="perkGunslinger,9mmGun"/>
+		
+		<triggered_effect trigger="onSelfPrimaryActionUpdate" action="AttachPrefabToEntity" prefab="@:Entities/Electrical/signNeonColdBeerPrefab.prefab" local_offset="-0.0594,0.0535,-0.0234" local_rotation="0,-90,0" local_scale="0.08,0.08,0.08" parent_transform="Handle"/>
+		<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="signNeonColdBeerPrefab" parent_transform="Handle" />
+		
+		<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="true" parent_transform="Handle/signNeonColdBeerPrefab" transform_path="MainLight"/>
+		<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="silencer"/>
+		<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="gunlaser"/>
+		<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="holosight"/>
+		
+		<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="false" parent_transform="Handle/signNeonColdBeerPrefab" transform_path="MainLight"/>
+		<!--<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="false" transform_path="silencer"/>
+		<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="false" transform_path="gunlaser"/>
+		<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="false" transform_path="holosight"/>-->
+		
+		<triggered_effect trigger="onSelfItemActivate" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="gunlaser/gunlaser"/>
+		<triggered_effect trigger="onSelfItemDeactivate" action="SetTransformActive" active="false" parent_transform="#HeldItemRoot" transform_path="gunlaser/gunlaser"/>
+		<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="false" parent_transform="#HeldItemRoot" transform_path="gunlaser/gunlaser"/>
+	</effect_group>
+	<effect_group name="sneak damage bonus" tiered="false">
+		<requirement name="CVarCompare" cvar="_crouching" operation="Equals" value="1"/>
+		<requirement name="CVarCompare" cvar="_notAlerted" operation="GT" value="0" target="other"/>
+			<passive_effect name="EntityDamage" operation="perc_add" value="2" />
+			<display_value name="dEntityDamageSneak" value="2"/>
+	</effect_group>
+</item>
+	
+	
+	
+	<item name="ZombieINC_Mission_gunMGT1AK47">
+	<property name="Tags" value="weapon,ranged,holdBreathAiming,reloadPenalty,gun,barrelAttachments,sideAttachments,smallTopAttachments,mediumTopAttachments,stock,magazine,drumMagazine,firingMode,bottomAttachments,attFortitude,perkMachineGunner,perkBookAutoWeapons,attachmentsIncluded,canHaveCosmetic,machinegunSkill"/>
+	<property name="DisplayType" value="rangedGun"/>
+	<property name="HoldType" value="48"/>
+	<property name="Meshfile" value="@:Other/Items/Weapons/Ranged/AK47/ak47Prefab.prefab"/>
+	<property name="Material" value="MMachineGunParts"/>
+	<property name="TintColor" value="151, 81, 63"/>
+	<property name="CustomIcon" value="gunMGT1AK47"/>
+	<property name="CustomIconTint" value="0,0,0"/>
+	<property name="DescriptionKey" value="ZombieINC_gunMGT1AK47Desc"/>			
+	<property name="ItemTypeIcon" value="star"/>
+	<property name="Weight" value="1"/>
+	<property name="CrosshairOnAim" value="true"/> <!-- aimTest -->
+	<property name="CrosshairUpAfterShot" value="true"/> <!-- aimTest -->
+	<property name="RepairTools" value=""/>
+	<property name="DegradationBreaksAfter" value="true"/>
+	<property name="SoundJammed" value="weapon_jam"/>
+	<property name="Sound_Sight_In" value="rifle_sight_in"/>
+	<property name="Sound_Sight_Out" value="rifle_sight_out"/>
+	<property name="RepairExpMultiplier" value="10.8"/>
+	<property name="EconomicValue" value="500"/>
+	<property name="SellableToTrader" value="false"/>
+	<property name="ShowQuality" value="true"/>
+	<property name="Group" value="Ammo/Weapons,Ranged Weapons"/>
+	<property name="SoundUnholster" value="weapon_unholster"/>
+	<property name="SoundHolster" value="weapon_holster"/>
+
+	<property class="Action0">
+		<property name="Class" value="Ranged"/>
+		<property name="Delay" value=".150"/> <!-- obsolete if rounds per minute exists -->
+		<property name="Magazine_items" value="ammo762mmBulletBall,ammo762mmBulletHP,ammo762mmBulletAP"/>
+		<property name="Sound_start" value="ak47_fire"/>
+		<property name="Sound_loop" value="ak47_fire"/>
+		<property name="Sound_empty" value="dryfire"/>
+		<property name="Sound_reload" value="ak47_reload"/>
+		<property name="Sound_end" value="ak47_fire_end"/>
+		<property name="AutoReload" value="false"/>
+		<property name="Particles_muzzle_fire" value="gunfire_AK47"/>
+		<property name="Particles_muzzle_fire_fpv" value="gunfire_AK47_fpv"/>
+		<requirement name="HasBuff" buff="ZombieINC_WeaponTestPart1_InMissionBuff" />
+		<requirement name="CVarCompare" cvar="_underwater" operation="LT" value=".98"/>
+                <property name="triggerEffectTriggerPullDualsense" value="RifleTrigger"/>
+                <property name="triggerEffectTriggerPullXbox" value="PistolTrigger"/>
+                <property name="triggerEffectTriggerShootDualsense" value="MGShoot"/>
+                <property name="triggerEffectTriggerShootXbox" value="PistolShoot"/>
+	</property>
+	<property class="Action1">
+		<property name="Class" value="Zoom"/>
+		<property name="Zoom_max_out" value="55"/>
+		<property name="Zoom_max_in" value="55"/>
+		<property name="ScopeCameraOffset" value="-.00062,0,.055"/>
+                <property name="zoomTriggerEffectTriggerPullDualsense" value="PistolZoom"/>
+                <property name="zoomTriggerEffectTriggerPullXbox" value="PistolZoom"/>
+		<requirement name="HasBuff" buff="ZombieINC_WeaponTestPart1_InMissionBuff" />
+	</property>
+	<effect_group name="gunMGT1AK47" tiered="false">
+		<passive_effect name="MaxRange" operation="base_set" value="90" tags="perkMachineGunner"/>
+		<passive_effect name="DamageFalloffRange" operation="base_set" value="41" tags="perkMachineGunner"/>
+		<passive_effect name="BlockDamage" operation="base_add" value="-3" tags="perkMachineGunner"/> <!-- damage offset -->
+		<passive_effect name="EntityDamage" operation="base_add" value="46" tags="perkMachineGunner"/> <!-- damage offset -->
+		<passive_effect name="EntityDamage" operation="perc_add" value="-.2,.2" tags="perkMachineGunner"/> <!-- random EntityDmg -->
+		<passive_effect name="BlockDamage" operation="perc_add" value="-.08,.08" tags="perkMachineGunner"/> <!-- random BlockDmg -->
+		<passive_effect name="WeaponHandling" operation="perc_add" value="-.08,.08" tags="perkMachineGunner"/> <!-- random WeaponHandling -->
+		<passive_effect name="RoundsPerMinute" operation="base_set" value="460" tags="perkMachineGunner"/>
+		<passive_effect name="BurstRoundCount" operation="base_set" value="1000" tags="perkMachineGunner"/>
+		<passive_effect name="MagazineSize" operation="base_set" value="45" tags="perkMachineGunner"/>
+		<passive_effect name="ReloadSpeedMultiplier" operation="base_set" value="1" tags="perkMachineGunner"/> <!-- 2.85s -->
+
+		<passive_effect name="SpreadDegreesVertical" operation="base_set" value="2.8" tags="perkMachineGunner"/>
+		<passive_effect name="SpreadDegreesHorizontal" operation="base_set" value="2.8" tags="perkMachineGunner"/>
+		<passive_effect name="SpreadMultiplierAiming" operation="base_set" value=".22" tags="perkMachineGunner"/>
+		<passive_effect name="SpreadMultiplierCrouching" operation="base_set" value=".8" tags="perkMachineGunner"/>
+		<passive_effect name="SpreadMultiplierWalking" operation="base_set" value="1.5" tags="perkMachineGunner"/>
+		<passive_effect name="SpreadMultiplierRunning" operation="base_set" value="2.2" tags="perkMachineGunner"/>
+
+		<passive_effect name="KickDegreesVerticalMin" operation="base_set" value="-.5" tags="perkMachineGunner"/>
+		<passive_effect name="KickDegreesVerticalMax" operation="base_set" value="1" tags="perkMachineGunner"/>
+		<passive_effect name="KickDegreesHorizontalMin" operation="base_set" value="-1" tags="perkMachineGunner"/>
+		<passive_effect name="KickDegreesHorizontalMax" operation="base_set" value="1" tags="perkMachineGunner"/>
+
+		<passive_effect name="IncrementalSpreadMultiplier" operation="base_set" value="1.6" tags="perkMachineGunner"/>
+		<passive_effect name="WeaponHandling" operation="base_set" value=".7" tags="perkMachineGunner"/> <!-- ak47 -->
+
+		<passive_effect name="DegradationMax" operation="base_set" value="800" tags="perkMachineGunner,perkBookAutoWeapons"/>
+		<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="perkMachineGunner,perkBookAutoWeapons"/>
+
+		<passive_effect name="ModSlots" operation="base_set" value="0" />
+		<passive_effect name="ModPowerBonus" operation="perc_add" value=".10" tags="EntityDamage,BlockDamage"/>
+		<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+		
+		<triggered_effect trigger="onSelfPrimaryActionUpdate" action="AttachPrefabToEntity" prefab="@:Entities/OutdoorDecor/cowSkullPrefab.prefab" parent_transform="Handle" local_offset="-0.05,0.048,-0.0385" local_rotation="50.021,-90,0" local_scale="0.06,0.06,0.06"/>
+		<triggered_effect trigger="onSelfPrimaryActionUpdate" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Melee/Knives/hunting_knifePrefab.prefab" parent_transform="Handle" local_offset="0.0,0.009373,0.43502" local_rotation="-96.521,180,0" local_scale="0.7,0.5,0.75"/>
+		<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="hunting_knifePrefab" parent_transform="Handle"/>
+		<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="cowSkullPrefab" parent_transform="Handle"/>
+	</effect_group>
+</item>
+
+
+
+
+<item name="ZombieINC_Mission_gunMGT2TacticalAR">
+	<property name="Tags" value="weapon,ranged,holdBreathAiming,reloadPenalty,gun,barrelAttachments,sideAttachments,smallTopAttachments,mediumTopAttachments,stock,magazine,drumMagazine,firingMode,bottomAttachments,attFortitude,perkMachineGunner,perkBookAutoWeapons,canHaveCosmetic,attachmentsIncluded,machinegunSkill"/><!-- attachmentsIncluded -->
+	<property name="DisplayType" value="rangedGun"/>
+	<property name="HoldType" value="71"/>
+	<property name="Meshfile" value="@:Other/Items/Weapons/Ranged/Tactical Assault Rifle/tacticalAssaultRiflePrefab.prefab"/>
+	<property name="Material" value="MMachineGunParts"/>
+	<property name="TintColor" value="102, 102, 51"/>
+	<property name="CustomIcon" value="gunMGT2TacticalAR"/>
+	<property name="CustomIconTint" value="0,0,0"/>
+	<property name="DescriptionKey" value="ZombieINC_gunMGT2TacticalARDesc"/>			
+	<property name="ItemTypeIcon" value="star"/>
+	<property name="Weight" value="1"/>
+	<property name="CrosshairOnAim" value="true"/> <!-- aimTest -->
+	<property name="CrosshairUpAfterShot" value="true"/> <!-- aimTest -->
+	<property name="RepairTools" value=""/>
+	<property name="DegradationBreaksAfter" value="true"/>
+	<property name="SoundJammed" value="weapon_jam"/>
+	<property name="Sound_Sight_In" value="rifle_sight_in"/>
+	<property name="Sound_Sight_Out" value="rifle_sight_out"/>
+	<property name="RepairExpMultiplier" value="10.8"/>
+	<property name="EconomicValue" value="1000"/>
+	<property name="SellableToTrader" value="false"/>
+	<property name="ShowQuality" value="true"/>
+	<property name="Group" value="Ammo/Weapons,Ranged Weapons"/>
+	<property name="SoundUnholster" value="weapon_unholster"/>
+	<property name="SoundHolster" value="weapon_holster"/>
+
+	<property class="Action0">
+		<property name="Class" value="Ranged"/>
+		<property name="Delay" value=".150"/> <!-- obsolete if rounds per minute exists -->
+		<property name="Magazine_items" value="ammo762mmBulletBall,ammo762mmBulletHP,ammo762mmBulletAP"/>
+		<property name="Sound_start" value="ak47_s_fire"/>
+		<property name="Sound_end" value="silencefiller"/>
+		<property name="Sound_loop" value="ak47_s_fire"/>
+		<property name="BarrelOffset" value="0,.005,.275"/>
+		<property name="BarrelScale" value="1,1,1"/>
+		<property name="SideOffset" value="0,0.021,0.258"/>
+		<property name="SideScale" value="1,1,1"/>
+		<property name="Sound_empty" value="dryfire"/>
+		<property name="AutoReload" value="false"/>
+		<property name="Particles_muzzle_fire" value="gunfire_assault_rifle"/>
+		<property name="Particles_muzzle_fire_fpv" value="gunfire_assault_rifle_fpv"/>
+		<requirement name="HasBuff" buff="ZombieINC_WeaponTestPart1_InMissionBuff" />
+		<requirement name="CVarCompare" cvar="_underwater" operation="LT" value=".98"/>
+                <property name="triggerEffectTriggerPullDualsense" value="RifleTrigger"/>
+                <property name="triggerEffectTriggerPullXbox" value="PistolTrigger"/>
+                <property name="triggerEffectTriggerShootDualsense" value="MGShoot"/>
+                <property name="triggerEffectTriggerShootXbox" value="PistolShoot"/>
+	</property>
+	<property class="Action1">
+		<property name="Class" value="Zoom"/>
+		<property name="Zoom_max_out" value="55"/>
+		<property name="Zoom_max_in" value="55"/>
+		<property name="ScopeOffset" value="-.00099,0.0972,-0.098"/>
+		<property name="ScopeScale" value=".63,.63,.63"/>
+		<property name="ScopeCameraOffset" value="0,.000,0.0016"/>
+		
+                <property name="zoomTriggerEffectTriggerPullDualsense" value="RifleZoom"/>
+                <property name="zoomTriggerEffectTriggerPullXbox" value="PistolZoom"/>
+		<requirement name="HasBuff" buff="ZombieINC_WeaponTestPart1_InMissionBuff" />
+	</property>
+
+	<effect_group name="gunMGT2TacticalAR" tiered="false">
+		<passive_effect name="MaxRange" operation="base_set" value="90" tags="perkMachineGunner"/>
+		<passive_effect name="DamageFalloffRange" operation="base_set" value="60" tags="perkMachineGunner"/>
+
+		<passive_effect name="BlockDamage" operation="base_add" value="-2" tags="perkMachineGunner"/> <!-- damage offset -->
+		<passive_effect name="EntityDamage" operation="base_add" value="46" tags="perkMachineGunner"/> <!-- damage offset -->
+		<passive_effect name="EntityDamage" operation="perc_add" value="-.2,.2" tags="perkMachineGunner"/> <!-- random EntityDmg -->
+
+		<passive_effect name="BlockDamage" operation="perc_add" value="-.08,.08" tags="perkMachineGunner"/> <!-- random BlockDmg -->
+	
+		
+		<!-- <passive_effect name="RoundsPerMinute" operation="perc_add" value="-.05,.05" tags="perkMachineGunner"/> --> <!-- random APM -->
+		<!-- <passive_effect name="MagazineSize" operation="perc_add" value="-.122,.122"/> --> <!-- random MagazineSize -->
+		<passive_effect name="RoundsPerMinute" operation="base_set" value="405" tags="perkMachineGunner"/>
+		<passive_effect name="BurstRoundCount" operation="base_set" value="20" tags="perkMachineGunner"/>
+		<passive_effect name="MagazineSize" operation="base_set" value="20" tags="perkMachineGunner"/>
+		<passive_effect name="ReloadSpeedMultiplier" operation="base_set" value=".7" tags="perkMachineGunner"/> <!-- 3.8s -->
+
+		<passive_effect name="SpreadDegreesVertical" operation="base_set" value="1.5" tags="perkMachineGunner"/>
+		<passive_effect name="SpreadDegreesHorizontal" operation="base_set" value="1.5" tags="perkMachineGunner"/>
+		<passive_effect name="SpreadMultiplierAiming" operation="base_set" value=".22" tags="perkMachineGunner"/>
+		<passive_effect name="SpreadMultiplierCrouching" operation="base_set" value=".8" tags="perkMachineGunner"/>
+		<passive_effect name="SpreadMultiplierWalking" operation="base_set" value="1.0" tags="perkMachineGunner"/>
+		<passive_effect name="SpreadMultiplierRunning" operation="base_set" value="1.5" tags="perkMachineGunner"/>
+
+		<passive_effect name="KickDegreesVerticalMin" operation="base_set" value="-.5" tags="perkMachineGunner"/>
+		<passive_effect name="KickDegreesVerticalMax" operation="base_set" value="1" tags="perkMachineGunner"/>
+		<passive_effect name="KickDegreesHorizontalMin" operation="base_set" value="-1" tags="perkMachineGunner"/>
+		<passive_effect name="KickDegreesHorizontalMax" operation="base_set" value="1" tags="perkMachineGunner"/>
+
+		<passive_effect name="IncrementalSpreadMultiplier" operation="base_set" value="1.1" tags="perkMachineGunner"/>
+		<passive_effect name="WeaponHandling" operation="base_set" value=".5" tags="perkMachineGunner"/> <!-- ak47 -->
+
+		<passive_effect name="DegradationMax" operation="base_set" value="900" tags="perkMachineGunner,perkBookAutoWeapons"/>
+		<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="perkMachineGunner,perkBookAutoWeapons"/>
+
+		<passive_effect name="ModSlots" operation="base_set" value="0" />
+		<passive_effect name="ModPowerBonus" operation="perc_add" value=".10" tags="EntityDamage,BlockDamage"/>
+		<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+		
+		<triggered_effect trigger="onSelfPrimaryActionUpdate" action="AttachPrefabToEntity" prefab="@:Entities/Commercial/WoodenBearPrefab.prefab" parent_transform="Handle" local_offset="-0.0315,-0.0062,-0.0340" local_rotation="0,-90,0" local_scale="0.05,0.05,0.05"/>
+		<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="WoodenBearPrefab" parent_transform="Handle" />
+		
+		<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="silencer"/>
+		<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="gunlaser"/>
+		<triggered_effect trigger="onSelfHoldingItemCreated" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="holosight"/>
+		<!--<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="true" transform_path="flashlight"/>-->
+		
+		<!--<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="false" transform_path="silencer"/>
+		<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="false" transform_path="gunlaser"/>
+		<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="false" transform_path="holosight"/>-->
+		<!--<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="false" transform_path="flashlight"/>-->
+		
+		<triggered_effect trigger="onSelfItemActivate" action="SetTransformActive" active="true" parent_transform="#HeldItemRoot" transform_path="gunlaser/gunlaser"/>
+		<triggered_effect trigger="onSelfItemDeactivate" action="SetTransformActive" active="false" parent_transform="#HeldItemRoot" transform_path="gunlaser/gunlaser"/>
+		<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="false" parent_transform="#HeldItemRoot" transform_path="gunlaser/gunlaser"/>
+	</effect_group>
+</item>
+
+<item name="ZombieINC_Mission_gunMGT3M60">
+	<property name="Tags" value="weapon,ranged,holdBreathAiming,reloadPenalty,gun,barrelAttachments,sideAttachments,smallTopAttachments,bottomAttachments,mediumTopAttachments,attFortitude,perkMachineGunner,perkBookAutoWeapons,attachmentsIncluded,canHaveCosmetic,machinegunSkill"/>
+	<property name="DisplayType" value="rangedGun"/>
+	<property name="HoldType" value="60"/>
+	<property name="Meshfile" value="@:Other/Items/Weapons/Ranged/MachineGun/m60MachinegunPrefab.prefab"/>
+	<property name="Material" value="MMachineGunParts"/>
+	<property name="TintColor" value="71, 84, 59"/>
+	<property name="CustomIcon" value="gunMGT3M60"/>
+	<property name="CustomIconTint" value="0,0,0"/>
+	<property name="DescriptionKey" value="ZombieINC_gunMGT3M60Desc"/>			
+	<property name="ItemTypeIcon" value="star"/>
+	<property name="Weight" value="1"/>
+	<property name="CrosshairOnAim" value="true"/> <!-- aimTest -->
+	<property name="CrosshairUpAfterShot" value="true"/> <!-- aimTest -->
+	<property name="RepairTools" value=""/>
+	<property name="DegradationBreaksAfter" value="true"/>
+	<property name="SoundJammed" value="weapon_jam"/>
+	<property name="Sound_Sight_In" value="rifle_sight_in"/>
+	<property name="Sound_Sight_Out" value="rifle_sight_out"/>
+	<property name="RepairExpMultiplier" value="10.8"/>
+	<property name="EconomicValue" value="1500"/>
+	<property name="SellableToTrader" value="false"/>
+	<property name="ShowQuality" value="true"/>
+	<property name="Group" value="Ammo/Weapons,Ranged Weapons"/>
+	<property name="SoundUnholster" value="weapon_unholster"/>
+	<property name="SoundHolster" value="weapon_holster"/>
+
+	<property class="Action0">
+		<property name="Class" value="Ranged"/>
+		<property name="Delay" value=".150"/> <!-- obsolete if rounds per minute exists -->
+		<property name="Magazine_items" value="ammo762mmBulletBall,ammo762mmBulletHP,ammo762mmBulletAP"/>
+		<property name="Sound_start" value="m60_fire"/>
+		<property name="Sound_loop" value="m60_fire"/>
+		<property name="Sound_empty" value="dryfire"/>
+		<property name="Sound_reload" value="m60_reload"/>
+		<property name="Sound_end" value="m60_fire_end"/>
+		<property name="AutoReload" value="false"/>
+		<property name="Particles_muzzle_fire" value="gunfire_m60"/>
+		<property name="Particles_muzzle_smoke" value="gunfire_smoke"/>
+		<property name="Particles_muzzle_fire_fpv" value="gunfire_m60_fpv"/>
+		<property name="Particles_muzzle_smoke_fpv" value="gunfire_smoke_fpv"/>
+		<requirement name="HasBuff" buff="ZombieINC_WeaponTestPart1_InMissionBuff" />
+		<requirement name="CVarCompare" cvar="_underwater" operation="LT" value=".98"/>
+                <property name="triggerEffectTriggerPullDualsense" value="RifleTrigger"/>
+                <property name="triggerEffectTriggerPullXbox" value="PistolTrigger"/>
+                <property name="triggerEffectTriggerShootDualsense" value="MGShoot"/>
+                <property name="triggerEffectTriggerShootXbox" value="PistolShoot"/>
+	</property>
+	<property class="Action1">
+		<property name="Class" value="Zoom"/>
+		<property name="Zoom_max_out" value="55"/>
+		<property name="Zoom_max_in" value="55"/>
+		<property name="ScopeCameraOffset" value="-.00062,0,.055"/>
+                <property name="zoomTriggerEffectTriggerPullDualsense" value="RifleZoom"/>
+                <property name="zoomTriggerEffectTriggerPullXbox" value="PistolZoom"/>
+		<requirement name="HasBuff" buff="ZombieINC_WeaponTestPart1_InMissionBuff" />
+	</property>
+	<effect_group name="gunMGT3M60" tiered="false">
+		<passive_effect name="MaxRange" operation="base_set" value="90" tags="perkMachineGunner"/>
+		<passive_effect name="DamageFalloffRange" operation="base_set" value="58" tags="perkMachineGunner"/>
+		<passive_effect name="DamageFalloffRange" operation="perc_add" value="-.1,.05" tags="perkMachineGunner"/> <!-- random effective rng -->
+		<passive_effect name="BlockDamage" operation="base_add" value="-2" tags="perkMachineGunner"/> <!-- damage offset -->
+		<passive_effect name="EntityDamage" operation="base_add" value="70" tags="perkMachineGunner"/> <!-- damage offset -->
+		<passive_effect name="BlockDamage" operation="perc_add" value="-.08,.08" tags="perkMachineGunner"/> <!-- random BlockDmg -->
+		<passive_effect name="MagazineSize" operation="perc_add" value="-.33,.33"/> <!-- random MagazineSize -->
+		<passive_effect name="WeaponHandling" operation="perc_add" value="-.08,.08" tags="perkMachineGunner"/> <!-- random WeaponHandling -->
+		<passive_effect name="RoundsPerMinute" operation="base_set" value="400" tags="perkMachineGunner"/>
+		<passive_effect name="BurstRoundCount" operation="base_set" value="1000" tags="perkMachineGunner"/>
+		<passive_effect name="MagazineSize" operation="base_set" value="300" tags="perkMachineGunner"/>
+		<passive_effect name="ReloadSpeedMultiplier" operation="base_set" value="0.65" tags="perkMachineGunner"/>
+
+		<passive_effect name="SpreadDegreesVertical" operation="base_set" value="3.8" tags="perkMachineGunner"/>
+		<passive_effect name="SpreadDegreesHorizontal" operation="base_set" value="3.8" tags="perkMachineGunner"/>
+		<passive_effect name="SpreadMultiplierAiming" operation="base_set" value=".33" tags="perkMachineGunner"/>
+		<passive_effect name="SpreadMultiplierCrouching" operation="base_set" value=".8" tags="perkMachineGunner"/>
+		<passive_effect name="SpreadMultiplierWalking" operation="base_set" value="1.5" tags="perkMachineGunner"/>
+		<passive_effect name="SpreadMultiplierRunning" operation="base_set" value="2.2" tags="perkMachineGunner"/>
+
+		<passive_effect name="KickDegreesVerticalMin" operation="base_set" value="-.4" tags="perkMachineGunner"/>
+		<passive_effect name="KickDegreesVerticalMax" operation="base_set" value="1.1" tags="perkMachineGunner"/>
+		<passive_effect name="KickDegreesHorizontalMin" operation="base_set" value="-1" tags="perkMachineGunner"/>
+		<passive_effect name="KickDegreesHorizontalMax" operation="base_set" value="1" tags="perkMachineGunner"/>
+
+		<passive_effect name="IncrementalSpreadMultiplier" operation="base_set" value="1.5" tags="perkMachineGunner"/>
+		<passive_effect name="WeaponHandling" operation="base_set" value=".83" tags="perkMachineGunner"/> <!-- M60 -->
+
+		<passive_effect name="DegradationMax" operation="base_set" value="2000" tags="perkMachineGunner,perkBookAutoWeapons"/>
+		<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="perkMachineGunner,perkBookAutoWeapons"/>
+		
+		<passive_effect name="Mobility" operation="perc_subtract" value=".55"/>
+		
+		<passive_effect name="ModSlots" operation="base_set" value="3" tags="perkMachineGunner"/>	
+		<passive_effect name="ModPowerBonus" operation="perc_add" value=".10" tags="EntityDamage,BlockDamage"/>
+		<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+		
+		<triggered_effect trigger="onSelfPrimaryActionUpdate" action="AttachPrefabToEntity" prefab="@:Entities/LootContainers/munitionsBox_01Prefab.prefab" local_offset="-0.0487,-0.0461,0.1607" local_rotation="0,0,0" local_scale="0.15,0.3,0.25" parent_transform="Handle"/>
+		<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="munitionsBox_01Prefab" parent_transform="Handle" />
+		
+		<triggered_effect trigger="onSelfPrimaryActionUpdate" action="AttachPrefabToEntity" prefab="@:Entities/Plumbing/pipe_cornerPrefab.prefab" local_offset="-0.0804,-0.1055,-0.1024" local_rotation="-90,0,-90" local_scale="0.03,0.1,0.03" parent_transform="Handle"/>
+		<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="pipe_cornerPrefab" parent_transform="Handle" />
+		
+		<triggered_effect trigger="onSelfPrimaryActionUpdate" action="AttachPrefabToEntity" prefab="@:Entities/Plumbing/pipe_straight_longPrefab.prefab" local_offset="-0.0797,-0.1052,-0.0123" local_rotation="0,0,0" local_scale="0.1,0.03,0.05" parent_transform="Handle"/>
+		<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="pipe_straight_longPrefab" parent_transform="Handle" />
+		
+		<triggered_effect trigger="onSelfPrimaryActionUpdate" action="AttachPrefabToEntity" prefab="@:Entities/Plumbing/pipe_straightPrefab.prefab" local_offset="-0.0804,-0.0777,-0.1024" local_rotation="90,0,0" local_scale="0.1,0.03,0.026" parent_transform="Handle"/>
+		<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="pipe_straightPrefab" parent_transform="Handle" />
+		
+		<triggered_effect trigger="onSelfPrimaryActionUpdate" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/pipeSmallJointPrefab.prefab" local_offset="-0.0017,-0.0753,0.1711" local_rotation="0,0,0" local_scale="0.2,0.2,0.2" parent_transform="Handle"/>
+		<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="pipeSmallJointPrefab" parent_transform="Handle" />
+		
+		<triggered_effect trigger="onSelfPrimaryActionUpdate" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/pipeSmallCornerPrefab.prefab" local_offset="0.0033,-0.0777,-0.0354" local_rotation="-90,0,0" local_scale="0.2,0.2,0.2" parent_transform="Handle"/>
+		<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="pipeSmallCornerPrefab" parent_transform="Handle" />
+		
+		
+		
+	</effect_group>
+</item>
+<!--Weapon Signature-->
+	</append>
+</Config>

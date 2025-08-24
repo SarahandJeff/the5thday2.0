@@ -1,5 +1,17 @@
 <snj>
 
+<conditional>
+		<if cond="mod_loaded('mateusjobsmain')">
+		<insertBefore xpath="//quest[starts-with(@id,'ZINC')]/reward[@type='Exp']">
+			<action type="SetCVar">
+				<property name="cvar" value="HOH_Questing_XP_temp" />
+				<property name="value" value="45" />
+				<property name="on_complete" value="true" />
+  		     </action>
+		</insertBefore>
+</if>
+</conditional>
+
 <!--burried-->
 <insertBefore xpath="//quest[starts-with(@id,'tier1_buried_supplies')]/reward[@type='Exp']">
 	<action type="SetCVar">

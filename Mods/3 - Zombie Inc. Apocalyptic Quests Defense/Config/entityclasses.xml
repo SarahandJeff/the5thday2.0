@@ -1,0 +1,527 @@
+<Config>
+
+	<conditional>
+		<if cond="mod_loaded('mateusjobsmain') == 'false'">
+			<append xpath="/entity_classes">
+				
+				
+			</append>
+		</if>
+	</conditional>
+	<append xpath="/entity_classes">
+	
+	
+				<entity_class name="ZombieINC_Defense_Anchor_npcTraderTemplate">
+					<property name="Class" value="EntityTrader"/>
+					<property name="UserSpawnType" value="Menu"/>
+					<property name="Tags" value="entity,npc,human"/>
+					<property name="EntityType" value="Player"/>
+					<property name="Faction" value="none"/>
+					
+					<property name="Mesh" value="Player/Male/player_maleRagdoll"/>
+					<property name="AvatarController" value="AvatarNpcController"/>
+					<property name="ModelType" value="Npc"/>
+					<property name="HasRagdoll" value="false"/>
+					<property name="Prefab" value="NPC"/>
+					<property name="Parent" value="Players"/>
+					<property name="PhysicsBody" value="zombieINCEmpty_Defense"/>
+					<property name="Weight" value="9000"/>
+					<property name="Mass" value="9000"/>
+					<property name="PushFactor" value="9000"/>
+					<property name="LookAtAngle" value="0"/>
+
+					<property name="NPCID" value="traderric"/>
+					<property name="IsEnemyEntity" value="true"/>
+					<property name="WalkType" value="7"/>
+					<property name="SurfaceCategory" value="organic"/>
+					<property name="ParticleOnDeath" value="blood_death"/>
+					<property name="HasDeathAnim" value="true"/>
+					<property name="SoundRandomTime" value="200"/>
+					<property name="Archetype" value="TraderJoel"/>
+					<property name="SoundHurt" value=""/>
+					<property name="SoundHurtSmall" value=""/>
+					<property name="SoundDeath" value=""/>
+					<property name="SoundStamina" value=""/>
+					<property name="SoundDrownPain" value=""/>
+					<property name="SoundWaterSurface" value=""/>
+					<property name="SoundDrownDeath" value=""/>
+					<property name="SoundJump" value=""/>
+					<property name="SoundLandSoft" value=""/>
+					<property name="SoundLandHard" value=""/>
+					<property name="SoundPlayerLandThump" value=""/>
+					<!-- <property name="CorpseBlock" value="air"/><property name="CorpseBlockChance" value="0"/> -->
+
+					<!-- Stealth -->
+					<property name="MaxViewAngle" value="180"/>
+
+					<!-- Gameplay  -->
+					<property name="LootListAlive" value="traderNPC"/>
+
+					<property name="MoveSpeed" value="0.75"/>
+					<property name="MoveSpeedAggro" value="1.15, 1.15"/>
+					<property name="MoveSpeedPanic" value="1.35"/>
+					<property name="CanClimbLadders" value="true"/>
+
+					<property name="Buffs" value="god"/> 
+
+					<property name="ExperienceGain" value="130"/>
+					<property name="TimeStayAfterDeath" value="30"/>
+					<property name="DeadBodyHitPoints" value="251"/>
+
+					<property name="NavObject" value="" />
+					
+					
+					<property name="AITask" value="
+					"/>
+					
+					<effect_group name="Base Effects">
+						
+						<passive_effect name="HealthMax" operation="base_set" value="100000"/>
+						<passive_effect name="BuffResistance" operation="base_set" value="1" tags="buffFatiguedTrigger,buffArmSprainedCHTrigger,buffLegSprainedCHTrigger,buffLaceration,buffInfectionCatch,buffAbrasionCatch,buffInjuryStunned01CHTrigger,buffInjuryBleedingOne,buffInjuryBleedingTwo,buffInjuryBleeding,buffBurningZombie,buffBurningElement,buffBurningEnvironment,buffBurningEnvironmentHack,buffBurningFlamingArrow,buffBurningMolotov,buffIsOnFire,buffShocked,buffRadiationPool"/>
+					</effect_group>
+				</entity_class>
+					
+					<entity_class name="ZombieINC_Defense_RallyPointHuntPlaceHolder" extends="ZombieINC_Defense_Anchor_npcTraderTemplate">
+						<property name="Class" value="EntityZombie"/>
+						<property name="UserSpawnType" value="Menu"/>
+						<property name="Tags" value="entity,RallyPointHunt,Anchor"/>
+						<property name="SizeScale" value="0.3"/>
+						<property name="Mesh" value="@:Entities/Traders/Prefabs/TraderHugh.prefab"/>
+						<property name="DanceType" value="1" />
+						<property name="HasRagdoll" value="true"/>
+						<!--<property name="NPCID" value="traderdefenseanchor"/>-->
+						<property name="Buffs" value="ZombieINC_Defense_RallyPointHuntPlaceHolder_AttachPrefabBuff"/>
+						<property name="LootListAlive" value=""/>
+						
+						<effect_group name="Base Effects">
+							<passive_effect name="GeneralDamageResist" operation="base_set" value="1"/>
+							<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" target="self" buff="ZombieINC_Defense_RallyPointHuntPlaceHolder_AttachPrefabBuff"/>	
+						</effect_group>
+					</entity_class>
+				
+				
+	
+	
+	
+	<!--###Defense-->
+	<entity_class name="ZombieINC_Defense_junkTurretGun_T1">
+		<property name="Class" value="EntityTurret"/>
+		<property name="UserSpawnType" value="Console"/>
+		<property name="Tags" value="turret,turretRanged,deployed,noMedBuffs"/>
+		<property name="Parent" value="NPC"/>
+		<property name="Prefab" value="@:Other/Items/Weapons/Ranged/JunkTurret/junkTurret_Prefab.prefab"/>
+		<property name="ModelType" value="Standard"/>
+		<property name="SurfaceCategory" value="metal"/>
+		<property name="IgnoreTrigger" value="true"/>
+		<property name="LootListAlive" value="roboticTurret"/>
+		<property name="IsEnemyEntity" value="false"/>
+
+		<property name="WakeUpTime" value="0.5"/>
+		<property name="FallAsleepTime" value="10"/>
+
+		<property name="YawRange" value="170"/> <!-- horizontal swivel range. Keep under 180. -->
+		<property name="PitchRange" value="70"/>
+		<property name="TurnSpeed" value="22.5"/>
+		<property name="MaxDistance" value="10"/>
+
+		<property name="RaySpread" value="5"/>
+		<property name="BurstRoundCount" value="1"/>
+		<property name="BurstFireRate" value="0.5"/>
+		<property name="CooldownTime" value="1"/>
+		<property name="OvershootTime" value="0"/>
+		<property name="MaxOwnerDistance" value="15"/>
+
+		<property name="TargetingSound" value="turret_retarget_lp"/>
+		<property name="OverheatSound" value="turret_overheat_lp"/>
+		<property name="WakeUpSound" value="turret_windup"/>
+		<property name="FireSound" value="junkturret_fire"/>
+
+		<property name="ParticlesMuzzleFire" value="gunfire_junkturret"/>
+		<!-- <property name="ParticlesMuzzleSmoke" value="nozzlesmokeuzi"/> -->
+
+		<property name="TimeStayAfterDeath" value="0"/>
+		<property name="Explosion.ParticleIndex" value="6"/>
+		<property name="Explosion.RadiusBlocks" value="1"/>
+		<property name="Explosion.RadiusEntities" value="1"/>
+		<property name="RotateToGround" value="true"/>
+		<property name="Faction" value="none"/>
+
+		<!--<property name="MapIcon" value="ui_game_symbol_electric_turret"/>-->
+		<property name="NavObject" value="junk_turret" />
+		<property name="TrackerIcon" value="ui_game_symbol_assemble"/>
+		<property name="Buffs" value="ZombieINC_Defense_ImATurret_T1"/>
+		
+		<effect_group name="Base Effects">
+			<passive_effect name="HealthMax" operation="base_set" value="100"/>
+			<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="ZombieINC_Defense_ImATurret_T1"/>	
+		</effect_group>
+	</entity_class>
+	
+	<entity_class name="ZombieINC_Defense_junkTurretGun_T2">
+		<property name="Class" value="EntityTurret"/>
+		<property name="UserSpawnType" value="Console"/>
+		<property name="Tags" value="turret,turretRanged,deployed,noMedBuffs"/>
+		<property name="Parent" value="NPC"/>
+		<property name="Prefab" value="@:Other/Items/Weapons/Ranged/JunkTurret/junkTurret_Prefab.prefab"/>
+		<property name="ModelType" value="Standard"/>
+		<property name="SurfaceCategory" value="metal"/>
+		<property name="IgnoreTrigger" value="true"/>
+		<property name="LootListAlive" value="roboticTurret"/>
+		<property name="IsEnemyEntity" value="false"/>
+
+		<property name="WakeUpTime" value="0.5"/>
+		<property name="FallAsleepTime" value="10"/>
+
+		<property name="YawRange" value="170"/> <!-- horizontal swivel range. Keep under 180. -->
+		<property name="PitchRange" value="70"/>
+		<property name="TurnSpeed" value="22.5"/>
+		<property name="MaxDistance" value="10"/>
+
+		<property name="RaySpread" value="1"/>
+		<property name="BurstRoundCount" value="1"/>
+		<property name="BurstFireRate" value="0.5"/>
+		<property name="CooldownTime" value="1"/>
+		<property name="OvershootTime" value="0"/>
+		<property name="MaxOwnerDistance" value="15"/>
+
+		<property name="TargetingSound" value="turret_retarget_lp"/>
+		<property name="OverheatSound" value="turret_overheat_lp"/>
+		<property name="WakeUpSound" value="turret_windup"/>
+		<property name="FireSound" value="m60_fire"/>
+
+	<!--	<property name="ParticlesMuzzleFire" value="gunfire_junkturret"/>-->
+		<property name="ParticlesMuzzleFire" value="gunfire_m60"/>
+		<!-- <property name="ParticlesMuzzleSmoke" value="nozzlesmokeuzi"/> -->
+
+		<property name="TimeStayAfterDeath" value="0"/>
+		<property name="Explosion.ParticleIndex" value="6"/>
+		<property name="Explosion.RadiusBlocks" value="1"/>
+		<property name="Explosion.RadiusEntities" value="1"/>
+		<property name="RotateToGround" value="true"/>
+		<property name="Faction" value="none"/>
+
+		<!--<property name="MapIcon" value="ui_game_symbol_electric_turret"/>-->
+		<property name="NavObject" value="junk_turret" />
+		<property name="TrackerIcon" value="ui_game_symbol_assemble"/>
+		<property name="Buffs" value="ZombieINC_Defense_ImATurret_T2"/>
+		
+		<effect_group name="Base Effects">
+			<passive_effect name="HealthMax" operation="base_set" value="100"/>
+			<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="ZombieINC_Defense_ImATurret_T2"/>	
+		</effect_group>
+	</entity_class>
+	<entity_class name="ZombieINC_Defense_junkTurretGun_T3">
+		<property name="Class" value="EntityTurret"/>
+		<property name="UserSpawnType" value="Console"/>
+		<property name="Tags" value="turret,turretRanged,deployed,noMedBuffs"/>
+		<property name="Parent" value="NPC"/>
+		<property name="Prefab" value="@:Other/Items/Weapons/Ranged/JunkTurret/junkTurret_Prefab.prefab"/>
+		<property name="ModelType" value="Standard"/>
+		<property name="SurfaceCategory" value="metal"/>
+		<property name="IgnoreTrigger" value="true"/>
+		<property name="LootListAlive" value="roboticTurret"/>
+		<property name="IsEnemyEntity" value="false"/>
+
+		<property name="WakeUpTime" value="0.5"/>
+		<property name="FallAsleepTime" value="10"/>
+
+		<property name="YawRange" value="120"/> <!-- horizontal swivel range. Keep under 180. -->
+		<property name="PitchRange" value="70"/>
+		<property name="TurnSpeed" value="22.5"/>
+		<property name="MaxDistance" value="60"/>
+
+		<property name="RaySpread" value="1"/>
+		<property name="BurstRoundCount" value="1"/>
+		<property name="BurstFireRate" value="0.5"/>
+		<property name="CooldownTime" value="1"/>
+		<property name="OvershootTime" value="0"/>
+		<property name="MaxOwnerDistance" value="15"/>
+
+		<property name="TargetingSound" value="turret_retarget_lp"/>
+		<property name="OverheatSound" value="turret_overheat_lp"/>
+		<property name="WakeUpSound" value="turret_windup"/>
+		<property name="FireSound" value="sharpshooter_fire"/>
+
+	<!--	<property name="ParticlesMuzzleFire" value="gunfire_junkturret"/>-->
+		<property name="ParticlesMuzzleFire" value="gunfire_pistol"/>
+		<!-- <property name="ParticlesMuzzleSmoke" value="nozzlesmokeuzi"/> -->
+
+		<property name="TimeStayAfterDeath" value="0"/>
+		<property name="Explosion.ParticleIndex" value="6"/>
+		<property name="Explosion.RadiusBlocks" value="1"/>
+		<property name="Explosion.RadiusEntities" value="1"/>
+		<property name="RotateToGround" value="true"/>
+		<property name="Faction" value="none"/>
+
+		<!--<property name="MapIcon" value="ui_game_symbol_electric_turret"/>-->
+		<property name="NavObject" value="junk_turret" />
+		<property name="TrackerIcon" value="ui_game_symbol_assemble"/>
+		<property name="Buffs" value="ZombieINC_Defense_ImATurret_T3"/>
+		
+		<effect_group name="Base Effects">
+			<passive_effect name="HealthMax" operation="base_set" value="100"/>
+			<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="ZombieINC_Defense_ImATurret_T3"/>	
+		</effect_group>
+	</entity_class>
+	
+	<entity_class name="ZombieINC_Defense_junkTurretGun_T4">
+		<property name="Class" value="EntityTurret"/>
+		<property name="UserSpawnType" value="Console"/>
+		<property name="Tags" value="turret,turretRanged,deployed,noMedBuffs"/>
+		<property name="Parent" value="NPC"/>
+		<property name="Prefab" value="@:Other/Items/Weapons/Ranged/JunkTurret/junkTurret_Prefab.prefab"/>
+		<property name="ModelType" value="Standard"/>
+		<property name="SurfaceCategory" value="metal"/>
+		<property name="IgnoreTrigger" value="true"/>
+		<property name="LootListAlive" value="roboticTurret"/>
+		<property name="IsEnemyEntity" value="false"/>
+
+		<property name="WakeUpTime" value="0.5"/>
+		<property name="FallAsleepTime" value="10"/>
+
+		<property name="YawRange" value="90"/> <!-- horizontal swivel range. Keep under 180. -->
+		<property name="PitchRange" value="70"/>
+		<property name="TurnSpeed" value="22.5"/>
+		<property name="MaxDistance" value="45"/>
+
+		<property name="RaySpread" value="1"/>
+		<property name="BurstRoundCount" value="1"/>
+		<property name="BurstFireRate" value="0.5"/>
+		<property name="CooldownTime" value="1"/>
+		<property name="OvershootTime" value="0"/>
+		<property name="MaxOwnerDistance" value="15"/>
+
+		<property name="TargetingSound" value="turret_retarget_lp"/>
+		<property name="OverheatSound" value="turret_overheat_lp"/>
+		<property name="WakeUpSound" value="turret_windup"/>
+		<property name="FireSound" value="m136_fire"/>
+
+	<!--	<property name="ParticlesMuzzleFire" value="gunfire_junkturret"/>-->
+		<!--<property name="ParticlesMuzzleFire" value="gunfire_pistol"/>-->
+		<property name="ParticlesMuzzleFire" value="junkturret_fire"/>
+		<!-- <property name="ParticlesMuzzleSmoke" value="nozzlesmokeuzi"/> -->
+
+		<property name="TimeStayAfterDeath" value="0"/>
+		<property name="Explosion.ParticleIndex" value="6"/>
+		<property name="Explosion.RadiusBlocks" value="1"/>
+		<property name="Explosion.RadiusEntities" value="1"/>
+		<property name="RotateToGround" value="true"/>
+		<property name="Faction" value="none"/>
+
+		<!--<property name="MapIcon" value="ui_game_symbol_electric_turret"/>-->
+		<property name="NavObject" value="junk_turret" />
+		<property name="TrackerIcon" value="ui_game_symbol_assemble"/>
+		<property name="Buffs" value="ZombieINC_Defense_ImATurret_T4"/>
+		
+		<effect_group name="Base Effects">
+			<passive_effect name="HealthMax" operation="base_set" value="100"/>
+			<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="ZombieINC_Defense_ImATurret_T4"/>	
+		</effect_group>
+	</entity_class>
+	
+	<entity_class name="ZombieINC_Defense_junkTurretGun_T5">
+		<property name="Class" value="EntityTurret"/>
+		<property name="UserSpawnType" value="Console"/>
+		<property name="Tags" value="turret,turretRanged,deployed,noMedBuffs"/>
+		<property name="Parent" value="NPC"/>
+		<property name="Prefab" value="@:Other/Items/Weapons/Ranged/JunkTurret/junkTurret_Prefab.prefab"/>
+		<property name="ModelType" value="Standard"/>
+		<property name="SurfaceCategory" value="metal"/>
+		<property name="IgnoreTrigger" value="true"/>
+		<property name="LootListAlive" value="roboticTurret"/>
+		<property name="IsEnemyEntity" value="false"/>
+
+		<property name="WakeUpTime" value="0.5"/>
+		<property name="FallAsleepTime" value="10"/>
+
+		<property name="YawRange" value="90"/> <!-- horizontal swivel range. Keep under 180. -->
+		<property name="PitchRange" value="70"/>
+		<property name="TurnSpeed" value="22.5"/>
+		<property name="MaxDistance" value="45"/>
+
+		<property name="RaySpread" value="1"/>
+		<property name="BurstRoundCount" value="5"/>
+		<property name="BurstFireRate" value="0.5"/>
+		<property name="CooldownTime" value="1"/>
+		<property name="OvershootTime" value="0"/>
+		<property name="MaxOwnerDistance" value="15"/>
+
+		<property name="TargetingSound" value="turret_retarget_lp"/>
+		<property name="OverheatSound" value="turret_overheat_lp"/>
+		<property name="WakeUpSound" value="turret_windup"/>
+		<property name="FireSound" value="m136_fire"/>
+
+	<!--	<property name="ParticlesMuzzleFire" value="gunfire_junkturret"/>-->
+		<!--<property name="ParticlesMuzzleFire" value="gunfire_pistol"/>-->
+		<property name="ParticlesMuzzleFire" value="junkturret_fire"/>
+		<!-- <property name="ParticlesMuzzleSmoke" value="nozzlesmokeuzi"/> -->
+
+		<property name="TimeStayAfterDeath" value="0"/>
+		<property name="Explosion.ParticleIndex" value="6"/>
+		<property name="Explosion.RadiusBlocks" value="1"/>
+		<property name="Explosion.RadiusEntities" value="1"/>
+		<property name="RotateToGround" value="true"/>
+		<property name="Faction" value="none"/>
+
+		<!--<property name="MapIcon" value="ui_game_symbol_electric_turret"/>-->
+		<property name="NavObject" value="junk_turret" />
+		<property name="TrackerIcon" value="ui_game_symbol_assemble"/>
+		<property name="Buffs" value="ZombieINC_Defense_ImATurret_T5"/>
+		
+		<effect_group name="Base Effects">
+			<passive_effect name="HealthMax" operation="base_set" value="100"/>
+			<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="ZombieINC_Defense_ImATurret_T5"/>	
+		</effect_group>
+	</entity_class>
+	
+	<entity_class name="ZombieINC_Defense_junkTurretGun_T6">
+		<property name="Class" value="EntityTurret"/>
+		<property name="UserSpawnType" value="Console"/>
+		<property name="Tags" value="turret,turretRanged,deployed,noMedBuffs"/>
+		<property name="Parent" value="NPC"/>
+		<property name="Prefab" value="@:Other/Items/Weapons/Ranged/JunkTurret/junkTurret_Prefab.prefab"/>
+		<property name="ModelType" value="Standard"/>
+		<property name="SurfaceCategory" value="metal"/>
+		<property name="IgnoreTrigger" value="true"/>
+		<property name="LootListAlive" value="roboticTurret"/>
+		<property name="IsEnemyEntity" value="false"/>
+
+		<property name="WakeUpTime" value="0.5"/>
+		<property name="FallAsleepTime" value="10"/>
+
+		<property name="YawRange" value="170"/> <!-- horizontal swivel range. Keep under 180. -->
+		<property name="PitchRange" value="70"/>
+		<property name="TurnSpeed" value="22.5"/>
+		<property name="MaxDistance" value="5"/>
+
+		<property name="RaySpread" value="1"/>
+		<property name="BurstRoundCount" value="1"/>
+		<property name="BurstFireRate" value="0.5"/>
+		<property name="CooldownTime" value="1"/>
+		<property name="OvershootTime" value="0"/>
+		<property name="MaxOwnerDistance" value="15"/>
+
+		<property name="TargetingSound" value="turret_retarget_lp"/>
+		<property name="OverheatSound" value="turret_overheat_lp"/>
+		<property name="WakeUpSound" value="turret_windup"/>
+		<property name="FireSound" value="junkturret_fire"/>
+
+	<!--	<property name="ParticlesMuzzleFire" value="gunfire_junkturret"/>-->
+		<property name="ParticlesMuzzleFire" value="gunfire_pistol"/>
+		<!-- <property name="ParticlesMuzzleSmoke" value="nozzlesmokeuzi"/> -->
+
+		<property name="TimeStayAfterDeath" value="0"/>
+		<property name="Explosion.ParticleIndex" value="6"/>
+		<property name="Explosion.RadiusBlocks" value="1"/>
+		<property name="Explosion.RadiusEntities" value="1"/>
+		<property name="RotateToGround" value="true"/>
+		<property name="Faction" value="none"/>
+
+		<!--<property name="MapIcon" value="ui_game_symbol_electric_turret"/>-->
+		<property name="NavObject" value="junk_turret" />
+		<property name="TrackerIcon" value="ui_game_symbol_assemble"/>
+		<property name="Buffs" value="ZombieINC_Defense_ImATurret_T6"/>
+		
+		<effect_group name="Base Effects">
+			<passive_effect name="HealthMax" operation="base_set" value="100"/>
+			<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="ZombieINC_Defense_ImATurret_T6"/>	
+		</effect_group>
+	</entity_class>
+	
+	<entity_class name="ZombieINC_Defense_junkTurretGun_T7">
+		<property name="Class" value="EntityTurret"/>
+		<property name="UserSpawnType" value="Console"/>
+		<property name="Tags" value="turret,turretRanged,deployed,noMedBuffs"/>
+		<property name="Parent" value="NPC"/>
+		<property name="Prefab" value="@:Other/Items/Weapons/Ranged/JunkTurret/junkTurret_Prefab.prefab"/>
+		<property name="ModelType" value="Standard"/>
+		<property name="SurfaceCategory" value="metal"/>
+		<property name="IgnoreTrigger" value="true"/>
+		<property name="LootListAlive" value="roboticTurret"/>
+		<property name="IsEnemyEntity" value="false"/>
+
+		<property name="WakeUpTime" value="0.5"/>
+		<property name="FallAsleepTime" value="10"/>
+
+		<property name="YawRange" value="120"/> <!-- horizontal swivel range. Keep under 180. -->
+		<property name="PitchRange" value="70"/>
+		<property name="TurnSpeed" value="22.5"/>
+		<property name="MaxDistance" value="4"/>
+
+		<property name="RaySpread" value="1"/>
+		<property name="BurstRoundCount" value="1"/>
+		<property name="BurstFireRate" value="0.5"/>
+		<property name="CooldownTime" value="1"/>
+		<property name="OvershootTime" value="0"/>
+		<property name="MaxOwnerDistance" value="15"/>
+
+		<property name="TargetingSound" value="turret_retarget_lp"/>
+		<property name="OverheatSound" value="turret_overheat_lp"/>
+		<property name="WakeUpSound" value="turret_windup"/>
+		<property name="FireSound" value=""/>
+
+	<!--	<property name="ParticlesMuzzleFire" value="gunfire_junkturret"/>-->
+		<property name="ParticlesMuzzleFire" value=""/>
+		<!-- <property name="ParticlesMuzzleSmoke" value="nozzlesmokeuzi"/> -->
+
+		<property name="TimeStayAfterDeath" value="0"/>
+		<property name="Explosion.ParticleIndex" value="6"/>
+		<property name="Explosion.RadiusBlocks" value="1"/>
+		<property name="Explosion.RadiusEntities" value="1"/>
+		<property name="RotateToGround" value="true"/>
+		<property name="Faction" value="none"/>
+
+		<!--<property name="MapIcon" value="ui_game_symbol_electric_turret"/>-->
+		<property name="NavObject" value="junk_turret" />
+		<property name="TrackerIcon" value="ui_game_symbol_assemble"/>
+		<property name="Buffs" value="ZombieINC_Defense_ImATurret_T7"/>
+		
+		<effect_group name="Base Effects">
+			<passive_effect name="HealthMax" operation="base_set" value="100"/>
+			<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="ZombieINC_Defense_ImATurret_T7"/>
+			
+			<!--<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" targer="self" buff="ZombieINC_Defense_ImATurret_T7_Particle"/>
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="AddBuff" targer="self" buff="ZombieINC_Defense_ImATurret_T7_Particle"/>-->
+		</effect_group>
+	</entity_class>
+	<!--#Creates-->
+	
+	<entity_class name="ZombieINC_crate_template">
+		<property name="Class" value="EntityLootContainer"/>
+		<property name="UserSpawnType" value="None"/>
+		<property name="ModelType" value="Custom"/>
+		<property name="Prefab" value="Backpack"/>
+		<property name="Parent" value="Backpack"/>
+		<property name="IsEnemyEntity" value="false"/>
+		<property name="TimeStayAfterDeath" value="2400"/>
+		<property name="Faction" value="none"/>
+		<property name="NavObject" value="ZombieINC_supply,ZombieINC_supply_other" />
+	</entity_class>
+
+	<entity_class name="ZombieINC_Defense_Crate_Turret_T1" extends="ZombieINC_crate_template">
+		<property name="UserSpawnType" value="Menu"/>
+		<property name="Mesh" value="@:Entities/LootContainers/tier1LootChestPrefab.prefab"/>
+		<property name="LootListOnDeath" value="ZINC_questSatchel_Defense_T1"/>
+	</entity_class>
+	<entity_class name="ZombieINC_Defense_Crate_Turret_T2" extends="ZombieINC_crate_template">
+		<property name="UserSpawnType" value="Menu"/>
+		<property name="Mesh" value="@:Entities/LootContainers/tier1LootChestPrefab.prefab"/>
+		<property name="LootListOnDeath" value="ZINC_questSatchel_Defense_T2"/>
+	</entity_class>
+	
+	<entity_class name="ZombieINC_crate_T1" extends="ZombieINC_crate_template">
+		<property name="UserSpawnType" value="Console"/>
+		<property name="Mesh" value="@:Entities/LootContainers/crate_storeSignablePrefab.prefab"/>
+		<property name="LootListOnDeath" value="ZombieINC_DefenseCrate_T1"/>
+	</entity_class>
+	
+	<entity_class name="ZombieINC_crate_T2" extends="ZombieINC_crate_template">
+		<property name="UserSpawnType" value="Console"/>
+		<property name="Mesh" value="@:Entities/LootContainers/crate_storeSignablePrefab.prefab"/>
+		<property name="LootListOnDeath" value="ZombieINC_DefenseCrate_T2"/>
+	</entity_class>
+	
+	<!--Creates-->
+	<!--Defense-->
+	</append>
+</Config>

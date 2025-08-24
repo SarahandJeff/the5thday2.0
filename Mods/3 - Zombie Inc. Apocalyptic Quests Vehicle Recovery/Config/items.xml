@@ -1,0 +1,234 @@
+<Config>
+	<append xpath="/items">
+	<item name="ZombieINC_vehicleMinibikePlaceable">
+	<property name="Tags" value="vehicle,vengine,vfuel,vlight,vseat,canHaveCosmetic,ZombieINCVehicleRemover"/>
+	<property name="DescriptionKey" value="vehiclePlaceableGroupDesc"/>
+	<property name="HoldType" value="7"/>
+	<property name="HoldingItemHidden" value="true"/>
+	<property name="Meshfile" value="@:Entities/Vehicles/VBikeMini/VBikeMiniP.prefab"/>
+	<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+	<property name="CustomIcon" value="vehicleMinibikePlaceable"/>
+	<property name="CustomIconTint" value="0,0,0"/>
+	<property name="DescriptionKey" value="ZombieINC_vehicleMinibikePlaceableDesc"/>			
+	<property name="ItemTypeIcon" value="star"/>
+	<property name="Material" value="Mmetal"/>
+	<property name="Weight" value="0"/>
+	<property name="Stacknumber" value="1"/>
+	<property name="EconomicValue" value="6000"/>
+	<property name="SellableToTrader" value="false"/>
+	<property name="Group" value="Science,TCScience"/>
+	<property name="SoundPickup" value="minibike_grab"/>
+	<property name="SoundPlace" value="minibike_place"/>
+	<property class="Action1">
+		<property name="Class" value="SpawnVehicle"/>
+		<property name="Vehicle" value="ZombieINC_vehicleMinibike"/>
+	</property>
+	<effect_group name="vehicleMinibikePlaceable" tiered="false">
+		<passive_effect name="ModSlots" operation="base_set" value="0"/>
+		<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+		<passive_effect name="DegradationMax" operation="base_set" value="300" />
+			
+	</effect_group>
+	<!--<effect_group name="Perk" tiered="false">	
+		<passive_effect name="VehicleVelocityMaxPer" operation="perc_add" level="1" value="5">
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_perkVehicleRecovery1" operation="Equals" value="1"/>
+		</passive_effect>
+		
+		<passive_effect name="VehicleVelocityMaxTurboPer" operation="perc_add" level="1" value="5">
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_perkVehicleRecovery2" operation="Equals" value="1"/>
+		</passive_effect>
+		
+		<passive_effect name="DegradationMax" operation="base_set" value="600">
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_perkVehicleRecovery7" operation="Equals" value="1"/>
+		</passive_effect>
+	</effect_group>-->
+</item>
+
+
+
+<item name="ZombieINC_vehicleBicyclePlaceable">
+	<property name="Extends" value="ZombieINC_vehicleMinibikePlaceable"/>
+	<property name="Tags" value="vehicle,canHaveCosmetic,ZombieINCVehicleRemover"/>
+	<property name="DescriptionKey" value="vehiclePlaceableBicycleDesc"/>
+	<property name="Meshfile" value="@:Entities/Vehicles/VBikeMountain/VBikeMountainP.prefab"/>
+	<property name="CustomIcon" value="vehicleBicyclePlaceable"/>
+	<property name="CustomIconTint" value="0,0,0"/>
+	<property name="DescriptionKey" value="ZombieINC_vehicleBicyclePlaceableDesc"/>			
+	<property name="ItemTypeIcon" value="star"/>
+	<property name="EconomicValue" value="2500"/>
+	<property name="SoundPickup" value="bike_grab"/>
+	<property name="SoundPlace" value="bike_place"/>
+	<property class="Action1">
+		<property name="Vehicle" value="ZombieINC_vehicleBicycle"/>
+	</property>
+	<effect_group name="vehicleBicyclePlaceable" tiered="false">
+		<passive_effect name="ModSlots" operation="base_set" value="0"/>
+		<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+		<passive_effect name="DegradationMax" operation="base_set" value="150"/>
+	</effect_group>
+	<!--<effect_group name="Perk" tiered="false">	
+		<passive_effect name="VehicleVelocityMaxPer" operation="perc_add" level="1" value="0.3">
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_perkVehicleRecovery1" operation="Equals" value="1"/>
+		</passive_effect>
+		
+		<passive_effect name="VehicleVelocityMaxTurboPer" operation="perc_add" level="1" value="0.3">
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_perkVehicleRecovery2" operation="Equals" value="1"/>
+		</passive_effect>
+		
+		<passive_effect name="DegradationMax" operation="perc_add" value="1">
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_perkVehicleRecovery7" operation="Equals" value="1"/>
+		</passive_effect>
+	</effect_group>-->
+</item>
+
+
+
+<item name="ZombieINC_vehicleMotorcyclePlaceable">
+	<property name="Extends" value="ZombieINC_vehicleMinibikePlaceable"/>
+	<property name="Tags" value="vehicle,vengine,vfuel,vlight,vseat,canHaveCosmetic,ZombieINCVehicleRemover"/>
+	<property name="Meshfile" value="@:Entities/Vehicles/VMotorcycle/VMotorcycleP.prefab"/>
+	<property name="CustomIcon" value="vehicleMotorcyclePlaceable"/>
+	<property name="CustomIconTint" value="0,0,0"/>
+	<property name="DescriptionKey" value="ZombieINC_vehicleMotorcyclePlaceableDesc"/>			
+	<property name="ItemTypeIcon" value="star"/>
+	<property name="EconomicValue" value="10000"/>
+	<property name="SoundPickup" value="motorcycle_grab"/>
+	<property name="SoundPlace" value="motorcycle_place"/>
+	<property class="Action1">
+		<property name="Vehicle" value="ZombieINC_vehicleMotorcycle"/>
+		<property name="VehicleSize" value="1.3, 1.9, 3"/>
+	</property>
+	<effect_group name="vehicleMotorcyclePlaceable" tiered="false">
+		<passive_effect name="ModSlots" operation="base_set" value="0"/>
+		<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+		<passive_effect name="DegradationMax" operation="base_set" value="600"/>
+	</effect_group>
+	<!--<effect_group name="Perk" tiered="false">	
+		<passive_effect name="VehicleVelocityMaxPer" operation="perc_add" level="1" value="0.3">
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_perkVehicleRecovery1" operation="Equals" value="1"/>
+		</passive_effect>
+		
+		<passive_effect name="VehicleVelocityMaxTurboPer" operation="perc_add" level="1" value="0.3">
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_perkVehicleRecovery2" operation="Equals" value="1"/>
+		</passive_effect>
+		
+		<passive_effect name="DegradationMax" operation="perc_add" value="1">
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_perkVehicleRecovery7" operation="Equals" value="1"/>
+		</passive_effect>
+	</effect_group>-->
+</item>
+
+
+
+<item name="ZombieINC_vehicle4x4TruckPlaceable">
+	<property name="Extends" value="ZombieINC_vehicleMinibikePlaceable"/>
+	<property name="Tags" value="vehicle,vengine,vfuel,vlight,vseat,canHaveCosmetic,ZombieINCVehicleRemover,ZINCTruckQuestMD"/>
+	<property name="Meshfile" value="@:Entities/Vehicles/VTruck4x4/VTruck4x4P.prefab"/>
+	<property name="CustomIcon" value="vehicle4x4TruckPlaceable"/>
+	<property name="CustomIconTint" value="0,0,0"/>
+	<property name="DescriptionKey" value="ZombieINC_vehicle4x4TruckPlaceableDesc"/>			
+	<property name="ItemTypeIcon" value="star"/>
+	<property name="EconomicValue" value="30000"/>
+	<property class="Action1">
+		<property name="Vehicle" value="ZombieINC_vehicle4x4Truck"/>
+		<property name="VehicleSize" value="4.5, 3.1, 7"/>
+	</property>
+	<effect_group name="vehicle4x4TruckPlaceable" tiered="false">
+		<passive_effect name="ModSlots" operation="base_set" value="0"/>
+		<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+		<passive_effect name="DegradationMax" operation="base_set" value="800"/>
+	</effect_group>
+	<!--<effect_group name="Perk" tiered="false">	
+		<passive_effect name="VehicleVelocityMaxPer" operation="perc_add" level="1" value="0.3">
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_perkVehicleRecovery1" operation="Equals" value="1"/>
+		</passive_effect>
+		
+		<passive_effect name="VehicleVelocityMaxTurboPer" operation="perc_add" level="1" value="0.3">
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_perkVehicleRecovery2" operation="Equals" value="1"/>
+		</passive_effect>
+		
+		<passive_effect name="DegradationMax" operation="perc_add" value="1">
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_perkVehicleRecovery7" operation="Equals" value="1"/>
+		</passive_effect>
+	</effect_group>-->
+</item>
+
+
+<item name="ZombieINC_vehicleGyrocopterPlaceable">
+	<property name="Extends" value="ZombieINC_vehicleMinibikePlaceable"/>
+	<property name="Tags" value="vehicle,vengine,vfuel,canHaveCosmetic,ZombieINCVehicleRemover"/>
+	<property name="Meshfile" value="@:Entities/Vehicles/VGyrocopter/VGyrocopterP.prefab"/>
+	<property name="CustomIcon" value="vehicleGyrocopterPlaceable"/>
+	<property name="CustomIconTint" value="0,0,0"/>
+	<property name="DescriptionKey" value="ZombieINC_vehicleGyrocopterPlaceableDesc"/>			
+	<property name="ItemTypeIcon" value="star"/>
+	<property name="EconomicValue" value="50000"/>
+	<property class="Action1">
+		<property name="Vehicle" value="ZombieINC_vehicleGyrocopter"/>
+		<property name="VehicleSize" value="2.5, 2.5, 5.5"/>
+	</property>
+	<effect_group name="vehicleGyrocopterPlaceable" tiered="false">
+		<passive_effect name="ModSlots" operation="base_set" value="0"/>
+		<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+		<passive_effect name="DegradationMax" operation="base_set" value="1200"/>
+	</effect_group>
+	<!--<effect_group name="Perk" tiered="false">	
+		<passive_effect name="VehicleVelocityMaxPer" operation="perc_add" level="1" value="0.3">
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_perkVehicleRecovery1" operation="Equals" value="1"/>
+		</passive_effect>
+		
+		<passive_effect name="VehicleVelocityMaxTurboPer" operation="perc_add" level="1" value="0.3">
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_perkVehicleRecovery2" operation="Equals" value="1"/>
+		</passive_effect>
+		
+		<passive_effect name="DegradationMax" operation="perc_add" value="1">
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_perkVehicleRecovery7" operation="Equals" value="1"/>
+		</passive_effect>
+	</effect_group>-->
+</item>
+	
+<item name="ZombieINC_vehicle4x4TruckSuperPlaceable">
+	<property name="Extends" value="ZombieINC_vehicleMinibikePlaceable"/>
+	<property name="CustomIcon" value="vehicle4x4TruckPlaceable"/>
+	<property name="DescriptionKey" value="ZombieINC_vehicle4x4TruckSuperPlaceableDesc"/>
+	<property name="ItemTypeIcon" value="star"/>
+	<property name="CustomIconTint" value="0,0,0"/>
+	<property name="Tags" value="vehicle,vengine,vfuel,vlight,vseat,canHaveCosmetic"/>
+	<property name="Meshfile" value="@:Entities/Vehicles/VTruck4x4/VTruck4x4P.prefab"/>
+	<property name="EconomicValue" value="60000"/>
+	<property class="Action1">
+		<property name="Vehicle" value="ZombieINC_vehicle4x4TruckSuper"/>
+		<property name="VehicleSize" value="4.5, 3.1, 7"/>
+	</property>
+	<effect_group name="vehicle4x4TruckPlaceable" tiered="false">
+		<passive_effect name="ModSlots" operation="base_set" value="5"/>
+		<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+		<passive_effect name="DegradationMax" operation="base_set" value="20000"/>
+	</effect_group>
+</item>	
+
+	
+<item name="ZombieINC_vehicleMotorcycleSuperPlaceable">
+	<property name="Extends" value="ZombieINC_vehicleMinibikePlaceable"/>
+	<property name="CustomIcon" value="vehicleMotorcyclePlaceable"/>
+	<property name="DescriptionKey" value="ZombieINC_vehicleMotorcycleSuperPlaceableDesc"/>
+	<property name="ItemTypeIcon" value="star"/>
+	<property name="CustomIconTint" value="0,0,0"/>
+	<property name="Tags" value="vehicle,vengine,vlight,canHaveCosmetic"/>
+	<property name="Meshfile" value="@:Entities/Vehicles/VMotorcycle/VMotorcycleP.prefab"/>
+	<property name="EconomicValue" value="30000"/>
+	<property name="SoundPickup" value="motorcycle_grab"/>
+	<property name="SoundPlace" value="motorcycle_place"/>
+	<property class="Action1">
+		<property name="Vehicle" value="ZombieINC_vehicleMotorcycleSuper"/>
+		<property name="VehicleSize" value="1.3, 1.9, 3"/>
+	</property>
+	<effect_group name="vehicleMotorcyclePlaceable" tiered="false">
+		<passive_effect name="ModSlots" operation="base_set" value="2"/>
+		<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+		<passive_effect name="DegradationMax" operation="base_set" value="3000"/>
+	</effect_group>
+</item>
+
+</append>
+</Config>

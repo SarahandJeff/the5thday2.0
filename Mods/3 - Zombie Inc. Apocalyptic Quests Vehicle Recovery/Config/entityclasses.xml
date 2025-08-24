@@ -1,0 +1,188 @@
+<Config>
+
+<append xpath="/entity_classes">
+
+<!--###Vehicles-->
+	<!--##Vehicle Delivery-->
+	
+<entity_class name="ZombieINC_vehicleBicycle">
+	<property name="Class" value="EntityBicycle"/>
+	<property name="Tags" value="vehicle,ZombieINCVehicleRemover,ZINCBicycleQuest"/>
+	<property name="Parent" value="Cars"/>
+	<property name="Prefab" value="@:Entities/Vehicles/VBikeMountain/VBikeMountainP.prefab"/>
+	<property name="ModelType" value="Standard"/>
+	<property name="SurfaceCategory" value="metal"/>
+	<property name="IgnoreTrigger" value="true"/>
+	<property name="LootListAlive" value="vehicleBicycle"/>
+	<property name="IsEnemyEntity" value="false"/>
+	<property name="Explosion.ParticleIndex" value="25"/>
+	<property name="Explosion.RadiusBlocks" value="1"/>
+	<property name="Explosion.RadiusEntities" value="1"/>
+	<property name="RotateToGround" value="true"/>
+	<property name="Faction" value="none"/>
+	<property name="MapIcon" value="ui_game_symbol_bicycle"/>
+	<property name="NavObject" value="ZombieINC_bicycle" />
+	<property name="Buffs" value="ZombieINC_vehicleBicycle_buff"/>	
+		<effect_group name="Base Effects">
+			<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="ZombieINC_vehicleBicycle_buff"/>	
+		</effect_group>
+</entity_class>
+
+		
+<entity_class name="ZombieINC_vehicleMinibike">
+	<property name="Class" value="EntityMinibike"/>
+	<property name="Tags" value="vehicle,usesGas,bikerSetBonus,ZombieINCVehicleRemover,ZINCMinibikeQuest"/>
+	<property name="Parent" value="Cars"/>
+	<property name="Prefab" value="@:Entities/Vehicles/VBikeMini/VBikeMiniP.prefab"/>
+	<property name="ModelType" value="Standard"/>
+	<property name="SurfaceCategory" value="metal"/>
+	<property name="IgnoreTrigger" value="true"/>
+	<property name="LootListAlive" value="vehicleMinibike"/>
+	<property name="IsEnemyEntity" value="false"/>
+	<property name="Explosion.ParticleIndex" value="26"/>
+	<property name="Explosion.RadiusBlocks" value="3"/>
+	<property name="Explosion.RadiusEntities" value="3"/>
+	<property name="Explosion.BlockDamage" value="20"/>
+	<property name="Explosion.EntityDamage" value="20"/>
+	<property name="RotateToGround" value="true"/>
+	<property name="Faction" value="none"/>
+	<property name="MapIcon" value="ui_game_symbol_minibike"/>
+	<property name="NavObject" value="ZombieINC_minibike" />
+	<property name="Buffs" value="ZombieINC_vehicleMinibike_buff"/>	
+		<effect_group name="Base Effects">
+			<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="ZombieINC_vehicleMinibike_buff"/>	
+		</effect_group>
+</entity_class>
+
+		
+<entity_class name="ZombieINC_vehicleMotorcycle">
+	<property name="Class" value="EntityMotorcycle"/>
+	<property name="Tags" value="vehicle,usesGas,bikerSetBonus,ZombieINCVehicleRemover,ZINCMotorcycleQuest"/>
+	<property name="Parent" value="Cars"/>
+	<property name="Prefab" value="@:Entities/Vehicles/VMotorcycle/VMotorcycleP.prefab"/>
+	<property name="ModelType" value="Standard"/>
+	<property name="SurfaceCategory" value="metal"/>
+	<property name="IgnoreTrigger" value="true"/>
+	<property name="LootListAlive" value="vehicleMotorcycle"/>
+	<property name="IsEnemyEntity" value="false"/>
+	<property name="Explosion.ParticleIndex" value="27"/>
+	<property name="Explosion.RadiusBlocks" value="4"/>
+	<property name="Explosion.RadiusEntities" value="4"/>
+	<property name="Explosion.BlockDamage" value="50"/>
+	<property name="Explosion.EntityDamage" value="50"/>
+	<property name="RotateToGround" value="true"/>
+	<property name="Faction" value="none"/>
+	<property name="MapIcon" value="ui_game_symbol_motorcycle"/>
+	<property name="NavObject" value="ZombieINC_motorcycle" />
+	<property name="Buffs" value="ZombieINC_vehicleMotorcycle_buff"/>	
+		<effect_group name="Base Effects">
+			<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="ZombieINC_vehicleMotorcycle_buff"/>	
+		</effect_group>
+</entity_class>
+
+<entity_class name="ZombieINC_vehicleMotorcycleSuper">
+	<property name="Class" value="EntityMotorcycle"/>
+	<property name="Tags" value="vehicle,usesGas,ZombieINCVehicleSuper"/>
+	<property name="Parent" value="Cars"/>
+	<property name="Prefab" value="@:Entities/Vehicles/VMotorcycle/VMotorcycleP.prefab"/>
+	<property name="ModelType" value="Standard"/>
+	<property name="SurfaceCategory" value="metal"/>
+	<property name="IgnoreTrigger" value="true"/>
+	<property name="LootListAlive" value="vehicleMotorcycle"/>
+	<property name="IsEnemyEntity" value="false"/>
+	<property name="Explosion.ParticleIndex" value="27"/>
+	<property name="Explosion.RadiusBlocks" value="4"/>
+	<property name="Explosion.RadiusEntities" value="4"/>
+	<property name="Explosion.BlockDamage" value="50"/>
+	<property name="Explosion.EntityDamage" value="50"/>
+	<property name="RotateToGround" value="true"/>
+	<property name="Faction" value="none"/>
+	<property name="MapIcon" value="ui_game_symbol_motorcycle"/>
+	<property name="NavObject" value="motorcycle" />
+	<property name="Buffs" value="ZombieINC_VH_PlayerOnVehicle"/>	
+		<effect_group name="Base Effects">
+			<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="ZombieINC_VH_PlayerOnVehicle"/>	
+		</effect_group>
+</entity_class>
+
+		
+<entity_class name="ZombieINC_vehicle4x4Truck">
+	<property name="Class" value="EntityVJeep"/>
+	<property name="Tags" value="vehicle,usesGas,ZombieINCVehicleRemover,ZINCTruckQuest"/>
+	<!--<property name="Tags" value="vehicle,usesGas,zinctruckquest"/>-->
+	<property name="Parent" value="Cars"/>
+	<property name="Prefab" value="@:Entities/Vehicles/VTruck4x4/VTruck4x4P.prefab"/>
+	<property name="ModelType" value="Standard"/>
+	<property name="SurfaceCategory" value="metal"/>
+	<property name="IgnoreTrigger" value="true"/>
+	<property name="LootListAlive" value="vehicle4x4Truck"/>
+	<property name="IsEnemyEntity" value="false"/>
+	<property name="Explosion.ParticleIndex" value="29"/>
+	<property name="Explosion.RadiusBlocks" value="5"/>
+	<property name="Explosion.RadiusEntities" value="5"/>
+	<property name="Explosion.BlockDamage" value="100"/>
+	<property name="Explosion.EntityDamage" value="100"/>
+	<property name="RotateToGround" value="true"/>
+	<property name="Faction" value="none"/>
+	<property name="MapIcon" value="ui_game_symbol_4x4"/>
+	<property name="NavObject" value="ZombieINC_4x4" />
+	<property name="Buffs" value="ZombieINC_vehicle4x4Truck_buff"/>	
+		<effect_group name="Base Effects">
+			<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="ZombieINC_vehicle4x4Truck_buff"/>	
+		</effect_group>
+</entity_class>
+
+<entity_class name="ZombieINC_vehicle4x4TruckSuper" extends="ZombieINC_vehicle4x4Truck">
+	<property name="Class" value="EntityVJeep"/>
+	<property name="Tags" value="vehicle,usesGas,ZombieINCVehicleSuper"/>
+	<property name="Parent" value="Cars"/>
+	<property name="Prefab" value="@:Entities/Vehicles/VTruck4x4/VTruck4x4P.prefab"/>
+	<property name="ModelType" value="Standard"/>
+	<property name="SurfaceCategory" value="metal"/>
+	<property name="IgnoreTrigger" value="true"/>
+	<property name="LootListAlive" value="vehicle4x4Truck"/>
+	<property name="IsEnemyEntity" value="false"/>
+	<property name="Explosion.ParticleIndex" value="29"/>
+	<property name="Explosion.RadiusBlocks" value="5"/>
+	<property name="Explosion.RadiusEntities" value="5"/>
+	<property name="Explosion.BlockDamage" value="100"/>
+	<property name="Explosion.EntityDamage" value="100"/>
+	<property name="RotateToGround" value="true"/>
+	<property name="Faction" value="none"/>
+	<property name="MapIcon" value="ui_game_symbol_4x4"/>
+	<property name="NavObject" value="4x4" />
+</entity_class>
+		
+<entity_class name="ZombieINC_vehicleGyrocopter">
+	<property name="Class" value="EntityVGyroCopter"/>
+	<property name="Tags" value="vehicle,usesGas,ZombieINCVehicleRemover"/>
+	<property name="Parent" value="Cars"/>
+	<property name="Prefab" value="@:Entities/Vehicles/VGyrocopter/VGyrocopterP.prefab"/>
+	<property name="ModelType" value="Standard"/>
+	<property name="SurfaceCategory" value="metal"/>
+	<property name="IgnoreTrigger" value="true"/>
+	<property name="LootListAlive" value="vehicleGyrocopter"/>
+	<property name="IsEnemyEntity" value="false"/>
+	<property name="Explosion.ParticleIndex" value="28"/>
+	<property name="Explosion.RadiusBlocks" value="3"/>
+	<property name="Explosion.RadiusEntities" value="3"/>
+	<property name="Explosion.BlockDamage" value="30"/>
+	<property name="Explosion.EntityDamage" value="30"/>
+	<property name="RotateToGround" value="true"/>
+	<property name="Faction" value="none"/>
+	<property name="MapIcon" value="ui_game_symbol_gyrocopter"/>
+	<property name="NavObject" value="ZombieINC_gyrocopter" />
+	<property name="Buffs" value="ZombieINC_vehicleGyrocopter_buff"/>	
+		<effect_group name="Base Effects">
+			<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="ZombieINC_vehicleGyrocopter_buff"/>	
+		</effect_group>
+</entity_class>
+			
+<!--Vehicle Delivery (Recovery)-->
+<!--Vehicle Recovery-->
+<!--Vehicle Recovery-->
+
+
+</append>
+
+</Config>

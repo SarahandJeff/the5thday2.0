@@ -24,6 +24,80 @@
 <remove xpath="/windows/window[@name='windowVehicleStorage']"/>	<!-- LEFT -->
 
 
+
+<set xpath="//window[@name='windowPowerCameraControlPreview']">
+	<rect pos="-100,0">
+	<panel style="header.panel">
+			<sprite depth="2" name="windowIcon" style="icon32px" pos="5,-5" sprite="ui_game_symbol_search"/>
+			<label style="header.name.shrink" text="Camera Preview" text_key="xuiCameraPreview" />
+		</panel>
+		<panel pos="0,-46" name="cameraClick" width="100%" height="100%" depth="2" backgroundcolor="[darkGrey]" bordercolor="[black]" borderthickness="3" style="press" sound_play_on_press="false">
+			<texture depth="105" pos="3,-3" name="camera" material="Materials/Transparent Colored" width="222" height="122" globalopacity="false"/>
+		</panel>
+    </rect>
+</set>
+<set xpath="//window[@name='windowPowerRangedTrapOptions']">
+<rect pos="-100,0">
+<panel name="header" height="43" depth="1" backgroundspritename="ui_game_panel_header">
+			<sprite depth="2" name="windowIcon" style="icon32px" pos="5,-5" sprite="ui_game_symbol_electric_power"/>
+			<label style="header.name.shrink" text="TARGETING" text_key="xuiTargeting" /> <!-- text_key="btnOptions" -->
+		</panel>
+
+		<rect name="content" depth="0" pos="0,-46" height="54" pivot="center">
+
+			<sprite depth="1" color="[darkGrey]" type="sliced" width="228" height="50" pos="0,-3" />
+
+			<grid name="stats" rows="1" cols="1" pos="3,0" cell_width="223" cell_height="60" repeat_content="false" >
+				<rect name="pnlTargeting">
+					<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="-3,0" width="228" height="52" color="[black]" type="sliced" fillcenter="false"  />
+					<sprite depth="1" color="[mediumGrey]" type="sliced" width="225" height="49" pos="0,-3" />
+
+					<!-- <label justify="center" text="TARGETING" pos="3, -10" /> -->
+					<button depth="4" name="btnTargetSelf" style="icon30px, press, hover" pos="35,-25" sprite="ui_game_symbol_character" defaultcolor="[disabledLabelColor]" pivot="center" tooltip_key="xuiTargetSelf" sound="[paging_click]" />
+
+					<button depth="4" name="btnTargetAllies" style="icon30px, press, hover" pos="85,-25" sprite="ui_game_symbol_allies" defaultcolor="[disabledLabelColor]" pivot="center" tooltip_key="xuiTargetAllies" sound="[paging_click]" />
+
+					<button depth="4" name="btnTargetStrangers" style="icon30px, press, hover" pos="135,-25" sprite="ui_game_symbol_knife" defaultcolor="[disabledLabelColor]" pivot="center" tooltip_key="xuiTargetStrangers" sound="[paging_click]" />
+
+					<button depth="4" name="btnTargetZombies" style="icon30px, press, hover" pos="185,-25" sprite="ui_game_symbol_zombie" defaultcolor="[disabledLabelColor]" pivot="center" tooltip_key="xuiTargetZombies" sound="[paging_click]" />
+				</rect>
+			</grid>
+		</rect>
+	</rect>
+</set>
+<set xpath="//window[@name='windowPowerTrapSlots']">
+<rect pos="-100,0">
+<panel style="header.panel">
+			<sprite depth="2" name="windowIcon" style="icon32px" pos="5,-5" sprite="ui_game_symbol_electric_power"/>
+			<label style="header.name.shrink" text="AMMO" text_key="xuiAmmo" />
+		</panel>
+
+
+		<rect name="content" depth="0" pos="0,-46" height="78" disablefallthrough="true" on_press="true" gamepad_selectable="false">
+			<sprite depth="2" name="background" sprite="menu_empty" color="[darkGrey]" type="sliced" />
+			<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" height="78" color="[black]" type="sliced" fillcenter="false" on_press="true" gamepad_selectable="false"/>
+			<grid depth="3" name="inventory" rows="1" cols="3" pos="3,-3" cell_width="75" cell_height="75" repeat_content="true" controller="PowerRangedAmmoSlots">
+				<item_stack controller="RequiredItemStack" name="0"/>
+			</grid>
+		</rect>
+
+		<rect name="btnOn" depth="3" pos="0, -122" height="36" >
+			<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" />
+			<sprite depth="2" name="background" pos="3,-3" sprite="menu_empty" width="224" height="32" color="[darkGrey]" type="sliced" />
+			<rect depth="3" pos="1,-3" width="224" height="31">
+				<button name="clickable" sprite="menu_empty" defaultcolor="[mediumGrey]" hoversprite="ui_game_select_row" hovercolor="[white]" type="sliced" hoverscale="1.0" />
+				<!-- <sprite depth="2" name="windowIcon" width="24" height="24" pos="46,-3" sprite="ui_game_symbol_lock" color="[black_half_alpha]"/>
+				<sprite depth="2" name="windowIcon" width="24" height="24" pos="44,-3" sprite="ui_game_symbol_lock" color="[black_half_alpha]"/>
+
+				<sprite depth="2" name="windowIcon" width="24" height="24" pos="44,-1" sprite="ui_game_symbol_lock" color="[black_half_alpha]"/>
+				<sprite depth="2" name="windowIcon" width="24" height="24" pos="46,-1" sprite="ui_game_symbol_lock" color="[black_half_alpha]"/> -->
+
+				<sprite depth="2" name="sprOnOff" width="24" height="24" pos="8,-2" color="[iconColor]" sprite="ui_game_symbol_lock"/>
+				<label depth="2" name="lblOnOff" pos="40,-15" justify="left" pivot="left" text="TURN ON" text_key="xuiTurnOn" font_size="24" width="180" />
+			</rect>
+		</rect>
+	</rect>
+</set>
 <append xpath="/windows">
 
 <!-- WINDOW COMPASS BY DJTRIPL3XMR -->
@@ -513,7 +587,13 @@
 					<texture depth="2" name="playerPreviewSDCS" material="Materials/Transparent Colored" size="327,522" globalopacity="false"/>
 				</rect>
 				<rect pos="3,-3">
-					<equipment_weather_stack name="biomeBadgeSlot" />
+				<grid depth="0" pos="0,0" width="41" cols="2" cell_width="41" cell_height="41" repeat_content="false" arrangement="horizontal">
+						<equipment_weather_stack name="biomeBadgeSlot1" />
+						<equipment_weather_stack name="biomeBadgeSlot2" />
+						<equipment_weather_stack name="biomeBadgeSlot3" />
+						<equipment_weather_stack name="biomeBadgeSlot4" />
+					</grid>
+					
 				</rect>
 				<rect name="pissoff" depth="1" visible="false">
 				<rect name="btnCosmetic" pos="243,0" depth="1" height="83" width="83"   visible="false">
@@ -1048,7 +1128,7 @@
 			<sprite depth="-2" name="backgroundCRB" anchor_top="queue,0,-35" anchor_bottom="queue,0,-43" anchor_left="queue,1,-3" anchor_right="queue,1,5" sprite="ui_game_symbol_triangle" flip="Vertically" width="8" height="8" type="sliced"  color="[darkestGrey]"/>				
 		</rect>
 		<grid depth="2" name="queue" rows="10" cols="9" pos="-2,-49" cell_width="70" cell_height="70" repeat_content="true">
-			<AX_item_stack name="0"/>
+			<SNJ_item_stack name="0"/>
 		</grid>
 	</window>
 

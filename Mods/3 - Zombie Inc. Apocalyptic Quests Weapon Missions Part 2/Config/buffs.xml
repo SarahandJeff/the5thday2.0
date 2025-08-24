@@ -1,0 +1,566 @@
+<Config>
+
+<conditional>
+	<if cond="mod_loaded('mateusjobsmain') == 'false'">
+		<append xpath="/buffs">
+			<buff name="ZombieINC_EnemyDotBuff">
+				<stack_type value="ignore"/>
+				<effect_group>	
+					<triggered_effect trigger="onSelfBuffStart" action="SetNavObject" nav_object="ZombieINC_EnemyDot" add="true" />	
+				</effect_group>
+			</buff>
+		</append>
+	</if>
+</conditional>
+
+<append xpath="/buffs">
+	<buff name="ZombieINC_WeaponPart2_WithWeapon" remove_on_death="true" hidden="true" icon="ui_game_symbol_infection" icon_color="10,180,15">		
+		<stack_type value="replace"/>
+		<tags value="ZINC_WTPart2_WithWeapon" />
+		<effect_group>		                                                                                                                   			
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_WeaponPart2_WithWeapon" />
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_WeaponPart2_WithWeapon"/>
+		</effect_group>	
+	</buff>
+	
+	<buff name="ZombieINC_WS_PipeMachineGun_FEP_Buff" remove_on_death="true" hidden="true" icon="ui_game_symbol_infection" icon_color="10,180,15">		
+		<stack_type value="replace"/>
+		<duration value="1200"/>
+		<effect_group>		                                                                                                                   			
+			<triggered_effect trigger="onSelfLeaveGame" action="CallGameEvent" target="self" event="ZombieINC_WS_PipeMachineGun_FailQuest_Event" allow_client_call="true" />
+			<triggered_effect trigger="onSelfEnteredGame" action="CallGameEvent" target="self" event="ZombieINC_WS_PipeMachineGun_FailQuest_Event" allow_client_call="true" />
+		</effect_group>	
+	</buff>
+	
+	
+
+	<buff name="ZombieINC_WeaponTest_InQuestBuff" hidden="false" icon="ui_game_symbol_clock" icon_color="250,250,255">
+		<stack_type value="replace"/>
+		<duration value="1200"/>
+		<update_rate value="1"/>
+		<display_value value=".ZombieINCClockTimer"/>
+		<display_value_format value="time"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".ZombieINCClockTimer" operation="set" value="1200"/>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZombieINCClockTimer" operation="set" value="1200"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZombieINCClockTimer" operation="subtract" value="1"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" event="ZombieINC_WeaponTest_WeaponRemover" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" event="ZombieINC_WeaponTest_MissionRemover" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfDied" action="CallGameEvent" event="ZombieINC_WeaponTest_WeaponRemover" allow_client_call="true" />
+			<triggered_effect trigger="onSelfDied" action="CallGameEvent" event="ZombieINC_WeaponTest_MissionRemover" allow_client_call="true" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_WeaponTest_InMissionBuff" hidden="true" icon="ui_game_symbol_clock" icon_color="250,250,255">
+		<stack_type value="replace"/>
+		<duration value="1200"/>
+		<effect_group>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_WeaponTest_ZombieLureCooldown" hidden="false" icon="ui_game_symbol_clock" icon_color="185,180,15">
+		<stack_type value="replace"/>
+		<duration value="30"/>
+		<update_rate value="1"/>
+		<display_value value=".ZombieINCExplosiveKnuclesLureCooldown"/>
+		<display_value_format value="time"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZombieINCExplosiveKnuclesLureCooldown" operation="set" value="30"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZombieINCExplosiveKnuclesLureCooldown" operation="subtract" value="1"/>
+			
+		</effect_group>
+	</buff>
+	
+<!--##Explosive Knucles-->
+	
+	
+	
+	<buff name="ZombieINC_WeaponTestKnuclesSpawnerBuff" hidden="true" icon="ui_game_symbol_laceration" icon_color="185,10,15">
+		<stack_type value="duration"/>
+		<duration value="1200"/>
+		<update_rate value="20"/>
+		<effect_group>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_WeaponTestKnuclesSpawnerEvent" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_WeaponTestKnuclesSpawnerEvent" allow_client_call="false"/>
+	
+		</effect_group>
+	</buff>
+
+
+	<buff name="ZombieINC_KnuclesExplosionSelfDamage" hidden="false" icon="ui_game_symbol_laceration" icon_color="185,10,15">
+		<stack_type value="duration"/>
+		<duration value="10"/>
+		<display_value value=".ZombieINCExplosiveKnucles"/>	
+		<effect_group>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZombieINCExplosiveKnucles" operation="set" value="1"/>
+			<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".ZombieINCExplosiveKnucles" operation="add" value="1"/>
+	
+		
+			<triggered_effect trigger="onSelfBuffStack" action="AddBuff" buff="buffArmBroken">
+				<requirement name="CVarCompare" cvar=".ZombieINCExplosiveKnucles" operation="GTE" value="6"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffStack" action="RemoveBuff" buff="ZombieINC_KnuclesExplosionSelfDamage">
+				<requirement name="CVarCompare" cvar=".ZombieINCExplosiveKnucles" operation="GTE" value="6"/>
+				<requirement name="HasBuff" buff="buffArmBroken" />
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffFinish" action="ModifyCVar" cvar=".ZombieINCExplosiveKnucles" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".ZombieINCExplosiveKnucles" operation="set" value="0"/>
+			
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_KnuclesExplosionSelfDamageDisplay" hidden="false" icon="ui_game_symbol_fatigued" icon_color="185,120,15">
+		<stack_type value="duration"/>
+		<duration value="10"/>
+		<display_value value="duration"/>
+		<effect_group>		
+		</effect_group>
+	</buff>
+	
+	
+	<buff name="ZombieINC_WeaponTest_KnuclesRewardBuff" name_key="ZombieINC_WeaponTest_KnuclesRewardBuff_Name" description_key="ZombieINC_WeaponTest_KnuclesRewardBuff_Desc" tooltip_key="ZombieINC_WeaponTest_KnuclesRewardBuff_tooltip_key" hidden="false" remove_on_death="false" icon="ui_game_symbol_trophy" icon_color="185,120,15">
+		<stack_type value="duration"/>
+		<duration value="600"/>
+		<update_rate value="1"/>
+		<display_value value=".KnuclesRewardDisplay"/>
+		<display_value_format value="time"/>		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".KnuclesRewardDisplay" operation="set" value="600"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".KnuclesRewardDisplay" operation="add" value="-1"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" event="ZombieINC_WeaponTest_KnuclesRewardQuestEvent" allow_client_call="false"/>
+		</effect_group>
+	</buff>
+<!--Explosive Knucles-->
+	
+<!--##Nail Gun-->
+		<buff name="ZombieINC_WeaponTestNailgunSpawnerBuff" hidden="true" icon="ui_game_symbol_laceration" icon_color="185,10,15">
+		<stack_type value="duration"/>
+		<duration value="1200"/>
+		<update_rate value="30"/>
+		<effect_group>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_WeaponTestNailgunSpawnerEvent" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_WeaponTestNailgunSpawnerEvent" allow_client_call="false"/>
+	
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_WeaponTest_NailgunRewardBuff" name_key="ZombieINC_WeaponTest_NailgunRewardBuff_Name" description_key="ZombieINC_WeaponTest_NailgunRewardBuff_Desc" tooltip_key="ZombieINC_WeaponTest_NailgunRewardBuff_tooltip_key" hidden="false" remove_on_death="false" icon="ui_game_symbol_trophy" icon_color="185,120,15">
+		<stack_type value="duration"/>
+		<duration value="600"/>
+		<update_rate value="1"/>
+		<display_value value=".NailgunRewardDisplay"/>
+		<display_value_format value="time"/>		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".NailgunRewardDisplay" operation="set" value="600"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".NailgunRewardDisplay" operation="add" value="-1"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" event="ZombieINC_WeaponTest_NailgunRewardQuestEvent" allow_client_call="false"/>
+		</effect_group>
+	</buff>
+		
+		
+		<buff name="ZombieINC_NailgunSoundBase" hidden="true" icon="ui_game_symbol_electric_power" icon_color="18,10,143">
+				
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="auger_idle" loop="true"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="StopSound" sound="auger_idle" />
+				<triggered_effect trigger="onSelfBuffFinish" action="StopSound" sound="auger_idle" />					
+			</effect_group>
+		</buff>
+		<buff name="ZombieINC_NailgunSoundFiring" hidden="true" icon="ui_game_symbol_electric_power" icon_color="18,10,143">
+				
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="Auger_Fire_Start" />
+				<triggered_effect trigger="onSelfBuffRemove" action="StopSound" sound="Auger_Fire_Start" />
+				<triggered_effect trigger="onSelfBuffFinish" action="StopSound" sound="Auger_Fire_Start" />					
+			</effect_group>
+		</buff>
+		
+		<buff name="ZombieINC_NailgunCharging" hidden="false" icon="ui_game_symbol_electric_power" icon_color="18,10,143">
+			<duration value="2"/>
+			<stack_type value="replace"/>
+			<update_rate value="1"/>
+			<display_value value="$ZombieINCNailgunCharging"/>
+			<display_value_format value="time"/>
+			
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$ZombieINCNailgunCharging" operation="set" value="2"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$ZombieINCNailgunCharging" operation="subtract" value="1"/>		
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="$ZombieINCNailgunCharging" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="ModifyCVar" cvar="$ZombieINCNailgunCharging" operation="set" value="0"/>			
+			</effect_group>
+		</buff>
+		<buff name="ZombieINC_NailgunCharging2" hidden="false" icon="ui_game_symbol_electric_power" icon_color="18,10,143">
+			<duration value="4"/>
+			<stack_type value="replace"/>
+			<update_rate value="1"/>
+			<display_value value="$ZombieINCNailgunCharging"/>
+			<display_value_format value="time"/>
+			
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="GetBuffDuration" reference="$ZombieINCNailgunCharging"/>
+				<!--<triggered_effect trigger="onSelfBuffStack" action="GetBuffDuration" reference="$ZombieINCNailgunCharging"/>-->
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar="$ZombieINCNailgunCharging" operation="set" value="4"/>
+				<!--<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$ZombieINCNailgunCharging" operation="set" value="4"/>-->
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$ZombieINCNailgunCharging" operation="subtract" value="1"/>		
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="$ZombieINCNailgunCharging" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="ModifyCVar" cvar="$ZombieINCNailgunCharging" operation="set" value="0"/>			
+			</effect_group>
+		</buff>
+		
+		<buff name="ZombieINC_NailgunReloadshock" hidden="true" icon="ui_game_symbol_electric_power" icon_color="18,10,143">
+			<duration value="1"/>
+			<stack_type value="replace"/>	
+			<effect_group>
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="60"/>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_NailgunReloadshockEffect"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="ZombieINC_NailgunReloadshockEffect" description_key="buffShockedDesc" tooltip_key="buffShockedTooltip" icon="ui_game_symbol_electric_power" name_key="buffShockedName" icon_color="255,0,0">
+			<damage_type value="electrical"/>
+			<stack_type value="ignore"/>
+			<duration value="2"/>
+			<update_rate value="1"/>
+			<display_value value="$buffShockedDisplay"/>
+			<display_value_format value="time"/>
+
+		<effect_group>
+			
+			<passive_effect name="BuffBlink" operation="base_set" value="2" duration="0,3" tags="buffShocked"/>
+		
+			<triggered_effect trigger="onSelfBuffStart" action="GetBuffDuration" reference="$shockDurationMax"/>
+			<triggered_effect trigger="onSelfBuffStart" action="GetBuffDuration" reference="$buffShockedDisplay"/>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$buffShockedDisplay" operation="set" value="2">
+				<requirement name="CVarCompare" cvar="$buffShockedDisplay" operation="LTE" value="0"/>
+			</triggered_effect>
+
+			<triggered_effect trigger="onSelfBuffStack" action="GetBuffDuration" reference="$buffShockedDisplay"/>
+
+			<passive_effect name="HealthChangeOT" operation="base_add" value="-4"/>
+
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$buffShockedDisplay" operation="add" value="-1"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="$buffShockedDisplay" operation="set" value="0"/>
+
+			<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_electric_shock" parent_transform="Spine1" local_offset="0,-.2,0"/>
+			<triggered_effect trigger="onSelfEnteredGame" action="AttachParticleEffectToEntity" particle="p_electric_shock" parent_transform="Spine1" local_offset="0,-.2,0"/>
+
+			<triggered_effect trigger="onSelfDied" action="RemoveParticleEffectFromEntity" particle="p_electric_shock"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="RemoveParticleEffectFromEntity" particle="p_electric_shock"/>
+
+			<triggered_effect trigger="onSelfBuffFinish" action="RemoveParticleEffectFromEntity" particle="p_electric_shock"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="RemoveParticleEffectFromEntity" particle="p_electric_shock"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="ETrapHit" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveParticleEffectFromEntity" particle="p_electric_shock"/>
+
+			<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="electric_fence_impact"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="FadeOutSound" sound="electric_fence_impact"/>
+			<triggered_effect trigger="onSelfLeaveGame" action="StopSound" sound="electric_fence_impact"/>
+		</effect_group>
+
+		
+	</buff>
+		
+		<!--<buff name="ZombieINC_meleeToolRepairT3NailgunDelay" hidden="false" icon="ui_game_symbol_trophy" icon_color="185,120,15">
+			<duration value="5"/>
+			<stack_type value="ignore"/>
+			<update_rate value="1"/>
+			<display_value value="$ZombieINCDelay"/>
+			
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$ZombieINCDelay" operation="set" value="5"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$ZombieINCDelay" operation="subtract" value="1"/>
+					
+				
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="$ZombieINCDelay" operation="set" value="5"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="ModifyCVar" cvar="$ZombieINCDelay" operation="set" value="5"/>
+			</effect_group>
+		</buff>-->
+
+<!--Nail Gun-->
+<!--##Ice Hammer-->
+	
+	<buff name="ZombieINC_WeaponTestIceHammerSpawnerBuff" hidden="true" icon="ui_game_symbol_laceration" icon_color="185,10,15">
+		<stack_type value="duration"/>
+		<duration value="1200"/>
+		<update_rate value="20"/>
+		<effect_group>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_WeaponTestIceHammerSpawnerEvent" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_WeaponTestIceHammerSpawnerEvent" allow_client_call="false"/>
+	
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_WeaponTest_IceHammerRewardBuff" name_key="ZombieINC_WeaponTest_IceHammerRewardBuff_Name" description_key="ZombieINC_WeaponTest_IceHammerRewardBuff_Desc" tooltip_key="ZombieINC_WeaponTest_IceHammerRewardBuff_tooltip_key" hidden="false" remove_on_death="false" icon="ui_game_symbol_trophy" icon_color="185,120,15">
+		<stack_type value="duration"/>
+		<duration value="600"/>
+		<update_rate value="1"/>
+		<display_value value=".IceHammerRewardDisplay"/>
+		<display_value_format value="time"/>		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".IceHammerRewardDisplay" operation="set" value="600"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".IceHammerRewardDisplay" operation="add" value="-1"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" event="ZombieINC_WeaponTest_IceHammerRewardQuestEvent" allow_client_call="false"/>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_SnowBall" hidden="true" icon="ui_game_symbol_cold" icon_color="255,128,0">
+		<duration value="2.1"/>
+		<stack_type value="ignore"/>
+		<update_rate value="0.05"/>
+		<effect_group>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_impact_organic_on_snow" local_offset="-0.002,0.3653,0.233" local_rotation="0,-180.3,0" local_scale="3.2,3,3" parent_transform="Handle"/>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$ZombieINCSnowBall" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$ZombieINCSnowBall" operation="add" value="1"/>
+			<triggered_effect trigger="onSelfBuffStart" action="RemovePrefabFromEntity" prefab="snowballPrefab" parent_transform="Handle" />
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="AttachPrefabToEntity" prefab="@:Other/Items/Misc/snowballPrefab.prefab" local_offset="-0.002,0.3653,0.233" local_rotation="0,-180.3,0" local_scale="2,2,2" parent_transform="Handle">
+				<requirement name="CVarCompare" cvar="$ZombieINCSnowBall" operation="Equals" value="1"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemovePrefabFromEntity" prefab="snowballPrefab" parent_transform="Handle" >
+				<requirement name="CVarCompare" cvar="$ZombieINCSnowBall" operation="Equals" value="14"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AttachPrefabToEntity" prefab="@:Other/Items/Misc/snowballPrefab.prefab" local_offset="-0.002,0.3653,0.233" local_rotation="0,-180.3,0" local_scale="2.5,2.5,2.5" parent_transform="Handle">
+				<requirement name="CVarCompare" cvar="$ZombieINCSnowBall" operation="Equals" value="15"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemovePrefabFromEntity" prefab="snowballPrefab" parent_transform="Handle" >
+				<requirement name="CVarCompare" cvar="$ZombieINCSnowBall" operation="Equals" value="22"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AttachPrefabToEntity" prefab="@:Other/Items/Misc/snowballPrefab.prefab" local_offset="-0.002,0.3653,0.233" local_rotation="0,-180.3,0" local_scale="2.7,2.7,2.7" parent_transform="Handle">
+				<requirement name="CVarCompare" cvar="$ZombieINCSnowBall" operation="Equals" value="23"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemovePrefabFromEntity" prefab="snowballPrefab" parent_transform="Handle" >
+				<requirement name="CVarCompare" cvar="$ZombieINCSnowBall" operation="Equals" value="30"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AttachPrefabToEntity" prefab="@:Other/Items/Misc/snowballPrefab.prefab" local_offset="-0.002,0.3653,0.233" local_rotation="0,-180.3,0" local_scale="2.9,2.9,2.9" parent_transform="Handle">
+				<requirement name="CVarCompare" cvar="$ZombieINCSnowBall" operation="Equals" value="31"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemovePrefabFromEntity" prefab="snowballPrefab" parent_transform="Handle" >
+				<requirement name="CVarCompare" cvar="$ZombieINCSnowBall" operation="Equals" value="39"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AttachPrefabToEntity" prefab="@:Other/Items/Misc/snowballPrefab.prefab" local_offset="-0.002,0.3653,0.233" local_rotation="0,-180.3,0" local_scale="3.2,3,3" parent_transform="Handle">
+				<requirement name="CVarCompare" cvar="$ZombieINCSnowBall" operation="GTE" value="40"/>
+			</triggered_effect>
+			
+			<triggered_effect trigger="onSelfBuffFinish" action="RemoveParticleEffectFromEntity" particle="p_impact_organic_on_snow" />
+		</effect_group>
+	</buff>
+	
+	
+	<buff name="ZombieINC_buffElementCold" icon="ui_game_symbol_cold" icon_color="255,128,0">
+		<damage_type value="cold"/>
+		<stack_type value="ignore"/>
+		<effect_group>
+			<passive_effect name="BuffBlink" operation="base_set" value="2" duration="0,3" tags="buffElementCold"/>	
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" intensity="1" fade="3" effect_name="Cold2"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" intensity="0" fade="3" effect_name="Cold2"/>
+		</effect_group>
+	</buff>
+	
+	
+	<buff name="ZombieINC_buffElementFreezing" icon="ui_game_symbol_cold" icon_color="255,0,0" icon_blink="true">
+		<damage_type value="cold"/>
+		<stack_type value="ignore"/>
+		<effect_group>
+			<passive_effect name="BuffBlink" operation="base_set" value="2" duration="0,3" tags="buffElementFreezing"/>		
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" intensity="1" fade="3" effect_name="Cold2"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" intensity="0" fade="3" effect_name="Cold2"/>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_IceOthers" icon="ui_game_symbol_cold" icon_color="255,0,0" icon_blink="true">
+		<damage_type value="cold"/>
+		<duration value="4"/>
+		<!--<update_rate value=".1"/>-->
+		<stack_type value="duration"/>
+		<effect_group>
+			<passive_effect name="WalkSpeed" operation="perc_add" value="-0.6"/>
+			<passive_effect name="RunSpeed" operation="perc_add" value="-0.6"/>
+			<passive_effect name="HealthChangeOT" operation="base_add" value="-5"/>
+			<passive_effect name="HealthChangeOT" operation="base_add" value="-30">
+				<requirement name="EntityTagCompare" tags="MinionFire,BossFire"/>
+			</passive_effect>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" target="self" particle="p_blockdestroy_snow" local_offset="0,0.75,0" shape_mesh="true"/>
+			<triggered_effect trigger="onSelfBuffStack" action="AttachParticleEffectToEntity" target="self" particle="p_blockdestroy_snow" local_offset="0,0.75,0" shape_mesh="true"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="RemoveParticleEffectFromEntity" target="self" particle="p_blockdestroy_snow" />
+			<triggered_effect trigger="onSelfDied" action="RemoveParticleEffectFromEntity" target="self" particle="p_blockdestroy_snow" />
+			
+			<!--<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" target="self" particle="p_impact_bullet_on_snow" local_offset="0,0.75,0"/>
+			<triggered_effect trigger="onSelfBuffStack" action="AttachParticleEffectToEntity" target="self" particle="p_impact_bullet_on_snow" local_offset="0,0.75,0"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="RemoveParticleEffectFromEntity" target="self" particle="p_impact_bullet_on_snow" />
+			<triggered_effect trigger="onSelfDied" action="RemoveParticleEffectFromEntity" target="self" particle="p_impact_bullet_on_snow" />-->
+			
+			<!--<triggered_effect trigger="onSelfBuffUpdate" action="AttachParticleEffectToEntity" target="self" particle="p_impact_metal_on_snow" local_offset="0,0,0" parent_transform="RightShoulder" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="AttachParticleEffectToEntity" target="self" particle="p_impact_metal_on_snow" local_offset="0,0,0" parent_transform="LeftShoulder" />
+			<triggered_effect trigger="onSelfBuffFinish" action="RemoveParticleEffectFromEntity" target="self" particle="p_impact_metal_on_snow" />
+			<triggered_effect trigger="onSelfDied" action="RemoveParticleEffectFromEntity" target="self" particle="p_impact_metal_on_snow" />-->
+			
+			<!--<triggered_effect trigger="onSelfBuffUpdate" action="AttachParticleEffectToEntity" target="self" particle="p_impact_organic_on_snow" local_offset="0,0,0" parent_transform="LeftShoulder" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="AttachParticleEffectToEntity" target="self" particle="p_impact_organic_on_snow" local_offset="0,0,0" parent_transform="RightShoulder" />
+			<triggered_effect trigger="onSelfBuffFinish" action="RemoveParticleEffectFromEntity" target="self" particle="p_impact_metal_on_snow" />
+			<triggered_effect trigger="onSelfDied" action="RemoveParticleEffectFromEntity" target="self" particle="p_impact_organic_on_snow" />-->
+			
+			
+			<!--shape_mesh="true" local_scale="3,3,3" parent_transform="Head" parent_transform="Spine1"-->
+			
+			
+			<!--<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_nozzlesmoke_m136" local_offset="0,.5,0" local_scale="5,5,5"  />
+			<triggered_effect trigger="onSelfDied" action="RemoveParticleEffectFromEntity" target="self" particle="p_nozzlesmoke_m136" />-->
+			
+			
+			<!--<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" target="self" particle="p_tiresmoke" local_offset="0,0.75,0" />
+			<triggered_effect trigger="onSelfDied" action="RemoveParticleEffectFromEntity" target="self" particle="p_tiresmoke" />-->
+			
+			<!--<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" target="self" particle="p_smoke" local_offset="0,0.75,0"/>
+			<triggered_effect trigger="onSelfDied" action="RemoveParticleEffectFromEntity" target="self" particle="p_smoke" />-->
+			
+			<!--<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" target="self" particle="p_snowstorm1" local_offset="0,0.75,0"/>
+			<triggered_effect trigger="onSelfDied" action="RemoveParticleEffectFromEntity" target="self" particle="p_snowstorm1" />-->
+			   
+		</effect_group>
+	</buff>
+	
+<!--Ice Hammer-->
+<!--##Spear Gun-->
+		<buff name="ZombieINC_WeaponTestSpearGunSpawnerBuff" hidden="true" icon="ui_game_symbol_laceration" icon_color="185,10,15">
+		<stack_type value="duration"/>
+		<duration value="1200"/>
+		<update_rate value="20"/>
+		<effect_group>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_WeaponTestSpearGunSpawnerEvent" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_WeaponTestSpearGunSpawnerEvent" allow_client_call="false"/>
+	
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_WeaponTest_SpearGunRewardBuff" description_key="ZombieINC_WeaponTest_SpearGunRewardBuff_Desc" tooltip_key="ZombieINC_WeaponTest_SpearGunRewardBuff_tooltip_key" hidden="false" remove_on_death="false" icon="ui_game_symbol_trophy" icon_color="185,120,15">
+		<stack_type value="duration"/>
+		<duration value="600"/>
+		<update_rate value="1"/>
+		<display_value value=".SpearGunRewardDisplay"/>
+		<display_value_format value="time"/>		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="ZombieINC_Gunpowder" operation="set" value="1"/>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".SpearGunRewardDisplay" operation="set" value="600"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".SpearGunRewardDisplay" operation="add" value="-1"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" event="ZombieINC_WeaponTest_SpearGunRewardQuestEvent" allow_client_call="false"/>
+		</effect_group>
+	</buff>
+		
+		<buff name="ZombieINC_SpearGun_Melee_DegradationDisplay" hidden="false" icon="ui_game_symbol_spear" icon_color="18,10,13">
+			<display_value value="$ZombieINCSpearGunMelee"/>
+			<effect_group>					
+			</effect_group>
+		</buff>
+		
+		<buff name="ZombieINC_SpearGun_Ranged_DegradationDisplay" hidden="false" icon="ui_game_symbol_spear" icon_color="18,10,13">
+			<display_value value="$ZombieINCSpearGunRanged"/>
+			<effect_group>				
+			</effect_group>
+		</buff>
+		<buff name="ZombieINC_SpearRangedStuck" hidden="false" icon="ui_game_symbol_assemble" icon_color="230,10,13" icon_blink="true">
+			<duration value="6"/>
+			<effect_group>				
+			</effect_group>
+		</buff>
+
+<!--Spear Gun-->
+<!--##Fire Shock Spear-->
+	<buff name="ZombieINC_WeaponTestFireShockSpearSpawnerBuff" hidden="true" icon="ui_game_symbol_laceration" icon_color="185,10,15">
+		<stack_type value="duration"/>
+		<duration value="1200"/>
+		<update_rate value="20"/>
+		<effect_group>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_WeaponTestFireShockSpearSpawnerEvent" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_WeaponTestFireShockSpearSpawnerEvent" allow_client_call="false"/>
+	
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_WeaponTest_FireShockSpearRewardBuff" name_key="ZombieINC_WeaponTest_FireShockSpearRewardBuff_Name" description_key="ZombieINC_WeaponTest_FireShockSpearRewardBuff_Desc" tooltip_key="ZombieINC_WeaponTest_FireShockSpearRewardBuff_tooltip_key" hidden="false" remove_on_death="false" icon="ui_game_symbol_trophy" icon_color="185,120,15">
+		<stack_type value="duration"/>
+		<duration value="600"/>
+		<update_rate value="1"/>
+		<display_value value=".FireShockSpearRewardDisplay"/>
+		<display_value_format value="time"/>		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".FireShockSpearRewardDisplay" operation="set" value="600"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".FireShockSpearRewardDisplay" operation="add" value="-1"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" event="ZombieINC_WeaponTest_FireShockSpearRewardQuestEvent" allow_client_call="false"/>
+		</effect_group>
+	</buff>
+<!--Fire Shock Spear-->	
+<!--##PipeMachineGun-->
+	<buff name="ZombieINC_NearTraderPipeMachineGun_RemoverItemBuff"  >
+		<update_rate value="5"/>
+		<duration value="80"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_SuppliesPipeMachineGun_RemoveItemEvent" allow_client_call="false">
+				<requirement name="IsIndoors"/></triggered_effect>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_NearTraderPipeMachineGun_CheckerBuff" remove_on_death="true" hidden="true" icon="ui_game_symbol_map_trader" icon_color="125,120,15">
+		<stack_type value="replace"/>
+		<duration value="80"/>
+		<update_rate value="8"/>
+		<display_value value=".ZombieINCTraderDistance"/>
+		<display_value_key value="{0}m"/>		
+		<effect_group>	
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" target="self" event="ZombieINC_NearTraderPipeMachineGun_Event" allow_client_call="false"/>	
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MiniBossPipeMachineGun_AttachPrefabBuff"  >
+		<stack_type value="ignore"/>
+	
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart"	action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/PipeMachinegun/PipeMachinegunPrefab.prefab" local_offset="-0.016,-0.057,-0.193" local_rotation="-49.121,95.378,0" local_scale="1,1,1" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/barrelGasPrefab.prefab" local_offset="0.0537,0.1173,0.0635" local_rotation="90,0,90" local_scale="0.1,0.1,0.1" parent_transform="Handle"/>	
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Plumbing/pipe_cornerPrefab.prefab" local_offset="-0.0001,0.1361,0.0483" local_rotation="0,90,-90" local_scale="0.04,0.04,0.04" parent_transform="Handle"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AddPart" part="Fire" prefab="@:ParticleEffects/p_fire_flaming_arrow.prefab" parentTransform="Handle" localPos="0.0,0.081,0.51" localRot="0,0,0"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MiniBossPipeMachineGun_SpawnerBuff"  >
+		<stack_type value="duration"/>
+		<duration value="1200"/>
+		<update_rate value="63"/>
+				
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_MiniBossPipeMachineGun_SpawnEvent" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_MiniBossPipeMachineGun_SpawnEvent" allow_client_call="false"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MiniBossBear_SpawnerBuff"  >
+		<stack_type value="duration"/>
+		<duration value="1200"/>
+		<update_rate value="63"/>
+				
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_MiniBossBear_SpawnEvent" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_MiniBossBear_SpawnEvent" allow_client_call="false"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MiniBossBear_Buff"  >
+		<update_rate value="30"/>	
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="ZombieINC_MiniBossBear_Buff2"/>
+			<passive_effect name="HealthMax" operation="base_set" value="2000"/>
+			<passive_effect name="WalkSpeed" operation="base_set" value="0.35"/>
+			<passive_effect name="RunSpeed" operation="base_set" value="0.35"/>
+			<passive_effect name="EntityDamage" operation="perc_add" value="-0.2" />	 
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MiniBossBear_Buff2"  >
+		<effect_group>
+			<passive_effect name="WalkSpeed" operation="base_set" value="1.1"/>
+			<passive_effect name="RunSpeed" operation="base_set" value="1.1"/>
+			<passive_effect name="EntityDamage" operation="perc_add" value="0.2" />	 
+		</effect_group>
+	</buff>
+<!--PipeMachineGun-->
+
+<!--Weapon Experimental-->
+</append>
+</Config>

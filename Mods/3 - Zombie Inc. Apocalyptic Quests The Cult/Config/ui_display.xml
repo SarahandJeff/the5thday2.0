@@ -1,0 +1,58 @@
+<Config>
+<append xpath="/ui_display_info/item_display">
+
+		<item_display_info display_type="ZINC_TheCult_armorHeavy" display_group="groupAttire" >
+			<display_entry name="PhysicalDamageResist" display_type="Decimal1" title_key="statPhysicalDamageResistHeavy"/>
+			<!--<display_entry name="ElementalDamageResist" display_type="Decimal1" title_key="statExplosionResistance" tags="heat,electrical"/>-->
+			<!--<display_entry name="BuffResistance" title_key="statBuffResistance" display_type="Percent" tags="critResistDisplay" show_inverted="false"/>-->
+			<display_entry name="dStaminaChangeOT" title_key="statStaminaChangeOT" display_type="Decimal2"/>
+			<display_entry name="Mobility" title_key="statMobility" display_type="Percent" show_inverted="true" negative_preferred="false"/>
+			<display_entry name="dNoiseMultiplier" title_key="statNoiseIncrease" display_type="Percent" show_inverted="false" negative_preferred="true"/>
+			<display_entry name="DegradationMax" title_key="statDegradationMax" tags="heavyArmorDeg,admin"/>
+		</item_display_info>
+
+<!-- ###The Cult PREACHER -->
+		<item_display_info display_type="ZINC_armorPreacherHelmet" display_group="groupAttire" extends="ZINC_TheCult_armorHeavy" >
+			<display_entry name="dBartering" title_key="statBarteringBuy" display_type="Percent" display_leading_plus="true"/>
+			<display_entry name="dStunResist" title_key="statStunResist" display_type="Percent" display_leading_plus="true"/>
+		</item_display_info>
+
+		<item_display_info display_type="ZINC_armorPreacherOutfit" display_group="groupAttire" extends="ZINC_TheCult_armorHeavy" >
+			<display_entry name="dDamageResist" title_key="statUndeadDamageResist" display_type="Percent" display_leading_plus="true"/>
+		</item_display_info>
+
+		<item_display_info display_type="ZINC_armorPreacherGloves" display_group="groupAttire" extends="ZINC_TheCult_armorHeavy" >
+			<display_entry name="dEntityDamage" title_key="statUndeadDamage" display_type="Percent" display_leading_plus="true"/>
+		</item_display_info>
+
+		<item_display_info display_type="ZINC_armorPreacherBoots" display_group="groupAttire" extends="ZINC_TheCult_armorHeavy" >
+			<display_entry name="dTreatedCritHealing" title_key="statTreatedCritHealing" display_type="Percent" display_leading_plus="true"/>
+			<display_entry name="dTrapDoorTriggerDelay" title_key="statTrapDoorTriggerDelay" display_type="Time" display_leading_plus="true"/>
+			<display_entry name="dLandMineTriggerDelay" title_key="statLandMineTriggerDelay" display_type="Time" display_leading_plus="true"/>
+			<display_entry name="dTrapIncomingDamage" title_key="statTrapIncomingDamage" display_type="Percent" display_leading_plus="true"/>
+		</item_display_info>
+
+
+
+</append>
+</Config>
+<!-- *** NOTES -->
+<!-- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+This UI system can display all passive effects on an item - the base stats.
+
+It can also display CVARS that are added when using the item with these exact 2 actions:
+onSelfPrimaryActionEnd
+onSelfSecondaryActionEnd
+
+<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="medicalRegHealthAmount" operation="add" value="14"/>
+
+The "name" is the name of the cvar.
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+display_type="Integer"	;	The values are "Integer", "Decimal", "Bool", and "Percent"
+show_inverted="true"	;
+negative_preferred="true";	For item comparisons sometimes lower is better.
+
+display_group: Used for the compare function. i.e. groupConsumables are not compared against groupRanged
+-->

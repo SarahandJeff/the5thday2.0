@@ -1,0 +1,945 @@
+<Config>
+	<conditional>
+		<if cond="mod_loaded('mateusjobsmain')">
+			<insertAfter xpath="/quests/quest[@id='tier2_buried_supplies']">
+				<quest id="ZombieINC_WorkAround_NestDemolition_Reward_T1">
+					<property name="name_key" value="ZombieINC_WorkAround_NestDemolition_Reward_name" param1="name"/>
+					<property name="subtitle_key" value="ZombieINC_WorkAround_NestDemolition_Reward_subtitle" param1="subtitle"/>
+					<property name="description_key" value="ZombieINC_WorkAround_NestDemolition_Reward_desc" param1="description"/>
+					<property name="icon" value="ui_game_symbol_quest"/>
+					<property name="repeatable" value="true"/>
+					<property name="category_key" value="challenge"/>
+					<property name="add_to_tier_complete" value="false"/>
+					<property name="difficulty_tier" value="0" />
+					<property name="allow_remove" value="false" />
+					<property name="reward_choices_count" value="0"/>
+					<property name="extra_tags" value="ZINCND,ZINCNDT1" param1="tags"  />
+					<property name="completiontype" value="AutoComplete"/>
+				</quest>
+				<quest id="ZombieINC_WorkAround_NestDemolition_Reward_T2" template="ZombieINC_WorkAround_NestDemolition_Reward_T1">
+					<variable name="tags" value="ZINCND,ZINCNDT2"/>	
+				</quest>
+				<quest id="ZombieINC_WorkAround_NestDemolition_Reward_T3" template="ZombieINC_WorkAround_NestDemolition_Reward_T1">
+					<variable name="tags" value="ZINCND,ZINCNDT3"/>	
+				</quest>
+				<quest id="ZombieINC_WorkAround_NestDemolition_Reward_T4" template="ZombieINC_WorkAround_NestDemolition_Reward_T1">
+					<variable name="tags" value="ZINCND,ZINCNDT4"/>	
+				</quest>
+				<quest id="ZombieINC_WorkAround_NestDemolition_Reward_T5" template="ZombieINC_WorkAround_NestDemolition_Reward_T1">
+					<variable name="tags" value="ZINCND,ZINCNDT5"/>	
+				</quest>
+				<quest id="ZombieINC_WorkAround_NestDemolition_Reward_T6" template="ZombieINC_WorkAround_NestDemolition_Reward_T1">
+					<variable name="tags" value="ZINCND,ZINCNDT6"/>	
+				</quest>
+				<!--###-->
+			</insertAfter>
+		</if>
+	</conditional>
+	<conditional>
+		<if cond="mod_loaded('mateusjobstraderalternative')">
+			<append xpath="/quests/quest_list[@id='trader_radio1_quests']">
+				<quest id="ZINCNestDemolition1"/>
+				<quest id="ZINCNestDemolition2"/>
+				<quest id="ZINCNestDemolition3"/>
+				<quest id="ZINCNestDemolition4"/>
+				<quest id="ZINCNestDemolition5"/>
+				<quest id="ZINCNestDemolition6"/>
+			</append>
+		</if>
+		
+		<else>
+			<append xpath="/quests/quest_list[@id='trader_rekt_quests']">				
+				<quest id="ZINCNestDemolition1"/>
+				<quest id="ZINCNestDemolition2"/>
+				<quest id="ZINCNestDemolition3"/>
+				<quest id="ZINCNestDemolition4"/>
+				<quest id="ZINCNestDemolition5"/>
+				<quest id="ZINCNestDemolition6"/>
+			</append>
+			<append xpath="/quests/quest_list[@id='trader_jen_quests']">				
+				<quest id="ZINCNestDemolition1"/>
+				<quest id="ZINCNestDemolition2"/>
+				<quest id="ZINCNestDemolition3"/>
+				<quest id="ZINCNestDemolition4"/>
+				<quest id="ZINCNestDemolition5"/>
+				<quest id="ZINCNestDemolition6"/>
+			</append>	
+			<append xpath="/quests/quest_list[@id='trader_bob_quests']">				
+				<quest id="ZINCNestDemolition1"/>
+				<quest id="ZINCNestDemolition2"/>
+				<quest id="ZINCNestDemolition3"/>
+				<quest id="ZINCNestDemolition4"/>
+				<quest id="ZINCNestDemolition5"/>
+				<quest id="ZINCNestDemolition6"/>
+			</append>	
+			<append xpath="/quests/quest_list[@id='trader_hugh_quests']">				
+				<quest id="ZINCNestDemolition1"/>
+				<quest id="ZINCNestDemolition2"/>
+				<quest id="ZINCNestDemolition3"/>
+				<quest id="ZINCNestDemolition4"/>
+				<quest id="ZINCNestDemolition5"/>
+				<quest id="ZINCNestDemolition6"/>
+			</append>	
+			<append xpath="/quests/quest_list[@id='trader_joel_quests']">				
+				<quest id="ZINCNestDemolition1"/>
+				<quest id="ZINCNestDemolition2"/>
+				<quest id="ZINCNestDemolition3"/>
+				<quest id="ZINCNestDemolition4"/>
+				<quest id="ZINCNestDemolition5"/>
+				<quest id="ZINCNestDemolition6"/>
+			</append>
+		</else>
+	</conditional>
+
+<insertAfter xpath="/quests/quest[@id='tier2_buried_supplies']">
+	
+	<!--###Nest Demolition-->
+	<quest id="ZINCNestDemolition1">
+		<property name="name_key" value="ZombieINC_challenge_tier1_NestDemolition_name" param1="name"/>
+		<property name="subtitle_key" value="ZombieINC_challenge_tier1_NestDemolition_subtitle"/>
+		<property name="description_key" value="ZombieINC_challenge_tier1_NestDemolition_description"/>
+		<property name="icon" value="ui_game_symbol_quest"/>
+		<property name="repeatable" value="true"/>
+		<property name="category_key" value="quest"/>
+		<property name="offer_key" value="ZombieINC_challenge_tier1_NestDemolition_offer" param1="offer"/>
+		<property name="difficulty" value="medium"/>
+		<property name="difficulty_tier" value="1" param1="difficulty"/>
+		<property name="statement_key" value="ZombieINC_challenge_tier1_NestDemolition_statement"/>
+		<property name="response_key" value="ZombieINC_challenge_tier1_NestDemolition_response"/>
+		<property name="login_rally_reset" value="true"/>
+		<property name="reward_choices_count" value="5" />
+		<!--<property name="extra_tags" value="" />-->
+		<property name="extra_tags" value="infested" />
+		<property name="shareable" value="true"/>
+		<property name="quest_hints" value="ZombieINC_ND_T1_QuestObjective" />
+		<property name="completiontype" value="AutoComplete"/>
+		<property name="completion_key" value="ZombieINC_challenge_tier1_NestDemolition_completion"/>
+		
+		<property name="gamestage_mod" value=".1" />
+		<property name="gamestage_bonus" value="10" />
+		<property name="spawn_multiplier" value="2" />
+	
+		<action type="GameEvent" id="ZombieINC_ND_RemoveBuffsWhenFail_T1" phase="1"/>
+		<action type="GameEvent" id="ZombieINC_ND_AddItemToPlayer_T1" phase="1"/>
+		
+		<action type="GameEvent" id="ZombieINC_ND_ResetBombCounter" phase="1"/>
+		
+		<objective type="RandomPOIGoto">
+			<property name="phase" value="1"/>
+			<!--<property name="biome_filter_type" value="SameBiome"  />
+			<property name="biome_filter" value=""  />-->
+			<property name="nav_object" value="quest" />
+			<property name="poi_tier" value="1"  />
+		</objective>
+		
+		<objective type="RallyPoint">
+			<property name="phase" value="2"/>
+			<property name="nav_object" value="rally" />
+			<property name="activate_event" value="ZombieINC_ND_Activate_Anchor_T1"/>
+			<property name="rally_marker_type" value="questRallyMarkerInfestation"/>
+		</objective>
+		
+		<action type="GameEvent" id="ZombieINC_ND_T1_RallyPointActivated" phase="3"/>
+		
+		
+		<objective type="ClearSleepers">
+			<property name="phase" value="3"/>
+			<property name="nav_object" value="sleeper_volume"/>
+			<!--<property name="optional" value="true"/>-->
+		</objective>
+		<!--<objective type="EntityKill" phase="3">             
+			<property name="needed_count" value="20" />
+			<property name="target_tags" value="zombie"/>		
+		</objective>-->
+		<objective type="GameEvent">
+			<property name="phase" value="3"/>
+			<property name="event" value="ZombieINC_ND_T1_GameEventObjective"/>
+			<property name="hidden" value="true"/>
+		</objective>
+
+		<objective type="POIStayWithin">
+			<property name="phase" value="3"/>
+			<property name="radius" value="25"/>
+		</objective>
+
+		<action type="UnlockPOI" >
+			<property name="phase" value="4"/>
+		</action>
+		
+		<action type="GameEvent" id="ZombieINC_ND_T1_RemoveSpawnerBuff_Event" phase="4"/>
+		
+		
+		<objective type="ReturnToNPC">
+			<property name="phase" value="4"/>
+			<property name="nav_object" value="return_to_trader" />
+		</objective>
+		
+		<action type="GameEvent" id="ZombieINC_ND_QuestFinished_T1" >
+			<property name="on_complete" value="true"/>
+		</action>
+		
+		
+		
+		<reward type="Quest" id="ZINCNestDemolition1Reward"/>
+		
+	</quest>
+	<quest id="ZINCNestDemolition1Reward"> 
+		    <property name="name_key" value="ZombieINC_challenge_tier1_NestDemolitionReward_name" param1="name"/>
+			<property name="subtitle_key" value="ZombieINC_challenge_tier1_NestDemolition_subtitle"/>
+			<property name="description_key" value="ZombieINC_challenge_tier1_NestDemolition_description"/>
+			<property name="icon" value="ui_game_symbol_quest"/>
+			<property name="repeatable" value="true"/>
+			<property name="category_key" value="quest"/>
+			<property name="offer_key" value="ZombieINC_challenge_tier1_NestDemolition_offer" param1="offer"/>
+			<property name="difficulty" value="medium"/>
+			<property name="difficulty_tier" value="1" param1="difficulty"/>
+			<property name="statement_key" value="ZombieINC_challenge_tier1_NestDemolition_statement"/>
+			<property name="response_key" value="ZombieINC_challenge_tier1_NestDemolition_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value="trader" />
+			<property name="shareable" value="false"/>	
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_tier1_NestDemolition_completion"/>
+			<property name="add_to_tier_complete" value="false"/>
+			
+			<action type="TrackQuest"/>	
+	
+			<objective type="ClosestPOIGoto">
+				<property name="distance" value="10"/>
+				<property name="phase" value="1"/>
+			</objective>			
+			<objective type="InteractWithNPC">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="return_to_trader"/>
+				<!--<property name="use_closest" value="true"/>-->
+			</objective>
+          
+			<reward type="Exp" value="4000"/>
+		<reward type="Item" id="casinoCoin" value="800"/>
+
+		<reward type="LootItem" id="groupQuestFood,groupQuestAmmo,groupQuestSchematics" ischosen="true" value="1"/>
+		<reward type="LootItem" id="groupQuestFood,groupQuestAmmo,groupQuestSchematics" ischosen="true" value="1"/>
+		<reward type="LootItem" id="groupQuestFood,groupQuestAmmo,groupQuestSchematics" ischosen="true" value="1"/>
+		<reward type="LootItem" id="groupQuestFood,groupQuestAmmo,groupQuestSchematics" ischosen="true" value="1"/>
+		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics" ischosen="true" value="1"/>
+		<reward type="LootItem" id="groupQuestResourcesT0" ischosen="true" value="1"/>
+		<reward type="LootItem" id="groupQuestResourcesT0,groupQuestT1SkillMagazineBundle" ischosen="true" value="1"/>
+	</quest>
+	<quest id="ZINCNestDemolition2">
+		<property name="name_key" value="ZombieINC_challenge_tier2_NestDemolition_name" param1="name"/>
+		<property name="subtitle_key" value="ZombieINC_challenge_tier2_NestDemolition_subtitle"/>
+		<property name="description_key" value="ZombieINC_challenge_tier2_NestDemolition_description"/>
+		<property name="icon" value="ui_game_symbol_quest"/>
+		<property name="repeatable" value="true"/>
+		<property name="category_key" value="quest"/>
+		<property name="offer_key" value="ZombieINC_challenge_tier2_NestDemolition_offer" param1="offer"/>
+		<property name="difficulty" value="medium"/>
+		<property name="difficulty_tier" value="2" param1="difficulty"/>
+		<property name="statement_key" value="ZombieINC_challenge_tier2_NestDemolition_statement"/>
+		<property name="response_key" value="ZombieINC_challenge_tier2_NestDemolition_response"/>
+		<property name="login_rally_reset" value="true"/>
+		<property name="reward_choices_count" value="5" />
+		<!--<property name="extra_tags" value="" />-->
+		<property name="extra_tags" value="infested" />
+		<property name="shareable" value="true"/>
+		<property name="quest_hints" value="ZombieINC_ND_T2_QuestObjective" />
+		<property name="completiontype" value="AutoComplete"/>
+		<property name="completion_key" value="ZombieINC_challenge_tier2_NestDemolition_completion"/>
+		
+		<property name="gamestage_mod" value=".2" />
+		<property name="gamestage_bonus" value="10" />
+		<property name="spawn_multiplier" value="2" />
+	
+		<action type="GameEvent" id="ZombieINC_ND_RemoveBuffsWhenFail_T2" phase="1"/>
+		<action type="GameEvent" id="ZombieINC_ND_AddItemToPlayer_T2" phase="1"/>
+		
+		<action type="GameEvent" id="ZombieINC_ND_ResetBombCounter" phase="1"/>
+		
+		<objective type="RandomPOIGoto">
+			<property name="phase" value="1"/>
+			<!--<property name="biome_filter_type" value="SameBiome"  />
+			<property name="biome_filter" value=""  />-->
+			<property name="nav_object" value="quest" />
+			<property name="poi_tier" value="2"  />
+		</objective>
+		
+		<objective type="RallyPoint">
+			<property name="phase" value="2"/>
+			<property name="nav_object" value="rally" />
+			<property name="activate_event" value="ZombieINC_ND_Activate_Anchor_T2"/>
+			<property name="rally_marker_type" value="questRallyMarkerInfestation"/>
+		</objective>
+		
+		<action type="GameEvent" id="ZombieINC_ND_T2_RallyPointActivated" phase="3"/>
+		
+		
+		<objective type="ClearSleepers">
+			<property name="phase" value="3"/>
+			<property name="nav_object" value="sleeper_volume"/>
+			<!--<property name="optional" value="true"/>-->
+		</objective>
+		<!--<objective type="EntityKill" phase="3">             
+			<property name="needed_count" value="20" />
+			<property name="target_tags" value="zombie"/>		
+		</objective>-->
+		<objective type="GameEvent">
+			<property name="phase" value="3"/>
+			<property name="event" value="ZombieINC_ND_T2_GameEventObjective"/>
+			<property name="hidden" value="true"/>
+		</objective>
+
+		<objective type="POIStayWithin">
+			<property name="phase" value="3"/>
+			<property name="radius" value="25"/>
+		</objective>
+
+		<action type="UnlockPOI" >
+			<property name="phase" value="4"/>
+		</action>
+		
+		<action type="GameEvent" id="ZombieINC_ND_T2_RemoveSpawnerBuff_Event" phase="4"/>
+		
+		<objective type="ReturnToNPC">
+			<property name="phase" value="4"/>
+			<property name="nav_object" value="return_to_trader" />
+		</objective>
+		
+		<action type="GameEvent" id="ZombieINC_ND_QuestFinished_T2" >
+			<property name="on_complete" value="true"/>
+		</action>
+		
+		
+		
+		<reward type="Quest" id="ZINCNestDemolition2Reward"/>
+		
+	</quest>
+	<quest id="ZINCNestDemolition2Reward"> 
+		    <property name="name_key" value="ZombieINC_challenge_tier2_NestDemolitionReward_name" param1="name"/>
+			<property name="subtitle_key" value="ZombieINC_challenge_tier2_NestDemolition_subtitle"/>
+			<property name="description_key" value="ZombieINC_challenge_tier2_NestDemolition_description"/>
+			<property name="icon" value="ui_game_symbol_quest"/>
+			<property name="repeatable" value="true"/>
+			<property name="category_key" value="quest"/>
+			<property name="offer_key" value="ZombieINC_challenge_tier2_NestDemolition_offer" param1="offer"/>
+			<property name="difficulty" value="medium"/>
+			<property name="difficulty_tier" value="1" param1="difficulty"/>
+			<property name="statement_key" value="ZombieINC_challenge_tier2_NestDemolition_statement"/>
+			<property name="response_key" value="ZombieINC_challenge_tier2_NestDemolition_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value="trader" />
+			<property name="shareable" value="false"/>	
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_tier2_NestDemolition_completion"/>
+			<property name="add_to_tier_complete" value="false"/>
+			
+			<action type="TrackQuest"/>	
+	
+			<objective type="ClosestPOIGoto">
+				<property name="distance" value="10"/>
+				<property name="phase" value="1"/>
+			</objective>			
+			<objective type="InteractWithNPC">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="return_to_trader"/>
+				<!--<property name="use_closest" value="true"/>-->
+			</objective>
+          
+			<reward type="Exp" value="6625"/>
+		<reward type="Item" id="casinoCoin" value="1200"/>
+
+		<reward type="LootItem" id="groupQuestFood,groupQuestAmmo,groupQuestSchematics" ischosen="true" value="2"/>
+		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics" ischosen="true" value="2"/>
+		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics" ischosen="true" value="2"/>
+		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics" ischosen="true" value="2"/>
+		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics" ischosen="true" value="2"/>
+		<reward type="LootItem" id="groupQuestResourcesT0" ischosen="true" value="1"/>
+		<reward type="LootItem" id="groupQuestResourcesT0,groupQuestT1SkillMagazineBundle" ischosen="true" value="2"/>
+	</quest>
+	<quest id="ZINCNestDemolition3">
+		<property name="name_key" value="ZombieINC_challenge_tier3_NestDemolition_name" param1="name"/>
+		<property name="subtitle_key" value="ZombieINC_challenge_tier3_NestDemolition_subtitle"/>
+		<property name="description_key" value="ZombieINC_challenge_tier3_NestDemolition_description"/>
+		<property name="icon" value="ui_game_symbol_quest"/>
+		<property name="repeatable" value="true"/>
+		<property name="category_key" value="quest"/>
+		<property name="offer_key" value="ZombieINC_challenge_tier3_NestDemolition_offer" param1="offer"/>
+		<property name="difficulty" value="medium"/>
+		<property name="difficulty_tier" value="3" param1="difficulty"/>
+		<property name="statement_key" value="ZombieINC_challenge_tier3_NestDemolition_statement"/>
+		<property name="response_key" value="ZombieINC_challenge_tier3_NestDemolition_response"/>
+		<property name="login_rally_reset" value="true"/>
+		<property name="reward_choices_count" value="5" />
+		<!--<property name="extra_tags" value="" />-->
+		<property name="extra_tags" value="infested" />
+		<property name="shareable" value="true"/>
+		<property name="quest_hints" value="ZombieINC_ND_T3_QuestObjective" />
+		<property name="completiontype" value="AutoComplete"/>
+		<property name="completion_key" value="ZombieINC_challenge_tier3_NestDemolition_completion"/>
+		
+		<property name="gamestage_mod" value=".3" />
+		<property name="gamestage_bonus" value="20" />
+		<property name="spawn_multiplier" value="3" />
+	
+		<action type="GameEvent" id="ZombieINC_ND_RemoveBuffsWhenFail_T3" phase="1"/>
+		<action type="GameEvent" id="ZombieINC_ND_CheatingProtector_T3" phase="1"/>
+		<action type="GameEvent" id="ZombieINC_ND_SpawnMinibike_T3" phase="1"/>
+		<action type="GameEvent" id="ZombieINC_ND_ResetBombCounter" phase="1"/>
+		
+		<objective type="RandomPOIGoto">
+			<property name="phase" value="1"/>
+			<!--<property name="biome_filter_type" value="SameBiome"  />
+			<property name="biome_filter" value=""  />-->
+			<property name="nav_object" value="quest" />
+			<property name="poi_tier" value="2"  />
+		</objective>
+		
+		<objective type="RallyPoint">
+			<property name="phase" value="2"/>
+			<property name="nav_object" value="rally" />
+			<property name="activate_event" value="ZombieINC_ND_Activate_Anchor_T3"/>
+			<property name="rally_marker_type" value="questRallyMarkerInfestation"/>
+		</objective>
+		
+		<action type="GameEvent" id="ZombieINC_ND_T3_RallyPointActivated" phase="3"/>
+		
+		
+		<objective type="ClearSleepers">
+			<property name="phase" value="3"/>
+			<property name="nav_object" value="sleeper_volume"/>
+		<!--<property name="optional" value="true"/>-->
+		</objective>
+		<!--<objective type="EntityKill" phase="3">             
+			<property name="needed_count" value="40" />
+			<property name="target_tags" value="zombie"/>		
+		</objective>-->
+		<objective type="GameEvent">
+			<property name="phase" value="3"/>
+			<property name="event" value="ZombieINC_ND_T3_GameEventObjective"/>
+			<property name="hidden" value="true"/>
+		</objective>
+
+		<objective type="POIStayWithin">
+			<property name="phase" value="3"/>
+			<property name="radius" value="25"/>
+		</objective>
+
+		<action type="UnlockPOI" >
+			<property name="phase" value="4"/>
+		</action>
+		
+		<action type="GameEvent" id="ZombieINC_ND_T3_RemoveSpawnerBuff_Event" phase="4"/>
+		<action type="GameEvent" id="ZombieINC_ND_ReturnMiniBike_Event" phase="4"/>
+		
+		<objective type="GameEvent">
+			<property name="phase" value="4"/>
+			<property name="event" value="ZombieINC_ND_T3_GameEventObjective2"/>
+			<property name="hidden" value="true"/>
+		</objective>
+		
+		<objective type="ReturnToNPC">
+			<property name="phase" value="4"/>
+			<property name="nav_object" value="return_to_trader" />
+		</objective>
+		
+		<action type="GameEvent" id="ZombieINC_ND_QuestMiniBikeFinished_Event" >
+			<property name="on_complete" value="true"/>
+		</action>
+		
+		
+		
+		<reward type="Quest" id="ZINCNestDemolition3Reward"/>
+		
+	</quest>
+	<quest id="ZINCNestDemolition3Reward"> 
+		    <property name="name_key" value="ZombieINC_challenge_tier3_NestDemolitionReward_name" param1="name"/>
+			<property name="subtitle_key" value="ZombieINC_challenge_tier3_NestDemolition_subtitle"/>
+			<property name="description_key" value="ZombieINC_challenge_tier3_NestDemolition_description"/>
+			<property name="icon" value="ui_game_symbol_quest"/>
+			<property name="repeatable" value="true"/>
+			<property name="category_key" value="quest"/>
+			<property name="offer_key" value="ZombieINC_challenge_tier3_NestDemolition_offer" param1="offer"/>
+			<property name="difficulty" value="medium"/>
+			<property name="difficulty_tier" value="1" param1="difficulty"/>
+			<property name="statement_key" value="ZombieINC_challenge_tier3_NestDemolition_statement"/>
+			<property name="response_key" value="ZombieINC_challenge_tier3_NestDemolition_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value="trader" />
+			<property name="shareable" value="false"/>	
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_tier3_NestDemolition_completion"/>
+			<property name="add_to_tier_complete" value="false"/>
+			
+			<action type="TrackQuest"/>	
+	
+			<objective type="ClosestPOIGoto">
+				<property name="distance" value="10"/>
+				<property name="phase" value="1"/>
+			</objective>			
+			<objective type="InteractWithNPC">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="return_to_trader"/>
+				<!--<property name="use_closest" value="true"/>-->
+			</objective>
+          
+			<reward type="Exp" value="10000"/>
+		<reward type="Item" id="casinoCoin" value="2000"/>
+
+		<reward type="LootItem" id="groupQuestFood,groupQuestAmmo,groupQuestSchematics" ischosen="true" value="3"/>
+		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics" ischosen="true" value="3"/>
+		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics" ischosen="true" value="3"/>
+		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics" ischosen="true" value="3"/>
+		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics" ischosen="true" value="3"/>
+		<reward type="LootItem" id="groupQuestResourcesT1" ischosen="true" value="1"/>
+		<reward type="LootItem" id="groupQuestResourcesT1,groupQuestT1SkillMagazineBundle" ischosen="true" value="3"/>
+	</quest>
+	<quest id="ZINCNestDemolition4">
+		<property name="name_key" value="ZombieINC_challenge_tier4_NestDemolition_name" param1="name"/>
+		<property name="subtitle_key" value="ZombieINC_challenge_tier4_NestDemolition_subtitle"/>
+		<property name="description_key" value="ZombieINC_challenge_tier4_NestDemolition_description"/>
+		<property name="icon" value="ui_game_symbol_quest"/>
+		<property name="repeatable" value="true"/>
+		<property name="category_key" value="quest"/>
+		<property name="offer_key" value="ZombieINC_challenge_tier4_NestDemolition_offer" param1="offer"/>
+		<property name="difficulty" value="medium"/>
+		<property name="difficulty_tier" value="4" param1="difficulty"/>
+		<property name="statement_key" value="ZombieINC_challenge_tier4_NestDemolition_statement"/>
+		<property name="response_key" value="ZombieINC_challenge_tier4_NestDemolition_response"/>
+		<property name="login_rally_reset" value="true"/>
+		<property name="reward_choices_count" value="5" />
+		<!--<property name="extra_tags" value="" />-->
+		<property name="extra_tags" value="infested" />
+		<property name="shareable" value="true"/>
+		<property name="quest_hints" value="ZombieINC_ND_T4_QuestObjective" />
+		<property name="completiontype" value="AutoComplete"/>
+		<property name="completion_key" value="ZombieINC_challenge_tier4_NestDemolition_completion"/>
+		
+		<property name="gamestage_mod" value=".4" />
+		<property name="gamestage_bonus" value="20" />
+		<property name="spawn_multiplier" value="4" />
+	
+		<action type="GameEvent" id="ZombieINC_ND_RemoveBuffsWhenFail_T4" phase="1"/>
+		<action type="GameEvent" id="ZombieINC_ND_CheatingProtector_T4" phase="1"/>
+		<action type="GameEvent" id="ZombieINC_ND_SpawnMinibike_T4" phase="1"/>
+		<action type="GameEvent" id="ZombieINC_ND_ResetBombCounter" phase="1"/>
+		
+		<objective type="RandomPOIGoto">
+			<property name="phase" value="1"/>
+			<!--<property name="biome_filter_type" value="SameBiome"  />
+			<property name="biome_filter" value=""  />-->
+			<property name="nav_object" value="quest" />
+			<property name="poi_tier" value="2"  />
+		</objective>
+		
+		<objective type="RallyPoint">
+			<property name="phase" value="2"/>
+			<property name="nav_object" value="rally" />
+			<property name="activate_event" value="ZombieINC_ND_Activate_Anchor_T4"/>
+			<property name="rally_marker_type" value="questRallyMarkerInfestation"/>
+		</objective>
+		
+		<action type="GameEvent" id="ZombieINC_ND_T4_RallyPointActivated" phase="3"/>
+		
+		
+		<objective type="ClearSleepers">
+			<property name="phase" value="3"/>
+			<property name="nav_object" value="sleeper_volume"/>
+			<!--<property name="optional" value="true"/>-->
+		</objective>
+		<!--<objective type="EntityKill" phase="3">             
+			<property name="needed_count" value="60" />
+			<property name="target_tags" value="zombie"/>		
+		</objective>-->
+		<objective type="GameEvent">
+			<property name="phase" value="3"/>
+			<property name="event" value="ZombieINC_ND_T4_GameEventObjective"/>
+			<property name="hidden" value="true"/>
+		</objective>
+
+		<objective type="POIStayWithin">
+			<property name="phase" value="3"/>
+			<property name="radius" value="25"/>
+		</objective>
+
+		<action type="UnlockPOI" >
+			<property name="phase" value="4"/>
+		</action>
+		
+		<action type="GameEvent" id="ZombieINC_ND_T4_RemoveSpawnerBuff_Event" phase="4"/>
+		<action type="GameEvent" id="ZombieINC_ND_ReturnMiniBike_Event" phase="4"/>
+		
+		<objective type="GameEvent">
+			<property name="phase" value="4"/>
+			<property name="event" value="ZombieINC_ND_T4_GameEventObjective2"/>
+			<property name="hidden" value="true"/>
+		</objective>
+		
+		<objective type="ReturnToNPC">
+			<property name="phase" value="4"/>
+			<property name="nav_object" value="return_to_trader" />
+		</objective>
+		
+		<action type="GameEvent" id="ZombieINC_ND_QuestMiniBikeFinished_Event" >
+			<property name="on_complete" value="true"/>
+		</action>
+		
+		
+		
+		<reward type="Quest" id="ZINCNestDemolition4Reward"/>
+		
+	</quest>
+	<quest id="ZINCNestDemolition4Reward"> 
+		    <property name="name_key" value="ZombieINC_challenge_tier4_NestDemolitionReward_name" param1="name"/>
+			<property name="subtitle_key" value="ZombieINC_challenge_tier4_NestDemolition_subtitle"/>
+			<property name="description_key" value="ZombieINC_challenge_tier4_NestDemolition_description"/>
+			<property name="icon" value="ui_game_symbol_quest"/>
+			<property name="repeatable" value="true"/>
+			<property name="category_key" value="quest"/>
+			<property name="offer_key" value="ZombieINC_challenge_tier4_NestDemolition_offer" param1="offer"/>
+			<property name="difficulty" value="medium"/>
+			<property name="difficulty_tier" value="1" param1="difficulty"/>
+			<property name="statement_key" value="ZombieINC_challenge_tier4_NestDemolition_statement"/>
+			<property name="response_key" value="ZombieINC_challenge_tier4_NestDemolition_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value="trader" />
+			<property name="shareable" value="false"/>	
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_tier4_NestDemolition_completion"/>
+			<property name="add_to_tier_complete" value="false"/>
+			
+			<action type="TrackQuest"/>	
+	
+			<objective type="ClosestPOIGoto">
+				<property name="distance" value="10"/>
+				<property name="phase" value="1"/>
+			</objective>			
+			<objective type="InteractWithNPC">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="return_to_trader"/>
+				<!--<property name="use_closest" value="true"/>-->
+			</objective>
+          
+			<reward type="Exp" value="20375"/>
+		<reward type="Item" id="casinoCoin" value="4000"/>
+
+		<reward type="LootItem" id="groupQuestFood,groupQuestAmmo,groupQuestSchematics" ischosen="true" value="4"/>
+		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics" ischosen="true" value="4"/>
+		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics" ischosen="true" value="4"/>
+		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics" ischosen="true" value="4"/>
+		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics" ischosen="true" value="4"/>
+		<reward type="LootItem" id="groupQuestResourcesT1" ischosen="true" value="1"/>
+		<reward type="LootItem" id="groupQuestResourcesT1,groupQuestT1SkillMagazineBundle" ischosen="true" value="4"/>
+	</quest>
+	<quest id="ZINCNestDemolition5">
+		<property name="name_key" value="ZombieINC_challenge_tier5_NestDemolition_name" param1="name"/>
+		<property name="subtitle_key" value="ZombieINC_challenge_tier5_NestDemolition_subtitle"/>
+		<property name="description_key" value="ZombieINC_challenge_tier5_NestDemolition_description"/>
+		<property name="icon" value="ui_game_symbol_quest"/>
+		<property name="repeatable" value="true"/>
+		<property name="category_key" value="quest"/>
+		<property name="offer_key" value="ZombieINC_challenge_tier5_NestDemolition_offer" param1="offer"/>
+		<property name="difficulty" value="medium"/>
+		<property name="difficulty_tier" value="5" param1="difficulty"/>
+		<property name="statement_key" value="ZombieINC_challenge_tier5_NestDemolition_statement"/>
+		<property name="response_key" value="ZombieINC_challenge_tier5_NestDemolition_response"/>
+		<property name="login_rally_reset" value="true"/>
+		<property name="reward_choices_count" value="5" />
+		<!--<property name="extra_tags" value="" />-->
+		<property name="extra_tags" value="infested" />
+		<property name="shareable" value="true"/>
+		<property name="quest_hints" value="ZombieINC_ND_T5_QuestObjective" />
+		<property name="completiontype" value="AutoComplete"/>
+		<property name="completion_key" value="ZombieINC_challenge_tier5_NestDemolition_completion"/>
+		
+		<property name="gamestage_mod" value=".5" />
+		<property name="gamestage_bonus" value="30" />
+		<property name="spawn_multiplier" value="5" />
+	
+		<action type="GameEvent" id="ZombieINC_ND_RemoveBuffsWhenFail_T5" phase="1"/>
+		<action type="GameEvent" id="ZombieINC_ND_CheatingProtector_T5" phase="1"/>
+		<action type="GameEvent" id="ZombieINC_ND_SpawnTruck_T5" phase="1"/>
+		<action type="GameEvent" id="ZombieINC_ND_ResetBombCounter" phase="1"/>
+		
+		<objective type="RandomPOIGoto">
+			<property name="phase" value="1"/>
+			<!--<property name="biome_filter_type" value="SameBiome"  />
+			<property name="biome_filter" value=""  />-->
+			<property name="nav_object" value="quest" />
+			<property name="poi_tier" value="2"  />
+		</objective>
+		
+		<objective type="RallyPoint">
+			<property name="phase" value="2"/>
+			<property name="nav_object" value="rally" />
+			<property name="activate_event" value="ZombieINC_ND_Activate_Anchor_T5"/>
+			<property name="rally_marker_type" value="questRallyMarkerInfestation"/>
+		</objective>
+		
+		<action type="GameEvent" id="ZombieINC_ND_T5_RallyPointActivated" phase="3"/>
+		
+		
+		<objective type="ClearSleepers">
+			<property name="phase" value="3"/>
+			<property name="nav_object" value="sleeper_volume"/>
+			<!--<property name="optional" value="true"/>-->
+		</objective>
+		<!--<objective type="EntityKill" phase="3">             
+			<property name="needed_count" value="100" />
+			<property name="target_tags" value="zombie"/>		
+		</objective>-->
+		<objective type="GameEvent">
+			<property name="phase" value="3"/>
+			<property name="event" value="ZombieINC_ND_T5_GameEventObjective"/>
+			<property name="hidden" value="true"/>
+		</objective>
+
+		<objective type="POIStayWithin">
+			<property name="phase" value="3"/>
+			<property name="radius" value="25"/>
+		</objective>
+
+		<action type="UnlockPOI" >
+			<property name="phase" value="4"/>
+		</action>
+		
+		<action type="GameEvent" id="ZombieINC_ND_T5_RemoveSpawnerBuff_Event" phase="4"/>
+		<action type="GameEvent" id="ZombieINC_ND_ReturnTruck_Event" phase="4"/>
+		
+		<objective type="GameEvent">
+			<property name="phase" value="4"/>
+			<property name="event" value="ZombieINC_ND_T5_GameEventObjective2"/>
+			<property name="hidden" value="true"/>
+		</objective>
+		
+		<objective type="ReturnToNPC">
+			<property name="phase" value="4"/>
+			<property name="nav_object" value="return_to_trader" />
+		</objective>
+		
+		<action type="GameEvent" id="ZombieINC_ND_QuestTruckFinished_Event" >
+			<property name="on_complete" value="true"/>
+		</action>
+		
+		
+		
+		<reward type="Quest" id="ZINCNestDemolition5Reward"/>
+		
+	</quest>
+	<quest id="ZINCNestDemolition5Reward"> 
+		    <property name="name_key" value="ZombieINC_challenge_tier5_NestDemolitionReward_name" param1="name"/>
+			<property name="subtitle_key" value="ZombieINC_challenge_tier5_NestDemolition_subtitle"/>
+			<property name="description_key" value="ZombieINC_challenge_tier5_NestDemolition_description"/>
+			<property name="icon" value="ui_game_symbol_quest"/>
+			<property name="repeatable" value="true"/>
+			<property name="category_key" value="quest"/>
+			<property name="offer_key" value="ZombieINC_challenge_tier5_NestDemolition_offer" param1="offer"/>
+			<property name="difficulty" value="medium"/>
+			<property name="difficulty_tier" value="1" param1="difficulty"/>
+			<property name="statement_key" value="ZombieINC_challenge_tier5_NestDemolition_statement"/>
+			<property name="response_key" value="ZombieINC_challenge_tier5_NestDemolition_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value="trader" />
+			<property name="shareable" value="false"/>	
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_tier5_NestDemolition_completion"/>
+			<property name="add_to_tier_complete" value="false"/>
+			
+			<action type="TrackQuest"/>	
+	
+			<objective type="ClosestPOIGoto">
+				<property name="distance" value="10"/>
+				<property name="phase" value="1"/>
+			</objective>			
+			<objective type="InteractWithNPC">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="return_to_trader"/>
+				<!--<property name="use_closest" value="true"/>-->
+			</objective>
+          
+			<reward type="Exp" value="30750"/>
+		<reward type="Item" id="casinoCoin" value="6000"/>
+
+		<reward type="LootItem" id="groupQuestArmorResources" ischosen="true" value="1"/>
+		<reward type="LootItem" id="groupQuestFood,groupQuestAmmo,groupQuestSchematics" ischosen="true" value="5"/>
+		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics" ischosen="true" value="5"/>
+		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics" ischosen="true" value="5"/>
+		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics" ischosen="true" value="5"/>
+		<reward type="LootItem" id="groupQuestGas" ischosen="true" value="1"/>
+		<reward type="LootItem" id="groupQuestResourcesT1,groupQuestT1SkillMagazineBundle" ischosen="true" value="5"/>
+	</quest>
+	<quest id="ZINCNestDemolition6">
+		<property name="name_key" value="ZombieINC_challenge_tier6_NestDemolition_name" param1="name"/>
+		<property name="subtitle_key" value="ZombieINC_challenge_tier6_NestDemolition_subtitle"/>
+		<property name="description_key" value="ZombieINC_challenge_tier6_NestDemolition_description"/>
+		<property name="icon" value="ui_game_symbol_quest"/>
+		<property name="repeatable" value="true"/>
+		<property name="category_key" value="quest"/>
+		<property name="offer_key" value="ZombieINC_challenge_tier6_NestDemolition_offer" param1="offer"/>
+		<property name="difficulty" value="medium"/>
+		<property name="difficulty_tier" value="6" param1="difficulty"/>
+		<property name="statement_key" value="ZombieINC_challenge_tier6_NestDemolition_statement"/>
+		<property name="response_key" value="ZombieINC_challenge_tier6_NestDemolition_response"/>
+		<property name="login_rally_reset" value="true"/>
+		<property name="reward_choices_count" value="5" />
+		<!--<property name="extra_tags" value="" />-->
+		<property name="extra_tags" value="infested" />
+		<property name="shareable" value="true"/>
+		<property name="quest_hints" value="ZombieINC_ND_T6_QuestObjective" />
+		<property name="completiontype" value="AutoComplete"/>
+		<property name="completion_key" value="ZombieINC_challenge_tier6_NestDemolition_completion"/>
+		
+		<property name="gamestage_mod" value="1" />
+		<property name="gamestage_bonus" value="60" />
+		<property name="spawn_multiplier" value="6" />
+	
+		<action type="GameEvent" id="ZombieINC_ND_RemoveBuffsWhenFail_T6" phase="1"/>
+		<action type="GameEvent" id="ZombieINC_ND_CheatingProtector_T6" phase="1"/>
+		<action type="GameEvent" id="ZombieINC_ND_SpawnTruck_T6" phase="1"/>
+		<action type="GameEvent" id="ZombieINC_ND_ResetBombCounter" phase="1"/>
+		
+		<objective type="RandomPOIGoto">
+			<property name="phase" value="1"/>
+			<!--<property name="biome_filter_type" value="SameBiome"  />
+			<property name="biome_filter" value=""  />-->
+			<property name="nav_object" value="quest" />
+			<property name="poi_tier" value="3"  />
+		</objective>
+		
+		<objective type="RallyPoint">
+			<property name="phase" value="2"/>
+			<property name="nav_object" value="rally" />
+			<property name="activate_event" value="ZombieINC_ND_Activate_Anchor_T6"/>
+			<property name="rally_marker_type" value="questRallyMarkerInfestation"/>
+		</objective>
+		
+		<action type="GameEvent" id="ZombieINC_ND_T6_RallyPointActivated" phase="3"/>
+		
+		
+		<objective type="ClearSleepers">
+			<property name="phase" value="3"/>
+			<property name="nav_object" value="sleeper_volume"/>
+			<!--<property name="optional" value="true"/>-->
+		</objective>
+		<!--<objective type="EntityKill" phase="3">             
+			<property name="needed_count" value="200" />
+			<property name="target_tags" value="zombie"/>		
+		</objective>-->
+		<objective type="GameEvent">
+			<property name="phase" value="3"/>
+			<property name="event" value="ZombieINC_ND_T6_GameEventObjective"/>
+			<property name="hidden" value="true"/>
+		</objective>
+
+		<objective type="POIStayWithin">
+			<property name="phase" value="3"/>
+			<property name="radius" value="25"/>
+		</objective>
+
+		<action type="UnlockPOI" >
+			<property name="phase" value="4"/>
+		</action>
+		
+		<action type="GameEvent" id="ZombieINC_ND_T6_RemoveSpawnerBuff_Event" phase="4"/>
+		<action type="GameEvent" id="ZombieINC_ND_ReturnTruck_Event" phase="4"/>
+		
+		<objective type="GameEvent">
+			<property name="phase" value="4"/>
+			<property name="event" value="ZombieINC_ND_T6_GameEventObjective2"/>
+			<property name="hidden" value="true"/>
+		</objective>
+		
+		<objective type="ReturnToNPC">
+			<property name="phase" value="4"/>
+			<property name="nav_object" value="return_to_trader" />
+		</objective>
+		
+		<action type="GameEvent" id="ZombieINC_ND_QuestTruckFinished_Event" >
+			<property name="on_complete" value="true"/>
+		</action>
+		
+		
+		
+		<reward type="Quest" id="ZINCNestDemolition6Reward"/>
+		
+	</quest>
+	<quest id="ZINCNestDemolition6Reward"> 
+		    <property name="name_key" value="ZombieINC_challenge_tier6_NestDemolitionReward_name" param1="name"/>
+			<property name="subtitle_key" value="ZombieINC_challenge_tier6_NestDemolition_subtitle"/>
+			<property name="description_key" value="ZombieINC_challenge_tier6_NestDemolition_description"/>
+			<property name="icon" value="ui_game_symbol_quest"/>
+			<property name="repeatable" value="true"/>
+			<property name="category_key" value="quest"/>
+			<property name="offer_key" value="ZombieINC_challenge_tier6_NestDemolition_offer" param1="offer"/>
+			<property name="difficulty" value="medium"/>
+			<property name="difficulty_tier" value="1" param1="difficulty"/>
+			<property name="statement_key" value="ZombieINC_challenge_tier6_NestDemolition_statement"/>
+			<property name="response_key" value="ZombieINC_challenge_tier6_NestDemolition_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value="trader" />
+			<property name="shareable" value="false"/>	
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_tier6_NestDemolition_completion"/>
+			<property name="add_to_tier_complete" value="false"/>
+			
+			<action type="TrackQuest"/>	
+	
+			<objective type="ClosestPOIGoto">
+				<property name="distance" value="10"/>
+				<property name="phase" value="1"/>
+			</objective>			
+			<objective type="InteractWithNPC">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="return_to_trader"/>
+				<!--<property name="use_closest" value="true"/>-->
+			</objective>
+          
+			<reward type="Exp" value="50000"/>
+		<reward type="Item" id="casinoCoin" value="8000"/>
+
+		<reward type="Item" id="resourceLegendaryParts" ischosen="true" isfixed="true" value="2"/>
+		<reward type="LootItem" id="groupQuestFood,groupQuestAmmo,groupQuestSchematics" ischosen="true" value="6"/>
+		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics" ischosen="true" value="6"/>
+		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics" ischosen="true" value="6"/>
+		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics" ischosen="true" value="6"/>
+		<reward type="LootItem" id="groupQuestGas" ischosen="true" value="1"/>
+		<reward type="LootItem" id="groupQuestResourcesT1,groupQuestT1SkillMagazineBundle" ischosen="true" value="6"/>
+	</quest>
+	<!--Nest Demolition-->
+
+
+
+</insertAfter>
+<conditional>
+		<if cond="mod_loaded('mateusjobsmain')">
+			<append xpath="/quests/quest[@id='ZINCNestDemolition1Reward']">
+				<reward type="LootItem" id="ZINCMagazineNestDemolition" ischosen="true" value="1"/>
+				<reward type="Quest" id="ZombieINC_WorkAround_NestDemolition_Reward_T1" />
+			</append>
+			<append xpath="/quests/quest[@id='ZINCNestDemolition2Reward']">
+				<reward type="LootItem" id="ZINCMagazineNestDemolition" ischosen="true" value="2"/>
+				<reward type="Quest" id="ZombieINC_WorkAround_NestDemolition_Reward_T2" />
+			</append>
+			<append xpath="/quests/quest[@id='ZINCNestDemolition3Reward']">
+				<reward type="LootItem" id="ZINCMagazineNestDemolition" ischosen="true" value="3"/>
+				<reward type="Quest" id="ZombieINC_WorkAround_NestDemolition_Reward_T3" />
+			</append>
+			<append xpath="/quests/quest[@id='ZINCNestDemolition4Reward']">
+				<reward type="LootItem" id="ZINCMagazineNestDemolition" ischosen="true" value="4"/>
+				<reward type="Quest" id="ZombieINC_WorkAround_NestDemolition_Reward_T4" />
+			</append>
+			<append xpath="/quests/quest[@id='ZINCNestDemolition5Reward']">
+				<reward type="LootItem" id="ZINCMagazineNestDemolition" ischosen="true" value="5"/>
+				<reward type="Quest" id="ZombieINC_WorkAround_NestDemolition_Reward_T5" />
+			</append>
+			<append xpath="/quests/quest[@id='ZINCNestDemolition6Reward']">
+				<reward type="LootItem" id="ZINCMagazineNestDemolition" ischosen="true" value="6"/>
+				<reward type="Quest" id="ZombieINC_WorkAround_NestDemolition_Reward_T6" />
+			</append>
+		</if>
+	</conditional>
+</Config>

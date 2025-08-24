@@ -1,0 +1,1199 @@
+<Config>
+	<insertAfter xpath="/quests/quest[@id='tier2_buried_supplies']">
+<!--###The Cult Main-->
+	<!--##The Cult Trader Interactions-->
+	<quest id="ZINCTCTRADER1">
+		<property name="name_key" value="ZINCTCTRADER1_name_key"/>
+		<property name="subtitle_key" value="ZINCTCTRADER1_subtitle_key"/>
+		<property name="description_key" value="ZINCTCTRADER1_description_key"/>
+		<property name="icon" value="ui_game_symbol_map_trader"/>
+		<property name="category_key" value="quest"/>
+		<property name="add_to_tier_complete" value="false"/>
+		<property name="shareable" value="false"/>
+		<property name="quest_faction" value="1"/>
+		<property name="quest_hints" value="ZINCTCTRADER1_hint1"/>
+		<property name="extra_tags" value="trader" />
+		<property name="allow_remove" value="false" />
+		
+		<property name="completiontype" value="TurnIn"/>
+		<property name="completion_key" value="ZINCTCTRADER1_completion_key"/>
+
+		<action type="TrackQuest"/>	
+		
+		<!--<action type="ShowMessageWindow">
+			<property name="message" value="ZINCTCTRADER1_message"/>
+			<property name="title" value="ZINCTCTRADER1_title"/>
+			<property name="delay" value="3"/>
+		</action>-->
+		
+		<!--<objective type="Goto" value="5" phase="1">
+			<!{1}**<!{2}**<property name="location_tag" value="TraderRekt" param1="trader_tag" />**{2}>**{1}>
+			<property name="location_name" value="trader_rekt" />
+			<!{1}**<property name="biome_filter_type" value="OnlyBiome"/>
+			<property name="biome_filter" value="pine_forest"/>**{1}>
+			<!{1}** <property name="biome_filter_type" value="ExcludeBiome"/> **{1}>
+			<!{1}** <property name="biome_filter" value="wasteland"/> **{1}>
+			<property name="nav_object" value="go_to_trader"/>
+		</objective>-->
+		<objective type="ClosestPOIGoto">
+			<property name="distance" value="10"/>
+			<!--<property name="location_tag" value="TraderRekt" param1="trader_tag" />
+			<property name="location_name" value="trader_rekt" />-->
+			<property name="phase" value="1"/>
+		</objective>
+		<!--<objective type="RandomPOIGoto">
+			<property name="phase" value="1"/>
+			<property name="biome_filter_type" value="SameBiome" param1="biome_filter_type"/>
+			<property name="biome_filter" value="" param1="biome_filter"/>
+			<property name="nav_object" value="quest"/>
+		</objective>-->
+		<!--<objective type="ReturnToNPC">
+			<property name="phase" value="1"/>
+			<property name="nav_object" value="return_to_trader" />
+		</objective>-->
+		
+		<objective type="InteractWithNPC">
+			<property name="phase" value="2"/>
+			<property name="nav_object" value="return_to_trader"/>
+			<property name="use_closest" value="true"/>
+		</objective>
+		
+		<reward type="Exp" value="666"/>
+		<reward type="Quest" id="ZINCMotherInfestedUnlock" />	
+		<!--<reward type="Quest" id="ZINCPenitenceInfestedUnlock" />	
+		<reward type="Quest" id="ZINCFarmerInfestedUnlock" />	
+		<reward type="Quest" id="ZINCFatherInfestedUnlock" />-->
+	</quest>
+	<quest id="ZINCTCTRADER2">
+		<property name="name_key" value="ZINCTCTRADER2_name_key"/>
+		<property name="subtitle_key" value="ZINCTCTRADER2_subtitle_key"/>
+		<property name="description_key" value="ZINCTCTRADER2_description_key"/>
+		<property name="icon" value="ui_game_symbol_map_trader"/>
+		<property name="category_key" value="quest"/>
+		<property name="add_to_tier_complete" value="false"/>
+		<property name="shareable" value="false"/>
+		<property name="quest_faction" value="1"/>
+		<property name="quest_hints" value="ZINCTCTRADER2_hint1"/>
+		<property name="allow_remove" value="false" />
+		
+		<property name="extra_tags" value="trader" />
+		
+		<property name="completiontype" value="TurnIn"/>
+		<property name="completion_key" value="ZINCTCTRADER2_completion_key"/>
+
+		<action type="TrackQuest"/>	
+		
+		<!--<action type="ShowMessageWindow">
+			<property name="message" value="ZINCTCTRADER2_message"/>
+			<property name="title" value="ZINCTCTRADER2_title"/>
+			<property name="delay" value="3"/>
+		</action>-->
+		
+		<!--<objective type="Goto" id="trader" value="5" phase="1">
+			<property name="biome_filter_type" value="OnlyBiome"/>
+			<property name="biome_filter" value="pine_forest"/>
+			<!{1}** <property name="biome_filter_type" value="ExcludeBiome"/> **{1}>
+			<!{1}** <property name="biome_filter" value="wasteland"/> **{1}>
+			<property name="nav_object" value="go_to_trader"/>
+		</objective>-->
+		
+		<objective type="ClosestPOIGoto">
+			<property name="distance" value="10"/>
+			<!--<property name="location_tag" value="TraderRekt" param1="trader_tag" />
+			<property name="location_name" value="trader_rekt" />-->
+			<property name="phase" value="1"/>
+		</objective>
+		
+		<objective type="InteractWithNPC">
+			<property name="phase" value="2"/>
+			<property name="nav_object" value="return_to_trader"/>
+			<property name="use_closest" value="true"/>
+		</objective>
+		
+		<reward type="Exp" value="666"/>
+		<reward type="Quest" id="ZINCPenitenceInfestedUnlock" />
+	</quest>
+	<quest id="ZINCTCTRADER3">
+		<property name="name_key" value="ZINCTCTRADER3_name_key"/>
+		<property name="subtitle_key" value="ZINCTCTRADER3_subtitle_key"/>
+		<property name="description_key" value="ZINCTCTRADER3_description_key"/>
+		<property name="icon" value="ui_game_symbol_map_trader"/>
+		<property name="category_key" value="quest"/>
+		<property name="add_to_tier_complete" value="false"/>
+		<property name="shareable" value="false"/>
+		<property name="quest_faction" value="1"/>
+		<property name="quest_hints" value="ZINCTCTRADER3_hint1"/>
+		<property name="allow_remove" value="false" />
+		
+		<property name="extra_tags" value="trader" />
+
+		<property name="completiontype" value="TurnIn"/>
+		<property name="completion_key" value="ZINCTCTRADER3_completion_key"/>
+
+		<action type="TrackQuest"/>	
+		
+		<!--<action type="ShowMessageWindow">
+			<property name="message" value="ZINCTCTRADER3_message"/>
+			<property name="title" value="ZINCTCTRADER3_title"/>
+			<property name="delay" value="3"/>
+		</action>-->
+		
+		<objective type="ClosestPOIGoto">
+			<property name="distance" value="10"/>
+			<!--<property name="location_tag" value="TraderRekt" param1="trader_tag" />
+			<property name="location_name" value="trader_rekt" />-->
+			<property name="phase" value="1"/>
+		</objective>
+
+		<objective type="InteractWithNPC">
+			<property name="phase" value="2"/>
+			<property name="nav_object" value="return_to_trader"/>
+			<property name="use_closest" value="true"/>
+		</objective>
+		
+		<reward type="Exp" value="666"/>
+		<reward type="Quest" id="ZINCFarmerInfestedUnlock" />
+	</quest>
+	<quest id="ZINCTCTRADER4">
+		<property name="name_key" value="ZINCTCTRADER4_name_key"/>
+		<property name="subtitle_key" value="ZINCTCTRADER4_subtitle_key"/>
+		<property name="description_key" value="ZINCTCTRADER4_description_key"/>
+		<property name="icon" value="ui_game_symbol_map_trader"/>
+		<property name="category_key" value="quest"/>
+		<property name="add_to_tier_complete" value="false"/>
+		<property name="shareable" value="false"/>
+		<property name="quest_faction" value="1"/>
+		<property name="quest_hints" value="ZINCTCTRADER4_hint1"/>
+		<property name="allow_remove" value="false" />
+		
+		<property name="extra_tags" value="trader" />
+		
+		<property name="completiontype" value="TurnIn"/>
+		<property name="completion_key" value="ZINCTCTRADER4_completion_key"/>
+
+		<action type="TrackQuest"/>	
+		
+		<!--<action type="ShowMessageWindow">
+			<property name="message" value="ZINCTCTRADER4_message"/>
+			<property name="title" value="ZINCTCTRADER4_title"/>
+			<property name="delay" value="3"/>
+		</action>-->
+		
+		<objective type="ClosestPOIGoto">
+			<property name="distance" value="10"/>
+			<!--<property name="location_tag" value="TraderRekt" param1="trader_tag" />
+			<property name="location_name" value="trader_rekt" />-->
+			<property name="phase" value="1"/>
+		</objective>
+
+		<objective type="InteractWithNPC">
+			<property name="phase" value="2"/>
+			<property name="nav_object" value="return_to_trader"/>
+			<property name="use_closest" value="true"/>
+		</objective>
+		
+		<action type="SetCVar">
+				<property name="cvar" value="ZINCTC9COMPLETED" />
+				<property name="value" value="1" />
+				<property name="on_complete" value="true"/>
+			</action>
+		
+		<reward type="Exp" value="666"/>
+	</quest>
+	<!--##The Cult Interactions-->
+	<!--##The Cult Quests-->
+		<quest id="ZINCRitual">
+	 	    <property name="name_key" value="ZINCRitual_name_key"/>
+		    <property name="subtitle_key" value="ZINCRitual_subtitle_key"/>
+		    <property name="description_key" value="ZINCRitual_description_key"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="true"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="very Hard"/>	
+		    <!--<property name="difficulty_tier" value="1"/>	-->		
+		    <property name="offer_key" value="ZINCRitual_offer_key"/>
+			<!--<property name="statement_key" value="ZINCRitual_statement"/>
+		    <property name="response_key" value="ZINCRitual_response"/>-->
+		   <!-- <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="0" />-->
+			<property name="extra_tags" value="THECCULT,ZINCTC1"  />
+			<property name="shareable" value="false"/>			
+		    <property name="completiontype" value="AutoComplete"/>
+			<property name="quest_faction" value="6"/>
+			<!--<property name="completion_key" value="ZINCRitual_completion"/> -->
+									
+			<!--<objective type="Craft" id="ZombieINC_Ritual_Item" phase="1" count="1"/>-->
+			<action type="TrackQuest"/>	
+			
+			<action type="SetCVar" phase="1">
+				<property name="cvar" value="ZombieINC_spawnRitual_1_TheCult" />
+				<property name="value" value="1" />
+				<!--<property name="on_complete" value="false"/>-->
+			</action>
+			
+			<action type="GameEvent" id="ZombieINC_TC_RecipeSetCvar_Event" phase="1"/>
+			
+			<objective type="Craft" phase="1">
+				<property name="item" value="ZombieINC_spawnRitual_1_TheCult"/>
+				<property name="count" value="1"/>
+				<property name="hidden" value="false"/>
+			</objective>											
+		<reward type="Exp" value="666"/>	
+		</quest>
+		<quest id="ZINCPriest">
+	 	    <property name="name_key" value="ZINCPriest_name_key"/>
+		    <property name="subtitle_key" value="ZINCPriest_subtitle_key"/>
+		    <property name="description_key" value="ZINCPriest_description_key"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="true"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="very Hard"/>	
+		    <property name="difficulty_tier" value="1"/>			
+		    <property name="offer_key" value="ZINCPriest_offer_key"/>
+			<property name="statement_key" value="ZINCPriest_statement_key"/>
+		    <property name="response_key" value="ZINCPriest_response_key"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="0" />
+			<property name="extra_tags" value="THECULT,ZINCTC2"  />
+			<property name="shareable" value="true"/>			
+		    <property name="completiontype" value="TurnIn"/>
+			<property name="completion_key" value="ZINCPriest_completion_key"/> 
+			<!--<property name="quest_type" value="thecult"/>-->
+			<property name="add_to_tier_complete" value="false"/>
+			<!--<property name="single_quest" value="true"/>-->
+			<!--<property name="always_allow" value="true"/>-->
+			<!--<property name="quest_faction" value="6"/>-->
+			<!--<property name="unique_key" value="ZINCPriest"/>-->
+			
+			<objective type="RandomGotoNPC" phase="1">
+				<property name="completion_distance" value="20"/>
+				<property name="distance" value="350-600"/>
+				<property name="biome_filter_type" value="OnlyBiome"/>
+				<property name="biome_filter" value="pine_forest"/>
+				<property name="nav_object" value="quest" />
+			</objective>	
+	
+			<objective type="RallyPoint" phase="2">
+				<property name="start_mode" value="Create"/>
+				<property name="nav_object" value="rally" />
+				<!--<property name="activate_event" value="quest_treasure_replace_road"/>-->
+				<property name="activate_event" value="ZombieINC_Activate_Event_Ritual_AnchorBuried"/>
+				<property name="rally_marker_type" value="questRallyMarkerBuriedSupplies"/>
+			</objective>
+					
+			<objective type="StayWithin" phase="3">
+				<property name="radius" value="40"/>
+			</objective>
+
+			<objective type="TreasureChest" phase="3">
+				<property name="block" value="ZombieINC_BuriedChest_Priest"/>
+				<property name="default_radius" value="3"/>
+				<property name="container_type" value="Supplies"/>
+				<property name="nav_object" value="treasure" />
+				<property name="direct_nav_object" value="treasure_direct" />
+				<property name="blocks_per_reduction" value="1" />
+				<property name="radius_reduction_sound" value="ui_radius_shrink" />
+				<property name="use_nearby" value="true" />
+			</objective>
+		
+			<objective type="StayWithin" phase="4">
+				<property name="radius" value="40"/>
+			</objective>
+			<objective type="Time" phase="4">
+				<property name="time" value="3"/>
+			</objective>
+			<!--<objective type="FetchFromTreasure" phase="4">	        
+				<property name="block" value="ZombieINC_BuriedChest_Priest"/>
+				<property name="quest_item_ID" value="1"/>
+				<property name="item_count" value="1"/>
+			</objective>-->	
+			
+			
+			
+			<objective type="StayWithin" phase="5">
+				<property name="radius" value="40"/>
+			</objective>
+			
+			<objective type="EntityKill" phase="5">
+				<property name="objective_name_key" value="ZombieINC_KillBossPriest_key" />
+				<property name="needed_count" value="1" />           
+				<property name="target_tags" value="BossPriest"/>						  
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_BossRitual_WaitForDead_Quest" phase="6"/>
+			
+			<objective type="ReturnToNPC">
+				<property name="phase" value="6"/>
+				<property name="nav_object" value="ZombieINC_return_to_ritual" />
+			</objective>
+
+			<objective type="InteractWithNPC">
+				<property name="phase" value="6"/>
+				<property name="nav_object" value="ZombieINC_return_to_ritual" />
+			</objective>
+			
+			<!--<objective type="Goto" value="5" phase="6">
+				<property name="nav_object" value="go_to_trader"/>
+				<property name="biome_filter_type" value="AnyBiome" param1="biome_filter_type"/>
+			</objective>-->
+			
+			<action type="SetCVar">
+				<property name="cvar" value="ZINCTC2COMPLETED" />
+				<property name="value" value="1" />
+				<property name="on_complete" value="true"/>
+			</action>
+			
+		<reward type="Exp" value="666"/>
+		<reward type="Quest" id="ZINCTCTRADER1" />
+		
+		<reward type="Item" id="ZombieINC_armorRaiderHelmet" value="1" />
+		<!--<reward type="Quest" id="ZINCMotherInfestedUnlock" />	
+		<reward type="Quest" id="ZINCPenitenceInfestedUnlock" />	
+		<reward type="Quest" id="ZINCFarmerInfestedUnlock" />	
+		<reward type="Quest" id="ZINCFatherInfestedUnlock" />	-->
+	</quest>
+	
+	<quest id="ZINCRitual2">
+	 	    <property name="name_key" value="ZINCRitual_name_key"/>
+		    <property name="subtitle_key" value="ZINCRitual_subtitle_key"/>
+		    <property name="description_key" value="ZINCRitual_description_key"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="true"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="very Hard"/>	
+		    <!--<property name="difficulty_tier" value="1"/>	-->		
+		    <property name="offer_key" value="ZINCRitual_offer_key"/>
+			<!--<property name="statement_key" value="ZINCRitual_statement"/>
+		    <property name="response_key" value="ZINCRitual_response"/>-->
+		   <!-- <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="0" />-->
+			<property name="extra_tags" value="THECULT,ZINCTC1"  />
+			<property name="shareable" value="false"/>			
+		    <property name="completiontype" value="AutoComplete"/>
+			<!--<property name="completion_key" value="ZINCRitual_completion"/> -->
+									
+			<!--<objective type="Craft" id="ZombieINC_Ritual_Item" phase="1" count="1"/>-->
+			<action type="TrackQuest"/>	
+			
+			<objective type="Craft" phase="1">
+				<property name="item" value="ZombieINC_Ritual_ItemNorth"/>
+				<property name="count" value="1"/>
+				<property name="hidden" value="false"/>
+			</objective>
+			<objective type="Craft" phase="1">
+				<property name="item" value="ZombieINC_Ritual_ItemSideA"/>
+				<property name="count" value="1"/>
+				<property name="hidden" value="false"/>
+			</objective>	
+			<objective type="Craft" phase="1">
+				<property name="item" value="ZombieINC_Ritual_ItemSideB"/>
+				<property name="count" value="1"/>
+				<property name="hidden" value="false"/>
+			</objective>	
+			<objective type="Craft" phase="1">
+				<property name="item" value="ZombieINC_Ritual_ItemBottomA"/>
+				<property name="count" value="1"/>
+				<property name="hidden" value="false"/>
+			</objective>	
+			<objective type="Craft" phase="1">
+				<property name="item" value="ZombieINC_Ritual_ItemBottomB"/>
+				<property name="count" value="1"/>
+				<property name="hidden" value="false"/>
+			</objective>	
+		<reward type="Exp" value="666"/>	
+		</quest>
+	<quest id="ZINCMotherInfestedUnlock">
+	 	    <property name="name_key" value="ZINCMotherInfestedUnlock_name_key"/>
+		    <property name="subtitle_key" value="ZINCMotherInfestedUnlock_subtitle_key"/>
+		    <property name="description_key" value="ZINCMotherInfestedUnlock_description_key"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="true"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="very Hard"/>
+			<property name="extra_tags" value="THECULTU,ZINCTC3"  />
+		    <property name="allow_remove" value="false" />
+			<property name="quest_faction" value="6"/>
+		    <property name="offer_key" value="ZINCMotherInfestedUnlock_offer_key"/>
+		    
+			<property name="shareable" value="false"/>
+			
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZINCMotherInfestedUnlock_completion_key"/> 
+									
+			<objective type="EntityKill" phase="1">
+				<property name="objective_name_key" value="ZINCMotherInfestedUnlock_objective_name_key" />
+				<property name="needed_count" value="3" />           
+				<property name="target_tags" value="Screamer"/>
+				<property name="hidden" value="false"/>
+			</objective>
+												
+			<objective type="ReturnToNPC">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="ZombieINC_return_to_ritual" />
+			</objective>
+
+			<objective type="InteractWithNPC">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="ZombieINC_return_to_ritual" />
+			</objective>
+			
+			<action type="SetCVar">
+				<property name="cvar" value="ZINCTC3COMPLETED" />
+				<property name="value" value="1" />
+				<property name="on_complete" value="true"/>
+			</action>
+			
+		<reward type="Exp" value="6060"/>
+		<!--<reward type="Item" id="ZombieINC_Quest_MotherInfested" value="1"/>	-->
+	</quest>
+		<quest id="ZINCMotherInfested">
+	 	    <property name="name_key" value="ZINCMotherInfested_name_key"/>
+		    <property name="subtitle_key" value="ZINCMotherInfested_subtitle_key"/>
+		    <property name="description_key" value="ZINCMotherInfested_description_key"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="true"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="very Hard"/>
+			 <property name="difficulty_tier" value="1"/>		
+			<property name="extra_tags" value="THECULT,ZINCTC4"  />
+		    <property name="add_to_tier_complete" value="false"/>
+		    <property name="offer_key" value="ZINCMotherInfested_offer_key"/>
+			<!--<property name="quest_faction" value="6"/>
+			<property name="single_quest" value="true"/>
+			<property name="always_allow" value="true"/>
+			<property name="unique_key" value="ZINCMother"/>-->
+			
+			<property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="0" />
+			
+			<property name="statement_key" value="ZINCMotherInfested_statement_key"/>
+		    <property name="response_key" value="ZINCMotherInfested_response_key"/>
+			<property name="completion_key" value="ZINCMotherInfested_completion_key"/> 
+			
+			<property name="shareable" value="true"/>
+		<!--	<property name="quest_type" value="thecult"/>-->
+		    <property name="completiontype" value="TurnIn"/>
+		 
+									
+			<objective type="RandomGotoNPC" phase="1">
+				<property name="completion_distance" value="20"/>
+				<property name="distance" value="350-600"/>
+				<property name="biome_filter_type" value="OnlyBiome"/>
+				<property name="biome_filter" value="pine_forest"/>
+				<property name="nav_object" value="quest" />
+			</objective>	
+	
+			<objective type="RallyPoint" phase="2">
+				<property name="start_mode" value="Create"/>
+				<property name="nav_object" value="rally" />
+				<!--<property name="activate_event" value="quest_treasure_replace_road"/>-->
+				<property name="activate_event" value="ZombieINC_Activate_Event_Ritual_AnchorBuried"/>
+				<property name="rally_marker_type" value="questRallyMarkerBuriedSupplies"/>
+			</objective>
+					
+			<objective type="StayWithin" phase="3">
+				<property name="radius" value="40"/>
+			</objective>
+
+			<objective type="TreasureChest" phase="3">
+				<property name="block" value="ZombieINC_BuriedChest_MotherInfested"/>
+				<property name="default_radius" value="3"/>
+				<property name="container_type" value="Supplies"/>
+				<property name="nav_object" value="treasure" />
+				<property name="direct_nav_object" value="treasure_direct" />
+				<property name="blocks_per_reduction" value="1" />
+				<property name="radius_reduction_sound" value="ui_radius_shrink" />
+				<property name="use_nearby" value="true" />
+			</objective>
+		
+			<objective type="StayWithin" phase="4">
+				<property name="radius" value="40"/>
+			</objective>
+			<objective type="Time" phase="4">
+				<property name="time" value="3"/>
+			</objective>
+			<!--<objective type="FetchFromTreasure" phase="4">	        
+				<property name="block" value="ZombieINC_BuriedChest_MotherInfested"/>
+				<property name="quest_item_ID" value="1"/>
+				<property name="item_count" value="1"/>
+			</objective>	-->
+									
+			<objective type="StayWithin" phase="5">
+				<property name="radius" value="40"/>
+			</objective>
+			
+			<objective type="EntityKill" phase="5">
+				<property name="objective_name_key" value="ZombieINC_KillBossMotherInfested_key" />
+				<property name="needed_count" value="1" />           
+				<property name="target_tags" value="BossMotherInfested"/>						  
+			</objective>
+									
+			<action type="GameEvent" id="ZombieINC_BossRitual_WaitForDead_Quest" phase="6"/>
+									
+			<objective type="ReturnToNPC">
+				<property name="phase" value="6"/>
+				<property name="nav_object" value="ZombieINC_return_to_ritual" />
+			</objective>
+
+			<objective type="InteractWithNPC">
+				<property name="phase" value="6"/>
+				<property name="nav_object" value="ZombieINC_return_to_ritual" />
+			</objective>
+			
+			<action type="SetCVar">
+				<property name="cvar" value="ZINCTC4COMPLETED" />
+				<property name="value" value="1" />
+				<property name="on_complete" value="true"/>
+			</action>
+			
+		<reward type="Exp" value="6060"/>
+		<!--<reward type="Item" id="casinoCoin" value="3000"/>-->
+		<reward type="Quest" id="ZINCTCTRADER2" />
+		<reward type="Item" id="ZombieINC_candle" value="1" />	
+	</quest>
+	<quest id="ZINCPenitenceInfestedUnlock">
+	 	    <property name="name_key" value="ZINCPenitenceInfestedUnlock_name_key"/>
+		    <property name="subtitle_key" value="ZINCPenitenceInfestedUnlock_subtitle_key"/>
+		    <property name="description_key" value="ZINCPenitenceInfestedUnlock_description_key"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="true"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="very Hard"/>
+			<property name="extra_tags" value="THECULTU,ZINCTC5"  />
+			<property name="allow_remove" value="false" />
+		    <property name="offer_key" value="ZINCPenitenceInfestedUnlock_offer_key"/>
+		    <property name="quest_faction" value="6"/>
+			<property name="shareable" value="false"/>
+			
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZINCPenitenceInfestedUnlock_completion_key"/> 
+									
+			<!--<objective type="EntityKill" phase="1">
+				<property name="objective_name_key" value="ZINCPenitenceInfestedUnlock_objective_name_key" />
+				<property name="needed_count" value="7" />           
+				<property name="target_tags" value="Screamer"/>
+				<property name="hidden" value="false"/>
+			</objective>-->
+			
+			<objective type="Craft" phase="1">
+				<property name="item" value="trapSpikesWoodDmg0"/>
+				<property name="count" value="50"/>
+				<property name="hidden" value="false"/>
+			</objective>	
+			
+			<objective type="Craft" phase="1">
+				<property name="item" value="trapSpikesIronDmg0"/>
+				<property name="count" value="50"/>
+				<property name="hidden" value="false"/>
+			</objective>
+			
+			<objective type="ReturnToNPC">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="ZombieINC_return_to_ritual" />
+			</objective>
+
+			<objective type="InteractWithNPC">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="ZombieINC_return_to_ritual" />
+			</objective>
+			
+			<action type="SetCVar">
+				<property name="cvar" value="ZINCTC5COMPLETED" />
+				<property name="value" value="1" />
+				<property name="on_complete" value="true"/>
+			</action>
+			
+		<reward type="Exp" value="6060"/>
+		<!--<reward type="Item" id="ZombieINC_Quest_PenitenceInfested" value="1"/>	-->
+	</quest>
+		<quest id="ZINCPenitenceInfested">
+	 	    <property name="name_key" value="ZINCPenitenceInfested_name_key"/>
+		    <property name="subtitle_key" value="ZINCPenitenceInfested_subtitle_key"/>
+		    <property name="description_key" value="ZINCPenitenceInfested_description_key"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="true"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="very Hard"/>
+			 <property name="difficulty_tier" value="1"/>		
+			<property name="extra_tags" value="THECULT,ZINCTC6"  />
+			<property name="add_to_tier_complete" value="false"/>
+		    <property name="offer_key" value="ZINCPenitenceInfested_offer_key"/>
+		   <!-- <property name="quest_faction" value="6"/>
+			<property name="single_quest" value="true"/>
+			<property name="always_allow" value="true"/>
+			<property name="unique_key" value="ZINCPenitence"/>-->
+			
+			<property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="0" />
+			
+			<property name="statement_key" value="ZINCPenitenceInfested_statement_key"/>
+		    <property name="response_key" value="ZINCPenitenceInfested_response_key"/>
+			<property name="completion_key" value="ZINCPenitenceInfested_completion_key"/> 
+			
+			<property name="shareable" value="true"/>
+		<!--	<property name="quest_type" value="thecult"/>-->
+		    <property name="completiontype" value="TurnIn"/>
+		 
+									
+			<objective type="RandomGotoNPC" phase="1">
+				<property name="completion_distance" value="20"/>
+				<property name="distance" value="350-600"/>
+				<property name="biome_filter_type" value="OnlyBiome"/>
+				<property name="biome_filter" value="pine_forest"/>
+				<property name="nav_object" value="quest" />
+			</objective>	
+	
+			<objective type="RallyPoint" phase="2">
+				<property name="start_mode" value="Create"/>
+				<property name="nav_object" value="rally" />
+				<!--<property name="activate_event" value="quest_treasure_replace_road"/>-->
+				<property name="activate_event" value="ZombieINC_Activate_Event_Ritual_AnchorBuried"/>
+				<property name="rally_marker_type" value="questRallyMarkerBuriedSupplies"/>
+			</objective>
+					
+			<objective type="StayWithin" phase="3">
+				<property name="radius" value="40"/>
+			</objective>
+
+			<objective type="TreasureChest" phase="3">
+				<property name="block" value="ZombieINC_BuriedChest_PenitenceInfested"/>
+				<property name="default_radius" value="3"/>
+				<property name="container_type" value="Supplies"/>
+				<property name="nav_object" value="treasure" />
+				<property name="direct_nav_object" value="treasure_direct" />
+				<property name="blocks_per_reduction" value="1" />
+				<property name="radius_reduction_sound" value="ui_radius_shrink" />
+				<property name="use_nearby" value="true" />
+			</objective>
+		
+			<objective type="StayWithin" phase="4">
+				<property name="radius" value="40"/>
+			</objective>
+			<objective type="Time" phase="4">
+				<property name="time" value="3"/>
+			</objective>
+			<!--<objective type="FetchFromTreasure" phase="4">	        
+				<property name="block" value="ZombieINC_BuriedChest_PenitenceInfested"/>
+				<property name="quest_item_ID" value="1"/>
+				<property name="item_count" value="1"/>
+			</objective>	-->
+									
+			<objective type="StayWithin" phase="5">
+				<property name="radius" value="40"/>
+			</objective>
+			
+			<objective type="EntityKill" phase="5">
+				<property name="objective_name_key" value="ZombieINC_KillBossPenitenceInfested_key" />
+				<property name="needed_count" value="1" />           
+				<property name="target_tags" value="BossPenitenceInfested"/>						  
+			</objective>
+				
+			<action type="GameEvent" id="ZombieINC_BossRitual_WaitForDead_Quest" phase="6"/>
+				
+			<objective type="ReturnToNPC">
+				<property name="phase" value="6"/>
+				<property name="nav_object" value="ZombieINC_return_to_ritual" />
+			</objective>
+
+			<objective type="InteractWithNPC">
+				<property name="phase" value="6"/>
+				<property name="nav_object" value="ZombieINC_return_to_ritual" />
+			</objective>
+			
+			<action type="SetCVar">
+				<property name="cvar" value="ZINCTC6COMPLETED" />
+				<property name="value" value="1" />
+				<property name="on_complete" value="true"/>
+			</action>
+			
+		<reward type="Exp" value="6060"/>
+		<!--<reward type="Item" id="casinoCoin" value="3000"/>-->
+		<reward type="Quest" id="ZINCTCTRADER3" />
+		<reward type="Item" id="ZombieINC_armorPreacherBoots" value="1" />	
+	</quest>
+	<quest id="ZINCFarmerInfestedUnlock">
+	 	    <property name="name_key" value="ZINCFarmerInfestedUnlock_name_key"/>
+		    <property name="subtitle_key" value="ZINCFarmerInfestedUnlock_subtitle_key"/>
+		    <property name="description_key" value="ZINCFarmerInfestedUnlock_description_key"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="true"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="very Hard"/>
+			<property name="extra_tags" value="THECULTU,ZINCTC7"  />
+			<property name="allow_remove" value="false" />
+		    <property name="offer_key" value="ZINCFarmerInfestedUnlock_offer_key"/>
+		   <property name="quest_faction" value="6"/>
+			<property name="shareable" value="false"/>
+			
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZINCFarmerInfestedUnlock_completion_key"/> 
+									
+			<objective type="EntityKill" phase="1">
+				<property name="objective_name_key" value="ZINCFarmerInfestedUnlock1_objective_name_key" />
+				<property name="needed_count" value="7" />           
+				<property name="target_tags" value="boar"/>
+				<property name="hidden" value="false"/>
+			</objective>
+			
+			<objective type="EntityKill" phase="1">
+				<property name="objective_name_key" value="ZINCFarmerInfestedUnlock2_objective_name_key" />
+				<property name="needed_count" value="7" />           
+				<property name="target_tags" value="chicken"/>
+				<property name="hidden" value="false"/>
+			</objective>
+			
+			<objective type="EntityKill" phase="1">
+				<property name="objective_name_key" value="ZINCFarmerInfestedUnlock3_objective_name_key" />
+				<property name="needed_count" value="7" />           
+				<property name="target_tags" value="bear"/>	
+				<property name="hidden" value="false"/>
+			</objective>
+			
+			<objective type="EntityKill" phase="1">
+				<property name="objective_name_key" value="ZINCFarmerInfestedUnlock4_objective_name_key" />
+				<property name="needed_count" value="7" />           
+				<property name="target_tags" value="wolf,dog"/>	
+				<property name="hidden" value="false"/>
+			</objective>
+			
+			<objective type="ReturnToNPC">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="ZombieINC_return_to_ritual" />
+			</objective>
+
+			<objective type="InteractWithNPC">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="ZombieINC_return_to_ritual" />
+			</objective>
+			
+			<action type="SetCVar">
+				<property name="cvar" value="ZINCTC7COMPLETED" />
+				<property name="value" value="1" />
+				<property name="on_complete" value="true"/>
+			</action>
+			
+		<reward type="Exp" value="6060"/>
+	<!--	<reward type="Item" id="ZombieINC_Quest_FarmerInfested" value="1"/>	-->
+	</quest>
+	<quest id="ZINCFarmerInfested">
+	 	    <property name="name_key" value="ZINCFarmerInfested_name_key"/>
+		    <property name="subtitle_key" value="ZINCFarmerInfested_subtitle_key"/>
+		    <property name="description_key" value="ZINCFarmerInfested_description_key"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="true"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="very Hard"/>
+			 <property name="difficulty_tier" value="1"/>		
+		    <property name="offer_key" value="ZINCFarmerInfested_offer_key"/>  
+			<!--<property name="quest_faction" value="6"/>-->
+			<property name="statement_key" value="ZINCFarmerInfested_statement_key"/>
+		    <property name="response_key" value="ZINCFarmerInfested_response_key"/>
+			
+			<!--<property name="single_quest" value="true"/>
+			<property name="always_allow" value="true"/>
+			<property name="unique_key" value="ZINCFarmer"/>-->
+			
+			<property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="0" />
+			
+			<property name="shareable" value="true"/>	
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZINCFarmerInfested_completion_key"/> 
+			<property name="extra_tags" value="THECULT,ZINCTC8"  />
+			<!--<property name="quest_type" value="thecult"/>-->
+			<property name="add_to_tier_complete" value="false"/>
+			
+			<objective type="RandomGotoNPC" phase="1">
+				<property name="completion_distance" value="20"/>
+				<property name="distance" value="350-600"/>
+				<property name="biome_filter_type" value="OnlyBiome"/>
+				<property name="biome_filter" value="pine_forest"/>
+				<property name="nav_object" value="quest" />
+			</objective>	
+	
+			<objective type="RallyPoint" phase="2">
+				<property name="start_mode" value="Create"/>
+				<property name="nav_object" value="rally" />
+				<!--<property name="activate_event" value="quest_treasure_replace_road"/>-->
+				<property name="activate_event" value="ZombieINC_Activate_Event_Ritual_AnchorBuried_TreeReplacer"/>
+				<property name="rally_marker_type" value="questRallyMarkerBuriedSupplies"/>
+			</objective>
+					
+			<objective type="StayWithin" phase="3">
+				<property name="radius" value="40"/>
+			</objective>
+
+			<objective type="TreasureChest" phase="3">
+				<property name="block" value="ZombieINC_BuriedChest_FarmerInfested"/>
+				<property name="default_radius" value="3"/>
+				<property name="container_type" value="Supplies"/>
+				<property name="nav_object" value="treasure" />
+				<property name="direct_nav_object" value="treasure_direct" />
+				<property name="blocks_per_reduction" value="1" />
+				<property name="radius_reduction_sound" value="ui_radius_shrink" />
+				<property name="use_nearby" value="true" />
+			</objective>
+		
+			<objective type="StayWithin" phase="4">
+				<property name="radius" value="40"/>
+			</objective>
+			<objective type="Time" phase="4">
+				<property name="time" value="3"/>
+			</objective>
+			<!--<objective type="FetchFromTreasure" phase="4">	        
+				<property name="block" value="ZombieINC_BuriedChest_FarmerInfested"/>
+				<property name="quest_item_ID" value="1"/>
+				<property name="item_count" value="1"/>
+			</objective>-->	
+									
+			<objective type="StayWithin" phase="5">
+				<property name="radius" value="40"/>
+			</objective>
+			
+			<objective type="EntityKill" phase="5">
+				<property name="objective_name_key" value="ZombieINC_KillBossFarmerInfested_key" />
+				<property name="needed_count" value="1" />           
+				<property name="target_tags" value="BossFarmerInfested"/>						  
+			</objective>
+				
+			<action type="GameEvent" id="ZombieINC_BossRitual_WaitForDead_Quest" phase="6"/>
+				
+			<objective type="ReturnToNPC">
+				<property name="phase" value="6"/>
+				<property name="nav_object" value="ZombieINC_return_to_ritual" />
+			</objective>
+
+			<objective type="InteractWithNPC">
+				<property name="phase" value="6"/>
+				<property name="nav_object" value="ZombieINC_return_to_ritual" />
+			</objective>
+			
+			<action type="SetCVar">
+				<property name="cvar" value="ZINCTC8COMPLETED" />
+				<property name="value" value="1" />
+				<property name="on_complete" value="true"/>
+			</action>
+			
+		<reward type="Exp" value="6060"/>
+		<!--<reward type="Item" id="casinoCoin" value="3000"/>-->
+		<reward type="Quest" id="ZINCTCTRADER4" />
+		
+		<reward type="Item" id="ZombieINC_armorPreacherGloves" value="1" />	
+	</quest>
+	<quest id="ZINCFatherInfestedUnlock">
+	 	    <property name="name_key" value="ZINCFatherInfestedUnlock_name_key"/>
+		    <property name="subtitle_key" value="ZINCFatherInfestedUnlock_subtitle_key"/>
+		    <property name="description_key" value="ZINCFatherInfestedUnlock_description_key"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="true"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="very Hard"/> 
+		    <property name="offer_key" value="ZINCFatherInfestedUnlock_offer_key"/>	   
+			<property name="shareable" value="false"/>
+			<property name="extra_tags" value="THECULTU,ZINCTC9"  />
+			<property name="allow_remove" value="false" />
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZINCFatherInfestedUnlock_completion_key"/> 
+			<property name="quest_faction" value="6"/>
+				
+			<objective type="EntityKill" phase="1">
+				<property name="objective_name_key" value="ZINCFatherInfestedUnlock1_objective_name_key" />
+				<property name="needed_count" value="1" />           
+				<property name="target_tags" value="BossWitchInfested"/>
+				<property name="hidden" value="false"/>				
+			</objective>
+			
+			<objective type="EntityKill" phase="1">
+				<property name="objective_name_key" value="ZINCFatherInfestedUnlock2_objective_name_key" />
+				<property name="needed_count" value="1" />           
+				<property name="target_tags" value="BossPenitenceInfested"/>						  
+				<property name="hidden" value="false"/>
+			</objective>
+			
+			<objective type="EntityKill" phase="1">
+				<property name="objective_name_key" value="ZINCFatherInfestedUnlock3_objective_name_key" />
+				<property name="needed_count" value="1" />           
+				<property name="target_tags" value="BossFarmerInfested"/>						  
+				<property name="hidden" value="false"/>
+			</objective>
+			
+			<objective type="ReturnToNPC">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="ZombieINC_return_to_ritual" />
+			</objective>
+
+			<objective type="InteractWithNPC">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="ZombieINC_return_to_ritual" />
+			</objective>
+			
+			<action type="SetCVar">
+				<property name="cvar" value="ZINCTC9COMPLETED" />
+				<property name="value" value="1" />
+				<property name="on_complete" value="true"/>
+			</action>
+			
+		<reward type="Exp" value="6060"/>
+		<!--<reward type="Item" id="ZombieINC_Quest_FatherInfested" value="1"/>	-->		
+	</quest>
+		<quest id="ZINCFatherInfested">
+	 	    <property name="name_key" value="ZINCFatherInfested_name_key"/>
+		    <property name="subtitle_key" value="ZINCFatherInfested_subtitle_key"/>
+		    <property name="description_key" value="ZINCFatherInfested_description_key"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="true"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="very Hard"/>
+			<property name="difficulty_tier" value="1"/>		
+		    <property name="offer_key" value="ZINCFatherInfested_offer_key"/>	
+		<!--	<property name="quest_faction" value="6"/>
+			<property name="single_quest" value="true"/>
+			<property name="always_allow" value="true"/>
+			<property name="unique_key" value="ZINCFather"/>-->
+			<property name="reward_choices_count" value="0" />
+			<property name="statement_key" value="ZINCFatherInfested_statement_key"/>
+		    <property name="response_key" value="ZINCFatherInfested_response_key"/>
+			<property name="completion_key" value="ZINCFatherInfested_completion_key"/>
+			
+			<property name="login_rally_reset" value="true"/>		
+		
+			
+			<property name="shareable" value="true"/>		
+		    <property name="completiontype" value="TurnIn"/>
+			<property name="extra_tags" value="THECULT,ZINCTC10"  />
+			<!--<property name="quest_type" value="thecult"/>-->
+			<property name="add_to_tier_complete" value="false"/>
+			
+			<objective type="RandomGotoNPC" phase="1">
+				<property name="completion_distance" value="20"/>
+				<property name="distance" value="350-600"/>
+				<property name="biome_filter_type" value="OnlyBiome"/>
+				<property name="biome_filter" value="pine_forest"/>
+				<property name="nav_object" value="quest" />
+			</objective>	
+	
+			<objective type="RallyPoint" phase="2">
+				<property name="start_mode" value="Create"/>
+				<property name="nav_object" value="rally" />
+				<!--<property name="activate_event" value="quest_treasure_replace_road"/>-->
+				<property name="activate_event" value="ZombieINC_Activate_Event_Ritual_AnchorBuried_TreeReplacer"/>
+				<property name="rally_marker_type" value="questRallyMarkerBuriedSupplies"/>
+			</objective>
+					
+			<objective type="StayWithin" phase="3">
+				<property name="radius" value="40"/>
+			</objective>
+
+			<objective type="TreasureChest" phase="3">
+				<property name="block" value="ZombieINC_BuriedChest_FatherInfested"/>
+				<property name="default_radius" value="3"/>
+				<property name="container_type" value="Supplies"/>
+				<property name="nav_object" value="treasure" />
+				<property name="direct_nav_object" value="treasure_direct" />
+				<property name="blocks_per_reduction" value="1" />
+				<property name="radius_reduction_sound" value="ui_radius_shrink" />
+				<property name="use_nearby" value="true" />
+			</objective>
+		
+			<objective type="StayWithin" phase="4">
+				<property name="radius" value="40"/>
+			</objective>
+			<objective type="Time" phase="4">
+				<property name="time" value="3"/>
+			</objective>
+			<!--<objective type="FetchFromTreasure" phase="4">	        
+				<property name="block" value="ZombieINC_BuriedChest_FatherInfested"/>
+				<property name="quest_item_ID" value="1"/>
+				<property name="item_count" value="1"/>
+			</objective>-->	
+									
+			<objective type="StayWithin" phase="5">
+				<property name="radius" value="40"/>
+			</objective>
+			
+			<objective type="EntityKill" phase="5">
+				<property name="objective_name_key" value="ZombieINC_KillBossFatherInfested_key" />
+				<property name="needed_count" value="1" />           
+				<property name="target_tags" value="BossFatherInfested"/>						  
+			</objective>
+				
+			<action type="GameEvent" id="ZombieINC_BossRitual_WaitForDead_Quest" phase="6"/>
+				
+			<objective type="ReturnToNPC">
+				<property name="phase" value="6"/>
+				<property name="nav_object" value="ZombieINC_return_to_ritual" />
+			</objective>
+
+			<objective type="InteractWithNPC">
+				<property name="phase" value="6"/>
+				<property name="nav_object" value="ZombieINC_return_to_ritual" />
+			</objective>
+			
+			<action type="SetCVar">
+				<property name="cvar" value="ZINCTC10COMPLETED" />
+				<property name="value" value="1" />
+				<property name="on_complete" value="true"/>
+			</action>
+			
+		<reward type="Exp" value="6060"/>
+		
+		
+		<reward type="Item" id="ZombieINC_armorPreacherOutfit" value="1" />
+	</quest>
+	
+	
+	<!--The Cult-->	
+	
+	<quest id="ZINCBoneKnife"> 
+		    <property name="name_key" value="ZombieINC_challenge_BoneKnife_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_BoneKnife_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_BoneKnife_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="true"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="1"/>
+		    <property name="offer_key" value="ZombieINC_challenge_BoneKnife_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_BoneKnife_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_BoneKnife_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value=""  />
+			<property name="shareable" value="false"/>
+			<property name="add_to_tier_complete" value="false" />
+				
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_BoneKnife_completion"/>
+			
+			<objective type="RandomGotoNPC" phase="1">
+				<property name="completion_distance" value="20"/>
+				<property name="distance" value="250-500"/>
+				<property name="nav_object" value="quest" />
+			</objective>	
+	
+			<objective type="RallyPoint">
+				<property name="start_mode" value="Create"/>
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="rally" />
+				<property name="rally_marker_type" value="questRallyMarkerBuriedSupplies"/>
+			</objective>
+			                				
+			<objective type="StayWithin">
+				<property name="phase" value="3"/>
+				<property name="radius" value="50"/>
+			</objective>
+
+			<objective type="TreasureChest">
+				<property name="phase" value="3" />
+				<property name="block" value="cntBuriedFoodStashChest"/>
+				<property name="default_radius" value="9"/>
+				<property name="container_type" value="Supplies"/>
+				<property name="nav_object" value="treasure" />
+				<property name="direct_nav_object" value="treasure_direct" />
+				<property name="blocks_per_reduction" value="1" />
+				<property name="radius_reduction_sound" value="ui_radius_shrink" />
+				<property name="use_nearby" value="true" />
+			</objective>
+		
+			<objective type="StayWithin">
+				<property name="phase" value="4"/>
+				<property name="radius" value="50"/>
+			</objective>
+			<objective type="Time" phase="4">
+				<property name="time" value="3"/>
+			</objective>
+			<!--<objective type="FetchFromTreasure">	        
+				<property name="phase" value="4" />
+				<property name="block" value="cntBuriedFoodStashChest"/>
+				<property name="quest_item_ID" value="1"/>
+				<property name="item_count" value="1"/>
+			</objective>-->
+			
+			<action type="GameEvent" id="ZombieINC_WS_BoneKnife_FEPBuff_Event" phase="5"/>
+			
+			<objective type="StayWithin">
+				<property name="phase" value="5"/>
+				<property name="radius" value="50"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_InMissionWeaponSignature_AddBuffEvent" phase="5"/>
+			<action type="GameEvent" id="ZombieINC_FogBoneKnife_AddBuffEvent" phase="5"/>
+			<action type="GameEvent" id="ZombieINC_Cultist1BoneKnife_AddSpawnerBuffEvent" phase="5"/>
+			<action type="GameEvent" id="ZombieINC_MiniBossBoneKnife_AddSpawnerBuffEvent" phase="5"/>
+			<objective type="EntityKill" phase="5">
+				<property name="objective_name_key" value="ZombieINC_KillMiniBossBoneKnife_key" />
+				<property name="needed_count" value="1" />
+				<property name="target_tags" value="MiniBossBoneKnife"/>			
+			</objective>
+			
+			<objective type="StayWithin">
+				<property name="phase" value="6"/>
+				<property name="radius" value="50"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_InMissionWeaponSignature_AddBuffEvent" phase="6"/>
+			<action type="GameEvent" id="ZombieINC_BoneKnife_AddItemEvent" phase="6"/>
+			<requirement type="Quests.Requirements.Holding" id="ZombieINC_meleeWpnBladeT0BoneKnife_Inactive" phase="6"/>
+			<objective type="EntityKill" phase="6">
+				<property name="objective_name_key" value="ZombieINC_KillCultistBoneKnife_key" />
+				<property name="needed_count" value="10" />
+				<property name="target_tags" value="zombie"/>			
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_BoneKnife_ReplaceKnifeEvent" phase="7"/>
+			<action type="GameEvent" id="ZombieINC_InMissionWeaponSignature_AddBuffEvent" phase="7"/>
+			<objective type="StayWithin">
+				<property name="phase" value="7"/>
+				<property name="radius" value="50"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_Cultist2BoneKnife_AddSpawnerBuffEvent" phase="7"/>
+			<requirement type="Quests.Requirements.Holding" id="ZombieINC_Mission_meleeWpnBladeT0BoneKnife" phase="7"/>
+			<objective type="EntityKill" phase="7">
+				<property name="objective_name_key" value="ZombieINC_KillCultist2BoneKnife_key" />
+				<property name="needed_count" value="20" />
+				<property name="target_tags" value="zombie"/>			
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_WS_BoneKnife_RemoveFEPBuff_Event" phase="8"/>
+			
+			<action type="GameEvent" id="ZombieINC_DefaultBoneKnife_SetWeatherEvent" phase="8"/>
+			<action type="GameEvent" id="ZombieINC_Cultist1BoneKnife_RemoveSpawnerBuffEvent" phase="8"/>
+			<action type="GameEvent" id="ZombieINC_Cultist2BoneKnife_RemoveSpawnerBuffEvent" phase="8"/>
+			<action type="GameEvent" id="ZombieINC_WeaponTest_BuffRemover" phase="8"/>
+			<action type="GameEvent" id="ZombieINC_FogBoneKnife_RemoveBuffEvent" phase="8"/>
+			<objective type="ReturnToNPC" phase="8">
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_RemoveKnifeBoneKnife_AddBuffEvent" phase="9"/>
+			
+			<objective type="InteractWithNPC" phase="9">
+				<property name="nav_object" value="return_to_trader" />						
+			</objective>
+    
+			<reward type="Exp" value="5000"/>
+			<reward type="Item" id="ZombieINC_meleeWpnBladeT0BoneKnife" value="1"/>
+	</quest>
+	</insertAfter>
+	<insertAfter xpath="/quests/quest_list[@id='trader_rekt_quests']">
+	<quest_list id="trader_ritual1_quests">		
+		<quest id="ZINCPriest"/>
+	</quest_list>
+	<quest_list id="trader_ritual2_quests">		
+		<quest id="ZINCMotherInfested"/>
+	</quest_list>
+	<quest_list id="trader_ritual3_quests">		
+		<quest id="ZINCPenitenceInfested"/>
+	</quest_list>
+	<quest_list id="trader_ritual4_quests">		
+		<quest id="ZINCFarmerInfested"/>
+	</quest_list>
+	<quest_list id="trader_ritual5_quests">		
+		<quest id="ZINCFatherInfested"/>
+	</quest_list>
+	<quest_list id="trader_ritual6_quests">		
+		<!--<quest id="ZINCFatherInfested"/>-->
+	</quest_list>
+	</insertAfter>
+</Config>

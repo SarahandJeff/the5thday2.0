@@ -1,0 +1,1134 @@
+<Config>
+
+<conditional>
+	<if cond="mod_loaded('mateusjobsmain') == 'false'">
+		<append xpath="/buffs">
+			<buff name="ZombieINC_MD_EnemyDotBuff">
+				<stack_type value="ignore"/>
+				<tags value="ZINC_MD_BUFFS_ENEMY" />
+				<effect_group>	
+					<triggered_effect trigger="onSelfBuffStart" action="SetNavObject" nav_object="ZombieINC_MD_EnemyDot" add="true" />	
+				</effect_group>
+			</buff>
+		</append>
+	</if>
+</conditional>
+
+<append xpath="/buffs">
+<!--###Main Module Progression Related-->
+	<buff name="ZombieINC_MD_T3_InQuest_Buff" hidden="true" icon="ui_game_symbol_clock" icon_color="185,40,45"> 
+		<stack_type value="replace"/>
+		<tags value="ZINC_MD_BUFFS" />
+		<effect_group>
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_perkMobileDefense4" operation="Equals" value="1"/>
+				<passive_effect name="LootQuantity" operation="perc_add" value="0.5" tags="ammo762mm" />
+				<passive_effect name="LootQuantity" operation="perc_add" value="0.5" tags="ammoShells" />
+				<passive_effect name="LootQuantity" operation="perc_add" value="0.5" tags="ammo9mm" />
+				<passive_effect name="LootQuantity" operation="perc_add" value="0.5" tags="ammo44Mag" />
+		</effect_group>
+		<effect_group>
+		    <triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_MD_T3_InQuest_Buff" />	
+		    <triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_MD_T3_InQuest_Buff" />	
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_T4_InQuest_Buff" hidden="true" icon="ui_game_symbol_clock" icon_color="185,40,45"> 
+		<stack_type value="replace"/>
+		<tags value="ZINC_MD_BUFFS" />
+		<effect_group>
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_perkMobileDefense4" operation="Equals" value="1"/>
+				<passive_effect name="LootQuantity" operation="perc_add" value="0.5" tags="ammo762mm" />
+				<passive_effect name="LootQuantity" operation="perc_add" value="0.5" tags="ammoShells" />
+				<passive_effect name="LootQuantity" operation="perc_add" value="0.5" tags="ammo9mm" />
+				<passive_effect name="LootQuantity" operation="perc_add" value="0.5" tags="ammo44Mag" />
+		</effect_group>
+		<effect_group>
+		    <triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_MD_T4_InQuest_Buff" />	
+		    <triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_MD_T4_InQuest_Buff" />	
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_T5_InQuest_Buff" hidden="true" icon="ui_game_symbol_clock" icon_color="185,40,45"> 
+		<stack_type value="replace"/>
+		<tags value="ZINC_MD_BUFFS" />
+		<effect_group>
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_perkMobileDefense4" operation="Equals" value="1"/>
+				<passive_effect name="LootQuantity" operation="perc_add" value="0.5" tags="ammo762mm" />
+				<passive_effect name="LootQuantity" operation="perc_add" value="0.5" tags="ammoShells" />
+				<passive_effect name="LootQuantity" operation="perc_add" value="0.5" tags="ammo9mm" />
+				<passive_effect name="LootQuantity" operation="perc_add" value="0.5" tags="ammo44Mag" />
+		</effect_group>
+		<effect_group>
+		    <triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_MD_T5_InQuest_Buff" />	
+		    <triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_MD_T5_InQuest_Buff" />	
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_T6_InQuest_Buff" hidden="true" icon="ui_game_symbol_clock" icon_color="185,40,45"> 
+		<stack_type value="replace"/>
+		<tags value="ZINC_MD_BUFFS" />
+		<effect_group>
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_perkMobileDefense4" operation="Equals" value="1"/>
+				<passive_effect name="LootQuantity" operation="perc_add" value="0.5" tags="ammo762mm" />
+				<passive_effect name="LootQuantity" operation="perc_add" value="0.5" tags="ammoShells" />
+				<passive_effect name="LootQuantity" operation="perc_add" value="0.5" tags="ammo9mm" />
+				<passive_effect name="LootQuantity" operation="perc_add" value="0.5" tags="ammo44Mag" />
+		</effect_group>
+		<effect_group>
+		    <triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_MD_T6_InQuest_Buff" />	
+		    <triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_MD_T6_InQuest_Buff" />	
+		</effect_group>
+	</buff>
+
+<!--Main Module Progression Related-->
+<!--###Mobile Defense-->
+<!--#General Use-->
+	<buff name="ZombieINC_MD_Antenna_EntityAttachPrefab_Buff"  >
+		<update_rate value="0.05"/>
+		<stack_type value="ignore"/>
+		<tags value="ZINC_MD_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="FeralEye"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD0"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD1"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD2"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="NormalEye"/>	
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="FeralEye"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="LOD0"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="LOD1"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="LOD2"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="NormalEye"/>	
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Electrical/smallGeneratorPrefab.prefab" local_offset="0.0020,0.706,-0.0451" local_rotation="0,0,0" local_scale="1.4,1.4,1.4" parent_transform="Origin"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Electrical/satelliteUnitSmallFloorPrefab.prefab" local_offset="-0.014,0.848,-0.08" local_rotation="0,90,0" local_scale="1.2,1.2,1.2" parent_transform="Origin"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/pipeSmallValvePrefab.prefab" local_offset="0.536,0.516,-0.269" local_rotation="0,90,90" local_scale="0.65,0.65,0.5" parent_transform="Origin"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/pipeSmall_1x1Prefab.prefab" local_offset="0.452,0.516,0.158" local_rotation="0,90,90" local_scale="0.65,0.65,0.5" parent_transform="Origin"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/barrelGasPrefab.prefab" local_offset="1.001,0.386,-0.0219" local_rotation="90,0,0" local_scale="0.8,0.8,0.8" parent_transform="Origin"/>
+			
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_MD_Objective_Buff"  >
+		<update_rate value="1"/>
+		<stack_type value="ignore"/>
+		<tags value="ZINC_MD_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="FeralEye"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD0"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD1"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD2"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="NormalEye"/>
+
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="ZombieINC_MD_PlayerDeployAntenna_Buff" target="positionAOE" range="1.5" target_tags="player">
+				<requirement name="HasBuff" target="other" buff="ZombieINC_MD_PlayerAttachPrefab_Buff" />
+			</triggered_effect>
+				
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_MD_PlayerDeployAntenna_Buff" hidden="false" icon="ui_game_symbol_clock">
+		<duration value="0.5"/> 
+		<stack_type value="replace"/>
+		<!--<update_rate value="1"/>-->
+		<display_value value="ZINCAntennaDeployTimer"/>	
+		<display_value_format value="time"/>	
+		<tags value="ZINC_MD_BUFFS" />
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="ZINCAntennaDeployTimer" operation="set" value="3" />
+			<triggered_effect trigger="onSelfPrimaryActionUpdate" action="ModifyCVar" cvar="ZINCAntennaDeployTimer" operation="set" value="3" >	
+					<requirement name="CVarCompare" cvar="_crouching" operation="Equals" value="0"/>	
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar="ZINCAntennaDeployTimer" operation="add" value="-1"/>
+				
+			
+			<triggered_effect trigger="onSelfBuffStack" action="CallGameEvent" target="self" event="ZombieINC_MD_PickObjective_Event" allow_client_call="false" >
+				<requirement name="CVarCompare" cvar="ZINCAntennaDeployTimer" operation="LTE" value="0"/>		
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_MD_Jeep_PlayerOnJeep_Buff" remove_on_death="true" hidden="true" icon="ui_game_symbol_trophy" icon_color="185,120,15">
+		<damage_type value="heat"/>  <!-- Thanks for A21 ServerSideVehicles Mod to finally solve this problem--> <!--I'd never imagine that damage_type would be a thing to make this work-->	
+		<stack_type value="replace"/>
+		<duration value="2"/>	
+		<effect_group>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_PlayerOnVehicle" remove_on_death="true" hidden="true" icon="ui_game_symbol_trophy" icon_color="185,120,15">
+		<damage_type value="heat"/>  <!-- Thanks for A21 ServerSideVehicles Mod to finally solve this problem--> <!--I'd never imagine that damage_type would be a thing to make this work-->	
+		<stack_type value="ignore"/>
+		<update_rate value="0.5"/>	
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="positionAOE" target_tags="player" range="2" buff="ZombieINC_MD_OnVehicle" >
+				<requirement name="IsAttachedToEntity" target="other"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_OnVehicle" remove_on_death="true" hidden="true" icon="ui_game_symbol_trophy" icon_color="185,120,15">
+		<stack_type value="replace"/>
+		<tags value="ZINC_MD_BUFFS" />
+		<duration value="1"/>		
+		<effect_group>
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_perkMobileDefense6" operation="Equals" value="1"/>
+				<passive_effect name="VehicleVelocityMaxPer" operation="perc_add" value="0.2"/>
+				<passive_effect name="VehicleMotorTorquePer" operation="perc_add" value="0.2"/>
+		</effect_group>
+		<effect_group>
+		<!--<requirements compare_type="or">
+		</requirements>-->
+			<requirement name="!HasBuff" buff="ZombieINC_MD_T5_PlayerTimer_Buff"/>
+			<requirement name="!HasBuff" buff="ZombieINC_MD_T6_PlayerTimer_Buff"/>
+			<!--<requirement name="!HasBuff" buff="ZombieINC_MD_MoveDetector_T1"/>
+			<requirement name="!HasBuff" buff="ZombieINC_MD_MoveDetector_T2"/>
+			<requirement name="!HasBuff" buff="ZombieINC_MD_MoveDetector_T3"/>
+			<requirement name="!HasBuff" buff="ZombieINC_MD_MoveDetector_T4"/>
+			<requirement name="!HasBuff" buff="ZombieINC_MD_MoveDetector_T5"/>
+			<requirement name="!HasBuff" buff="ZombieINC_MD_MoveDetector_T6"/>-->
+				<passive_effect name="VehicleVelocityMaxPer" operation="base_set" value="0"/>
+				<passive_effect name="VehicleMotorTorquePer" operation="base_set" value="0"/>
+		</effect_group>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStack" action="AddBuff" target="positionAOE" target_tags="ZINCTruckQuestMD" range="2" buff="ZombieINC_MD_Jeep_PlayerOnJeep_Buff" />	
+		</effect_group>
+		<effect_group>
+			<requirement name="HasBuff" buff="ZombieINC_MD_InWave_Buff_T6"/>
+				<passive_effect name="VehicleVelocityMaxPer" operation="base_set" value="0"/>
+				<passive_effect name="VehicleMotorTorquePer" operation="base_set" value="0"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_JeepAttachPrefab_Buff" hidden="true">
+		<damage_type value="heat"/>  <!-- Thanks for A21 ServerSideVehicles Mod to finally solve this problem--> <!--I'd never imagine that damage_type would be a thing to make this work-->	
+		<stack_type value="ignore"/>	
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/electrical/bigGeneratorPrefab.prefab" local_offset="-0.023,1.931,-1.537" local_rotation="0,0,0" local_scale="0.5,0.5,0.4" parent_transform="Physics" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/electrical/radioHamPrefab.prefab" local_offset="0,2.259,-2.1" local_rotation="0,180,0" local_scale="1,1,1" parent_transform="Physics" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/electrical/satelliteUnitLargePrefab.prefab" local_offset="0,2.416,-0.359" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="Physics" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/BanditProps/BanditRampSheet3x2APrefab.prefab" local_offset="0,1.56,-2.305" local_rotation="0,270,333.197" local_scale="0.25,0.4,0.6" parent_transform="Physics" />	
+		</effect_group>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_MD_VehicleEraseItSelf_AfterWait_45m" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_MD_PlayerOnVehicle" />
+		</effect_group>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" parent_transform="Physics" transform_path="OnState">
+				<requirement name="NotHasBuff" buff="ZombieINC_MD_T5_JeepWave1_Buff"/>
+				<requirement name="NotHasBuff" buff="ZombieINC_MD_T5_JeepWave2_Buff"/>
+				<requirement name="NotHasBuff" buff="ZombieINC_MD_T5_JeepWave3_Buff"/>
+				<requirement name="NotHasBuff" buff="ZombieINC_MD_T6_JeepWave1_Buff"/>
+				<requirement name="NotHasBuff" buff="ZombieINC_MD_T6_JeepWave2_Buff"/>
+				<requirement name="NotHasBuff" buff="ZombieINC_MD_T6_JeepWave3_Buff"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_MD_PlayerAttachPrefab_Buff" tooltip_key="ZombieINC_MD_PlayerAttachPrefab_Buff_Tooltip" name_key="ZombieINC_MD_PlayerAttachPrefab_Buff_Name" description_key="ZombieINC_MD_PlayerAttachPrefab_Buff_Description" hidden="false" icon="ui_game_symbol_clock">
+		<!--<duration value="1200"/> -->
+		<stack_type value="replace"/>
+		<display_value value=".ZINCAntennaHealth"/>	
+		<tags value="ZINC_MD_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AddChatMessage" message_key="ZombieINC_MD_PlayerPickAntenna_Buff_Message1" />
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/electrical/smallGeneratorPrefab.prefab" local_offset="0.003,0.074,-0.40" local_rotation="0.216,90,270" local_scale="0.6,0.6,0.6" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/electrical/satelliteUnitSmallFloorPrefab.prefab" local_offset="0.00367,0.251,-0.229" local_rotation="0,180,0.216" local_scale="0.5,0.5,0.5" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/pipeSmallValvePrefab.prefab" local_offset="-0.08784,-0.14766,-0.308" local_rotation="89.786,270,180" local_scale="0.25,0.25,0.2" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/pipeSmall_1x1Prefab.prefab" local_offset="0.07316,-0.14827,-0.308" local_rotation="89.786,270,180" local_scale="0.25,0.25,0.2" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/barrelGasPrefab.prefab" local_offset="0.01849,-0.32606,-0.255" local_rotation="0,0,269.784" local_scale="0.3,0.3,0.3" parent_transform="Spine3" />
+			
+			<triggered_effect trigger="onSelfBuffStack" action="AttachPrefabToEntity" prefab="@:Entities/electrical/smallGeneratorPrefab.prefab" local_offset="0.003,0.074,-0.40" local_rotation="0.216,90,270" local_scale="0.6,0.6,0.6" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfBuffStack" action="AttachPrefabToEntity" prefab="@:Entities/electrical/satelliteUnitSmallFloorPrefab.prefab" local_offset="0.00367,0.251,-0.229" local_rotation="0,180,0.216" local_scale="0.5,0.5,0.5" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfBuffStack" action="AttachPrefabToEntity" prefab="@:Entities/industrial/pipeSmallValvePrefab.prefab" local_offset="-0.08784,-0.14766,-0.308" local_rotation="89.786,270,180" local_scale="0.25,0.25,0.2" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfBuffStack" action="AttachPrefabToEntity" prefab="@:Entities/industrial/pipeSmall_1x1Prefab.prefab" local_offset="0.07316,-0.14827,-0.308" local_rotation="89.786,270,180" local_scale="0.25,0.25,0.2" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfBuffStack" action="AttachPrefabToEntity" prefab="@:Entities/industrial/barrelGasPrefab.prefab" local_offset="0.01849,-0.32606,-0.255" local_rotation="0,0,269.784" local_scale="0.3,0.3,0.3" parent_transform="Spine3" />
+				
+		</effect_group>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="@:Entities/Electrical/smallGeneratorPrefab.prefab"  parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="@:Entities/Electrical/satelliteUnitSmallFloorPrefab.prefab"  parent_transform="Spine3"/>	
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="@:Entities/Industrial/pipeSmallValvePrefab.prefab" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="@:Entities/Industrial/pipeSmall_1x1Prefab.prefab" parent_transform="Spine3"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="@:Entities/Industrial/barrelGasPrefab.prefab" parent_transform="Spine3"/>
+		</effect_group>
+		<effect_group>
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_MD_PlayerAttachPrefab_Buff" />	
+		    <triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_MD_PlayerAttachPrefab_Buff" />
+		</effect_group>
+		<effect_group>
+			<passive_effect name="RunSpeed" operation="perc_add" value="-0.2"/>
+			<passive_effect name="WalkSpeed" operation="perc_add" value="-0.2"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_NoVehicle_Buff" hidden="true" icon="ui_game_symbol_clock" icon_color="185,40,45"> 
+		<stack_type value="replace"/>
+		<tags value="ZINC_MD_BUFFS" />
+		<effect_group>
+		    <passive_effect name="VehicleFuelUsePer" operation="perc_set" value="0"/>
+			<passive_effect name="VehicleVelocityMaxPer" operation="base_set" value="0"/>
+			<passive_effect name="VehicleMotorTorquePer" operation="base_set" value="0"/>
+			<passive_effect name="NoVehicle" operation="base_set" value="1" />
+			
+		    <triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_MD_NoVehicle_Buff" />	
+		    <triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_MD_NoVehicle_Buff" />	 
+		</effect_group>
+	</buff>
+<!--General Use-->
+<!--##T3-T4-->
+<!--#T3-->
+
+	<buff name="ZombieINC_MD_ActivateRallyMainBuff_T3"  >
+		<duration value="1"/>
+		<stack_type value="replace"/>
+		<update_rate value="1"/>
+		<effect_group>	
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_MD_DirtPlacementByBuff" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="ally,party" range="60" buff="ZombieINC_MD_CheckIfAnyOneHasAntenna_T3" />
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_MD_CheckIfAnyOneHasAntenna_T3" />
+			
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_CheckIfAnyOneHasAntenna_T3"  >
+		<duration value="2"/>
+		<stack_type value="replace"/>
+		<update_rate value="1"/>
+		<effect_group>	
+			
+			<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" target="positionAOE" target_tags="ally,party" range="60" buff="ZombieINC_MD_CheckIfAnyOneHasAntenna_T3" >
+				<requirement name="HasBuff" buff="ZombieINC_MD_PlayerWithAntennaBuff_T3"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="ZombieINC_MD_CheckIfAnyOneHasAntenna_T3" >
+				<requirement name="HasBuff" buff="ZombieINC_MD_PlayerWithAntennaBuff_T3"/>
+			</triggered_effect>
+			
+			
+			<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" event="ZombieINC_MD_FailQuestCloseParty_T3" allow_client_call="false" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_MD_Antenna_EntityBuff_T3"  >
+		<update_rate value="0.05"/>
+		<stack_type value="ignore"/>
+		<tags value="ZINC_MD_BUFFS" />
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="ZombieINC_MD_PlayerPickAntenna_Buff_T3" target="positionAOE" range="1.5" target_tags="player">
+			</triggered_effect>
+		</effect_group>
+		
+	</buff>
+	<buff name="ZombieINC_MD_PlayerTurnsAntennaNotPickable_T3" hidden="true" icon="ui_game_symbol_clock">
+		<duration value="1"/> 
+		<stack_type value="replace"/>
+		<tags value="ZINC_MD_BUFFS" />
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="Antenna" range="40" buff="ZombieINC_MD_AntennaNotPickable_T3" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_AntennaNotPickable_T3" hidden="true" icon="ui_game_symbol_clock">
+		<duration value="180"/> 
+		<stack_type value="ignore"/>
+		<tags value="ZINC_MD_BUFFS" />	
+		<effect_group></effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_MD_PlayerPickAntenna_Buff_T3" tooltip_key="ZombieINC_MD_PlayerPickAntenna_Buff_T3_Tooltip" name_key="ZombieINC_MD_PlayerPickAntenna_Buff_T3_Name" description_key="ZombieINC_MD_PlayerPickAntenna_Buff_T3_Description" hidden="false" icon="ui_game_symbol_clock">
+		<duration value="0.5"/> 
+		<stack_type value="replace"/>
+		<!--<update_rate value="1"/>-->
+		<display_value value="ZINCAntennaPickTimer"/>	
+		<display_value_format value="time"/>	
+		<tags value="ZINC_MD_BUFFS" />
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="ZINCAntennaPickTimer" operation="set" value="40" />
+			<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar="ZINCAntennaPickTimer" operation="add" value="-1"/>
+			<triggered_effect trigger="onSelfBuffStack" action="CallGameEvent" target="self" event="ZombieINC_MD_PickAntenna_Event_T3" allow_client_call="false" >
+				<requirement name="CVarCompare" cvar="ZINCAntennaPickTimer" operation="LTE" value="0"/>		
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_MD_PlayerWithAntennaBuff_T3" hidden="true" icon="ui_game_symbol_clock">
+		<stack_type value="replace"/>
+		<display_value value=".ZINCAntennaHealth"/>	
+		<tags value="ZINC_MD_BUFFS" />
+		<effect_group>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCAntennaHealth" operation="set" value="200" />
+			
+			<triggered_effect trigger="onOtherAttackedSelf" action="ModifyCVar" cvar=".ZINCAntennaHealth" operation="subtract" value="5" />
+			<triggered_effect trigger="onOtherAttackedSelf" action="AddBuff" buff="ZombieINC_MD_AntennaDestroyed_T3" >
+				<requirement name="CVarCompare" cvar=".ZINCAntennaHealth" operation="LTE" value="5"/>	
+			</triggered_effect>
+			
+			
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_MD_W1_Event_T3" allow_client_call="false" />
+		</effect_group>
+		<effect_group>
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_MD_PlayerWithAntennaBuff_T3" />	
+		    <triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_MD_PlayerWithAntennaBuff_T3" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_AntennaDestroyed_T3" hidden="false" icon="ui_game_symbol_clock">
+		<duration value="0.25"/> 
+		<stack_type value="replace"/>
+		
+		<tags value="ZINC_MD_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="ally,party" range="120" buff="ZombieINC_MD_AntennaDestroyed_T3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_MD_ExplodeAntenna" >
+				<requirement name="HasBuff" buff="ZombieINC_MD_PlayerWithAntennaBuff_T3"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" event="ZombieINC_MD_T3_FailQuestPart2_Event" allow_client_call="false" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_ExplodeAntenna" hidden="false" icon="ui_game_symbol_clock">
+		<duration value="0.5"/> 
+		<stack_type value="replace"/>
+		
+		<tags value="ZINC_MD_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" event="ZombieINC_MD_Explode_Event" allow_client_call="false" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_PlayerWithAntennaArrived_T3" hidden="false" icon="ui_game_symbol_clock">
+		<stack_type value="replace"/>
+		<tags value="ZINC_MD_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_MD_PlayerWithAntennaArrived_T3" />	
+		    <triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_MD_PlayerWithAntennaArrived_T3" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_MD_PlayerAttachPrefab_Active_Buff_T3" hidden="false" icon="ui_game_symbol_clock">
+		<duration value="120"/> 
+		<stack_type value="replace"/>
+		<display_value value="duration"/>	
+		<tags value="ZINC_MD_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="true" parent_transform="Spine3" transform_path="OnState"/>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_MD_T3_Trader_SpawnAntenna_Buff" hidden="false" icon="ui_game_symbol_clock">
+		<duration value="9"/> 
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_MD_T3_SpawnAntenna_Event" target="self" allow_client_call="false"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_T3_PlayerTimer_Buff" hidden="false" icon="ui_game_symbol_clock" icon_color="185,40,45"> 
+		<stack_type value="replace"/>
+		<duration value="900"/>
+		<display_value value="duration"/>	
+		<tags value="ZINC_MD_BUFFS" />
+		<effect_group>
+		    <triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" target="self" event="ZombieINC_MD_T3_FailQuestTimer_Event" allow_client_call="false" />	
+		    <triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_MD_T3_PlayerTimer_Buff" />	
+		    <triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_MD_T3_PlayerTimer_Buff" />	
+		   
+		 
+		</effect_group>
+	</buff>
+	
+<!--T3-->
+<!--#T4-->
+	<buff name="ZombieINC_MD_ActivateRallyMainBuff_T4"  >
+		<duration value="1"/>
+		<stack_type value="replace"/>
+		<update_rate value="1"/>
+		<effect_group>	
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_MD_DirtPlacementByBuff" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="ally,party" range="60" buff="ZombieINC_MD_CheckIfAnyOneHasAntenna_T4" />
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_MD_CheckIfAnyOneHasAntenna_T4" />
+			
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_CheckIfAnyOneHasAntenna_T4"  >
+		<duration value="2"/>
+		<stack_type value="replace"/>
+		<update_rate value="1"/>
+		<effect_group>	
+			
+			<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" target="positionAOE" target_tags="ally,party" range="60" buff="ZombieINC_MD_CheckIfAnyOneHasAntenna_T4" >
+				<requirement name="HasBuff" buff="ZombieINC_MD_PlayerWithAntennaBuff_T4"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="ZombieINC_MD_CheckIfAnyOneHasAntenna_T4" >
+				<requirement name="HasBuff" buff="ZombieINC_MD_PlayerWithAntennaBuff_T4"/>
+			</triggered_effect>
+			
+			
+			<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" event="ZombieINC_MD_FailQuestCloseParty_T4" allow_client_call="false" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_MD_Antenna_EntityBuff_T4"  >
+		<update_rate value="0.05"/>
+		<stack_type value="ignore"/>
+		<tags value="ZINC_MD_BUFFS" />
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="ZombieINC_MD_PlayerPickAntenna_Buff_T4" target="positionAOE" range="1.5" target_tags="player">
+			</triggered_effect>
+		</effect_group>
+		
+	</buff>
+	<buff name="ZombieINC_MD_PlayerTurnsAntennaNotPickable_T4" hidden="true" icon="ui_game_symbol_clock">
+		<duration value="1"/> 
+		<stack_type value="replace"/>
+		<tags value="ZINC_MD_BUFFS" />
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="Antenna" range="40" buff="ZombieINC_MD_AntennaNotPickable_T4" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_AntennaNotPickable_T4" hidden="true" icon="ui_game_symbol_clock">
+		<duration value="180"/> 
+		<stack_type value="ignore"/>
+		<tags value="ZINC_MD_BUFFS" />	
+		<effect_group></effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_MD_PlayerPickAntenna_Buff_T4" tooltip_key="ZombieINC_MD_PlayerPickAntenna_Buff_T4_Tooltip" name_key="ZombieINC_MD_PlayerPickAntenna_Buff_T4_Name" description_key="ZombieINC_MD_PlayerPickAntenna_Buff_T4_Description" hidden="false" icon="ui_game_symbol_clock">
+		<duration value="0.5"/> 
+		<stack_type value="replace"/>
+		<!--<update_rate value="1"/>-->
+		<display_value value="ZINCAntennaPickTimer"/>	
+		<display_value_format value="time"/>	
+		<tags value="ZINC_MD_BUFFS" />
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="ZINCAntennaPickTimer" operation="set" value="40" />
+			<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar="ZINCAntennaPickTimer" operation="add" value="-1"/>
+			<triggered_effect trigger="onSelfBuffStack" action="CallGameEvent" target="self" event="ZombieINC_MD_PickAntenna_Event_T4" allow_client_call="false" >
+				<requirement name="CVarCompare" cvar="ZINCAntennaPickTimer" operation="LTE" value="0"/>		
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_MD_PlayerWithAntennaBuff_T4" hidden="true" icon="ui_game_symbol_clock">
+		<stack_type value="replace"/>
+		<display_value value=".ZINCAntennaHealth"/>	
+		<tags value="ZINC_MD_BUFFS" />
+		<effect_group>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCAntennaHealth" operation="set" value="200" />
+			
+			<triggered_effect trigger="onOtherAttackedSelf" action="ModifyCVar" cvar=".ZINCAntennaHealth" operation="subtract" value="5" />
+			<triggered_effect trigger="onOtherAttackedSelf" action="AddBuff" buff="ZombieINC_MD_AntennaDestroyed_T4" >
+				<requirement name="CVarCompare" cvar=".ZINCAntennaHealth" operation="LTE" value="5"/>	
+			</triggered_effect>
+			
+			
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_MD_W1_Event_T4" allow_client_call="false" />
+		</effect_group>
+		<effect_group>
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_MD_PlayerWithAntennaBuff_T4" />	
+		    <triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_MD_PlayerWithAntennaBuff_T4" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_AntennaDestroyed_T4" hidden="false" icon="ui_game_symbol_clock">
+		<duration value="0.25"/> 
+		<stack_type value="replace"/>
+		
+		<tags value="ZINC_MD_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="ally,party" range="120" buff="ZombieINC_MD_AntennaDestroyed_T4"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_MD_ExplodeAntenna" >
+				<requirement name="HasBuff" buff="ZombieINC_MD_PlayerWithAntennaBuff_T4"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" event="ZombieINC_MD_T4_FailQuestPart2_Event" allow_client_call="false" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_ExplodeAntenna" hidden="false" icon="ui_game_symbol_clock">
+		<duration value="0.5"/> 
+		<stack_type value="replace"/>
+		
+		<tags value="ZINC_MD_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" event="ZombieINC_MD_Explode_Event" allow_client_call="false" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_PlayerWithAntennaArrived_T4" hidden="false" icon="ui_game_symbol_clock">
+		<stack_type value="replace"/>
+		<tags value="ZINC_MD_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_MD_PlayerWithAntennaArrived_T4" />	
+		    <triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_MD_PlayerWithAntennaArrived_T4" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_MD_PlayerAttachPrefab_Active_Buff_T4" hidden="false" icon="ui_game_symbol_clock">
+		<duration value="120"/> 
+		<stack_type value="replace"/>
+		<display_value value="duration"/>	
+		<tags value="ZINC_MD_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="true" parent_transform="Spine3" transform_path="OnState"/>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_MD_T4_Trader_SpawnAntenna_Buff" hidden="false" icon="ui_game_symbol_clock">
+		<duration value="9"/> 
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_MD_T4_SpawnAntenna_Event" target="self" allow_client_call="false"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_T4_PlayerTimer_Buff" hidden="false" icon="ui_game_symbol_clock" icon_color="185,40,45"> 
+		<stack_type value="replace"/>
+		<duration value="900"/>
+		<display_value value="duration"/>	
+		<tags value="ZINC_MD_BUFFS" />
+		<effect_group>
+		    <triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" target="self" event="ZombieINC_MD_T4_FailQuestTimer_Event" allow_client_call="false" />	
+		    <triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_MD_T4_PlayerTimer_Buff" />	
+		    <triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_MD_T4_PlayerTimer_Buff" />	
+		   
+		 
+		</effect_group>
+	</buff>
+	
+<!--T3-T4-->
+<!--#T5-->
+<buff name="ZombieINC_MD_T5_Trader_SpawnVehicle_Buff" hidden="false" icon="ui_game_symbol_clock">
+		<duration value="9"/> 
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_MD_T5_SpawnVehicle_Event" target="self" allow_client_call="false"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_T5_PlayerTimer_Buff" hidden="false" icon="ui_game_symbol_clock" icon_color="185,40,45"> 
+		<stack_type value="replace"/>
+		<duration value="900"/>
+		<display_value value="duration"/>	
+		<tags value="ZINC_MD_BUFFS" />
+		<effect_group>
+		    <triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" target="self" event="ZombieINC_MD_T5_FailQuestTimer_Event" allow_client_call="false" />	
+		    <triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self" event="ZombieINC_MD_T5_FailQuest_Event" allow_client_call="false" />	
+		    <triggered_effect trigger="onSelfBuffStack" action="CallGameEvent" target="self" event="ZombieINC_MD_T5_FailQuest_Event" allow_client_call="false" />	
+		    <triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_MD_T5_PlayerTimer_Buff" />	
+		    <triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_MD_T5_PlayerTimer_Buff" />	
+		   
+		 
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_MD_T5_JeepTimer_Buff" hidden="true">
+		<damage_type value="heat"/>  <!-- Thanks for A21 ServerSideVehicles Mod to finally solve this problem--> <!--I'd never imagine that damage_type would be a thing to make this work-->	
+		<stack_type value="ignore"/>
+		<duration value="1200"/>
+		<update_rate value="1"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCJeepTimer" operation="set" value="1200" />
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCJeepTimerLimit1" operation="set" value="randomint(1140,1170)" />
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCJeepTimerLimit2" operation="set" value="randomint(970,1010)" />
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCJeepWaveDuration1" operation="set" value="randomint(60,80)" />
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCJeepWaveDuration2" operation="set" value="randomint(60,80)" />
+			<!--<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCJeepTimerLimit3" operation="set" value="randomint(420,360)" />-->
+			
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCJeepWaveDuration1Half" operation="set" value="@.ZINCJeepWaveDuration1" />
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCJeepWaveDuration1Half" operation="divide" value="2" />
+			
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCJeepWaveDuration2Half" operation="set" value="@.ZINCJeepWaveDuration2" />
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCJeepWaveDuration2Half" operation="divide" value="2" />
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZINCJeepTimer" operation="add" value="-1" >
+					<requirement name="HasBuff" buff="ZombieINC_MD_Jeep_PlayerOnJeep_Buff"/>
+					<requirement name="!HasBuff" buff="ZombieINC_MD_T5_JeepWave1_Buff"/>
+					<requirement name="!HasBuff" buff="ZombieINC_MD_T5_JeepWave2_Buff"/>
+					<requirement name="!HasBuff" buff="ZombieINC_MD_T5_JeepWave3_Buff"/>
+					<requirement name="!HasBuff" buff="ZombieINC_MD_T5_JeepWave4_Buff"/>
+			</triggered_effect>
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="ZombieINC_MD_T5_JeepWave1_Buff" duration="@.ZINCJeepWaveDuration1">
+				<requirement name="CVarCompare" cvar=".ZINCJeepTimer" operation="LTE" value="@.ZINCJeepTimerLimit1"/>
+				<requirement name="CVarCompare" cvar=".ZINCJeepTimer" operation="GTE" value="1140"/>
+				<requirement name="NotHasBuff" buff="ZombieINC_MD_T5_JeepWave1_Buff"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="ZombieINC_MD_T5_JeepWave2_Buff" duration="@.ZINCJeepWaveDuration2">
+				<requirement name="CVarCompare" cvar=".ZINCJeepTimer" operation="LTE" value="@.ZINCJeepTimerLimit2"/>
+				<requirement name="CVarCompare" cvar=".ZINCJeepTimer" operation="GTE" value="970"/>
+				<requirement name="NotHasBuff" buff="ZombieINC_MD_T5_JeepWave2_Buff"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_InWave_Buff_T5" hidden="true">
+		<damage_type value="heat"/> 
+		<stack_type value="replace"/>
+		<duration value="240"/>
+		<tags value="ZINC_MD_BUFFS" />
+		<effect_group>
+			<passive_effect name="VehicleFuelUsePer" operation="perc_set" value="0"/>
+			<passive_effect name="VehicleVelocityMaxPer" operation="base_set" value="0"/>
+			<passive_effect name="VehicleMotorTorquePer" operation="base_set" value="0"/>
+			<passive_effect name="NoVehicle" operation="base_set" value="1" />
+			
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_MD_InWave_Buff_T5" />	
+		    <triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_MD_InWave_Buff_T5" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_T5_JeepWave1_Buff" hidden="true">
+		<damage_type value="heat"/> 
+		<stack_type value="ignore"/>
+		<duration value="0"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_MD_T5_W1_Event" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="true" parent_transform="Physics" transform_path="OnState"/>
+			<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="generator_large_run_lp" loop="true"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="StopSound" sound="generator_large_run_lp" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="true" parent_transform="Physics" transform_path="OnState"/>
+			
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_MD_T5_JeepWave1Half_Buff" duration="@.ZINCJeepWaveDuration1Half"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCJeepTimer" operation="add" value="-61" />
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="player" range="80" buff="ZombieINC_MD_InWave_Buff_T5">
+				<requirement name="HasBuff" target="other" buff="ZombieINC_MD_T5_PlayerTimer_Buff"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffRemove" action="RemoveBuff" target="positionAOE" target_tags="player" range="80" buff="ZombieINC_MD_InWave_Buff_T5"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="player" range="40" buff="ZombieINC_MD_T5_JeepWave1_Player_Buff" >
+				<requirement name="HasBuff" target="other" buff="ZombieINC_MD_T5_PlayerTimer_Buff"/>
+			</triggered_effect>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AddChatMessage" target="positionAOE" target_tags="player" range="60" message_key="ZombieINC_MD_T5_JeepWave1Start_Message" />
+			<triggered_effect trigger="onSelfBuffFinish" action="AddChatMessage" target="positionAOE" target_tags="player" range="60" message_key="ZombieINC_MD_T5_JeepWave1Finished_Message" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_T5_JeepWave1Half_Buff" hidden="true">
+		<damage_type value="heat"/> 
+		<stack_type value="ignore"/>
+		<duration value="0"/>
+		<effect_group>
+			<!--<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" target="positionAOE" target_tags="player" range="60" buff="ZombieINC_MD_T5_JeepWave1Half_Player_Buff" />-->
+			<triggered_effect trigger="onSelfBuffFinish" action="AddChatMessage" target="positionAOE" target_tags="player" range="60" message_key="ZombieINC_MD_T5_JeepWave1Half_Message" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_MD_T5_JeepWave1_Player_Buff" icon="ui_game_symbol_clock" hidden="false">
+		<stack_type value="ignore"/>
+		<duration value="60"/>
+		<tags value="ZINC_MD_BUFFS" />
+		<effect_group>
+			<passive_effect name="VehicleFuelUsePer" operation="perc_set" value="0"/>
+			<passive_effect name="VehicleVelocityMaxPer" operation="base_set" value="0"/>
+			<passive_effect name="VehicleMotorTorquePer" operation="base_set" value="0"/>
+			<passive_effect name="NoVehicle" operation="base_set" value="1" />
+			
+			
+	
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_MD_T5_JeepWave1_Player_Buff" />	
+		    <triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_MD_T5_JeepWave1_Player_Buff" />	
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_T5_JeepWave2_Buff" hidden="true">
+		<damage_type value="heat"/>  
+		<stack_type value="ignore"/>
+		<duration value="0"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_MD_T5_W2_Event" allow_client_call="false" />
+			
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="true" parent_transform="Physics" transform_path="OnState"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="true" parent_transform="Physics" transform_path="OnState"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="generator_large_run_lp" loop="true"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="StopSound" sound="generator_large_run_lp" />
+			
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCJeepTimer" operation="add" value="-61" />
+			
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_MD_T5_JeepWave2Half_Buff" duration="@.ZINCJeepWaveDuration2Half"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="player" range="80" buff="ZombieINC_MD_InWave_Buff_T5">
+				<requirement name="HasBuff" target="other" buff="ZombieINC_MD_T5_PlayerTimer_Buff"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffRemove" action="RemoveBuff" target="positionAOE" target_tags="player" range="80" buff="ZombieINC_MD_InWave_Buff_T5"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="player" range="40" buff="ZombieINC_MD_T5_JeepWave2_Player_Buff"  >
+				<requirement name="HasBuff" target="other" buff="ZombieINC_MD_T5_PlayerTimer_Buff"/>
+			</triggered_effect>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AddChatMessage" target="positionAOE" target_tags="player" range="60" message_key="ZombieINC_MD_T5_JeepWave2Start_Message" />
+			<triggered_effect trigger="onSelfBuffFinish" action="AddChatMessage" target="positionAOE" target_tags="player" range="60" message_key="ZombieINC_MD_T5_JeepWave2Finished_Message" />
+			
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_T5_JeepWave2Half_Buff" hidden="true">
+		<damage_type value="heat"/> 
+		<stack_type value="ignore"/>
+		<duration value="0"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffFinish" action="AddChatMessage" target="positionAOE" target_tags="player" range="60" message_key="ZombieINC_MD_T5_JeepWave2Half_Message" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_MD_T5_JeepWave2_Player_Buff" hidden="false">
+		<stack_type value="replace"/>
+		<duration value="60"/>
+		<tags value="ZINC_MD_BUFFS" />
+		<effect_group>
+			<passive_effect name="VehicleFuelUsePer" operation="perc_set" value="0"/>
+			<passive_effect name="VehicleVelocityMaxPer" operation="base_set" value="0"/>
+			<passive_effect name="VehicleMotorTorquePer" operation="base_set" value="0"/>
+			<passive_effect name="NoVehicle" operation="base_set" value="1" />
+			
+			
+			
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_MD_T5_JeepWave2_Player_Buff" />	
+		    <triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_MD_T5_JeepWave2_Player_Buff" />	
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_T5_JeepWave3_Buff" hidden="true">
+		<damage_type value="heat"/>  
+		<stack_type value="ignore"/>
+		<duration value="240"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_MD_T5_W3_Event" allow_client_call="false" />
+			
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="true" parent_transform="Physics" transform_path="OnState"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="true" parent_transform="Physics" transform_path="OnState"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="generator_large_run_lp" loop="true"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="StopSound" sound="generator_large_run_lp" />
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="player" range="80" buff="ZombieINC_MD_InWave_Buff_T5">
+				<requirement name="HasBuff" target="other" buff="ZombieINC_MD_T5_PlayerTimer_Buff"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffRemove" action="RemoveBuff" target="positionAOE" target_tags="player" range="80" buff="ZombieINC_MD_InWave_Buff_T5"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="player" range="40" buff="ZombieINC_MD_T5_JeepWave3_Player_Buff"  >
+				<requirement name="HasBuff" target="other" buff="ZombieINC_MD_T5_PlayerTimer_Buff"/>
+			</triggered_effect>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AddChatMessage" target="positionAOE" target_tags="player" range="60" message_key="ZombieINC_MD_T5_JeepWave3Start_Message" />
+			<triggered_effect trigger="onSelfBuffFinish" action="AddChatMessage" target="positionAOE" target_tags="player" range="60" message_key="ZombieINC_MD_T5_JeepWave3Finished_Message" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_T5_JeepWave3_Player_Buff" hidden="false">
+		<stack_type value="replace"/>
+		<duration value="220"/>
+		<tags value="ZINC_MD_BUFFS" />
+		<effect_group>
+			<passive_effect name="VehicleFuelUsePer" operation="perc_set" value="0"/>
+			<passive_effect name="VehicleVelocityMaxPer" operation="base_set" value="0"/>
+			<passive_effect name="VehicleMotorTorquePer" operation="base_set" value="0"/>
+			<passive_effect name="NoVehicle" operation="base_set" value="1" />
+			
+			
+			
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_MD_T5_JeepWave3_Player_Buff" />	
+		    <triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_MD_T5_JeepWave3_Player_Buff" />	
+		</effect_group>
+	</buff>
+<!--T5-->
+<!--#T6-->
+	<buff name="ZombieINC_MD_T6_Trader_SpawnVehicle_Buff" hidden="false" icon="ui_game_symbol_clock">
+		<duration value="9"/> 
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_MD_T6_SpawnVehicle_Event" target="self" allow_client_call="false"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_T6_PlayerTimer_Buff" hidden="false" icon="ui_game_symbol_clock" icon_color="185,40,45"> 
+		<stack_type value="replace"/>
+		<duration value="900"/>
+		<display_value value="duration"/>	
+		<tags value="ZINC_MD_BUFFS" />
+		<effect_group>
+		    <triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" target="self" event="ZombieINC_MD_T6_FailQuestTimer_Event" allow_client_call="false" />	
+		    <triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self" event="ZombieINC_MD_T6_FailQuest_Event" allow_client_call="false" />	
+		    <triggered_effect trigger="onSelfBuffStack" action="CallGameEvent" target="self" event="ZombieINC_MD_T6_FailQuest_Event" allow_client_call="false" />	
+		    <triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_MD_T6_PlayerTimer_Buff" />	
+		    <triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_MD_T6_PlayerTimer_Buff" />	
+		   
+		 
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_MD_T6_JeepTimer_Buff" hidden="true">
+		<damage_type value="heat"/>  <!-- Thanks for A21 ServerSideVehicles Mod to finally solve this problem--> <!--I'd never imagine that damage_type would be a thing to make this work-->	
+		<stack_type value="ignore"/>
+		<duration value="1200"/>
+		<update_rate value="1"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCJeepTimer" operation="set" value="1200" />
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCJeepTimerLimit1" operation="set" value="randomint(1140,1170)" />
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCJeepTimerLimit2" operation="set" value="randomint(970,1010)" />
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCJeepWaveDuration1" operation="set" value="randomint(60,80)" />
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCJeepWaveDuration2" operation="set" value="randomint(60,80)" />
+			<!--<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCJeepTimerLimit3" operation="set" value="randomint(420,360)" />-->
+			
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCJeepWaveDuration1Half" operation="set" value="@.ZINCJeepWaveDuration1" />
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCJeepWaveDuration1Half" operation="divide" value="2" />
+			
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCJeepWaveDuration2Half" operation="set" value="@.ZINCJeepWaveDuration2" />
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCJeepWaveDuration2Half" operation="divide" value="2" />
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZINCJeepTimer" operation="add" value="-1" >
+					<requirement name="HasBuff" buff="ZombieINC_MD_Jeep_PlayerOnJeep_Buff"/>
+					<requirement name="!HasBuff" buff="ZombieINC_MD_T6_JeepWave1_Buff"/>
+					<requirement name="!HasBuff" buff="ZombieINC_MD_T6_JeepWave2_Buff"/>
+					<requirement name="!HasBuff" buff="ZombieINC_MD_T6_JeepWave3_Buff"/>
+					<requirement name="!HasBuff" buff="ZombieINC_MD_T6_JeepWave4_Buff"/>
+			</triggered_effect>
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="ZombieINC_MD_T6_JeepWave1_Buff" duration="@.ZINCJeepWaveDuration1">
+				<requirement name="CVarCompare" cvar=".ZINCJeepTimer" operation="LTE" value="@.ZINCJeepTimerLimit1"/>
+				<requirement name="CVarCompare" cvar=".ZINCJeepTimer" operation="GTE" value="1140"/>
+				<requirement name="NotHasBuff" buff="ZombieINC_MD_T6_JeepWave1_Buff"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="ZombieINC_MD_T6_JeepWave2_Buff" duration="@.ZINCJeepWaveDuration2">
+				<requirement name="CVarCompare" cvar=".ZINCJeepTimer" operation="LTE" value="@.ZINCJeepTimerLimit2"/>
+				<requirement name="CVarCompare" cvar=".ZINCJeepTimer" operation="GTE" value="970"/>
+				<requirement name="NotHasBuff" buff="ZombieINC_MD_T6_JeepWave2_Buff"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_InWave_Buff_T6" hidden="true">
+		<damage_type value="heat"/> 
+		<stack_type value="replace"/>
+		<duration value="240"/>
+		<tags value="ZINC_MD_BUFFS" />
+		<effect_group>
+			<passive_effect name="VehicleFuelUsePer" operation="perc_set" value="0"/>
+			<passive_effect name="VehicleVelocityMaxPer" operation="base_set" value="0"/>
+			<passive_effect name="VehicleMotorTorquePer" operation="base_set" value="0"/>
+			<passive_effect name="NoVehicle" operation="base_set" value="1" />
+			
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_MD_InWave_Buff_T6" />	
+		    <triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_MD_InWave_Buff_T6" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_T6_JeepWave1_Buff" hidden="true">
+		<damage_type value="heat"/> 
+		<stack_type value="ignore"/>
+		<duration value="0"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_MD_T6_W1_Event" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="true" parent_transform="Physics" transform_path="OnState"/>
+			<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="generator_large_run_lp" loop="true"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="StopSound" sound="generator_large_run_lp" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="true" parent_transform="Physics" transform_path="OnState"/>
+			
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_MD_T6_JeepWave1Half_Buff" duration="@.ZINCJeepWaveDuration1Half"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCJeepTimer" operation="add" value="-61" />
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="player" range="80" buff="ZombieINC_MD_InWave_Buff_T6">
+				<requirement name="HasBuff" target="other" buff="ZombieINC_MD_T6_PlayerTimer_Buff"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffRemove" action="RemoveBuff" target="positionAOE" target_tags="player" range="80" buff="ZombieINC_MD_InWave_Buff_T6"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="player" range="40" buff="ZombieINC_MD_T6_JeepWave1_Player_Buff" >
+				<requirement name="HasBuff" target="other" buff="ZombieINC_MD_T6_PlayerTimer_Buff"/>
+			</triggered_effect>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AddChatMessage" target="positionAOE" target_tags="player" range="60" message_key="ZombieINC_MD_T6_JeepWave1Start_Message" />
+			<triggered_effect trigger="onSelfBuffFinish" action="AddChatMessage" target="positionAOE" target_tags="player" range="60" message_key="ZombieINC_MD_T6_JeepWave1Finished_Message" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_T6_JeepWave1Half_Buff" hidden="true">
+		<damage_type value="heat"/> 
+		<stack_type value="ignore"/>
+		<duration value="0"/>
+		<effect_group>
+			<!--<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" target="positionAOE" target_tags="player" range="60" buff="ZombieINC_MD_T6_JeepWave1Half_Player_Buff" />-->
+			<triggered_effect trigger="onSelfBuffFinish" action="AddChatMessage" target="positionAOE" target_tags="player" range="60" message_key="ZombieINC_MD_T6_JeepWave1Half_Message" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_MD_T6_JeepWave1_Player_Buff" icon="ui_game_symbol_clock" hidden="false">
+		<stack_type value="ignore"/>
+		<duration value="60"/>
+		<tags value="ZINC_MD_BUFFS" />
+		<effect_group>
+			<passive_effect name="VehicleFuelUsePer" operation="perc_set" value="0"/>
+			<passive_effect name="VehicleVelocityMaxPer" operation="base_set" value="0"/>
+			<passive_effect name="VehicleMotorTorquePer" operation="base_set" value="0"/>
+			<passive_effect name="NoVehicle" operation="base_set" value="1" />
+			
+			
+	
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_MD_T6_JeepWave1_Player_Buff" />	
+		    <triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_MD_T6_JeepWave1_Player_Buff" />	
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_T6_JeepWave2_Buff" hidden="true">
+		<damage_type value="heat"/>  
+		<stack_type value="ignore"/>
+		<duration value="0"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_MD_T6_W2_Event" allow_client_call="false" />
+			
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="true" parent_transform="Physics" transform_path="OnState"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="true" parent_transform="Physics" transform_path="OnState"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="generator_large_run_lp" loop="true"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="StopSound" sound="generator_large_run_lp" />
+			
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCJeepTimer" operation="add" value="-61" />
+			
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_MD_T6_JeepWave2Half_Buff" duration="@.ZINCJeepWaveDuration2Half"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="player" range="80" buff="ZombieINC_MD_InWave_Buff_T6">
+				<requirement name="HasBuff" target="other" buff="ZombieINC_MD_T6_PlayerTimer_Buff"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffRemove" action="RemoveBuff" target="positionAOE" target_tags="player" range="80" buff="ZombieINC_MD_InWave_Buff_T6"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="player" range="40" buff="ZombieINC_MD_T6_JeepWave2_Player_Buff"  >
+				<requirement name="HasBuff" target="other" buff="ZombieINC_MD_T6_PlayerTimer_Buff"/>
+			</triggered_effect>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AddChatMessage" target="positionAOE" target_tags="player" range="60" message_key="ZombieINC_MD_T6_JeepWave2Start_Message" />
+			<triggered_effect trigger="onSelfBuffFinish" action="AddChatMessage" target="positionAOE" target_tags="player" range="60" message_key="ZombieINC_MD_T6_JeepWave2Finished_Message" />
+			
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_T6_JeepWave2Half_Buff" hidden="true">
+		<damage_type value="heat"/> 
+		<stack_type value="ignore"/>
+		<duration value="0"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffFinish" action="AddChatMessage" target="positionAOE" target_tags="player" range="60" message_key="ZombieINC_MD_T6_JeepWave2Half_Message" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_MD_T6_JeepWave2_Player_Buff" hidden="false">
+		<stack_type value="replace"/>
+		<duration value="60"/>
+		<tags value="ZINC_MD_BUFFS" />
+		<effect_group>
+			<passive_effect name="VehicleFuelUsePer" operation="perc_set" value="0"/>
+			<passive_effect name="VehicleVelocityMaxPer" operation="base_set" value="0"/>
+			<passive_effect name="VehicleMotorTorquePer" operation="base_set" value="0"/>
+			<passive_effect name="NoVehicle" operation="base_set" value="1" />
+			
+			
+			
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_MD_T6_JeepWave2_Player_Buff" />	
+		    <triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_MD_T6_JeepWave2_Player_Buff" />	
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_T6_JeepWave3_Buff" hidden="true">
+		<damage_type value="heat"/>  
+		<stack_type value="ignore"/>
+		<duration value="240"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_MD_T6_W3_Event" allow_client_call="false" />
+			
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="true" parent_transform="Physics" transform_path="OnState"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="true" parent_transform="Physics" transform_path="OnState"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="generator_large_run_lp" loop="true"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="StopSound" sound="generator_large_run_lp" />
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="player" range="80" buff="ZombieINC_MD_InWave_Buff_T6">
+				<requirement name="HasBuff" target="other" buff="ZombieINC_MD_T6_PlayerTimer_Buff"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffRemove" action="RemoveBuff" target="positionAOE" target_tags="player" range="80" buff="ZombieINC_MD_InWave_Buff_T6"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="player" range="40" buff="ZombieINC_MD_T6_JeepWave3_Player_Buff"  >
+				<requirement name="HasBuff" target="other" buff="ZombieINC_MD_T6_PlayerTimer_Buff"/>
+			</triggered_effect>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AddChatMessage" target="positionAOE" target_tags="player" range="60" message_key="ZombieINC_MD_T6_JeepWave3Start_Message" />
+			<triggered_effect trigger="onSelfBuffFinish" action="AddChatMessage" target="positionAOE" target_tags="player" range="60" message_key="ZombieINC_MD_T6_JeepWave3Finished_Message" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_T6_JeepWave3_Player_Buff" hidden="false">
+		<stack_type value="replace"/>
+		<duration value="220"/>
+		<tags value="ZINC_MD_BUFFS" />
+		<effect_group>
+			<passive_effect name="VehicleFuelUsePer" operation="perc_set" value="0"/>
+			<passive_effect name="VehicleVelocityMaxPer" operation="base_set" value="0"/>
+			<passive_effect name="VehicleMotorTorquePer" operation="base_set" value="0"/>
+			<passive_effect name="NoVehicle" operation="base_set" value="1" />
+			
+			
+			
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_MD_T6_JeepWave3_Player_Buff" />	
+		    <triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_MD_T6_JeepWave3_Player_Buff" />	
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_T6_JeepWave4_Buff" hidden="true">
+		<damage_type value="heat"/>  
+		<stack_type value="ignore"/>
+		<duration value="120"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_MD_T6_W4_Event" allow_client_call="false" />
+			
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="true" parent_transform="Particles" transform_path="p_broken"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="true" parent_transform="Particles" transform_path="p_broken"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="SetTransformActive" active="false" parent_transform="Particles" transform_path="p_broken"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" parent_transform="Particles" transform_path="p_on"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" parent_transform="Particles" transform_path="p_on"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="SetTransformActive" active="true" parent_transform="Particles" transform_path="p_on"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="player" range="80" buff="ZombieINC_MD_InWave_Buff_T6">
+				<requirement name="HasBuff" target="other" buff="ZombieINC_MD_T6_PlayerTimer_Buff"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffRemove" action="RemoveBuff" target="positionAOE" target_tags="player" range="80" buff="ZombieINC_MD_InWave_Buff_T6"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="player" range="40" buff="ZombieINC_MD_T6_JeepWave4_Player_Buff"  >
+				<requirement name="HasBuff" target="other" buff="ZombieINC_MD_T6_PlayerTimer_Buff"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_T6_JeepWave4_PlayerStart_Buff" hidden="false">
+		<stack_type value="ignore"/>
+		<duration value="280"/>
+		<update_rate value="1"/>
+		<tags value="ZINC_MD_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCJeepBreakTimer" operation="set" value="30" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZINCJeepBreakTimer" operation="add" value="-1" >
+					<requirement name="IsAttachedToEntity" />
+					<requirement name="!HasBuff" buff="ZombieINC_MD_T6_JeepWave1_Player_Buff"/>
+					<requirement name="!HasBuff" buff="ZombieINC_MD_T6_JeepWave2_Player_Buff"/>
+					<requirement name="!HasBuff" buff="ZombieINC_MD_T6_JeepWave3_Player_Buff"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" target="positionAOE" target_tags="player" range="80" buff="ZombieINC_MD_T6_JeepWave4_PlayerStart_Buff" >
+					<requirement name="CVarCompare" cvar=".ZINCJeepBreakTimer" operation="LTE" value="0"/>	
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffRemove"  action="AddBuff" target="positionAOE" target_tags="ZINCTruckQuestMD" range="5" buff="ZombieINC_MD_T6_JeepWave4_Buff"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="RemoveCVar" cvar=".ZINCJeepBreakTimer" />
+			
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_MD_T6_JeepWave4_PlayerStart_Buff" />	
+		    <triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_MD_T6_JeepWave4_PlayerStart_Buff" />	
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_T6_JeepWave4_Player_Buff" hidden="false">
+		<stack_type value="ignore"/>
+		<duration value="120"/>
+		<tags value="ZINC_MD_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart"  action="AddChatMessage" message_key="ZombieINC_MD_T6_JeepWave4_Message"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_MD_T6_JeepWave4Half_Player_Buff"/>
+			<triggered_effect trigger="onSelfBuffFinish"  action="AddChatMessage" message_key="ZombieINC_MD_T6_JeepWave4_FinishWave_Message"/>
+			<passive_effect name="VehicleFuelUsePer" operation="perc_set" value="0"/>
+			<passive_effect name="VehicleVelocityMaxPer" operation="base_set" value="0"/>
+			<passive_effect name="VehicleMotorTorquePer" operation="base_set" value="0"/>
+			<passive_effect name="NoVehicle" operation="base_set" value="1" />
+			
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_MD_T6_JeepWave4_Player_Buff" />	
+		    <triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_MD_T6_JeepWave4_Player_Buff" />	
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_MD_T6_JeepWave4Half_Player_Buff" hidden="false">
+		<stack_type value="ignore"/>
+		<duration value="60"/>
+		<tags value="ZINC_MD_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffFinish"  action="AddChatMessage" message_key="ZombieINC_MD_T6_JeepWave4Half_Message"/>		
+		</effect_group>
+	</buff>
+<!---->	
+
+</append>
+</Config>

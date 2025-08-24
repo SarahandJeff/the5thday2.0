@@ -1,0 +1,1307 @@
+<Config>
+	<csv xpath="/items/item[@name='gunBowT0PrimitiveBow']/property[@class='Action0']/property[@name='Magazine_items']/@value" delim="," op="add" >ZombieINC_ammoArrowFlare</csv>
+	<csv xpath="/items/item[@name='gunBowT1WoodenBow']/property[@class='Action0']/property[@name='Magazine_items']/@value" delim="," op="add" >ZombieINC_ammoArrowFlare</csv>
+	<csv xpath="/items/item[@name='gunBowT3CompoundBow']/property[@class='Action0']/property[@name='Magazine_items']/@value" delim="," op="add" >ZombieINC_ammoArrowFlare</csv>
+	
+	<csv xpath="/items/item[@name='meleeToolRepairT0StoneAxe']/property[@class='Action1']/property[@name='Allowed_upgrade_items']/@value" delim="," op="add" >ZombieINC_resourceSmellEnhancer</csv>
+	<csv xpath="/items/item[@name='meleeToolRepairT1ClawHammer']/property[@class='Action1']/property[@name='Allowed_upgrade_items']/@value" delim="," op="add" >ZombieINC_resourceSmellEnhancer</csv>
+	<csv xpath="/items/item[@name='meleeToolRepairT3Nailgun']/property[@class='Action1']/property[@name='Allowed_upgrade_items']/@value" delim="," op="add" >ZombieINC_resourceSmellEnhancer</csv>
+	
+<append xpath="/items">
+<!--###DefensePOI-->
+	<item name="ZombieINC_Defense_gunBotT2JunkTurret_T1">
+		<property name="Tags" value="turretRanged,weapon,ranged,reloadPenalty,drumMagazine,attIntellect,perkTurrets,canHaveCosmetic,roboticsSkill,meleeIntellect"/>
+		<property name="DisplayType" value="ZombieINC_rangedTurret"/>
+		<property name="CustomIcon" value="gunBotT2JunkTurret"/>
+		<property name="DescriptionKey" value="ZombieINC_Defense_gunBotT2JunkTurret_T1_Desc"/>
+		<property name="HoldType" value="67"/>
+		<property name="Meshfile" value="@:Other/Items/Weapons/Ranged/JunkTurret/junkTurret_Prefab.prefab"/>
+		<property name="HandMeshfile" value="@:Other/Items/Weapons/Ranged/JunkTurret/junkTurretHeld_Prefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="Material" value="MJunkTurretParts"/>
+		<property name="TintColor" value="227, 127, 13"/>
+		<property name="DegradationBreaksAfter" value="true"/>
+		<property name="SoundJammed" value="weapon_jam"/>
+		<property name="Weight" value="4"/>
+		<property name="ScrapTimeOverride" value="10.0"/>
+		<property name="NoScrapping" value="true"/>
+		<property name="RepairTools" value=""/>
+		<property name="Group" value="Ammo/Weapons,Robotics"/>
+		<property name="Stacknumber" value="1"/>
+		<property name="EconomicValue" value="200"/>
+	
+		<property name="SellableToTrader" value="true"/>
+		<property name="RequiredPower" value="15"/>
+		
+		<property name="ShowQuality" value="true"/>
+		<property name="IgnoreKeystoneSound" value="true"/>
+		<property name="SoundUnholster" value="weapon_unholster"/>
+		<property name="SoundHolster" value="weapon_holster"/>
+		<property name="SoundPickup" value="robotic_turret_grab"/>
+		<property name="SoundPlace" value="robotic_turret_place"/>
+
+		<property class="Action0">
+			<property name="Class" value="Ranged"/>
+			<property name="Delay" value="1.6"/> <!-- obsolete if rounds per minute exists -->
+			<!-- <property name="Range" value="40"/> -->
+			<property name="Magazine_items" value="ZombieINC_Defense_ammoJunkTurretRegular"/>
+			<!--<property name="Infinite_ammo" value="false"/>
+			<property name="Single_magazine_usage" value="true"/>-->
+			<property name="Reload_time" value="2.1"/>
+			<property name="Sound_start" value="junkturret_fire"/>
+			<property name="Sound_loop" value="junkturret_fire"/>
+			<property name="Sound_repeat" value=""/>
+			<property name="Sound_end" value=""/>
+			<property name="Sound_empty" value="dryfire"/>
+			<property name="Sound_reload" value="m60_reload"/>
+			<property name="AutoReload" value="false"/>
+			<property name="Particles_muzzle_fire" value="gunfire_junkturret_fpv"/>
+			
+			<property name="ScopeOffset" value="0,-2.0,0"/>
+			<property name="SideOffset" value="0,-2.0,0"/>
+			<property name="BarrelOffset" value="0,-2.0,0"/>
+			<requirement name="HasBuff" buff="ZombieINC_Defense_ImATurret_T1"/>
+			<property name="triggerEffectTriggerPullDualsense" value="PistolTrigger"/>
+			<property name="triggerEffectTriggerPullXbox" value="PistolTrigger"/>
+			<property name="triggerEffectShootDualsense" value="PistolShoot"/>
+			<property name="triggerEffectShootXbox" value="PistolShoot"/>
+		</property>
+		<property class="Action1">
+			<property name="Class" value="SpawnTurret"/>
+			<property name="Turret" value="ZombieINC_Defense_junkTurretGun_T1"/>
+			<property name="PreviewSize" value="0.75,0.75,0.75"/>
+			<requirement name="HasBuff" buff="ZombieINC_Defense_BuffsToPlayer_AllTiers"/>
+		</property>
+		<effect_group name="gunBotT2JunkTurret" tiered="false">
+			<passive_effect name="DamageFalloffRange" operation="perc_add" value="-.2" tags="perkTurrets"/> <!-- random effective rng -->
+			<passive_effect name="EntityDamage" operation="perc_add" value="-.08,.08" tags="perkTurrets"/> <!-- random EntityDmg -->
+			
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-.08,.08" tags="perkTurrets"/> <!-- random WeaponHandling -->
+			<passive_effect name="RoundsPerMinute" operation="perc_add" value="-.1,.1" tags="turretRanged"/> <!-- random APM -->
+			<passive_effect name="RoundsPerMinute" operation="base_set" value="45" tags="turretRanged"/> <!-- random APM -->
+			
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-.08,.08" tags="perkTurrets"/> <!-- random WeaponHandling -->
+			<passive_effect name="BurstRoundCount" operation="base_set" value="1" tags="perkTurrets"/>
+			<passive_effect name="MagazineSize" operation="base_set" value="100" tags="turretRanged"/>
+		
+			<passive_effect name="ReloadSpeedMultiplier" operation="base_set" value="1.5" tags="perkTurrets"/>
+
+			<passive_effect name="SpreadMultiplierAiming" operation="perc_add" value="-.13" tags="perkTurrets"/>
+			<passive_effect name="SpreadMultiplierCrouching" operation="perc_add" value="-.05" tags="perkTurrets"/>
+			<passive_effect name="SpreadMultiplierWalking" operation="perc_add" value=".15" tags="perkTurrets"/>
+			<passive_effect name="SpreadMultiplierRunning" operation="perc_add" value=".3" tags="perkTurrets"/>
+
+			<passive_effect name="KickDegreesVerticalMin" operation="base_set" value="3" tags="perkTurrets"/>
+			<passive_effect name="KickDegreesVerticalMax" operation="base_set" value="3" tags="perkTurrets"/>
+			<passive_effect name="KickDegreesHorizontalMin" operation="base_set" value="-2" tags="perkTurrets"/>
+			<passive_effect name="KickDegreesHorizontalMax" operation="base_set" value="2" tags="perkTurrets"/>
+
+			<passive_effect name="IncrementalSpreadMultiplier" operation="base_set" value="0" tags="perkTurrets"/>
+			<passive_effect name="WeaponHandling" operation="base_set" value="1" tags="perkTurrets"/>
+
+			<passive_effect name="DegradationMax" operation="base_set" value="200"  tags="perkTurrets"/>
+			<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="perkTurrets"/>
+			<passive_effect name="ModSlots" operation="base_set" value="0"/>
+			
+			<display_value name="dYawRange" value="170"/>
+			<display_value name="dPitchRange" value="70"/>
+		</effect_group>
+	</item>
+	<item name="ZombieINC_Defense_gunBotT2JunkTurret_T2">
+		<property name="Tags" value="turretRanged,weapon,ranged,reloadPenalty,drumMagazine,attIntellect,perkTurrets,canHaveCosmetic,roboticsSkill,meleeIntellect"/>
+		<property name="DisplayType" value="ZombieINC_rangedTurret"/>
+		<property name="CustomIcon" value="gunBotT2JunkTurret"/>
+		<property name="DescriptionKey" value="ZombieINC_Defense_gunBotT2JunkTurret_T2_Desc"/>
+		<property name="HoldType" value="67"/>
+		<property name="Meshfile" value="@:Other/Items/Weapons/Ranged/JunkTurret/junkTurret_Prefab.prefab"/>
+		<property name="HandMeshfile" value="@:Other/Items/Weapons/Ranged/JunkTurret/junkTurretHeld_Prefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="Material" value="MJunkTurretParts"/>
+		<property name="TintColor" value="227, 127, 13"/>
+		<property name="DegradationBreaksAfter" value="true"/>
+		<property name="SoundJammed" value="weapon_jam"/>
+		<property name="Weight" value="4"/>
+		<property name="ScrapTimeOverride" value="10.0"/>
+		<property name="RepairTools" value=""/>
+		<property name="Group" value="Ammo/Weapons,Robotics"/>
+		<property name="Stacknumber" value="1"/>
+		<property name="EconomicValue" value="200"/>
+		<property name="NoScrapping" value="true"/>
+		<property name="SellableToTrader" value="true"/>
+		<property name="RequiredPower" value="15"/>
+		
+		<property name="ShowQuality" value="true"/>
+		<property name="IgnoreKeystoneSound" value="true"/>
+		<property name="SoundUnholster" value="weapon_unholster"/>
+		<property name="SoundHolster" value="weapon_holster"/>
+		<property name="SoundPickup" value="robotic_turret_grab"/>
+		<property name="SoundPlace" value="robotic_turret_place"/>
+
+		<property class="Action0">
+			<property name="Class" value="Ranged"/>
+			<property name="Delay" value="1.6"/> <!-- obsolete if rounds per minute exists -->
+			<!-- <property name="Range" value="40"/> -->
+			<property name="Magazine_items" value="ZombieINC_Defense_ammoJunkTurretMachineGun"/>
+			<!--<property name="Infinite_ammo" value="false"/>
+			<property name="Single_magazine_usage" value="true"/>-->
+			<property name="Reload_time" value="2.1"/>
+			<property name="Sound_start" value="junkturret_fire"/>
+			<property name="Sound_loop" value="junkturret_fire"/>
+			<property name="Sound_repeat" value=""/>
+			<property name="Sound_end" value=""/>
+			<property name="Sound_empty" value="dryfire"/>
+			<property name="Sound_reload" value="m60_reload"/>
+			<property name="AutoReload" value="false"/>
+			<property name="Particles_muzzle_fire" value="gunfire_junkturret_fpv"/>
+			
+			<property name="ScopeOffset" value="0,0,0"/>
+			<property name="SideOffset" value="0,0,0"/>
+			<property name="BarrelOffset" value="0,0,0"/>
+			<requirement name="HasBuff" buff="ZombieINC_Defense_ImATurret_T2"/>
+			<property name="triggerEffectTriggerPullDualsense" value="PistolTrigger"/>
+			<property name="triggerEffectTriggerPullXbox" value="PistolTrigger"/>
+			<property name="triggerEffectShootDualsense" value="PistolShoot"/>
+			<property name="triggerEffectShootXbox" value="PistolShoot"/>
+		</property>
+		<property class="Action1">
+			<property name="Class" value="SpawnTurret"/>
+			<property name="Turret" value="ZombieINC_Defense_junkTurretGun_T2"/>
+			<property name="PreviewSize" value="0.75,0.75,0.75"/>
+			<requirement name="HasBuff" buff="ZombieINC_Defense_BuffsToPlayer_AllTiers"/>
+		</property>
+		<effect_group name="gunBotT2JunkTurret" tiered="false">
+			<passive_effect name="DamageFalloffRange" operation="perc_add" value="-.2" tags="perkTurrets"/> 
+			<passive_effect name="EntityDamage" operation="perc_add" value="-0.50" tags="perkTurrets"/> 
+			
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-.08,.08" tags="perkTurrets"/> <!-- random WeaponHandling -->
+			<passive_effect name="RoundsPerMinute" operation="perc_add" value="-.1,.1" tags="turretRanged"/> <!-- random APM -->
+			<passive_effect name="RoundsPerMinute" operation="base_set" value="180" tags="turretRanged"/> <!-- random APM -->
+			
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-.08,.08" tags="perkTurrets"/> <!-- random WeaponHandling -->
+			<passive_effect name="BurstRoundCount" operation="base_set" value="1" tags="perkTurrets"/>
+			<passive_effect name="MagazineSize" operation="base_set" value="250" tags="turretRanged"/>
+		
+			<passive_effect name="ReloadSpeedMultiplier" operation="base_set" value="1.5" tags="perkTurrets"/>
+
+			<passive_effect name="SpreadMultiplierAiming" operation="perc_add" value="-.13" tags="perkTurrets"/>
+			<passive_effect name="SpreadMultiplierCrouching" operation="perc_add" value="-.05" tags="perkTurrets"/>
+			<passive_effect name="SpreadMultiplierWalking" operation="perc_add" value=".15" tags="perkTurrets"/>
+			<passive_effect name="SpreadMultiplierRunning" operation="perc_add" value=".3" tags="perkTurrets"/>
+
+			<passive_effect name="KickDegreesVerticalMin" operation="base_set" value="3" tags="perkTurrets"/>
+			<passive_effect name="KickDegreesVerticalMax" operation="base_set" value="3" tags="perkTurrets"/>
+			<passive_effect name="KickDegreesHorizontalMin" operation="base_set" value="-2" tags="perkTurrets"/>
+			<passive_effect name="KickDegreesHorizontalMax" operation="base_set" value="2" tags="perkTurrets"/>
+
+			<passive_effect name="IncrementalSpreadMultiplier" operation="base_set" value="0" tags="perkTurrets"/>
+			<passive_effect name="WeaponHandling" operation="base_set" value="1" tags="perkTurrets"/>
+
+			<passive_effect name="DegradationMax" operation="base_set" value="1000"  tags="perkTurrets"/>
+			<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="perkTurrets"/>
+			<passive_effect name="ModSlots" operation="base_set" value="0"/>
+			<display_value name="dYawRange" value="170"/>
+			<display_value name="dPitchRange" value="70"/>
+		</effect_group>
+		<effect_group name="gunBotT2JunkTurret_Hand" tiered="false">
+			<triggered_effect trigger="onSelfEquipStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/MachineGun/m60MachinegunPrefab.prefab" local_offset="0,0.31,0" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="Handle"/>
+			<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="m60MachinegunPrefab" parent_transform="Handle" />
+			
+			<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="false" transform_path="junkTurretBarrel_LOD0"/>
+			<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="false" transform_path="junkTurretBarrel_LOD1"/>
+			<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="false" transform_path="junkTurretBarrel_LOD2"/>
+			
+			<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="true" transform_path="junkTurretBarrel_LOD0"/>
+			<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="true" transform_path="junkTurretBarrel_LOD1"/>
+			<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="true" transform_path="junkTurretBarrel_LOD2"/>
+		</effect_group>
+	</item>
+	<item name="ZombieINC_Defense_gunBotT2JunkTurret_T3">
+		<property name="Tags" value="turretRanged,weapon,ranged,reloadPenalty,drumMagazine,attIntellect,perkTurrets,canHaveCosmetic,roboticsSkill,meleeIntellect"/>
+		<property name="DisplayType" value="ZombieINC_rangedTurret"/>
+		<property name="CustomIcon" value="gunBotT2JunkTurret"/>
+		<property name="DescriptionKey" value="ZombieINC_Defense_gunBotT2JunkTurret_T3_Desc"/>
+		<property name="HoldType" value="67"/>
+		<property name="Meshfile" value="@:Other/Items/Weapons/Ranged/JunkTurret/junkTurret_Prefab.prefab"/>
+		<property name="HandMeshfile" value="@:Other/Items/Weapons/Ranged/JunkTurret/junkTurretHeld_Prefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="Material" value="MJunkTurretParts"/>
+		<property name="TintColor" value="227, 127, 13"/>
+		<property name="DegradationBreaksAfter" value="true"/>
+		<property name="SoundJammed" value="weapon_jam"/>
+		<property name="Weight" value="4"/>
+		<property name="ScrapTimeOverride" value="10.0"/>
+		<property name="RepairTools" value=""/>
+		<property name="Group" value="Ammo/Weapons,Robotics"/>
+		<property name="Stacknumber" value="1"/>
+		<property name="EconomicValue" value="200"/>
+		<property name="NoScrapping" value="true"/>
+		<property name="SellableToTrader" value="true"/>
+		<property name="RequiredPower" value="15"/>
+		
+		<property name="ShowQuality" value="true"/>
+		<property name="IgnoreKeystoneSound" value="true"/>
+		<property name="SoundUnholster" value="weapon_unholster"/>
+		<property name="SoundHolster" value="weapon_holster"/>
+		<property name="SoundPickup" value="robotic_turret_grab"/>
+		<property name="SoundPlace" value="robotic_turret_place"/>
+
+		<property class="Action0">
+			<property name="Class" value="Ranged"/>
+			<property name="Delay" value="1.6"/> <!-- obsolete if rounds per minute exists -->
+			<!-- <property name="Range" value="40"/> -->
+			<property name="Magazine_items" value="ZombieINC_Defense_ammoJunkTurretSniper"/>
+			<!--<property name="Magazine_items" value=""/>-->
+			<!--<property name="Infinite_ammo" value="false"/>
+			<property name="Single_magazine_usage" value="true"/>-->
+			<property name="Reload_time" value="2.1"/>
+			<property name="Sound_start" value="sharpshooter_fire"/>
+			<property name="Sound_loop" value="sharpshooter_fire"/>
+			<property name="Sound_repeat" value=""/>
+			<property name="Sound_end" value=""/>
+			<property name="Sound_empty" value="dryfire"/>
+			<property name="Sound_reload" value="m60_reload"/>
+			<property name="AutoReload" value="false"/>
+			<property name="Particles_muzzle_fire" value="gunfire_junkturret_fpv"/>
+			
+			<property name="ScopeOffset" value="0,0,0"/>
+			<property name="SideOffset" value="0,0,0"/>
+			<property name="BarrelOffset" value="0,0,0"/>
+			<requirement name="HasBuff" buff="ZombieINC_Defense_ImATurret_T3"/>
+			<property name="triggerEffectTriggerPullDualsense" value="PistolTrigger"/>
+			<property name="triggerEffectTriggerPullXbox" value="PistolTrigger"/>
+			<property name="triggerEffectShootDualsense" value="PistolShoot"/>
+			<property name="triggerEffectShootXbox" value="PistolShoot"/>
+		</property>
+		<property class="Action1">
+			<property name="Class" value="SpawnTurret"/>
+			<property name="Turret" value="ZombieINC_Defense_junkTurretGun_T3"/>
+			<property name="PreviewSize" value="0.75,0.75,0.75"/>
+			<requirement name="HasBuff" buff="ZombieINC_Defense_BuffsToPlayer_AllTiers"/>
+		</property>
+		<effect_group name="gunBotT2JunkTurret" tiered="false">
+			<passive_effect name="DamageFalloffRange" operation="perc_add" value=".2" tags="perkTurrets"/> 
+			
+			<!--<passive_effect name="EntityDamage" operation="base_set" value="100" tags="perkTurrets"/> -->
+			
+			<passive_effect name="EntityDamage" operation="perc_add" value="1" tags="perkTurrets"/> 
+			
+			
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-.08,.08" tags="perkTurrets"/> <!-- random WeaponHandling -->
+			<passive_effect name="RoundsPerMinute" operation="perc_add" value="-.1,.1" tags="turretRanged"/> <!-- random APM -->
+			<passive_effect name="RoundsPerMinute" operation="base_set" value="20" tags="turretRanged"/> <!-- random APM -->
+			
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-.08,.08" tags="perkTurrets"/> <!-- random WeaponHandling -->
+			<passive_effect name="BurstRoundCount" operation="base_set" value="1" tags="perkTurrets"/>
+			<passive_effect name="MagazineSize" operation="base_set" value="40" tags="turretRanged"/>
+		
+			<passive_effect name="ReloadSpeedMultiplier" operation="base_set" value="1.5" tags="perkTurrets"/>
+
+			<passive_effect name="SpreadMultiplierAiming" operation="perc_add" value="-.13" tags="perkTurrets"/>
+			<passive_effect name="SpreadMultiplierCrouching" operation="perc_add" value="-.05" tags="perkTurrets"/>
+			<passive_effect name="SpreadMultiplierWalking" operation="perc_add" value=".15" tags="perkTurrets"/>
+			<passive_effect name="SpreadMultiplierRunning" operation="perc_add" value=".3" tags="perkTurrets"/>
+
+			<passive_effect name="KickDegreesVerticalMin" operation="base_set" value="1" tags="perkTurrets"/>
+			<passive_effect name="KickDegreesVerticalMax" operation="base_set" value="1" tags="perkTurrets"/>
+			<passive_effect name="KickDegreesHorizontalMin" operation="base_set" value="1" tags="perkTurrets"/>
+			<passive_effect name="KickDegreesHorizontalMax" operation="base_set" value="1" tags="perkTurrets"/>
+
+			<passive_effect name="IncrementalSpreadMultiplier" operation="base_set" value="0" tags="perkTurrets"/>
+			<passive_effect name="WeaponHandling" operation="base_set" value="1" tags="perkTurrets"/>
+
+			<passive_effect name="DegradationMax" operation="base_set" value="200"  tags="perkTurrets"/>
+			<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="perkTurrets"/>
+			<passive_effect name="ModSlots" operation="base_set" value="0"/>
+			<display_value name="dYawRange" value="120"/>
+			<display_value name="dPitchRange" value="70"/>
+		</effect_group>
+		<effect_group name="gunBotT2JunkTurret_Hand" tiered="false">
+			<triggered_effect trigger="onSelfEquipStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/PipeRifle/PipeRiflePrefab.prefab" local_offset="0,0.320,0.123" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="Handle" />
+			<!--<triggered_effect trigger="onSelfEquipStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/LeverActionRifle/leverActionRiflePrefab.prefab" local_offset="0,0.372,-0.05" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="Handle" />-->
+			<triggered_effect trigger="onSelfEquipStart" action="AttachPrefabToEntity" prefab="@:Entities/electrical/smallGeneratorPrefab.prefab" local_offset="0.044,0.433,0.0" local_rotation="0,90,0" local_scale="0.35,0.35,0.35" parent_transform="Handle" />
+			<!--<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="leverActionRiflePrefab" parent_transform="Handle" />-->
+			<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="PipeRiflePrefab" parent_transform="Handle" />
+			<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="smallGeneratorPrefab" parent_transform="Handle" />
+			
+			<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="false" transform_path="OnState" parent_transform="Handle"/>
+			<triggered_effect trigger="onSelfPrimaryActionUpdate" action="SetTransformActive" active="false" transform_path="OnState" parent_transform="Handle"/>
+			
+			<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="false" transform_path="junkTurretBarrel_LOD0"/>
+			<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="false" transform_path="junkTurretBarrel_LOD1"/>
+			<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="false" transform_path="junkTurretBarrel_LOD2"/>
+			
+			<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="true" transform_path="junkTurretBarrel_LOD0"/>
+			<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="true" transform_path="junkTurretBarrel_LOD1"/>
+			<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="true" transform_path="junkTurretBarrel_LOD2"/>
+		</effect_group>
+	</item>
+	<item name="ZombieINC_Defense_gunBotT2JunkTurret_T4">
+		<property name="Tags" value="turretRanged,weapon,ranged,reloadPenalty,drumMagazine,attIntellect,perkTurrets,canHaveCosmetic,roboticsSkill,meleeIntellect"/>
+		<property name="DisplayType" value="ZombieINC_rangedTurret"/>
+		<property name="CustomIcon" value="gunBotT2JunkTurret"/>
+		<property name="DescriptionKey" value="ZombieINC_Defense_gunBotT2JunkTurret_T4_Desc"/>
+		<property name="HoldType" value="67"/>
+		<property name="Meshfile" value="@:Other/Items/Weapons/Ranged/JunkTurret/junkTurret_Prefab.prefab"/>
+		<property name="HandMeshfile" value="@:Other/Items/Weapons/Ranged/JunkTurret/junkTurretHeld_Prefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="Material" value="MJunkTurretParts"/>
+		<property name="TintColor" value="227, 127, 13"/>
+		<property name="DegradationBreaksAfter" value="true"/>
+		<property name="SoundJammed" value="weapon_jam"/>
+		<property name="Weight" value="4"/>
+		<property name="ScrapTimeOverride" value="10.0"/>
+		<property name="RepairTools" value=""/>
+		<property name="Group" value="Ammo/Weapons,Robotics"/>
+		<property name="Stacknumber" value="1"/>
+		<property name="EconomicValue" value="200"/>
+		<property name="NoScrapping" value="true"/>
+		<property name="SellableToTrader" value="true"/>
+		<property name="RequiredPower" value="15"/>
+		
+		<property name="ShowQuality" value="true"/>
+		<property name="IgnoreKeystoneSound" value="true"/>
+		<property name="SoundUnholster" value="weapon_unholster"/>
+		<property name="SoundHolster" value="weapon_holster"/>
+		<property name="SoundPickup" value="robotic_turret_grab"/>
+		<property name="SoundPlace" value="robotic_turret_place"/>
+
+		<property class="Action0">
+			<property name="Class" value="Ranged"/>
+			<property name="Delay" value="1.6"/> <!-- obsolete if rounds per minute exists -->
+			<!-- <property name="Range" value="40"/> -->
+			<property name="Magazine_items" value="ZombieINC_Defense_ammoJunkTurretRocket"/>
+			<!--<property name="Infinite_ammo" value="false"/>
+			<property name="Single_magazine_usage" value="true"/>-->
+			<property name="Reload_time" value="2.1"/>
+			<property name="Sound_start" value="m136_fire"/>
+			<property name="Sound_loop" value="m136_fire"/>
+			<property name="Sound_repeat" value=""/>
+			<property name="Sound_end" value=""/>
+			<property name="Sound_empty" value="dryfire"/>
+			<property name="Sound_reload" value="m60_reload"/>
+			<property name="AutoReload" value="false"/>
+			<property name="Particles_muzzle_fire" value="gunfire_junkturret_fpv"/>
+			
+			<property name="ScopeOffset" value="0,0,0"/>
+			<property name="SideOffset" value="0,0,0"/>
+			<property name="BarrelOffset" value="0,0,0"/>
+			<requirement name="HasBuff" buff="ZombieINC_Defense_ImATurret_T4"/>
+			<property name="triggerEffectTriggerPullDualsense" value="PistolTrigger"/>
+			<property name="triggerEffectTriggerPullXbox" value="PistolTrigger"/>
+			<property name="triggerEffectShootDualsense" value="PistolShoot"/>
+			<property name="triggerEffectShootXbox" value="PistolShoot"/>
+		</property>
+		<!--<property class="Action0">
+			<property name="Class" value="Launcher"/>
+			<property name="Delay" value=".8"/> <!{1}** obsolete if rounds per minute exists **{1}>
+			<!{1}** <property name="Range" value="200"/> **{1}>
+			<property name="Range" value="40"/>
+			<property name="Magazine_items" value="ZombieINC_Defense_ammoJunkTurretRocket"/>
+			<!{1}** <property name="Reload_time" value="2"/> **{1}>
+			<property name="Sound_start" value="m136_fire"/>
+			<property name="Sound_repeat" value=""/>
+			<property name="Sound_end" value=""/>
+			<property name="Sound_empty" value="dryfire"/>
+			<property name="Sound_reload" value="m136_reload"/>
+			<property name="AutoReload" value="false"/>
+			<property name="Particles_muzzle_fire" value="rocketLauncherFire"/>
+			<property name="Particles_muzzle_smoke" value="nozzlesmoke_m136"/>
+			<property name="ScopeOffset" value="-.00062,.088,.065"/>
+			<property name="SideOffset" value="0,0,0"/>
+			<property name="BarrelOffset" value="0,0,0"/>
+			<requirement name="CVarCompare" cvar="_underwater" operation="LT" value=".98"/>
+				<property name="triggerEffectTriggerShootDualsense" value="PistolShoot"/>
+		</property>-->
+		<property class="Action1">
+			<property name="Class" value="SpawnTurret"/>
+			<property name="Turret" value="ZombieINC_Defense_junkTurretGun_T4"/>
+			<property name="PreviewSize" value="0.75,0.75,0.75"/>
+			<requirement name="HasBuff" buff="ZombieINC_Defense_BuffsToPlayer_AllTiers"/>
+		</property>
+		<effect_group name="gunBotT4JunkTurret" tiered="false">
+			<passive_effect name="DamageFalloffRange" operation="perc_add" value=".2" tags="perkTurrets"/> 
+			<passive_effect name="EntityDamage" operation="perc_add" value="-0.50" tags="perkTurrets"/> 
+			
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-.08,.08" tags="perkTurrets"/> <!-- random WeaponHandling -->
+			<passive_effect name="RoundsPerMinute" operation="perc_add" value="-.1,.1" tags="turretRanged"/> <!-- random APM -->
+			<passive_effect name="RoundsPerMinute" operation="base_set" value="20" tags="turretRanged"/> <!-- random APM -->
+			
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-.08,.08" tags="perkTurrets"/> <!-- random WeaponHandling -->
+			<passive_effect name="BurstRoundCount" operation="base_set" value="1" tags="perkTurrets"/>
+			<passive_effect name="MagazineSize" operation="base_set" value="40" tags="turretRanged"/>
+		
+			<passive_effect name="ReloadSpeedMultiplier" operation="base_set" value="1.5" tags="perkTurrets"/>
+
+			<passive_effect name="SpreadMultiplierAiming" operation="perc_add" value="-.13" tags="perkTurrets"/>
+			<passive_effect name="SpreadMultiplierCrouching" operation="perc_add" value="-.05" tags="perkTurrets"/>
+			<passive_effect name="SpreadMultiplierWalking" operation="perc_add" value=".15" tags="perkTurrets"/>
+			<passive_effect name="SpreadMultiplierRunning" operation="perc_add" value=".3" tags="perkTurrets"/>
+
+			<passive_effect name="KickDegreesVerticalMin" operation="base_set" value="1" tags="perkTurrets"/>
+			<passive_effect name="KickDegreesVerticalMax" operation="base_set" value="1" tags="perkTurrets"/>
+			<passive_effect name="KickDegreesHorizontalMin" operation="base_set" value="1" tags="perkTurrets"/>
+			<passive_effect name="KickDegreesHorizontalMax" operation="base_set" value="1" tags="perkTurrets"/>
+
+			<passive_effect name="IncrementalSpreadMultiplier" operation="base_set" value="-0.9" tags="perkTurrets"/>
+			<passive_effect name="WeaponHandling" operation="base_set" value="1" tags="perkTurrets"/>
+
+			<passive_effect name="DegradationMax" operation="base_set" value="200"  tags="perkTurrets"/>
+			<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="perkTurrets"/>
+			<passive_effect name="ModSlots" operation="base_set" value="0"/>
+			<display_value name="dYawRange" value="90"/>
+			<display_value name="dPitchRange" value="70"/>
+			
+			<!--<triggered_effect trigger="onSelfDamagedOther" action="AddBuff" target="other" buff="ZombieINC_Defense_Turret_T4_Explosion"/>-->
+			<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" buff="ZombieINC_Defense_Turret_T4_Explosion"/>
+			<triggered_effect trigger="onSelfAttackedOther" action="Ragdoll" target="otherAOE" range="1.8" duration="2.5" force="350" target_tags="zombie"/>
+			
+		</effect_group>
+		<effect_group name="gunBotT2JunkTurret_Hand" tiered="false">
+			<triggered_effect trigger="onSelfEquipStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/RocketLauncher/rocketlauncherPrefab.prefab" local_offset="0,0.388,0.174" local_rotation="0,0,0" local_scale="0.5,0.5,0.55" parent_transform="Handle"/>
+			<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="rocketlauncherPrefab" parent_transform="Handle" />
+		</effect_group>
+	</item>
+	<item name="ZombieINC_Defense_gunBotT2JunkTurret_T5">
+		<property name="Tags" value="turretRanged,weapon,ranged,reloadPenalty,drumMagazine,attIntellect,perkTurrets,canHaveCosmetic,roboticsSkill,meleeIntellect"/>
+		<property name="DisplayType" value="ZombieINC_rangedTurret"/>
+		<property name="CustomIcon" value="gunBotT2JunkTurret"/>
+		<property name="DescriptionKey" value="ZombieINC_Defense_gunBotT2JunkTurret_T5_Desc"/>
+		<property name="HoldType" value="67"/>
+		<property name="Meshfile" value="@:Other/Items/Weapons/Ranged/JunkTurret/junkTurret_Prefab.prefab"/>
+		<property name="HandMeshfile" value="@:Other/Items/Weapons/Ranged/JunkTurret/junkTurretHeld_Prefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="Material" value="MJunkTurretParts"/>
+		<property name="TintColor" value="227, 127, 13"/>
+		<property name="DegradationBreaksAfter" value="true"/>
+		<property name="SoundJammed" value="weapon_jam"/>
+		<property name="Weight" value="4"/>
+		<property name="ScrapTimeOverride" value="10.0"/>
+		<property name="RepairTools" value=""/>
+		<property name="Group" value="Ammo/Weapons,Robotics"/>
+		<property name="Stacknumber" value="1"/>
+		<property name="EconomicValue" value="200"/>
+		<property name="NoScrapping" value="true"/>
+		<property name="SellableToTrader" value="true"/>
+		<property name="RequiredPower" value="15"/>
+		
+		<property name="ShowQuality" value="true"/>
+		<property name="IgnoreKeystoneSound" value="true"/>
+		<property name="SoundUnholster" value="weapon_unholster"/>
+		<property name="SoundHolster" value="weapon_holster"/>
+		<property name="SoundPickup" value="robotic_turret_grab"/>
+		<property name="SoundPlace" value="robotic_turret_place"/>
+
+		<property class="Action0">
+			<property name="Class" value="Ranged"/>
+			<property name="Delay" value="1.6"/> <!-- obsolete if rounds per minute exists -->
+			<!-- <property name="Range" value="40"/> -->
+			<property name="Magazine_items" value="ZombieINC_Defense_ammoJunkTurretRocket"/>
+			<!--<property name="Infinite_ammo" value="false"/>
+			<property name="Single_magazine_usage" value="true"/>-->
+			<property name="Reload_time" value="2.1"/>
+			<property name="Sound_start" value="m136_fire"/>
+			<property name="Sound_loop" value="m136_fire"/>
+			<property name="Sound_repeat" value=""/>
+			<property name="Sound_end" value=""/>
+			<property name="Sound_empty" value="dryfire"/>
+			<property name="Sound_reload" value="m60_reload"/>
+			<property name="AutoReload" value="false"/>
+			<property name="Particles_muzzle_fire" value="gunfire_junkturret_fpv"/>
+			
+			<property name="ScopeOffset" value="0,0,0"/>
+			<property name="SideOffset" value="0,0,0"/>
+			<property name="BarrelOffset" value="0,0,0"/>
+			<requirement name="HasBuff" buff="ZombieINC_Defense_ImATurret_T5"/>
+			<property name="triggerEffectTriggerPullDualsense" value="PistolTrigger"/>
+			<property name="triggerEffectTriggerPullXbox" value="PistolTrigger"/>
+			<property name="triggerEffectShootDualsense" value="PistolShoot"/>
+			<property name="triggerEffectShootXbox" value="PistolShoot"/>
+		</property>
+		<property class="Action1">
+			<property name="Class" value="SpawnTurret"/>
+			<property name="Turret" value="ZombieINC_Defense_junkTurretGun_T5"/>
+			<property name="PreviewSize" value="0.75,0.75,0.75"/>
+			<requirement name="HasBuff" buff="ZombieINC_Defense_BuffsToPlayer_AllTiers"/>
+		</property>
+		<effect_group name="gunBotT5JunkTurret" tiered="false">
+			<passive_effect name="DamageFalloffRange" operation="perc_add" value=".2" tags="perkTurrets"/> 
+			<passive_effect name="EntityDamage" operation="perc_add" value="-0.50" tags="perkTurrets"/> 
+			
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-.08,.08" tags="perkTurrets"/> <!-- random WeaponHandling -->
+			
+			<passive_effect name="RoundsPerMinute" operation="base_set" value="60" tags="turretRanged"/> <!-- random APM -->
+			
+			<passive_effect name="RoundsPerMinute" operation="perc_add" value="-1" tags="turretRanged">
+				<requirement name="HasBuff" buff="ZombieINC_Defense_Turret_T5_CoolDown"/>
+			</passive_effect> 
+			<passive_effect name="RoundsPerMinute" operation="perc_add" value="2" tags="turretRanged">
+				<requirement name="HasBuff" buff="ZombieINC_Defense_Turret_T5_Burst"/>
+			</passive_effect> 
+			
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-.08,.08" tags="perkTurrets"/> <!-- random WeaponHandling -->
+			<passive_effect name="BurstRoundCount" operation="base_set" value="1" tags="perkTurrets"/>
+			<passive_effect name="MagazineSize" operation="base_set" value="40" tags="turretRanged"/>
+		
+			<passive_effect name="ReloadSpeedMultiplier" operation="base_set" value="1.5" tags="perkTurrets"/>
+
+			<passive_effect name="SpreadMultiplierAiming" operation="perc_add" value="-.13" tags="perkTurrets"/>
+			<passive_effect name="SpreadMultiplierCrouching" operation="perc_add" value="-.05" tags="perkTurrets"/>
+			<passive_effect name="SpreadMultiplierWalking" operation="perc_add" value=".15" tags="perkTurrets"/>
+			<passive_effect name="SpreadMultiplierRunning" operation="perc_add" value=".3" tags="perkTurrets"/>
+
+			<passive_effect name="KickDegreesVerticalMin" operation="base_set" value="1" tags="perkTurrets"/>
+			<passive_effect name="KickDegreesVerticalMax" operation="base_set" value="1" tags="perkTurrets"/>
+			<passive_effect name="KickDegreesHorizontalMin" operation="base_set" value="1" tags="perkTurrets"/>
+			<passive_effect name="KickDegreesHorizontalMax" operation="base_set" value="1" tags="perkTurrets"/>
+
+			<passive_effect name="IncrementalSpreadMultiplier" operation="base_set" value="-0.9" tags="perkTurrets"/>
+			<passive_effect name="WeaponHandling" operation="base_set" value="1" tags="perkTurrets"/>
+
+			<passive_effect name="DegradationMax" operation="base_set" value="200"  tags="perkTurrets"/>
+			<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="perkTurrets"/>
+			<passive_effect name="ModSlots" operation="base_set" value="0"/>
+			<display_value name="dYawRange" value="90"/>
+			<display_value name="dPitchRange" value="70"/>
+			
+			<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" buff="ZombieINC_Defense_Turret_T5_Explosion"/>
+			<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="self" buff="ZombieINC_Defense_Turret_T5_Burst"/>
+		</effect_group>
+		<effect_group name="gunBotT2JunkTurret_Hand" tiered="false">
+			<triggered_effect trigger="onSelfEquipStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/RocketLauncher/rocketlauncherPrefab.prefab" local_offset="0,0.388,0.174" local_rotation="0,0,0" local_scale="0.5,0.5,0.55" parent_transform="Handle"/>
+			<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="rocketlauncherPrefab" parent_transform="Handle" />
+		</effect_group>
+	</item>
+	<item name="ZombieINC_Defense_gunBotT2JunkTurret_T6">
+		<property name="Tags" value="turretRanged,weapon,ranged,reloadPenalty,drumMagazine,attIntellect,perkTurrets,canHaveCosmetic,roboticsSkill,meleeIntellect"/>
+		<property name="DisplayType" value="ZombieINC_rangedTurret"/>
+		<property name="CustomIcon" value="gunBotT2JunkTurret"/>
+		<property name="DescriptionKey" value="ZombieINC_Defense_gunBotT2JunkTurret_T6_Desc"/>
+		<property name="HoldType" value="67"/>
+		<property name="Meshfile" value="@:Other/Items/Weapons/Ranged/JunkTurret/junkTurret_Prefab.prefab"/>
+		<property name="HandMeshfile" value="@:Other/Items/Weapons/Ranged/JunkTurret/junkTurretHeld_Prefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="Material" value="MJunkTurretParts"/>
+		<property name="TintColor" value="227, 127, 13"/>
+		<property name="DegradationBreaksAfter" value="true"/>
+		<property name="SoundJammed" value="weapon_jam"/>
+		<property name="Weight" value="4"/>
+		<property name="ScrapTimeOverride" value="10.0"/>
+		<property name="RepairTools" value=""/>
+		<property name="Group" value="Ammo/Weapons,Robotics"/>
+		<property name="Stacknumber" value="1"/>
+		<property name="EconomicValue" value="200"/>
+		<property name="NoScrapping" value="true"/>
+		<property name="SellableToTrader" value="true"/>
+		<property name="RequiredPower" value="15"/>
+		
+		<property name="ShowQuality" value="true"/>
+		<property name="IgnoreKeystoneSound" value="true"/>
+		<property name="SoundUnholster" value="weapon_unholster"/>
+		<property name="SoundHolster" value="weapon_holster"/>
+		<property name="SoundPickup" value="robotic_turret_grab"/>
+		<property name="SoundPlace" value="robotic_turret_place"/>
+
+		<property class="Action0">
+			<property name="Class" value="Ranged"/>
+			<property name="Delay" value="1.6"/> <!-- obsolete if rounds per minute exists -->
+			<!-- <property name="Range" value="40"/> -->
+			<property name="Magazine_items" value="ZombieINC_Defense_ammoJunkTurretCrowdControl"/>
+			<!--<property name="Infinite_ammo" value="false"/>
+			<property name="Single_magazine_usage" value="true"/>-->
+			<property name="Reload_time" value="2.1"/>
+			<property name="Sound_start" value="junkturret_fire"/>
+			<property name="Sound_loop" value="junkturret_fire"/>
+			<property name="Sound_repeat" value=""/>
+			<property name="Sound_end" value=""/>
+			<property name="Sound_empty" value="dryfire"/>
+			<property name="Sound_reload" value="m60_reload"/>
+			<property name="AutoReload" value="false"/>
+			<property name="Particles_muzzle_fire" value="gunfire_junkturret_fpv"/>
+			
+			<property name="ScopeOffset" value="0,0,0"/>
+			<property name="SideOffset" value="0,0,0"/>
+			<property name="BarrelOffset" value="0,0,0"/>
+			<requirement name="HasBuff" buff="ZombieINC_Defense_ImATurret_T6"/>
+			<property name="triggerEffectTriggerPullDualsense" value="PistolTrigger"/>
+			<property name="triggerEffectTriggerPullXbox" value="PistolTrigger"/>
+			<property name="triggerEffectShootDualsense" value="PistolShoot"/>
+			<property name="triggerEffectShootXbox" value="PistolShoot"/>
+		</property>
+		<property class="Action1">
+			<property name="Class" value="SpawnTurret"/>
+			<property name="Turret" value="ZombieINC_Defense_junkTurretGun_T6"/>
+			<property name="PreviewSize" value="0.75,0.75,0.75"/>
+			<requirement name="HasBuff" buff="ZombieINC_Defense_BuffsToPlayer_AllTiers"/>
+		</property>
+		<effect_group name="gunBotT6JunkTurret" tiered="false">
+			<passive_effect name="EntityPenetrationCount" operation="base_set" value="4"/>
+		
+			<passive_effect name="DamageFalloffRange" operation="perc_add" value=".2" tags="perkTurrets"/> 
+			<passive_effect name="EntityDamage" operation="perc_add" value="-0.50" tags="perkTurrets"/> 
+			
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-.08,.08" tags="perkTurrets"/> <!-- random WeaponHandling -->
+			<passive_effect name="RoundsPerMinute" operation="perc_add" value="-.1,.1" tags="turretRanged"/> <!-- random APM -->
+			<passive_effect name="RoundsPerMinute" operation="base_set" value="60" tags="turretRanged"/> <!-- random APM -->
+			
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-.08,.08" tags="perkTurrets"/> <!-- random WeaponHandling -->
+			<passive_effect name="BurstRoundCount" operation="base_set" value="1" tags="perkTurrets"/>
+			<passive_effect name="MagazineSize" operation="base_set" value="100" tags="turretRanged"/>
+		
+			<passive_effect name="ReloadSpeedMultiplier" operation="base_set" value="1.5" tags="perkTurrets"/>
+
+			<passive_effect name="SpreadMultiplierAiming" operation="perc_add" value="-.13" tags="perkTurrets"/>
+			<passive_effect name="SpreadMultiplierCrouching" operation="perc_add" value="-.05" tags="perkTurrets"/>
+			<passive_effect name="SpreadMultiplierWalking" operation="perc_add" value=".15" tags="perkTurrets"/>
+			<passive_effect name="SpreadMultiplierRunning" operation="perc_add" value=".3" tags="perkTurrets"/>
+
+			<passive_effect name="KickDegreesVerticalMin" operation="base_set" value="3" tags="perkTurrets"/>
+			<passive_effect name="KickDegreesVerticalMax" operation="base_set" value="3" tags="perkTurrets"/>
+			<passive_effect name="KickDegreesHorizontalMin" operation="base_set" value="-2" tags="perkTurrets"/>
+			<passive_effect name="KickDegreesHorizontalMax" operation="base_set" value="2" tags="perkTurrets"/>
+
+			<passive_effect name="IncrementalSpreadMultiplier" operation="base_set" value="0" tags="perkTurrets"/>
+			<passive_effect name="WeaponHandling" operation="base_set" value="1" tags="perkTurrets"/>
+
+			<passive_effect name="DegradationMax" operation="base_set" value="500"  tags="perkTurrets"/>
+			<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="perkTurrets"/>
+			<passive_effect name="ModSlots" operation="base_set" value="0"/>
+			<display_value name="dYawRange" value="170"/>
+			<display_value name="dPitchRange" value="70"/>
+			
+			<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="otherAOE" range="3" target_tags="zombie" buff="ZombieINC_Defense_Turret_T6_TaserExplosion"/>
+			
+		</effect_group>
+		<effect_group name="gunBotT2JunkTurret_Hand" tiered="false">
+			<triggered_effect trigger="onSelfEquipStart" action="AttachPrefabToEntity" prefab="@:Entities/bandits/barbedwire/barbedwire_spindlePrefab.prefab" local_offset="-0.1,-0.33,0.056" local_rotation="0,90,90" local_scale="0.08,0.08,0.08" parent_transform="junkTurretBarrel_LOD0" />
+			<triggered_effect trigger="onSelfEquipStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Melee/TaserBaton/TaserBatonPrefab.prefab" local_offset="-0.1,0,0.1" local_rotation="0,180,180" local_scale="0.8,0.8,0.8" parent_transform="junkTurretBarrel_LOD0" />
+		  
+			<triggered_effect trigger="onSelfEquipStart" action="AttachPrefabToEntity" prefab="@:Entities/bandits/barbedwire/barbedwire_spindlePrefab.prefab" local_offset="0.1,-0.333,0.056" local_rotation="0,90,90" local_scale="0.08,0.08,0.08" parent_transform="junkTurretBarrel_LOD1" />
+			<triggered_effect trigger="onSelfEquipStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Melee/TaserBaton/TaserBatonPrefab.prefab" local_offset="0.1,0,0.1" local_rotation="0,180,180" local_scale="0.8,0.8,0.8" parent_transform="junkTurretBarrel_LOD1" />
+		  
+			<triggered_effect trigger="onSelfEquipStart" action="AttachPrefabToEntity" prefab="@:Entities/bandits/barbedwire/barbedwire_spindlePrefab.prefab" local_offset="0,-0.286,0.038" local_rotation="0,90,90" local_scale="0.12,0.12,0.12" parent_transform="junkTurretBarrel_LOD2" />
+					
+			<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="TaserBatonPrefab" parent_transform="junkTurretBarrel_LOD0" />
+			<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="TaserBatonPrefab" parent_transform="junkTurretBarrel_LOD1" />
+			<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="barbedwire_spindlePrefab" parent_transform="junkTurretBarrel_LOD0" />
+			<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="barbedwire_spindlePrefab" parent_transform="junkTurretBarrel_LOD1" />
+			<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="barbedwire_spindlePrefab" parent_transform="junkTurretBarrel_LOD2" />
+		
+		</effect_group>
+	</item>
+	<item name="ZombieINC_Defense_gunBotT2JunkTurret_T7">
+		<property name="Tags" value="turretRanged,weapon,ranged,reloadPenalty,drumMagazine,attIntellect,perkTurrets,canHaveCosmetic,roboticsSkill,meleeIntellect"/>
+		<property name="DisplayType" value="ZombieINC_rangedTurret"/>
+		<property name="CustomIcon" value="gunBotT2JunkTurret"/>
+		<property name="DescriptionKey" value="ZombieINC_Defense_gunBotT2JunkTurret_T6_Desc"/>
+		<property name="HoldType" value="67"/>
+		<property name="Meshfile" value="@:Other/Items/Weapons/Ranged/JunkTurret/junkTurret_Prefab.prefab"/>
+		<property name="HandMeshfile" value="@:Other/Items/Weapons/Ranged/JunkTurret/junkTurretHeld_Prefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="Material" value="MJunkTurretParts"/>
+		<property name="TintColor" value="227, 127, 13"/>
+		<property name="DegradationBreaksAfter" value="true"/>
+		<property name="SoundJammed" value="weapon_jam"/>
+		<property name="Weight" value="4"/>
+		<property name="ScrapTimeOverride" value="10.0"/>
+		<property name="RepairTools" value=""/>
+		<property name="Group" value="Ammo/Weapons,Robotics"/>
+		<property name="Stacknumber" value="1"/>
+		<property name="EconomicValue" value="200"/>
+		<property name="NoScrapping" value="true"/>
+		<property name="SellableToTrader" value="true"/>
+		<property name="RequiredPower" value="15"/>
+		
+		<property name="ShowQuality" value="true"/>
+		<property name="IgnoreKeystoneSound" value="true"/>
+		<property name="SoundUnholster" value="weapon_unholster"/>
+		<property name="SoundHolster" value="weapon_holster"/>
+		<property name="SoundPickup" value="robotic_turret_grab"/>
+		<property name="SoundPlace" value="robotic_turret_place"/>
+
+		<property class="Action0">
+			<property name="Class" value="Ranged"/>
+			<property name="Delay" value="1.6"/> <!-- obsolete if rounds per minute exists -->
+			<!-- <property name="Range" value="40"/> -->
+			<property name="Magazine_items" value="ZombieINC_Defense_ammoJunkTurretFlame"/>
+			<!--<property name="Infinite_ammo" value="false"/>
+			<property name="Single_magazine_usage" value="true"/>-->
+			<property name="Reload_time" value="2.1"/>
+			<property name="Sound_start" value=""/>
+			<property name="Sound_loop" value=""/>
+			<property name="Sound_repeat" value=""/>
+			<property name="Sound_end" value=""/>
+			<property name="Sound_empty" value="dryfire"/>
+			<property name="Sound_reload" value="m60_reload"/>
+			<property name="AutoReload" value="false"/>
+			<property name="Particles_muzzle_fire" value="gunfire_junkturret_fpv"/>
+			
+			<property name="ScopeOffset" value="0,0,0"/>
+			<property name="SideOffset" value="0,0,0"/>
+			<property name="BarrelOffset" value="0,0,0"/>
+			<requirement name="HasBuff" buff="ZombieINC_Defense_ImATurret_T6"/>
+			<property name="triggerEffectTriggerPullDualsense" value="PistolTrigger"/>
+			<property name="triggerEffectTriggerPullXbox" value="PistolTrigger"/>
+			<property name="triggerEffectShootDualsense" value="PistolShoot"/>
+			<property name="triggerEffectShootXbox" value="PistolShoot"/>
+		</property>
+		<property class="Action1">
+			<property name="Class" value="SpawnTurret"/>
+			<property name="Turret" value="ZombieINC_Defense_junkTurretGun_T7"/>
+			<property name="PreviewSize" value="0.75,0.75,0.75"/>
+			<requirement name="HasBuff" buff="ZombieINC_Defense_BuffsToPlayer_AllTiers"/>
+		</property>
+		<effect_group name="gunBotT7JunkTurret" tiered="false">
+			<passive_effect name="EntityPenetrationCount" operation="base_set" value="4"/>
+			
+			<passive_effect name="DamageFalloffRange" operation="perc_add" value=".2" tags="perkTurrets"/> 
+			<passive_effect name="EntityDamage" operation="perc_add" value="-0.50" tags="perkTurrets"/> 
+			
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-.08,.08" tags="perkTurrets"/> <!-- random WeaponHandling -->
+			<passive_effect name="RoundsPerMinute" operation="perc_add" value="-.1,.1" tags="turretRanged"/> <!-- random APM -->
+			<passive_effect name="RoundsPerMinute" operation="base_set" value="120" tags="turretRanged"/> <!-- random APM -->
+			
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-.08,.08" tags="perkTurrets"/> <!-- random WeaponHandling -->
+			<passive_effect name="BurstRoundCount" operation="base_set" value="1" tags="perkTurrets"/>
+			<passive_effect name="MagazineSize" operation="base_set" value="4000" tags="turretRanged"/>
+		
+			<passive_effect name="ReloadSpeedMultiplier" operation="base_set" value="1.5" tags="perkTurrets"/>
+
+			<passive_effect name="SpreadMultiplierAiming" operation="perc_add" value="-.13" tags="perkTurrets"/>
+			<passive_effect name="SpreadMultiplierCrouching" operation="perc_add" value="-.05" tags="perkTurrets"/>
+			<passive_effect name="SpreadMultiplierWalking" operation="perc_add" value=".15" tags="perkTurrets"/>
+			<passive_effect name="SpreadMultiplierRunning" operation="perc_add" value=".3" tags="perkTurrets"/>
+
+			<passive_effect name="KickDegreesVerticalMin" operation="base_set" value="3" tags="perkTurrets"/>
+			<passive_effect name="KickDegreesVerticalMax" operation="base_set" value="3" tags="perkTurrets"/>
+			<passive_effect name="KickDegreesHorizontalMin" operation="base_set" value="-2" tags="perkTurrets"/>
+			<passive_effect name="KickDegreesHorizontalMax" operation="base_set" value="2" tags="perkTurrets"/>
+
+			<passive_effect name="IncrementalSpreadMultiplier" operation="base_set" value="0" tags="perkTurrets"/>
+			<passive_effect name="WeaponHandling" operation="base_set" value="1" tags="perkTurrets"/>
+
+			<passive_effect name="DegradationMax" operation="base_set" value="1000"  tags="perkTurrets"/>
+			<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="perkTurrets"/>
+			<passive_effect name="ModSlots" operation="base_set" value="0"/>
+			<display_value name="dYawRange" value="120"/>
+			<display_value name="dPitchRange" value="70"/>
+			
+			<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="otherAOE" range="3" target_tags="zombie" buff="ZombieINC_Defense_Turret_T7_Flame"/>
+			
+			
+		</effect_group>
+		<effect_group name="gunBotT2JunkTurret_Hand" tiered="false">	
+			<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="PipeMachinegunPrefab" parent_transform="Handle" />
+			<triggered_effect trigger="onSelfEquipStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/PipeMachinegun/PipeMachinegunPrefab.prefab" local_offset="0,0.308,-0.071" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="Handle" />
+			
+			<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="false" transform_path="junkTurretBarrel_LOD0"/>
+			<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="false" transform_path="junkTurretBarrel_LOD1"/>
+			<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="false" transform_path="junkTurretBarrel_LOD2"/>
+			
+			<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="true" transform_path="junkTurretBarrel_LOD0"/>
+			<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="true" transform_path="junkTurretBarrel_LOD1"/>
+			<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="true" transform_path="junkTurretBarrel_LOD2"/>
+		</effect_group>
+	</item>
+	<item name="ZombieINC_Defense_ammoJunkTurretRegular">
+		<property name="Tags" value="ammo"/>
+		<property name="CustomIcon" value="ammoJunkTurretRegular"/>
+		<property name="DisplayType" value="ammoJunkTurretRegular"/>
+		<property name="DescriptionKey" value="ZombieINC_Defense_ammoJunkTurretRegular_Desc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="Material" value="Mmetal"/>
+		<property name="Stacknumber" value="200"/>
+		<property name="EconomicValue" value="1"/>
+		<property name="NoScrapping" value="true"/>
+		<property name="SellableToTrader" value="true"/>
+		<property name="Group" value="Ammo/Weapons,Ammo,Robotics"/>
+		<property name="SoundPickup" value="ammocan_grab"/>
+		<property name="SoundPlace" value="ammocan_place"/>
+		<effect_group name="ammoJunkTurretRegular" tiered="false">
+			<passive_effect name="MaxRange" operation="base_set" value="15" tags="perkTurrets"/>
+			<passive_effect name="DamageFalloffRange" operation="base_set" value="10" tags="perkTurrets"/>
+			<passive_effect name="BlockRange" operation="base_set" value="3" tags="perkTurrets"/>
+
+			<passive_effect name="EntityDamage" operation="base_set" value="12" tags="perkTurrets"/>
+			<passive_effect name="BlockDamage" operation="base_set" value="1" tags="perkTurrets"/>
+			<passive_effect name="RoundsPerMinute" operation="base_set" value="105.6" tags="turretRanged"/>
+
+			<passive_effect name="SpreadDegreesVertical" operation="base_set" value="5" tags="perkTurrets"/>
+			<passive_effect name="SpreadDegreesHorizontal" operation="base_set" value="5" tags="perkTurrets"/>
+		</effect_group>
+	</item>
+	<item name="ZombieINC_Defense_ammoJunkTurretMachineGun">
+		<property name="Tags" value="ammo"/>
+		<property name="CustomIcon" value="ammoJunkTurretRegular"/>
+		<property name="DisplayType" value="ammoJunkTurretRegular"/>
+		<property name="DescriptionKey" value="ZombieINC_Defense_ammoJunkTurretMachineGun_Desc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="Material" value="Mmetal"/>
+		<property name="Stacknumber" value="500"/>
+		<property name="EconomicValue" value="1"/>
+		<property name="SellableToTrader" value="true"/>
+		<property name="NoScrapping" value="true"/>
+		<property name="Group" value="Ammo/Weapons,Ammo,Robotics"/>
+		<property name="SoundPickup" value="ammocan_grab"/>
+		<property name="SoundPlace" value="ammocan_place"/>
+		<effect_group name="ammoJunkTurretRegular" tiered="false">
+			<passive_effect name="MaxRange" operation="base_set" value="15" tags="perkTurrets"/>
+			<passive_effect name="DamageFalloffRange" operation="base_set" value="10" tags="perkTurrets"/>
+			<passive_effect name="BlockRange" operation="base_set" value="3" tags="perkTurrets"/>
+
+			<passive_effect name="EntityDamage" operation="base_set" value="12" tags="perkTurrets"/>
+			<passive_effect name="BlockDamage" operation="base_set" value="1" tags="perkTurrets"/>
+			<passive_effect name="RoundsPerMinute" operation="base_set" value="105.6" tags="turretRanged"/>
+
+			<passive_effect name="SpreadDegreesVertical" operation="base_set" value="5" tags="perkTurrets"/>
+			<passive_effect name="SpreadDegreesHorizontal" operation="base_set" value="5" tags="perkTurrets"/>
+		</effect_group>
+	</item>
+	<item name="ZombieINC_Defense_ammoJunkTurretSniper">
+		<property name="Tags" value="ammo"/>
+		<property name="CustomIcon" value="ammoJunkTurretRegular"/>
+		<property name="DisplayType" value="ammoJunkTurretRegular"/>
+		<property name="DescriptionKey" value="ZombieINC_Defense_ammoJunkTurretSniper_Desc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="Material" value="Mmetal"/>
+		<property name="Stacknumber" value="100"/>
+		<property name="EconomicValue" value="1"/>
+		<property name="NoScrapping" value="true"/>
+		<property name="SellableToTrader" value="true"/>
+		<property name="Group" value="Ammo/Weapons,Ammo,Robotics"/>
+		<property name="SoundPickup" value="ammocan_grab"/>
+		<property name="SoundPlace" value="ammocan_place"/>
+		<effect_group name="ammoJunkTurretRegular" tiered="false">
+			<passive_effect name="MaxRange" operation="base_set" value="70" tags="perkTurrets"/>
+			<passive_effect name="DamageFalloffRange" operation="base_set" value="60" tags="perkTurrets"/>
+			<passive_effect name="BlockRange" operation="base_set" value="3" tags="perkTurrets"/>
+
+			<passive_effect name="EntityDamage" operation="base_set" value="42" tags="perkTurrets"/>
+			<passive_effect name="BlockDamage" operation="base_set" value="1" tags="perkTurrets"/>
+			<passive_effect name="RoundsPerMinute" operation="base_set" value="105.6" tags="turretRanged"/>
+
+			<passive_effect name="SpreadDegreesVertical" operation="base_set" value="0" tags="perkTurrets"/>
+			<passive_effect name="SpreadDegreesHorizontal" operation="base_set" value="0" tags="perkTurrets"/>
+		</effect_group>
+	</item>
+	<item name="ZombieINC_Defense_ammoJunkTurretRocket">
+		<property name="Tags" value="ammo"/>
+		<property name="CustomIcon" value="ammoJunkTurretRegular"/>
+		<property name="DisplayType" value="ammoJunkTurretRegular"/>
+		<property name="Meshfile" value="@:Other/Items/Weapons/Ranged/RocketLauncher/rocketPrefab.prefab"/>
+		<property name="DescriptionKey" value="ZombieINC_Defense_ammoJunkTurretRocket_Desc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="Material" value="Mmetal"/>
+		<property name="Stacknumber" value="40"/>
+		<property name="NoScrapping" value="true"/>
+		<property name="EconomicValue" value="1"/>
+		<property name="SellableToTrader" value="true"/>
+		<property name="Group" value="Ammo/Weapons,Ammo,Robotics"/>
+		<property name="SoundPickup" value="ammocan_grab"/>
+		<property name="SoundPlace" value="ammocan_place"/>
+		
+		<!--<property class="Action1">
+			<property name="Class" value="Projectile"/>
+			<property name="Explosion.BlockDamage" value="500"/>
+			<property name="Explosion.EntityDamage" value="120"/>
+			<property name="Explosion.ParticleIndex" value="5"/> <!{1}** which Prefab/particle is used **{1}>
+			<property name="Explosion.RadiusBlocks" value="3"/> <!{1}** damage radius for blocks **{1}>
+			<property name="Explosion.RadiusEntities" value="4"/> <!{1}** damage radius for entities **{1}>
+			<property name="Explosion.DamageBonus.water" value="0"/>
+			<property name="Explosion.DamageBonus.earth" value="0.3"/>
+			<property name="Gravity" value="-6"/>
+			<property name="FlyTime" value=".2"/>
+			<property name="LifeTime" value="20"/>
+
+			<!{1}**<property name="Explosion.BlockDamage" value="2500"/>  workaround, not affected by perks at all **{1}>
+			<!{1}**<property name="Explosion.EntityDamage" value="442"/>  workaround, not affected by perks at all **{1}>
+		</property>
+		<effect_group name="ammoRocketHE" tiered="false">
+			<triggered_effect trigger="onSelfPrimaryActionUpdate" action="ModifyCVar" target="self" cvar=".ZINCRocketT4" operation="set" value="1"/>
+			<!{1}**<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" target="self" cvar=".ZINCRocketT4" operation="set" value="0"/>**{1}>
+			
+			<passive_effect name="BlockDamage" operation="base_set" value="500" tags="perkDemolitionsExpert"/>
+			<passive_effect name="EntityDamage" operation="base_set" value="120" tags="perkDemolitionsExpert"/>
+			<passive_effect name="ProjectileVelocity" operation="base_set" value="50" tags="perkDemolitionsExpert"/>
+			<display_value name="dExRadius" value="5"/>
+			
+			<!{1}**<passive_effect name="DamageModifier" operation="perc_add" value="-1" tags="earth"/>**{1}><!{1}**Not Working**{1}>
+		</effect_group>-->
+		<effect_group name="ammoJunkTurretRegular" tiered="false">
+			<passive_effect name="MaxRange" operation="base_set" value="45" tags="perkTurrets"/>
+			<passive_effect name="DamageFalloffRange" operation="base_set" value="30" tags="perkTurrets"/>
+			<passive_effect name="BlockRange" operation="base_set" value="3" tags="perkTurrets"/>
+
+			<passive_effect name="EntityDamage" operation="base_set" value="1" tags="perkTurrets"/>
+			<passive_effect name="BlockDamage" operation="base_set" value="1" tags="perkTurrets"/>
+			<passive_effect name="RoundsPerMinute" operation="base_set" value="105.6" tags="turretRanged"/>
+
+			<passive_effect name="SpreadDegreesVertical" operation="base_set" value="0" tags="perkTurrets"/>
+			<passive_effect name="SpreadDegreesHorizontal" operation="base_set" value="0" tags="perkTurrets"/>
+		</effect_group>
+	</item>
+	<item name="ZombieINC_Defense_ammoJunkTurretCrowdControl">
+		<property name="Tags" value="ammo"/>
+		<property name="CustomIcon" value="ammoJunkTurretRegular"/>
+		<property name="DisplayType" value="ammoJunkTurretRegular"/>
+		<property name="DescriptionKey" value="ZombieINC_Defense_ammoJunkTurretCrowdControl_Desc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="Material" value="Mmetal"/>
+		<property name="Stacknumber" value="100"/>
+		<property name="EconomicValue" value="1"/>
+		<property name="NoScrapping" value="true"/>
+		<property name="SellableToTrader" value="true"/>
+		<property name="Group" value="Ammo/Weapons,Ammo,Robotics"/>
+		<property name="SoundPickup" value="ammocan_grab"/>
+		<property name="SoundPlace" value="ammocan_place"/>
+		<effect_group name="ammoJunkTurretRegular" tiered="false">
+			<passive_effect name="MaxRange" operation="base_set" value="5" tags="perkTurrets"/>
+			<passive_effect name="DamageFalloffRange" operation="base_set" value="5" tags="perkTurrets"/>
+			<passive_effect name="BlockRange" operation="base_set" value="3" tags="perkTurrets"/>
+
+			<passive_effect name="EntityDamage" operation="base_set" value="5" tags="perkTurrets"/>
+			<passive_effect name="BlockDamage" operation="base_set" value="1" tags="perkTurrets"/>
+			<passive_effect name="RoundsPerMinute" operation="base_set" value="105.6" tags="turretRanged"/>
+
+			<passive_effect name="SpreadDegreesVertical" operation="base_set" value="5" tags="perkTurrets"/>
+			<passive_effect name="SpreadDegreesHorizontal" operation="base_set" value="5" tags="perkTurrets"/>
+		</effect_group>
+	</item>
+	<item name="ZombieINC_Defense_ammoJunkTurretFlame">
+		<property name="Tags" value="ammo"/>
+		<property name="CustomIcon" value="ammoJunkTurretRegular"/>
+		<property name="DisplayType" value="ammoJunkTurretRegular"/>
+		<property name="DescriptionKey" value="ZombieINC_Defense_ammoJunkTurretFlame_Desc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="Material" value="Mmetal"/>
+		<property name="Stacknumber" value="10000"/>
+		<property name="EconomicValue" value="1"/>
+		<property name="NoScrapping" value="true"/>
+		<property name="SellableToTrader" value="true"/>
+		<property name="Group" value="Ammo/Weapons,Ammo,Robotics"/>
+		<property name="SoundPickup" value="ammocan_grab"/>
+		<property name="SoundPlace" value="ammocan_place"/>
+		<effect_group name="ammoJunkTurretRegular" tiered="false">
+			<passive_effect name="MaxRange" operation="base_set" value="5" tags="perkTurrets"/>
+			<passive_effect name="DamageFalloffRange" operation="base_set" value="5" tags="perkTurrets"/>
+			<passive_effect name="BlockRange" operation="base_set" value="3" tags="perkTurrets"/>
+
+			<passive_effect name="EntityDamage" operation="base_set" value="5" tags="perkTurrets"/>
+			<passive_effect name="BlockDamage" operation="base_set" value="1" tags="perkTurrets"/>
+			<passive_effect name="RoundsPerMinute" operation="base_set" value="105.6" tags="turretRanged"/>
+
+			<passive_effect name="SpreadDegreesVertical" operation="base_set" value="5" tags="perkTurrets"/>
+			<passive_effect name="SpreadDegreesHorizontal" operation="base_set" value="5" tags="perkTurrets"/>
+		</effect_group>
+	</item>
+	
+	
+	<item name="ZombieINC_ammoArrowFlare">
+	<property name="Tags" value="ZombieINCRemove"/>
+	<property name="Extends" value="ammoArrowIron"/>
+	<property name="DisplayType" value="ammoArrowFlaming"/>
+	<property name="Meshfile" value="@:Other/Items/Weapons/Ranged/Bows/Arrows/arrow_flamingPrefab.prefab"/>
+	<property name="TintColor" value="184,15,10"/>
+	<property name="CustomIcon" value="ammoArrowFlaming"/> 	
+	<property name="CustomIconTint" value="184,15,10"/>
+	<property name="HoldType" value="45"/>
+	<property name="HandMeshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+	<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+	<property name="IsSticky" value="false"/>
+	<property name="DescriptionKey" value="ZombieINC_ammoArrowFlareDesc"/>
+	<property name="UsableUnderwater" value="false"/>
+	<property name="EconomicValue" value="44"/>
+	<property name="EconomicBundleSize" value="1"/>
+	<property name="SellableToTrader" value="false"/>
+	<property name="Damage_type" value="Heat"/>
+	<property name="StickyOffset" value=".7"/>
+	
+	
+	<property class="Action1">
+		<property name="Gravity" value="-5"/>
+		<property name="DamageBonus.wood" value="2"/>
+	</property>
+	<effect_group name="ammoArrowFlaming" tiered="false"> <!-- ammoArrowFlaming -->
+		<passive_effect name="EntityDamage" operation="base_set" value="10" tags="perkArchery"/>
+		<passive_effect name="BlockDamage" operation="base_set" value="6" tags="perkArchery"/>
+		<passive_effect name="BlockDamage" operation="base_add" value="50" tags="barrelExplosive"/>
+		<passive_effect name="DamageModifier" operation="perc_set" value=".1" tags="wood"/>
+		<passive_effect name="DamageModifier" operation="perc_set" value="0" tags="earth,cloth"/>
+		<passive_effect name="ProjectileVelocity" operation="base_set" value="40" tags="perkArchery"/>
+		<passive_effect name="ProjectileStickChance" operation="perc_set" value="0"/>
+
+		<triggered_effect trigger="onProjectileImpact" action="ModifyCVar" target="other" cvar="$buffBurningFlamingArrowDuration" operation="set" value="4">
+			<requirement name="ProgressionLevel" progression_name="perkFiremansAlmanacMolotov" operation="Equals" value="0"/></triggered_effect>
+		<triggered_effect trigger="onProjectileImpact" action="ModifyCVar" target="other" cvar="$buffBurningFlamingArrowDuration" operation="set" value="5">
+			<requirement name="ProgressionLevel" progression_name="perkFiremansAlmanacMolotov" operation="Equals" value="1"/></triggered_effect>
+
+		<triggered_effect trigger="onProjectileImpact" action="AddBuff" target="other" buff="ZombieINC_buffBurningFlamingArrowNerfed">
+			<requirement name="CVarCompare" target="other" cvar="_underwater" operation="LT" value="0.3"/>
+		</triggered_effect>
+										
+		<triggered_effect trigger="onSelfRangedBurstShotStart" action="AddBuff" target="self" buff="ZombieINC_ArrowCheckLandingBuff"/>
+		
+		<triggered_effect trigger="onSelfRangedBurstShotStart" action="ModifyCVar" target="self" cvar="ZombieINCEssenceBox" operation="set" value="0"/>
+		
+		<triggered_effect trigger="onSelfRangedBurstShotStart" action="AddBuff" target="self" buff="ZombieINC_ArrowLandingCvar"/>
+		<triggered_effect trigger="onSelfRangedBurstShotStart" action="ModifyCVar" target="self" cvar=".ZombieINCArrow" operation="set" value="1"/>
+		<triggered_effect trigger="onSelfDamagedOther" action="ModifyCVar" target="self" cvar=".ZombieINCArrow" operation="set" value="0"/>
+		<triggered_effect trigger="onProjectileImpact" action="ModifyCVar" target="self" cvar=".ZombieINCArrow" operation="set" value="0"/>
+		<!--<triggered_effect trigger="onSelfRangedBurstShotStart" action="ModifyCVar" target="self" cvar=".ZombieINCArrowTEST" operation="add" value="1"/>-->
+		<!--<triggered_effect trigger="onProjectileImpact" action="CallGameEvent" event="ZombieINC_TestEvent_Spawn_WanderingHorde"/>--> <!--Not Important Stuff-->
+		
+		
+		<!--<triggered_effect trigger="onSelfDamagedOther" action="RemoveBuff" target="self" buff="ZombieINC_ArrowCheckLandingBuff"/>-->
+		
+		<!--<triggered_effect trigger="onProjectileImpact" action="AddBuff" target="self" buff="ZombieINC_ArrowLandingSuccess">
+			<requirement name="HasBuff" target="self" buff="ZombieINC_ArrowLandingSuccess"/>
+		</triggered_effect>-->
+		<triggered_effect trigger="onProjectileImpact" action="AddBuff" target="self" buff="ZombieINC_ArrowLandingFailed">
+			<requirement name="CVarCompare" cvar=".ZombieINCArrowSuccess" operation="Equals" value="0"/>
+		</triggered_effect>
+
+		<display_value name="dEntityDamageFire" value="40"/>
+		<display_value name="dDuration" value="4"/>
+	</effect_group>
+
+	<effect_group name="ammoArrowFlamingFire" tiered="false">
+
+		<triggered_effect trigger="onSelfEquipStart" action="AttachParticleEffectToEntity" particle="p_fire_flaming_arrow" parent_transform="particle_joint">
+			<requirement name="CVarCompare" cvar="_underwater" operation="LT" value="1"/>
+		</triggered_effect>
+		<triggered_effect trigger="onSelfEquipStop" action="RemoveParticleEffectFromEntity" particle="p_fire_flaming_arrow"/>
+		<triggered_effect trigger="onSelfWaterSurface" action="AttachParticleEffectToEntity" particle="p_fire_flaming_arrow" parent_transform="particle_joint"/>
+		<triggered_effect trigger="onSelfWaterSubmerge" action="RemoveParticleEffectFromEntity" particle="p_fire_flaming_arrow"/>
+		<triggered_effect trigger="onReloadStart" action="AttachParticleEffectToEntity" particle="p_fire_flaming_arrow" parent_transform="particle_joint">
+			<requirement name="CVarCompare" cvar="_underwater" operation="LT" value="1"/>
+		</triggered_effect>
+
+		<triggered_effect trigger="onSelfEquipStart" action="AttachParticleEffectToEntity" particle="p_fire_arrow_flaming_cloth" parent_transform="Cloth_4">
+			<requirement name="CVarCompare" cvar="_underwater" operation="LT" value="1"/>
+		</triggered_effect>
+		<triggered_effect trigger="onSelfEquipStop" action="RemoveParticleEffectFromEntity" particle="p_fire_arrow_flaming_cloth"/>
+		<triggered_effect trigger="onSelfWaterSurface" action="AttachParticleEffectToEntity" particle="p_fire_arrow_flaming_cloth" parent_transform="Cloth_4"/>
+		<triggered_effect trigger="onSelfWaterSubmerge" action="RemoveParticleEffectFromEntity" particle="p_fire_arrow_flaming_cloth"/>
+		<triggered_effect trigger="onReloadStart" action="AttachParticleEffectToEntity" particle="p_fire_arrow_flaming_cloth" parent_transform="Cloth_4">
+			<requirement name="CVarCompare" cvar="_underwater" operation="LT" value="1"/>
+		</triggered_effect>
+
+	</effect_group>
+</item>
+
+<item name="ZombieINC_Borrowed_gunBowT0PrimitiveBow">
+	<property name="Tags" value="weapon,ranged,bowDrawPenalty,archery,bow,attAgility,perkArchery,canHaveCosmetic,bowSkill,ZombieINCRemove"/>
+	<property name="DisplayType" value="rangedBow"/>
+	<property name="HoldType" value="27"/> 
+	<property name="Meshfile" value="@:Other/Items/Weapons/Ranged/Bows/WoodenBow/WoodenBowPrefab.prefab"/>
+	<property name="Material" value="Mwood"/>
+	<property name="TintColor" value="204, 153, 102"/>
+	<property name="RepairTools" value="resourceWood"/>
+	<property name="EconomicValue" value="250"/>
+	<property name="CustomIcon" value="gunBowT0PrimitiveBow"/> 
+
+	<property name="EconomicBundleSize" value="1"/>
+	<property name="SellableToTrader" value="false"/>
+	<property name="DescriptionKey" value="ZombieINC_Borrowed_gunBowT0PrimitiveBowDesc"/>
+	<property name="DegradationBreaksAfter" value="false"/>
+	<property name="SoundJammed" value="ItemNeedsRepair"/>
+	<property name="SoundDestroy" value="wooddestroy1"/>
+	<property name="CrosshairOnAim" value="true"/> 
+	<property name="CrosshairUpAfterShot" value="false"/>
+	<property name="RepairExpMultiplier" value="5.5"/>
+	<property name="PickupJournalEntry" value="alternateAmmoTip"/>
+	<property name="ShowQuality" value="true"/>
+	<property name="Group" value="Ammo/Weapons,Basics,Ranged Weapons"/>
+	<property name="UsableUnderwater" value="false"/>
+	<property name="SoundUnholster" value="weapon_unholster"/>
+	<property name="SoundHolster" value="weapon_holster"/>
+	
+	<property class="Action0">
+		<property name="Class" value="Catapult"/>
+		
+		<property name="Hitmask_override" value="Arrow"/>
+		<property name="Delay" value="1"/> 
+		<property name="Magazine_items" value="ammoArrowStone,ammoArrowIron,ammoArrowSteelAP,ammoArrowFlaming,ammoArrowExploding,ZombieINC_ammoArrowFlare"/>
+		
+		<property name="Sound_start" value="bow_fire"/>
+		<property name="Sound_repeat" value=""/>
+		<property name="Sound_end" value=""/>
+		<property name="Sound_empty" value="dryfire"/>
+		<property name="Sound_reload" value="bow_unquiver"/>
+		<property name="Sound_draw" value="bow_draw"/>
+		<property name="Sound_cancel" value="bow_fire_cancel"/>
+		<property name="Particles_muzzle_fire" value="nozzleflashuzi"/>
+		<property name="Particles_muzzle_smoke" value="nozzlesmokeuzi"/>
+		<property name="Max_strain_time" value="1.5"/>
+		<property name="ScopeOffset" value="-.00062,.088,.065"/>
+		<property name="SideOffset" value="0,0,0"/>
+		<property name="BarrelOffset" value="0,0,0"/>
+		<requirement name="CVarCompare" cvar="_underwater" operation="LT" value=".98"/>
+                <property name="triggerEffectTriggerPullDualsense" value="PistolTrigger"/>
+                <property name="triggerEffectTriggerPullXbox" value="PistolTrigger"/>
+                <property name="triggerEffectShootDualsense" value="PistolShoot"/>
+                <property name="triggerEffectShootXbox" value="PistolShoot"/>
+	</property>
+	<property class="Action1"> 
+		<property name="Class" value="Zoom"/>
+		<property name="Zoom_max_out" value="55"/>
+		<property name="Zoom_max_in" value="55"/>
+	        <property name="triggerEffectTriggerPullDualsense" value="PistolZoom"/>
+	</property>
+	<effect_group name="gunBowT0PrimitiveBow">
+		<passive_effect name="ProjectileVelocity" operation="perc_add" value="-.3" tags="perkArchery"/>
+		<passive_effect name="DamageFalloffRange" operation="base_set" value="20" tags="perkArchery"/>
+		<passive_effect name="MaxRange" operation="base_set" value="100" tags="perkArchery"/>
+		<passive_effect name="MagazineSize" operation="base_set" value="1" tags="perkArchery"/>
+		<passive_effect name="EntityDamage" operation="base_add" value="-10" tags="perkArchery"/> <!-- damage offset -->
+		<passive_effect name="EntityDamage" operation="perc_add" value=".07,.35" tier="2,6" tags="perkArchery"/> <!-- tier bonus -->
+		<passive_effect name="BlockDamage" operation="perc_add" value=".15,.75" tier="2,6" tags="perkArchery"/> <!-- tier bonus -->
+
+		<passive_effect name="SpreadDegreesVertical" operation="base_set" value="2.8" tags="perkArchery"/>
+		<passive_effect name="SpreadDegreesHorizontal" operation="base_set" value="2.8" tags="perkArchery"/>
+		<passive_effect name="SpreadMultiplierAiming" operation="base_set" value=".26" tags="perkArchery"/>
+		<passive_effect name="SpreadMultiplierCrouching" operation="base_set" value=".8" tags="perkArchery"/>
+		<passive_effect name="SpreadMultiplierWalking" operation="base_set" value="1.5" tags="perkArchery"/>
+		<passive_effect name="SpreadMultiplierRunning" operation="base_set" value="2.2" tags="perkArchery"/>
+
+		<passive_effect name="IncrementalSpreadMultiplier" operation="base_set" value="2" tags="perkArchery"/>
+		<passive_effect name="WeaponHandling" operation="base_set" value=".9" tags="perkArchery"/> <!-- crosshair reset speed -->
+
+		<passive_effect name="RoundsPerMinute" operation="base_set" value="75" tags="perkArchery,bowDrawPenalty"/>
+		<passive_effect name="ReloadSpeedMultiplier" operation="base_set" value=".9" tags="perkArchery"/>
+
+		<!--
+		<passive_effect name="AttacksPerMinute" operation="perc_add" value="15"/>
+		-->
+		<!-- <passive_effect name="AttacksPerMinute" operation="base_set" value="166"/>
+
+		AttacksPerMinute, RoundsPerMinute  do NOT affect bow rate of fire
+		-->
+
+		<passive_effect name="BurstRoundCount" operation="base_set" value="1" tags="perkArchery"/>
+		<passive_effect name="KickDegreesVerticalMin" operation="base_set" value=".5" tags="perkArchery"/>
+		<passive_effect name="KickDegreesVerticalMax" operation="base_set" value=".5" tags="perkArchery"/>
+		<passive_effect name="KickDegreesHorizontalMin" operation="base_set" value="-.2" tags="perkArchery"/>
+		<passive_effect name="KickDegreesHorizontalMax" operation="base_set" value=".2" tags="perkArchery"/>
+
+		<passive_effect name="DegradationMax" operation="base_set" value="60,150" tier="1,6" tags="perkArchery"/>
+		<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="perkArchery"/>
+		<passive_effect name="ModSlots" operation="base_set" value="1,1,1,2,2,3" tier="1,2,3,4,5,6"/>
+		<passive_effect name="ModPowerBonus" operation="perc_add" value=".10" tags="EntityDamage,BlockDamage"/>
+		<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+	</effect_group>
+	
+</item>
+
+
+<item name="ZombieINC_resourceSmellEnhancer">
+			<property name="CustomIcon" value="resourceTestosteroneExtract"/>
+			<property name="DescriptionKey" value="ZombieINC_resourceSmellEnhancerDesc"/>
+			<property name="CustomIconTint" value="ff9f9f"/>
+			<property name="Tags" value="ZombieINCRemoveSmellEnhancer"/>
+			<property name="HoldType" value="45"/>
+			<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+			<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+			<property name="Material" value="MresourceTestosteroneExtract"/>
+			<property name="Stacknumber" value="10"/> <!-- STK resource -->
+			<property name="EconomicValue" value="500"/>
+			<property name="EconomicBundleSize" value="1"/>
+			<property name="Group" value="Resources,Chemicals,CFChemicals"/>
+			<property name="CraftingIngredientTime" value="2"/>
+		</item>
+
+
+
+<item name="ZombieINC_WarriorArmorSteelHelmet">
+	<property name="Extends" value="armorRaiderHelmet" param1="CustomIcon"/>
+	<property name="Tags" value="head,armor,armorHead,heavyArmor,heavyArmorPenalty,canHaveCosmetic,heavyArmorDeg,armorHeavySkill,ZombieINCWarriorHelmet"/>
+	<property name="EquipSlot" value="Head"/>
+	<property name="TintColor" value="204, 153, 102"/>
+	<property name="CustomIcon" value="armorSteelHelmet"/>
+	<property name="CustomIconTint" value="134,15,10"/>	
+	<effect_group name="steel armor">
+		<passive_effect name="ModSlots" operation="base_set" value="3,3,3,4,4,4" tier="1,2,3,4,5,6"/>
+		<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+		<passive_effect name="PhysicalDamageResist" operation="base_add" value="8.71,12.51"/>
+		<passive_effect name="PhysicalDamageResist" operation="base_add" value="0,4.29" tier="1,6"/>
+		<passive_effect name="ElementalDamageResist" operation="base_add" value="8.71,12.51" tags="heat,electrical"/>
+		<passive_effect name="ElementalDamageResist" operation="base_add" value="0,4.29" tier="1,6"/>
+		<passive_effect name="BuffResistance" operation="base_add" value="0.061,0.076" tags="buffFatiguedTrigger,buffArmSprainedCHTrigger,buffLegSprainedCHTrigger,buffLaceration,buffInfectionCatch,buffInjuryStunned01CHTrigger,buffInjuryBleedingTwo,buffInjuryBleedingBarbedWire,critResistDisplay"/>
+		<passive_effect name="DegradationMax" operation="base_set" value="500,750" tier="1,6"/>
+		<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="heavyArmorDeg"/>
+		<passive_effect name="Mobility" operation="perc_add" value="-.055"/>
+		<passive_effect name="StaminaChangeOT" operation="perc_add" value="-.040" tags="walking"/>
+		<passive_effect name="StaminaChangeOT" operation="perc_add" value="-.085" tags="running"/>
+		<display_value name="dStaminaChangeOT" value="-.85"/>
+		<passive_effect name="NoiseMultiplier" operation="perc_add" value=".18"/><display_value name="dNoiseMultiplier" value=".18"/>
+	</effect_group>
+
+	<property class="SDCS">
+		<property name="Prefab" value="Entities/Player/*/Gear/Prefabs/gear*RaiderPrefab"/>
+		<property name="TransformName" value="head"/>
+		<property name="Excludes" value="head"/>
+		<property name="HairMaskType" value="None"/>
+		<property name="FacialHairMaskType" value="None"/>
+	</property>
+</item>
+
+<item name="ZombieINC_EssenceBox">
+	<property name="CreativeMode" value="Player"/>
+	<property name="CustomIcon" value="ammoJunkTurretAP"/>
+	<property name="ItemTypeIcon" value="bundle"/>
+	<property name="CustomIconTint" value="150,10,10"/>
+	<property name="HoldType" value="45"/>
+	<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+	<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+	<property name="Material" value="Mmetal"/>
+	<property name="Stacknumber" value="1"/>
+	<property name="Weight" value="0"/>
+	<property name="SellableToTrader" value="false"/>
+	<property name="Group" value="Special Items"/>
+	<property class="Action0"> 
+		<property name="Class" value="Activate"/>
+		<property name="Delay" value="1"/> 
+	</property>
+	
+	<effect_group tiered="false" name="EssenceBox">
+	
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" target="self" buff="ZombieINC_EssenceBoxCvar"/>			
+			
+	
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="CallGameEvent" event="ZombieINC_EssenceBox1">			
+			<requirement name="PlayerItemCount"  item_name="resourceCloth" operation="LT" value="5" />
+			<requirement name="PlayerItemCount"  item_name="ZombieINC_ammoArrowFlare" operation="Equals" value="0" />
+			<requirement name="CVarCompare" cvar="ZombieINCEssenceBox" operation="Equals" value="0"/>			
+		</triggered_effect>
+		
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="CallGameEvent" event="ZombieINC_EssenceBox2">
+			<requirement name="PlayerItemCount"  item_name="ammoArrowSteelAP" operation="Equals" value="0" />
+			<requirement name="PlayerItemCount"  item_name="ZombieINC_ammoArrowFlare" operation="Equals" value="0" />
+			<requirement name="CVarCompare" cvar="ZombieINCEssenceBox" operation="Equals" value="0"/>			
+		</triggered_effect>
+		
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="CallGameEvent" event="ZombieINC_EssenceBox3">
+			<requirement name="PlayerItemCount"  item_name="ZombieINC_resourceSmellEnhancer" operation="Equals" value="0" />
+			<requirement name="PlayerItemCount"  item_name="ZombieINC_ammoArrowFlare" operation="Equals" value="0" />
+			<requirement name="CVarCompare" cvar="ZombieINCEssenceBox" operation="Equals" value="0"/>
+		</triggered_effect>
+		
+	</effect_group>
+	
+</item>
+
+	<!--DefensePOI-->
+</append>
+
+</Config>

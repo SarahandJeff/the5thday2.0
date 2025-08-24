@@ -5,9 +5,8 @@
 	
 	<append xpath="/controls">
 		
-		<backpack_item_stack controller="Quartz.ItemStack, Quartz" on_scroll="false" allow_dropping="true" prefix_id="false">
-			<rect controller="${controller}" style="ss_style_item_stack, hover" collider_scale="1.0" on_scroll="${on_scroll}" allow_dropping="${allow_dropping}" prefix_id="${prefix_id}" tooltip="{tooltip}" enabled="{# !userlockmode}" >
-				<!-- ${} -->
+		<backpack_item_stack controller="Quartz.ItemStack, Quartz" on_scroll="false" allow_dropping="true" prefix_id="false" show_favorites="false">
+			<rect controller="${controller}" style="itemStack, hover" collider_scale="1.0" on_scroll="${on_scroll}" allow_dropping="${allow_dropping}" prefix_id="${prefix_id}" show_favorites="${show_favorites}" tooltip="{tooltip}" enabled="{# !defined('userlockmode') or !userlockmode}" >
 				<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="${Round(-3-(-3*(100-cell_width/68*100)/100),0)},${Round(3-(3*(100-cell_height/68*100)/100),0)}" width="${Round(70-(70*(100-cell_width/68*100)/100),0)}" height="${Round(70-(70*(100-cell_height/68*100)/100),0)}" color="[black]" type="sliced" fillcenter="false" />
 				<sprite depth="3" name="background" sprite="menu_empty3px" width="${Round(65-(65*(100-cell_width/68*100)/100),0)}" height="${Round(65-(65*(100-cell_height/68*100)/100),0)}" color="{selectionbordercolor}" type="sliced" globalopacity="true" fillcenter="false"/>
 				<sprite depth="2" name="highlightOverlay" width="${Round(64-(64*(100-cell_width/68*100)/100),0)}" height="${Round(64-(64*(100-cell_height/68*100)/100),0)}" color="{backgroundcolor}" pos="0,0" type="sliced" globalopacity="true"/>
@@ -25,13 +24,16 @@
 				
 				<label depth="7" name="stackValue" pos="${Round(0-(0*(100-cell_width/68*100)/100),0)},${Round(-37-(-37*(100-cell_height/68*100)/100),0)}" width="${Round(62-(62*(100-cell_width/68*100)/100),0)}" height="${Round(28-(28*(100-cell_height/68*100)/100),0)}" text="{itemcount}" font_size="${Round(26-(26*(100-cell_height/68*100)/100),0)}" effect="outline" justify="{#hasdurability ? 'Center' : 'Right'}" />
 				<label depth="7" name="timer" pos="${Round(35-(35*(100-cell_width/68*100)/100),0)},${Round(-33-(-33*(100-cell_height/68*100)/100),0)}" width="${Round(62-(62*(100-cell_width/68*100)/100),0)}" height="${Round(24-(24*(100-cell_height/68*100)/100),0)}" font_size="${Round(24-(24*(100-cell_height/68*100)/100),0)}" justify="center" pivot="center" effect="outline" color="[beige]"/>
-				<sprite depth="9" name="cancel" sprite="ui_game_symbol_x" width="${Round(62-(62*(100-cell_width/68*100)/100),0)}" height="${Round(62-(62*(100-cell_height/68*100)/100),0)}" color="255,0,0,255" type="sliced" visible="false" foregroundlayer="true"/>
+			<sprite depth="9" name="cancel" sprite="ui_game_symbol_x" color="255,0,0,255" type="sliced" visible="{# ishovered and islocked}" foregroundlayer="true"
+				width="62" height="62" />
 				<sprite depth="13" name="assembleIcon" size="${Round(35-(35*(100-cell_width/68*100)/100),0)},${Round(35-(35*(100-cell_height/68*100)/100),0)}" sprite="{stacklockicon}" color="{stacklockcolor}" visible="{isassemblelocked}" pos="${Round(14-(14*(100-cell_width/68*100)/100),0)},${Round(-14-(-14*(100-cell_height/68*100)/100),0)}" foregroundlayer="true" />
 				
-				<button name="rectSlotLock" depth="15" style="press, hover" width="${Round(65-(65*(100-cell_width/68*100)/100),0)}" height="${Round(65-(65*(100-cell_height/68*100)/100),0)}" visible="{userlockmode}" sprite="" hoverscale="1" use_selection_box="true">
-					<sprite depth="16" name="button" width="${Round(24-(24*(100-cell_width/68*100)/100),0)}" height="${Round(24-(24*(100-cell_height/68*100)/100),0)}" sprite="{# userlockedslot ? 'ui_game_symbol_lock' : 'ui_game_symbol_unlock' }" pos="${Round(50-(50*(100-cell_width/68*100)/100),0)}, ${Round(-14-(-14*(100-cell_height/68*100)/100),0)}" style="icon32px" pivot="center" color="{# userlockedslot ? '222,206,163' : '255,255,255' }" />
+				<button name="rectSlotLock" depth="15" style="press, hover" width="65" height="65" visible="{userlockmode}" sprite="" hoverscale="1" use_selection_box="true">
+					<sprite depth="3" name="iconSlotLock" width="${Round(65-(65*(100-cell_width/68*100)/100),0)}" height="${Round(65-(65*(100-cell_width/68*100)/100),0)}" sprite="menu_empty3px"  type="sliced" fillcenter="true" color="{# userlockedslot ? '255, 0, 0,150' : '0,255,0,150' }"  />
+					<sprite depth="3" name="iconSlotLock" width="${Round(65-(65*(100-cell_width/68*100)/100),0)}" height="${Round(65-(65*(100-cell_width/68*100)/100),0)}" sprite="menu_empty3px"  type="sliced" fillcenter="false" color="{# userlockedslot ? '255, 0, 0,150' : '0,255,0,150' }"  />
 				</button>
-				<sprite depth="15" name="iconSlotLock" width="${Round(20-(20*(100-cell_width/68*100)/100),0)}" height="${Round(20-(20*(100-cell_height/68*100)/100),0)}" sprite="ui_game_symbol_lock" pos="${Round(50-(50*(100-cell_width/68*100)/100),0)}, ${Round(-14-(-14*(100-cell_height/68*100)/100),0)}" style="icon32px" pivot="center" visible="{# userlockedslot and !userlockmode}" color="[lightGrey]" />
+				<sprite depth="3" name="iconSlotLock" width="${Round(65-(65*(100-cell_width/68*100)/100),0)}" height="${Round(65-(65*(100-cell_width/68*100)/100),0)}" sprite="menu_empty3px"  type="sliced" fillcenter="true" visible="{# userlockedslot and !userlockmode}" color="255,0,0,150" />
+				<sprite depth="3" name="iconSlotLock" width="${Round(65-(65*(100-cell_width/68*100)/100),0)}" height="${Round(65-(65*(100-cell_width/68*100)/100),0)}" sprite="menu_empty3px"  type="sliced" fillcenter="false" visible="{# userlockedslot and !userlockmode}" color="255,0,0,150" />
 			</rect>
 		</backpack_item_stack>
 	</append>

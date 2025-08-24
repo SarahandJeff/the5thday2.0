@@ -1,0 +1,291 @@
+<Config>
+
+	<append xpath="/gameevents">
+			<action_sequence name="ZombieINC_RemoveItems">	
+	    
+				<action class="AddPartyToGroup">
+					<property name="phase" value="0" />
+					<property name="group_name" value="party" />
+				</action>	
+				
+				<action class="RemoveItems">
+					<property name="phase" value="1" />
+					<property name="group_name" value="party" />
+					<property name="items_location" value="Toolbelt,Backpack"  />
+					<property name="items_tags" value="ZombieINCRemove" />
+				</action>
+				
+			</action_sequence>
+	
+			<action_sequence name="ZombieINC_Activate_Event_Anchor">
+				<action class="AddBuff">
+					<property name="buff_name" value="ZombieINC_TheCult_BellEffect_Buff" />
+					<property name="phase" value="1"/>				
+				</action>
+				<action class="SpawnEntity">			
+					<property name="entity_names" value="ZombieINC_RallyPointHuntPlaceHolder" />
+				<!--	<property name="add_buffs" value="ZombieINC_EnemyDotBuff"/>-->
+					<property name="spawn_count" value="1"  />
+					<property name="max_distance" value="1" />
+					<property name="min_distance" value="1" />
+					<property name="air_spawn" value="true" />		
+				</action>
+			</action_sequence>
+			
+			<action_sequence name="ZombieINC_OneAnchorGenericPlacementByBuff">
+					<property name="target_type" value="Entity" />
+					<property name="allow_while_dead" value="true" />
+					<!--<property name="single_instance" value="true" />-->
+					<property name="refund_inactivity" value="false" />
+					
+					<action class="BlockReplace">
+						<property name="min_offset" value="2,-10,1" />
+						<property name="max_offset" value="2,10,1" />
+						<property name="block_to" value="ZombieINC_Anchor_Generic_Block" />
+						<property name="block_tags" value="air" />
+						<property name="allow_terrain" value="true" />
+						<property name="phase" value="1" />
+					</action>
+				</action_sequence>
+				
+				
+				
+				
+				<!--###Challenges-->
+	<!--##Rewards-->
+	<action_sequence name="challenge_reward_4000">
+		<property name="allow_user_trigger" value="false" />
+		<property name="action_type" value="Game" />
+		
+		<action class="AddXP">
+			<property name="xp_amount" value="4000" />
+		</action>
+	</action_sequence>
+	<action_sequence name="challenge_reward_6000">
+		<property name="allow_user_trigger" value="false" />
+		<property name="action_type" value="Game" />
+		
+		<action class="AddXP">
+			<property name="xp_amount" value="6000" />
+		</action>
+	</action_sequence>
+	<action_sequence name="challenge_reward_8000">
+		<property name="allow_user_trigger" value="false" />
+		<property name="action_type" value="Game" />
+		
+		<action class="AddXP">
+			<property name="xp_amount" value="8000" />
+		</action>
+	</action_sequence>
+	<action_sequence name="challenge_reward_15000">
+		<property name="allow_user_trigger" value="false" />
+		<property name="action_type" value="Game" />
+		
+		<action class="AddXP">
+			<property name="xp_amount" value="15000" />
+		</action>
+	</action_sequence>
+	<action_sequence name="challenge_reward_20000">
+		<property name="allow_user_trigger" value="false" />
+		<property name="action_type" value="Game" />
+		
+		<action class="AddXP">
+			<property name="xp_amount" value="20000" />
+		</action>
+	</action_sequence>
+	<action_sequence name="challenge_reward_30000">
+		<property name="allow_user_trigger" value="false" />
+		<property name="action_type" value="Game" />
+		
+		<action class="AddXP">
+			<property name="xp_amount" value="30000" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_challenge_reward_skillpoints_1">
+		<property name="allow_user_trigger" value="false" />
+		<property name="action_type" value="Game" />
+		
+		<action class="AddSkillPoints">
+			<property name="skill_points" value="1" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_challenge_reward_skillpoints_2">
+		<property name="allow_user_trigger" value="false" />
+		<property name="action_type" value="Game" />
+		
+		<action class="AddSkillPoints">
+			<property name="skill_points" value="2" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_challenge_reward_skillpoints_5">
+		<property name="allow_user_trigger" value="false" />
+		<property name="action_type" value="Game" />
+		
+		<action class="AddSkillPoints">
+			<property name="skill_points" value="5" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_challenge_reward_skillpoints_10">
+		<property name="allow_user_trigger" value="false" />
+		<property name="action_type" value="Game" />
+		
+		<action class="AddSkillPoints">
+			<property name="skill_points" value="10" />
+		</action>
+	</action_sequence>
+	<!--Rewards-->
+	<!--##Rewards Group-->
+	<action_sequence name="ZombieINC_challenge_group_reward_MonsterSlayer">
+		<!-- <property name="allow_user_trigger" value="false" /> -->
+		<property name="action_type" value="Game" />
+		<action class="AddQuest">
+			<property name="quest" value="ZombieINC_challengegroup_reward_MonsterSlayer" param1="quest" />
+			<property name="notify" value="false" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_challenge_group_reward_GodSlayer">
+		<!-- <property name="allow_user_trigger" value="false" /> -->
+		<property name="action_type" value="Game" />
+		<action class="AddQuest">
+			<property name="quest" value="ZombieINC_challengegroup_reward_GodSlayer" param1="quest" />
+			<property name="notify" value="false" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_challenge_group_reward_Fortress">
+		<!-- <property name="allow_user_trigger" value="false" /> -->
+		<property name="action_type" value="Game" />
+		<action class="AddQuest">
+			<property name="quest" value="ZombieINC_challengegroup_reward_Fortress" param1="quest" />
+			<property name="notify" value="false" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_challenge_group_reward_Surviver">
+		<!-- <property name="allow_user_trigger" value="false" /> -->
+		<property name="action_type" value="Game" />
+		<action class="AddQuest">
+			<property name="quest" value="ZombieINC_challengegroup_reward_Surviver" param1="quest" />
+			<property name="notify" value="false" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_challenge_group_reward_CarThief">
+		<!-- <property name="allow_user_trigger" value="false" /> -->
+		<property name="action_type" value="Game" />
+		<action class="AddQuest">
+			<property name="quest" value="ZombieINC_challengegroup_reward_CarThief" param1="quest" />
+			<property name="notify" value="false" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_challenge_group_reward_TheCult">
+		<!-- <property name="allow_user_trigger" value="false" /> -->
+		<property name="action_type" value="Game" />
+		<action class="AddQuest">
+			<property name="quest" value="ZombieINC_challengegroup_reward_TheCult" param1="quest" />
+			<property name="notify" value="false" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_challenge_group_reward_MobileDefense">
+		<!-- <property name="allow_user_trigger" value="false" /> -->
+		<property name="action_type" value="Game" />
+		<action class="AddQuest">
+			<property name="quest" value="ZombieINC_challengegroup_reward_MobileDefense" param1="quest" />
+			<property name="notify" value="false" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_challenge_group_reward_NestDemolition">
+		<!-- <property name="allow_user_trigger" value="false" /> -->
+		<property name="action_type" value="Game" />
+		<action class="AddQuest">
+			<property name="quest" value="ZombieINC_challengegroup_reward_NestDemolition" param1="quest" />
+			<property name="notify" value="false" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_challenge_group_reward_WeaponsPart1">
+		<!-- <property name="allow_user_trigger" value="false" /> -->
+		<property name="action_type" value="Game" />
+		<action class="AddQuest">
+			<property name="quest" value="ZombieINC_challengegroup_reward_WeaponsPart1" param1="quest" />
+			<property name="notify" value="false" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_challenge_group_reward_WeaponsPart2">
+		<!-- <property name="allow_user_trigger" value="false" /> -->
+		<property name="action_type" value="Game" />
+		<action class="AddQuest">
+			<property name="quest" value="ZombieINC_challengegroup_reward_WeaponsPart2" param1="quest" />
+			<property name="notify" value="false" />
+		</action>
+	</action_sequence>
+	<!--Rewards Group-->
+	<!--Challenges-->
+	<!--###New Weapons and Ammo-->
+	<action_sequence name="ZombieINC_RocketT4_Explode_Event">
+		<action class="ExplodeTarget">
+			<property name="blast_power" value="100" />
+			<property name="block_damage" value="250" />
+			<property name="block_radius" value="2" />
+			<property name="entity_damage" value="80" />
+			<property name="entity_radius" value="2" />
+			<property name="particle_index" value="5" />	
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_TunedSniperT4_Degradation_Event">
+		<action class="AddItemDurability">
+			<property name="items_location" value="Held" />
+			<property name="amount" value="1" />
+			<property name="is_negative" value="true" />
+			<property name="is_percent" value="false" />
+		</action>
+	</action_sequence>
+	<!--New Weapons and Ammo-->
+	
+	<action_sequence name="ZombieINC_Leftovers_Event">	
+		<action class="CloseWindow" />
+	</action_sequence>
+	<!--###Zombie Table-->
+	<!--
+	
+	zombieArlene,zombieBurnt,zombieLab,zombieMarlene,zombieDarlene,zombiePartyGirl,zombieNurse
+	
+	zombieSkateboarder,zombieTomClark,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieUtilityWorker
+	
+	zombieMoe,zombieJanitor,zombieBiker,zombieFatHawaiian,zombieLumberjack,zombieFemaleFat,zombieSoldier,zombieMaleHazmat
+	
+	zombieSpider,zombieSteveCrawler,zombieScreamer
+	
+	animalZombieDog,zombieFatCop
+	
+	
+	zombieArleneFeral,zombieBurntFeral,zombieLabFeral,zombieMarleneFeral,zombieDarleneFeral,zombiePartyGirlFeral,zombieNurseFeral
+	
+	zombieSkateboarderFeral,zombieTomClarkFeral,zombieBoeFeral,zombieJoeFeral,zombieSteveFeral,zombieYoFeral,zombieBusinessManFeral,zombieUtilityWorkerFeral
+	
+	zombieMoeFeral,zombieJanitorFeral,zombieBikerFeral,zombieFatHawaiianFeral,zombieLumberjackFeral,zombieFemaleFatFeral,zombieSoldierFeral,zombieMaleHazmatFeral,zombieWightFeral
+	
+	zombieSpiderFeral,zombieSteveCrawlerFeral,zombieScreamerFeral
+	
+	animalZombieDog,zombieFatCopFeral,animalZombieVulture
+	
+	
+	zombieArleneRadiated,zombieBurntRadiated,zombieLabRadiated,zombieMarleneRadiated,zombieDarleneRadiated,zombiePartyGirlRadiated,zombieNurseRadiated
+	
+	zombieSkateboarderRadiated,zombieTomClarkRadiated,zombieBoeRadiated,zombieJoeRadiated,zombieSteveRadiated,zombieYoRadiated,zombieBusinessManRadiated,zombieUtilityWorkerRadiated
+	
+	zombieMoeRadiated,zombieJanitorRadiated,zombieBikerRadiated,zombieFatHawaiianRadiated,zombieLumberjackRadiated,zombieFemaleFatRadiated,zombieSoldierRadiated,zombieMaleHazmatRadiated,zombieWightRadiated
+	
+	zombieSpiderRadiated,zombieScreamerRadiated
+	
+	animalZombieDog,zombieFatCopRadiated,animalZombieVultureRadiated
+	
+	
+	
+	
+	
+	-->
+	<!--Zombie Table-->
+		</append>
+
+</Config>

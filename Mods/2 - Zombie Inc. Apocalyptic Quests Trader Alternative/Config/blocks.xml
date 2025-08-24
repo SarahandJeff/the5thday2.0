@@ -1,0 +1,21 @@
+<Config>
+
+<csv xpath="/blocks/block[@name='radioHam']/property[@name='Tags']/@value" delim="," op="add" >ZombieINCRadioQuest</csv>
+
+<!--<append xpath="/blocks/block[@name='radioHam']">
+	<!{1}**<property name="Class" value="SpawnEntity"/>
+	<property name="SpawnClass" value="ZombieINC_NPC_Radio_1"/>
+	<property name="Shape" value="ModelEntity"/>**{1}>
+	<property name="Class" value="PlantGrowing"/>
+	<property name="PlantGrowing.FertileLevel" value="0"/>
+	<property name="PlantGrowing.Next" value="ZombieINC_spawnRadio_1"/>
+	<property name="PlantGrowing.GrowthRate" value="0"/>
+	<property name="PlantGrowing.IsRandom" value="false"/>
+	<property name="PlantGrowing.LightLevelStay" value="0"/>	
+</append>-->
+<append xpath="/blocks/block[@name='radioHam']">
+	<property name="Class" value="GameEvent"/>	
+    <property name="ActivateEvent" value="ZombieINC_ActiveRadioOnTrader_Event"/>
+</append>
+
+</Config>

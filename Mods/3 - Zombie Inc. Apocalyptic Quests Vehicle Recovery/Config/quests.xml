@@ -1,0 +1,943 @@
+<Config>
+	
+	
+	
+
+
+	<insertAfter xpath="/quests/quest[@id='tier2_buried_supplies']">
+		<!--###Vehicle Delivery (Recovery)-->
+	
+	<quest id="ZINCVehicleDelivery1"> 
+		    <property name="name_key" value="ZombieINC_challenge_tier1_VehicleDelivery_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_tier1_VehicleDelivery_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_tier1_VehicleDelivery_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="false"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="1"/>
+		    <property name="offer_key" value="ZombieINC_challenge_tier1_VehicleDelivery_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_tier1_VehicleDelivery_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_tier1_VehicleDelivery_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value="ZINCVH,ZINCVHT1"  />
+			<property name="shareable" value="true"/>
+			<property name="quest_hints" value="ZombieINC_VH_RideTheVehicle" />
+			
+		    <property name="completiontype" value="AutoComplete"/>
+		    <property name="completion_key" value="ZombieINC_challenge_tier1_VehicleDelivery_completion"/>
+					
+			<objective type="RandomGotoNPC" phase="1">
+				<property name="completion_distance" value="20"/>
+				<property name="distance" value="200-300"/>
+				<property name="nav_object" value="quest" />
+			</objective>
+
+			<objective type="RallyPoint">
+				<property name="start_mode" value="Create"/>
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="rally" />
+				<property name="activate_event" value="ZombieINC_Activate_Event_Buried_Vehicle_T1"/>
+				<property name="rally_marker_type" value="questRallyMarkerBuriedSupplies"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_RemoveAllBuffsWhenFail_T1" phase="3"/>
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_New_Message0" phase="3"/>
+			
+			<objective type="StayWithin">
+				<property name="phase" value="3"/>
+				<property name="radius" value="20"/>
+			</objective>
+
+			<objective type="TreasureChest">
+				<property name="phase" value="3" />
+				<property name="block" value="cntBuriedFoodStashChest"/>
+				<property name="default_radius" value="2"/>
+				<property name="container_type" value="Supplies"/>
+				<property name="nav_object" value="treasure" />
+				<property name="direct_nav_object" value="treasure_direct" />
+				<property name="blocks_per_reduction" value="1" />
+				<property name="radius_reduction_sound" value="ui_radius_shrink" />
+				<property name="use_nearby" value="true" />
+			</objective>
+		
+			<objective type="StayWithin">
+				<property name="phase" value="4"/>
+				<property name="radius" value="20"/>
+			</objective>
+			
+			<objective type="FetchFromTreasure">	        
+				<property name="phase" value="4" />
+				<property name="block" value="cntBuriedFoodStashChest"/>
+				<property name="quest_item_ID" value="1"/>
+				<property name="item_count" value="1"/>
+			</objective>
+					
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_New_Message1" phase="5"/>
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_AddMoveDetector_T1" phase="5"/>
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_PlayerFailQuest_T1" phase="5"/>
+				
+			<objective type="ReturnToNPC" phase="5">
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_FinishedDelivery" phase="6"/>
+			
+			
+			<objective type="Time">
+				<property name="phase" value="6"/>
+				<property name="time" value="1"/>
+			</objective>
+            
+			<reward type="Quest" id="ZINCVehicleDelivery1Reward"/>
+	</quest>
+	<quest id="ZINCVehicleDelivery1Reward"> 
+		    <property name="name_key" value="ZombieINC_challenge_tier1_VehicleDeliveryReward_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_tier1_VehicleDelivery_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_tier1_VehicleDelivery_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="false"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="1"/>
+		    <property name="offer_key" value="ZombieINC_challenge_tier1_VehicleDelivery_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_tier1_VehicleDelivery_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_tier1_VehicleDelivery_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value="trader" />
+			<property name="shareable" value="false"/>	
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_tier1_VehicleDelivery_completion"/>
+			<property name="add_to_tier_complete" value="false"/>
+			
+			<action type="TrackQuest"/>	
+	
+			<objective type="ClosestPOIGoto">
+				<property name="distance" value="10"/>
+				<property name="phase" value="1"/>
+			</objective>			
+			<objective type="InteractWithNPC">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="return_to_trader"/>
+				<!--<property name="use_closest" value="true"/>-->
+			</objective>
+          
+			<reward type="Exp" value="2000"/>
+			<reward type="Item" id="casinoCoin" value="800"/>
+			
+	</quest>
+	
+	<quest id="ZINCVehicleDelivery2"> 
+		    <property name="name_key" value="ZombieINC_challenge_tier2_VehicleDelivery_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_tier2_VehicleDelivery_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_tier2_VehicleDelivery_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="false"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="2"/>
+		    <property name="offer_key" value="ZombieINC_challenge_tier2_VehicleDelivery_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_tier2_VehicleDelivery_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_tier2_VehicleDelivery_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value="ZINCVH,ZINCVHT2"  />
+			<property name="shareable" value="true"/>
+			<property name="quest_hints" value="ZombieINC_VH_RideTheVehicle" />
+		    <property name="completiontype" value="AutoComplete"/>
+		    <property name="completion_key" value="ZombieINC_challenge_tier2_VehicleDelivery_completion"/>
+				
+			<objective type="RandomGotoNPC" phase="1">
+				<property name="completion_distance" value="20"/>
+				<property name="distance" value="250-400"/>
+				<property name="nav_object" value="quest" />
+			</objective>
+
+			<objective type="RallyPoint">
+				<property name="start_mode" value="Create"/>
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="rally" />
+				<property name="activate_event" value="ZombieINC_Activate_Event_Buried_Vehicle_T2"/>
+				<property name="rally_marker_type" value="questRallyMarkerBuriedSupplies"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_RemoveAllBuffsWhenFail_T2" phase="3"/>
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_New_Message0" phase="3"/>
+			
+			<objective type="StayWithin">
+				<property name="phase" value="3"/>
+				<property name="radius" value="20"/>
+			</objective>
+
+			<objective type="TreasureChest">
+				<property name="phase" value="3" />
+				<property name="block" value="cntBuriedFoodStashChest"/>
+				<property name="default_radius" value="2"/>
+				<property name="container_type" value="Supplies"/>
+				<property name="nav_object" value="treasure" />
+				<property name="direct_nav_object" value="treasure_direct" />
+				<property name="blocks_per_reduction" value="1" />
+				<property name="radius_reduction_sound" value="ui_radius_shrink" />
+				<property name="use_nearby" value="true" />
+			</objective>
+		
+			<objective type="StayWithin">
+				<property name="phase" value="4"/>
+				<property name="radius" value="20"/>
+			</objective>
+			
+			<objective type="FetchFromTreasure">	        
+				<property name="phase" value="4" />
+				<property name="block" value="cntBuriedFoodStashChest"/>
+				<property name="quest_item_ID" value="1"/>
+				<property name="item_count" value="1"/>
+			</objective>
+					
+		
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_New_Message1" phase="5"/>
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_AddMoveDetector_T2" phase="5"/>
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_PlayerFailQuest_T2" phase="5"/>
+			
+			<objective type="ReturnToNPC" phase="5">
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_FinishedDelivery2" phase="6"/>
+			
+		
+			<objective type="Time">
+				<property name="phase" value="6"/>
+				<property name="time" value="1"/>
+			</objective>
+            
+			<reward type="Quest" id="ZINCVehicleDelivery2Reward"/>
+            
+			
+	</quest>
+	<quest id="ZINCVehicleDelivery2Reward"> 
+		    <property name="name_key" value="ZombieINC_challenge_tier2_VehicleDeliveryReward_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_tier2_VehicleDelivery_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_tier2_VehicleDelivery_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="false"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="2"/>
+		    <property name="offer_key" value="ZombieINC_challenge_tier2_VehicleDelivery_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_tier2_VehicleDelivery_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_tier2_VehicleDelivery_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value="trader" />
+			<property name="shareable" value="false"/>	
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_tier2_VehicleDelivery_completion"/>
+			<property name="add_to_tier_complete" value="false"/>
+			
+			<action type="TrackQuest"/>	
+	
+			<objective type="ClosestPOIGoto">
+				<property name="distance" value="10"/>
+				<property name="phase" value="1"/>
+			</objective>			
+			<objective type="InteractWithNPC">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="return_to_trader"/>
+				<!--<property name="use_closest" value="true"/>-->
+			</objective>
+          
+			<reward type="Exp" value="4000"/>
+			<reward type="Item" id="casinoCoin" value="1200"/>
+
+			
+	</quest>
+	<quest id="ZINCVehicleDelivery3"> 
+		    <property name="name_key" value="ZombieINC_challenge_tier3_VehicleDelivery_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_tier3_VehicleDelivery_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_tier3_VehicleDelivery_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="false"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="3"/>
+		    <property name="offer_key" value="ZombieINC_challenge_tier3_VehicleDelivery_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_tier3_VehicleDelivery_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_tier3_VehicleDelivery_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value="ZINCVH,ZINCVHT3"  />
+			<property name="shareable" value="true"/>
+			<property name="quest_hints" value="ZombieINC_VH_RideTheVehicle" />
+		    <property name="completiontype" value="AutoComplete"/>
+		    <property name="completion_key" value="ZombieINC_challenge_tier3_VehicleDelivery_completion"/>
+			
+			
+			
+			<objective type="RandomGotoNPC" phase="1">
+				<property name="completion_distance" value="20"/>
+				<property name="distance" value="400-600"/>
+				<property name="nav_object" value="quest" />
+			</objective>
+
+			<objective type="RallyPoint">
+				<property name="start_mode" value="Create"/>
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="rally" />
+				<property name="activate_event" value="ZombieINC_Activate_Event_Buried_Vehicle_T3"/>
+				<property name="rally_marker_type" value="questRallyMarkerBuriedSupplies"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_RemoveAllBuffsWhenFail_T3" phase="3"/>
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_New_Message0" phase="3"/>
+			
+			<objective type="StayWithin">
+				<property name="phase" value="3"/>
+				<property name="radius" value="20"/>
+			</objective>
+
+			<objective type="TreasureChest">
+				<property name="phase" value="3" />
+				<property name="block" value="cntBuriedFoodStashChest"/>
+				<property name="default_radius" value="2"/>
+				<property name="container_type" value="Supplies"/>
+				<property name="nav_object" value="treasure" />
+				<property name="direct_nav_object" value="treasure_direct" />
+				<property name="blocks_per_reduction" value="1" />
+				<property name="radius_reduction_sound" value="ui_radius_shrink" />
+				<property name="use_nearby" value="true" />
+			</objective>
+		
+			<objective type="StayWithin">
+				<property name="phase" value="4"/>
+				<property name="radius" value="20"/>
+			</objective>
+			
+			<objective type="FetchFromTreasure">	        
+				<property name="phase" value="4" />
+				<property name="block" value="cntBuriedFoodStashChest"/>
+				<property name="quest_item_ID" value="1"/>
+				<property name="item_count" value="1"/>
+			</objective>
+			
+			
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_New_Message1" phase="5"/>
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_AddMoveDetector_T3" phase="5"/>
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_PlayerFailQuest_T3" phase="5"/>
+			
+			<objective type="ReturnToNPC" phase="5">
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_FinishedDelivery3" phase="6"/>
+			
+		
+			<objective type="Time">
+				<property name="phase" value="6"/>
+				<property name="time" value="1"/>
+			</objective>
+            
+			<reward type="Quest" id="ZINCVehicleDelivery3Reward"/>
+            
+			
+	</quest>
+	<quest id="ZINCVehicleDelivery3Reward"> 
+		    <property name="name_key" value="ZombieINC_challenge_tier3_VehicleDeliveryReward_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_tier3_VehicleDelivery_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_tier3_VehicleDelivery_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="false"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="3"/>
+		    <property name="offer_key" value="ZombieINC_challenge_tier3_VehicleDelivery_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_tier3_VehicleDelivery_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_tier3_VehicleDelivery_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value="trader" />
+			<property name="shareable" value="false"/>	
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_tier3_VehicleDelivery_completion"/>
+			<property name="add_to_tier_complete" value="false"/>
+			
+			<action type="TrackQuest"/>	
+	
+			<objective type="ClosestPOIGoto">
+				<property name="distance" value="10"/>
+				<property name="phase" value="1"/>
+			</objective>			
+			<objective type="InteractWithNPC">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="return_to_trader"/>
+			<!--	<property name="use_closest" value="true"/>-->
+			</objective>
+          
+			<reward type="Exp" value="8000"/>
+			<reward type="Item" id="casinoCoin" value="2000"/>	
+			
+			
+	</quest>
+	<quest id="ZINCVehicleDelivery4"> 
+		    <property name="name_key" value="ZombieINC_challenge_tier4_VehicleDelivery_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_tier4_VehicleDelivery_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_tier4_VehicleDelivery_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="false"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="4"/>
+		    <property name="offer_key" value="ZombieINC_challenge_tier4_VehicleDelivery_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_tier4_VehicleDelivery_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_tier4_VehicleDelivery_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value="ZINCVH,ZINCVHT4"  />
+			<property name="shareable" value="true"/>
+			<property name="quest_hints" value="ZombieINC_VH_RideTheVehicle" />
+		    <property name="completiontype" value="AutoComplete"/>
+		    <property name="completion_key" value="ZombieINC_challenge_tier4_VehicleDelivery_completion"/>
+			
+			
+			
+			<objective type="RandomGotoNPC" phase="1">
+				<property name="completion_distance" value="20"/>
+				<property name="distance" value="500-700"/>
+				<property name="nav_object" value="quest" />
+			</objective>
+
+			<objective type="RallyPoint">
+				<property name="start_mode" value="Create"/>
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="rally" />
+				<property name="activate_event" value="ZombieINC_Activate_Event_Buried_Vehicle_T4"/>
+				<property name="rally_marker_type" value="questRallyMarkerBuriedSupplies"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_RemoveAllBuffsWhenFail_T4" phase="3"/>
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_New_Message0" phase="3"/>
+			
+			
+			
+			<objective type="StayWithin">
+				<property name="phase" value="3"/>
+				<property name="radius" value="20"/>
+			</objective>
+
+			<objective type="TreasureChest">
+				<property name="phase" value="3" />
+				<property name="block" value="cntBuriedFoodStashChest"/>
+				<property name="default_radius" value="2"/>
+				<property name="container_type" value="Supplies"/>
+				<property name="nav_object" value="treasure" />
+				<property name="direct_nav_object" value="treasure_direct" />
+				<property name="blocks_per_reduction" value="1" />
+				<property name="radius_reduction_sound" value="ui_radius_shrink" />
+				<property name="use_nearby" value="true" />
+			</objective>
+		
+			<objective type="StayWithin">
+				<property name="phase" value="4"/>
+				<property name="radius" value="20"/>
+			</objective>
+			
+			<objective type="FetchFromTreasure">	        
+				<property name="phase" value="4" />
+				<property name="block" value="cntBuriedFoodStashChest"/>
+				<property name="quest_item_ID" value="1"/>
+				<property name="item_count" value="1"/>
+			</objective>
+			
+			
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_New_Message1" phase="5"/>
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_AddMoveDetector_T4" phase="5"/>
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_PlayerFailQuest_T4" phase="5"/>
+			
+			<objective type="ReturnToNPC" phase="5">
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_FinishedDelivery4" phase="6"/>
+			
+			<objective type="Time">
+				<property name="phase" value="6"/>
+				<property name="time" value="1"/>
+			</objective>
+            
+			<reward type="Quest" id="ZINCVehicleDelivery4Reward"/>
+            
+			
+	</quest>
+	<quest id="ZINCVehicleDelivery4Reward"> 
+		    <property name="name_key" value="ZombieINC_challenge_tier4_VehicleDeliveryReward_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_tier4_VehicleDelivery_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_tier4_VehicleDelivery_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="false"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="4"/>
+		    <property name="offer_key" value="ZombieINC_challenge_tier4_VehicleDelivery_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_tier4_VehicleDelivery_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_tier4_VehicleDelivery_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value="trader" />
+			<property name="shareable" value="false"/>	
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_tier4_VehicleDelivery_completion"/>
+			<property name="add_to_tier_complete" value="false"/>
+			
+			<action type="TrackQuest"/>	
+	
+			<objective type="ClosestPOIGoto">
+				<property name="distance" value="10"/>
+				<property name="phase" value="1"/>
+			</objective>			
+			<objective type="InteractWithNPC">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="return_to_trader"/>
+				<!--<property name="use_closest" value="true"/>-->
+			</objective>
+          
+			<reward type="Exp" value="14000"/>
+			<reward type="Item" id="casinoCoin" value="4000"/>
+
+			
+	</quest>
+	<quest id="ZINCVehicleDelivery5"> 
+		    <property name="name_key" value="ZombieINC_challenge_tier5_VehicleDelivery_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_tier5_VehicleDelivery_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_tier5_VehicleDelivery_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="false"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="5"/>
+		    <property name="offer_key" value="ZombieINC_challenge_tier5_VehicleDelivery_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_tier5_VehicleDelivery_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_tier5_VehicleDelivery_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value="ZINCVH,ZINCVHT5"  />
+			<property name="shareable" value="true"/>
+			<property name="quest_hints" value="ZombieINC_VH_RideTheVehicle" />
+		    <property name="completiontype" value="AutoComplete"/>
+		    <property name="completion_key" value="ZombieINC_challenge_tier5_VehicleDelivery_completion"/>
+				
+			
+			<objective type="RandomGotoNPC" phase="1">
+				<property name="completion_distance" value="20"/>
+				<property name="distance" value="700-900"/>
+				<property name="nav_object" value="quest" />
+			</objective>
+
+			<objective type="RallyPoint">
+				<property name="start_mode" value="Create"/>
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="rally" />
+				<property name="activate_event" value="ZombieINC_Activate_Event_Buried_Vehicle_T5"/>
+				<property name="rally_marker_type" value="questRallyMarkerBuriedSupplies"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_RemoveAllBuffsWhenFail_T5" phase="3"/>
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_New_Message0" phase="3"/>
+					
+			<objective type="StayWithin">
+				<property name="phase" value="3"/>
+				<property name="radius" value="20"/>
+			</objective>
+
+			<objective type="TreasureChest">
+				<property name="phase" value="3" />
+				<property name="block" value="cntBuriedFoodStashChest"/>
+				<property name="default_radius" value="2"/>
+				<property name="container_type" value="Supplies"/>
+				<property name="nav_object" value="treasure" />
+				<property name="direct_nav_object" value="treasure_direct" />
+				<property name="blocks_per_reduction" value="1" />
+				<property name="radius_reduction_sound" value="ui_radius_shrink" />
+				<property name="use_nearby" value="true" />
+			</objective>
+		
+			<objective type="StayWithin">
+				<property name="phase" value="4"/>
+				<property name="radius" value="20"/>
+			</objective>
+			
+			<objective type="FetchFromTreasure">	        
+				<property name="phase" value="4" />
+				<property name="block" value="cntBuriedFoodStashChest"/>
+				<property name="quest_item_ID" value="1"/>
+				<property name="item_count" value="1"/>
+			</objective>
+							
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_New_Message1" phase="5"/>
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_AddMoveDetector_T5" phase="5"/>
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_PlayerFailQuest_T5" phase="5"/>
+			
+			<objective type="ReturnToNPC" phase="5">
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_FinishedDelivery5" phase="6"/>
+			
+			<objective type="Time">
+				<property name="phase" value="6"/>
+				<property name="time" value="1"/>
+			</objective>
+            
+			<reward type="Quest" id="ZINCVehicleDelivery5Reward"/>
+            
+			
+	</quest>
+	<quest id="ZINCVehicleDelivery5Reward"> 
+		    <property name="name_key" value="ZombieINC_challenge_tier5_VehicleDeliveryReward_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_tier5_VehicleDelivery_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_tier5_VehicleDelivery_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="false"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="5"/>
+		    <property name="offer_key" value="ZombieINC_challenge_tier5_VehicleDelivery_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_tier5_VehicleDelivery_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_tier5_VehicleDelivery_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value="trader" />
+			<property name="shareable" value="false"/>	
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_tier5_VehicleDelivery_completion"/>
+			<property name="add_to_tier_complete" value="false"/>
+			
+			<action type="TrackQuest"/>	
+	
+			<objective type="ClosestPOIGoto">
+				<property name="distance" value="10"/>
+				<property name="phase" value="1"/>
+			</objective>			
+			<objective type="InteractWithNPC">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="return_to_trader"/>
+				<!--<property name="use_closest" value="true"/>-->
+			</objective>
+          
+			<reward type="Exp" value="18000"/>
+			<reward type="Item" id="casinoCoin" value="6000"/>	
+
+			
+	</quest>
+	<quest id="ZINCVehicleDelivery6"> 
+		    <property name="name_key" value="ZombieINC_challenge_tier6_VehicleDelivery_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_tier6_VehicleDelivery_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_tier6_VehicleDelivery_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="false"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="6"/>
+		    <property name="offer_key" value="ZombieINC_challenge_tier6_VehicleDelivery_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_tier6_VehicleDelivery_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_tier6_VehicleDelivery_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value="ZINCVH,ZINCVHT6"  />
+			<property name="shareable" value="true"/>
+			<property name="quest_hints" value="ZombieINC_VH_RideTheVehicle" />
+		    <property name="completiontype" value="AutoComplete"/>
+		    <property name="completion_key" value="ZombieINC_challenge_tier6_VehicleDelivery_completion"/>
+			
+			
+			<objective type="RandomGotoNPC" phase="1">
+				<property name="completion_distance" value="20"/>
+				<property name="distance" value="800-1000"/>
+				<property name="nav_object" value="quest" />
+			</objective>
+
+			<objective type="RallyPoint">
+				<property name="start_mode" value="Create"/>
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="rally" />
+				<property name="activate_event" value="ZombieINC_Activate_Event_Buried_Vehicle_T6"/>
+				<property name="rally_marker_type" value="questRallyMarkerBuriedSupplies"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_RemoveAllBuffsWhenFail_T6" phase="3"/>
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_New_Message0" phase="3"/>
+			
+			<objective type="StayWithin">
+				<property name="phase" value="3"/>
+				<property name="radius" value="20"/>
+			</objective>
+
+			<objective type="TreasureChest">
+				<property name="phase" value="3" />
+				<property name="block" value="cntBuriedFoodStashChest"/>
+				<property name="default_radius" value="2"/>
+				<property name="container_type" value="Supplies"/>
+				<property name="nav_object" value="treasure" />
+				<property name="direct_nav_object" value="treasure_direct" />
+				<property name="blocks_per_reduction" value="1" />
+				<property name="radius_reduction_sound" value="ui_radius_shrink" />
+				<property name="use_nearby" value="true" />
+			</objective>
+		
+			<objective type="StayWithin">
+				<property name="phase" value="4"/>
+				<property name="radius" value="20"/>
+			</objective>
+			
+			<objective type="FetchFromTreasure">	        
+				<property name="phase" value="4" />
+				<property name="block" value="cntBuriedFoodStashChest"/>
+				<property name="quest_item_ID" value="1"/>
+				<property name="item_count" value="1"/>
+			</objective>
+			
+			
+			
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_New_Message1" phase="5"/>
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_AddMoveDetector_T6" phase="5"/>
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_PlayerFailQuest_T6" phase="5"/>
+			
+			<objective type="ReturnToNPC" phase="5">
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_FinishedDelivery6" phase="6"/>
+			
+			<!--<objective type="InteractWithNPC" phase="6">
+				<property name="nav_object" value="return_to_trader" />						
+			</objective>-->
+			<objective type="Time">
+				<property name="phase" value="6"/>
+				<property name="time" value="1"/>
+			</objective>
+            
+			<reward type="Quest" id="ZINCVehicleDelivery6Reward"/>
+            
+			
+	</quest>
+	<quest id="ZINCVehicleDelivery6Reward"> 
+		    <property name="name_key" value="ZombieINC_challenge_tier6_VehicleDeliveryReward_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_tier6_VehicleDelivery_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_tier6_VehicleDelivery_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="false"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="6"/>
+		    <property name="offer_key" value="ZombieINC_challenge_tier6_VehicleDelivery_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_tier6_VehicleDelivery_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_tier6_VehicleDelivery_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value="trader" />
+			<property name="shareable" value="false"/>	
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_tier6_VehicleDelivery_completion"/>
+			<property name="add_to_tier_complete" value="false"/>
+			
+			<action type="TrackQuest"/>	
+	
+			<objective type="ClosestPOIGoto">
+				<property name="distance" value="10"/>
+				<property name="phase" value="1"/>
+			</objective>			
+			<objective type="InteractWithNPC">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="return_to_trader"/>
+				<!--<property name="use_closest" value="true"/>-->
+			</objective>
+          
+			<reward type="Exp" value="30000"/>
+			<reward type="Item" id="casinoCoin" value="10000"/>	
+
+			
+	</quest>
+	<!--Vehicle Delivery (Recovery)-->
+	<!--##Vehicle Delivery (Recovery)Unique -->
+	
+	<quest id="ZINCVehicleRecoveryMotorcycleVar1"> 
+		    <property name="name_key" value="ZombieINC_challenge_MotorcycleVar1_VehicleRecovery_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_MotorcycleVar1_VehicleRecovery_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_MotorcycleVar1_VehicleRecovery_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="false"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="6"/>
+		    <property name="offer_key" value="ZombieINC_challenge_MotorcycleVar1_VehicleRecovery_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_MotorcycleVar1_VehicleRecovery_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_MotorcycleVar1_VehicleRecovery_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value="ZINCVHBIKEV1"  />
+			<property name="shareable" value="false"/>
+			
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_MotorcycleVar1_VehicleRecovery_completion"/>
+			
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_SpawnBicycleEvent" phase="1"/>
+			
+			<objective type="RandomPOIGoto" phase="1">
+				<property name="biome_filter_type" value="SameBiome" param1="biome_filter_type" />
+				<property name="biome_filter" value="burnt_forest" param1="biome_filter" />
+				<property name="nav_object" value="quest" />
+				<property name="poi_tier" value="3"  />
+			</objective>
+
+			<objective type="RallyPoint" phase="2">
+				<property name="nav_object" value="rally" />
+				<property name="rally_marker_type" value="questRallyMarkerBuriedSupplies"/>
+			</objective>
+			
+			<objective type="ReturnToNPC" phase="3">
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+					
+			<objective type="InteractWithNPC" phase="4">
+				<property name="nav_object" value="return_to_trader" />						
+			</objective>
+
+            
+			<reward type="Exp" value="20000"/>
+			<!--<reward type="Quest" id="ZINCVehicleDeliveryMotorcyclePart2"/>	-->			
+	</quest>
+	
+	<quest id="ZINCVehicleRecovery4X4TruckVar1"> 
+		    <property name="name_key" value="ZombieINC_challenge_4X4TruckVar1_VehicleRecovery_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_4X4TruckVar1_VehicleRecovery_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_4X4TruckVar1_VehicleRecovery_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="false"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="6"/>
+		    <property name="offer_key" value="ZombieINC_challenge_4X4TruckVar1_VehicleRecovery_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_4X4TruckVar1_VehicleRecovery_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_4X4TruckVar1_VehicleRecovery_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value="ZINCVH4X4V1"  />
+			<property name="shareable" value="false"/>
+			
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_4X4TruckVar1_VehicleRecovery_completion"/>
+			
+			<action type="GameEvent" id="ZombieINC_VehicleDelivery_SpawnBicycleEvent" phase="1"/>
+			
+			<objective type="RandomPOIGoto" phase="1">
+				<property name="biome_filter_type" value="SameBiome" param1="biome_filter_type" />
+				<property name="biome_filter" value="burnt_forest" param1="biome_filter" />
+				<property name="nav_object" value="quest" />
+				<property name="poi_tier" value="3"  />
+			</objective>
+
+			<objective type="RallyPoint" phase="2">
+				<property name="nav_object" value="rally" />
+				<property name="rally_marker_type" value="questRallyMarkerBuriedSupplies"/>
+			</objective>
+			
+			<objective type="ReturnToNPC" phase="3">
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+					
+			<objective type="InteractWithNPC" phase="4">
+				<property name="nav_object" value="return_to_trader" />						
+			</objective>
+
+            
+			<reward type="Exp" value="20000"/>
+			<!--<reward type="Quest" id="ZINCVehicleDelivery4X4TruckPart2"/>-->				
+	</quest>
+	<!--Vehicle Delivery (Recovery)-->
+	</insertAfter>
+	
+	
+	<conditional>
+		<if cond="mod_loaded('mateusjobsmain')">
+			<append xpath="/quests/quest[@id='ZINCVehicleDelivery1Reward']">
+				<reward type="LootItem" id="ZINCMagazineVehicleRecovery" ischosen="true" value="1"/>
+				<reward type="LootItem" id="ZINCMagazineVehicleRecovery" ischosen="true" value="1"/>
+			</append>
+			<append xpath="/quests/quest[@id='ZINCVehicleDelivery2Reward']">
+				<reward type="LootItem" id="ZINCMagazineVehicleRecovery" ischosen="true" value="2"/>
+				<reward type="LootItem" id="ZINCMagazineVehicleRecovery" ischosen="true" value="2"/>
+			</append>
+			<append xpath="/quests/quest[@id='ZINCVehicleDelivery3Reward']">
+				<reward type="LootItem" id="ZINCMagazineVehicleRecovery" ischosen="true" value="3"/>
+				<reward type="LootItem" id="ZINCMagazineVehicleRecovery" ischosen="true" value="3"/>
+			</append>
+			<append xpath="/quests/quest[@id='ZINCVehicleDelivery4Reward']">
+				<reward type="LootItem" id="ZINCMagazineVehicleRecovery" ischosen="true" value="4"/>
+				<reward type="LootItem" id="ZINCMagazineVehicleRecovery" ischosen="true" value="4"/>
+			</append>
+			<append xpath="/quests/quest[@id='ZINCVehicleDelivery5Reward']">
+				<reward type="LootItem" id="ZINCMagazineVehicleRecovery" ischosen="true" value="5"/>
+				<reward type="LootItem" id="ZINCMagazineVehicleRecovery" ischosen="true" value="5"/>
+			</append>
+			<append xpath="/quests/quest[@id='ZINCVehicleDelivery6Reward']">
+				<reward type="LootItem" id="ZINCMagazineVehicleRecovery" ischosen="true" value="6"/>
+				<reward type="LootItem" id="ZINCMagazineVehicleRecovery" ischosen="true" value="6"/>
+			</append>
+		</if>
+	</conditional>
+	<conditional>
+		<if cond="mod_loaded('mateusjobstraderalternative')">
+			<append xpath="/quests/quest_list[@id='trader_radio1_quests']">
+				<quest id="ZINCVehicleDelivery1"/>
+				<quest id="ZINCVehicleDelivery2"/>
+				<quest id="ZINCVehicleDelivery3"/>
+				<quest id="ZINCVehicleDelivery4"/>
+				<quest id="ZINCVehicleDelivery5"/>
+				<quest id="ZINCVehicleDelivery6"/>
+			</append>
+		</if>
+	
+		<else>
+			<append xpath="/quests/quest_list[@id='trader_rekt_quests']">				
+				<quest id="ZINCVehicleDelivery1"/>
+				<quest id="ZINCVehicleDelivery2"/>
+				<quest id="ZINCVehicleDelivery3"/>
+				<quest id="ZINCVehicleDelivery4"/>
+				<quest id="ZINCVehicleDelivery5"/>
+				<quest id="ZINCVehicleDelivery6"/>
+			</append>
+			<append xpath="/quests/quest_list[@id='trader_jen_quests']">				
+				<quest id="ZINCVehicleDelivery1"/>
+				<quest id="ZINCVehicleDelivery2"/>
+				<quest id="ZINCVehicleDelivery3"/>
+				<quest id="ZINCVehicleDelivery4"/>
+				<quest id="ZINCVehicleDelivery5"/>
+				<quest id="ZINCVehicleDelivery6"/>
+			</append>	
+			<append xpath="/quests/quest_list[@id='trader_bob_quests']">				
+				<quest id="ZINCVehicleDelivery1"/>
+				<quest id="ZINCVehicleDelivery2"/>
+				<quest id="ZINCVehicleDelivery3"/>
+				<quest id="ZINCVehicleDelivery4"/>
+				<quest id="ZINCVehicleDelivery5"/>
+				<quest id="ZINCVehicleDelivery6"/>
+			</append>	
+			<append xpath="/quests/quest_list[@id='trader_hugh_quests']">				
+				<quest id="ZINCVehicleDelivery1"/>
+				<quest id="ZINCVehicleDelivery2"/>
+				<quest id="ZINCVehicleDelivery3"/>
+				<quest id="ZINCVehicleDelivery4"/>
+				<quest id="ZINCVehicleDelivery5"/>
+				<quest id="ZINCVehicleDelivery6"/>
+			</append>	
+			<append xpath="/quests/quest_list[@id='trader_joel_quests']">				
+				<quest id="ZINCVehicleDelivery1"/>
+				<quest id="ZINCVehicleDelivery2"/>
+				<quest id="ZINCVehicleDelivery3"/>
+				<quest id="ZINCVehicleDelivery4"/>
+				<quest id="ZINCVehicleDelivery5"/>
+				<quest id="ZINCVehicleDelivery6"/>
+			</append>
+		</else>
+	</conditional>
+</Config>

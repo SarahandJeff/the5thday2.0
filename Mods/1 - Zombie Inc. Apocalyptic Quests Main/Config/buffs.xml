@@ -1,0 +1,1527 @@
+<Config>
+	<append xpath="/buffs/buff[@name='buffStatusCheck02']">
+	<effect_group>
+		<!--<passive_effect name="TrackDistance" operation="base_set" value="100"/>-->
+		<!--<triggered_effect trigger="onSelfEnteredGame" action="CallGameEvent"  event="ZombieINC_AddQuests" allow_client_call="true"/>-->
+		<!--<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar"  cvar="ZINCBNKC" operation="add" value="1">--> <!--Boss Normal Kill Counter-->
+			<!--<requirement name="EntityTagCompare" target="other" tags="boss"/></triggered_effect>-->
+		<!--<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar"  cvar="ZINCBIKC" operation="add" value="1">--> <!--Boss Infested Kill Counter-->
+			<!--<requirement name="EntityTagCompare" target="other" tags="boss,infested" has_all_tags="true"/></triggered_effect>-->
+		<!--<triggered_effect trigger="onSelfBuffUpdate" action="LogMessage"  message="Boss Tracked"><requirement name="HasTrackedEntity" tags="boss"/></triggered_effect>-->
+			
+	</effect_group>
+	<!--<effect_group>
+		<triggered_effect trigger="onSelfKilledOther" action="CVarLogValue"  cvar="ZINCBIKC"/>
+		<triggered_effect trigger="onSelfKilledOther" action="CVarLogValue"  cvar="ZINCBNKC"/>
+	</effect_group>-->
+	<effect_group>
+			<!--##Perk-->
+			<!--#Night Perks-->
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$ZINCNIGHTPERK" operation="set" value="1">
+				<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_NightGod" operation="GTE" value="1"/></triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$ZINCNIGHTPERK" operation="set" value="1">
+				<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_NightHunter" operation="GTE" value="1"/></triggered_effect>
+				
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$ZINCNIGHTPERK" operation="set" value="0">
+				<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_NightHunter" operation="Equals" value="0"/>
+				<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_NightGod" operation="Equals" value="0"/></triggered_effect>
+			<!--Night Perks-->
+			<!--#Day Perks-->
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$ZINCDAYPERK" operation="set" value="1">
+				<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_Photosynthesis" operation="GTE" value="1"/></triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$ZINCDAYPERK" operation="set" value="1">
+				<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_VigorOverflow" operation="GTE" value="1"/></triggered_effect>
+				
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$ZINCDAYPERK" operation="set" value="0">
+				<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_VigorOverflow" operation="Equals" value="0"/>
+				<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_Photosynthesis" operation="Equals" value="0"/></triggered_effect>
+			<!--Day Perks-->
+			<!--#Warcry-->
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$ZINCperkWarCryCooldown" operation="set" value="3">
+				<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_Warcry" operation="Equals" value="1"/></triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$ZINCperkWarCryCooldown" operation="set" value="4">
+				<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_Warcry" operation="Equals" value="2"/></triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$ZINCperkWarCryCooldown" operation="set" value="5">
+				<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_Warcry" operation="Equals" value="3"/></triggered_effect>
+				
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$ZINCperkWarCryDuration" operation="set" value="3">
+				<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_Warcry" operation="Equals" value="1"/></triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$ZINCperkWarCryDuration" operation="set" value="4">
+				<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_Warcry" operation="Equals" value="2"/></triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$ZINCperkWarCryDuration" operation="set" value="5">
+				<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_Warcry" operation="Equals" value="3"/></triggered_effect>
+				
+			<!--Warcry-->
+			<!--#VigorOverFlow-->
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$ZINCperkVigorOverFlowCooldown" operation="set" value="900"><!--900-->
+				<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_VigorOverflow" operation="Equals" value="1"/></triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$ZINCperkVigorOverFlowCooldown" operation="set" value="900">
+				<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_VigorOverflow" operation="Equals" value="2"/></triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$ZINCperkVigorOverFlowCooldown" operation="set" value="900">
+				<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_VigorOverflow" operation="Equals" value="3"/></triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$ZINCperkVigorOverFlowCooldown" operation="set" value="900">
+				<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_VigorOverflow" operation="Equals" value="4"/></triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$ZINCperkVigorOverFlowCooldown" operation="set" value="900"><!--600-->
+				<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_VigorOverflow" operation="Equals" value="5"/></triggered_effect>
+				
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$ZINCperkVigorOverFlowDuration" operation="set" value="60"><!--60-->
+				<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_VigorOverflow" operation="Equals" value="1"/></triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$ZINCperkVigorOverFlowDuration" operation="set" value="80">
+				<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_VigorOverflow" operation="Equals" value="2"/></triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$ZINCperkVigorOverFlowDuration" operation="set" value="120">
+				<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_VigorOverflow" operation="Equals" value="3"/></triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$ZINCperkVigorOverFlowDuration" operation="set" value="180">
+				<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_VigorOverflow" operation="Equals" value="4"/></triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$ZINCperkVigorOverFlowDuration" operation="set" value="300"><!--120-->
+				<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_VigorOverflow" operation="Equals" value="5"/></triggered_effect>
+		
+			<!--VigorOverFlow-->
+			<!--#Masochist-->
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$ZINCperkMasochistCounter" operation="set" value="20">
+				<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_Masochist" operation="Equals" value="1"/></triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$ZINCperkMasochistCounter" operation="set" value="16">
+				<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_Masochist" operation="Equals" value="2"/></triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$ZINCperkMasochistCounter" operation="set" value="12">
+				<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_Masochist" operation="Equals" value="3"/></triggered_effect>
+			<!--Masochist-->
+			<!--#DeepBreath-->
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$ZINCperkDeepBreathDamage" operation="set" value="0.5">
+				<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_DeepBreath" operation="Equals" value="1"/></triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$ZINCperkDeepBreathDamage" operation="set" value="1.0">
+				<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_DeepBreath" operation="Equals" value="2"/></triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$ZINCperkDeepBreathDamage" operation="set" value="1.5">
+				<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_DeepBreath" operation="Equals" value="3"/></triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$ZINCperkDeepBreathDamage" operation="set" value="2.0">
+				<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_DeepBreath" operation="Equals" value="4"/></triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$ZINCperkDeepBreathDamage" operation="set" value="2.5">
+				<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_DeepBreath" operation="Equals" value="5"/></triggered_effect>
+			
+		</effect_group>
+		
+		
+</append>
+<append xpath="/buffs/buff[@name='buffPlayerFallingDamage']">
+	<effect_group>
+		<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".impactSpeed" operation="add" value="-.0162">
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_perkSurvival7" operation="Equals" value="1"/>
+		</triggered_effect>
+	</effect_group>
+</append>
+	
+	<append xpath="/buffs">
+	<buff name="ZombieINC_RallyPointHuntPlaceHolder_AttachPrefabBuff"  >
+		<!--<duration value="3"/>-->
+		<!--<update_rate value="0.05"/>-->
+		<stack_type value="replace"/>
+		<effect_group>
+			<passive_effect name="LightMultiplier" operation="perc_add" value="-1"/>
+			<passive_effect name="NoiseMultiplier" operation="perc_add" value="-1"/>
+			<!--<triggered_effect trigger="onSelfBuffStart" action="SetNavObject" nav_object="ZombieINC_Objective" add="true" />-->
+			<!--<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="FeralEye"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD0"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD1"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD2"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="NormalEye"/>
+			<triggered_effect trigger="onSelfBuffStack" action="SetTransformActive" active="false" transform_path="FeralEye"/>
+			<triggered_effect trigger="onSelfBuffStack" action="SetTransformActive" active="false" transform_path="LOD0"/>
+			<triggered_effect trigger="onSelfBuffStack" action="SetTransformActive" active="false" transform_path="LOD1"/>
+			<triggered_effect trigger="onSelfBuffStack" action="SetTransformActive" active="false" transform_path="LOD2"/>
+			<triggered_effect trigger="onSelfBuffStack" action="SetTransformActive" active="false" transform_path="NormalEye"/>-->
+		
+		</effect_group>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStack" action="SetTransformActive" active="false" transform_path="Body"/>
+			<triggered_effect trigger="onSelfBuffStack" action="SetTransformActive" active="false" transform_path="Hair"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="Body"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="Hair"/>
+		</effect_group>
+	</buff>
+	
+	
+	
+	
+	<!--###Apocalyptic Skills-->
+<!--##Magazines-->
+<!--#The God Slayer Path-->
+	
+	<buff name="ZombieINC_perkGodSlayerStunMelee" name_key="ZombieINC_buffGodSlayerStunMeleeName" description_key="ZombieINC_buffGodSlayerStunMeleeDesc" icon="ui_game_symbol_map_cursor" icon_color="0,255,0" icon_blink="true">
+		<stack_type value="replace"/>
+		<duration value="6"/>
+		<display_value value=".GodSlayerStunMeleeKillCounter"/>
+		<display_value_key value="+{0}%"/>
+
+		<effect_group>
+			<!--Took Dead Eye as Reference-->
+			
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".GodSlayerStunMeleeKillCounter" operation="set" value="2"/>
+			
+			<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".GodSlayerStunMeleeKillCounter" operation="add" value="2">
+				<requirement name="CVarCompare" cvar=".GodSlayerStunMeleeKillCounter" operation="LT" value="50"/>
+			</triggered_effect>
+					
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".GodSlayerStunMeleeKillCounter" operation="set" value="0"/>
+				
+		</effect_group>
+		<effect_group>
+			<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@.GodSlayerStunMeleeKillCounter"/>
+			<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" buff="buffInjuryStunned01"/>
+			<triggered_effect trigger="onSelfAttackedOther" action="RemoveBuff" buff="ZombieINC_perkGodSlayerStunMelee"/>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_perkGodSlayerDamageMelee" name_key="ZombieINC_buffGodSlayerDamageMeleeName" description_key="ZombieINC_buffGodSlayerDamageMeleeDesc" icon="ui_game_symbol_map_cursor" icon_color="0,255,0" icon_blink="true">
+		<stack_type value="replace"/>
+		<duration value="6"/>
+		<display_value value=".GodSlayerDamageMeleeEffectDisplay"/>
+		<display_value_key value="+{0}%"/>
+
+		<effect_group>
+			<!--Took Dead Eye as Reference-->
+			
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".GodSlayerDamageMeleeKillCounter" operation="set" value=".1"/>
+			
+			<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".GodSlayerDamageMeleeKillCounter" operation="add" value=".1">
+				<requirement name="CVarCompare" cvar=".GodSlayerDamageMeleeKillCounter" operation="LT" value=".5"/>
+			</triggered_effect>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".GodSlayerDamageMeleeEffectApply" operation="set" value="@.GodSlayerDamageMeleeKillCounter"/>
+			<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".GodSlayerDamageMeleeEffectApply" operation="set" value="@.GodSlayerDamageMeleeKillCounter"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".GodSlayerDamageMeleeEffectDisplay" operation="set" value="@.GodSlayerDamageMeleeEffectApply"/>
+			<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".GodSlayerDamageMeleeEffectDisplay" operation="set" value="@.GodSlayerDamageMeleeEffectApply"/>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".GodSlayerDamageMeleeEffectDisplay" operation="multiply" value="100"/>
+			<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".GodSlayerDamageMeleeEffectDisplay" operation="multiply" value="100"/>
+			
+			<passive_effect name="EntityDamage" operation="perc_add" value="@.GodSlayerDamageMeleeEffectApply" />
+				
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".GodSlayerDamageMeleeKillCounter" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".GodSlayerDamageMeleeEffectDisplay" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".GodSlayerDamageMeleeEffectApply" operation="set" value="0"/>
+			
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_perkGodSlayerDamageRanged" name_key="ZombieINC_buffGodSlayerDamageRangedName" description_key="ZombieINC_buffGodSlayerDamageRangedDesc" icon="ui_game_symbol_map_cursor" icon_color="0,255,0" icon_blink="true">
+		<stack_type value="replace"/>
+		<duration value="6"/>
+		<display_value value=".GodSlayerDamageRangedEffectDisplay"/>
+		<display_value_key value="+{0}%"/>
+
+		<effect_group>
+			<!--Took Dead Eye as Reference-->
+			
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".GodSlayerDamageRangedKillCounter" operation="set" value=".05"/>
+			
+			<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".GodSlayerDamageRangedKillCounter" operation="add" value=".05">
+				<requirement name="CVarCompare" cvar=".GodSlayerDamageRangedKillCounter" operation="LT" value=".25"/>
+			</triggered_effect>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".GodSlayerDamageRangedEffectApply" operation="set" value="@.GodSlayerDamageRangedKillCounter"/>
+			<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".GodSlayerDamageRangedEffectApply" operation="set" value="@.GodSlayerDamageRangedKillCounter"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".GodSlayerDamageRangedEffectDisplay" operation="set" value="@.GodSlayerDamageRangedEffectApply"/>
+			<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".GodSlayerDamageRangedEffectDisplay" operation="set" value="@.GodSlayerDamageRangedEffectApply"/>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".GodSlayerDamageRangedEffectDisplay" operation="multiply" value="100"/>
+			<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".GodSlayerDamageRangedEffectDisplay" operation="multiply" value="100"/>
+			
+			<passive_effect name="EntityDamage" operation="perc_add" value="@.GodSlayerDamageRangedEffectApply" />
+				
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".GodSlayerDamageRangedKillCounter" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".GodSlayerDamageRangedEffectDisplay" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".GodSlayerDamageRangedEffectApply" operation="set" value="0"/>
+			
+		</effect_group>
+	</buff>
+
+<!--The God Slayer Path-->
+<!--#Survival at all cost-->
+
+	<buff name="ZombieINC_Perk_Survival_Magazine_buff" icon="ui_game_symbol_loot_sack" >	
+		<duration value="300"/>	
+		<stack_type value="replace"/>
+		<effect_group>
+			<passive_effect name="StaminaMax" operation="base_add" value="10"/>		
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_perkSuvival4_MissHit" icon="ui_game_symbol_loot_sack" hidden="false" >	
+		<duration value="6"/>	
+		<stack_type value="replace"/>
+		<effect_group>
+			<passive_effect name="GeneralDamageResist" operation="base_add" value="1"/>
+			
+			<triggered_effect trigger="onOtherAttackedSelf" action="AddBuff" buff="ZombieINC_perkSuvival4_MissHit_CoolDown"/>
+			<triggered_effect trigger="onOtherAttackedSelf" action="RemoveBuff" buff="ZombieINC_perkSuvival4_MissHit"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_perkSuvival4_MissHit_CoolDown" icon="ui_game_symbol_loot_sack" hidden="false" >	
+		<duration value="60"/>	
+		<stack_type value="replace"/>
+		<effect_group>	
+		</effect_group>
+	</buff>
+<!--Survival at all cost-->
+<!--Magazines-->
+<!--#Locky Looter-->
+	<buff name="ZombieINC_Perk_LuckyLooter_NormalL1_buff" icon="ui_game_symbol_loot_sack" hidden="false">	
+		<duration value="300"/>	
+		<stack_type value="replace"/>
+		<display_value value="duration"/>
+		<display_value_format value="time"/>
+		<effect_group>
+			<passive_effect name="LootStage" operation="perc_add" value="0.10" />			
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Perk_LuckyLooter_NormalL2_buff" icon="ui_game_symbol_loot_sack" hidden="false">	
+		<duration value="600"/>	
+		<stack_type value="replace"/>
+		<display_value value="duration"/>
+		<display_value_format value="time"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="ZombieINC_Perk_LuckyLooter_NormalL1_buff" />
+			<passive_effect name="LootStage" operation="perc_add" value="0.15" />			
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Perk_LuckyLooter_NormalL3_buff" icon="ui_game_symbol_loot_sack" hidden="false">	
+		<duration value="900"/>	
+		<stack_type value="replace"/>
+		<display_value value="duration"/>
+		<display_value_format value="time"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="ZombieINC_Perk_LuckyLooter_NormalL2_buff" />
+			<passive_effect name="LootStage" operation="perc_add" value="0.20" />			
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Perk_LuckyLooter_NormalL4_buff" icon="ui_game_symbol_loot_sack" hidden="false">	
+		<duration value="1200"/>	
+		<stack_type value="replace"/>
+		<display_value value="duration"/>
+		<display_value_format value="time"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="ZombieINC_Perk_LuckyLooter_NormalL3_buff" />
+			<passive_effect name="LootStage" operation="perc_add" value="0.25" />			
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Perk_LuckyLooter_NormalL5_buff" icon="ui_game_symbol_loot_sack" hidden="false">	
+		<duration value="1500"/>	
+		<stack_type value="replace"/>
+		<display_value value="duration"/>
+		<display_value_format value="time"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="ZombieINC_Perk_LuckyLooter_NormalL4_buff" />
+			<passive_effect name="LootStage" operation="perc_add" value="0.30" />			
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Perk_LuckyLooter_InfestedL4_buff" icon="ui_game_symbol_loot_sack" hidden="false">	
+		<duration value="1500"/>	
+		<stack_type value="replace"/>
+		<display_value value="duration"/>
+		<display_value_format value="time"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="ZombieINC_Perk_LuckyLooter_NormalL3_buff" />
+			<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="ZombieINC_Perk_LuckyLooter_NormalL4_buff" />
+			<passive_effect name="LootStage" operation="perc_add" value="0.4" />			
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Perk_LuckyLooter_InfestedL5_buff" icon="ui_game_symbol_loot_sack" hidden="false">	
+		<duration value="1800"/>	
+		<stack_type value="replace"/>
+		<display_value value="duration"/>
+		<display_value_format value="time"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="ZombieINC_Perk_LuckyLooter_InfestedL4_buff" />
+			<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="ZombieINC_Perk_LuckyLooter_NormalL4_buff" />
+			<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="ZombieINC_Perk_LuckyLooter_NormalL5_buff" />
+			<passive_effect name="LootStage" operation="perc_add" value="0.5" />			
+		</effect_group>
+	</buff>
+<!--Locky Looter-->
+<!--#Wise Afraid man-->
+	<buff name="ZombieINC_Perk_WiseAfraid_NormalL1_buff" icon="ui_game_symbol_agility" hidden="false">	
+		<duration value="1"/>	
+		<stack_type value="replace"/>
+		<display_value value="duration"/>
+		<display_value_format value="time"/>
+		<effect_group>		
+			<passive_effect name="WalkSpeed" operation="perc_add" value="0.05" />			
+			<passive_effect name="RunSpeed" operation="perc_add" value="0.05" />			
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Perk_WiseAfraid_NormalL2_buff" icon="ui_game_symbol_agility" hidden="false">	
+		<duration value="1.5"/>	
+		<stack_type value="replace"/>
+		<display_value value="duration"/>
+		<display_value_format value="time"/>
+		<effect_group>		
+			<passive_effect name="WalkSpeed" operation="perc_add" value="0.10" />			
+			<passive_effect name="RunSpeed" operation="perc_add" value="0.10" />				
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Perk_WiseAfraid_NormalL3_buff" icon="ui_game_symbol_agility" hidden="false">	
+		<duration value="2.0"/>	
+		<stack_type value="replace"/>
+		<display_value value="duration"/>
+		<display_value_format value="time"/>
+		<effect_group>		
+			<passive_effect name="WalkSpeed" operation="perc_add" value="0.15" />			
+			<passive_effect name="RunSpeed" operation="perc_add" value="0.15" />				
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Perk_WiseAfraid_NormalL4_buff" icon="ui_game_symbol_agility" hidden="false">	
+		<duration value="2.5"/>	
+		<stack_type value="replace"/>
+		<display_value value="duration"/>
+		<display_value_format value="time"/>
+		<effect_group>		
+			<passive_effect name="WalkSpeed" operation="perc_add" value="0.20" />			
+			<passive_effect name="RunSpeed" operation="perc_add" value="0.20" />
+			<passive_effect name="JumpStrength" operation="perc_add"  value=".15"/>
+			<passive_effect name="StaminaLoss" operation="perc_add"  value="-0.2" tags="jumping"/>		
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Perk_WiseAfraid_NormalL5_buff" icon="ui_game_symbol_agility" hidden="false">	
+		<duration value="3"/>	
+		<stack_type value="replace"/>
+		<display_value value="duration"/>
+		<display_value_format value="time"/>
+		<effect_group>		
+			<passive_effect name="WalkSpeed" operation="perc_add" value="0.25" />			
+			<passive_effect name="RunSpeed" operation="perc_add" value="0.25" />
+			<passive_effect name="JumpStrength" operation="perc_add"  value=".3"/>
+			<passive_effect name="StaminaLoss" operation="perc_add"  value="-0.3" tags="jumping"/>
+		</effect_group>
+	</buff>
+<!--Wise Afraid man-->
+<!--#WarCry-->
+	<buff name="ZombieINC_Perk_WarCry_Display" icon="ui_game_symbol_muscle" hidden="false">
+		<stack_type value="replace"/>
+		<duration value="30"/>	
+		<display_value value=".ZINCWARCRYDISPLAY"/>
+		<display_value_key value="+{0}%"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCWARCRYDISPLAY" target="self" operation="set" value="@.ZINCWARCRYCOUNTER"/>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCWARCRYDISPLAY" target="self" operation="multiply" value="100"/>	
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Perk_WarCrySelf_NormalL1_Cooldownbuff" icon="ui_game_symbol_clock" hidden="false">
+		<stack_type value="replace"/>
+		<duration value="480"/>	
+		<display_value value="duration"/>
+		<display_value_format value="time"/>
+		<effect_group></effect_group>
+	</buff>
+	<buff name="ZombieINC_Perk_WarCrySelf_NormalL2_Cooldownbuff" icon="ui_game_symbol_clock" hidden="false">
+		<stack_type value="replace"/>
+		<duration value="240"/>	
+		<display_value value="duration"/>
+		<display_value_format value="time"/>
+		<effect_group></effect_group>
+	</buff>
+	<buff name="ZombieINC_Perk_WarCrySelf_NormalL3_Cooldownbuff" icon="ui_game_symbol_clock" hidden="false">
+		<stack_type value="replace"/>
+		<duration value="120"/>	
+		<display_value value="duration"/>
+		<display_value_format value="time"/>
+		<effect_group>
+			<passive_effect name="BuffResistance" operation="base_add" value="5" tags="buffInjuryBleedingOne,buffInjuryBleedingTwo"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Perk_WarCrySelf_NormalL1_buff" icon="ui_game_symbol_muscle" hidden="false">
+		<stack_type value="replace"/>
+		<duration value="30"/>	
+		<display_value value="duration"/>
+		<!--<display_value_key value="+{0}%"/>-->
+		
+			
+		
+		<effect_group>
+			<passive_effect name="RunSpeed" operation="perc_add" value="-0.3"/>
+			<passive_effect name="WalkSpeed" operation="perc_add" value="-0.3"/>
+			<passive_effect name="LightMultiplier" operation="perc_add" value="2"/>
+			<passive_effect name="NoiseMultiplier" operation="perc_add" value="2"/>
+			<passive_effect name="EnemySearchDuration" operation="perc_add" value="1"/>
+			
+			<passive_effect name="GeneralDamageResist" operation="base_add" value="@.ZINCWARCRYCOUNTER"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCWARCRYCOUNTER" target="self" operation="set" value="0"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="ZINCWARCRYSHOUT" />
+						
+		</effect_group>
+		<effect_group>
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_Warcry" operation="Equals" value="1"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_Perk_WarCrySelf_NormalL1_Cooldownbuff" />
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_Perk_WarCryOther_NormalL1_buff" target="selfOtherPlayers" target_tags="ally,party" >
+				<requirement name="NotHasBuff" buff="ZombieINC_Perk_WarCrySelf_NormalL1_buff" target="other"/>
+			</triggered_effect>
+			<passive_effect name="GeneralDamageResist" operation="base_add" value="0.1"/>
+		</effect_group>
+		<effect_group>
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_Warcry" operation="Equals" value="2"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_Perk_WarCrySelf_NormalL2_Cooldownbuff" />
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_Perk_WarCryOther_NormalL2_buff" target="selfOtherPlayers" target_tags="ally,party" >
+				<requirement name="NotHasBuff" buff="ZombieINC_Perk_WarCrySelf_NormalL1_buff" target="other"/>
+			</triggered_effect>
+			<passive_effect name="GeneralDamageResist" operation="base_add" value="0.2"/>
+		</effect_group>
+		<effect_group>
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_Warcry" operation="Equals" value="3"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_Perk_WarCrySelf_NormalL3_Cooldownbuff" />
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_Perk_WarCryOther_NormalL3_buff" target="selfOtherPlayers" target_tags="ally,party" >
+				<requirement name="NotHasBuff" buff="ZombieINC_Perk_WarCrySelf_NormalL1_buff" target="other"/>
+			</triggered_effect>
+			<passive_effect name="GeneralDamageResist" operation="base_add" value="0.3"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Perk_WarCryOther_NormalL1_buff" icon="ui_game_symbol_defense" hidden="false">
+		<stack_type value="replace"/>
+		<duration value="10"/>
+		<display_value value="duration"/>
+		<display_value_format value="time"/>
+		<effect_group>
+			<passive_effect name="LightMultiplier" operation="perc_add" value="-1"/>
+			<passive_effect name="NoiseMultiplier" operation="perc_add" value="-1"/>
+			<passive_effect name="EnemySearchDuration" operation="perc_add" value="-1"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCWARCRYCOUNTER" target="selfOtherPlayers" target_tags="ally,party" operation="add" value="0.03">
+				<requirement name="NotHasBuff" buff="ZombieINC_Perk_WarCryOther_NormalL1_buff" target="other"/>
+				<requirement name="NotHasBuff" buff="ZombieINC_Perk_WarCryOther_NormalL2_buff" target="other"/>
+				<requirement name="NotHasBuff" buff="ZombieINC_Perk_WarCryOther_NormalL3_buff" target="other"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_Perk_WarCry_Display" target="selfOtherPlayers" target_tags="ally,party" >
+				<requirement name="NotHasBuff" buff="ZombieINC_Perk_WarCryOther_NormalL1_buff" target="other"/>
+				<requirement name="NotHasBuff" buff="ZombieINC_Perk_WarCryOther_NormalL2_buff" target="other"/>
+				<requirement name="NotHasBuff" buff="ZombieINC_Perk_WarCryOther_NormalL3_buff" target="other"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Perk_WarCryOther_NormalL2_buff" icon="ui_game_symbol_defense" hidden="false">
+		<stack_type value="replace"/>
+		<duration value="20"/>	
+		<display_value value="duration"/>
+		<display_value_format value="time"/>
+		<effect_group>
+			<passive_effect name="LightMultiplier" operation="perc_add" value="-1"/>
+			<passive_effect name="NoiseMultiplier" operation="perc_add" value="-1"/>
+			<passive_effect name="EnemySearchDuration" operation="perc_add" value="-1"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCWARCRYCOUNTER" target="selfOtherPlayers" target_tags="ally,party" operation="add" value="0.04">
+				<requirement name="NotHasBuff" buff="ZombieINC_Perk_WarCryOther_NormalL1_buff" target="other"/>
+				<requirement name="NotHasBuff" buff="ZombieINC_Perk_WarCryOther_NormalL2_buff" target="other"/>
+				<requirement name="NotHasBuff" buff="ZombieINC_Perk_WarCryOther_NormalL3_buff" target="other"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_Perk_WarCry_Display" target="selfOtherPlayers" target_tags="ally,party" >
+				<requirement name="NotHasBuff" buff="ZombieINC_Perk_WarCryOther_NormalL1_buff" target="other"/>
+				<requirement name="NotHasBuff" buff="ZombieINC_Perk_WarCryOther_NormalL2_buff" target="other"/>
+				<requirement name="NotHasBuff" buff="ZombieINC_Perk_WarCryOther_NormalL3_buff" target="other"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Perk_WarCryOther_NormalL3_buff" icon="ui_game_symbol_defense" hidden="false">
+		<stack_type value="replace"/>
+		<duration value="30"/>
+		<display_value value="duration"/>
+		<display_value_format value="time"/>		
+		<effect_group>
+			<passive_effect name="LightMultiplier" operation="perc_add" value="-1"/>
+			<passive_effect name="NoiseMultiplier" operation="perc_add" value="-1"/>
+			<passive_effect name="EnemySearchDuration" operation="perc_add" value="-1"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCWARCRYCOUNTER" target="selfOtherPlayers" target_tags="ally,party" operation="add" value="0.05">
+				<requirement name="NotHasBuff" buff="ZombieINC_Perk_WarCryOther_NormalL1_buff" target="other"/>
+				<requirement name="NotHasBuff" buff="ZombieINC_Perk_WarCryOther_NormalL2_buff" target="other"/>
+				<requirement name="NotHasBuff" buff="ZombieINC_Perk_WarCryOther_NormalL3_buff" target="other"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_Perk_WarCry_Display" target="selfOtherPlayers" target_tags="ally,party" >
+				<requirement name="NotHasBuff" buff="ZombieINC_Perk_WarCryOther_NormalL1_buff" target="other"/>
+				<requirement name="NotHasBuff" buff="ZombieINC_Perk_WarCryOther_NormalL2_buff" target="other"/>
+				<requirement name="NotHasBuff" buff="ZombieINC_Perk_WarCryOther_NormalL3_buff" target="other"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+<!--WarCry-->
+<!--#VigorOverflow-->
+	<buff name="ZombieINC_Perk_VigorOverflow_Cooldownbuff" icon="ui_game_symbol_fatigued" hidden="false">
+		<stack_type value="ignore"/>
+		<duration value="0"/>	<!--Fake Duration-->
+		<display_value value=".ZINCperkVigorOverFlowCooldownActive"/>
+		<display_value_format value="time"/>
+		
+		<effect_group>
+			<!-- Setup and Update Cooldown Duration -->
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCperkVigorOverFlowCooldownActive" operation="set" value="@$ZINCperkVigorOverFlowCooldown"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZINCperkVigorOverFlowCooldownActive" operation="subtract" value="1"/>
+			
+			<!-- Actual Cooldown Duration-->
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="ZombieINC_Perk_VigorOverflow_Cooldownbuff">
+				<requirement name="CVarCompare" cvar=".ZINCperkVigorOverFlowCooldownActive" operation="LTE" value="0"/>
+			</triggered_effect>
+		</effect_group>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyStats" stat="Health" operation="set" value="50">
+				<requirement name="StatCompareCurrent" stat="Health" operation="GT" value="50"/>
+			</triggered_effect>
+			<!--<triggered_effect trigger="onSelfBuffStart" action="ModifyStats" stat="Health" operation="subtract" value="50">
+				<requirement name="StatComparePercModMaxToMax" stat="Health" operation="GT" value="0.5"/>
+			</triggered_effect>-->
+			<!--<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_Perk_VigorOverflow_Cooldown_debuff"/>-->
+			<passive_effect name="HealthMax" operation="base_subtract" value="@$PlayerLevelBonus"/>
+			<passive_effect name="StaminaMax" operation="base_subtract" value="@$PlayerLevelBonus"/>
+			<passive_effect name="WaterMax" operation="base_subtract" value="@$PlayerLevelBonus"/>
+			<passive_effect name="FoodMax" operation="base_subtract" value="@$PlayerLevelBonus"/>
+		</effect_group>
+	</buff>
+	<!--<buff name="ZombieINC_Perk_VigorOverflow_Cooldown_debuff" icon="ui_game_symbol_clock" hidden="true">
+		<stack_type value="ignore"/>
+		<duration value="0.05"/>	
+		<effect_group>
+			<!{1}**<triggered_effect trigger="onSelfBuffStart" action="ModifyStats" stat="Health" operation="subtract" value="50">
+				<requirement name="StatComparePercModMaxToMax" stat="Health" operation="GT" value="0.8"/>
+			</triggered_effect>**{1}>
+		<passive_effect name="HealthMax" operation="base_subtract" value="50"/>
+		</effect_group>
+	</buff>-->
+	<buff name="ZombieINC_Perk_VigorOverflow_Blocker_buff" icon="ui_game_symbol_clock" hidden="true">
+		<stack_type value="ignore"/>
+		<duration value="1"/>		
+		<effect_group>
+			<requirement name="StatComparePercModMaxToMax" stat="Health" operation="GTE" value="1"/>
+			<requirement name="StatComparePercCurrentToModMax" stat="Health" operation="GTE" value="1"/>
+			<requirement name="StatComparePercCurrentToMax" stat="Health" operation="GTE" value="1"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_Perk_VigorOverflow_buff"/>
+		</effect_group>	
+	</buff>
+	<buff name="ZombieINC_Perk_VigorOverflow_buff" icon="ui_game_symbol_healing_factor" hidden="false">
+		<stack_type value="ignore"/>
+		<duration value="0"/>	<!--Fake Duration-->
+		<display_value value=".ZINCperkVigorOverFlowDurationActive"/>
+		<display_value_format value="time"/>
+		
+		<!--<requirement name="StatComparePercCurrentToMax" stat="Health" operation="GTE" value="1"/>-->
+		<!--<effect_group>
+			<requirement name="StatComparePercModMaxToMax" stat="Health" operation="LT" value="1"/>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCperkVigorOverFlowDurationActive" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="ZombieINC_Perk_VigorOverflow_buff"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_Perk_VigorOverflow_Blocker_buff"/>
+		</effect_group>-->
+		<effect_group>
+			
+			
+			<triggered_effect trigger="onSelfBuffRemove" action="AddBuff" buff="ZombieINC_Perk_VigorOverflow_Cooldownbuff">
+				<requirement name="NotHasBuff" buff="ZombieINC_Perk_VigorOverflow_Blocker_buff"/>
+			</triggered_effect>
+				
+			
+			<!-- Setup and Update Perk Duration -->
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCperkVigorOverFlowDurationActive" operation="set" value="@$ZINCperkVigorOverFlowDuration">
+				<requirement name="StatComparePercModMaxToMax" stat="Health" operation="GTE" value="1"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZINCperkVigorOverFlowDurationActive" operation="subtract" value="1">
+				<requirement name="CVarCompare" cvar=".ZINCperkVigorOverFlowDurationActive" operation="GTE" value="1"/>
+			</triggered_effect>
+			
+			<!-- Actual Perk Duration-->
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="ZombieINC_Perk_VigorOverflow_buff">
+				<requirement name="CVarCompare" cvar=".ZINCperkVigorOverFlowDurationActive" operation="LTE" value="0"/>
+			</triggered_effect>
+			
+		</effect_group>
+		<effect_group>
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_VigorOverflow" operation="Equals" value="1"/>
+				<passive_effect name="HealthMax" operation="base_add" value="50" />
+				<passive_effect name="HealthChangeOT" operation="base_add" value="1" />
+		</effect_group>
+		<effect_group>
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_VigorOverflow" operation="Equals" value="2"/>
+				<passive_effect name="HealthMax" operation="base_add" value="75" />
+				<passive_effect name="HealthChangeOT" operation="base_add" value="1.5" />
+		</effect_group>
+		<effect_group>
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_VigorOverflow" operation="Equals" value="3"/>
+				<passive_effect name="HealthMax" operation="base_add" value="100" />
+				<passive_effect name="HealthChangeOT" operation="base_add" value="2" />
+		</effect_group>
+		<effect_group>
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_VigorOverflow" operation="Equals" value="4"/>
+				<passive_effect name="HealthMax" operation="base_add" value="150" />
+				<passive_effect name="HealthChangeOT" operation="base_add" value="2.5" />
+		</effect_group>
+		<effect_group>
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_VigorOverflow" operation="Equals" value="5"/>
+				<passive_effect name="HealthMax" operation="base_add" value="200" />
+				<passive_effect name="HealthChangeOT" operation="base_add" value="3" />
+		</effect_group>
+	</buff>
+<!--VigorOverflow-->
+<!--#Photosynthesis-->
+	<buff name="ZombieINC_Perk_Photosynthesis_buff" hidden="true">
+		<stack_type value="replace"/>
+		<duration value="3"/>
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".ZINCPhotosynthesisCounter" operation="set" value="0"/>
+			<triggered_effect trigger="onOtherAttackedSelf" action="RemoveBuff" buff="ZombieINC_Perk_Photosynthesis_buff"/>
+		</effect_group>
+		<effect_group>
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_Photosynthesis" operation="Equals" value="1"/>
+				<passive_effect name="HealthChangeOT" operation="base_add" value="0.25" />
+				
+				<passive_effect name="LightMultiplier" operation="perc_add" value="1"/>
+				<passive_effect name="NoiseMultiplier" operation="perc_add" value="1"/>
+				<passive_effect name="EnemySearchDuration" operation="perc_add" value="1"/>
+		</effect_group>
+		<effect_group>
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_Photosynthesis" operation="Equals" value="2"/>		
+				<passive_effect name="HealthChangeOT" operation="base_add" value="0.50" />
+				<passive_effect name="LightMultiplier" operation="perc_add" value="1"/>
+				<passive_effect name="NoiseMultiplier" operation="perc_add" value="1"/>
+				<passive_effect name="EnemySearchDuration" operation="perc_add" value="1"/>
+		</effect_group>
+		<effect_group>
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_Photosynthesis" operation="Equals" value="3"/>
+				<triggered_effect trigger="onSelfBuffStack" action="PlaySound" sound="ZINCPHOTOYELL" />
+				<passive_effect name="HealthChangeOT" operation="base_add" value="1" />
+				<passive_effect name="LightMultiplier" operation="perc_add" value="2"/>
+				<passive_effect name="NoiseMultiplier" operation="perc_add" value="2"/>
+				<passive_effect name="EnemySearchDuration" operation="perc_add" value="2"/>
+		</effect_group>
+		<effect_group>
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_Photosynthesis" operation="Equals" value="4"/>
+				<triggered_effect trigger="onSelfBuffStack" action="PlaySound" sound="ZINCPHOTOYELL" />
+				<passive_effect name="HealthChangeOT" operation="base_add" value="2" />
+				<passive_effect name="LightMultiplier" operation="perc_add" value="3"/>
+				<passive_effect name="NoiseMultiplier" operation="perc_add" value="3"/>
+				<passive_effect name="EnemySearchDuration" operation="perc_add" value="3"/>
+		</effect_group>
+	</buff>
+<!--Photosynthesis-->
+<!--#Masochist-->
+	<buff name="ZombieINC_perkMasochistFrenzy" icon="ui_game_symbol_cardio" hidden="false">
+		<stack_type value="replace"/>
+		<duration value="3"/>	
+		<display_value value=".ZINCperkMasochistCounterActive"/>
+		<!--<display_value_format value="time"/>-->
+		
+		<effect_group>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCperkMasochistCounterActive" operation="set" value="@$ZINCperkMasochistCounter"/>
+			<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".ZINCperkMasochistCounterActive" operation="subtract" value="1">
+				<requirement name="CVarCompare" cvar=".ZINCperkMasochistCounterActive" operation="LT" value="0"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffStack" action="AddBuff" buff="ZombieINC_perkMasochistFrenzyActive"/>
+				
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".ZINCperkMasochistCounterActive" operation="set" value="@$ZINCperkMasochistCounter"/>
+		</effect_group>
+		<effect_group>
+			<requirement name="CVarCompare" cvar=".ZINCperkMasochistCounterActive" operation="LTE" value="0"/>
+			<triggered_effect trigger="onSelfBuffStack" action="AddBuff" buff="ZombieINC_perkMasochistFrenzyActive"/>
+			<triggered_effect trigger="onSelfBuffStack" action="RemoveBuff" buff="ZombieINC_perkMasochistFrenzy"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_perkMasochistFrenzyActive" icon="ui_game_symbol_candy_skull_crushers" hidden="false">
+		<stack_type value="replace"/>
+		<duration value="8"/>	
+		<display_value value="duration"/>
+		<display_value_format value="time"/>
+		
+		<effect_group>
+		</effect_group>
+		
+	</buff>
+<!--Masochist-->
+<!--#DeepBreath-->
+	<buff name="ZombieINC_Perk_DeepBreath_buff" icon="ui_game_symbol_long_shot" hidden="false">
+		<stack_type value="replace"/>
+		<update_rate value="0.1"/>
+		<duration value="3"/>
+		<!--<update_rate value="65"/>-->
+		<!--<display_value value="duration"/>
+		<display_value_format value="time"/>-->
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="ZombieINC_Perk_DeepBreathActive_buff"/>
+			<!--<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="ZombieINC_Perk_DeepBreathCheck_buff"/>-->
+				
+			
+			
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="AddBuff" buff="ZombieINC_Perk_DeepBreath_buff"/>
+			<triggered_effect trigger="onSelfDied" action="RemoveBuff" buff="ZombieINC_Perk_DeepBreath_buff"/>
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_Perk_DeepBreath_buff"/>
+			<triggered_effect trigger="onSelfAimingGunStop" action="RemoveBuff" buff="ZombieINC_Perk_DeepBreath_buff"/>
+			<triggered_effect trigger="onSelfEquipStart" action="RemoveBuff" buff="ZombieINC_Perk_DeepBreath_buff"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="ZombieINC_Perk_DeepBreath_buff">
+				<requirement name="!HoldingItemHasTags" tags="holdBreathAiming,perkDeadEye,rifleSkill" has_all_tags="true"/>
+			</triggered_effect>
+		</effect_group>
+		<effect_group>
+			<requirement name="!EntityHasMovementTag" tags="idle"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="ZombieINC_Perk_DeepBreath_buff"/>
+			<!--<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_Perk_DeepBreath_buff"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="ZombieINC_Perk_DeepBreath_buff"/>-->
+			<!--<triggered_effect trigger="onSelfRun" action="AddBuff" buff="ZombieINC_Perk_DeepBreath_buff"/>
+			<triggered_effect trigger="onSelfWalk" action="AddBuff" buff="ZombieINC_Perk_DeepBreath_buff"/>--> <!--Not Working-->
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Perk_DeepBreathActive_buff" icon="ui_game_symbol_map_cursor" hidden="false">
+		<stack_type value="replace"/>
+		<duration value="0"/>	
+		<display_value value=".ZINCperkDeepBreathDisplay"/>
+		<display_value_key value="+{0}%"/>
+		<update_rate value="0.33"/>
+		
+		<effect_group>
+			<!--<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCperkDeepBreathDamageActive" operation="set" value="@$ZINCperkDeepBreathDamage"/>-->
+			
+			
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCperkDeepBreathDamageActive" operation="set" value="0.1"/>
+				
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCperkDeepBreathDisplay" operation="set" value="@.ZINCperkDeepBreathDamageActive"/>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCperkDeepBreathDisplay" operation="multiply" value="100"/>
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZINCperkDeepBreathDamageActive" operation="add" value="0.1">
+				<requirement name="CVarCompare" cvar=".ZINCperkDeepBreathDamageActive" operation="LT" value="@$ZINCperkDeepBreathDamage"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZINCperkDeepBreathDisplay" operation="set" value="@.ZINCperkDeepBreathDamageActive"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZINCperkDeepBreathDisplay" operation="multiply" value="100"/>
+				
+			<passive_effect name="EntityDamage" operation="perc_add" value="@.ZINCperkDeepBreathDamageActive" >
+				<requirement name="EntityHasMovementTag" tags="idle"/>
+				<requirement name="EntityTagCompare" target="other" tags="zombie"/>
+				<requirement name="HitLocation" body_parts="Torso"/>
+			</passive_effect>
+			
+		</effect_group>
+		<effect_group>
+			<triggered_effect trigger="onSelfPrimaryActionRayMiss" action="AddBuff" buff="ZombieINC_Perk_DeepBreath_buff"/>
+			<triggered_effect trigger="onSelfPrimaryActionRayMiss" action="RemoveBuff" buff="ZombieINC_Perk_DeepBreathActive_buff"/>
+			<triggered_effect trigger="onSelfPrimaryActionRayHit" action="AddBuff" buff="ZombieINC_Perk_DeepBreath_buff"/>
+			<triggered_effect trigger="onSelfPrimaryActionRayHit" action="RemoveBuff" buff="ZombieINC_Perk_DeepBreathActive_buff"/>
+			<triggered_effect trigger="onSelfPrimaryActionMissEntity" action="AddBuff" buff="ZombieINC_Perk_DeepBreath_buff"/>
+			<triggered_effect trigger="onSelfPrimaryActionMissEntity" action="RemoveBuff" buff="ZombieINC_Perk_DeepBreathActive_buff"/>
+			<!--<triggered_effect trigger="onSelfDamagedOther" action="RemoveBuff" buff="ZombieINC_Perk_DeepBreathActive_buff"/>-->
+			<triggered_effect trigger="onSelfDied" action="RemoveBuff" buff="ZombieINC_Perk_DeepBreathActive_buff"/>
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_Perk_DeepBreathActive_buff"/>
+			<triggered_effect trigger="onSelfAimingGunStop" action="RemoveBuff" buff="ZombieINC_Perk_DeepBreathActive_buff"/>
+			<triggered_effect trigger="onSelfEquipStart" action="RemoveBuff" buff="ZombieINC_Perk_DeepBreathActive_buff"/>
+
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="ZombieINC_Perk_DeepBreathActive_buff">
+				<requirement name="!HoldingItemHasTags" tags="holdBreathAiming,perkDeadEye,rifleSkill" has_all_tags="true"/>
+			</triggered_effect>
+		</effect_group>
+		<effect_group>
+			<triggered_effect trigger="onSelfRun" action="AddBuff" buff="ZombieINC_Perk_DeepBreath_buff"/>	
+			<triggered_effect trigger="onSelfWalk" action="AddBuff" buff="ZombieINC_Perk_DeepBreath_buff"/>
+			<triggered_effect trigger="onSelfCrouchRun" action="AddBuff" buff="ZombieINC_Perk_DeepBreath_buff"/>
+			<triggered_effect trigger="onSelfCrouchWalk" action="AddBuff" buff="ZombieINC_Perk_DeepBreath_buff"/>
+				
+			<triggered_effect trigger="onSelfRun" action="RemoveBuff" buff="ZombieINC_Perk_DeepBreathActive_buff"/>
+			<triggered_effect trigger="onSelfWalk" action="RemoveBuff" buff="ZombieINC_Perk_DeepBreathActive_buff"/>
+			<triggered_effect trigger="onSelfCrouchRun" action="RemoveBuff" buff="ZombieINC_Perk_DeepBreathActive_buff"/>
+			<triggered_effect trigger="onSelfCrouchWalk" action="RemoveBuff" buff="ZombieINC_Perk_DeepBreathActive_buff"/>
+		</effect_group>
+		<effect_group>
+			<requirement name="!EntityHasMovementTag" tags="idle"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_Perk_DeepBreath_buff"/>
+			<triggered_effect trigger="onSelfPrimaryActionUpdate" action="AddBuff" buff="ZombieINC_Perk_DeepBreath_buff"/>
+			<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="ZombieINC_Perk_DeepBreathActive_buff"/>
+			<triggered_effect trigger="onSelfPrimaryActionUpdate" action="RemoveBuff" buff="ZombieINC_Perk_DeepBreathActive_buff"/>
+			<!--<triggered_effect trigger="onSelfBuffRemove" action="AddBuff" buff="ZombieINC_Perk_DeepBreath_buff"/>-->
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="ZombieINC_Perk_DeepBreath_buff"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="ZombieINC_Perk_DeepBreathActive_buff"/>
+			<!--<triggered_effect trigger="onSelfRun" action="AddBuff" buff="ZombieINC_Perk_DeepBreath_buff"/>
+			<triggered_effect trigger="onSelfRun" action="RemoveBuff" buff="ZombieINC_Perk_DeepBreathActive_buff"/>
+			<triggered_effect trigger="onSelfWalk" action="AddBuff" buff="ZombieINC_Perk_DeepBreath_buff"/>
+			<triggered_effect trigger="onSelfWalk" action="RemoveBuff" buff="ZombieINC_Perk_DeepBreathActive_buff"/>--> <!--Not working-->
+		
+		</effect_group>
+	</buff>
+<!--DeepBreath-->
+<!--#HighDemand--> <!--Not Used-->
+	<buff name="ZombieINC_HighDemand_Buff" icon="ui_game_symbol_loot_sack" hidden="false">
+		<stack_type value="ignore"/>
+		<duration value="600"/>
+	
+		<effect_group>
+			<!--<requirement name="IsBloodMoon"/>-->
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_HighDemand" operation="Equals" value="1"/>
+				<passive_effect name="BarteringSelling" operation="base_add" value="0.25"/>
+		</effect_group>
+		<effect_group>
+			<!--<requirement name="IsBloodMoon"/>-->
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_HighDemand" operation="Equals" value="2"/>
+				<passive_effect name="BarteringSelling" operation="base_add"  value="0.50"/>
+		</effect_group>
+		<effect_group>
+			<!--<requirement name="IsBloodMoon"/>-->
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_HighDemand" operation="Equals" value="3"/>
+				<passive_effect name="BarteringSelling" operation="base_add" value="0.75"/>
+		</effect_group>
+		<effect_group>
+		<!--	<requirement name="IsBloodMoon"/>-->
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_HighDemand" operation="Equals" value="4"/>
+				<passive_effect name="BarteringSelling" operation="base_add" value="1"/>
+		</effect_group>
+	</buff>
+<!--HighDemand-->
+<!--#Leftovers--> <!--Not Used-->
+	<buff name="ZombieINC_Leftovers_Buff" icon="ui_game_symbol_loot_sack" hidden="false">
+		<stack_type value="replace"/>
+		<duration value="5"/>
+	
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self" event="ZombieINC_Leftovers_Event" allow_client_call="false" />
+		</effect_group>
+		<effect_group>
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_Leftovers" operation="Equals" value="1"/>
+				<passive_effect name="BarteringBuying" operation="base_set" value="0.20"/>
+				<passive_effect name="TraderStage" operation="base_set" value="20"/>
+		</effect_group>
+		<effect_group>
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_Leftovers" operation="Equals" value="2"/>
+				<passive_effect name="BarteringBuying" operation="base_set" value="0.30"/>
+				<passive_effect name="TraderStage" operation="base_set" value="20"/>
+		</effect_group>
+		<effect_group>
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_Leftovers" operation="Equals" value="3"/>
+				<passive_effect name="BarteringBuying" operation="base_set" value="0.50"/>
+				<passive_effect name="TraderStage" operation="base_set" value="20"/>
+		</effect_group>
+	</buff>
+<!--Leftovers-->
+<!--Apocalyptic Skills-->
+<!--###New Weapons and Ammo-->
+
+	<buff name="ZombieINC_HealGun_HealV1_Buff" icon="ui_game_symbol_steroids" hidden="false">
+		<stack_type value="replace"/>
+		<duration value="5"/>
+		<update_rate value="1"/>
+		<display_value value="duration"/>
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyStats" stat="Health" operation="add" value="20"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyStats" stat="Health" operation="add" value="2"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="ModifyStats" stat="Health" operation="add" value="2"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_HealGun_StrengthV1_Buff" icon="ui_game_symbol_steroids" hidden="false">
+		<stack_type value="replace"/>
+		<duration value="5"/>
+		<update_rate value="1"/>
+		<display_value value="duration"/>
+		
+		<effect_group>
+			<passive_effect name="ReloadSpeedMultiplier" operation="perc_add" value="1"/>
+			
+			<passive_effect name="SpreadDegreesVertical" operation="perc_add" value="-0.5" />
+			<passive_effect name="SpreadDegreesHorizontal" operation="perc_add" value="-0.5" />
+			<passive_effect name="SpreadMultiplierAiming" operation="perc_add" value="-0.5" />
+			<passive_effect name="SpreadMultiplierCrouching" operation="perc_add" value="-0.5" />
+			<passive_effect name="SpreadMultiplierWalking" operation="perc_add" value="-0.5" />
+			<passive_effect name="SpreadMultiplierRunning" operation="perc_add" value="-0.5" />
+
+			<passive_effect name="KickDegreesVerticalMin" operation="perc_add" value="-0.5" />
+			<passive_effect name="KickDegreesVerticalMax" operation="perc_add" value="-0.5" />
+			<passive_effect name="KickDegreesHorizontalMin" operation="perc_add" value="-0.5" />
+			<passive_effect name="KickDegreesHorizontalMax" operation="perc_add" value="-0.5" />
+			
+			<passive_effect name="EntityDamage" operation="perc_add" value="1" tags="melee"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_HealGun_TranquilizerV1_Player_Buff" icon="ui_game_symbol_clock" hidden="true">
+		<stack_type value="replace"/>
+		<duration value="0"/>
+		<update_rate value="1"/>
+		<!--<display_value value="duration"/>-->
+		
+		<effect_group>
+			<requirement name="NotHasBuff" buff="ZombieINC_HealGun_TranquilizerV1_Player_Blackout_Buff"/>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCTranquilizerTimer" operation="set" value="randomint(10,30)"/>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCBlackout" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".ZINCBlackout" operation="add" value="randomint(5,15)"/>
+					
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZINCTranquilizerTimer" operation="subtract" value="1">
+				<requirement name="CVarCompare" cvar=".ZINCTranquilizerTimer" operation="GT" value="0"/>
+			</triggered_effect>
+					
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="ZombieINC_HealGun_TranquilizerV1_Player_Buff">
+				<requirement name="CVarCompare" cvar=".ZINCTranquilizerTimer" operation="LTE" value="0"/>
+			</triggered_effect>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" effect_name="Dark" intensity=".3" fade=".5"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" effect_name="Dark" intensity="0" fade=".5"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="AddBuff" buff="ZombieINC_HealGun_TranquilizerV1_Player_Blackout_Buff"/>
+		</effect_group>
+		<effect_group>
+			<requirement name="CVarCompare" cvar=".ZINCBlackout" operation="LT" value="99"/>
+			<requirement name="HasBuff" buff="ZombieINC_HealGun_TranquilizerV1_Player_Blackout_Buff"/>
+			<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".ZINCBlackout" operation="add" value="randomint(5,15)"/>
+		</effect_group>
+		<effect_group>
+			<requirement name="CVarCompare" cvar=".ZINCBlackout" operation="GTE" value="100"/>
+			<requirement name="HasBuff" buff="ZombieINC_HealGun_TranquilizerV1_Player_Blackout_Buff"/>
+			<triggered_effect trigger="onSelfBuffStack" action="ModifyStats" stat="Health" operation="add" value="-1000"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_HealGun_TranquilizerV1_Player_Blackout_Buff" icon="ui_game_symbol_clock" hidden="false">
+		<stack_type value="replace"/>
+		<duration value="0"/>
+		<update_rate value="1"/>
+		<display_value value=".ZINCBlackout"/>
+		<display_value_format value="time"/>
+		
+		<effect_group>		
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZINCBlackout" operation="subtract" value="1">
+				<requirement name="CVarCompare" cvar=".ZINCBlackout" operation="GT" value="0"/>
+			</triggered_effect>
+					
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="ZombieINC_HealGun_TranquilizerV1_Player_Blackout_Buff">
+				<requirement name="CVarCompare" cvar=".ZINCBlackout" operation="LTE" value="0"/>
+			</triggered_effect>
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="Ragdoll" duration="@.ZINCBlackout" >
+				<requirement name="CVarCompare" cvar="ragdoll" operation="Equals" value="0"/>
+				<requirement name="CVarCompare" cvar=".ZINCBlackout" operation="GT" value="0"/>
+			</triggered_effect>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" effect_name="Dark" intensity="1" fade="1"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" effect_name="Dark" intensity="0" fade="1"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_HealGun_TranquilizerV1_Zombie_Buff" icon="ui_game_symbol_clock" hidden="false">
+		<stack_type value="replace"/>
+		<duration value="8"/>
+		<update_rate value="1"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCBlackoutLimit" operation="add" value="4"/>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCBlackout" operation="set" value="1"/>
+			<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".ZINCBlackout" operation="add" value="1"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".ZINCBlackout" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".ZINCBlackoutLimit" operation="set" value="0"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCBlackoutLimit" operation="add" value="-3">
+				<requirement name="EntityTagCompare" tags="small"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCBlackoutLimit" operation="add" value="-2">
+				<requirement name="EntityTagCompare" tags="medium"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCBlackoutLimit" operation="add" value="0">
+				<requirement name="EntityTagCompare" tags="big"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCBlackoutLimit" operation="add" value="8">
+				<requirement name="EntityTagCompare" tags="verybig"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCBlackoutLimit" operation="add" value="8">
+				<requirement name="EntityTagCompare" tags="boss"/>
+			</triggered_effect>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="Ragdoll" duration="5" >
+				<requirement name="CVarCompare" cvar=".ZINCBlackout" operation="GTE" value="@.ZINCBlackoutLimit"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffStack" action="Ragdoll" duration="5" >
+				<requirement name="CVarCompare" cvar=".ZINCBlackout" operation="GTE" value="@.ZINCBlackoutLimit"/>
+			</triggered_effect>
+			
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_HealGun_TranquilizerV1_Animal_Buff" icon="ui_game_symbol_clock" hidden="false">
+		<stack_type value="replace"/>
+		<duration value="8"/>
+		<update_rate value="1"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCBlackoutLimit" operation="set" value="4"/>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCBlackout" operation="set" value="1"/>
+			<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".ZINCBlackout" operation="add" value="1"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".ZINCBlackout" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".ZINCBlackoutLimit" operation="set" value="0"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCBlackoutLimit" operation="add" value="-3">
+				<requirement name="EntityTagCompare" tags="small"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCBlackoutLimit" operation="add" value="-2">
+				<requirement name="EntityTagCompare" tags="medium"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCBlackoutLimit" operation="add" value="0">
+				<requirement name="EntityTagCompare" tags="big"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCBlackoutLimit" operation="add" value="8">
+				<requirement name="EntityTagCompare" tags="verybig"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCBlackoutLimit" operation="add" value="8">
+				<requirement name="EntityTagCompare" tags="boss"/>
+			</triggered_effect>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="Ragdoll" duration="5" >
+				<requirement name="CVarCompare" cvar=".ZINCBlackout" operation="GTE" value="@.ZINCBlackoutLimit"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffStack" action="Ragdoll" duration="5" >
+				<requirement name="CVarCompare" cvar=".ZINCBlackout" operation="GTE" value="@.ZINCBlackoutLimit"/>
+			</triggered_effect>
+			
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_HealGun_AntibioticV1_Buff" icon="ui_game_symbol_steroids" hidden="false">
+		<stack_type value="replace"/>
+		<duration value="5"/>
+		<update_rate value="1"/>
+		<display_value value="duration"/>
+		
+		<effect_group>
+			<requirement name="EntityTagCompare" tags="player"/>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$buffInfectionAddCurePerc" operation="add" value="2"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffInfectionAddCure"/>
+			
+			<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar="$buffInfectionAddCurePerc" operation="add" value="2"/>
+			<triggered_effect trigger="onSelfBuffStack" action="AddBuff" buff="buffInfectionAddCure"/>
+		</effect_group>
+		<effect_group>
+			<requirement name="EntityTagCompare" tags="zombie"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".ZINCAmmoAntibioticV1" operation="set" value="0"/>
+		</effect_group>
+		<effect_group>
+			<requirement name="EntityTagCompare" tags="zombie"/>
+			<requirement name="!EntityTagCompare" tags="feral"/>
+			<requirement name="!EntityTagCompare" tags="radiated"/>
+			<requirement name="!EntityTagCompare" tags="boss"/>
+			
+			<passive_effect name="HealthMax" operation="perc_add" value="-0.5"/>
+		</effect_group>
+		<effect_group>
+			<requirement name="EntityTagCompare" tags="zombie"/>
+			<requirement name="EntityTagCompare" tags="feral"/>
+			<requirement name="!EntityTagCompare" tags="radiated"/>
+			<requirement name="!EntityTagCompare" tags="boss"/>
+			
+			<passive_effect name="HealthMax" operation="perc_add" value="-0.25">
+				<requirement name="CVarCompare" target="self" cvar=".ZINCAmmoAntibioticV1" operation="Equals" value="0"/>
+			</passive_effect>
+			<passive_effect name="HealthMax" operation="perc_add" value="-0.50">
+				<requirement name="CVarCompare" target="self" cvar=".ZINCAmmoAntibioticV1" operation="GTE" value="1"/>
+			</passive_effect>
+			<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".ZINCAmmoAntibioticV1" operation="add" value="1"/>
+				
+		</effect_group>
+		<effect_group>
+			<requirement name="EntityTagCompare" tags="zombie"/>
+			<requirement name="EntityTagCompare" tags="radiated"/>
+			<requirement name="!EntityTagCompare" tags="boss"/>
+			
+			<passive_effect name="HealthMax" operation="perc_add" value="-0.05">
+				<requirement name="CVarCompare" target="self" cvar=".ZINCAmmoAntibioticV1" operation="Equals" value="0"/>
+			</passive_effect>
+			<passive_effect name="HealthMax" operation="perc_add" value="-0.10">
+				<requirement name="CVarCompare" target="self" cvar=".ZINCAmmoAntibioticV1" operation="Equals" value="1"/>
+			</passive_effect>
+			<passive_effect name="HealthMax" operation="perc_add" value="-0.25">
+				<requirement name="CVarCompare" target="self" cvar=".ZINCAmmoAntibioticV1" operation="Equals" value="2"/>
+			</passive_effect>
+			<passive_effect name="HealthMax" operation="perc_add" value="-0.50">
+				<requirement name="CVarCompare" target="self" cvar=".ZINCAmmoAntibioticV1" operation="GTE" value="3"/>
+			</passive_effect>
+			<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".ZINCAmmoAntibioticV1" operation="add" value="1"/>
+				
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_HealGun_AdrenalineV1_Buff" icon="ui_game_symbol_steroids" hidden="false">
+		<stack_type value="replace"/>
+		<duration value="5"/>
+		<update_rate value="1"/>
+		<display_value value="duration"/>
+		
+		<effect_group>
+			<passive_effect name="RunSpeed" operation="perc_add" value="0.4" />
+			<passive_effect name="WalkSpeed" operation="perc_add" value="0.4" />
+			<passive_effect name="CrouchSpeed" operation="perc_add" value="0.4" />
+			<passive_effect name="JumpStrength" operation="perc_add" value="0.4" />
+			<passive_effect name="AttacksPerMinute" operation="perc_add" value="0.4" />		
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_PEMGrenade_BossBuff" hidden="true">
+		<stack_type value="replace"/>
+		<duration value="30"/>	
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" parent_transform="Spine3" transform_path="OnState"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="SetTransformActive" active="true" parent_transform="Spine3" transform_path="OnState"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" parent_transform="Spine2" transform_path="OnState"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="SetTransformActive" active="true" parent_transform="Spine2" transform_path="OnState"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" parent_transform="Spine" transform_path="OnState"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="SetTransformActive" active="true" parent_transform="Spine" transform_path="OnState"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_AcidGrenade_Buff" hidden="true">
+		<stack_type value="replace"/>
+		<duration value="30"/>	
+		<effect_group>
+			<passive_effect name="PhysicalDamageResist" operation="base_add" value="-30"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_buffRadiationPool_AcidGrenadeBuff" name_key="buffRadiation03Name" description_key="buffRadiation03Desc" icon="ui_game_symbol_radiation" icon_color="255,0,0" icon_blink="true">
+		<damage_type value="radiation"/>
+		<stack_type value="ignore"/>
+		<duration value="3"/>
+		<update_rate value="1"/>
+		<effect_group>
+			<passive_effect name="HealthChangeOT" operation="base_subtract" value="4"/>
+				
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_AcidGrenade_Buff"/>
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" intensity="0" fade=".7" effect_name="Hot" />
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" intensity="0" fade="1" effect_name="Hot"/>
+
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" effect_name="Radiation" intensity=".6" fade="1"/>
+			<triggered_effect trigger="onSelfDied" action="ModifyScreenEffect" effect_name="Radiation" intensity="0" fade="0"/>
+			<triggered_effect trigger="onSelfDied" action="RemoveBuff" buff="buffRadiationPool" />
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" effect_name="Radiation" intensity="0" fade="1"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_buffBurningElementSpread" hidden="true">
+		<stack_type value="ignore"/>
+		<duration value="4"/>	
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="zombie" range="1" buff="buffBurningElement" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_buffShockedSpread" hidden="true">
+		<stack_type value="ignore"/>
+		<duration value="4"/>	
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="zombie" range="1" buff="buffShocked" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_RocketT4Counter" icon="ui_game_symbol_explosion" hidden="false">
+		<stack_type value="replace"/>
+		<duration value="6"/>	
+		<display_value value=".ZINCRocketT4CounterDisplay"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCRocketT4CounterDisplay" operation="add" value="1"/>
+			<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".ZINCRocketT4CounterDisplay" operation="add" value="1"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".ZINCRocketT4CounterDisplay" operation="set" value="0"/>
+			
+			<triggered_effect trigger="onSelfBuffStack" action="AddBuff" buff="ZombieINC_RocketT4Effect" >
+				<requirement name="CVarCompare" target="self" cvar=".ZINCRocketT4CounterDisplay" operation="GTE" value="@.ZINCRocketT4CounterLimiter"/>
+			</triggered_effect>
+		</effect_group>
+			
+		<effect_group>
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_ExperimentalProject" operation="LTE" value="3"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCRocketT4CounterLimiter" operation="set" value="4"/>
+		</effect_group>
+		<effect_group>
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_ExperimentalProject" operation="GTE" value="4"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCRocketT4CounterLimiter" operation="set" value="6"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_RocketT4Effect" icon="ui_game_symbol_explosion"  icon_color="200,30,30" icon_blink="true" hidden="false">
+		<stack_type value="replace"/>
+		<duration value="6"/>	
+	
+		<!--<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="RemovePrefabFromEntity" prefab="lightIndustrialMountedWallPrefab" parent_transform="Handle" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Electrical/lightIndustrialMountedWallRedPrefab.prefab" local_offset="-0.1633,0.1461,0.0789" local_rotation="-42.076,-90,90" local_scale="0.3,0.3,0.3" parent_transform="Handle"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="true" parent_transform="Handle" transform_path="MainLight"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="SetTransformActive" active="false" parent_transform="Handle" transform_path="MainLight"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="lightIndustrialMountedWallRedPrefab" parent_transform="Handle" />
+			<triggered_effect trigger="onSelfBuffRemove" action="AttachPrefabToEntity" prefab="@:Entities/Electrical/lightIndustrialMountedWallPrefab.prefab" local_offset="-0.1633,0.1461,0.0789" local_rotation="-42.076,-90,90" local_scale="0.3,0.3,0.3" parent_transform="Handle"/>
+		</effect_group>-->
+		<effect_group>
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_ExperimentalProject" operation="LTE" value="3"/>
+			<requirement name="CVarCompare" target="self" cvar=".ZINCRocketT4CounterDisplay" operation="Equals" value="5"/>
+			<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="10"/>
+			<!--<triggered_effect trigger="onSelfRangedBurstShotStart" action="Explode" target="self" blast_power="0" block_damage="200" block_radius="1" entity_damage="80" entity_radius="2"/>-->	
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="CallGameEvent" target="self" event="ZombieINC_RocketT4_Explode_Event" allow_client_call="true" />	
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="RemoveBuff" target="self" buff="ZombieINC_RocketT4Counter" />	
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="RemoveBuff" target="self" buff="ZombieINC_RocketT4Effect" />
+				
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="Ragdoll" target="positionAOE" range="3" force="600" />
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="AddBuff" target="positionAOE" range="3" buff="buffInjuryStunned03" />
+		</effect_group>
+		<effect_group>
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_ExperimentalProject" operation="LTE" value="3"/>
+			<requirement name="CVarCompare" target="self" cvar=".ZINCRocketT4CounterDisplay" operation="Equals" value="6"/>
+			<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="25"/>
+			<!--<triggered_effect trigger="onSelfRangedBurstShotStart" action="Explode" target="self" blast_power="0" block_damage="200" block_radius="1" entity_damage="80" entity_radius="2"/>-->	
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="CallGameEvent" target="self" event="ZombieINC_RocketT4_Explode_Event" allow_client_call="true" />
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="RemoveBuff" target="self" buff="ZombieINC_RocketT4Counter" />
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="RemoveBuff" target="self" buff="ZombieINC_RocketT4Effect" />
+
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="Ragdoll" target="positionAOE" range="3" force="600" />
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="AddBuff" target="positionAOE" range="3" buff="buffInjuryStunned03" />
+		</effect_group>
+		<effect_group>
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_ExperimentalProject" operation="LTE" value="3"/>
+			<requirement name="CVarCompare" target="self" cvar=".ZINCRocketT4CounterDisplay" operation="Equals" value="7"/>
+			<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="40"/>
+			<!--<triggered_effect trigger="onSelfRangedBurstShotStart" action="Explode" target="self" blast_power="0" block_damage="200" block_radius="1" entity_damage="80" entity_radius="2"/>-->	
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="CallGameEvent" target="self" event="ZombieINC_RocketT4_Explode_Event" allow_client_call="true" />
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="RemoveBuff" target="self" buff="ZombieINC_RocketT4Counter" />
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="RemoveBuff" target="self" buff="ZombieINC_RocketT4Effect" />	
+			
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="Ragdoll" target="positionAOE" range="3" force="600" />
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="AddBuff" target="positionAOE" range="3" buff="buffInjuryStunned03" />
+		</effect_group>
+		<effect_group>
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_ExperimentalProject" operation="LTE" value="3"/>
+			<requirement name="CVarCompare" target="self" cvar=".ZINCRocketT4CounterDisplay" operation="Equals" value="8"/>
+			<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/>
+			<!--<triggered_effect trigger="onSelfRangedBurstShotStart" action="Explode" target="self" blast_power="0" block_damage="200" block_radius="1" entity_damage="80" entity_radius="2"/>-->	
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="CallGameEvent" target="self" event="ZombieINC_RocketT4_Explode_Event" allow_client_call="true" />
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="RemoveBuff" target="self" buff="ZombieINC_RocketT4Counter" />
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="RemoveBuff" target="self" buff="ZombieINC_RocketT4Effect" />	
+			
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="Ragdoll" target="positionAOE" range="3" force="600" />
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="AddBuff" target="positionAOE" range="3" buff="buffInjuryStunned03" />
+		</effect_group>
+		<effect_group>
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_ExperimentalProject" operation="LTE" value="3"/>
+			<requirement name="CVarCompare" target="self" cvar=".ZINCRocketT4CounterDisplay" operation="Equals" value="9"/>
+			<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="70"/>
+			<!--<triggered_effect trigger="onSelfRangedBurstShotStart" action="Explode" target="self" blast_power="0" block_damage="200" block_radius="1" entity_damage="80" entity_radius="2"/>-->	
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="CallGameEvent" target="self" event="ZombieINC_RocketT4_Explode_Event" allow_client_call="true" />
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="RemoveBuff" target="self" buff="ZombieINC_RocketT4Counter" />
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="RemoveBuff" target="self" buff="ZombieINC_RocketT4Effect" />	
+			
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="Ragdoll" target="positionAOE" range="3" force="600" />
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="AddBuff" target="positionAOE" range="3" buff="buffInjuryStunned03" />
+		</effect_group>
+		<effect_group>
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_ExperimentalProject" operation="LTE" value="3"/>
+			<requirement name="CVarCompare" target="self" cvar=".ZINCRocketT4CounterDisplay" operation="GTE" value="10"/>
+			<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="100"/>
+			<!--<triggered_effect trigger="onSelfRangedBurstShotStart" action="Explode" target="self" blast_power="0" block_damage="200" block_radius="1" entity_damage="80" entity_radius="2"/>-->	
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="CallGameEvent" target="self" event="ZombieINC_RocketT4_Explode_Event" allow_client_call="true" />
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="RemoveBuff" target="self" buff="ZombieINC_RocketT4Counter" />
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="RemoveBuff" target="self" buff="ZombieINC_RocketT4Effect" />	
+			
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="Ragdoll" target="positionAOE" range="3" force="600" />
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="AddBuff" target="positionAOE" range="3" buff="buffInjuryStunned03" />
+		</effect_group>
+		
+		<effect_group>
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_ExperimentalProject" operation="GTE" value="4"/>
+			<requirement name="CVarCompare" target="self" cvar=".ZINCRocketT4CounterDisplay" operation="Equals" value="7"/>
+			<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="10"/>
+			<!--<triggered_effect trigger="onSelfRangedBurstShotStart" action="Explode" target="self" blast_power="0" block_damage="200" block_radius="1" entity_damage="80" entity_radius="2"/>-->	
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="CallGameEvent" target="self" event="ZombieINC_RocketT4_Explode_Event" allow_client_call="true" />
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="RemoveBuff" target="self" buff="ZombieINC_RocketT4Counter" />
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="RemoveBuff" target="self" buff="ZombieINC_RocketT4Effect" />	
+			
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="Ragdoll" target="positionAOE" range="3" force="600" />
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="AddBuff" target="positionAOE" range="3" buff="buffInjuryStunned03" />
+		</effect_group>
+		<effect_group>
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_ExperimentalProject" operation="GTE" value="4"/>
+			<requirement name="CVarCompare" target="self" cvar=".ZINCRocketT4CounterDisplay" operation="Equals" value="8"/>
+			<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="25"/>
+			<!--<triggered_effect trigger="onSelfRangedBurstShotStart" action="Explode" target="self" blast_power="0" block_damage="200" block_radius="1" entity_damage="80" entity_radius="2"/>-->	
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="CallGameEvent" target="self" event="ZombieINC_RocketT4_Explode_Event" allow_client_call="true" />
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="RemoveBuff" target="self" buff="ZombieINC_RocketT4Counter" />
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="RemoveBuff" target="self" buff="ZombieINC_RocketT4Effect" />	
+			
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="Ragdoll" target="positionAOE" range="3" force="600" />
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="AddBuff" target="positionAOE" range="3" buff="buffInjuryStunned03" />
+		</effect_group>
+		<effect_group>
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_ExperimentalProject" operation="GTE" value="4"/>
+			<requirement name="CVarCompare" target="self" cvar=".ZINCRocketT4CounterDisplay" operation="Equals" value="9"/>
+			<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/>
+			<!--<triggered_effect trigger="onSelfRangedBurstShotStart" action="Explode" target="self" blast_power="0" block_damage="200" block_radius="1" entity_damage="80" entity_radius="2"/>-->	
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="CallGameEvent" target="self" event="ZombieINC_RocketT4_Explode_Event" allow_client_call="true" />
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="RemoveBuff" target="self" buff="ZombieINC_RocketT4Counter" />
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="RemoveBuff" target="self" buff="ZombieINC_RocketT4Effect" />	
+			
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="Ragdoll" target="positionAOE" range="3" force="600" />
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="AddBuff" target="positionAOE" range="3" buff="buffInjuryStunned03" />
+		</effect_group>
+		<effect_group>
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_ExperimentalProject" operation="GTE" value="4"/>
+			<requirement name="CVarCompare" target="self" cvar=".ZINCRocketT4CounterDisplay" operation="GTE" value="10"/>
+			<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="70"/>
+			<!--<triggered_effect trigger="onSelfRangedBurstShotStart" action="Explode" target="self" blast_power="0" block_damage="200" block_radius="1" entity_damage="80" entity_radius="2"/>-->	
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="CallGameEvent" target="self" event="ZombieINC_RocketT4_Explode_Event" allow_client_call="true" />
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="RemoveBuff" target="self" buff="ZombieINC_RocketT4Counter" />
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="RemoveBuff" target="self" buff="ZombieINC_RocketT4Effect" />	
+			
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="Ragdoll" target="positionAOE" range="3" force="600" />
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="AddBuff" target="positionAOE" range="3" buff="buffInjuryStunned03" />
+		</effect_group>
+	</buff>
+	<!--<buff name="ZombieINC_TunedSniperT4_OffBuff" icon="ui_game_symbol_skull" hidden="true">
+		<duration value="0.1"/>
+		<effect_group>	
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="true" parent_transform="Handle" transform_path="OffState" />
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" parent_transform="Handle" transform_path="OnState" />
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" parent_transform="Handle" transform_path="MainLight" />
+			<triggered_effect trigger="onSelfBuffStart" action="RemovePrefabFromEntity" prefab="p_electric_shock_small" parent_transform="Handle" />
+		</effect_group>
+	</buff>-->
+	<!--<buff name="ZombieINC_TunedSniperT4_OtherBuff" icon="ui_game_symbol_skull" hidden="true">
+		<duration value="1"/>
+		<effect_group>	
+			<passive_effect name="DismemberSelfChance" operation="base_set" value="100" />
+		</effect_group>
+	</buff>-->
+	
+	<buff name="ZombieINC_TunedSniperT4_ShortBonusBuff" icon="ui_game_symbol_skull" hidden="true">
+		<duration value="0.3"/>
+		<effect_group>	
+			<passive_effect name="DismemberChance" operation="base_set" value="100">
+				<requirement name="!EntityTagCompare" target="other" tags="boss"/>
+			</passive_effect>
+			<passive_effect name="EntityDamage" operation="base_add" value="100" />
+			<passive_effect name="TargetArmor" operation="perc_add" value="-0.5" />
+			<passive_effect name="EntityPenetrationCount" operation="base_set" value="5"  />
+			<passive_effect name="BlockPenetrationFactor" operation="base_set" value="10000"/>
+			
+			
+			<passive_effect name="SpreadDegreesVertical" operation="base_add" value="6" tags="perkDeadEye"/>
+			<passive_effect name="SpreadDegreesHorizontal" operation="base_add" value="6" tags="perkDeadEye"/>
+			<passive_effect name="SpreadMultiplierAiming" operation="base_add" value=".06" tags="perkDeadEye"/>
+			<passive_effect name="SpreadMultiplierCrouching" operation="base_add" value=".8" tags="perkDeadEye"/>
+			<passive_effect name="SpreadMultiplierWalking" operation="base_add" value="1.5" tags="perkDeadEye"/>
+			<passive_effect name="SpreadMultiplierRunning" operation="base_add" value="2" tags="perkDeadEye"/>
+
+			<passive_effect name="KickDegreesVerticalMin" operation="base_add" value="3" tags="perkDeadEye"/>
+			<passive_effect name="KickDegreesVerticalMax" operation="base_add" value="3" tags="perkDeadEye"/>
+			<passive_effect name="KickDegreesHorizontalMin" operation="base_add" value="-.2" tags="perkDeadEye"/>
+			<passive_effect name="KickDegreesHorizontalMax" operation="base_add" value=".2" tags="perkDeadEye"/>
+			
+			
+			<triggered_effect trigger="onSelfAttackedOther" action="Ragdoll" target="other" force="300" >
+				<requirement name="!EntityTagCompare" target="other" tags="player"/>
+				<requirement name="!EntityTagCompare" target="other" tags="boss"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_TunedSniperT4_Buff" icon="ui_game_symbol_skull" hidden="false">
+		<stack_type value="replace"/>	
+		<display_value value=".ZINCTunedSniperT4Charge"/>
+		<update_rate value="1"/>
+		
+		<effect_group>
+			<requirement name="!HoldingItemBroken"/>
+			<requirement name="CVarCompare" cvar=".ZINCTunedSniperT4Charge" operation="GTE" value="50"/>
+				<triggered_effect trigger="onSelfRangedBurstShotStart" action="AttachPrefabToEntity" prefab="@:ParticleEffects/p_nozzlesmoke_m136.prefab" local_offset="-0.11,0.0272,0.3725" local_rotation="-97.944,90,0" local_scale="1,1,1" parent_transform="Handle"/>
+				<triggered_effect trigger="onSelfRangedBurstShotStart" action="AttachPrefabToEntity" prefab="@:ParticleEffects/p_nozzlesmoke.prefab" local_offset="-0.11,0.0272,0.3725" local_rotation="-97.944,90,0" local_scale="1,1,1" parent_transform="Handle"/>
+				<triggered_effect trigger="onSelfRangedBurstShotStart" action="ModifyCVar" cvar=".ZINCTunedSniperT4Charge" operation="add" value="-50"/>
+				<!--<passive_effect name="DismemberChance" operation="base_set" value="100">
+					<requirement name="!EntityTagCompare" target="other" tags="boss"/>
+				</passive_effect>-->
+				
+				<triggered_effect trigger="onSelfRangedBurstShotStart" action="PlaySound" sound="desertvulture_fire" loop="false"/>
+				<triggered_effect trigger="onSelfRangedBurstShotStart" action="PlaySound" sound="shotgundb_fire" loop="false"/>
+				<!--<triggered_effect trigger="onSelfRangedBurstShotStart" action="PlaySound" sound="turret_fire" loop="false"/>-->
+				
+				<triggered_effect trigger="onSelfRangedBurstShotStart" action="AddBuff" buff="ZombieINC_TunedSniperT4_ShortBonusBuff"/>
+				
+				
+		</effect_group>
+		<effect_group>
+			<requirement name="!HoldingItemBroken"/>
+			<requirement name="CVarCompare" cvar=".ZINCTunedSniperT4Charge" operation="LT" value="50"/>
+			<triggered_effect trigger="onSelfRangedBurstShotStart" action="ModifyCVar" cvar=".ZINCTunedSniperT4Charge" operation="set" value="0"/>
+		</effect_group>
+		<effect_group>
+			<requirement name="!HoldingItemBroken"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:ParticleEffects/p_electric_fence_sparks.prefab" local_offset="0.0539,0.0652,-0.0624" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="Handle"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:ParticleEffects/p_electric_shock_small.prefab" local_offset="0.0,0.0764,-0.1227" local_rotation="90,0,0" local_scale="1,1,1" parent_transform="Handle"/>	
+				
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" parent_transform="Handle" transform_path="OffState" />
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="true" parent_transform="Handle" transform_path="OnState" />
+				
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="true" parent_transform="Handle" transform_path="MainLight" />
+				
+		</effect_group>
+		<effect_group>
+		<requirement name="!HoldingItemBroken"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_TunedSniperT4_Degradation_Event" allow_client_call="false" />
+			
+			<triggered_effect trigger="onSelfPrimaryActionUpdate" action="ModifyCVar" cvar=".ZINCTunedSniperT4Charge" operation="add" value="1">
+				<requirement name="CVarCompare" cvar=".ZINCTunedSniperT4Charge" operation="LT" value="100"/>
+			</triggered_effect>
+		</effect_group>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".ZINCTunedSniperT4Charge" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="SetTransformActive" active="true" parent_transform="Handle" transform_path="OffState" />
+			<triggered_effect trigger="onSelfBuffRemove" action="SetTransformActive" active="false" parent_transform="Handle" transform_path="OnState" />
+			<triggered_effect trigger="onSelfBuffRemove" action="SetTransformActive" active="false" parent_transform="Handle" transform_path="MainLight" />
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="p_electric_shock_small" parent_transform="Handle" />
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="p_electric_fence_sparks" parent_transform="Handle" />
+		</effect_group>
+	</buff>
+<!--New Weapons and Ammo-->
+<!--###Nest Demolition-->
+	<buff name="ZombieINC_ND_SecondBlast_Main">
+		<duration value="15"/>
+		<stack_type value="ignore"/>
+		<effect_group>	
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="self" buff="ZombieINC_ND_SecondBlast_Explosion"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="zombie" range="4" buff="ZombieINC_ND_SecondBlast_Spread1">
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_SecondBlast_Spread1">
+		<duration value="15"/>
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="self" buff="ZombieINC_ND_SecondBlast_Explosion"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="zombie" range="4" buff="ZombieINC_ND_SecondBlast_Spread2">
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="40"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_SecondBlast_Spread2">
+		<duration value="15"/>
+		<stack_type value="ignore"/>
+		<effect_group>	
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="self" buff="ZombieINC_ND_SecondBlast_Explosion"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="zombie" range="4" buff="ZombieINC_ND_SecondBlast_Spread3">
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="30"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_SecondBlast_Spread3">
+		<duration value="15"/>
+		<stack_type value="ignore"/>
+		<effect_group>	
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="self" buff="ZombieINC_ND_SecondBlast_Explosion"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="zombie" range="4" buff="ZombieINC_ND_SecondBlast_Explosion">
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="20"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_SecondBlast_Explosion">
+		<duration value="0.2"/>
+		<stack_type value="ignore"/>
+		<effect_group>	
+			<triggered_effect trigger="onSelfBuffStart" action="Explode" target="self" blast_power="500" block_damage="0" block_radius="0" entity_damage="80" entity_radius="3"/>
+		</effect_group>
+	</buff>
+	
+<!--Nest Demolition-->
+
+<!--###NavObject-->
+	<buff name="ZombieINC_EnemyDotBuff">
+		<stack_type value="ignore"/>
+		<effect_group>	
+			<triggered_effect trigger="onSelfBuffStart" action="SetNavObject" nav_object="ZombieINC_EnemyDot" add="true" />	
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_TraderDistanceBuff">
+		<duration value="1200"/>
+		<stack_type value="ignore"/>
+		<effect_group>	
+			<triggered_effect trigger="onSelfBuffStart" action="SetNavObject" nav_object="ZombieINC_trader" add="true" />
+		</effect_group>
+	</buff>
+	
+<!--NavObject-->	
+</append>
+
+</Config>

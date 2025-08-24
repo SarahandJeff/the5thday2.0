@@ -1,0 +1,403 @@
+<Config>
+	<append xpath="/items">
+	
+	<item name="ZombieINC_ND_vehicleMinibikePlaceable">
+	<property name="Tags" value="vehicle,vengine,vfuel,vlight,vseat,canHaveCosmetic,ZombieINCVehicleRemover"/>
+	<property name="DescriptionKey" value="vehiclePlaceableGroupDesc"/>
+	<property name="HoldType" value="7"/>
+	<property name="HoldingItemHidden" value="true"/>
+	<property name="Meshfile" value="@:Entities/Vehicles/VBikeMini/VBikeMiniP.prefab"/>
+	<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+	<property name="CustomIcon" value="vehicleMinibikePlaceable"/>
+	<property name="CustomIconTint" value="0,0,0"/>
+	<property name="DescriptionKey" value="ZombieINC_vehicleMinibikePlaceableDesc"/>			
+	<property name="ItemTypeIcon" value="star"/>
+	<property name="Material" value="Mmetal"/>
+	<property name="Weight" value="0"/>
+	<property name="Stacknumber" value="1"/>
+	<property name="EconomicValue" value="6000"/>
+	<property name="SellableToTrader" value="false"/>
+	<property name="Group" value="Science,TCScience"/>
+	<property name="SoundPickup" value="minibike_grab"/>
+	<property name="SoundPlace" value="minibike_place"/>
+	<property class="Action1">
+		<property name="Class" value="SpawnVehicle"/>
+		<property name="Vehicle" value="ZombieINC_vehicleMinibike"/>
+	</property>
+	<effect_group name="vehicleMinibikePlaceable" tiered="false">
+		<passive_effect name="ModSlots" operation="base_set" value="0"/>
+		<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+		<passive_effect name="DegradationMax" operation="base_set" value="300" />
+			
+	</effect_group>
+</item>
+	
+	<!--##NEST DEMOLITION-->
+	<item name="ZombieINC_vehicleMinibikeBomberPlaceable">
+	<property name="Tags" value="vehicle,vengine,vfuel,vlight,vseat,canHaveCosmetic,ZombieINCVehicleRemover,ZINCQuestND"/>
+	<property name="DescriptionKey" value="vehiclePlaceableGroupDesc"/>
+	<property name="HoldType" value="7"/>
+	<property name="HoldingItemHidden" value="true"/>
+	<property name="Meshfile" value="@:Entities/Vehicles/VBikeMini/VBikeMiniP.prefab"/>
+	<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+	<property name="CustomIcon" value="vehicleMinibikePlaceable"/>
+	<property name="CustomIconTint" value="0,0,0"/>
+	<property name="DescriptionKey" value="ZombieINC_vehicleMinibikePlaceableDesc"/>			
+	<property name="ItemTypeIcon" value="star"/>
+	<property name="Material" value="Mmetal"/>
+	<property name="Weight" value="0"/>
+	<property name="Stacknumber" value="1"/>
+	<property name="EconomicValue" value="6000"/>
+	<property name="SellableToTrader" value="false"/>
+	<property name="Group" value="Science,TCScience"/>
+	<property name="SoundPickup" value="minibike_grab"/>
+	<property name="SoundPlace" value="minibike_place"/>
+	<property class="Action1">
+		<property name="Class" value="SpawnVehicle"/>
+		<property name="Vehicle" value="ZombieINC_vehicleMinibikeBomber"/>
+	</property>
+	<effect_group name="vehicleMinibikePlaceable" tiered="false">
+		<passive_effect name="ModSlots" operation="base_set" value="0"/>
+		<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+		<passive_effect name="DegradationMax" operation="base_set" value="450" />
+			
+	</effect_group>
+	</item>
+	
+	<item name="ZombieINC_vehicle4x4TruckBomberPlaceable">
+	<property name="Extends" value="ZombieINC_ND_vehicleMinibikePlaceable"/>
+	<property name="Tags" value="vehicle,vengine,vfuel,vlight,vseat,canHaveCosmetic,ZombieINCVehicleRemover,ZINCQuestND"/>
+	<property name="Meshfile" value="@:Entities/Vehicles/VTruck4x4/VTruck4x4P.prefab"/>
+	<property name="CustomIcon" value="vehicle4x4TruckPlaceable"/>
+	<property name="CustomIconTint" value="0,0,0"/>
+	<property name="DescriptionKey" value="ZombieINC_vehicle4x4TruckPlaceableDesc"/>			
+	<property name="ItemTypeIcon" value="star"/>
+	<property name="EconomicValue" value="30000"/>
+	<property class="Action1">
+		<property name="Vehicle" value="ZombieINC_vehicle4x4TruckBomber"/>
+		<property name="VehicleSize" value="4.5, 3.1, 7"/>
+	</property>
+	<effect_group name="vehicle4x4TruckPlaceable" tiered="false">
+		<passive_effect name="ModSlots" operation="base_set" value="0"/>
+		<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+		<passive_effect name="DegradationMax" operation="base_set" value="800"/>
+	</effect_group>
+	</item>
+	
+	<item name="ZombieINC_gunBotT3JunkDrone_Radar">
+		<property name="Tags" value="drone,attIntellect,perkTurrets,canHaveCosmetic,roboticsSkill"/>
+		<property name="DisplayType" value="droneTurret"/>
+		<property name="CustomIcon" value="gunBotT3JunkDrone"/>
+		<property name="Group" value="Ammo/Weapons,Robotics"/>
+		<property name="Meshfile" value="@:Other/Items/Weapons/Ranged/Junk Drone/junkDroneHeld_Prefab.prefab"/>
+		<property name="HoldType" value="78"/>
+		<property name="Material" value="MJunkTurretParts"/>
+		<property name="TintColor" value="227, 127, 13"/>
+		<property name="Weight" value="7"/>
+		<property name="ScrapTimeOverride" value="10.0"/>
+		<property name="RepairTools" value="resourceRepairKit"/>
+		<property name="SoundDestroy" value="wooddestroy1"/>
+		<property name="RepairExpMultiplier" value="5.5"/>
+		<property name="EconomicBundleSize" value="1"/>
+		<property name="EconomicValue" value="5000"/>
+		<property name="ShowQuality" value="true"/>
+		<property name="TintColor" value="255,167,0"/>
+		<property name="SoundUnholster" value="weapon_unholster"/>
+		<property name="SoundHolster" value="weapon_holster"/>
+		<property name="SoundPickup" value="robotic_drone_grab"/>
+		<property name="SoundPlace" value="robotic_drone_place"/>
+
+		<property class="Action1">
+			<property name="Class" value="SpawnTurret"/>
+			<property name="Turret" value="ZombieINC_entityJunkDrone_Radar"/>
+			<!--<property name="Turret" value="entityJunkDrone"/>-->
+			<property name="PreviewSize" value="0.25,0.25,0.25"/>
+		</property>
+		<effect_group name="gunBotT3JunkDrone">
+			
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-.08,.08" tags="perkTurrets"/> <!-- random WeaponHandling -->
+			<passive_effect name="SpreadDegreesVertical" operation="base_set" value="0" tags="perkTurrets"/>
+			<passive_effect name="SpreadDegreesHorizontal" operation="base_set" value="0" tags="perkTurrets"/>
+			<passive_effect name="SpreadMultiplierAiming" operation="perc_add" value="0" tags="perkTurrets"/>
+			<passive_effect name="SpreadMultiplierCrouching" operation="perc_add" value="0" tags="perkTurrets"/>
+			<passive_effect name="SpreadMultiplierWalking" operation="perc_add" value="0" tags="perkTurrets"/>
+			<passive_effect name="SpreadMultiplierRunning" operation="perc_add" value="0" tags="perkTurrets"/>
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-.08,.08" tags="perkTurrets"/> <!-- random WeaponHandling -->
+			<passive_effect name="RoundsPerMinute" operation="base_set" value="60"/>
+			<passive_effect name="BurstRoundCount" operation="base_set" value="1" tags="perkTurrets"/>
+			<passive_effect name="MagazineSize" operation="base_set" value="62" tags="perkTurrets"/>
+			<passive_effect name="ReloadSpeedMultiplier" operation="base_set" value="1" tags="perkTurrets"/>
+			<passive_effect name="SpreadMultiplierAiming" operation="perc_add" value="-.13" tags="perkTurrets"/>
+			<passive_effect name="SpreadMultiplierCrouching" operation="perc_add" value="-.05" tags="perkTurrets"/>
+			<passive_effect name="SpreadMultiplierWalking" operation="perc_add" value=".15" tags="perkTurrets"/>
+			<passive_effect name="SpreadMultiplierRunning" operation="perc_add" value=".3" tags="perkTurrets"/>
+			<passive_effect name="KickDegreesVerticalMin" operation="base_set" value="3" tags="perkTurrets"/>
+			<passive_effect name="KickDegreesVerticalMax" operation="base_set" value="3" tags="perkTurrets"/>
+			<passive_effect name="KickDegreesHorizontalMin" operation="base_set" value="-2" tags="perkTurrets"/>
+			<passive_effect name="KickDegreesHorizontalMax" operation="base_set" value="2" tags="perkTurrets"/>
+			<passive_effect name="IncrementalSpreadMultiplier" operation="base_set" value="0" tags="perkTurrets"/>
+			<passive_effect name="WeaponHandling" operation="base_set" value="1" tags="perkTurrets"/>
+			<passive_effect name="DegradationMax" operation="base_set" value="600" tags="perkTurrets"/>
+			<passive_effect name="DegradationPerUse" operation="base_set" value="0.35" tags="perkTurrets"/>
+			<passive_effect name="ModSlots" operation="base_set" value="0" />
+			<passive_effect name="HealthMax" operation="base_add" value="100,500" tier="2,6"/>
+			<passive_effect name="ModPowerBonus" operation="perc_add" value=".10" tags="EntityDamage"/>
+			<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+		</effect_group>
+		<effect_group>
+			<triggered_effect trigger="onSelfSecondaryActionEnd" action="AddBuff" buff="ZombieINC_DroneRadar_Tier1_Player_Buff">
+				<requirement name="RequirementItemTier" operation="Equals" value="1"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfSecondaryActionEnd" action="AddBuff" buff="ZombieINC_DroneRadar_Tier2_Player_Buff">
+				<requirement name="RequirementItemTier" operation="Equals" value="2"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfSecondaryActionEnd" action="AddBuff" buff="ZombieINC_DroneRadar_Tier3_Player_Buff">
+				<requirement name="RequirementItemTier" operation="Equals" value="3"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfSecondaryActionEnd" action="AddBuff" buff="ZombieINC_DroneRadar_Tier4_Player_Buff">
+				<requirement name="RequirementItemTier" operation="Equals" value="4"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfSecondaryActionEnd" action="AddBuff" buff="ZombieINC_DroneRadar_Tier5_Player_Buff">
+				<requirement name="RequirementItemTier" operation="Equals" value="5"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfSecondaryActionEnd" action="AddBuff" buff="ZombieINC_DroneRadar_Tier6_Player_Buff">
+				<requirement name="RequirementItemTier" operation="Equals" value="6"/>
+			</triggered_effect>
+		</effect_group>
+	</item>
+	
+	<!--NEST DEMOLITION-->
+	<!--###Nest Demolition-->
+	
+	<item name="ZombieINC_thrownTimedCharge_Small_ND">
+	<property name="Tags" value="ammo,weapon,attPerception,perkDemolitionsExpert,explosivesSkill,perkGreatHeistSafes"/>
+	<property name="ItemTypeIcon" value="explosion"/>
+	<property name="DisplayType" value="ammoGrenadeTimedCharge"/>
+	<property name="Class" value="ItemClassTimeBomb"/>
+	<property name="HoldType" value="62"/>
+	<property name="Meshfile" value="@:Other/Items/Weapons/Ranged/TimedCharge/timedChargePrefab.prefab"/>
+	<property name="TintColor" value="120,30,40"/>
+	<property name="CustomIcon" value="thrownTimedCharge"/>
+	<property name="CustomIconTint" value="120,30,40"/>
+	<property name="ItemTypeIcon" value="star"/>
+	<property name="DescriptionKey" value="ZombieINC_thrownTimedCharge_Small_ND_Desc"/>
+	<property name="ActivationTransformToHide" value="Armed"/>
+	<property name="DropScale" value="1.8"/>
+	<property name="Material" value="Mmetal"/>
+	<property name="Stacknumber" value="20"/>
+	<property name="EconomicValue" value="25"/>
+	<property name="Weight" value="0"/>
+	<property name="Explosion.BlockDamage" value="500"/>
+	<property name="Explosion.EntityDamage" value="100"/>
+	<property name="Explosion.ParticleIndex" value="12"/>
+	<property name="Explosion.RadiusBlocks" value="7"/>
+	<property name="Explosion.RadiusEntities" value="7"/>
+	<property name="Explosion.DamageBonus.stone" value="1"/>
+	<property name="Explosion.DamageBonus.metal" value="1"/>
+	<property name="Explosion.DamageBonus.earth" value="0.01"/> <!-- should work? -->
+	<property name="Explosion.DamageBonus.wood" value="1"/>
+	<property name="Explosion.DamageBonus.water" value="0"/>
+	<property name="Explosion.BlastPower" value="550"/> <!-- (int,100) how far ragdolls and such are flung -->
+	<property name="FusePrimeOnActivate" value="true"/>
+	<property name="FuseTime" value="6"/> <!-- End: Needed for  time in sec, max 6 -->
+	<property name="StickPercent" value="1"/>
+	<property name="Group" value="Ammo/Weapons,Ammo"/>
+	<property name="SoundUnholster" value="charge_unholster"/>
+	<property name="SoundStick" value="charge_stick"/>
+	<property name="SoundTick" value="charge_beep,.8"/>
+	<property class="Action0">
+		<property name="Class" value="ThrowAway"/>
+		<property name="Delay" value="1.2"/>
+		<property name="Throw_strength_default" value="1"/>
+		<property name="Max_strain_time" value="0"/>
+		<property name="Sound_start" value="charge_throw"/>
+        <property name="triggerEffectTriggerPullDualsense" value="ShotgunTrigger"/>
+        <property name="triggerEffectTriggerPullXbox" value="ShotgunTrigger"/>
+        <property name="triggerEffectShootDualsense" value="ShotgunShoot"/>
+        <property name="triggerEffectShootXbox" value="PistolShoot"/>
+		<requirement name="HasBuff" buff="ZombieINC_ND_PlayerCloseObjective_Buff" />
+	</property>
+  <property class="Action1">  
+    <property name="Class" value="Activate"/>
+    <property name="Delay" value="1"/>
+	<requirement name="CVarCompare" cvar="_underwater" operation="LT" value="1"/>
+	<requirement name="HasBuff" buff="ZombieINC_ND_PlayerCloseObjective_Buff" />
+  </property>
+  <property name="ThrowableDecoy" value="true"/>
+	<effect_group tiered="false">
+		<!--<passive_effect name="BlockDamage" operation="base_set" value="3000" tags="perkDemolitionsExpert"/>-->
+			<display_value name="dExDamageBlock" value="10000"/>
+	<!--	<passive_effect name="EntityDamage" operation="base_set" value="200" tags="perkDemolitionsExpert"/>-->
+		
+			
+		<display_value name="dExRadius" value="7"/>
+		<display_value name="dFuseTime" value="6"/>
+		
+		<triggered_effect trigger="onSelfPrimaryActionStart" action="AddBuff" buff="ZombieINC_ND_DamageOnObjective_Buff"/>
+		<triggered_effect trigger="onSelfPrimaryActionStart" action="AddBuff" target="selfAOE" range="7" target_tags="Objective" buff="ZombieINC_ND_ObjectiveDamaged_Buff">
+			<requirement name="EntityTagCompare" target="other" tags="Objective"/>
+		</triggered_effect>
+		<!--<triggered_effect trigger="onSelfPrimaryActionStart" action="AddBuff" target="positionAOE" target_tags="Objective" range="8" buff="ZombieINC_ND_KillObjective_Buff"/>-->
+		<!--<triggered_effect trigger="onSelfDamagedOther" action="ModifyStats" stat="Health" target="other" target_tags="Objective" operation="subtract" value="1000"/>	-->
+		<!--<triggered_effect trigger="onSelfDamagedOther" action="CallGameEvent" event="ZombieINC_ND_AddOneBombCounter" allow_client_call="true">
+			<requirement name="EntityTagCompare" target="other" tags="Objective"/>
+		</triggered_effect>-->
+	</effect_group>
+
+</item>
+<item name="ZombieINC_thrownTimedCharge_Medium_ND">
+	<property name="Tags" value="ammo,weapon,attPerception,perkDemolitionsExpert,explosivesSkill,perkGreatHeistSafes"/>
+	<property name="ItemTypeIcon" value="explosion"/>
+	<property name="DisplayType" value="ammoGrenadeTimedCharge"/>
+	<property name="Class" value="ItemClassTimeBomb"/>
+	<property name="HoldType" value="62"/>
+	<property name="Meshfile" value="@:Other/Items/Weapons/Ranged/TimedCharge/timedChargePrefab.prefab"/>
+	<property name="TintColor" value="120,30,40"/>
+	<property name="CustomIcon" value="thrownTimedCharge"/>
+	<property name="CustomIconTint" value="120,30,40"/>
+	<property name="ItemTypeIcon" value="star"/>
+	<property name="DescriptionKey" value="ZombieINC_thrownTimedCharge_Medium_ND_Desc"/>
+	<property name="ActivationTransformToHide" value="Armed"/>
+	<property name="DropScale" value="1.8"/>
+	<property name="Material" value="Mmetal"/>
+	<property name="Stacknumber" value="20"/>
+	<property name="EconomicValue" value="25"/>
+	<property name="Weight" value="0"/>
+	<property name="Explosion.BlockDamage" value="10000"/>
+	<property name="Explosion.EntityDamage" value="200"/>
+	<property name="Explosion.ParticleIndex" value="12"/>
+	<property name="Explosion.RadiusBlocks" value="7"/>
+	<property name="Explosion.RadiusEntities" value="7"/>
+	<property name="Explosion.DamageBonus.stone" value="1"/>
+	<property name="Explosion.DamageBonus.metal" value="1"/>
+	<property name="Explosion.DamageBonus.earth" value="0.01"/> <!-- should work? -->
+	<property name="Explosion.DamageBonus.wood" value="1"/>
+	<property name="Explosion.DamageBonus.water" value="0"/>
+	<property name="Explosion.BlastPower" value="550"/> <!-- (int,100) how far ragdolls and such are flung -->
+	<property name="FusePrimeOnActivate" value="true"/>
+	<property name="FuseTime" value="6"/> <!-- End: Needed for  time in sec, max 6 -->
+	<property name="StickPercent" value="1"/>
+	<property name="Group" value="Ammo/Weapons,Ammo"/>
+	<property name="SoundUnholster" value="charge_unholster"/>
+	<property name="SoundStick" value="charge_stick"/>
+	<property name="SoundTick" value="charge_beep,.8"/>
+	<property class="Action0">
+		<property name="Class" value="ThrowAway"/>
+		<property name="Delay" value="1.2"/>
+		<property name="Throw_strength_default" value="1"/>
+		<property name="Max_strain_time" value="0"/>
+		<property name="Sound_start" value="charge_throw"/>
+        <property name="triggerEffectTriggerPullDualsense" value="ShotgunTrigger"/>
+        <property name="triggerEffectTriggerPullXbox" value="ShotgunTrigger"/>
+        <property name="triggerEffectShootDualsense" value="ShotgunShoot"/>
+        <property name="triggerEffectShootXbox" value="PistolShoot"/>
+		<requirement name="HasBuff" buff="ZombieINC_ND_PlayerCloseObjective_Buff" />
+	</property>
+  <property class="Action1">  
+    <property name="Class" value="Activate"/>
+    <property name="Delay" value="1"/>
+	<requirement name="CVarCompare" cvar="_underwater" operation="LT" value="1"/>
+	<requirement name="HasBuff" buff="ZombieINC_ND_PlayerCloseObjective_Buff" />
+  </property>
+  <property name="ThrowableDecoy" value="true"/>
+	<effect_group tiered="false">
+		<!--<passive_effect name="BlockDamage" operation="base_set" value="3000" tags="perkDemolitionsExpert"/>-->
+			<display_value name="dExDamageBlock" value="10000"/>
+	<!--	<passive_effect name="EntityDamage" operation="base_set" value="200" tags="perkDemolitionsExpert"/>-->
+		
+			
+		<display_value name="dExRadius" value="7"/>
+		<display_value name="dFuseTime" value="6"/>
+		
+		<triggered_effect trigger="onSelfPrimaryActionStart" action="AddBuff" buff="ZombieINC_ND_DamageOnObjective_Buff"/>
+		<triggered_effect trigger="onSelfPrimaryActionStart" action="AddBuff" target="selfAOE" range="7" target_tags="Objective" buff="ZombieINC_ND_ObjectiveDamaged_Buff">
+			<requirement name="EntityTagCompare" target="other" tags="Objective"/>
+		</triggered_effect>
+		<!--<triggered_effect trigger="onSelfPrimaryActionStart" action="AddBuff" target="positionAOE" target_tags="Objective" range="8" buff="ZombieINC_ND_KillObjective_Buff"/>-->
+		<!--<triggered_effect trigger="onSelfDamagedOther" action="ModifyStats" stat="Health" target="other" target_tags="Objective" operation="subtract" value="1000"/>	-->
+		<!--<triggered_effect trigger="onSelfDamagedOther" action="CallGameEvent" event="ZombieINC_ND_AddOneBombCounter" allow_client_call="true">
+			<requirement name="EntityTagCompare" target="other" tags="Objective"/>
+		</triggered_effect>-->
+	</effect_group>
+
+</item>
+<item name="ZombieINC_thrownTimedCharge_Large_ND">
+	<property name="Tags" value="ammo,weapon,attPerception,perkDemolitionsExpert,explosivesSkill,perkGreatHeistSafes"/>
+	<property name="ItemTypeIcon" value="explosion"/>
+	<property name="DisplayType" value="ammoGrenadeTimedCharge"/>
+	<property name="Class" value="ItemClassTimeBomb"/>
+	<property name="HoldType" value="62"/>
+	<property name="Meshfile" value="@:Other/Items/Weapons/Ranged/TimedCharge/timedChargePrefab.prefab"/>
+	<property name="TintColor" value="120,30,40"/>
+	<property name="CustomIcon" value="thrownTimedCharge"/>
+	<property name="CustomIconTint" value="120,30,40"/>
+	<property name="ItemTypeIcon" value="star"/>
+	<property name="DescriptionKey" value="ZombieINC_thrownTimedCharge_Large_ND_Desc"/>
+	<property name="ActivationTransformToHide" value="Armed"/>
+	<property name="DropScale" value="1.8"/>
+	<property name="Material" value="Mmetal"/>
+	<property name="Stacknumber" value="20"/>
+	<property name="EconomicValue" value="25"/>
+	<property name="Weight" value="0"/>
+	<property name="Explosion.BlockDamage" value="10000"/>
+	<property name="Explosion.EntityDamage" value="200"/>
+	<property name="Explosion.ParticleIndex" value="12"/>
+	<property name="Explosion.RadiusBlocks" value="7"/>
+	<property name="Explosion.RadiusEntities" value="7"/>
+	<property name="Explosion.DamageBonus.stone" value="1"/>
+	<property name="Explosion.DamageBonus.metal" value="1"/>
+	<property name="Explosion.DamageBonus.earth" value="0.01"/> <!-- should work? -->
+	<property name="Explosion.DamageBonus.wood" value="1"/>
+	<property name="Explosion.DamageBonus.water" value="0"/>
+	<property name="Explosion.BlastPower" value="550"/> <!-- (int,100) how far ragdolls and such are flung -->
+	<property name="FusePrimeOnActivate" value="true"/>
+	<property name="FuseTime" value="6"/> <!-- End: Needed for  time in sec, max 6 -->
+	<property name="StickPercent" value="1"/>
+	<property name="Group" value="Ammo/Weapons,Ammo"/>
+	<property name="SoundUnholster" value="charge_unholster"/>
+	<property name="SoundStick" value="charge_stick"/>
+	<property name="SoundTick" value="charge_beep,.8"/>
+	<property class="Action0">
+		<property name="Class" value="ThrowAway"/>
+		<property name="Delay" value="1.2"/>
+		<property name="Throw_strength_default" value="1"/>
+		<property name="Max_strain_time" value="0"/>
+		<property name="Sound_start" value="charge_throw"/>
+        <property name="triggerEffectTriggerPullDualsense" value="ShotgunTrigger"/>
+        <property name="triggerEffectTriggerPullXbox" value="ShotgunTrigger"/>
+        <property name="triggerEffectShootDualsense" value="ShotgunShoot"/>
+        <property name="triggerEffectShootXbox" value="PistolShoot"/>
+		<requirement name="HasBuff" buff="ZombieINC_ND_PlayerCloseObjective_Buff" />
+	</property>
+  <property class="Action1">  
+    <property name="Class" value="Activate"/>
+    <property name="Delay" value="1"/>
+	<requirement name="CVarCompare" cvar="_underwater" operation="LT" value="1"/>
+	<requirement name="HasBuff" buff="ZombieINC_ND_PlayerCloseObjective_Buff" />
+  </property>
+  <property name="ThrowableDecoy" value="true"/>
+	<effect_group tiered="false">
+		<!--<passive_effect name="BlockDamage" operation="base_set" value="3000" tags="perkDemolitionsExpert"/>-->
+			<display_value name="dExDamageBlock" value="10000"/>
+	<!--	<passive_effect name="EntityDamage" operation="base_set" value="200" tags="perkDemolitionsExpert"/>-->
+		
+			
+		<display_value name="dExRadius" value="7"/>
+		<display_value name="dFuseTime" value="6"/>
+		
+		<triggered_effect trigger="onSelfPrimaryActionStart" action="AddBuff" buff="ZombieINC_ND_DamageOnObjective_Buff"/>
+		<triggered_effect trigger="onSelfPrimaryActionStart" action="AddBuff" target="selfAOE" range="7" target_tags="Objective" buff="ZombieINC_ND_ObjectiveDamaged_Buff">
+			<requirement name="EntityTagCompare" target="other" tags="Objective"/>
+		</triggered_effect>
+		<!--<triggered_effect trigger="onSelfPrimaryActionStart" action="AddBuff" target="positionAOE" target_tags="Objective" range="8" buff="ZombieINC_ND_KillObjective_Buff"/>-->
+		<!--<triggered_effect trigger="onSelfDamagedOther" action="ModifyStats" stat="Health" target="other" target_tags="Objective" operation="subtract" value="1000"/>	-->
+		<!--<triggered_effect trigger="onSelfDamagedOther" action="CallGameEvent" event="ZombieINC_ND_AddOneBombCounter" allow_client_call="true">
+			<requirement name="EntityTagCompare" target="other" tags="Objective"/>
+		</triggered_effect>-->
+	</effect_group>
+
+</item>
+	
+	<!--Nest Demolition-->
+	</append>
+</Config>

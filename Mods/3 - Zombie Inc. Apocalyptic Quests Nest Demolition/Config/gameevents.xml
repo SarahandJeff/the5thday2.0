@@ -1,0 +1,2234 @@
+<Config>
+
+
+	<append xpath="/gameevents">
+		
+		<!--###Nest Demolition-->
+		
+		<!--##Nest Demolition T1-->
+	<action_sequence name="ZombieINC_ND_T1_GameEventObjective">
+		<property name="refund_inactivity" value="false"/>
+			
+		<wait class="While">
+			<property name="phase" value="1" />
+			<requirement class="CVar">
+				<property name="cvar" value="ZINCQuestNDBombCount"/>
+				<property name="operation" value="LTE"/>
+				<property name="value" value="1"/>
+			</requirement>	
+		</wait>
+		<action class="CallGameEvent">
+			<property name="game_events" value="ZombieINC_ND_T1_GameEventObjective_RemoveObjective" />
+			<property name="phase" value="2"/>				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_T1_GameEventObjective_RemoveObjective">		
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_ND_PlayerSearchingSpot_T1" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="1" />
+			<property name="entity_tags" value="Objective" />
+			<property name="group_name" value="Objective" />
+			<property name="max_distance" value="100" />
+		</action>
+		<action class="RemoveEntities">
+			<property name="phase" value="2" />
+			<property name="target_group" value="Objective" />			
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_T1_RemoveSpawnerBuff_Event">
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_ND_Player_ZombieSpawnerT1_Buff" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_ND_CountDisplay_T1" />
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_T1_RallyPointActivated">
+		
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_ND_FindGoodSpotMessage"  />
+			<property name="phase" value="0"/>	
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_ND_PlayerSearchingSpot_T1" />
+			<property name="phase" value="1"/>				
+		</action>
+		<action class="Delay">
+			<property name="phase" value="2" />	
+			<property name="time" value="30" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_ND_Player_ZombieSpawnerT1_Buff" />
+			<property name="phase" value="3"/>				
+		</action>
+		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_T1_SpawnZombies"> 
+		<decision class="If">
+			<requirement class="InPOI"/>
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_ND_Player_ZombieSpawnerT1_Buff" />
+			</requirement>
+			
+			<action class="SpawnEntity">				    
+				<property name="entity_group" value="SleeperGSList" />
+				<property name="spawn_count" value="1"  />
+				<property name="add_to_group" value="targets" />
+				<property name="add_buffs" value="ZombieINC_ND_EnemyDotBuff"/>
+				<property name="safe_spawn" value="false" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<!--<property name="max_distance" value="45"  />
+				<property name="min_distance" value="30"  />-->
+				<property name="air_spawn" value="false" />
+				<property name="phase" value="1" />			
+			</action>
+			<action class="SpawnEntity">				    
+				<property name="entity_group" value="SleeperGSList" />
+				<property name="spawn_count" value="1"  />
+				<property name="add_to_group" value="targets" />
+				<property name="add_buffs" value="ZombieINC_ND_EnemyDotBuff"/>
+				<property name="safe_spawn" value="false" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<!--<property name="max_distance" value="45"  />
+				<property name="min_distance" value="30"  />-->
+				<property name="air_spawn" value="false" />
+				<property name="phase" value="1" />			
+			</action>
+		</decision>
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_ND_T1_SpawnObjective_Action"> 
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_Objective_ND"  />
+			<property name="add_buffs" value="ZombieINC_ND_Objective_Buff,ZombieINC_ND_Objective_VisualSelectorSmall_Buff" />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="6" />
+			<property name="min_distance" value="1" />
+			<property name="air_spawn" value="true" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_ND_IdealLocationBeltTooltip"  />
+			<property name="phase" value="2"/>
+		</action>		
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_ND_IdealLocationMessage"  />
+			<property name="phase" value="2"/>	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_T1_SpawnObjective"> 
+			<action class="CallGameEvent">
+				<property name="game_events" value="ZombieINC_ND_T1_SpawnObjective_Action" />
+				<property name="phase" value="1"/>				
+			</action>
+			<action class="RemoveBuff">
+				<property name="buff_name" value="ZombieINC_ND_PlayerSearchingSpot_CheckIsIndoors_T1" />
+				<property name="phase" value="2"/>				
+			</action>	
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_AddItemToPlayer_T1">
+		<property name="action_type" value="Game" />
+		<property name="target_type" value="Entity" />
+		
+		
+		<action class="AddItems">
+			<property name="added_items" value="ZombieINC_thrownTimedCharge_Small_ND" />
+			<property name="added_item_counts" value="4" />
+			<property name="phase" value="1"/>
+		</action>
+	
+		
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_QuestFinished_T1">
+		<action class="RemoveBuffsByTag">
+			<property name="buff_tag" value="ZINC_ND_BUFFS" />
+			<property name="phase" value="1"/>				
+		</action>		
+	</action_sequence>
+		<!--Nest Demolition T1-->
+		
+		<!--##Nest Demolition T2-->
+	<action_sequence name="ZombieINC_ND_T2_GameEventObjective">
+		<property name="refund_inactivity" value="false"/>
+			
+		<wait class="While">
+			<property name="phase" value="1" />
+			<requirement class="CVar">
+				<property name="cvar" value="ZINCQuestNDBombCount"/>
+				<property name="operation" value="LTE"/>
+				<property name="value" value="1"/>
+			</requirement>	
+		</wait>
+		<action class="CallGameEvent">
+			<property name="game_events" value="ZombieINC_ND_T2_GameEventObjective_RemoveObjective" />
+			<property name="phase" value="2"/>				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_T2_GameEventObjective_RemoveObjective">		
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_ND_PlayerSearchingSpot_T2" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="1" />
+			<property name="entity_tags" value="Objective" />
+			<property name="group_name" value="Objective" />
+			<property name="max_distance" value="100" />
+		</action>
+		<action class="RemoveEntities">
+			<property name="phase" value="2" />
+			<property name="target_group" value="Objective" />			
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_T2_RemoveSpawnerBuff_Event">
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_ND_Player_ZombieSpawnerT2_Buff" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_ND_CountDisplay_T2" />
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_T2_RallyPointActivated">
+		
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_ND_FindGoodSpotMessage"  />
+			<property name="phase" value="0"/>	
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_ND_PlayerSearchingSpot_T2" />
+			<property name="phase" value="1"/>				
+		</action>
+		<action class="Delay">
+			<property name="phase" value="2" />	
+			<property name="time" value="30" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_ND_Player_ZombieSpawnerT2_Buff" />
+			<property name="phase" value="3"/>				
+		</action>
+		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_T2_SpawnZombies"> 
+		<decision class="If">
+			<requirement class="InPOI"/>
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_ND_Player_ZombieSpawnerT2_Buff" />
+			</requirement>
+			
+			<action class="SpawnEntity">				    
+				<property name="entity_group" value="SleeperGSList" />
+				<property name="spawn_count" value="1"  />
+				<property name="add_to_group" value="targets" />
+				<property name="add_buffs" value="ZombieINC_ND_EnemyDotBuff"/>
+				<property name="safe_spawn" value="false" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<!--<property name="max_distance" value="45"  />
+				<property name="min_distance" value="30"  />-->
+				<property name="air_spawn" value="false" />
+				<property name="phase" value="1" />			
+			</action>
+			<action class="SpawnEntity">				    
+				<property name="entity_group" value="SleeperGSList" />
+				<property name="spawn_count" value="1"  />
+				<property name="add_to_group" value="targets" />
+				<property name="add_buffs" value="ZombieINC_ND_EnemyDotBuff"/>
+				<property name="safe_spawn" value="false" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<!--<property name="max_distance" value="45"  />
+				<property name="min_distance" value="30"  />-->
+				<property name="air_spawn" value="false" />
+				<property name="phase" value="1" />			
+			</action>
+		</decision>
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_ND_T2_SpawnObjective_Action"> 
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_Objective_ND"  />
+			<property name="add_buffs" value="ZombieINC_ND_Objective_Buff,ZombieINC_ND_Objective_VisualSelectorSmall_Buff" />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="6" />
+			<property name="min_distance" value="1" />
+			<property name="air_spawn" value="true" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_ND_IdealLocationBeltTooltip"  />
+			<property name="phase" value="2"/>
+		</action>		
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_ND_IdealLocationMessage"  />
+			<property name="phase" value="2"/>	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_T2_SpawnObjective"> 
+			<action class="CallGameEvent">
+				<property name="game_events" value="ZombieINC_ND_T2_SpawnObjective_Action" />
+				<property name="phase" value="1"/>				
+			</action>
+			<action class="RemoveBuff">
+				<property name="buff_name" value="ZombieINC_ND_PlayerSearchingSpot_CheckIsIndoors_T2" />
+				<property name="phase" value="2"/>				
+			</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_AddItemToPlayer_T2">
+		<property name="action_type" value="Game" />
+		<property name="target_type" value="Entity" />
+		
+		
+		<action class="AddItems">
+			<property name="added_items" value="ZombieINC_thrownTimedCharge_Small_ND" />
+			<property name="added_item_counts" value="4" />
+			<property name="phase" value="1"/>
+		</action>
+	
+		
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_QuestFinished_T2">
+		<action class="RemoveBuffsByTag">
+			<property name="buff_tag" value="ZINC_ND_BUFFS" />
+			<property name="phase" value="1"/>				
+		</action>		
+	</action_sequence>	
+		<!--Nest Demolition T2-->
+		<!--##Nest Demolition T3-->
+		<action_sequence name="ZombieINC_ND_T3_GameEventObjective">
+		<property name="refund_inactivity" value="false"/>
+			
+		<wait class="While">
+			<property name="phase" value="1" />
+			<requirement class="CVar">
+				<property name="cvar" value="ZINCQuestNDBombCount"/>
+				<property name="operation" value="LTE"/>
+				<property name="value" value="2"/>
+			</requirement>	
+		</wait>
+		<action class="CallGameEvent">
+			<property name="game_events" value="ZombieINC_ND_T3_GameEventObjective_RemoveObjective" />
+			<property name="phase" value="2"/>				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_T3_GameEventObjective_RemoveObjective">		
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_ND_PlayerSearchingSpot_T3" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="1" />
+			<property name="entity_tags" value="Objective" />
+			<property name="group_name" value="Objective" />
+			<property name="max_distance" value="100" />
+		</action>
+		<action class="RemoveEntities">
+			<property name="phase" value="2" />
+			<property name="target_group" value="Objective" />			
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_T3_RemoveSpawnerBuff_Event">
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_ND_Player_ZombieSpawnerT3_Buff" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_ND_CountDisplay_T3" />
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_T3_RallyPointActivated">
+		<action class="Delay">
+			<property name="phase" value="2" />	
+			<property name="time" value="30" />
+		</action>
+		
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_ND_Player_ZombieSpawnerT3_Buff" />
+			<property name="phase" value="3"/>				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_T3_SpawnZombies"> 
+		<decision class="If">
+			<requirement class="InPOI"/>
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_ND_Player_ZombieSpawnerT3_Buff" />
+			</requirement>
+			
+			<action class="CallGameEvent">
+				<property name="game_events" value="ZombieINC_ND_T3_SpawnZombies_InPOI" />
+				<property name="phase" value="1"/>				
+			</action>
+		</decision>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_T3_SpawnZombies_InPOI"> 
+		<property name="action_type" value="Game" />
+		<property name="target_type" value="POI" />
+			
+		<action class="SpawnEntity">				    
+			<property name="entity_group" value="SleeperGSList" />
+			<property name="spawn_count" value="1"  />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_ND_EnemyDotBuff"/>
+			<property name="safe_spawn" value="false" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="max_distance" value="45"  />
+			<property name="min_distance" value="30"  />
+			<property name="air_spawn" value="false" />
+			<property name="phase" value="1" />			
+		</action>
+		<action class="SpawnEntity">				    
+			<property name="entity_group" value="SleeperGSList" />
+			<property name="spawn_count" value="1"  />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_ND_EnemyDotBuff"/>
+			<property name="safe_spawn" value="false" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="max_distance" value="45"  />
+			<property name="min_distance" value="30"  />
+			<property name="air_spawn" value="false" />
+			<property name="phase" value="1" />			
+		</action>
+		<action class="SpawnEntity">				    
+			<property name="entity_group" value="SleeperGSList" />
+			<property name="spawn_count" value="1"  />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_ND_EnemyDotBuff"/>
+			<property name="safe_spawn" value="false" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="max_distance" value="45"  />
+			<property name="min_distance" value="30"  />
+			<property name="air_spawn" value="false" />
+			<property name="phase" value="1" />			
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_T3_SpawnObjective_Action"> 
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_Objective_ND"  />
+			<property name="add_buffs" value="ZombieINC_ND_Objective_Buff,ZombieINC_ND_Objective_VisualSelectorSmall_Buff" />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="6" />
+			<property name="min_distance" value="1" />
+			<property name="air_spawn" value="true" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_ND_IdealLocationBeltTooltip"  />
+			<property name="phase" value="2"/>
+		</action>		
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_ND_IdealLocationMessage"  />
+			<property name="phase" value="2"/>	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_T3_SpawnObjective"> 
+			<action class="CallGameEvent">
+				<property name="game_events" value="ZombieINC_ND_T3_SpawnObjective_Action" />
+				<property name="phase" value="1"/>				
+			</action>
+			<action class="RemoveBuff">
+				<property name="buff_name" value="ZombieINC_ND_PlayerSearchingSpot_CheckIsIndoors_T3" />
+				<property name="phase" value="2"/>				
+			</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_AddItemToPlayer_T3">
+		<property name="action_type" value="Game" />
+		<property name="target_type" value="Entity" />
+		
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_ND_FindGoodSpotMessage"  />
+			<property name="phase" value="0"/>	
+		</action>
+		<action class="AddItems">
+			<property name="added_items" value="ZombieINC_thrownTimedCharge_Medium_ND" />
+			<property name="added_item_counts" value="6" />
+			<property name="phase" value="1"/>
+		</action>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="2" />
+			<property name="entity_tags" value="ZINCMinibikeQuestND" />
+			<property name="group_name" value="vehicle" />
+			<property name="max_distance" value="60" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_ND_MinibikeRemoveAttachBombPrefab_Buff" />
+			<property name="target_group" value="vehicle" />
+			<property name="phase" value="3"/>				
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_ND_PlayerSearchingSpot_T3" />
+			<property name="phase" value="4"/>				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_SpawnMinibike_T3">					  
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="1" />
+			<property name="entity_tags" value="trader" />
+			<property name="group_name" value="trader" />
+			<property name="max_distance" value="5" />
+		</action>
+		 <action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_ND_T3_Trader_SpawnVehicle_Buff" />
+			<property name="target_group" value="trader" />
+			<property name="phase" value="2"/>				
+		</action>
+		 <action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_ND_MoveDetector_T3" />
+			<property name="phase" value="2"/>				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_SpawnMinibike_T3_Event">
+		<property name="refund_inactivity" value="false"/>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_vehicleMinibikeBomber" />
+			<!--<property name="add_buffs" value="ZombieINC_ND_MinibikeAttachPrefab_Buff" />-->
+			<property name="spawn_count" value="1"  />
+			<property name="safe_spawn" value="true"  />
+			<property name="max_distance" value="30" />		
+			<property name="min_distance" value="1" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="phase" value="1" />		
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_T3_AddMinibikeReturnedBuff">
+		<property name="refund_inactivity" value="false"/>
+		<wait class="Until">
+			<property name="phase" value="0" />
+			<property name="phase_on_complete" value="1" />
+			<requirement class="InPOI"/>
+			<requirement class="InSafeZone"/>
+			<requirement class="NearbyEntities">
+				<property name="entity_tags" value="ZINCMinibikeQuestND" />
+				<property name="max_distance" value="15" />
+				<property name="target_is_owner" value="false" />
+			</requirement>
+		</wait>
+		<wait class="Until">
+			<property name="phase" value="0" />
+			<property name="phase_on_complete" value="2" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_ND_MinibikeReturned_T3"/>
+			</requirement>
+		</wait>
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="player" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_ND_MinibikeReturned_T3" />
+			<property name="target_group" value="player" />
+			<property name="check_already_exists" value="false" />
+			<property name="phase" value="1"/>				
+		</action>
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_ND_MinibikeReturnedChecker_T3" />
+			<property name="target_group" value="player" />
+			<property name="phase" value="2"/>				
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_T3_GameEventObjective2">
+		<property name="refund_inactivity" value="false"/>
+		<action class="AddPartyToGroup">
+			<property name="phase" value="1" />
+			<property name="group_name" value="player" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_ND_MinibikeReturnedChecker_T3" />
+			<property name="target_group" value="player" />
+			<property name="check_already_exists" value="false" />
+			<property name="phase" value="2"/>				
+		</action>
+		<wait class="Until">
+			<property name="phase" value="3" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_ND_MinibikeReturned_T3"/>
+			</requirement>
+		</wait>
+		
+		
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_ND_MinibikeReturned_T3" />
+			<property name="target_group" value="player" />
+			<property name="phase" value="4"/>				
+		</action>
+	</action_sequence>
+		<!--Nest Demolition T3-->
+		<!--##Nest Demolition T4-->
+
+	<action_sequence name="ZombieINC_ND_T4_GameEventObjective">
+		<property name="refund_inactivity" value="false"/>
+			
+		<wait class="While">
+			<property name="phase" value="1" />
+			<requirement class="CVar">
+				<property name="cvar" value="ZINCQuestNDBombCount"/>
+				<property name="operation" value="LTE"/>
+				<property name="value" value="3"/>
+			</requirement>	
+		</wait>
+		<action class="CallGameEvent">
+			<property name="game_events" value="ZombieINC_ND_T4_GameEventObjective_RemoveObjective" />
+			<property name="phase" value="2"/>				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_T4_GameEventObjective_RemoveObjective">		
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_ND_PlayerSearchingSpot_T4" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="1" />
+			<property name="entity_tags" value="Objective" />
+			<property name="group_name" value="Objective" />
+			<property name="max_distance" value="100" />
+		</action>
+		<action class="RemoveEntities">
+			<property name="phase" value="2" />
+			<property name="target_group" value="Objective" />			
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_T4_RemoveSpawnerBuff_Event">
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_ND_Player_ZombieSpawnerT4_Buff" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_ND_CountDisplay_T4" />
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_ReturnMiniBike_Event">       			    
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_ND_ReturnMiniBikeBeltTooltip"  />
+			<property name="phase" value="1"/>
+		</action>		
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_ND_ReturnMiniBikeMessage"  />
+			<property name="phase" value="1"/>	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_T4_RallyPointActivated">
+		<action class="Delay">
+			<property name="phase" value="2" />	
+			<property name="time" value="30" />
+		</action>
+		
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_ND_Player_ZombieSpawnerT4_Buff" />
+			<property name="phase" value="3"/>				
+		</action>
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_ND_T4_SpawnZombies"> 
+		<decision class="If">
+			<requirement class="InPOI"/>
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_ND_Player_ZombieSpawnerT4_Buff" />
+			</requirement>
+			
+			<action class="CallGameEvent">
+				<property name="game_events" value="ZombieINC_ND_T4_SpawnZombies_InPOI" />
+				<property name="phase" value="1"/>				
+			</action>
+		</decision>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_T4_SpawnZombies_InPOI"> 
+		<property name="action_type" value="Game" />
+		<property name="target_type" value="POI" />
+			
+		<action class="SpawnEntity">				    
+			<property name="entity_group" value="SleeperGSList" />
+			<property name="spawn_count" value="1"  />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_ND_EnemyDotBuff"/>
+			<property name="safe_spawn" value="false" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="max_distance" value="45"  />
+			<property name="min_distance" value="30"  />
+			<property name="air_spawn" value="false" />
+			<property name="phase" value="1" />			
+		</action>
+		<action class="SpawnEntity">				    
+			<property name="entity_group" value="SleeperGSList" />
+			<property name="spawn_count" value="1"  />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_ND_EnemyDotBuff"/>
+			<property name="safe_spawn" value="false" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="max_distance" value="45"  />
+			<property name="min_distance" value="30"  />
+			<property name="air_spawn" value="false" />
+			<property name="phase" value="1" />			
+		</action>
+		<action class="SpawnEntity">				    
+			<property name="entity_group" value="SleeperGSList" />
+			<property name="spawn_count" value="1"  />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_ND_EnemyDotBuff"/>
+			<property name="safe_spawn" value="false" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="max_distance" value="45"  />
+			<property name="min_distance" value="30"  />
+			<property name="air_spawn" value="false" />
+			<property name="phase" value="1" />			
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_T4_SpawnObjective_Action"> 
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_Objective_ND"  />
+			<property name="add_buffs" value="ZombieINC_ND_Objective_Buff,ZombieINC_ND_Objective_VisualSelectorSmall_Buff" />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="6" />
+			<property name="min_distance" value="1" />
+			<property name="air_spawn" value="true" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_ND_IdealLocationBeltTooltip"  />
+			<property name="phase" value="2"/>
+		</action>		
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_ND_IdealLocationMessage"  />
+			<property name="phase" value="2"/>	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_T4_SpawnObjective"> 
+			<action class="CallGameEvent">
+				<property name="game_events" value="ZombieINC_ND_T4_SpawnObjective_Action" />
+				<property name="phase" value="1"/>				
+			</action>
+			<action class="RemoveBuff">
+				<property name="buff_name" value="ZombieINC_ND_PlayerSearchingSpot_CheckIsIndoors_T4" />
+				<property name="phase" value="2"/>				
+			</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_AddItemToPlayer_T4">
+		<property name="action_type" value="Game" />
+		<property name="target_type" value="Entity" />
+		
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_ND_FindGoodSpotMessage"  />
+			<property name="phase" value="0"/>	
+		</action>
+		<action class="AddItems">
+			<property name="added_items" value="ZombieINC_thrownTimedCharge_Medium_ND" />
+			<property name="added_item_counts" value="6" />
+			<property name="phase" value="1"/>
+		</action>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="2" />
+			<property name="entity_tags" value="ZINCMinibikeQuestND" />
+			<property name="group_name" value="vehicle" />
+			<property name="max_distance" value="60" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_ND_MinibikeRemoveAttachBombPrefab_Buff" />
+			<property name="target_group" value="vehicle" />
+			<property name="phase" value="3"/>				
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_ND_PlayerSearchingSpot_T4" />
+			<property name="phase" value="4"/>				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_SpawnMinibike_T4">					  
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="1" />
+			<property name="entity_tags" value="trader" />
+			<property name="group_name" value="trader" />
+			<property name="max_distance" value="5" />
+		</action>
+		 <action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_ND_T4_Trader_SpawnVehicle_Buff" />
+			<property name="target_group" value="trader" />
+			<property name="phase" value="2"/>				
+		</action>
+		 <action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_ND_MoveDetector_T4" />
+			<property name="phase" value="2"/>				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_SpawnMinibike_T4_Event">
+		<property name="refund_inactivity" value="false"/>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_vehicleMinibikeBomber" />
+			<!--<property name="add_buffs" value="ZombieINC_ND_MinibikeAttachPrefab_Buff" />-->
+			<property name="spawn_count" value="1"  />
+			<property name="safe_spawn" value="true"  />
+			<property name="max_distance" value="30" />		
+			<property name="min_distance" value="1" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="phase" value="1" />		
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_BringBackTheBikeMessage1_Event">	
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_ND_BringBackTheBikeMessage1_BeltTooltip_Message3"  />
+			<property name="phase" value="1"/>
+		</action>				      			    
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_ND_BringBackTheBikeMessage1_ChatMessage_Message3"  />
+			<property name="phase" value="1"/>	
+		</action>			
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_BringBackTheBikeMessage2_Event">	
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_ND_BringBackTheBikeMessage2_BeltTooltip_Message3"  />
+			<property name="phase" value="1"/>
+		</action>				      			    
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_ND_BringBackTheBikeMessage2_ChatMessage_Message3"  />
+			<property name="phase" value="1"/>	
+		</action>			
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_ND_QuestMiniBikeFinished_Event">
+		
+		<action class="AddEntitiesToGroup">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="ZINCMinibikeQuestND" />
+			<property name="max_distance" value="45" />
+			<property name="target_is_owner" value="false" />
+		</requirement>
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="ZINCMinibikeQuestND" />
+			<property name="group_name" value="Vehicle" />
+			<property name="max_distance" value="45" />
+		</action>
+		
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="player" />
+		</action>
+		
+		<action class="RemoveVehicles">
+			<property name="phase" value="1" />
+			<property name="target_group" value="Vehicle" />
+			<property name="return_items" value="true" />
+			<property name="include_vehicle" value="false" />
+		</action>
+		
+		<action class="RemoveBuffsByTag">
+			<property name="buff_tag" value="ZINC_ND_BUFFS" />
+			<property name="target_group" value="player" />
+			<property name="phase" value="2"/>				
+		</action>
+		
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_ND_BeltTooltip_VehicleReturned"  />
+			<property name="phase" value="3"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_ND_ChatMessage_VehicleReturned"  />
+			<property name="phase" value="3"/>	
+		</action>			
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_ND_T4_AddMinibikeReturnedBuff">
+		<property name="refund_inactivity" value="false"/>
+		<wait class="Until">
+			<property name="phase" value="0" />
+			<property name="phase_on_complete" value="1" />
+			<requirement class="InPOI"/>
+			<requirement class="InSafeZone"/>
+			<requirement class="NearbyEntities">
+				<property name="entity_tags" value="ZINCMinibikeQuestND" />
+				<property name="max_distance" value="15" />
+				<property name="target_is_owner" value="false" />
+			</requirement>
+		</wait>
+		<wait class="Until">
+			<property name="phase" value="0" />
+			<property name="phase_on_complete" value="2" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_ND_MinibikeReturned_T4"/>
+			</requirement>
+		</wait>
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="player" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_ND_MinibikeReturned_T4" />
+			<property name="target_group" value="player" />
+			<property name="check_already_exists" value="false" />
+			<property name="phase" value="1"/>				
+		</action>
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_ND_MinibikeReturnedChecker_T4" />
+			<property name="target_group" value="player" />
+			<property name="phase" value="2"/>				
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_T4_GameEventObjective2">
+		<property name="refund_inactivity" value="false"/>
+		<action class="AddPartyToGroup">
+			<property name="phase" value="1" />
+			<property name="group_name" value="player" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_ND_MinibikeReturnedChecker_T4" />
+			<property name="target_group" value="player" />
+			<property name="check_already_exists" value="false" />
+			<property name="phase" value="2"/>				
+		</action>
+		<wait class="Until">
+			<property name="phase" value="3" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_ND_MinibikeReturned_T4"/>
+			</requirement>
+		</wait>
+		
+		
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_ND_MinibikeReturned_T4" />
+			<property name="target_group" value="player" />
+			<property name="phase" value="4"/>				
+		</action>
+	</action_sequence>
+<!--Nest Demolition T4-->
+<!--##Nest Demolition T5-->
+	<action_sequence name="ZombieINC_ND_T5_GameEventObjective">
+		<property name="refund_inactivity" value="false"/>
+			
+		<wait class="While">
+			<property name="phase" value="1" />
+			<requirement class="CVar">
+				<property name="cvar" value="ZINCQuestNDBombCount"/>
+				<property name="operation" value="LTE"/>
+				<property name="value" value="0"/>
+			</requirement>	
+		</wait>
+		<action class="CallGameEvent">
+			<property name="game_events" value="ZombieINC_ND_T5_GameEventObjective_RemoveObjective" />
+			<property name="phase" value="2"/>				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_T5_GameEventObjective_RemoveObjective">		
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_ND_PlayerSearchingSpot_T5" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="1" />
+			<property name="entity_tags" value="Objective" />
+			<property name="group_name" value="Objective" />
+			<property name="max_distance" value="100" />
+		</action>
+		<action class="RemoveEntities">
+			<property name="phase" value="2" />
+			<property name="target_group" value="Objective" />			
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_T5_RemoveSpawnerBuff_Event">
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_ND_Player_ZombieSpawnerT5_Buff" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_ND_CountDisplay_T5" />
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_ReturnTruck_Event">       			    
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_ND_ReturnTruckBeltTooltip"  />
+			<property name="phase" value="1"/>
+		</action>		
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_ND_ReturnTruckMessage"  />
+			<property name="phase" value="1"/>	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_T5_RallyPointActivated">
+		<action class="Delay">
+			<property name="phase" value="2" />	
+			<property name="time" value="30" />
+		</action>
+		
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_ND_Player_ZombieSpawnerT5_Buff" />
+			<property name="phase" value="3"/>				
+		</action>
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_ND_T5_SpawnZombies"> 
+		<decision class="If">
+			<requirement class="InPOI"/>
+			<!--<requirement class="InQuestZone"/>-->
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_ND_Player_ZombieSpawnerT5_Buff" />
+			</requirement>
+			
+			<action class="SpawnEntity">				    
+				<property name="entity_group" value="SleeperGSList" />
+				<property name="spawn_count" value="1"  />
+				<property name="add_buffs" value="ZombieINC_ND_EnemyDotBuff"/>
+				<property name="spawn_type" value="WanderingHorde" />
+				<!--<property name="max_distance" value="45"  />
+				<property name="min_distance" value="30"  />-->
+				<property name="air_spawn" value="false" />
+				<property name="phase" value="1" />			
+			</action>
+			<action class="SpawnEntity">				    
+				<property name="entity_group" value="SleeperGSList" />
+				<property name="spawn_count" value="1"  />
+				<property name="add_buffs" value="ZombieINC_ND_EnemyDotBuff"/>
+				<property name="spawn_type" value="WanderingHorde" />
+				<!--<property name="max_distance" value="45"  />
+				<property name="min_distance" value="30"  />-->
+				<property name="air_spawn" value="false" />
+				<property name="phase" value="1" />			
+			</action>
+			<action class="SpawnEntity">				    
+				<property name="entity_group" value="SleeperGSList" />
+				<property name="spawn_count" value="1"  />
+				<property name="add_buffs" value="ZombieINC_ND_EnemyDotBuff"/>
+				<property name="spawn_type" value="WanderingHorde" />
+				<!--<property name="max_distance" value="45"  />
+				<property name="min_distance" value="30"  />-->
+				<property name="air_spawn" value="false" />
+				<property name="phase" value="1" />			
+			</action>
+			<action class="SpawnEntity">				    
+				<property name="entity_group" value="SleeperGSList" />
+				<property name="spawn_count" value="1"  />
+				<property name="add_buffs" value="ZombieINC_ND_EnemyDotBuff"/>
+				<property name="spawn_type" value="WanderingHorde" />
+				<!--<property name="max_distance" value="45"  />
+				<property name="min_distance" value="30"  />-->
+				<property name="air_spawn" value="false" />
+				<property name="phase" value="1" />			
+			</action>
+			
+			
+		</decision>
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_ND_T5_SpawnObjective_Action"> 
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_Objective_ND"  />
+			<property name="add_buffs" value="ZombieINC_ND_Objective_Buff,ZombieINC_ND_Objective_VisualSelectorSmall_Buff" />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="6" />
+			<property name="min_distance" value="1" />
+			<property name="air_spawn" value="true" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_ND_IdealLocationBeltTooltip"  />
+			<property name="phase" value="2"/>
+		</action>		
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_ND_IdealLocationMessage"  />
+			<property name="phase" value="2"/>	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_T5_SpawnObjective"> 
+			<action class="CallGameEvent">
+				<property name="game_events" value="ZombieINC_ND_T5_SpawnObjective_Action" />
+				<property name="phase" value="1"/>				
+			</action>
+			<action class="RemoveBuff">
+				<property name="buff_name" value="ZombieINC_ND_PlayerSearchingSpot_CheckIsIndoors_T5" />
+				<property name="phase" value="2"/>				
+			</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_AddItemToPlayer_T5">
+		<property name="action_type" value="Game" />
+		<property name="target_type" value="Entity" />
+		
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_ND_FindGoodSpotMessage"  />
+			<property name="phase" value="0"/>	
+		</action>
+		<!--<action class="AddItems">
+			<property name="added_items" value="ZombieINC_thrownTimedCharge_Medium_ND" />
+			<property name="added_item_counts" value="6" />
+			<property name="phase" value="1"/>
+		</action>-->
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="2" />
+			<property name="entity_tags" value="ZINCTruckQuestND" />
+			<property name="group_name" value="vehicle" />
+			<property name="max_distance" value="60" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_ND_JeepAttachPrefabDisableAll_Buff" />
+			<property name="target_group" value="vehicle" />
+			<property name="phase" value="3"/>				
+		</action>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_ND_Bomb_NPC_T5"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="8" />
+			<property name="min_distance" value="5" />
+			<property name="air_spawn" value="true" />
+			<property name="phase" value="4" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_ND_PlayerSearchingSpot_T5" />
+			<property name="phase" value="4"/>				
+		</action>
+		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_SpawnTruck_T5">					  
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="1" />
+			<property name="entity_tags" value="trader" />
+			<property name="group_name" value="trader" />
+			<property name="max_distance" value="5" />
+		</action>
+		 <action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_ND_T5_Trader_SpawnVehicle_Buff" />
+			<property name="check_already_exists" value="false" />
+			<property name="target_group" value="trader" />
+			<property name="phase" value="2"/>				
+		</action>
+		 <action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_ND_MoveDetector_T5" />
+			<property name="check_already_exists" value="false" />
+			<property name="phase" value="2"/>				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_SpawnTruck_T5_Event">
+		<property name="refund_inactivity" value="false"/>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_vehicle4x4TruckBomber" />
+			<property name="add_buffs" value="ZombieINC_ND_JeepAttachPrefabDisableOneSide_Buff" />
+			<property name="spawn_count" value="1"  />
+			<property name="safe_spawn" value="true"  />
+			<property name="max_distance" value="30" />		
+			<property name="min_distance" value="1" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="phase" value="1" />		
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_BringBackTheTruckMessage1_Event">	
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_ND_BringBackTheBikeMessage1_BeltTooltip_Message3"  />
+			<property name="phase" value="1"/>
+		</action>				      			    
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_ND_BringBackTheBikeMessage1_ChatMessage_Message3"  />
+			<property name="phase" value="1"/>	
+		</action>			
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_BringBackTheTruckMessage2_Event">	
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_ND_BringBackTheBikeMessage2_BeltTooltip_Message3"  />
+			<property name="phase" value="1"/>
+		</action>				      			    
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_ND_BringBackTheBikeMessage2_ChatMessage_Message3"  />
+			<property name="phase" value="1"/>	
+		</action>			
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_ND_QuestTruckFinished_Event">
+		
+		<action class="AddEntitiesToGroup">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="ZINCTruckQuestND" />
+			<property name="max_distance" value="45" />
+			<property name="target_is_owner" value="false" />
+		</requirement>
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="ZINCTruckQuestND" />
+			<property name="group_name" value="Vehicle" />
+			<property name="max_distance" value="45" />
+		</action>
+		
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="player" />
+		</action>
+		
+		<action class="RemoveVehicles">
+			<property name="phase" value="1" />
+			<property name="target_group" value="Vehicle" />
+			<property name="return_items" value="true" />
+			<property name="include_vehicle" value="false" />
+		</action>
+		
+		<action class="RemoveBuffsByTag">
+			<property name="buff_tag" value="ZINC_ND_BUFFS" />
+			<property name="target_group" value="player" />
+			<property name="phase" value="2"/>				
+		</action>
+		
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_ND_BeltTooltip_VehicleReturned"  />
+			<property name="phase" value="3"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_ND_ChatMessage_VehicleReturned"  />
+			<property name="phase" value="3"/>	
+		</action>			
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_ND_T5_AddMinibikeReturnedBuff">
+		<property name="refund_inactivity" value="false"/>
+		<wait class="Until">
+			<property name="phase" value="0" />
+			<property name="phase_on_complete" value="1" />
+			<requirement class="InPOI"/>
+			<requirement class="InSafeZone"/>
+			<requirement class="NearbyEntities">
+				<property name="entity_tags" value="ZINCTruckQuestND" />
+				<property name="max_distance" value="15" />
+				<property name="target_is_owner" value="false" />
+			</requirement>
+		</wait>
+		<wait class="Until">
+			<property name="phase" value="0" />
+			<property name="phase_on_complete" value="2" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_ND_MinibikeReturned_T5"/>
+			</requirement>
+		</wait>
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="player" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_ND_MinibikeReturned_T5" />
+			<property name="target_group" value="player" />
+			<property name="check_already_exists" value="false" />
+			<property name="phase" value="1"/>				
+		</action>
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_ND_MinibikeReturnedChecker_T5" />
+			<property name="target_group" value="player" />
+			<property name="phase" value="2"/>				
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_T5_GameEventObjective2">
+		<property name="refund_inactivity" value="false"/>
+		<action class="AddPartyToGroup">
+			<property name="phase" value="1" />
+			<property name="group_name" value="player" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_ND_MinibikeReturnedChecker_T5" />
+			<property name="target_group" value="player" />
+			<property name="check_already_exists" value="false" />
+			<property name="phase" value="2"/>				
+		</action>
+		<wait class="Until">
+			<property name="phase" value="3" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_ND_MinibikeReturned_T5"/>
+			</requirement>
+		</wait>
+		
+		
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_ND_MinibikeReturned_T5" />
+			<property name="target_group" value="player" />
+			<property name="phase" value="4"/>				
+		</action>
+	</action_sequence>
+<!--Nest Demolition T5-->
+<!--##Nest Demolition T6-->
+<action_sequence name="ZombieINC_ND_T6_GameEventObjective">
+		<property name="refund_inactivity" value="false"/>
+			
+		<wait class="While">
+			<property name="phase" value="1" />
+			<requirement class="CVar">
+				<property name="cvar" value="ZINCQuestNDBombCount"/>
+				<property name="operation" value="LTE"/>
+				<property name="value" value="1"/>
+			</requirement>	
+		</wait>
+		<action class="CallGameEvent">
+			<property name="game_events" value="ZombieINC_ND_T6_GameEventObjective_RemoveObjective" />
+			<property name="phase" value="2"/>				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_T6_GameEventObjective_RemoveObjective">		
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_ND_PlayerSearchingSpot_T6" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="1" />
+			<property name="entity_tags" value="Objective" />
+			<property name="group_name" value="Objective" />
+			<property name="max_distance" value="100" />
+		</action>
+		<action class="RemoveEntities">
+			<property name="phase" value="2" />
+			<property name="target_group" value="Objective" />			
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_T6_RemoveSpawnerBuff_Event">
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_ND_Player_ZombieSpawnerT6_Buff" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_ND_CountDisplay_T6" />
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_ND_T6_RallyPointActivated">
+		<action class="Delay">
+			<property name="phase" value="2" />	
+			<property name="time" value="30" />
+		</action>
+		
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_ND_Player_ZombieSpawnerT6_Buff" />
+			<property name="phase" value="3"/>				
+		</action>
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_ND_T6_SpawnZombies"> 
+		<decision class="If">
+			<requirement class="InPOI"/>
+			<!--<requirement class="InQuestZone"/>-->
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_ND_Player_ZombieSpawnerT6_Buff" />
+			</requirement>
+			
+			<action class="SpawnEntity">				    
+				<property name="entity_group" value="SleeperGSList" />
+				<property name="spawn_count" value="1"  />
+				<property name="add_buffs" value="ZombieINC_ND_EnemyDotBuff"/>
+				<property name="spawn_type" value="WanderingHorde" />
+				<!--<property name="max_distance" value="45"  />
+				<property name="min_distance" value="30"  />-->
+				<property name="air_spawn" value="false" />
+				<property name="phase" value="1" />			
+			</action>
+			<action class="SpawnEntity">				    
+				<property name="entity_group" value="SleeperGSList" />
+				<property name="spawn_count" value="1"  />
+				<property name="add_buffs" value="ZombieINC_ND_EnemyDotBuff"/>
+				<property name="spawn_type" value="WanderingHorde" />
+				<!--<property name="max_distance" value="45"  />
+				<property name="min_distance" value="30"  />-->
+				<property name="air_spawn" value="false" />
+				<property name="phase" value="1" />			
+			</action>
+			<action class="SpawnEntity">				    
+				<property name="entity_group" value="SleeperGSList" />
+				<property name="spawn_count" value="1"  />
+				<property name="add_buffs" value="ZombieINC_ND_EnemyDotBuff"/>
+				<property name="spawn_type" value="WanderingHorde" />
+				<!--<property name="max_distance" value="45"  />
+				<property name="min_distance" value="30"  />-->
+				<property name="air_spawn" value="false" />
+				<property name="phase" value="1" />			
+			</action>
+			<action class="SpawnEntity">				    
+				<property name="entity_group" value="SleeperGSList" />
+				<property name="spawn_count" value="1"  />
+				<property name="add_buffs" value="ZombieINC_ND_EnemyDotBuff"/>
+				<property name="spawn_type" value="WanderingHorde" />
+				<!--<property name="max_distance" value="45"  />
+				<property name="min_distance" value="30"  />-->
+				<property name="air_spawn" value="false" />
+				<property name="phase" value="1" />			
+			</action>
+			
+			
+		</decision>
+		
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_ND_T6_SpawnObjective_Action"> 
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_Objective_ND"  />
+			<property name="add_buffs" value="ZombieINC_ND_Objective_Buff,ZombieINC_ND_Objective_VisualSelectorSmall_Buff" />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="6" />
+			<property name="min_distance" value="1" />
+			<property name="air_spawn" value="true" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_ND_IdealLocationBeltTooltip"  />
+			<property name="phase" value="2"/>
+		</action>		
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_ND_IdealLocationMessage"  />
+			<property name="phase" value="2"/>	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_T6_SpawnObjective"> 
+		
+			<action class="CallGameEvent">
+				<property name="game_events" value="ZombieINC_ND_T6_SpawnObjective_Action" />
+				<property name="phase" value="1"/>				
+			</action>
+			<action class="RemoveBuff">
+				<property name="buff_name" value="ZombieINC_ND_PlayerSearchingSpot_CheckIsIndoors_T6" />
+				<property name="phase" value="2"/>				
+			</action>
+		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_AddItemToPlayer_T6">
+		<property name="action_type" value="Game" />
+		<property name="target_type" value="Entity" />
+		
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_ND_FindGoodSpotMessage"  />
+			<property name="phase" value="0"/>	
+		</action>
+		<!--<action class="AddItems">
+			<property name="added_items" value="ZombieINC_thrownTimedCharge_Medium_ND" />
+			<property name="added_item_counts" value="6" />
+			<property name="phase" value="1"/>
+		</action>-->
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="2" />
+			<property name="entity_tags" value="ZINCTruckQuestND" />
+			<property name="group_name" value="vehicle" />
+			<property name="max_distance" value="60" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_ND_JeepAttachPrefabDisableAll_Buff" />
+			<property name="target_group" value="vehicle" />
+			<property name="phase" value="3"/>				
+		</action>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_ND_Bomb_NPC_T5"  />
+			<property name="spawn_count" value="2"  />
+			<property name="max_distance" value="8" />
+			<property name="min_distance" value="5" />
+			<property name="air_spawn" value="true" />
+			<property name="phase" value="4" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_ND_PlayerSearchingSpot_T6" />
+			<property name="phase" value="4"/>				
+		</action>
+		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_SpawnTruck_T6">					  
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="1" />
+			<property name="entity_tags" value="trader" />
+			<property name="group_name" value="trader" />
+			<property name="max_distance" value="5" />
+		</action>
+		 <action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_ND_T6_Trader_SpawnVehicle_Buff" />
+			<property name="check_already_exists" value="false" />
+			<property name="target_group" value="trader" />
+			<property name="phase" value="2"/>				
+		</action>
+		 <action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_ND_MoveDetector_T6" />
+			<property name="check_already_exists" value="false" />
+			<property name="phase" value="2"/>				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_SpawnTruck_T6_Event">
+		<property name="refund_inactivity" value="false"/>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_vehicle4x4TruckBomber" />
+			<!--<property name="add_buffs" value="ZombieINC_ND_JeepAttachPrefabDisableOneSide_Buff" />-->
+			<property name="spawn_count" value="1"  />
+			<property name="safe_spawn" value="true"  />
+			<property name="max_distance" value="30" />		
+			<property name="min_distance" value="1" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="phase" value="1" />		
+		</action>
+	</action_sequence>
+		
+	<action_sequence name="ZombieINC_ND_T6_AddMinibikeReturnedBuff">
+		<property name="refund_inactivity" value="false"/>
+		<wait class="Until">
+			<property name="phase" value="0" />
+			<property name="phase_on_complete" value="1" />
+			<requirement class="InPOI"/>
+			<requirement class="InSafeZone"/>
+			<requirement class="NearbyEntities">
+				<property name="entity_tags" value="ZINCTruckQuestND" />
+				<property name="max_distance" value="15" />
+				<property name="target_is_owner" value="false" />
+			</requirement>
+		</wait>
+		<wait class="Until">
+			<property name="phase" value="0" />
+			<property name="phase_on_complete" value="2" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_ND_MinibikeReturned_T6"/>
+			</requirement>
+		</wait>
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="player" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_ND_MinibikeReturned_T6" />
+			<property name="target_group" value="player" />
+			<property name="check_already_exists" value="false" />
+			<property name="phase" value="1"/>				
+		</action>
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_ND_MinibikeReturnedChecker_T6" />
+			<property name="target_group" value="player" />
+			<property name="phase" value="2"/>				
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_T6_GameEventObjective2">
+		<property name="refund_inactivity" value="false"/>
+		<action class="AddPartyToGroup">
+			<property name="phase" value="1" />
+			<property name="group_name" value="player" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_ND_MinibikeReturnedChecker_T6" />
+			<property name="target_group" value="player" />
+			<property name="check_already_exists" value="false" />
+			<property name="phase" value="2"/>				
+		</action>
+		<wait class="Until">
+			<property name="phase" value="3" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_ND_MinibikeReturned_T6"/>
+			</requirement>
+		</wait>
+		
+		
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_ND_MinibikeReturned_T6" />
+			<property name="target_group" value="player" />
+			<property name="phase" value="4"/>				
+		</action>
+	</action_sequence>
+<!--Nest Demolition T6-->
+<!--##General Gameenvets-->
+<!--##Nest Demolition Remove Vehicle and Bomb Event-->
+
+	<action_sequence name="ZombieINC_ND_VehicleEraseItSelf_AfterWait_120m">
+		<!--<property name="refund_inactivity" value="false" />					
+			<wait class="Until">
+				<property name="phase" value="1" />
+				<requirement class="NearbyEntities">
+					<property name="entity_tags" value="player" />
+					<property name="max_distance" value="10" />
+				</requirement>			
+			</wait>
+			<wait class="While">
+				<property name="phase" value="2" />
+				<requirement class="NearbyEntities">
+					<property name="entity_tags" value="player" />
+					<property name="max_distance" value="120" />
+				</requirement>			
+			</wait>
+			<action class="Kill">
+				<property name="phase" value="3" />
+			</action>-->
+		</action_sequence>
+		<action_sequence name="ZombieINC_ND_BombOnBackJumpRemover_Event">
+			<action class="RemoveBuff">
+				<property name="buff_name" value="ZombieINC_ND_PlayerAttachBombOnBackPrefab_Buff" />
+				<property name="phase" value="1"/>				
+			</action>
+			 
+			<action class="SpawnEntity">
+				<property name="entity_names" value="ZombieINC_ND_Bomb_NPC_T5"  />
+				<property name="spawn_count" value="1"  />
+				<property name="max_distance" value="3" />
+				<property name="min_distance" value="1" />
+				<property name="air_spawn" value="true" />
+				<property name="phase" value="2" />
+			</action>
+		</action_sequence>
+		<action_sequence name="ZombieINC_ND_BombOnBackExplode_Event">
+			<action class="ExplodeTarget">
+				<property name="phase" value="1" />
+				<property name="blast_power" value="255" />
+				<property name="block_damage" value="10000" />
+				<property name="block_radius" value="10" />
+				<property name="entity_damage" value="1000" />
+				<property name="entity_radius" value="10" />
+			</action>
+		</action_sequence>
+<!--Nest Demolition Remove Vehicle Event-->
+<!--##Nest Demolition Cheat Protector Event-->
+
+	<action_sequence name="ZombieINC_ND_CheatingProtector_T3">
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_ND_CheckVehicleInventory_T3" />			
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_FailQuestCheating_T3">
+		<action class="FailQuest">
+			<property name="quest" value="zincnestdemolition3" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_ND_FailQuestCheating_BeltTooltip"  />
+			<property name="phase" value="1" />
+		</action>		
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_ND_FailQuestCheating_ChatMessage"  />
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_CheatingProtector_T4">
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_ND_CheckVehicleInventory_T4" />			
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_FailQuestCheating_T4">
+		<action class="FailQuest">
+			<property name="quest" value="zincnestdemolition4" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_ND_FailQuestCheating_BeltTooltip"  />
+			<property name="phase" value="1" />
+		</action>		
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_ND_FailQuestCheating_ChatMessage"  />
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_CheatingProtector_T5">
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_ND_CheckVehicleInventory_T5" />			
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_FailQuestCheating_T5">
+		<action class="FailQuest">
+			<property name="quest" value="zincnestdemolition5" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_ND_FailQuestCheating_BeltTooltip"  />
+			<property name="phase" value="1" />
+		</action>		
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_ND_FailQuestCheating_ChatMessage"  />
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_CheatingProtector_T6">
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_ND_CheckVehicleInventory_T6" />			
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_FailQuestCheating_T6">
+		<action class="FailQuest">
+			<property name="quest" value="zincnestdemolition6" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_ND_FailQuestCheating_BeltTooltip"  />
+			<property name="phase" value="1" />
+		</action>		
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_ND_FailQuestCheating_ChatMessage"  />
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_FailQuestCheatingRemove">
+		<action class="RemoveItems">
+			<property name="phase" value="1" />
+			<property name="items_location" value="Toolbelt,Backpack,Equipment,Held" />
+			<property name="items_tags" value="ZombieINCVehicleRemover" />
+			<property name="count" value="1" />
+		</action>
+	</action_sequence>
+<!--Nest Demolition Cheat Protector Event-->
+<!--##Nest Demolition Fail Quest Event-->
+	<action_sequence name="ZombieINC_ND_RemoveBuffsWhenFail_T1">	
+		<property name="refund_inactivity" value="false" />
+		<action class="Delay">			
+			<property name="phase" value="0" />		
+			<property name="time" value="10" />
+		</action>
+		<wait class="While">
+			<property name="phase" value="1" />
+			<property name="condition_type" value="Any" />
+			<requirement class="OnQuest">
+				<property name="quest" value="zincnestdemolition1" />
+			</requirement>
+		</wait>
+		<action class="RemoveBuffsByTag">
+			<property name="buff_tag" value="ZINC_ND_BUFFS" />	
+			<property name="phase" value="2" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_RemoveBuffsWhenFail_T2">	
+		<property name="refund_inactivity" value="false" />
+		<action class="Delay">			
+			<property name="phase" value="0" />		
+			<property name="time" value="10" />
+		</action>
+		<wait class="While">
+			<property name="phase" value="1" />
+			<property name="condition_type" value="Any" />
+			<requirement class="OnQuest">
+				<property name="quest" value="zincnestdemolition2" />
+			</requirement>
+		</wait>
+		<action class="RemoveBuffsByTag">
+			<property name="buff_tag" value="ZINC_ND_BUFFS" />	
+			<property name="phase" value="2" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_RemoveBuffsWhenFail_T3">	
+		<property name="refund_inactivity" value="false" />
+		<action class="Delay">			
+			<property name="phase" value="0" />		
+			<property name="time" value="10" />
+		</action>
+		<wait class="While">
+			<property name="phase" value="1" />
+			<property name="condition_type" value="Any" />
+			<requirement class="OnQuest">
+				<property name="quest" value="zincnestdemolition3" />
+			</requirement>
+		</wait>
+		<action class="RemoveBuffsByTag">
+			<property name="buff_tag" value="ZINC_ND_BUFFS" />	
+			<property name="phase" value="2" />
+		</action>
+	</action_sequence>	
+	<action_sequence name="ZombieINC_ND_RemoveBuffsWhenFail_T4">	
+		<property name="refund_inactivity" value="false" />
+		<action class="Delay">			
+			<property name="phase" value="0" />		
+			<property name="time" value="10" />
+		</action>
+		<wait class="While">
+			<property name="phase" value="1" />
+			<property name="condition_type" value="Any" />
+			<requirement class="OnQuest">
+				<property name="quest" value="zincnestdemolition4" />
+			</requirement>
+		</wait>
+		<action class="RemoveBuffsByTag">
+			<property name="buff_tag" value="ZINC_ND_BUFFS" />	
+			<property name="phase" value="2" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_RemoveBuffsWhenFail_T5">	
+		<property name="refund_inactivity" value="false" />
+		<action class="Delay">			
+			<property name="phase" value="0" />		
+			<property name="time" value="10" />
+		</action>
+		<wait class="While">
+			<property name="phase" value="1" />
+			<property name="condition_type" value="Any" />
+			<requirement class="OnQuest">
+				<property name="quest" value="zincnestdemolition5" />
+			</requirement>
+		</wait>
+		<action class="RemoveBuffsByTag">
+			<property name="buff_tag" value="ZINC_ND_BUFFS" />	
+			<property name="phase" value="2" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_RemoveBuffsWhenFail_T6">	
+		<property name="refund_inactivity" value="false" />
+		<action class="Delay">			
+			<property name="phase" value="0" />		
+			<property name="time" value="10" />
+		</action>
+		<wait class="While">
+			<property name="phase" value="1" />
+			<property name="condition_type" value="Any" />
+			<requirement class="OnQuest">
+				<property name="quest" value="zincnestdemolition6" />
+			</requirement>
+		</wait>
+		<action class="RemoveBuffsByTag">
+			<property name="buff_tag" value="ZINC_ND_BUFFS" />	
+			<property name="phase" value="2" />
+		</action>
+	</action_sequence>	
+		<!--Nest Demolition Fail Quest Event-->
+<!--#General Gameenvets Fail Quest-->
+	<action_sequence name="ZombieINC_ND_Activate_Anchor_T1">
+			<action class="SpawnEntity">			
+				<property name="entity_names" value="ZombieINC_ND_RallyPointHuntPlaceHolder" />
+		<!--<property name="add_buffs" value="ZombieINC_ND_EnemyDotBuff"/>-->
+				<property name="spawn_count" value="1"  />
+				<property name="max_distance" value="5" />
+				<property name="min_distance" value="2" />
+				<property name="air_spawn" value="true" />	
+				<property name="phase" value="1"/>	
+			</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_FailQuest_T1">
+		<action class="FailQuest">
+			<property name="quest" value="zincnestdemolition1" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />
+		</action>
+		
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_ND_FailQuest_BeltTooltip"  />
+			<property name="phase" value="1" />
+		</action>		
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_ND_FailQuest_ChatMessage"  />
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_Activate_Anchor_T2">
+			<action class="SpawnEntity">			
+				<property name="entity_names" value="ZombieINC_ND_RallyPointHuntPlaceHolder" />
+				<property name="spawn_count" value="1"  />
+				<property name="max_distance" value="5" />
+				<property name="min_distance" value="2" />
+				<property name="air_spawn" value="true" />	
+				<property name="phase" value="1"/>	
+			</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_FailQuest_T2">
+		<action class="FailQuest">
+			<property name="quest" value="zincnestdemolition2" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />
+		</action>
+		
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_ND_FailQuest_BeltTooltip"  />
+			<property name="phase" value="1" />
+		</action>		
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_ND_FailQuest_ChatMessage"  />
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_Activate_Anchor_T3">
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="NearbyVehicle" />
+			<property name="entity_tags" value="ZINCMinibikeQuestND" />
+			<property name="max_distance" value="50" />
+		</action>
+		 <decision class="If">
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="NearbyVehicle"/>
+				<property name="operation" value="GTE"/> 
+				<property name="count" value="1"/>
+			</requirement>
+			<action class="SpawnEntity">			
+				<property name="entity_names" value="ZombieINC_ND_RallyPointHuntPlaceHolder" />
+		<!--	<property name="add_buffs" value="ZombieINC_ND_EnemyDotBuff"/>-->
+				<property name="spawn_count" value="1"  />
+				<property name="max_distance" value="5" />
+				<property name="min_distance" value="2" />
+				<property name="air_spawn" value="true" />	
+				<property name="phase" value="1"/>	
+			</action>
+			
+			<action class="CallGameEvent">
+				<property name="game_events" value="ZombieINC_ND_AddItemToPlayer_T3" />
+				<property name="phase" value="2"/>				
+			</action>
+		</decision>
+		 <decision class="If">
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="NearbyVehicle"/>
+				<property name="operation" value="Equals"/> 
+				<property name="count" value="0"/>
+			</requirement>
+			<action class="AddBuff">
+				<property name="buff_name" value="ZombieINC_ND_FailQuestCloseParty_T3" />
+				<property name="phase" value="1" />
+				<property name="check_already_exists" value="false" />
+			</action>
+		 </decision>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_FailQuest_T3">
+		<action class="FailQuest">
+			<property name="quest" value="zincnestdemolition3" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />
+		</action>
+		
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_ND_FailQuest_BeltTooltip"  />
+			<property name="phase" value="1" />
+		</action>		
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_ND_FailQuest_ChatMessage"  />
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_Activate_Anchor_T4">
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="NearbyVehicle" />
+			<property name="entity_tags" value="ZINCMinibikeQuestND" />
+			<property name="max_distance" value="50" />
+		</action>
+		 <decision class="If">
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="NearbyVehicle"/>
+				<property name="operation" value="GTE"/> 
+				<property name="count" value="1"/>
+			</requirement>
+			<action class="SpawnEntity">			
+				<property name="entity_names" value="ZombieINC_ND_RallyPointHuntPlaceHolder" />
+		<!--	<property name="add_buffs" value="ZombieINC_ND_EnemyDotBuff"/>-->
+				<property name="spawn_count" value="1"  />
+				<property name="max_distance" value="5" />
+				<property name="min_distance" value="2" />
+				<property name="air_spawn" value="true" />	
+				<property name="phase" value="1"/>	
+			</action>
+			
+			<action class="CallGameEvent">
+				<property name="game_events" value="ZombieINC_ND_AddItemToPlayer_T4" />
+				<property name="phase" value="2"/>				
+			</action>
+		</decision>
+		 <decision class="If">
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="NearbyVehicle"/>
+				<property name="operation" value="Equals"/> 
+				<property name="count" value="0"/>
+			</requirement>
+			<action class="AddBuff">
+				<property name="buff_name" value="ZombieINC_ND_FailQuestCloseParty_T4" />
+				<property name="phase" value="1" />
+				<property name="check_already_exists" value="false" />
+			</action>
+		 </decision>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_FailQuest_T4">
+		<action class="FailQuest">
+			<property name="quest" value="zincnestdemolition4" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />
+		</action>
+		
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_ND_FailQuest_BeltTooltip"  />
+			<property name="phase" value="1" />
+		</action>		
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_ND_FailQuest_ChatMessage"  />
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_Activate_Anchor_T5">
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="NearbyVehicle" />
+			<property name="entity_tags" value="ZINCTruckQuestND" />
+			<property name="max_distance" value="50" />
+		</action>
+		 <decision class="If">
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="NearbyVehicle"/>
+				<property name="operation" value="GTE"/> 
+				<property name="count" value="1"/>
+			</requirement>
+			<action class="SpawnEntity">			
+				<property name="entity_names" value="ZombieINC_ND_RallyPointHuntPlaceHolder" />
+		<!--	<property name="add_buffs" value="ZombieINC_ND_EnemyDotBuff"/>-->
+				<property name="spawn_count" value="1"  />
+				<property name="max_distance" value="5" />
+				<property name="min_distance" value="2" />
+				<property name="air_spawn" value="true" />	
+				<property name="phase" value="1"/>	
+			</action>
+			
+			<action class="CallGameEvent">
+				<property name="game_events" value="ZombieINC_ND_AddItemToPlayer_T5" />
+				<property name="phase" value="2"/>				
+			</action>
+		</decision>
+		 <decision class="If">
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="NearbyVehicle"/>
+				<property name="operation" value="Equals"/> 
+				<property name="count" value="0"/>
+			</requirement>
+			<action class="AddBuff">
+				<property name="buff_name" value="ZombieINC_ND_FailQuestCloseParty_T5" />
+				<property name="phase" value="1" />
+				<property name="check_already_exists" value="false" />
+			</action>
+		 </decision>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_FailQuest_T5">
+		<action class="FailQuest">
+			<property name="quest" value="zincnestdemolition5" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />
+		</action>
+		
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_ND_FailQuest_BeltTooltip"  />
+			<property name="phase" value="1" />
+		</action>		
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_ND_FailQuest_ChatMessage"  />
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_Activate_Anchor_T6">
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="NearbyVehicle" />
+			<property name="entity_tags" value="ZINCTruckQuestND" />
+			<property name="max_distance" value="50" />
+		</action>
+		 <decision class="If">
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="NearbyVehicle"/>
+				<property name="operation" value="GTE"/> 
+				<property name="count" value="1"/>
+			</requirement>
+			<action class="SpawnEntity">			
+				<property name="entity_names" value="ZombieINC_ND_RallyPointHuntPlaceHolder" />
+		<!--	<property name="add_buffs" value="ZombieINC_ND_EnemyDotBuff"/>-->
+				<property name="spawn_count" value="1"  />
+				<property name="max_distance" value="5" />
+				<property name="min_distance" value="2" />
+				<property name="air_spawn" value="true" />	
+				<property name="phase" value="1"/>	
+			</action>
+			
+			<action class="CallGameEvent">
+				<property name="game_events" value="ZombieINC_ND_AddItemToPlayer_T6" />
+				<property name="phase" value="2"/>				
+			</action>
+		</decision>
+		 <decision class="If">
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="NearbyVehicle"/>
+				<property name="operation" value="Equals"/> 
+				<property name="count" value="0"/>
+			</requirement>
+			<action class="AddBuff">
+				<property name="buff_name" value="ZombieINC_ND_FailQuestCloseParty_T6" />
+				<property name="phase" value="1" />
+				<property name="check_already_exists" value="false" />
+			</action>
+		 </decision>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_FailQuest_T6">
+		<action class="FailQuest">
+			<property name="quest" value="zincnestdemolition6" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />
+		</action>
+		
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_ND_FailQuest_BeltTooltip"  />
+			<property name="phase" value="1" />
+		</action>		
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_ND_FailQuest_ChatMessage"  />
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>
+<!--General Gameenvets-->
+<action_sequence name="ZombieINC_ND_AddOneBombCounter">
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="player" />
+		</action>
+		
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />	
+			<property name="cvar" value="ZINCQuestNDBombCount" />
+			<property name="target_group" value="player" />
+			<property name="operation" value="add" />
+			<property name="value" value="1" />
+		</action>
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />	
+			<property name="cvar" value=".ZINCQuestNDBombCountDisplay" />
+			<property name="target_group" value="player" />
+			<property name="operation" value="subtract" />
+			<property name="value" value="1" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ND_ResetBombCounter">	
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />	
+			<property name="cvar" value="ZINCQuestNDBombCount" />
+			<property name="operation" value="Set" />
+			<property name="value" value="0" />
+		</action>
+		<action class="ModifyCVar">
+			<property name="phase" value="2" />		
+			<property name="cvar" value="ZINCQuestNDDelivery" />
+			<property name="operation" value="Set" />
+			<property name="value" value="0" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Objective_KillSelf">
+		<action class="Kill"/>		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ND_PlayerRemoveBomb">
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="Bomb" />
+			<property name="group_name" value="ObjectiveGroup" />
+			<property name="max_distance" value="5" />
+		</action>
+		
+		<action class="RemoveEntities">
+			<property name="phase" value="1" />
+			<property name="target_group" value="ObjectiveGroup" />
+		</action>	
+	</action_sequence>
+<!--General Gameenvets-->
+<!--Nest Demolition-->
+	
+	<action_sequence name="ZombieINC_DroneRadar_Tier6_Event">
+		<!--<requirement class="NearbyEntities">
+			<property name="entity_tags" value="droneRadar" />
+			<property name="max_distance" value="20" />
+			<property name="target_is_owner" value="true" />
+		</requirement>-->
+		<action class="Delay">
+			<property name="time" value="3"/>
+			<property name="phase" value="0" />
+		</action>
+		<action class="AddChatMessage">							
+			<property name="text" value="Phase 1"  />
+			<property name="phase" value="1"/>	
+		</action>
+		<action class="AddClosestEntityToGroup">
+			<property name="phase" value="1" />
+			<property name="group_name" value="drone" />
+			<property name="entity_tags" value="droneRadar" />
+			<property name="max_distance" value="20" />
+			<property name="target_is_owner" value="true" />
+		</action>
+		<action class="AddChatMessage">							
+			<property name="text" value="Phase 2"  />
+			<property name="phase" value="2"/>	
+		</action>
+		<action class="ModifyCVar">
+			<property name="phase" value="2" />
+			<property name="cvar" value="ZINCDroneTier" />
+			<property name="operation" value="Set" />
+			<property name="value" value="6" />
+			<property name="target_group" value="drone"/>
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_ND_Objective_SmallPile_D_Buff" />
+			<property name="phase" value="2"/>				
+			<property name="check_already_exists" value="false"/>				
+			<property name="target_group" value="drone"/>			
+		</action>
+		<action class="AddChatMessage">							
+			<property name="text" value="Phase 3"  />
+			<property name="phase" value="3"/>	
+		</action>
+		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_NestDemolition_ImADrone_T6_GameEvent">
+		<wait class="Until">
+			<property name="phase" value="0" />
+			<requirement class="NearbyEntities">
+				<property name="entity_tags" value="drone" />
+				<property name="max_distance" value="20" />
+				<property name="target_is_owner" value="true" />
+			</requirement>
+		</wait>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="1" />
+			<property name="group_name" value="drone" />
+			<property name="entity_tags" value="drone" />
+			<property name="max_distance" value="10" />
+			<property name="target_is_owner" value="true" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_NestDemolition_ImADrone_T6" />
+			<property name="phase" value="2" />
+			<property name="check_already_exists" value="false" />
+			<property name="target_group" value="drone" />
+		</action>
+	</action_sequence>
+	
+	</append>
+
+</Config>

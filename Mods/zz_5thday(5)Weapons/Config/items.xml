@@ -1,13 +1,10 @@
 <snj>
 
 	<set xpath="/items/item[starts-with(@name,'ammo9mm')]/property[@name='Group']/@value">Ammo_Firearm,Ammo_Pistol</set>		
-	<set xpath="/items/item[starts-with(@name,'ammo9mm')]/property[@name='Stacknumber']/@value">600</set>	
-	<set xpath="/items/item[starts-with(@name,'ammo762')]/property[@name='Stacknumber']/@value">600</set>		
+		
 	
 	<set xpath="/items/item[starts-with(@name,'ammoShotgun')]/property[@name='Group']/@value">Ammo_Firearm,Ammo_Shotgun</set>
-	<set xpath="/items/item[starts-with(@name,'ammoShotgun')]/property[@name='Stacknumber']/@value">600</set>
 	
-	<set xpath="/items/item[starts-with(@name,'resourceGunPowder')]/property[@name='Stacknumber']/@value">6000</set>
 	
 	<set xpath="/items/item[starts-with(@name,'ammo762mmBulletBall')]/effect_group/passive_effect[@name='EntityDamage']/@value">96</set>
 	<set xpath="/items/item[starts-with(@name,'ammo762mmBulletHP')]/effect_group/passive_effect[@name='EntityDamage']/@value">101</set>
@@ -6071,6 +6068,13 @@
 		<passive_effect name="SpreadMultiplierRunning" operation="perc_add" value=".3" tags="perkHOHShotguns"/>
 		<passive_effect name="DamageModifier" operation="perc_add" value="-.8" tags="earth"/>
 	</effect_group>
+	<property class="Action0">
+			<property name="Class" value="OpenBundle"/>
+			<property name="Delay" value="0"/>
+			<property name="Use_time" value="0"/>
+			<property name="Create_item" value="resourceBuckshot,resourceSmokelessPowder"/>
+			<property name="Create_item_count" value="1,1"/>
+		</property>
 </item>
 
 <item name="ammo410Slug">
@@ -6088,7 +6092,7 @@
 	<property name="SoundPickup" value="shotgunshells_grab"/>
 	<property name="SoundPlace" value="shotgunshells_place"/>
 	<effect_group name="ammo410Slug" tiered="false">
-		<passive_effect name="EntityDamage" operation="base_set" value="45" tags="perkHOHShotguns"/>
+		<passive_effect name="EntityDamage" operation="base_set" value="32" tags="perkHOHShotguns"/>
 		<passive_effect name="BlockDamage" operation="base_set" value="50" tags="perkHOHShotguns"/>
 		<passive_effect name="RoundRayCount" operation="base_set" value="1" tags="perkHOHShotguns"/>
 		<passive_effect name="MaxRange" operation="base_set" value="18" tags="perkHOHShotguns"/>
@@ -6117,6 +6121,13 @@
 		<passive_effect name="TargetArmor" operation="perc_add" value="-.3" tags="perkHOHShotguns">
 			<requirement name="ProgressionLevel" progression_name="perkHOHShotguns" operation="GTE" value="150"/></passive_effect>
 	</effect_group>
+		<property class="Action0">
+			<property name="Class" value="OpenBundle"/>
+			<property name="Delay" value="0"/>
+			<property name="Use_time" value="0"/>
+			<property name="Create_item" value="resourceBuckshot,resourceSmokelessPowder"/>
+			<property name="Create_item_count" value="1,1"/>
+		</property>
 </item>
 	<item name="ammo2229G">
 		 <property name="Tags" value="ammo,22r" />
@@ -6167,6 +6178,13 @@
     <property name="ItemWeight" value="10">
       <!--Element appended by: "HOHCollectionLearnByDoing"-->
     </property>
+		<property class="Action0">
+			<property name="Class" value="OpenBundle"/>
+			<property name="Delay" value="0"/>
+			<property name="Use_time" value="0"/>
+			<property name="Create_item" value="resourceSmokelessPowder"/>
+			<property name="Create_item_count" value="1"/>
+		</property>
 			
 		
  	</item>
@@ -6194,6 +6212,13 @@
 		<passive_effect name="DamageModifier" operation="perc_add" value="-.8" tags="earth" />
 		<passive_effect name="DamageModifier" operation="perc_add" value="2" tags="wood" />
 		</effect_group>
+		<property class="Action0">
+			<property name="Class" value="OpenBundle"/>
+			<property name="Delay" value="0"/>
+			<property name="Use_time" value="0"/>
+			<property name="Create_item" value="resourceSmokelessPowder"/>
+			<property name="Create_item_count" value="1"/>
+		</property>
  	</item>
 		
 	<item name="ammo38">
@@ -6309,7 +6334,8 @@
 		<property name="Repair_amount" value="400"/>
 		<property name="Upgrade_hit_offset" value="-2"/>
 		<property name="Sound_start" value="repair_block"/>
-		<property name="Allowed_upgrade_items" value="resourceWood,resourceClayLump,resourceSnowBall,resourceScrapIron,resourceForgedIron,resourceForgedSteel,resourceConcreteMix,resourceCobblestones,ironDoorBlockVariantHelper,ironDoorDoubleBlockVariantHelper,vaultDoor01,vaultDoor01Double,ironHatchBlockVariantHelper,vaultHatch01,cellarDoorDoubleIron,cellarDoorDoubleSteel,shuttersIronBlockVariantHelper,shuttersSteelBlockVariantHelper,resourceYuccaFibers,resourceCloth,resourceScrapPolymers,resourceNail,glassBulletproofBlockVariantHelper,resourceWoodandNails"/>		<property name="UsePowerAttackAnimation" value="false"/>
+		<property name="Allowed_upgrade_items" value="resourceWood,resourceClayLump,resourceSnowBall,resourceScrapIron,resourceForgedIron,resourceForgedSteel,resourceConcreteMix,resourceCobblestones,ironDoorBlockVariantHelper,ironDoorDoubleBlockVariantHelper,vaultDoor01,vaultDoor01Double,ironHatchBlockVariantHelper,vaultHatch01,cellarDoorDoubleIron,cellarDoorDoubleSteel,shuttersIronBlockVariantHelper,shuttersSteelBlockVariantHelper,resourceYuccaFibers,resourceCloth,resourceScrapPolymers,resourceNail,glassBulletproofBlockVariantHelper,resourceWoodandNails"/>
+		<property name="UsePowerAttackAnimation" value="false"/>
 	</property>
 	<effect_group name="meleeToolRepairT1ClawHammer">
 		<passive_effect name="AttacksPerMinute" operation="base_set" value="70" tags="perkMiner69r"/>
@@ -6466,7 +6492,7 @@
 	<property name="Meshfile" value="#@modfolder:Assets/ElectricKnuckle.unity3d?ElectricKnuckleRight.prefab"/>	
 	<property name="HoldType" value="61"/>
 	<property name="DescriptionKey" value="meleeWpnTier4ElectricKnucklesDesc"/>
-	<property name="RepairTools" value="repairKitTools"/>
+	<property name="RepairTools" value="repairKitWeapon"/>
 	<property name="DegradationBreaksAfter" value="false"/>
 	<property name="SoundJammed" value="ItemNeedsRepair"/>
 	<property name="SoundDestroy" value="wooddestroy1"/>
@@ -6613,7 +6639,7 @@
 	<property name="Meshfile" value="#@modfolder:Assets/HOH_Melee_Weapons.unity3d?Ulak_Right.prefab"/>	
 	<property name="HoldType" value="61"/>
 	<property name="DescriptionKey" value="meleeWpnTier4ElectricKnucklesDesc"/>
-	<property name="RepairTools" value="repairKitTools"/>
+	<property name="RepairTools" value="repairKitWeapon"/>
 	<property name="DegradationBreaksAfter" value="false"/>
 	<property name="SoundJammed" value="ItemNeedsRepair"/>
 	<property name="SoundDestroy" value="wooddestroy1"/>
@@ -7645,7 +7671,7 @@
 		<passive_effect name="WeaponHandling" operation="base_set" value="0.7" tags="perkHOHRifles"/>
 		<passive_effect name="DegradationMax" operation="base_set" value="600" tier="1,6" tags="perkHOHRifles"/>
 		<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="perkHOHRifles"/>
-		<triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="5d_srTrackerActivate"/>
+			<triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="5d_srTrackerActivate"/>
 			<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="5d_srTrackerActivate"/>
 	</effect_group>
 			
@@ -8003,7 +8029,7 @@
 		<property name="ShowQuality" value="true"/>
 		<property class="Action0">
 		<property name="Class" value="Ranged"/>
-		<property name="Magazine_items" value="ammo9mmBulletBall,ammo9mmBulletHP,ammo9mmBulletAP"/>
+		<property name="Magazine_items" value="ammo9mmBulletBall,ammo9mmBulletHP,ammo9mmBulletAP"/><!--,ammo9mmShock,ammo9mmRadiation,ammo9mmBallistic-->
 		<property name="Sound_start" value="Pistol_Fire"/>
 		<property name="Sound_loop" value="Pistol_Fire"/>
 		<property name="Sound_end" value=""/>
@@ -8838,23 +8864,27 @@
 			<triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="5thdayAR15killTrackerActivate"/>
 			<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="5thdayAR15killTrackerActivate"/>
 			<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="5thdayAR15KillCounter" operation="add" value="1"/>
-		</append>
+	</append>
+	<append xpath="//item[@name='5thdayAR15_556']/property[@name='Tags']/@value">,tacticalar,PerkHOHMachineGuns</append>
+	<append xpath="//item[@name='5thdayAR15_556']/effect_group[@name='5thdayAR15']">
+			<triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="5thdayAR15556killTrackerActivate"/>
+			<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="5thdayAR15556killTrackerActivate"/>
+			
+	</append>
 
 
 
 	<append xpath="//item[@name='5thday_Scar_L']/effect_group[@name='5thday_SCAR_L']">
-			<triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="5thday_SCAR_TrackerActivate"/>
-			<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="5thday_SCAR_TrackerActivate"/>
-			
-		</append>
+			<triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="5thday_SCARL_TrackerActivate"/>
+			<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="5thday_SCARL_TrackerActivate"/>
+	</append>
 
 
 
 	<append xpath="//item[@name='5thday_Scar_H']/effect_group[@name='5thday_SCAR_H']">
-			<triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="5thday_SCAR_TrackerActivate"/>
-			<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="5thday_SCAR_TrackerActivate"/>
-			
-		</append>
+			<triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="5thday_SCARH_TrackerActivate"/>
+			<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="5thday_SCARH_TrackerActivate"/>
+	</append>
 
 
 
@@ -9013,10 +9043,10 @@
 
 <append xpath="//items/item[@name='gunRifleT2LeverActionRifle']//property[@name='Group']/@value">,RifleCraft</append>
 
-<set xpath="//item[@name='KillerBunnyElectricKnuckles']/property[@name='RepairTools']/@value">repairKitTools</set>
-<set xpath="//item[@name='RiddicUlak']/property[@name='RepairTools']/@value">repairKitTools</set>
-<set xpath="//item[@name='RiddicPickaxe']/property[@name='RepairTools']/@value">repairKitTools</set>
-<set xpath="//item[@name='RiddickDagger']/property[@name='RepairTools']/@value">repairKitTools</set>
+<set xpath="//item[@name='KillerBunnyElectricKnuckles']/property[@name='RepairTools']/@value">repairKitWeapon</set>
+<set xpath="//item[@name='RiddicUlak']/property[@name='RepairTools']/@value">repairKitWeapon</set>
+<set xpath="//item[@name='RiddicPickaxe']/property[@name='RepairTools']/@value">repairKitWeapon</set>
+<set xpath="//item[@name='RiddickDagger']/property[@name='RepairTools']/@value">repairKitWeapon</set>
 <set xpath="//item[@name='5thdayAR15']/property[@name='RepairTools']/@value">repairKitWeapon</set>
 
 <set xpath="//item[@name='5thday_Scar_H']/property[@name='RepairTools']/@value">repairKitWeapon</set>
@@ -9034,8 +9064,6 @@
 <set xpath="//item[@name='gunExplosivesT3RocketLauncher']/property[@name='RepairTools']/@value">repairKitWeapon</set>
 <set xpath="//item[starts-with(@name,'gunBow')]/property[@name='RepairTools']/@value">repairKitWeapon</set>
 
-<set xpath="//item[@name='meleeWpnClubT0WoodenClub']/property[@name='RepairTools']/@value">resourceWood</set>
-<set xpath="//item[@name='meleeWpnClubT1BaseballBat']/property[@name='RepairTools']/@value">resourceWood</set>
 
 
 
@@ -9301,9 +9329,9 @@
 	<property name="DisplayType" value="meleeKnife"/>
 	<property name="HoldType" value="36"/>
 	<property name="Meshfile" value="#@modfolder:Assets/HOH_Melee_Tools.unity3d?tanto"/>
-	<property name="Material" value="Mmetal"/>
+	<property name="Material" value="MresourceBone"/>
 	<property name="ScrapTimeOverride" value="10.0"/>
-	<property name="RepairTools" value="repairKitTools"/>
+	<property name="RepairTools" value="resourceBone"/>
 	<property name="EconomicValue" value="200"/>
 	<property name="TraderStageTemplate" value="baseTier0"/><!-- meleeWpnBladeT0BoneKnife -->
 	<property name="SellableToTrader" value="false"/>
@@ -9814,7 +9842,7 @@
 		<property name="Class" value="Ranged"/>
 		<!-- <property name="Hitmask_override" value="Arrow"/> -->
 		<property name="Delay" value=".2"/> <!-- obsolete if rounds per minute exists -->
-		<property name="Magazine_items" value="ammoCrossbowBoltIron,ammoCrossbowBoltSteelAP"/>
+		<property name="Magazine_items" value="ammoCrossbowBoltIron,ammoCrossbowBoltSteelAP,ammoCrossbowBoltShock"/>
 		<!-- <property name="Reload_time" value="4"/> -->
 		<property name="Sound_start" value="crossbow2_fire"/>
 		<property name="Sound_repeat" value=""/>
@@ -9952,7 +9980,7 @@
 		<passive_effect name="BurstRoundCount" operation="base_set" value="1" tags="perkHOHPistols"/>
 		<passive_effect name="MagazineSize" operation="base_set" value="6" tags="perkHOHPistols"/>
 		<passive_effect name="ReloadSpeedMultiplier" operation="base_set" value="1" tags="perkHOHPistols"/> <!-- 4s -->
-		<passive_effect name="ModSlots" operation="base_set" value="1,1,2,2,3,3" tier="1,2,3,4,5,6"/>
+		<passive_effect name="ModSlots" operation="base_set" value="1,2,3,4,5,6" tier="1,2,3,4,5,6"/>
 		<passive_effect name="ModPowerBonus" operation="perc_add" value=".10" tags="EntityDamage,BlockDamage"/>
 		<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
 		<passive_effect name="EntityDamage" operation="base_add" value="-5" tags="perkHOHPistols"/> <!-- damage offset -->
@@ -10046,11 +10074,11 @@
 		<property name="zoomTriggerEffectTriggerPullXbox" value="PistolZoom"/>
 	</property>
 	<effect_group name="gunRifleT2LeverActionRifle">
-		<passive_effect name="MaxRange" operation="base_set" value="150" tags="perkHOHShotguns"/>
-		<passive_effect name="DamageFalloffRange" operation="base_set" value="69" tags="perkHOHShotguns"/>
+		<passive_effect name="MaxRange" operation="base_set" value="50" tags="perkHOHShotguns"/>
+		<passive_effect name="DamageFalloffRange" operation="base_set" value="40" tags="perkHOHShotguns"/>
 		<passive_effect name="DamageFalloffRange" operation="perc_add" value="-.1,.05" tier="1,6" tags="perkHOHShotguns"/> <!-- random effective rng -->
 		<passive_effect name="BlockDamage" operation="base_add" value="-1" tags="perkHOHShotguns"/> <!-- damage offset -->
-		<passive_effect name="RoundsPerMinute" operation="base_set" value="82" tags="perkHOHShotguns"/>
+		<passive_effect name="RoundsPerMinute" operation="base_set" value="60" tags="perkHOHShotguns"/>
 		<passive_effect name="BurstRoundCount" operation="base_set" value="1" tags="perkHOHShotguns"/>
 		<passive_effect name="MagazineSize" operation="base_set" value="5" tags="perkHOHShotguns"/>
 		<passive_effect name="ReloadSpeedMultiplier" operation="base_set" value="1" tags="perkHOHShotguns"/> <!-- 2.7s -->
@@ -10209,6 +10237,8 @@
 <append xpath="//item[@name='ammoShotgunSlug']/property[@name='Tags']/@value">,slug</append>
 <append xpath="//item[@name='ammoShotgunBreachingSlug']/property[@name='Tags']/@value">,breach</append>
 <append xpath="//item[@name='resourceGunLube'                            ]"><property name="ItemWeight" value="5"/></append>
+<append xpath="//item[contains(@name,'ammoPrimer')]"><property name="ItemWeight" value="6.25"/></append>
+<append xpath="//item[contains(@name,'Feather')]"><property name="ItemWeight" value="1.1"/></append>
 
 
 

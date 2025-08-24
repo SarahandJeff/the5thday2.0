@@ -1,0 +1,333 @@
+<Config>
+	
+	<conditional>
+		<if cond="mod_loaded('mateusjobsmain')">
+			<insertAfter xpath="/quests/quest[@id='tier2_buried_supplies']">
+				<quest id="ZombieINC_WorkAround_WeaponTestPart1_Reward">
+					<property name="name_key" value="ZombieINC_WorkAround_WeaponTestPart1_Reward_name" param1="name"/>
+					<property name="subtitle_key" value="ZombieINC_WorkAround_WeaponTestPart1_Reward_subtitle" param1="subtitle"/>
+					<property name="description_key" value="ZombieINC_WorkAround_WeaponTestPart1_Reward_desc" param1="description"/>
+					<property name="icon" value="ui_game_symbol_quest"/>
+					<property name="repeatable" value="true"/>
+					<property name="category_key" value="challenge"/>
+					<property name="add_to_tier_complete" value="false"/>
+					<property name="difficulty_tier" value="0" />
+					<property name="allow_remove" value="false" />
+					<property name="reward_choices_count" value="0"/>
+					<property name="extra_tags" value="ZINCWTP1" param1="tags"  />
+					<property name="completiontype" value="AutoComplete"/>
+				</quest>
+				
+				<!--###-->
+			</insertAfter>
+		</if>
+	</conditional>
+	<insertAfter xpath="/quests/quest[@id='tier2_buried_supplies']">
+	
+		<!--###Weapon Test Signature-->
+	
+	
+	<quest id="ZINCPistol"> 
+		    <property name="name_key" value="ZombieINC_challenge_Pistol_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_Pistol_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_Pistol_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="true"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="4"/>
+		    <property name="offer_key" value="ZombieINC_challenge_Pistol_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_Pistol_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_Pistol_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+		
+			<property name="shareable" value="false"/>
+			<property name="add_to_tier_complete" value="false" />
+			
+			<property name="spawn_multiplier" value="2" />
+			<property name="gamestage_mod" value=".6" />
+			<property name="gamestage_bonus" value="30" />
+			<property name="extra_tags" value="ZINCWTP1" />
+				
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_Pistol_completion"/>
+			
+			<action type="GameEvent" id="ZombieINC_InMissionWSPart1_AddBuffEvent" phase="1"/>
+			<requirement type="Quests.Requirements.Holding" id="ZombieINC_Mission_gunHandgunT0PipePistol" phase="1"/>
+			<requirement type="Quests.Requirements.Buff" id="ZombieINC_PlayerPistol_HiddenBuff" phase="1"/>
+			<objective type="EntityKill" phase="1">
+				<property name="objective_name_key" value="ZombieINC_KillHiddenPistol_key" />
+				<property name="needed_count" value="20" />
+				<property name="target_tags" value="zombie"/>			
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_MainPistol_AddBuffEvent" phase="1"/>
+			<action type="GameEvent" id="ZombieINC_TimerPistol_AddBuffEvent" phase="1"/>
+		    <action type="GameEvent" id="ZombieINC_Pistol_AddItemEvent" phase="1"/>
+
+			
+			<action type="GameEvent" id="ZombieINC_MainPistol_RemoveBuffEvent" phase="2"/>
+			<action type="GameEvent" id="ZombieINC_TimerPistol_RemoveBuffEvent" phase="2"/>
+			<action type="GameEvent" id="ZombieINC_RemoveSuppliesPistol_AddBuffEvent" phase="2"/>
+			<objective type="ReturnToNPC" phase="2">
+				<property name="nav_object" value="return_to_trader" />
+			</objective>	
+			
+			<objective type="InteractWithNPC" phase="3">
+				<property name="nav_object" value="return_to_trader" />						
+			</objective>
+    
+			<reward type="Exp" value="8000"/>
+			<reward type="Item" id="ZombieINC_gunHandgunT1Pistol" value="1"/>			
+	</quest>
+	<quest id="ZINCAK47"> 
+		    <property name="name_key" value="ZombieINC_challenge_AK47_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_AK47_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_AK47_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="true"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="4"/>
+		    <property name="offer_key" value="ZombieINC_challenge_AK47_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_AK47_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_AK47_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			
+			<property name="shareable" value="false"/>
+			<property name="add_to_tier_complete" value="false" />
+			
+			<property name="spawn_multiplier" value="2" />
+			<property name="gamestage_mod" value=".6" />
+			<property name="gamestage_bonus" value="30" />
+			<property name="extra_tags" value="infested" />
+				
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_AK47_completion"/>
+			
+			<objective type="RandomPOIGoto">
+				<property name="phase" value="1"/>
+				<property name="biome_filter_type" value="SameBiome" param1="biome_filter_type" />
+				<property name="biome_filter" value="burnt_forest" param1="biome_filter" />
+				<property name="nav_object" value="quest" />
+				<property name="poi_tier" value="4" />
+			</objective>
+
+			<objective type="RallyPoint">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="rally" />
+				<property name="rally_marker_type" value="questRallyMarkerFetchClear"/>
+			</objective>
+			
+			<!--<action type="GameEvent" id="ZombieINC_WS_AK47_FEPBuff_Event" phase="3"/>-->
+			
+			<objective type="ClearSleepers">
+				<property name="phase" value="3"/>
+				<property name="nav_object" value="sleeper_volume"/>
+				<property name="optional" value="true" />
+			</objective>
+			
+			<objective type="POIStayWithin">
+				<property name="phase" value="3"/>
+				<property name="radius" value="25"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_AK47_AddSpawnerZombiesBuff_Event" phase="3"/>
+		
+			<objective type="EntityKill" phase="3">
+				<property name="objective_name_key" value="ZombieINC_KillBanditsAK_key" />
+				<property name="needed_count" value="10" />
+				<property name="target_tags" value="MiniBossAK47"/>			
+			</objective>
+				
+			<!--<action type="GameEvent" id="ZombieINC_WS_AK47_RemoveFEPBuff_Event" phase="4"/>-->
+			
+			<action type="GameEvent" id="ZombieINC_AK47_RemoveSpawnerZombiesBuff_Event" phase="4"/>	
+			<objective type="ReturnToNPC" phase="4">
+				<property name="nav_object" value="return_to_trader" />
+			</objective>	
+			
+			<objective type="InteractWithNPC" phase="5">
+				<property name="nav_object" value="return_to_trader" />						
+			</objective>
+			<!--<action type="GameEvent" id="ZombieINC_RemoveSuppliesAK47_AddBuffEvent" phase="5"/>-->
+			
+			<reward type="Exp" value="8000"/>
+			<reward type="Recipe" id="ZombieINC_gunMGT1AK47" value="1"/>
+			<!--<reward type="ShowTip" value="ZombieINC_WeaponTest_AnnotationFix1" stage="aftercomplete"/>-->
+	</quest>
+	<quest id="ZINCAR"> 
+		    <property name="name_key" value="ZombieINC_challenge_AR_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_AR_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_AR_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="true"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="4"/>
+		    <property name="offer_key" value="ZombieINC_challenge_AR_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_AR_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_AR_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			
+			<property name="shareable" value="false"/>
+			<property name="add_to_tier_complete" value="false" />
+			
+			<property name="spawn_multiplier" value="2" />
+			<property name="gamestage_mod" value=".6" />
+			<property name="gamestage_bonus" value="30" />
+			<property name="extra_tags" value="infested" />
+				
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_AR_completion"/>
+			
+			<objective type="RandomPOIGoto">
+				<property name="phase" value="1"/>
+				<property name="biome_filter_type" value="SameBiome" param1="biome_filter_type" />
+				<property name="biome_filter" value="burnt_forest" param1="biome_filter" />
+				<property name="nav_object" value="quest" />
+				<property name="poi_tier" value="4" />
+			</objective>
+
+			<objective type="RallyPoint">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="rally" />
+				<property name="rally_marker_type" value="questRallyMarkerFetchClear"/>
+			</objective>
+			
+			<!--<action type="GameEvent" id="ZombieINC_WS_TacticalAR_FEPBuff_Event" phase="3"/>-->
+			
+			<objective type="ClearSleepers">
+				<property name="phase" value="3"/>
+				<property name="nav_object" value="sleeper_volume"/>
+				<property name="optional" value="true" />
+			</objective>
+			
+			<objective type="POIStayWithin">
+				<property name="phase" value="3"/>
+				<property name="radius" value="25"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_TacticalAR_AddSpawnerMiniBossBuff_Event" phase="3"/>
+			<action type="GameEvent" id="ZombieINC_TacticalAR_AddSpawnerZombiesBuff_Event" phase="3"/>
+			<objective type="EntityKill" phase="3">
+				<property name="objective_name_key" value="ZombieINC_KillPolice_key" />
+				<property name="needed_count" value="1" />
+				<property name="target_tags" value="MiniBossTacticalAR"/>			
+			</objective>
+			
+			<!--<action type="GameEvent" id="ZombieINC_WS_TacticalAR_RemoveFEPBuff_Event" phase="4"/>-->
+			
+			<objective type="ReturnToNPC" phase="4">
+				<property name="nav_object" value="return_to_trader" />
+			</objective>	
+			
+			<action type="GameEvent" id="ZombieINC_TacticalAR_RemoveSpawnerZombiesBuff_Event" phase="4"/>
+			<!--<action type="GameEvent" id="ZombieINC_RemoveSuppliesTacticalAR_AddBuffEvent" phase="5"/>-->
+			
+			<objective type="InteractWithNPC" phase="5">
+				<property name="nav_object" value="return_to_trader" />						
+			</objective>
+    
+			<reward type="Exp" value="8000"/>
+			<reward type="Recipe" id="ZombieINC_gunMGT2TacticalAR" value="1"/>	
+			<!--<reward type="ShowTip" value="ZombieINC_WeaponTest_AnnotationFix1" stage="aftercomplete"/>-->
+	</quest>
+	<quest id="ZINCM60"> 
+		    <property name="name_key" value="ZombieINC_challenge_M60_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_M60_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_M60_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="true"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="4"/>
+		    <property name="offer_key" value="ZombieINC_challenge_M60_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_M60_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_M60_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			
+			<property name="shareable" value="false"/>
+			<property name="add_to_tier_complete" value="false" />
+			
+			<property name="spawn_multiplier" value="2" />
+			<property name="gamestage_mod" value=".6" />
+			<property name="gamestage_bonus" value="30" />
+			<property name="extra_tags" value="infested" />
+				
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_M60_completion"/>
+			
+			<objective type="RandomPOIGoto">
+				<property name="phase" value="1"/>
+				<property name="biome_filter_type" value="SameBiome" param1="biome_filter_type" />
+				<property name="biome_filter" value="burnt_forest" param1="biome_filter" />
+				<property name="nav_object" value="quest" />
+				<property name="poi_tier" value="4" />
+			</objective>
+
+			<objective type="RallyPoint">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="rally" />
+				<property name="rally_marker_type" value="questRallyMarkerFetchClear"/>
+			</objective>
+
+			<!--<action type="GameEvent" id="ZombieINC_WS_M60_FEPBuff_Event" phase="3"/>-->
+
+			<objective type="ClearSleepers">
+				<property name="phase" value="3"/>
+				<property name="nav_object" value="sleeper_volume"/>
+				<property name="optional" value="true" />
+			</objective>
+			
+			<objective type="POIStayWithin">
+				<property name="phase" value="3"/>
+				<property name="radius" value="25"/>
+			</objective>
+			
+			
+			<action type="GameEvent" id="ZombieINC_M60_AddSpawnerZombiesBuff_Event" phase="3"/>
+			<objective type="EntityKill" phase="3">
+				<property name="objective_name_key" value="ZombieINC_KillTurret_key" />
+				<property name="needed_count" value="20" />
+				<property name="target_tags" value="zombieTurret"/>			
+			</objective>
+			
+			<!--<action type="GameEvent" id="ZombieINC_WS_M60_RemoveFEPBuff_Event" phase="4"/>-->
+			
+			<action type="GameEvent" id="ZombieINC_M60_RemoveSpawnerZombiesBuff_Event" phase="4"/>
+			<objective type="ReturnToNPC" phase="4">
+				<property name="nav_object" value="return_to_trader" />
+			</objective>	
+			
+			<!--<action type="GameEvent" id="ZombieINC_RemoveSuppliesM60_AddBuffEvent" phase="5"/>-->
+			
+			<objective type="InteractWithNPC" phase="5">
+				<property name="nav_object" value="return_to_trader" />						
+			</objective>
+    
+			<reward type="Exp" value="8000"/>
+			<reward type="Recipe" id="ZombieINC_gunMGT3M60" value="1"/>
+			<!--<reward type="ShowTip" value="ZombieINC_WeaponTest_AnnotationFix1" stage="aftercomplete"/>-->
+	</quest>
+	<!--Weapon Test Signature-->
+	
+	</insertAfter>
+	<conditional>
+		<if cond="mod_loaded('mateusjobsmain')">
+			<append xpath="/quests/quest[@id='ZINCAK47']">
+				<reward type="Quest" id="ZombieINC_WorkAround_WeaponTestPart1_Reward" />
+			</append>
+			<append xpath="/quests/quest[@id='ZINCAR']">
+				<reward type="Quest" id="ZombieINC_WorkAround_WeaponTestPart1_Reward" />
+			</append>
+			<append xpath="/quests/quest[@id='ZINCM60']">
+				<reward type="Quest" id="ZombieINC_WorkAround_WeaponTestPart1_Reward" />
+			</append>
+		</if>
+	</conditional>
+</Config>

@@ -1,0 +1,795 @@
+<Config>
+
+	<conditional>
+	<if cond="mod_loaded('mateusjobsmain') == 'false'">
+		<append xpath="/buffs">
+			<buff name="ZombieINC_EnemyDotBuff">
+				<stack_type value="ignore"/>
+				<effect_group>	
+					<triggered_effect trigger="onSelfBuffStart" action="SetNavObject" nav_object="ZombieINC_EnemyDot" add="true" />	
+				</effect_group>
+			</buff>
+		</append>
+	</if>
+</conditional>
+
+	<append xpath="/buffs">
+	<!--###Survival-->
+	
+	<buff name="ZombieINC_Survival_tier1_VehicleBlockerBuff"  >
+		<stack_type value="replace"/>
+		<update_rate value="5"/>
+		<duration value="1200"/>
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_Survival_tier1_VehicleBlockerEvent" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".ZombieINCVehicleBlockerCounter" operation="set" value="0" />
+			
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_Survival_tier1_VehicleBlockerBuff" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_Survival_tier1_VehicleBlockerBuff" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Survival_tier1_VehicleBlockerCounter"  >
+		<duration value="1"/>
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZombieINCVehicleBlockerCounter" operation="add" value="1" />
+			<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" event="ZombieINC_FailMissionSurvivalT1_VehicleBlocker" allow_client_call="false" >
+				<requirement name="CVarCompare" cvar=".ZombieINCVehicleBlockerCounter" operation="GTE" value="3"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Survival_Tier1_Part1_Spawner"  >
+		<stack_type value="replace"/>
+		<duration value="1200"/>
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_Survival_Tier1_Part1_SpawnerEffects" />
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_Survival_NewWave_Event_T1" allow_client_call="false" />
+			
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_Survival_Tier1_Part1_Spawner" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_Survival_Tier1_Part1_Spawner" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Survival_Tier1_Part1_SpawnerEffects"  >
+		<stack_type value="replace"/>
+		<duration value="1200"/>
+		<update_rate value="25"/>
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target_tags="zombie" target="positionAOE" range="25" buff="ZombieINC_Survival_SpeedV1_Buff" />
+			
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_Survival_Tier1_Part1_SpawnerEffects" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_Survival_Tier1_Part1_SpawnerEffects" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Survival_BlockDamageV1_Buff"  >
+		<stack_type value="replace"/>
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		<effect_group>
+			<passive_effect name="BlockDamage" operation="base_add" value="300"/>	    
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Survival_SpeedV1_Buff"  >
+		<stack_type value="replace"/>
+		<duration value="10"/>
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		
+		<effect_group>
+		    <passive_effect name="WalkSpeed" operation="base_set" value="1.1"/>
+			<passive_effect name="RunSpeed" operation="base_set" value="1.3"/>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_SurvivalT1_IsInDoorsChecker" name_key="zombieinc_isindoorscheckerdisplay" hidden="false" icon="ui_game_symbol_clock" icon_color="185,10,15" >		
+		<stack_type value="replace"/>
+		<duration value="1200"/>
+		<update_rate value="1"/>
+		<display_value value=".ZombieINCIsInDoorsCheckerCounter"/>
+		<display_value_format value="time"/>	
+		<tags value="ZINC_SURVIVAL_BUFFS" />		
+		<effect_group>
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZombieINCIsInDoorsCheckerCounter" operation="add" value="-1" >
+				<requirement name="IsIndoors"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZombieINCIsInDoorsCheckerCounter" operation="set" value="10" >
+				<requirement name="!IsIndoors"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZombieINCIsInDoorsCheckerCounter" operation="set" value="10" />
+			
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_FailMissionSurvivalT1" allow_client_call="false" >
+				<requirement name="CVarCompare" cvar=".ZombieINCIsInDoorsCheckerCounter" operation="LTE" value="0"/>
+			</triggered_effect>
+			
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_SurvivalT1_IsInDoorsChecker" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_SurvivalT1_IsInDoorsChecker" />
+		</effect_group>
+		
+	</buff>
+	
+<!--##Tier1-->	
+<!--##Tier2-->	
+	
+	<buff name="ZombieINC_Survival_tier2_VehicleBlockerBuff"  >
+		<stack_type value="replace"/>
+		<update_rate value="5"/>
+		<duration value="1200"/>
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_Survival_tier2_VehicleBlockerEvent" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".ZombieINCVehicleBlockerCounter" operation="set" value="0" />
+			
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_Survival_tier2_VehicleBlockerBuff" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_Survival_tier2_VehicleBlockerBuff" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Survival_tier2_VehicleBlockerCounter"  >
+		<duration value="1"/>
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZombieINCVehicleBlockerCounter" operation="add" value="1" />
+			<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" event="ZombieINC_FailMissionSurvivalT2_VehicleBlocker" allow_client_call="false" >
+				<requirement name="CVarCompare" cvar=".ZombieINCVehicleBlockerCounter" operation="GTE" value="3"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	
+	
+	<buff name="ZombieINC_Survival_Tier2_Part1_SpawnerEffects"  >
+		<stack_type value="replace"/>
+		<duration value="1200"/>
+		<update_rate value="25"/>
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target_tags="zombie" target="positionAOE" range="25" buff="ZombieINC_Survival_SpeedV2_Buff" />
+			
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_Survival_Tier2_Part1_SpawnerEffects" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_Survival_Tier2_Part1_SpawnerEffects" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Survival_SpeedV2_Buff"  >
+		<stack_type value="replace"/>
+		<duration value="10"/>
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		
+		<effect_group>
+		    <passive_effect name="WalkSpeed" operation="base_set" value="1.1"/>
+			<passive_effect name="RunSpeed" operation="base_set" value="1.3"/>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_SurvivalT2_IsInDoorsChecker" name_key="zombieinc_isindoorscheckerdisplay" hidden="false" icon="ui_game_symbol_clock" icon_color="185,10,15" >		
+		<stack_type value="replace"/>
+		<duration value="1200"/>
+		<update_rate value="1"/>
+		<display_value value=".ZombieINCIsInDoorsCheckerCounter"/>
+		<display_value_format value="time"/>		
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		<effect_group>
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZombieINCIsInDoorsCheckerCounter" operation="add" value="-1" >
+				<requirement name="IsIndoors"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZombieINCIsInDoorsCheckerCounter" operation="set" value="10" >
+				<requirement name="!IsIndoors"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZombieINCIsInDoorsCheckerCounter" operation="set" value="10" />
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_FailMissionSurvivalT2" allow_client_call="false" >
+				<requirement name="CVarCompare" cvar=".ZombieINCIsInDoorsCheckerCounter" operation="LTE" value="0"/>
+			</triggered_effect>
+			
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_SurvivalT2_IsInDoorsChecker" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_SurvivalT2_IsInDoorsChecker" />
+		</effect_group>
+		
+	</buff>
+	
+	
+	<buff name="ZombieINC_Survival_Tier2_Part1_Spawner"  >
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		<duration value="1200"/>
+		
+		<effect_group>
+		    <triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_Survival_Tier2_Part1_SpawnerEffects" />
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_Survival_NewWave_Event_T2" allow_client_call="false" />
+			
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_Survival_Tier2_Part1_Spawner" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_Survival_Tier2_Part1_Spawner" />
+		</effect_group>
+	</buff>
+	
+<!--Tier2-->
+<!--##Tier3-->
+<buff name="ZombieINC_Survival_tier3_VehicleBlockerBuff"  >
+		<stack_type value="replace"/>
+		<update_rate value="5"/>
+		<duration value="1200"/>
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_Survival_tier3_VehicleBlockerEvent" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".ZombieINCVehicleBlockerCounter" operation="set" value="0" />
+			
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_Survival_tier3_VehicleBlockerBuff" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_Survival_tier3_VehicleBlockerBuff" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Survival_tier3_VehicleBlockerCounter"  >
+		<duration value="1"/>
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZombieINCVehicleBlockerCounter" operation="add" value="1" />
+			<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" event="ZombieINC_FailMissionSurvivalT3_VehicleBlocker" allow_client_call="false" >
+				<requirement name="CVarCompare" cvar=".ZombieINCVehicleBlockerCounter" operation="GTE" value="3"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	
+	
+	<buff name="ZombieINC_Survival_Tier3_Part1_SpawnerEffects"  >
+		<stack_type value="replace"/>
+		<duration value="1200"/>
+		<update_rate value="25"/>
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target_tags="zombie" target="positionAOE" range="25" buff="ZombieINC_Survival_SpeedV3_Buff" />
+			
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_Survival_Tier3_Part1_SpawnerEffects" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_Survival_Tier3_Part1_SpawnerEffects" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Survival_SpeedV3_Buff"  >
+		<stack_type value="replace"/>
+		<duration value="10"/>
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		
+		<effect_group>
+		    <passive_effect name="WalkSpeed" operation="base_set" value="1.1"/>
+			<passive_effect name="RunSpeed" operation="base_set" value="1.3"/>
+		</effect_group>
+	</buff>
+	
+	<buff name="TEST1234"  >
+		<stack_type value="replace"/>
+		<duration value="1200"/>
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		
+		<effect_group>
+		  
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_SurvivalT3_IsInDoorsChecker" name_key="zombieinc_isindoorscheckerdisplay" hidden="false" icon="ui_game_symbol_clock" icon_color="185,10,15" >		
+		<stack_type value="replace"/>
+		<duration value="1200"/>
+		<update_rate value="1"/>
+		<display_value value=".ZombieINCIsInDoorsCheckerCounter"/>
+		<display_value_format value="time"/>	
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		
+		<effect_group>
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZombieINCIsInDoorsCheckerCounter" operation="add" value="-1" >
+				<requirement name="IsIndoors"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZombieINCIsInDoorsCheckerCounter" operation="set" value="10" >
+				<requirement name="!IsIndoors"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZombieINCIsInDoorsCheckerCounter" operation="set" value="10" />
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_FailMissionSurvivalT3" allow_client_call="false" >
+				<requirement name="CVarCompare" cvar=".ZombieINCIsInDoorsCheckerCounter" operation="LTE" value="0"/>
+			</triggered_effect>
+			
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_SurvivalT3_IsInDoorsChecker" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_SurvivalT3_IsInDoorsChecker" />
+		</effect_group>
+		
+	</buff>
+	
+	
+	<buff name="ZombieINC_Survival_Tier3_Part1_Spawner"  >
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		<duration value="1200"/>
+		
+		<effect_group>
+		    <triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_Survival_Tier3_Part1_SpawnerEffects" />
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_Survival_NewWave_Event_T3" allow_client_call="false" />
+			
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_Survival_Tier3_Part1_Spawner" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_Survival_Tier3_Part1_Spawner" />
+		</effect_group>
+	</buff>
+<!--Tier3-->
+<!--##Tier4-->
+<buff name="ZombieINC_Survival_tier4_VehicleBlockerBuff"  >
+		<stack_type value="replace"/>
+		<update_rate value="5"/>
+		<duration value="1200"/>
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_Survival_tier4_VehicleBlockerEvent" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".ZombieINCVehicleBlockerCounter" operation="set" value="0" />
+			
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_Survival_tier4_VehicleBlockerBuff" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_Survival_tier4_VehicleBlockerBuff" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Survival_tier4_VehicleBlockerCounter"  >
+		<duration value="1"/>
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZombieINCVehicleBlockerCounter" operation="add" value="1" />
+			<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" event="ZombieINC_FailMissionSurvivalT4_VehicleBlocker" allow_client_call="false" >
+				<requirement name="CVarCompare" cvar=".ZombieINCVehicleBlockerCounter" operation="GTE" value="3"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	
+	
+	<buff name="ZombieINC_Survival_Tier4_Part1_SpawnerEffects"  >
+		<stack_type value="replace"/>
+		<duration value="1200"/>
+		<update_rate value="25"/>
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target_tags="zombie" target="positionAOE" range="25" buff="ZombieINC_Survival_SpeedV4_Buff" />
+			
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_Survival_Tier4_Part1_SpawnerEffects" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_Survival_Tier4_Part1_SpawnerEffects" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Survival_SpeedV4_Buff"  >
+		<stack_type value="replace"/>
+		<duration value="10"/>
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		
+		<effect_group>
+		    <passive_effect name="WalkSpeed" operation="base_set" value="1.1"/>
+			<passive_effect name="RunSpeed" operation="base_set" value="1.3"/>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_SurvivalT4_IsInDoorsChecker" name_key="zombieinc_isindoorscheckerdisplay" hidden="false" icon="ui_game_symbol_clock" icon_color="185,10,15" >		
+		<stack_type value="replace"/>
+		<duration value="1200"/>
+		<update_rate value="1"/>
+		<display_value value=".ZombieINCIsInDoorsCheckerCounter"/>
+		<display_value_format value="time"/>		
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		
+		<effect_group>
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZombieINCIsInDoorsCheckerCounter" operation="add" value="-1" >
+				<requirement name="IsIndoors"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZombieINCIsInDoorsCheckerCounter" operation="set" value="10" >
+				<requirement name="!IsIndoors"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZombieINCIsInDoorsCheckerCounter" operation="set" value="10" />
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_FailMissionSurvivalT4" allow_client_call="false" >
+				<requirement name="CVarCompare" cvar=".ZombieINCIsInDoorsCheckerCounter" operation="LTE" value="0"/>
+			</triggered_effect>
+			
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_SurvivalT4_IsInDoorsChecker" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_SurvivalT4_IsInDoorsChecker" />
+		</effect_group>
+		
+	</buff>
+	
+	
+	<buff name="ZombieINC_Survival_Tier4_Part1_Spawner"  >
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		<duration value="1200"/>
+		
+		<effect_group>
+		    <triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_Survival_Tier4_Part1_SpawnerEffects" />
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_Survival_NewWave_Event_T4" allow_client_call="false" />
+			
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_Survival_Tier4_Part1_Spawner" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_Survival_Tier4_Part1_Spawner" />
+		</effect_group>
+	</buff>
+<!--Tier4-->
+<!--##Tier5-->
+<buff name="ZombieINC_Survival_tier5_VehicleBlockerBuff"  >
+		<stack_type value="replace"/>
+		<update_rate value="5"/>
+		<duration value="1200"/>
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_Survival_tier5_VehicleBlockerEvent" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".ZombieINCVehicleBlockerCounter" operation="set" value="0" />
+			
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_Survival_tier5_VehicleBlockerBuff" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_Survival_tier5_VehicleBlockerBuff" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Survival_tier5_VehicleBlockerCounter"  >
+		<duration value="1"/>
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZombieINCVehicleBlockerCounter" operation="add" value="1" />
+			<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" event="ZombieINC_FailMissionSurvivalT5_VehicleBlocker" allow_client_call="false" >
+				<requirement name="CVarCompare" cvar=".ZombieINCVehicleBlockerCounter" operation="GTE" value="3"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	
+	
+	<buff name="ZombieINC_Survival_Tier5_Part1_SpawnerEffects"  >
+		<stack_type value="replace"/>
+		<duration value="1200"/>
+		<update_rate value="25"/>
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target_tags="zombie" target="positionAOE" range="25" buff="ZombieINC_Survival_SpeedV5_Buff" />
+			
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_Survival_Tier5_Part1_SpawnerEffects" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_Survival_Tier5_Part1_SpawnerEffects" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Survival_SpeedV5_Buff"  >
+		<stack_type value="replace"/>
+		<duration value="10"/>
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		
+		<effect_group>
+		    <passive_effect name="WalkSpeed" operation="base_set" value="1.1"/>
+			<passive_effect name="RunSpeed" operation="base_set" value="1.3"/>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_SurvivalT5_IsInDoorsChecker" name_key="zombieinc_isindoorscheckerdisplay" hidden="false" icon="ui_game_symbol_clock" icon_color="185,10,15" >		
+		<stack_type value="replace"/>
+		<duration value="1200"/>
+		<update_rate value="1"/>
+		<display_value value=".ZombieINCIsInDoorsCheckerCounter"/>
+		<display_value_format value="time"/>		
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		
+		<effect_group>
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZombieINCIsInDoorsCheckerCounter" operation="add" value="-1" >
+				<requirement name="IsIndoors"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZombieINCIsInDoorsCheckerCounter" operation="set" value="10" >
+				<requirement name="!IsIndoors"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZombieINCIsInDoorsCheckerCounter" operation="set" value="10" />
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_FailMissionSurvivalT5" allow_client_call="false" >
+				<requirement name="CVarCompare" cvar=".ZombieINCIsInDoorsCheckerCounter" operation="LTE" value="0"/>
+			</triggered_effect>
+			
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_SurvivalT5_IsInDoorsChecker" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_SurvivalT5_IsInDoorsChecker" />
+		</effect_group>
+		
+	</buff>
+	
+	
+	<buff name="ZombieINC_Survival_Tier5_Part1_Spawner"  >
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		<duration value="1200"/>
+		
+		<effect_group>
+		    <triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_Survival_Tier5_Part1_SpawnerEffects" />
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_Survival_NewWave_Event_T5" allow_client_call="false" />
+			
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_Survival_Tier5_Part1_Spawner" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_Survival_Tier5_Part1_Spawner" />
+		</effect_group>
+	</buff>
+<!--Tier5-->
+<!--##Tier6-->
+
+<buff name="ZombieINC_Survival_tier6_VehicleBlockerBuff"  >
+		<stack_type value="replace"/>
+		<update_rate value="5"/>
+		<duration value="1200"/>
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_Survival_tier6_VehicleBlockerEvent" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".ZombieINCVehicleBlockerCounter" operation="set" value="0" />
+			
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_Survival_tier6_VehicleBlockerBuff" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_Survival_tier6_VehicleBlockerBuff" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Survival_tier6_VehicleBlockerCounter"  >
+		<duration value="1"/>
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZombieINCVehicleBlockerCounter" operation="add" value="1" />
+			<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" event="ZombieINC_FailMissionSurvivalT6_VehicleBlocker" allow_client_call="false" >
+				<requirement name="CVarCompare" cvar=".ZombieINCVehicleBlockerCounter" operation="GTE" value="3"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	
+	
+	<buff name="ZombieINC_Survival_Tier6_Part1_SpawnerEffects"  >
+		<stack_type value="replace"/>
+		<duration value="1200"/>
+		<update_rate value="25"/>
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target_tags="zombie" target="positionAOE" range="25" buff="ZombieINC_Survival_SpeedV6_Buff" />
+			
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_Survival_Tier6_Part1_SpawnerEffects" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_Survival_Tier6_Part1_SpawnerEffects" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Survival_SpeedV6_Buff"  >
+		<stack_type value="replace"/>
+		<duration value="10"/>
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		
+		<effect_group>
+		    <passive_effect name="WalkSpeed" operation="base_set" value="1.1"/>
+			<passive_effect name="RunSpeed" operation="base_set" value="1.3"/>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_SurvivalT6_IsInDoorsChecker" name_key="zombieinc_isindoorscheckerdisplay" hidden="false" icon="ui_game_symbol_clock" icon_color="185,10,15" >		
+		<stack_type value="replace"/>
+		<duration value="1200"/>
+		<update_rate value="1"/>
+		<display_value value=".ZombieINCIsInDoorsCheckerCounter"/>
+		<display_value_format value="time"/>	
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		
+		<effect_group>
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZombieINCIsInDoorsCheckerCounter" operation="add" value="-1" >
+				<requirement name="IsIndoors"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZombieINCIsInDoorsCheckerCounter" operation="set" value="10" >
+				<requirement name="!IsIndoors"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZombieINCIsInDoorsCheckerCounter" operation="set" value="10" />
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_FailMissionSurvivalT6" allow_client_call="false" >
+				<requirement name="CVarCompare" cvar=".ZombieINCIsInDoorsCheckerCounter" operation="LTE" value="0"/>
+			</triggered_effect>
+			
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_SurvivalT6_IsInDoorsChecker" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_SurvivalT6_IsInDoorsChecker" />
+		</effect_group>
+		
+	</buff>
+	
+	
+	<buff name="ZombieINC_Survival_Tier6_Part1_Spawner"  >
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		<duration value="1200"/>
+		
+		<effect_group>
+		    <triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_Survival_Tier6_Part1_SpawnerEffects" />
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_Survival_NewWave_Event_T6" allow_client_call="false" />
+			
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_Survival_Tier6_Part1_Spawner" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_Survival_Tier6_Part1_Spawner" />
+		</effect_group>
+	</buff>
+
+	
+<!--Tier6-->	
+<!--##All Tiers-->
+	<buff name="ZombieINC_GeneralUse_NoVehicle_Buff"  >
+		<stack_type value="replace"/>
+		<duration value="1200"/>
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		
+		<effect_group>
+			<passive_effect name="NoVehicle" operation="base_set" value="1" />
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_GeneralUse_EjectVehicle_Event" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffStack" action="CallGameEvent" event="ZombieINC_GeneralUse_EjectVehicle_Event" allow_client_call="false" />
+		</effect_group>
+	</buff>
+
+	<buff name="ZombieINC_GeneralUse_ZombieAlerted_Buff"  >
+		<stack_type value="replace"/>
+		<duration value="10"/>		
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		
+		<effect_group>
+			<requirement name="CVarCompare" cvar="_notAlerted" operation="GT" value="0" target="self"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="player" range="35" buff="ZombieINC_GeneralUse_PlayerNotHidden_Buff"/>
+			<triggered_effect trigger="onSelfBuffStack" action="AddBuff" target="positionAOE" target_tags="player" range="35" buff="ZombieINC_GeneralUse_PlayerNotHidden_Buff"/>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_GeneralUse_PlayerNotHidden_Buff"  >
+		<stack_type value="replace"/>
+		<duration value="10"/>	
+		<tags value="ZINC_SURVIVAL_BUFFS" />
+		
+		<effect_group>
+			
+		</effect_group>
+	</buff>
+
+	<buff name="ZombieINC_Survival_T1_NotHiddenCheckerEvent_Buff"  >
+		<stack_type value="replace"/>
+		<duration value="1200"/>
+		<update_rate value="10"/>
+		<tags value="zinc_survivalfailed,ZINC_SURVIVAL_BUFFS" />
+		<effect_group>
+			<requirement name="CVarCompare" cvar="zincnozombies" operation="LTE" value="1" target="self"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_GeneralUse_NotHiddenChecker_Event" allow_client_call="false" />
+		</effect_group>
+		<effect_group>
+			<requirement name="CVarCompare" cvar="zincnozombies" operation="Equals" value="1" target="self"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddChatMessage" message_key="ZombieINC_Survival_Message_MissionWillFail" />
+		</effect_group>
+		<effect_group>
+			<requirement name="CVarCompare" cvar="zincnozombies" operation="GTE" value="2" target="self"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_FailMissionSurvivalT1" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="zincnozombies" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="ZombieINC_Survival_T1_NotHiddenCheckerEvent_Buff"/>
+		</effect_group>
+		<effect_group>
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_Survival_T1_NotHiddenCheckerEvent_Buff" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_Survival_T1_NotHiddenCheckerEvent_Buff" />
+		</effect_group>
+
+	</buff>
+	
+	<buff name="ZombieINC_Survival_T2_NotHiddenCheckerEvent_Buff"  >
+		<stack_type value="replace"/>
+		<duration value="1200"/>
+		<update_rate value="10"/>
+		<tags value="zinc_survivalfailed,ZINC_SURVIVAL_BUFFS" />
+		<effect_group>
+			<requirement name="CVarCompare" cvar="zincnozombies" operation="LTE" value="1" target="self"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_GeneralUse_NotHiddenChecker_Event" allow_client_call="false" />
+		</effect_group>
+		<effect_group>
+			<requirement name="CVarCompare" cvar="zincnozombies" operation="Equals" value="1" target="self"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddChatMessage" message_key="ZombieINC_Survival_Message_MissionWillFail" />
+		</effect_group>
+		<effect_group>
+			<requirement name="CVarCompare" cvar="zincnozombies" operation="GTE" value="2" target="self"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_FailMissionSurvivalT2" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="zincnozombies" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="ZombieINC_Survival_T2_NotHiddenCheckerEvent_Buff"/>
+		</effect_group>
+		<effect_group>
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_Survival_T2_NotHiddenCheckerEvent_Buff" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_Survival_T2_NotHiddenCheckerEvent_Buff" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Survival_T3_NotHiddenCheckerEvent_Buff"  >
+		<stack_type value="replace"/>
+		<duration value="1200"/>
+		<update_rate value="10"/>
+		<tags value="zinc_survivalfailed,ZINC_SURVIVAL_BUFFS" />
+		<effect_group>
+			<requirement name="CVarCompare" cvar="zincnozombies" operation="LTE" value="1" target="self"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_GeneralUse_NotHiddenChecker_Event" allow_client_call="false" />
+		</effect_group>
+		<effect_group>
+			<requirement name="CVarCompare" cvar="zincnozombies" operation="Equals" value="1" target="self"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddChatMessage" message_key="ZombieINC_Survival_Message_MissionWillFail" />
+		</effect_group>
+		<effect_group>
+			<requirement name="CVarCompare" cvar="zincnozombies" operation="GTE" value="2" target="self"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_FailMissionSurvivalT3" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="zincnozombies" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="ZombieINC_Survival_T3_NotHiddenCheckerEvent_Buff"/>
+		</effect_group>
+		<effect_group>
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_Survival_T3_NotHiddenCheckerEvent_Buff" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_Survival_T3_NotHiddenCheckerEvent_Buff" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Survival_T4_NotHiddenCheckerEvent_Buff"  >
+		<stack_type value="replace"/>
+		<duration value="1200"/>
+		<update_rate value="10"/>
+		<tags value="zinc_survivalfailed,ZINC_SURVIVAL_BUFFS" />
+		<effect_group>
+			<requirement name="CVarCompare" cvar="zincnozombies" operation="LTE" value="1" target="self"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_GeneralUse_NotHiddenChecker_Event" allow_client_call="false" />
+		</effect_group>
+		<effect_group>
+			<requirement name="CVarCompare" cvar="zincnozombies" operation="Equals" value="1" target="self"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddChatMessage" message_key="ZombieINC_Survival_Message_MissionWillFail" />
+		</effect_group>
+		<effect_group>
+			<requirement name="CVarCompare" cvar="zincnozombies" operation="GTE" value="2" target="self"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_FailMissionSurvivalT4" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="zincnozombies" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="ZombieINC_Survival_T4_NotHiddenCheckerEvent_Buff"/>
+		</effect_group>
+		<effect_group>
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_Survival_T4_NotHiddenCheckerEvent_Buff" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_Survival_T4_NotHiddenCheckerEvent_Buff" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Survival_T5_NotHiddenCheckerEvent_Buff"  >
+		<stack_type value="replace"/>
+		<duration value="1200"/>
+		<update_rate value="10"/>
+		<tags value="zinc_survivalfailed,ZINC_SURVIVAL_BUFFS" />
+		<effect_group>
+			<requirement name="CVarCompare" cvar="zincnozombies" operation="LTE" value="1" target="self"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_GeneralUse_NotHiddenChecker_Event" allow_client_call="false" />
+		</effect_group>
+		<effect_group>
+			<requirement name="CVarCompare" cvar="zincnozombies" operation="Equals" value="1" target="self"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddChatMessage" message_key="ZombieINC_Survival_Message_MissionWillFail" />
+		</effect_group>
+		<effect_group>
+			<requirement name="CVarCompare" cvar="zincnozombies" operation="GTE" value="2" target="self"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_FailMissionSurvivalT5" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="zincnozombies" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="ZombieINC_Survival_T5_NotHiddenCheckerEvent_Buff"/>
+		</effect_group>
+		<effect_group>
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_Survival_T5_NotHiddenCheckerEvent_Buff" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_Survival_T5_NotHiddenCheckerEvent_Buff" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Survival_T6_NotHiddenCheckerEvent_Buff"  >
+		<stack_type value="replace"/>
+		<duration value="1200"/>
+		<update_rate value="10"/>
+		<tags value="zinc_survivalfailed,ZINC_SURVIVAL_BUFFS" />
+		<effect_group>
+			<requirement name="CVarCompare" cvar="zincnozombies" operation="LTE" value="1" target="self"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_GeneralUse_NotHiddenChecker_Event" allow_client_call="false" />
+		</effect_group>
+		<effect_group>
+			<requirement name="CVarCompare" cvar="zincnozombies" operation="Equals" value="1" target="self"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddChatMessage" message_key="ZombieINC_Survival_Message_MissionWillFail" />
+		</effect_group>
+		<effect_group>
+			<requirement name="CVarCompare" cvar="zincnozombies" operation="GTE" value="2" target="self"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_FailMissionSurvivalT6" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="zincnozombies" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="ZombieINC_Survival_T6_NotHiddenCheckerEvent_Buff"/>
+		</effect_group>
+		<effect_group>
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_Survival_T6_NotHiddenCheckerEvent_Buff" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_Survival_T6_NotHiddenCheckerEvent_Buff" />
+		</effect_group>
+	</buff>
+
+<!--All Tiers-->
+<!--Survival-->
+	</append>
+</Config>

@@ -1,5 +1,6 @@
 <configs>
-<set xpath="/quests/@quests_per_tier">6</set>
+<set xpath="/quests/@quests_per_tier">10</set>
+<set xpath="/quests/@max_quest_tier">6</set>
 <!-- Skip Intro Quest (other part in dialogs) -->
 	<!-- <conditional>
 		<if cond="mod_loaded('Gears') == 'true' and modsetting('QuestRevamp', 'global', 'General.NoIntro.NQ1') == 'Yes'">
@@ -89,14 +90,13 @@
 				<property name="phase" value="4"/>
 			</action>
 			<objective type="ReturnToNPC">
-			<property name="phase" value="4"/>
-			<property name="nav_object" value="return_to_trader"/>
-		</objective>
-
-		<objective type="InteractWithNPC">
-			<property name="phase" value="4"/>
-			<property name="nav_object" value="return_to_trader"/>
-		</objective>
+				<property name="phase" value="5"/>
+				<property name="nav_object" value="return_to_trader"/>
+			</objective>
+			<objective type="InteractWithNPC">
+				<property name="phase" value="5"/>
+				<property name="nav_object" value="return_to_trader"/>
+			</objective>
 			<reward type="Exp" value="1000"/>
 			<reward type="Item" id="casinoCoin" value="200"/>
 			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="2"/>

@@ -1,0 +1,37 @@
+<Config>
+<append xpath="/ui_display_info/item_display">
+
+	
+<!--###Defense-->
+		<item_display_info display_type="ZombieINC_rangedTurret" display_group="groupRanged">
+			<display_entry name="EntityDamage" display_type="Decimal1" title_key="statEntityDamageRanged" tags="perkTurrets"/>
+			<display_entry name="MagazineSize" title_key="statMagazineSize" tags="turretRanged"/>
+			<display_entry name="RoundsPerMinute" title_key="statRoundsPerMinute" tags="turretRanged"/>
+			<display_entry name="DamageFalloffRange" title_key="statDamageFalloffRange" tags="perkTurrets"/>
+			<display_entry name="DegradationMax" title_key="statDegradationHPMax" tags="perkTurrets"/>
+			<display_entry name="dYawRange" title_key="statYawRangeMax" />
+			<display_entry name="dPitchRange" title_key="statPitchRangeMax" />
+		</item_display_info>
+
+</append>
+</Config>
+<!-- *** NOTES -->
+<!-- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+This UI system can display all passive effects on an item - the base stats.
+
+It can also display CVARS that are added when using the item with these exact 2 actions:
+onSelfPrimaryActionEnd
+onSelfSecondaryActionEnd
+
+<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="medicalRegHealthAmount" operation="add" value="14"/>
+
+The "name" is the name of the cvar.
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+display_type="Integer"	;	The values are "Integer", "Decimal", "Bool", and "Percent"
+show_inverted="true"	;
+negative_preferred="true";	For item comparisons sometimes lower is better.
+
+display_group: Used for the compare function. i.e. groupConsumables are not compared against groupRanged
+-->

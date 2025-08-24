@@ -1,0 +1,561 @@
+<Config>
+
+<append xpath="/gameevents">
+
+
+<!--###New Quest Giver 2.6-->
+	<!--<action_sequence name="ZombieINC_ActiveRadioOnTrader_Event">
+		<property name="allow_user_trigger" value="true" />
+		<property name="action_type" value="Game" />
+		<property name="target_type" value="Block"/>
+		
+		 <decision class="If">
+		 <property name="condition_type" value="Any"/>
+			<requirement class="InPOI">
+				<property name="name" value="trader_rekt"/>
+			</requirement>
+			<requirement class="InPOI">
+				<property name="name" value="trader_bob"/>
+			</requirement>
+			<requirement class="InPOI">
+				<property name="name" value="trader_hugh"/>
+			</requirement>
+			<requirement class="InPOI">
+				<property name="name" value="trader_joel"/>
+			</requirement>
+			<requirement class="InPOI">
+				<property name="name" value="trader_jen"/>
+			</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="1" />
+			<property name="entity_tags" value="radio1,radiodecoy" />
+			<property name="group_name" value="radioremove" />
+			<property name="max_distance" value="65" />
+		</action>
+		<!{1}**<action class="RemoveEntities">
+			<property name="phase" value="1" />
+			<property name="target_group" value="radioremove" />
+		</action>**{1}>
+		
+		<action class="BeltTooltip">
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="radioremove"/>
+				<property name="operation" value="GTE"/> 
+				<property name="count" value="1"/>
+			</requirement>
+			<property name="text_key" value="ZombieINC_DroneAlreadyHere_BeltTooltip" />
+			<property name="phase" value="2" />
+		</action>
+		<action class="BeltTooltip">
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="radioremove"/>
+				<property name="operation" value="Equals"/> 
+				<property name="count" value="0"/>
+			</requirement>
+			<property name="text_key" value="ZombieINC_DroneCalled_BeltTooltip" />
+			<property name="phase" value="2" />
+		</action>	
+		<action class="SpawnEntity">
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="radioremove"/>
+				<property name="operation" value="Equals"/> 
+				<property name="count" value="0"/>
+			</requirement>
+			<!{1}**<property name="entity_names" value="ZombieINC_RadioDecoy" />**{1}>
+			<property name="entity_names" value="ZombieINC_NPC_Radio_1" />
+			<property name="spawn_count" value="1"  />
+			<property name="safe_spawn" value="true" />
+			<property name="max_distance" value="60"  />
+			<property name="min_distance" value="20"  />
+			<property name="add_to_group" value="radio" />
+			<property name="air_spawn" value="false" />
+			<property name="phase" value="3" />
+		</action>
+		<!{1}**<action class="AddChatMessage">							
+			<property name="text" value="" />
+			<property name="phase" value="2" />
+		</action>**{1}>
+		<!{1}**<action class="AddEntitiesToGroup">
+			<property name="phase" value="3" />
+			<property name="entity_tags" value="radiodecoy" />
+			<property name="group_name" value="radio" />
+			<property name="max_distance" value="6" />
+		</action>**{1}>
+		<!{1}**<action class="Delay">
+			<property name="phase" value="4" />	
+			<property name="time" value="1" />
+		</action>
+		<action class="ReplaceEntities">
+			<property name="time" value="5" />
+			<property name="phase" value="5" />	
+			<property name="entity_names" value="ZombieINC_NPC_Radio_1" />
+			<property name="single_choice" value="true" />
+			<property name="target_group" value="radio" />
+		</action>
+		**{1}>
+		</decision>	
+	</action_sequence>-->
+	
+	<action_sequence name="ZombieINC_ActiveRadioOnTrader_Event">
+		<property name="allow_user_trigger" value="true" />
+		<property name="action_type" value="Game" />
+		<property name="target_type" value="Block"/>
+		
+		 <decision class="If">
+			<requirement class="InPOI">
+				<property name="name" value="trader_jen"/>
+			</requirement>
+			<action class="CallGameEvent">
+				<property name="game_events" value="ZombieINC_ActiveRadioOnTraderSpawn_Event" />
+				<property name="phase" value="1" />	
+			</action>
+		</decision>	
+		 <decision class="If">		
+			<requirement class="InPOI">
+				<property name="name" value="trader_joel"/>
+			</requirement>
+			<action class="CallGameEvent">
+				<property name="game_events" value="ZombieINC_ActiveRadioOnTraderSpawn_Event" />
+				<property name="phase" value="1" />	
+			</action>
+		
+		</decision>	
+		 <decision class="If">		
+			<requirement class="InPOI">
+				<property name="name" value="trader_hugh"/>
+			</requirement>
+			<action class="CallGameEvent">
+				<property name="game_events" value="ZombieINC_ActiveRadioOnTraderSpawn_Event" />
+				<property name="phase" value="1" />	
+			</action>
+		
+		</decision>	
+		 <decision class="If">		
+			<requirement class="InPOI">
+				<property name="name" value="trader_bob"/>
+			</requirement>
+			<action class="CallGameEvent">
+				<property name="game_events" value="ZombieINC_ActiveRadioOnTraderSpawn_Event" />
+				<property name="phase" value="1" />	
+			</action>
+		
+		</decision>	
+		 <decision class="If">
+			<requirement class="InPOI">
+				<property name="name" value="trader_rekt"/>
+			</requirement>
+			<action class="CallGameEvent">
+				<property name="game_events" value="ZombieINC_ActiveRadioOnTraderSpawn_Event" />
+				<property name="phase" value="1" />	
+			</action>
+		
+		
+		</decision>	
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ActiveRadioOnTraderSpawn_Event">
+		<property name="allow_user_trigger" value="true" />
+		<property name="action_type" value="Game" />
+		<property name="target_type" value="Entity"/>
+		
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="1" />
+			<property name="entity_tags" value="radio1,radiodecoy" />
+			<property name="group_name" value="radioremove" />
+			<property name="max_distance" value="45" />
+		</action>
+		<action class="BeltTooltip">
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="radioremove"/>
+				<property name="operation" value="GTE"/> 
+				<property name="count" value="1"/>
+			</requirement>
+			<property name="text_key" value="ZombieINC_DroneAlreadyHere_BeltTooltip" />
+			<property name="phase" value="2" />
+		</action>
+		<action class="BeltTooltip">
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="radioremove"/>
+				<property name="operation" value="Equals"/> 
+				<property name="count" value="0"/>
+			</requirement>
+			<property name="text_key" value="ZombieINC_DroneCalled_BeltTooltip" />
+			<property name="phase" value="2" />
+		</action>	
+		<action class="SpawnEntity">
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="radioremove"/>
+				<property name="operation" value="Equals"/> 
+				<property name="count" value="0"/>
+			</requirement>
+			<property name="entity_names" value="ZombieINC_NPC_Radio_1" />
+			<property name="spawn_count" value="1"  />
+			<property name="safe_spawn" value="true" />
+			<property name="max_distance" value="20"  />
+			<property name="min_distance" value="10"  />
+			<property name="add_to_group" value="radio" />
+			<property name="air_spawn" value="false" />
+			<property name="phase" value="3" />
+		</action>
+		<action class="PlaySound">
+			<property name="phase" value="3" />
+			<property name="sound" value="drone_fly" />
+			<property name="max_distance" value="25" />
+		</action>
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_UpgradeRadio1OnTraderArea_Event">
+		<action class="BlockUpgrade">
+			<property name="min_offset" value="-5,0,-5" />
+			<property name="max_offset" value="5,3,5" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_PutRadio1OnTraderArea_Event">
+		<property name="action_type" value="Game" />
+		<property name="target_type" value="Block"/>
+		<action class="BlockReplace">
+			<property name="safe_allowed" value="true" />	
+			<property name="min_offset" value="-60,-10,-60" />
+			<property name="max_offset" value="60,10,60" />
+			<property name="block_to" value="ZombieINC_spawnRadio_1" />
+			<property name="block_tags" value="ZombieINCRadioQuest" />		
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_PutRadio1OnTraderAreaNotHave_Event">
+	<property name="action_type" value="Game" />
+	<property name="target_type" value="Block"/>
+		<action class="BlockReplace">
+			<property name="min_offset" value="-60,-10,-60" />
+			<property name="max_offset" value="60,10,60" />
+			<property name="block_to" value="ZombieINC_spawnRadio_1" />
+			<property name="block_tags" value="ZombieINCRadioQuest" />		
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_PutRadio1OnTraderAreaFalse_Event">
+	<property name="action_type" value="Game" />
+	<property name="target_type" value="Block"/>
+		<action class="BlockReplace">
+			<property name="safe_allowed" value="false" />	
+			<property name="min_offset" value="-60,-10,-60" />
+			<property name="max_offset" value="60,10,60" />
+			<property name="block_to" value="ZombieINC_spawnRadio_1" />
+			<property name="block_tags" value="ZombieINCRadioQuest" />		
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_PickRadio1_Event">
+		<!--<property name="refund_inactivity" value="false" />-->
+
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="radio1" />
+			<property name="group_name" value="radio" />
+			<property name="max_distance" value="6" />
+		</action>
+		
+		<action class="RemoveEntities">
+			<property name="phase" value="1" />
+			<property name="target_group" value="radio" />
+		</action>
+		
+		<action class="BlockReplace">
+			<property name="min_offset" value="-6,-6,-6" />
+			<property name="max_offset" value="6,6,6" />
+			<property name="block_to" value="air" />
+			<property name="block_tags" value="ZINCRADIO1" />
+			<property name="phase" value="1" />	
+		</action>
+		<!--<action class="Kill">
+			<property name="phase" value="1" />
+			<property name="target_group" value="ritual" />
+		</action>-->
+		
+		<action class="AddItems">
+			<property name="phase" value="2" />
+			<property name="added_items" value="ZombieINC_spawnRadio_1" />
+			<property name="added_item_counts" value="1" />			
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_PickRadio2_Event">
+		<!--<property name="refund_inactivity" value="false" />-->
+
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="radio2" />
+			<property name="group_name" value="radio" />
+			<property name="max_distance" value="6" />
+		</action>
+		
+		<action class="RemoveEntities">
+			<property name="phase" value="1" />
+			<property name="target_group" value="radio" />
+		</action>
+		
+		<action class="BlockReplace">
+			<property name="min_offset" value="-6,-6,-6" />
+			<property name="max_offset" value="6,6,6" />
+			<property name="block_to" value="air" />
+			<property name="block_tags" value="ZINCRADIO2" />
+			<property name="phase" value="1" />	
+		</action>
+		<!--<action class="Kill">
+			<property name="phase" value="1" />
+			<property name="target_group" value="ritual" />
+		</action>-->
+		
+		<action class="AddItems">
+			<property name="phase" value="2" />
+			<property name="added_items" value="ZombieINC_spawnRadio_2" />
+			<property name="added_item_counts" value="1" />			
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_PickRadio3_Event">
+		<!--<property name="refund_inactivity" value="false" />-->
+
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="radio3" />
+			<property name="group_name" value="radio" />
+			<property name="max_distance" value="6" />
+		</action>
+		
+		<action class="RemoveEntities">
+			<property name="phase" value="1" />
+			<property name="target_group" value="radio" />
+		</action>
+		
+		<action class="BlockReplace">
+			<property name="min_offset" value="-6,-6,-6" />
+			<property name="max_offset" value="6,6,6" />
+			<property name="block_to" value="air" />
+			<property name="block_tags" value="ZINCRADIO3" />
+			<property name="phase" value="1" />	
+		</action>
+		<!--<action class="Kill">
+			<property name="phase" value="1" />
+			<property name="target_group" value="ritual" />
+		</action>-->
+		
+		<action class="AddItems">
+			<property name="phase" value="2" />
+			<property name="added_items" value="ZombieINC_spawnRadio_3" />
+			<property name="added_item_counts" value="1" />			
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_PickRadio4_Event">
+		<!--<property name="refund_inactivity" value="false" />-->
+
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="radio4" />
+			<property name="group_name" value="radio" />
+			<property name="max_distance" value="6" />
+		</action>
+		
+		<action class="RemoveEntities">
+			<property name="phase" value="1" />
+			<property name="target_group" value="radio" />
+		</action>
+		
+		<action class="BlockReplace">
+			<property name="min_offset" value="-6,-6,-6" />
+			<property name="max_offset" value="6,6,6" />
+			<property name="block_to" value="air" />
+			<property name="block_tags" value="ZINCRADIO4" />
+			<property name="phase" value="1" />	
+		</action>
+		<!--<action class="Kill">
+			<property name="phase" value="1" />
+			<property name="target_group" value="ritual" />
+		</action>-->
+		
+		<action class="AddItems">
+			<property name="phase" value="2" />
+			<property name="added_items" value="ZombieINC_spawnRadio_4" />
+			<property name="added_item_counts" value="1" />			
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_PickRadio5_Event">
+		<!--<property name="refund_inactivity" value="false" />-->
+
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="radio5" />
+			<property name="group_name" value="radio" />
+			<property name="max_distance" value="6" />
+		</action>
+		
+		<action class="RemoveEntities">
+			<property name="phase" value="1" />
+			<property name="target_group" value="radio" />
+		</action>
+		
+		<action class="BlockReplace">
+			<property name="min_offset" value="-6,-6,-6" />
+			<property name="max_offset" value="6,6,6" />
+			<property name="block_to" value="air" />
+			<property name="block_tags" value="ZINCRADIO5" />
+			<property name="phase" value="1" />	
+		</action>
+		<!--<action class="Kill">
+			<property name="phase" value="1" />
+			<property name="target_group" value="ritual" />
+		</action>-->
+		
+		<action class="AddItems">
+			<property name="phase" value="2" />
+			<property name="added_items" value="ZombieINC_spawnRadio_5" />
+			<property name="added_item_counts" value="1" />			
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_PickRadio6_Event">
+		<!--<property name="refund_inactivity" value="false" />-->
+
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="radio6" />
+			<property name="group_name" value="radio" />
+			<property name="max_distance" value="6" />
+		</action>
+		
+		<action class="RemoveEntities">
+			<property name="phase" value="1" />
+			<property name="target_group" value="radio" />
+		</action>
+		
+		<action class="BlockReplace">
+			<property name="min_offset" value="-6,-6,-6" />
+			<property name="max_offset" value="6,6,6" />
+			<property name="block_to" value="air" />
+			<property name="block_tags" value="ZINCRADIO6" />
+			<property name="phase" value="1" />	
+		</action>
+		<!--<action class="Kill">
+			<property name="phase" value="1" />
+			<property name="target_group" value="ritual" />
+		</action>-->
+		
+		<action class="AddItems">
+			<property name="phase" value="2" />
+			<property name="added_items" value="ZombieINC_spawnRadio_6" />
+			<property name="added_item_counts" value="1" />			
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_UpgradeRadio1_Event">
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="radio1" />
+			<property name="group_name" value="radio" />
+			<property name="max_distance" value="6" />
+		</action>
+		<action class="BlockReplace">
+			<property name="min_offset" value="-6,-6,-6" />
+			<property name="max_offset" value="6,6,6" />
+			<property name="block_to" value="ZombieINC_spawnRadio_2" />
+			<property name="block_tags" value="ZINCRADIO1" />
+			<property name="phase" value="0" />	
+		</action>
+		<action class="ReplaceEntities">
+			<property name="time" value="5" />
+			<property name="phase" value="1" />	
+			<property name="entity_names" value="ZombieINC_NPC_Radio_2" />
+			<property name="single_choice" value="true" />
+			<property name="target_group" value="radio" />
+		</action>		
+	</action_sequence>
+	<action_sequence name="ZombieINC_UpgradeRadio2_Event">
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="radio2" />
+			<property name="group_name" value="radio" />
+			<property name="max_distance" value="6" />
+		</action>
+		<action class="BlockReplace">
+			<property name="min_offset" value="-6,-6,-6" />
+			<property name="max_offset" value="6,6,6" />
+			<property name="block_to" value="ZombieINC_spawnRadio_3" />
+			<property name="block_tags" value="ZINCRADIO2" />
+			<property name="phase" value="0" />	
+		</action>
+		<action class="ReplaceEntities">
+			<property name="time" value="5" />
+			<property name="phase" value="1" />	
+			<property name="entity_names" value="ZombieINC_NPC_Radio_3" />
+			<property name="single_choice" value="true" />
+			<property name="target_group" value="radio" />
+		</action>		
+	</action_sequence>
+	<action_sequence name="ZombieINC_UpgradeRadio3_Event">
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="radio3" />
+			<property name="group_name" value="radio" />
+			<property name="max_distance" value="6" />
+		</action>
+		<action class="BlockReplace">
+			<property name="min_offset" value="-6,-6,-6" />
+			<property name="max_offset" value="6,6,6" />
+			<property name="block_to" value="ZombieINC_spawnRadio_4" />
+			<property name="block_tags" value="ZINCRADIO3" />
+			<property name="phase" value="0" />	
+		</action>
+		<action class="ReplaceEntities">
+			<property name="time" value="5" />
+			<property name="phase" value="1" />	
+			<property name="entity_names" value="ZombieINC_NPC_Radio_4" />
+			<property name="single_choice" value="true" />
+			<property name="target_group" value="radio" />
+		</action>		
+	</action_sequence>
+	<action_sequence name="ZombieINC_UpgradeRadio4_Event">
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="radio4" />
+			<property name="group_name" value="radio" />
+			<property name="max_distance" value="6" />
+		</action>
+		<action class="BlockReplace">
+			<property name="min_offset" value="-6,-6,-6" />
+			<property name="max_offset" value="6,6,6" />
+			<property name="block_to" value="ZombieINC_spawnRadio_5" />
+			<property name="block_tags" value="ZINCRADIO4" />
+			<property name="phase" value="0" />	
+		</action>
+		<action class="ReplaceEntities">
+			<property name="time" value="5" />
+			<property name="phase" value="1" />	
+			<property name="entity_names" value="ZombieINC_NPC_Radio_5" />
+			<property name="single_choice" value="true" />
+			<property name="target_group" value="radio" />
+		</action>		
+	</action_sequence>
+	<action_sequence name="ZombieINC_UpgradeRadio5_Event">
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="radio5" />
+			<property name="group_name" value="radio" />
+			<property name="max_distance" value="6" />
+		</action>
+		<action class="BlockReplace">
+			<property name="min_offset" value="-6,-6,-6" />
+			<property name="max_offset" value="6,6,6" />
+			<property name="block_to" value="ZombieINC_spawnRadio_6" />
+			<property name="block_tags" value="ZINCRADIO5" />
+			<property name="phase" value="0" />	
+		</action>
+		<action class="ReplaceEntities">
+			<property name="time" value="5" />
+			<property name="phase" value="1" />	
+			<property name="entity_names" value="ZombieINC_NPC_Radio_6" />
+			<property name="single_choice" value="true" />
+			<property name="target_group" value="radio" />
+		</action>		
+	</action_sequence>
+<!--New Quest Giver 2.6-->	
+
+
+</append>
+
+</Config>

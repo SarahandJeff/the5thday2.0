@@ -1,0 +1,183 @@
+<Config>
+	<append xpath="/entity_classes">
+	
+		<!--###Mobile Defense-->
+	<entity_class name="ZombieINC_Antenna_template" extends="zombieTomClark">
+	<property name="UserSpawnType" value="Menu"/>
+	<property name="Tags" value="entity,zombie,walker,Antenna"/>
+	<property name="SizeScale" value="0.6"/>
+	<property name="SoundRandom" value=""/>
+	<property name="SoundAlert" value=""/>
+	<property name="SoundAttack" value=""/>
+	<property name="SoundHurt" value=""/>
+	<property name="SoundDeath" value=""/>
+	<property name="SoundSense" value=""/>
+	<property name="PhysicsBody" value="zombieStandard"/>
+	<!--<property name="PhysicsBody" value="ZombieINCAntenna"/>-->
+	<property name="ModelType" value="Standard"/>
+	<property name="PainResistPerHit" value="1"/>
+	<property name="WalkType" value="40"/>
+	<property name="Mass" value="5000"/>
+	<property name="Weight" value="700"/>
+	<property name="RootMotion" value="false"/>
+	<property name="CorpseBlock" value="air"/>
+	<property name="CorpseBlockChance" value="0"/>
+	<property name="TimeStayAfterDeath" value="0"/>
+	<property name="DeadBodyHitPoints" value="1"/>
+	<property name="PushFactor" value="100"/>
+	<property name="AIPathCostScale" value="0.1, 0.1"/>
+	<property name="SurfaceCategory" value="metal"/>
+	<property name="HasRagdoll" value="false"/>
+	<property name="DanceType" value="2" />
+	<property name="NavObject" value="" />
+	<property name="LootDropProb" value="0"/>
+	<property name="MaxTurnSpeed" value="1"/>
+	<property name="MoveSpeed" value="1"/> 
+	<property name="MoveSpeedAggro" value="1,1"/> 
+	<property name="MoveSpeedRand" value="1,1"/> 
+	<property name="MoveSpeedPanic" value="1"/>
+	<property name="SwimSpeed" value="0"/>
+	<property name="SwimStrokeRate" value="0,0"/>
+	<property name="CanClimbLadders" value="false"/>
+	<property name="JumpMaxDistance" value="0,0"/>
+	<property name="DismemberMultiplierLegs" value="0"/>
+	<property name="DismemberMultiplierHead" value="0"/>
+	<property name="DismemberMultiplierArms" value="0"/>
+	<property name="HasDeathAnim" value="false"/>
+	<property name="ParticleOnDeath" value=""/>
+	<property name="DismemberTag_L_HeadGore" value=""/>
+	<property name="DismemberTag_L_LeftUpperLegGore" value=""/>
+	<property name="DismemberTag_L_LeftLowerLegGore" value=""/>
+	<property name="DismemberTag_L_RightUpperLegGore" value=""/>
+	<property name="DismemberTag_L_RightLowerLegGore" value=""/>
+	<property name="DismemberTag_L_LeftUpperArmGore" value=""/>
+	<property name="DismemberTag_L_LeftLowerArmGore" value=""/>
+	<property name="DismemberTag_L_RightUpperArmGore" value=""/>
+	<property name="DismemberTag_L_RightLowerArmGore" value=""/>
+	<!--<property name="Buffs" value="ZombieINC_MD_Antenna_EntityAttachPrefab_Buff"/>-->
+	<property name="NavObject" value="ZombieINC_Antenna" />
+	
+	<property name="AITask" value="
+	"/>
+	
+	<effect_group name="Base Effects">
+		<passive_effect name="HealthMax" operation="base_set" value="500"/>	
+		
+		<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="ZombieINC_MD_Antenna_EntityAttachPrefab_Buff"/>	
+	</effect_group>
+</entity_class>
+
+<entity_class name="ZombieINC_Antenna_T3" extends="ZombieINC_Antenna_template">
+	<property name="UserSpawnType" value="Menu"/>
+	<property name="Tags" value="entity,zombie,walker,Antenna,AntennaT4"/>
+	<property name="Buffs" value="ZombieINC_MD_Antenna_EntityAttachPrefab_Buff,ZombieINC_MD_Antenna_EntityBuff_T3"/>
+	
+	<effect_group name="Base Effects">
+		<passive_effect name="HealthMax" operation="base_set" value="500"/>	
+		<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="ZombieINC_MD_Antenna_EntityBuff_T3"/>	
+	</effect_group>
+</entity_class>
+
+<entity_class name="ZombieINC_Antenna_T4" extends="ZombieINC_Antenna_template">
+	<property name="UserSpawnType" value="Menu"/>
+	<property name="Tags" value="entity,zombie,walker,Antenna,AntennaT4"/>
+	<property name="Buffs" value="ZombieINC_MD_Antenna_EntityAttachPrefab_Buff,ZombieINC_MD_Antenna_EntityBuff_T4"/>
+	
+	<effect_group name="Base Effects">
+		<passive_effect name="HealthMax" operation="base_set" value="500"/>	
+		<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="ZombieINC_MD_Antenna_EntityBuff_T4"/>	
+	</effect_group>
+</entity_class>
+
+<entity_class name="ZombieINC_Objective" extends="zombieTomClark">
+	<property name="UserSpawnType" value="Menu"/>
+	<property name="Tags" value="entity,zombie,walker,Objective"/>
+	<property name="SizeScale" value="1"/>
+	<property name="SoundRandom" value=""/>
+	<property name="SoundAlert" value=""/>
+	<property name="SoundAttack" value=""/>
+	<property name="SoundHurt" value=""/>
+	<property name="SoundDeath" value=""/>
+	<property name="SoundSense" value=""/>
+	<property name="PhysicsBody" value="zombieINCEmpty_MD"/>
+	<property name="ModelType" value="Standard"/>
+	<property name="PainResistPerHit" value="1"/>
+	<property name="WalkType" value="40"/>
+	<property name="Mass" value="5000"/>
+	<property name="Weight" value="700"/>
+	<property name="RootMotion" value="false"/>
+	<property name="CorpseBlock" value="air"/>
+	<property name="CorpseBlockChance" value="0"/>
+	<property name="TimeStayAfterDeath" value="0"/>
+	<property name="DeadBodyHitPoints" value="1"/>
+	<property name="PushFactor" value="100"/>
+	<property name="AIPathCostScale" value="0.1, 0.1"/>
+	<property name="SurfaceCategory" value="metal"/>
+	<property name="HasRagdoll" value="false"/>
+	<property name="DanceType" value="2" />
+	<property name="NavObject" value="" />
+	<property name="LootDropProb" value="0"/>
+	<property name="MaxTurnSpeed" value="1"/>
+	<property name="MoveSpeed" value="1"/> 
+	<property name="MoveSpeedAggro" value="1,1"/> 
+	<property name="MoveSpeedRand" value="1,1"/> 
+	<property name="MoveSpeedPanic" value="1"/>
+	<property name="SwimSpeed" value="0"/>
+	<property name="SwimStrokeRate" value="0,0"/>
+	<property name="CanClimbLadders" value="false"/>
+	<property name="JumpMaxDistance" value="0,0"/>
+	<property name="DismemberMultiplierLegs" value="0"/>
+	<property name="DismemberMultiplierHead" value="0"/>
+	<property name="DismemberMultiplierArms" value="0"/>
+	<property name="HasDeathAnim" value="false"/>
+	<property name="ParticleOnDeath" value=""/>
+	<property name="DismemberTag_L_HeadGore" value=""/>
+	<property name="DismemberTag_L_LeftUpperLegGore" value=""/>
+	<property name="DismemberTag_L_LeftLowerLegGore" value=""/>
+	<property name="DismemberTag_L_RightUpperLegGore" value=""/>
+	<property name="DismemberTag_L_RightLowerLegGore" value=""/>
+	<property name="DismemberTag_L_LeftUpperArmGore" value=""/>
+	<property name="DismemberTag_L_LeftLowerArmGore" value=""/>
+	<property name="DismemberTag_L_RightUpperArmGore" value=""/>
+	<property name="DismemberTag_L_RightLowerArmGore" value=""/>
+	<property name="Buffs" value="ZombieINC_MD_Objective_Buff"/>
+	<property name="NavObject" value="ZombieINC_Objective" />
+	
+	<property name="AITask" value="
+	"/>
+	
+	<effect_group name="Base Effects">
+		<passive_effect name="HealthMax" operation="base_set" value="999999"/>	
+		<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="ZombieINC_MD_Objective_Buff"/>	
+	</effect_group>
+</entity_class>	
+	<!--Mobile Defense-->
+	<!--##Mobile Defense-->
+<entity_class name="ZombieINC_vehicle4x4TruckAntenna">
+	<property name="Class" value="EntityVJeep"/>
+	<property name="Tags" value="vehicle,usesGas,ZINCTruckQuestMD"/>
+	<property name="Parent" value="Cars"/>
+	<property name="Prefab" value="@:Entities/Vehicles/VTruck4x4/VTruck4x4P.prefab"/>
+	<property name="ModelType" value="Standard"/>
+	<property name="SurfaceCategory" value="metal"/>
+	<property name="IgnoreTrigger" value="true"/>
+	<property name="LootListAlive" value="vehicle4x4Truck"/>
+	<property name="IsEnemyEntity" value="false"/>
+	<property name="Explosion.ParticleIndex" value="29"/>
+	<property name="Explosion.RadiusBlocks" value="5"/>
+	<property name="Explosion.RadiusEntities" value="5"/>
+	<property name="Explosion.BlockDamage" value="100"/>
+	<property name="Explosion.EntityDamage" value="100"/>
+	<property name="RotateToGround" value="true"/>
+	<property name="Faction" value="none"/>
+	<property name="MapIcon" value="ui_game_symbol_4x4"/>
+	<property name="NavObject" value="ZombieINC_4x4" />
+	<property name="Buffs" value="ZombieINC_MD_JeepAttachPrefab_Buff" />
+
+	<effect_group name="Base Effects">
+		<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="ZombieINC_MD_JeepAttachPrefab_Buff"/>	
+	</effect_group>
+</entity_class>
+<!--Mobile Defense-->
+	</append>
+</Config>

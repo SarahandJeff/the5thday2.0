@@ -1,0 +1,1017 @@
+<Config>
+
+	<conditional>
+		<if cond="mod_loaded('mateusjobshunt')">
+			<append xpath="/progression/skills">	
+				<skill name="ZombieINC_Perception_AS" parent="attPerception" name_key="ZombieINC_ApocalypticPerks_Perception_name" desc_key="ZombieINC_ApocalypticPerks_Perception_desc" icon="ui_game_symbol_skull"><effect_group/></skill>
+				<skill name="ZombieINC_Strength_AS" parent="attStrength" name_key="ZombieINC_ApocalypticPerks_Strength_name" desc_key="ZombieINC_ApocalypticPerks_Strength_desc" icon="ui_game_symbol_skull"><effect_group/></skill>
+				<skill name="ZombieINC_Fortitude_AS" parent="attFortitude" name_key="ZombieINC_ApocalypticPerks_Fortitude_name" desc_key="ZombieINC_ApocalypticPerks_Fortitude_desc" icon="ui_game_symbol_skull"><effect_group/></skill>
+				<skill name="ZombieINC_Agility_AS" parent="attAgility" name_key="ZombieINC_ApocalypticPerks_Agility_name" desc_key="ZombieINC_ApocalypticPerks_Agility_desc" icon="ui_game_symbol_skull"><effect_group/></skill>
+				<skill name="ZombieINC_Intellect_AS" parent="attIntellect" name_key="ZombieINC_ApocalypticPerks_Intellect_name" desc_key="ZombieINC_ApocalypticPerks_Intellect_desc" icon="ui_game_symbol_skull"><effect_group/></skill>
+
+				<book_group name="ZombieINC_BookSkill_GodSlayer" parent="attBooks" name_key="ZombieINC_BookSkill_GodSlayer_Name" desc_key="ZombieINC_BookSkill_GodSlayer_Desc" long_desc_key="perkBookGroupLongDesc" icon="ui_game_symbol_skull"><effect_group/></book_group>
+			</append>
+			<append xpath="/progression/perks">
+				<perk name="ZombieINC_Perk_NightHunter" parent="ZombieINC_Perception_AS" name_key="ZombieINC_Perk_NightHunter_name" desc_key="ZombieINC_Perk_NightHunter_desc" icon="ui_game_symbol_tracking_wolf" max_level="5" max_level_ratio_to_parent="1" base_skill_point_cost="1" cost_multiplier_per_level="1">	
+					<level_requirements level="1"><requirement name="ProgressionLevel" progression_name="attPerception" operation="GTE" value="1" desc_key="reqPerceptionLevel01"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="1" desc_key="ZombieINC_reqNormalBossScore01"/><requirement name="CVarCompare" cvar="$ZINCDAYPERK" operation="Equals" value="0" desc_key="ZombieINC_reqNotDayPerk"/></level_requirements>
+					<level_requirements level="2"><requirement name="ProgressionLevel" progression_name="attPerception" operation="GTE" value="3" desc_key="reqPerceptionLevel03"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="10" desc_key="ZombieINC_reqNormalBossScore10"/><requirement name="CVarCompare" cvar="$ZINCDAYPERK" operation="Equals" value="0" desc_key="ZombieINC_reqNotDayPerk"/></level_requirements>
+					<level_requirements level="3"><requirement name="ProgressionLevel" progression_name="attPerception" operation="GTE" value="5" desc_key="reqPerceptionLevel05"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="20" desc_key="ZombieINC_reqNormalBossScore20"/><requirement name="CVarCompare" cvar="$ZINCDAYPERK" operation="Equals" value="0" desc_key="ZombieINC_reqNotDayPerk"/></level_requirements>
+					<level_requirements level="4"><requirement name="ProgressionLevel" progression_name="attPerception" operation="GTE" value="7" desc_key="reqPerceptionLevel07"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="35" desc_key="ZombieINC_reqNormalBossScore35"/><requirement name="CVarCompare" cvar="ZINCBIKC" operation="GTE" value="1" desc_key="ZombieINC_reqInfestedBossScore01"/><requirement name="CVarCompare" cvar="$ZINCDAYPERK" operation="Equals" value="0" desc_key="ZombieINC_reqNotDayPerk"/></level_requirements>
+					<level_requirements level="5"><requirement name="ProgressionLevel" progression_name="attPerception" operation="GTE" value="10" desc_key="reqPerceptionLevel10"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="50" desc_key="ZombieINC_reqNormalBossScore50"/><requirement name="CVarCompare" cvar="ZINCBIKC" operation="GTE" value="5" desc_key="ZombieINC_reqInfestedBossScore05"/><requirement name="CVarCompare" cvar="$ZINCDAYPERK" operation="Equals" value="0" desc_key="ZombieINC_reqNotDayPerk"/></level_requirements>
+					
+					<effect_group>
+						<requirement name="IsNight"/>
+						<requirement name="EntityTagCompare" target="other" tags="boss"/>
+							<!--<passive_effect name="EntityDamage" operation="perc_add" level="1,5" value="10" />--> <!--Test Value-->
+							<passive_effect name="EntityDamage" operation="perc_add" level="1,5" value="0.1,0.5" />
+							<passive_effect name="EntityDamage" operation="perc_add" level="1,5" value="0.1,0.5" />	
+					</effect_group>
+					<effect_group>
+						<requirement name="IsNight"/>
+						<requirement name="EntityTagCompare" target="other" tags="zombie"/>
+						<requirement name="!EntityTagCompare" target="other" tags="boss"/>
+							<!--<passive_effect name="EntityDamage" operation="perc_add" level="1,5" value="10" />--> <!--Test Value-->
+							<passive_effect name="EntityDamage" operation="perc_add" level="1,5" value="0.05,0.25" />
+							<passive_effect name="EntityDamage" operation="perc_add" level="1,5" value="0.05,0.25" />	
+					</effect_group>
+					<effect_group>
+						<requirement name="IsNight"/>
+							<!--<passive_effect name="GameStage" operation="perc_add" level="1,5" value="10" />-->	<!--Test Value-->
+							<passive_effect name="GameStage" operation="perc_add" level="1,5" value="0.04,0.20" />	
+							<passive_effect name="GameStage" operation="base_add" level="1,5" value="10,50" />	
+					</effect_group>
+					<effect_group>
+						<effect_description level="1" desc_key="ZombieINC_Perk_NightHunter1_desc" long_desc_key="ZombieINC_Perk_NightHunter1_LongDesc"/>
+						<effect_description level="2" desc_key="ZombieINC_Perk_NightHunter2_desc" long_desc_key="ZombieINC_Perk_NightHunter2_LongDesc"/>
+						<effect_description level="3" desc_key="ZombieINC_Perk_NightHunter3_desc" long_desc_key="ZombieINC_Perk_NightHunter3_LongDesc"/>
+						<effect_description level="4" desc_key="ZombieINC_Perk_NightHunter4_desc" long_desc_key="ZombieINC_Perk_NightHunter4_LongDesc"/>
+						<effect_description level="5" desc_key="ZombieINC_Perk_NightHunter5_desc" long_desc_key="ZombieINC_Perk_NightHunter5_LongDesc"/>		
+					</effect_group>
+				</perk>
+				<perk name="ZombieINC_Perk_TotalDespair" parent="ZombieINC_Agility_AS" name_key="ZombieINC_Perk_TotalDespair_name" desc_key="ZombieINC_Perk_TotalDespair_desc" icon="ui_game_symbol_candy_skull_crushers" max_level="5" max_level_ratio_to_parent="1" base_skill_point_cost="1" cost_multiplier_per_level="1">	
+					<level_requirements level="1"><requirement name="ProgressionLevel" progression_name="attAgility" operation="GTE" value="1" desc_key="reqAgilityLevel01"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="1" desc_key="ZombieINC_reqNormalBossScore01"/></level_requirements>
+					<level_requirements level="2"><requirement name="ProgressionLevel" progression_name="attAgility" operation="GTE" value="3" desc_key="reqAgilityLevel03"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="10" desc_key="ZombieINC_reqNormalBossScore10"/></level_requirements>
+					<level_requirements level="3"><requirement name="ProgressionLevel" progression_name="attAgility" operation="GTE" value="5" desc_key="reqAgilityLevel05"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="20" desc_key="ZombieINC_reqNormalBossScore20"/></level_requirements>
+					<level_requirements level="4"><requirement name="ProgressionLevel" progression_name="attAgility" operation="GTE" value="7" desc_key="reqAgilityLevel07"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="35" desc_key="ZombieINC_reqNormalBossScore35"/><requirement name="CVarCompare" cvar="ZINCBIKC" operation="GTE" value="1" desc_key="ZombieINC_reqInfestedBossScore01"/></level_requirements>
+					<level_requirements level="5"><requirement name="ProgressionLevel" progression_name="attAgility" operation="GTE" value="10" desc_key="reqAgilityLevel10"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="50" desc_key="ZombieINC_reqNormalBossScore50"/><requirement name="CVarCompare" cvar="ZINCBIKC" operation="GTE" value="5" desc_key="ZombieINC_reqInfestedBossScore05"/></level_requirements>
+					
+					<effect_group>
+						<requirement name="ItemHasTags" tags="attAgility"/>
+						<requirement name="StatComparePercCurrentToMax" stat="Health" operation="LTE" value="0.40"/>
+						<requirement name="EntityTagCompare" target="other" tags="boss"/>
+							<!--<passive_effect name="EntityDamage" operation="perc_add" level="1,5" value="100" />--> <!--Test Value-->
+							<passive_effect name="EntityDamage" operation="perc_add" level="1,5" value="0.1,0.5" />
+							<passive_effect name="EntityDamage" operation="perc_add" level="1,5" value="0.1,0.5" />
+					</effect_group>
+					<effect_group>
+						<requirement name="ItemHasTags" tags="attAgility"/>
+						<requirement name="StatComparePercCurrentToMax" stat="Health" operation="LTE" value="0.40"/>
+						<requirement name="EntityTagCompare" target="other" tags="zombie"/>
+						<requirement name="!EntityTagCompare" target="other" tags="boss"/>
+							<!--<passive_effect name="EntityDamage" operation="perc_add" level="1,5" value="10" />--> <!--Test Value-->
+							<passive_effect name="EntityDamage" operation="perc_add" level="1,5" value="0.05,0.25" />
+							<passive_effect name="EntityDamage" operation="perc_add" level="1,5" value="0.05,0.25" />	
+					</effect_group>
+					
+					<effect_group>
+						<effect_description level="1" desc_key="ZombieINC_Perk_TotalDespair1_desc" long_desc_key="ZombieINC_Perk_TotalDespair1_LongDesc"/>
+						<effect_description level="2" desc_key="ZombieINC_Perk_TotalDespair2_desc" long_desc_key="ZombieINC_Perk_TotalDespair2_LongDesc"/>
+						<effect_description level="3" desc_key="ZombieINC_Perk_TotalDespair3_desc" long_desc_key="ZombieINC_Perk_TotalDespair3_LongDesc"/>
+						<effect_description level="4" desc_key="ZombieINC_Perk_TotalDespair4_desc" long_desc_key="ZombieINC_Perk_TotalDespair4_LongDesc"/>
+						<effect_description level="5" desc_key="ZombieINC_Perk_TotalDespair5_desc" long_desc_key="ZombieINC_Perk_TotalDespair5_LongDesc"/>		
+					</effect_group>
+				</perk>
+				
+				<perk name="ZombieINC_Perk_WiseAfraid" parent="ZombieINC_Agility_AS" name_key="ZombieINC_Perk_WiseAfraid_name" desc_key="ZombieINC_Perk_WiseAfraid_desc" icon="ui_game_symbol_tracking_rabbit" max_level="5" max_level_ratio_to_parent="1" base_skill_point_cost="1" cost_multiplier_per_level="1">	
+					<level_requirements level="1"><requirement name="ProgressionLevel" progression_name="attAgility" operation="GTE" value="1" desc_key="reqAgilityLevel01"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="1" desc_key="ZombieINC_reqNormalBossScore01"/></level_requirements>
+					<level_requirements level="2"><requirement name="ProgressionLevel" progression_name="attAgility" operation="GTE" value="3" desc_key="reqAgilityLevel03"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="10" desc_key="ZombieINC_reqNormalBossScore10"/></level_requirements>
+					<level_requirements level="3"><requirement name="ProgressionLevel" progression_name="attAgility" operation="GTE" value="5" desc_key="reqAgilityLevel05"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="20" desc_key="ZombieINC_reqNormalBossScore20"/></level_requirements>
+					<level_requirements level="4"><requirement name="ProgressionLevel" progression_name="attAgility" operation="GTE" value="7" desc_key="reqAgilityLevel07"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="35" desc_key="ZombieINC_reqNormalBossScore35"/><requirement name="CVarCompare" cvar="ZINCBIKC" operation="GTE" value="1" desc_key="ZombieINC_reqInfestedBossScore01"/></level_requirements>
+					<level_requirements level="5"><requirement name="ProgressionLevel" progression_name="attAgility" operation="GTE" value="10" desc_key="reqAgilityLevel10"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="50" desc_key="ZombieINC_reqNormalBossScore50"/><requirement name="CVarCompare" cvar="ZINCBIKC" operation="GTE" value="5" desc_key="ZombieINC_reqInfestedBossScore05"/></level_requirements>
+					
+					
+					<effect_group>
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_WiseAfraid" operation="Equals" value="1"/>
+						<triggered_effect trigger="onOtherDamagedSelf" action="AddBuff" buff="ZombieINC_Perk_WiseAfraid_NormalL1_buff">
+							<requirement name="EntityTagCompare" target="other" tags="boss"/>
+						</triggered_effect>
+					</effect_group>
+					<effect_group>
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_WiseAfraid" operation="Equals" value="2"/>
+						<triggered_effect trigger="onOtherDamagedSelf" action="AddBuff" buff="ZombieINC_Perk_WiseAfraid_NormalL2_buff">
+							<requirement name="EntityTagCompare" target="other" tags="boss"/>
+						</triggered_effect>
+					</effect_group>
+					<effect_group>
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_WiseAfraid" operation="Equals" value="3"/>
+						<triggered_effect trigger="onOtherDamagedSelf" action="AddBuff" buff="ZombieINC_Perk_WiseAfraid_NormalL3_buff">
+							<requirement name="EntityTagCompare" target="other" tags="boss"/>
+						</triggered_effect>
+					</effect_group>
+					<effect_group>
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_WiseAfraid" operation="Equals" value="4"/>
+						<triggered_effect trigger="onOtherDamagedSelf" action="AddBuff" buff="ZombieINC_Perk_WiseAfraid_NormalL4_buff">
+							<requirement name="EntityTagCompare" target="other" tags="boss"/>
+						</triggered_effect>		
+					</effect_group>
+					<effect_group>
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_WiseAfraid" operation="Equals" value="5"/>
+						<triggered_effect trigger="onOtherDamagedSelf" action="AddBuff" buff="ZombieINC_Perk_WiseAfraid_NormalL5_buff">
+							<requirement name="EntityTagCompare" target="other" tags="boss"/>
+						</triggered_effect>		
+					</effect_group>
+					
+					<effect_group>
+						<effect_description level="1" desc_key="ZombieINC_Perk_WiseAfraid1_desc" long_desc_key="ZombieINC_Perk_WiseAfraid1_LongDesc"/>
+						<effect_description level="2" desc_key="ZombieINC_Perk_WiseAfraid2_desc" long_desc_key="ZombieINC_Perk_WiseAfraid2_LongDesc"/>
+						<effect_description level="3" desc_key="ZombieINC_Perk_WiseAfraid3_desc" long_desc_key="ZombieINC_Perk_WiseAfraid3_LongDesc"/>
+						<effect_description level="4" desc_key="ZombieINC_Perk_WiseAfraid4_desc" long_desc_key="ZombieINC_Perk_WiseAfraid4_LongDesc"/>
+						<effect_description level="5" desc_key="ZombieINC_Perk_WiseAfraid5_desc" long_desc_key="ZombieINC_Perk_WiseAfraid5_LongDesc"/>		
+					</effect_group>
+				</perk>
+				<perk name="ZombieINC_Perk_LuckyLooter" parent="ZombieINC_Perception_AS" name_key="ZombieINC_Perk_LuckyLooter_name" desc_key="ZombieINC_Perk_LuckyLooter_desc" icon="ui_game_symbol_loot_sack" max_level="5" max_level_ratio_to_parent="1" base_skill_point_cost="1" cost_multiplier_per_level="1">	
+					<level_requirements level="1"><requirement name="ProgressionLevel" progression_name="attPerception" operation="GTE" value="1" desc_key="reqPerceptionLevel01"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="1" desc_key="ZombieINC_reqNormalBossScore01"/></level_requirements>
+					<level_requirements level="2"><requirement name="ProgressionLevel" progression_name="attPerception" operation="GTE" value="3" desc_key="reqPerceptionLevel03"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="10" desc_key="ZombieINC_reqNormalBossScore10"/></level_requirements>
+					<level_requirements level="3"><requirement name="ProgressionLevel" progression_name="attPerception" operation="GTE" value="5" desc_key="reqPerceptionLevel05"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="20" desc_key="ZombieINC_reqNormalBossScore20"/></level_requirements>
+					<level_requirements level="4"><requirement name="ProgressionLevel" progression_name="attPerception" operation="GTE" value="7" desc_key="reqPerceptionLevel07"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="35" desc_key="ZombieINC_reqNormalBossScore35"/><requirement name="CVarCompare" cvar="ZINCBIKC" operation="GTE" value="1" desc_key="ZombieINC_reqInfestedBossScore01"/></level_requirements>
+					<level_requirements level="5"><requirement name="ProgressionLevel" progression_name="attPerception" operation="GTE" value="10" desc_key="reqPerceptionLevel10"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="50" desc_key="ZombieINC_reqNormalBossScore50"/><requirement name="CVarCompare" cvar="ZINCBIKC" operation="GTE" value="5" desc_key="ZombieINC_reqInfestedBossScore05"/></level_requirements>
+					
+					<effect_group>
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_LuckyLooter" operation="Equals" value="1"/>
+						<triggered_effect trigger="onSelfKilledOther" action="AddBuff" buff="ZombieINC_Perk_LuckyLooter_NormalL1_buff">
+							<requirement name="EntityTagCompare" target="other" tags="boss"/>
+							<requirement name="!EntityTagCompare" target="other" tags="infested"/>
+						</triggered_effect>
+					</effect_group>
+					<effect_group>
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_LuckyLooter" operation="Equals" value="2"/>
+						<triggered_effect trigger="onSelfKilledOther" action="AddBuff" buff="ZombieINC_Perk_LuckyLooter_NormalL2_buff">
+							<requirement name="EntityTagCompare" target="other" tags="boss"/>
+							<requirement name="!EntityTagCompare" target="other" tags="infested"/>
+						</triggered_effect>
+					</effect_group>
+					<effect_group>
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_LuckyLooter" operation="Equals" value="3"/>
+						<triggered_effect trigger="onSelfKilledOther" action="AddBuff" buff="ZombieINC_Perk_LuckyLooter_NormalL3_buff">
+							<requirement name="EntityTagCompare" target="other" tags="boss"/>
+							<requirement name="!EntityTagCompare" target="other" tags="infested"/>
+						</triggered_effect>
+					</effect_group>
+					<effect_group>
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_LuckyLooter" operation="Equals" value="4"/>
+						<triggered_effect trigger="onSelfKilledOther" action="AddBuff" buff="ZombieINC_Perk_LuckyLooter_NormalL4_buff">
+							<requirement name="NotHasBuff" buff="ZombieINC_Perk_LuckyLooter_InfestedL4_buff"/>
+							<requirement name="NotHasBuff" buff="ZombieINC_Perk_LuckyLooter_InfestedL5_buff"/>
+							<requirement name="EntityTagCompare" target="other" tags="boss"/>
+							<requirement name="!EntityTagCompare" target="other" tags="infested"/>
+						</triggered_effect>
+						<triggered_effect trigger="onSelfKilledOther" action="AddBuff" buff="ZombieINC_Perk_LuckyLooter_InfestedL4_buff">
+							<requirement name="EntityTagCompare" target="other" tags="boss,infested" has_all_tags="true"/>
+						</triggered_effect>
+					</effect_group>
+					<effect_group>
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_LuckyLooter" operation="Equals" value="5"/>
+						<triggered_effect trigger="onSelfKilledOther" action="AddBuff" buff="ZombieINC_Perk_LuckyLooter_NormalL5_buff">
+							<requirement name="NotHasBuff" buff="ZombieINC_Perk_LuckyLooter_InfestedL4_buff"/>
+							<requirement name="NotHasBuff" buff="ZombieINC_Perk_LuckyLooter_InfestedL5_buff"/>
+							<requirement name="EntityTagCompare" target="other" tags="boss"/>
+							<requirement name="!EntityTagCompare" target="other" tags="infested"/>
+						</triggered_effect>
+						<triggered_effect trigger="onSelfKilledOther" action="AddBuff" buff="ZombieINC_Perk_LuckyLooter_InfestedL5_buff">
+							<requirement name="EntityTagCompare" target="other" tags="boss,infested" has_all_tags="true"/>
+						</triggered_effect>
+					</effect_group>
+					
+					<effect_group>
+						<effect_description level="1" desc_key="ZombieINC_Perk_LuckyLooter1_desc" long_desc_key="ZombieINC_Perk_LuckyLooter1_LongDesc"/>
+						<effect_description level="2" desc_key="ZombieINC_Perk_LuckyLooter2_desc" long_desc_key="ZombieINC_Perk_LuckyLooter2_LongDesc"/>
+						<effect_description level="3" desc_key="ZombieINC_Perk_LuckyLooter3_desc" long_desc_key="ZombieINC_Perk_LuckyLooter3_LongDesc"/>
+						<effect_description level="4" desc_key="ZombieINC_Perk_LuckyLooter4_desc" long_desc_key="ZombieINC_Perk_LuckyLooter4_LongDesc"/>
+						<effect_description level="5" desc_key="ZombieINC_Perk_LuckyLooter5_desc" long_desc_key="ZombieINC_Perk_LuckyLooter5_LongDesc"/>		
+					</effect_group>
+				</perk>
+				<perk name="ZombieINC_Perk_Masochist" parent="ZombieINC_Strength_AS" name_key="ZombieINC_Perk_Masochist_name" desc_key="ZombieINC_Perk_Masochist_desc" icon="ui_game_symbol_candy_skull_crushers" max_level="3" max_level_ratio_to_parent="1" base_skill_point_cost="1" cost_multiplier_per_level="1">	
+					<level_requirements level="1"><requirement name="ProgressionLevel" progression_name="attStrength" operation="GTE" value="5" desc_key="reqStrengthLevel05"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="20" desc_key="ZombieINC_reqNormalBossScore20"/></level_requirements>
+					<level_requirements level="2"><requirement name="ProgressionLevel" progression_name="attStrength" operation="GTE" value="7" desc_key="reqStrengthLevel07"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="35" desc_key="ZombieINC_reqNormalBossScore35"/><requirement name="CVarCompare" cvar="ZINCBIKC" operation="GTE" value="1" desc_key="ZombieINC_reqInfestedBossScore01"/></level_requirements>
+					<level_requirements level="3"><requirement name="ProgressionLevel" progression_name="attStrength" operation="GTE" value="10" desc_key="reqStrengthLevel10"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="50" desc_key="ZombieINC_reqNormalBossScore50"/><requirement name="CVarCompare" cvar="ZINCBIKC" operation="GTE" value="5" desc_key="ZombieINC_reqInfestedBossScore05"/></level_requirements>
+					
+					<effect_group>
+					<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_Masochist" operation="GTE" value="1"/>
+						<triggered_effect trigger="onOtherAttackedSelf" action="AddBuff" buff="ZombieINC_perkMasochistFrenzy">
+							<requirement name="NotHasBuff" buff="ZombieINC_perkMasochistFrenzyActive" /></triggered_effect>
+					</effect_group>
+					<effect_group>
+						<requirement name="HasBuff" buff="ZombieINC_perkMasochistFrenzyActive" />
+						<passive_effect name="AttacksPerMinute" operation="perc_add" level="1,3" value="0.1,0.3" tags="melee"/>
+						<passive_effect name="GeneralDamageResist" operation="base_add" level="1,3" value="0.1,0.3"/>
+						<passive_effect name="RunSpeed" operation="perc_add" level="1,3" value="0.1,0.3" />
+						<passive_effect name="StaminaChangeOT" operation="perc_add" level="1,3" value="0.1,0.3" />
+					</effect_group>
+					<effect_group>
+						<effect_description level="1" desc_key="ZombieINC_Perk_Masochist1_desc" long_desc_key="ZombieINC_Perk_Masochist1_LongDesc"/>
+						<effect_description level="2" desc_key="ZombieINC_Perk_Masochist2_desc" long_desc_key="ZombieINC_Perk_Masochist2_LongDesc"/>
+						<effect_description level="3" desc_key="ZombieINC_Perk_Masochist3_desc" long_desc_key="ZombieINC_Perk_Masochist3_LongDesc"/>		
+					</effect_group>
+				</perk>
+				<perk name="ZombieINC_Perk_ArmoredMuscles" parent="ZombieINC_Strength_AS" name_key="ZombieINC_Perk_ArmoredMuscles_name" desc_key="ZombieINC_Perk_ArmoredMuscles_desc" icon="ui_game_symbol_armor_iron" max_level="5" max_level_ratio_to_parent="1" base_skill_point_cost="1" cost_multiplier_per_level="1">	
+					<level_requirements level="1"><requirement name="ProgressionLevel" progression_name="attStrength" operation="GTE" value="1" desc_key="reqStrengthLevel01"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="1" desc_key="ZombieINC_reqNormalBossScore01"/></level_requirements>
+					<level_requirements level="2"><requirement name="ProgressionLevel" progression_name="attStrength" operation="GTE" value="3" desc_key="reqStrengthLevel03"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="10" desc_key="ZombieINC_reqNormalBossScore10"/></level_requirements>
+					<level_requirements level="3"><requirement name="ProgressionLevel" progression_name="attStrength" operation="GTE" value="5" desc_key="reqStrengthLevel05"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="20" desc_key="ZombieINC_reqNormalBossScore20"/></level_requirements>
+					<level_requirements level="4"><requirement name="ProgressionLevel" progression_name="attStrength" operation="GTE" value="7" desc_key="reqStrengthLevel07"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="35" desc_key="ZombieINC_reqNormalBossScore35"/><requirement name="CVarCompare" cvar="ZINCBIKC" operation="GTE" value="1" desc_key="ZombieINC_reqInfestedBossScore01"/></level_requirements>
+					<level_requirements level="5"><requirement name="ProgressionLevel" progression_name="attStrength" operation="GTE" value="10" desc_key="reqStrengthLevel10"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="50" desc_key="ZombieINC_reqNormalBossScore50"/><requirement name="CVarCompare" cvar="ZINCBIKC" operation="GTE" value="5" desc_key="ZombieINC_reqInfestedBossScore05"/></level_requirements>
+					
+					<effect_group>
+					<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_ArmoredMuscles" operation="Equals" value="1"/>
+						<triggered_effect trigger="onOtherAttackedSelf" action="ModifyStats" stat="Health" operation="add" value="-5"/>
+					</effect_group>
+					<effect_group>
+					<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_ArmoredMuscles" operation="Equals" value="2"/>
+						<triggered_effect trigger="onOtherAttackedSelf" action="ModifyStats" stat="Health" operation="add" value="-10"/>
+					</effect_group>
+					<effect_group>
+					<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_ArmoredMuscles" operation="Equals" value="3"/>
+						<triggered_effect trigger="onOtherAttackedSelf" action="ModifyStats" stat="Health" operation="add" value="-15"/>
+					</effect_group>
+					<effect_group>
+					<requirement name="NotHasBuff" buff="ZombieINC_Perk_WarCrySelf_NormalL1_buff" />
+					<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_ArmoredMuscles" operation="Equals" value="4"/>
+						<triggered_effect trigger="onOtherAttackedSelf" action="ModifyStats" stat="Health" operation="add" value="-20"/>
+					</effect_group>
+					<effect_group>
+					<requirement name="HasBuff" buff="ZombieINC_Perk_WarCrySelf_NormalL1_buff" />
+					<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_ArmoredMuscles" operation="Equals" value="4"/>
+						<triggered_effect trigger="onOtherAttackedSelf" action="ModifyStats" stat="Health" operation="add" value="-40"/>
+					</effect_group>
+					<effect_group>
+					<requirement name="NotHasBuff" buff="ZombieINC_Perk_WarCrySelf_NormalL1_buff" />
+					<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_ArmoredMuscles" operation="Equals" value="5"/>
+						<triggered_effect trigger="onOtherAttackedSelf" action="ModifyStats" stat="Health" operation="add" value="-40"/>
+					</effect_group>
+					<effect_group>
+					<requirement name="HasBuff" buff="ZombieINC_Perk_WarCrySelf_NormalL1_buff" />
+					<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_ArmoredMuscles" operation="Equals" value="5"/>
+						<triggered_effect trigger="onOtherAttackedSelf" action="ModifyStats" stat="Health" operation="add" value="-80"/>
+					</effect_group>
+					
+					<effect_group>
+						<effect_description level="1" desc_key="ZombieINC_Perk_ArmoredMuscles1_desc" long_desc_key="ZombieINC_Perk_ArmoredMuscles1_LongDesc"/>
+						<effect_description level="2" desc_key="ZombieINC_Perk_ArmoredMuscles2_desc" long_desc_key="ZombieINC_Perk_ArmoredMuscles2_LongDesc"/>
+						<effect_description level="3" desc_key="ZombieINC_Perk_ArmoredMuscles3_desc" long_desc_key="ZombieINC_Perk_ArmoredMuscles3_LongDesc"/>
+						<effect_description level="4" desc_key="ZombieINC_Perk_ArmoredMuscles4_desc" long_desc_key="ZombieINC_Perk_ArmoredMuscles4_LongDesc"/>
+						<effect_description level="5" desc_key="ZombieINC_Perk_ArmoredMuscles5_desc" long_desc_key="ZombieINC_Perk_ArmoredMuscles5_LongDesc"/>		
+					</effect_group>
+				</perk>
+				<perk name="ZombieINC_Perk_Warcry" parent="ZombieINC_Strength_AS" name_key="ZombieINC_Perk_Warcry_name" desc_key="ZombieINC_Perk_Warcry_desc" icon="ui_game_symbol_bull" max_level="3" max_level_ratio_to_parent="1" base_skill_point_cost="1" cost_multiplier_per_level="1">	
+					<level_requirements level="1"><requirement name="ProgressionLevel" progression_name="attStrength" operation="GTE" value="8" desc_key="reqStrengthLevel08"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="20" desc_key="ZombieINC_reqNormalBossScore20"/></level_requirements>
+					<level_requirements level="2"><requirement name="ProgressionLevel" progression_name="attStrength" operation="GTE" value="9" desc_key="reqStrengthLevel09"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="35" desc_key="ZombieINC_reqNormalBossScore35"/><requirement name="CVarCompare" cvar="ZINCBIKC" operation="GTE" value="1" desc_key="ZombieINC_reqInfestedBossScore01"/></level_requirements>
+					<level_requirements level="3"><requirement name="ProgressionLevel" progression_name="attStrength" operation="GTE" value="10" desc_key="reqStrengthLevel10"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="50" desc_key="ZombieINC_reqNormalBossScore50"/><requirement name="CVarCompare" cvar="ZINCBIKC" operation="GTE" value="5" desc_key="ZombieINC_reqInfestedBossScore05"/></level_requirements>
+					
+					<effect_group>
+						<passive_effect name="LightMultiplier" operation="perc_add" level="1,3" value="0.2,0.2"/>
+						<passive_effect name="NoiseMultiplier" operation="perc_add" level="1,3" value="0.2,0.2"/>
+						<passive_effect name="EnemySearchDuration" operation="perc_add" level="1,3" value="0.2,0.2"/>
+						<!--Effects on Players Hand-->
+					</effect_group>
+					
+					<effect_group>
+						<effect_description level="1" desc_key="ZombieINC_Perk_Warcry1_desc" long_desc_key="ZombieINC_Perk_Warcry1_LongDesc"/>
+						<effect_description level="2" desc_key="ZombieINC_Perk_Warcry2_desc" long_desc_key="ZombieINC_Perk_Warcry2_LongDesc"/>
+						<effect_description level="3" desc_key="ZombieINC_Perk_Warcry3_desc" long_desc_key="ZombieINC_Perk_Warcry3_LongDesc"/>	
+					</effect_group>
+				</perk>
+				<perk name="ZombieINC_Perk_NightGod" parent="ZombieINC_Perception_AS" name_key="ZombieINC_Perk_NightGod_name" desc_key="ZombieINC_Perk_NightGod_desc" icon="ui_game_symbol_7th_curse" max_level="5" max_level_ratio_to_parent="1" base_skill_point_cost="2" cost_multiplier_per_level="1.5">	
+					<level_requirements level="1"><requirement name="ProgressionLevel" progression_name="attPerception" operation="GTE" value="6" desc_key="reqPerceptionLevel01"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="1" desc_key="ZombieINC_reqNormalBossScore01"/><requirement name="CVarCompare" cvar="$ZINCDAYPERK" operation="Equals" value="0" desc_key="ZombieINC_reqNotDayPerk"/></level_requirements>
+					<level_requirements level="2"><requirement name="ProgressionLevel" progression_name="attPerception" operation="GTE" value="7" desc_key="reqPerceptionLevel03"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="10" desc_key="ZombieINC_reqNormalBossScore10"/><requirement name="CVarCompare" cvar="$ZINCDAYPERK" operation="Equals" value="0" desc_key="ZombieINC_reqNotDayPerk"/></level_requirements>
+					<level_requirements level="3"><requirement name="ProgressionLevel" progression_name="attPerception" operation="GTE" value="8" desc_key="reqPerceptionLevel05"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="20" desc_key="ZombieINC_reqNormalBossScore20"/><requirement name="CVarCompare" cvar="$ZINCDAYPERK" operation="Equals" value="0" desc_key="ZombieINC_reqNotDayPerk"/></level_requirements>
+					<level_requirements level="4"><requirement name="ProgressionLevel" progression_name="attPerception" operation="GTE" value="9" desc_key="reqPerceptionLevel07"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="35" desc_key="ZombieINC_reqNormalBossScore35"/><requirement name="CVarCompare" cvar="ZINCBIKC" operation="GTE" value="1" desc_key="ZombieINC_reqInfestedBossScore01"/><requirement name="CVarCompare" cvar="$ZINCDAYPERK" operation="Equals" value="0" desc_key="ZombieINC_reqNotDayPerk"/></level_requirements>
+					<level_requirements level="5"><requirement name="ProgressionLevel" progression_name="attPerception" operation="GTE" value="10" desc_key="reqPerceptionLevel10"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="50" desc_key="ZombieINC_reqNormalBossScore50"/><requirement name="CVarCompare" cvar="ZINCBIKC" operation="GTE" value="5" desc_key="ZombieINC_reqInfestedBossScore05"/><requirement name="CVarCompare" cvar="$ZINCDAYPERK" operation="Equals" value="0" desc_key="ZombieINC_reqNotDayPerk"/></level_requirements>
+					
+					<effect_group>
+						<requirement name="IsNight"/>
+						<requirement name="WornItems" tags="heavyArmorPenalty" operation="Equals" value="0"/>
+						<requirement name="WornItems" tags="lightArmorPenalty" operation="Equals" value="0"/>
+						
+							<passive_effect name="LightMultiplier" operation="perc_add" level="1,5" value="-0.1,-0.5"/>
+							<passive_effect name="NoiseMultiplier" operation="perc_add" level="1,5" value="-0.1,-0.5"/>
+							<passive_effect name="EnemySearchDuration" operation="perc_add" level="1,5" value="-0.1,-0.5"/>
+							
+							<passive_effect name="LootDropProb" operation="perc_add" level="1,5" value="0.2,1"/>
+							
+							<passive_effect name="GeneralDamageResist" operation="base_add" level="1,5" value="-0.05,-0.25"/>			
+							<passive_effect name="GameStage" operation="perc_add" level="1,5" value="0.1,0.5" />	
+							<passive_effect name="GameStage" operation="base_add" level="1,5" value="10,50" />
+
+							
+					</effect_group>
+					<effect_group>
+						<requirement name="IsNight"/>
+						<requirement name="WornItems" tags="heavyArmorPenalty" operation="Equals" value="0"/>
+						<requirement name="WornItems" tags="lightArmorPenalty" operation="Equals" value="0"/>
+						<requirement name="CVarCompare" cvar="_notAlerted" operation="GT" value="0" target="other"/>
+							<passive_effect name="DamageBonus" operation="base_add" level="1,5" value="0.2,1"/> <!--For UI-->
+							<passive_effect name="EntityDamage" operation="perc_add" level="1,5" value="0.2,1"/>
+					</effect_group>
+					<effect_group>
+						<effect_description level="1" desc_key="ZombieINC_Perk_NightGod1_desc" long_desc_key="ZombieINC_Perk_NightGod1_LongDesc"/>
+						<effect_description level="2" desc_key="ZombieINC_Perk_NightGod2_desc" long_desc_key="ZombieINC_Perk_NightGod2_LongDesc"/>
+						<effect_description level="3" desc_key="ZombieINC_Perk_NightGod3_desc" long_desc_key="ZombieINC_Perk_NightGod3_LongDesc"/>
+						<effect_description level="4" desc_key="ZombieINC_Perk_NightGod4_desc" long_desc_key="ZombieINC_Perk_NightGod4_LongDesc"/>
+						<effect_description level="5" desc_key="ZombieINC_Perk_NightGod5_desc" long_desc_key="ZombieINC_Perk_NightGod5_LongDesc"/>		
+					</effect_group>
+				</perk>
+				<perk name="ZombieINC_Perk_Photosynthesis" parent="ZombieINC_Fortitude_AS" name_key="ZombieINC_Perk_Photosynthesis_name" desc_key="ZombieINC_Perk_Photosynthesis_desc" icon="ui_game_symbol_crops" max_level="4" max_level_ratio_to_parent="1" base_skill_point_cost="1" cost_multiplier_per_level="1">	
+					<level_requirements level="1"><requirement name="ProgressionLevel" progression_name="attFortitude" operation="GTE" value="3" desc_key="reqFortitudeLevel03"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="10" desc_key="ZombieINC_reqNormalBossScore10"/><requirement name="CVarCompare" cvar="$ZINCNIGHTPERK" operation="Equals" value="0" desc_key="ZombieINC_reqNotNightPerk"/></level_requirements>
+					<level_requirements level="2"><requirement name="ProgressionLevel" progression_name="attFortitude" operation="GTE" value="5" desc_key="reqFortitudeLevel05"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="20" desc_key="ZombieINC_reqNormalBossScore20"/><requirement name="CVarCompare" cvar="$ZINCNIGHTPERK" operation="Equals" value="0" desc_key="ZombieINC_reqNotNightPerk"/></level_requirements>
+					<level_requirements level="3"><requirement name="ProgressionLevel" progression_name="attFortitude" operation="GTE" value="7" desc_key="reqFortitudeLevel07"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="35" desc_key="ZombieINC_reqNormalBossScore35"/><requirement name="CVarCompare" cvar="ZINCBIKC" operation="GTE" value="1" desc_key="ZombieINC_reqInfestedBossScore01"/><requirement name="CVarCompare" cvar="$ZINCNIGHTPERK" operation="Equals" value="0" desc_key="ZombieINC_reqNotNightPerk"/></level_requirements>
+					<level_requirements level="4"><requirement name="ProgressionLevel" progression_name="attFortitude" operation="GTE" value="10" desc_key="reqFortitudeLevel10"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="50" desc_key="ZombieINC_reqNormalBossScore50"/><requirement name="CVarCompare" cvar="ZINCBIKC" operation="GTE" value="5" desc_key="ZombieINC_reqInfestedBossScore05"/><requirement name="CVarCompare" cvar="$ZINCNIGHTPERK" operation="Equals" value="0" desc_key="ZombieINC_reqNotNightPerk"/></level_requirements>
+					
+					<effect_group>
+						<requirement name="!IsIndoors"/>
+						<requirement name="IsDay"/>
+						<requirement name="CVarCompare" cvar="_shaded" operation="Equals" value="0"/>
+						<requirement name="CVarCompare" cvar="_sheltered" operation="Equals" value="0"/>
+						
+							<passive_effect name="LightMultiplier" operation="perc_add" level="1,4" value="0.1,0.4"/>
+							<passive_effect name="NoiseMultiplier" operation="perc_add" level="1,4" value="0.1,0.4"/>
+							<passive_effect name="EnemySearchDuration" operation="perc_add" level="1,4" value="0.1,0.4"/>
+					</effect_group>
+					<effect_group>
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_Photosynthesis" operation="GTE" value="1"/>
+						<requirement name="!IsIndoors"/>
+						<requirement name="IsDay"/>	
+						<requirement name="BlockStandingOn" tags="ZINCGroundNatural" has_all_tags="false"/>
+						<requirement name="CVarCompare" cvar="_shaded" operation="Equals" value="0"/>
+						<requirement name="CVarCompare" cvar="_sheltered" operation="Equals" value="0"/>
+						
+						<requirement name="WornItems" tags="heavyArmorPenalty" operation="Equals" value="0"/>
+						<requirement name="WornItems" tags="lightArmorPenalty" operation="Equals" value="0"/>
+						<requirement name="WornItems" tags="heavyArmor" operation="Equals" value="0"/>
+						<requirement name="WornItems" tags="lightArmor" operation="Equals" value="0"/>
+							<!--<triggered_effect trigger="onSelfProgressionUpdate" action="LogMessage" message="buff triggered"/>-->
+							
+							<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" cvar=".ZINCPhotosynthesisCounter" operation="add" value="1">
+								<requirement name="CVarCompare" cvar=".ZINCPhotosynthesisCounter" operation="LTE" value="6"/>
+								<requirement name="NotHasBuff" buff="ZombieINC_Perk_Photosynthesis_buff" />
+								<requirement name="EntityHasMovementTag" tags="idle"/>
+							</triggered_effect>
+							<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" cvar=".ZINCPhotosynthesisCounter" operation="set" value="0">			
+								<requirement name="!EntityHasMovementTag" tags="idle"/>
+							</triggered_effect>
+							<triggered_effect trigger="onSelfProgressionUpdate" action="AddBuff" buff="ZombieINC_Perk_Photosynthesis_buff">
+								<requirement name="CVarCompare" cvar=".ZINCPhotosynthesisCounter" operation="GTE" value="7"/>
+								<requirement name="EntityHasMovementTag" tags="idle"/>
+							</triggered_effect>
+					</effect_group>
+					
+					<effect_group>
+						<effect_description level="1" desc_key="ZombieINC_Perk_Photosynthesis1_desc" long_desc_key="ZombieINC_Perk_Photosynthesis1_LongDesc"/>
+						<effect_description level="2" desc_key="ZombieINC_Perk_Photosynthesis2_desc" long_desc_key="ZombieINC_Perk_Photosynthesis2_LongDesc"/>
+						<effect_description level="3" desc_key="ZombieINC_Perk_Photosynthesis3_desc" long_desc_key="ZombieINC_Perk_Photosynthesis3_LongDesc"/>
+						<effect_description level="4" desc_key="ZombieINC_Perk_Photosynthesis4_desc" long_desc_key="ZombieINC_Perk_Photosynthesis4_LongDesc"/>	
+					</effect_group>
+				</perk>
+				<perk name="ZombieINC_Perk_BiomeExpert" parent="ZombieINC_Fortitude_AS" name_key="ZombieINC_Perk_BiomeExpert_name" desc_key="ZombieINC_Perk_BiomeExpert_desc" icon="ui_game_symbol_map" max_level="5" max_level_ratio_to_parent="1" base_skill_point_cost="1" cost_multiplier_per_level="1">	
+					<level_requirements level="1"><requirement name="ProgressionLevel" progression_name="attFortitude" operation="GTE" value="1" desc_key="reqFortitudeLevel01"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="1" desc_key="ZombieINC_reqNormalBossScore01"/></level_requirements>
+					<level_requirements level="2"><requirement name="ProgressionLevel" progression_name="attFortitude" operation="GTE" value="3" desc_key="reqFortitudeLevel03"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="10" desc_key="ZombieINC_reqNormalBossScore10"/></level_requirements>
+					<level_requirements level="3"><requirement name="ProgressionLevel" progression_name="attFortitude" operation="GTE" value="5" desc_key="reqFortitudeLevel05"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="20" desc_key="ZombieINC_reqNormalBossScore20"/></level_requirements>
+					<level_requirements level="4"><requirement name="ProgressionLevel" progression_name="attFortitude" operation="GTE" value="7" desc_key="reqFortitudeLevel07"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="35" desc_key="ZombieINC_reqNormalBossScore35"/><requirement name="CVarCompare" cvar="ZINCBIKC" operation="GTE" value="1" desc_key="ZombieINC_reqInfestedBossScore01"/></level_requirements>
+					<level_requirements level="5"><requirement name="ProgressionLevel" progression_name="attFortitude" operation="GTE" value="10" desc_key="reqFortitudeLevel10"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="50" desc_key="ZombieINC_reqNormalBossScore50"/><requirement name="CVarCompare" cvar="ZINCBIKC" operation="GTE" value="5" desc_key="ZombieINC_reqInfestedBossScore05"/></level_requirements>
+					
+					<effect_group>
+						<requirement name="InBiome" biome="3"/><!--Pine Forest-->
+							<passive_effect name="HarvestCount" operation="perc_add" level="1,5" value="0.1,0.5" tags="butcherHarvest"/>
+							<passive_effect name="HarvestCount" operation="perc_add" level="1,5" value="0.1,0.5" tags="bonusCropHarvest"/>
+							<passive_effect name="HarvestCount" operation="perc_add" level="1,5" value="0.1,0.5" tags="cropHarvest"/>
+							<passive_effect name="HarvestCount" operation="perc_add" level="1,5" value="0.1,0.5" tags="wildCropsHarvest"/>
+					</effect_group>
+					<effect_group>
+						<requirement name="InBiome" biome="5"/><!--Desert-->
+							<passive_effect name="QuestBonusItemReward" operation="perc_add" level="2,5" value="0.2,0.5"/>
+					</effect_group>
+					<effect_group>
+						<requirement name="InBiome" biome="1"/><!--Snow-->
+							<passive_effect name="HealthMax" operation="base_add" level="3,5" value="50,100" />
+					</effect_group>
+					<effect_group>
+						<requirement name="InBiome" biome="9"/><!--Burnt Forest-->
+							<passive_effect name="HarvestCount" operation="perc_add" level="4,5" value="0.4,0.5" tags="oreWoodHarvest"/>
+					</effect_group>
+					<effect_group>
+						<requirement name="InBiome" biome="8"/><!--Wasteland-->
+							<passive_effect name="EntityDamage" operation="perc_add" level="5" value="0.5">
+								<requirement name="EntityTagCompare" target="other" tags="radiated"/></passive_effect>
+					</effect_group>
+					
+					
+					<effect_group>
+						<effect_description level="1" desc_key="ZombieINC_Perk_BiomeExpert1_desc" long_desc_key="ZombieINC_Perk_BiomeExpert1_LongDesc"/>
+						<effect_description level="2" desc_key="ZombieINC_Perk_BiomeExpert2_desc" long_desc_key="ZombieINC_Perk_BiomeExpert2_LongDesc"/>
+						<effect_description level="3" desc_key="ZombieINC_Perk_BiomeExpert3_desc" long_desc_key="ZombieINC_Perk_BiomeExpert3_LongDesc"/>
+						<effect_description level="4" desc_key="ZombieINC_Perk_BiomeExpert4_desc" long_desc_key="ZombieINC_Perk_BiomeExpert4_LongDesc"/>
+						<effect_description level="5" desc_key="ZombieINC_Perk_BiomeExpert5_desc" long_desc_key="ZombieINC_Perk_BiomeExpert5_LongDesc"/>		
+					</effect_group>
+				</perk>
+				<perk name="ZombieINC_Perk_VigorOverflow" parent="ZombieINC_Fortitude_AS" name_key="ZombieINC_Perk_VigorOverflow_name" desc_key="ZombieINC_Perk_VigorOverflow_desc" icon="ui_game_symbol_healing_factor" max_level="5" max_level_ratio_to_parent="1" base_skill_point_cost="1" cost_multiplier_per_level="1">	
+					<level_requirements level="1"><requirement name="ProgressionLevel" progression_name="attFortitude" operation="GTE" value="1" desc_key="reqFortitudeLevel01"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="1" desc_key="ZombieINC_reqNormalBossScore01"/><requirement name="CVarCompare" cvar="$ZINCNIGHTPERK" operation="Equals" value="0" desc_key="ZombieINC_reqNotNightPerk"/></level_requirements>
+					<level_requirements level="2"><requirement name="ProgressionLevel" progression_name="attFortitude" operation="GTE" value="3" desc_key="reqFortitudeLevel03"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="10" desc_key="ZombieINC_reqNormalBossScore10"/><requirement name="CVarCompare" cvar="$ZINCNIGHTPERK" operation="Equals" value="0" desc_key="ZombieINC_reqNotNightPerk"/></level_requirements>
+					<level_requirements level="3"><requirement name="ProgressionLevel" progression_name="attFortitude" operation="GTE" value="5" desc_key="reqFortitudeLevel05"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="20" desc_key="ZombieINC_reqNormalBossScore20"/><requirement name="CVarCompare" cvar="$ZINCNIGHTPERK" operation="Equals" value="0" desc_key="ZombieINC_reqNotNightPerk"/></level_requirements>
+					<level_requirements level="4"><requirement name="ProgressionLevel" progression_name="attFortitude" operation="GTE" value="7" desc_key="reqFortitudeLevel07"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="35" desc_key="ZombieINC_reqNormalBossScore35"/><requirement name="CVarCompare" cvar="ZINCBIKC" operation="GTE" value="1" desc_key="ZombieINC_reqInfestedBossScore01"/><requirement name="CVarCompare" cvar="$ZINCNIGHTPERK" operation="Equals" value="0" desc_key="ZombieINC_reqNotNightPerk"/></level_requirements>
+					<level_requirements level="5"><requirement name="ProgressionLevel" progression_name="attFortitude" operation="GTE" value="10" desc_key="reqFortitudeLevel10"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="50" desc_key="ZombieINC_reqNormalBossScore50"/><requirement name="CVarCompare" cvar="ZINCBIKC" operation="GTE" value="5" desc_key="ZombieINC_reqInfestedBossScore05"/><requirement name="CVarCompare" cvar="$ZINCNIGHTPERK" operation="Equals" value="0" desc_key="ZombieINC_reqNotNightPerk"/></level_requirements>
+					
+					<effect_group>
+							<!--<triggered_effect trigger="onCombatEntered" action="AddBuff" buff="ZombieINC_Perk_VigorOverflow_buff">
+								<requirement name="NotHasBuff" buff="ZombieINC_Perk_VigorOverflow_Cooldownbuff" />
+								<requirement name="NotHasBuff" buff="ZombieINC_Perk_VigorOverflow_buff" />
+							</triggered_effect>-->
+							<!--Effects in the hand-->
+					</effect_group>
+					
+					<effect_group>
+						<effect_description level="1" desc_key="ZombieINC_Perk_VigorOverflow1_desc" long_desc_key="ZombieINC_Perk_VigorOverflow1_LongDesc"/>
+						<effect_description level="2" desc_key="ZombieINC_Perk_VigorOverflow2_desc" long_desc_key="ZombieINC_Perk_VigorOverflow2_LongDesc"/>
+						<effect_description level="3" desc_key="ZombieINC_Perk_VigorOverflow3_desc" long_desc_key="ZombieINC_Perk_VigorOverflow3_LongDesc"/>
+						<effect_description level="4" desc_key="ZombieINC_Perk_VigorOverflow4_desc" long_desc_key="ZombieINC_Perk_VigorOverflow4_LongDesc"/>
+						<effect_description level="5" desc_key="ZombieINC_Perk_VigorOverflow5_desc" long_desc_key="ZombieINC_Perk_VigorOverflow5_LongDesc"/>		
+					</effect_group>
+				</perk>
+				<perk name="ZombieINC_Perk_Leftovers" parent="ZombieINC_Intellect_AS" name_key="ZombieINC_Perk_Leftovers_name" desc_key="ZombieINC_Perk_Leftovers_desc" icon="ui_game_symbol_loot_sack" max_level="3" max_level_ratio_to_parent="1" base_skill_point_cost="1" cost_multiplier_per_level="1">	
+					<level_requirements level="1"><requirement name="ProgressionLevel" progression_name="attIntellect" operation="GTE" value="5" desc_key="reqIntellectLevel05"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="20" desc_key="ZombieINC_reqNormalBossScore20"/></level_requirements>
+					<level_requirements level="2"><requirement name="ProgressionLevel" progression_name="attIntellect" operation="GTE" value="7" desc_key="reqIntellectLevel07"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="35" desc_key="ZombieINC_reqNormalBossScore35"/><requirement name="CVarCompare" cvar="ZINCBIKC" operation="GTE" value="1" desc_key="ZombieINC_reqInfestedBossScore01"/></level_requirements>
+					<level_requirements level="3"><requirement name="ProgressionLevel" progression_name="attIntellect" operation="GTE" value="10" desc_key="reqIntellectLevel10"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="50" desc_key="ZombieINC_reqNormalBossScore50"/><requirement name="CVarCompare" cvar="ZINCBIKC" operation="GTE" value="5" desc_key="ZombieINC_reqInfestedBossScore05"/></level_requirements>
+					
+					<effect_group>
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_Leftovers" operation="GTE" value="1"/>
+						<requirement name="TimeOfDay" operation="GTE" value="2100"/>
+						<requirement name="TimeOfDay" operation="LTE" value="2359"/>
+							<triggered_effect trigger="onSelfProgressionUpdate" action="AddBuff" buff="ZombieINC_Leftovers_Buff">
+								<!--<requirement name="NotHasBuff" buff="ZombieINC_Leftovers_Buff" />-->
+							</triggered_effect>
+					
+						<!--<passive_effect name="BarteringBuying" operation="base_add" level="1,3" value="0.15,0.45"/>
+						<passive_effect name="TraderStage" operation="perc_add" level="1,3" value="-0.15,-0.45"/>-->
+					</effect_group>
+					
+					<effect_group>
+						<effect_description level="1" desc_key="ZombieINC_Perk_Leftovers1_desc" long_desc_key="ZombieINC_Perk_Leftovers1_LongDesc"/>
+						<effect_description level="2" desc_key="ZombieINC_Perk_Leftovers2_desc" long_desc_key="ZombieINC_Perk_Leftovers2_LongDesc"/>
+						<effect_description level="3" desc_key="ZombieINC_Perk_Leftovers3_desc" long_desc_key="ZombieINC_Perk_Leftovers3_LongDesc"/>	
+					</effect_group>
+				</perk>
+				<perk name="ZombieINC_Perk_HighDemand" parent="ZombieINC_Intellect_AS" name_key="ZombieINC_Perk_HighDemand_name" desc_key="ZombieINC_Perk_HighDemand_desc" icon="ui_game_symbol_loot_sack" max_level="4" max_level_ratio_to_parent="1" base_skill_point_cost="1" cost_multiplier_per_level="1">	
+					<level_requirements level="1"><requirement name="ProgressionLevel" progression_name="attIntellect" operation="GTE" value="3" desc_key="reqIntellectLevel03"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="10" desc_key="ZombieINC_reqNormalBossScore10"/></level_requirements>
+					<level_requirements level="2"><requirement name="ProgressionLevel" progression_name="attIntellect" operation="GTE" value="5" desc_key="reqIntellectLevel05"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="20" desc_key="ZombieINC_reqNormalBossScore20"/></level_requirements>
+					<level_requirements level="3"><requirement name="ProgressionLevel" progression_name="attIntellect" operation="GTE" value="7" desc_key="reqIntellectLevel07"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="35" desc_key="ZombieINC_reqNormalBossScore35"/><requirement name="CVarCompare" cvar="ZINCBIKC" operation="GTE" value="1" desc_key="ZombieINC_reqInfestedBossScore01"/></level_requirements>
+					<level_requirements level="4"><requirement name="ProgressionLevel" progression_name="attIntellect" operation="GTE" value="10" desc_key="reqIntellectLevel10"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="50" desc_key="ZombieINC_reqNormalBossScore50"/><requirement name="CVarCompare" cvar="ZINCBIKC" operation="GTE" value="5" desc_key="ZombieINC_reqInfestedBossScore05"/></level_requirements>
+					
+					<effect_group>
+						<!--<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_HighDemand" operation="GTE" value="1"/>
+						<triggered_effect trigger="onSelfProgressionUpdate" action="AddBuff" buff="ZombieINC_HighDemand_Buff">
+							<requirement name="NotHasBuff" buff="ZombieINC_HighDemand_Buff" />
+							<requirement name="!IsBloodMoon" target="self"/>
+							</triggered_effect>-->
+						<requirement name="InBiome" biome="8"/>
+						<passive_effect name="BarteringSelling" operation="base_add" level="1,4" value="0.15,0.60"/>
+					</effect_group>
+					
+					<effect_group>
+						<effect_description level="1" desc_key="ZombieINC_Perk_HighDemand1_desc" long_desc_key="ZombieINC_Perk_HighDemand1_LongDesc"/>
+						<effect_description level="2" desc_key="ZombieINC_Perk_HighDemand2_desc" long_desc_key="ZombieINC_Perk_HighDemand2_LongDesc"/>
+						<effect_description level="3" desc_key="ZombieINC_Perk_HighDemand3_desc" long_desc_key="ZombieINC_Perk_HighDemand3_LongDesc"/>
+						<effect_description level="4" desc_key="ZombieINC_Perk_HighDemand4_desc" long_desc_key="ZombieINC_Perk_HighDemand4_LongDesc"/>
+					</effect_group>
+				</perk>
+				<perk name="ZombieINC_Perk_ExperimentalProject" parent="ZombieINC_Intellect_AS" name_key="ZombieINC_Perk_ExperimentalProject_name" desc_key="ZombieINC_Perk_ExperimentalProject_desc" icon="ui_game_symbol_misc_crafting" max_level="5" max_level_ratio_to_parent="1" base_skill_point_cost="1" cost_multiplier_per_level="1">	
+					<level_requirements level="1"><requirement name="ProgressionLevel" progression_name="attIntellect" operation="GTE" value="1" desc_key="reqIntellectLevel01"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="1" desc_key="ZombieINC_reqNormalBossScore01"/></level_requirements>
+					<level_requirements level="2"><requirement name="ProgressionLevel" progression_name="attIntellect" operation="GTE" value="3" desc_key="reqIntellectLevel03"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="10" desc_key="ZombieINC_reqNormalBossScore10"/></level_requirements>
+					<level_requirements level="3"><requirement name="ProgressionLevel" progression_name="attIntellect" operation="GTE" value="5" desc_key="reqIntellectLevel05"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="20" desc_key="ZombieINC_reqNormalBossScore20"/></level_requirements>
+					<level_requirements level="4"><requirement name="ProgressionLevel" progression_name="attIntellect" operation="GTE" value="7" desc_key="reqIntellectLevel07"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="35" desc_key="ZombieINC_reqNormalBossScore35"/><requirement name="CVarCompare" cvar="ZINCBIKC" operation="GTE" value="1" desc_key="ZombieINC_reqInfestedBossScore01"/></level_requirements>
+					<level_requirements level="5"><requirement name="ProgressionLevel" progression_name="attIntellect" operation="GTE" value="10" desc_key="reqIntellectLevel10"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="50" desc_key="ZombieINC_reqNormalBossScore50"/><requirement name="CVarCompare" cvar="ZINCBIKC" operation="GTE" value="5" desc_key="ZombieINC_reqInfestedBossScore05"/></level_requirements>
+					
+					<effect_group>
+						<passive_effect name="HarvestCount" operation="base_set" level="1,5" value="1" tags="ZombieINC_StrongAcidPerk"/>
+						<passive_effect name="HarvestCount" operation="base_set" level="2,5" value="1" tags="ZombieINC_RadioactiveAshesPerk"/>
+						
+						<passive_effect name="HarvestCount" operation="base_set" level="3,5" value="1" tags="ZombieINC_ExperimentalProjectLevel3Perk"/>
+						<passive_effect name="HarvestCount" operation="base_set" level="4,5" value="1" tags="ZombieINC_ExperimentalProjectLevel4Perk"/>
+						
+						
+						
+						<passive_effect name="RecipeTagUnlocked" operation="base_set" level="1,5" value="1" tags="ZombieINC_AcidGrenade"/>
+						<passive_effect name="RecipeTagUnlocked" operation="base_set" level="2,5" value="1" tags="ZombieINC_thrownAmmoPipeBomb"/>
+						<passive_effect name="RecipeTagUnlocked" operation="base_set" level="4,5" value="1" tags="ZombieINC_thrownTimedCharge"/>
+						<passive_effect name="RecipeTagUnlocked" operation="base_set" level="5" value="1" tags="ZombieINC_TunedSniperT4"/>
+						<passive_effect name="RecipeTagUnlocked" operation="base_set" level="5" value="1" tags="ZombieINC_MixtureV1"/>
+						<passive_effect name="RecipeTagUnlocked" operation="base_set" level="5" value="1" tags="ZombieINC_ammoRocketNuke"/>
+						<!-- *** Effects on items
+							Acid Grenade Recipe Level 1
+							Harvest Strong Acid Level 1
+							
+							Harvest Radioctive Ashes Level 2
+							PipeBomb Radioctive Ashes Level 2
+							
+							Level 3:
+							Ice Hammer Buff - Immunity to Fire
+							Fire and Shock Spear - More 33% damage and less 33% stamina loss
+							Repair Gun - more 50% damage
+							SpearGun Melee - More 25% and less 25% stamina loss
+							SpearGun Ranged - More 100% damage
+							Explosive Knucles - Less 50% stamina Loss
+							
+							
+							TimedCharge Bomb Red Ash Level 4, done
+							
+							TunedSniperT4 Level 5
+						Effects on items-->
+					</effect_group>
+					
+					<effect_group>
+						<effect_description level="1" desc_key="ZombieINC_Perk_ExperimentalProject1_desc" long_desc_key="ZombieINC_Perk_ExperimentalProject1_LongDesc"/>
+						<effect_description level="2" desc_key="ZombieINC_Perk_ExperimentalProject2_desc" long_desc_key="ZombieINC_Perk_ExperimentalProject2_LongDesc"/>
+						<effect_description level="3" desc_key="ZombieINC_Perk_ExperimentalProject3_desc" long_desc_key="ZombieINC_Perk_ExperimentalProject3_LongDesc"/>
+						<effect_description level="4" desc_key="ZombieINC_Perk_ExperimentalProject4_desc" long_desc_key="ZombieINC_Perk_ExperimentalProject4_LongDesc"/>
+						<effect_description level="5" desc_key="ZombieINC_Perk_ExperimentalProject5_desc" long_desc_key="ZombieINC_Perk_ExperimentalProject5_LongDesc"/>		
+					</effect_group>
+				</perk>
+				
+				<perk name="ZombieINC_Perk_DeepBreath" parent="ZombieINC_Perception_AS" name_key="ZombieINC_Perk_DeepBreath_name" desc_key="ZombieINC_Perk_DeepBreath_desc" icon="ui_game_symbol_long_shot" max_level="5" max_level_ratio_to_parent="1" base_skill_point_cost="1" cost_multiplier_per_level="1">	
+					<level_requirements level="1"><requirement name="ProgressionLevel" progression_name="attPerception" operation="GTE" value="1" desc_key="reqPerceptionLevel01"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="1" desc_key="ZombieINC_reqNormalBossScore01"/></level_requirements>
+					<level_requirements level="2"><requirement name="ProgressionLevel" progression_name="attPerception" operation="GTE" value="3" desc_key="reqPerceptionLevel03"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="10" desc_key="ZombieINC_reqNormalBossScore10"/></level_requirements>
+					<level_requirements level="3"><requirement name="ProgressionLevel" progression_name="attPerception" operation="GTE" value="5" desc_key="reqPerceptionLevel05"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="20" desc_key="ZombieINC_reqNormalBossScore20"/></level_requirements>
+					<level_requirements level="4"><requirement name="ProgressionLevel" progression_name="attPerception" operation="GTE" value="7" desc_key="reqPerceptionLevel07"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="35" desc_key="ZombieINC_reqNormalBossScore35"/><requirement name="CVarCompare" cvar="ZINCBIKC" operation="GTE" value="1" desc_key="ZombieINC_reqInfestedBossScore01"/></level_requirements>
+					<level_requirements level="5"><requirement name="ProgressionLevel" progression_name="attPerception" operation="GTE" value="10" desc_key="reqPerceptionLevel10"/><requirement name="CVarCompare" cvar="ZINCBNKC" operation="GTE" value="50" desc_key="ZombieINC_reqNormalBossScore50"/><requirement name="CVarCompare" cvar="ZINCBIKC" operation="GTE" value="5" desc_key="ZombieINC_reqInfestedBossScore05"/></level_requirements>
+					
+					<effect_group>
+						<requirement name="HasBuff" buff="ZombieINC_Perk_DeepBreathActive_buff" />
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_DeepBreath" operation="GTE" value="4"/>
+						<requirement name="EntityHasMovementTag" tags="idle"/>
+						<requirement name="CVarCompare" cvar="_shaded" operation="Equals" value="1"/>
+						<requirement name="CVarCompare" cvar="_sheltered" operation="GTE" value="0"/>
+						
+							<passive_effect name="EntityDamage" operation="perc_add" level="4,5" value="0.5,1" />
+					</effect_group>
+					<effect_group>
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_Perk_DeepBreath" operation="GTE" value="1"/>
+						<!--<requirement name="EntityHasMovementTag" tags="idle"/>-->	
+							<triggered_effect trigger="onSelfAimingGunStart" action="AddBuff" buff="ZombieINC_Perk_DeepBreath_buff">
+								<requirement name="HoldingItemHasTags" tags="holdBreathAiming,perkDeadEye,rifleSkill" has_all_tags="true"/>
+							</triggered_effect>
+							<!--<triggered_effect trigger="onSelfAimingGunStop" action="AddBuff" buff="ZombieINC_Perk_DeepBreath_buff"/>-->			
+					</effect_group>
+					<effect_group>
+						<effect_description level="1" desc_key="ZombieINC_Perk_DeepBreath1_desc" long_desc_key="ZombieINC_Perk_DeepBreath1_LongDesc"/>
+						<effect_description level="2" desc_key="ZombieINC_Perk_DeepBreath2_desc" long_desc_key="ZombieINC_Perk_DeepBreath2_LongDesc"/>
+						<effect_description level="3" desc_key="ZombieINC_Perk_DeepBreath3_desc" long_desc_key="ZombieINC_Perk_DeepBreath3_LongDesc"/>
+						<effect_description level="4" desc_key="ZombieINC_Perk_DeepBreath4_desc" long_desc_key="ZombieINC_Perk_DeepBreath4_LongDesc"/>
+						<effect_description level="5" desc_key="ZombieINC_Perk_DeepBreath5_desc" long_desc_key="ZombieINC_Perk_DeepBreath5_LongDesc"/>		
+					</effect_group>
+				</perk>
+				<!---->
+				<!--###Books-->
+				<!--##The God Slayer Path-->
+				<book name="ZombieINC_perkGodSlayerPath1" parent="ZombieINC_BookSkill_GodSlayer" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkGodSlayerPath1_Desc" long_desc_key="ZombieINC_perkGodSlayerPath1_LongDesc">
+					<effect_group>
+						<passive_effect name="EntityDamage" operation="perc_add" level="1" value="0.1" >
+							<requirement name="EntityTagCompare" target="other" tags="boss"/></passive_effect>
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkGodSlayerPath2" parent="ZombieINC_BookSkill_GodSlayer" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkGodSlayerPath2_Desc" long_desc_key="ZombieINC_perkGodSlayerPath2_LongDesc">
+					<effect_group>
+					<passive_effect name="DamageModifier" operation="perc_add" level="1" value="0.5" tags="head">
+						<requirement name="EntityTagCompare" target="other" tags="boss"/>
+					</passive_effect>
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkGodSlayerPath3" parent="ZombieINC_BookSkill_GodSlayer" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkGodSlayerPath3_Desc" long_desc_key="ZombieINC_perkGodSlayerPath3_LongDesc">
+					<effect_group>
+						<requirement name="EntityTagCompare" target="other" tags="boss"/>
+							<passive_effect name="GeneralDamageResist" operation="base_add" level="1" value="0.1"/>
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkGodSlayerPath4" parent="ZombieINC_BookSkill_GodSlayer" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkGodSlayerPath4_Desc" long_desc_key="ZombieINC_perkGodSlayerPath4_LongDesc">
+					<effect_group>
+						<passive_effect name="RecipeTagUnlocked" operation="base_set" level="1" value="1" tags="ZombieINC_PEMGrenade"/>
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkGodSlayerPath5" parent="ZombieINC_BookSkill_GodSlayer" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkGodSlayerPath5_Desc" long_desc_key="ZombieINC_perkGodSlayerPath5_LongDesc">
+					<effect_group>
+						<triggered_effect trigger="onSelfSecondaryActionRayHit" action="AddBuff" target="other" buff="buffBatterUpSlowDown">
+							<requirement name="HitLocation" body_parts="LeftUpperLeg,RightUpperLeg,LeftLowerLeg,RightLowerLeg"/>
+							<requirement name="ProgressionLevel" progression_name="ZombieINC_perkGodSlayerPath5" operation="Equals" value="1"/>
+							<requirement name="EntityTagCompare" target="other" tags="boss"/>
+							<requirement name="HoldingItemHasTags" tags="melee"/>
+						</triggered_effect>
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkGodSlayerPath6" parent="ZombieINC_BookSkill_GodSlayer" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkGodSlayerPath6_Desc" long_desc_key="ZombieINC_perkGodSlayerPath6_LongDesc">
+					<effect_group>
+						<triggered_effect trigger="onSelfPrimaryActionRayHit" action="ModifyStats" stat="Stamina" operation="add" value="10" delay="1.0">
+							<requirement name="HitLocation" body_parts="Head"/>
+							<requirement name="ProgressionLevel" progression_name="ZombieINC_perkGodSlayerPath6" operation="Equals" value="1"/>
+							<requirement name="EntityTagCompare" target="other" tags="boss"/>
+							<requirement name="HoldingItemHasTags" tags="melee"/>
+						</triggered_effect>
+						<triggered_effect trigger="onSelfSecondaryActionRayHit" action="ModifyStats" stat="Stamina" operation="add" value="20" delay="1.0">
+							<requirement name="HitLocation" body_parts="Head"/>
+							<requirement name="ProgressionLevel" progression_name="ZombieINC_perkGodSlayerPath6" operation="Equals" value="1"/>
+							<requirement name="EntityTagCompare" target="other" tags="boss"/>
+							<requirement name="HoldingItemHasTags" tags="melee"/>
+						</triggered_effect>
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkGodSlayerPath7" parent="ZombieINC_BookSkill_GodSlayer" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkGodSlayerPath7_Desc" long_desc_key="ZombieINC_perkGodSlayerPath7_LongDesc">
+					<effect_group>
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_perkGodSlayerPath7" operation="Equals" value="1"/>
+						
+						<triggered_effect trigger="onSelfDamagedOther" action="AddBuff" buff="ZombieINC_perkGodSlayerStunMelee">
+							<requirement name="EntityTagCompare" target="other" tags="boss"/>
+							<requirement name="HoldingItemHasTags" tags="melee"/>
+						</triggered_effect>
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkGodSlayerPathComplete" parent="ZombieINC_BookSkill_GodSlayer" max_level="1" base_skill_point_cost="0" name_key="ZombieINC_perkGodSlayerPathComplete_Name" desc_key="ZombieINC_perkGodSlayerPathComplete_Desc" long_desc_key="ZombieINC_perkGodSlayerPathComplete_LongDesc">
+					<effect_group>
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_perkGodSlayerPathComplete" operation="Equals" value="1"/>
+						
+						<triggered_effect trigger="onSelfDamagedOther" action="AddBuff" buff="ZombieINC_perkGodSlayerDamageMelee">
+							<requirement name="EntityTagCompare" target="other" tags="boss"/>
+							<requirement name="HoldingItemHasTags" tags="melee"/>
+						</triggered_effect>
+						<triggered_effect trigger="onSelfDamagedOther" action="AddBuff" buff="ZombieINC_perkGodSlayerDamageRanged">
+							<requirement name="EntityTagCompare" target="other" tags="boss"/>
+							<requirement name="HoldingItemHasTags" tags="ranged"/>
+						</triggered_effect>
+						<!--<requirement name="EntityTagCompare" target="other" tags="boss"/>
+						<requirement name="HoldingItemHasTags" tags="melee"/>
+						
+						<requirement name="EntityTagCompare" target="other" tags="boss"/>
+						<requirement name="HoldingItemHasTags" tags="ranged"/>-->
+					</effect_group>
+				</book>
+				<!--The God Slayer Path-->
+			</append>
+		</if>
+	</conditional>
+	<conditional>
+		<if cond="mod_loaded('mateusjobsdefense')">
+			<append xpath="/progression/skills">
+				<book_group name="ZombieINC_BookSkill_Defense" parent="attBooks" name_key="ZombieINC_BookSkill_Defense_Name" desc_key="ZombieINC_BookSkill_Defense_Desc" long_desc_key="perkBookGroupLongDesc" icon="ui_game_symbol_skull"><effect_group/></book_group>
+			</append>
+			<append xpath="/progression/perks">
+				<!--##Defense-->
+				<book name="ZombieINC_perkDefense1" parent="ZombieINC_BookSkill_Defense" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkDefense1_Desc" long_desc_key="ZombieINC_perkDefense1_LongDesc">
+					<effect_group>
+						<passive_effect name="CraftingTier" operation="base_set" level="1" value="2" tags="ZombieINC_PerkDefenseBlockWoodShape">
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_perkDefenseComplete" operation="Equals" value="0"/></passive_effect>
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkDefense2" parent="ZombieINC_BookSkill_Defense" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkDefense2_Desc" long_desc_key="ZombieINC_perkDefense2_LongDesc">
+					<effect_group>
+						<passive_effect name="CraftingTier" operation="base_set" level="1" value="2" tags="ZombieINC_PerkDefenseBlockStoneShape">
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_perkDefenseComplete" operation="Equals" value="0"/></passive_effect>
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkDefense3" parent="ZombieINC_BookSkill_Defense" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkDefense3_Desc" long_desc_key="ZombieINC_perkDefense3_LongDesc">
+					<effect_group>
+						<passive_effect name="CraftingTier" operation="base_set" level="1" value="2" tags="ZombieINC_PerkDefenseBlockConcreteShape">
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_perkDefenseComplete" operation="Equals" value="0"/></passive_effect>
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkDefense4" parent="ZombieINC_BookSkill_Defense" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkDefense4_Desc" long_desc_key="ZombieINC_perkDefense4_LongDesc">
+					<effect_group>
+						<passive_effect name="CraftingTier" operation="base_set" level="1" value="2" tags="ZombieINC_PerkDefenseBlockSteelShape">
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_perkDefenseComplete" operation="Equals" value="0"/></passive_effect>
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkDefense5" parent="ZombieINC_BookSkill_Defense" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkDefense5_Desc" long_desc_key="ZombieINC_perkDefense5_LongDesc">
+					<effect_group>
+						<passive_effect name="CraftingTier" operation="base_set" level="1" value="2" tags="ZombieINC_PerkDefenseTrapWood">
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_perkDefenseComplete" operation="Equals" value="0"/></passive_effect>
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkDefense6" parent="ZombieINC_BookSkill_Defense" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkDefense6_Desc" long_desc_key="ZombieINC_perkDefense6_LongDesc">
+					<effect_group>
+						<passive_effect name="CraftingTier" operation="base_set" level="1" value="2" tags="ZombieINC_PerkDefenseTrapIron">
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_perkDefenseComplete" operation="Equals" value="0"/></passive_effect>
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkDefense7" parent="ZombieINC_BookSkill_Defense" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkDefense7_Desc" long_desc_key="ZombieINC_perkDefense7_LongDesc">
+					<effect_group>
+						<passive_effect name="CraftingTier" operation="base_set" level="1" value="2" tags="ZombieINC_PerkDefenseTrapMineTin">
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_perkDefenseComplete" operation="Equals" value="0"/></passive_effect>
+						<passive_effect name="CraftingTier" operation="base_set" level="1" value="2" tags="ZombieINC_PerkDefenseTrapMineCap">
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_perkDefenseComplete" operation="Equals" value="0"/></passive_effect>
+						<passive_effect name="CraftingTier" operation="base_set" level="1" value="2" tags="ZombieINC_PerkDefenseTrapMineFilter">
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_perkDefenseComplete" operation="Equals" value="0"/></passive_effect>
+						<passive_effect name="CraftingTier" operation="base_set" level="1" value="2" tags="ZombieINC_PerkDefenseTrapMinePot">
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_perkDefenseComplete" operation="Equals" value="0"/></passive_effect>
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkDefenseComplete" parent="ZombieINC_BookSkill_Defense" max_level="1" base_skill_point_cost="0" name_key="ZombieINC_perkDefenseComplete_Name" desc_key="ZombieINC_perkDefenseComplete_Desc" long_desc_key="ZombieINC_perkDefenseComplete_LongDesc">
+					<effect_group>
+						<passive_effect name="CraftingTier" operation="base_set" level="1" value="3" tags="ZombieINC_PerkDefenseBlockWoodShape">
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_perkDefenseComplete" operation="Equals" value="1"/></passive_effect>
+						<passive_effect name="CraftingTier" operation="base_set" level="1" value="3" tags="ZombieINC_PerkDefenseBlockStoneShape">
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_perkDefenseComplete" operation="Equals" value="1"/></passive_effect>
+						<passive_effect name="CraftingTier" operation="base_set" level="1" value="3" tags="ZombieINC_PerkDefenseBlockConcreteShape">
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_perkDefenseComplete" operation="Equals" value="1"/></passive_effect>
+						<passive_effect name="CraftingTier" operation="base_set" level="1" value="3" tags="ZombieINC_PerkDefenseBlockSteelShape">
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_perkDefenseComplete" operation="Equals" value="1"/></passive_effect>
+						<passive_effect name="CraftingTier" operation="base_set" level="1" value="3" tags="ZombieINC_PerkDefenseTrapWood">
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_perkDefenseComplete" operation="Equals" value="1"/></passive_effect>
+						<passive_effect name="CraftingTier" operation="base_set" level="1" value="3" tags="ZombieINC_PerkDefenseTrapIron">
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_perkDefenseComplete" operation="Equals" value="1"/></passive_effect>
+						<passive_effect name="CraftingTier" operation="base_set" level="1" value="3" tags="ZombieINC_PerkDefenseTrapMineTin">
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_perkDefenseComplete" operation="Equals" value="1"/></passive_effect>
+						<passive_effect name="CraftingTier" operation="base_set" level="1" value="3" tags="ZombieINC_PerkDefenseTrapMineCap">
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_perkDefenseComplete" operation="Equals" value="1"/></passive_effect>
+						<passive_effect name="CraftingTier" operation="base_set" level="1" value="3" tags="ZombieINC_PerkDefenseTrapMineFilter">
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_perkDefenseComplete" operation="Equals" value="1"/></passive_effect>
+						<passive_effect name="CraftingTier" operation="base_set" level="1" value="3" tags="ZombieINC_PerkDefenseTrapMinePot">
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_perkDefenseComplete" operation="Equals" value="1"/></passive_effect>
+					</effect_group>
+				</book>
+				<!--Defense-->
+			</append>
+		</if>
+	</conditional>
+	<conditional>
+		<if cond="mod_loaded('mateusjobssurvival')">
+			<append xpath="/progression/skills">
+				<book_group name="ZombieINC_BookSkill_Survival" parent="attBooks" name_key="ZombieINC_BookSkill_Survival_Name" desc_key="ZombieINC_BookSkill_Survival_Desc" long_desc_key="perkBookGroupLongDesc" icon="ui_game_symbol_skull"><effect_group/></book_group>
+			</append>
+			<append xpath="/progression/perks">
+				<!--##Survival-->
+				<book name="ZombieINC_perkSurvival1" parent="ZombieINC_BookSkill_Survival" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkSurvival1_Desc" long_desc_key="ZombieINC_perkSurvival1_LongDesc">
+					<effect_group>
+						<passive_effect name="WalkSpeed" operation="perc_add" level="1" value="0.05" />	
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkSurvival2" parent="ZombieINC_BookSkill_Survival" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkSurvival2_Desc" long_desc_key="ZombieINC_perkSurvival2_LongDesc">
+					<effect_group>
+						<passive_effect name="RunSpeed" operation="perc_add" level="1" value="0.05" />
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkSurvival3" parent="ZombieINC_BookSkill_Survival" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkSurvival3_Desc" long_desc_key="ZombieINC_perkSurvival3_LongDesc">
+					<effect_group>
+						 <!--Buff directly in the items-->			
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkSurvival4" parent="ZombieINC_BookSkill_Survival" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkSurvival4_Desc" long_desc_key="ZombieINC_perkSurvival4_LongDesc">
+					<effect_group>
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_perkSurvival4" operation="Equals" value="1"/>
+						<triggered_effect trigger="onOtherAttackedSelf" action="AddBuff" buff="ZombieINC_perkSuvival4_MissHit">
+							<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="10"/>
+							<requirement name="NotHasBuff" buff="ZombieINC_perkSuvival4_MissHit_CoolDown"/>
+						</triggered_effect>
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkSurvival5" parent="ZombieINC_BookSkill_Survival" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkSurvival5_Desc" long_desc_key="ZombieINC_perkSurvival5_LongDesc">
+					<effect_group>
+						<passive_effect name="StaminaChangeOT" operation="perc_add" level="1" value="0.05" tags="running,swimmingRun"/>
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkSurvival6" parent="ZombieINC_BookSkill_Survival" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkSurvival6_Desc" long_desc_key="ZombieINC_perkSurvival6_LongDesc">
+					<effect_group>
+						<requirement name="!IsIndoors"/>
+						<passive_effect name="GeneralDamageResist" operation="base_add" level="1" value="0.05"/>
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkSurvival7" parent="ZombieINC_BookSkill_Survival" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkSurvival7_Desc" long_desc_key="ZombieINC_perkSurvival7_LongDesc">
+					<effect_group>
+						<!--Effect in Buff.xml-->
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkSurvivalComplete" parent="ZombieINC_BookSkill_Survival" max_level="1" base_skill_point_cost="0" name_key="ZombieINC_perkSurvivalComplete_Name" desc_key="ZombieINC_perkSurvivalComplete_Desc" long_desc_key="ZombieINC_perkSurvivalComplete_LongDesc">
+					<effect_group>
+						<!--<passive_effect name="JumpStrength" operation="perc_add" level="1" value=".05"/>
+						<passive_effect name="StaminaLoss" operation="perc_add" level="1" value="-0.10" tags="jumping"/>-->	
+						<passive_effect name="WalkSpeed" operation="perc_add" level="1" value="0.05" />			
+						<passive_effect name="RunSpeed" operation="perc_add" level="1" value="0.05" />
+						<passive_effect name="StaminaChangeOT" operation="perc_add" level="1" value="0.05" tags="running,swimmingRun"/>
+					</effect_group>
+
+					<effect_group>
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_perkSurvivalComplete" operation="Equals" value="1"/>
+					</effect_group>
+				</book>
+				<!--Survival-->
+			</append>
+		</if>
+	</conditional>
+	<conditional>
+		<if cond="mod_loaded('mateusjobsvehiclerecovery')">
+			<append xpath="/progression/skills">
+				<book_group name="ZombieINC_BookSkill_VehicleRecovery" parent="attBooks" name_key="ZombieINC_BookSkill_VehicleRecovery_Name" desc_key="ZombieINC_BookSkill_VehicleRecovery_Desc" long_desc_key="perkBookGroupLongDesc" icon="ui_game_symbol_skull"><effect_group/></book_group>
+			</append>
+			<append xpath="/progression/perks">
+				<!--##Vehicle Recovery-->
+				<book name="ZombieINC_perkVehicleRecovery1" parent="ZombieINC_BookSkill_VehicleRecovery" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkVehicleRecovery1_Desc" long_desc_key="ZombieINC_perkVehicleRecovery1_LongDesc">
+					<effect_group>
+						<passive_effect name="VehicleVelocityMaxPer" operation="perc_add" level="1" value="0.05"/>
+						<passive_effect name="VehicleMotorTorquePer" operation="perc_add" level="1" value="0.05"/>	
+						<!--More speed, effect on the BUFF for Quest Vehicles-->
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkVehicleRecovery2" parent="ZombieINC_BookSkill_VehicleRecovery" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkVehicleRecovery2_Desc" long_desc_key="ZombieINC_perkVehicleRecovery2_LongDesc">
+					<effect_group>
+						<passive_effect name="VehicleSelfDamage" operation="perc_add" level="1" value="-0.10" tags="vehicle"/>
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkVehicleRecovery3" parent="ZombieINC_BookSkill_VehicleRecovery" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkVehicleRecovery3_Desc" long_desc_key="ZombieINC_perkVehicleRecovery3_LongDesc">
+					<effect_group>
+						<passive_effect name="QuestBonusItemReward" operation="perc_add" level="1" value="0.1"/>
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkVehicleRecovery4" parent="ZombieINC_BookSkill_VehicleRecovery" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkVehicleRecovery4_Desc" long_desc_key="ZombieINC_perkVehicleRecovery4_LongDesc">
+					<effect_group>
+						<passive_effect name="LightIntensity" operation="perc_add" level="1" value="0.2"/>
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkVehicleRecovery5" parent="ZombieINC_BookSkill_VehicleRecovery" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkVehicleRecovery5_Desc" long_desc_key="ZombieINC_perkVehicleRecovery5_LongDesc">
+					<effect_group>
+						<passive_effect name="VehicleFuelMaxPer" operation="perc_add" level="1" value=".1"/>	
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkVehicleRecovery6" parent="ZombieINC_BookSkill_VehicleRecovery" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkVehicleRecovery6_Desc" long_desc_key="ZombieINC_perkVehicleRecovery6_LongDesc">
+					<effect_group>
+						<passive_effect name="VehicleFuelUsePer" operation="perc_add" level="1" value="-.05"/>
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkVehicleRecovery7" parent="ZombieINC_BookSkill_VehicleRecovery" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkVehicleRecovery7_Desc" long_desc_key="ZombieINC_perkVehicleRecovery7_LongDesc">
+					<effect_group>
+						<passive_effect name="HealthChangeOT" operation="base_add" level="1" value=".022">
+							<requirement name="IsAttachedToEntity" />
+						</passive_effect>
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkVehicleRecoveryComplete" parent="ZombieINC_BookSkill_VehicleRecovery" max_level="1" base_skill_point_cost="0" name_key="ZombieINC_perkVehicleRecoveryComplete_Name" desc_key="ZombieINC_perkVehicleRecoveryComplete_Desc" long_desc_key="ZombieINC_perkVehicleRecoveryComplete_LongDesc">
+					<effect_group>
+						<passive_effect name="QuestBonusItemReward" operation="perc_add" level="1" value="0.20"/>
+						<passive_effect name="VehicleVelocityMaxPer" operation="perc_add" level="1" value="0.05"/>
+						<passive_effect name="VehicleMotorTorquePer" operation="perc_add" level="1" value="0.05"/>	
+					</effect_group>
+
+					<effect_group>
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_perkVehicleRecoveryComplete" operation="Equals" value="1"/>
+					</effect_group>
+				</book>
+				<!--Vehicle Recovery-->
+			</append>
+		</if>
+	</conditional>
+	<conditional>
+		<if cond="mod_loaded('mateusjobsmobiledefense')">
+			<append xpath="/progression/skills">	
+				<book_group name="ZombieINC_BookSkill_MobileDefense" parent="attBooks" name_key="ZombieINC_BookSkill_MobileDefense_Name" desc_key="ZombieINC_BookSkill_MobileDefense_Desc" long_desc_key="perkBookGroupLongDesc" icon="ui_game_symbol_skull"><effect_group/></book_group>
+			</append>
+			<append xpath="/progression/perks">
+				<!--#Mobile Defense-->
+				<book name="ZombieINC_perkMobileDefense1" parent="ZombieINC_BookSkill_MobileDefense" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkMobileDefense1_Desc" long_desc_key="ZombieINC_perkMobileDefense1_LongDesc">
+					<effect_group>
+						<passive_effect name="LootQuantity" operation="perc_add" level="1" value="0.05" tags="dukes"/>
+					</effect_group>
+					<effect_group>
+						<!--<passive_effect name="VehicleEntityDamage" operation="perc_add" level="1" value="0.25"/>
+						<passive_effect name="VehicleBlockDamage" operation="perc_add" level="1" value="0.25"/>-->
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkMobileDefense2" parent="ZombieINC_BookSkill_MobileDefense" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkMobileDefense2_Desc" long_desc_key="ZombieINC_perkMobileDefense2_LongDesc">
+					<effect_group>
+						<passive_effect name="LootQuantity" operation="perc_add" level="1" value="0.25" tags="ZombieINC_MD_SI"/>
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkMobileDefense3" parent="ZombieINC_BookSkill_MobileDefense" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkMobileDefense3_Desc" long_desc_key="ZombieINC_perkMobileDefense3_LongDesc">
+					<effect_group>
+						<passive_effect name="LootQuantity" operation="perc_add" level="1" value="0.1" tags="buriedTreasure"/>
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkMobileDefense4" parent="ZombieINC_BookSkill_MobileDefense" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkMobileDefense4_Desc" long_desc_key="ZombieINC_perkMobileDefense4_LongDesc">
+					<effect_group>
+						<!--ZombieINC_MD_I,ZombieINC_MD_SI-->
+						<!--<passive_effect name="LootQuantity" operation="perc_add" level="1" value="40" tags="ZombieINC_MD_DukeTag"/> -->
+					</effect_group>
+					<effect_group>
+						<passive_effect name="LootQuantity" operation="perc_add" level="1" value="0.25" tags="ZombieINC_MD_buriedTreasure"/>
+						
+						<!--More 50% ammo762mm,ammoShells,ammo9mm,ammo44Mag add using buffs-->
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkMobileDefense5" parent="ZombieINC_BookSkill_MobileDefense" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkMobileDefense5_Desc" long_desc_key="ZombieINC_perkMobileDefense5_LongDesc">
+					<effect_group>
+						<passive_effect name="LootProb" operation="perc_add" level="1" value="0.5" tags="ZombieINC_MD_LI"/>
+					</effect_group>
+					<effect_group>
+						<!--<passive_effect name="VehicleFuelUsePer" operation="perc_add" level="1" value="-.05"/>-->
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkMobileDefense6" parent="ZombieINC_BookSkill_MobileDefense" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkMobileDefense6_Desc" long_desc_key="ZombieINC_perkMobileDefense6_LongDesc">
+					<effect_group>
+						<passive_effect name="VehicleMotorTorquePer" operation="perc_add" level="1" value="0.05"/>
+						<passive_effect name="VehicleVelocityMaxPer" operation="perc_add" level="1" value="0.05"/>
+						<!--More speed, effect on the BUFF for Quest Vehicles-->
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkMobileDefense7" parent="ZombieINC_BookSkill_MobileDefense" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkMobileDefense7_Desc" long_desc_key="ZombieINC_perkMobileDefense7_LongDesc">
+					<effect_group>
+						<passive_effect name="VehicleFuelUsePer" operation="perc_add" level="1" value="-0.05"/>
+						<passive_effect name="VehicleSelfDamage" operation="perc_add" level="1" value="-0.25" tags="vehicle"/>
+					</effect_group>
+					<effect_group>
+						<!--<passive_effect name="VehicleStrongSelfDamage" operation="perc_add" level="1" value="0.25"/>-->
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkMobileDefenseComplete" parent="ZombieINC_BookSkill_MobileDefense" max_level="1" base_skill_point_cost="0" name_key="ZombieINC_perkMobileDefenseComplete_Name" desc_key="ZombieINC_perkMobileDefenseComplete_Desc" long_desc_key="ZombieINC_perkMobileDefenseComplete_LongDesc">
+					<effect_group>
+						<passive_effect name="LootQuantity" operation="perc_add" level="1" value="0.1" tags="ammo762mm"/>
+						<passive_effect name="LootQuantity" operation="perc_add" level="1" value="0.1" tags="ammoShells" />
+						<passive_effect name="LootQuantity" operation="perc_add" level="1" value="0.1" tags="ammo9mm" />
+						<passive_effect name="LootQuantity" operation="perc_add" level="1" value="0.1" tags="ammo44Mag" />
+						
+						<passive_effect name="LootQuantity" operation="perc_add" level="1" value="0.2" tags="buriedTreasure"/>
+						<passive_effect name="LootQuantity" operation="perc_add" level="1" value="0.2" tags="dukes"/>
+					</effect_group>
+
+					<effect_group>
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_perkMobileDefenseComplete" operation="Equals" value="1"/>
+					</effect_group>
+				</book>
+				<!--Mobile Defense-->
+			</append>
+		</if>
+	</conditional>
+	<conditional>
+		<if cond="mod_loaded('mateusjobsnestdemolition')">
+			<append xpath="/progression/skills">	
+				<book_group name="ZombieINC_BookSkill_NestDemolition" parent="attBooks" name_key="ZombieINC_BookSkill_NestDemolition_Name" desc_key="ZombieINC_BookSkill_NestDemolition_Desc" long_desc_key="perkBookGroupLongDesc" icon="ui_game_symbol_skull"><effect_group/></book_group>
+			</append>
+			<append xpath="/progression/perks">
+				<!--#Nest Demolition-->
+				<book name="ZombieINC_perkNestDemolition1" parent="ZombieINC_BookSkill_NestDemolition" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkNestDemolition1_Desc" long_desc_key="ZombieINC_perkNestDemolition1_LongDesc">
+					<effect_group>
+						
+						
+						<passive_effect name="ExplosionEntityDamage" operation="perc_add" level="1" value="0.1" tags="perkDemolitionsExpert"/>
+						
+						
+						<!--More speed, effect on the BUFF for Quest Vehicles-->
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkNestDemolition2" parent="ZombieINC_BookSkill_NestDemolition" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkNestDemolition2_Desc" long_desc_key="ZombieINC_perkNestDemolition2_LongDesc">
+					<effect_group>
+						
+						<passive_effect name="ExplosionBlockDamage" operation="perc_add" level="1" value="0.1" tags="perkDemolitionsExpert"/>
+						
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkNestDemolition3" parent="ZombieINC_BookSkill_NestDemolition" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkNestDemolition3_Desc" long_desc_key="ZombieINC_perkNestDemolition3_LongDesc">
+					<effect_group>
+						<passive_effect name="CraftingTime" operation="perc_add" level="1" value="-0.1" tags="perkDemolitionsExpert"/>
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkNestDemolition4" parent="ZombieINC_BookSkill_NestDemolition" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkNestDemolition4_Desc" long_desc_key="ZombieINC_perkNestDemolition4_LongDesc">
+					<effect_group>
+						<passive_effect name="LootProb" operation="perc_add" level="1" value="2" tags="explosivesSkill"/>
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkNestDemolition5" parent="ZombieINC_BookSkill_NestDemolition" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkNestDemolition5_Desc" long_desc_key="ZombieINC_perkNestDemolition5_LongDesc">
+					<effect_group>
+						<passive_effect name="VehicleVelocityMaxPer" operation="perc_add" level="1" value="0.05"/>
+						<passive_effect name="VehicleMotorTorquePer" operation="perc_add" level="1" value="0.05"/>
+							<!--More speed, effect on the BUFF for Quest Vehicles-->
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkNestDemolition6" parent="ZombieINC_BookSkill_NestDemolition" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkNestDemolition6_Desc" long_desc_key="ZombieINC_perkNestDemolition6_LongDesc">
+					<effect_group>
+						<passive_effect name="WeaponHandling" operation="perc_add" level="1" value="0.1" tags="perkDemolitionsExpert"/>
+						<passive_effect name="ReloadSpeedMultiplier" operation="perc_add" level="1" value="0.10" tags="perkDemolitionsExpert"/>
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkNestDemolition7" parent="ZombieINC_BookSkill_NestDemolition" max_level="1" base_skill_point_cost="0" desc_key="ZombieINC_perkNestDemolition7_Desc" long_desc_key="ZombieINC_perkNestDemolition7_LongDesc">
+					<effect_group>
+						<passive_effect name="PlayerExpGain" operation="perc_add" level="1" value=".05" tags="Kill"/>
+					</effect_group>
+				</book>
+				<book name="ZombieINC_perkNestDemolitionComplete" parent="ZombieINC_BookSkill_NestDemolition" max_level="1" base_skill_point_cost="0" name_key="ZombieINC_perkNestDemolitionComplete_Name" desc_key="ZombieINC_perkNestDemolitionComplete_Desc" long_desc_key="ZombieINC_perkNestDemolitionComplete_LongDesc">
+					<effect_group>
+						
+					</effect_group>
+
+					<effect_group>
+						<requirement name="ProgressionLevel" progression_name="ZombieINC_perkNestDemolitionComplete" operation="Equals" value="1"/>
+						<triggered_effect trigger="onSelfExplosionDamagedOther" action="AddBuff" target="other" target_tags="zombie" buff="ZombieINC_ND_SecondBlast_Main">
+							<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/>
+						</triggered_effect>
+					</effect_group>
+				</book>
+				<!--Nest Demolition-->
+			</append>
+		</if>
+	</conditional>
+
+
+		<append xpath="/progression/perks">	
+				<!--Books-->
+		</append>
+
+
+</Config>

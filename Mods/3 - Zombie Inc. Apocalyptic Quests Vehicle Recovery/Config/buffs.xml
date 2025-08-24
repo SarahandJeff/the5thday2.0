@@ -1,0 +1,829 @@
+<Config>
+
+<conditional>
+	<if cond="mod_loaded('mateusjobsmain') == 'false'">
+		<append xpath="/buffs">
+			<buff name="ZombieINC_EnemyDotBuff">
+				<stack_type value="ignore"/>
+				<effect_group>	
+					<triggered_effect trigger="onSelfBuffStart" action="SetNavObject" nav_object="ZombieINC_EnemyDot" add="true" />	
+				</effect_group>
+			</buff>
+		</append>
+	</if>
+</conditional>
+
+
+<append xpath="/buffs">
+
+<!--###Vehicle Delivery-->
+
+	<!--##New Vehicle Buffs-->
+		<buff name="ZombieINC_vehicleBicycle_buff" remove_on_death="false" hidden="true" icon="ui_game_symbol_trophy" icon_color="185,120,15">
+			<damage_type value="heat"/>  <!-- Thanks for A21 ServerSideVehicles Mod to finally solve this problem--> <!--I'd never imagine that damage_type would be a thing to make this work-->	
+			<stack_type value="ignore"/>
+			<update_rate value="0.3"/>	
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="positionAOE" target_tags="player" range="2" buff="ZombieINC_VH_OnVehicle" >
+					<requirement name="IsAttachedToEntity" target="other"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_VehicleDelivery_VehicleEraseItSelf_45m" allow_client_call="false" />
+			</effect_group>
+		</buff>
+		<buff name="ZombieINC_vehicleMinibike_buff" remove_on_death="false" hidden="true" icon="ui_game_symbol_trophy" icon_color="185,120,15">
+			<damage_type value="heat"/>  <!-- Thanks for A21 ServerSideVehicles Mod to finally solve this problem--> <!--I'd never imagine that damage_type would be a thing to make this work-->	
+			<stack_type value="ignore"/>
+			<update_rate value="0.3"/>	
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="positionAOE" target_tags="player" range="2" buff="ZombieINC_VH_OnVehicle" >
+					<requirement name="IsAttachedToEntity" target="other"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_VehicleDelivery_VehicleEraseItSelf_45m" allow_client_call="false" />
+			</effect_group>
+		</buff>
+		<buff name="ZombieINC_vehicleMotorcycle_buff" remove_on_death="false" hidden="true" icon="ui_game_symbol_trophy" icon_color="185,120,15">
+			<damage_type value="heat"/>  <!-- Thanks for A21 ServerSideVehicles Mod to finally solve this problem--> <!--I'd never imagine that damage_type would be a thing to make this work-->	
+			<stack_type value="ignore"/>
+			<update_rate value="0.3"/>	
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="positionAOE" target_tags="player" range="2" buff="ZombieINC_VH_OnVehicle" >
+					<requirement name="IsAttachedToEntity" target="other"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_VehicleDelivery_VehicleEraseItSelf_45m" allow_client_call="false" />
+			</effect_group>
+		</buff>
+		<buff name="ZombieINC_vehicle4x4Truck_buff" remove_on_death="false" hidden="true" icon="ui_game_symbol_trophy" icon_color="185,120,15">
+			<damage_type value="heat"/>  <!-- Thanks for A21 ServerSideVehicles Mod to finally solve this problem--> <!--I'd never imagine that damage_type would be a thing to make this work-->	
+			<stack_type value="ignore"/>
+			<update_rate value="0.3"/>	
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="positionAOE" target_tags="player" range="2" buff="ZombieINC_VH_OnVehicle" >
+					<requirement name="IsAttachedToEntity" target="other"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_VehicleDelivery_VehicleEraseItSelf_45m" allow_client_call="false" />
+			</effect_group>
+		</buff>
+		<buff name="ZombieINC_vehicleGyrocopter_buff" remove_on_death="false" hidden="true" icon="ui_game_symbol_trophy" icon_color="185,120,15">
+			<damage_type value="heat"/>  <!-- Thanks for A21 ServerSideVehicles Mod to finally solve this problem--> <!--I'd never imagine that damage_type would be a thing to make this work-->	
+			<stack_type value="ignore"/>
+			<update_rate value="0.3"/>	
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="positionAOE" target_tags="player" range="2" buff="ZombieINC_VH_OnVehicle" >
+					<requirement name="IsAttachedToEntity" target="other"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_VehicleDelivery_VehicleEraseItSelf_60m" allow_client_call="false" />
+			</effect_group>
+		</buff>
+	<!--##New Vehicle Buffs-->
+	<!--##Vehicle Recovery General-->
+	<buff name="ZombieINC_VH_NoKey" remove_on_death="true" hidden="true" icon="ui_game_symbol_trophy" icon_color="185,120,15">
+		<stack_type value="ignore"/>
+		<duration value="240"/>
+		<tags value="zombieinc_missionfailed" />
+		<effect_group>
+			<passive_effect name="NoVehicle" operation="base_set" value="1" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_VH_NoKey" />
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_VH_NoKey" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_VH_PlayerOnVehicle" remove_on_death="true" hidden="true" icon="ui_game_symbol_trophy" icon_color="185,120,15">
+		<damage_type value="heat"/>  <!-- Thanks for A21 ServerSideVehicles Mod to finally solve this problem--> <!--I'd never imagine that damage_type would be a thing to make this work-->	
+		<stack_type value="ignore"/>
+		<update_rate value="1"/>	
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="positionAOE" target_tags="player" range="1" buff="ZombieINC_VH_OnVehicle" />
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_VehicleDelivery_VehicleEraseItSelf" allow_client_call="false" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_VH_OnVehicle" remove_on_death="true" hidden="true" icon="ui_game_symbol_trophy" icon_color="185,120,15">
+		<stack_type value="replace"/>
+		<tags value="zombieinc_missionfailed" />
+		<duration value="0.5"/>		
+		<effect_group>
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_perkVehicleRecovery1" operation="Equals" value="1"/>
+				<passive_effect name="VehicleVelocityMaxPer" operation="perc_add" value="0.2"/>
+				<passive_effect name="VehicleMotorTorquePer" operation="perc_add" value="0.2"/>
+		</effect_group>
+		<effect_group>
+			<requirement name="!HasBuff" buff="ZombieINC_VH_MoveDetector_T1"/>
+			<requirement name="!HasBuff" buff="ZombieINC_VH_MoveDetector_T2"/>
+			<requirement name="!HasBuff" buff="ZombieINC_VH_MoveDetector_T3"/>
+			<requirement name="!HasBuff" buff="ZombieINC_VH_MoveDetector_T4"/>
+			<requirement name="!HasBuff" buff="ZombieINC_VH_MoveDetector_T5"/>
+			<requirement name="!HasBuff" buff="ZombieINC_VH_MoveDetector_T6"/>
+			<passive_effect name="VehicleVelocityMaxPer" operation="base_set" value="0"/>
+			<passive_effect name="VehicleMotorTorquePer" operation="base_set" value="0"/>
+		</effect_group>
+		<effect_group>
+			<!--<requirements compare_type="or">
+				<requirement name="HasBuff" buff="ZombieINC_VH_MoveDetector_T1"/>
+				<requirement name="HasBuff" buff="ZombieINC_VH_MoveDetector_T2"/>
+				<requirement name="HasBuff" buff="ZombieINC_VH_MoveDetector_T3"/>
+				<requirement name="HasBuff" buff="ZombieINC_VH_MoveDetector_T4"/>
+				<requirement name="HasBuff" buff="ZombieINC_VH_MoveDetector_T5"/>
+				<requirement name="HasBuff" buff="ZombieINC_VH_MoveDetector_T6"/>
+			</requirements>-->
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="zombie" range="35" buff="ZombieINC_Survival_SpeedV1Short_VD_Buff" />		
+			<triggered_effect trigger="onSelfBuffFinish" action="RemoveBuff" target="positionAOE" target_tags="zombie" range="45" buff="ZombieINC_Survival_SpeedV1Short_VD_Buff" />
+		</effect_group>
+	</buff>
+	<!--##Vehicle Recovery General-->
+	<!--#New BicycleT1-->	
+		<buff name="ZombieINC_Activate_Event_Buried_Buff_T1"  >
+			<duration value="1"/>
+			<stack_type value="replace"/>
+			<tags value="zombieinc_missionfailed" />
+			<update_rate value="1"/>
+			<effect_group>	
+				<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_VH_DirtPlacementByBuff" allow_client_call="false" />
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="player" range="30" buff="ZombieINC_VH_NoKey" />
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_Call_Vehicle_T1"/>	
+			</effect_group>
+		</buff>
+		
+		<buff name="ZombieINC_Call_Vehicle_T1"  >
+			<duration value="10"/>
+			<stack_type value="ignore"/>
+			<tags value="zombieinc_missionfailed" />
+			<update_rate value="1"/>
+				<effect_group>	
+					<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_Activate_Event_VH_1" allow_client_call="false" />
+				</effect_group>
+		</buff>
+		
+		<buff name="ZombieINC_VH_MoveDetector_T1" remove_on_death="true" hidden="true" icon="ui_game_symbol_trophy" icon_color="185,120,15">
+			<stack_type value="replace"/>
+			<!--<duration value="20"/>-->
+			<tags value="zombieinc_missionfailed" />
+			<update_rate value="1"/>
+				
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="ZombieINC_VH_NoKey" />
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCOnVehicle" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZINCOnVehicle" operation="add" value="1">
+					<requirement name="IsAttachedToEntity"/>
+					<requirement name="HasBuff" buff="ZombieINC_VH_OnVehicle"/>	
+					<requirement name="!HasBuff" buff="ZombieINC_VehicleDelivery_BicycleWavesStop"/>	
+				</triggered_effect>	
+			</effect_group>
+			<effect_group>
+				<requirement name="IsAttachedToEntity"/>
+				<requirement name="HasBuff" buff="ZombieINC_VH_OnVehicle"/>	
+				<requirement name="CVarCompare" cvar=".ZINCOnVehicle" operation="GTE" value="40"/>
+					<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="self" buff="ZombieINC_VehicleDelivery_BicycleWavesStop">
+						<requirement name="!HasBuff" buff="ZombieINC_VehicleDelivery_BicycleWavesStop"/>
+					</triggered_effect>
+					<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="self" buff="ZombieINC_VehicleDelivery_BicycleWavesSpawner">
+						<requirement name="!HasBuff" buff="ZombieINC_VehicleDelivery_BicycleWavesSpawner"/>
+					</triggered_effect>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_VH_MoveDetector_T1" />
+				<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_VH_MoveDetector_T1" />
+			</effect_group>
+		</buff>
+	<!--New BicycleT1-->	
+	<!--##BicycleT1-->
+	<buff name="ZombieINC_VehicleDelivery_BicycleWavesStop" hidden="false" icon="ui_game_symbol_wrench" icon_color="185,120,15">		
+     	<duration value="30"/>
+		<tags value="zombieinc_missionfailed" />
+		<effect_group>
+			<passive_effect name="VehicleVelocityMaxPer" operation="base_set" value="0"/>
+			<passive_effect name="VehicleMotorTorquePer" operation="base_set" value="0"/>
+			<passive_effect name="NoVehicle" operation="base_set" value="1" />
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self" event="ZombieINC_VehicleDelivery_Bicycle_Message1" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" target="self" event="ZombieINC_VehicleDelivery_Bicycle_Message2" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="ModifyCVar" cvar=".ZINCOnVehicle" operation="set" value="0"/>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_VehicleDelivery_BicycleWavesSpawner" hidden="true" icon="ui_game_symbol_trophy" icon_color="185,120,15">	
+		<stack_type value="replace"/>	
+     	<duration value="25"/>
+		<tags value="zombieinc_missionfailed" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self"  event="ZombieINC_VehicleDelivery_BicycleWavesSpawnerEvent" allow_client_call="false"/>				
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_Survival_SpeedV1_VD_Buff"  >
+		<stack_type value="replace"/>
+		<duration value="4"/>
+		<effect_group>
+		    <passive_effect name="WalkSpeed" operation="base_set" value="1.0"/>
+			<passive_effect name="RunSpeed" operation="base_set" value="1.3"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_Survival_SpeedV1Short_VD_Buff"  >
+		<stack_type value="ignore"/>
+		<duration value="30"/>
+		<effect_group>
+		    <passive_effect name="WalkSpeed" operation="base_set" value="1.5"/>
+			<passive_effect name="RunSpeed" operation="base_set" value="1.5"/>
+		</effect_group>
+	</buff>
+	<!--BicycleT1-->
+	<!--##BicycleT2-->
+	<!--#New BicycleT2-->	
+		<buff name="ZombieINC_Activate_Event_Buried_Buff_T2"  >
+			<duration value="1"/>
+			<stack_type value="replace"/>
+			<tags value="zombieinc_missionfailed" />
+			<update_rate value="1"/>
+			<effect_group>	
+				<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_VH_DirtPlacementByBuff" allow_client_call="false" />
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="player" range="30" buff="ZombieINC_VH_NoKey" />
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_Call_Vehicle_T2"/>	
+			</effect_group>
+		</buff>
+		
+		<buff name="ZombieINC_Call_Vehicle_T2"  >
+			<duration value="10"/>
+			<stack_type value="ignore"/>
+			<tags value="zombieinc_missionfailed" />
+			<update_rate value="1"/>
+				<effect_group>	
+					<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_Activate_Event_VH_2" allow_client_call="false" />
+				</effect_group>
+		</buff>
+		
+		<buff name="ZombieINC_VH_MoveDetector_T2" remove_on_death="true" hidden="true" icon="ui_game_symbol_trophy" icon_color="185,120,15">
+			<stack_type value="replace"/>
+			<!--<duration value="20"/>-->
+			<tags value="zombieinc_missionfailed" />
+			<update_rate value="1"/>
+				
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="ZombieINC_VH_NoKey" />
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCOnVehicle" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZINCOnVehicle" operation="add" value="1">
+					<requirement name="IsAttachedToEntity"/>
+					<requirement name="HasBuff" buff="ZombieINC_VH_OnVehicle"/>	
+					<requirement name="!HasBuff" buff="ZombieINC_VehicleDelivery_BicycleWavesStop2"/>	
+				</triggered_effect>	
+			</effect_group>
+			<effect_group>
+				<requirement name="IsAttachedToEntity"/>
+				<requirement name="HasBuff" buff="ZombieINC_VH_OnVehicle"/>	
+				<requirement name="CVarCompare" cvar=".ZINCOnVehicle" operation="GTE" value="40"/>
+					<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="self" buff="ZombieINC_VehicleDelivery_BicycleWavesStop2">
+						<requirement name="!HasBuff" buff="ZombieINC_VehicleDelivery_BicycleWavesStop2"/>
+					</triggered_effect>
+					<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="self" buff="ZombieINC_VehicleDelivery_BicycleWavesSpawner2">
+						<requirement name="!HasBuff" buff="ZombieINC_VehicleDelivery_BicycleWavesSpawner2"/>
+					</triggered_effect>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_VH_MoveDetector_T2" />
+				<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_VH_MoveDetector_T2" />
+			</effect_group>
+		</buff>
+	<!--New BicycleT2-->		
+	<buff name="ZombieINC_VehicleDelivery_BicycleWavesStop2" hidden="false" icon="ui_game_symbol_wrench" icon_color="185,120,15">		
+     	<duration value="30"/>
+		<tags value="zombieinc_missionfailed" />
+		<effect_group>
+			<passive_effect name="VehicleVelocityMaxPer" operation="base_set" value="0"/>
+			<passive_effect name="VehicleMotorTorquePer" operation="base_set" value="0"/>
+			<passive_effect name="NoVehicle" operation="base_set" value="1" />
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self" event="ZombieINC_VehicleDelivery_Bicycle_Message1" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" target="self" event="ZombieINC_VehicleDelivery_Bicycle_Message2" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="ModifyCVar" cvar=".ZINCOnVehicle" operation="set" value="0"/>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_VehicleDelivery_BicycleWavesSpawner2" hidden="true" icon="ui_game_symbol_trophy" icon_color="185,120,15">	
+		<stack_type value="replace"/>	
+     	<duration value="30"/>
+		<update_rate value="10"/>
+		<tags value="zombieinc_missionfailed" />		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self"  event="ZombieINC_VehicleDelivery_BicycleWavesSpawnerEvent2" allow_client_call="false"/>				
+		</effect_group>
+	</buff>
+	<!--BicycleT2-->
+	<!--##MiniBike-->
+	<!--#New T3-->	
+		<buff name="ZombieINC_Activate_Event_Buried_Buff_T3"  >
+			<duration value="1"/>
+			<stack_type value="replace"/>
+			<tags value="zombieinc_missionfailed" />
+			<update_rate value="1"/>
+			<effect_group>	
+				<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_VH_DirtPlacementByBuff" allow_client_call="false" />
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="player" range="30" buff="ZombieINC_VH_NoKey" />
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_Call_Vehicle_T3"/>	
+			</effect_group>
+		</buff>
+		
+		<buff name="ZombieINC_Call_Vehicle_T3"  >
+			<duration value="10"/>
+			<stack_type value="ignore"/>
+			<tags value="zombieinc_missionfailed" />
+			<update_rate value="1"/>
+				<effect_group>	
+					<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_Activate_Event_VH_3" allow_client_call="false" />
+				</effect_group>
+		</buff>
+		
+		<buff name="ZombieINC_VH_MoveDetector_T3" remove_on_death="true" hidden="true" icon="ui_game_symbol_trophy" icon_color="185,120,15">
+			<stack_type value="replace"/>
+			<!--<duration value="20"/>-->
+			<tags value="zombieinc_missionfailed" />
+			<update_rate value="1"/>
+				
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="ZombieINC_VH_NoKey" />
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCOnVehicle" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZINCOnVehicle" operation="add" value="1">
+					<requirement name="IsAttachedToEntity"/>
+					<requirement name="HasBuff" buff="ZombieINC_VH_OnVehicle"/>	
+					<requirement name="!HasBuff" buff="ZombieINC_VehicleDelivery_BicycleWavesStop3"/>	
+				</triggered_effect>	
+			</effect_group>
+			<effect_group>
+				<requirement name="IsAttachedToEntity"/>
+				<requirement name="HasBuff" buff="ZombieINC_VH_OnVehicle"/>	
+				<requirement name="CVarCompare" cvar=".ZINCOnVehicle" operation="GTE" value="40"/>
+					<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="self" buff="ZombieINC_VehicleDelivery_BicycleWavesStop3">
+						<requirement name="!HasBuff" buff="ZombieINC_VehicleDelivery_BicycleWavesStop3"/>
+					</triggered_effect>
+					<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="self" buff="ZombieINC_VehicleDelivery_BicycleWavesSpawner3">
+						<requirement name="!HasBuff" buff="ZombieINC_VehicleDelivery_BicycleWavesSpawner3"/>
+					</triggered_effect>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_VH_MoveDetector_T3" />
+				<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_VH_MoveDetector_T3" />
+			</effect_group>
+		</buff>
+	<!--New T3-->	
+	<buff name="ZombieINC_VehicleDelivery_BicycleWavesStop3" hidden="false" icon="ui_game_symbol_wrench" icon_color="185,120,15">		
+     	<duration value="30"/>	
+		<tags value="zombieinc_missionfailed" />
+		<effect_group>
+			<passive_effect name="VehicleVelocityMaxPer" operation="base_set" value="0"/>
+			<passive_effect name="VehicleMotorTorquePer" operation="base_set" value="0"/>
+			<passive_effect name="NoVehicle" operation="base_set" value="1" />
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self" event="ZombieINC_VehicleDelivery_Bicycle_Message4" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" target="self" event="ZombieINC_VehicleDelivery_Bicycle_Message5" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="ModifyCVar" cvar=".ZINCOnVehicle" operation="set" value="0"/>
+		</effect_group>
+	</buff>	
+	<buff name="ZombieINC_VehicleDelivery_BicycleWavesSpawner3" hidden="true" icon="ui_game_symbol_trophy" icon_color="185,120,15">	
+		<stack_type value="replace"/>	
+     	<duration value="30"/>
+		<update_rate value="10"/>	
+		<tags value="zombieinc_missionfailed" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self"  event="ZombieINC_VehicleDelivery_BicycleWavesSpawnerEvent3" allow_client_call="false"/>				
+		</effect_group>
+	</buff>
+	
+	<!--MiniBike-->	
+	<!--##Motorcycle-->
+	<!--#New T4-->	
+		<buff name="ZombieINC_Activate_Event_Buried_Buff_T4"  >
+			<duration value="1"/>
+			<stack_type value="replace"/>
+			<tags value="zombieinc_missionfailed" />
+			<update_rate value="1"/>
+			<effect_group>	
+				<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_VH_DirtPlacementByBuff" allow_client_call="false" />
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="player" range="30" buff="ZombieINC_VH_NoKey" />
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_Call_Vehicle_T4"/>	
+			</effect_group>
+		</buff>
+		
+		<buff name="ZombieINC_Call_Vehicle_T4"  >
+			<duration value="10"/>
+			<stack_type value="ignore"/>
+			<tags value="zombieinc_missionfailed" />
+			<update_rate value="1"/>
+				<effect_group>	
+					<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_Activate_Event_VH_4" allow_client_call="false" />
+				</effect_group>
+		</buff>
+		
+		<buff name="ZombieINC_VH_MoveDetector_T4" remove_on_death="true" hidden="true" icon="ui_game_symbol_trophy" icon_color="185,120,15">
+			<stack_type value="replace"/>
+			<!--<duration value="20"/>-->
+			<tags value="zombieinc_missionfailed" />
+			<update_rate value="1"/>
+				
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="ZombieINC_VH_NoKey" />
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_VehicleDelivery_BicycleWavesSpawner4" />
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_VehicleDelivery_BicycleWavesStop4" />
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCOnVehicle" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZINCOnVehicle" operation="add" value="1">
+					<requirement name="IsAttachedToEntity"/>
+					<requirement name="HasBuff" buff="ZombieINC_VH_OnVehicle"/>	
+					<requirement name="!HasBuff" buff="ZombieINC_VehicleDelivery_BicycleWavesStop4"/>	
+				</triggered_effect>	
+			</effect_group>
+			<effect_group>
+				<requirement name="IsAttachedToEntity"/>
+				<requirement name="HasBuff" buff="ZombieINC_VH_OnVehicle"/>	
+				<requirement name="CVarCompare" cvar=".ZINCOnVehicle" operation="GTE" value="45"/>
+					<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="self" buff="ZombieINC_VehicleDelivery_BicycleWavesStop4">
+						<requirement name="!HasBuff" buff="ZombieINC_VehicleDelivery_BicycleWavesStop4"/>
+					</triggered_effect>
+					<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="self" buff="ZombieINC_VehicleDelivery_BicycleWavesSpawner4">
+						<requirement name="!HasBuff" buff="ZombieINC_VehicleDelivery_BicycleWavesSpawner4"/>
+					</triggered_effect>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_VH_MoveDetector_T4" />
+				<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_VH_MoveDetector_T4" />
+			</effect_group>
+		</buff>
+	<!--New T4-->
+	<buff name="ZombieINC_VehicleDelivery_BicycleWavesStop4" hidden="false" icon="ui_game_symbol_wrench" icon_color="185,120,15">		
+     	<duration value="35"/>
+		<tags value="zombieinc_missionfailed" />
+		<effect_group>
+			<passive_effect name="VehicleVelocityMaxPer" operation="base_set" value="0"/>
+			<passive_effect name="VehicleMotorTorquePer" operation="base_set" value="0"/>
+			<passive_effect name="NoVehicle" operation="base_set" value="1" />
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self" event="ZombieINC_VehicleDelivery_Bicycle_Message6" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" target="self" event="ZombieINC_VehicleDelivery_Bicycle_Message7" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="ModifyCVar" cvar=".ZINCOnVehicle" operation="set" value="0"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_VehicleDelivery_BicycleWavesSpawner4" hidden="true" icon="ui_game_symbol_trophy" icon_color="185,120,15">	
+		<stack_type value="replace"/>	
+     	<duration value="35"/>
+		<update_rate value="10"/>
+		<tags value="zombieinc_missionfailed" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self"  event="ZombieINC_VehicleDelivery_BicycleWavesSpawnerEvent4" allow_client_call="false"/>				
+		</effect_group>
+	</buff>
+	<!--Motorcycle-->
+	<!--##4X4Truck-->
+	<!--#New T5-->	
+		<buff name="ZombieINC_Activate_Event_Buried_Buff_T5"  >
+			<duration value="1"/>
+			<stack_type value="replace"/>
+			<tags value="zombieinc_missionfailed" />
+			<update_rate value="1"/>
+			<effect_group>	
+				<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_VH_DirtPlacementByBuff" allow_client_call="false" />
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="player" range="30" buff="ZombieINC_VH_NoKey" />
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_Call_Vehicle_T5"/>	
+			</effect_group>
+		</buff>
+		
+		<buff name="ZombieINC_Call_Vehicle_T5"  >
+			<duration value="10"/>
+			<stack_type value="ignore"/>
+			<tags value="zombieinc_missionfailed" />
+			<update_rate value="1"/>
+				<effect_group>	
+					<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_Activate_Event_VH_5" allow_client_call="false" />
+				</effect_group>
+		</buff>
+		
+		<buff name="ZombieINC_VH_MoveDetector_T5" remove_on_death="true" hidden="true" icon="ui_game_symbol_trophy" icon_color="185,120,15">
+			<stack_type value="replace"/>
+			<!--<duration value="20"/>-->
+			<tags value="zombieinc_missionfailed" />
+			<update_rate value="1"/>
+				
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="ZombieINC_VH_NoKey" />
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_VehicleDelivery_BicycleWavesStop5" />
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_VehicleDelivery_BicycleWavesSpawner5" />
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCOnVehicle" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZINCOnVehicle" operation="add" value="1">
+					<requirement name="IsAttachedToEntity"/>
+					<requirement name="HasBuff" buff="ZombieINC_VH_OnVehicle"/>	
+					<requirement name="!HasBuff" buff="ZombieINC_VehicleDelivery_BicycleWavesStop5"/>	
+				</triggered_effect>	
+			</effect_group>
+			<effect_group>
+				<requirement name="IsAttachedToEntity"/>
+				<requirement name="HasBuff" buff="ZombieINC_VH_OnVehicle"/>	
+				<requirement name="CVarCompare" cvar=".ZINCOnVehicle" operation="GTE" value="50"/>
+					<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="self" buff="ZombieINC_VehicleDelivery_BicycleWavesStop5">
+						<requirement name="!HasBuff" buff="ZombieINC_VehicleDelivery_BicycleWavesStop5"/>
+					</triggered_effect>
+					<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="self" buff="ZombieINC_VehicleDelivery_BicycleWavesSpawner5">
+						<requirement name="!HasBuff" buff="ZombieINC_VehicleDelivery_BicycleWavesSpawner5"/>
+					</triggered_effect>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_VH_MoveDetector_T5" />
+				<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_VH_MoveDetector_T5" />
+			</effect_group>
+		</buff>
+	<!--New T5-->
+	
+	<buff name="ZombieINC_VehicleDelivery_BicycleWavesStop5" hidden="false" icon="ui_game_symbol_wrench" icon_color="185,120,15">		
+     	<duration value="40"/>	
+		<tags value="zombieinc_missionfailed" />
+		<effect_group>
+			<passive_effect name="VehicleVelocityMaxPer" operation="base_set" value="0"/>
+			<passive_effect name="VehicleMotorTorquePer" operation="base_set" value="0"/>
+			<passive_effect name="NoVehicle" operation="base_set" value="1" />
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self" event="ZombieINC_VehicleDelivery_Bicycle_Message8" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" target="self" event="ZombieINC_VehicleDelivery_Bicycle_Message9" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="ModifyCVar" cvar=".ZINCOnVehicle" operation="set" value="0"/>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_VehicleDelivery_BicycleWavesSpawner5" hidden="true" icon="ui_game_symbol_trophy" icon_color="185,120,15">	
+		<stack_type value="replace"/>	
+     	<duration value="40"/>
+		<update_rate value="10"/>
+		<tags value="zombieinc_missionfailed" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self"  event="ZombieINC_VehicleDelivery_BicycleWavesSpawnerEvent5" allow_client_call="false"/>				
+		</effect_group>
+	</buff>
+	
+	<!--4X4Truck-->
+	<!--##Gyrocopter-->
+	<!--#New T6-->	
+		<buff name="ZombieINC_Activate_Event_Buried_Buff_T6"  >
+			<duration value="1"/>
+			<stack_type value="replace"/>
+			<tags value="zombieinc_missionfailed" />
+			<update_rate value="1"/>
+			<effect_group>	
+				<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_VH_DirtPlacementByBuff" allow_client_call="false" />
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="player" range="30" buff="ZombieINC_VH_NoKey" />
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_Call_Vehicle_T6"/>	
+			</effect_group>
+		</buff>
+		
+		<buff name="ZombieINC_Call_Vehicle_T6"  >
+			<duration value="10"/>
+			<stack_type value="ignore"/>
+			<tags value="zombieinc_missionfailed" />
+			<update_rate value="1"/>
+				<effect_group>	
+					<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_Activate_Event_VH_6" allow_client_call="false" />
+				</effect_group>
+		</buff>
+		
+		<buff name="ZombieINC_VH_MoveDetector_T6" remove_on_death="true" hidden="true" icon="ui_game_symbol_trophy" icon_color="185,120,15">
+			<stack_type value="replace"/>
+			<!--<duration value="20"/>-->
+			<tags value="zombieinc_missionfailed" />
+			<update_rate value="1"/>
+				
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="ZombieINC_VH_NoKey" />
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_VehicleDelivery_BicycleWavesSpawner6" />
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_VehicleDelivery_BicycleWavesStop6" />
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCOnVehicle" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZINCOnVehicle" operation="add" value="1">
+					<requirement name="IsAttachedToEntity"/>
+					<requirement name="HasBuff" buff="ZombieINC_VH_OnVehicle"/>	
+					<requirement name="!HasBuff" buff="ZombieINC_VehicleDelivery_BicycleWavesStop6"/>	
+				</triggered_effect>	
+			</effect_group>
+			<effect_group>
+				<requirement name="IsAttachedToEntity"/>
+				<requirement name="HasBuff" buff="ZombieINC_VH_OnVehicle"/>	
+				<requirement name="CVarCompare" cvar=".ZINCOnVehicle" operation="GTE" value="60"/>
+					<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="self" buff="ZombieINC_VehicleDelivery_BicycleWavesStop6">
+						<requirement name="!HasBuff" buff="ZombieINC_VehicleDelivery_BicycleWavesStop6"/>
+					</triggered_effect>
+					<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="self" buff="ZombieINC_VehicleDelivery_BicycleWavesSpawner6">
+						<requirement name="!HasBuff" buff="ZombieINC_VehicleDelivery_BicycleWavesSpawner6"/>
+					</triggered_effect>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_VH_MoveDetector_T6" />
+				<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_VH_MoveDetector_T6" />
+			</effect_group>
+		</buff>
+	<!--New T6-->
+	
+	<buff name="ZombieINC_VehicleDelivery_BicycleWavesSpawner6" hidden="true" icon="ui_game_symbol_wrench" icon_color="185,120,15">	
+		<stack_type value="replace"/>	
+     	<duration value="60"/>
+		<tags value="zombieinc_missionfailed" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self"  event="ZombieINC_VehicleDelivery_BicycleWavesSpawnerEvent6" allow_client_call="false"/>					
+		</effect_group>
+	</buff>
+	
+	
+	<buff name="ZombieINC_VehicleDelivery_BicycleWavesStop6" hidden="false" icon="ui_game_symbol_wrench" icon_color="185,120,15">		
+     	<duration value="60"/>
+		<tags value="zombieinc_missionfailed" />
+		<effect_group>
+			<passive_effect name="VehicleVelocityMaxPer" operation="base_set" value="0"/>
+			<passive_effect name="VehicleMotorTorquePer" operation="base_set" value="0"/>
+			<passive_effect name="NoVehicle" operation="base_set" value="1" />
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="self" buff="ZombieINC_GyrocopterExplosion"/>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self" event="ZombieINC_VehicleDelivery_Bicycle_Message10" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" target="self" event="ZombieINC_VehicleDelivery_Bicycle_Message12" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="ModifyCVar" cvar=".ZINCOnVehicle" operation="set" value="0"/>
+		</effect_group>
+	</buff>
+	
+	
+	<buff name="ZombieINC_GyrocopterExplosion" hidden="false" icon="ui_game_symbol_clock" icon_color="185,10,15" >		
+		<stack_type value="replace"/>
+		<duration value="10"/>
+		<update_rate value="1"/>
+		<display_value value="duration"/>
+		<tags value="zombieinc_missionfailed" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_VehicleDelivery_Bicycle_Message11" allow_client_call="false"/>
+				
+			<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" event="ZombieINC_GyrocopterExplosionEvent" allow_client_call="false" >
+				<requirement name="IsAttachedToEntity" /></triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" target="self" buff="ZombieINC_GyrocopterExplosion">
+				<requirement name="!IsAttachedToEntity" /></triggered_effect>
+			<passive_effect name="BuffBlink" operation="base_set" value="2" tags="ZombieINC_GyrocopterExplosion"/>
+		</effect_group>
+		
+	</buff>
+	
+	<!--Gyrocopter-->		
+<!--Vehicle Delivery-->	
+<!--Vehicle Delivery (Recovery)-->
+	<!--Motorcycle-->
+	<buff name="ZombieINC_VR_PlayerMotorcycleFire1AttachPrefab_Buff"> <!--Not Used, buff added directly in Gameevents.xml-->
+		<stack_type value="replace"/>
+		<duration value="5"/>
+		<update_rate value="0.1"/>
+		<tags value="ZINC_MD_BUFFS" />
+		<effect_group>
+		   <triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="positionAOE" range="40" target_tags="ZINCMotorcycleQuest" buff="ZombieINC_VR_MotorcycleFire1AttachPrefab_Buff" >
+				<requirement name="NotHasBuff" target="other" buff="ZombieINC_VR_MotorcycleFire1AttachPrefab_Buff"/>
+		   </triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_VR_MotorcycleFire1AttachPrefab_Buff" hidden="true">
+		<damage_type value="heat"/>  <!-- Thanks for A21 ServerSideVehicles Mod to finally solve this problem--> <!--I'd never imagine that damage_type would be a thing to make this work-->	
+		<stack_type value="ignore"/>	
+		<effect_group>		
+			
+		<!--	<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/JunkTurret/junkTurret_Prefab.prefab" local_offset="" local_rotation="0,0,0" local_scale="0.75,0.75,0.75" parent_transform="Box1"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false"  parent_transform="Box1" transform_path="BaseMesh"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false"  parent_transform="Box1" transform_path="turret_cone"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false"  parent_transform="Box1" transform_path="DiscMesh"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false"  parent_transform="Box1" transform_path="turret_laser"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/barrelGasPrefab.prefab" local_offset="" local_rotation="90,90,90" local_scale="1,1,1" parent_transform="Box1"/>-->
+			
+			
+			<!--<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:ParticleEffects/p_flame_hazard.prefab" local_offset="0.305,0.1199664,1.56" local_rotation="0,-90,0" local_scale="1,1,1" parent_transform="Box1"/>-->
+			
+				
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/JunkTurret/junkTurret_Prefab.prefab" local_offset="0.3539998,-0.1399666,0.7659991" local_rotation="0,0,0" local_scale="-0.75,0.75,0.75" parent_transform="Box2"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false"  parent_transform="Box2" transform_path="BaseMesh"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false"  parent_transform="Box2" transform_path="turret_cone"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false"  parent_transform="Box2" transform_path="DiscMesh"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false"  parent_transform="Box2" transform_path="turret_laser"/>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/barrelGasPrefab.prefab" local_offset="0.3119997,0.5120332,0.4519991" local_rotation="-90,-90,-90" local_scale="0.35,0.4,0.35" parent_transform="Box2"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/pipeSmall_1x3Prefab.prefab" local_offset="0.3689998,0.4446336,0.02900013" local_rotation="0,0,0" local_scale="0.3,0.3,0.15" parent_transform="Box2"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/pipeSmallWallCornerPrefab.prefab" local_offset="0.3701998,0.4460335,-0.6448004" local_rotation="0,0,90" local_scale="0.3,0.3,0.3" parent_transform="Box2"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/pipeSmallWallCenterBridgePrefab.prefab" local_offset="0.3685998,0.4450335,-0.3460003" local_rotation="0,0,90" local_scale="0.3,0.3,0.3" parent_transform="Box2"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/pipeSmallCornerPrefab.prefab" local_offset="0.4890246,0.7382069,-0.644876" local_rotation="0,-90,0" local_scale="0.3,0.3,0.3" parent_transform="Box2"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/pipeSmallJointPrefab.prefab" local_offset="0.3169,0.458,0.4180" local_rotation="0,0,90" local_scale="0.3,0.3,0.3" parent_transform="Box2"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/pipeSmallWallValve02SwitchPrefab.prefab" local_offset="0.1948,0.7079,-0.644" local_rotation="0,90,0" local_scale="0.3,0.3,0.3" parent_transform="Box2"/>
+		
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:ParticleEffects/p_flame_hazard.prefab" local_offset="0.376,0.032,1.764" local_rotation="0,-90,0" local_scale="1,1,1" parent_transform="Box2"/>
+		
+			<!--Test new unity tools-->
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/pipeSmall_1x3Prefab.prefab" local_offset="-0.369,0.03763,0.082" local_rotation="0,0,0" local_scale="-0.3,0.3,0.15" parent_transform="Box1" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/barrelGasPrefab.prefab" local_offset="-0.312,0.10503,0.505" local_rotation="270,180,0" local_scale="-0.35,0.4,0.35" parent_transform="Box1" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/pipeSmallWallCornerPrefab.prefab" local_offset="-0.3702,0.03903,-0.5918" local_rotation="0,0,270" local_scale="-0.3,0.3,0.3" parent_transform="Box1" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/pipeSmallCornerPrefab.prefab" local_offset="-0.48902,0.33121,-0.59188" local_rotation="0,90,0" local_scale="-0.3,0.3,0.3" parent_transform="Box1" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/pipeSmallWallCenterBridgePrefab.prefab" local_offset="-0.3686,0.03803,-0.293" local_rotation="0,0,270" local_scale="-0.3,0.3,0.3" parent_transform="Box1" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/pipeSmallJointPrefab.prefab" local_offset="-0.3169,0.051,0.471" local_rotation="0,0,270" local_scale="-0.3,0.3,0.3" parent_transform="Box1" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:ParticleEffects/p_flame_hazard.prefab" local_offset="-0.376,-0.375,1.817" local_rotation="0,90,0" local_scale="-1,1,1" parent_transform="Box1" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/pipeSmallWallValve02SwitchPrefab.prefab" local_offset="-0.1948,0.3009,-0.591" local_rotation="0,90,0" local_scale="-0.3,0.3,0.3" parent_transform="Box1" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/JunkTurret/junkTurret_Prefab.prefab" local_offset="-0.354,-0.54697,0.819" local_rotation="0,0,0" local_scale="0.75,0.75,0.75" parent_transform="Box1" />
+			<triggered_effect action="SetTransformActive" active="false" transform_path="turret_laser" parent_transform="Box1" />
+			<triggered_effect action="SetTransformActive" active="false" transform_path="DiscMesh" parent_transform="Box1" />
+			<triggered_effect action="SetTransformActive" active="false" transform_path="BaseMesh" parent_transform="Box1" />
+			<triggered_effect action="SetTransformActive" active="false" transform_path="turret_cone" parent_transform="Box1" />
+			
+		</effect_group>
+	</buff>
+		
+	<!--Motorcycle-->
+	<!--4X4Truck-->
+	<buff name="ZombieINC_VR_PlayerJeepFire1AttachPrefab_Buff"> <!--Not Used, buff added directly in Gameevents.xml-->
+		<stack_type value="replace"/>
+		<duration value="5"/>
+		<update_rate value="0.1"/>
+		<tags value="ZINC_MD_BUFFS" />
+		<effect_group>
+		   <triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="positionAOE" range="40" target_tags="ZINCTruckQuest" buff="ZombieINC_VR_JeepFire1AttachPrefab_Buff" >
+				<requirement name="NotHasBuff" target="other" buff="ZombieINC_VR_JeepFire1AttachPrefab_Buff"/>
+		   </triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_VR_PlayerJeepFireVar2AttachPrefab_Buff"> <!--Not Used, buff added directly in Gameevents.xml-->
+		<stack_type value="replace"/>
+		<duration value="5"/>
+		<update_rate value="0.1"/>
+		<tags value="ZINC_MD_BUFFS" />
+		<effect_group>
+		   <triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="positionAOE" range="40" target_tags="ZINCTruckQuest" buff="ZombieINC_VR_JeepFireVar2AttachPrefab_Buff" >
+				<requirement name="NotHasBuff" target="other" buff="ZombieINC_VR_JeepFireVar2AttachPrefab_Buff"/>
+		   </triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_VR_JeepFire1AttachPrefab_Buff" hidden="true">
+		<damage_type value="heat"/>  <!-- Thanks for A21 ServerSideVehicles Mod to finally solve this problem--> <!--I'd never imagine that damage_type would be a thing to make this work-->	
+		<stack_type value="ignore"/>	
+		<effect_group>		
+			<!--<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Industrial/barrelGasQuadBPrefab.prefab" local_offset="0,1.703,-2.109" local_rotation="0,90,0" local_scale="1,1,1" parent_transform="Physics"/>		
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/BanditProps/BanditPlatformSheet3x2APrefab.prefab" local_offset="0.0,1.718,-2.202" local_rotation="180,90,0" local_scale="0.4,0.7,0.94" parent_transform="Physics"/>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/BanditProps/BanditRamp3x2APrefab.prefab" local_offset="0.0,1.109,-2.436" local_rotation="180,-90,0" local_scale="0.22,0.4,0.94" parent_transform="Physics"/>
+			-->
+			
+  
+  
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/barrelGasPrefab.prefab" local_offset="-0.294,0.718,-1.153" local_rotation="0,270,0" local_scale="1.65,1.5,1.65" parent_transform="Box1" />
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/pipeSmallWallBrokePrefab.prefab" local_offset="0,1.498,-1.521" local_rotation="0,90,0" local_scale="1,1,1.5" parent_transform="Box1" />
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/Vehicles/Car/carWheelGNDAPrefab.prefab" local_offset="0,0.118,-1.949" local_rotation="270,0,0" local_scale="1,1,1" parent_transform="Box1" />
+ 
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/JunkTurret/junkTurret_Prefab.prefab" local_offset="-1.244,0.555,1.257" local_rotation="0,0,0" local_scale="0.75,0.75,0.75" parent_transform="BoxL" />
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/barrelGasPrefab.prefab" local_offset="-1.03,0.944,0.769" local_rotation="90,0,0" local_scale="1,1,1" parent_transform="BoxL" />
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:ParticleEffects/p_flame_hazard.prefab" local_offset="-1.242,0.851,2.197" local_rotation="0,270,0" local_scale="1,1,1" parent_transform="BoxL" />
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/pipeSmallValve02Prefab.prefab" local_offset="-1.208,1.116,-0.213" local_rotation="0,180,0" local_scale="1,1,1" parent_transform="BoxL" />
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/pipeSmallWallOutsideCornerPrefab.prefab" local_offset="-1.711,1.118,-2.082" local_rotation="90,90,0" local_scale="1,1,1" parent_transform="BoxL" />
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/pipeSmallWallCenterBridgePrefab.prefab" local_offset="-1.208,1.516,-1.145" local_rotation="0,180,0" local_scale="1,1,0.9" parent_transform="BoxL" />
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/pipeSmallCornerPrefab.prefab" local_offset="-1.212,2.004,-1.678" local_rotation="0,90,0" local_scale="1,0.8,1" parent_transform="BoxL" />
+    <triggered_effect action="SetTransformActive" active="false" transform_path="turret_laser" parent_transform="BoxL" />
+    <triggered_effect action="SetTransformActive" active="false" transform_path="DiscMesh" parent_transform="BoxL" />
+    <triggered_effect action="SetTransformActive" active="false" transform_path="BaseMesh" parent_transform="BoxL" />
+    <triggered_effect action="SetTransformActive" active="false" transform_path="turret_cone" parent_transform="BoxL" />
+    <!--<triggered_effect action="SetTransformActive" active="false" transform_path="large_flames" parent_transform="BoxL" />-->
+ 
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:ParticleEffects/p_flame_hazard.prefab" local_offset="1.242,0.851,2.197" local_rotation="0,90,0" local_scale="-1,1,1" parent_transform="BoxR" />
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/pipeSmallValve02Prefab.prefab" local_offset="1.208,1.116,-0.213" local_rotation="0,180,0" local_scale="-1,1,1" parent_transform="BoxR" />
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/pipeSmallWallOutsideCornerPrefab.prefab" local_offset="1.711,1.118,-2.082" local_rotation="90,270,0" local_scale="-1,1,1" parent_transform="BoxR" />
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/pipeSmallWallCenterBridgePrefab.prefab" local_offset="1.208,1.516,-1.145" local_rotation="0,180,0" local_scale="-1,1,0.9" parent_transform="BoxR" />
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/pipeSmallCornerPrefab.prefab" local_offset="1.212,2.004,-1.678" local_rotation="0,270,0" local_scale="-1,0.8,1" parent_transform="BoxR" />
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/barrelGasPrefab.prefab" local_offset="1.03,0.944,0.769" local_rotation="90,0,0" local_scale="-1,1,1" parent_transform="BoxR" />
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/JunkTurret/junkTurret_Prefab.prefab" local_offset="1.244,0.555,1.257" local_rotation="0,0,0" local_scale="-0.75,0.75,0.75" parent_transform="BoxR" />
+   <!-- <triggered_effect action="SetTransformActive" active="false" transform_path="large_flames" parent_transform="BoxR" />-->
+    <triggered_effect action="SetTransformActive" active="false" transform_path="turret_laser" parent_transform="BoxR" />
+    <triggered_effect action="SetTransformActive" active="false" transform_path="DiscMesh" parent_transform="BoxR" />
+    <triggered_effect action="SetTransformActive" active="false" transform_path="BaseMesh" parent_transform="BoxR" />
+    <triggered_effect action="SetTransformActive" active="false" transform_path="turret_cone" parent_transform="BoxR" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_VR_JeepFireVar2AttachPrefab_Buff" hidden="true">
+		<damage_type value="heat"/>  <!-- Thanks for A21 ServerSideVehicles Mod to finally solve this problem--> <!--I'd never imagine that damage_type would be a thing to make this work-->	
+		<stack_type value="ignore"/>	
+		<effect_group>		
+			
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/pipeSmallCornerPrefab.prefab" local_offset="-0.335,2.029,-2.489" local_rotation="0,45,0" local_scale="1,1,1" parent_transform="Box2" />
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/pipeSmallWallCornerPrefab.prefab" local_offset="-0.049,2.017,-1.51" local_rotation="90,45,0" local_scale="1,1,1" parent_transform="Box2" />
+  
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/pipeSmallWallOutsideCornerPrefab.prefab" local_offset="-0.49,1.6691,-2.382" local_rotation="0,180,90" local_scale="1,1,1" parent_transform="Box1" />
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/pipeSmallCornerPrefab.prefab" local_offset="0.356,1.112,-2.324" local_rotation="0,315,0" local_scale="-1,1,1" parent_transform="Box1" />
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/pipeSmallWallCornerPrefab.prefab" local_offset="0.082,1.129,-1.355" local_rotation="90,315,0" local_scale="-1,1,1" parent_transform="Box1" />
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/pipeSmall_1x1Prefab.prefab" local_offset="0.013,1.269,-1.397" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="Box1" />
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/pipeSmallJointPrefab.prefab" local_offset="0.0132,1.2687,-0.605" local_rotation="0,90,270" local_scale="1,1,1" parent_transform="Box1" />
+ 
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/barrelGasPrefab.prefab" local_offset="-1.036,0.978,0.75" local_rotation="90,0,0" local_scale="1,1,1" parent_transform="BoxL" />
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/JunkTurret/junkTurret_Prefab.prefab" local_offset="-1.228,0.572,1.235" local_rotation="0,0,0" local_scale="0.75,0.75,0.75" parent_transform="BoxL" />
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:ParticleEffects/p_flame_hazard.prefab" local_offset="-1.252,0.7,1.97" local_rotation="0,-90,0" local_scale="1,1,1" parent_transform="BoxL" />
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/pipeSmallWallInsideCornerPrefab.prefab" local_offset="-0.815,1.534,-0.826" local_rotation="45,0,0" local_scale="1,1,1" parent_transform="BoxL" />
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/pipeSmallValve02Prefab.prefab" local_offset="-1.217,1.304,0.111" local_rotation="45,0,270" local_scale="1,1,1" parent_transform="BoxL" />
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/pipeSmallWallOutsideCornerPrefab.prefab" local_offset="-0.706,0.769,0.742" local_rotation="90,270,0" local_scale="1,1,1" parent_transform="BoxL" />
+    <triggered_effect action="SetTransformActive" active="false" transform_path="turret_laser" parent_transform="BoxL" />
+    <triggered_effect action="SetTransformActive" active="false" transform_path="DiscMesh" parent_transform="BoxL" />
+    <triggered_effect action="SetTransformActive" active="false" transform_path="BaseMesh" parent_transform="BoxL" />
+    <triggered_effect action="SetTransformActive" active="false" transform_path="turret_cone" parent_transform="BoxL" />
+  
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/barrelGasPrefab.prefab" local_offset="1.036,0.978,0.75" local_rotation="90,0,0" local_scale="-1,1,1" parent_transform="BoxR" />
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:ParticleEffects/p_flame_hazard.prefab" local_offset="1.252,0.7,1.97" local_rotation="0,90,0" local_scale="-1,1,1" parent_transform="BoxR" />
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/pipeSmallWallInsideCornerPrefab.prefab" local_offset="0.815,1.534,-0.826" local_rotation="45,0,0" local_scale="-1,1,1" parent_transform="BoxR" />
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/pipeSmallValve02Prefab.prefab" local_offset="1.217,1.304,0.111" local_rotation="45,0,90" local_scale="-1,1,1" parent_transform="BoxR" />
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/pipeSmallWallOutsideCornerPrefab.prefab" local_offset="0.706,0.769,0.742" local_rotation="90,90,0" local_scale="-1,1,1" parent_transform="BoxR" />
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/JunkTurret/junkTurret_Prefab.prefab" local_offset="1.228,0.572,1.235" local_rotation="0,0,0" local_scale="-0.75,0.75,0.75" parent_transform="BoxR" />
+    <triggered_effect action="SetTransformActive" active="false" transform_path="turret_laser" parent_transform="BoxR" />
+    <triggered_effect action="SetTransformActive" active="false" transform_path="DiscMesh" parent_transform="BoxR" />
+    <triggered_effect action="SetTransformActive" active="false" transform_path="BaseMesh" parent_transform="BoxR" />
+    <triggered_effect action="SetTransformActive" active="false" transform_path="turret_cone" parent_transform="BoxR" />
+ 
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/barrelGasQuadBPrefab.prefab" local_offset="0,1.503,-2.109" local_rotation="0,90,0" local_scale="1,1,1" parent_transform="Physics" />
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/BanditProps/BanditPlatformSheet3x2APrefab.prefab" local_offset="0,1.68,-2.202" local_rotation="0,270,180" local_scale="0.4,0.7,0.94" parent_transform="Physics" />
+    <triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/BanditProps/BanditRamp3x2APrefab.prefab" local_offset="0,1.109,-2.436" local_rotation="0,90,180" local_scale="0.22,0.4,0.94" parent_transform="Physics" />
+ 
+		</effect_group>
+	</buff>
+	<!--4X4Truck-->		
+<!--Vehicle Delivery (Recovery)-->
+
+</append>
+
+</Config>

@@ -36,7 +36,7 @@
 				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="5d_m700Display" operation="set" value="0"/>
 			</effect_group>
 		</buff>
-<buff name="5d_srTrackerActivate" hidden="true" icon="ui_game_symbol_add" icon_color="255,0,0" icon_blink="true">
+		<buff name="5d_srTrackerActivate" hidden="true" icon="ui_game_symbol_add" icon_color="255,0,0" icon_blink="true">
 			<stack_type value="replace"/>
 			<duration value="0"/>
 			<effect_group>
@@ -45,7 +45,6 @@
 				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="5d_srDisplay" operation="set" value="0"/>
 			</effect_group>
 		</buff>
-		
 		<buff name="5d_doubleBarrelShotgunDisplay" hidden="true" icon="ui_game_symbol_add" icon_color="255,0,0" icon_blink="true">
 			<stack_type value="replace"/>
 			<duration value="0"/>
@@ -114,14 +113,40 @@
 				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="5thdayMK23Display" operation="set" value="0"/>
 			</effect_group>
 		</buff>
-
-	<buff name="5thday_SCAR_TrackerActivate" hidden="true" icon="ui_game_symbol_add" icon_color="255,0,0" icon_blink="true">
+	<buff name="5thdayAR15KillTrackerActivate" hidden="true" icon="ui_game_symbol_add" icon_color="255,0,0" icon_blink="true">
 			<stack_type value="replace"/>
 			<duration value="0"/>
 			<effect_group>
-				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="5thdaySCARDisplay" operation="set" value="255"/>
-				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="5thdaySCARDisplay" operation="set" value="255"/>
-				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="5thdaySCARDisplay" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="5thdayAR15KillDisplay" operation="set" value="255"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="5thdayAR15KillDisplay" operation="set" value="255"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="5thdayAR15KillDisplay" operation="set" value="0"/>
+			</effect_group>
+		</buff>
+		<buff name="5thdayAR15556KillTrackerActivate" hidden="true" icon="ui_game_symbol_add" icon_color="255,0,0" icon_blink="true">
+			<stack_type value="replace"/>
+			<duration value="0"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="5thdayAR15556KillDisplay" operation="set" value="255"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="5thdayAR15556KillDisplay" operation="set" value="255"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="5thdayAR15556KillDisplay" operation="set" value="0"/>
+			</effect_group>
+		</buff>
+	<buff name="5thday_SCARL_TrackerActivate" hidden="true" icon="ui_game_symbol_add" icon_color="255,0,0" icon_blink="true">
+			<stack_type value="replace"/>
+			<duration value="0"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="5thdaySCARLDisplay" operation="set" value="255"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="5thdaySCARLDisplay" operation="set" value="255"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="5thdaySCARLDisplay" operation="set" value="0"/>
+			</effect_group>
+		</buff>
+	<buff name="5thday_SCARH_TrackerActivate" hidden="true" icon="ui_game_symbol_add" icon_color="255,0,0" icon_blink="true">
+			<stack_type value="replace"/>
+			<duration value="0"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="5thdaySCARHDisplay" operation="set" value="255"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="5thdaySCARHDisplay" operation="set" value="255"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="5thdaySCARHDisplay" operation="set" value="0"/>
 			</effect_group>
 		</buff>
 
@@ -205,6 +230,58 @@
 			</effect_group>
 		</buff>
 </append>
+
+<insertAfter xpath="//buff[@name='HOH_Level_Display_machineguns']/effect_group[@name='progressionBasics']/requirement[@name='IsAlive']">
+				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_MachineGuns_XP_Temp" operation="add" value="5">
+					<requirement name="ItemHasTags" tags="5thdayAR15"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_MachineGuns_XP_Temp" operation="add" value="10">
+					<requirement name="ItemHasTags" tags="5thdayAR15_556"/>
+					<requirement name="CVarCompare" cvar="HOH_MachineGun_lvl" operation="GTE" value="50"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_MachineGuns_XP_Temp" operation="add" value="15">
+					<requirement name="ItemHasTags" tags="5thday_Scar_L"/>
+					<requirement name="CVarCompare" cvar="HOH_MachineGun_lvl" operation="GTE" value="50"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_MachineGuns_XP_Temp" operation="add" value="20">
+					<requirement name="ItemHasTags" tags="5thday_Scar_H"/>
+					<requirement name="CVarCompare" cvar="HOH_MachineGun_lvl" operation="GTE" value="75"/>
+				</triggered_effect>
+</insertAfter>
+<insertAfter xpath="//buff[@name='HOH_Level_Display_machineguns']/effect_group[@name='progressionKills']/requirement[@name='IsAlive']">
+				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_MachineGun_XP_Temp_Killed" operation="add" value="5">
+					<requirement name="ItemHasTags" tags="5thdayAR15"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_MachineGun_XP_Temp_Killed" operation="add" value="10">
+					<requirement name="ItemHasTags" tags="5thdayAR15_556"/>
+					<requirement name="CVarCompare" cvar="HOH_MachineGun_lvl" operation="GTE" value="50"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_MachineGun_XP_Temp_Killed" operation="add" value="15">
+					<requirement name="ItemHasTags" tags="5thday_Scar_L"/>
+					<requirement name="CVarCompare" cvar="HOH_MachineGun_lvl" operation="GTE" value="50"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_MachineGun_XP_Temp_Killed" operation="add" value="20">
+					<requirement name="ItemHasTags" tags="5thday_Scar_H"/>
+					<requirement name="CVarCompare" cvar="HOH_MachineGun_lvl" operation="GTE" value="75"/>
+				</triggered_effect>
+</insertAfter>
+<insertAfter xpath="//buff[@name='HOH_Level_Display_shotguns']/effect_group[@name='progressionBasics']/triggered_effect[@cvar='HOH_Shotguns_XP_Temp']">
+				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_Shotguns_XP_Temp_Killed" operation="add" value="5">
+					<requirement name="ItemHasTags" tags="5d_LeverActionShotgun"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_Shotguns_XP_Temp_Killed" operation="add" value="10">
+					<requirement name="ItemHasTags" tags="5d_doubleBarrelShotgun"/>
+					<requirement name="CVarCompare" cvar="HOH_Shotguns_lvl" operation="GTE" value="25"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_Shotguns_XP_Temp_Killed" operation="add" value="15">
+					<requirement name="ItemHasTags" tags="5thday_SPAS12"/>
+					<requirement name="CVarCompare" cvar="HOH_Shotguns_lvl" operation="GTE" value="50"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_Shotguns_XP_Temp_Killed" operation="add" value="20">
+					<requirement name="ItemHasTags" tags="5thday_Shotgun_Auto"/>
+					<requirement name="CVarCompare" cvar="HOH_Shotguns_lvl" operation="GTE" value="75"/>
+				</triggered_effect>
+</insertAfter>
 
 
 </snj>

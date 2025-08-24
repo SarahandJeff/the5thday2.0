@@ -1,0 +1,545 @@
+<Config>
+
+	<insertAfter xpath="/quests/quest[@id='tier2_buried_supplies']">
+		
+		<!--###Weapon Test-->
+	
+	<quest id="ZINCSteelKnucles"> 
+		    <property name="name_key" value="ZombieINC_challenge_ExplosiveKnucles_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_ExplosiveKnucles_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_ExplosiveKnucles_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="true"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="5"/>
+		    <property name="offer_key" value="ZombieINC_challenge_ExplosiveKnucles_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_ExplosiveKnucles_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_ExplosiveKnucles_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value=""  />
+			<property name="shareable" value="false"/>
+			<property name="add_to_tier_complete" value="false" />
+			
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_ExplosiveKnucles_completion"/>
+			
+			<action type="GameEvent" id="ZombieINC_WSPart2_FailQuestIfOnTrader" phase="1"/>
+			<action type="GameEvent" id="ZombieINC_WeaponTestKnucles_AddItems" phase="1"/>
+			<action type="GameEvent" id="ZombieINC_WeaponTest_InQuest" phase="1"/>
+			
+			<objective type="BlockPlace" id="ZombieINC_WSPart2_capChimneyLargeSmoke_WeaponTestKnuclesActive" value="1" phase="1"/>
+			
+			<requirement type="Quests.Requirements.Holding" id="ZombieINC_Prototype_meleeWpnKnucklesT3SteelKnuckles" phase="2"/>
+			<!--<requirement type="Quests.Requirements.Buff" id="ZombieINC_WeaponTest_InMissionBuff" phase="2"/>-->
+			<objective type="EntityKill" phase="2">	
+				<property name="needed_count" value="30" />
+				<property name="target_tags" value="zombie"/>			
+			</objective>
+					
+			<action type="GameEvent" id="ZombieINC_WeaponTestKnucles_BuffRemover" phase="3"/>
+					
+			<objective type="ReturnToNPC" phase="3">
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_WeaponTest_WeaponRemover" phase="4"/>
+			<action type="GameEvent" id="ZombieINC_WeaponTest_KnuclesRewardEvent" phase="4"/>
+			
+			<objective type="InteractWithNPC" phase="4">
+				<property name="nav_object" value="return_to_trader" />						
+			</objective>
+    
+			<reward type="Exp" value="20000"/>				
+	</quest>
+	
+	<quest id="ZINCSteelKnuclesReward"> 
+		    <property name="name_key" value="ZombieINC_challenge_ExplosiveKnucles_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_ExplosiveKnucles_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_ExplosiveKnucles_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="true"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="5"/>
+		    <property name="offer_key" value="ZombieINC_challenge_ExplosiveKnucles_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_ExplosiveKnucles_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_ExplosiveKnucles_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value="ZINCWTP2"  />
+			<property name="shareable" value="false"/>
+			
+			<property name="add_to_tier_complete" value="false" />
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_ExplosiveKnucles2_completion"/>
+			
+			<objective type="ReturnToNPC" phase="1">
+				<property name="nav_object" value="return_to_trader" />
+			</objective>			
+			<objective type="InteractWithNPC" phase="2">
+				<property name="nav_object" value="return_to_trader" />						
+			</objective>      
+			<reward type="Item" id="ZombieINC_meleeWpnKnucklesT3SteelKnuckles" value="1"/>						
+	</quest>
+	
+	
+		<quest id="ZINCNailgun"> 
+		    <property name="name_key" value="ZombieINC_challenge_Nailgun_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_Nailgun_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_Nailgun_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="true"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="5"/>
+		    <property name="offer_key" value="ZombieINC_challenge_Nailgun_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_Nailgun_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_Nailgun_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value=""  />
+			<property name="shareable" value="false"/>
+			<property name="add_to_tier_complete" value="false" />
+			
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_Nailgun_completion"/>
+			
+			<action type="GameEvent" id="ZombieINC_WSPart2_FailQuestIfOnTrader" phase="1"/>
+			<action type="GameEvent" id="ZombieINC_WeaponTestNailgun_AddItems" phase="1"/>
+			<action type="GameEvent" id="ZombieINC_WeaponTest_InQuest" phase="1"/>
+			
+			<objective type="BlockPlace" id="ZombieINC_WSPart2_capChimneyLargeSmoke_WeaponTestNailgunActive" value="1" phase="1"/>
+			
+			<requirement type="Quests.Requirements.Holding" id="ZombieINC_Prototype_meleeToolRepairT3Nailgun" phase="2"/>
+			<!--<requirement type="Quests.Requirements.Buff" id="ZombieINC_WeaponTest_InMissionBuff" phase="2"/>-->
+			<objective type="EntityKill" phase="2">	
+				<property name="needed_count" value="30" />
+				<property name="target_tags" value="zombie"/>			
+			</objective>
+					
+			<action type="GameEvent" id="ZombieINC_WeaponTest_BuffRemover" phase="3"/>
+					
+			<objective type="ReturnToNPC" phase="3">
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_WeaponTest_WeaponRemover" phase="4"/>
+			<action type="GameEvent" id="ZombieINC_WeaponTest_NailgunRewardEvent" phase="4"/>
+			
+			<objective type="InteractWithNPC" phase="4">
+				<property name="nav_object" value="return_to_trader" />						
+			</objective>
+    
+			<reward type="Exp" value="10000"/>				
+	</quest>
+	
+	<quest id="ZINCNailgunReward"> 
+		    <property name="name_key" value="ZombieINC_challenge_Nailgun_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_Nailgun_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_Nailgun_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="true"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="5"/>
+		    <property name="offer_key" value="ZombieINC_challenge_Nailgun_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_Nailgun_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_Nailgun_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value="ZINCWTP2"  />
+			<property name="shareable" value="false"/>
+			
+			<property name="add_to_tier_complete" value="false" />
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_Nailgun2_completion"/>
+			
+			<objective type="ReturnToNPC" phase="1">
+				<property name="nav_object" value="return_to_trader" />
+			</objective>			
+			<objective type="InteractWithNPC" phase="2">
+				<property name="nav_object" value="return_to_trader" />						
+			</objective>      
+			<reward type="Item" id="ZombieINC_meleeToolRepairT3Nailgun" value="1"/>						
+	</quest>
+	
+	<quest id="ZINCSteelSpear"> 
+		    <property name="name_key" value="ZombieINC_challenge_FireShockSpear_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_FireShockSpear_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_FireShockSpear_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="true"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="5"/>
+		    <property name="offer_key" value="ZombieINC_challenge_FireShockSpear_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_FireShockSpear_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_FireShockSpear_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value=""  />
+			<property name="shareable" value="false"/>
+			<property name="add_to_tier_complete" value="false" />
+			
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_FireShockSpear_completion"/>
+			
+			<action type="GameEvent" id="ZombieINC_WSPart2_FailQuestIfOnTrader" phase="1"/>
+			<action type="GameEvent" id="ZombieINC_WeaponTestFireShockSpear_AddItems" phase="1"/>
+			<action type="GameEvent" id="ZombieINC_WeaponTest_InQuest" phase="1"/>
+			
+			<objective type="BlockPlace" id="ZombieINC_WSPart2_capChimneyLargeSmoke_WeaponTestFireShockSpearActive" value="1" phase="1"/>
+			
+			<requirement type="Quests.Requirements.Holding" id="ZombieINC_Prototype_meleeWpnSpearT3SteelSpear" phase="2"/>
+			<!--<requirement type="Quests.Requirements.Buff" id="ZombieINC_WeaponTest_InMissionBuff" phase="2"/>-->
+			<objective type="EntityKill" phase="2">	
+				<property name="needed_count" value="30" />
+				<property name="target_tags" value="zombie"/>			
+			</objective>
+					
+			<action type="GameEvent" id="ZombieINC_WeaponTest_BuffRemover" phase="3"/>
+					
+			<objective type="ReturnToNPC" phase="3">
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_WeaponTest_WeaponRemover" phase="4"/>
+			<action type="GameEvent" id="ZombieINC_WeaponTest_FireShockSpearRewardEvent" phase="4"/>
+			
+			<objective type="InteractWithNPC" phase="4">
+				<property name="nav_object" value="return_to_trader" />						
+			</objective>
+    
+			<reward type="Exp" value="20000"/>				
+	</quest>
+	
+	<quest id="ZINCSteelSpearReward"> 
+		    <property name="name_key" value="ZombieINC_challenge_FireShockSpear_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_FireShockSpear_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_FireShockSpear_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="true"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="5"/>
+		    <property name="offer_key" value="ZombieINC_challenge_FireShockSpear_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_FireShockSpear_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_FireShockSpear_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value="ZINCWTP2"  />
+			<property name="shareable" value="false"/>
+			
+			<property name="add_to_tier_complete" value="false" />
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_FireShockSpear2_completion"/>
+			
+			<objective type="ReturnToNPC" phase="1">
+				<property name="nav_object" value="return_to_trader" />
+			</objective>			
+			<objective type="InteractWithNPC" phase="2">
+				<property name="nav_object" value="return_to_trader" />						
+			</objective>      
+			<reward type="Item" id="ZombieINC_meleeWpnSpearT3SteelSpear" value="1"/>						
+	</quest>
+	
+	<quest id="ZINCIceHammer"> 
+		    <property name="name_key" value="ZombieINC_challenge_IceHammer_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_IceHammer_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_IceHammer_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="true"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="5"/>
+		    <property name="offer_key" value="ZombieINC_challenge_IceHammer_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_IceHammer_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_IceHammer_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value=""  />
+			<property name="shareable" value="false"/>
+			<property name="add_to_tier_complete" value="false" />
+			
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_IceHammer_completion"/>
+			
+			<action type="GameEvent" id="ZombieINC_WSPart2_FailQuestIfOnTrader" phase="1"/>
+			<action type="GameEvent" id="ZombieINC_WeaponTestIceHammer_AddItems" phase="1"/>
+			<action type="GameEvent" id="ZombieINC_WeaponTest_InQuest" phase="1"/>
+			
+			<objective type="BlockPlace" id="ZombieINC_WSPart2_capChimneyLargeSmoke_WeaponTestIceHammerActive" value="1" phase="1"/>
+			
+			<requirement type="Quests.Requirements.Holding" id="ZombieINC_Prototype_meleeWpnSledgeT3SteelSledgehammer" phase="2"/>
+			<!--<requirement type="Quests.Requirements.Buff" id="ZombieINC_WeaponTest_InMissionBuff" phase="2"/>-->
+			<objective type="EntityKill" phase="2">	
+				<property name="needed_count" value="30" />
+				<property name="target_tags" value="zombie"/>			
+			</objective>
+					
+			<action type="GameEvent" id="ZombieINC_WeaponTest_BuffRemover" phase="3"/>
+					
+			<objective type="ReturnToNPC" phase="3">
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_WeaponTest_WeaponRemover" phase="4"/>
+			<action type="GameEvent" id="ZombieINC_WeaponTest_IceHammerRewardEvent" phase="4"/>
+			
+			<objective type="InteractWithNPC" phase="4">
+				<property name="nav_object" value="return_to_trader" />						
+			</objective>
+    
+			<reward type="Exp" value="20000"/>				
+	</quest>
+	
+	<quest id="ZINCIceHammerReward"> 
+		    <property name="name_key" value="ZombieINC_challenge_IceHammer_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_IceHammer_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_IceHammer_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="true"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="5"/>
+		    <property name="offer_key" value="ZombieINC_challenge_IceHammer_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_IceHammer_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_IceHammer_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value="ZINCWTP2"  />
+			<property name="shareable" value="false"/>
+			
+			<property name="add_to_tier_complete" value="false" />
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_IceHammer2_completion"/>
+			
+			<objective type="ReturnToNPC" phase="1">
+				<property name="nav_object" value="return_to_trader" />
+			</objective>			
+			<objective type="InteractWithNPC" phase="2">
+				<property name="nav_object" value="return_to_trader" />						
+			</objective>      
+			<reward type="Item" id="ZombieINC_meleeWpnSledgeT3SteelSledgehammer" value="1"/>						
+	</quest>
+	
+	<quest id="ZINCSpearGun"> 
+		    <property name="name_key" value="ZombieINC_challenge_SpearGun_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_SpearGun_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_SpearGun_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="true"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="5"/>
+		    <property name="offer_key" value="ZombieINC_challenge_SpearGun_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_SpearGun_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_SpearGun_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value=""  />
+			<property name="shareable" value="false"/>
+			<property name="add_to_tier_complete" value="false" />
+			
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_SpearGun_completion"/>
+			
+			<action type="GameEvent" id="ZombieINC_WSPart2_FailQuestIfOnTrader" phase="1"/>
+			<action type="GameEvent" id="ZombieINC_WeaponTestSpearGun_AddItems" phase="1"/>
+			<action type="GameEvent" id="ZombieINC_WeaponTest_InQuest" phase="1"/>
+			
+			<objective type="BlockPlace" id="ZombieINC_WSPart2_capChimneyLargeSmoke_WeaponTestSpearGunActive" value="1" phase="1"/>
+			
+			<requirement type="Quests.Requirements.Holding" id="ZombieINC_Prototype_GunSpearMelee_meleeWpnSpearT3SteelSpear" phase="2"/>
+			<!--<requirement type="Quests.Requirements.Buff" id="ZombieINC_WeaponTest_InMissionBuff" phase="2"/>-->
+			<objective type="EntityKill" phase="2">	
+				<property name="needed_count" value="20" />
+				<property name="target_tags" value="zombie"/>			
+			</objective>
+			
+			<requirement type="Quests.Requirements.Holding" id="ZombieINC_Prototype_GunSpearRanged_meleeWpnSpearT3SteelSpear" phase="3"/>
+			<!--<requirement type="Quests.Requirements.Buff" id="ZombieINC_WeaponTest_InMissionBuff" phase="3"/>-->
+			<objective type="EntityKill" phase="3">	
+				<property name="needed_count" value="20" />
+				<property name="target_tags" value="zombie"/>			
+			</objective>
+					
+			<action type="GameEvent" id="ZombieINC_WeaponTest_BuffRemover" phase="4"/>
+					
+			<objective type="ReturnToNPC" phase="4">
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_WeaponTest_WeaponRemover" phase="5"/>
+			<action type="GameEvent" id="ZombieINC_WeaponTest_SpearGunRewardEvent" phase="5"/>
+			
+			<objective type="InteractWithNPC" phase="5">
+				<property name="nav_object" value="return_to_trader" />						
+			</objective>
+    
+			<reward type="Exp" value="20000"/>				
+	</quest>
+	
+	<quest id="ZINCSpearGunReward"> 
+		    <property name="name_key" value="ZombieINC_challenge_SpearGun_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_SpearGun_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_SpearGun_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="true"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="5"/>
+		    <property name="offer_key" value="ZombieINC_challenge_SpearGun_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_SpearGun_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_SpearGun_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value="ZINCWTP2"  />
+			<property name="shareable" value="false"/>
+			
+			<property name="add_to_tier_complete" value="false" />
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_SpearGun2_completion"/>
+			
+			<objective type="ReturnToNPC" phase="1">
+				<property name="nav_object" value="return_to_trader" />
+			</objective>			
+			<objective type="InteractWithNPC" phase="2">
+				<property name="nav_object" value="return_to_trader" />						
+			</objective>      
+			<reward type="Item" id="ZombieINC_GunSpearMelee_meleeWpnSpearT3SteelSpear" value="1"/>						
+	</quest>
+	
+	<!--Weapon Test Experimental-->
+	
+	<quest id="ZINCPipeMachinegun"> 
+		    <property name="name_key" value="ZombieINC_challenge_PipeMachineGun_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_PipeMachineGun_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_PipeMachineGun_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="true"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="2"/>
+		    <property name="offer_key" value="ZombieINC_challenge_PipeMachineGun_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_PipeMachineGun_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_PipeMachineGun_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			
+			<property name="shareable" value="false"/>
+			<property name="add_to_tier_complete" value="false" />
+			
+			<property name="spawn_multiplier" value="2" />
+			<property name="gamestage_mod" value=".6" />
+			<property name="gamestage_bonus" value="30" />
+			<property name="extra_tags" value="infested" />
+				
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_PipeMachineGun_completion"/>
+			
+			<objective type="RandomPOIGoto">
+				<property name="phase" value="1"/>
+				<property name="biome_filter_type" value="SameBiome" param1="biome_filter_type" />
+				<property name="biome_filter" value="burnt_forest" param1="biome_filter" />
+				<property name="nav_object" value="quest" />
+				<property name="poi_tier" value="1" />
+			</objective>
+
+			<objective type="RallyPoint">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="rally" />
+				<property name="rally_marker_type" value="questRallyMarkerFetchClear"/>
+			</objective>
+
+			<objective type="ClearSleepers">
+				<property name="phase" value="3"/>
+				<property name="nav_object" value="sleeper_volume"/>
+			</objective>
+			
+			<objective type="POIStayWithin">
+				<property name="phase" value="3"/>
+				<property name="radius" value="25"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_MiniBossPipeMachineGun_AddSpawnerBuffEvent" phase="4"/>
+		
+			<objective type="EntityKill" phase="4">
+				<property name="objective_name_key" value="ZombieINC_KillMiniBossPipeMachineGun_key" />
+				<property name="needed_count" value="1" />
+				<property name="target_tags" value="MiniBossPipeMachineGun"/>			
+			</objective>
+			
+			<objective type="POIStayWithin">
+				<property name="phase" value="4"/>
+				<property name="radius" value="25"/>
+			</objective>
+			
+			<!--<action type="GameEvent" id="ZombieINC_WS_PipeMachineGun_FEPBuff_Event" phase="5"/>-->
+			
+			
+			<!--<action type="GameEvent" id="ZombieINC_WS_PipeMachineGun_RemoveFEPBuff_Event" phase="6"/>-->
+			
+			<objective type="ReturnToNPC" phase="5">
+				<property name="nav_object" value="return_to_trader" />
+			</objective>	
+			
+			<objective type="InteractWithNPC" phase="6">
+				<property name="nav_object" value="return_to_trader" />						
+			</objective>
+			
+			<!--<action type="GameEvent" id="ZombieINC_RemoveSuppliesPipeMachineGun_AddBuffEvent" phase="7"/>-->
+			
+			<reward type="Exp" value="2000"/>
+			<reward type="Quest" id="ZINCPipeMachinegunPart2"/>
+	</quest>
+	<quest id="ZINCPipeMachinegunPart2"> 
+		    <property name="name_key" value="ZombieINC_challenge_PipeMachineGun_name"/>
+		    <property name="subtitle_key" value="ZombieINC_challenge_PipeMachineGun_subtitle"/>
+		    <property name="description_key" value="ZombieINC_challenge_PipeMachineGun_description"/>
+		    <property name="icon" value="ui_game_symbol_quest"/>
+		    <property name="repeatable" value="true"/>
+		    <property name="category_key" value="quest"/>
+		    <property name="difficulty" value="Ridiculous"/>
+		    <property name="difficulty_tier" value="2"/>
+		    <property name="offer_key" value="ZombieINC_challenge_PipeMachineGun_offer"/>
+		    <property name="statement_key" value="ZombieINC_challenge_PipeMachineGun_statement"/>
+		    <property name="response_key" value="ZombieINC_challenge_PipeMachineGun_response"/>
+		    <property name="login_rally_reset" value="true"/>		
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value="ZINCWTP2"  />
+			<property name="shareable" value="false"/>
+			<property name="add_to_tier_complete" value="false" />
+				
+		    <property name="completiontype" value="TurnIn"/>
+		    <property name="completion_key" value="ZombieINC_challenge_PipeMachineGun_completion"/>
+			
+			<action type="GameEvent" id="ZombieINC_NearTraderPipeMachineGun_AddBuffEvent" phase="1"/>
+			<action type="GameEvent" id="ZombieINC_BearPipeMachineGun_AddSpawnerBuffEvent" phase="1"/>
+		
+			<objective type="EntityKill" phase="1">
+				<property name="objective_name_key" value="ZombieINC_KillBearPipeMachineGun_key" />
+				<property name="needed_count" value="1" />
+				<property name="target_tags" value="bear"/>			
+			</objective>
+				
+			<objective type="ReturnToNPC" phase="2">
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+					
+			<objective type="InteractWithNPC" phase="3">
+				<property name="nav_object" value="return_to_trader" />						
+			</objective>
+    
+			<reward type="Exp" value="5000"/>
+			<reward type="Recipe" id="ZombieINC_gunMGT0PipeMachineGun" value="1"/>
+			<!--<reward type="ShowTip" value="ZombieINC_WeaponTest_AnnotationFix1" stage="aftercomplete"/>-->
+	</quest>
+	
+	
+	</insertAfter>
+
+
+</Config>

@@ -1,0 +1,115 @@
+<Config>
+
+	<append xpath="/items">
+	
+	<item name="ZombieINC_MD_SmallIntel">
+		<property name="HoldType" value="45"/>
+		<property name="Tags" value="dukes,ZombieINC_MD_I,ZombieINC_MD_SI"/>
+		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="Material" value="MoldCash"/>
+		<property name="DescriptionKey" value="ZombieINC_MD_SmallIntel_DescriptionKey"/>
+		<property name="CustomIcon" value="lightPanelLEDWhite"/><property name="ItemTypeIcon" value="computer"/>
+		<property name="CustomIconTint" value="008000"/>
+		<property name="FuelValue" value="1"/>
+		<property name="Weight" value="1"/>
+		<property name="Stacknumber" value="5"/>
+		<property name="EconomicValue" value="1000"/>
+		<property name="Group" value="Resources"/>
+		<property name="SoundPickup" value="oldcash_grab"/>
+		<property name="SoundPlace" value="oldcash_place"/>
+	</item>
+	<item name="ZombieINC_MD_MediumIntel">
+		<property name="HoldType" value="45"/>
+		<property name="Tags" value="dukes,ZombieINC_MD_I,ZombieINC_MD_MI"/>
+		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="Material" value="MoldCash"/>
+		<property name="DescriptionKey" value="ZombieINC_MD_MediumIntel_DescriptionKey"/>
+		<property name="CustomIcon" value="lightPanelLEDWhite"/><property name="ItemTypeIcon" value="computer"/>
+		<property name="CustomIconTint" value="0000FF"/>
+		<property name="FuelValue" value="1"/>
+		<property name="Weight" value="1"/>
+		<property name="Stacknumber" value="5"/>
+		<property name="EconomicValue" value="4000"/>
+		<property name="Group" value="Resources"/>
+		<property name="SoundPickup" value="oldcash_grab"/>
+		<property name="SoundPlace" value="oldcash_place"/>
+	</item>
+	<item name="ZombieINC_MD_LargeIntel">
+		<property name="HoldType" value="45"/>
+		<property name="Tags" value="dukes,ZombieINC_MD_I,ZombieINC_MD_LI"/>
+		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="Material" value="MoldCash"/>
+		<property name="DescriptionKey" value="ZombieINC_MD_LargeIntel_DescriptionKey"/>
+		<property name="CustomIcon" value="lightPanelLEDWhite"/><property name="ItemTypeIcon" value="computer"/>
+		<property name="CustomIconTint" value="FFD700"/>
+		<property name="FuelValue" value="1"/>
+		
+		<property name="Weight" value="1"/>
+		<property name="Stacknumber" value="5"/>
+		<property name="EconomicValue" value="8000"/>
+		<property name="Group" value="Resources"/>
+		<property name="SoundPickup" value="oldcash_grab"/>
+		<property name="SoundPlace" value="oldcash_place"/>
+	</item>
+	
+	
+	<item name="ZombieINC_MD_vehicleMinibikePlaceable">
+	<property name="Tags" value="vehicle,vengine,vfuel,vlight,vseat,canHaveCosmetic,ZombieINCVehicleRemover"/>
+	<property name="DescriptionKey" value="vehiclePlaceableGroupDesc"/>
+	<property name="HoldType" value="7"/>
+	<property name="HoldingItemHidden" value="true"/>
+	<property name="Meshfile" value="@:Entities/Vehicles/VBikeMini/VBikeMiniP.prefab"/>
+	<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+	<property name="CustomIcon" value="vehicleMinibikePlaceable"/>
+	<property name="CustomIconTint" value="0,0,0"/>
+	<property name="DescriptionKey" value="ZombieINC_vehicleMinibikePlaceableDesc"/>			
+	<property name="ItemTypeIcon" value="star"/>
+	<property name="Material" value="Mmetal"/>
+	<property name="Weight" value="0"/>
+	<property name="Stacknumber" value="1"/>
+	<property name="EconomicValue" value="6000"/>
+	<property name="SellableToTrader" value="false"/>
+	<property name="Group" value="Science,TCScience"/>
+	<property name="SoundPickup" value="minibike_grab"/>
+	<property name="SoundPlace" value="minibike_place"/>
+	<property class="Action1">
+		<property name="Class" value="SpawnVehicle"/>
+		<property name="Vehicle" value="ZombieINC_vehicleMinibike"/>
+	</property>
+	<effect_group name="vehicleMinibikePlaceable" tiered="false">
+		<passive_effect name="ModSlots" operation="base_set" value="0"/>
+		<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+		<passive_effect name="DegradationMax" operation="base_set" value="300" />
+			
+	</effect_group>
+</item>
+		<!--##MOBILE DEFENSE-->
+	
+	<item name="ZombieINC_vehicle4x4TruckAntennaPlaceable">
+	<property name="Extends" value="ZombieINC_MD_vehicleMinibikePlaceable"/>
+	<property name="Tags" value="vehicle,vengine,vfuel,vlight,vseat,canHaveCosmetic,ZombieINCVehicleRemover,ZINCTruckQuestMD"/>
+	<property name="Meshfile" value="@:Entities/Vehicles/VTruck4x4/VTruck4x4P.prefab"/>
+	<property name="CustomIcon" value="vehicle4x4TruckPlaceable"/>
+	<property name="CustomIconTint" value="0,0,0"/>
+	<property name="DescriptionKey" value="ZombieINC_vehicle4x4TruckAntennaPlaceableDesc"/>			
+	<property name="ItemTypeIcon" value="star"/>
+	<property name="EconomicValue" value="10"/>
+	<property class="Action1">
+		<property name="Vehicle" value="ZombieINC_vehicle4x4TruckAntenna"/>
+		<property name="VehicleSize" value="4.5, 3.1, 7"/>
+	</property>
+	<effect_group name="vehicle4x4TruckPlaceable" tiered="false">
+		<passive_effect name="ModSlots" operation="base_set" value="0"/>
+		<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+		<passive_effect name="DegradationMax" operation="base_set" value="4000"/>
+	</effect_group>
+	</item>
+	
+	<!--MOBILE DEFENSE-->
+	
+	</append>
+
+</Config>

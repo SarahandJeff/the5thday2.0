@@ -1,0 +1,3667 @@
+<Config>
+
+
+
+<append xpath="/gameevents">
+	<action_sequence name="ZombieINC_Defense_OneAnchorGenericPlacementByBuff">
+					<property name="target_type" value="Entity" />
+					<property name="allow_while_dead" value="true" />
+					<!--<property name="single_instance" value="true" />-->
+					<property name="refund_inactivity" value="false" />
+					
+					<action class="BlockReplace">
+						<property name="min_offset" value="2,-10,1" />
+						<property name="max_offset" value="2,10,1" />
+						<property name="block_to" value="ZombieINC_Defense_Anchor_Generic_Block" />
+						<property name="block_tags" value="air" />
+						<property name="allow_terrain" value="true" />
+						<property name="phase" value="1" />
+					</action>
+				</action_sequence>
+				
+	<action_sequence name="ZombieINC_Defense_Activate_Event_Anchor">
+				<action class="AddBuff">
+					<property name="buff_name" value="ZombieINC_TheCult_BellEffect_Buff" />
+					<property name="phase" value="1"/>				
+				</action>
+				<action class="SpawnEntity">			
+					<property name="entity_names" value="ZombieINC_Defense_RallyPointHuntPlaceHolder" />
+				<!--	<property name="add_buffs" value="ZombieINC_EnemyDotBuff"/>-->
+					<property name="spawn_count" value="1"  />
+					<property name="max_distance" value="1" />
+					<property name="min_distance" value="1" />
+					<property name="air_spawn" value="true" />		
+				</action>
+			</action_sequence>
+
+<!--###Defense Misc-->
+			
+	<action_sequence name="ZombieINC_tier3_DefenseConstruction_ToolbeltTip_event">	        			    
+		<action class="BeltTooltip">  
+			<property name="text" value="The Trader Have Been Ambushed"  />
+			<property name="text_key" value="ZombieINC_tier3_DefenseConstruction_BeltTooltip"  />
+		</action>	
+	</action_sequence>		
+	
+	<action_sequence name="ZombieINC_tier3_DefenseConstruction_ChatMessage_event">	        			    
+		<action class="AddChatMessage">	    
+			<property name="text" value="| [FF6600]Player's Mind:[-]  When I'm ready, I will put the Lure to start the fight" />
+			<property name="text_key" value="ZombieINC_tier3_DefenseConstruction_ChatMessage"  />
+		</action>	
+	</action_sequence>	
+	
+	<action_sequence name="ZombieINC_tier4_DefenseConstruction_ToolbeltTip_event">	        			    
+		<action class="BeltTooltip">  
+			<property name="text" value="You Have Been Ambushed"  />
+			<property name="text_key" value="ZombieINC_tier4_DefenseConstruction_BeltTooltip"  />
+		</action>	
+	</action_sequence>		
+	
+	<action_sequence name="ZombieINC_tier4_DefenseConstruction_ChatMessage_event">	        			    
+		<action class="AddChatMessage">	    
+			<property name="text" value="| [FF6600]Player's Mind:[-] This time I can't decide when to start fighting. I need to act now." />
+			<property name="text_key" value="ZombieINC_tier4_DefenseConstruction_ChatMessage"  />
+		</action>	
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ArrowLandingExplanationEvent">	        			    
+		<action class="AddChatMessage">	    
+			<property name="text" value="| [FF6600]Player's Mind:[-] If i remember correct, he said that i need to aim totally vertically, so the arrow with flare can reach high enough for the scout's vision." />
+			<property name="text_key" value="ZombieINC_ArrowLandingExplanationChatMessage"  />
+		</action>
+		<action class="BeltTooltip">  
+			<property name="text" value="You need to aim TOTALLY VERTICALLY."  />
+			<property name="text_key" value="ZombieINC_ArrowLandingExplanationBeltTooltipMessage"  />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ArrowLandingExplanationEvent2">	        			    
+		<action class="AddChatMessage">	    
+			<property name="text" value="| [FF6600]Player's Mind:[-] Okay, need to shot the flare again." />
+			<property name="text_key" value="ZombieINC_ArrowLandingExplanationChatMessage2"  />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ArrowLandingFailedMessageEvent">			
+		<action class="AddChatMessage">	    
+			<property name="text" value="| [FF6600]Player's Mind:[-] Oh crap, not high enough." />
+			<property name="text_key" value="ZombieINC_ArrowLandingFailedChatMessage"  />
+		</action>
+		<action class="BeltTooltip">  
+			<property name="text" value="Your arrow did not reach enough height."  />
+			<property name="text_key" value="ZombieINC_ArrowLandingFailedBeltTooltipMessage"  />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ArrowLandingSuccessMessageEvent">	
+		<action class="AddChatMessage">	    
+			<property name="text" value="| [FF6600]Player's Mind:[-] I got it." />
+			<property name="text_key" value="ZombieINC_ArrowLandingSuccessChatMessage"  />
+		</action>
+		<action class="BeltTooltip">  
+			<property name="text" value="Your arrow reached enough height."  />
+			<property name="text_key" value="ZombieINC_ArrowLandingSuccessBeltTooltipMessage"  />
+		</action>	
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_TimedExplodeEntity">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="bomber" />
+			<property name="max_distance" value="41" />
+		</requirement>
+	<action class="AddEntitiesToGroup">
+			<property name="phase" value="1" />
+			<property name="group_name" value="bomber" />
+			<property name="entity_tags" value="bomber" />
+			
+			
+			<property name="max_distance" value="41" />
+		</action>
+	<action class="PrimeEntity">
+			<property name="phase" value="2" />
+			<property name="target_group" value="bomber" />
+			<property name="override_time" value="3" />
+			<property name="min_override_time" value="1" /> 
+			<property name="max_override_time" value="3" /> 
+
+			
+		</action>
+	</action_sequence>	
+	
+	
+	<!--Defense-->
+	<!--###DefenseJobs tier 1-4 -->
+	<!--###DefenseTemplates -->
+	
+	<action_sequence name="ZombieINC_DefenseWavePOI_Template">
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene" param1="zombiename" />
+			<property name="spawn_count" value="1" param1="spawncount" />
+			<property name="air_spawn" value="true" param1="airspawn" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="min_distance" value="10" />
+			<property name="max_distance" value="20" />
+			<property name="add_to_group" value="targets" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="is_aggressive" value="true" />
+		</action>
+		<action class="PlaySound">
+			<property name="sound" value="zombiemalealert" param1="alertsound" />
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_DefenseWavePOI_Template2">
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene" param1="zombiename" />
+			<property name="spawn_count" value="1" param1="spawncount" />
+			<property name="air_spawn" value="true" param1="airspawn" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="min_distance" value="10" />
+			<property name="max_distance" value="20" />
+			<property name="add_to_group" value="targets" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="is_aggressive" value="true" />
+		</action>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene" param1="zombiename2" />
+			<property name="spawn_count" value="1" param1="spawncount2" />
+			<property name="air_spawn" value="true" param1="airspawn2" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="min_distance" value="10" />
+			<property name="max_distance" value="20" />
+			<property name="add_to_group" value="targets" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="is_aggressive" value="true" />
+		</action>
+		<action class="PlaySound">
+			<property name="sound" value="zombiemalealert" param1="alertsound" />
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>
+
+	<action_sequence name="ZombieINC_DefenseWavePOI_Template3">
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene" param1="zombiename" />
+			<property name="spawn_count" value="1" param1="spawncount" />
+			<property name="air_spawn" value="true" param1="airspawn" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="min_distance" value="10" />
+			<property name="max_distance" value="20" />
+			<property name="add_to_group" value="targets" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="is_aggressive" value="true" />
+		</action>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene" param1="zombiename2" />
+			<property name="spawn_count" value="1" param1="spawncount2" />
+			<property name="air_spawn" value="true" param1="airspawn2" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="min_distance" value="10" />
+			<property name="max_distance" value="20" />
+			<property name="add_to_group" value="targets" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="is_aggressive" value="true" />
+		</action>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene" param1="zombiename3" />
+			<property name="spawn_count" value="1" param1="spawncount3" />
+			<property name="air_spawn" value="true" param1="airspawn3" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="min_distance" value="10" />
+			<property name="max_distance" value="20" />
+			<property name="add_to_group" value="targets" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="is_aggressive" value="true" />
+		</action>
+		<action class="PlaySound">
+			<property name="sound" value="zombiemalealert" param1="alertsound" />
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>
+
+	<action_sequence name="ZombieINC_DefenseWavePOI_Template4">
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene" param1="zombiename" />
+			<property name="spawn_count" value="1" param1="spawncount" />
+			<property name="air_spawn" value="true" param1="airspawn" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="min_distance" value="10" />
+			<property name="max_distance" value="20" />
+			<property name="add_to_group" value="targets" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="is_aggressive" value="true" />
+		</action>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene" param1="zombiename2" />
+			<property name="spawn_count" value="1" param1="spawncount2" />
+			<property name="air_spawn" value="true" param1="airspawn2" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="min_distance" value="10" />
+			<property name="max_distance" value="20" />
+			<property name="add_to_group" value="targets" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="is_aggressive" value="true" />
+		</action>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene" param1="zombiename3" />
+			<property name="spawn_count" value="1" param1="spawncount3" />
+			<property name="air_spawn" value="true" param1="airspawn3" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="min_distance" value="10" />
+			<property name="max_distance" value="20" />
+			<property name="add_to_group" value="targets" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="is_aggressive" value="true" />
+		</action>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene" param1="zombiename4" />
+			<property name="spawn_count" value="1" param1="spawncount4" />
+			<property name="air_spawn" value="true" param1="airspawn4" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="min_distance" value="10" />
+			<property name="max_distance" value="20" />
+			<property name="add_to_group" value="targets" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="is_aggressive" value="true" />
+		</action>
+		<action class="PlaySound">
+			<property name="sound" value="zombiemalealert" param1="alertsound" />
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>	
+	
+	<action_sequence name="ZombieINC_DefenseWaveOpenArea_Template">
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene" param1="zombiename" />
+			<property name="spawn_count" value="1" param1="spawncount" />
+			<property name="air_spawn" value="true" param1="airspawn" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="min_distance" value="30" />
+			<property name="max_distance" value="40" />
+			<property name="add_to_group" value="targets" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="is_aggressive" value="true" />
+		</action>
+		<action class="PlaySound">
+			<property name="sound" value="zombiemalealert" param1="alertsound" />
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_DefenseWaveOpenArea_Template2">
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene" param1="zombiename" />
+			<property name="spawn_count" value="1" param1="spawncount" />
+			<property name="air_spawn" value="true" param1="airspawn" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="min_distance" value="30" />
+			<property name="max_distance" value="40" />
+			<property name="add_to_group" value="targets" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="is_aggressive" value="true" />
+		</action>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene" param1="zombiename2" />
+			<property name="spawn_count" value="1" param1="spawncount2" />
+			<property name="air_spawn" value="true" param1="airspawn2" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="min_distance" value="30" />
+			<property name="max_distance" value="40" />
+			<property name="add_to_group" value="targets" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="is_aggressive" value="true" />
+		</action>
+		<action class="PlaySound">
+			<property name="sound" value="zombiemalealert" param1="alertsound" />
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>
+
+	<action_sequence name="ZombieINC_DefenseWaveOpenArea_Template3">
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene" param1="zombiename" />
+			<property name="spawn_count" value="1" param1="spawncount" />
+			<property name="air_spawn" value="true" param1="airspawn" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="min_distance" value="30" />
+			<property name="max_distance" value="40" />
+			<property name="add_to_group" value="targets" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="is_aggressive" value="true" />
+		</action>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene" param1="zombiename2" />
+			<property name="spawn_count" value="1" param1="spawncount2" />
+			<property name="air_spawn" value="true" param1="airspawn2" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="min_distance" value="30" />
+			<property name="max_distance" value="40" />
+			<property name="add_to_group" value="targets" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="is_aggressive" value="true" />
+		</action>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene" param1="zombiename3" />
+			<property name="spawn_count" value="1" param1="spawncount3" />
+			<property name="air_spawn" value="true" param1="airspawn3" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="min_distance" value="30" />
+			<property name="max_distance" value="40" />
+			<property name="add_to_group" value="targets" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="is_aggressive" value="true" />
+		</action>
+		<action class="PlaySound">
+			<property name="sound" value="zombiemalealert" param1="alertsound" />
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>
+
+	<action_sequence name="ZombieINC_DefenseWaveOpenArea_Template4">
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene" param1="zombiename" />
+			<property name="spawn_count" value="1" param1="spawncount" />
+			<property name="air_spawn" value="true" param1="airspawn" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="min_distance" value="30" />
+			<property name="max_distance" value="40" />
+			<property name="add_to_group" value="targets" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="is_aggressive" value="true" />
+		</action>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene" param1="zombiename2" />
+			<property name="spawn_count" value="1" param1="spawncount2" />
+			<property name="air_spawn" value="true" param1="airspawn2" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="min_distance" value="30" />
+			<property name="max_distance" value="40" />
+			<property name="add_to_group" value="targets" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="is_aggressive" value="true" />
+		</action>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene" param1="zombiename3" />
+			<property name="spawn_count" value="1" param1="spawncount3" />
+			<property name="air_spawn" value="true" param1="airspawn3" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="min_distance" value="30" />
+			<property name="max_distance" value="40" />
+			<property name="add_to_group" value="targets" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="is_aggressive" value="true" />
+		</action>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene" param1="zombiename4" />
+			<property name="spawn_count" value="1" param1="spawncount4" />
+			<property name="air_spawn" value="true" param1="airspawn4" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="min_distance" value="30" />
+			<property name="max_distance" value="40" />
+			<property name="add_to_group" value="targets" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="is_aggressive" value="true" />
+		</action>
+		<action class="PlaySound">
+			<property name="sound" value="zombiemalealert" param1="alertsound" />
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_DefenseWaveTraderArea_Template">
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene" param1="zombiename" />
+			<property name="spawn_count" value="1" param1="spawncount" />
+			<property name="air_spawn" value="true" param1="airspawn" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="max_distance" value="75" />
+			<property name="min_distance" value="25" />
+			<property name="add_to_group" value="targets" />
+		</action>
+		<action class="PlaySound">
+			<property name="sound" value="zombiemalealert" param1="alertsound" />
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_DefenseWaveTraderArea_Template2">
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene" param1="zombiename" />
+			<property name="spawn_count" value="1" param1="spawncount" />
+			<property name="air_spawn" value="true" param1="airspawn" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="max_distance" value="75" />
+			<property name="min_distance" value="25" />
+			<property name="add_to_group" value="targets" />
+		</action>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene" param1="zombiename2" />
+			<property name="spawn_count" value="1" param1="spawncount2" />
+			<property name="air_spawn" value="true" param1="airspawn2" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="max_distance" value="75" />
+			<property name="min_distance" value="25" />
+			<property name="add_to_group" value="targets" />
+		</action>
+		<action class="PlaySound">
+			<property name="sound" value="zombiemalealert" param1="alertsound" />
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>
+
+	<action_sequence name="ZombieINC_DefenseWaveTraderArea_Template3">
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene" param1="zombiename" />
+			<property name="spawn_count" value="1" param1="spawncount" />
+			<property name="air_spawn" value="true" param1="airspawn" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="max_distance" value="75" />
+			<property name="min_distance" value="25" />
+			<property name="add_to_group" value="targets" />
+		</action>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene" param1="zombiename2" />
+			<property name="spawn_count" value="1" param1="spawncount2" />
+			<property name="air_spawn" value="true" param1="airspawn2" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="max_distance" value="75" />
+			<property name="min_distance" value="25" />
+			<property name="add_to_group" value="targets" />
+		</action>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene" param1="zombiename3" />
+			<property name="spawn_count" value="1" param1="spawncount3" />
+			<property name="air_spawn" value="true" param1="airspawn3" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="max_distance" value="75" />
+			<property name="min_distance" value="25" />
+			<property name="add_to_group" value="targets" />
+		</action>
+		<action class="PlaySound">
+			<property name="sound" value="zombiemalealert" param1="alertsound" />
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>
+
+	<action_sequence name="ZombieINC_DefenseWaveTraderArea_Template4">
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene" param1="zombiename" />
+			<property name="spawn_count" value="1" param1="spawncount" />
+			<property name="air_spawn" value="true" param1="airspawn" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="max_distance" value="75" />
+			<property name="min_distance" value="25" />
+			<property name="add_to_group" value="targets" />
+		</action>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene" param1="zombiename2" />
+			<property name="spawn_count" value="1" param1="spawncount2" />
+			<property name="air_spawn" value="true" param1="airspawn2" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="max_distance" value="75" />
+			<property name="min_distance" value="25" />
+			<property name="add_to_group" value="targets" />
+		</action>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene" param1="zombiename3" />
+			<property name="spawn_count" value="1" param1="spawncount3" />
+			<property name="air_spawn" value="true" param1="airspawn3" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="max_distance" value="75" />
+			<property name="min_distance" value="25" />
+			<property name="add_to_group" value="targets" />
+		</action>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene" param1="zombiename4" />
+			<property name="spawn_count" value="1" param1="spawncount4" />
+			<property name="air_spawn" value="true" param1="airspawn4" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="max_distance" value="75" />
+			<property name="min_distance" value="25" />
+			<property name="add_to_group" value="targets" />
+		</action>
+		<action class="PlaySound">
+			<property name="sound" value="zombiemalealert" param1="alertsound" />
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>
+	
+	<!--DefenseTemplates -->
+	
+	<!--###DefenseJobs tier 1-2 -->
+	
+	<action_sequence name="ZombieINC_DefenseT6_Messages">
+	
+	
+	
+		<action class="BeltTooltip">  								
+			<property name="text" value="We have been ambushed"  />
+			<property name="text_key" value="ZombieINC_Defense_BeltTooltip_DefenseT6"  />
+			<property name="phase" value="1"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text" value="| [FF6600]Player's Mind:[-] Oh Shit! The Zeds Arrived" />
+			<property name="text_key" value="ZombieINC_Defense_ChatMessage_DefenseT6"  />
+			<property name="phase" value="1"/>	
+		</action>
+		
+		<action class="Delay">  								
+			<property name="time" value="2"  />		
+			<property name="phase" value="2"/>
+		</action>
+		
+		<action class="AddChatMessage">							
+			<property name="text" value="| [FF6600]Trader's Voice:[-] You can't keep inside, go over there! The mission will fail if you insist" />
+			<property name="text_key" value="ZombieINC_Defense_ChatMessage_DefenseT6Trader"  />
+			<property name="phase" value="3"/>	
+		</action>
+		
+		<action class="Delay">  								
+			<property name="time" value="2"  />		
+			<property name="phase" value="4"/>
+		</action>
+		
+		<action class="AddChatMessage">							
+			<property name="text" value="| [FF6600]Game:[-] The time limit is 10 seconds" />
+			<property name="text_key" value="ZombieINC_Defense_ChatMessage_DefenseT6Game"  />
+			<property name="phase" value="5"/>	
+		</action>
+		
+	</action_sequence>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<action_sequence name="ZombieINC_AddSmellEnhancer">						
+		<action class="AddItems">
+			<property name="phase" value="1" />
+			<property name="added_items" value="ZombieINC_resourceSmellEnhancer" />
+			<property name="added_item_counts" value="1" />			
+		</action>	
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_AddZombieLure_T3">						
+		<action class="AddItems">
+			<property name="phase" value="1" />
+			<property name="added_items" value="ZombieINC_capChimneyLargeSmoke_T3_W1,resourceScrapIron,meleeToolRepairT0StoneAxe" />
+			<property name="added_item_counts" value="1,20,1" />			
+		</action>	
+	</action_sequence>
+	<action_sequence name="ZombieINC_AddZombieLure_T4">						
+		<action class="AddItems">
+			<property name="phase" value="1" />
+			<property name="added_items" value="ZombieINC_capChimneyLargeSmoke_T4_W1,resourceScrapIron" />
+			<property name="added_item_counts" value="1,30" />			
+		</action>	
+	</action_sequence>
+	<action_sequence name="ZombieINC_AddZombieLure_T5">						
+		<action class="AddItems">
+			<property name="phase" value="1" />
+			<property name="added_items" value="ZombieINC_capChimneyLargeSmoke_T5_W1,resourceScrapIron,meleeToolRepairT0StoneAxe" />
+			<property name="added_item_counts" value="1,40,1" />			
+		</action>	
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_AddFlaresANDBow">
+				
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_BowBorrowCheck" />
+			<property name="phase" value="0" />	
+		</action>
+				
+		<action class="AddItems">
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_BowBorrow" />				
+			</requirement>
+			<property name="phase" value="1" />
+			<property name="added_items" value="ZombieINC_Borrowed_gunBowT0PrimitiveBow" />
+			<property name="added_item_counts" value="1" />			
+		</action>
+							
+		<action class="AddItems">
+		<property name="phase" value="1" />
+			<property name="added_items" value="ZombieINC_ammoArrowFlare" />
+			<property name="added_item_counts" value="10" />			
+		</action>
+		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ArrowFlareSuccessEventGo">
+	
+		<action class="AddPartyToGroup">
+			<property name="phase" value="1" />
+			<property name="group_name" value="party" />
+			
+		</action>
+				
+		<wait class="Until">
+			<property name="phase" value="2" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_ArrowLandingSuccess" />
+				<property name="target_group" value="party" />				
+			</requirement>
+		</wait>
+		
+	</action_sequence>
+	
+	
+	
+	
+	<action_sequence name="ZombieINC_AddBuffSimple_Template">	
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_DefenseWave1" param1="buffname"/>
+			<property name="check_already_exists" value="false"/>
+		</action>	
+	</action_sequence>
+	
+	
+	
+
+<!--##Defense Spawns T1-->
+	<!--#Multiplayer Sync Ultimate Solution-->
+	<action_sequence name="ZombieINC_Multiplayer_FirstPhase_Sync_ObjectiveEvent_TEST">
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_Defense_T1_Sync_BuffSpreader"/>
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Defense_T1_Sync_ObjectiveEvent">
+		<property name="refund_inactivity" value="false" />
+			<action class="RemoveBuff">
+				<property name="buff_name" value="ZombieINC_Defense_T1_Sync_BuffSpreader"/>
+				<property name="phase" value="1" />
+			</action>
+			<wait class="While">
+				<property name="phase" value="2" />
+				<requirement class="OnQuest">
+					<property name="quest" value="zincdefensepoi1" />
+				</requirement>
+				<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_Defense_T1_Sync_Buff" />
+				</requirement>
+			</wait>
+	</action_sequence>
+	<action_sequence name="ZombieINC_Defense_T1_Sync_Buff_Event">
+		<property name="refund_inactivity" value="false" />
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Defense_T1_Sync_BuffSpreader"/>
+			<property name="check_already_exists" value="false"/>
+			<property name="phase" value="1" />
+		</action>
+		<wait class="While">
+			<property name="phase" value="2" />
+			<requirement class="OnQuest">
+				<property name="quest" value="zincdefensepoi1" />
+			</requirement>
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_Defense_T1_Sync_BuffSpreader" />
+			</requirement>
+		</wait>
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_Defense_T1_Sync_BuffSpreader"/>
+			<property name="phase" value="3" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Defense_T2_Sync_ObjectiveEvent">
+		<property name="refund_inactivity" value="false" />
+			<action class="RemoveBuff">
+				<property name="buff_name" value="ZombieINC_Defense_T2_Sync_BuffSpreader"/>
+				<property name="phase" value="1" />
+			</action>
+			<wait class="While">
+				<property name="phase" value="2" />
+				<requirement class="OnQuest">
+					<property name="quest" value="zincdefensepoi2" />
+				</requirement>
+				<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_Defense_T2_Sync_Buff" />
+				</requirement>
+			</wait>
+	</action_sequence>
+	<action_sequence name="ZombieINC_Defense_T2_Sync_Buff_Event">
+		<property name="refund_inactivity" value="false" />
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Defense_T2_Sync_BuffSpreader"/>
+			<property name="check_already_exists" value="false"/>
+			<property name="phase" value="1" />
+		</action>
+		<wait class="While">
+			<property name="phase" value="2" />
+			<requirement class="OnQuest">
+				<property name="quest" value="zincdefensepoi2" />
+			</requirement>
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_Defense_T2_Sync_BuffSpreader" />
+			</requirement>
+		</wait>
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_Defense_T2_Sync_BuffSpreader"/>
+			<property name="phase" value="3" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Defense_T5_Sync_ObjectiveEvent">
+		<property name="refund_inactivity" value="false" />
+			<action class="RemoveBuff">
+				<property name="buff_name" value="ZombieINC_Defense_T5_Sync_BuffSpreader"/>
+				<property name="phase" value="1" />
+			</action>
+			<wait class="While">
+				<property name="phase" value="2" />
+				<requirement class="OnQuest">
+					<property name="quest" value="zincdefensetrader5" />
+				</requirement>
+				<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_Defense_T5_Sync_Buff" />
+				</requirement>
+			</wait>
+	</action_sequence>
+	<action_sequence name="ZombieINC_Defense_T5_Sync_Buff_Event">
+		<property name="refund_inactivity" value="false" />
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Defense_T5_Sync_BuffSpreader"/>
+			<property name="check_already_exists" value="false"/>
+			<property name="phase" value="1" />
+		</action>
+		<wait class="While">
+			<property name="phase" value="2" />
+			<requirement class="OnQuest">
+				<property name="quest" value="zincdefensetrader5" />
+			</requirement>
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_Defense_T5_Sync_BuffSpreader" />
+			</requirement>
+		</wait>
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_Defense_T5_Sync_BuffSpreader"/>
+			<property name="phase" value="3" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Defense_T6_Sync_ObjectiveEvent">
+		<property name="refund_inactivity" value="false" />
+			<action class="RemoveBuff">
+				<property name="buff_name" value="ZombieINC_Defense_T6_Sync_BuffSpreader"/>
+				<property name="phase" value="1" />
+			</action>
+			<wait class="While">
+				<property name="phase" value="2" />
+				<!--<requirement class="OnQuest">
+					<property name="quest" value="zincdefensetrader6part1" />
+				</requirement>-->
+				<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_Defense_T6_Sync_Buff" />
+				</requirement>
+			</wait>
+	</action_sequence>
+	<action_sequence name="ZombieINC_Defense_T6_Sync_Buff_Event">
+		<property name="refund_inactivity" value="false" />
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Defense_T6_Sync_BuffSpreader"/>
+			<property name="check_already_exists" value="false"/>
+			<property name="phase" value="1" />
+		</action>
+		<action class="Delay">			
+			<property name="phase" value="2" />		
+			<property name="time" value="10" />
+		</action>
+		<wait class="While">
+			<property name="phase" value="3" />
+			<requirement class="OnQuest">
+				<property name="quest" value="zincdefensetrader6part1" />
+			</requirement>
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_Defense_T6_Sync_BuffSpreader" />
+			</requirement>
+		</wait>
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_Defense_T6_Sync_BuffSpreader"/>
+			<property name="phase" value="4" />
+		</action>
+	</action_sequence>
+<!--Multiplayer Sync Ultimate Solution-->
+	<action_sequence name="ZombieINC_Defense_T1_Sachel">
+		<property name="target_type" value="Entity"/>
+        <decision class="If">
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_Defense_T1_Sachel_Picked" />
+				<property name="invert" value="true" />
+			</requirement>
+			
+			<action class="CallGameEvent">
+				<property name="game_events" value="ZombieINC_Defense_T1_Sachel_Part2" />
+				<property name="phase" value="1" />
+			</action>
+			
+			<action class="AddBuff">
+				<property name="buff_name" value="ZombieINC_Defense_T1_Sachel_Picked" />
+				<property name="phase" value="2" />
+				<property name="check_already_exists" value="false"/>
+			</action>
+		</decision>
+	</action_sequence>
+	<action_sequence name="ZombieINC_Defense_T1_Sachel_Part2">
+		<property name="refund_inactivity" value="false" />
+		<property name="allow_while_dead" value="true" />
+		<action class="SpawnEntity">				    
+			<property name="entity_names" value="ZombieINC_Defense_Crate_Turret_T1" />
+			<property name="spawn_count" value="1"  />
+			<property name="safe_spawn" value="true" />
+			<property name="max_distance" value="5"  />
+			<property name="min_distance" value="1"  />
+			<property name="air_spawn" value="true" />
+			<property name="phase" value="1" />			
+		</action>	
+		<!--<action class="AddItems">
+			<property name="added_items" value="ZombieINC_Defense_gunBotT2JunkTurret_T1,ZombieINC_Defense_ammoJunkTurretRegular" />
+			<property name="added_item_counts" value="4,400" />
+		</action>-->
+	</action_sequence>
+	<action_sequence name="ZombieINC_Defense_T1_NoLoot_Event">	
+		<property name="refund_inactivity" value="false" />
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Defense_NoLoot_T1" />
+			<property name="phase" value="1"/>
+			<property name="check_already_exists" value="false"/>
+		</action>
+		<wait class="While">
+			<property name="phase" value="2" />
+			<requirement class="InPOI"/>
+		</wait>
+		<action class="RemoveBuffsByTag">
+			<property name="buff_tag" value="zombieinc_crappyloot" />	
+			<property name="phase" value="3" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_Defense_T1_RemoveBuffsWhenFail_Event">	
+		<property name="refund_inactivity" value="false" />
+		<action class="Delay">			
+			<property name="phase" value="0" />		
+			<property name="time" value="10" />
+		</action>
+		<wait class="While">
+			<property name="phase" value="1" />
+			<requirement class="OnQuest">
+				<property name="quest" value="zincdefensepoi1" />
+			</requirement>
+		</wait>
+		<action class="RemoveBuffsByTag">
+			<property name="buff_tag" value="zombieinc_defense" />	
+			<property name="phase" value="2" />
+		</action>
+		<!--<action class="AddChatMessage">							
+				<property name="text" value="ZombieINC_Defense_T1_RemoveBuffsWhenFail_Event" />
+				<property name="phase" value="3"/>	
+			</action>-->
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Defense_T1_30Secs_ObjectiveEvent">
+		<property name="refund_inactivity" value="false" />
+			<action class="Delay">			
+				<property name="phase" value="1" />		
+				<property name="time" value="30" />
+			</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Defense_Objective_Loop_WaitForAllDead_T1">
+		<property name="refund_inactivity" value="false" />
+			<action class="Delay">			
+				<property name="phase" value="0" />		
+				<property name="time" value="5" />
+			</action>
+			<action class="Delay">			
+				<property name="phase" value="1" />		
+				<property name="time" value="25" />
+				<property name="phase_on_complete" value="2" />
+			</action>
+			<wait class="While">
+				<property name="phase" value="1" />
+				<property name="phase_on_complete" value="3" />
+				<requirement class="OnQuest">
+					<property name="quest" value="zincdefensepoi1" />
+				</requirement>
+				<requirement class="NearbyEntities">
+					<property name="entity_tags" value="zombie" />
+					<property name="max_distance" value="60" />
+				</requirement>
+			</wait>
+			<wait class="While">
+				<property name="phase" value="2" />
+				<property name="phase_on_complete" value="3" />
+				<requirement class="OnQuest">
+					<property name="quest" value="zincdefensepoi1" />
+				</requirement>
+				<requirement class="NearbyEntities">
+					<property name="entity_tags" value="zombie" />
+					<property name="max_distance" value="25" />
+				</requirement>
+			</wait>
+			<loop class="While" >
+			<property name="phase" value="2" />
+				<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_Defense_BuffsToPlayer_T1" />
+				</requirement>
+				<action class="AddEntitiesToGroup">
+					<property name="phase" value="1" />
+					<property name="group_name" value="NearbyZombies" />
+					<property name="entity_tags" value="zombie" />
+					<property name="max_distance" value="35" />
+				</action>
+				<action class="AddBuff">
+					<property name="buff_name" value="ZombieINC_EnemyDotBuff" />
+					<property name="phase" value="2" />
+					<property name="target_group" value="NearbyZombies"/>
+				</action>
+				<action class="Delay">			
+					<property name="phase" value="3" />		
+					<property name="time" value="5" />			
+				</action>
+			</loop>
+			<action class="Delay">			
+				<property name="phase" value="3" />		
+				<property name="time" value="1" />			
+			</action>
+			<!--<action class="AddChatMessage">							
+				<property name="text" value="ZombieINC_Defense_Objective_Loop_WaitForAllDead_T1" />
+				<property name="phase" value="4"/>	
+			</action>-->
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_DefenseBuffsToAnchor_T1">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="100" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="Anchor" />
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="100" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Defense_BuffsToPlayer_Anchor_T1" />
+			<property name="phase" value="1"/>
+			<property name="check_already_exists" value="false"/>
+			<property name="target_group" value="Anchor"/>	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Defense_NoisyPlayer_Event">
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Defense_NoisyPlayer" />
+			<property name="phase" value="1"/>
+			<property name="check_already_exists" value="false"/>
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_DefenseWaveToAnchor_1_T1">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="100" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="Anchor" />
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="100" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Anchor_DefenseWave_1_T1_Buff" />
+			<property name="phase" value="1"/>
+			<property name="target_group" value="Anchor"/>
+			<property name="check_already_exists" value="false"/>
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_DefenseWaveToAnchor_2_T1">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="100" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="Anchor" />
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="100" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Anchor_DefenseWave_2_T1_Buff" />
+			<property name="phase" value="1"/>
+			<property name="target_group" value="Anchor"/>
+			<property name="check_already_exists" value="false"/>
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_DefenseWaveToAnchor_3_T1">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="100" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="Anchor" />
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="100" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Anchor_DefenseWave_3_T1_Buff" />
+			<property name="phase" value="1"/>
+			<property name="target_group" value="Anchor"/>
+			<property name="check_already_exists" value="false"/>
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_DefenseWave_1_T1">
+	<property name="refund_inactivity" value="false" />
+		<action class="SpawnEntity">	
+			<property name="entity_names" value="zombieArlene,zombieBurnt,zombieLab,zombieMarlene,zombieDarlene,zombiePartyGirl,zombieNurse,zombieSkateboarder,zombieTomClark,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieUtilityWorker" />
+			<property name="spawn_count" value="12"  />
+			<property name="max_distance" value="10" />		
+			<property name="min_distance" value="8" />
+			<property name="add_to_group" value="spawnedEnemies" />
+			<property name="air_spawn" value="false" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff"/>
+			<property name="spawn_type" value="WanderingHorde" />	
+			<property name="is_aggressive" value="true" />
+		</action>
+	</action_sequence>
+
+	<action_sequence name="ZombieINC_DefenseWave_2_T1">
+	<property name="refund_inactivity" value="false" />
+		<action class="SpawnEntity">	
+			<property name="entity_names" value="zombieArlene,zombieBurnt,zombieLab,zombieMarlene,zombieDarlene,zombiePartyGirl,zombieNurse,zombieSkateboarder,zombieTomClark,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieUtilityWorker" />
+			<property name="spawn_count" value="12"  />
+			<property name="max_distance" value="10" />		
+			<property name="min_distance" value="8" />
+			<property name="add_to_group" value="spawnedEnemies" />
+			<property name="air_spawn" value="false" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff"/>
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="is_aggressive" value="true" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_DefenseWave_3_T1">
+	<property name="refund_inactivity" value="false" />
+		<action class="SpawnEntity">	
+			<property name="entity_names" value="zombieArlene,zombieBurnt,zombieLab,zombieMarlene,zombieDarlene,zombiePartyGirl,zombieNurse,zombieSkateboarder,zombieTomClark,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieUtilityWorker" />
+			<property name="spawn_count" value="12"  />
+			<property name="max_distance" value="10" />		
+			<property name="min_distance" value="8" />
+			<property name="add_to_group" value="spawnedEnemies" />
+			<property name="air_spawn" value="false" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff"/>
+			<property name="spawn_type" value="WanderingHorde" />	
+			<property name="is_aggressive" value="true" />
+		</action>
+		<!--<action class="SpawnEntity">	
+			<property name="entity_names" value="zombieBiker,zombieFatHawaiian,zombieSpider,zombieSoldier"  />
+			<property name="spawn_count" value="3"  />
+			<property name="max_distance" value="10" />		
+			<property name="min_distance" value="8" />
+			<property name="add_to_group" value="spawnedEnemies" />
+			<property name="air_spawn" value="false" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff"/>
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="is_aggressive" value="true" />
+		</action>-->
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_AllTiers_DefenseRemoverWaves_Event">							
+		<action class="RemoveBuffsByTag">
+			<property name="phase" value="0" />
+			<property name="buff_tag" value="zombieinc_defensewaves" />	
+		</action>
+	</action_sequence>
+<!--Defense Spawns T1-->	
+<!--##Defense Spawns T2-->
+	<action_sequence name="ZombieINC_Defense_T2_Sachel">
+		<property name="target_type" value="Entity"/>
+        <decision class="If">
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_Defense_T2_Sachel_Picked" />
+				<property name="invert" value="true" />
+			</requirement>
+			
+			<action class="CallGameEvent">
+				<property name="game_events" value="ZombieINC_Defense_T2_Sachel_Part2" />
+				<property name="phase" value="1" />
+			</action>
+			
+			<action class="AddBuff">
+				<property name="buff_name" value="ZombieINC_Defense_T2_Sachel_Picked" />
+				<property name="phase" value="2" />
+				<property name="check_already_exists" value="false"/>
+			</action>
+		</decision>
+	</action_sequence>
+	<action_sequence name="ZombieINC_Defense_T2_Sachel_Part2">
+		<property name="refund_inactivity" value="false" />
+		<property name="allow_while_dead" value="true" />
+		<action class="SpawnEntity">				    
+			<property name="entity_names" value="ZombieINC_Defense_Crate_Turret_T2" />
+			<property name="spawn_count" value="1"  />
+			<property name="safe_spawn" value="true" />
+			<property name="max_distance" value="5"  />
+			<property name="min_distance" value="1"  />
+			<property name="air_spawn" value="true" />
+			<property name="phase" value="1" />			
+		</action>	
+	</action_sequence>
+	<action_sequence name="ZombieINC_Defense_T2_NoLoot_Event">	
+		<property name="refund_inactivity" value="false" />
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Defense_NoLoot_T2" />
+			<property name="phase" value="1"/>
+			<property name="check_already_exists" value="false"/>
+		</action>
+		<wait class="While">
+			<property name="phase" value="2" />
+			<requirement class="InPOI"/>
+		</wait>
+		<action class="RemoveBuffsByTag">
+			<property name="buff_tag" value="zombieinc_crappyloot" />	
+			<property name="phase" value="3" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_Defense_T2_RemoveBuffsWhenFail_Event">	
+		<property name="refund_inactivity" value="false" />
+		<action class="Delay">			
+			<property name="phase" value="0" />		
+			<property name="time" value="10" />
+		</action>
+		<wait class="While">
+			<property name="phase" value="1" />
+			<requirement class="OnQuest">
+				<property name="quest" value="zincdefensepoi2" />
+			</requirement>
+		</wait>
+		<action class="RemoveBuffsByTag">
+			<property name="buff_tag" value="zombieinc_defense" />	
+			<property name="phase" value="2" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Defense_Objective_Loop_WaitForAllDead_T2">
+		<property name="refund_inactivity" value="false" />
+			<action class="Delay">			
+				<property name="phase" value="0" />		
+				<property name="time" value="5" />
+			</action>
+			<action class="Delay">			
+				<property name="phase" value="1" />		
+				<property name="time" value="25" />
+				<property name="phase_on_complete" value="2" />
+			</action>
+			<wait class="While">
+				<property name="phase" value="1" />
+				<property name="phase_on_complete" value="3" />
+				<requirement class="OnQuest">
+					<property name="quest" value="zincdefensepoi2" />
+				</requirement>
+				<requirement class="NearbyEntities">
+					<property name="entity_tags" value="zombie" />
+					<property name="max_distance" value="60" />
+				</requirement>
+			</wait>
+			<wait class="While">
+				<property name="phase" value="2" />
+				<property name="phase_on_complete" value="3" />
+				<requirement class="OnQuest">
+					<property name="quest" value="zincdefensepoi2" />
+				</requirement>
+				<requirement class="NearbyEntities">
+					<property name="entity_tags" value="zombie" />
+					<property name="max_distance" value="25" />
+				</requirement>
+			</wait>
+			<loop class="While" >
+			<property name="phase" value="2" />
+				<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_Defense_BuffsToPlayer_T2" />
+				</requirement>
+				<action class="AddEntitiesToGroup">
+					<property name="phase" value="1" />
+					<property name="group_name" value="NearbyZombies" />
+					<property name="entity_tags" value="zombie" />
+					<property name="max_distance" value="35" />
+				</action>
+				<action class="AddBuff">
+					<property name="buff_name" value="ZombieINC_EnemyDotBuff" />
+					<property name="phase" value="2" />
+					<property name="target_group" value="NearbyZombies"/>
+				</action>
+				<action class="Delay">			
+					<property name="phase" value="3" />		
+					<property name="time" value="5" />			
+				</action>
+			</loop>
+			<action class="Delay">			
+				<property name="phase" value="3" />		
+				<property name="time" value="1" />			
+			</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_DefenseBuffsToAnchor_T2">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="100" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="Anchor" />
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="100" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Defense_BuffsToPlayer_Anchor_T2" />
+			<property name="phase" value="1"/>
+			<property name="check_already_exists" value="false"/>
+			<property name="target_group" value="Anchor"/>	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_DefenseWaveToAnchor_1_T2">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="100" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="Anchor" />
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="100" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Anchor_DefenseWave_1_T2_Buff" />
+			<property name="phase" value="1"/>
+			<property name="target_group" value="Anchor"/>
+			<property name="check_already_exists" value="false"/>
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_DefenseWaveToAnchor_2_T2">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="100" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="Anchor" />
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="100" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Anchor_DefenseWave_2_T2_Buff" />
+			<property name="phase" value="1"/>
+			<property name="target_group" value="Anchor"/>
+			<property name="check_already_exists" value="false"/>
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_DefenseWaveToAnchor_3_T2">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="100" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="Anchor" />
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="100" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Anchor_DefenseWave_3_T2_Buff" />
+			<property name="phase" value="1"/>
+			<property name="target_group" value="Anchor"/>
+			<property name="check_already_exists" value="false"/>
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_DefenseWave_1_T2">
+	<property name="refund_inactivity" value="false" />
+		<action class="SpawnEntity">	
+			<property name="entity_names" value="zombieArlene,zombieBurnt,zombieLab,zombieMarlene,zombieDarlene,zombiePartyGirl,zombieNurse,zombieSkateboarder,zombieTomClark,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieUtilityWorker" />
+			<property name="spawn_count" value="10"  />
+			<property name="max_distance" value="10" />		
+			<property name="min_distance" value="8" />
+			<property name="add_to_group" value="spawnedEnemies" />
+			<property name="air_spawn" value="false" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff"/>
+			<property name="spawn_type" value="WanderingHorde" />	
+			<property name="is_aggressive" value="true" />
+		</action>
+		<action class="SpawnEntity">	
+			<property name="entity_names" value="zombieArlene,zombieBurnt,zombieLab,zombieMarlene,zombieDarlene,zombiePartyGirl,zombieNurse,zombieSkateboarder,zombieTomClark,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieUtilityWorker" />
+			<property name="spawn_count" value="8"  />
+			<property name="max_distance" value="10" />		
+			<property name="min_distance" value="8" />
+			<property name="add_to_group" value="spawnedEnemies" />
+			<property name="air_spawn" value="false" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff"/>
+			<property name="spawn_type" value="WanderingHorde" />	
+			<property name="is_aggressive" value="true" />
+		</action>
+	</action_sequence>
+
+	<action_sequence name="ZombieINC_DefenseWave_2_T2">
+	<property name="refund_inactivity" value="false" />
+		<action class="SpawnEntity">	
+			<property name="entity_names" value="zombieArlene,zombieBurnt,zombieLab,zombieMarlene,zombieDarlene,zombiePartyGirl,zombieNurse,zombieSkateboarder,zombieTomClark,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieUtilityWorker" />
+			<property name="spawn_count" value="10"  />
+			<property name="max_distance" value="10" />		
+			<property name="min_distance" value="8" />
+			<property name="add_to_group" value="spawnedEnemies" />
+			<property name="air_spawn" value="false" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff"/>
+			<property name="spawn_type" value="WanderingHorde" />	
+			<property name="is_aggressive" value="true" />
+		</action>
+		<action class="SpawnEntity">	
+			<property name="entity_names" value="zombieArlene,zombieBurnt,zombieLab,zombieMarlene,zombieDarlene,zombiePartyGirl,zombieNurse,zombieSkateboarder,zombieTomClark,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieUtilityWorker" />
+			<property name="spawn_count" value="8"  />
+			<property name="max_distance" value="10" />		
+			<property name="min_distance" value="8" />
+			<property name="add_to_group" value="spawnedEnemies" />
+			<property name="air_spawn" value="false" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff"/>
+			<property name="spawn_type" value="WanderingHorde" />	
+			<property name="is_aggressive" value="true" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_DefenseWave_3_T2">
+	<property name="refund_inactivity" value="false" />
+		<action class="SpawnEntity">	
+			<property name="entity_names" value="zombieArlene,zombieBurnt,zombieLab,zombieMarlene,zombieDarlene,zombiePartyGirl,zombieNurse,zombieSkateboarder,zombieTomClark,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieUtilityWorker" />
+			<property name="spawn_count" value="10"  />
+			<property name="max_distance" value="10" />		
+			<property name="min_distance" value="8" />
+			<property name="add_to_group" value="spawnedEnemies" />
+			<property name="air_spawn" value="false" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff"/>
+			<property name="spawn_type" value="WanderingHorde" />	
+			<property name="is_aggressive" value="true" />
+		</action>
+		<action class="SpawnEntity">	
+			<property name="entity_names" value="zombieArlene,zombieBurnt,zombieLab,zombieMarlene,zombieDarlene,zombiePartyGirl,zombieNurse,zombieSkateboarder,zombieTomClark,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieUtilityWorker" />
+			<property name="spawn_count" value="5"  />
+			<property name="max_distance" value="10" />		
+			<property name="min_distance" value="8" />
+			<property name="add_to_group" value="spawnedEnemies" />
+			<property name="air_spawn" value="false" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff"/>
+			<property name="spawn_type" value="WanderingHorde" />	
+			<property name="is_aggressive" value="true" />
+		</action>
+		<action class="SpawnEntity">	
+			<property name="entity_names" value="zombieBiker,zombieFatHawaiian,zombieSpider,zombieSoldier"  />
+			<property name="spawn_count" value="3"  />
+			<property name="max_distance" value="10" />		
+			<property name="min_distance" value="8" />
+			<property name="add_to_group" value="spawnedEnemies" />
+			<property name="air_spawn" value="false" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_Survival_BlockDamageV1_Buff"/>
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="is_aggressive" value="true" />
+		</action>
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_DefenseWave_tier2_AddQuest">
+		
+		<action class="Delay">			
+			<property name="phase" value="1" />		
+			<property name="time" value="2" />			
+		</action>
+		
+		<action class="AddQuest">
+			<property name="quest" value="ZINCDefensePOI2Part2" />
+			<property name="phase" value="2" />	
+		</action>
+	
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_DefenseWave_tier6_AddQuest">	
+		<action class="Delay">			
+			<property name="phase" value="1" />		
+			<property name="time" value="2" />			
+		</action>	
+		<action class="AddQuest">
+			<property name="quest" value="ZINCDefenseTrader6" />
+			<property name="phase" value="2" />				
+		</action>
+	</action_sequence>
+
+
+
+	
+	
+	
+	<action_sequence name="ZombieINC_DefenseWave_tier2_4_messageveginevent">
+			     
+		<action class="AddChatMessage">							
+			<property name="text" value="| [FF6600]Player's Mind:[-] Why there is another horde ?" />
+			<property name="text_key" value="ZombieINC_Defense_ChatMessage_Wave4_Begin"  />
+			<property name="phase" value="1"/>	
+		</action>
+		</action_sequence>
+		
+	<action_sequence name="ZombieINC_DefenseWave_tier2_4"><property name="refund_inactivity" value="false" />
+		<!--<requirement class="OnQuest">
+			<property name="quest" value="zincdefensepoi2part2" />
+		</requirement>-->
+	<decision class="If">
+		<requirement class="IsIndoors">
+			<property name="invert" value="true" />
+		</requirement>
+	
+		<action class="SpawnEntity">    
+			<property name="entity_names" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse" />
+			<property name="spawn_count" value="4" />
+			<property name="max_distance" value="35" />
+			<property name="min_distance" value="15" />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />	
+		</action>
+	
+		<action class="SpawnEntity">	    
+			<property name="entity_names" value="zombieBiker,zombieFatHawaiian,zombieSpider,zombieSoldier" />
+			<property name="spawn_count" value="2"  />
+			<property name="max_distance" value="35" />
+			<property name="min_distance" value="15" />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />		
+		</action>
+	
+		<action class="SpawnEntity">	    
+			<property name="entity_names" value="zombieTomClarkFeral,zombiePartyGirlFeral,zombieArleneFeral" />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="35" />
+			<property name="min_distance" value="15" />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />	
+		</action>
+	</decision>
+	
+	<decision class="If">
+	<requirement class="IsIndoors">
+			<property name="invert" value="false" />
+		</requirement>
+	<action class="SpawnEntity">    
+			<property name="entity_names" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse" />
+			<property name="spawn_count" value="4" />
+			<property name="max_distance" value="15" />
+			<property name="min_distance" value="7" />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />	
+		</action>
+	
+		<action class="SpawnEntity">	    
+			<property name="entity_names" value="zombieBiker,zombieFatHawaiian,zombieSpider,zombieSoldier" />
+			<property name="spawn_count" value="2"  />
+			<property name="max_distance" value="15" />
+			<property name="min_distance" value="7" />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />		
+		</action>
+	
+		<action class="SpawnEntity">	    
+			<property name="entity_names" value="zombieTomClarkFeral,zombiePartyGirlFeral,zombieArleneFeral" />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="15" />
+			<property name="min_distance" value="7" />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />	
+		</action>
+	
+	</decision>
+	  </action_sequence> 	    
+
+	<action_sequence name="ZombieINC_DefenseWave_tier2_4MessageSurprise">	
+					     			    
+		<action class="BeltTooltip">  								
+			<property name="text" value="Wave 4 Finished"  />
+			<property name="text_key" value="ZombieINC_Defense_BeltTooltip_Wave4_Surprise"  />
+			<property name="phase" value="3"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text" value="| [FF6600]Player's Mind:[-] Oh shit! I'm still alive" />
+			<property name="text_key" value="ZombieINC_Defense_ChatMessage_Wave4_Surprise"  />
+			<property name="phase" value="3"/>	
+		</action>
+		
+	</action_sequence>
+	
+	<!--##Defense Jobs tier 3-4-->
+	<action_sequence name="ZombieINC_Activate_Event_Anchor_Defense_T3">
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Activate_Event_Defense_Buried_Buff_T3" />
+			<property name="phase" value="1"/>				
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_Activate_Event_Anchor_Defense_T4">
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Activate_Event_Defense_Buried_Buff_T4" />
+			<property name="phase" value="1"/>				
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_Activate_Event_Anchor_Defense_T5">
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Activate_Event_Defense_Buried_Buff_T5" />
+			<property name="phase" value="1"/>				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Spawn_Anchor_Defense_T3">
+		<action class="SpawnEntity">			
+			<property name="entity_names" value="ZombieINC_Defense_RallyPointHuntPlaceHolder" />
+			<property name="add_buffs" value="ZombieINC_Defense_BuffsToPlayer_Anchor_T3"/>
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="1" />
+			<property name="min_distance" value="1" />
+			<property name="air_spawn" value="true" />		
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_Spawn_Anchor_Defense_T4">
+		<action class="SpawnEntity">			
+			<property name="entity_names" value="ZombieINC_Defense_RallyPointHuntPlaceHolder" />
+			<property name="add_buffs" value="ZombieINC_Defense_BuffsToPlayer_Anchor_T4"/>
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="1" />
+			<property name="min_distance" value="1" />
+			<property name="air_spawn" value="true" />		
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_Spawn_Anchor_Defense_T5">
+		<action class="SpawnEntity">			
+			<property name="entity_names" value="ZombieINC_Defense_RallyPointHuntPlaceHolder" />
+			<property name="add_buffs" value="ZombieINC_Defense_BuffsToPlayer_Anchor_T5"/>
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="1" />
+			<property name="min_distance" value="1" />
+			<property name="air_spawn" value="true" />		
+		</action>
+	</action_sequence>
+	
+	
+	
+	
+	<action_sequence name="ZombieINC_DefenseWaveEventCall_T3_W1">	
+		
+		<action class="CallGameEvent">  								
+			<property name="game_events" value="ZombieINC_DefenseWave_tier3_1"  />
+			<property name="phase" value="0"/>			
+		</action>
+		
+		<action class="CallGameEvent">  								
+			<property name="game_events" value="ZombieINC_ZombieLureReplacer_T3_W1"  />	
+			<property name="phase" value="1"/>				
+		</action>	
+				
+				
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_DefenseWaveBlockerEvent">		
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_DefenseWaveBlocker" />	
+		</action>						
+	</action_sequence>
+	
+
+	
+	<action_sequence name="ZombieINC_DefenseWave_tier3_1" template="ZombieINC_DefenseWaveOpenArea_Template">			
+		<variable name="zombiename" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse" />
+		<variable name="spawncount" value="10" />		
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_DefenseWave_tier3_2" template="ZombieINC_DefenseWaveOpenArea_Template2">			
+		<variable name="zombiename" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse" />
+		<variable name="spawncount" value="8" />
+
+		<variable name="zombiename2" value="zombieBiker,zombieFatHawaiian,zombieSpider,zombieSoldier" />
+		<variable name="spawncount2" value="3"  />		
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_DefenseWave_tier3_3" template="ZombieINC_DefenseWaveOpenArea_Template2">			
+		<variable name="zombiename" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse" />
+		<variable name="spawncount" value="8" />
+
+		<variable name="zombiename2" value="zombieBiker,zombieFatHawaiian,zombieSpider,zombieSoldier" />
+		<variable name="spawncount2" value="5"  />		
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_DefenseWave_tier3_4" template="ZombieINC_DefenseWaveOpenArea_Template3">			
+		<variable name="zombiename" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse" />
+		<variable name="spawncount" value="7" />
+
+		<variable name="zombiename2" value="zombieBiker,zombieFatHawaiian,zombieSpider,zombieSoldier" />
+		<variable name="spawncount2" value="5"  />
+
+		<variable name="zombiename3" value="zombieTomClarkFeral,zombiePartyGirlFeral,zombieArleneFeral" />
+		<variable name="spawncount3" value="3"  />			
+	</action_sequence>
+	
+	
+	
+	
+	
+	<action_sequence name="ZombieINC_DefenseWave_tier4_1" template="ZombieINC_DefenseWaveOpenArea_Template">			
+		<variable name="zombiename" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse" />
+		<variable name="spawncount" value="10" />		
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_DefenseWave_tier4_2" template="ZombieINC_DefenseWaveOpenArea_Template2">			
+		<variable name="zombiename" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse" />
+		<variable name="spawncount" value="8" />
+
+		<variable name="zombiename2" value="zombieBiker,zombieFatHawaiian,zombieSpider,zombieSoldier" />
+		<variable name="spawncount2" value="3"  />			
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_DefenseWave_tier4_3" template="ZombieINC_DefenseWaveOpenArea_Template2">			
+		<variable name="zombiename" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse" />
+		<variable name="spawncount" value="8" />
+
+		<variable name="zombiename2" value="zombieBiker,zombieFatHawaiian,zombieSpider,zombieSoldier" />
+		<variable name="spawncount2" value="5"  />			
+	</action_sequence>
+	
+
+	<action_sequence name="ZombieINC_DefenseWave_tier4_4" template="ZombieINC_DefenseWaveOpenArea_Template3">			
+		<variable name="zombiename" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse" />
+		<variable name="spawncount" value="7" />
+
+		<variable name="zombiename2" value="zombieBiker,zombieFatHawaiian,zombieSpider,zombieSoldier" />
+		<variable name="spawncount2" value="5"  />
+
+		<variable name="zombiename3" value="zombieTomClarkFeral,zombiePartyGirlFeral,zombieArleneFeral" />
+		<variable name="spawncount3" value="3"  />			
+	</action_sequence>	
+	
+	<action_sequence name="ZombieINC_DefenseWave_tier4_5" template="ZombieINC_DefenseWaveOpenArea_Template3">			
+		<variable name="zombiename" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse" />
+		<variable name="spawncount" value="8" />
+
+		<variable name="zombiename2" value="zombieBiker,zombieFatHawaiian,zombieSpider,zombieSoldier" />
+		<variable name="spawncount2" value="5"  />
+
+		<variable name="zombiename3" value="zombieTomClarkFeral,zombiePartyGirlFeral,zombieArleneFeral" />
+		<variable name="spawncount3" value="4"  />			
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_DefenseWave_tier4_6" template="ZombieINC_DefenseWaveOpenArea_Template3">			
+		<variable name="zombiename" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse" />
+		<variable name="spawncount" value="8" />
+
+		<variable name="zombiename2" value="zombieBiker,zombieFatHawaiian,zombieSpider,zombieSoldier" />
+		<variable name="spawncount2" value="5"  />
+
+		<variable name="zombiename3" value="zombieTomClarkFeral,zombiePartyGirlFeral,zombieArleneFeral" />
+		<variable name="spawncount3" value="4"  />			
+	</action_sequence>
+	
+
+	<!--DefenseJobs tier 1-4 -->
+	<!--###DefenseJobs tier 5-6 -->
+	
+	<action_sequence name="ZombieINC_Defense_T5_FailMission_Event">
+		<action class="FailQuest">
+			<property name="phase" value="1" />
+			<property name="quest" value="zincdefensetrader5" />
+			<property name="remove_quest" value="false" />			
+		</action>
+		<action class="BeltTooltip">  								
+			<property name="text" value="Cant't activate"  />
+			<property name="text_key" value="ZombieINC_Defense_BeltTooltip_LeaveTraderAreaFail"  />
+			<property name="phase" value="2"/>
+		</action>			      			    
+		<action class="AddChatMessage">							
+			<property name="text" value="| [FF6600]Player's Mind:[-] Cant't activate, there are zombies nearby" />
+			<property name="text_key" value="ZombieINC_Defense_ChatMessage_LeaveTraderAreaFail"  />
+			<property name="phase" value="2"/>	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Defense_T6_FailMission_Event">
+		<action class="FailQuest">
+			<property name="phase" value="1" />
+			<property name="quest" value="zincdefensetrader6" />
+			<property name="remove_quest" value="false" />			
+		</action>
+		<action class="BeltTooltip">  								
+			<property name="text" value="Cant't activate"  />
+			<property name="text_key" value="ZombieINC_Defense_BeltTooltip_LeaveTraderAreaFail"  />
+			<property name="phase" value="2"/>
+		</action>			      			    
+		<action class="AddChatMessage">							
+			<property name="text" value="| [FF6600]Player's Mind:[-] Cant't activate, there are zombies nearby" />
+			<property name="text_key" value="ZombieINC_Defense_ChatMessage_LeaveTraderAreaFail"  />
+			<property name="phase" value="2"/>	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_DefenseIsNearTraderCheckerT5">
+		<property name="refund_inactivity" value="false" />
+			
+			<action class="Delay">
+				<property name="time" value="15" />
+				<property name="phase" value="1" />
+			</action>
+			
+			<wait class="While">
+				<property name="phase" value="2" />
+				<requirement class="InPOI"/>
+				<requirement class="InSafeZone"/>	
+			</wait>	
+			<action class="RemoveBuffsByTag">
+				<property name="phase" value="3" />
+				<property name="buff_tag" value="zombieinc_defense" />	
+			</action>
+			<action class="CallGameEvent">
+				<property name="phase" value="4" />
+				<property name="game_events" value="ZombieINC_Defense_T5_FailMission_Event" />	
+			</action>						
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_DefenseIsNearTraderCheckerT6">
+		<property name="refund_inactivity" value="false" />
+			
+			<action class="Delay">
+				<property name="time" value="15" />
+				<property name="phase" value="1" />
+			</action>
+			
+			<wait class="While">
+				<property name="phase" value="2" />
+				<requirement class="InPOI"/>	
+				<requirement class="InSafeZone"/>	
+			</wait>	
+			<action class="RemoveBuffsByTag">
+				<property name="phase" value="3" />
+				<property name="buff_tag" value="zombieinc_defense" />	
+			</action>
+			<action class="CallGameEvent">
+				<property name="phase" value="4" />
+				<property name="game_events" value="ZombieINC_Defense_T6_FailMission_Event" />	
+			</action>
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_FailmissionDefenseTrader">
+									
+		<action class="FailQuest">
+			<property name="quest" value="zincdefensetrader5" />
+			<property name="remove_quest" value="true" />			
+		</action>
+		
+		<action class="FailQuest">
+			<property name="quest" value="zincdefensetrader6" />
+			<property name="remove_quest" value="true" />			
+		</action>
+		
+		<action class="RemoveBuffsByTag">
+			<property name="buff_tag" value="zombieinc_defense" />	
+		</action>
+		
+		<action class="BeltTooltip">  								
+			<property name="text" value="StayToolongIndoorsFail"  />
+			<property name="text_key" value="ZombieINC_Defense_BeltTooltip_StayToolongIndoorsFail"  />
+			<property name="phase" value="1"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text" value="| [FF6600]Player's Mind:[-] StayToolongIndoorsFail" />
+			<property name="text_key" value="ZombieINC_Defense_ChatMessage_StayToolongIndoorsFail"  />
+			<property name="phase" value="1"/>	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_DefenseIsIndoorsCheckerEvent">
+		<action class="AddBuff">
+			<property name="phase" value="0" />
+			<property name="buff_name" value="ZombieINC_Tier6Phase2BeginProtection" />	
+		</action>							
+		<action class="AddBuff">
+			<property name="phase" value="1" />
+			<property name="buff_name" value="ZombieINC_IsInDoorsChecker" />	
+		</action>
+		<action class="AddBuff">
+			<property name="phase" value="1" />
+			<property name="buff_name" value="ZombieINC_IsInDoorsCheckerDisplay" />	
+		</action>
+		
+	</action_sequence>
+	
+	
+	
+	
+	<action_sequence name="ZombieINC_DefenseWave_tier5_1" template="ZombieINC_DefenseWaveOpenArea_Template">			
+		<variable name="zombiename" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse" />
+		<variable name="spawncount" value="10" />		
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_DefenseWave_tier5_2" template="ZombieINC_DefenseWaveOpenArea_Template2">			
+		<variable name="zombiename" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse" />
+		<variable name="spawncount" value="7" />
+
+		<variable name="zombiename2" value="zombieBiker,zombieFatHawaiian,zombieSpider,zombieSoldier" />
+		<variable name="spawncount2" value="5"  />		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_DefenseWave_tier5_3" template="ZombieINC_DefenseWaveOpenArea_Template3">			
+		<variable name="zombiename" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse" />
+		<variable name="spawncount" value="5" />
+
+		<variable name="zombiename2" value="zombieBiker,zombieFatHawaiian,zombieSpider,zombieSoldier" />
+		<variable name="spawncount2" value="7"  />
+
+		<variable name="zombiename3" value="zombieTomClarkFeral,zombiePartyGirlFeral,zombieArleneFeral" />
+		<variable name="spawncount3" value="2"  />			
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_DefenseWave_tier5_4" template="ZombieINC_DefenseWaveOpenArea_Template3">			
+		<variable name="zombiename" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse" />
+		<variable name="spawncount" value="5" />
+
+		<variable name="zombiename2" value="zombieBiker,zombieFatHawaiian,zombieSpider,zombieSoldier" />
+		<variable name="spawncount2" value="5"  />
+
+		<variable name="zombiename3" value="zombieTomClarkFeral,zombiePartyGirlFeral,zombieArleneFeral" />
+		<variable name="spawncount3" value="4"  />			
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_DefenseWave_tier5_5" template="ZombieINC_DefenseWaveOpenArea_Template4">			
+		<variable name="zombiename" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse" />
+		<variable name="spawncount" value="4" />
+
+		<variable name="zombiename2" value="zombieBiker,zombieFatHawaiian,zombieSpider,zombieSoldier" />
+		<variable name="spawncount2" value="4"  />
+
+		<variable name="zombiename3" value="zombieTomClarkFeral,zombiePartyGirlFeral,zombieArleneFeral" />
+		<variable name="spawncount3" value="3"  />
+
+		<variable name="zombiename4" value="zombieBikerFeral,zombieFatHawaiianFeral,zombieSpiderFeral,zombieSoldierFeral" />
+		<variable name="spawncount4" value="3"  />			
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_DefenseWave_tier5_6" template="ZombieINC_DefenseWaveOpenArea_Template4">			
+		<variable name="zombiename" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse" />
+		<variable name="spawncount" value="2" />
+
+		<variable name="zombiename2" value="zombieBiker,zombieFatHawaiian,zombieSpider,zombieSoldier" />
+		<variable name="spawncount2" value="2"  />
+
+		<variable name="zombiename3" value="zombieTomClarkFeral,zombiePartyGirlFeral,zombieArleneFeral" />
+		<variable name="spawncount3" value="5"  />
+
+		<variable name="zombiename4" value="zombieBikerFeral,zombieFatHawaiianFeral,zombieSpiderFeral,zombieSoldierFeral" />
+		<variable name="spawncount4" value="4"  />			
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_DefenseWave_tier5_7" template="ZombieINC_DefenseWaveOpenArea_Template2">			
+		<variable name="zombiename" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse" />
+		<variable name="spawncount" value="5" />
+
+		<variable name="zombiename2" value="zombieArleneFeral,zombieMarleneFeral,zombieSkateboarderFeral,zombieTomClarkFeral,zombieMoeFeral,zombieBoeFeral,zombieJoeFeral,zombieSteveFeral,zombieYoFeral,zombieBusinessManFeral,zombieDarleneFeral,zombiePartyGirlFeral,zombieJanitorFeral,zombieNurseFeral" />
+		<variable name="spawncount2" value="5"  />				
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_DefenseWave_tier5_8" template="ZombieINC_DefenseWaveTraderArea_Template2">			
+		<variable name="zombiename" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse" />
+		<variable name="spawncount" value="3" />
+
+		<variable name="zombiename2" value="zombieArleneFeral,zombieMarleneFeral,zombieSkateboarderFeral,zombieTomClarkFeral,zombieMoeFeral,zombieBoeFeral,zombieJoeFeral,zombieSteveFeral,zombieYoFeral,zombieBusinessManFeral,zombieDarleneFeral,zombiePartyGirlFeral,zombieJanitorFeral,zombieNurseFeral" />
+		<variable name="spawncount2" value="10"  />				
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_DefenseTraderSetWeather">
+	        			    				
+		<!--<action class="SetWeather">
+			<property name="weather_group" value="ZombieINC_fog" />
+			<property name="time" value="360" />
+		</action>-->
+					
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_tier5_DefenseChatAmbushed">
+	
+		<action class="AddChatMessage">							
+			<property name="text" value="| [FF6600]Player's Mind:[-] An Ambush" />
+			<property name="text_key" value="ZombieINC_Defense_ChatMessage_Wave7Begin"  />
+			<property name="phase" value="7"/>	
+		</action>
+		
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_DefenseWave_tier6_1" template="ZombieINC_DefenseWaveTraderArea_Template2">	
+		<variable name="zombiename" value="zombieArleneFeral,zombieMarleneFeral,zombieSkateboarderFeral,zombieTomClarkFeral,zombieMoeFeral,zombieBoeFeral,zombieJoeFeral,zombieSteveFeral,zombieYoFeral,zombieBusinessManFeral,zombieDarleneFeral,zombiePartyGirlFeral,zombieJanitorFeral,zombieNurseFeral" />
+		<variable name="spawncount" value="10"  />
+			
+		<variable name="zombiename2" value="zombieArleneRadiated,zombieMarleneRadiated,zombieSkateboarderRadiated,zombieTomClarkRadiated,zombieMoeRadiated,zombieBoeRadiated,zombieJoeRadiated,zombieSteveRadiated,zombieYoRadiated,zombieBusinessManRadiated,zombieDarleneRadiated,zombiePartyGirlRadiated,zombieJanitorRadiated,zombieNurseRadiated" />
+		<variable name="spawncount2" value="1" />					
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_DefenseWave_tier6_2" template="ZombieINC_DefenseWaveTraderArea_Template3">	
+		<variable name="zombiename" value="zombieArleneFeral,zombieMarleneFeral,zombieSkateboarderFeral,zombieTomClarkFeral,zombieMoeFeral,zombieBoeFeral,zombieJoeFeral,zombieSteveFeral,zombieYoFeral,zombieBusinessManFeral,zombieDarleneFeral,zombiePartyGirlFeral,zombieJanitorFeral,zombieNurseFeral" />
+		<variable name="spawncount" value="8"  />
+			
+		<variable name="zombiename2" value="zombieArleneRadiated,zombieMarleneRadiated,zombieSkateboarderRadiated,zombieTomClarkRadiated,zombieMoeRadiated,zombieBoeRadiated,zombieJoeRadiated,zombieSteveRadiated,zombieYoRadiated,zombieBusinessManRadiated,zombieDarleneRadiated,zombiePartyGirlRadiated,zombieJanitorRadiated,zombieNurseRadiated" />
+		<variable name="spawncount2" value="1" />
+		
+		<variable name="zombiename3" value="zombieBikerFeral,zombieFatHawaiianFeral,zombieSpiderFeral,zombieSoldierFeral" />
+		<variable name="spawncount3" value="3" />		
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_DefenseWave_tier6_3" template="ZombieINC_DefenseWaveTraderArea_Template3">	
+		<variable name="zombiename" value="zombieArleneFeral,zombieMarleneFeral,zombieSkateboarderFeral,zombieTomClarkFeral,zombieMoeFeral,zombieBoeFeral,zombieJoeFeral,zombieSteveFeral,zombieYoFeral,zombieBusinessManFeral,zombieDarleneFeral,zombiePartyGirlFeral,zombieJanitorFeral,zombieNurseFeral" />
+		<variable name="spawncount" value="5"  />
+			
+		<variable name="zombiename2" value="zombieArleneRadiated,zombieMarleneRadiated,zombieSkateboarderRadiated,zombieTomClarkRadiated,zombieMoeRadiated,zombieBoeRadiated,zombieJoeRadiated,zombieSteveRadiated,zombieYoRadiated,zombieBusinessManRadiated,zombieDarleneRadiated,zombiePartyGirlRadiated,zombieJanitorRadiated,zombieNurseRadiated" />
+		<variable name="spawncount2" value="1" />
+		
+		<variable name="zombiename3" value="zombieBikerFeral,zombieFatHawaiianFeral,zombieSpiderFeral,zombieSoldierFeral" />
+		<variable name="spawncount3" value="5" />		
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_DefenseWave_tier6_4" template="ZombieINC_DefenseWaveTraderArea_Template4">	
+		<variable name="zombiename" value="zombieArleneFeral,zombieMarleneFeral,zombieSkateboarderFeral,zombieTomClarkFeral,zombieMoeFeral,zombieBoeFeral,zombieJoeFeral,zombieSteveFeral,zombieYoFeral,zombieBusinessManFeral,zombieDarleneFeral,zombiePartyGirlFeral,zombieJanitorFeral,zombieNurseFeral" />
+		<variable name="spawncount" value="6"  />
+			
+		<variable name="zombiename2" value="zombieArleneRadiated,zombieMarleneRadiated,zombieSkateboarderRadiated,zombieTomClarkRadiated,zombieMoeRadiated,zombieBoeRadiated,zombieJoeRadiated,zombieSteveRadiated,zombieYoRadiated,zombieBusinessManRadiated,zombieDarleneRadiated,zombiePartyGirlRadiated,zombieJanitorRadiated,zombieNurseRadiated" />
+		<variable name="spawncount2" value="2" />
+		
+		<variable name="zombiename3" value="zombieBikerFeral,zombieFatHawaiianFeral,zombieSpiderFeral,zombieSoldierFeral" />
+		<variable name="spawncount3" value="1" />
+
+		<variable name="zombiename4" value="zombieBikerRadiated,zombieFatHawaiianRadiated,zombieSpiderRadiated,zombieSoldierRadiated" />
+		<variable name="spawncount4" value="1" />			
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_DefenseWave_tier6_5" template="ZombieINC_DefenseWaveTraderArea_Template4">	
+		<variable name="zombiename" value="zombieArleneFeral,zombieMarleneFeral,zombieSkateboarderFeral,zombieTomClarkFeral,zombieMoeFeral,zombieBoeFeral,zombieJoeFeral,zombieSteveFeral,zombieYoFeral,zombieBusinessManFeral,zombieDarleneFeral,zombiePartyGirlFeral,zombieJanitorFeral,zombieNurseFeral" />
+		<variable name="spawncount" value="5"  />
+			
+		<variable name="zombiename2" value="zombieArleneRadiated,zombieMarleneRadiated,zombieSkateboarderRadiated,zombieTomClarkRadiated,zombieMoeRadiated,zombieBoeRadiated,zombieJoeRadiated,zombieSteveRadiated,zombieYoRadiated,zombieBusinessManRadiated,zombieDarleneRadiated,zombiePartyGirlRadiated,zombieJanitorRadiated,zombieNurseRadiated" />
+		<variable name="spawncount2" value="2" />
+		
+		<variable name="zombiename3" value="zombieBikerFeral,zombieFatHawaiianFeral,zombieSpiderFeral,zombieSoldierFeral" />
+		<variable name="spawncount3" value="2" />
+
+		<variable name="zombiename4" value="zombieBikerRadiated,zombieFatHawaiianRadiated,zombieSpiderRadiated,zombieSoldierRadiated" />
+		<variable name="spawncount4" value="1" />			
+	</action_sequence>
+	
+	
+	
+	
+	<action_sequence name="ZombieINC_DefenseWave_tier6_6" template="ZombieINC_DefenseWaveTraderArea_Template4">	
+		<variable name="zombiename" value="zombieArleneFeral,zombieMarleneFeral,zombieSkateboarderFeral,zombieTomClarkFeral,zombieMoeFeral,zombieBoeFeral,zombieJoeFeral,zombieSteveFeral,zombieYoFeral,zombieBusinessManFeral,zombieDarleneFeral,zombiePartyGirlFeral,zombieJanitorFeral,zombieNurseFeral" />
+		<variable name="spawncount" value="7"  />
+			
+		<variable name="zombiename2" value="zombieArleneRadiated,zombieMarleneRadiated,zombieSkateboarderRadiated,zombieTomClarkRadiated,zombieMoeRadiated,zombieBoeRadiated,zombieJoeRadiated,zombieSteveRadiated,zombieYoRadiated,zombieBusinessManRadiated,zombieDarleneRadiated,zombiePartyGirlRadiated,zombieJanitorRadiated,zombieNurseRadiated" />
+		<variable name="spawncount2" value="3" />
+		
+		<variable name="zombiename3" value="zombieBikerFeral,zombieFatHawaiianFeral,zombieSpiderFeral,zombieSoldierFeral" />
+		<variable name="spawncount3" value="1" />
+
+		<variable name="zombiename4" value="zombieBikerRadiated,zombieFatHawaiianRadiated,zombieSpiderRadiated,zombieSoldierRadiated" />
+		<variable name="spawncount4" value="3" />			
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_DefenseWave_tier6_7" template="ZombieINC_DefenseWaveTraderArea_Template4">	
+		<variable name="zombiename" value="zombieArleneFeral,zombieMarleneFeral,zombieSkateboarderFeral,zombieTomClarkFeral,zombieMoeFeral,zombieBoeFeral,zombieJoeFeral,zombieSteveFeral,zombieYoFeral,zombieBusinessManFeral,zombieDarleneFeral,zombiePartyGirlFeral,zombieJanitorFeral,zombieNurseFeral" />
+		<variable name="spawncount" value="2"  />
+			
+		<variable name="zombiename2" value="zombieArleneRadiated,zombieMarleneRadiated,zombieSkateboarderRadiated,zombieTomClarkRadiated,zombieMoeRadiated,zombieBoeRadiated,zombieJoeRadiated,zombieSteveRadiated,zombieYoRadiated,zombieBusinessManRadiated,zombieDarleneRadiated,zombiePartyGirlRadiated,zombieJanitorRadiated,zombieNurseRadiated" />
+		<variable name="spawncount2" value="4" />
+		
+		<variable name="zombiename3" value="zombieBikerFeral,zombieFatHawaiianFeral,zombieSpiderFeral,zombieSoldierFeral" />
+		<variable name="spawncount3" value="3" />
+
+		<variable name="zombiename4" value="zombieBikerRadiated,zombieFatHawaiianRadiated,zombieSpiderRadiated,zombieSoldierRadiated" />
+		<variable name="spawncount4" value="3" />			
+	</action_sequence>
+	
+	
+	
+	
+	<action_sequence name="ZombieINC_DefenseWave_tier6_8" template="ZombieINC_DefenseWaveTraderArea_Template4">	
+		<variable name="zombiename" value="zombieArleneFeral,zombieMarleneFeral,zombieSkateboarderFeral,zombieTomClarkFeral,zombieMoeFeral,zombieBoeFeral,zombieJoeFeral,zombieSteveFeral,zombieYoFeral,zombieBusinessManFeral,zombieDarleneFeral,zombiePartyGirlFeral,zombieJanitorFeral,zombieNurseFeral" />
+		<variable name="spawncount" value="3"  />
+			
+		<variable name="zombiename2" value="zombieArleneRadiated,zombieMarleneRadiated,zombieSkateboarderRadiated,zombieTomClarkRadiated,zombieMoeRadiated,zombieBoeRadiated,zombieJoeRadiated,zombieSteveRadiated,zombieYoRadiated,zombieBusinessManRadiated,zombieDarleneRadiated,zombiePartyGirlRadiated,zombieJanitorRadiated,zombieNurseRadiated" />
+		<variable name="spawncount2" value="4" />
+		
+		<variable name="zombiename3" value="zombieBikerFeral,zombieFatHawaiianFeral,zombieSpiderFeral,zombieSoldierFeral" />
+		<variable name="spawncount3" value="4" />
+
+		<variable name="zombiename4" value="zombieBikerRadiated,zombieFatHawaiianRadiated,zombieSpiderRadiated,zombieSoldierRadiated" />
+		<variable name="spawncount4" value="3" />			
+	</action_sequence>
+	
+	
+	
+	
+	<action_sequence name="ZombieINC_DefenseWave_tier6_9" template="ZombieINC_DefenseWaveTraderArea_Template4">	
+		<variable name="zombiename" value="zombieArleneFeral,zombieMarleneFeral,zombieSkateboarderFeral,zombieTomClarkFeral,zombieMoeFeral,zombieBoeFeral,zombieJoeFeral,zombieSteveFeral,zombieYoFeral,zombieBusinessManFeral,zombieDarleneFeral,zombiePartyGirlFeral,zombieJanitorFeral,zombieNurseFeral" />
+		<variable name="spawncount" value="1"  />
+			
+		<variable name="zombiename2" value="zombieArleneRadiated,zombieMarleneRadiated,zombieSkateboarderRadiated,zombieTomClarkRadiated,zombieMoeRadiated,zombieBoeRadiated,zombieJoeRadiated,zombieSteveRadiated,zombieYoRadiated,zombieBusinessManRadiated,zombieDarleneRadiated,zombiePartyGirlRadiated,zombieJanitorRadiated,zombieNurseRadiated" />
+		<variable name="spawncount2" value="5" />
+		
+		<variable name="zombiename3" value="zombieBikerFeral,zombieFatHawaiianFeral,zombieSpiderFeral,zombieSoldierFeral" />
+		<variable name="spawncount3" value="4" />
+
+		<variable name="zombiename4" value="zombieBikerRadiated,zombieFatHawaiianRadiated,zombieSpiderRadiated,zombieSoldierRadiated" />
+		<variable name="spawncount4" value="4" />			
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_DefenseWave_tier6_10" template="ZombieINC_DefenseWaveTraderArea_Template4">	
+		<variable name="zombiename" value="zombieArleneFeral,zombieMarleneFeral,zombieSkateboarderFeral,zombieTomClarkFeral,zombieMoeFeral,zombieBoeFeral,zombieJoeFeral,zombieSteveFeral,zombieYoFeral,zombieBusinessManFeral,zombieDarleneFeral,zombiePartyGirlFeral,zombieJanitorFeral,zombieNurseFeral" />
+		<variable name="spawncount" value="1"  />
+			
+		<variable name="zombiename2" value="zombieArleneRadiated,zombieMarleneRadiated,zombieSkateboarderRadiated,zombieTomClarkRadiated,zombieMoeRadiated,zombieBoeRadiated,zombieJoeRadiated,zombieSteveRadiated,zombieYoRadiated,zombieBusinessManRadiated,zombieDarleneRadiated,zombiePartyGirlRadiated,zombieJanitorRadiated,zombieNurseRadiated" />
+		<variable name="spawncount2" value="6" />
+		
+		<variable name="zombiename3" value="zombieBikerFeral,zombieFatHawaiianFeral,zombieSpiderFeral,zombieSoldierFeral" />
+		<variable name="spawncount3" value="1" />
+
+		<variable name="zombiename4" value="zombieBikerRadiated,zombieFatHawaiianRadiated,zombieSpiderRadiated,zombieSoldierRadiated" />
+		<variable name="spawncount4" value="8" />			
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_Defense_T6_AddTurretBuff">
+		<property name="refund_inactivity" value="false" />
+			<action class="AddBuff">
+				<property name="buff_name" value="ZombieINC_Defense_BuffsToPlayer_T6"/>
+				<property name="check_already_exists" value="false" />
+				<property name="phase" value="1" />
+			</action>
+			<action class="Delay">
+				<property name="time" value="20" />
+				<property name="phase" value="2" />
+			</action>
+			<wait class="While">
+				<property name="phase" value="3" />
+				<requirement class="OnQuest">
+					<property name="quest" value="zincdefensetrader6" />
+				</requirement>
+				
+			</wait>
+			<action class="RemoveBuff">
+				<property name="buff_name" value="ZombieINC_Defense_BuffsToPlayer_T6"/>
+				<property name="phase" value="4" />
+			</action>
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_AddWarriosHelmet">
+				
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_WarriorsHelmetCheck" />
+			<property name="phase" value="0" />	
+		</action>
+				
+		<action class="AddItems">
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_WarriorsHelmet" />				
+			</requirement>
+			<property name="phase" value="1" />
+			<property name="added_items" value="ZombieINC_WarriorArmorSteelHelmet" />
+			<property name="added_item_counts" value="1" />			
+		</action>
+							
+		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_RemoveWarriosHelmet">
+		
+		<action class="RemoveItems">
+			<property name="phase" value="0" />
+			<property name="items_location" value="Toolbelt,Backpack,Equipment,Held"  />
+			<property name="items_tags" value="ZombieINCWarriorHelmet" />
+		</action>
+			
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_AddWarriosHelmet2">
+		
+		<action class="RemoveItems">
+			<property name="phase" value="0" />
+			<property name="items_location" value="Toolbelt,Backpack,Equipment,Held"  />
+			<property name="items_tags" value="ZombieINCWarriorHelmet" />
+		</action>
+		
+		<action class="AddItems">
+			<property name="phase" value="1" />
+			<property name="added_items" value="ZombieINC_WarriorArmorSteelHelmet" />
+			<property name="added_item_counts" value="1" />			
+		</action>
+							
+		
+	</action_sequence>
+	<!--MultiplayerCheckPhase-->
+	<action_sequence name="ZombieINC_MultiplayerCheckPhaseEventBuff">
+	
+		<action class="AddBuff">								
+			<property name="buff_name" value="ZombieINC_WaitPartnerGiver" />					
+		</action>
+		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_MultiplayerCheckPhaseEvent">
+	
+		<action class="RemoveBuff">	
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_WaitPartnerGiver" />				
+			</requirement>		
+			
+			<property name="buff_name" value="ZombieINC_WaitPartnerGiver" />		
+			<property name="phase" value="1" />				
+		</action>
+		
+		<action class="RemoveBuff">	
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_WaitPartner" />				
+			</requirement>		
+			
+			<property name="buff_name" value="ZombieINC_WaitPartner" />		
+			<property name="phase" value="1" />				
+		</action>
+	
+		<action class="Delay">			
+			<property name="phase" value="2" />		
+			<property name="time" value="3" />			
+		</action>
+	
+		<action class="AddPartyToGroup">			
+			<property name="phase" value="3" />		
+			<property name="group_name" value="CheckPhase" />			
+		</action>
+		
+		<decision class="If">
+				<requirement class="GroupLiveCount">
+					<property name="target_group" value="CheckPhase"/>
+					<property name="operation" value="GTE"/> 
+					<property name="count" value="2"/>
+				</requirement>
+						
+				<action class="AddChatMessage">
+					<property name="phase" value="1" />	
+					<property name="text" value="Waiting the remaining partners" />
+					<property name="text_key" value="ZombieINC_MultiplayerCheckChatMessage" />
+				</action>				
+						
+				<wait class="While">			
+					<property name="phase" value="2" />	
+					<requirement class="HasBuff">
+						<property name="buff_name" value="ZombieINC_WaitPartner" />				
+					</requirement>
+				
+				</wait>	
+				
+		</decision>
+		
+		<decision class="If">
+				<requirement class="GroupLiveCount">
+					<property name="target_group" value="CheckPhase"/>
+					<property name="operation" value="Equals"/> 
+					<property name="count" value="1"/>
+				</requirement>
+			
+				<action class="AddChatMessage">
+					<property name="phase" value="1" />	
+					<property name="text" value="Done" />
+				</action>
+				
+		</decision>
+		
+		
+	</action_sequence>
+	
+	
+	<!--MultiplayerCheckPhase-->
+	
+	<action_sequence name="ZombieINC_OnQuestDefensePOI">
+					
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_OnQuestDefensePOIBuff" />					 
+			<property name="phase" value="1" />
+		</action>
+			
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_AllowMissionBuffTypeOneEventGiver">
+					
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_AllowMissionBuffTypeOne" />					 
+			<property name="phase" value="1" />
+		</action>
+			
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_AllowMissionBuffTypeOneEventRemover">
+					
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_AllowMissionBuffTypeOne" />					 
+			<property name="phase" value="1" />
+		</action>
+			
+	</action_sequence>
+	 
+	
+	 
+	<action_sequence name="ZombieINC_LeaveQuestDefensePOI">
+					
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_OnQuestDefensePOIBuffRemover" />					 
+			<property name="phase" value="1" />
+		</action>
+			
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_EssenceBoxGiver">
+					
+		<action class="AddItems">							
+			<property name="added_items" value="ZombieINC_EssenceBox" />
+			<property name="added_item_counts" value="1" />			 
+			<property name="phase" value="1" />
+		</action>		
+	
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_EssenceBox1">
+						
+		<action class="AddItems">
+			<property name="added_items" value="resourceCloth" />
+			<property name="added_item_counts" value="5" />
+			<property name="phase" value="1" />
+		</action>
+				
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_EssenceBox2">
+		
+		<action class="AddItems">
+			<property name="added_items" value="ammoArrowSteelAP" />
+			<property name="added_item_counts" value="1" />			 
+			<property name="phase" value="1" />
+		</action>
+	
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_EssenceBox3">
+		
+		<action class="AddItems">
+			<property name="added_items" value="ZombieINC_resourceSmellEnhancer" />
+			<property name="added_item_counts" value="1" />			 
+			<property name="phase" value="1" />
+		</action>
+				
+	</action_sequence>
+	
+	<!--###Messages-->
+	<action_sequence name="ZombieINC_DefenseWave1_FinishedMessageEvent">	  
+							     			    
+		<action class="BeltTooltip">  								
+			<property name="text" value="Wave 1 Finished"  />
+			<property name="text_key" value="ZombieINC_Defense_BeltTooltip_Wave1"  />
+			<property name="phase" value="1"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text" value="| [FF6600]Player's Mind:[-] I've finished the first wave" />
+			<property name="text_key" value="ZombieINC_Defense_ChatMessage_Wave1"  />
+			<property name="phase" value="1"/>	
+		</action>
+		
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_DefenseWave2_FinishedMessageEvent">	  
+							     			    
+		<action class="BeltTooltip">  								
+			<property name="text" value="Wave 2 Finished"  />
+			<property name="text_key" value="ZombieINC_Defense_BeltTooltip_Wave2"  />
+			<property name="phase" value="1"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text" value="| [FF6600]Player's Mind:[-] I've finished the second wave" />
+			<property name="text_key" value="ZombieINC_Defense_ChatMessage_Wave2"  />
+			<property name="phase" value="1"/>	
+		</action>
+		
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_DefenseWave3_FinishedMessageEvent">	  
+							     			    
+		<action class="BeltTooltip">  								
+			<property name="text" value="Wave 3 Finished"  />
+			<property name="text_key" value="ZombieINC_Defense_BeltTooltip_Wave3"  />
+			<property name="phase" value="1"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text" value="| [FF6600]Player's Mind:[-] I've finished the third wave" />
+			<property name="text_key" value="ZombieINC_Defense_ChatMessage_Wave3"  />
+			<property name="phase" value="1"/>	
+		</action>
+		
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_DefenseWave4_FinishedMessageEvent">	  
+							     			    
+		<action class="BeltTooltip">  								
+			<property name="text" value="Wave 4 Finished"  />
+			<property name="text_key" value="ZombieINC_Defense_BeltTooltip_Wave4"  />
+			<property name="phase" value="1"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text" value="| [FF6600]Player's Mind:[-] I've finished the first wave" />
+			<property name="text_key" value="ZombieINC_Defense_ChatMessage_Wave4"  />
+			<property name="phase" value="1"/>	
+		</action>
+		
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_DefenseWave4Surprise_FinishedMessageEvent">	  
+							     			    
+		<action class="BeltTooltip">  								
+			<property name="text" value="Wave 4 Finished"  />
+			<property name="text_key" value="ZombieINC_Defense_BeltTooltip_Wave4_Surprise"  />
+			<property name="phase" value="1"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text" value="| [FF6600]Player's Mind:[-] I've finished the first wave" />
+			<property name="text_key" value="ZombieINC_Defense_ChatMessage_Wave4_Surprise"  />
+			<property name="phase" value="1"/>	
+		</action>
+		
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_DefenseWave5_FinishedMessageEvent">	  
+							     			    
+		<action class="BeltTooltip">  								
+			<property name="text" value="Wave 5 Finished"  />
+			<property name="text_key" value="ZombieINC_Defense_BeltTooltip_Wave5"  />
+			<property name="phase" value="1"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text" value="| [FF6600]Player's Mind:[-] I've finished the first wave" />
+			<property name="text_key" value="ZombieINC_Defense_ChatMessage_Wave5"  />
+			<property name="phase" value="1"/>	
+		</action>
+		
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_DefenseWave6_FinishedMessageEvent">	  
+							     			    
+		<action class="BeltTooltip">  								
+			<property name="text" value="Wave 1 Finished"  />
+			<property name="text_key" value="ZombieINC_Defense_BeltTooltip_Wave6"  />
+			<property name="phase" value="1"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text" value="| [FF6600]Player's Mind:[-] I've finished the first wave" />
+			<property name="text_key" value="ZombieINC_Defense_ChatMessage_Wave6"  />
+			<property name="phase" value="1"/>	
+		</action>
+		
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_DefenseWave7_FinishedMessageEvent">	  
+							     			    
+		<action class="BeltTooltip">  								
+			<property name="text" value="Wave 1 Finished"  />
+			<property name="text_key" value="ZombieINC_Defense_BeltTooltip_Wave7"  />
+			<property name="phase" value="1"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text" value="| [FF6600]Player's Mind:[-] I've finished the first wave" />
+			<property name="text_key" value="ZombieINC_Defense_ChatMessage_Wave7"  />
+			<property name="phase" value="1"/>	
+		</action>
+		
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_DefenseWave8_FinishedMessageEvent">	  
+							     			    
+		<action class="BeltTooltip">  								
+			<property name="text" value="Wave 1 Finished"  />
+			<property name="text_key" value="ZombieINC_Defense_BeltTooltip_Wave8"  />
+			<property name="phase" value="1"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text" value="| [FF6600]Player's Mind:[-] I've finished the first wave" />
+			<property name="text_key" value="ZombieINC_Defense_ChatMessage_Wave8"  />
+			<property name="phase" value="1"/>	
+		</action>
+		
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_DefenseWave9_FinishedMessageEvent">	  
+							     			    
+		<action class="BeltTooltip">  								
+			<property name="text" value="Wave 1 Finished"  />
+			<property name="text_key" value="ZombieINC_Defense_BeltTooltip_Wave9"  />
+			<property name="phase" value="1"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text" value="| [FF6600]Player's Mind:[-] I've finished the first wave" />
+			<property name="text_key" value="ZombieINC_Defense_ChatMessage_Wave9"  />
+			<property name="phase" value="1"/>	
+		</action>
+		
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_DefenseWave10_FinishedMessageEvent">	  
+							     			    
+		<action class="BeltTooltip">  								
+			<property name="text" value="Wave 1 Finished"  />
+			<property name="text_key" value="ZombieINC_Defense_BeltTooltip_Wave10"  />
+			<property name="phase" value="1"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text" value="| [FF6600]Player's Mind:[-] I've finished the first wave" />
+			<property name="text_key" value="ZombieINC_Defense_ChatMessage_Wave10"  />
+			<property name="phase" value="1"/>	
+		</action>
+		
+	</action_sequence>
+	
+	<!--Messages-->
+	<!--###Defense Stuff-->	
+	
+	<action_sequence name="ZombieINC_FailQuest_DefensePOI2"><property name="refund_inactivity" value="false" />
+	     <wait class="Until">
+			<requirement class="InPOI">
+				<property name="invert" value="true" />
+			</requirement>
+		</wait>
+		 <action class="Delay">
+			<property name="time" value="10-15" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="FailQuest">	   
+			<property name="quest" value="zincdefensepoi2" />
+			<property name="remove_quest" value="true"  />
+			<property name="phase" value="2" />
+		</action>
+		<action class="CallGameEvent">  								
+			<property name="game_events" value="ZombieINC_DefenseWave_tier2_AddQuest"  />
+			<property name="phase" value="3"/>
+		</action>
+	</action_sequence>	
+ 	
+	<action_sequence name="ZombieINC_FailQuest_DefenseTrader6">
+	     
+		<action class="FailQuest">	   
+			<property name="quest" value="zincdefensetrader6part1" />
+			<property name="remove_quest" value="true"  />		
+		</action>
+	
+	</action_sequence>	
+	
+		
+	
+	<action_sequence name="ZombieINC_Remove_Nearby_Enemies">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="zombie" />
+			<property name="max_distance" value="100" />
+		</requirement>
+	    <action class="AddEntitiesToGroup">
+			<property name="phase" value="1" />
+			<property name="entity_tags" value="zombie" />
+			<property name="group_name" value="NearbyEnemies" />
+			<property name="max_distance" value="100"/>			
+		</action>
+		
+	    <action class="RemoveEntities">
+			<property name="phase" value="2" />
+			<property name="target_group" value="NearbyEnemies" />			
+		</action>		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_RemoveItemsSmellEnhancer">	
+	    <action class="RemoveItems">
+			<property name="items_location" value="Toolbelt,Backpack"  />
+			<property name="items_tags" value="ZombieINCRemoveSmellEnhancer" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_RemoveItemsSmellEnhancer2">	
+	    <action class="RemoveItems">
+			<property name="items_location" value="Toolbelt,Backpack"  />
+			<property name="items_tags" value="ZombieINCRemoveSmellEnhancer" />
+			<property name="count" value="1" />
+			<property name="count_type" value="Items" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_RemoveItemsSmellEnhancer3">	
+	    <action class="RemoveItems">
+			<property name="items_location" value="Toolbelt,Backpack"  />
+			<property name="items_tags" value="ZombieINCRemoveSmellEnhancer" />
+			<property name="count" value="1" />
+			<property name="count_type" value="Items" />
+		</action>
+	</action_sequence>
+	
+	<!--###Template don't working-->
+	
+	<action_sequence name="ZombieINC_ZombieLureReplacer_T3_W1">	
+		
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="zombie" />
+			<property name="group_name" value="zombies" />
+			<property name="max_distance" value="10" />
+			<property name="y_height" value="5" />
+		</action>
+		
+	<decision class="If">
+		<property name="condition_type" value="All"/>
+		<requirement class="IsIndoors"/>
+						
+		<action class="BeltTooltip">  								
+			<property name="text" value="Cant't activate"  />
+			<property name="text_key" value="ZombieINC_Defense_BeltTooltip_AlternativeBuried1"  />
+			<property name="phase" value="1"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text" value="| [FF6600]Player's Mind:[-] Cant't activate, The lure needs to be in a open area." />
+			<property name="text_key" value="ZombieINC_Defense_ChatMessage_AlternativeBuried1"  />
+			<property name="phase" value="1"/>	
+		</action>		
+	</decision>
+	
+	<decision class="If">
+		<requirement class="GroupLiveCount">
+			<property name="target_group" value="zombies"/>
+			<property name="operation" value="GTE"/> 
+			<property name="count" value="1"/>
+		</requirement>
+	 	
+		<action class="AddBuff">
+			<property name="phase" value="1" />
+			<property name="target_group" value="zombies" />
+			<property name="buff_name" value="ZombieINC_EnemyDotBuff" />			
+		</action>
+		
+		<action class="CallGameEvent">  								
+			<property name="game_events" value="ZombieINC_ThereAreZombieNearbyMessages"  />
+			<property name="phase" value="1"/>
+		</action>
+	</decision>	
+		
+	<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_DefenseWaveBlocker"/> 
+				<property name="invert" value="true"/>
+			</requirement>
+			<requirement class="IsIndoors">
+				<property name="invert" value="true"/>
+			</requirement>
+			<requirement class="GroupLiveCount">
+					<property name="target_group" value="zombies"/>
+					<property name="operation" value="Equals"/> 
+					<property name="count" value="0"/>
+			</requirement>
+					
+		<action class="CallGameEvent">  								
+			<property name="game_events" value="ZombieINC_DefenseWave_tier3_1" param1="event"  />
+			<property name="phase" value="1"/>			
+		</action>
+		
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_DefenseWaveBlocker" />
+			<property name="phase" value="1"/>				
+		</action>
+		
+		<action class="BlockReplace">  								
+			<property name="block_to" value="ZombieINC_capChimneyLarge_T3_W1" param1="blockto" />
+			<property name="max_offset" value="1"  />
+			<property name="block_tags" value="ChimneyW1" param1="blockfrom"/>
+			<property name="phase" value="2"/>	
+		</action>	
+	</decision>				
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ZombieLureReplacer_T3_W2">	
+		
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="zombie" />
+			<property name="group_name" value="zombies" />
+			<property name="max_distance" value="10" />
+			<property name="y_height" value="5" />
+		</action>
+		
+	<decision class="If">
+		<property name="condition_type" value="All"/>
+		<requirement class="IsIndoors"/>
+						
+		<action class="BeltTooltip">  								
+			<property name="text" value="Cant't activate"  />
+			<property name="text_key" value="ZombieINC_Defense_BeltTooltip_AlternativeBuried1"  />
+			<property name="phase" value="1"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text" value="| [FF6600]Player's Mind:[-] Cant't activate, The lure needs to be in a open area." />
+			<property name="text_key" value="ZombieINC_Defense_ChatMessage_AlternativeBuried1"  />
+			<property name="phase" value="1"/>	
+		</action>		
+	</decision>
+	
+	<decision class="If">
+		<requirement class="GroupLiveCount">
+			<property name="target_group" value="zombies"/>
+			<property name="operation" value="GTE"/> 
+			<property name="count" value="1"/>
+		</requirement>
+	 		
+		<action class="AddBuff">
+			<property name="phase" value="1" />
+			<property name="target_group" value="zombies" />
+			<property name="buff_name" value="ZombieINC_EnemyDotBuff" />			
+		</action>	
+			
+		<action class="CallGameEvent">  								
+			<property name="game_events" value="ZombieINC_ThereAreZombieNearbyMessages"  />
+			<property name="phase" value="1"/>
+		</action>
+	</decision>	
+		
+	<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_DefenseWaveBlocker"/> 
+					<property name="invert" value="true"/>
+			</requirement>
+			<requirement class="IsIndoors">
+				<property name="invert" value="true"/>
+			</requirement>
+			<requirement class="GroupLiveCount">
+					<property name="target_group" value="zombies"/>
+					<property name="operation" value="Equals"/> 
+					<property name="count" value="0"/>
+			</requirement>
+					
+		<action class="CallGameEvent">  								
+			<property name="game_events" value="ZombieINC_DefenseWave_tier3_2" param1="event"  />
+			<property name="phase" value="1"/>			
+		</action>
+		
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_DefenseWaveBlocker" />
+			<property name="phase" value="1"/>				
+		</action>
+		
+		<action class="BlockReplace">  								
+			<property name="block_to" value="ZombieINC_capChimneyLarge_T3_W2" param1="blockto" />
+			<property name="max_offset" value="1"  />
+			<property name="block_tags" value="ChimneyW2" param1="blockfrom"/>
+			<property name="phase" value="2"/>	
+		</action>	
+	</decision>				
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ZombieLureReplacer_T3_W3">	
+		
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="zombie" />
+			<property name="group_name" value="zombies" />
+			<property name="max_distance" value="10" />
+			<property name="y_height" value="5" />
+		</action>
+	
+	<decision class="If">
+		<property name="condition_type" value="All"/>
+		<requirement class="IsIndoors"/>
+						
+		<action class="BeltTooltip">  								
+			<property name="text" value="Cant't activate"  />
+			<property name="text_key" value="ZombieINC_Defense_BeltTooltip_AlternativeBuried1"  />
+			<property name="phase" value="1"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text" value="| [FF6600]Player's Mind:[-] Cant't activate, The lure needs to be in a open area." />
+			<property name="text_key" value="ZombieINC_Defense_ChatMessage_AlternativeBuried1"  />
+			<property name="phase" value="1"/>	
+		</action>		
+	</decision>
+		
+	<decision class="If">
+		<requirement class="GroupLiveCount">
+			<property name="target_group" value="zombies"/>
+			<property name="operation" value="GTE"/> 
+			<property name="count" value="1"/>
+		</requirement>
+	 		
+		<action class="AddBuff">
+			<property name="phase" value="1" />
+			<property name="target_group" value="zombies" />
+			<property name="buff_name" value="ZombieINC_EnemyDotBuff" />			
+		</action>	
+			
+		<action class="CallGameEvent">  								
+			<property name="game_events" value="ZombieINC_ThereAreZombieNearbyMessages"  />
+			<property name="phase" value="1"/>
+		</action>
+	</decision>	
+		
+	<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_DefenseWaveBlocker"/> 
+					<property name="invert" value="true"/>
+			</requirement>
+			<requirement class="IsIndoors">
+				<property name="invert" value="true"/>
+			</requirement>
+			<requirement class="GroupLiveCount">
+					<property name="target_group" value="zombies"/>
+					<property name="operation" value="Equals"/> 
+					<property name="count" value="0"/>
+			</requirement>
+					
+		<action class="CallGameEvent">  								
+			<property name="game_events" value="ZombieINC_DefenseWave_tier3_3" param1="event"  />
+			<property name="phase" value="1"/>			
+		</action>
+		
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_DefenseWaveBlocker" />
+			<property name="phase" value="1"/>				
+		</action>
+		
+		<action class="BlockReplace">  								
+			<property name="block_to" value="ZombieINC_capChimneyLarge_T3_W3" param1="blockto" />
+			<property name="max_offset" value="1"  />
+			<property name="block_tags" value="ChimneyW3" param1="blockfrom"/>
+			<property name="phase" value="2"/>	
+		</action>	
+	</decision>				
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ZombieLureReplacer_T3_W4">	
+		
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="zombie" />
+			<property name="group_name" value="zombies" />
+			<property name="max_distance" value="10" />
+			<property name="y_height" value="5" />
+		</action>
+		
+	<decision class="If">
+		<property name="condition_type" value="All"/>
+		<requirement class="IsIndoors"/>
+						
+		<action class="BeltTooltip">  								
+			<property name="text" value="Cant't activate"  />
+			<property name="text_key" value="ZombieINC_Defense_BeltTooltip_AlternativeBuried1"  />
+			<property name="phase" value="1"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text" value="| [FF6600]Player's Mind:[-] Cant't activate, The lure needs to be in a open area." />
+			<property name="text_key" value="ZombieINC_Defense_ChatMessage_AlternativeBuried1"  />
+			<property name="phase" value="1"/>	
+		</action>		
+	</decision>
+		
+	<decision class="If">
+		<requirement class="GroupLiveCount">
+			<property name="target_group" value="zombies"/>
+			<property name="operation" value="GTE"/> 
+			<property name="count" value="1"/>
+		</requirement>
+	 	
+		<action class="AddBuff">
+			<property name="phase" value="1" />
+			<property name="target_group" value="zombies" />
+			<property name="buff_name" value="ZombieINC_EnemyDotBuff" />			
+		</action>
+		
+		<action class="CallGameEvent">  								
+			<property name="game_events" value="ZombieINC_ThereAreZombieNearbyMessages"  />
+			<property name="phase" value="1"/>
+		</action>
+	</decision>	
+		
+	<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_DefenseWaveBlocker"/> 
+					<property name="invert" value="true"/>
+			</requirement>
+			<requirement class="IsIndoors">
+				<property name="invert" value="true"/>
+			</requirement>
+			<requirement class="GroupLiveCount">
+					<property name="target_group" value="zombies"/>
+					<property name="operation" value="Equals"/> 
+					<property name="count" value="0"/>
+			</requirement>
+					
+		<action class="CallGameEvent">  								
+			<property name="game_events" value="ZombieINC_DefenseWave_tier3_4" param1="event"  />
+			<property name="phase" value="1"/>			
+		</action>
+		
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_DefenseWaveBlocker" />
+			<property name="phase" value="1"/>				
+		</action>
+		
+		<action class="BlockReplace">  								
+			<property name="block_to" value="ZombieINC_capChimneyLarge_T3_W4" param1="blockto" />
+			<property name="max_offset" value="1"  />
+			<property name="block_tags" value="ChimneyW4" param1="blockfrom"/>
+			<property name="phase" value="2"/>	
+		</action>	
+	</decision>				
+	</action_sequence>
+	
+	
+	
+	
+	
+	
+	
+	<action_sequence name="ZombieINC_ZombieLureReplacer_T5_W1">	
+		
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="zombie" />
+			<property name="group_name" value="zombies" />
+			<property name="max_distance" value="10" />
+			<property name="y_height" value="5" />
+		</action>
+	
+	<decision class="If">
+		<property name="condition_type" value="All"/>
+		<requirement class="IsIndoors"/>
+						
+		<action class="BeltTooltip">  								
+			<property name="text" value="Cant't activate"  />
+			<property name="text_key" value="ZombieINC_Defense_BeltTooltip_AlternativeBuried1"  />
+			<property name="phase" value="1"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text" value="| [FF6600]Player's Mind:[-] Cant't activate, The lure needs to be in a open area." />
+			<property name="text_key" value="ZombieINC_Defense_ChatMessage_AlternativeBuried1"  />
+			<property name="phase" value="1"/>	
+		</action>		
+	</decision>
+	
+	<decision class="If">
+		<requirement class="GroupLiveCount">
+			<property name="target_group" value="zombies"/>
+			<property name="operation" value="GTE"/> 
+			<property name="count" value="1"/>
+		</requirement>
+	 		
+		<action class="AddBuff">
+			<property name="phase" value="1" />
+			<property name="target_group" value="zombies" />
+			<property name="buff_name" value="ZombieINC_EnemyDotBuff" />			
+		</action>	
+			
+		<action class="CallGameEvent">  								
+			<property name="game_events" value="ZombieINC_ThereAreZombieNearbyMessages"  />
+			<property name="phase" value="1"/>
+		</action>
+	</decision>	
+		
+	<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_DefenseWaveBlocker"/> 
+					<property name="invert" value="true"/>
+			</requirement>
+			<requirement class="IsIndoors">
+				<property name="invert" value="true"/>
+			</requirement>
+			<requirement class="GroupLiveCount">
+					<property name="target_group" value="zombies"/>
+					<property name="operation" value="Equals"/> 
+					<property name="count" value="0"/>
+			</requirement>
+					
+		<action class="CallGameEvent">  								
+			<property name="game_events" value="ZombieINC_DefenseWave_tier5_1" param1="event"  />
+			<property name="phase" value="1"/>			
+		</action>
+		
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_DefenseWaveBlocker" />
+			<property name="phase" value="1"/>				
+		</action>
+		
+		<action class="BlockReplace">  								
+			<property name="block_to" value="ZombieINC_capChimneyLarge_T5_W1" param1="blockto" />
+			<property name="max_offset" value="1"  />
+			<property name="block_tags" value="ChimneyW1" param1="blockfrom"/>
+			<property name="phase" value="2"/>	
+		</action>	
+	</decision>				
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ZombieLureReplacer_T5_W2">	
+		
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="zombie" />
+			<property name="group_name" value="zombies" />
+			<property name="max_distance" value="10" />
+			<property name="y_height" value="5" />
+		</action>
+		
+	<decision class="If">
+		<property name="condition_type" value="All"/>
+		<requirement class="IsIndoors"/>
+						
+		<action class="BeltTooltip">  								
+			<property name="text" value="Cant't activate"  />
+			<property name="text_key" value="ZombieINC_Defense_BeltTooltip_AlternativeBuried1"  />
+			<property name="phase" value="1"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text" value="| [FF6600]Player's Mind:[-] Cant't activate, The lure needs to be in a open area." />
+			<property name="text_key" value="ZombieINC_Defense_ChatMessage_AlternativeBuried1"  />
+			<property name="phase" value="1"/>	
+		</action>		
+	</decision>
+		
+	<decision class="If">
+		<requirement class="GroupLiveCount">
+			<property name="target_group" value="zombies"/>
+			<property name="operation" value="GTE"/> 
+			<property name="count" value="1"/>
+		</requirement>
+	 		
+		<action class="AddBuff">
+			<property name="phase" value="1" />
+			<property name="target_group" value="zombies" />
+			<property name="buff_name" value="ZombieINC_EnemyDotBuff" />			
+		</action>	
+			
+		<action class="CallGameEvent">  								
+			<property name="game_events" value="ZombieINC_ThereAreZombieNearbyMessages"  />
+			<property name="phase" value="1"/>
+		</action>
+	</decision>	
+		
+	<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_DefenseWaveBlocker"/> 
+					<property name="invert" value="true"/>
+			</requirement>
+			<requirement class="IsIndoors">
+				<property name="invert" value="true"/>
+			</requirement>
+			<requirement class="GroupLiveCount">
+					<property name="target_group" value="zombies"/>
+					<property name="operation" value="Equals"/> 
+					<property name="count" value="0"/>
+			</requirement>
+					
+		<action class="CallGameEvent">  								
+			<property name="game_events" value="ZombieINC_DefenseWave_tier5_2" param1="event"  />
+			<property name="phase" value="1"/>			
+		</action>
+		
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_DefenseWaveBlocker" />
+			<property name="phase" value="1"/>				
+		</action>
+		
+		<action class="BlockReplace">  								
+			<property name="block_to" value="ZombieINC_capChimneyLarge_T5_W2" param1="blockto" />
+			<property name="max_offset" value="1"  />
+			<property name="block_tags" value="ChimneyW2" param1="blockfrom"/>
+			<property name="phase" value="2"/>	
+		</action>	
+	</decision>				
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ZombieLureReplacer_T5_W3">	
+		
+	
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="zombie" />
+			<property name="group_name" value="zombies" />
+			<property name="max_distance" value="10" />
+			<property name="y_height" value="5" />
+		</action>
+		
+	<decision class="If">
+		<property name="condition_type" value="All"/>
+		<requirement class="IsIndoors"/>
+						
+		<action class="BeltTooltip">  								
+			<property name="text" value="Cant't activate"  />
+			<property name="text_key" value="ZombieINC_Defense_BeltTooltip_AlternativeBuried1"  />
+			<property name="phase" value="1"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text" value="| [FF6600]Player's Mind:[-] Cant't activate, The lure needs to be in a open area." />
+			<property name="text_key" value="ZombieINC_Defense_ChatMessage_AlternativeBuried1"  />
+			<property name="phase" value="1"/>	
+		</action>		
+	</decision>
+	
+	<decision class="If">
+		<requirement class="GroupLiveCount">
+			<property name="target_group" value="zombies"/>
+			<property name="operation" value="GTE"/> 
+			<property name="count" value="1"/>
+		</requirement>
+	 	
+		<action class="AddBuff">
+			<property name="phase" value="1" />
+			<property name="target_group" value="zombies" />
+			<property name="buff_name" value="ZombieINC_EnemyDotBuff" />			
+		</action>
+		
+		<action class="CallGameEvent">  								
+			<property name="game_events" value="ZombieINC_ThereAreZombieNearbyMessages"  />
+			<property name="phase" value="1"/>
+		</action>
+	</decision>	
+		
+	<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_DefenseWaveBlocker"/> 
+					<property name="invert" value="true"/>
+			</requirement>
+			<requirement class="IsIndoors">
+				<property name="invert" value="true"/>
+			</requirement>
+			<requirement class="GroupLiveCount">
+					<property name="target_group" value="zombies"/>
+					<property name="operation" value="Equals"/> 
+					<property name="count" value="0"/>
+			</requirement>
+					
+		<action class="CallGameEvent">  								
+			<property name="game_events" value="ZombieINC_DefenseWave_tier5_3" param1="event"  />
+			<property name="phase" value="1"/>			
+		</action>
+		
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_DefenseWaveBlocker" />
+			<property name="phase" value="1"/>				
+		</action>
+		
+		<action class="BlockReplace">  								
+			<property name="block_to" value="ZombieINC_capChimneyLarge_T5_W3" param1="blockto" />
+			<property name="max_offset" value="1"  />
+			<property name="block_tags" value="ChimneyW3" param1="blockfrom"/>
+			<property name="phase" value="2"/>	
+		</action>	
+	</decision>				
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ZombieLureReplacer_T5_W4">	
+		
+	
+		
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="zombie" />
+			<property name="group_name" value="zombies" />
+			<property name="max_distance" value="10" />
+			<property name="y_height" value="5" />
+		</action>
+		
+	<decision class="If">
+		<property name="condition_type" value="All"/>
+		<requirement class="IsIndoors"/>
+						
+		<action class="BeltTooltip">  								
+			<property name="text" value="Cant't activate"  />
+			<property name="text_key" value="ZombieINC_Defense_BeltTooltip_AlternativeBuried1"  />
+			<property name="phase" value="1"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text" value="| [FF6600]Player's Mind:[-] Cant't activate, The lure needs to be in a open area." />
+			<property name="text_key" value="ZombieINC_Defense_ChatMessage_AlternativeBuried1"  />
+			<property name="phase" value="1"/>	
+		</action>		
+	</decision>
+		
+	
+	<decision class="If">
+		<requirement class="GroupLiveCount">
+			<property name="target_group" value="zombies"/>
+			<property name="operation" value="GTE"/> 
+			<property name="count" value="1"/>
+		</requirement>
+	 	
+		<action class="AddBuff">
+			<property name="phase" value="1" />
+			<property name="target_group" value="zombies" />
+			<property name="buff_name" value="ZombieINC_EnemyDotBuff" />			
+		</action>
+		
+		<action class="CallGameEvent">  								
+			<property name="game_events" value="ZombieINC_ThereAreZombieNearbyMessages"  />
+			<property name="phase" value="1"/>
+		</action>
+	</decision>	
+		
+	<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_DefenseWaveBlocker"/> 
+					<property name="invert" value="true"/>
+			</requirement>
+			<requirement class="IsIndoors">
+				<property name="invert" value="true"/>
+			</requirement>
+			<requirement class="GroupLiveCount">
+					<property name="target_group" value="zombies"/>
+					<property name="operation" value="Equals"/> 
+					<property name="count" value="0"/>
+			</requirement>
+					
+		<action class="CallGameEvent">  								
+			<property name="game_events" value="ZombieINC_DefenseWave_tier5_4" param1="event"  />
+			<property name="phase" value="1"/>			
+		</action>
+		
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_DefenseWaveBlocker" />
+			<property name="phase" value="1"/>				
+		</action>
+		
+		<action class="BlockReplace">  								
+			<property name="block_to" value="ZombieINC_capChimneyLarge_T5_W4" param1="blockto" />
+			<property name="max_offset" value="1"  />
+			<property name="block_tags" value="ChimneyW4" param1="blockfrom"/>
+			<property name="phase" value="2"/>	
+		</action>	
+	</decision>				
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ZombieLureReplacer_T5_W5">	
+		
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="zombie" />
+			<property name="group_name" value="zombies" />
+			<property name="max_distance" value="10" />
+			<property name="y_height" value="5" />
+		</action>
+	
+	<decision class="If">
+		<property name="condition_type" value="All"/>
+		<requirement class="IsIndoors"/>
+						
+		<action class="BeltTooltip">  								
+			<property name="text" value="Cant't activate"  />
+			<property name="text_key" value="ZombieINC_Defense_BeltTooltip_AlternativeBuried1"  />
+			<property name="phase" value="1"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text" value="| [FF6600]Player's Mind:[-] Cant't activate, The lure needs to be in a open area." />
+			<property name="text_key" value="ZombieINC_Defense_ChatMessage_AlternativeBuried1"  />
+			<property name="phase" value="1"/>	
+		</action>		
+	</decision>
+		
+	<decision class="If">
+		<requirement class="GroupLiveCount">
+			<property name="target_group" value="zombies"/>
+			<property name="operation" value="GTE"/> 
+			<property name="count" value="1"/>
+		</requirement>
+	 	
+		<action class="AddBuff">
+			<property name="phase" value="1" />
+			<property name="target_group" value="zombies" />
+			<property name="buff_name" value="ZombieINC_EnemyDotBuff" />			
+		</action>
+		
+		<action class="CallGameEvent">  								
+			<property name="game_events" value="ZombieINC_ThereAreZombieNearbyMessages"  />
+			<property name="phase" value="1"/>
+		</action>
+	</decision>	
+		
+	<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_DefenseWaveBlocker"/> 
+					<property name="invert" value="true"/>
+			</requirement>
+			<requirement class="IsIndoors">
+				<property name="invert" value="true"/>
+			</requirement>
+			<requirement class="GroupLiveCount">
+					<property name="target_group" value="zombies"/>
+					<property name="operation" value="Equals"/> 
+					<property name="count" value="0"/>
+			</requirement>
+					
+		<action class="CallGameEvent">  								
+			<property name="game_events" value="ZombieINC_DefenseWave_tier5_5" param1="event"  />
+			<property name="phase" value="1"/>			
+		</action>
+		
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_DefenseWaveBlocker" />
+			<property name="phase" value="1"/>				
+		</action>
+		
+		<action class="BlockReplace">  								
+			<property name="block_to" value="ZombieINC_capChimneyLarge_T5_W5" param1="blockto" />
+			<property name="max_offset" value="1"  />
+			<property name="block_tags" value="ChimneyW5" param1="blockfrom"/>
+			<property name="phase" value="2"/>	
+		</action>	
+	</decision>				
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ZombieLureReplacer_T5_W6">	
+		
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="zombie" />
+			<property name="group_name" value="zombies" />
+			<property name="max_distance" value="10" />
+			<property name="y_height" value="5" />
+		</action>
+	
+	<decision class="If">
+		<property name="condition_type" value="All"/>
+		<requirement class="IsIndoors"/>
+						
+		<action class="BeltTooltip">  								
+			<property name="text" value="Cant't activate"  />
+			<property name="text_key" value="ZombieINC_Defense_BeltTooltip_AlternativeBuried1"  />
+			<property name="phase" value="1"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text" value="| [FF6600]Player's Mind:[-] Cant't activate, The lure needs to be in a open area." />
+			<property name="text_key" value="ZombieINC_Defense_ChatMessage_AlternativeBuried1"  />
+			<property name="phase" value="1"/>	
+		</action>		
+	</decision>
+		
+	<decision class="If">
+		<requirement class="GroupLiveCount">
+			<property name="target_group" value="zombies"/>
+			<property name="operation" value="GTE"/> 
+			<property name="count" value="1"/>
+		</requirement>
+	 	
+		<action class="AddBuff">
+			<property name="phase" value="1" />
+			<property name="target_group" value="zombies" />
+			<property name="buff_name" value="ZombieINC_EnemyDotBuff" />			
+		</action>
+		
+		<action class="CallGameEvent">  								
+			<property name="game_events" value="ZombieINC_ThereAreZombieNearbyMessages"  />
+			<property name="phase" value="1"/>
+		</action>
+	</decision>	
+		
+	<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_DefenseWaveBlocker"/> 
+					<property name="invert" value="true"/>
+			</requirement>
+			<requirement class="IsIndoors">
+				<property name="invert" value="true"/>
+			</requirement>
+			<requirement class="GroupLiveCount">
+					<property name="target_group" value="zombies"/>
+					<property name="operation" value="Equals"/> 
+					<property name="count" value="0"/>
+			</requirement>
+					
+		<action class="CallGameEvent">  								
+			<property name="game_events" value="ZombieINC_DefenseWave_tier5_6" param1="event"  />
+			<property name="phase" value="1"/>			
+		</action>
+		
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_DefenseWaveBlocker" />
+			<property name="phase" value="1"/>				
+		</action>
+		
+		<action class="BlockReplace">  								
+			<property name="block_to" value="ZombieINC_capChimneyLarge_T5_W6" param1="blockto" />
+			<property name="max_offset" value="1"  />
+			<property name="block_tags" value="ChimneyW6" param1="blockfrom"/>
+			<property name="phase" value="2"/>	
+		</action>	
+	</decision>				
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ZombieLureReplacer_T5_W7">	
+		
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="zombie" />
+			<property name="group_name" value="zombies" />
+			<property name="max_distance" value="10" />
+			<property name="y_height" value="5" />
+		</action>
+				
+	<decision class="If">
+		<property name="condition_type" value="All"/>
+		<requirement class="IsIndoors"/>
+						
+		<action class="BeltTooltip">  								
+			<property name="text" value="Cant't activate"  />
+			<property name="text_key" value="ZombieINC_Defense_BeltTooltip_AlternativeBuried1"  />
+			<property name="phase" value="1"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text" value="| [FF6600]Player's Mind:[-] Cant't activate, The lure needs to be in a open area." />
+			<property name="text_key" value="ZombieINC_Defense_ChatMessage_AlternativeBuried1"  />
+			<property name="phase" value="1"/>	
+		</action>		
+	</decision>
+	
+	<decision class="If">
+		<requirement class="GroupLiveCount">
+			<property name="target_group" value="zombies"/>
+			<property name="operation" value="GTE"/> 
+			<property name="count" value="1"/>
+		</requirement>
+	 	
+		<action class="AddBuff">
+			<property name="phase" value="1" />
+			<property name="target_group" value="zombies" />
+			<property name="buff_name" value="ZombieINC_EnemyDotBuff" />			
+		</action>
+		
+		<action class="CallGameEvent">  								
+			<property name="game_events" value="ZombieINC_ThereAreZombieNearbyMessages"  />
+			<property name="phase" value="1"/>
+		</action>
+	</decision>	
+		
+	<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="HasBuff">
+					<property name="buff_name" value="ZombieINC_DefenseWaveBlocker"/> 
+					<property name="invert" value="true"/>
+			</requirement>
+			<requirement class="IsIndoors">
+				<property name="invert" value="true"/>
+			</requirement>
+			<requirement class="GroupLiveCount">
+					<property name="target_group" value="zombies"/>
+					<property name="operation" value="Equals"/> 
+					<property name="count" value="0"/>
+			</requirement>
+					
+		<action class="CallGameEvent">  								
+			<property name="game_events" value="ZombieINC_DefenseWave_tier5_7" param1="event"  />
+			<property name="phase" value="1"/>			
+		</action>
+		
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_DefenseWaveBlocker" />
+			<property name="phase" value="1"/>				
+		</action>
+		
+		<action class="BlockReplace">  								
+			<property name="block_to" value="ZombieINC_capChimneyLarge_T5_W7" param1="blockto" />
+			<property name="max_offset" value="1"  />
+			<property name="block_tags" value="ChimneyW7" param1="blockfrom"/>
+			<property name="phase" value="2"/>	
+		</action>	
+	</decision>				
+	</action_sequence>
+	<!--Template don't working-->
+	<!--##Fatal Errors Protectors Defense-->
+	
+	<action_sequence name="ZombieINC_Defense_T1_FailQuest_Event">
+		<property name="allow_user_trigger" value="true" />
+		<action class="FailQuest">	   
+			<property name="quest" value="zincdefensepoi1" />
+			<property name="remove_quest" value="true"  />		
+		</action>		
+		<!--<action class="AddQuest">
+			<property name="quest" value="zincdefensepoi1" />
+		</action>-->
+	</action_sequence>	
+	
+	<action_sequence name="ZombieINC_Defense_T2_FailQuest_Event">
+		<property name="allow_user_trigger" value="true" />
+		<action class="FailQuest">	   
+			<property name="quest" value="zincdefensepoi2" />
+			<property name="remove_quest" value="true"  />		
+		</action>
+		<!--<action class="AddQuest">
+			<property name="quest" value="zincdefensepoi2" />
+		</action>-->
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Defense_T1_FatalErrorProtectorBuff_Event">			
+	    <action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Defense_T1_FatalErrorProtector_Buff" />				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Defense_T2_FatalErrorProtectorBuff_Event">		
+	    <action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Defense_T2_FatalErrorProtector_Buff" />				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Defense_T1_RemoveFatalErrorProtectorBuff_Event">			
+	    <action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_Defense_T1_FatalErrorProtector_Buff" />				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Defense_T2_RemoveFatalErrorProtectorBuff_Event">		
+	    <action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_Defense_T2_FatalErrorProtector_Buff" />				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Defense_T3_FailQuest_Event">
+		<property name="allow_user_trigger" value="true" />
+		<action class="FailQuest">	   
+			<property name="quest" value="zincdefensearea3" />
+			<property name="remove_quest" value="true"  />		
+		</action>
+		<!--<action class="AddQuest">
+			<property name="quest" value="zincdefensearea3" />
+		</action>-->
+	</action_sequence>
+	<action_sequence name="ZombieINC_Defense_T3_FatalErrorProtectorBuff_Event">			
+	    <action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Defense_T3_FatalErrorProtector_Buff" />				
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_Defense_T3_RemoveFatalErrorProtectorBuff_Event">			
+	    <action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_Defense_T3_FatalErrorProtector_Buff" />				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Defense_T4_FailQuest_Event">
+		<property name="allow_user_trigger" value="true" />
+		<action class="FailQuest">	   
+			<property name="quest" value="zincdefensearea4" />
+			<property name="remove_quest" value="true"  />		
+		</action>
+		<!--<action class="AddQuest">
+			<property name="quest" value="zincdefensearea4" />
+		</action>-->
+	</action_sequence>
+	<action_sequence name="ZombieINC_Defense_T4_FatalErrorProtectorBuff_Event">			
+	    <action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Defense_T4_FatalErrorProtector_Buff" />				
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_Defense_T4_RemoveFatalErrorProtectorBuff_Event">			
+	    <action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_Defense_T4_FatalErrorProtector_Buff" />				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Defense_T5_FailQuest_Event">
+		<property name="allow_user_trigger" value="true" />
+		<action class="FailQuest">	   
+			<property name="quest" value="zincdefensetrader5" />
+			<property name="remove_quest" value="true"  />		
+		</action>
+		<!--<action class="AddQuest">
+			<property name="quest" value="zincdefensetrader5" />
+		</action>-->
+	</action_sequence>
+	<action_sequence name="ZombieINC_Defense_T5_FatalErrorProtectorBuff_Event">			
+	    <action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Defense_T5_FatalErrorProtector_Buff" />				
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_Defense_T5_RemoveFatalErrorProtectorBuff_Event">			
+	    <action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_Defense_T5_FatalErrorProtector_Buff" />				
+		</action>
+	</action_sequence>
+</append>
+</Config>

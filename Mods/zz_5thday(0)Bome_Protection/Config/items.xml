@@ -3,10 +3,11 @@
 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_BookRead_Mining1" operation="set" value="1" />
 </insertafter>
 
-<set xpath="//item[@name='biomeBadge1']/property[@name='AllowUnEquip']/@value">true</set>
+<!-- <set xpath="//item[@name='biomeBadge1']/property[@name='AllowUnEquip']/@value">true</set>
 <set xpath="//item[@name='biomeBadge1']/property[@name='AutoEquip']/@value">false</set>
-<set xpath="//item[@name='biomeBadge1']/property[@name='IsCosmetic']/@value">true</set>
+<set xpath="//item[@name='biomeBadge1']/property[@name='IsCosmetic']/@value">true</set> -->
 
+<set xpath="//item[starts-with(@name,'biomeWeatherItem')]/property[@name='EquipSlot']/@value">BiomeBadge</set>
 
 <append xpath="/items">
 
@@ -196,13 +197,13 @@
 		<property name="EconomicBundleSize" value="1"/>
 	 </item>
 </append>
-<append xpath="//item[@name='biomeBadge1']">
+<append xpath="//item[@name='biomeWeatherItem1']">
 			<effect_group>
 				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="AcidProt" operation="set" value="100"/>
 				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="AcidProt" operation="set" value="0"/>
 			</effect_group>
 </append>
-<append xpath="//item[@name='biomeBadge2']">
+<append xpath="//item[@name='biomeWeatherItem2']">
 			<effect_group>
 				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="AcidProt" operation="set" value="100"/>
 				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="AcidProt" operation="set" value="0"/>
@@ -211,7 +212,7 @@
 			</effect_group>
 </append>
 
-<append xpath="//item[@name='biomeBadge3']">
+<append xpath="//item[@name='biomeWeatherItem3']">
 			<effect_group>
 				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="AcidProt" operation="set" value="100"/>
 				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="AcidProt" operation="set" value="0"/>
@@ -224,7 +225,7 @@
 
 
 
-<append xpath="//item[@name='biomeBadge4']">
+<append xpath="//item[@name='biomeWeatherItem4']">
 	<effect_group tiered="false">
 				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="FNProt" operation="set" value="100"/>
 				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="FNProt" operation="set" value="0"/>

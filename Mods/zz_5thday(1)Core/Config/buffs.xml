@@ -43,6 +43,19 @@
 	<remove xpath="/buffs/buff[@name='buffAnimalTracker']"/>
 	<remove xpath="/buffs/buff[@name='buffAnimalTrackerAcquired']"/>
 	<remove xpath="/buffs/buff[@name='buffCrouching']"/>
+
+	<!-- <remove xpath="/buffs/buff[@name='buffStatusCheck01']/effect_group[@name='Loot Caps']"/>
+	<insertAfter xpath="//buff[@name='buffStatusCheck01']/effect_group[@name='Pain Sound']">
+
+		<effect_group name="Loot Caps">
+			<triggered_effect trigger="onSelfBiomeLootStageMaxEntered" action="AddBuff" buff="buffLootStageCap"></triggered_effect>
+			<triggered_effect trigger="onSelfBiomeLootStageMaxExited" action="RemoveBuff" buff="buffLootStageCap"></triggered_effect>
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="buffLootStageCap"></triggered_effect>
+		</effect_group>
+    </insertAfter> -->
+
+
+
 	<set xpath="//buff[@name='buffStatusCheck02']/effect_group/triggered_effect/requirement[@progression_name='perkHealingFactor']/@progression_name">PerkHOHEating</set>
 	<set xpath="//buff[@name='buffStatusCheck02']/effect_group/triggered_effect/requirement[@progression_name='perkPhysician']/@progression_name">PerkHOHHealthandBody</set>
 	<!--<set xpath="//buff[@name='buffPerkAbilityUpdate']/effect_group/triggered_effect/requirement[@progression_name='perkSlowMetabolism']/@progression_name">PerkHOHCooking</set><set xpath="//buff[@name='buffPerkAbilityUpdate']/effect_group/triggered_effect/requirement[@progression_name='perkPhysician']/@progression_name">PerkHOHHealthandBody</set><set xpath="//buff[@name='buffPerkAbilityUpdate']/effect_group/triggered_effect/requirement[@progression_name='perkParkour']/@progression_name">PerkHOHOlympics</set>-->
@@ -1974,12 +1987,12 @@
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_MachineGun_lvl_Next_Display" operation="set" value="@HOH_MachineGun_XP_Total"/>
 			</effect_group>
 			<!-- MachineGun Attack XP Gain -->
-			<effect_group>
+			<effect_group name='progressionBasics'>
 				<requirement name="ItemHasTags" tags="PerkHOHMachineGuns"/>
 				<requirement name="CVarCompare" cvar="HOH_Pistols_lvl" operation="GTE" value="50"/>
 				<requirement name="IsAlive" target="other"/>
 				<!-- Base Zombie xp (ONATTACKED, Pipe MachineGun) -->
-				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_MachineGun_XP_Temp" operation="add" value="2"/>
+				<!-- <triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_MachineGun_XP_Temp" operation="add" value="2"/> -->
 				<!-- Headshot Modifier -->
 				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_MachineGun_XP_Temp" operation="multiply" value="1.5">
 					<requirement name="HitLocation" body_parts="Head"/>
@@ -2062,9 +2075,10 @@
 					-->
 			</effect_group>
 			<!-- MachineGun Kill XP Gain -->
-			<effect_group>
+			<effect_group name="progressionKills">
 				<requirement name="CVarCompare" cvar="HOH_Pistols_lvl" operation="GTE" value="50"/>
 				<requirement name="ItemHasTags" tags="PerkHOHMachineGuns"/>
+				<requirement name="IsAlive" target="other"/>
 				<!-- Base Zombie xp (ONATTACKED, Pipe MachineGun) -->
 				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="HOH_MachineGun_XP_Temp_Killed" operation="add" value="10"/>
 				<!-- Headshot Modifier -->
@@ -2505,7 +2519,7 @@
 				<triggered_effect trigger="onSelfBuffUpdate" action="ShowToolbeltMessage" message="[804cba][I]Your Skill with Rifles is ready!"/>
 				<triggered_effect trigger="onSelfBuffUpdate" action="PlaySound" sound="levelup"/>
 			</effect_group>
-			<effect_group>
+			<effect_group name="progressionBasics">
 				<requirement name="CVarCompare" cvar="HOH_Pistols_lvl" operation="GTE" value="50"/>
 				<requirement name="ItemHasTags" tags="PerkHOHShotguns"/>
 				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_Shotguns_XP_Temp_Killed" operation="add" value="1">
@@ -2516,7 +2530,7 @@
 				</triggered_effect>
 				<!-- Base Zombie xp -->
 
-				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_Shotguns_XP_Temp_Killed" operation="add" value="5">
+				<!-- <triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_Shotguns_XP_Temp_Killed" operation="add" value="5">
 					<requirement name="ItemHasTags" tags="5d_LeverActionShotgun"/>
 				</triggered_effect>
 				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_Shotguns_XP_Temp_Killed" operation="add" value="10">
@@ -2530,7 +2544,7 @@
 				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_Shotguns_XP_Temp_Killed" operation="add" value="20">
 					<requirement name="ItemHasTags" tags="5thday_Shotgun_Auto"/>
 					<requirement name="CVarCompare" cvar="HOH_Shotguns_lvl" operation="GTE" value="75"/>
-				</triggered_effect>
+				</triggered_effect> -->
 				<!-- <triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="HOH_Shotguns_XP_Temp_Killed" operation="add" value="12"/> -->
 				<!-- Headshot Modifier -->
 				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="HOH_Shotguns_XP_Temp_Killed" operation="multiply" value="2">
@@ -3755,6 +3769,96 @@
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_foodSundayChickenDinner" operation="add" value="1" />
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Cooking_XP" operation="add" value="15" />
 			</effect_group>
+
+			<!--canned food-->
+
+			<effect_group name="foodCanChili">
+				<requirement name="CVarCompare" cvar="HOH_Cooking_lvl" operation="LT" value="100"/>
+				<requirement name="CVarCompare" cvar="processedCount_foodCanChili" operation="LT" value="@_craftCount_foodCanChili" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_foodCanChili" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Cooking_XP" operation="add" value="3" />
+			</effect_group>
+			<effect_group name="Cooked-foodCanBeef">
+				<requirement name="CVarCompare" cvar="HOH_Cooking_lvl" operation="LT" value="100"/>
+				<requirement name="CVarCompare" cvar="processedCount_Cooked-foodCanBeef" operation="LT" value="@_craftCount_Cooked-foodCanBeef" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_Cooked-foodCanBeef" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Cooking_XP" operation="add" value="3" />
+			</effect_group>
+			<effect_group name="Cooked-foodCanChicken">
+				<requirement name="CVarCompare" cvar="HOH_Cooking_lvl" operation="LT" value="100"/>
+				<requirement name="CVarCompare" cvar="processedCount_Cooked-foodCanChicken" operation="LT" value="@_craftCount_Cooked-foodCanChicken" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_Cooked-foodCanChicken" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Cooking_XP" operation="add" value="3" />
+			</effect_group>
+			<effect_group name="Cooked-foodCanLamb">
+				<requirement name="CVarCompare" cvar="HOH_Cooking_lvl" operation="LT" value="100"/>
+				<requirement name="CVarCompare" cvar="processedCount_Cooked-foodCanLamb" operation="LT" value="@_craftCount_Cooked-foodCanLamb" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_Cooked-foodCanLamb" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Cooking_XP" operation="add" value="3" />
+			</effect_group>
+			<effect_group name="Cooked-foodCanTuna">
+				<requirement name="CVarCompare" cvar="HOH_Cooking_lvl" operation="LT" value="100"/>
+				<requirement name="CVarCompare" cvar="processedCount_Cooked-foodCanTuna" operation="LT" value="@_craftCount_Cooked-foodCanTuna" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_Cooked-foodCanTuna" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Cooking_XP" operation="add" value="3" />
+			</effect_group>
+			<effect_group name="Cooked-foodCanPasta">
+				<requirement name="CVarCompare" cvar="HOH_Cooking_lvl" operation="LT" value="100"/>
+				<requirement name="CVarCompare" cvar="processedCount_Cooked-foodCanPasta" operation="LT" value="@_craftCount_Cooked-foodCanPasta" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_Cooked-foodCanPasta" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Cooking_XP" operation="add" value="3" />
+			</effect_group>
+			<effect_group name="Cooked-foodCanSalmon">
+				<requirement name="CVarCompare" cvar="HOH_Cooking_lvl" operation="LT" value="100"/>
+				<requirement name="CVarCompare" cvar="processedCount_Cooked-foodCanSalmon" operation="LT" value="@_craftCount_Cooked-foodCanSalmon" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_Cooked-foodCanSalmon" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Cooking_XP" operation="add" value="3" />
+			</effect_group>
+			<effect_group name="Cooked-foodCanMiso">
+				<requirement name="CVarCompare" cvar="HOH_Cooking_lvl" operation="LT" value="100"/>
+				<requirement name="CVarCompare" cvar="processedCount_Cooked-foodCanMiso" operation="LT" value="@_craftCount_Cooked-foodCanMiso" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_Cooked-foodCanMiso" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Cooking_XP" operation="add" value="3" />
+			</effect_group>
+			<effect_group name="Cooked-foodCanPeas">
+				<requirement name="CVarCompare" cvar="HOH_Cooking_lvl" operation="LT" value="100"/>
+				<requirement name="CVarCompare" cvar="processedCount_Cooked-foodCanPeas" operation="LT" value="@_craftCount_Cooked-foodCanPeas" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_Cooked-foodCanPeas" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Cooking_XP" operation="add" value="3" />
+			</effect_group>
+			<effect_group name="Cooked-foodCanPears">
+				<requirement name="CVarCompare" cvar="HOH_Cooking_lvl" operation="LT" value="100"/>
+				<requirement name="CVarCompare" cvar="processedCount_Cooked-foodCanPears" operation="LT" value="@_craftCount_Cooked-foodCanPears" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_Cooked-foodCanPears" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Cooking_XP" operation="add" value="3" />
+			</effect_group>
+			<effect_group name="Cooked-foodCanSoup">
+				<requirement name="CVarCompare" cvar="HOH_Cooking_lvl" operation="LT" value="100"/>
+				<requirement name="CVarCompare" cvar="processedCount_Cooked-foodCanSoup" operation="LT" value="@_craftCount_Cooked-foodCanSoup" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_Cooked-foodCanSoup" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Cooking_XP" operation="add" value="3" />
+			</effect_group>
+			<effect_group name="Cooked-foodCanStock">
+				<requirement name="CVarCompare" cvar="HOH_Cooking_lvl" operation="LT" value="100"/>
+				<requirement name="CVarCompare" cvar="processedCount_Cooked-foodCanStock" operation="LT" value="@_craftCount_Cooked-foodCanStock" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_Cooked-foodCanStock" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Cooking_XP" operation="add" value="3" />
+			</effect_group>
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		</buff>
 		<buff name="HOH_Level_Display_Eating" hidden="true" remove_on_death="false">
 			<update_rate value="0.1"/>
@@ -3841,6 +3945,7 @@
 			<effect_group name="armorbonus">
 				<triggered_effect trigger="onSelfDestroyedBlock" action="ModifyCVar" cvar="HOH_Farming_XP" operation="multiply" value="1.5">
 					<requirement name="HasBuff" buff="buffFarmerSetBonus"/>
+					<requirement name="TriggerHasTags" tags="challenge_farming"/>
 				</triggered_effect>
 			</effect_group>
 			<effect_group name="HOH_Farming_Level_Progress">
@@ -5397,15 +5502,7 @@
 				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="TacticalMachineGunKillDisplay" operation="set" value="0"/>
 			</effect_group>
 		</buff>
-		<buff name="5thdayAR15KillTrackerActivate" hidden="true" icon="ui_game_symbol_add" icon_color="255,0,0" icon_blink="true">
-			<stack_type value="replace"/>
-			<duration value="0"/>
-			<effect_group>
-				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="5thdayAR15KillDisplay" operation="set" value="255"/>
-				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="5thdayAR15KillDisplay" operation="set" value="255"/>
-				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="5thdayAR15KillDisplay" operation="set" value="0"/>
-			</effect_group>
-		</buff>
+		
 		<!-- M60 Machine Gun -->
 		<buff name="M60MachineGunKillTrackerActivate" hidden="true" icon="ui_game_symbol_add" icon_color="255,0,0" icon_blink="true">
 			<stack_type value="replace"/>

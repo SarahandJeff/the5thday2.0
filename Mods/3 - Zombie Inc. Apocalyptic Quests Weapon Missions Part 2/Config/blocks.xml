@@ -1,0 +1,128 @@
+<Config>
+	
+	<csv xpath="/blocks/block[@name='batterybank']/property[@name='SlotItem']/@value" delim="," op="add" >ZombieINC_gunRifleT0PipeRifle</csv>
+	
+	<append xpath="/blocks">
+
+<block name="ZombieINC_WSPart2_capChimneyLarge">
+    
+	<property name="CustomIcon" value="capChimney"/>
+	<property name="Material" value="Mmetal_weak"/>
+	<property name="Shape" value="ModelEntity"/>
+	<property name="Model" value="@:Entities/Buildings/capChimneyLargeSmokePrefab.prefab"/>
+	<property name="DisplayType" value="blockHardened"/>
+	<property name="ImposterExchange" value="imposterDontBlockCTRPole" param1="87"/>
+	<property name="CustomIconTint" value="B80F0A"/>
+	<property name="TintColor" value="B80F0A"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="EconomicValue" value="20"/>
+	<property class="RepairItems">
+		<property name="resourceScrapIron" value="0"/>
+	</property>
+	<drop event="Harvest" name="resourceScrapIron" count="0" tag="allHarvest"/>
+	<drop event="Destroy" count="0"/>
+	<drop event="Fall" name="scrapMetalPile" count="1" prob="0" stick_chance="1"/>
+	<property name="SortOrder1" value="B650"/>
+	<property name="SortOrder2" value="0002"/>
+	<property name="Group" value="Building,advBuilding"/>
+	<property name="FilterTags" value="MC_building,SC_plumbing,A21_NEW"/>
+</block>
+	
+<block name="ZombieINC_WSPart2_capChimneyLargeSmoke">
+	<property name="CustomIcon" value="capChimney"/>
+	<property name="Material" value="Mmetal_weak"/>
+	<property name="Shape" value="ModelEntity"/>
+	<property name="Model" value="@:Entities/Buildings/capChimneyLargePrefab.prefab"/>
+	<property name="DisplayType" value="blockHardened"/>
+	<property name="ImposterExchange" value="imposterDontBlockCTRPole" param1="87"/>
+	<property name="CustomIconTint" value="B80F0A"/>
+	<property name="TintColor" value="B80F0A"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="EconomicValue" value="20"/>
+	<property class="RepairItems">
+		<property name="resourceScrapIron" value="0"/>
+	</property>
+	<drop event="Harvest" name="resourceScrapIron" count="0" tag="allHarvest"/>
+	<drop event="Destroy" count="0"/>
+	<drop event="Fall" name="scrapMetalPile" count="1" prob="0" stick_chance="1"/>
+	<property name="SortOrder1" value="B650"/>
+	<property name="SortOrder2" value="0002"/>
+	<property name="Group" value="Building,advBuilding"/>
+	<property name="FilterTags" value="MC_building,SC_plumbing,A21_NEW"/>
+</block>	
+	
+<block name="ZombieINC_WSPart2_capChimneyLargeSmoke_WeaponTestKnuclesActive">
+	<property name="Extends" value="ZombieINC_WSPart2_capChimneyLargeSmoke"/>
+	<property name="Tags" value="ChimneyWeaponTestKnuclesActive"/>
+	<property name="Class" value="GameEvent"/>	
+    <property name="ActivateEvent" value="ZombieINC_ChimneyEvent_WeaponTestKnuclesActive"/>
+</block>
+<block name="ZombieINC_WSPart2_capChimneyLargeSmoke_WeaponTestKnucles">
+	<property name="Extends" value="ZombieINC_WSPart2_capChimneyLarge"/>
+	<property name="Tags" value="ChimneyWeaponTestKnucles"/>
+	<property name="Class" value="GameEvent"/>	
+    <property name="ActivateEvent" value="ZombieINC_ChimneyEvent_WeaponTestKnucles"/>
+</block>
+
+
+
+<block name="ZombieINC_WSPart2_capChimneyLargeSmoke_WeaponTestIceHammerActive">
+	<property name="Extends" value="ZombieINC_WSPart2_capChimneyLargeSmoke"/>
+	<property name="Tags" value="ChimneyWeaponTestIceHammerActive"/>
+	<property name="Class" value="GameEvent"/>	
+    <property name="ActivateEvent" value="ZombieINC_ChimneyEvent_WeaponTestIceHammerActive"/>
+</block>
+<block name="ZombieINC_WSPart2_capChimneyLargeSmoke_WeaponTestIceHammer">
+	<property name="Extends" value="ZombieINC_WSPart2_capChimneyLarge"/>
+	<property name="Tags" value="ChimneyWeaponTestIceHammer"/>
+	<property name="Class" value="GameEvent"/>	
+    <property name="ActivateEvent" value="ZombieINC_ChimneyEvent_WeaponTestIceHammer"/>
+</block>
+
+
+
+<block name="ZombieINC_WSPart2_capChimneyLargeSmoke_WeaponTestNailgunActive">
+	<property name="Extends" value="ZombieINC_WSPart2_capChimneyLargeSmoke"/>
+	<property name="Tags" value="ChimneyWeaponTestNailgunActive"/>
+	<property name="Class" value="GameEvent"/>	
+    <property name="ActivateEvent" value="ZombieINC_ChimneyEvent_WeaponTestNailgunActive"/>
+</block>
+<block name="ZombieINC_WSPart2_capChimneyLargeSmoke_WeaponTestNailgun">
+	<property name="Extends" value="ZombieINC_WSPart2_capChimneyLarge"/>
+	<property name="Tags" value="ChimneyWeaponTestNailgun"/>
+	<property name="Class" value="GameEvent"/>	
+    <property name="ActivateEvent" value="ZombieINC_ChimneyEvent_WeaponTestNailgun"/>
+</block>
+
+
+
+<block name="ZombieINC_WSPart2_capChimneyLargeSmoke_WeaponTestSpearGunActive">
+	<property name="Extends" value="ZombieINC_WSPart2_capChimneyLargeSmoke"/>
+	<property name="Tags" value="ChimneyWeaponTestSpearGunActive"/>
+	<property name="Class" value="GameEvent"/>	
+    <property name="ActivateEvent" value="ZombieINC_ChimneyEvent_WeaponTestSpearGunActive"/>
+</block>
+<block name="ZombieINC_WSPart2_capChimneyLargeSmoke_WeaponTestSpearGun">
+	<property name="Extends" value="ZombieINC_WSPart2_capChimneyLarge"/>
+	<property name="Tags" value="ChimneyWeaponTestSpearGun"/>
+	<property name="Class" value="GameEvent"/>	
+    <property name="ActivateEvent" value="ZombieINC_ChimneyEvent_WeaponTestSpearGun"/>
+</block>
+
+
+
+<block name="ZombieINC_WSPart2_capChimneyLargeSmoke_WeaponTestFireShockSpearActive">
+	<property name="Extends" value="ZombieINC_WSPart2_capChimneyLargeSmoke"/>
+	<property name="Tags" value="ChimneyWeaponTestFireShockSpearActive"/>
+	<property name="Class" value="GameEvent"/>	
+    <property name="ActivateEvent" value="ZombieINC_ChimneyEvent_WeaponTestFireShockSpearActive"/>
+</block>
+<block name="ZombieINC_WSPart2_capChimneyLargeSmoke_WeaponTestFireShockSpear">
+	<property name="Extends" value="ZombieINC_WSPart2_capChimneyLarge"/>
+	<property name="Tags" value="ChimneyWeaponTestFireShockSpear"/>
+	<property name="Class" value="GameEvent"/>	
+    <property name="ActivateEvent" value="ZombieINC_ChimneyEvent_WeaponTestFireShockSpear"/>
+</block>
+	
+	</append>
+</Config>

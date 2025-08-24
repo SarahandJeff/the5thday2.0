@@ -1,0 +1,1504 @@
+<Config>
+
+	<conditional>
+	<if cond="mod_loaded('mateusjobsmain') == 'false'">
+		<append xpath="/buffs">
+			<buff name="ZombieINC_ND_EnemyDotBuff">
+				<stack_type value="ignore"/>
+				<tags value="ZINC_ND_BUFFS_ENEMY" />
+				<effect_group>	
+					<triggered_effect trigger="onSelfBuffStart" action="SetNavObject" nav_object="ZombieINC_ND_EnemyDot" add="true" />	
+				</effect_group>
+			</buff>
+		</append>
+	</if>
+</conditional>
+
+	<append xpath="/buffs">
+	
+		
+		
+		<!--###Nest Demolition-->
+		
+		<!--##General Buff-->
+	
+		<!--General Buff-->
+
+
+		<!--#T1-->
+		<buff name="ZombieINC_ND_CountDisplay_T1" name_key="ZombieINC_ND_CountDisplay_T1_Name" description_key="ZombieINC_ND_CountDisplay_T1_Description" hidden="false" icon="ui_game_symbol_destruction">
+		<stack_type value="replace"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<display_value value=".ZINCQuestNDBombCountDisplay"/>	
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_ND_CountDisplay_T1" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_ND_CountDisplay_T1" />	
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCQuestNDBombCountDisplay" operation="set" value="2"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_PlayerSearchingSpot_T1" hidden="true" icon="ui_game_symbol_clock">
+		<stack_type value="replace"/>
+		<update_rate value="0.25"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<display_value value=".ZINCQuestNDBombCountDisplay"/>	
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_ND_PlayerSearchingSpot_T1" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_ND_PlayerSearchingSpot_T1" />
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_ND_CountDisplay_T1"/>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCNDPSSCOUNTER" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZINCNDPSSCOUNTER" operation="add" value="0.5"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZINCNDPSSCOUNTER" operation="add" value="0.5">
+				<requirement name="!EntityHasMovementTag" tags="idle"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZINCNDPSSCOUNTER" operation="add" value="1">
+				<requirement name="IsIndoors"/>
+				<requirement name="!EntityHasMovementTag" tags="idle"/>
+			</triggered_effect>
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="ZombieINC_ND_PlayerSearchingSpot_CheckIsIndoors_T1" >
+				<requirement name="CVarCompare" cvar=".ZINCNDPSSCOUNTER" operation="GTE" value="240"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_PlayerSearchingSpot_CheckIsIndoors_T1" hidden="true" icon="ui_game_symbol_clock">
+		<duration value="50"/> 
+		<stack_type value="replace"/>
+		<update_rate value="1"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<display_value value="ZINCQuestNDBombCount"/>	
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCNDPSSCOUNTER" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCNDPSSCOUNTER" target="positionAOE" target_tags="party" range="70" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_ND_T1_SpawnObjective" target="self" allow_client_call="true">
+				<requirement name="IsIndoors"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_Player_ZombieSpawnerT1_Buff" hidden="true" icon="ui_game_symbol_clock">
+		<stack_type value="replace"/>
+		<update_rate value="60"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<display_value value="ZINCQuestNDBombCount"/>	
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_ND_Player_ZombieSpawnerT1_Buff" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_ND_Player_ZombieSpawnerT1_Buff" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_ND_T1_SpawnZombies" target="self" allow_client_call="false"/>
+		</effect_group>
+	</buff>
+		<!--T1-->
+		<!--#T2-->
+	<buff name="ZombieINC_ND_CountDisplay_T2" name_key="ZombieINC_ND_CountDisplay_T1_Name" description_key="ZombieINC_ND_CountDisplay_T1_Description" hidden="false" icon="ui_game_symbol_destruction">
+		<stack_type value="replace"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<display_value value=".ZINCQuestNDBombCountDisplay"/>	
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_ND_CountDisplay_T2" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_ND_CountDisplay_T2" />	
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCQuestNDBombCountDisplay" operation="set" value="2"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_PlayerSearchingSpot_T2" hidden="true" icon="ui_game_symbol_clock">
+		<stack_type value="replace"/>
+		<update_rate value="0.25"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<display_value value=".ZINCQuestNDBombCountDisplay"/>	
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_ND_PlayerSearchingSpot_T2" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_ND_PlayerSearchingSpot_T2" />
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_ND_CountDisplay_T2"/>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCNDPSSCOUNTER" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZINCNDPSSCOUNTER" operation="add" value="0.5"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZINCNDPSSCOUNTER" operation="add" value="0.5">
+				<requirement name="!EntityHasMovementTag" tags="idle"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZINCNDPSSCOUNTER" operation="add" value="1">
+				<requirement name="IsIndoors"/>
+				<requirement name="!EntityHasMovementTag" tags="idle"/>
+			</triggered_effect>
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="ZombieINC_ND_PlayerSearchingSpot_CheckIsIndoors_T2" >
+				<requirement name="CVarCompare" cvar=".ZINCNDPSSCOUNTER" operation="GTE" value="240"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_PlayerSearchingSpot_CheckIsIndoors_T2" hidden="true" icon="ui_game_symbol_clock">
+		<duration value="50"/> 
+		<stack_type value="replace"/>
+		<update_rate value="1"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<display_value value="ZINCQuestNDBombCount"/>	
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCNDPSSCOUNTER" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCNDPSSCOUNTER" target="positionAOE" target_tags="party" range="70" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_ND_T2_SpawnObjective" target="self" allow_client_call="true">
+				<requirement name="IsIndoors"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_Player_ZombieSpawnerT2_Buff" hidden="true" icon="ui_game_symbol_clock">
+		<stack_type value="replace"/>
+		<update_rate value="60"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<display_value value="ZINCQuestNDBombCount"/>	
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_ND_Player_ZombieSpawnerT2_Buff" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_ND_Player_ZombieSpawnerT2_Buff" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_ND_T2_SpawnZombies" target="self" allow_client_call="false"/>
+		</effect_group>
+	</buff>
+		<!--T2-->
+		<!--#T3-->
+		<buff name="ZombieINC_ND_CountDisplay_T3" name_key="ZombieINC_ND_CountDisplay_T3_Name" description_key="ZombieINC_ND_CountDisplay_T3_Description" hidden="false" icon="ui_game_symbol_destruction">
+		<stack_type value="replace"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<display_value value=".ZINCQuestNDBombCountDisplay"/>	
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_ND_CountDisplay_T3" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_ND_CountDisplay_T3" />	
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCQuestNDBombCountDisplay" operation="set" value="3"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_PlayerSearchingSpot_T3" hidden="true" icon="ui_game_symbol_clock">
+		<stack_type value="replace"/>
+		<update_rate value="0.25"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<display_value value=".ZINCQuestNDBombCountDisplay"/>	
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_ND_PlayerSearchingSpot_T3" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_ND_PlayerSearchingSpot_T3" />
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_ND_CountDisplay_T4"/>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCNDPSSCOUNTER" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZINCNDPSSCOUNTER" operation="add" value="0.5"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZINCNDPSSCOUNTER" operation="add" value="0.5">
+				<requirement name="!EntityHasMovementTag" tags="idle"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZINCNDPSSCOUNTER" operation="add" value="1">
+				<requirement name="IsIndoors"/>
+				<requirement name="!EntityHasMovementTag" tags="idle"/>
+			</triggered_effect>
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="ZombieINC_ND_PlayerSearchingSpot_CheckIsIndoors_T3" >
+				<requirement name="CVarCompare" cvar=".ZINCNDPSSCOUNTER" operation="GTE" value="240"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_PlayerSearchingSpot_CheckIsIndoors_T3" hidden="true" icon="ui_game_symbol_clock">
+		<duration value="50"/> 
+		<stack_type value="replace"/>
+		<update_rate value="1"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<display_value value="ZINCQuestNDBombCount"/>	
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCNDPSSCOUNTER" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCNDPSSCOUNTER" target="positionAOE" target_tags="party" range="70" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_ND_T3_SpawnObjective" target="self" allow_client_call="true">
+				<requirement name="IsIndoors"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_FailQuestCloseParty_T3" hidden="true" icon="ui_game_symbol_clock">
+		<duration value="1"/> 
+		<stack_type value="replace"/>
+		<update_rate value="1"/>
+		<tags value="ZINC_ND_BUFFS" />
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="positionAOE" target_tags="party" range="50" event="ZombieINC_ND_FailQuest_T3" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_ND_FailQuest_T3" allow_client_call="false"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_T3_Trader_SpawnVehicle_Buff" hidden="true" icon="ui_game_symbol_clock">
+		<duration value="9"/> 
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_ND_SpawnMinibike_T3_Event" target="self" allow_client_call="false"/>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_ND_MinibikeReturnedChecker_T3" hidden="true" icon="ui_game_symbol_clock">
+		<!--<duration value="90"/> -->
+		<stack_type value="replace"/>
+		<!--<update_rate value="61"/>-->
+		<tags value="ZINC_ND_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_ND_T3_AddMinibikeReturnedBuff" target="self" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffStack" action="CallGameEvent" event="ZombieINC_ND_T3_AddMinibikeReturnedBuff" target="self" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfEnteredGame" action="CallGameEvent" event="ZombieINC_ND_T3_AddMinibikeReturnedBuff" target="self" allow_client_call="false"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_MinibikeReturned_T3" hidden="true" icon="ui_game_symbol_clock">
+		<!--<duration value="90"/>--> 
+		<stack_type value="replace"/>
+		<!--<update_rate value="1"/>-->
+		<tags value="ZINC_ND_BUFFS" />
+		
+		
+		<effect_group>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_Player_ZombieSpawnerT3_Buff" hidden="true" icon="ui_game_symbol_clock">
+		<stack_type value="replace"/>
+		<update_rate value="25"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<display_value value="ZINCQuestNDBombCount"/>	
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_ND_Player_ZombieSpawnerT3_Buff" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_ND_Player_ZombieSpawnerT3_Buff" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_ND_T3_SpawnZombies" target="self" allow_client_call="false"/>
+		</effect_group>
+	</buff>
+		<!--T3-->
+		<!--#T4-->
+	<buff name="ZombieINC_ND_CountDisplay_T4" name_key="ZombieINC_ND_CountDisplay_T4_Name" description_key="ZombieINC_ND_CountDisplay_T4_Description" hidden="false" icon="ui_game_symbol_destruction">
+		<stack_type value="replace"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<display_value value=".ZINCQuestNDBombCountDisplay"/>	
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_ND_CountDisplay_T4" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_ND_CountDisplay_T4" />	
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCQuestNDBombCountDisplay" operation="set" value="4"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_PlayerSearchingSpot_T4" hidden="true" icon="ui_game_symbol_clock">
+		<stack_type value="replace"/>
+		<update_rate value="0.25"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<display_value value=".ZINCQuestNDBombCountDisplay"/>	
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_ND_PlayerSearchingSpot_T4" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_ND_PlayerSearchingSpot_T4" />
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_ND_CountDisplay_T4"/>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCNDPSSCOUNTER" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZINCNDPSSCOUNTER" operation="add" value="0.5"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZINCNDPSSCOUNTER" operation="add" value="0.5">
+				<requirement name="!EntityHasMovementTag" tags="idle"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZINCNDPSSCOUNTER" operation="add" value="1">
+				<requirement name="IsIndoors"/>
+				<requirement name="!EntityHasMovementTag" tags="idle"/>
+			</triggered_effect>
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="ZombieINC_ND_PlayerSearchingSpot_CheckIsIndoors_T4" >
+				<requirement name="CVarCompare" cvar=".ZINCNDPSSCOUNTER" operation="GTE" value="240"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_PlayerSearchingSpot_CheckIsIndoors_T4" hidden="true" icon="ui_game_symbol_clock">
+		<duration value="50"/> 
+		<stack_type value="replace"/>
+		<update_rate value="1"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<display_value value="ZINCQuestNDBombCount"/>	
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCNDPSSCOUNTER" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCNDPSSCOUNTER" target="positionAOE" target_tags="party" range="70" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_ND_T4_SpawnObjective" target="self" allow_client_call="true">
+				<requirement name="IsIndoors"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_FailQuestCloseParty_T4" hidden="true" icon="ui_game_symbol_clock">
+		<duration value="1"/> 
+		<stack_type value="replace"/>
+		<update_rate value="1"/>
+		<tags value="ZINC_ND_BUFFS" />
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="positionAOE" target_tags="party" range="50" event="ZombieINC_ND_FailQuest_T4" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_ND_FailQuest_T4" allow_client_call="false"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_T4_Trader_SpawnVehicle_Buff" hidden="true" icon="ui_game_symbol_clock">
+		<duration value="9"/> 
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_ND_SpawnMinibike_T4_Event" target="self" allow_client_call="false"/>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_ND_MinibikeReturnedChecker_T4" hidden="true" icon="ui_game_symbol_clock">
+		<!--<duration value="90"/> -->
+		<stack_type value="replace"/>
+		<!--<update_rate value="61"/>-->
+		<tags value="ZINC_ND_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_ND_T4_AddMinibikeReturnedBuff" target="self" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffStack" action="CallGameEvent" event="ZombieINC_ND_T4_AddMinibikeReturnedBuff" target="self" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfEnteredGame" action="CallGameEvent" event="ZombieINC_ND_T4_AddMinibikeReturnedBuff" target="self" allow_client_call="false"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_MinibikeReturned_T4" hidden="true" icon="ui_game_symbol_clock">
+		<!--<duration value="90"/>--> 
+		<stack_type value="replace"/>
+		<!--<update_rate value="1"/>-->
+		<tags value="ZINC_ND_BUFFS" />
+		
+		
+		<effect_group>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_Player_ZombieSpawnerT4_Buff" hidden="true" icon="ui_game_symbol_clock">
+		<stack_type value="replace"/>
+		<update_rate value="20"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<display_value value="ZINCQuestNDBombCount"/>	
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_ND_Player_ZombieSpawnerT4_Buff" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_ND_Player_ZombieSpawnerT4_Buff" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_ND_T4_SpawnZombies" target="self" allow_client_call="false"/>
+		</effect_group>
+	</buff>
+<!--T4-->
+<!--#T5-->
+<buff name="ZombieINC_ND_CountDisplay_T5" name_key="ZombieINC_ND_CountDisplay_T5_Name" description_key="ZombieINC_ND_CountDisplay_T5_Description" hidden="false" icon="ui_game_symbol_destruction">
+		<stack_type value="replace"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<display_value value=".ZINCQuestNDBombCountDisplay"/>	
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_ND_CountDisplay_T5" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_ND_CountDisplay_T5" />	
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCQuestNDBombCountDisplay" operation="set" value="1"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_PlayerSearchingSpot_T5" hidden="true" icon="ui_game_symbol_clock">
+		<stack_type value="replace"/>
+		<update_rate value="0.25"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<display_value value=".ZINCQuestNDBombCountDisplay"/>	
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_ND_PlayerSearchingSpot_T5" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_ND_PlayerSearchingSpot_T5" />
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_ND_CountDisplay_T5"/>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCNDPSSCOUNTER" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZINCNDPSSCOUNTER" operation="add" value="0.5"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZINCNDPSSCOUNTER" operation="add" value="0.5">
+				<requirement name="!EntityHasMovementTag" tags="idle"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZINCNDPSSCOUNTER" operation="add" value="1">
+				<requirement name="IsIndoors"/>
+				<requirement name="!EntityHasMovementTag" tags="idle"/>
+			</triggered_effect>
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="ZombieINC_ND_PlayerSearchingSpot_CheckIsIndoors_T5" >
+				<requirement name="CVarCompare" cvar=".ZINCNDPSSCOUNTER" operation="GTE" value="580"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_PlayerSearchingSpot_CheckIsIndoors_T5" hidden="true" icon="ui_game_symbol_clock">
+		<duration value="50"/> 
+		<stack_type value="replace"/>
+		<update_rate value="1"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<display_value value="ZINCQuestNDBombCount"/>	
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCNDPSSCOUNTER" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCNDPSSCOUNTER" target="positionAOE" target_tags="party" range="70" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_ND_T5_SpawnObjective" target="self" allow_client_call="true">
+				<requirement name="IsIndoors"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_FailQuestCloseParty_T5" hidden="true" icon="ui_game_symbol_clock">
+		<duration value="1"/> 
+		<stack_type value="replace"/>
+		<update_rate value="1"/>
+		<tags value="ZINC_ND_BUFFS" />
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="positionAOE" target_tags="party" range="50" event="ZombieINC_ND_FailQuest_T5" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_ND_FailQuest_T5" allow_client_call="false"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_T5_Trader_SpawnVehicle_Buff" hidden="true" icon="ui_game_symbol_clock">
+		<duration value="9"/> 
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_ND_SpawnTruck_T5_Event" target="self" allow_client_call="false"/>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_ND_MinibikeReturnedChecker_T5" hidden="true" icon="ui_game_symbol_clock">
+		<!--<duration value="90"/> -->
+		<stack_type value="replace"/>
+		<!--<update_rate value="61"/>-->
+		<tags value="ZINC_ND_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_ND_T5_AddMinibikeReturnedBuff" target="self" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffStack" action="CallGameEvent" event="ZombieINC_ND_T5_AddMinibikeReturnedBuff" target="self" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfEnteredGame" action="CallGameEvent" event="ZombieINC_ND_T5_AddMinibikeReturnedBuff" target="self" allow_client_call="false"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_MinibikeReturned_T5" hidden="true" icon="ui_game_symbol_clock">
+		<!--<duration value="90"/>--> 
+		<stack_type value="replace"/>
+		<!--<update_rate value="1"/>-->
+		<tags value="ZINC_ND_BUFFS" />
+		
+		
+		<effect_group>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_Player_ZombieSpawnerT5_Buff" hidden="true" icon="ui_game_symbol_clock">
+		<stack_type value="replace"/>
+		<update_rate value="20"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<display_value value="ZINCQuestNDBombCount"/>	
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_ND_Player_ZombieSpawnerT5_Buff" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_ND_Player_ZombieSpawnerT5_Buff" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_ND_T5_SpawnZombies" target="self" allow_client_call="false"/>
+		</effect_group>
+	</buff>
+
+<!--T5-->
+<!--#T6-->
+	<buff name="ZombieINC_ND_CountDisplay_T6" name_key="ZombieINC_ND_CountDisplay_T6_Name" description_key="ZombieINC_ND_CountDisplay_T6_Description" hidden="false" icon="ui_game_symbol_destruction">
+		<stack_type value="replace"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<display_value value=".ZINCQuestNDBombCountDisplay"/>	
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_ND_CountDisplay_T6" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_ND_CountDisplay_T6" />	
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCQuestNDBombCountDisplay" operation="set" value="2"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_PlayerSearchingSpot_T6" hidden="true" icon="ui_game_symbol_clock">
+		<stack_type value="replace"/>
+		<update_rate value="0.25"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<display_value value=".ZINCQuestNDBombCountDisplay"/>	
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_ND_PlayerSearchingSpot_T6" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_ND_PlayerSearchingSpot_T6" />
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_ND_CountDisplay_T6"/>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCNDPSSCOUNTER" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZINCNDPSSCOUNTER" operation="add" value="0.5"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZINCNDPSSCOUNTER" operation="add" value="0.5">
+				<requirement name="!EntityHasMovementTag" tags="idle"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZINCNDPSSCOUNTER" operation="add" value="1">
+				<requirement name="IsIndoors"/>
+				<requirement name="!EntityHasMovementTag" tags="idle"/>
+			</triggered_effect>
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="ZombieINC_ND_PlayerSearchingSpot_CheckIsIndoors_T6" >
+				<requirement name="CVarCompare" cvar=".ZINCNDPSSCOUNTER" operation="GTE" value="580"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_PlayerSearchingSpot_CheckIsIndoors_T6" hidden="true" icon="ui_game_symbol_clock">
+		<duration value="50"/> 
+		<stack_type value="replace"/>
+		<update_rate value="1"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<display_value value="ZINCQuestNDBombCount"/>	
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCNDPSSCOUNTER" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCNDPSSCOUNTER" target="positionAOE" target_tags="party" range="70" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_ND_T6_SpawnObjective" target="self" allow_client_call="true">
+				<requirement name="IsIndoors"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_FailQuestCloseParty_T6" hidden="true" icon="ui_game_symbol_clock">
+		<duration value="1"/> 
+		<stack_type value="replace"/>
+		<update_rate value="1"/>
+		<tags value="ZINC_ND_BUFFS" />
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="positionAOE" target_tags="party" range="50" event="ZombieINC_ND_FailQuest_T6" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_ND_FailQuest_T6" allow_client_call="false"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_T6_Trader_SpawnVehicle_Buff" hidden="true" icon="ui_game_symbol_clock">
+		<duration value="9"/> 
+		<stack_type value="ignore"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_ND_SpawnTruck_T6_Event" target="self" allow_client_call="false"/>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_ND_MinibikeReturnedChecker_T6" hidden="true" icon="ui_game_symbol_clock">
+		<!--<duration value="90"/> -->
+		<stack_type value="replace"/>
+		<!--<update_rate value="61"/>-->
+		<tags value="ZINC_ND_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_ND_T6_AddMinibikeReturnedBuff" target="self" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffStack" action="CallGameEvent" event="ZombieINC_ND_T6_AddMinibikeReturnedBuff" target="self" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfEnteredGame" action="CallGameEvent" event="ZombieINC_ND_T6_AddMinibikeReturnedBuff" target="self" allow_client_call="false"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_MinibikeReturned_T6" hidden="true" icon="ui_game_symbol_clock">
+		<!--<duration value="90"/>--> 
+		<stack_type value="replace"/>
+		<!--<update_rate value="1"/>-->
+		<tags value="ZINC_ND_BUFFS" />
+		
+		
+		<effect_group>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_Player_ZombieSpawnerT6_Buff" hidden="true" icon="ui_game_symbol_clock">
+		<stack_type value="replace"/>
+		<update_rate value="20"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<display_value value="ZINCQuestNDBombCount"/>	
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="ZombieINC_ND_Player_ZombieSpawnerT6_Buff" />
+			<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="ZombieINC_ND_Player_ZombieSpawnerT6_Buff" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="ZombieINC_ND_T6_SpawnZombies" target="self" allow_client_call="false"/>
+		</effect_group>
+	</buff>
+	
+<!--T6-->
+<!--##Bomb Visuals and Buffs-->
+	<buff name="ZombieINC_ND_PlayerAttachBombOnBackPrefab_Buff" hidden="true" icon="ui_game_symbol_clock" tooltip_key="ZombieINC_ND_PlayerAttachBombOnBackPrefab_Tooltip" name_key="ZombieINC_ND_PlayerAttachBombOnBackPrefab_Name" description_key="ZombieINC_ND_PlayerAttachBombOnBackPrefab_Desc"> 
+		<stack_type value="replace"/>
+		<update_rate value="0.5"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<effect_group>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/singleHomeFuseBox_02Prefab.prefab" local_offset="-0.3095,-0.1003,-0.523" local_rotation="357.02,237.091,1.927" local_scale="0.35,0.35,0.35" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/TimedCharge/timedChargePrefab.prefab" local_offset="0.00948,0.19653,-0.276" local_rotation="3.537,85.442,359.718" local_scale="1.5,1.5,1.5" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/electrical/lightIndustrialPrefab.prefab" local_offset="0.08814,0.59242,-0.47" local_rotation="3.548,90,0" local_scale="0.75,0.75,0.75" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/Dynamite/dynamitePrefab.prefab" local_offset="-0.20247,-0.07087,-0.203" local_rotation="3.292,111.93,1.325" local_scale="2,2,2" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/barrelGasPrefab.prefab" local_offset="0.156,-0.042,-0.443" local_rotation="3.548,90,0" local_scale="0.75,0.75,0.75" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="MainLight" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="Armed" parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="Sparks" parent_transform="Spine3" />
+				
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="singleHomeFuseBox_02Prefab"  parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="timedChargePrefab"  parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="lightIndustrialPrefab"  parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="dynamitePrefab"  parent_transform="Spine3" />
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="barrelGasPrefab" parent_transform="Spine3" />
+			
+			<passive_effect name="RunSpeed" operation="perc_add" value="-0.5"/>
+			<passive_effect name="WalkSpeed" operation="perc_add" value="-0.5"/>
+		</effect_group>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="ZINCBombCount" target="positionAOE" target_tags="Bomb" range="1.5" operation="subtract" value="1" />
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="ZINCBombOnPlayer" operation="set" value="1" />
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="ZINCBombOnPlayer" operation="set" value="0" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="positionAOE" target_tags="Objective" range="1.5" buff="ZombieINC_ND_DispatchBomb" >
+				<requirement name="HasBuff" buff="ZombieINC_ND_PlayerCloseObjective_Buff"/>
+			</triggered_effect>
+			
+			<triggered_effect trigger="onSelfBuffRemove" action="RemoveBuff" buff="ZombieINC_ND_BombOnBackDoNotShake" />
+			<triggered_effect trigger="onSelfBuffRemove" action="AddBuff" buff="ZombieINC_ND_AddOneBombCounter_buffDelay" >
+				<requirement name="!HasBuff" buff="ZombieINC_ND_BombOnBackJumpRemover_Buff"/>
+				<requirement name="!HasBuff" buff="ZombieINC_ND_BombOnBackExplode_Buff"/>
+			</triggered_effect>
+			
+			<!--<triggered_effect trigger="onSelfBuffFinish" action="Explode" blast_power="2500" block_damage="10000" block_radius="10" entity_damage="500" entity_radius="10" />-->
+		</effect_group>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_ND_BombOnBackDoNotShake" />
+			<triggered_effect trigger="onSelfJump" action="AddBuff" buff="ZombieINC_ND_BombOnBackJumpRemover_Buff" />
+				
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_BombOnBackDoNotShake" hidden="false" icon="ui_game_symbol_explosion" tooltip_key="ZombieINC_ND_PlayerAttachBombOnBackPrefab_Tooltip" name_key="ZombieINC_ND_PlayerAttachBombOnBackPrefab_Name" description_key="ZombieINC_ND_PlayerAttachBombOnBackPrefab_Desc" >
+		<stack_type value="replace"/>
+		<update_rate value="0.25"/>
+		<tags value="ZINC_ND_BUFFS" />
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".ZINCBombShake" operation="set" value="0" />
+			<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".ZINCBombShake" operation="set" value="0" />
+			<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".ZINCBombShake" operation="set" value="0" />
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZINCBombShake" operation="subtract" value="4" >
+				<requirement name="CVarCompare" cvar=".ZINCBombShake" operation="GTE" value="1"/>
+				<requirement name="EntityHasMovementTag" tags="idle"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZINCBombShake" operation="subtract" value="1" >
+				<requirement name="CVarCompare" cvar=".ZINCBombShake" operation="GTE" value="1"/>
+				<requirement name="!EntityHasMovementTag" tags="running"/>
+				<requirement name="!EntityHasMovementTag" tags="idle"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".ZINCBombShake" operation="add" value="5" >
+				<requirement name="EntityHasMovementTag" tags="running"/>
+			</triggered_effect>
+			
+			<triggered_effect trigger="onOtherAttackedSelf" action="ModifyCVar" cvar=".ZINCBombShake" operation="add" value="10" />
+			
+			
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="ZombieINC_ND_BombOnBackExplode_Buff" >
+				<requirement name="CVarCompare" cvar=".ZINCBombShake" operation="GTE" value="150"/>
+			</triggered_effect>
+		</effect_group>
+		<effect_group>
+			<passive_effect name="BuffBlink" operation="base_set" value="1" tags="ZombieINC_ND_BombOnBackDoNotShake">
+				<requirement name="CVarCompare" cvar=".ZINCBombShake" operation="GTE" value="33"/>
+			</passive_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="ZombieINC_ND_BombOnBackDoNotShake2" >
+				<requirement name="CVarCompare" cvar=".ZINCBombShake" operation="GTE" value="66"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="ZombieINC_ND_BombOnBackDoNotShake2" >
+				<requirement name="CVarCompare" cvar=".ZINCBombShake" operation="LTE" value="65"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffRemove" action="RemoveBuff" buff="ZombieINC_ND_BombOnBackDoNotShake2" />
+				
+		</effect_group>
+		<effect_group></effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_BombOnBackDoNotShake2" icon_color="200,0,0" icon_blink="true" hidden="false" icon="ui_game_symbol_explosion" tooltip_key="ZombieINC_ND_PlayerAttachBombOnBackPrefab_Tooltip" name_key="ZombieINC_ND_PlayerAttachBombOnBackPrefab_Name" description_key="ZombieINC_ND_PlayerAttachBombOnBackPrefab_Desc" >
+		<stack_type value="replace"/>
+		<tags value="ZINC_ND_BUFFS" />
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="PlaySound" loop="false" sound="alarm1"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="StopSound" sound="alarm1"/> <!--FadeOutSound-->
+		</effect_group>	
+	</buff>
+	<buff name="ZombieINC_ND_BombOnBackJumpRemover_Buff" hidden="true" icon="ui_game_symbol_clock" >
+		<stack_type value="replace"/>
+		<duration value="1"/>
+		<tags value="ZINC_ND_BUFFS" />
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_ND_BombOnBackJumpRemover_Event" allow_client_call="false" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_BombOnBackExplode_Buff" hidden="true" icon="ui_game_symbol_clock" >
+		<stack_type value="replace"/>
+		<duration value="1"/>
+		<tags value="ZINC_ND_BUFFS" />
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_ND_BombOnBackExplode_Event" allow_client_call="false" />
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_ND_AddOneBombCounter_buffDelay" hidden="true" icon="ui_game_symbol_clock" >
+		<stack_type value="replace"/>
+		<duration value="13"/>
+		<tags value="ZINC_ND_BUFFS" />
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffRemove" action="CallGameEvent" event="ZombieINC_ND_AddOneBombCounter" allow_client_call="false" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_DispatchBomb" hidden="false" icon="ui_game_symbol_clock" > 
+		<stack_type value="replace"/>
+		<duration value="10"/>
+		<update_rate value="1"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<effect_group>
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/barrelGasPrefab.prefab" local_offset="-0.712,0.576,-0.493" local_rotation="0,90,0" local_scale="1.125,1.125,1.125" parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/Dynamite/dynamitePrefab.prefab" local_offset="-1.254,0.54713,-0.179" local_rotation="0,111.93,0" local_scale="3,3,3" parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/electrical/lightIndustrialPrefab.prefab" local_offset="-0.722,1.557,-0.379" local_rotation="0,90,0" local_scale="1.125,1.125,1.125" parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/TimedCharge/timedChargePrefab.prefab" local_offset="-0.966,0.815,-0.321" local_rotation="0,90,359.718" local_scale="2.25,2.25,2.25" parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/singleHomeFuseBox_02Prefab.prefab" local_offset="-1.406,0.471,-0.61" local_rotation="0,237.091,0" local_scale="0.525,0.525,0.525" parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="true" transform_path="MainLight" parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="true" transform_path="Armed" parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="Sparks" parent_transform="Origin" />
+			
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="singleHomeFuseBox_02Prefab"  parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="timedChargePrefab"  parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="lightIndustrialPrefab"  parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="dynamitePrefab"  parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="barrelGasPrefab" parent_transform="Origin" />
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="PlaySound" sound="demolitionz_beep"/>
+		</effect_group>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" target="positionAOE" target_tags="player" range="2.5" buff="ZombieINC_ND_PlayerAttachBombOnBackPrefab_Buff" />	
+			<triggered_effect trigger="onSelfBuffFinish" action="ModifyStats" stat="Health" target="self"  operation="subtract" value="99999" />
+			<triggered_effect trigger="onSelfBuffFinish" action="Explode" blast_power="2500" block_damage="25000" block_radius="10" entity_damage="500" entity_radius="10" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_Bomb_T5"> 
+		<stack_type value="replace"/>
+		<update_rate value="0.1"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="FeralEye"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD0"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD1"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD2"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="NormalEye"/>
+		
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/singleHomeFuseBox_02Prefab.prefab" local_offset="-0.743,0.713,-0.488" local_rotation="0,237.141,0" local_scale="0.75,0.75,0.75" parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/TimedCharge/timedChargePrefab.prefab" local_offset="-0.108,1.231,0.013" local_rotation="0,85.451,0" local_scale="3,3,3" parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/electrical/lightIndustrialPrefab.prefab" local_offset="0.019,2.049,-0.334" local_rotation="0,90,0" local_scale="1.5,1.5,1.5" parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/Dynamite/dynamitePrefab.prefab" local_offset="-0.489,0.816,0.176" local_rotation="0,111.892,0" local_scale="3,3,3" parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/barrelGasPrefab.prefab" local_offset="0.201,0.8,-0.307" local_rotation="0,90,0" local_scale="1.5,1.5,1.5" parent_transform="Origin" />
+			<triggered_effect action="SetTransformActive" active="false" transform_path="Armed" parent_transform="Origin" />
+			<triggered_effect action="SetTransformActive" active="false" transform_path="MainLight" parent_transform="Origin" />
+			<triggered_effect action="SetTransformActive" active="false" transform_path="Sparks" parent_transform="Origin" />
+		</effect_group>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="ZINCBombCount" operation="set" value="1" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="positionAOE" target_tags="player" range="1.5" buff="ZombieINC_ND_RemoveBomb" >
+				<requirement name="CVarCompare" cvar="ZINCBombCount" operation="LTE" value="0"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="positionAOE" target_tags="player" range="1.3" buff="ZombieINC_ND_PlayerAttachBombOnBackPrefab_Buff" >
+				<requirement name="!HasBuff" target="other" buff="ZombieINC_ND_PlayerAttachBombOnBackPrefab_Buff"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_RemoveBomb"> 
+		<stack_type value="replace"/>
+		<duration value="1"/>
+		<tags value="ZINC_ND_BUFFS" />
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_ND_PlayerRemoveBomb" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffStack" action="CallGameEvent" event="ZombieINC_ND_PlayerRemoveBomb" allow_client_call="false" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_Bomb_T6"> 
+		<stack_type value="replace"/>
+		<update_rate value="0.5"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="FeralEye"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD0"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD1"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD2"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="NormalEye"/>
+		
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/singleHomeFuseBox_02Prefab.prefab" local_offset="-0.743,0.713,-0.488" local_rotation="0,237.141,0" local_scale="0.75,0.75,0.75" parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/TimedCharge/timedChargePrefab.prefab" local_offset="-0.108,1.231,0.013" local_rotation="0,85.451,0" local_scale="3,3,3" parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/electrical/lightIndustrialPrefab.prefab" local_offset="0.019,2.049,-0.334" local_rotation="0,90,0" local_scale="1.5,1.5,1.5" parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/Dynamite/dynamitePrefab.prefab" local_offset="-0.489,0.816,0.176" local_rotation="0,111.892,0" local_scale="3,3,3" parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/barrelGasPrefab.prefab" local_offset="0.201,0.8,-0.307" local_rotation="0,90,0" local_scale="1.5,1.5,1.5" parent_transform="Origin" />
+			<triggered_effect action="SetTransformActive" active="false" transform_path="Armed" parent_transform="Origin" />
+			<triggered_effect action="SetTransformActive" active="false" transform_path="MainLight" parent_transform="Origin" />
+			<triggered_effect action="SetTransformActive" active="false" transform_path="Sparks" parent_transform="Origin" />
+		</effect_group>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="ZINCBombCount" operation="set" value="1" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="positionAOE" target_tags="player" range="1.6" buff="ZombieINC_ND_RemoveBomb" >
+				<requirement name="CVarCompare" cvar="ZINCBombCount" operation="LTE" value="0"/>
+			</triggered_effect>
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="positionAOE" target_tags="player" range="1.2" buff="ZombieINC_ND_PlayerAttachBombOnBackPrefab_Buff" />
+		</effect_group>
+	</buff>
+<!--Bomb Visuals and Buffs-->
+<!--##Vehicle Visuals And Buff-->
+	<buff name="ZombieINC_ND_PlayerOnVehicle_MiniBike" remove_on_death="true" hidden="true" icon="ui_game_symbol_trophy" icon_color="185,120,15">
+		<damage_type value="heat"/>  <!-- Thanks for A21 ServerSideVehicles Mod to finally solve this problem--> <!--I'd never imagine that damage_type would be a thing to make this work-->	
+		<stack_type value="ignore"/>
+		<update_rate value="0.5"/>	
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="positionAOE" target_tags="player" range="2" buff="ZombieINC_ND_OnVehicle_MiniBike" >
+				<requirement name="IsAttachedToEntity" target="other"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_OnVehicle_MiniBike" remove_on_death="true" hidden="true" icon="ui_game_symbol_trophy" icon_color="185,120,15">
+		<stack_type value="replace"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<duration value="1"/>		
+		<effect_group>
+			<requirement name="ProgressionLevel" progression_name="ZombieINC_perkNestDemolition5" operation="Equals" value="1"/>
+				<passive_effect name="VehicleVelocityMaxPer" operation="perc_add" value="0.2"/>
+				<passive_effect name="VehicleMotorTorquePer" operation="perc_add" value="0.2"/>
+		</effect_group>
+		<effect_group>
+			<requirement name="!HasBuff" buff="ZombieINC_ND_MoveDetector_T3"/>
+			<requirement name="!HasBuff" buff="ZombieINC_ND_MoveDetector_T4"/>
+				<passive_effect name="VehicleVelocityMaxPer" operation="base_set" value="0"/>
+				<passive_effect name="VehicleMotorTorquePer" operation="base_set" value="0"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_PlayerOnVehicle_Truck" remove_on_death="true" hidden="true" icon="ui_game_symbol_trophy" icon_color="185,120,15">
+		<damage_type value="heat"/>  <!-- Thanks for A21 ServerSideVehicles Mod to finally solve this problem--> <!--I'd never imagine that damage_type would be a thing to make this work-->	
+		<stack_type value="ignore"/>
+		<update_rate value="0.5"/>	
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="positionAOE" target_tags="player" range="2" buff="ZombieINC_ND_OnVehicle_Truck" >
+				<requirement name="IsAttachedToEntity" target="other"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_OnVehicle_Truck" remove_on_death="true" hidden="true" icon="ui_game_symbol_trophy" icon_color="185,120,15">
+		<stack_type value="replace"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<duration value="1"/>		
+		<effect_group>
+			<passive_effect name="VehicleVelocityMaxPer" operation="perc_add" value="0.2">
+				<requirement name="ProgressionLevel" progression_name="ZombieINC_perkVehicleRecovery1" operation="Equals" value="1"/>
+			</passive_effect>
+			<passive_effect name="VehicleMotorTorquePer" operation="perc_add" value="0.2">
+				<requirement name="ProgressionLevel" progression_name="ZombieINC_perkVehicleRecovery2" operation="Equals" value="1"/>
+			</passive_effect>
+		</effect_group>
+		<effect_group>
+			<requirement name="!HasBuff" buff="ZombieINC_ND_MoveDetector_T5"/>
+			<requirement name="!HasBuff" buff="ZombieINC_ND_MoveDetector_T6"/>
+				<passive_effect name="VehicleVelocityMaxPer" operation="base_set" value="0"/>
+				<passive_effect name="VehicleMotorTorquePer" operation="base_set" value="0"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_MoveDetector_T3" remove_on_death="true" hidden="true" icon="ui_game_symbol_trophy" icon_color="185,120,15">
+		<stack_type value="replace"/>
+		<tags value="ZINC_ND_BUFFS" />
+				
+		<effect_group>
+			
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_MoveDetector_T4" remove_on_death="true" hidden="true" icon="ui_game_symbol_trophy" icon_color="185,120,15">
+		<stack_type value="replace"/>
+		<tags value="ZINC_ND_BUFFS" />
+				
+		<effect_group>
+			
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_MoveDetector_T5" remove_on_death="true" hidden="true" icon="ui_game_symbol_trophy" icon_color="185,120,15">
+		<stack_type value="replace"/>
+		<tags value="ZINC_ND_BUFFS" />
+				
+		<effect_group>
+			
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_MoveDetector_T6" remove_on_death="true" hidden="true" icon="ui_game_symbol_trophy" icon_color="185,120,15">
+		<stack_type value="replace"/>
+		<tags value="ZINC_ND_BUFFS" />
+				
+		<effect_group>
+			
+		</effect_group>
+	</buff>
+<buff name="ZombieINC_ND_PlayerMinibikeAttachPrefab_Buff"> <!--Not Used, buff added directly in Gameevents.xml-->
+		<stack_type value="replace"/>
+		<duration value="5"/>
+		<update_rate value="0.1"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<effect_group>
+		   <triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="positionAOE" range="40" target_tags="ZINCMinibikeQuestND" buff="ZombieINC_ND_MinibikeAttachPrefab_Buff" >
+				<requirement name="NotHasBuff" target="other" buff="ZombieINC_ND_MinibikeAttachPrefab_Buff"/>
+		   </triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_MinibikeAttachPrefab_Buff" hidden="true">
+		<damage_type value="heat"/>  <!-- Thanks for A21 ServerSideVehicles Mod to finally solve this problem--> <!--I'd never imagine that damage_type would be a thing to make this work-->	
+		<stack_type value="ignore"/>	
+		<effect_group>
+		
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/TimedCharge/timedChargePrefab.prefab" local_offset="-0.069,0.721,-0.869" local_rotation="0,90,0" local_scale="1,1,1" parent_transform="BLow" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/pipeSmall_1x3Prefab.prefab" local_offset="-0.261,0.467,-0.534" local_rotation="57.107,90,0" local_scale="0.25,0.25,0.178" parent_transform="BLow" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/boxCardboard2Prefab.prefab" local_offset="-0.439,0.737,-0.515" local_rotation="0,90,0" local_scale="0.4,0.4,0.4" parent_transform="BLow" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/LootContainers/basketLaundryPrefab.prefab" local_offset="-0.017,0.909,-0.873" local_rotation="0,0,0" local_scale="0.5,0.5,0.5" parent_transform="BLow" />
+			<triggered_effect action="SetTransformActive" active="false" transform_path="Armed" parent_transform="BLow" />
+		  
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/pipeSmall_1x3Prefab.prefab" local_offset="0.261,0.447,-0.439" local_rotation="302.893,90,0" local_scale="0.25,0.25,0.178" parent_transform="BHigh" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/pipeSmall_1x1Prefab.prefab" local_offset="0,0.677,-0.422" local_rotation="0,90,0" local_scale="0.25,0.25,0.6" parent_transform="BHigh" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/boxCardboard2Prefab.prefab" local_offset="0.434,0.724,-0.431" local_rotation="0,90,0" local_scale="0.4,0.4,0.4" parent_transform="BHigh" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/TimedCharge/timedChargePrefab.prefab" local_offset="0.141,0.815,-0.869" local_rotation="316.558,90,0" local_scale="1,1,1" parent_transform="BHigh" />
+			<triggered_effect action="SetTransformActive" active="false" transform_path="Armed" parent_transform="BHigh" />
+		  
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/TimedCharge/timedChargePrefab.prefab" local_offset="-0.12101,0.81685,-0.85802" local_rotation="0,0,356.427" local_scale="1,1,1" parent_transform="M" />
+				
+		</effect_group>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_ND_VehicleEraseItSelf_AfterWait_120m" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_ND_PlayerOnVehicle_MiniBike" />
+		</effect_group>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="basketLaundryPrefab" parent_transform="BLow"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="pipeSmall_1x3Prefab" parent_transform="BLow"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="boxCardboard2Prefab" parent_transform="BLow"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="timedChargePrefab" parent_transform="BLow"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="timedChargePrefab" parent_transform="BHigh"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="pipeSmall_1x3Prefab"  parent_transform="BHigh"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="pipeSmall_1x1Prefab"  parent_transform="BHigh"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="boxCardboard2Prefab"  parent_transform="BHigh"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="RemovePrefabFromEntity" prefab="timedChargePrefab"  parent_transform="M"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_MinibikeRemoveAttachBombPrefab_Buff" hidden="true">
+		<damage_type value="heat"/>  <!-- Thanks for A21 ServerSideVehicles Mod to finally solve this problem--> <!--I'd never imagine that damage_type would be a thing to make this work-->	
+		<stack_type value="ignore"/>	
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="RemovePrefabFromEntity" prefab="timedChargePrefab" parent_transform="BLow"/>
+			<triggered_effect trigger="onSelfBuffStart" action="RemovePrefabFromEntity" prefab="timedChargePrefab"  parent_transform="BHigh"/>
+			<triggered_effect trigger="onSelfBuffStart" action="RemovePrefabFromEntity" prefab="timedChargePrefab"  parent_transform="M"/>
+		</effect_group>
+	</buff>
+	
+	
+	<buff name="ZombieINC_ND_PlayerJeepAttachPrefab_Buff"> <!--Not Used, buff added directly in Gameevents.xml-->
+		<stack_type value="replace"/>
+		<duration value="5"/>
+		<update_rate value="0.1"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<effect_group>
+		   <triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="positionAOE" range="40" target_tags="ZINCTruckQuestND" buff="ZombieINC_ND_JeepAttachPrefab_Buff" >
+				<requirement name="NotHasBuff" target="other" buff="ZombieINC_ND_JeepAttachPrefab_Buff"/>
+		   </triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_JeepAttachPrefab_Buff" hidden="true">
+		<damage_type value="heat"/>  <!-- Thanks for A21 ServerSideVehicles Mod to finally solve this problem--> <!--I'd never imagine that damage_type would be a thing to make this work-->	
+		<stack_type value="ignore"/>	
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/singleHomeFuseBox_02Prefab.prefab" local_offset="-0.357,1.7,-2.728" local_rotation="0,182.434,0" local_scale="0.5,0.5,0.5" parent_transform="BL" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/TimedCharge/timedChargePrefab.prefab" local_offset="-0.37372,1.992,-2.18564" local_rotation="0,30.744,0" local_scale="2,2,2" parent_transform="BL" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/electrical/lightIndustrialPrefab.prefab" local_offset="-0.15729,2.59,-2.31434" local_rotation="0,35.293,0" local_scale="1,1,1" parent_transform="BL" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/Dynamite/dynamitePrefab.prefab" local_offset="-0.47507,1.773,-1.9203" local_rotation="0,35.293,0" local_scale="2,2,2" parent_transform="BL" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/barrelGasPrefab.prefab" local_offset="-0.07417,1.757,-2.15019" local_rotation="0,35.293,0" local_scale="1,1,1" parent_transform="BL" />
+			<triggered_effect action="SetTransformActive" active="false" transform_path="Armed" parent_transform="BL" />
+			<triggered_effect action="SetTransformActive" active="false" transform_path="MainLight" parent_transform="BL" />
+			<triggered_effect action="SetTransformActive" active="false" transform_path="Sparks" parent_transform="BL" />
+   
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/Dynamite/dynamitePrefab.prefab" local_offset="0.13583,1.773,-1.92019" local_rotation="0,35.293,0" local_scale="2,2,2" parent_transform="BR" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/barrelGasPrefab.prefab" local_offset="0.53673,1.757,-2.15008" local_rotation="0,35.293,0" local_scale="1,1,1" parent_transform="BR" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/TimedCharge/timedChargePrefab.prefab" local_offset="0.23718,1.992,-2.18553" local_rotation="0,30.744,0" local_scale="2,2,2" parent_transform="BR" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/singleHomeFuseBox_02Prefab.prefab" local_offset="0.2539,1.7,-2.72789" local_rotation="0,182.434,0" local_scale="0.5,0.5,0.5" parent_transform="BR" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/electrical/lightIndustrialPrefab.prefab" local_offset="0.45361,2.59,-2.31422" local_rotation="0,35.293,0" local_scale="1,1,1" parent_transform="BR" />
+			<triggered_effect action="SetTransformActive" active="false" transform_path="Sparks" parent_transform="BR" />
+			<triggered_effect action="SetTransformActive" active="false" transform_path="Armed" parent_transform="BR" />
+			<triggered_effect action="SetTransformActive" active="false" transform_path="MainLight" parent_transform="BR" />	
+		</effect_group>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_ND_VehicleEraseItSelf_AfterWait_120m" allow_client_call="false" />
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="ZombieINC_ND_PlayerOnVehicle_Truck" />
+		</effect_group>
+		<effect_group>
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="singleHomeFuseBox_02Prefab"  parent_transform="BL" />
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="timedChargePrefab"  parent_transform="BL" />
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="lightIndustrialPrefab"  parent_transform="BL" />
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="dynamitePrefab"  parent_transform="BL" />
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="barrelGasPrefab"  parent_transform="BL" />
+			
+   
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="singleHomeFuseBox_02Prefab"  parent_transform="BR" />
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="timedChargePrefab"  parent_transform="BR" />
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="lightIndustrialPrefab"  parent_transform="BR" />
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="dynamitePrefab"  parent_transform="BR" />
+			<triggered_effect trigger="onSelfDied" action="RemovePrefabFromEntity" prefab="barrelGasPrefab"  parent_transform="BR" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_JeepAttachPrefabDisableOneSide_Buff" hidden="true">
+		<damage_type value="heat"/>  <!-- Thanks for A21 ServerSideVehicles Mod to finally solve this problem--> <!--I'd never imagine that damage_type would be a thing to make this work-->	
+		<stack_type value="ignore"/>	
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="RemovePrefabFromEntity" prefab="singleHomeFuseBox_02Prefab"  parent_transform="BL" />
+			<triggered_effect trigger="onSelfBuffStart" action="RemovePrefabFromEntity" prefab="timedChargePrefab"  parent_transform="BL" />
+			<triggered_effect trigger="onSelfBuffStart" action="RemovePrefabFromEntity" prefab="lightIndustrialPrefab"  parent_transform="BL" />
+			<triggered_effect trigger="onSelfBuffStart" action="RemovePrefabFromEntity" prefab="dynamitePrefab"  parent_transform="BL" />
+			<triggered_effect trigger="onSelfBuffStart" action="RemovePrefabFromEntity" prefab="barrelGasPrefab"  parent_transform="BL" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_JeepAttachPrefabDisableAll_Buff" hidden="true">
+		<damage_type value="heat"/>  <!-- Thanks for A21 ServerSideVehicles Mod to finally solve this problem--> <!--I'd never imagine that damage_type would be a thing to make this work-->	
+		<stack_type value="ignore"/>	
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="RemovePrefabFromEntity" prefab="singleHomeFuseBox_02Prefab"  parent_transform="BL" />
+			<triggered_effect trigger="onSelfBuffStart" action="RemovePrefabFromEntity" prefab="timedChargePrefab"  parent_transform="BL" />
+			<triggered_effect trigger="onSelfBuffStart" action="RemovePrefabFromEntity" prefab="lightIndustrialPrefab"  parent_transform="BL" />
+			<triggered_effect trigger="onSelfBuffStart" action="RemovePrefabFromEntity" prefab="dynamitePrefab"  parent_transform="BL" />
+			<triggered_effect trigger="onSelfBuffStart" action="RemovePrefabFromEntity" prefab="barrelGasPrefab"  parent_transform="BL" />
+			
+   
+			<triggered_effect trigger="onSelfBuffStart" action="RemovePrefabFromEntity" prefab="singleHomeFuseBox_02Prefab"  parent_transform="BR" />
+			<triggered_effect trigger="onSelfBuffStart" action="RemovePrefabFromEntity" prefab="timedChargePrefab"  parent_transform="BR" />
+			<triggered_effect trigger="onSelfBuffStart" action="RemovePrefabFromEntity" prefab="lightIndustrialPrefab"  parent_transform="BR" />
+			<triggered_effect trigger="onSelfBuffStart" action="RemovePrefabFromEntity" prefab="dynamitePrefab"  parent_transform="BR" />
+			<triggered_effect trigger="onSelfBuffStart" action="RemovePrefabFromEntity" prefab="barrelGasPrefab"  parent_transform="BR" />
+			
+		</effect_group>
+	</buff>
+<!--Vehicle Visuals And Buff-->
+<!--##Objectives Visuals And Buff-->
+	<buff name="ZombieINC_ND_ObjectiveDamaged_Buff" hidden="true" icon="ui_game_symbol_clock">
+		<stack_type value="ignore"/>
+		<duration value="6.5"/> 
+		<tags value="ZINC_ND_BUFFS" />
+		<effect_group>
+			<requirement name="EntityTagCompare" target="self" tags="Objective"/>
+			<!--<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_Objective_KillSelf" target="self" allow_client_call="false"/>-->
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="positionAOE" target_tags="player" range="5" buff="ZombieINC_ND_Player_AddOneCounter_Buff" >
+				<requirement name="HasBuff" target="other" buff="ZombieINC_ND_DamageOnObjective_Buff"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffFinish" action="ModifyStats" stat="Health" target="self"  operation="subtract" value="1000" />
+			<triggered_effect trigger="onSelfBuffFinish" action="Explode" blast_power="250" block_damage="50" block_radius="6" entity_damage="50" entity_radius="6" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_Player_AddOneCounter_Buff" hidden="true" icon="ui_game_symbol_clock">
+		<stack_type value="ignore"/>
+		<duration value="6.5"/> 
+		<tags value="ZINC_ND_BUFFS" />
+		
+		<effect_group>
+			<!--<triggered_effect trigger="onSelfBuffStack" action="CallGameEvent" event="ZombieINC_ND_AddOneBombCounter" target="self" allow_client_call="true"/>-->
+			<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" event="ZombieINC_ND_AddOneBombCounter" target="self" allow_client_call="false"/>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_DamageOnObjective_Buff" hidden="true" icon="ui_game_symbol_clock">
+		<duration value="9"/> 
+		<stack_type value="replace"/>
+		<update_rate value="1"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<display_value value="ZINCQuestNDBombCount"/>	
+		
+		<effect_group>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_PlayerCloseObjective_Buff"  > 
+		<duration value="1.5"/>
+		<stack_type value="replace"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<effect_group>
+				
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_DestroyObjective_Buff"  > <!--Not Used-->
+		<update_rate value="1"/>
+		<stack_type value="ignore"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<effect_group>
+			
+			<triggered_effect trigger="onSelfExplosionAttackedOther" action="ModifyStats" stat="Health" target="other" target_tags="Objective" operation="subtract" value="1000">
+				<!--<requirement name="HasBuff" target="other" buff="ZombieINC_MD_PlayerAttachPrefab_Buff" />-->
+			</triggered_effect>
+				
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_Objective_Buff"  >
+		<update_rate value="1"/>
+		<stack_type value="ignore"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="FeralEye"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD0"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD1"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="LOD2"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="NormalEye"/>
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="FeralEye"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="LOD0"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="LOD1"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="LOD2"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="NormalEye"/>
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="ZombieINC_ND_PlayerCloseObjective_Buff" target="positionAOE" range="2.5" target_tags="player">
+				<!--<requirement name="HasBuff" target="other" buff="ZombieINC_MD_PlayerAttachPrefab_Buff" />-->
+			</triggered_effect>
+			<!--<triggered_effect trigger="onOtherKilledSelf" action="AddBuff" buff="ZombieINC_ND_Player_AddOneCounter_Buff" target="other" />-->
+				
+		</effect_group>
+	</buff>
+
+	<buff name="ZombieINC_ND_Objective_SmallPile_D_Buff"  >
+		<stack_type value="ignore"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AttachPrefabToEntity" prefab="@:Entities/LootContainers/trashPileAPrefab.prefab" local_offset="0.4,0.50948,0.128" local_rotation="0,326.548,0" local_scale="1,1,1" parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="AttachPrefabToEntity" prefab="@:Entities/gore/humanSkullGorePrefab.prefab" local_offset="-0.083,0.51387,0.85" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="AttachPrefabToEntity" prefab="@:Entities/LootContainers/trashPileBPrefab.prefab" local_offset="-0.96,0.52361,-0.01506" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="AttachPrefabToEntity" prefab="@:Entities/LootContainers/trashPileDPrefab.prefab" local_offset="-0.492,0.84,-0.12" local_rotation="0,0,0" local_scale="1.5,1.5,1.5" parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="AttachPrefabToEntity" prefab="@:Entities/LootContainers/trashPileEPrefab.prefab" local_offset="-0.077,0.51115,0.531" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="AttachPrefabToEntity" prefab="@:Entities/LootContainers/trashPileCPrefab.prefab" local_offset="-0.593,0.543,0.485" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="AttachPrefabToEntity" prefab="@:Entities/LootContainers/trashPileGPrefab.prefab" local_offset="-0.502,0.72,-0.165" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="AttachPrefabToEntity" prefab="@:Entities/lighting/barrel03_burningPrefab.prefab" local_offset="-0.07746,0.569,0.14417" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="Origin" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_Objective_SmallPile_A_Buff"  >
+		<stack_type value="ignore"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AttachPrefabToEntity" prefab="@:Entities/Zombies/Zombies/corpse3Prefab.prefab" local_offset="-0.015,0.52551,0.801" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="AttachPrefabToEntity" prefab="@:Entities/gore/humanSkeletonGorePrefab.prefab" local_offset="-0.682,0.57109,0.483" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="AttachPrefabToEntity" prefab="@:Entities/LootContainers/bruteStyleTrashCanFullPrefab.prefab" local_offset="0.008,0.641,0.097" local_rotation="0,77.746,0" local_scale="1,1,1" parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="AttachPrefabToEntity" prefab="@:Entities/LootContainers/trashPileAPrefab.prefab" local_offset="0.4,0.50948,0.128" local_rotation="0,326.548,0" local_scale="1,1,1" parent_transform="Origin" />
+		</effect_group>
+	</buff>
+	 <buff name="ZombieINC_ND_Objective_SmallPile_B_Buff"  >
+		<stack_type value="ignore"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AttachPrefabToEntity" prefab="@:Entities/LootContainers/bruteStyleTrashCanFullPrefab.prefab" local_offset="0.008,0.641,0.097" local_rotation="0,77.746,0" local_scale="1,1,1" parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="AttachPrefabToEntity" prefab="@:Entities/LootContainers/trashPileAPrefab.prefab" local_offset="0.4,0.50948,0.128" local_rotation="0,326.548,0" local_scale="1,1,1" parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="AttachPrefabToEntity" prefab="@:Entities/LootContainers/trashPileEPrefab.prefab" local_offset="-0.077,0.51115,0.531" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="AttachPrefabToEntity" prefab="@:Entities/LootContainers/trashPileCPrefab.prefab" local_offset="-0.593,0.543,0.485" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="Origin" />
+		</effect_group>
+	</buff>
+	 <buff name="ZombieINC_ND_Objective_SmallPile_C_Buff"  >
+		<stack_type value="ignore"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AttachPrefabToEntity" prefab="@:Entities/LootContainers/trashPileAPrefab.prefab" local_offset="0.4,0.50948,0.128" local_rotation="0,326.548,0" local_scale="1,1,1" parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="AttachPrefabToEntity" prefab="@:Entities/gore/humanSkullGorePrefab.prefab" local_offset="-0.083,0.51387,0.85" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="AttachPrefabToEntity" prefab="@:Entities/LootContainers/trashPileBPrefab.prefab" local_offset="-0.96,0.52361,-0.01506" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="AttachPrefabToEntity" prefab="@:Entities/LootContainers/trashPileDPrefab.prefab" local_offset="-0.22,0.84,0.11" local_rotation="0,0,0" local_scale="1.5,1.5,1.5" parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="AttachPrefabToEntity" prefab="@:Entities/LootContainers/trashPileEPrefab.prefab" local_offset="-0.077,0.51115,0.531" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="AttachPrefabToEntity" prefab="@:Entities/LootContainers/trashPileCPrefab.prefab" local_offset="-0.593,0.543,0.485" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="Origin" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="AttachPrefabToEntity" prefab="@:Entities/LootContainers/trashPileGPrefab.prefab" local_offset="-0.502,0.72,-0.165" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="Origin" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_Objective_VisualSelectorSmall_Buff"  >
+		<stack_type value="ignore"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" fireOneBuff="true" buff="ZombieINC_ND_Objective_SmallPile_A_Buff,ZombieINC_ND_Objective_SmallPile_B_Buff,ZombieINC_ND_Objective_SmallPile_C_Buff,ZombieINC_ND_Objective_SmallPile_D_Buff" weights="25,25,25,25" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_Objective_VisualSelectorLarge_Buff"  >
+		<stack_type value="ignore"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" fireOneBuff="true" buff="ZombieINC_ND_Objective_SmallPile_D_Buff" weights="25" />
+		</effect_group>
+	</buff>
+<!--Objectives Visuals-->
+<!--#Drone Tier-->
+	<buff name="ZombieINC_DroneRadar_Tier1_Player_Buff"  >
+		<duration value="1"/>
+		<stack_type value="replace"/>
+		<update_rate value="0.05"/>
+		<effect_group>	
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="positionAOE" range="5" target_tags="droneradar" buff="ZombieINC_DroneRadar_Tier1_Drone_Buff">
+				<requirement name="HasBuff" target="other" buff="ZombieINC_DroneRadar_Naive"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_DroneRadar_Tier1_Drone_Buff"  >
+		<duration value="2"/>
+		<stack_type value="replace"/>
+		<update_rate value="0.05"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="ZINCDroneTier" operation="set" value="1" >
+				<requirement name="CVarCompare" cvar="ZINCDroneTier" operation="Equals" value="0"/>
+			</triggered_effect>
+				
+			<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" target="positionAOE" range="5" target_tags="player" buff="ZombieINC_DroneRadar_Tier1_Player_Buff"/>
+			<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="ZombieINC_DroneRadar_Naive"/>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_DroneRadar_Tier2_Player_Buff"  >
+		<duration value="1"/>
+		<stack_type value="replace"/>
+		<update_rate value="0.05"/>
+		<effect_group>	
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="positionAOE" range="5" target_tags="droneradar" buff="ZombieINC_DroneRadar_Tier2_Drone_Buff">
+				<requirement name="HasBuff" target="other" buff="ZombieINC_DroneRadar_Naive"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_DroneRadar_Tier2_Drone_Buff"  >
+		<duration value="2"/>
+		<stack_type value="replace"/>
+		<update_rate value="0.05"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="ZINCDroneTier" operation="set" value="2" >
+				<requirement name="CVarCompare" cvar="ZINCDroneTier" operation="Equals" value="0"/>
+			</triggered_effect>
+				
+			<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" target="positionAOE" range="5" target_tags="player" buff="ZombieINC_DroneRadar_Tier2_Player_Buff"/>
+			<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="ZombieINC_DroneRadar_Naive"/>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_DroneRadar_Tier3_Player_Buff"  >
+		<duration value="1"/>
+		<stack_type value="replace"/>
+		<update_rate value="0.05"/>
+		<effect_group>	
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="positionAOE" range="5" target_tags="droneradar" buff="ZombieINC_DroneRadar_Tier3_Drone_Buff">
+				<requirement name="HasBuff" target="other" buff="ZombieINC_DroneRadar_Naive"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_DroneRadar_Tier3_Drone_Buff"  >
+		<duration value="2"/>
+		<stack_type value="replace"/>
+		<update_rate value="0.05"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="ZINCDroneTier" operation="set" value="3" >
+				<requirement name="CVarCompare" cvar="ZINCDroneTier" operation="Equals" value="0"/>
+			</triggered_effect>
+				
+			<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" target="positionAOE" range="5" target_tags="player" buff="ZombieINC_DroneRadar_Tier3_Player_Buff"/>
+			<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="ZombieINC_DroneRadar_Naive"/>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_DroneRadar_Tier4_Player_Buff"  >
+		<duration value="1"/>
+		<stack_type value="replace"/>
+		<update_rate value="0.05"/>
+		<effect_group>	
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="positionAOE" range="5" target_tags="droneradar" buff="ZombieINC_DroneRadar_Tier4_Drone_Buff">
+				<requirement name="HasBuff" target="other" buff="ZombieINC_DroneRadar_Naive"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_DroneRadar_Tier4_Drone_Buff"  >
+		<duration value="2"/>
+		<stack_type value="replace"/>
+		<update_rate value="0.05"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="ZINCDroneTier" operation="set" value="4" >
+				<requirement name="CVarCompare" cvar="ZINCDroneTier" operation="Equals" value="0"/>
+			</triggered_effect>
+				
+			<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" target="positionAOE" range="5" target_tags="player" buff="ZombieINC_DroneRadar_Tier4_Player_Buff"/>
+			<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="ZombieINC_DroneRadar_Naive"/>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_DroneRadar_Tier5_Player_Buff"  >
+		<duration value="1"/>
+		<stack_type value="replace"/>
+		<update_rate value="0.05"/>
+		<effect_group>	
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="positionAOE" range="5" target_tags="droneradar" buff="ZombieINC_DroneRadar_Tier5_Drone_Buff">
+				<requirement name="HasBuff" target="other" buff="ZombieINC_DroneRadar_Naive"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_DroneRadar_Tier5_Drone_Buff"  >
+		<duration value="2"/>
+		<stack_type value="replace"/>
+		<update_rate value="0.05"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="ZINCDroneTier" operation="set" value="5" >
+				<requirement name="CVarCompare" cvar="ZINCDroneTier" operation="Equals" value="0"/>
+			</triggered_effect>
+				
+			<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" target="positionAOE" range="5" target_tags="player" buff="ZombieINC_DroneRadar_Tier5_Player_Buff"/>
+			<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="ZombieINC_DroneRadar_Naive"/>
+		</effect_group>
+	</buff>
+	
+	<buff name="ZombieINC_DroneRadar_Tier6_Player_Buff"  >
+		<duration value="1"/>
+		<stack_type value="replace"/>
+		<update_rate value="0.05"/>
+		<effect_group>	
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="positionAOE" range="5" target_tags="droneradar" buff="ZombieINC_DroneRadar_Tier6_Drone_Buff">
+				<requirement name="HasBuff" target="other" buff="ZombieINC_DroneRadar_Naive"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_DroneRadar_Tier6_Drone_Buff"  >
+		<duration value="2"/>
+		<stack_type value="replace"/>
+		<update_rate value="0.05"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="ZINCDroneTier" operation="set" value="6" >
+				<requirement name="CVarCompare" cvar="ZINCDroneTier" operation="Equals" value="0"/>
+			</triggered_effect>
+				
+			<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" target="positionAOE" range="5" target_tags="player" buff="ZombieINC_DroneRadar_Tier6_Player_Buff"/>
+			<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="ZombieINC_DroneRadar_Naive"/>
+		</effect_group>
+	</buff>
+<!--Drone Tier-->
+<!--#Drone Visuals-->
+	<buff name="ZombieINC_NestDemolition_ImADrone_T6_Player" hidden="true">	
+		<stack_type value="ignore"/>
+		<duration value="3"/>
+		<tags value="zombieinc_defense" />
+		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_NestDemolition_ImADrone_T6_GameEvent" allow_client_call="false"/> 
+		
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_DroneRadar_Naive" hidden="true">	
+		<stack_type value="ignore"/>
+		<duration value="0.5"/>
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffRemove" action="AddBuff" buff="ZombieINC_NestDemolition_ImADrone_T6"/>
+			<!--<triggered_effect trigger="onSelfBuffRemove" action="AddBuff" buff="ZombieINC_NestDemolition_ImADrone_T6">
+				<requirement name="CVarCompare" cvar="ZINCDroneTier" operation="Equals" value="0"/>
+			</triggered_effect>-->
+		</effect_group>	
+	</buff>
+	<buff name="ZombieINC_NestDemolition_ImADrone_T6" hidden="true">	
+		<stack_type value="ignore"/>
+		<tags value="zombieinc_defense" />
+		
+		<effect_group >
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/barrelGasPrefab.prefab" local_offset="-0.029,-0.213,-0.233" local_rotation="0,0,90" local_scale="0.4,0.4,0.4" parent_transform="Base" >
+				<!--<requirement name="CVarCompare" cvar="ZINCDroneTier" operation="Equals" value="5"/>-->
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/crafting/sign_wood_1x1_Prefab.prefab" local_offset="-0.451,-0.2155,0.016" local_rotation="0,90,90" local_scale="0.6,0.5,0.2" parent_transform="Base" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/doors/woodhatch/woodHatchPrefab.prefab" local_offset="-0.547,-0.19,-0.005" local_rotation="0,0,90" local_scale="0.6,0.7,0.38" parent_transform="Base" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/electrical/smallGeneratorPrefab.prefab" local_offset="-0.025,-0.284,0.051" local_rotation="0,0,0" local_scale="0.7,0.6,0.6" parent_transform="Base" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/pipeSmall_1x1Prefab.prefab" local_offset="0,-0.227,0.1983" local_rotation="0,90,0" local_scale="0.3,0.3,0.52" parent_transform="Base" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/pipeSmallWall_1x1Prefab.prefab" local_offset="0,-0.109,-0.108" local_rotation="0,90,0" local_scale="0.3,0.3,0.52" parent_transform="Base" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/electrical/satelliteUnitLargePrefab.prefab" local_offset="0,0.193,0.088" local_rotation="0,0,0" local_scale="0.55,0.55,0.55" parent_transform="Base" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/decor/signGunsThinSmilePrefab.prefab" local_offset="-1.355,-0.572,0" local_rotation="0,270,0" local_scale="0.8,0.8,0.8" parent_transform="Base" />
+			
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="DMG0" parent_transform="Base" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="DMG0" parent_transform="Base" />
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="DMG1" parent_transform="Base" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="DMG1" parent_transform="Base" />
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="trap_indicatorPrefab" parent_transform="Base" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="trap_indicatorPrefab" parent_transform="Base" />
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="FX" parent_transform="Base" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="FX" parent_transform="Base" />
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="OnState" parent_transform="Base"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="OnState" parent_transform="Base"/>
+			
+		</effect_group>
+	</buff>
+<!--Drone Visuals-->
+<!--##Prevent Cheating-->
+		
+	<buff name="ZombieINC_ND_CheckVehicleInventory_T3" hidden="true" icon="ui_game_symbol_clock">
+		<stack_type value="ignore"/>
+		<update_rate value="4"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="ZombieINC_ND_CheckVehicleInventoryExplosion_T3">
+				<requirement name="PlayerItemCount" item_name="ZombieINC_ND_vehicleMinibikePlaceable" operation="GTE" value="1"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_CheckVehicleInventoryExplosion_T3" hidden="true" icon="ui_game_symbol_clock">
+		<stack_type value="ignore"/>
+		<duration value="3"/> 
+		<tags value="ZINC_ND_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AddChatMessage" message_key="ZombieINC_ND_WhatAreDoing_Message_T3" />
+		
+			
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="positionAOE" target_tags="party" range="50" event="ZombieINC_ND_FailQuestCheating_T3" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_ND_FailQuestCheating_T3" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_ND_FailQuestCheatingRemove" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="Explode" blast_power="250" block_damage="50" block_radius="6" entity_damage="50" entity_radius="6" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_CheckVehicleInventory_T4" hidden="true" icon="ui_game_symbol_clock">
+		<stack_type value="ignore"/>
+		<update_rate value="4"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="ZombieINC_ND_CheckVehicleInventoryExplosion_T4">
+				<requirement name="PlayerItemCount" item_name="ZombieINC_ND_vehicleMinibikePlaceable" operation="GTE" value="1"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_CheckVehicleInventoryExplosion_T4" hidden="true" icon="ui_game_symbol_clock">
+		<stack_type value="ignore"/>
+		<duration value="3"/> 
+		<tags value="ZINC_ND_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AddChatMessage" message_key="ZombieINC_ND_WhatAreDoing_Message_T4" />
+			
+			
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="positionAOE" target_tags="party" range="50" event="ZombieINC_ND_FailQuestCheating_T4" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_ND_FailQuestCheating_T4" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_ND_FailQuestCheatingRemove" allow_client_call="false"/>
+			
+			<triggered_effect trigger="onSelfBuffFinish" action="Explode" blast_power="250" block_damage="50" block_radius="6" entity_damage="50" entity_radius="6" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_CheckVehicleInventory_T5" hidden="true" icon="ui_game_symbol_clock">
+		<stack_type value="ignore"/>
+		<update_rate value="4"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="ZombieINC_ND_CheckVehicleInventoryExplosion_T5">
+				<requirement name="PlayerItemCount" item_name="ZombieINC_vehicle4x4TruckBomberPlaceable" operation="GTE" value="1"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_CheckVehicleInventoryExplosion_T5" hidden="true" icon="ui_game_symbol_clock">
+		<stack_type value="ignore"/>
+		<duration value="3"/> 
+		<tags value="ZINC_ND_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AddChatMessage" message_key="ZombieINC_ND_WhatAreDoing_Message_T5" />
+			
+			
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="positionAOE" target_tags="party" range="50" event="ZombieINC_ND_FailQuestCheating_T5" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_ND_FailQuestCheating_T5" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_ND_FailQuestCheatingRemove" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="Explode" blast_power="250" block_damage="50" block_radius="6" entity_damage="50" entity_radius="6" />
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_CheckVehicleInventory_T6" hidden="true" icon="ui_game_symbol_clock">
+		<stack_type value="ignore"/>
+		<update_rate value="4"/>
+		<tags value="ZINC_ND_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="ZombieINC_ND_CheckVehicleInventoryExplosion_T6">
+				<requirement name="PlayerItemCount" item_name="ZombieINC_vehicle4x4TruckBomberPlaceable" operation="GTE" value="1"/>
+			</triggered_effect>
+		</effect_group>
+	</buff>
+	<buff name="ZombieINC_ND_CheckVehicleInventoryExplosion_T6" hidden="true" icon="ui_game_symbol_clock">
+		<stack_type value="ignore"/>
+		<duration value="3"/> 
+		<tags value="ZINC_ND_BUFFS" />
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AddChatMessage" message_key="ZombieINC_ND_WhatAreDoing_Message_T6" />
+			
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="positionAOE" target_tags="party" range="50" event="ZombieINC_ND_FailQuestCheating_T6" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_ND_FailQuestCheating_T6" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="ZombieINC_ND_FailQuestCheatingRemove" allow_client_call="false"/>
+			<triggered_effect trigger="onSelfBuffFinish" action="Explode" blast_power="250" block_damage="50" block_radius="6" entity_damage="50" entity_radius="6" />
+		</effect_group>
+	</buff>
+		<!--Prevent Cheating-->
+<buff name="ZombieINC_ND_RallyPointHuntPlaceHolder_AttachPrefabBuff"  >
+				<!--<duration value="3"/>-->
+				<!--<update_rate value="0.05"/>-->
+				<stack_type value="replace"/>
+				<effect_group>
+					<passive_effect name="LightMultiplier" operation="perc_add" value="-1"/>
+					<passive_effect name="NoiseMultiplier" operation="perc_add" value="-1"/>
+				</effect_group>
+				<effect_group>
+					<triggered_effect trigger="onSelfBuffStack" action="SetTransformActive" active="false" transform_path="Body"/>
+					<triggered_effect trigger="onSelfBuffStack" action="SetTransformActive" active="false" transform_path="Hair"/>
+					<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="Body"/>
+					<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="Hair"/>
+					<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="Body"/>
+					<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="Hair"/>
+				</effect_group>
+			</buff>
+<!--Nest Demolition-->
+		
+	</append>
+
+</Config>

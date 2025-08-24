@@ -1,0 +1,111 @@
+<Config>
+<append xpath="/entity_classes">
+
+<entity_class name="ZombieINC_Terrorist_AK47" extends="zombieSkateboarder">
+	<property name="UserSpawnType" value="Menu"/>
+	<property name="Tags" value="entity,zombie,walker,MiniBossAK47,boss"/>
+	<property name="ExperienceGain" value="400"/><!-- XP strong feral -->
+	<property name="LootDropProb" value="1"/> <!-- Feral -->
+	<property name="LootDropEntityClass" value="ZombieINC_AK_LootDrop"/>
+	<property name="NavObject" value="zombie" />
+	
+	<effect_group name="Base Effects">
+		<passive_effect name="HealthMax" operation="base_set" value="550"/>
+		<triggered_effect trigger="onSelfFirstSpawn" action="ModifyCVar" target="self" cvar="EntityBoss" operation="set" value="1"/>
+		<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" target="self" buff="ZombieINC_BanditsAK47_AttachPrefabBuff"/>
+	</effect_group>
+</entity_class>
+
+<entity_class name="ZombieINC_zombieFatCop_TacticalAR" extends="zombieFatCop">
+	<property name="UserSpawnType" value="Menu"/>
+	<property name="Tags" value="entity,zombie,walker,zombieCop,MiniBossTacticalAR,boss"/>
+	<property name="ExperienceGain" value="400"/><!-- XP strong feral -->
+	<property name="LootDropProb" value="1"/> <!-- Feral -->
+	<property name="LootDropEntityClass" value="ZombieINC_TacticalAR_LootDrop"/>
+	<property name="NavObject" value="zombie" />
+	
+	<effect_group name="Base Effects">
+		<passive_effect name="HealthMax" operation="base_set" value="550"/>
+		<triggered_effect trigger="onSelfFirstSpawn" action="ModifyCVar" target="self" cvar="EntityBoss" operation="set" value="1"/>
+		<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" target="self" buff="ZombieINC_TacticalAR_AttachPrefabBuff"/>
+	</effect_group>
+</entity_class>
+
+ <!--TurretZombies-->
+
+<entity_class name="ZombieINC_zombieSkateboarder_Turret1" extends="zombieSkateboarder">
+	<property name="UserSpawnType" value="Menu"/>
+	<property name="Tags" value="entity,zombie,walker,zombieTurret,miniboss"/>
+	<property name="ExperienceGain" value="400"/><!-- XP strong feral -->
+	<property name="LootDropProb" value="1"/> <!-- Feral -->
+	<property name="LootDropEntityClass" value="ZombieINC_M60_LootDrop"/>
+	<property name="LookAtAngle" value="0"/>
+	<property name="WalkType" value="22"/>
+	<property name="RootMotion" value="true"/>
+	<property name="HandItem" value="ZombieINC_meleeHandMiniBossTurret"/>
+	<property name="RightHandJointName" value="Muzzle"/>
+	<property name="MoveSpeedAggro" value="0.5, 1.2"/> 
+	
+	<property name="AITask" value="
+		BreakBlock|
+		DestroyArea|
+		Territorial|
+		RangedAttackTarget itemType=1;cooldown=5;duration=10;minRange=1;maxRange=20|
+		ApproachAndAttackTarget class=EntityPlayer,0|
+		ApproachSpot|
+		Look|
+		Wander|
+		"/>
+	
+	<effect_group name="Base Effects">
+		<passive_effect name="HealthMax" operation="base_set" value="550"/>
+		<triggered_effect trigger="onSelfFirstSpawn" action="ModifyCVar" target="self" cvar="EntityBoss" operation="set" value="1"/>
+		<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" target="self" buff="ZombieINC_Turret1_AttachPrefabBuff"/>
+		<!--<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" target="self" buff="ZombieINC_TurretZombies_AnimationBuff"/>-->
+	</effect_group>
+</entity_class>
+
+ <!--TurretZombies-->
+<entity_class name="ZombieINC_TacticalAR_LootDrop">
+	<property name="Class" value="EntityLootContainer"/>
+	<property name="UserSpawnType" value="Console"/>
+	<property name="Mesh" value="@:Entities/LootContainers/zpackRedPrefab.prefab"/>
+	<property name="ModelType" value="Custom"/>
+	<property name="Prefab" value="Backpack"/>
+	<property name="Parent" value="Backpack"/>
+	<property name="IsEnemyEntity" value="false"/>
+	<property name="TimeStayAfterDeath" value="3600"/>
+	<property name="LootListOnDeath" value="ZombieINC_TacticalAR_LootDropTable"/>
+	<property name="Faction" value="none"/>
+	<property name="NavObject" value="ZombieINC_supply,ZombieINC_supply_other" />
+</entity_class>
+
+<entity_class name="ZombieINC_AK_LootDrop">
+	<property name="Class" value="EntityLootContainer"/>
+	<property name="UserSpawnType" value="Console"/>
+	<property name="Mesh" value="@:Entities/LootContainers/zpackRedPrefab.prefab"/>
+	<property name="ModelType" value="Custom"/>
+	<property name="Prefab" value="Backpack"/>
+	<property name="Parent" value="Backpack"/>
+	<property name="IsEnemyEntity" value="false"/>
+	<property name="TimeStayAfterDeath" value="3600"/>
+	<property name="LootListOnDeath" value="ZombieINC_AK47_LootDropTable"/>
+	<property name="Faction" value="none"/>
+	<property name="NavObject" value="ZombieINC_supply,ZombieINC_supply_other" />
+</entity_class>
+
+<entity_class name="ZombieINC_M60_LootDrop">
+	<property name="Class" value="EntityLootContainer"/>
+	<property name="UserSpawnType" value="Console"/>
+	<property name="Mesh" value="@:Entities/LootContainers/zpackRedPrefab.prefab"/>
+	<property name="ModelType" value="Custom"/>
+	<property name="Prefab" value="Backpack"/>
+	<property name="Parent" value="Backpack"/>
+	<property name="IsEnemyEntity" value="false"/>
+	<property name="TimeStayAfterDeath" value="3600"/>
+	<property name="LootListOnDeath" value="ZombieINC_M60_LootDropTable"/>
+	<property name="Faction" value="none"/>
+	<property name="NavObject" value="ZombieINC_supply,ZombieINC_supply_other" />
+</entity_class>
+</append>
+</Config>

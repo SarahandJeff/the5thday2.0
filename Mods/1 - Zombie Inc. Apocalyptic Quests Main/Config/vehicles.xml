@@ -1,0 +1,111 @@
+<configs>
+
+
+	<append xpath="/vehicles">
+
+
+	
+	
+	<!--###The Cult-->
+	
+	<vehicle name="ZombieINC_RitualTest">
+		
+		<property name="cameraDistance" value="3, 4.5"/>
+		<property name="cameraTurnRate" value=".2, .35"/>
+		<property name="upAngleMax" value="70"/>
+		<property name="upForce" value="1"/>
+		<property name="steerAngleMax" value="28"/>
+		<property name="steerRate" value="130"/>
+		<property name="steerCenteringRate" value="90"/>
+		<property name="tiltAngleMax" value="20"/>
+		<property name="tiltThreshold" value="3"/>
+		<property name="tiltDampening" value=".22"/>
+		<property name="tiltDampenThreshold" value="8"/>
+		<property name="tiltUpForce" value="5"/>
+
+		<property name="motorTorque_turbo" value="500, 180, 750, 180"/>
+		<property name="velocityMax_turbo" value="3, 2, 3, 2"/>
+		<property name="brakeTorque" value="3000"/>
+		<property name="hopForce" value="4, .05"/>
+		<property name="unstickForce" value=".2"/>
+		<property name="waterDrag_y_velScale_velMaxScale" value="1.7, .9, .2"/>
+
+		<property name="wheelPtlScale" value=".6"/>
+
+		<property name="hornSound" value="bicycle_horn"/>
+
+		<property name="recipeName" value="ZombieINC_RitualTestPlaceable" />
+
+		<property class="chassis">
+			<property name="class" value="Chassis"/>
+			<property name="paint" value="M"/>
+		</property>
+
+		<property class="handlebars">
+			<property name="class" value="Steering"/>
+			<property name="transform" value="M/Forks"/>
+			<property name="steerAngle" value="0, 31, 0"/>
+			<property name="IKHandLPosition" value="-0.285, 0.180, 0.0408"/>
+			<property name="IKHandLRotation" value="-0.532, 91.886, 24.957"/>
+			<property name="IKHandRPosition" value="0.285, 0.180, 0.04"/>
+			<property name="IKHandRRotation" value="0.994, 85.819, -152.804"/>
+			<property name="paint" value="handlebar"/>
+		</property>
+
+		<property class="pedals">
+			<property name="class" value="Pedals"/>
+			<property name="transform" value="M/Crank"/>
+			<property name="pedalLPosition" value="-.182, 0, -.217"/>
+			<property name="pedalRPosition" value=".182, 0, .217"/>
+			<property name="IKFootLPosition" value="0, .1, -.05"/>
+			<property name="IKFootLRotation" value="0, 0, 0"/>
+			<property name="IKFootRPosition" value="0, .1, -.05"/>
+			<property name="IKFootRRotation" value="0, 0, 0"/>
+			<property name="pedalSound" value="bicycle_pedal"/>
+			<property name="staminaDrain" value="0,0"/><!-- stamina drain walking/running. It now uses movement tags so regular passives apply -->
+			<property name="particleDamaged" value="Particles/p_damaged"/>
+			<property name="particleBroken" value="Particles/p_broken"/>
+		</property>
+
+		<property class="seat0">
+			<property name="pose" value="1"/>
+			<property name="position" value="0, 0, 0"/>
+			<property name="rotation" value="0, 0, 0"/>
+			<property name="exit" value="-.8,0,0 ~ .8,0,0 ~ 0,0,-1.4 ~ 0,0,1.4 ~ 0,1.5,0"/>
+		</property>
+
+		<property class="wheel0">
+			<property name="tireTransform" value="M/Forks/Wheel0"/>
+			<property name="torqueScale_motor_brake" value=".15, .5"/>
+			<property name="bounceSound" value="bicycle_suspension"/>
+			<property name="slideSound" value="bicycle_brake"/>
+		</property>
+
+		<property class="wheel1">
+			<property name="tireTransform" value="Wheel1"/>
+			<property name="torqueScale_motor_brake" value="1, 1"/>
+			<property name="bounceSound" value="bicycle_suspension"/>
+			<property name="slideSound" value="bicycle_brake"/>
+		</property>
+
+		<property class="headlight">
+			<property name="class" value="Headlight"/>
+			<property name="bright" value=".75"/>
+			<property name="mod" value="light"/>
+			<property name="modT" value="M/Forks/HeadLights"/>
+			<property name="modOnT" value="M/Forks/HeadLights/Lights"/>
+			<property name="modMatEmissive" value="808080"/>
+		</property>
+
+		<property class="storage">
+			<property name="class" value="Storage"/>
+			<property name="mesh" value="M/Storage"/>
+			<property name="transform" value="basket"/>
+		</property>
+
+	</vehicle>
+	
+	<!--The Cult-->
+</append>
+
+</configs>

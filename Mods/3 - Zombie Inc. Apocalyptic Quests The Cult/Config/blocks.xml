@@ -1,0 +1,1873 @@
+<Config>
+	<csv xpath="/blocks/block[@name='cropsHarvestableMaster']/property[@name='Tags']/@value" delim="," op="add" >ZombieINCcropsHarvestableTag</csv>
+	<csv xpath="/blocks/block[@name='treeGrassMaster']/property[@name='Tags']/@value" delim="," op="add" >ZombieINCGrassTag</csv>
+	<csv xpath="/blocks/block[@name='treeMaster']/property[@name='Tags']/@value" delim="," op="add" >ZombieINCTreeTag</csv>
+	<csv xpath="/blocks/block[@name='plantShrub']/property[@name='Tags']/@value" delim="," op="add" >ZombieINCplantHedgeTag</csv>
+	<csv xpath="/blocks/block[@name='plantShrubSnow']/property[@name='Tags']/@value" delim="," op="add" >ZombieINCplantHedgeTag</csv>
+	<csv xpath="/blocks/block[@name='plantShrubDead']/property[@name='Tags']/@value" delim="," op="add" >ZombieINCplantHedgeTag</csv>
+	
+	<append xpath="/blocks/block[@name='terrForestGround']">
+		<property name="Tags" value="ZINCGroundNatural"/>
+	</append>
+	<append xpath="/blocks/block[@name='terrBurntForestGround']">
+		<property name="Tags" value="ZINCGroundNatural"/>
+	</append>
+	<append xpath="/blocks/block[@name='terrDesertGround']">
+		<property name="Tags" value="ZINCGroundNatural"/>
+	</append>
+	<append xpath="/blocks/block[@name='terrSnow']">
+		<property name="Tags" value="ZINCGroundNatural"/>
+	</append>
+	<append xpath="/blocks/block[@name='terrSand']">
+		<property name="Tags" value="ZINCGroundNatural"/>
+	</append>
+	<append xpath="/blocks/block[@name='terrTopSoil']">
+		<property name="Tags" value="ZINCGroundNatural"/>
+	</append>
+
+	<append xpath="/blocks/block[@name='cropsGrowingMaster']">
+		<property name="Tags" value="ZombieINCcropsGrowingTag"/>
+	</append>
+	<append xpath="/blocks/block[@name='plantHedge']">
+		<property name="Tags" value="ZombieINCplantHedgeTag"/>
+	</append>
+
+
+<conditional>
+		<if cond="mod_loaded('mateusjobstheritualtraderalternative')">
+			
+			<append xpath="/blocks">
+				<block name="ZombieINC_spawnTrader">
+					<property name="CreativeMode" value="Dev"/>
+					<property name="Class" value="SpawnEntity"/>
+					<property name="SpawnClass" value="ZombieINC_NPC_Ritual_1_TheCult"/>
+					<property name="IndexName" value="Trader"/>
+					<property name="CustomIcon" value="goreBlockAnimal"/>
+					<property name="CustomIconTint" value="FF8000"/>
+					<property name="DisplayType" value="blockHardened"/>
+					<property name="Material" value="Mmetal_medium"/>
+					<property name="Shape" value="ModelEntity"/>
+					<property name="Model" value="@:Entities/Gore/animalRemainsGorePrefab.prefab"/>
+					<property name="WaterFlow" value="permitted"/>
+					<property name="Collide" value="sight"/>
+					<property name="StabilitySupport" value="false"/>
+					<drop event="Destroy" name="resourceScrapIron" count="0"/>
+					<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+					<property name="SortOrder1" value="LD04"/>
+					<property name="SortOrder2" value="0500"/>
+					<property name="FilterTags" value="MC_helpers,SC_questblocks"/>
+				</block>
+
+				<block name="ZombieINC_spawnRitual_1_TheCult">
+					<property name="CreativeMode" value="Dev"/>
+					<property name="Class" value="SpawnEntity"/>
+					<property name="SpawnClass" value="ZombieINC_NPC_Ritual_1_TheCult"/>
+					<!--<property name="IndexName" value="Trader"/>-->
+					<property name="DescriptionKey" value="ZombieINC_spawnRitual_1_TheCult_Desc"/>
+					<property name="CustomIcon" value="goreBlockAnimal"/>
+					<property name="CustomIconTint" value="FF8000"/>
+					<property name="DisplayType" value="blockHardened"/>
+					<property name="Material" value="Mmetal_medium"/>
+					<property name="Shape" value="ModelEntity"/>
+					<property name="Model" value="@:Entities/Gore/animalRemainsGorePrefab.prefab"/>
+					<property name="WaterFlow" value="permitted"/>
+					<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+					<property name="CanPickup" value="true"/>
+					<property name="StabilitySupport" value="false"/>
+					<property name="Tags" value="ZINCTCRITUALONLY,ZINCRITUAL,ZINCRITUAL1"/>
+					<property name="UnlockedBy" value="ZombieINC_Quest_Priest"/>
+					<drop event="Destroy" name="resourceScrapIron" count="0"/>
+					<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+					<property name="SortOrder1" value="LD04"/>
+					<property name="SortOrder2" value="0500"/>
+					<property name="FilterTags" value="MC_helpers,SC_questblocks"/>
+				</block>
+				<block name="ZombieINC_spawnRitual_2_TheCult">
+					<property name="CreativeMode" value="Dev"/>
+					<property name="Class" value="SpawnEntity"/>
+					<property name="SpawnClass" value="ZombieINC_NPC_Ritual_2_TheCult"/>
+					<!--<property name="IndexName" value="Trader"/>-->
+					<property name="DescriptionKey" value="ZombieINC_spawnRitual_2_TheCult_Desc"/>
+					<property name="CustomIcon" value="goreBlockAnimal"/>
+					<property name="CustomIconTint" value="FF8000"/>
+					<property name="DisplayType" value="blockHardened"/>
+					<property name="Material" value="Mmetal_medium"/>
+					<property name="Shape" value="ModelEntity"/>
+					<property name="Model" value="@:Entities/Gore/animalRemainsGorePrefab.prefab"/>
+					<property name="WaterFlow" value="permitted"/>
+					<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+					<property name="CanPickup" value="true"/>
+					<property name="StabilitySupport" value="false"/>
+					<property name="Tags" value="ZINCTCRITUALONLY,ZINCRITUAL,ZINCRITUAL2"/>
+					<drop event="Destroy" name="resourceScrapIron" count="0"/>
+					<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+					<property name="SortOrder1" value="LD04"/>
+					<property name="SortOrder2" value="0500"/>
+					<property name="FilterTags" value="MC_helpers,SC_questblocks"/>
+				</block>
+				<block name="ZombieINC_spawnRitual_3_TheCult">
+					<property name="CreativeMode" value="Dev"/>
+					<property name="Class" value="SpawnEntity"/>
+					<property name="SpawnClass" value="ZombieINC_NPC_Ritual_3_TheCult"/>
+					<!--<property name="IndexName" value="Trader"/>-->
+					<property name="DescriptionKey" value="ZombieINC_spawnRitual_3_TheCult_Desc"/>
+					<property name="CustomIcon" value="goreBlockAnimal"/>
+					<property name="CustomIconTint" value="FF8000"/>
+					<property name="DisplayType" value="blockHardened"/>
+					<property name="Material" value="Mmetal_medium"/>
+					<property name="Shape" value="ModelEntity"/>
+					<property name="Model" value="@:Entities/Gore/animalRemainsGorePrefab.prefab"/>
+					<property name="WaterFlow" value="permitted"/>
+					<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+					<property name="CanPickup" value="true"/>
+					<property name="StabilitySupport" value="false"/>
+					<property name="Tags" value="ZINCTCRITUALONLY,ZINCRITUAL,ZINCRITUAL3"/>
+					<drop event="Destroy" name="resourceScrapIron" count="0"/>
+					<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+					<property name="SortOrder1" value="LD04"/>
+					<property name="SortOrder2" value="0500"/>
+					<property name="FilterTags" value="MC_helpers,SC_questblocks"/>
+				</block>
+				<block name="ZombieINC_spawnRitual_4_TheCult">
+					<property name="CreativeMode" value="Dev"/>
+					<property name="Class" value="SpawnEntity"/>
+					<property name="SpawnClass" value="ZombieINC_NPC_Ritual_4_TheCult"/>
+					<!--<property name="IndexName" value="Trader"/>-->
+					<property name="CustomIcon" value="goreBlockAnimal"/>
+					<property name="DescriptionKey" value="ZombieINC_spawnRitual_4_TheCult_Desc"/>
+					<property name="CustomIconTint" value="FF8000"/>
+					<property name="DisplayType" value="blockHardened"/>
+					<property name="Material" value="Mmetal_medium"/>
+					<property name="Shape" value="ModelEntity"/>
+					<property name="Model" value="@:Entities/Gore/animalRemainsGorePrefab.prefab"/>
+					<property name="WaterFlow" value="permitted"/>
+					<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+					<property name="CanPickup" value="true"/>
+					<property name="StabilitySupport" value="false"/>
+					<property name="Tags" value="ZINCTCRITUALONLY,ZINCRITUAL,ZINCRITUAL4"/>
+					<drop event="Destroy" name="resourceScrapIron" count="0"/>
+					<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+					<property name="SortOrder1" value="LD04"/>
+					<property name="SortOrder2" value="0500"/>
+					<property name="FilterTags" value="MC_helpers,SC_questblocks"/>
+				</block>
+				<block name="ZombieINC_spawnRitual_5_TheCult">
+					<property name="CreativeMode" value="Dev"/>
+					<property name="Class" value="SpawnEntity"/>
+					<property name="SpawnClass" value="ZombieINC_NPC_Ritual_5_TheCult"/>
+					<!--<property name="IndexName" value="Trader"/>-->
+					<property name="CustomIcon" value="goreBlockAnimal"/>
+					<property name="DescriptionKey" value="ZombieINC_spawnRitual_5_TheCult_Desc"/>
+					<property name="CustomIconTint" value="FF8000"/>
+					<property name="DisplayType" value="blockHardened"/>
+					<property name="Material" value="Mmetal_medium"/>
+					<property name="Shape" value="ModelEntity"/>
+					<property name="Model" value="@:Entities/Gore/animalRemainsGorePrefab.prefab"/>
+					<property name="WaterFlow" value="permitted"/>
+					<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+					<property name="CanPickup" value="true"/>
+					<property name="StabilitySupport" value="false"/>
+					<property name="Tags" value="ZINCTCRITUALONLY,ZINCRITUAL,ZINCRITUAL5"/>
+					<drop event="Destroy" name="resourceScrapIron" count="0"/>
+					<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+					<property name="SortOrder1" value="LD04"/>
+					<property name="SortOrder2" value="0500"/>
+					<property name="FilterTags" value="MC_helpers,SC_questblocks"/>
+				</block>
+				<block name="ZombieINC_spawnRitual_6_TheCult">
+					<property name="CreativeMode" value="Dev"/>
+					<property name="Class" value="SpawnEntity"/>
+					<property name="SpawnClass" value="ZombieINC_NPC_Ritual_6_TheCult"/>
+					<!--<property name="IndexName" value="Trader"/>-->
+					<property name="CustomIcon" value="goreBlockAnimal"/>
+					<property name="DescriptionKey" value="ZombieINC_spawnRitual_6_TheCult_Desc"/>
+					<property name="CustomIconTint" value="FF8000"/>
+					<property name="DisplayType" value="blockHardened"/>
+					<property name="Material" value="Mmetal_medium"/>
+					<property name="Shape" value="ModelEntity"/>
+					<property name="Model" value="@:Entities/Gore/animalRemainsGorePrefab.prefab"/>
+					<property name="WaterFlow" value="permitted"/>
+					<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+					<property name="CanPickup" value="true"/>
+					<property name="StabilitySupport" value="false"/>
+					<property name="Tags" value="ZINCTCRITUALONLY,ZINCRITUAL,ZINCRITUAL6"/>
+					<drop event="Destroy" name="resourceScrapIron" count="0"/>
+					<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+					<property name="SortOrder1" value="LD04"/>
+					<property name="SortOrder2" value="0500"/>
+					<property name="FilterTags" value="MC_helpers,SC_questblocks"/>
+				</block>
+			</append>
+		</if>
+		
+		<else>
+			<append xpath="/blocks">
+			
+				<block name="ZombieINC_spawnTrader">
+					<property name="CreativeMode" value="Dev"/>
+					<property name="Class" value="GameEvent"/>	
+					<property name="ActivateEvent" value="ZombieINC_TheCult_ActiveTrader1_Event"/>
+					<property name="CustomIcon" value="candleWallLight"/>
+					<property name="CustomIconTint" value="FF8000"/>
+					<property name="DisplayType" value="blockHardened"/>
+					<property name="Material" value="Mmetal_medium"/>
+					<property name="Shape" value="ModelEntity"/>
+					<property name="Model" value="@:Entities/Gore/animalRemainsGorePrefab.prefab"/>
+					<property name="WaterFlow" value="permitted"/>
+					<property name="Collide" value="sight"/>
+					<property name="StabilitySupport" value="false"/>
+					<drop event="Destroy" name="resourceScrapIron" count="0"/>
+					<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+					<property name="SortOrder1" value="LD04"/>
+					<property name="SortOrder2" value="0500"/>
+					<property name="FilterTags" value="MC_helpers,SC_questblocks"/>
+				</block>
+
+				<block name="ZombieINC_spawnRitual_1_TheCult">
+					<property name="CreativeMode" value="Dev"/>
+					<property name="Class" value="GameEvent"/>	
+					<property name="ActivateEvent" value="ZombieINC_TheCult_ActiveTrader1_Event"/>
+					<property name="DescriptionKey" value="ZombieINC_spawnRitual_1_TheCult_Desc"/>
+					<property name="CustomIcon" value="candleWallLight"/>
+					<property name="CustomIconTint" value="FF8000"/>
+					<property name="DisplayType" value="blockHardened"/>
+					<property name="Material" value="Mmetal_medium"/>
+					<property name="Shape" value="ModelEntity"/>
+					<property name="Model" value="@:Entities/Lighting/candle_table_playerPrefab.prefab"/>
+					<property name="WaterFlow" value="permitted"/>
+					<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+					<property name="CanPickup" value="true"/>
+					<property name="StabilitySupport" value="false"/>
+					<property name="Tags" value="ZINCTCRITUALONLY,ZINCRITUAL,ZINCRITUAL1"/>
+					<property name="UnlockedBy" value="ZombieINC_Quest_Priest"/>
+					<drop event="Destroy" name="resourceScrapIron" count="0"/>
+					<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+					<property name="SortOrder1" value="LD04"/>
+					<property name="SortOrder2" value="0500"/>
+					<property name="FilterTags" value="MC_helpers,SC_questblocks"/>
+				</block>
+				<block name="ZombieINC_spawnRitual_2_TheCult">
+					<property name="CreativeMode" value="Dev"/>
+					<property name="Class" value="GameEvent"/>	
+					<property name="ActivateEvent" value="ZombieINC_TheCult_ActiveTrader2_Event"/>
+					<property name="DescriptionKey" value="ZombieINC_spawnRitual_2_TheCult_Desc"/>
+					<property name="CustomIcon" value="candleWallLight"/>
+					<property name="CustomIconTint" value="FF8000"/>
+					<property name="DisplayType" value="blockHardened"/>
+					<property name="Material" value="Mmetal_medium"/>
+					<property name="Shape" value="ModelEntity"/>
+					<property name="Model" value="@:Entities/Lighting/candle_table_playerPrefab.prefab"/>
+					<property name="WaterFlow" value="permitted"/>
+					<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+					<property name="CanPickup" value="true"/>
+					<property name="StabilitySupport" value="false"/>
+					<property name="Tags" value="ZINCTCRITUALONLY,ZINCRITUAL,ZINCRITUAL2"/>
+					<drop event="Destroy" name="resourceScrapIron" count="0"/>
+					<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+					<property name="SortOrder1" value="LD04"/>
+					<property name="SortOrder2" value="0500"/>
+					<property name="FilterTags" value="MC_helpers,SC_questblocks"/>
+				</block>
+				<block name="ZombieINC_spawnRitual_3_TheCult">
+					<property name="CreativeMode" value="Dev"/>
+					<property name="Class" value="GameEvent"/>	
+					<property name="ActivateEvent" value="ZombieINC_TheCult_ActiveTrader3_Event"/>
+					<property name="DescriptionKey" value="ZombieINC_spawnRitual_3_TheCult_Desc"/>
+					<property name="CustomIcon" value="candleWallLight"/>
+					<property name="CustomIconTint" value="FF8000"/>
+					<property name="DisplayType" value="blockHardened"/>
+					<property name="Material" value="Mmetal_medium"/>
+					<property name="Shape" value="ModelEntity"/>
+					<property name="Model" value="@:Entities/Lighting/candle_table_playerPrefab.prefab"/>
+					<property name="WaterFlow" value="permitted"/>
+					<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+					<property name="CanPickup" value="true"/>
+					<property name="StabilitySupport" value="false"/>
+					<property name="Tags" value="ZINCTCRITUALONLY,ZINCRITUAL,ZINCRITUAL3"/>
+					<drop event="Destroy" name="resourceScrapIron" count="0"/>
+					<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+					<property name="SortOrder1" value="LD04"/>
+					<property name="SortOrder2" value="0500"/>
+					<property name="FilterTags" value="MC_helpers,SC_questblocks"/>
+				</block>
+				<block name="ZombieINC_spawnRitual_4_TheCult">
+					<property name="CreativeMode" value="Dev"/>
+					<property name="Class" value="GameEvent"/>	
+					<property name="ActivateEvent" value="ZombieINC_TheCult_ActiveTrader4_Event"/>
+					<property name="CustomIcon" value="candleWallLight"/>
+					<property name="DescriptionKey" value="ZombieINC_spawnRitual_4_TheCult_Desc"/>
+					<property name="CustomIconTint" value="FF8000"/>
+					<property name="DisplayType" value="blockHardened"/>
+					<property name="Material" value="Mmetal_medium"/>
+					<property name="Shape" value="ModelEntity"/>
+					<property name="Model" value="@:Entities/Lighting/candle_table_playerPrefab.prefab"/>
+					<property name="WaterFlow" value="permitted"/>
+					<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+					<property name="CanPickup" value="true"/>
+					<property name="StabilitySupport" value="false"/>
+					<property name="Tags" value="ZINCTCRITUALONLY,ZINCRITUAL,ZINCRITUAL4"/>
+					<drop event="Destroy" name="resourceScrapIron" count="0"/>
+					<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+					<property name="SortOrder1" value="LD04"/>
+					<property name="SortOrder2" value="0500"/>
+					<property name="FilterTags" value="MC_helpers,SC_questblocks"/>
+				</block>
+				<block name="ZombieINC_spawnRitual_5_TheCult">
+					<property name="CreativeMode" value="Dev"/>
+					<property name="Class" value="GameEvent"/>	
+					<property name="ActivateEvent" value="ZombieINC_TheCult_ActiveTrader5_Event"/>
+					<property name="CustomIcon" value="candleWallLight"/>
+					<property name="DescriptionKey" value="ZombieINC_spawnRitual_5_TheCult_Desc"/>
+					<property name="CustomIconTint" value="FF8000"/>
+					<property name="DisplayType" value="blockHardened"/>
+					<property name="Material" value="Mmetal_medium"/>
+					<property name="Shape" value="ModelEntity"/>
+					<property name="Model" value="@:Entities/Lighting/candle_table_playerPrefab.prefab"/>
+					<property name="WaterFlow" value="permitted"/>
+					<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+					<property name="CanPickup" value="true"/>
+					<property name="StabilitySupport" value="false"/>
+					<property name="Tags" value="ZINCTCRITUALONLY,ZINCRITUAL,ZINCRITUAL5"/>
+					<drop event="Destroy" name="resourceScrapIron" count="0"/>
+					<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+					<property name="SortOrder1" value="LD04"/>
+					<property name="SortOrder2" value="0500"/>
+					<property name="FilterTags" value="MC_helpers,SC_questblocks"/>
+				</block>
+				<block name="ZombieINC_spawnRitual_6_TheCult">
+					<property name="CreativeMode" value="Dev"/>
+					<property name="Class" value="GameEvent"/>	
+					<property name="ActivateEvent" value="ZombieINC_TheCult_ActiveTrader6_Event"/>
+					<property name="CustomIcon" value="candleWallLight"/>
+					<property name="DescriptionKey" value="ZombieINC_spawnRitual_6_TheCult_Desc"/>
+					<property name="CustomIconTint" value="FF8000"/>
+					<property name="DisplayType" value="blockHardened"/>
+					<property name="Material" value="Mmetal_medium"/>
+					<property name="Shape" value="ModelEntity"/>
+					<property name="Model" value="@:Entities/Lighting/candle_table_playerPrefab.prefab"/>
+					<property name="WaterFlow" value="permitted"/>
+					<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+					<property name="CanPickup" value="true"/>
+					<property name="StabilitySupport" value="false"/>
+					<property name="Tags" value="ZINCTCRITUALONLY,ZINCRITUAL,ZINCRITUAL6"/>
+					<drop event="Destroy" name="resourceScrapIron" count="0"/>
+					<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+					<property name="SortOrder1" value="LD04"/>
+					<property name="SortOrder2" value="0500"/>
+					<property name="FilterTags" value="MC_helpers,SC_questblocks"/>
+				</block>
+			</append>
+		</else>
+	</conditional>
+
+<append xpath="/blocks">
+<!--###The Cult-->
+		<!---->
+		<block name="ZombieINC_Ritual_Anchor_Block">
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Class" value="SpawnEntity"/>
+			<property name="SpawnClass" value="ZombieINC_Ritual_RallyPoint_AnchorBlock"/>
+			<property name="IndexName" value="Trader"/>
+			<property name="CustomIcon" value="goreBlockAnimal"/>
+			<property name="CustomIconTint" value="FF8000"/>
+			<property name="DisplayType" value="blockHardened"/>
+			<property name="Material" value="Mmetal_medium"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Model" value="@:Entities/Gore/animalRemainsGorePrefab.prefab"/>
+			<property name="WaterFlow" value="permitted"/>
+			<property name="Collide" value="sight"/>
+			<property name="StabilitySupport" value="false"/>
+			<drop event="Destroy" name="resourceScrapIron" count="0"/>
+			<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+			<property name="SortOrder1" value="LD04"/>
+			<property name="SortOrder2" value="0500"/>
+			<property name="FilterTags" value="MC_helpers,SC_questblocks"/>
+			<property name="Tags" value="TheCultRemover"/>
+		</block>
+		<block name="ZombieINC_Ritual_Anchor_TreeReplacer_Block">
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Class" value="SpawnEntity"/>
+			<property name="SpawnClass" value="ZombieINC_Ritual_RallyPoint_TreeReplacer_AnchorBlock"/>
+			<property name="IndexName" value="Trader"/>
+			<property name="CustomIcon" value="goreBlockAnimal"/>
+			<property name="CustomIconTint" value="FF8000"/>
+			<property name="DisplayType" value="blockHardened"/>
+			<property name="Material" value="Mmetal_medium"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Model" value="@:Entities/Gore/animalRemainsGorePrefab.prefab"/>
+			<property name="WaterFlow" value="permitted"/>
+			<property name="Collide" value="sight"/>
+			<property name="StabilitySupport" value="false"/>
+			<drop event="Destroy" name="resourceScrapIron" count="0"/>
+			<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+			<property name="SortOrder1" value="LD04"/>
+			<property name="SortOrder2" value="0500"/>
+			<property name="FilterTags" value="MC_helpers,SC_questblocks"/>
+			<property name="Tags" value="TheCultRemover"/>
+		</block>
+
+
+<!--<block name="ZombieINC_spawnRitual_1_TheCult">
+	<property name="CreativeMode" value="Dev"/>
+	<property name="CustomIcon" value="goreBlockAnimal"/>
+	<property name="DisplayType" value="blockHardened"/>
+	<property name="Material" value="Mbrass"/>
+	<property name="Shape" value="ModelEntity"/>
+	<property name="Model" value="@:Entities/Gore/animalRemainsGorePrefab.prefab"/>
+	<property name="Tags" value="ZINCTCRITUALONLY,ZINCRITUAL"/>
+	<property name="IsTerrainDecoration" value="true"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="Collide" value="sight"/>
+	<property name="Weight" value="63"/>
+	<property name="EconomicValue" value="125"/> 
+	<drop event="Harvest" name="resourceScrapBrass" count="0" tag="salvageHarvest" tool_category="Disassemble"/>
+	<drop event="Destroy" name="resourceMechanicalParts" count="0"/>
+
+	<property name="Class" value="GameEvent"/>	
+    <property name="ActivateEvent" value="ZombieINC_RitualHandle_Event"/>
+	<property name="BuffsWhenWalkedOn" value="ZombieINC_IsStandingOnRitual_Buff"/>
+</block>-->
+
+<!---->
+<!--##Chests-->
+<block name="ZombieINC_BuriedChest_Priest">
+	<property name="Extends" value="cntLootChestHeroInsecure" param1="DescriptionKey"/>
+	<property name="Class" value="QuestLoot"/>
+	<property name="CreativeMode" value="None"/>
+	<property name="CustomIcon" value="cntLootChestHero"/>
+	<property name="CustomIconTint" value="8000FF"/>
+	<property name="TintColor" value="804141"/>
+	<property name="LootList" value="ZombieINC_BuriedChestLootList_Priest"/>
+	<property name="Tags" value="buriedTreasure"/>
+	<property name="FilterTags" value="MC_helpers,SC_questblocks"/>
+</block>
+
+<block name="ZombieINC_BuriedChest_MotherInfested">
+	<property name="Extends" value="cntLootChestHeroInsecure" param1="DescriptionKey"/>
+	<property name="Class" value="QuestLoot"/>
+	<property name="CreativeMode" value="None"/>
+	<property name="CustomIcon" value="cntLootChestHero"/>
+	<property name="CustomIconTint" value="8000FF"/>
+	<property name="TintColor" value="804141"/>
+	<property name="LootList" value="ZombieINC_BuriedChestLootList_MotherInfested"/>
+	<property name="Tags" value="buriedTreasure"/>
+	<property name="FilterTags" value="MC_helpers,SC_questblocks"/>
+</block>
+
+<block name="ZombieINC_BuriedChest_FarmerInfested">
+	<property name="Extends" value="cntLootChestHeroInsecure" param1="DescriptionKey"/>
+	<property name="Class" value="QuestLoot"/>
+	<property name="CreativeMode" value="None"/>
+	<property name="CustomIcon" value="cntLootChestHero"/>
+	<property name="CustomIconTint" value="8000FF"/>
+	<property name="TintColor" value="804141"/>
+	<property name="LootList" value="ZombieINC_BuriedChestLootList_FarmerInfested"/>
+	<property name="Tags" value="buriedTreasure"/>
+	<property name="FilterTags" value="MC_helpers,SC_questblocks"/>
+</block>
+
+<block name="ZombieINC_BuriedChest_PenitenceInfested">
+	<property name="Extends" value="cntLootChestHeroInsecure" param1="DescriptionKey"/>
+	<property name="Class" value="QuestLoot"/>
+	<property name="CreativeMode" value="None"/>
+	<property name="CustomIcon" value="cntLootChestHero"/>
+	<property name="CustomIconTint" value="8000FF"/>
+	<property name="TintColor" value="804141"/>
+	<property name="LootList" value="ZombieINC_BuriedChestLootList_PenitenceInfested"/>
+	<property name="Tags" value="buriedTreasure"/>
+	<property name="FilterTags" value="MC_helpers,SC_questblocks"/>
+</block>
+
+<block name="ZombieINC_BuriedChest_FatherInfested">
+	<property name="Extends" value="cntLootChestHeroInsecure" param1="DescriptionKey"/>
+	<property name="Class" value="QuestLoot"/>
+	<property name="CreativeMode" value="None"/>
+	<property name="CustomIcon" value="cntLootChestHero"/>
+	<property name="CustomIconTint" value="8000FF"/>
+	<property name="TintColor" value="804141"/>
+	<property name="LootList" value="ZombieINC_BuriedChestLootList_FatherInfested"/>
+	<property name="Tags" value="buriedTreasure"/>
+	<property name="FilterTags" value="MC_helpers,SC_questblocks"/>
+</block>
+<!--Chests-->
+
+<!--##BossFatherInfested-->
+
+<block name="ZombieINC_candleTableLightPlayer">
+	<property name="Extends" value="candleTableLightPlayer"/>
+	<property name="CreativeMode" value="Dev"/>
+	<property name="Tags" value="BossFatherCandle"/>
+	<property name="CustomIcon" value="candleTableLight"/>
+	<property name="Model" value="@:Entities/Lighting/candle_table_playerPrefab.prefab"/>
+	<property name="IsTerrainDecoration" value="true"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="Shape" value="ModelEntity"/>
+	<property name="Material" value="ZombieINC_Mpaper"/>
+	<property name="Collide" value="melee,bullet,arrow,rocket"/>
+	<property name="CanPickup" value="false" param1="candleTableLightPlayer"/>
+	<property name="SortOrder1" value="B202"/>
+	<property name="SortOrder2" value="3203"/>
+	<drop event="Destroy" name="candle" count="0"/>
+	<property name="FilterTags" value="MC_playerBlocks,SC_electrical"/>
+	<!--<property name="Class" value="GameEvent"/>	
+    <property name="ActivateEvent" value="ZombieINC_BossFatherCandle_RemoveCandlesEvent"/>-->
+</block>
+
+<block name="ZombieINC_goreBlockAnimal">
+	<property name="Material" value="Morganic"/>
+	<property name="Shape" value="ModelEntity"/>
+	<property name="Model" value="@:Entities/Gore/animalRemainsGorePrefab.prefab"/>
+	<property name="Tags" value="BossFatherRemover"/>
+	<property name="ImposterExclude" value="true"/>
+	<property name="ImposterDontBlock" value="true"/>
+	<property name="Density" value="0.9"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="Collide" value="melee,bullet,arrow,rocket"/>
+	<property name="IsTerrainDecoration" value="true"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="FallDamage" value=".9"/>
+	<property name="MaxDamage" value="100"/>
+	<drop event="Harvest" name="foodRottingFlesh" count="0" tag="allHarvest" tool_category="Butcher"/>
+	<drop event="Harvest" name="foodRottingFlesh" count="0" tag="butcherHarvest"/>
+	<drop event="Harvest" name="resourceAnimalFat" count="0" tag="butcherHarvest"/>
+	<drop event="Harvest" name="resourcePotassiumNitratePowder" count="0" tag="butcherHarvest"/>
+	<drop event="Destroy" name="resourceBone" count="0" tag="butcherHarvest"/>
+	<property name="SortOrder1" value="B265"/>
+	<property name="SortOrder2" value="0000"/>
+	<property name="FilterTags" value="MC_building,SC_decor"/>
+</block>
+
+<block name="ZombieINC_goreBlockHumanCorpse">
+	<property name="Material" value="Morganic"/>
+	<property name="Shape" value="ModelEntity"/>
+	<property name="Model" value="@:Entities/Zombies/Zombies/halfCorpsePrefab.prefab"/>
+	<property name="Tags" value="BossFatherRemover"/>
+	<property name="ImposterExclude" value="true"/>
+	<property name="ImposterDontBlock" value="true"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="Place" value="TowardsPlacerInverted"/>
+	<property name="Collide" value="melee,bullet,arrow,rocket"/>
+	<property name="IsTerrainDecoration" value="true"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="MaxDamage" value="80"/>
+	<property name="FallDamage" value=".9"/>
+	<drop event="Harvest" name="foodRottingFlesh" count="0" tag="allHarvest" tool_category="Butcher"/>
+	<drop event="Harvest" name="foodRottingFlesh" count="0" tag="butcherHarvest"/>
+	<drop event="Harvest" name="resourcePotassiumNitratePowder" count="0" tag="butcherHarvest"/>
+	<drop event="Destroy" name="resourceBone" count="0" tag="butcherHarvest"/>
+	<property name="SortOrder1" value="B265"/>
+	<property name="SortOrder2" value="0001"/>
+	<property name="FilterTags" value="MC_building,SC_decor"/>
+	<!-- <property name="DroppedEntityClass" value="EvisceratedRemains"/>
+	Would drop this entity on destruction, containing any loot the block had. -->
+</block>
+
+<block name="ZombieINC_goreBlockHumanCorpse1">
+	<property name="Extends" value="ZombieINC_goreBlockHumanCorpse"/>
+	<property name="Model" value="@:Entities/Zombies/Zombies/corpse1Prefab.prefab"/>
+	<property name="Tags" value="BossFatherRemover"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="SortOrder1" value="B265"/>
+	<property name="SortOrder2" value="0002"/>
+</block>
+
+<block name="ZombieINC_goreBlockHumanCorpse2">
+	<property name="Extends" value="ZombieINC_goreBlockHumanCorpse"/>
+	<property name="Model" value="@:Entities/Zombies/Zombies/corpse2Prefab.prefab"/>
+	<property name="Tags" value="BossFatherRemover"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="SortOrder1" value="B265"/>
+	<property name="SortOrder2" value="0003"/>
+</block>
+
+<block name="ZombieINC_goreBlockHumanCorpse2Offset">
+	<property name="Extends" value="ZombieINC_goreBlockHumanCorpse2"/>
+	<property name="CustomIcon" value="goreBlockHumanCorpse2"/>
+	<property name="Tags" value="BossFatherRemover"/>
+	<property name="DisplayType" value="blockMulti"/>
+	<property name="MultiBlockDim" value="2,1,1"/>
+	<property name="SortOrder1" value="B265"/>
+	<property name="SortOrder2" value="0004"/>
+</block>
+
+<block name="ZombieINC_goreBlockHumanCorpse3">
+	<property name="Extends" value="ZombieINC_goreBlockHumanCorpse"/>
+	<property name="Model" value="@:Entities/Zombies/Zombies/corpse3Prefab.prefab"/>
+	<property name="Tags" value="BossFatherRemover"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="SortOrder1" value="B265"/>
+	<property name="SortOrder2" value="0005"/>
+</block>
+
+<block name="ZombieINC_goreBlockHumanBones">
+	<property name="Material" value="Morganic"/>
+	<property name="Shape" value="ModelEntity"/>
+	<property name="Model" value="@:Entities/Gore/humanSkeletonGorePrefab.prefab"/>
+	<property name="Tags" value="BossFatherRemover"/>
+	<property name="ImposterExclude" value="true"/>
+	<property name="ImposterDontBlock" value="true"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="Place" value="TowardsPlacerInverted"/>
+	<property name="Collide" value="melee,bullet,arrow,rocket"/>
+	<property name="IsTerrainDecoration" value="true"/>
+	<property name="StabilitySupport" value="false"/>
+	<drop event="Harvest" name="resourcePotassiumNitratePowder" count="0" tag="butcherHarvest" tool_category="Butcher"/>
+	<drop event="Destroy" name="resourceBone" count="0" tag="butcherHarvest"/>
+	<property name="SortOrder1" value="B265"/>
+	<property name="SortOrder2" value="0006"/>
+	<property name="FilterTags" value="MC_building,SC_decor"/>
+</block>
+
+<block name="ZombieINC_goreHumanSkull">
+	<property name="Extends" value="ZombieINC_goreBlockHumanBones"/>
+	<property name="Model" value="@:Entities/Gore/humanSkullGorePrefab.prefab"/>
+	<property name="Tags" value="BossFatherRemover"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="SortOrder1" value="B265"/>
+	<property name="SortOrder2" value="0007"/>
+</block>
+
+<block name="ZombieINC_graveStone01">
+	<property name="Material" value="Mstone"/>
+	<property name="Shape" value="ModelEntity"/>
+	<property name="Model" value="@:Entities/OutdoorDecor/graveStone01Prefab.prefab"/>
+	<property name="Tags" value="BossFatherRemover"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+	<property name="IsTerrainDecoration" value="true"/>
+	<property name="StabilitySupport" value="false"/>
+	<drop event="Harvest" name="resourceRockSmall" count="0" tag="allHarvest"/>
+	<drop event="Destroy" count="0"/>
+	<drop event="Fall" name="terrDestroyedStone" count="0" prob="0.5" stick_chance="1"/>
+	<property name="SortOrder1" value="B441"/>
+	<property name="SortOrder2" value="0000"/>
+	<property name="FilterTags" value="MC_outdoor,SC_decor"/>
+</block>
+
+<block name="ZombieINC_graveStone02">
+	<property name="Extends" value="ZombieINC_graveStone01"/>
+	<property name="Model" value="@:Entities/OutdoorDecor/graveStone02Prefab.prefab"/>
+	<property name="Tags" value="BossFatherRemover"/>
+	<property name="SortOrder2" value="0001"/>
+</block>
+
+<block name="ZombieINC_graveStone03">
+	<property name="Extends" value="ZombieINC_graveStone01"/>
+	<property name="Model" value="@:Entities/OutdoorDecor/graveStone03Prefab.prefab"/>
+	<property name="Tags" value="BossFatherRemover"/>
+	<property name="SortOrder2" value="0002"/>
+</block>
+
+<block name="ZombieINC_graveStone04">
+	<property name="Extends" value="ZombieINC_graveStone01"/>
+	<property name="Model" value="@:Entities/OutdoorDecor/graveStone04Prefab.prefab"/>
+	<property name="Tags" value="BossFatherRemover"/>
+	<property name="SortOrder2" value="0003"/>
+</block>
+
+<block name="ZombieINC_graveStone05">
+	<property name="Extends" value="ZombieINC_graveStone01"/>
+	<property name="Model" value="@:Entities/OutdoorDecor/graveStone05Prefab.prefab"/>
+	<property name="Tags" value="BossFatherRemover"/>
+	<property name="SortOrder2" value="0004"/>
+</block>
+
+<block name="ZombieINC_graveStone06">
+	<property name="Extends" value="ZombieINC_graveStone01"/>
+	<property name="Model" value="@:Entities/OutdoorDecor/graveStone06Prefab.prefab"/>
+	<property name="Tags" value="BossFatherRemover"/>
+	<property name="SortOrder2" value="0005"/>
+</block>
+
+<block name="ZombieINC_graveStone07">
+	<property name="Extends" value="ZombieINC_graveStone01"/>
+	<property name="Model" value="@:Entities/OutdoorDecor/graveStone07Prefab.prefab"/>
+	<property name="Tags" value="BossFatherRemover"/>
+	<property name="SortOrder2" value="0006"/>
+</block>
+
+<block name="ZombieINC_graveStone08">
+	<property name="Extends" value="ZombieINC_graveStone01"/>
+	<property name="Model" value="@:Entities/OutdoorDecor/graveStone08Prefab.prefab"/>
+	<property name="Tags" value="BossFatherRemover"/>
+	<property name="SortOrder2" value="0007"/>
+</block>
+
+<block name="ZombieINC_churchBell1x2x1">
+	<property name="CreativeMode" value="Dev"/>
+	<property name="CustomIcon" value="churchBell"/>
+	<property name="DisplayType" value="blockMulti"/>
+	<property name="Material" value="Mbrass"/>
+	<property name="Shape" value="ModelEntity"/>
+	<property name="Model" value="@:Entities/OutdoorDecor/churchBellPrefab.prefab"/>
+	<property name="ModelOffset" value=".5,0,0"/>
+	<property name="MultiBlockDim" value="1,2,1"/>
+	<property name="Tags" value="BossFatherRemover,ZINCBELLActive"/>
+	<property name="IsTerrainDecoration" value="true"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+	<property name="Weight" value="63"/>
+	<property name="EconomicValue" value="125"/> 
+	<drop event="Harvest" name="resourceScrapBrass" count="0" tag="salvageHarvest" tool_category="Disassemble"/>
+	<drop event="Destroy" name="resourceMechanicalParts" count="0"/>
+	<property name="SortOrder1" value="B422"/>
+	<property name="SortOrder2" value="0002"/>
+	<property name="FilterTags" value="MC_building,SC_plumbing"/>
+	<property name="Class" value="GameEvent"/>	
+    <property name="ActivateEvent" value="ZombieINC_TheCult_BellGameEvent"/>
+</block>
+<block name="ZombieINC_churchBell1x2x1_1">
+	<property name="CreativeMode" value="Dev"/>
+	<property name="CustomIcon" value="churchBell"/>
+	<property name="DisplayType" value="blockMulti"/>
+	<property name="Material" value="Mbrass"/>
+	<property name="Shape" value="ModelEntity"/>
+	<property name="Model" value="@:Entities/OutdoorDecor/churchBellPrefab.prefab"/>
+	<property name="ModelOffset" value=".5,0,0"/>
+	<property name="MultiBlockDim" value="1,2,1"/>
+	<property name="Tags" value="BossFatherRemover,ZINCBELLActive"/>
+	<property name="IsTerrainDecoration" value="true"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+	<property name="Weight" value="63"/>
+	<property name="EconomicValue" value="125"/> 
+	<drop event="Harvest" name="resourceScrapBrass" count="0" tag="salvageHarvest" tool_category="Disassemble"/>
+	<drop event="Destroy" name="resourceMechanicalParts" count="0"/>
+	<property name="SortOrder1" value="B422"/>
+	<property name="SortOrder2" value="0002"/>
+	<property name="FilterTags" value="MC_building,SC_plumbing"/>
+	<property name="Class" value="GameEvent"/>	
+    <property name="ActivateEvent" value="ZombieINC_TheCult_BellGameEvent_Priest"/>
+</block>
+<block name="ZombieINC_churchBell1x2x1_2">
+	<property name="CreativeMode" value="Dev"/>
+	<property name="CustomIcon" value="churchBell"/>
+	<property name="DisplayType" value="blockMulti"/>
+	<property name="Material" value="Mbrass"/>
+	<property name="Shape" value="ModelEntity"/>
+	<property name="Model" value="@:Entities/OutdoorDecor/churchBellPrefab.prefab"/>
+	<property name="ModelOffset" value=".5,0,0"/>
+	<property name="MultiBlockDim" value="1,2,1"/>
+	<property name="Tags" value="BossFatherRemover,ZINCBELLActive"/>
+	<property name="IsTerrainDecoration" value="true"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+	<property name="Weight" value="63"/>
+	<property name="EconomicValue" value="125"/> 
+	<drop event="Harvest" name="resourceScrapBrass" count="0" tag="salvageHarvest" tool_category="Disassemble"/>
+	<drop event="Destroy" name="resourceMechanicalParts" count="0"/>
+	<property name="SortOrder1" value="B422"/>
+	<property name="SortOrder2" value="0002"/>
+	<property name="FilterTags" value="MC_building,SC_plumbing"/>
+	<property name="Class" value="GameEvent"/>	
+    <property name="ActivateEvent" value="ZombieINC_TheCult_BellGameEvent_Mother"/>
+</block>
+<block name="ZombieINC_churchBell1x2x1_3">
+	<property name="CreativeMode" value="Dev"/>
+	<property name="CustomIcon" value="churchBell"/>
+	<property name="DisplayType" value="blockMulti"/>
+	<property name="Material" value="Mbrass"/>
+	<property name="Shape" value="ModelEntity"/>
+	<property name="Model" value="@:Entities/OutdoorDecor/churchBellPrefab.prefab"/>
+	<property name="ModelOffset" value=".5,0,0"/>
+	<property name="MultiBlockDim" value="1,2,1"/>
+	<property name="Tags" value="BossFatherRemover,ZINCBELLActive"/>
+	<property name="IsTerrainDecoration" value="true"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+	<property name="Weight" value="63"/>
+	<property name="EconomicValue" value="125"/> 
+	<drop event="Harvest" name="resourceScrapBrass" count="0" tag="salvageHarvest" tool_category="Disassemble"/>
+	<drop event="Destroy" name="resourceMechanicalParts" count="0"/>
+	<property name="SortOrder1" value="B422"/>
+	<property name="SortOrder2" value="0002"/>
+	<property name="FilterTags" value="MC_building,SC_plumbing"/>
+	<property name="Class" value="GameEvent"/>	
+    <property name="ActivateEvent" value="ZombieINC_TheCult_BellGameEvent_Penitence"/>
+</block>
+<block name="ZombieINC_churchBell1x2x1_4">
+	<property name="CreativeMode" value="Dev"/>
+	<property name="CustomIcon" value="churchBell"/>
+	<property name="DisplayType" value="blockMulti"/>
+	<property name="Material" value="Mbrass"/>
+	<property name="Shape" value="ModelEntity"/>
+	<property name="Model" value="@:Entities/OutdoorDecor/churchBellPrefab.prefab"/>
+	<property name="ModelOffset" value=".5,0,0"/>
+	<property name="MultiBlockDim" value="1,2,1"/>
+	<property name="Tags" value="BossFatherRemover,ZINCBELLActive"/>
+	<property name="IsTerrainDecoration" value="true"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+	<property name="Weight" value="63"/>
+	<property name="EconomicValue" value="125"/> 
+	<drop event="Harvest" name="resourceScrapBrass" count="0" tag="salvageHarvest" tool_category="Disassemble"/>
+	<drop event="Destroy" name="resourceMechanicalParts" count="0"/>
+	<property name="SortOrder1" value="B422"/>
+	<property name="SortOrder2" value="0002"/>
+	<property name="FilterTags" value="MC_building,SC_plumbing"/>
+	<property name="Class" value="GameEvent"/>	
+    <property name="ActivateEvent" value="ZombieINC_TheCult_BellGameEvent_Farmer"/>
+</block>
+<block name="ZombieINC_churchBell1x2x1_5">
+	<property name="CreativeMode" value="Dev"/>
+	<property name="CustomIcon" value="churchBell"/>
+	<property name="DisplayType" value="blockMulti"/>
+	<property name="Material" value="Mbrass"/>
+	<property name="Shape" value="ModelEntity"/>
+	<property name="Model" value="@:Entities/OutdoorDecor/churchBellPrefab.prefab"/>
+	<property name="ModelOffset" value=".5,0,0"/>
+	<property name="MultiBlockDim" value="1,2,1"/>
+	<property name="Tags" value="BossFatherRemover,ZINCBELLActive"/>
+	<property name="IsTerrainDecoration" value="true"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+	<property name="Weight" value="63"/>
+	<property name="EconomicValue" value="125"/> 
+	<drop event="Harvest" name="resourceScrapBrass" count="0" tag="salvageHarvest" tool_category="Disassemble"/>
+	<drop event="Destroy" name="resourceMechanicalParts" count="0"/>
+	<property name="SortOrder1" value="B422"/>
+	<property name="SortOrder2" value="0002"/>
+	<property name="FilterTags" value="MC_building,SC_plumbing"/>
+	<property name="Class" value="GameEvent"/>	
+    <property name="ActivateEvent" value="ZombieINC_TheCult_BellGameEvent_Father"/>
+</block>
+
+<block name="ZombieINC_churchBell1x2x1Inactive">
+	<property name="CreativeMode" value="Dev"/>
+	<property name="CustomIcon" value="churchBell"/>
+	<property name="DisplayType" value="blockMulti"/>
+	<property name="Material" value="Mbrass"/>
+	<property name="Shape" value="ModelEntity"/>
+	<property name="Model" value="@:Entities/OutdoorDecor/churchBellPrefab.prefab"/>
+	<property name="ModelOffset" value=".5,0,0"/>
+	<property name="MultiBlockDim" value="1,2,1"/>
+	<property name="Tags" value="BossFatherRemover,ZINCBELLInactive"/>
+	<property name="IsTerrainDecoration" value="true"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+	<property name="Weight" value="63"/>
+	<property name="EconomicValue" value="125"/> 
+	<drop event="Harvest" name="resourceScrapBrass" count="0" tag="salvageHarvest" tool_category="Disassemble"/>
+	<drop event="Destroy" name="resourceMechanicalParts" count="0"/>
+	<property name="SortOrder1" value="B422"/>
+	<property name="SortOrder2" value="0002"/>
+	<property name="FilterTags" value="MC_building,SC_plumbing"/>
+</block>
+
+<block name="ZombieINC_treeMaster">
+	<property name="CreativeMode" value="None"/>
+	<property name="Class" value="ModelTree"/>
+	<property name="IsPlant" value="true"/>
+	<property name="CanPlayersSpawnOn" value="false"/>
+	<property name="IndexName" value="quest_wood_trees"/>
+	<property name="DescriptionKey" value="plantsBlockGroupDesc"/>
+	<property name="DisplayType" value="blockMulti"/>
+	<property name="Material" value="MtreeWoodSmall"/>
+	<property name="Shape" value="DistantDecoTree"/>
+	<property name="Model" value="#Entities/Trees?StudioGimbal/MountainPineLrg01/MountainPineLrg01GimbalPrefab.prefab"/>
+	<property name="Texture" value="116"/>
+	<property name="ImposterExclude" value="true"/>
+	<property name="ImposterDontBlock" value="true"/>
+	<property name="LightOpacity" value="0"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="ParticleOnDeath" value="treeGib_burnt"/>
+	<property name="OnlySimpleRotations" value="true"/>
+	<property name="IsDistantDecoration" value="true"/>
+	<property name="IsTerrainDecoration" value="true"/>
+	<property name="ActivationDistance" value="12"/>
+	<drop event="Harvest" name="foodHoney" prob=".05" count="1" tag="WasteTreasuresHoneyHarvest"/>
+	<drop event="Destroy" count="0"/>
+	<drop event="Fall" name="resourceYuccaFibers" count="0" prob="1" stick_chance="0"/>
+	<property name="SortOrder1" value="M210"/>
+	<property name="SortOrder2" value="0000"/>
+	<property name="BlockTag" value="TreeTrunk"/>
+	<property name="Tags" value="ZombieINCTreeTag,wood"/>
+	<property name="FilterTags" value="MC_outdoor,SC_trees"/>
+</block>
+
+<block name="ZombieINC_treeDeadTree01">
+	<property name="Extends" value="ZombieINC_treeMaster"/>
+	<property name="Model" value="#Entities/Trees?StudioGimbal/White_Oak22/White_Oak22GimbalPrefab.prefab"/>
+	<property name="ModelOffset" value="0,-0.3,0"/>
+	<property name="MultiBlockDim" value="1,4,1"/>
+	<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+	<property name="Tags" value="BossFatherRemover,ZombieINCTreeTag"/>
+	<property name="Path" value="solid"/>
+	<property name="BigDecorationRadius" value="4"/>
+	<property name="ParticleOnDeath" value="treeGib_dead_01"/>
+	<drop event="Harvest" name="resourceWood" count="30" tag="oreWoodHarvest,lumberjackHarvest"/>
+	<property name="SortOrder1" value="B901"/>
+</block>
+
+<block name="ZombieINC_treeDeadTree02">
+	<property name="Extends" value="ZombieINC_treeMaster"/>
+	<property name="Model" value="#Entities/Trees?StudioGimbal/Haunted_Shrub_Wasteland/Haunted_Shrub_WastelandGimbalPrefab.prefab"/>
+	<property name="ModelOffset" value="0,-0.3,0"/>
+	<property name="ParticleOnDeath" value="treeGib_dead_02"/>
+	<property name="Collide" value="melee,rocket"/> 
+	<property name="Tags" value="BossFatherRemover,ZombieINCTreeTag"/>
+	<property name="Path" value="solid"/>
+	<property name="IsTerrainDecoration" value="true"/>
+	<drop event="Harvest" name="resourceWood" count="0" tag="oreWoodHarvest"/>
+	<property name="SortOrder1" value="B901"/>
+	<property name="SortOrder2" value="0001"/>
+	<property name="FilterTags" value="MC_outdoor,SC_trees,SC_shrubbery"/>
+</block>
+
+<block name="ZombieINC_treeDeadPineLeaf">
+	<property name="IndexName" value="quest_wood"/>
+	<property name="Material" value="Mleaves"/>
+	<property name="Shape" value="BillboardPlant"/>
+	<property name="Mesh" value="grass"/>
+	<property name="Texture" value="177"/>
+	<property name="Tags" value="ZombieINCGrassTag,BossFatherRemover,ZombieINCTreeTag"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="Collide" value="melee"/>
+	<property name="IsTerrainDecoration" value="true"/>
+	<property name="CanDecorateOnSlopes" value="true"/>
+	<drop event="Harvest" name="resourceWood" count="0" tag="allHarvest"/>
+	<drop event="Destroy" count="0"/>
+	<drop event="Fall" name="resourceWood" count="0" prob="1" stick_chance="0"/>
+	<property name="SortOrder1" value="B900"/>
+	<property name="SortOrder2" value="0001"/>
+	<property name="FilterTags" value="MC_outdoor,SC_shrubbery"/>
+</block>
+
+<block name="ZombieINC_treeBurntMaple01">
+	<property name="Extends" value="ZombieINC_treeMaster"/>
+	<property name="Model" value="#Entities/Trees?StudioGimbal/Haunted_Tree_Wasteland25/Haunted_Tree_Wasteland25GimbalPrefab.prefab"/>
+	<property name="ModelOffset" value="0,-.5,0"/>
+	<property name="MultiBlockDim" value="1,3,1"/>
+	<property name="ParticleOnDeath" value="treeGib_burnt_small"/>
+	<property name="Path" value="solid"/>
+	<property name="BigDecorationRadius" value="4"/>
+	<drop event="Harvest" name="resourceWood" count="30" tag="oreWoodHarvest,lumberjackHarvest"/>
+	<drop event="Harvest" name="resourceCoal" count="3,8" tag="oreWoodHarvest"/>
+	<drop event="Harvest" name="resourceCoal" count="3,8" tag="coalHarvest"/>
+	<property name="SortOrder1" value="B906"/>
+	<property name="Tags" value="BossFatherRemover,ZombieINCTreeTag"/>
+</block>
+
+<block name="ZombieINC_treeBurntMaple02">
+	<property name="Extends" value="ZombieINC_treeMaster"/>
+	<property name="Material" value="MtreeWoodLarge"/>
+	<property name="Model" value="#Entities/Trees?StudioGimbal/Haunted_Tree_Wasteland39/Haunted_Tree_Wasteland39GimbalPrefab.prefab"/>
+	<property name="ModelOffset" value="0,-.4,0"/>
+	<property name="MultiBlockDim" value="1,5,1"/>
+	<property name="Path" value="solid"/>
+	<property name="BigDecorationRadius" value="5"/>
+	<drop event="Harvest" name="resourceWood" count="110" tag="oreWoodHarvest,lumberjackHarvest"/>
+	<drop event="Harvest" name="resourceCoal" count="11,22" tag="oreWoodHarvest"/>
+	<drop event="Harvest" name="resourceCoal" count="11,22" tag="coalHarvest"/>
+	<property name="SortOrder1" value="B906"/>
+	<property name="SortOrder2" value="0001"/>
+	<property name="Tags" value="BossFatherRemover,ZombieINCTreeTag"/>
+</block>
+
+<block name="ZombieINC_treeBurntMaple03">
+	<property name="Extends" value="ZombieINC_treeMaster"/>
+	<property name="Material" value="MtreeWoodFull"/>
+	<property name="Model" value="#Entities/Trees?StudioGimbal/Haunted_Tree_Wasteland42/Haunted_Tree_Wasteland42GimbalPrefab.prefab"/>
+	<property name="ModelOffset" value="-0.5,-0.6,-0.5"/>
+	<property name="Path" value="solid"/>
+	<property name="BigDecorationRadius" value="5"/>
+	<property name="ActivationDistance" value="14"/>
+	<drop event="Harvest" name="resourceWood" count="150" tag="oreWoodHarvest,lumberjackHarvest"/>
+	<drop event="Harvest" name="resourceCoal" count="15,30" tag="oreWoodHarvest"/>
+	<drop event="Harvest" name="resourceCoal" count="15,30" tag="coalHarvest"/>
+	<property name="SortOrder1" value="B906"/>
+	<property name="SortOrder2" value="0002"/>
+	<property name="Tags" value="BossFatherRemover,ZombieINCTreeTag"/>
+	<property name="OversizedBounds" value="(-0.5,4,-0.5),(2,9,2)"/>
+</block>
+
+<block name="ZombieINC_treeDeadTree01_TreeReplace">
+	<property name="Extends" value="ZombieINC_treeMaster"/>
+	<property name="Model" value="#Entities/Trees?StudioGimbal/White_Oak22/White_Oak22GimbalPrefab.prefab"/>
+	<property name="ModelOffset" value="0,-0.3,0"/>
+	<property name="MultiBlockDim" value="1,4,1"/>
+	<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+	<property name="Tags" value="ZombieINCTreeReplace,BossFatherRemover,ZombieINCTreeTag"/>
+	<property name="Path" value="solid"/>
+	<property name="BigDecorationRadius" value="4"/>
+	<property name="ParticleOnDeath" value="treeGib_dead_01"/>
+	<drop event="Harvest" name="resourceWood" count="30" tag="oreWoodHarvest,lumberjackHarvest"/>
+	<property name="SortOrder1" value="B901"/>
+</block>
+
+<block name="ZombieINC_treeDeadTree02_TreeReplace">
+	<property name="Extends" value="ZombieINC_treeMaster"/>
+	<property name="Model" value="#Entities/Trees?StudioGimbal/Haunted_Shrub_Wasteland/Haunted_Shrub_WastelandGimbalPrefab.prefab"/>
+	<property name="ModelOffset" value="0,-0.3,0"/>
+	<property name="ParticleOnDeath" value="treeGib_dead_02"/>
+	<property name="Collide" value="melee,rocket"/> 
+	<property name="Tags" value="ZombieINCTreeReplace,BossFatherRemover,ZombieINCTreeTag"/>
+	<property name="Path" value="solid"/>
+	<property name="IsTerrainDecoration" value="true"/>
+	<drop event="Harvest" name="resourceWood" count="0" tag="oreWoodHarvest"/>
+	<property name="SortOrder1" value="B901"/>
+	<property name="SortOrder2" value="0001"/>
+	<property name="FilterTags" value="MC_outdoor,SC_trees,SC_shrubbery"/>
+</block>
+
+<block name="ZombieINC_treeDeadPineLeaf_TreeReplace">
+	<property name="IndexName" value="quest_wood"/>
+	<property name="Material" value="Mleaves"/>
+	<property name="Shape" value="BillboardPlant"/>
+	<property name="Mesh" value="grass"/>
+	<property name="Texture" value="177"/>
+	<property name="Tags" value="ZombieINCTreeReplace,BossFatherRemover,ZombieINCTreeTag"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="Collide" value="melee"/>
+	<property name="IsTerrainDecoration" value="true"/>
+	<property name="CanDecorateOnSlopes" value="true"/>
+	<drop event="Harvest" name="resourceWood" count="0" tag="allHarvest"/>
+	<drop event="Destroy" count="0"/>
+	<drop event="Fall" name="resourceWood" count="0" prob="1" stick_chance="0"/>
+	<property name="SortOrder1" value="B900"/>
+	<property name="SortOrder2" value="0001"/>
+	<property name="FilterTags" value="MC_outdoor,SC_shrubbery"/>
+</block>
+
+<block name="ZombieINC_treeBurntMaple01_TreeReplace">
+	<property name="Extends" value="ZombieINC_treeMaster"/>
+	<property name="Model" value="#Entities/Trees?StudioGimbal/Haunted_Tree_Wasteland25/Haunted_Tree_Wasteland25GimbalPrefab.prefab"/>
+	<property name="ModelOffset" value="0,-.5,0"/>
+	<property name="MultiBlockDim" value="1,3,1"/>
+	<property name="ParticleOnDeath" value="treeGib_burnt_small"/>
+	<property name="Path" value="solid"/>
+	<property name="BigDecorationRadius" value="4"/>
+	<drop event="Harvest" name="resourceWood" count="30" tag="oreWoodHarvest,lumberjackHarvest"/>
+	<drop event="Harvest" name="resourceCoal" count="3,8" tag="oreWoodHarvest"/>
+	<drop event="Harvest" name="resourceCoal" count="3,8" tag="coalHarvest"/>
+	<property name="SortOrder1" value="B906"/>
+	<property name="Tags" value="ZombieINCTreeReplace,BossFatherRemover,ZombieINCTreeTag"/>
+</block>
+
+<block name="ZombieINC_treeBurntMaple02_TreeReplace">
+	<property name="Extends" value="ZombieINC_treeMaster"/>
+	<property name="Material" value="MtreeWoodLarge"/>
+	<property name="Model" value="#Entities/Trees?StudioGimbal/Haunted_Tree_Wasteland39/Haunted_Tree_Wasteland39GimbalPrefab.prefab"/>
+	<property name="ModelOffset" value="0,-.4,0"/>
+	<property name="MultiBlockDim" value="1,5,1"/>
+	<property name="Path" value="solid"/>
+	<property name="BigDecorationRadius" value="5"/>
+	<drop event="Harvest" name="resourceWood" count="110" tag="oreWoodHarvest,lumberjackHarvest"/>
+	<drop event="Harvest" name="resourceCoal" count="11,22" tag="oreWoodHarvest"/>
+	<drop event="Harvest" name="resourceCoal" count="11,22" tag="coalHarvest"/>
+	<property name="SortOrder1" value="B906"/>
+	<property name="SortOrder2" value="0001"/>
+	<property name="Tags" value="ZombieINCTreeReplace,BossFatherRemover,ZombieINCTreeTag"/>
+</block>
+
+<block name="ZombieINC_treeBurntMaple03_TreeReplace">
+	<property name="Extends" value="ZombieINC_treeMaster"/>
+	<property name="Material" value="MtreeWoodFull"/>
+	<property name="Model" value="#Entities/Trees?StudioGimbal/Haunted_Tree_Wasteland42/Haunted_Tree_Wasteland42GimbalPrefab.prefab"/>
+	<property name="ModelOffset" value="-0.5,-0.6,-0.5"/>
+	<property name="Path" value="solid"/>
+	<property name="BigDecorationRadius" value="5"/>
+	<property name="ActivationDistance" value="14"/>
+	<drop event="Harvest" name="resourceWood" count="150" tag="oreWoodHarvest,lumberjackHarvest"/>
+	<drop event="Harvest" name="resourceCoal" count="15,30" tag="oreWoodHarvest"/>
+	<drop event="Harvest" name="resourceCoal" count="15,30" tag="coalHarvest"/>
+	<property name="SortOrder1" value="B906"/>
+	<property name="SortOrder2" value="0002"/>
+	<property name="Tags" value="ZombieINCTreeReplace,BossFatherRemover,ZombieINCTreeTag"/>
+	<property name="OversizedBounds" value="(-0.5,4,-0.5),(2,9,2)"/>
+</block>
+<!--BossFatherInfested-->
+<!--##BossFarmerInfested-->
+<!--#Tractors-->
+<block name="ZombieINC_tractorRed">
+	<property name="Extends" value="cntBusSchool"/>
+	<property name="CreativeMode" value="Dev"/>
+	<property name="Class" value="CarExplode"/>
+	<property name="CustomIcon" value="tractorWhite"/>
+	<property name="CustomIconTint" value="95635E"/>
+	<property name="TintColor" value="95635E"/>
+	<property name="Model" value="@:Entities/Vehicles/Tractor/tractorPrefab.prefab"/>
+	<property name="Tags" value="BossFarmRemover"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="ModelOffset" value="0,0.5,0"/>
+	<property name="MultiBlockDim" value="2,3,4"/>
+	<property name="SortOrder1" value="B874"/>
+	<property name="SortOrder2" value="0002"/>
+	<property name="FilterTags" value="MC_building,SC_automotive,A21_NEW"/>
+</block>
+<block name="ZombieINC_tractorGreen">
+	<property name="Extends" value="cntBusSchool"/>
+	<property name="CreativeMode" value="Dev"/>
+	<property name="Class" value="CarExplode"/>
+	<property name="CustomIcon" value="tractorWhite"/>
+	<property name="CustomIconTint" value="607163"/>
+	<property name="TintColor" value="607163"/>
+	<property name="Model" value="@:Entities/Vehicles/Tractor/tractorPrefab.prefab"/>
+	<property name="Tags" value="BossFarmRemover"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="ModelOffset" value="0,0.5,0"/>
+	<property name="MultiBlockDim" value="2,3,4"/>
+	<property name="SortOrder1" value="B874"/>
+	<property name="SortOrder2" value="0005"/>
+	<property name="FilterTags" value="MC_building,SC_automotive,A21_NEW"/>
+</block>
+
+<block name="ZombieINC_tractorBlue">
+	<property name="Extends" value="cntBusSchool"/>
+	<property name="CreativeMode" value="Dev"/>
+	<property name="Class" value="CarExplode"/>
+	<property name="CustomIcon" value="tractorWhite"/>
+	<property name="CustomIconTint" value="567088"/>
+	<property name="TintColor" value="567088"/>
+	<property name="Model" value="@:Entities/Vehicles/Tractor/tractorPrefab.prefab"/>
+	<property name="Tags" value="BossFarmRemover"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="ModelOffset" value="0,0.5,0"/>
+	<property name="MultiBlockDim" value="2,3,4"/>
+	<property name="SortOrder1" value="B874"/>
+	<property name="SortOrder2" value="0006"/>
+	<property name="FilterTags" value="MC_building,SC_automotive,A21_NEW"/>
+</block>
+<!--Tractors-->
+<!--#Corn Dead-->
+<block name="ZombieINC_plantedCornDeadSmall">
+	<property name="Material" value="Mcorn"/>
+	<property name="Shape" value="ModelEntity"/>
+	<property name="Model" value="@:Entities/OutdoorDecor/cornStalkBrownSmallPrefab.prefab"/>
+	<property name="Tags" value="BossFarmRemover"/>
+	<property name="ModelOffset" value="0,0,0"/>
+	<property name="LightOpacity" value="0"/>
+	<property name="Collide" value="melee"/>
+	<property name="IsTerrainDecoration" value="true"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="SortOrder1" value="B960"/>
+	<property name="SortOrder2" value="0006"/>
+	<drop event="Destroy" count="0"/>
+</block>
+
+<block name="ZombieINC_plantedCornDeadMedium">
+	<property name="DisplayType" value="blockMulti"/>
+	<property name="Material" value="Mcorn"/>
+	<property name="Shape" value="ModelEntity"/>
+	<property name="Model" value="@:Entities/OutdoorDecor/cornStalkBrownMediumPrefab.prefab"/>
+	<property name="Tags" value="BossFarmRemover"/>
+	<property name="ModelOffset" value="0,0,0"/>
+	<property name="MultiBlockDim" value="1,2,1"/>
+	<property name="LightOpacity" value="0"/>
+	<property name="Collide" value="melee"/>
+	<property name="IsTerrainDecoration" value="true"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="SortOrder1" value="B960"/>
+	<property name="SortOrder2" value="0007"/>
+	<drop event="Destroy" count="0"/>
+</block>
+
+<block name="ZombieINC_plantedCornDead">
+	<property name="DisplayType" value="blockMulti"/>
+	<property name="Material" value="Mcorn"/>
+	<property name="Shape" value="ModelEntity"/>
+	<property name="Model" value="@:Entities/OutdoorDecor/cornStalkBrownPrefab.prefab"/>
+	<property name="Tags" value="BossFarmRemover"/>
+	<property name="ModelOffset" value="0,0,0"/>
+	<property name="MultiBlockDim" value="1,3,1"/>
+	<property name="LightOpacity" value="0"/>
+	<property name="Collide" value="melee"/>
+	<property name="IsTerrainDecoration" value="true"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="SortOrder1" value="B960"/>
+	<property name="SortOrder2" value="0008"/>
+	<drop event="Destroy" count="0"/>
+</block>
+<!--Corn Dead-->
+<!--#Decorations-->
+
+<block name="ZombieINC_hayBaleSquare_TreeReplacer">
+	<property name="Class" value="Hay"/>
+	<property name="DescriptionKey" value="hayBaleBlockDesc"/>
+	<property name="DisplayType" value="blockMulti"/>
+	<property name="Material" value="Mhay"/>
+	<property name="Shape" value="ModelEntity"/>
+	<property name="Model" value="@:Entities\OutdoorDecor\hayBaleSquarePrefab.prefab"/>
+	<property name="Tags" value="ZombieINCTreeReplace,BossFarmRemover"/>
+	<property name="MultiBlockDim" value="2,1,1"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="IsTerrainDecoration" value="true"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="FuelValue" value="8"/>
+	<property name="FallDamage" value=".5"/> 
+	<property name="SortOrder1" value="B270"/>
+	<property name="SortOrder2" value="0000"/>
+	<property name="Group" value="Decor/Miscellaneous"/>
+	<property name="FilterTags" value="MC_outdoor,SC_decor"/>
+	<drop event="Destroy" count="0"/>
+</block>
+
+<block name="ZombieINC_hayBaleRound_TreeReplacer">
+	<property name="Extends" value="ZombieINC_hayBaleSquare_TreeReplacer"/>
+	<property name="Model" value="@:Entities\OutdoorDecor\hayBaleRoundPrefab.prefab"/>
+	<property name="Tags" value="ZombieINCTreeReplace,BossFarmRemover"/>
+	<property name="MultiBlockDim" value="2,2,1"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="SortOrder1" value="B270"/>
+	<property name="SortOrder2" value="0001"/>
+	<drop event="Destroy" count="0"/>
+</block>
+
+<block name="ZombieINC_hayBaleSquare">
+	<property name="Class" value="Hay"/>
+	<property name="DescriptionKey" value="hayBaleBlockDesc"/>
+	<property name="DisplayType" value="blockMulti"/>
+	<property name="Material" value="Mhay"/>
+	<property name="Shape" value="ModelEntity"/>
+	<property name="Model" value="@:Entities\OutdoorDecor\hayBaleSquarePrefab.prefab"/>
+	<property name="Tags" value="BossFarmRemover"/>
+	<property name="MultiBlockDim" value="2,1,1"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="IsTerrainDecoration" value="true"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="FuelValue" value="8"/>
+	<property name="FallDamage" value=".5"/> 
+	<property name="SortOrder1" value="B270"/>
+	<property name="SortOrder2" value="0000"/>
+	<property name="Group" value="Decor/Miscellaneous"/>
+	<property name="FilterTags" value="MC_outdoor,SC_decor"/>
+	<drop event="Destroy" count="0"/>
+</block>
+
+<block name="ZombieINC_hayBaleRound">
+	<property name="Extends" value="ZombieINC_hayBaleSquare"/>
+	<property name="Model" value="@:Entities\OutdoorDecor\hayBaleRoundPrefab.prefab"/>
+	<property name="Tags" value="BossFarmRemover"/>
+	<property name="MultiBlockDim" value="2,2,1"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="SortOrder1" value="B270"/>
+	<property name="SortOrder2" value="0001"/>
+	<drop event="Destroy" count="0"/>
+</block>
+
+<block name="ZombieINC_cntTroughPigEmpty">
+	<property name="CreativeMode" value="Player"/>
+	<property name="Material" value="Mmetal_thin"/>
+	<property name="Shape" value="ModelEntity"/>
+	<property name="Model" value="@:Entities/LootContainers/troughPig_EmptyPrefab.prefab"/>
+	<property name="Tags" value="BossFarmRemover"/>
+	<property name="MultiBlockDim" value="2,1,1"/>
+	<property name="ImposterExchange" value="imposterDontBlockCTRQuarter" param1="12"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+	<property name="Path" value="solid"/>
+	<property name="IsTerrainDecoration" value="true"/>
+	<property name="IsDecoration" value="true"/>
+	<property name="StabilitySupport" value="false"/>
+	<drop event="Destroy" count="0"/>
+</block>
+
+<block name="ZombieINC_cntTroughPigFull">
+	<property name="Extends" value="ZombieINC_cntTroughPigEmpty"/>
+	<property name="CreativeMode" value="Player"/>
+	<property name="Model" value="@:Entities/LootContainers/troughPig_FullPrefab.prefab"/>
+	<property name="Tags" value="BossFarmRemover"/>
+	<drop event="Destroy" count="0"/>
+</block>
+
+<block name="ZombieINC_decoWildWestWagon">
+	<property name="Extends" value="decoEntityWoodMaster"/>
+	<property name="DisplayType" value="blockMulti"/>
+	<property name="Model" value="@:Entities/OutdoorDecor/wildWestWagonPrefab.prefab"/>
+	<property name="Tags" value="BossFarmRemover"/>
+	<property name="MultiBlockDim" value="4,3,2"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="ActivationDistance" value="8"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="SortOrder1" value="B271"/>
+	<property name="SortOrder2" value="0000"/>
+	<property name="FilterTags" value="MC_outdoor,SC_decor"/>
+	<drop event="Destroy" count="0"/>
+</block>
+
+<block name="ZombieINC_decoWildWestWagonWheelBack">
+	<property name="Extends" value="decoEntityWoodMaster"/>
+	<property name="Model" value="@:Entities/OutdoorDecor/wildWestWagonWheelBackPrefab.prefab"/>
+	<property name="Tags" value="BossFarmRemover"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="Collide" value="movement,melee,rocket"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="SortOrder1" value="B271"/>
+	<property name="SortOrder2" value="0001"/>
+	<property name="FilterTags" value="MC_outdoor,SC_decor"/>
+	<drop event="Destroy" count="0"/>
+</block>
+
+<block name="ZombieINC_decoWildWestWagonWheelFront">
+	<property name="Extends" value="decoWildWestWagonWheelBack"/>
+	<property name="Model" value="@:Entities/OutdoorDecor/wildWestWagonWheelFrontPrefab.prefab"/>
+	<property name="Tags" value="BossFarmRemover"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="SortOrder1" value="B271"/>
+	<property name="SortOrder2" value="0002"/>
+	<drop event="Destroy" count="0"/>
+</block>
+
+<block name="ZombieINC_wineBarrelPlain">
+	<property name="Extends" value="wineBarrel"/>
+	<property name="CreativeMode" value="Dev"/>
+	<property name="Model" value="@:Entities/Decor/BarrelPrefab.prefab"/>
+	<property name="Tags" value="BossFarmRemover"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="SortOrder1" value="B426"/>
+	<property name="SortOrder2" value="0002"/>
+	<drop event="Destroy" count="0"/>
+</block>
+
+<block name="ZombieINC_modularFireWoodStackA">
+	<property name="Material" value="Mwood_weak"/>
+	<property name="Shape" value="ModelEntity"/>
+	<property name="Model" value="@:Entities/OutdoorDecor/modularFireWoodStackAPrefab.prefab"/>
+	<property name="Tags" value="BossFarmRemover"/>
+	<property name="ImposterExchange" value="imposterBlock" param1="32"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="Place" value="TowardsPlacerInverted"/>
+	<property name="IsTerrainDecoration" value="true"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="SortOrder1" value="B269"/>
+	<property name="SortOrder2" value="0000"/>
+	<property name="FilterTags" value="MC_outdoor,SC_decor"/>
+	<drop event="Destroy" count="0"/>
+</block>
+
+<block name="ZombieINC_modularFireWoodStackB">
+	<property name="Extends" value="ZombieINC_modularFireWoodStackA"/>
+	<property name="Model" value="@:Entities/OutdoorDecor/modularFireWoodStackBPrefab.prefab"/>
+	<property name="Tags" value="BossFarmRemover"/>
+	<property name="ModelOffset" value="0,0,0"/>
+	<property name="SortOrder2" value="0001"/>
+	<drop event="Destroy" count="0"/>
+</block>
+
+<block name="ZombieINC_modularFireWoodStackC">
+	<property name="Extends" value="ZombieINC_modularFireWoodStackA"/>
+	<property name="Model" value="@:Entities/OutdoorDecor/modularFireWoodStackCPrefab.prefab"/>
+	<property name="Tags" value="BossFarmRemover"/>
+	<property name="ImposterExchange" value="imposterPyramid" param1="32"/>
+	<property name="MaxDamage" value="50"/>
+	<property name="SortOrder2" value="0002"/>
+	<drop event="Destroy" count="0"/>
+</block>
+
+<block name="ZombieINC_driftwood">
+	<property name="IndexName" value="quest_wood"/>
+	<property name="Material" value="Mwood_weak"/>
+	<property name="Shape" value="ModelEntity"/>
+	<property name="Model" value="@:Entities/OutdoorDecor/driftwood_01Prefab.prefab"/>
+	<property name="Tags" value="BossFarmRemover"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="OnlySimpleRotations" value="true"/>
+	<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+	<property name="IsTerrainDecoration" value="true"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="VehicleHitScale" value="999"/>
+	<property name="SortOrder1" value="B268"/>
+	<property name="SortOrder2" value="0000"/>
+	<property name="Tags" value="twitchReplace"/>
+	<property name="FilterTags" value="MC_outdoor,SC_decor,A21_NEW"/>
+	<drop event="Destroy" count="0"/>
+</block>
+
+<block name="ZombieINC_driftwood2">
+	<property name="Extends" value="ZombieINC_driftwood"/>
+	<property name="Model" value="@:Entities/OutdoorDecor/driftwood_02Prefab.prefab"/>
+	<property name="Tags" value="BossFarmRemover"/>
+	<property name="SortOrder2" value="0001"/>
+	<drop event="Destroy" count="0"/>
+</block>
+
+<block name="ZombieINC_driftwood3">
+	<property name="Extends" value="ZombieINC_driftwood"/>
+	<property name="Model" value="@:Entities/OutdoorDecor/driftwood_03Prefab.prefab"/>
+	<property name="Tags" value="BossFarmRemover"/>
+	<property name="SortOrder2" value="0002"/>
+	<drop event="Destroy" count="0"/>
+</block>
+
+<block name="ZombieINC_decoPicnicTable">
+	<property name="DescriptionKey" value="furnitureGroupDesc"/>
+	<property name="DisplayType" value="blockMulti"/>
+	<property name="Material" value="MtreeWoodSmall"/>
+	<property name="Shape" value="ModelEntity"/>
+	<property name="Model" value="@:Entities/Furniture/picnic_tablePrefab.prefab"/>
+	<property name="Tags" value="BossFarmRemover"/>
+	<property name="MultiBlockDim" value="3,1,3"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+	<property name="Path" value="solid"/>
+	<property name="IsTerrainDecoration" value="true"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="EconomicBundleSize" value="5"/>
+	<property name="SortOrder1" value="B408"/>
+	<property name="SortOrder2" value="0004"/>
+	<property name="Group" value="Decor/Miscellaneous"/>
+	<property name="FilterTags" value="MC_outdoor,SC_decor"/>
+	<drop event="Destroy" count="0"/>
+</block>
+
+<block name="ZombieINC_abandonedPickupTruck01Brown">
+	<property name="Extends" value="abandonedPickupTruck01White"/>
+	<property name="CreativeMode" value="Player"/>
+	<property name="CustomIcon" value="abandonedPickupTruck01White"/>
+	<property name="CustomIconTint" value="5C4D3E"/>
+	<property name="Tags" value="BossFarmRemover"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="TintColor" value="5C4D3E"/>
+	<property name="SortOrder2" value="0201"/>
+	<drop event="Destroy" count="0"/>
+</block>
+
+<block name="ZombieINC_cntFarmTruckClosed">
+	<property name="Extends" value="cntArmyTruckClosed"/>
+	<property name="LootList" value="farmTruck"/>
+	<property name="Model" value="@:Entities/Vehicles/Truck/farmTruckPrefab.prefab"/>
+	<property name="Tags" value="BossFarmRemover"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="ModelOffset" value="0,0,0"/>
+	<property name="VerticalOffset" value="0"/>
+	<property name="MultiBlockDim" value="3,3,7"/>
+	<drop event="Destroy" count="0"/>
+	<property name="SortOrder2" value="0002"/>
+	<drop event="Destroy" count="0"/>
+</block>
+<!--Decorations-->
+<!--#Bag-->
+<block name="ZombieINC_palletBagFertilizerBaseFull">
+	<property name="Material" value="Msandstone"/>
+	<property name="Shape" value="ModelEntity"/>
+	<property name="Model" value="@:Entities/Industrial/palletBagFertilizerBaseFullPrefab.prefab"/>
+	<property name="Tags" value="BossFarmRemover"/>
+	<property name="ImposterExchange" value="imposterBlock" param1="19"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="Collide" value="sight,movement,melee,bullet,arrow,rocket"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="Path" value="solid"/>
+	<property name="MaxDamage" value="200"/>
+	<property name="SortOrder1" value="B278"/>
+	<property name="SortOrder2" value="1000"/>
+	<property name="FilterTags" value="MC_building,SC_commercial,SC_construction,SC_decor,A21_NEW"/>
+	<drop event="Destroy" count="0"/>
+</block>
+
+<block name="ZombieINC_palletBagFertilizerTile">
+	<property name="Extends" value="ZombieINC_palletBagFertilizerBaseFull"/>
+	<property name="Model" value="@:Entities/Industrial/palletBagFertilizerTilePrefab.prefab"/>
+	<property name="Tags" value="BossFarmRemover"/>
+	<property name="SortOrder2" value="1001"/>
+	<drop event="Destroy" count="0"/>
+</block>
+
+<block name="ZombieINC_palletBagFertilizerBaseMed">
+	<property name="Extends" value="ZombieINC_palletBagFertilizerBaseFull"/>
+	<property name="Model" value="@:Entities/Industrial/palletBagFertilizerBaseMedPrefab.prefab"/>
+	<property name="Tags" value="BossFarmRemover"/>
+	<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="MaxDamage" value="100"/>
+	<property name="SortOrder2" value="1002"/>
+	<drop event="Destroy" count="0"/>
+</block>
+
+<block name="ZombieINC_palletBagFertilizerCapMed">
+	<property name="Extends" value="ZombieINC_palletBagFertilizerBaseMed"/>
+	<property name="Model" value="@:Entities/Industrial/palletBagFertilizerCapMedPrefab.prefab"/>
+	<property name="Tags" value="BossFarmRemover"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="MaxDamage" value="100"/>
+	<property name="SortOrder2" value="1003"/>
+	<drop event="Destroy" count="0"/>
+</block>
+
+<block name="ZombieINC_palletBagFertilizerCapSml">
+	<property name="Extends" value="ZombieINC_palletBagFertilizerBaseMed"/>
+	<property name="Model" value="@:Entities/Industrial/palletBagFertilizerCapSmlPrefab.prefab"/>
+	<property name="Tags" value="BossFarmRemover"/>
+	<property name="MaxDamage" value="100"/>
+	<property name="SortOrder2" value="1004"/>
+	<drop event="Destroy" count="0"/>
+</block>
+
+<block name="ZombieINC_palletBagFertilizerSingleBent">
+	<property name="Extends" value="ZombieINC_palletBagFertilizerBaseMed"/>
+	<property name="Model" value="@:Entities/Industrial/palletBagFertilizerSingleBentPrefab.prefab"/>
+	<property name="Tags" value="BossFarmRemover"/>
+	<property name="MaxDamage" value="50"/>
+	<property name="SortOrder2" value="1005"/>
+	<drop event="Destroy" count="0"/>
+</block>
+
+<block name="ZombieINC_palletBagFertilizerSingleFlat">
+	<property name="Extends" value="ZombieINC_palletBagFertilizerBaseMed"/>
+	<property name="Model" value="@:Entities/Industrial/palletBagFertilizerSingleFlatPrefab.prefab"/>
+	<property name="Tags" value="BossFarmRemover"/>
+	<property name="MaxDamage" value="50"/>
+	<property name="SortOrder2" value="1006"/>
+	<drop event="Destroy" count="0"/>
+</block>
+
+<block name="ZombieINC_palletBagCowFeedBaseFull">
+	<property name="Material" value="Msandstone"/>
+	<property name="Shape" value="ModelEntity"/>
+	<property name="Model" value="@:Entities/Industrial/palletBagCowFeedBaseFullPrefab.prefab"/>
+	<property name="Tags" value="BossFarmRemover"/>
+	<property name="ImposterExchange" value="imposterBlock" param1="19"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="Collide" value="sight,movement,melee,bullet,arrow,rocket"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="Path" value="solid"/>
+	<property name="MaxDamage" value="200"/>
+	<property name="SortOrder1" value="B278"/>
+	<property name="SortOrder2" value="0600"/>
+	<property name="FilterTags" value="MC_building,SC_commercial,SC_construction,SC_decor,A21_NEW"/>
+	<drop event="Destroy" count="0"/>
+</block>
+
+<block name="ZombieINC_palletBagCowFeedTile">
+	<property name="Extends" value="ZombieINC_palletBagCowFeedBaseFull"/>
+	<property name="Model" value="@:Entities/Industrial/palletBagCowFeedTilePrefab.prefab"/>
+	<property name="Tags" value="BossFarmRemover"/>
+	<property name="SortOrder2" value="0601"/>
+	<drop event="Destroy" count="0"/>
+</block>
+
+<block name="ZombieINC_palletBagCowFeedBaseMed">
+	<property name="Extends" value="ZombieINC_palletBagCowFeedBaseFull"/>
+	<property name="Model" value="@:Entities/Industrial/palletBagCowFeedBaseMedPrefab.prefab"/>
+	<property name="Tags" value="BossFarmRemover"/>
+	<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="MaxDamage" value="100"/>
+	<property name="SortOrder2" value="0602"/>
+	<drop event="Destroy" count="0"/>
+</block>
+
+<block name="ZombieINC_palletBagCowFeedCapMed">
+	<property name="Extends" value="ZombieINC_palletBagCowFeedBaseMed"/>
+	<property name="Model" value="@:Entities/Industrial/palletBagCowFeedCapMedPrefab.prefab"/>
+	<property name="Tags" value="BossFarmRemover"/>
+	<property name="MaxDamage" value="100"/>
+	<property name="SortOrder2" value="0603"/>
+	<drop event="Destroy" count="0"/>
+</block>
+
+<block name="ZombieINC_palletBagCowFeedCapSml">
+	<property name="Extends" value="ZombieINC_palletBagCowFeedBaseMed"/>
+	<property name="Model" value="@:Entities/Industrial/palletBagCowFeedCapSmlPrefab.prefab"/>
+	<property name="Tags" value="BossFarmRemover"/>
+	<property name="MaxDamage" value="100"/>
+	<drop event="Destroy" count="0"/>
+	<drop event="Fall" name="terrDestroyedStone" count="0" />
+	<property name="SortOrder2" value="0604"/>
+</block>
+
+<block name="ZombieINC_palletBagCowFeedSingleBent">
+	<property name="Extends" value="ZombieINC_palletBagCowFeedBaseMed"/>
+	<property name="Model" value="@:Entities/Industrial/palletBagCowFeedSingleBentPrefab.prefab"/>
+	<property name="Tags" value="BossFarmRemover"/>
+	<property name="MaxDamage" value="50"/>
+	<drop event="Destroy" count="0"/>
+	<drop event="Fall" count="0" prob="0"/>
+	<property name="SortOrder2" value="0605"/>
+</block>
+
+<block name="ZombieINC_palletBagCowFeedSingleFlat">
+	<property name="Extends" value="ZombieINC_palletBagCowFeedBaseMed"/>
+	<property name="Model" value="@:Entities/Industrial/palletBagCowFeedSingleFlatPrefab.prefab"/>
+	<property name="Tags" value="BossFarmRemover"/>
+	<property name="MaxDamage" value="50"/>
+	<property name="SortOrder2" value="0606"/>
+	<drop event="Destroy" count="0"/>
+</block>
+<!--Bag-->
+<!--BossFarmerInfested-->
+<!--##BossPenitenceInfested-->
+<!--#Spike Traps-->
+<block name="ZombieINC_trapSpikesWoodMaster">
+	<property name="CreativeMode" value="None"/>
+	<property name="Class" value="TrunkTip"/>
+	<property name="Damage" value="33"/>
+	<property name="Damage_received" value="33"/>
+	<property name="DescriptionKey" value="trapSpikesGroupDesc"/>
+	<property name="Material" value="MtrapSpikesWood"/>
+	<property name="Shape" value="ModelEntity"/>
+	<property name="Model" value="@:Entities/Traps/woodSpikesTrapPrefab.prefab"/>
+	<property name="Tags" value="BossPenitenceRemover,ZINCTraps"/>
+	<property name="ImposterExclude" value="true"/>
+	<property name="LightOpacity" value="6"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="Collide" value="movement,melee"/>
+	<property name="Path" value="solid"/>
+	<property name="IsTerrainDecoration" value="false"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="FuelValue" value="1000"/>
+	<property name="EconomicValue" value="30"/>
+	<property name="EconomicBundleSize" value="20"/>
+	<property name="MaxDamage" value="33"/>
+	<property name="UpgradeSound" value="place_block_wood"/>
+	<drop event="Destroy" name="resourceWood" count="0"/>
+	<drop event="Fall" count="0"/>
+	<property name="SortOrder1" value="B750"/>
+	<property name="SortOrder2" value="0000"/>
+	<property name="Group" value="Building"/>
+	<property name="BlockTag" value="Spike"/>
+	<property name="FilterTags" value="MC_building,SC_traps"/>
+</block>
+
+<block name="ZombieINC_trapSpikesWoodDmg2">
+	<property name="Extends" value="ZombieINC_trapSpikesWoodMaster"/>
+	<property name="CreativeMode" value="Dev"/>
+	<property name="Model" value="@:Entities/Traps/woodSpikesTrap2BloodPrefab.prefab"/>
+	<property name="Tags" value="BossPenitenceRemover,ZINCTraps"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="SortOrder2" value="0001"/>
+</block>
+
+<block name="ZombieINC_trapSpikesWoodDmg1">
+	<property name="Extends" value="ZombieINC_trapSpikesWoodMaster"/>
+	<property name="CreativeMode" value="Dev"/>
+	<property name="Model" value="@:Entities/Traps/woodSpikesTrap1BloodPrefab.prefab"/>
+	<property name="Tags" value="BossPenitenceRemover,ZINCTraps"/>
+	<property name="DowngradeBlock" value="trapSpikesWoodDmg2"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="SortOrder2" value="0002"/>
+</block>
+
+<block name="ZombieINC_trapSpikesWoodDmg0">
+	<property name="Extends" value="ZombieINC_trapSpikesWoodMaster"/>
+	<property name="CustomIcon" value="trapSpikesWoodMaster"/>
+	<property name="DowngradeBlock" value="trapSpikesWoodDmg1"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="Tags" value="BossPenitenceRemover,ZINCTraps"/>
+	<property name="SortOrder2" value="0003"/>
+</block>
+
+<block name="ZombieINC_trapSpikesScrapIronMaster">
+	<property name="CreativeMode" value="None"/>
+	<property name="Class" value="TrunkTip"/>
+	<property name="Damage" value="33"/>
+	<property name="Damage_received" value="33"/>
+	<property name="DescriptionKey" value="trapSpikesGroupDesc"/>
+	<property name="DisplayType" value="blockHardened"/>
+	<property name="Material" value="MtrapSpikesIron"/>
+	<property name="Shape" value="ModelEntity"/>
+    <property name="Model" value="@:Entities/traps/ironSpikesTrapPrefab.prefab"/>
+	<property name="Tags" value="BossPenitenceRemover,ZINCTraps"/>
+	<property name="ImposterExclude" value="true"/>
+	<property name="LightOpacity" value="6"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="Collide" value="movement,melee"/>
+	<property name="Path" value="solid"/>
+	<property name="IsTerrainDecoration" value="false"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="EconomicValue" value="30"/>
+	<property name="EconomicBundleSize" value="20"/>
+	<property name="MaxDamage" value="132"/>
+	<property name="UpgradeSound" value="place_block_metal"/>
+	<drop event="Destroy" name="resourceScrapIron" count="0"/>
+	<drop event="Fall" count="0"/>
+	<property name="SortOrder1" value="B751"/>
+	<property name="SortOrder2" value="0000"/>
+	<property name="Group" value="Building"/>
+	<property name="BlockTag" value="Spike"/>
+	<property name="FilterTags" value="MC_building,SC_traps"/>
+</block>
+
+
+<block name="ZombieINC_trapSpikesIronDmg2">
+	<property name="Extends" value="ZombieINC_trapSpikesScrapIronMaster"/>
+	<property name="CreativeMode" value="Dev"/>
+	<property name="Model" value="@:Entities/traps/ironSpikesTrap2BloodPrefab.prefab"/>
+	<property name="Tags" value="BossPenitenceRemover,ZINCTraps"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="SortOrder2" value="0001"/>
+</block>
+
+
+<block name="ZombieINC_trapSpikesIronDmg1">
+	<property name="Extends" value="ZombieINC_trapSpikesScrapIronMaster"/>
+	<property name="CreativeMode" value="Dev"/>
+    <property name="Model" value="@:Entities/traps/ironSpikesTrap1BloodPrefab.prefab"/>
+	<property name="Tags" value="BossPenitenceRemover,ZINCTraps"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="DowngradeBlock" value="trapSpikesIronDmg2"/>
+	<property name="SortOrder2" value="0002"/>
+</block>
+
+
+<block name="ZombieINC_trapSpikesIronDmg0">
+	<property name="Extends" value="ZombieINC_trapSpikesScrapIronMaster"/>
+	<property name="CustomIcon" value="trapSpikesScrapIronMaster"/>
+	<property name="DowngradeBlock" value="trapSpikesIronDmg1"/>
+	<property name="Tags" value="BossPenitenceRemover,ZINCTraps"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="SortOrder2" value="0003"/>
+</block>
+
+<!--Spike Traps-->
+<!--#Scenario Deco-->
+<block name="ZombieINC_burningBarrel">
+	<property name="Extends" value="burningBarrelPlayer" param1="Class,HeatMapStrength,HeatMapTime,HeatMapFrequency"/>
+	<property name="CreativeMode" value="Dev"/>
+	<property name="Class" value="Light"/>
+	<property name="Light" value="0.5"/>
+	<property name="DescriptionKey" value="lightPOIGroupDesc"/>
+	<property name="Model" value="@:Entities/Lighting/barrel03_burningPrefab.prefab"/>
+	<property name="Tags" value="BossPenitenceRemover"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="CanPickup" value="false"/>
+	<property name="FilterTags" value="MC_building,SC_lighting"/>
+	<property name="SortOrder1" value="B202"/>
+	<property name="SortOrder2" value="3301"/>
+</block>
+
+<block name="ZombieINC_emberPileDeco1">
+	<property name="Material" value="Mwood_weak"/>
+	<property name="Shape" value="ModelEntity"/>
+	<property name="Model" value="@:Entities/Debris/pileEmberBurntLogs1Prefab.prefab"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="ParticleName" value="ember_pile"/>
+	<property name="ParticleOffset" value="0,0,0"/>
+	<property name="Collide" value="melee,bullet,arrow,rocket"/>
+	<property name="IsTerrainDecoration" value="true"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="VehicleHitScale" value="999"/>
+	<property name="BuffsWhenWalkedOn" value="buffBurningEnvironment"/>
+	<drop event="Harvest" name="resourceCoal" count="0" tag="oreWoodHarvest"/>
+	<drop event="Harvest" name="resourceCoal" count="0" tag="coalHarvest"/>
+	<drop event="Destroy" name="resourceWood" count="0"/>
+	<property name="SortOrder1" value="B277"/>
+	<property name="SortOrder2" value="0000"/>
+	<property name="Tags" value="coalBurnedDmg,BossPenitenceRemover"/>
+	<property name="FilterTags" value="MC_outdoor,SC_decor"/>
+</block>
+
+<block name="ZombieINC_emberPileDeco2">
+	<property name="Extends" value="ZombieINC_emberPileDeco1"/>
+	<property name="Model" value="@:Entities/Debris/pileEmberBurntLogs2Prefab.prefab"/>
+	<property name="ParticleName" value="hotembers"/>
+	<property name="ParticleOffset" value="0,3,0"/>
+	<property name="Collide" value="melee,bullet,arrow,rocket"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="Tags" value="BossPenitenceRemover"/>
+	<property name="SortOrder1" value="B277"/>
+	<property name="SortOrder2" value="0001"/>
+</block>
+
+<block name="ZombieINC_emberPileDeco3">
+	<property name="Material" value="Mwood_weak"/>
+	<property name="Shape" value="ModelEntity"/>
+	<property name="Model" value="@:Entities/Debris/pileEmberBurntLogs3Prefab.prefab"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="Collide" value="melee,bullet,arrow,rocket"/>
+	<property name="IsTerrainDecoration" value="true"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="VehicleHitScale" value="999"/>
+	<drop event="Harvest" name="resourceCoal" count="0" tag="oreWoodHarvest"/>
+	<drop event="Harvest" name="resourceCoal" count="0" tag="coalHarvest"/>
+	<drop event="Destroy" name="resourceWood" count="0"/>
+	<property name="SortOrder1" value="B277"/>
+	<property name="SortOrder2" value="0002"/>
+	<property name="Tags" value="coalBurnedDmg,BossPenitenceRemover"/>
+	<property name="FilterTags" value="MC_outdoor,SC_decor"/>
+</block>
+
+<block name="ZombieINC_emberPileDeco4">
+	<property name="Extends" value="ZombieINC_emberPileDeco3"/>
+	<property name="Model" value="@:Entities/Debris/pileEmberBurntLogs4Prefab.prefab"/>
+	<property name="Tags" value="BossPenitenceRemover"/>
+	<property name="SortOrder1" value="B277"/>
+	<property name="SortOrder2" value="0003"/>
+</block>
+
+<block name="ZombieINC_emberPileDeco5">
+	<property name="Material" value="Mwood_weak"/>
+	<property name="Shape" value="ModelEntity"/>
+	<property name="Model" value="@:Entities/Debris/pileEmberBurntLogs1NoEmissivePrefab.prefab"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="Collide" value="melee,bullet,arrow,rocket"/>
+	<property name="IsTerrainDecoration" value="true"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="VehicleHitScale" value="999"/>
+	<drop event="Harvest" name="resourceCoal" count="0" tag="oreWoodHarvest"/>
+	<drop event="Harvest" name="resourceCoal" count="0" tag="coalHarvest"/>
+	<drop event="Destroy" name="resourceWood" count="0"/>
+	<property name="SortOrder1" value="B277"/>
+	<property name="SortOrder2" value="0004"/>
+	<property name="Tags" value="coalBurnedDmg,BossPenitenceRemover"/>
+	<property name="FilterTags" value="MC_outdoor,SC_decor"/>
+</block>
+
+<block name="ZombieINC_emberPileDeco6">
+	<property name="Extends" value="ZombieINC_emberPileDeco5"/>
+	<property name="Model" value="@:Entities/Debris/pileEmberBurntLogs2NoEmissivePrefab.prefab"/>
+	<property name="Tags" value="BossPenitenceRemover"/>
+	<property name="SortOrder1" value="B277"/>
+	<property name="SortOrder2" value="0005"/>
+</block>
+
+<block name="ZombieINC_emberPileDeco7">
+	<property name="Extends" value="ZombieINC_emberPileDeco5"/>
+	<property name="Model" value="@:Entities/Debris/pileEmberBurntLogs3NoEmissivePrefab.prefab"/>
+	<property name="Tags" value="BossPenitenceRemover"/>
+	<property name="SortOrder1" value="B277"/>
+	<property name="SortOrder2" value="0006"/>
+</block>
+
+<block name="ZombieINC_emberPileDeco8">
+	<property name="Extends" value="ZombieINC_emberPileDeco5"/>
+	<property name="Model" value="@:Entities/Debris/pileEmberBurntLogs4NoEmissivePrefab.prefab"/>
+	<property name="Tags" value="BossPenitenceRemover"/>
+	<property name="SortOrder1" value="B277"/>
+	<property name="SortOrder2" value="0007"/>
+</block>
+
+<block name="ZombieINC_emberPileLightPOI1">
+	<property name="CreativeMode" value="Dev"/>
+	<property name="Class" value="Light"/>
+	<property name="Light" value="0.5"/>
+	<property name="CustomIcon" value="emberPileDeco1"/>
+	<property name="Material" value="Mwood_weak"/>
+	<property name="Shape" value="ModelEntity"/>
+	<property name="Model" value="@:Entities/Lighting/pileEmberBurntLogs1LightPrefab.prefab"/>
+	<property name="WaterFlow" value="permitted"/>
+	<property name="Collide" value="melee,bullet,arrow,rocket"/>
+	<property name="IsTerrainDecoration" value="true"/>
+	<property name="StabilitySupport" value="false"/>
+	<property name="BuffsWhenWalkedOn" value="buffBurningEnvironment"/>
+	<drop event="Harvest" name="resourceCoal" count="0" tag="oreWoodHarvest"/>
+	<drop event="Harvest" name="resourceCoal" count="0" tag="coalHarvest"/>
+	<drop event="Destroy" name="resourceWood" count="0"/>
+	<property name="SortOrder1" value="B277"/>
+	<property name="SortOrder2" value="0008"/>
+	<property name="Tags" value="coalBurnedDmg,BossPenitenceRemover"/>
+	<property name="FilterTags" value="MC_building,SC_lighting"/>
+</block>
+
+<block name="ZombieINC_emberPileLightPOI2">
+	<property name="Extends" value="ZombieINC_emberPileLightPOI1"/>
+	<property name="CreativeMode" value="Dev"/>
+	<property name="CustomIcon" value="emberPileDeco2"/>
+	<property name="Model" value="@:Entities/Lighting/pileEmberBurntLogs2LightPrefab.prefab"/>
+	<property name="Tags" value="BossPenitenceRemover"/>
+	<property name="SortOrder1" value="B277"/>
+	<property name="SortOrder2" value="0009"/>
+</block>
+
+<!--Scenario Deco-->
+<!--BossPenitenceInfested-->
+</append>
+
+</Config>

@@ -1,0 +1,145 @@
+<Config>
+
+<append xpath="/buffs">
+	<!--###New Quest Giver 2.6-->
+
+		<buff name="ZombieINC_NPC_Radio_1_Prefab" hidden="true">
+		<stack_type value="ignore"/>
+		<update_rate value="1"/>		
+		<effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="drone_idle_hover" loop="true"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="Body"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="SetTransformActive" active="false" transform_path="Hair"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="Body"/>
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="Hair"/>
+			
+			<!--<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/industrial/palletsWoodStackPrefab.prefab" local_offset="-0.01029,0,-0.12554" local_rotation="0,0,90" local_scale="1,1,1" parent_transform="Global" />
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Entities/electrical/radioHamPrefab.prefab" local_offset="-1.505,-0.038,-0.118" local_rotation="0,0,90" local_scale="1,1,1" parent_transform="Global" />
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="AttachPrefabToEntity" prefab="@:Entities/industrial/palletsWoodStackPrefab.prefab" local_offset="-0.01029,0,-0.12554" local_rotation="0,0,90" local_scale="1,1,1" parent_transform="Global" />
+			<triggered_effect trigger="onSelfBuffUpdate" action="AttachPrefabToEntity" prefab="@:Entities/electrical/radioHamPrefab.prefab" local_offset="-1.505,-0.038,-0.118" local_rotation="0,0,90" local_scale="1,1,1" parent_transform="Global" />-->
+			
+			<triggered_effect trigger="onSelfBuffStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/Junk Drone/junkDrone_Prefab.prefab" local_offset="-1.6,0,0" local_rotation="180,0,90" local_scale="0.75,0.75,0.75" parent_transform="Global" />
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="armor" parent_transform="Global" />
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="machineGun" parent_transform="Global" />
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="false" transform_path="teddyBear" parent_transform="Global" />
+			<triggered_effect trigger="onSelfBuffStart" action="SetTransformActive" active="true" transform_path="freightBox" parent_transform="Global" />
+			
+			</effect_group>
+		</buff>
+		
+		<buff name="ZombieINC_UpgradeRadio1_Dialog_Buff" hidden="false" icon="ui_game_symbol_clock">
+			<stack_type value="replace"/>
+			<update_rate value="1"/>
+				<duration value="1"/> 
+			<tags value="ZINC_Radio_BUFFS" />
+			
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self" event="ZombieINC_UpgradeRadio1_Event" allow_client_call="false" />
+			</effect_group>
+		</buff>
+		<buff name="ZombieINC_UpgradeRadio2_Dialog_Buff" hidden="false" icon="ui_game_symbol_clock">
+			<stack_type value="replace"/>
+			<update_rate value="1"/>
+				<duration value="1"/> 
+			<tags value="ZINC_Radio_BUFFS" />
+			
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self" event="ZombieINC_UpgradeRadio2_Event" allow_client_call="false" />
+			</effect_group>
+		</buff>
+		<buff name="ZombieINC_UpgradeRadio3_Dialog_Buff" hidden="false" icon="ui_game_symbol_clock">
+			<stack_type value="replace"/>
+			<update_rate value="1"/>
+				<duration value="1"/> 
+			<tags value="ZINC_Radio_BUFFS" />
+			
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self" event="ZombieINC_UpgradeRadio3_Event" allow_client_call="false" />
+			</effect_group>
+		</buff>
+		<buff name="ZombieINC_UpgradeRadio4_Dialog_Buff" hidden="false" icon="ui_game_symbol_clock">
+			<stack_type value="replace"/>
+			<update_rate value="1"/>
+				<duration value="1"/> 
+			<tags value="ZINC_Radio_BUFFS" />
+			
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self" event="ZombieINC_UpgradeRadio4_Event" allow_client_call="false" />
+			</effect_group>
+		</buff>
+		<buff name="ZombieINC_UpgradeRadio5_Dialog_Buff" hidden="false" icon="ui_game_symbol_clock">
+			<stack_type value="replace"/>
+			<update_rate value="1"/>
+				<duration value="1"/> 
+			<tags value="ZINC_Radio_BUFFS" />
+			
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self" event="ZombieINC_UpgradeRadio5_Event" allow_client_call="false" />
+			</effect_group>
+		</buff>
+		<buff name="ZombieINC_PickRadio1_Dialog_Buff" hidden="false" icon="ui_game_symbol_clock">
+			<stack_type value="replace"/>
+			<update_rate value="1"/>
+				<duration value="1"/> 
+			<tags value="ZINC_Radio_BUFFS" />
+			
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self" event="ZombieINC_PickRadio1_Event" allow_client_call="false" />
+			</effect_group>
+		</buff>
+		<buff name="ZombieINC_PickRadio2_Dialog_Buff" hidden="false" icon="ui_game_symbol_clock">
+			<stack_type value="replace"/>
+			<update_rate value="1"/>
+				<duration value="1"/> 
+			<tags value="ZINC_Radio_BUFFS" />
+			
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self" event="ZombieINC_PickRadio2_Event" allow_client_call="false" />
+			</effect_group>
+		</buff>
+		<buff name="ZombieINC_PickRadio3_Dialog_Buff" hidden="false" icon="ui_game_symbol_clock">
+			<stack_type value="replace"/>
+			<update_rate value="1"/>
+				<duration value="1"/> 
+			<tags value="ZINC_Radio_BUFFS" />
+			
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self" event="ZombieINC_PickRadio3_Event" allow_client_call="false" />
+			</effect_group>
+		</buff>
+		<buff name="ZombieINC_PickRadio4_Dialog_Buff" hidden="false" icon="ui_game_symbol_clock">
+			<stack_type value="replace"/>
+			<update_rate value="1"/>
+				<duration value="1"/> 
+			<tags value="ZINC_Radio_BUFFS" />
+			
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self" event="ZombieINC_PickRadio4_Event" allow_client_call="false" />
+			</effect_group>
+		</buff>
+		<buff name="ZombieINC_PickRadio5_Dialog_Buff" hidden="false" icon="ui_game_symbol_clock">
+			<stack_type value="replace"/>
+			<update_rate value="1"/>
+				<duration value="1"/> 
+			<tags value="ZINC_Radio_BUFFS" />
+			
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self" event="ZombieINC_PickRadio5_Event" allow_client_call="false" />
+			</effect_group>
+		</buff>
+		<buff name="ZombieINC_PickRadio6_Dialog_Buff" hidden="false" icon="ui_game_symbol_clock">
+			<stack_type value="replace"/>
+			<update_rate value="1"/>
+				<duration value="1"/> 
+			<tags value="ZINC_Radio_BUFFS" />
+			
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" target="self" event="ZombieINC_PickRadio6_Event" allow_client_call="false" />
+			</effect_group>
+		</buff>
+<!--New Quest Giver 2.6-->
+
+</append>
+
+</Config>

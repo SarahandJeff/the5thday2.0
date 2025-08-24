@@ -1,0 +1,1742 @@
+<Config>
+	
+	
+	
+	
+	
+	
+	
+	<append xpath="/items">
+	
+	
+	<!--###New Skills and Magazines-->
+	
+	
+	<!--##The God Slayer Path  -->
+	<!--#Chapter 1 -->
+	<item name="ZombieINC_bookGodSlayerPath1">
+	<property name="Extends" value="schematicMaster"/>
+	<!--<property name="CustomIcon" value="bookFiremansAlmanacHeat"/>-->
+	<property name="CustomIcon" value="cntBookPile08"/>
+	<property name="DescriptionKey" value="ZombieINC_perkGodSlayerPath1_LongDesc"/>
+	<property name="Stacknumber" value="20"/>
+	<property name="EconomicValue" value="500"/>
+	<property name="Unlocks" value="ZombieINC_perkGodSlayerPath1"/>
+	<property name="Tags" value="ZombieINCBooks,ZINC_GSP_CSM"/>
+	<property name="Group" value="Books,BooksOnly,TCReading"/>
+	<property class="Action0">
+		<property name="Class" value="Eat"/>
+		<property name="Delay" value="1.0"/>
+		<property name="Sound_start" value="read_skillbook"/>
+	</property>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkGodSlayerPath1" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkGodSlayerPath1" level="-1"/> <!-- level="-1" sets a perk to max level -->
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkGodSlayerPathComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_GodSlayer" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_GodSlayer" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+	<!--Chapter 1 -->
+	<!--#Chapter 2 -->
+<item name="ZombieINC_bookGodSlayerPath2">
+	<property name="Extends" value="ZombieINC_bookGodSlayerPath1"/>
+	<property name="DescriptionKey" value="ZombieINC_perkGodSlayerPath2_LongDesc"/>
+	<property name="Unlocks" value="ZombieINC_perkGodSlayerPath2"/>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkGodSlayerPath2" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkGodSlayerPath2" level="-1"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkGodSlayerPathComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_GodSlayer" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_GodSlayer" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+
+	<!--Chapter 2 -->
+	<!--#Chapter 3 -->
+<item name="ZombieINC_bookGodSlayerPath3">
+	<property name="Extends" value="ZombieINC_bookGodSlayerPath1"/>
+	<property name="DescriptionKey" value="ZombieINC_perkGodSlayerPath3_LongDesc"/>
+	<property name="Unlocks" value="ZombieINC_perkGodSlayerPath3"/>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkGodSlayerPath3" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkGodSlayerPath3" level="-1"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkGodSlayerPathComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_GodSlayer" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_GodSlayer" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+
+	<!--Chapter 3 -->
+	<!--#Chapter 4 -->
+<item name="ZombieINC_bookGodSlayerPath4">
+	<property name="Extends" value="ZombieINC_bookGodSlayerPath1"/>
+	<property name="DescriptionKey" value="ZombieINC_perkGodSlayerPath4_LongDesc"/>
+	<property name="Unlocks" value="ZombieINC_perkGodSlayerPath4"/>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkGodSlayerPath4" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkGodSlayerPath4" level="-1"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkGodSlayerPathComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_GodSlayer" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_GodSlayer" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+
+	<!--Chapter 4 -->
+	<!--#Chapter 5 -->
+<item name="ZombieINC_bookGodSlayerPath5">
+	<property name="Extends" value="ZombieINC_bookGodSlayerPath1"/>
+	<property name="DescriptionKey" value="ZombieINC_perkGodSlayerPath5_LongDesc"/>
+	<property name="Unlocks" value="ZombieINC_perkGodSlayerPath5"/>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkGodSlayerPath5" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkGodSlayerPath5" level="-1"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkGodSlayerPathComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_GodSlayer" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_GodSlayer" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+
+	<!--Chapter 5 -->
+	<!--#Chapter 6 -->
+<item name="ZombieINC_bookGodSlayerPath6">
+	<property name="Extends" value="ZombieINC_bookGodSlayerPath1"/>
+	<property name="DescriptionKey" value="ZombieINC_perkGodSlayerPath6_LongDesc"/>
+	<property name="Unlocks" value="ZombieINC_perkGodSlayerPath6"/>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkGodSlayerPath6" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkGodSlayerPath6" level="-1"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkGodSlayerPathComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_GodSlayer" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_GodSlayer" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+
+	<!--Chapter 6 -->
+	<!--#Chapter 7 -->
+<item name="ZombieINC_bookGodSlayerPath7">
+	<property name="Extends" value="ZombieINC_bookGodSlayerPath1"/>
+	<property name="DescriptionKey" value="ZombieINC_perkGodSlayerPath7_LongDesc"/>
+	<property name="Unlocks" value="ZombieINC_perkGodSlayerPath7"/>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkGodSlayerPath7" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkGodSlayerPath7" level="-1"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkGodSlayerPathComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_GodSlayer" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_GodSlayer" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+
+	<!--Chapter 7 -->
+	<!--The God Slayer Path-->
+	<!--##The Defense Book  -->
+	<!--#Chapter 1 -->
+	<item name="ZombieINC_bookDefense1">
+	<property name="Extends" value="schematicMaster"/>
+	<!--<property name="CustomIcon" value="bookFiremansAlmanacHeat"/>-->
+	<property name="CustomIcon" value="cntBookPile08"/>
+	<property name="DescriptionKey" value="ZombieINC_perkDefense1_LongDesc"/>
+	<property name="Stacknumber" value="20"/>
+	<property name="EconomicValue" value="500"/>
+	<property name="Unlocks" value="ZombieINC_perkDefense1"/>
+	<property name="Tags" value="ZombieINCBooks,ZINC_D_CSM"/>
+	<property name="Group" value="Books,BooksOnly,TCReading"/>
+	<property class="Action0">
+		<property name="Class" value="Eat"/>
+		<property name="Delay" value="1.0"/>
+		<property name="Sound_start" value="read_skillbook"/>
+	</property>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkDefense1" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkDefense1" level="-1"/> <!-- level="-1" sets a perk to max level -->
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkDefenseComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_Defense" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_Defense" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+	<!--Chapter 1 -->
+	<!--#Chapter 2 -->
+<item name="ZombieINC_bookDefense2">
+	<property name="Extends" value="ZombieINC_bookDefense1"/>
+	<property name="DescriptionKey" value="ZombieINC_perkDefense2_LongDesc"/>
+	<property name="Unlocks" value="ZombieINC_perkDefense2"/>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkDefense2" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkDefense2" level="-1"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkDefenseComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_Defense" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_Defense" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+
+	<!--Chapter 2 -->
+	<!--#Chapter 3 -->
+<item name="ZombieINC_bookDefense3">
+	<property name="Extends" value="ZombieINC_bookDefense1"/>
+	<property name="DescriptionKey" value="ZombieINC_perkDefense3_LongDesc"/>
+	<property name="Unlocks" value="ZombieINC_perkDefense3"/>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkDefense3" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkDefense3" level="-1"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkDefenseComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_Defense" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_Defense" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+
+	<!--Chapter 3 -->
+	<!--#Chapter 4 -->
+<item name="ZombieINC_bookDefense4">
+	<property name="Extends" value="ZombieINC_bookDefense1"/>
+	<property name="DescriptionKey" value="ZombieINC_perkDefense4_LongDesc"/>
+	<property name="Unlocks" value="ZombieINC_perkDefense4"/>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkDefense4" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkDefense4" level="-1"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkDefenseComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_Defense" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_Defense" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+
+	<!--Chapter 4 -->
+	<!--#Chapter 5 -->
+<item name="ZombieINC_bookDefense5">
+	<property name="Extends" value="ZombieINC_bookDefense1"/>
+	<property name="DescriptionKey" value="ZombieINC_perkDefense5_LongDesc"/>
+	<property name="Unlocks" value="ZombieINC_perkDefense5"/>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkDefense5" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkDefense5" level="-1"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkDefenseComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_Defense" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_Defense" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+
+	<!--Chapter 5 -->
+	<!--#Chapter 6 -->
+<item name="ZombieINC_bookDefense6">
+	<property name="Extends" value="ZombieINC_bookDefense1"/>
+	<property name="DescriptionKey" value="ZombieINC_perkDefense6_LongDesc"/>
+	<property name="Unlocks" value="ZombieINC_perkDefense6"/>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkDefense6" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkDefense6" level="-1"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkDefenseComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_Defense" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_Defense" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+
+	<!--Chapter 6 -->
+	<!--#Chapter 7 -->
+<item name="ZombieINC_bookDefense7">
+	<property name="Extends" value="ZombieINC_bookDefense1"/>
+	<property name="DescriptionKey" value="ZombieINC_perkDefense7_LongDesc"/>
+	<property name="Unlocks" value="ZombieINC_perkDefense7"/>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkDefense7" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkDefense7" level="-1"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkDefenseComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_Defense" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_Defense" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+
+	<!--Chapter 7 -->
+	<!--The Defense Book-->
+	<!--##The Survival Book  -->
+	<!--#Chapter 1 -->
+	<item name="ZombieINC_bookSurvival1">
+	<property name="Extends" value="schematicMaster"/>
+	<!--<property name="CustomIcon" value="bookFiremansAlmanacHeat"/>-->
+	<property name="CustomIcon" value="cntBookPile08"/>
+	<property name="DescriptionKey" value="ZombieINC_perkSurvival1_LongDesc"/>
+	<property name="Stacknumber" value="20"/>
+	<property name="EconomicValue" value="500"/>
+	<property name="Unlocks" value="ZombieINC_perkSurvival1"/>
+	<property name="Tags" value="ZombieINCBooks,ZINC_S_CSM"/>
+	<property name="Group" value="Books,BooksOnly,TCReading"/>
+	<property class="Action0">
+		<property name="Class" value="Eat"/>
+		<property name="Delay" value="1.0"/>
+		<property name="Sound_start" value="read_skillbook"/>
+	</property>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkSurvival1" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkSurvival1" level="-1"/> <!-- level="-1" sets a perk to max level -->
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkSurvivalComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_Survival" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_Survival" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+	<!--Chapter 1 -->
+	<!--#Chapter 2 -->
+<item name="ZombieINC_bookSurvival2">
+	<property name="Extends" value="ZombieINC_bookSurvival1"/>
+	<property name="DescriptionKey" value="ZombieINC_perkSurvival2_LongDesc"/>
+	<property name="Unlocks" value="ZombieINC_perkSurvival2"/>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkSurvival2" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkSurvival2" level="-1"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkSurvivalComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_Survival" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_Survival" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+
+	<!--Chapter 2 -->
+	<!--#Chapter 3 -->
+<item name="ZombieINC_bookSurvival3">
+	<property name="Extends" value="ZombieINC_bookSurvival1"/>
+	<property name="DescriptionKey" value="ZombieINC_perkSurvival3_LongDesc"/>
+	<property name="Unlocks" value="ZombieINC_perkSurvival3"/>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkSurvival3" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkSurvival3" level="-1"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkSurvivalComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_Survival" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_Survival" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+
+	<!--Chapter 3 -->
+	<!--#Chapter 4 -->
+<item name="ZombieINC_bookSurvival4">
+	<property name="Extends" value="ZombieINC_bookSurvival1"/>
+	<property name="DescriptionKey" value="ZombieINC_perkSurvival4_LongDesc"/>
+	<property name="Unlocks" value="ZombieINC_perkSurvival4"/>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkSurvival4" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkSurvival4" level="-1"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkSurvivalComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_Survival" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_Survival" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+
+	<!--Chapter 4 -->
+	<!--#Chapter 5 -->
+<item name="ZombieINC_bookSurvival5">
+	<property name="Extends" value="ZombieINC_bookSurvival1"/>
+	<property name="DescriptionKey" value="ZombieINC_perkSurvival5_LongDesc"/>
+	<property name="Unlocks" value="ZombieINC_perkSurvival5"/>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkSurvival5" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkSurvival5" level="-1"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkSurvivalComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_Survival" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_Survival" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+
+	<!--Chapter 5 -->
+	<!--#Chapter 6 -->
+<item name="ZombieINC_bookSurvival6">
+	<property name="Extends" value="ZombieINC_bookSurvival1"/>
+	<property name="DescriptionKey" value="ZombieINC_perkSurvival6_LongDesc"/>
+	<property name="Unlocks" value="ZombieINC_perkSurvival6"/>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkSurvival6" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkSurvival6" level="-1"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkSurvivalComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_Survival" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_Survival" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+
+	<!--Chapter 6 -->
+	<!--#Chapter 7 -->
+<item name="ZombieINC_bookSurvival7">
+	<property name="Extends" value="ZombieINC_bookSurvival1"/>
+	<property name="DescriptionKey" value="ZombieINC_perkSurvival7_LongDesc"/>
+	<property name="Unlocks" value="ZombieINC_perkSurvival7"/>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkSurvival7" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkSurvival7" level="-1"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkSurvivalComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_Survival" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_Survival" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+
+	<!--Chapter 7 -->
+	<!--The Survival Book-->
+	<!--##The VehicleRecovery Book  -->
+	<!--#Chapter 1 -->
+	<item name="ZombieINC_bookVehicleRecovery1">
+	<property name="Extends" value="schematicMaster"/>
+	<!--<property name="CustomIcon" value="bookFiremansAlmanacHeat"/>-->
+	<property name="CustomIcon" value="cntBookPile08"/>
+	<property name="DescriptionKey" value="ZombieINC_perkVehicleRecovery1_LongDesc"/>
+	<property name="Stacknumber" value="20"/>
+	<property name="EconomicValue" value="500"/>
+	<property name="Unlocks" value="ZombieINC_perkVehicleRecovery1"/>
+	<property name="Tags" value="ZombieINCBooks,ZINC_VH_CSM"/>
+	<property name="Group" value="Books,BooksOnly,TCReading"/>
+	<property class="Action0">
+		<property name="Class" value="Eat"/>
+		<property name="Delay" value="1.0"/>
+		<property name="Sound_start" value="read_skillbook"/>
+	</property>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkVehicleRecovery1" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkVehicleRecovery1" level="-1"/> <!-- level="-1" sets a perk to max level -->
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkVehicleRecoveryComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_VehicleRecovery" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_VehicleRecovery" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+	<!--Chapter 1 -->
+	<!--#Chapter 2 -->
+<item name="ZombieINC_bookVehicleRecovery2">
+	<property name="Extends" value="ZombieINC_bookVehicleRecovery1"/>
+	<property name="DescriptionKey" value="ZombieINC_perkVehicleRecovery2_LongDesc"/>
+	<property name="Unlocks" value="ZombieINC_perkVehicleRecovery2"/>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkVehicleRecovery2" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkVehicleRecovery2" level="-1"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkVehicleRecoveryComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_VehicleRecovery" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_VehicleRecovery" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+
+	<!--Chapter 2 -->
+	<!--#Chapter 3 -->
+<item name="ZombieINC_bookVehicleRecovery3">
+	<property name="Extends" value="ZombieINC_bookVehicleRecovery1"/>
+	<property name="DescriptionKey" value="ZombieINC_perkVehicleRecovery3_LongDesc"/>
+	<property name="Unlocks" value="ZombieINC_perkVehicleRecovery3"/>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkVehicleRecovery3" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkVehicleRecovery3" level="-1"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkVehicleRecoveryComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_VehicleRecovery" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_VehicleRecovery" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+
+	<!--Chapter 3 -->
+	<!--#Chapter 4 -->
+<item name="ZombieINC_bookVehicleRecovery4">
+	<property name="Extends" value="ZombieINC_bookVehicleRecovery1"/>
+	<property name="DescriptionKey" value="ZombieINC_perkVehicleRecovery4_LongDesc"/>
+	<property name="Unlocks" value="ZombieINC_perkVehicleRecovery4"/>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkVehicleRecovery4" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkVehicleRecovery4" level="-1"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkVehicleRecoveryComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_VehicleRecovery" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_VehicleRecovery" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+
+	<!--Chapter 4 -->
+	<!--#Chapter 5 -->
+<item name="ZombieINC_bookVehicleRecovery5">
+	<property name="Extends" value="ZombieINC_bookVehicleRecovery1"/>
+	<property name="DescriptionKey" value="ZombieINC_perkVehicleRecovery5_LongDesc"/>
+	<property name="Unlocks" value="ZombieINC_perkVehicleRecovery5"/>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkVehicleRecovery5" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkVehicleRecovery5" level="-1"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkVehicleRecoveryComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_VehicleRecovery" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_VehicleRecovery" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+
+	<!--Chapter 5 -->
+	<!--#Chapter 6 -->
+<item name="ZombieINC_bookVehicleRecovery6">
+	<property name="Extends" value="ZombieINC_bookVehicleRecovery1"/>
+	<property name="DescriptionKey" value="ZombieINC_perkVehicleRecovery6_LongDesc"/>
+	<property name="Unlocks" value="ZombieINC_perkVehicleRecovery6"/>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkVehicleRecovery6" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkVehicleRecovery6" level="-1"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkVehicleRecoveryComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_VehicleRecovery" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_VehicleRecovery" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+
+	<!--Chapter 6 -->
+	<!--#Chapter 7 -->
+<item name="ZombieINC_bookVehicleRecovery7">
+	<property name="Extends" value="ZombieINC_bookVehicleRecovery1"/>
+	<property name="DescriptionKey" value="ZombieINC_perkVehicleRecovery7_LongDesc"/>
+	<property name="Unlocks" value="ZombieINC_perkVehicleRecovery7"/>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkVehicleRecovery7" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkVehicleRecovery7" level="-1"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkVehicleRecoveryComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_VehicleRecovery" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_VehicleRecovery" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+
+	<!--Chapter 7 -->
+	<!--The VehicleRecovery Book-->
+	<!--##The NestDemolition Book  -->
+	<!--#Chapter 1 -->
+	<item name="ZombieINC_bookNestDemolition1">
+	<property name="Extends" value="schematicMaster"/>
+	<!--<property name="CustomIcon" value="bookFiremansAlmanacHeat"/>-->
+	<property name="CustomIcon" value="cntBookPile08"/>
+	<property name="DescriptionKey" value="ZombieINC_perkNestDemolition1_LongDesc"/>
+	<property name="Stacknumber" value="20"/>
+	<property name="EconomicValue" value="500"/>
+	<property name="Unlocks" value="ZombieINC_perkNestDemolition1"/>
+	<property name="Tags" value="ZombieINCBooks,ZINC_ND_CSM"/>
+	<property name="Group" value="Books,BooksOnly,TCReading"/>
+	<property class="Action0">
+		<property name="Class" value="Eat"/>
+		<property name="Delay" value="1.0"/>
+		<property name="Sound_start" value="read_skillbook"/>
+	</property>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkNestDemolition1" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkNestDemolition1" level="-1"/> <!-- level="-1" sets a perk to max level -->
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkNestDemolitionComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_NestDemolition" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_NestDemolition" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+	<!--Chapter 1 -->
+	<!--#Chapter 2 -->
+<item name="ZombieINC_bookNestDemolition2">
+	<property name="Extends" value="ZombieINC_bookNestDemolition1"/>
+	<property name="DescriptionKey" value="ZombieINC_perkNestDemolition2_LongDesc"/>
+	<property name="Unlocks" value="ZombieINC_perkNestDemolition2"/>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkNestDemolition2" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkNestDemolition2" level="-1"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkNestDemolitionComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_NestDemolition" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_NestDemolition" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+
+	<!--Chapter 2 -->
+	<!--#Chapter 3 -->
+<item name="ZombieINC_bookNestDemolition3">
+	<property name="Extends" value="ZombieINC_bookNestDemolition1"/>
+	<property name="DescriptionKey" value="ZombieINC_perkNestDemolition3_LongDesc"/>
+	<property name="Unlocks" value="ZombieINC_perkNestDemolition3"/>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkNestDemolition3" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkNestDemolition3" level="-1"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkNestDemolitionComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_NestDemolition" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_NestDemolition" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+
+	<!--Chapter 3 -->
+	<!--#Chapter 4 -->
+<item name="ZombieINC_bookNestDemolition4">
+	<property name="Extends" value="ZombieINC_bookNestDemolition1"/>
+	<property name="DescriptionKey" value="ZombieINC_perkNestDemolition4_LongDesc"/>
+	<property name="Unlocks" value="ZombieINC_perkNestDemolition4"/>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkNestDemolition4" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkNestDemolition4" level="-1"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkNestDemolitionComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_NestDemolition" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_NestDemolition" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+
+	<!--Chapter 4 -->
+	<!--#Chapter 5 -->
+<item name="ZombieINC_bookNestDemolition5">
+	<property name="Extends" value="ZombieINC_bookNestDemolition1"/>
+	<property name="DescriptionKey" value="ZombieINC_perkNestDemolition5_LongDesc"/>
+	<property name="Unlocks" value="ZombieINC_perkNestDemolition5"/>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkNestDemolition5" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkNestDemolition5" level="-1"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkNestDemolitionComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_NestDemolition" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_NestDemolition" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+
+	<!--Chapter 5 -->
+	<!--#Chapter 6 -->
+<item name="ZombieINC_bookNestDemolition6">
+	<property name="Extends" value="ZombieINC_bookNestDemolition1"/>
+	<property name="DescriptionKey" value="ZombieINC_perkNestDemolition6_LongDesc"/>
+	<property name="Unlocks" value="ZombieINC_perkNestDemolition6"/>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkNestDemolition6" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkNestDemolition6" level="-1"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkNestDemolitionComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_NestDemolition" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_NestDemolition" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+
+	<!--Chapter 6 -->
+	<!--#Chapter 7 -->
+<item name="ZombieINC_bookNestDemolition7">
+	<property name="Extends" value="ZombieINC_bookNestDemolition1"/>
+	<property name="DescriptionKey" value="ZombieINC_perkNestDemolition7_LongDesc"/>
+	<property name="Unlocks" value="ZombieINC_perkNestDemolition7"/>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkNestDemolition7" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkNestDemolition7" level="-1"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkNestDemolitionComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_NestDemolition" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_NestDemolition" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+
+	<!--Chapter 7 -->
+	<!--The NestDemolition Book-->
+	<!--##The MobileDefense Book  -->
+	<!--#Chapter 1 -->
+	<item name="ZombieINC_bookMobileDefense1">
+	<property name="Extends" value="schematicMaster"/>
+	<!--<property name="CustomIcon" value="bookFiremansAlmanacHeat"/>-->
+	<property name="CustomIcon" value="cntBookPile08"/>
+	<property name="DescriptionKey" value="ZombieINC_perkMobileDefense1_LongDesc"/>
+	<property name="Stacknumber" value="20"/>
+	<property name="EconomicValue" value="500"/>
+	<property name="Unlocks" value="ZombieINC_perkMobileDefense1"/>
+	<property name="Tags" value="ZombieINCBooks,ZINC_MD_CSM"/>
+	<property name="Group" value="Books,BooksOnly,TCReading"/>
+	<property class="Action0">
+		<property name="Class" value="Eat"/>
+		<property name="Delay" value="1.0"/>
+		<property name="Sound_start" value="read_skillbook"/>
+	</property>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkMobileDefense1" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkMobileDefense1" level="-1"/> <!-- level="-1" sets a perk to max level -->
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkMobileDefenseComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_MobileDefense" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_MobileDefense" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+	<!--Chapter 1 -->
+	<!--#Chapter 2 -->
+<item name="ZombieINC_bookMobileDefense2">
+	<property name="Extends" value="ZombieINC_bookMobileDefense1"/>
+	<property name="DescriptionKey" value="ZombieINC_perkMobileDefense2_LongDesc"/>
+	<property name="Unlocks" value="ZombieINC_perkMobileDefense2"/>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkMobileDefense2" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkMobileDefense2" level="-1"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkMobileDefenseComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_MobileDefense" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_MobileDefense" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+
+	<!--Chapter 2 -->
+	<!--#Chapter 3 -->
+<item name="ZombieINC_bookMobileDefense3">
+	<property name="Extends" value="ZombieINC_bookMobileDefense1"/>
+	<property name="DescriptionKey" value="ZombieINC_perkMobileDefense3_LongDesc"/>
+	<property name="Unlocks" value="ZombieINC_perkMobileDefense3"/>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkMobileDefense3" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkMobileDefense3" level="-1"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkMobileDefenseComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_MobileDefense" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_MobileDefense" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+
+	<!--Chapter 3 -->
+	<!--#Chapter 4 -->
+<item name="ZombieINC_bookMobileDefense4">
+	<property name="Extends" value="ZombieINC_bookMobileDefense1"/>
+	<property name="DescriptionKey" value="ZombieINC_perkMobileDefense4_LongDesc"/>
+	<property name="Unlocks" value="ZombieINC_perkMobileDefense4"/>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkMobileDefense4" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkMobileDefense4" level="-1"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkMobileDefenseComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_MobileDefense" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_MobileDefense" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+
+	<!--Chapter 4 -->
+	<!--#Chapter 5 -->
+<item name="ZombieINC_bookMobileDefense5">
+	<property name="Extends" value="ZombieINC_bookMobileDefense1"/>
+	<property name="DescriptionKey" value="ZombieINC_perkMobileDefense5_LongDesc"/>
+	<property name="Unlocks" value="ZombieINC_perkMobileDefense5"/>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkMobileDefense5" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkMobileDefense5" level="-1"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkMobileDefenseComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_MobileDefense" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_MobileDefense" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+
+	<!--Chapter 5 -->
+	<!--#Chapter 6 -->
+<item name="ZombieINC_bookMobileDefense6">
+	<property name="Extends" value="ZombieINC_bookMobileDefense1"/>
+	<property name="DescriptionKey" value="ZombieINC_perkMobileDefense6_LongDesc"/>
+	<property name="Unlocks" value="ZombieINC_perkMobileDefense6"/>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkMobileDefense6" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkMobileDefense6" level="-1"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkMobileDefenseComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_MobileDefense" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_MobileDefense" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+
+	<!--Chapter 6 -->
+	<!--#Chapter 7 -->
+<item name="ZombieINC_bookMobileDefense7">
+	<property name="Extends" value="ZombieINC_bookMobileDefense1"/>
+	<property name="DescriptionKey" value="ZombieINC_perkMobileDefense7_LongDesc"/>
+	<property name="Unlocks" value="ZombieINC_perkMobileDefense7"/>
+	<effect_group tiered="false">
+		<requirement name="ProgressionLevel" progression_name="ZombieINC_perkMobileDefense7" operation="Equals" value="0"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkMobileDefense7" level="-1"/>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="ZombieINC_perkMobileDefenseComplete" level="-1">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_MobileDefense" operation="GTE" value="7"/></triggered_effect>
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+			<requirement name="PerksUnlocked" skill_name="ZombieINC_BookSkill_MobileDefense" operation="GTE" value="7"/></triggered_effect>
+	</effect_group>
+	<effect_group tiered="false">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+	</effect_group>
+</item>
+
+	<!--Chapter 7 -->
+	<!--The MobileDefense Book-->
+	<!--New Skills and Magazines-->
+	<!--###New Items-->
+	<item name="ZombieINC_MixtureV1">
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="Material" value="MresourceAcid"/>
+		<!--<property name="CustomIcon" value="resourceAcid"/>-->
+		<property name="CustomIcon" value="resourceCrushedSand"/>
+		<property name="CustomIconTint" value="150,60,150"/>
+		<property name="DescriptionKey" value="ZombieINC_MixtureV1_Desc"/>
+		<property name="Weight" value="0"/>
+		<property name="Stacknumber" value="100"/> <!-- STK resource -->
+		<property name="EconomicValue" value="140"/>
+		<property name="EconomicBundleSize" value="1"/>
+		<property name="RepairTime" value="3"/>
+		<property name="RepairAmount" value="100"/>
+		<property name="Group" value="Resources,Chemicals"/>
+	</item>
+	
+	<item name="ZombieINC_StrongAcid">
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="Material" value="MresourceAcid"/>
+		<property name="CustomIcon" value="resourceAcid"/>
+		<property name="CustomIconTint" value="40,150,40"/>
+		<property name="DescriptionKey" value="ZombieINC_StrongAcid_Desc"/>
+		<property name="Weight" value="0"/>
+		<property name="Stacknumber" value="100"/> <!-- STK resource -->
+		<property name="EconomicValue" value="140"/>
+		<property name="EconomicBundleSize" value="1"/>
+		<property name="Group" value="Resources,Chemicals"/>
+	</item>
+	
+	<item name="ZombieINC_RadioactiveAshes">
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="Material" value="MresourceCement"/>
+		<property name="CustomIcon" value="resourceCement"/>
+		<property name="CustomIconTint" value="110,30,40"/>
+		<property name="DescriptionKey" value="ZombieINC_RadioactiveAshes_Desc"/>
+		<property name="Stacknumber" value="1000"/> <!-- STK resource -->
+		<property name="EconomicValue" value="25"/>
+		<property name="EconomicBundleSize" value="50"/>
+		<property name="RepairTime" value="3"/>
+		<property name="RepairAmount" value="100"/>
+		<property name="Group" value="Resources"/>
+	</item>
+	<!--New Items-->
+	<!--###New Weapons and Ammo-->
+	
+	<item name="ZombieINC_resourceNail_HealV1_Recipe">
+		<property name="Extends" value="schematicNoQualityRecipeMaster"/>
+		<property name="CreativeMode" value="Player"/>
+		<property name="CustomIcon" value="schematicMaster"/>
+		<property name="Unlocks" value="ZombieINC_resourceNail_HealV1"/>
+		<effect_group tiered="false">
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="ZombieINC_resourceNail_HealV1" operation="set" value="1"/>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+		</effect_group>
+	</item>
+	<item name="ZombieINC_resourceNail_AdrenalineV1_Recipe">
+		<property name="Extends" value="schematicNoQualityRecipeMaster"/>
+		<property name="CreativeMode" value="Player"/>
+		<property name="CustomIcon" value="schematicMaster"/>
+		<property name="Unlocks" value="ZombieINC_resourceNail_AdrenalineV1"/>
+		<effect_group tiered="false">
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="ZombieINC_resourceNail_AdrenalineV1" operation="set" value="1"/>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+		</effect_group>
+	</item>
+	<item name="ZombieINC_resourceNail_TranquilizerV1_Recipe">
+		<property name="Extends" value="schematicNoQualityRecipeMaster"/>
+		<property name="CreativeMode" value="Player"/>
+		<property name="CustomIcon" value="schematicMaster"/>
+		<property name="Unlocks" value="ZombieINC_resourceNail_TranquilizerV1"/>
+		<effect_group tiered="false">
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="ZombieINC_resourceNail_TranquilizerV1" operation="set" value="1"/>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+		</effect_group>
+	</item>
+	<item name="ZombieINC_resourceNail_AntibioticV1_Recipe">
+		<property name="Extends" value="schematicNoQualityRecipeMaster"/>
+		<property name="CreativeMode" value="Player"/>
+		<property name="CustomIcon" value="schematicMaster"/>
+		<property name="Unlocks" value="ZombieINC_resourceNail_AntibioticV1"/>
+		<effect_group tiered="false">
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="ZombieINC_resourceNail_AntibioticV1" operation="set" value="1"/>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+		</effect_group>
+	</item>
+	<item name="ZombieINC_resourceNail_StrengthV1_Recipe">
+		<property name="Extends" value="schematicNoQualityRecipeMaster"/>
+		<property name="CreativeMode" value="Player"/>
+		<property name="CustomIcon" value="schematicMaster"/>
+		<property name="Unlocks" value="ZombieINC_resourceNail_StrengthV1"/>
+		<effect_group tiered="false">
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="ZombieINC_resourceNail_StrengthV1" operation="set" value="1"/>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+		</effect_group>
+	</item>
+	
+	<item name="ZombieINC_gunBowT1IronCrossbow_Vanilla_Recipe">
+		<property name="Extends" value="schematicNoQualityRecipeMaster"/>
+		<property name="CreativeMode" value="Player"/>
+		<property name="CustomIcon" value="schematicMaster"/>
+		<property name="Unlocks" value="gunBowT1IronCrossbow"/>
+		<effect_group tiered="false">
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="gunBowT1IronCrossbow" operation="set" value="1"/>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+		</effect_group>
+	</item>
+	
+	<item name="ZombieINC_meleeWpnBladeT3Machete_Vanilla_Recipe">
+		<property name="Extends" value="schematicNoQualityRecipeMaster"/>
+		<property name="CreativeMode" value="Player"/>
+		<property name="CustomIcon" value="schematicMaster"/>
+		<property name="Unlocks" value="meleeWpnBladeT3Machete"/>
+		<effect_group tiered="false">
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="meleeWpnBladeT3Machete" operation="set" value="1"/>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+		</effect_group>
+	</item>
+	<item name="ZombieINC_meleeWpnBatonT2StunBaton_Vanilla_Recipe">
+		<property name="Extends" value="schematicNoQualityRecipeMaster"/>
+		<property name="CreativeMode" value="Player"/>
+		<property name="CustomIcon" value="schematicMaster"/>
+		<property name="Unlocks" value="meleeWpnBatonT2StunBaton"/>
+		<effect_group tiered="false">
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="meleeWpnBatonT2StunBaton" operation="set" value="1"/>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+		</effect_group>
+	</item>
+	
+	<item name="ZombieINC_apparelRunningShoesHP">
+	<property name="Extends" value="armorLightMaster"/>
+	<!--<property name="Extends" value="armorAthleticBoots"/>-->
+	
+	<property name="CustomIcon" value="armorAthleticBoots"/>
+	<property name="CustomIconTint" value="86,255,109"/>
+	<property name="DescriptionKey" value="armorAthleticBootsDesc"/>
+	<property name="DisplayType" value="ZombieINC_armorAthleticBoots"/>
+	<property name="ArmorGroup" value="groupAthletic"/>
+	<property name="Tags" value="lowerbody,feet,armor,armorFeet,canHaveCosmetic,lightArmor,lightArmorDeg"/>
+	<property name="EquipSlot" value="Feet"/>
+	<property name="SoundPickup" value="footwear_regular_grab"/>
+	<property name="SoundPlace" value="footwear_regular_place"/>
+	<!--<property name="Stacknumber" value="1"/>
+	<property name="Weight" value="25"/>
+	<property name="Encumbrance" value=".02"/>-->
+	<!--<property name="ShowQuality" value="true"/>-->
+	<!--<property name="Group" value="Clothing,TCClothing"/>
+	<property name="EconomicValue" value="200"/>-->
+	<effect_group name="AthleticBoots">
+		<passive_effect name="ModSlots" operation="base_set" value="1,1,2,2,3,4" tier="1,2,3,4,5,6"/>
+		<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+		<passive_effect name="PhysicalDamageResist" operation="base_add" value="8,12.3" tier="1,6"/>
+		<passive_effect name="PhysicalDamageResist" operation="base_add" value="-.2,.2"/>
+		<passive_effect name="ElementalDamageResist" operation="base_add" value="8,12.3" tier="1,6" tags="heat,electrical"/>
+		<passive_effect name="ElementalDamageResist" operation="base_add" value="-.2,.2"/>
+		<passive_effect name="BuffResistance" operation="base_add" value="0.041" tags="buffFatiguedTrigger,buffArmSprainedCHTrigger,buffLegSprainedCHTrigger,buffAbrasionCatch,buffLaceration,buffInfectionCatch,buffInjuryStunned01CHTrigger,buffInjuryBleedingTwo,buffInjuryBleedingBarbedWire"/>
+		<passive_effect name="DegradationMax" operation="base_set" value="250,500" tier="1,6"/>
+		<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="lightArmorDeg"/>
+		<passive_effect name="HypothermalResist" operation="base_add" value="20"/>
+		<passive_effect name="HyperthermalResist" operation="base_add" value="20"/>
+	</effect_group>
+
+	<effect_group>
+		<passive_effect name="RunSpeed" operation="perc_add" value=".02,.04,.06,.08,.1,.2" tier="1,2,3,4,5,6"/>
+		<display_value name="dRunSpeed" value=".02,.04,.06,.08,.1,.2" tier="1,2,3,4,5,6"/>
+	</effect_group>
+
+	<effect_group>
+		<passive_effect name="StaminaChangeOT" operation="perc_add" value=".1,.1,.1,.1,.1,.1" tier="1,2,3,4,5,6" tags="running"/>
+		<display_value name="dStaminaRegen" value="10,10,10,10,10,10" tier="1,2,3,4,5,6"/>
+	</effect_group>
+	
+	<property class="SDCS">
+		<property name="Prefab" value="Entities/Player/*/Gear/Prefabs/gear*FitnessPrefab"/>
+		<property name="TransformName" value="feet"/>
+		<property name="Excludes" value="feet"/>
+	</property>
+	</item>
+	
+
+	
+
+	
+
+	
+
+
+<item name="ZombieINC_resourceNail_HealV1">
+	<property name="Meshfile" value="@:Other/Items/Tools/nailProjectilePrefab.prefab"/>
+	<property name="HoldType" value="45"/>
+	<property name="HandMeshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+	<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+	<property name="DescriptionKey" value="ZombieINC_resourceNail_HealV1_Desc"/>
+	
+	<property name="CustomIcon" value="drugSteroids"/>
+	<property name="CustomIconTint" value="140,0,0"/>
+	<property name="ItemTypeIcon" value="star"/>
+	<property name="Material" value="MresourceScrapIron"/>
+	<property name="Stacknumber" value="1000"/> <!-- STK resource -->
+	<property name="EconomicValue" value="10"/>
+	<property name="EconomicBundleSize" value="10"/>
+	<property name="Tags" value="ammo,ranged"/>
+	<property name="Group" value="Resources"/>
+	<property class="Action1">
+		<property name="Class" value="Projectile"/>
+		<property name="Explosion.ParticleIndex" value="0"/>
+		<!-- no expl. -->
+		<property name="FlyTime" value="1"/>
+		<property name="LifeTime" value=".75"/>
+	</property>
+	<effect_group name="resourceNail" tiered="false"> <!-- nail -->
+		<passive_effect name="EntityDamage" operation="base_set" value="0"/>
+		<passive_effect name="BlockDamage" operation="base_set" value="0"/>
+		<passive_effect name="DamageModifier" operation="perc_set" value="0" tags="earth,metal,cloth"/>
+		<passive_effect name="DamageModifier" operation="perc_set" value="0" tags="wood"/>
+		<passive_effect name="ProjectileVelocity" operation="base_set" value="20"/>
+		<passive_effect name="ProjectileStickChance" operation="perc_set" value="0"/>
+		
+		<triggered_effect trigger="onProjectileImpact" action="AddBuff" target="other" buff="ZombieINC_HealGun_HealV1_Buff" target_tags="player"/>
+	</effect_group>
+</item>
+
+<item name="ZombieINC_resourceNail_AdrenalineV1">
+	<property name="Meshfile" value="@:Other/Items/Tools/nailProjectilePrefab.prefab"/>
+	<property name="HoldType" value="45"/>
+	<property name="HandMeshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+	<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+	<property name="DescriptionKey" value="ZombieINC_resourceNail_AdrenalineV1_Desc"/>
+	
+	<property name="CustomIcon" value="drugSteroids"/>
+	<property name="CustomIconTint" value="235,130,20"/>
+	<property name="ItemTypeIcon" value="star"/>
+	<property name="Material" value="MresourceScrapIron"/>
+	<property name="Stacknumber" value="1000"/> <!-- STK resource -->
+	<property name="EconomicValue" value="10"/>
+	<property name="EconomicBundleSize" value="10"/>
+	<property name="Tags" value="ammo,ranged"/>
+	<property name="Group" value="Resources"/>
+	<property class="Action1">
+		<property name="Class" value="Projectile"/>
+		<property name="Explosion.ParticleIndex" value="0"/>
+		<!-- no expl. -->
+		<property name="FlyTime" value="1"/>
+		<property name="LifeTime" value=".75"/>
+	</property>
+	<effect_group name="resourceNail" tiered="false"> <!-- nail -->
+		<passive_effect name="EntityDamage" operation="base_set" value="0"/>
+		<passive_effect name="BlockDamage" operation="base_set" value=".1"/>
+		<passive_effect name="DamageModifier" operation="perc_set" value="0" tags="earth,metal,cloth"/>
+		<passive_effect name="DamageModifier" operation="perc_set" value=".1" tags="wood"/>
+		<passive_effect name="ProjectileVelocity" operation="base_set" value="20"/>
+		<passive_effect name="ProjectileStickChance" operation="perc_set" value="0"/>
+		
+		<triggered_effect trigger="onProjectileImpact" action="AddBuff" target="other" buff="ZombieINC_HealGun_AdrenalineV1_Buff" target_tags="player"/>
+	</effect_group>
+</item>
+
+<item name="ZombieINC_resourceNail_AntibioticV1">
+	<property name="Meshfile" value="@:Other/Items/Tools/nailProjectilePrefab.prefab"/>
+	<property name="HoldType" value="45"/>
+	<property name="HandMeshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+	<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+	<property name="DescriptionKey" value="ZombieINC_resourceNail_AntibioticV1_Desc"/>
+	
+	<property name="CustomIcon" value="drugSteroids"/>
+	<property name="CustomIconTint" value="155,155,155"/>
+	<property name="ItemTypeIcon" value="star"/>
+	<property name="Material" value="MresourceScrapIron"/>
+	<property name="Stacknumber" value="1000"/> <!-- STK resource -->
+	<property name="EconomicValue" value="10"/>
+	<property name="EconomicBundleSize" value="10"/>
+	<property name="Tags" value="ammo,ranged"/>
+	<property name="Group" value="Resources"/>
+	<property class="Action1">
+		<property name="Class" value="Projectile"/>
+		<property name="Explosion.ParticleIndex" value="0"/>
+		<!-- no expl. -->
+		<property name="FlyTime" value="1"/>
+		<property name="LifeTime" value=".75"/>
+	</property>
+	<effect_group name="resourceNail" tiered="false"> <!-- nail -->
+		<passive_effect name="EntityDamage" operation="base_set" value="0"/>
+		<passive_effect name="BlockDamage" operation="base_set" value=".1"/>
+		<passive_effect name="DamageModifier" operation="perc_set" value="0" tags="earth,metal,cloth"/>
+		<passive_effect name="DamageModifier" operation="perc_set" value=".1" tags="wood"/>
+		<passive_effect name="ProjectileVelocity" operation="base_set" value="20"/>
+		<passive_effect name="ProjectileStickChance" operation="perc_set" value="0"/>
+		
+		<!--<triggered_effect trigger="onSelfPrimaryActionRayHit" action="AddBuff" target="other" buff="ZombieINC_HealGun_AntibioticV1_Buff"/>--> <!--Not working on Projectile-->
+		<triggered_effect trigger="onProjectileImpact" action="AddBuff" target="other" buff="ZombieINC_HealGun_AntibioticV1_Buff"/>
+	</effect_group>
+</item>
+
+<item name="ZombieINC_resourceNail_TranquilizerV1">
+	<property name="Meshfile" value="@:Other/Items/Tools/nailProjectilePrefab.prefab"/>
+	<property name="HoldType" value="45"/>
+	<property name="HandMeshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+	<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+	<property name="DescriptionKey" value="ZombieINC_resourceNail_TranquilizerV1_Desc"/>
+	
+	<property name="CustomIcon" value="drugSteroids"/>
+	<property name="CustomIconTint" value="60,200,190"/>
+	<property name="ItemTypeIcon" value="star"/>
+	<property name="Material" value="MresourceScrapIron"/>
+	<property name="Stacknumber" value="1000"/> <!-- STK resource -->
+	<property name="EconomicValue" value="10"/>
+	<property name="EconomicBundleSize" value="10"/>
+	<property name="Tags" value="ammo,ranged"/>
+	<property name="Group" value="Resources"/>
+	<property class="Action1">
+		<property name="Class" value="Projectile"/>
+		<property name="Explosion.ParticleIndex" value="0"/>
+		<!-- no expl. -->
+		<property name="FlyTime" value="1"/>
+		<property name="LifeTime" value=".75"/>
+	</property>
+	<effect_group name="resourceNail" tiered="false"> <!-- nail -->
+		<passive_effect name="EntityDamage" operation="base_set" value="0"/>
+		<passive_effect name="BlockDamage" operation="base_set" value=".1"/>
+		<passive_effect name="DamageModifier" operation="perc_set" value="0" tags="earth,metal,cloth"/>
+		<passive_effect name="DamageModifier" operation="perc_set" value=".1" tags="wood"/>
+		<passive_effect name="ProjectileVelocity" operation="base_set" value="20"/>
+		<passive_effect name="ProjectileStickChance" operation="perc_set" value="0"/>
+		
+		<triggered_effect trigger="onProjectileImpact" action="AddBuff" target="other" buff="ZombieINC_HealGun_TranquilizerV1_Player_Buff" target_tags="player"/>
+		<triggered_effect trigger="onProjectileImpact" action="AddBuff" target="other" buff="ZombieINC_HealGun_TranquilizerV1_Zombie_Buff" target_tags="zombie"/>
+		<triggered_effect trigger="onProjectileImpact" action="AddBuff" target="other" buff="ZombieINC_HealGun_TranquilizerV1_Animal_Buff" target_tags="animal"/>
+	</effect_group>
+</item>
+
+<item name="ZombieINC_resourceNail_StrengthV1">
+	<property name="Meshfile" value="@:Other/Items/Tools/nailProjectilePrefab.prefab"/>
+	<property name="HoldType" value="45"/>
+	<property name="HandMeshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+	<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+	<property name="DescriptionKey" value="ZombieINC_resourceNail_StrengthV1_Desc"/>
+	
+	<property name="CustomIcon" value="drugSteroids"/>
+	<property name="CustomIconTint" value="255,0,0"/>
+	<property name="ItemTypeIcon" value="star"/>
+	<property name="Material" value="MresourceScrapIron"/>
+	<property name="Stacknumber" value="1000"/> <!-- STK resource -->
+	<property name="EconomicValue" value="10"/>
+	<property name="EconomicBundleSize" value="10"/>
+	<property name="Tags" value="ammo,ranged"/>
+	<property name="Group" value="Resources"/>
+	<property class="Action1">
+		<property name="Class" value="Projectile"/>
+		<property name="Explosion.ParticleIndex" value="0"/>
+		<!-- no expl. -->
+		<property name="FlyTime" value="1"/>
+		<property name="LifeTime" value=".75"/>
+	</property>
+	<effect_group name="resourceNail" tiered="false"> <!-- nail -->
+		<passive_effect name="EntityDamage" operation="base_set" value="0"/>
+		<passive_effect name="BlockDamage" operation="base_set" value=".1"/>
+		<passive_effect name="DamageModifier" operation="perc_set" value="0" tags="earth,metal,cloth"/>
+		<passive_effect name="DamageModifier" operation="perc_set" value=".1" tags="wood"/>
+		<passive_effect name="ProjectileVelocity" operation="base_set" value="20"/>
+		<passive_effect name="ProjectileStickChance" operation="perc_set" value="0"/>
+		
+		<triggered_effect trigger="onProjectileImpact" action="AddBuff" target="other" buff="ZombieINC_HealGun_StrengthV1_Buff" target_tags="player"/>
+	</effect_group>
+</item>
+
+	
+	<item name="ZombieINC_ammoAcidBall">
+	<property name="Tags" value="ammo,perkDemolitionsExpert"/>
+	<property name="DisplayType" value="ammoLauncher"/>
+	<!--<property name="Meshfile" value="@:Other/Items/Weapons/Ranged/Vomit/vomitMouthPrefab.prefab"/>-->
+	<property name="Meshfile" value="@:Other/Items/Weapons/Ranged/Grenade/GrenadePrefab.prefab"/>
+	<!--<property name="Meshfile" value="@:Other/Items/Weapons/Ranged/Bows/Arrows/bolt_flamingPrefab.prefab"/>-->
+	<!--<property name="Meshfile" value="@:Other/Items/Tools/nailProjectilePrefab.prefab"/>-->
+	<property name="HoldType" value="45"/>
+	<property name="HandMeshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+	<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+	<property name="Material" value="Morganic"/>
+	<property name="Stacknumber" value="20"/>
+	<property name="EconomicValue" value="250"/>
+	<property name="Group" value="Ammo/Weapons,Ammo,Ranged Weapons"/>
+	<property name="CreativeMode" value="Player"/>
+	<property name="CustomIcon" value="missingIcon"/>
+	<property class="Action1">
+		<property name="Class" value="Projectile"/>
+		<property name="Explosion.ParticleIndex" value="7"/>
+		<property name="Explosion.RadiusBlocks" value="3"/> <!-- damage radius for blocks -->
+		<property name="Explosion.RadiusEntities" value="4"/> <!-- damage radius for entities -->
+		<property name="Explosion.DamageBonus.water" value="0"/>
+		<property name="Explosion.DamageBonus.earth" value="0.3"/>
+		<property name="Explosion.Buff" value="buffRadiationPool"/>
+		<property name="FlyTime" value="0"/>
+		<property name="LifeTime" value="20"/>
+		<property name="Gravity" value="-6"/>
+		<!--<property name="CollisionRadius" value=".5"/>-->
+	</property>
+	<effect_group name="ammoAcid" tiered="false">
+		<passive_effect name="BlockDamage" operation="base_set" value="500" tags="perkDemolitionsExpert"/>
+		<passive_effect name="EntityDamage" operation="base_set" value="120" tags="perkDemolitionsExpert"/>
+		<passive_effect name="ProjectileVelocity" operation="base_set" value="50" tags="perkDemolitionsExpert"/>
+		<display_value name="dExRadius" value="5"/>
+	</effect_group>
+</item>
+	<!--Not Working-->
+	
+
+	
+	<item name="ZombieINC_PEMGrenade">
+	<property name="Tags" value="ammo,weapon,attPerception,perkDemolitionsExpert,explosivesSkill"/>
+	<property name="ItemTypeIcon" value="star"/>
+	<property name="CustomIconTint" value="13,37,200"/>
+    <property name="TintColor" value="191,37,13"/>
+	<property name="CustomIcon" value="thrownGrenadeContact"/>
+	<property name="DisplayType" value="ammoGrenadeContact"/>
+	<property name="DescriptionKey" value="ZombieINC_PEMGrenade_Desc"/>
+	<property name="Class" value="ItemClassTimeBomb"/>
+	<property name="HoldType" value="57"/>
+	<property name="Meshfile" value="@:Other/Items/Weapons/Ranged/Grenade/GrenadePrefab.prefab"/>
+	<property name="DropScale" value="2.5"/>
+	<property name="Material" value="Mmetal"/>
+	<property name="Stacknumber" value="25"/>
+	<property name="EconomicValue" value="41"/>
+	<property name="Weight" value="0"/>
+	<property name="Explosion.BlockDamage" value="0"/>
+	<property name="Explosion.EntityDamage" value="5"/>
+	<!-- <property name="Explosion.ParticleIndex" value="30"/> -->
+	<property name="Explosion.RadiusBlocks" value="4"/>
+	<property name="Explosion.RadiusEntities" value="12"/>
+	<property name="Explosion.DamageBonus.earth" value="0"/> <!-- should work? -->
+	<property name="Explosion.DamageBonus.water" value="0"/>
+	<property name="Explosion.BlastPower" value="75"/> <!-- (int,100) how far ragdolls and such are flung -->
+	<property name="FuseTime" value="6"/>
+	<property name="FusePrimeOnActivate" value="true"/>
+	<property name="ExplodeOnHit" value="true"/>
+	<property name="StickPercent" value=".5"/>
+	<property name="UnlockedBy" value="ZombieINC_perkGodSlayerPath4"/><!-- perkDemolitionsExpert,thrownGrenadeContactSchematic, -->
+	<property name="Group" value="Ammo/Weapons,Ammo"/>
+	<property name="SoundUnholster" value="grenade_unholster"/>
+	<property class="Action0">
+		<property name="Class" value="ThrowAway"/>
+		<!-- <property name="Hitmask_override" value="Arrow"/> unfortunately this cannot work without a serious rewrite of the hitmask system -->
+		<property name="Delay" value="1.2"/> <!-- obsolete if rounds per minute exists -->
+		<property name="Throw_strength_default" value="8"/>
+		<property name="Throw_strength_max" value="50"/>
+		<property name="Max_strain_time" value="1.25"/>
+		<property name="Sound_start" value="grenade_throw"/>
+		<property name="Gravity" value="-5"/>
+        <property name="triggerEffectTriggerPullDualsense" value="ShotgunTrigger"/>
+        <property name="triggerEffectTriggerPullXbox" value="ShotgunTrigger"/>
+        <property name="triggerEffectShootDualsense" value="ShotgunShoot"/>
+        <property name="triggerEffectShootXbox" value="PistolShoot"/>
+	</property>
+	<property class="Action1">
+		<property name="Class" value="Activate"/>
+		<property name="Delay" value="1"/>
+		<property name="Sound_start" value="grenade_pullpin"/>
+		<requirement name="CVarCompare" cvar="_underwater" operation="LT" value="1"/>
+	</property>
+	<property name="ThrowableDecoy" value="true"/>
+	<effect_group tiered="false">
+		<passive_effect name="BlockDamage" operation="base_set" value="0" tags="perkDemolitionsExpert"/>
+		<passive_effect name="EntityDamage" operation="base_set" value="5" tags="perkDemolitionsExpert"/>
+		<passive_effect name="EntityDamage" operation="base_set" value="1000" tags="perkDemolitionsExpert">
+			<requirement name="EntityTagCompare" target="other" tags="vehicle"/></passive_effect>
+		<display_value name="dExRadius" value="12"/>
+
+		<triggered_effect trigger="onProjectileImpact" action="AddBuff" target="positionAOE" range="12" target_tags="zombie,animal" buff="buffShocked"/>
+		<triggered_effect trigger="onProjectileImpact" action="AddBuff" target="positionAOE" range="12" target_tags="boss" buff="ZombieINC_PEMGrenade_BossBuff"/>
+		
+		<!--<triggered_effect trigger="onProjectileImpact" action="CallGameEvent" target="positionAOE" range="12" target_tags="zombie,animal"  event="ZombieINC_TestEvent_SpawnentitiesProjecile"/>--><!--Just tests-->
+
+		<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" target_tags="zombie,animal" buff="buffShocked"/>
+			
+		<triggered_effect trigger="onSelfDamagedOther" action="AddBuff" target="other" target_tags="zombie,animal" buff="buffShocked"/>
+		
+		<triggered_effect trigger="onSelfExplosionAttackedOther" action="AddBuff" target="other" target_tags="zombie,animal" buff="buffShocked"/>
+		
+		<triggered_effect trigger="onSelfExplosionDamagedOther" action="AddBuff" target="other" target_tags="zombie,animal" buff="buffShocked"/>
+			
+	</effect_group>
+
+</item>
+
+
+	
+	<!--New Weapons and Ammo-->
+	
+	<!--###New Turrets-->
+	
+	
+	<item name="ZombieINC_Turret_gunBotT2JunkTurret_Taser">
+		<property name="Tags" value="turretRanged,weapon,ranged,reloadPenalty,drumMagazine,attIntellect,perkTurrets,canHaveCosmetic,roboticsSkill,meleeIntellect"/>
+		<property name="DisplayType" value="ZombieINC_rangedTurret"/>
+		<property name="CustomIcon" value="gunBotT2JunkTurret"/>
+		<property name="DescriptionKey" value="ZombieINC_Turret_gunBotT2JunkTurret_Taser_Desc"/>
+		<property name="HoldType" value="67"/>
+		<property name="Meshfile" value="@:Other/Items/Weapons/Ranged/JunkTurret/junkTurret_Prefab.prefab"/>
+		<property name="HandMeshfile" value="@:Other/Items/Weapons/Ranged/JunkTurret/junkTurretHeld_Prefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="Material" value="MJunkTurretParts"/>
+		<property name="TintColor" value="227, 127, 13"/>
+		<property name="DegradationBreaksAfter" value="true"/>
+		<property name="SoundJammed" value="weapon_jam"/>
+		<property name="Weight" value="4"/>
+		<property name="ScrapTimeOverride" value="10.0"/>
+		<property name="RepairTools" value="resourceRepairKit"/>
+		<property name="Group" value="Ammo/Weapons,Robotics"/>
+		<property name="Stacknumber" value="1"/>
+		<property name="EconomicValue" value="200"/>
+	
+		<property name="SellableToTrader" value="true"/>
+		<property name="RequiredPower" value="15"/>
+		<property name="UnlockedBy" value="ZombieINC_Turret_gunBotT2JunkTurret_Taser_Recipe"/>
+		<property name="ShowQuality" value="true"/>
+		<property name="IgnoreKeystoneSound" value="true"/>
+		<property name="SoundUnholster" value="weapon_unholster"/>
+		<property name="SoundHolster" value="weapon_holster"/>
+		<property name="SoundPickup" value="robotic_turret_grab"/>
+		<property name="SoundPlace" value="robotic_turret_place"/>
+
+		<property class="Action0">
+			<property name="Class" value="Ranged"/>
+			<property name="Delay" value="1.6"/> <!-- obsolete if rounds per minute exists -->
+			<!-- <property name="Range" value="40"/> -->
+			<property name="Magazine_items" value="ZombieINC_ammoJunkTurret_Taser"/>
+			<!--<property name="Infinite_ammo" value="false"/>
+			<property name="Single_magazine_usage" value="true"/>-->
+			<property name="Reload_time" value="2.1"/>
+			<property name="Sound_start" value="junkturret_fire"/>
+			<property name="Sound_loop" value="junkturret_fire"/>
+			<property name="Sound_repeat" value=""/>
+			<property name="Sound_end" value=""/>
+			<property name="Sound_empty" value="dryfire"/>
+			<property name="Sound_reload" value="m60_reload"/>
+			<property name="AutoReload" value="false"/>
+			<property name="Particles_muzzle_fire" value="gunfire_junkturret_fpv"/>
+			
+			<property name="ScopeOffset" value="0,0,0"/>
+			<property name="SideOffset" value="0,0,0"/>
+			<property name="BarrelOffset" value="0,0,0"/>
+			<requirement name="HasBuff" buff="ZombieINC_Defense_ImATurret_T6"/>
+			<property name="triggerEffectTriggerPullDualsense" value="PistolTrigger"/>
+			<property name="triggerEffectTriggerPullXbox" value="PistolTrigger"/>
+			<property name="triggerEffectShootDualsense" value="PistolShoot"/>
+			<property name="triggerEffectShootXbox" value="PistolShoot"/>
+		</property>
+		<property class="Action1">
+			<property name="Class" value="SpawnTurret"/>
+			<property name="Turret" value="ZombieINC_Turret_junkTurretGun_Taser"/>
+			<property name="PreviewSize" value="0.75,0.75,0.75"/>
+			
+		</property>
+		<effect_group name="gunBotT6JunkTurret" >
+			<passive_effect name="EntityPenetrationCount" operation="base_set" value="4"/>
+		
+			<passive_effect name="DamageFalloffRange" operation="perc_add" value="0" tags="perkTurrets"/> 
+			
+			<passive_effect name="EntityDamage" operation="perc_add" value="-.2,.2" tags="perkTurrets"/>
+			
+			<passive_effect name="EntityDamage" operation="perc_add" value=".15,.75" tier="2,6" tags="perkTurrets"/>
+			
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-.08,.08" tags="perkTurrets"/> <!-- random WeaponHandling -->
+			<passive_effect name="RoundsPerMinute" operation="perc_add" value="-.1,.1" tags="turretRanged"/> <!-- random APM -->
+			<passive_effect name="RoundsPerMinute" operation="base_set" value="60" tags="turretRanged"/> <!-- random APM -->
+			
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-.08,.08" tags="perkTurrets"/> <!-- random WeaponHandling -->
+			<passive_effect name="BurstRoundCount" operation="base_set" value="1" tags="perkTurrets"/>
+			<passive_effect name="MagazineSize" operation="base_set" value="100" tags="turretRanged"/>
+			<passive_effect name="MagazineSize" operation="base_add" value="20,100" tier="2,6" tags="turretRanged"/>
+			
+			<passive_effect name="ReloadSpeedMultiplier" operation="base_set" value="1.5" tags="perkTurrets"/>
+
+			<passive_effect name="SpreadMultiplierAiming" operation="perc_add" value="-.13" tags="perkTurrets"/>
+			<passive_effect name="SpreadMultiplierCrouching" operation="perc_add" value="-.05" tags="perkTurrets"/>
+			<passive_effect name="SpreadMultiplierWalking" operation="perc_add" value=".15" tags="perkTurrets"/>
+			<passive_effect name="SpreadMultiplierRunning" operation="perc_add" value=".3" tags="perkTurrets"/>
+
+			<passive_effect name="KickDegreesVerticalMin" operation="base_set" value="3" tags="perkTurrets"/>
+			<passive_effect name="KickDegreesVerticalMax" operation="base_set" value="3" tags="perkTurrets"/>
+			<passive_effect name="KickDegreesHorizontalMin" operation="base_set" value="-2" tags="perkTurrets"/>
+			<passive_effect name="KickDegreesHorizontalMax" operation="base_set" value="2" tags="perkTurrets"/>
+
+			<passive_effect name="IncrementalSpreadMultiplier" operation="base_set" value="0" tags="perkTurrets"/>
+			<passive_effect name="WeaponHandling" operation="base_set" value="1" tags="perkTurrets"/>
+
+			<passive_effect name="DegradationMax" operation="base_set" value="500,3000" tier="1,6" tags="perkTurrets"/>
+			<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="perkTurrets"/>
+			<passive_effect name="ModSlots" operation="base_set" value="1,1,2,2,3,4" tier="1,2,3,4,5,6"/>
+			<display_value name="dYawRange" value="170"/>
+			<display_value name="dPitchRange" value="70"/>
+			
+			<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="otherAOE" range="3" target_tags="zombie" buff="ZombieINC_Defense_Turret_T6_TaserExplosion"/>
+			
+		</effect_group>
+		<effect_group name="gunBotT2JunkTurret_Hand" >
+			<triggered_effect trigger="onSelfEquipStart" action="AttachPrefabToEntity" prefab="@:Entities/bandits/barbedwire/barbedwire_spindlePrefab.prefab" local_offset="-0.1,-0.33,0.056" local_rotation="0,90,90" local_scale="0.08,0.08,0.08" parent_transform="junkTurretBarrel_LOD0" />
+			<triggered_effect trigger="onSelfEquipStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Melee/TaserBaton/TaserBatonPrefab.prefab" local_offset="-0.1,0,0.1" local_rotation="0,180,180" local_scale="0.8,0.8,0.8" parent_transform="junkTurretBarrel_LOD0" />
+		  
+			<triggered_effect trigger="onSelfEquipStart" action="AttachPrefabToEntity" prefab="@:Entities/bandits/barbedwire/barbedwire_spindlePrefab.prefab" local_offset="0.1,-0.333,0.056" local_rotation="0,90,90" local_scale="0.08,0.08,0.08" parent_transform="junkTurretBarrel_LOD1" />
+			<triggered_effect trigger="onSelfEquipStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Melee/TaserBaton/TaserBatonPrefab.prefab" local_offset="0.1,0,0.1" local_rotation="0,180,180" local_scale="0.8,0.8,0.8" parent_transform="junkTurretBarrel_LOD1" />
+		  
+			<triggered_effect trigger="onSelfEquipStart" action="AttachPrefabToEntity" prefab="@:Entities/bandits/barbedwire/barbedwire_spindlePrefab.prefab" local_offset="0,-0.286,0.038" local_rotation="0,90,90" local_scale="0.12,0.12,0.12" parent_transform="junkTurretBarrel_LOD2" />
+					
+			<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="TaserBatonPrefab" parent_transform="junkTurretBarrel_LOD0" />
+			<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="TaserBatonPrefab" parent_transform="junkTurretBarrel_LOD1" />
+			<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="barbedwire_spindlePrefab" parent_transform="junkTurretBarrel_LOD0" />
+			<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="barbedwire_spindlePrefab" parent_transform="junkTurretBarrel_LOD1" />
+			<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="barbedwire_spindlePrefab" parent_transform="junkTurretBarrel_LOD2" />
+		
+		</effect_group>
+	</item>
+	<item name="ZombieINC_Turret_gunBotT2JunkTurret_Flame">
+		<property name="Tags" value="turretRanged,weapon,ranged,reloadPenalty,drumMagazine,attIntellect,perkTurrets,canHaveCosmetic,roboticsSkill,meleeIntellect"/>
+		<property name="DisplayType" value="ZombieINC_rangedTurret"/>
+		<property name="CustomIcon" value="gunBotT2JunkTurret"/>
+		<property name="DescriptionKey" value="ZombieINC_Turret_gunBotT2JunkTurret_Flame_Desc"/>
+		<property name="HoldType" value="67"/>
+		<property name="Meshfile" value="@:Other/Items/Weapons/Ranged/JunkTurret/junkTurret_Prefab.prefab"/>
+		<property name="HandMeshfile" value="@:Other/Items/Weapons/Ranged/JunkTurret/junkTurretHeld_Prefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="Material" value="MJunkTurretParts"/>
+		<property name="TintColor" value="227, 127, 13"/>
+		<property name="DegradationBreaksAfter" value="true"/>
+		<property name="SoundJammed" value="weapon_jam"/>
+		<property name="Weight" value="4"/>
+		<property name="ScrapTimeOverride" value="10.0"/>
+		<property name="RepairTools" value="resourceRepairKit"/>
+		<property name="Group" value="Ammo/Weapons,Robotics"/>
+		<property name="Stacknumber" value="1"/>
+		<property name="EconomicValue" value="200"/>
+	
+		<property name="SellableToTrader" value="true"/>
+		<property name="RequiredPower" value="15"/>
+		<property name="UnlockedBy" value="ZombieINC_Turret_gunBotT2JunkTurret_Flame_Recipe"/>
+		<property name="ShowQuality" value="true"/>
+		<property name="IgnoreKeystoneSound" value="true"/>
+		<property name="SoundUnholster" value="weapon_unholster"/>
+		<property name="SoundHolster" value="weapon_holster"/>
+		<property name="SoundPickup" value="robotic_turret_grab"/>
+		<property name="SoundPlace" value="robotic_turret_place"/>
+
+		<property class="Action0">
+			<property name="Class" value="Ranged"/>
+			<property name="Delay" value="1.6"/> <!-- obsolete if rounds per minute exists -->
+			<!-- <property name="Range" value="40"/> -->
+			<property name="Magazine_items" value="ZombieINC_ammoJunkTurret_Flame"/>
+			<!--<property name="Infinite_ammo" value="false"/>
+			<property name="Single_magazine_usage" value="true"/>-->
+			<property name="Reload_time" value="2.1"/>
+			<property name="Sound_start" value=""/>
+			<property name="Sound_loop" value=""/>
+			<property name="Sound_repeat" value=""/>
+			<property name="Sound_end" value=""/>
+			<property name="Sound_empty" value="dryfire"/>
+			<property name="Sound_reload" value="m60_reload"/>
+			<property name="AutoReload" value="false"/>
+			<property name="Particles_muzzle_fire" value="gunfire_junkturret_fpv"/>
+			
+			<property name="ScopeOffset" value="0,0,0"/>
+			<property name="SideOffset" value="0,0,0"/>
+			<property name="BarrelOffset" value="0,0,0"/>
+			<requirement name="HasBuff" buff="ZombieINC_Defense_ImATurret_T6"/>
+			<property name="triggerEffectTriggerPullDualsense" value="PistolTrigger"/>
+			<property name="triggerEffectTriggerPullXbox" value="PistolTrigger"/>
+			<property name="triggerEffectShootDualsense" value="PistolShoot"/>
+			<property name="triggerEffectShootXbox" value="PistolShoot"/>
+		</property>
+		<property class="Action1">
+			<property name="Class" value="SpawnTurret"/>
+			<property name="Turret" value="ZombieINC_Turret_junkTurretGun_Flame"/>
+			<property name="PreviewSize" value="0.75,0.75,0.75"/>
+		
+		</property>
+		<effect_group name="gunBotT7JunkTurret" >
+			<passive_effect name="EntityPenetrationCount" operation="base_set" value="4"/>
+			
+			<passive_effect name="DamageFalloffRange" operation="perc_add" value="0" tags="perkTurrets"/> 
+			
+			<passive_effect name="EntityDamage" operation="perc_add" value="-.2,.2" tags="perkTurrets"/>
+			
+			<passive_effect name="EntityDamage" operation="perc_add" value=".15,.75" tier="2,6" tags="perkTurrets"/>
+			
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-.08,.08" tags="perkTurrets"/> <!-- random WeaponHandling -->
+			<passive_effect name="RoundsPerMinute" operation="perc_add" value="-.1,.1" tags="turretRanged"/> <!-- random APM -->
+			<passive_effect name="RoundsPerMinute" operation="base_set" value="120" tags="turretRanged"/> <!-- random APM -->
+			
+			<passive_effect name="WeaponHandling" operation="perc_add" value="-.08,.08" tags="perkTurrets"/> <!-- random WeaponHandling -->
+			<passive_effect name="BurstRoundCount" operation="base_set" value="1" tags="perkTurrets"/>
+			
+			<passive_effect name="MagazineSize" operation="base_set" value="1000" tier="1,6" tags="turretRanged"/>
+			<passive_effect name="MagazineSize" operation="base_add" value="1000,5000" tier="2,6" tags="turretRanged"/>
+			
+			<passive_effect name="ReloadSpeedMultiplier" operation="base_set" value="1.5" tags="perkTurrets"/>
+
+			<passive_effect name="SpreadMultiplierAiming" operation="perc_add" value="-.13" tags="perkTurrets"/>
+			<passive_effect name="SpreadMultiplierCrouching" operation="perc_add" value="-.05" tags="perkTurrets"/>
+			<passive_effect name="SpreadMultiplierWalking" operation="perc_add" value=".15" tags="perkTurrets"/>
+			<passive_effect name="SpreadMultiplierRunning" operation="perc_add" value=".3" tags="perkTurrets"/>
+
+			<passive_effect name="KickDegreesVerticalMin" operation="base_set" value="3" tags="perkTurrets"/>
+			<passive_effect name="KickDegreesVerticalMax" operation="base_set" value="3" tags="perkTurrets"/>
+			<passive_effect name="KickDegreesHorizontalMin" operation="base_set" value="-2" tags="perkTurrets"/>
+			<passive_effect name="KickDegreesHorizontalMax" operation="base_set" value="2" tags="perkTurrets"/>
+
+			<passive_effect name="IncrementalSpreadMultiplier" operation="base_set" value="0" tags="perkTurrets"/>
+			<passive_effect name="WeaponHandling" operation="base_set" value="1" tags="perkTurrets"/>
+
+			<passive_effect name="DegradationMax" operation="base_set" value="1000,2000" tier="1,6" tags="perkTurrets"/>
+			<passive_effect name="DegradationPerUse" operation="base_set" value="0.01" tags="perkTurrets"/>
+			<passive_effect name="ModSlots" operation="base_set" value="1,1,2,2,3,4" tier="1,2,3,4,5,6"/>
+			<display_value name="dYawRange" value="120"/>
+			<display_value name="dPitchRange" value="70"/>
+			
+			<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="otherAOE" range="3" target_tags="zombie" buff="ZombieINC_Defense_Turret_T7_Flame"/>
+			
+			
+		</effect_group>
+		<effect_group name="gunBotT2JunkTurret_Hand" >	
+			<triggered_effect trigger="onSelfEquipStop" action="RemovePrefabFromEntity" prefab="PipeMachinegunPrefab" parent_transform="Handle" />
+			<triggered_effect trigger="onSelfEquipStart" action="AttachPrefabToEntity" prefab="@:Other/Items/Weapons/Ranged/PipeMachinegun/PipeMachinegunPrefab.prefab" local_offset="0,0.308,-0.071" local_rotation="0,0,0" local_scale="1,1,1" parent_transform="Handle" />
+			
+			<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="false" transform_path="junkTurretBarrel_LOD0"/>
+			<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="false" transform_path="junkTurretBarrel_LOD1"/>
+			<triggered_effect trigger="onSelfEquipStart" action="SetTransformActive" active="false" transform_path="junkTurretBarrel_LOD2"/>
+			
+			<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="true" transform_path="junkTurretBarrel_LOD0"/>
+			<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="true" transform_path="junkTurretBarrel_LOD1"/>
+			<triggered_effect trigger="onSelfEquipStop" action="SetTransformActive" active="true" transform_path="junkTurretBarrel_LOD2"/>
+		</effect_group>
+	</item>
+	
+	
+	<item name="ZombieINC_ammoJunkTurret_Taser">
+		<property name="Tags" value="ammo"/>
+		<property name="CustomIcon" value="ammoJunkTurretRegular"/>
+		<property name="DisplayType" value="ammoJunkTurretRegular"/>
+		<property name="DescriptionKey" value="ZombieINC_ammoJunkTurret_Taser_Desc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="Material" value="Mmetal"/>
+		<property name="Stacknumber" value="100"/>
+		<property name="EconomicValue" value="1"/>
+		<property name="SellableToTrader" value="true"/>
+		<property name="Group" value="Ammo/Weapons,Ammo,Robotics"/>
+		<property name="SoundPickup" value="ammocan_grab"/>
+		<property name="SoundPlace" value="ammocan_place"/>
+		<effect_group name="ammoJunkTurretRegular" tiered="false">
+			<passive_effect name="MaxRange" operation="base_set" value="5" tags="perkTurrets"/>
+			<passive_effect name="DamageFalloffRange" operation="base_set" value="5" tags="perkTurrets"/>
+			<passive_effect name="BlockRange" operation="base_set" value="3" tags="perkTurrets"/>
+
+			<passive_effect name="EntityDamage" operation="base_set" value="15" tags="perkTurrets"/>
+			<passive_effect name="BlockDamage" operation="base_set" value="1" tags="perkTurrets"/>
+			<passive_effect name="RoundsPerMinute" operation="base_set" value="105.6" tags="turretRanged"/>
+
+			<passive_effect name="SpreadDegreesVertical" operation="base_set" value="5" tags="perkTurrets"/>
+			<passive_effect name="SpreadDegreesHorizontal" operation="base_set" value="5" tags="perkTurrets"/>
+		</effect_group>
+	</item>
+	<item name="ZombieINC_ammoJunkTurret_Flame">
+		<property name="Tags" value="ammo"/>
+		<property name="CustomIcon" value="ammoJunkTurretRegular"/>
+		<property name="DisplayType" value="ammoJunkTurretRegular"/>
+		<property name="DescriptionKey" value="ZombieINC_ammoJunkTurret_Flame_Desc"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="Material" value="Mmetal"/>
+		<property name="Stacknumber" value="10000"/>
+		<property name="EconomicValue" value="1"/>
+		<property name="SellableToTrader" value="true"/>
+		<property name="Group" value="Ammo/Weapons,Ammo,Robotics"/>
+		<property name="SoundPickup" value="ammocan_grab"/>
+		<property name="SoundPlace" value="ammocan_place"/>
+		<effect_group name="ammoJunkTurretRegular" tiered="false">
+			<passive_effect name="MaxRange" operation="base_set" value="5" tags="perkTurrets"/>
+			<passive_effect name="DamageFalloffRange" operation="base_set" value="5" tags="perkTurrets"/>
+			<passive_effect name="BlockRange" operation="base_set" value="3" tags="perkTurrets"/>
+
+			<passive_effect name="EntityDamage" operation="base_set" value="5" tags="perkTurrets"/>
+			<passive_effect name="BlockDamage" operation="base_set" value="1" tags="perkTurrets"/>
+			<passive_effect name="RoundsPerMinute" operation="base_set" value="105.6" tags="turretRanged"/>
+
+			<passive_effect name="SpreadDegreesVertical" operation="base_set" value="5" tags="perkTurrets"/>
+			<passive_effect name="SpreadDegreesHorizontal" operation="base_set" value="5" tags="perkTurrets"/>
+		</effect_group>
+	</item>
+	
+	
+	<item name="ZombieINC_ammoBundleJunkTurret_Taser">
+		<property name="Extends" value="ammoBundleMaster"/>
+		<property name="CustomIcon" value="ammoJunkTurretRegular"/>
+		<property name="EconomicValue" value="1000"/>
+		<property class="Action0">
+			<property name="Create_item" value="ZombieINC_ammoJunkTurret_Taser"/>
+			<property name="Create_item_count" value="5000"/>
+		</property>
+	</item>
+	<item name="ZombieINC_ammoBundleJunkTurret_Flame">
+		<property name="Extends" value="ammoBundleMaster"/>
+		<property name="CustomIcon" value="ammoJunkTurretRegular"/>
+		<property name="EconomicValue" value="1000"/>
+		<property class="Action0">
+			<property name="Create_item" value="ZombieINC_ammoJunkTurret_Flame"/>
+			<property name="Create_item_count" value="10000"/>
+		</property>
+	</item>
+	
+	
+	<item name="ZombieINC_Turret_gunBotT2JunkTurret_Taser_Recipe">
+		<property name="Extends" value="schematicNoQualityMaster"/>
+		<property name="DescriptionKey" value="ZombieINC_Turret_gunBotT2JunkTurret_Taser_Recipe_Desc"/>
+		<property name="CreativeMode" value="Player"/>
+		<property name="CustomIcon" value="gunBotT2JunkTurret"/>
+		<property name="Unlocks" value="ZombieINC_Turret_gunBotT2JunkTurret_Taser"/>
+		<effect_group tiered="false">
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="ZINCTurretTaserRecipe" operation="add" value="1">
+				<requirement name="CVarCompare" cvar="ZombieINC_Turret_gunBotT2JunkTurret_Taser" operation="GTE" value="1"/>
+				<requirement name="CVarCompare" cvar="ZINCTurretTaserRecipe" operation="LTE" value="4"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="ZombieINC_Turret_gunBotT2JunkTurret_Taser" operation="set" value="1"/>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="ZombieINC_ammoBundleJunkTurret_Taser" operation="set" value="1">
+				<requirement name="CVarCompare" cvar="ZINCTurretTaserRecipe" operation="GTE" value="4"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="ZombieINC_ammoJunkTurret_Taser" operation="set" value="1"/>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+		</effect_group>
+	</item>
+	<item name="ZombieINC_Turret_gunBotT2JunkTurret_Flame_Recipe">
+		<property name="Extends" value="schematicNoQualityMaster"/>
+		<property name="DescriptionKey" value="ZombieINC_Turret_gunBotT2JunkTurret_Flame_Recipe_Desc"/>
+		<property name="CreativeMode" value="Player"/>
+		<property name="CustomIcon" value="gunBotT2JunkTurret"/>
+		<property name="Unlocks" value="ZombieINC_Turret_gunBotT2JunkTurret_Flame"/>
+		<effect_group tiered="false">
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="ZINCTurretFlameRecipe" operation="add" value="1">
+				<requirement name="CVarCompare" cvar="ZombieINC_Turret_gunBotT2JunkTurret_Flame" operation="GTE" value="1"/>
+				<requirement name="CVarCompare" cvar="ZINCTurretFlameRecipe" operation="LTE" value="4"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="ZombieINC_Turret_gunBotT2JunkTurret_Flame" operation="set" value="1"/>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="ZombieINC_ammoBundleJunkTurret_Flame" operation="set" value="1">
+				<requirement name="CVarCompare" cvar="ZINCTurretM60Recipe" operation="GTE" value="4"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="ZombieINC_ammoJunkTurret_Flame" operation="set" value="1"/>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+		</effect_group>
+	</item>
+
+	</append>
+
+</Config>

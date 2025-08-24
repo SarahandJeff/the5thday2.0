@@ -1,0 +1,776 @@
+<Config>
+	<conditional>
+		<if cond="mod_loaded('mateusjobstraderalternative')">
+			<append xpath="/quests/quest_list[@id='trader_radio1_quests']">	
+				<quest id="ZINCMobileDefense3_1"/>
+				<quest id="ZINCMobileDefense4_1"/>
+				<quest id="ZINCMobileDefense5_1"/>
+				<quest id="ZINCMobileDefense6_1"/>
+				
+				<quest id="ZINCMobileDefense3_2"/>
+				<quest id="ZINCMobileDefense4_2"/>
+				<quest id="ZINCMobileDefense5_2"/>
+				<quest id="ZINCMobileDefense6_2"/>
+			</append>
+		</if>
+		<else>
+			<append xpath="/quests/quest_list[@id='trader_rekt_quests']">
+				<quest id="ZINCMobileDefense3_1"/>
+				<quest id="ZINCMobileDefense4_1"/>
+				<quest id="ZINCMobileDefense5_1"/>
+				<quest id="ZINCMobileDefense6_1"/>
+				
+				<quest id="ZINCMobileDefense3_2"/>
+				<quest id="ZINCMobileDefense4_2"/>
+				<quest id="ZINCMobileDefense5_2"/>
+				<quest id="ZINCMobileDefense6_2"/>
+			</append>
+			<append xpath="/quests/quest_list[@id='trader_jen_quests']">			
+				<quest id="ZINCMobileDefense3_1"/>
+				<quest id="ZINCMobileDefense4_1"/>
+				<quest id="ZINCMobileDefense5_1"/>
+				<quest id="ZINCMobileDefense6_1"/>
+				
+				<quest id="ZINCMobileDefense3_2"/>
+				<quest id="ZINCMobileDefense4_2"/>
+				<quest id="ZINCMobileDefense5_2"/>
+				<quest id="ZINCMobileDefense6_2"/>
+			</append>	
+			<append xpath="/quests/quest_list[@id='trader_bob_quests']">			
+				<quest id="ZINCMobileDefense3_1"/>
+				<quest id="ZINCMobileDefense4_1"/>
+				<quest id="ZINCMobileDefense5_1"/>
+				<quest id="ZINCMobileDefense6_1"/>
+				
+				<quest id="ZINCMobileDefense3_2"/>
+				<quest id="ZINCMobileDefense4_2"/>
+				<quest id="ZINCMobileDefense5_2"/>
+				<quest id="ZINCMobileDefense6_2"/>
+			</append>	
+			<append xpath="/quests/quest_list[@id='trader_hugh_quests']">		
+				<quest id="ZINCMobileDefense3_1"/>
+				<quest id="ZINCMobileDefense4_1"/>
+				<quest id="ZINCMobileDefense5_1"/>
+				<quest id="ZINCMobileDefense6_1"/>
+				
+				<quest id="ZINCMobileDefense3_2"/>
+				<quest id="ZINCMobileDefense4_2"/>
+				<quest id="ZINCMobileDefense5_2"/>
+				<quest id="ZINCMobileDefense6_2"/>
+			</append>	
+			<append xpath="/quests/quest_list[@id='trader_joel_quests']">	
+				<quest id="ZINCMobileDefense3_1"/>
+				<quest id="ZINCMobileDefense4_1"/>
+				<quest id="ZINCMobileDefense5_1"/>
+				<quest id="ZINCMobileDefense6_1"/>
+				
+				<quest id="ZINCMobileDefense3_2"/>
+				<quest id="ZINCMobileDefense4_2"/>
+				<quest id="ZINCMobileDefense5_2"/>
+				<quest id="ZINCMobileDefense6_2"/>
+			</append>
+		</else>
+	</conditional>
+	
+	<insertAfter xpath="/quests/quest[@id='tier2_buried_supplies']">
+	
+			<!--###Mobile Defense-->
+		<quest id="ZINCMobileDefense3_1">
+			<property name="name_key" value="ZombieINC_challenge_tier3_MobileDefense_name" param1="name"/>
+			<property name="subtitle_key" value="ZombieINC_challenge_tier3_MobileDefense_subtitle"/>
+			<property name="description_key" value="ZombieINC_challenge_tier3_MobileDefense_description"/>
+			<property name="icon" value="ui_game_symbol_treasure"/>
+			<property name="repeatable" value="true"/>
+			<property name="category_key" value="quest"/>
+			<property name="offer_key" value="ZombieINC_challenge_tier3_MobileDefense_offer" param1="offer"/>
+			<property name="difficulty" value="medium"/>
+			<property name="difficulty_tier" value="3" param1="difficulty"/>
+			<property name="statement_key" value="ZombieINC_challenge_tier3_MobileDefense_statement"/>
+			<property name="response_key" value="ZombieINC_challenge_tier3_MobileDefense_response"/>
+			
+			<property name="completiontype" value="AutoComplete"/>
+			<property name="completion_key" value="ZombieINC_challenge_tier3_MobileDefense_completion"/>
+			<property name="shareable" value="true"/>
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value="ZINCMD,ZINCMD3" />
+			
+			<action type="GameEvent" id="ZombieINC_MD_T3_SpawnAntenna" phase="1"/>
+			<action type="GameEvent" id="ZombieINC_MD_NoVehicleBuff_Event" phase="1"/>
+			<!--<action type="GameEvent" id="ZombieINC_MD_T3_TimerBuff_Event" phase="1"/>-->
+			<action type="GameEvent" id="ZombieINC_MD_T3_RemoveAllBuffsWhenFail" phase="1"/>
+			
+			
+			<objective type="RandomGotoNPC" phase="1">
+				<property name="completion_distance" value="20"/>
+				<property name="distance" value="700-750"/>
+				<property name="nav_object" value="quest" />
+			</objective>
+
+			<objective type="RallyPoint">
+				<property name="start_mode" value="Create"/>
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="rally" />
+				<property name="rally_marker_type" value="questRallyMarkerBuriedSupplies"/>
+				<property name="activate_event" value="ZombieINC_MD_ActivateRallyBuried_Event_T3"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_MD_W2_Event_T3" phase="3"/>
+			
+			<objective type="StayWithin">
+				<property name="phase" value="3"/>
+				<property name="radius" value="40"/>
+			</objective>
+			
+			<objective type="TreasureChest">
+				<property name="phase" value="3" />
+				<property name="block" value="ZombieINC_MD_cntBuriedChest_T3" />
+				<property name="default_radius" value="3" />
+				<property name="container_type" value="Supplies"/>
+				<property name="nav_object" value="treasure" />
+				<property name="direct_nav_object" value="treasure_direct" />
+				<property name="blocks_per_reduction" value="1" />
+				<property name="radius_reduction_sound" value="ui_radius_shrink" />
+				<property name="use_nearby" value="true" />
+				<property name="explosion_event" value="quest_treasure_explosion_horde" />
+			</objective>
+			
+			<objective type="FetchFromTreasure">
+				<property name="phase" value="3" />
+				<property name="block" value="ZombieINC_MD_cntBuriedChest_T3" param1="container" />
+				<property name="quest_item_ID" value="1"/>
+				<property name="item_count" value="1"/>
+			</objective>
+			
+			<objective type="ReturnToNPC">
+				<property name="phase" value="4"/>
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+			
+			<objective type="GameEvent">
+				<property name="phase" value="4"/>
+				<property name="event" value="ZombieINC_MD_PlayerWithAntennaArrived_WaitEvent_T3"/>
+				<property name="hidden" value="true"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_MD_T3_QuestFinished_Event" >
+				<property name="on_complete" value="true"/>
+			</action>
+			
+			<reward type="Quest" id="ZINCMobileDefense3Reward"/>
+			
+		</quest>		
+		<quest id="ZINCMobileDefense4_1">
+			<property name="name_key" value="ZombieINC_challenge_tier4_MobileDefense_name" param1="name"/>
+			<property name="subtitle_key" value="ZombieINC_challenge_tier4_MobileDefense_subtitle"/>
+			<property name="description_key" value="ZombieINC_challenge_tier4_MobileDefense_description"/>
+			<property name="icon" value="ui_game_symbol_treasure"/>
+			<property name="repeatable" value="true"/>
+			<property name="category_key" value="quest"/>
+			<property name="offer_key" value="ZombieINC_challenge_tier4_MobileDefense_offer" param1="offer"/>
+			<property name="difficulty" value="medium"/>
+			<property name="difficulty_tier" value="4" param1="difficulty"/>
+			<property name="statement_key" value="ZombieINC_challenge_tier4_MobileDefense_statement"/>
+			<property name="response_key" value="ZombieINC_challenge_tier4_MobileDefense_response"/>
+			
+			<property name="completiontype" value="AutoComplete"/>
+			<property name="completion_key" value="ZombieINC_challenge_tier4_MobileDefense_completion"/>
+			<property name="shareable" value="true"/>
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value="ZINCMD,ZINCMD4" />
+			
+			<action type="GameEvent" id="ZombieINC_MD_T4_SpawnAntenna" phase="1"/>
+			<action type="GameEvent" id="ZombieINC_MD_NoVehicleBuff_Event" phase="1"/>
+			<!--<action type="GameEvent" id="ZombieINC_MD_T4_TimerBuff_Event" phase="1"/>-->
+			<action type="GameEvent" id="ZombieINC_MD_T4_RemoveAllBuffsWhenFail" phase="1"/>
+			
+			
+			<objective type="RandomGotoNPC" phase="1">
+				<property name="completion_distance" value="20"/>
+				<property name="distance" value="700-750"/>
+				<property name="nav_object" value="quest" />
+			</objective>
+
+			<objective type="RallyPoint">
+				<property name="start_mode" value="Create"/>
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="rally" />
+				<property name="rally_marker_type" value="questRallyMarkerBuriedSupplies"/>
+				<property name="activate_event" value="ZombieINC_MD_ActivateRallyBuried_Event_T4"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_MD_W2_Event_T4" phase="3"/>
+			
+			<objective type="StayWithin">
+				<property name="phase" value="3"/>
+				<property name="radius" value="40"/>
+			</objective>
+			
+			<objective type="TreasureChest">
+				<property name="phase" value="3" />
+				<property name="block" value="ZombieINC_MD_cntBuriedChest_T4" />
+				<property name="default_radius" value="3" />
+				<property name="container_type" value="Supplies"/>
+				<property name="nav_object" value="treasure" />
+				<property name="direct_nav_object" value="treasure_direct" />
+				<property name="blocks_per_reduction" value="1" />
+				<property name="radius_reduction_sound" value="ui_radius_shrink" />
+				<property name="use_nearby" value="true" />
+				<property name="explosion_event" value="quest_treasure_explosion_horde" />
+			</objective>
+			
+			<objective type="FetchFromTreasure">
+				<property name="phase" value="3" />
+				<property name="block" value="ZombieINC_MD_cntBuriedChest_T4" param1="container" />
+				<property name="quest_item_ID" value="1"/>
+				<property name="item_count" value="1"/>
+			</objective>
+			
+			<objective type="ReturnToNPC">
+				<property name="phase" value="4"/>
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+			
+			<objective type="GameEvent">
+				<property name="phase" value="4"/>
+				<property name="event" value="ZombieINC_MD_PlayerWithAntennaArrived_WaitEvent_T4"/>
+				<property name="hidden" value="true"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_MD_T4_QuestFinished_Event" >
+				<property name="on_complete" value="true"/>
+			</action>
+			
+			<reward type="Quest" id="ZINCMobileDefense4Reward"/>
+			
+		</quest>
+		<quest id="ZINCMobileDefense5_1">
+			<property name="name_key" value="ZombieINC_challenge_tier5_MobileDefense_name" param1="name"/>
+			<property name="subtitle_key" value="ZombieINC_challenge_tier5_MobileDefense_subtitle"/>
+			<property name="description_key" value="ZombieINC_challenge_tier5_MobileDefense_description"/>
+			<property name="icon" value="ui_game_symbol_treasure"/>
+			<property name="repeatable" value="true"/>
+			<property name="category_key" value="quest"/>
+			<property name="offer_key" value="ZombieINC_challenge_tier5_MobileDefense_offer" param1="offer"/>
+			<property name="difficulty" value="medium"/>
+			<property name="difficulty_tier" value="5" param1="difficulty"/>
+			<property name="statement_key" value="ZombieINC_challenge_tier5_MobileDefense_statement"/>
+			<property name="response_key" value="ZombieINC_challenge_tier5_MobileDefense_response"/>
+			
+			<property name="completiontype" value="AutoComplete"/>
+			<property name="completion_key" value="ZombieINC_challenge_tier5_MobileDefense_completion"/>
+			<property name="shareable" value="true"/>
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value="ZINCMD,ZINCMD5" />
+			
+			<action type="GameEvent" id="ZombieINC_MD_T5_SpawnVehicle" phase="1"/>
+			<action type="GameEvent" id="ZombieINC_MD_T5_TimerBuff_Event" phase="1"/>
+			<action type="GameEvent" id="ZombieINC_MD_T5_RemoveAllBuffsWhenFail" phase="1"/>
+			
+			
+			<objective type="RandomGotoNPC" phase="1">
+				<property name="completion_distance" value="20"/>
+				<property name="distance" value="1000-1500"/>
+				<property name="nav_object" value="quest" />
+			</objective>
+
+			<objective type="RallyPoint">
+				<property name="start_mode" value="Create"/>
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="rally" />
+				<property name="rally_marker_type" value="questRallyMarkerBuriedSupplies"/>
+				<property name="activate_event" value="quest_treasure_replace_road"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_MD_T5_W3_Quest" phase="3"/>
+			
+			<objective type="StayWithin">
+				<property name="phase" value="3"/>
+				<property name="radius" value="40"/>
+			</objective>
+			
+			<objective type="Time" phase="3">
+				<property name="time" value="240"/>
+			</objective>
+			
+			<!--<action type="GameEvent" id="ZombieINC_MD_ResetCvars" phase="3"/>-->
+			
+			<objective type="TreasureChest">
+				<property name="phase" value="3" />
+				<property name="block" value="ZombieINC_MD_cntBuriedChest_T5" />
+				<property name="default_radius" value="3" />
+				<property name="container_type" value="Supplies"/>
+				<property name="nav_object" value="treasure" />
+				<property name="direct_nav_object" value="treasure_direct" />
+				<property name="blocks_per_reduction" value="1" />
+				<property name="radius_reduction_sound" value="ui_radius_shrink" />
+				<property name="use_nearby" value="true" />
+				<property name="explosion_event" value="quest_treasure_explosion_horde" />
+			</objective>
+
+			<!--<objective type="FetchFromTreasure">
+				<property name="phase" value="3" />
+				<property name="block" value="cntBuriedFoodStashChest" param1="container" />
+				<property name="quest_item_ID" value="1"/>
+				<property name="item_count" value="1"/>
+			</objective>-->
+			
+			
+			<objective type="ReturnToNPC">
+				<property name="phase" value="4"/>
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_MD_T5_QuestFinished_Event" >
+				<property name="on_complete" value="true"/>
+			</action>
+			
+			<!--<objective type="Time">
+				<property name="phase" value="5"/>
+				<property name="time" value="1"/>
+			</objective>-->
+			
+			<reward type="Quest" id="ZINCMobileDefense5Reward"/>
+			
+		</quest>		
+		<quest id="ZINCMobileDefense6_1">
+			<property name="name_key" value="ZombieINC_challenge_tier6_MobileDefense_name" param1="name"/>
+			<property name="subtitle_key" value="ZombieINC_challenge_tier6_MobileDefense_subtitle"/>
+			<property name="description_key" value="ZombieINC_challenge_tier6_MobileDefense_description"/>
+			<property name="icon" value="ui_game_symbol_treasure"/>
+			<property name="repeatable" value="true"/>
+			<property name="category_key" value="quest"/>
+			<property name="offer_key" value="ZombieINC_challenge_tier6_MobileDefense_offer" param1="offer"/>
+			<property name="difficulty" value="medium"/>
+			<property name="difficulty_tier" value="6" param1="difficulty"/>
+			<property name="statement_key" value="ZombieINC_challenge_tier6_MobileDefense_statement"/>
+			<property name="response_key" value="ZombieINC_challenge_tier6_MobileDefense_response"/>
+			
+			<property name="completiontype" value="AutoComplete"/>
+			<property name="completion_key" value="ZombieINC_challenge_tier6_MobileDefense_completion"/>
+			<property name="shareable" value="true"/>
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value="ZINCMD,ZINCMD6" />
+			
+			<action type="GameEvent" id="ZombieINC_MD_T6_SpawnVehicle" phase="1"/>
+			<action type="GameEvent" id="ZombieINC_MD_T6_TimerBuff_Event" phase="1"/>
+			<action type="GameEvent" id="ZombieINC_MD_T6_RemoveAllBuffsWhenFail" phase="1"/>
+			
+			
+			<objective type="RandomGotoNPC" phase="1">
+				<property name="completion_distance" value="20"/>
+				<property name="distance" value="1000-1500"/>
+				<property name="nav_object" value="quest" />
+			</objective>
+
+			<objective type="RallyPoint">
+				<property name="start_mode" value="Create"/>
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="rally" />
+				<property name="rally_marker_type" value="questRallyMarkerBuriedSupplies"/>
+				<property name="activate_event" value="quest_treasure_replace_road"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_MD_T6_W3_Quest" phase="3"/>
+			
+			<objective type="StayWithin">
+				<property name="phase" value="3"/>
+				<property name="radius" value="40"/>
+			</objective>
+			
+			<objective type="Time" phase="3">
+				<property name="time" value="240"/>
+			</objective>
+			
+			<!--<action type="GameEvent" id="ZombieINC_MD_ResetCvars" phase="3"/>-->
+			
+			<objective type="TreasureChest">
+				<property name="phase" value="3" />
+				<property name="block" value="ZombieINC_MD_cntBuriedChest_T6" />
+				<property name="default_radius" value="3" />
+				<property name="container_type" value="Supplies"/>
+				<property name="nav_object" value="treasure" />
+				<property name="direct_nav_object" value="treasure_direct" />
+				<property name="blocks_per_reduction" value="1" />
+				<property name="radius_reduction_sound" value="ui_radius_shrink" />
+				<property name="use_nearby" value="true" />
+				<property name="explosion_event" value="quest_treasure_explosion_horde" />
+			</objective>
+
+			<!--<objective type="FetchFromTreasure">
+				<property name="phase" value="3" />
+				<property name="block" value="cntBuriedFoodStashChest" param1="container" />
+				<property name="quest_item_ID" value="1"/>
+				<property name="item_count" value="1"/>
+			</objective>-->
+			
+			<action type="GameEvent" id="ZombieINC_MD_T6_W4_Quest" phase="4"/>
+			
+			<objective type="ReturnToNPC">
+				<property name="phase" value="4"/>
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_MD_T6_QuestFinished_Event" >
+				<property name="on_complete" value="true"/>
+			</action>
+			
+			<!--<objective type="Time">
+				<property name="phase" value="5"/>
+				<property name="time" value="1"/>
+			</objective>-->
+			
+			<reward type="Quest" id="ZINCMobileDefense6Reward"/>
+			
+		</quest>
+		<!--Mobile Defense-->
+		<!--###Mobile Defense-->
+		<quest id="ZINCMobileDefense3_2">
+			<property name="name_key" value="ZombieINC_challenge_tier3_MobileDefense_name" param1="name"/>
+			<property name="subtitle_key" value="ZombieINC_challenge_tier3_MobileDefense_subtitle"/>
+			<property name="description_key" value="ZombieINC_challenge_tier3_MobileDefense_description"/>
+			<property name="icon" value="ui_game_symbol_treasure"/>
+			<property name="repeatable" value="true"/>
+			<property name="category_key" value="quest"/>
+			<property name="offer_key" value="ZombieINC_challenge_tier3_MobileDefense_offer" param1="offer"/>
+			<property name="difficulty" value="medium"/>
+			<property name="difficulty_tier" value="3" param1="difficulty"/>
+			<property name="statement_key" value="ZombieINC_challenge_tier3_MobileDefense_statement"/>
+			<property name="response_key" value="ZombieINC_challenge_tier3_MobileDefense_response"/>
+			
+			<property name="completiontype" value="AutoComplete"/>
+			<property name="completion_key" value="ZombieINC_challenge_tier3_MobileDefense_completion"/>
+			<property name="shareable" value="true"/>
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value="ZINCMD,ZINCMD3" />
+			
+			<action type="GameEvent" id="ZombieINC_MD_T3_SpawnAntenna" phase="1"/>
+			<action type="GameEvent" id="ZombieINC_MD_NoVehicleBuff_Event" phase="1"/>
+			<!--<action type="GameEvent" id="ZombieINC_MD_T3_TimerBuff_Event" phase="1"/>-->
+			<action type="GameEvent" id="ZombieINC_MD_T3_RemoveAllBuffsWhenFail" phase="1"/>
+			
+			
+			<objective type="RandomGotoNPC" phase="1">
+				<property name="completion_distance" value="20"/>
+				<property name="distance" value="700-750"/>
+				<property name="nav_object" value="quest" />
+			</objective>
+
+			<objective type="RallyPoint">
+				<property name="start_mode" value="Create"/>
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="rally" />
+				<property name="rally_marker_type" value="questRallyMarkerBuriedSupplies"/>
+				<property name="activate_event" value="ZombieINC_MD_ActivateRallyBuried_Event_T3"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_MD_W2_Event_T3" phase="3"/>
+			
+			<objective type="StayWithin">
+				<property name="phase" value="3"/>
+				<property name="radius" value="40"/>
+			</objective>
+			
+			<objective type="TreasureChest">
+				<property name="phase" value="3" />
+				<property name="block" value="ZombieINC_MD_cntBuriedChest_T3" />
+				<property name="default_radius" value="3" />
+				<property name="container_type" value="Supplies"/>
+				<property name="nav_object" value="treasure" />
+				<property name="direct_nav_object" value="treasure_direct" />
+				<property name="blocks_per_reduction" value="1" />
+				<property name="radius_reduction_sound" value="ui_radius_shrink" />
+				<property name="use_nearby" value="true" />
+				<property name="explosion_event" value="quest_treasure_explosion_horde" />
+			</objective>
+			
+			<objective type="FetchFromTreasure">
+				<property name="phase" value="3" />
+				<property name="block" value="ZombieINC_MD_cntBuriedChest_T3" param1="container" />
+				<property name="quest_item_ID" value="1"/>
+				<property name="item_count" value="1"/>
+			</objective>
+			
+			<objective type="ReturnToNPC">
+				<property name="phase" value="4"/>
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+			
+			<objective type="GameEvent">
+				<property name="phase" value="4"/>
+				<property name="event" value="ZombieINC_MD_PlayerWithAntennaArrived_WaitEvent_T3"/>
+				<property name="hidden" value="true"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_MD_T3_QuestFinished_Event" >
+				<property name="on_complete" value="true"/>
+			</action>
+			
+			<reward type="Quest" id="ZINCMobileDefense3Reward"/>
+			
+		</quest>		
+		<quest id="ZINCMobileDefense4_2">
+			<property name="name_key" value="ZombieINC_challenge_tier4_MobileDefense_name" param1="name"/>
+			<property name="subtitle_key" value="ZombieINC_challenge_tier4_MobileDefense_subtitle"/>
+			<property name="description_key" value="ZombieINC_challenge_tier4_MobileDefense_description"/>
+			<property name="icon" value="ui_game_symbol_treasure"/>
+			<property name="repeatable" value="true"/>
+			<property name="category_key" value="quest"/>
+			<property name="offer_key" value="ZombieINC_challenge_tier4_MobileDefense_offer" param1="offer"/>
+			<property name="difficulty" value="medium"/>
+			<property name="difficulty_tier" value="4" param1="difficulty"/>
+			<property name="statement_key" value="ZombieINC_challenge_tier4_MobileDefense_statement"/>
+			<property name="response_key" value="ZombieINC_challenge_tier4_MobileDefense_response"/>
+			
+			<property name="completiontype" value="AutoComplete"/>
+			<property name="completion_key" value="ZombieINC_challenge_tier4_MobileDefense_completion"/>
+			<property name="shareable" value="true"/>
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value="ZINCMD,ZINCMD4" />
+			
+			<action type="GameEvent" id="ZombieINC_MD_T4_SpawnAntenna" phase="1"/>
+			<action type="GameEvent" id="ZombieINC_MD_NoVehicleBuff_Event" phase="1"/>
+			<!--<action type="GameEvent" id="ZombieINC_MD_T4_TimerBuff_Event" phase="1"/>-->
+			<action type="GameEvent" id="ZombieINC_MD_T4_RemoveAllBuffsWhenFail" phase="1"/>
+			
+			
+			<objective type="RandomGotoNPC" phase="1">
+				<property name="completion_distance" value="20"/>
+				<property name="distance" value="700-750"/>
+				<property name="nav_object" value="quest" />
+			</objective>
+
+			<objective type="RallyPoint">
+				<property name="start_mode" value="Create"/>
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="rally" />
+				<property name="rally_marker_type" value="questRallyMarkerBuriedSupplies"/>
+				<property name="activate_event" value="ZombieINC_MD_ActivateRallyBuried_Event_T4"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_MD_W2_Event_T4" phase="3"/>
+			
+			<objective type="StayWithin">
+				<property name="phase" value="3"/>
+				<property name="radius" value="40"/>
+			</objective>
+			
+			<objective type="TreasureChest">
+				<property name="phase" value="3" />
+				<property name="block" value="ZombieINC_MD_cntBuriedChest_T4" />
+				<property name="default_radius" value="3" />
+				<property name="container_type" value="Supplies"/>
+				<property name="nav_object" value="treasure" />
+				<property name="direct_nav_object" value="treasure_direct" />
+				<property name="blocks_per_reduction" value="1" />
+				<property name="radius_reduction_sound" value="ui_radius_shrink" />
+				<property name="use_nearby" value="true" />
+				<property name="explosion_event" value="quest_treasure_explosion_horde" />
+			</objective>
+			
+			<objective type="FetchFromTreasure">
+				<property name="phase" value="3" />
+				<property name="block" value="ZombieINC_MD_cntBuriedChest_T4" param1="container" />
+				<property name="quest_item_ID" value="1"/>
+				<property name="item_count" value="1"/>
+			</objective>
+			
+			<objective type="ReturnToNPC">
+				<property name="phase" value="4"/>
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+			
+			<objective type="GameEvent">
+				<property name="phase" value="4"/>
+				<property name="event" value="ZombieINC_MD_PlayerWithAntennaArrived_WaitEvent_T4"/>
+				<property name="hidden" value="true"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_MD_T4_QuestFinished_Event" >
+				<property name="on_complete" value="true"/>
+			</action>
+			
+			<reward type="Quest" id="ZINCMobileDefense4Reward"/>
+			
+		</quest>
+		<quest id="ZINCMobileDefense5_2">
+			<property name="name_key" value="ZombieINC_challenge_tier5_MobileDefense_name" param1="name"/>
+			<property name="subtitle_key" value="ZombieINC_challenge_tier5_MobileDefense_subtitle"/>
+			<property name="description_key" value="ZombieINC_challenge_tier5_MobileDefense_description"/>
+			<property name="icon" value="ui_game_symbol_treasure"/>
+			<property name="repeatable" value="true"/>
+			<property name="category_key" value="quest"/>
+			<property name="offer_key" value="ZombieINC_challenge_tier5_MobileDefense_offer" param1="offer"/>
+			<property name="difficulty" value="medium"/>
+			<property name="difficulty_tier" value="5" param1="difficulty"/>
+			<property name="statement_key" value="ZombieINC_challenge_tier5_MobileDefense_statement"/>
+			<property name="response_key" value="ZombieINC_challenge_tier5_MobileDefense_response"/>
+			
+			<property name="completiontype" value="AutoComplete"/>
+			<property name="completion_key" value="ZombieINC_challenge_tier5_MobileDefense_completion"/>
+			<property name="shareable" value="true"/>
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value="ZINCMD,ZINCMD5" />
+			
+			<action type="GameEvent" id="ZombieINC_MD_T5_SpawnVehicle" phase="1"/>
+			<action type="GameEvent" id="ZombieINC_MD_T5_TimerBuff_Event" phase="1"/>
+			<action type="GameEvent" id="ZombieINC_MD_T5_RemoveAllBuffsWhenFail" phase="1"/>
+			
+			
+			<objective type="RandomGotoNPC" phase="1">
+				<property name="completion_distance" value="20"/>
+				<property name="distance" value="1000-1500"/>
+				<property name="nav_object" value="quest" />
+			</objective>
+
+			<objective type="RallyPoint">
+				<property name="start_mode" value="Create"/>
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="rally" />
+				<property name="rally_marker_type" value="questRallyMarkerBuriedSupplies"/>
+				<property name="activate_event" value="quest_treasure_replace_road"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_MD_T5_W3_Quest" phase="3"/>
+			
+			<objective type="StayWithin">
+				<property name="phase" value="3"/>
+				<property name="radius" value="40"/>
+			</objective>
+			
+			<objective type="Time" phase="3">
+				<property name="time" value="240"/>
+			</objective>
+			
+			<!--<action type="GameEvent" id="ZombieINC_MD_ResetCvars" phase="3"/>-->
+			
+			<objective type="TreasureChest">
+				<property name="phase" value="3" />
+				<property name="block" value="ZombieINC_MD_cntBuriedChest_T5" />
+				<property name="default_radius" value="3" />
+				<property name="container_type" value="Supplies"/>
+				<property name="nav_object" value="treasure" />
+				<property name="direct_nav_object" value="treasure_direct" />
+				<property name="blocks_per_reduction" value="1" />
+				<property name="radius_reduction_sound" value="ui_radius_shrink" />
+				<property name="use_nearby" value="true" />
+				<property name="explosion_event" value="quest_treasure_explosion_horde" />
+			</objective>
+
+			<!--<objective type="FetchFromTreasure">
+				<property name="phase" value="3" />
+				<property name="block" value="cntBuriedFoodStashChest" param1="container" />
+				<property name="quest_item_ID" value="1"/>
+				<property name="item_count" value="1"/>
+			</objective>-->
+			
+			
+			<objective type="ReturnToNPC">
+				<property name="phase" value="4"/>
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_MD_T5_QuestFinished_Event" >
+				<property name="on_complete" value="true"/>
+			</action>
+			
+			<!--<objective type="Time">
+				<property name="phase" value="5"/>
+				<property name="time" value="1"/>
+			</objective>-->
+			
+			<reward type="Quest" id="ZINCMobileDefense5Reward"/>
+			
+		</quest>		
+		<quest id="ZINCMobileDefense6_2">
+			<property name="name_key" value="ZombieINC_challenge_tier6_MobileDefense_name" param1="name"/>
+			<property name="subtitle_key" value="ZombieINC_challenge_tier6_MobileDefense_subtitle"/>
+			<property name="description_key" value="ZombieINC_challenge_tier6_MobileDefense_description"/>
+			<property name="icon" value="ui_game_symbol_treasure"/>
+			<property name="repeatable" value="true"/>
+			<property name="category_key" value="quest"/>
+			<property name="offer_key" value="ZombieINC_challenge_tier6_MobileDefense_offer" param1="offer"/>
+			<property name="difficulty" value="medium"/>
+			<property name="difficulty_tier" value="6" param1="difficulty"/>
+			<property name="statement_key" value="ZombieINC_challenge_tier6_MobileDefense_statement"/>
+			<property name="response_key" value="ZombieINC_challenge_tier6_MobileDefense_response"/>
+			
+			<property name="completiontype" value="AutoComplete"/>
+			<property name="completion_key" value="ZombieINC_challenge_tier6_MobileDefense_completion"/>
+			<property name="shareable" value="true"/>
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value="ZINCMD,ZINCMD6" />
+			
+			<action type="GameEvent" id="ZombieINC_MD_T6_SpawnVehicle" phase="1"/>
+			<action type="GameEvent" id="ZombieINC_MD_T6_TimerBuff_Event" phase="1"/>
+			<action type="GameEvent" id="ZombieINC_MD_T6_RemoveAllBuffsWhenFail" phase="1"/>
+			
+			
+			<objective type="RandomGotoNPC" phase="1">
+				<property name="completion_distance" value="20"/>
+				<property name="distance" value="1000-1500"/>
+				<property name="nav_object" value="quest" />
+			</objective>
+
+			<objective type="RallyPoint">
+				<property name="start_mode" value="Create"/>
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="rally" />
+				<property name="rally_marker_type" value="questRallyMarkerBuriedSupplies"/>
+				<property name="activate_event" value="quest_treasure_replace_road"/>
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_MD_T6_W3_Quest" phase="3"/>
+			
+			<objective type="StayWithin">
+				<property name="phase" value="3"/>
+				<property name="radius" value="40"/>
+			</objective>
+			
+			<objective type="Time" phase="3">
+				<property name="time" value="240"/>
+			</objective>
+			
+			<!--<action type="GameEvent" id="ZombieINC_MD_ResetCvars" phase="3"/>-->
+			
+			<objective type="TreasureChest">
+				<property name="phase" value="3" />
+				<property name="block" value="ZombieINC_MD_cntBuriedChest_T6" />
+				<property name="default_radius" value="3" />
+				<property name="container_type" value="Supplies"/>
+				<property name="nav_object" value="treasure" />
+				<property name="direct_nav_object" value="treasure_direct" />
+				<property name="blocks_per_reduction" value="1" />
+				<property name="radius_reduction_sound" value="ui_radius_shrink" />
+				<property name="use_nearby" value="true" />
+				<property name="explosion_event" value="quest_treasure_explosion_horde" />
+			</objective>
+
+			<!--<objective type="FetchFromTreasure">
+				<property name="phase" value="3" />
+				<property name="block" value="cntBuriedFoodStashChest" param1="container" />
+				<property name="quest_item_ID" value="1"/>
+				<property name="item_count" value="1"/>
+			</objective>-->
+			
+			<action type="GameEvent" id="ZombieINC_MD_T6_W4_Quest" phase="4"/>
+			
+			<objective type="ReturnToNPC">
+				<property name="phase" value="4"/>
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+			
+			<action type="GameEvent" id="ZombieINC_MD_T6_QuestFinished_Event" >
+				<property name="on_complete" value="true"/>
+			</action>
+			
+			<!--<objective type="Time">
+				<property name="phase" value="5"/>
+				<property name="time" value="1"/>
+			</objective>-->
+			
+			<reward type="Quest" id="ZINCMobileDefense6Reward"/>
+			
+		</quest>
+		<!--Mobile Defense-->
+	</insertAfter>
+</Config>

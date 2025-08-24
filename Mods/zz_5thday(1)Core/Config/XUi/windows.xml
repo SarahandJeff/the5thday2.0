@@ -275,8 +275,13 @@
 					<sprite depth="1" color="[darkGrey]" type="sliced" width="304" height="697" pos="6,-5"/> -->
 					<texture depth="2" name="playerPreviewSDCS" material="Materials/Transparent Colored" size="327,622" globalopacity="false"/>
 				</rect>
-				<rect pos="3,-3">
-					<equipment_weather_stack name="biomeBadgeSlot" />
+				<rect pos="10,20">
+				<label depth="3"  pos="3,-25" width="50" font_size="26" text="Protection" justify="center" color="[white]" />
+						<equipment_weather_stack name="biomeBadgeSlot1" />
+				</rect>
+				<rect pos="10,-75">
+				<label depth="3" pos="3,-15" width="50" font_size="26" text="BackPack" justify="center" color="[white]" />
+						<equipment_weather_stack name="biomeBadgeSlot2" />
 				</rect>
 				<rect name="btnCosmetic" pos="243,0" depth="3" height="83" width="83">
 					<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" width="83" color="[black]" type="sliced" fillcenter="false" />
@@ -982,7 +987,7 @@
 
 
 <window name="windowLooting" width="{windowWidth}" height="378" controller="LootWindow" panel="Left" anchor_side="bottomright" visible="false" cursor_area="true" >
-	<!--#$-IGS END.-$#-->
+	
 	<rect pos="-100,0">
 		<panel name="header" height="43" depth="0" disableautobackground="true" anchor_left="queue,0,0" anchor_right="queue,1,0" >
 			<sprite depth="1" name="headerbackground" color="0,0,0,1" anchor_left="queue,0,-3" anchor_right="queue,1,0" />
@@ -998,13 +1003,13 @@
 		<rect name="content" pos="3,-49" >
 			<sprite depth="0" name="bg" color="255,255,255,1" type="sliced" sprite="menu_empty" anchor_left="queue,0,-3" anchor_bottom="queue,0,0" anchor_right="queue,1,0" anchor_top="queue,1,49" />
 			<rect name="background_design" anchor_left="queue,0,-5" anchor_right="queue,1,5" depth="0">
-				<!-- Header -->
+				
 				<sprite depth="-2" name="backgroundHeader" pos="0,49" height="43" anchor_left="queue,0,-5" anchor_right="queue,1,5" type="sliced"  color="[AXHeaderBackgroundP]" />
 				<sprite depth="-2" name="backgroundLine" pos="0,57" anchor_left="queue,0,3" anchor_right="queue,1,-3" height="8" type="sliced"  color="[darkestGrey]" />
 				
 				<sprite depth="-2" name="backgroundCL" pos="0,57" sprite="ui_game_symbol_triangle" flip="Horizontally" anchor_left="queue,0,-5" width="8" height="8" type="sliced"  color="[darkestGrey]"/>
 				<sprite depth="-2" name="backgroundCR" pos="0,57" sprite="ui_game_symbol_triangle" anchor_left="queue,1,-3" anchor_right="queue,1,5" width="8" height="8" type="sliced"  color="[darkestGrey]"/>
-				<!-- Background -->
+				
 				<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" anchor_left="queue,0,-5" anchor_bottom="queue,0,-35" anchor_right="queue,1,5" anchor_top="queue,1,49"  color="[AXWindowLine]" type="sliced" fillcenter="false" />
 				<sprite depth="-3" name="backgroundw" anchor_left="queue,0,-5" anchor_bottom="queue,0,-35" anchor_right="queue,1,5" anchor_top="queue,1,49"  type="sliced"  color="[AXWindowBackground]" />	
 
@@ -1018,6 +1023,8 @@
 		</rect>
 	</rect>
 	</window>
+
+	
 
 <!-- VENTANA DEL VEHICULO (STORAGE) BY DJTRIPL3XMR -->
 
@@ -1050,7 +1057,7 @@
 			<sprite depth="-2" name="backgroundCRB" anchor_top="queue,0,-35" anchor_bottom="queue,0,-43" anchor_left="queue,1,-3" anchor_right="queue,1,5" sprite="ui_game_symbol_triangle" flip="Vertically" width="8" height="8" type="sliced"  color="[darkestGrey]"/>				
 		</rect>
 		<grid depth="2" name="queue" rows="10" cols="9" pos="-2,-49" cell_width="70" cell_height="70" repeat_content="true">
-			<AX_item_stack name="0"/>
+			<SNJ_item_stack name="0"/>
 		</grid>
 		</rect>
 	</window>
@@ -1073,7 +1080,7 @@
 		<rect name="content" depth="0" pos="0,175" height="70" disablefallthrough="true">
 			<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" height="70" color="0,0,0,1" type="sliced" fillcenter="false" />
 			<grid depth="10" name="inventory" rows="1" cols="6" pos="6,0" cell_width="70" cell_height="70" controller="WorkstationOutputGrid" repeat_content="true">
-				<AX_item_stack name="0"/>
+				<SNJ_item_stack name="0"/>
 			</grid>
 		</rect>
 		</rect>
@@ -1118,7 +1125,7 @@
 		<rect name="content" depth="0" pos="0,75" height="70" disablefallthrough="true">
 			<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" height="70" color="0,0,0,1" type="sliced" fillcenter="false" />
 			<grid depth="10" name="inventory" rows="1" cols="6" pos="6,0" cell_width="70" cell_height="70" controller="WorkstationOutputGrid" repeat_content="true">
-				<AX_item_stack name="0"/>
+				<SNJ_item_stack name="0"/>
 			</grid>
 		</rect>
 		</rect>
@@ -1188,8 +1195,11 @@
 			</rect>
 			<sprite depth="4" name="windowIcon" style="icon32px" pos="4,-5" sprite="{itemgroupicon}" visible="{# !hasdurability}"/>
 			<label depth="4" name="windowName" pos="39,-6" width="300" height="32" text="{itemname}" font_size="32" />
-			<label depth="2" pos="35,-755" width="250" height="30" text="{pricelabel} {itemcost}{markup}" justify="left" />
-			<sprite depth="4" name="costIcon" sprite="ui_game_symbol_coin" size="24,24" pos="5,-756" color="[white]" foregroundlayer="true" />
+			<label depth="4" pos="30,-280" width="250" height="30" text="{pricelabel}" justify="left" font_size="24" />
+			<label depth="4" pos="120,-281" width="50" height="30" text="{itemcost}{markup}" justify="right" font_size="24" />
+			<sprite depth="4" name="costIcon" sprite="ui_game_symbol_coin" size="24,24" pos="5,-280" color="[white]" foregroundlayer="true" />
+			<!-- <sprite depth="80" name="weighticon" sprite="ui_game_symbol_pack_mule" size="24,24" pos="350,-650" color="[white]" foregroundlayer="true" /> -->
+
 		</panel>
 
 		<rect name="contentInfo" height="346" depth="1" pos="5,-50" >
@@ -1210,6 +1220,8 @@
 				<sprite depth="12" name="durabilityBackground" height="20" width="165" color="48,48,48,255" type="sliced" pos="5, -195" visible="{hasdurability}"/>
 				<filledsprite depth="14" name="durabilityBar" height="20" width="165" color="{durabilitycolor}" type="filled" pos="5, -195" fill="{durabilityfill}" visible="{hasdurability}" />
 				<label depth="16" name="durabilityValue" pos="5,-180" width="155" height="32" text="{durabilitytext}" font_size="30" justify="{durabilityjustify}" effect="outline" visible="{#!hasdurability}"/>
+				<label depth="16" name="ItemsWeightname" pos="100,0" width="75" height="32" text="Item Weight" justify="right" font_size="20"/>
+				<label depth="16" name="ItemsWeight" pos="90,-20" width="75" height="32" text="{ItemsWeight}/{cvar(MaxEncumbrancecvar)}" justify="right" font_size="20"/>
 			</rect>
 
 			<!-- <sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="0,-130" width="153" height="216" color="[black]" type="sliced" fillcenter="false" /> -->
@@ -1241,11 +1253,10 @@
 				<button depth="4" name="descriptionButton" style="icon30px, press" pos="40,-6" sprite="ui_game_symbol_book" hoverscale="1" tooltip="Description" tooltip_key="lblDescription" sound="[paging_click]" />
 			</rect>
 
-			<rect depth="1" pos="0,-320" name="description" width="330" height="423" visible="{# itemstattitle1 == ''}">
-				<sprite depth="2" pos="1,-1" width="328" height="421" color="[darkGrey]" type="sliced" globalopacity="true" />
-				<sprite depth="1" name="backgroundMain" sprite="menu_empty3px" pos="0,0" width="330" height="423" color="[black]" type="sliced" fillcenter="false" />
-
-				<label depth="3" name="descriptionText" pos="5,-5" text="{itemdescription}" width="320" height="413" justify="center" font_size="22" parse_actions="true" />
+			<rect depth="1" pos="0,-320" name="description" width="330" height="250" visible="{# itemstattitle1 == ''}">
+				<sprite depth="2" pos="1,-1" width="328" height="250" color="[darkGrey]" type="sliced" globalopacity="true" />
+				<sprite depth="1" name="backgroundMain" sprite="menu_empty3px" pos="0,0" width="330" height="200" color="[black]" type="sliced" fillcenter="false" />
+				<label depth="3" name="descriptionText" pos="5,-5" text="{itemdescription}" width="320" height="200" justify="center" font_size="22" parse_actions="true" />
 			</rect>
 
 			<rect depth="1" pos="0,-320" name="description" width="330" height="423" visible="{# itemstattitle1 != ''}">
@@ -1265,9 +1276,10 @@
 				<AX_Item_Desc depth="5" pos="0,-168" 	text="{itemdescription}" height="255" visible="{# itemstattitle6 != '' and itemstattitle7 == ''}" />
 				<AX_Item_Desc depth="5" pos="0,-196" 	text="{itemdescription}" height="227" visible="{# itemstattitle7 != ''}" />
 			</rect>
+			
 
 			<grid name="parts" rows="1" cols="6" pos="3,-265" cell_width="55" cell_height="55" repeat_content="true" controller="PartList" visible="{isnotcomparing}">
-				<AX_item_stack_mods name="0"/>
+				<SNJ_item_stack_mods name="0"/>
 			</grid>
 			<rect visible="{iscomparing}" pos="0,-260" width="330" height="52">
 				<sprite depth="1" color="[mediumGrey]" type="sliced" globalopacity="true" />
@@ -1641,7 +1653,7 @@
 		<rect name="content" depth="0" pos="0,-25" height="70" disablefallthrough="true">
 
 			<grid name="inventory" rows="1" cols="3" pos="6,100" cell_width="70" cell_height="70" controller="WorkstationToolGrid" repeat_content="true" required_tools="toolCookingPot,toolCookingGrill,kettle" required_tools_only="true">
-				<AX_item_stack controller="RequiredItemStack" name="0"/>
+				<SNJ_item_stack controller="RequiredItemStack" name="0"/>
 			</grid>
 		</rect>
 		</rect>
@@ -1657,7 +1669,7 @@
 		<rect name="content" depth="0" pos="0,-25" height="70" disablefallthrough="true">
 
 			<grid name="inventory" rows="1" cols="2" pos="6,100" cell_width="70" cell_height="70" controller="WorkstationToolGrid" repeat_content="true" required_tools="toolCookingPot,kettle" required_tools_only="true">
-				<AX_item_stack controller="RequiredItemStack" name="0"/>
+				<SNJ_item_stack controller="RequiredItemStack" name="0"/>
 			</grid>
 		</rect>
 		</rect>
@@ -1674,7 +1686,7 @@
 		<rect name="content" depth="0" pos="0,-25" height="70" disablefallthrough="true">
 
 			<grid name="inventory" rows="1" cols="4" pos="6,100" cell_width="70" cell_height="70" controller="WorkstationToolGrid" repeat_content="true" required_tools="stockpot,fryingpan,kettle,toolBakingPan" required_tools_only="true">
-				<AX_item_stack controller="RequiredItemStack" name="0"/>
+				<SNJ_item_stack controller="RequiredItemStack" name="0"/>
 			</grid>
 		</rect>
 		</rect>
@@ -1690,7 +1702,7 @@
 		<rect name="content" depth="0" pos="0,-25" height="70" disablefallthrough="true">
 
 			<grid name="inventory" rows="1" cols="1" pos="6,100" cell_width="70" cell_height="70" controller="WorkstationToolGrid" repeat_content="true" required_tools="kettle" required_tools_only="true">
-				<AX_item_stack controller="RequiredItemStack" name="0"/>
+				<SNJ_item_stack controller="RequiredItemStack" name="0"/>
 			</grid>
 		</rect>
 		</rect>
@@ -1708,7 +1720,7 @@
 		<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="0,-20" height="2" color="0,0,0,1" type="sliced" fillcenter="false" />
 		<rect name="content" depth="1" pos="0,65" height="153">
 			<grid depth="7" rows="1" cols="3" pos="6,0" cell_width="70" cell_height="70" controller="WorkstationMaterialInputGrid" repeat_content="true">
-				<AX_item_stack name="0"/>
+				<SNJ_item_stack name="0"/>
 			</grid>
 		</rect>
 
@@ -1733,7 +1745,7 @@
 		<rect name="content" depth="0" pos="0,-25" height="70" disablefallthrough="true">
 			<grid name="inventory" rows="1" cols="3" pos="6,0" cell_width="70" cell_height="70" controller="WorkstationToolGrid" repeat_content="true"
 			required_tools="toolBellows,toolAnvil,toolForgeCrucible" required_tools_only="true">
-				<AX_item_stack controller="RequiredItemStack" name="0"/>
+				<SNJ_item_stack controller="RequiredItemStack" name="0"/>
 			</grid>
 		</rect>
 		</rect>
@@ -1754,7 +1766,7 @@
 		<rect name="content" depth="0" pos="279,-25" height="70" >
 			<rect disablefallthrough="true">
 				<grid rows="1" cols="2" pos="6,0" cell_width="70" cell_height="70" controller="WorkstationFuelGrid" repeat_content="true">
-					<AX_item_stack name="0"/>
+					<SNJ_item_stack name="0"/>
 				</grid>
 			</rect>
 			<grid name="slot_preview" depth="1" rows="1" cols="2" pos="6,0" cell_width="70" cell_height="70" controller="SlotPreview">
@@ -2280,13 +2292,7 @@
 					<label depth="5" name="TextContent" pos="465,-10" font_size="15" color="255,255,255,{cvar(TacticalMachineGunKillDisplay)}" justify="center" pivot="topleft" text="{cvar(HOH_MachineGun_lvl)}"/>				
 				</rect>
 				
-				<rect pos="0,-33">
-					<sprite depth="1" name="itemPreview" pos="818,-4" width="40" height="40" atlas="ItemIconAtlas" sprite="5thdayAR15" color="{itemicontint}" pivot="center" visible="{cvar(5thdayAR15KillDisplay:true;false;false)}" foregroundlayer="true"/>
-					<sprite depth="0" name="windowicon" style="icon32px" pos="818,-4" pivot="center" justify="center" width="57" height="57" fillcenter="true" sprite="ui_game_filled_circle" color="[darkestGrey]" visible="{cvar(5thdayAR15KillDisplay:true;false;false)}"/>
-					<sprite depth="-1" name="windowicon" style="icon32px" pos="818,-4" pivot="center" justify="center" width="60" height="60" fillcenter="false" sprite="ui_game_filled_circle" color="100,100,100,255" visible="{cvar(5thdayAR15KillDisplay:true;false;false)}"/>				
-					<sprite depth="-1" name="windowicon" style="icon32px" pos="818,-4" pivot="center" justify="center" width="60" height="60" type="filled" fill="{cvar(HOH_MachineGun_lvl_Next_Display)}" filldirection="radial360" fillcenter="false" sprite="ui_game_filled_circle" color="0,255,0,255" visible="{cvar(5thdayAR15KillDisplay:true;false;false)}"/>	
-					<label depth="5" name="TextContent" pos="465,-10" font_size="15" color="255,255,255,{cvar(5thdayAR15KillDisplay)}" justify="center" pivot="topleft" text="{cvar(HOH_MachineGun_lvl)}"/>				
-				</rect>
+				
 
 
 
@@ -2902,7 +2908,7 @@
 		<rect name="content" depth="0" pos="279,75" height="70" >
 			<rect disablefallthrough="true">
 				<grid rows="1" cols="2" pos="6,0" cell_width="70" cell_height="70" controller="WorkstationFuelGrid" repeat_content="true">
-					<AX_item_stack name="0"/>
+					<SNJ_item_stack name="0"/>
 				</grid>
 			</rect>
 			<grid name="slot_preview" depth="1" rows="1" cols="2" pos="6,0" cell_width="70" cell_height="70" controller="SlotPreview">
@@ -2947,7 +2953,7 @@
 		<rect name="content" depth="0" pos="0,75" height="70" disablefallthrough="true">
 			<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" height="70" color="0,0,0,1" type="sliced" fillcenter="false" />
 			<grid depth="10" name="inventory" rows="1" cols="6" pos="6,0" cell_width="70" cell_height="70" controller="WorkstationOutputGrid" repeat_content="true">
-				<AX_item_stack name="0"/>
+				<SNJ_item_stack name="0"/>
 			</grid>
 		</rect>
 		</rect>
@@ -3050,10 +3056,20 @@
 				<button depth="4" name="descriptionButton" style="icon30px, press" pos="40,-6" sprite="ui_game_symbol_book" hoverscale="1" tooltip_key="lblBookDesc" sound="[paging_click]" />
 				<button depth="4" name="showunlocksButton" style="icon30px, press" pos="75,-5" sprite="ui_game_symbol_unlock" hoverscale="1" tooltip_key="xuiSkillUnlocks" sound="[paging_click]" visible="{showunlockedbytab}" />
 			</rect>
-			<rect depth="15" pos="0,-223" name="unlockedBy" width="330" height="435" visible="{showunlockedbytab}">
-				<grid rows="1" width="330" height="435" cell_height="87" cell_width="330" controller="UnlockByList" arrangement="vertical">
-					<unlocked_by_row name="1"/>
-				</grid>
+			<rect>
+				<rect depth="15"  pos="0,-223" name="CraftIn" width="330" height="50" anchor="CenterTop">
+						<label depth="2" name="requiredToolTextMain" width="330" height="20" text="{craftedin}" font_size="20" upper_case="true"  justify="center"/>
+				</rect>
+				<rect name="requiredToolOverlay" pos="0,-253">
+					<sprite size="24,24" depth="8" name="requiredToolCheckmark" pos="5,-2" sprite="ui_game_symbol_check" color="[red]"/>
+					<label depth="20" pos="25,-1" name="requiredToolText" width="330" height="22" text="Required" text_key="xuiRequired" font_size="22" upper_case="true" justify="center"/>
+				</rect>
+				<rect depth="15" pos="0,-283" name="unlockedBy" width="330" height="90" visible="{showunlockedbytab}">
+					<grid rows="1" width="330" height="90" cell_height="87" cell_width="330" controller="UnlockByList" arrangement="vertical">
+						<unlocked_by_row name="1"/>
+					</grid>
+				</rect>
+				
 			</rect>
 			<rect depth="4" width="330" pos="0,{# showunlockedbytab ? -290 : -273}">
 				<rect depth="1" pos="0,0" name="ingredients" width="330" height="164" >
@@ -3072,10 +3088,7 @@
 						<ingredient_row name="12"/>
 					</grid>
 				</rect>
-			<rect pos="0,30" name="requiredToolOverlay">
-				<sprite size="24,24" depth="8" name="requiredToolCheckmark" pos="5,-2" sprite="ui_game_symbol_check" color="[red]"/>
-				<label depth="20" pos="25,-1" name="requiredToolText" width="330" height="22" text="Required" text_key="xuiRequired" font_size="22" upper_case="true" justify="center"/>
-			</rect>
+			
 				<rect depth="20" pos="0,-250" name="description" width="330" height="{# showunlockedbytab ? 150 : 175}" >
 					<sprite depth="20" name="backgroundMain" sprite="menu_empty3px" pos="0,0" width="330" height="{# showunlockedbytab ? 150 : 175}" color="[black]" type="sliced" fillcenter="false" />
 					<rect visible="true">
@@ -3101,10 +3114,10 @@
 			<!--<label name="burnTimeLeft" depth="3" width="70" height="26" text="00:00" pos="213,-45" font_size="16" justify="center" />-->
 		<!--</panel>-->
 
-		<rect name="content" depth="-5" pos="212,-22" height="2" >
+		<rect name="content" depth="-5" pos="2012,-22" height="2" >
 			<rect disablefallthrough="true">
 				<grid rows="1" cols="1"  cell_width="2" cell_height="2" controller="WorkstationFuelGrid" repeat_content="true">
-					<AX_item_stack name="0"/>
+					<SNJ_item_stack name="0"/>
 				</grid>
 			</rect>
 			
@@ -3136,15 +3149,15 @@
 			<label name="burnTimeLeft" depth="3" width="70" height="26" text="00:00" pos="213,-33" font_size="20" justify="center" />
 		</panel>
 
-		<rect name="content" depth="0" pos="279,-25" height="70" >
-			<rect disablefallthrough="true">
-				<grid rows="1" cols="1" pos="6,0" cell_width="70" cell_height="70" controller="WorkstationFuelGrid" repeat_content="true">
-					<AX_item_stack name="0"/>
+		<rect name="content" depth="0" pos="2013,-62" height="70" >
+			<rect disablefallthrough="true" depth="0">
+				<grid depth="0" rows="1" cols="1" pos="6,0" cell_width="70" cell_height="70" controller="WorkstationFuelGrid" repeat_content="true">
+					<SNJ_item_stack name="0" depth="0"/>
 				</grid>
 			</rect>
-			<grid name="slot_preview" depth="1" rows="1" cols="1" pos="6,0" cell_width="70" cell_height="70" controller="SlotPreview">
+			<grid name="slot_preview" depth="0" rows="1" cols="1" pos="6,0" cell_width="70" cell_height="70" controller="SlotPreview">
 				<rect>
-					<sprite name="slot" depth="2" width="64" height="64" sprite="noItem" atlas="ItemIconAtlasGreyscale" pos="35,-35" pivot="center" foregroundlayer="true"/>
+					<sprite name="slot" depth="0" width="64" height="64" sprite="noItem" atlas="ItemIconAtlasGreyscale" pos="35,-35" pivot="center" foregroundlayer="true"/>
 				</rect>
 				
 			</grid>
@@ -3180,7 +3193,7 @@
 		<rect name="content" depth="0" pos="279,-25" height="70" >
 			<rect disablefallthrough="true">
 				<grid rows="1" cols="1" pos="6,0" cell_width="70" cell_height="70" controller="WorkstationFuelGrid" repeat_content="true">
-					<AX_item_stack name="0"/>
+					<SNJ_item_stack name="0"/>
 				</grid>
 			</rect>
 			<grid name="slot_preview" depth="1" rows="1" cols="1" pos="6,0" cell_width="70" cell_height="70" controller="SlotPreview">
@@ -3470,7 +3483,11 @@
 </append>		 -->
 			
 		
-
+			<!-- <insertAfter xpath="//window[@name='craftingInfoPanel']/rect/rect[@name='contentCraftingInfo']/rect[@name='searchControls']">
+				<rect depth="15"  pos="0,-223" name="CraftIn" width="330" height="50" anchor="CenterTop">
+					<label depth="2" name="requiredToolTextMain" width="330" height="20" text="{craftedin}" font_size="20" upper_case="true"  justify="center"/>
+				</rect>
+			</insertAfter> -->
 
 
 

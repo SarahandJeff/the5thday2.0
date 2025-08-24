@@ -1,0 +1,691 @@
+<Config>
+
+<append xpath="/dialogs">
+
+	<dialog id="ritual1" startstatementid="start">
+	
+		<statement id="start" text="ZombieINC_Dialog_Ritual_Start">
+			<response_entry id="jobsnone" />
+			<response_entry id="jobshave1" />		
+			<response_entry id="StartRitual" />
+			<response_entry id="UpgradeRitual" />
+			<!--<response_entry id="RitualStarted" />-->
+			<response_entry id="jobshavenotallowed" />
+			<response_entry id="pick" />
+			<response_entry id="resetallprogress" />
+			<response_entry id="done" />
+		</statement>
+		
+		<response id="nevermind" text="ZombieINC_Dialog_Ritual_NeverMind" nextstatementid="start" />
+
+		<statement id="currentjobs1" text="ZombieINC_Dialog_Ritual_QuestList" nextstatementid="start" >	
+			<quest_entry listindex="0" tier="1" />
+			<quest_entry listindex="1" tier="1" />
+			<quest_entry listindex="2" tier="1" />
+			<quest_entry listindex="3" tier="1" />
+			<quest_entry listindex="4" tier="1" />
+			<response_entry id="nevermind" />
+		</statement>
+		<response id="jobshave1" text="ZombieINC_Dialog_Ritual_Quest" nextstatementid="currentjobs1" >
+			<requirement type="QuestStatus" value="NotStarted" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCTC2COMPLETED" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCRitualStarted" value="1" requirementtype="Hide" />
+		</response>
+		
+		<response id="StartRitual" text="ZombieINC_Dialog_Ritual_StartRitual" >
+			<requirement type="CheckCVar" id="ZINCRitualStarted" value="0" requirementtype="Hide" />
+			<!--<requirement type="CheckCVar" id="ZINCRitualLevel" value="0" requirementtype="Hide" />-->
+			<requirement type="CheckCVar" id="ZINCTC3COMPLETED" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCRitualLevel2" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCRitualLevel3" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCRitualLevel4" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCRitualLevel5" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCRitualLevel6" value="0" requirementtype="Hide" />
+			<action type="AddBuff" id="ZombieINC_RitualStart1_Buff" />
+		</response>
+		<response id="UpgradeRitual" text="ZombieINC_Dialog_Ritual_StartUpgradeRitual" >
+			<requirement type="CheckCVar" id="ZINCTC3COMPLETED" value="1" requirementtype="Hide" />
+			<!--<requirement type="CheckCVar" id="ZINCRitualStarted" value="1" requirementtype="Hide" />-->
+			<action type="AddBuff" id="ZombieINC_RitualUpgrade1_Buff" />
+		</response>
+		<response id="RitualStarted" text="ZombieINC_Dialog_RitualStarted" nextstatementid="start" >
+			<!--<requirement type="Buff" id="ZombieINC_RitualStart_Buff" requirementtype="Hide" />-->
+			<requirement type="CheckCVar" id="ZINCRitualStarted" value="1" requirementtype="Hide" />
+			<!--<action type="AddQuest" id="zincpriest" />-->
+			<!--<action type="AddQuest" quest="zincpriest" listindex="0"/>-->
+		</response>	
+		<statement id="nojobs" text="ZombieINC_Dialog_Ritual_QuestInProgressNext" nextstatementid="start" />
+		<response id="jobsnone" text="ZombieINC_Dialog_Ritual_QuestInProgress" nextstatementid="nojobs" >
+			<requirement type="QuestStatus" value="InProgress" requirementtype="Hide" />
+		</response>
+		<statement id="jobsnotallowed" text="ZombieINC_Dialog_Ritual_DisableQuestingNext" nextstatementid="start" />
+		<response id="jobshavenotallowed" text="ZombieINC_Dialog_Ritual_DisableQuesting" nextstatementid="jobsnotallowed" >
+			<requirement type="CheckCVar" id="DisableQuesting" value="1" requirementtype="Hide" />
+		</response>		
+		<response id="pick" text="ZombieINC_Dialog_Ritual_Pickme">
+			<action type="AddBuff" id="ZombieINC_TheCult_RitualToPlayer1_Dialog_Buff" />
+		</response>
+		
+		<response id="resetallprogressyes" text="ZombieINC_Dialog_Ritual_resetallprogressyes">
+			<action type="AddBuff" id="ZombieINC_TheCult_ResetAllProgress_Dialog_Buff" />
+		</response>
+		<response id="resetallprogressno" text="ZombieINC_Dialog_Ritual_resetallprogressno"/>
+		<statement id="resetallprogress2" text="ZombieINC_Dialog_Ritual_resetallprogress2">
+			<response_entry id="resetallprogressyes" />
+			<response_entry id="resetallprogressno" />
+		</statement>
+		<response id="resetallprogress" text="ZombieINC_Dialog_Ritual_resetallprogress" nextstatementid="resetallprogress2">
+			<requirement type="CheckCVar" id="ZINCTC2COMPLETED" value="1" requirementtype="Hide" />
+		</response>
+		<response id="done" text="ZombieINC_Dialog_Ritual_done" />	
+	</dialog>
+	
+	
+	
+	<dialog id="ritual2" startstatementid="start">
+	
+		<statement id="start" text="ZombieINC_Dialog_Ritual_Start">
+			<response_entry id="jobsnone" />
+			<response_entry id="jobshave1" />		
+			<response_entry id="StartRitual" />
+			<response_entry id="UpgradeRitual" />
+			<response_entry id="DowngradeRitual" />
+			<!--<response_entry id="RitualStarted" />-->
+			<response_entry id="jobshavenotallowed" />
+			<response_entry id="pick" />
+			<response_entry id="resetallprogress" />
+			<response_entry id="done" />
+		</statement>
+		
+		<response id="nevermind" text="ZombieINC_Dialog_Ritual_NeverMind" nextstatementid="start" />
+
+		<statement id="currentjobs1" text="ZombieINC_Dialog_Ritual_QuestList" nextstatementid="start" >	
+			<quest_entry listindex="0" tier="1" />
+			<quest_entry listindex="1" tier="1" />
+			<quest_entry listindex="2" tier="1" />
+			<quest_entry listindex="3" tier="1" />
+			<quest_entry listindex="4" tier="1" />
+			<response_entry id="nevermind" />
+		</statement>
+		<response id="jobshave1" text="ZombieINC_Dialog_Ritual_Quest" nextstatementid="currentjobs1" >
+			<requirement type="QuestStatus" value="NotStarted" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCTC3COMPLETED" value="1" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCTC4COMPLETED" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCRitualStarted" value="1" requirementtype="Hide" />
+		</response>
+		
+		<response id="StartRitual" text="ZombieINC_Dialog_Ritual_StartRitual" >
+			<requirement type="CheckCVar" id="ZINCRitualStarted" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCRitualLevel" value="2" requirementtype="Hide" />
+			<action type="AddBuff" id="ZombieINC_RitualStart2_Buff" />
+		</response>
+		<response id="UpgradeRitual" text="ZombieINC_Dialog_Ritual_StartUpgradeRitual" >
+			<requirement type="CheckCVar" id="ZINCTC5COMPLETED" value="1" requirementtype="Hide" />
+			<action type="AddBuff" id="ZombieINC_RitualUpgrade2_Buff" />
+		</response>
+		<response id="DowngradeRitual" text="ZombieINC_Dialog_Ritual_StartDowngradeRitual" >
+			<requirement type="CheckCVar" id="ZINCTC3COMPLETED" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCTC5COMPLETED" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCRitualLevel2" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCRitualLevel3" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCRitualLevel4" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCRitualLevel5" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCRitualLevel6" value="0" requirementtype="Hide" />
+			<action type="AddBuff" id="ZombieINC_RitualDowngrade2_Buff" />
+		</response>
+		<response id="RitualStarted" text="ZombieINC_Dialog_RitualStarted" nextstatementid="start" >
+			<!--<requirement type="Buff" id="ZombieINC_RitualStart_Buff" requirementtype="Hide" />-->
+			<requirement type="CheckCVar" id="ZINCRitualStarted" value="1" requirementtype="Hide" />
+			<!--<action type="AddQuest" id="zincpriest" />-->
+			<!--<action type="AddQuest" quest="zincpriest" listindex="0"/>-->
+		</response>	
+		<statement id="nojobs" text="ZombieINC_Dialog_Ritual_QuestInProgressNext" nextstatementid="start" />
+		<response id="jobsnone" text="ZombieINC_Dialog_Ritual_QuestInProgress" nextstatementid="nojobs" >
+			<requirement type="QuestStatus" value="InProgress" requirementtype="Hide"  />
+		</response>
+		<statement id="jobsnotallowed" text="ZombieINC_Dialog_Ritual_DisableQuestingNext" nextstatementid="start" />
+		<response id="jobshavenotallowed" text="ZombieINC_Dialog_Ritual_DisableQuesting" nextstatementid="jobsnotallowed" >
+			<requirement type="CheckCVar" id="DisableQuesting" value="1" requirementtype="Hide" />
+		</response>		
+		<response id="pick" text="ZombieINC_Dialog_Ritual_Pickme">
+			<action type="AddBuff" id="ZombieINC_TheCult_RitualToPlayer2_Dialog_Buff" />
+		</response>
+		<response id="resetallprogressyes" text="ZombieINC_Dialog_Ritual_resetallprogressyes">
+			<action type="AddBuff" id="ZombieINC_TheCult_ResetAllProgress_Dialog_Buff" />
+		</response>
+		<response id="resetallprogressno" text="ZombieINC_Dialog_Ritual_resetallprogressno"/>
+		<statement id="resetallprogress2" text="ZombieINC_Dialog_Ritual_resetallprogress2">
+			<response_entry id="resetallprogressyes" />
+			<response_entry id="resetallprogressno" />
+		</statement>
+		<response id="resetallprogress" text="ZombieINC_Dialog_Ritual_resetallprogress" nextstatementid="resetallprogress2">
+			<requirement type="CheckCVar" id="ZINCTC2COMPLETED" value="1" requirementtype="Hide" />
+		</response>
+		<response id="done" text="ZombieINC_Dialog_Ritual_done" />	
+	</dialog>
+	
+	
+	
+	<dialog id="ritual3" startstatementid="start">
+	
+		<statement id="start" text="ZombieINC_Dialog_Ritual_Start">
+			<response_entry id="jobsnone" />
+			<response_entry id="jobshave1" />		
+			<response_entry id="StartRitual" />
+			<response_entry id="UpgradeRitual" />
+			<response_entry id="DowngradeRitual" />
+			<!--<response_entry id="RitualStarted" />-->
+			<response_entry id="jobshavenotallowed" />
+			<response_entry id="pick" />
+			<response_entry id="resetallprogress" />
+			<response_entry id="done" />
+		</statement>
+		
+		<response id="nevermind" text="ZombieINC_Dialog_Ritual_NeverMind" nextstatementid="start" />
+
+		<statement id="currentjobs1" text="ZombieINC_Dialog_Ritual_QuestList" nextstatementid="start" >	
+			<quest_entry listindex="0" tier="1" />
+			<quest_entry listindex="1" tier="1" />
+			<quest_entry listindex="2" tier="1" />
+			<quest_entry listindex="3" tier="1" />
+			<quest_entry listindex="4" tier="1" />
+			<response_entry id="nevermind" />
+		</statement>
+		<response id="jobshave1" text="ZombieINC_Dialog_Ritual_Quest" nextstatementid="currentjobs1" >
+			<requirement type="QuestStatus" value="NotStarted" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCTC5COMPLETED" value="1" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCTC6COMPLETED" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCRitualStarted" value="1" requirementtype="Hide" />
+		</response>
+		
+		<response id="StartRitual" text="ZombieINC_Dialog_Ritual_StartRitual" >
+			<requirement type="CheckCVar" id="ZINCRitualStarted" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCRitualLevel" value="3" requirementtype="Hide" />
+			<action type="AddBuff" id="ZombieINC_RitualStart3_Buff" />
+		</response>
+		<response id="UpgradeRitual" text="ZombieINC_Dialog_Ritual_StartUpgradeRitual" >
+			<requirement type="CheckCVar" id="ZINCTC7COMPLETED" value="1" requirementtype="Hide" />
+			<action type="AddBuff" id="ZombieINC_RitualUpgrade3_Buff" />
+		</response>
+		<response id="DowngradeRitual" text="ZombieINC_Dialog_Ritual_StartDowngradeRitual" >
+			<requirement type="CheckCVar" id="ZINCTC5COMPLETED" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCTC7COMPLETED" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCRitualLevel3" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCRitualLevel4" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCRitualLevel5" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCRitualLevel6" value="0" requirementtype="Hide" />
+			<action type="AddBuff" id="ZombieINC_RitualDowngrade3_Buff" />
+		</response>
+		<response id="RitualStarted" text="ZombieINC_Dialog_RitualStarted" nextstatementid="start" >
+			<!--<requirement type="Buff" id="ZombieINC_RitualStart_Buff" requirementtype="Hide" />-->
+			<requirement type="CheckCVar" id="ZINCRitualStarted" value="1" requirementtype="Hide" />
+			<!--<action type="AddQuest" id="zincpriest" />-->
+			<!--<action type="AddQuest" quest="zincpriest" listindex="0"/>-->
+		</response>	
+		<statement id="nojobs" text="ZombieINC_Dialog_Ritual_QuestInProgressNext" nextstatementid="start" />
+		<response id="jobsnone" text="ZombieINC_Dialog_Ritual_QuestInProgress" nextstatementid="nojobs" >
+			<requirement type="QuestStatus" value="InProgress" requirementtype="Hide" />
+		</response>
+		<statement id="jobsnotallowed" text="ZombieINC_Dialog_Ritual_DisableQuestingNext" nextstatementid="start" />
+		<response id="jobshavenotallowed" text="ZombieINC_Dialog_Ritual_DisableQuesting" nextstatementid="jobsnotallowed" >
+			<requirement type="CheckCVar" id="DisableQuesting" value="1" requirementtype="Hide" />
+		</response>		
+		<response id="pick" text="ZombieINC_Dialog_Ritual_Pickme">
+			<action type="AddBuff" id="ZombieINC_TheCult_RitualToPlayer3_Dialog_Buff" />
+		</response>
+		<response id="resetallprogressyes" text="ZombieINC_Dialog_Ritual_resetallprogressyes">
+			<action type="AddBuff" id="ZombieINC_TheCult_ResetAllProgress_Dialog_Buff" />
+		</response>
+		<response id="resetallprogressno" text="ZombieINC_Dialog_Ritual_resetallprogressno"/>
+		<statement id="resetallprogress2" text="ZombieINC_Dialog_Ritual_resetallprogress2">
+			<response_entry id="resetallprogressyes" />
+			<response_entry id="resetallprogressno" />
+		</statement>
+		<response id="resetallprogress" text="ZombieINC_Dialog_Ritual_resetallprogress" nextstatementid="resetallprogress2">
+			<requirement type="CheckCVar" id="ZINCTC2COMPLETED" value="1" requirementtype="Hide" />
+		</response>
+		<response id="done" text="ZombieINC_Dialog_Ritual_done" />	
+	</dialog>
+	
+	
+	
+	<dialog id="ritual4" startstatementid="start">
+	
+		<statement id="start" text="ZombieINC_Dialog_Ritual_Start">
+			<response_entry id="jobsnone" />
+			<response_entry id="jobshave1" />		
+			<response_entry id="StartRitual" />
+			<response_entry id="UpgradeRitual" />
+			<response_entry id="DowngradeRitual" />
+			<!--<response_entry id="RitualStarted" />-->
+			<response_entry id="jobshavenotallowed" />
+			<response_entry id="pick" />
+			<response_entry id="resetallprogress" />
+			<response_entry id="done" />
+		</statement>
+		
+		<response id="nevermind" text="ZombieINC_Dialog_Ritual_NeverMind" nextstatementid="start" />
+
+		<statement id="currentjobs1" text="ZombieINC_Dialog_Ritual_QuestList" nextstatementid="start" >	
+			<quest_entry listindex="0" tier="1" />
+			<quest_entry listindex="1" tier="1" />
+			<quest_entry listindex="2" tier="1" />
+			<quest_entry listindex="3" tier="1" />
+			<quest_entry listindex="4" tier="1" />
+			<response_entry id="nevermind" />
+		</statement>
+		<response id="jobshave1" text="ZombieINC_Dialog_Ritual_Quest" nextstatementid="currentjobs1" >
+			<requirement type="QuestStatus" value="NotStarted" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCTC7COMPLETED" value="1" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCTC8COMPLETED" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCRitualStarted" value="1" requirementtype="Hide" />
+		</response>
+		
+		<response id="StartRitual" text="ZombieINC_Dialog_Ritual_StartRitual" >
+			<requirement type="CheckCVar" id="ZINCRitualStarted" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCRitualLevel" value="4" requirementtype="Hide" />
+			<action type="AddBuff" id="ZombieINC_RitualStart4_Buff" />
+		</response>
+		<response id="UpgradeRitual" text="ZombieINC_Dialog_Ritual_StartUpgradeRitual" >
+			<requirement type="CheckCVar" id="ZINCTC9COMPLETED" value="1" requirementtype="Hide" />
+			<action type="AddBuff" id="ZombieINC_RitualUpgrade4_Buff" />
+		</response>
+		<response id="DowngradeRitual" text="ZombieINC_Dialog_Ritual_StartDowngradeRitual" >
+			<requirement type="CheckCVar" id="ZINCTC7COMPLETED" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCTC9COMPLETED" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCRitualLevel4" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCRitualLevel5" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCRitualLevel6" value="0" requirementtype="Hide" />
+			<action type="AddBuff" id="ZombieINC_RitualDowngrade4_Buff" />
+		</response>
+		<response id="RitualStarted" text="ZombieINC_Dialog_RitualStarted" nextstatementid="start" >
+			<!--<requirement type="Buff" id="ZombieINC_RitualStart_Buff" requirementtype="Hide" />-->
+			<requirement type="CheckCVar" id="ZINCRitualStarted" value="1" requirementtype="Hide" />
+			<!--<action type="AddQuest" id="zincpriest" />-->
+			<!--<action type="AddQuest" quest="zincpriest" listindex="0"/>-->
+		</response>	
+		<statement id="nojobs" text="ZombieINC_Dialog_Ritual_QuestInProgressNext" nextstatementid="start" />
+		<response id="jobsnone" text="ZombieINC_Dialog_Ritual_QuestInProgress" nextstatementid="nojobs" >
+			<requirement type="QuestStatus" value="InProgress" requirementtype="Hide" />
+		</response>
+		<statement id="jobsnotallowed" text="ZombieINC_Dialog_Ritual_DisableQuestingNext" nextstatementid="start" />
+		<response id="jobshavenotallowed" text="ZombieINC_Dialog_Ritual_DisableQuesting" nextstatementid="jobsnotallowed" >
+			<requirement type="CheckCVar" id="DisableQuesting" value="1" requirementtype="Hide" />
+		</response>		
+		<response id="pick" text="ZombieINC_Dialog_Ritual_Pickme">
+			<action type="AddBuff" id="ZombieINC_TheCult_RitualToPlayer4_Dialog_Buff" />
+		</response>
+		<response id="resetallprogressyes" text="ZombieINC_Dialog_Ritual_resetallprogressyes">
+			<action type="AddBuff" id="ZombieINC_TheCult_ResetAllProgress_Dialog_Buff" />
+		</response>
+		<response id="resetallprogressno" text="ZombieINC_Dialog_Ritual_resetallprogressno"/>
+		<statement id="resetallprogress2" text="ZombieINC_Dialog_Ritual_resetallprogress2">
+			<response_entry id="resetallprogressyes" />
+			<response_entry id="resetallprogressno" />
+		</statement>
+		<response id="resetallprogress" text="ZombieINC_Dialog_Ritual_resetallprogress" nextstatementid="resetallprogress2">
+			<requirement type="CheckCVar" id="ZINCTC2COMPLETED" value="1" requirementtype="Hide" />
+		</response>
+		<response id="done" text="ZombieINC_Dialog_Ritual_done" />	
+	</dialog>
+	
+	
+	
+	<dialog id="ritual5" startstatementid="start">
+	
+		<statement id="start" text="ZombieINC_Dialog_Ritual_Start">
+			<response_entry id="jobsnone" />
+			<response_entry id="jobshave1" />		
+			<response_entry id="StartRitual" />
+			<response_entry id="UpgradeRitual" />
+			<response_entry id="DowngradeRitual" />
+			<!--<response_entry id="RitualStarted" />-->
+			<response_entry id="jobshavenotallowed" />
+			<response_entry id="pick" />
+			<response_entry id="resetallprogress" />
+			<response_entry id="done" />
+		</statement>
+		
+		<response id="nevermind" text="ZombieINC_Dialog_Ritual_NeverMind" nextstatementid="start" />
+
+		<statement id="currentjobs1" text="ZombieINC_Dialog_Ritual_QuestList" nextstatementid="start" >	
+			<quest_entry listindex="0" tier="1" />
+			<quest_entry listindex="1" tier="1" />
+			<quest_entry listindex="2" tier="1" />
+			<quest_entry listindex="3" tier="1" />
+			<quest_entry listindex="4" tier="1" />
+			<response_entry id="nevermind" />
+		</statement>
+		<response id="jobshave1" text="ZombieINC_Dialog_Ritual_QuestFinal" nextstatementid="currentjobs1" >
+			<requirement type="QuestStatus" value="NotStarted" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCTC9COMPLETED" value="1" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCTC10COMPLETED" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCRitualStarted" value="1" requirementtype="Hide" />
+		</response>
+		
+		<response id="StartRitual" text="ZombieINC_Dialog_Ritual_StartRitual" >
+			<requirement type="CheckCVar" id="ZINCRitualStarted" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCRitualLevel" value="5" requirementtype="Hide" />
+			<action type="AddBuff" id="ZombieINC_RitualStart5_Buff" />
+		</response>
+		<response id="UpgradeRitual" text="ZombieINC_Dialog_Ritual_StartUpgradeRitual" >
+			<requirement type="CheckCVar" id="ZINCTC10COMPLETED" value="1" requirementtype="Hide" />
+			<action type="AddBuff" id="ZombieINC_RitualUpgrade5_Buff" />
+		</response>
+		<response id="DowngradeRitual" text="ZombieINC_Dialog_Ritual_StartDowngradeRitual" >
+			<requirement type="CheckCVar" id="ZINCTC9COMPLETED" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCTC10COMPLETED" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCRitualLevel5" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCRitualLevel6" value="0" requirementtype="Hide" />
+			<action type="AddBuff" id="ZombieINC_RitualDowngrade5_Buff" />
+		</response>
+		<response id="RitualStarted" text="ZombieINC_Dialog_RitualStarted" nextstatementid="start" >
+			<!--<requirement type="Buff" id="ZombieINC_RitualStart_Buff" requirementtype="Hide" />-->
+			<requirement type="CheckCVar" id="ZINCRitualStarted" value="1" requirementtype="Hide" />
+			<!--<action type="AddQuest" id="zincpriest" />-->
+			<!--<action type="AddQuest" quest="zincpriest" listindex="0"/>-->
+		</response>	
+		<statement id="nojobs" text="ZombieINC_Dialog_Ritual_QuestInProgressNext" nextstatementid="start" />
+		<response id="jobsnone" text="ZombieINC_Dialog_Ritual_QuestInProgress" nextstatementid="nojobs" >
+			<requirement type="QuestStatus" value="InProgress" requirementtype="Hide" />
+		</response>
+		<statement id="jobsnotallowed" text="ZombieINC_Dialog_Ritual_DisableQuestingNext" nextstatementid="start" />
+		<response id="jobshavenotallowed" text="ZombieINC_Dialog_Ritual_DisableQuesting" nextstatementid="jobsnotallowed" >
+			<requirement type="CheckCVar" id="DisableQuesting" value="1" requirementtype="Hide" />
+		</response>		
+		<response id="pick" text="ZombieINC_Dialog_Ritual_Pickme">
+			<action type="AddBuff" id="ZombieINC_TheCult_RitualToPlayer5_Dialog_Buff" />
+		</response>
+		<response id="resetallprogressyes" text="ZombieINC_Dialog_Ritual_resetallprogressyes">
+			<action type="AddBuff" id="ZombieINC_TheCult_ResetAllProgress_Dialog_Buff" />
+		</response>
+		<response id="resetallprogressno" text="ZombieINC_Dialog_Ritual_resetallprogressno"/>
+		<statement id="resetallprogress2" text="ZombieINC_Dialog_Ritual_resetallprogress2">
+			<response_entry id="resetallprogressyes" />
+			<response_entry id="resetallprogressno" />
+		</statement>
+		<response id="resetallprogress" text="ZombieINC_Dialog_Ritual_resetallprogress" nextstatementid="resetallprogress2">
+			<requirement type="CheckCVar" id="ZINCTC2COMPLETED" value="1" requirementtype="Hide" />
+		</response>
+		<response id="done" text="ZombieINC_Dialog_Ritual_done" />	
+	</dialog>
+	
+	<dialog id="ritual6" startstatementid="start">
+	
+		<statement id="start" text="ZombieINC_Dialog_Ritual_Start">
+			<!--<response_entry id="jobsnone" />
+			<response_entry id="jobshave1" />	-->	
+			<response_entry id="Finished" />
+			<response_entry id="StartRitual" />
+			<response_entry id="DowngradeRitual" />
+			<!--<response_entry id="UpgradeRitual" />-->
+			<!--<response_entry id="RitualStarted" />-->
+			<!--<response_entry id="jobshavenotallowed" />-->
+			<response_entry id="pick" />
+			<response_entry id="resetallprogress" />
+			<response_entry id="done" />
+		</statement>
+		
+		<response id="nevermind" text="ZombieINC_Dialog_Ritual_NeverMind" nextstatementid="start" />
+
+		<statement id="currentjobs1" text="ZombieINC_Dialog_Ritual_QuestList" nextstatementid="start" >	
+			<quest_entry listindex="0" tier="1" />
+			<quest_entry listindex="1" tier="1" />
+			<quest_entry listindex="2" tier="1" />
+			<quest_entry listindex="3" tier="1" />
+			<quest_entry listindex="4" tier="1" />
+			<response_entry id="nevermind" />
+		</statement>
+		<response id="jobshave1" text="ZombieINC_Dialog_Ritual_QuestFinal" nextstatementid="currentjobs1" >
+			<requirement type="QuestStatus" value="NotStarted" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCTC10COMPLETED" value="1" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCRitualStarted" value="1" requirementtype="Hide" />
+		</response>
+		
+		<response id="StartRitual" text="ZombieINC_Dialog_Ritual_StartRitual" >
+			<requirement type="CheckCVar" id="ZINCRitualStarted" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCRitualLevel" value="6" requirementtype="Hide" />
+			<action type="AddBuff" id="ZombieINC_RitualStart6_Buff" />
+		</response>
+		<response id="UpgradeRitual" text="ZombieINC_Dialog_Ritual_StartUpgradeRitual" >
+			<requirement type="CheckCVar" id="ZINCTC9COMPLETED" value="1" requirementtype="Hide" />
+			<action type="AddBuff" id="ZombieINC_RitualUpgrade5_Buff" />
+		</response>
+		<response id="DowngradeRitual" text="ZombieINC_Dialog_Ritual_StartDowngradeRitual" >
+			<requirement type="CheckCVar" id="ZINCRitualLevel6" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCTC10COMPLETED" value="0" requirementtype="Hide" />
+			<action type="AddBuff" id="ZombieINC_RitualDowngrade6_Buff" />
+		</response>
+		<response id="RitualStarted" text="ZombieINC_Dialog_RitualStarted" nextstatementid="start" >
+			<!--<requirement type="Buff" id="ZombieINC_RitualStart_Buff" requirementtype="Hide" />-->
+			<requirement type="CheckCVar" id="ZINCRitualStarted" value="1" requirementtype="Hide" />
+			<!--<action type="AddQuest" id="zincpriest" />-->
+			<!--<action type="AddQuest" quest="zincpriest" listindex="0"/>-->
+		</response>	
+		<statement id="nojobs" text="ZombieINC_Dialog_Ritual_QuestInProgressNext" nextstatementid="start" />
+		<response id="jobsnone" text="ZombieINC_Dialog_Ritual_QuestInProgress" nextstatementid="nojobs" >
+			<requirement type="QuestStatus" value="InProgress" requirementtype="Hide" />
+		</response>
+		<statement id="jobsnotallowed" text="ZombieINC_Dialog_Ritual_DisableQuestingNext" nextstatementid="start" />
+		<response id="jobshavenotallowed" text="ZombieINC_Dialog_Ritual_DisableQuesting" nextstatementid="jobsnotallowed" >
+			<requirement type="CheckCVar" id="DisableQuesting" value="1" requirementtype="Hide" />
+		</response>		
+		<response id="pick" text="ZombieINC_Dialog_Ritual_Pickme">
+			<action type="AddBuff" id="ZombieINC_TheCult_RitualToPlayer6_Dialog_Buff" />
+		</response>
+		<response id="resetallprogressyes" text="ZombieINC_Dialog_Ritual_resetallprogressyes">
+			<action type="AddBuff" id="ZombieINC_TheCult_ResetAllProgress_Dialog_Buff" />
+		</response>
+		<response id="resetallprogressno" text="ZombieINC_Dialog_Ritual_resetallprogressno"/>
+		<statement id="resetallprogress2" text="ZombieINC_Dialog_Ritual_resetallprogress2">
+			<response_entry id="resetallprogressyes" />
+			<response_entry id="resetallprogressno" />
+		</statement>
+		<response id="resetallprogress" text="ZombieINC_Dialog_Ritual_resetallprogress" nextstatementid="resetallprogress2">
+			<requirement type="CheckCVar" id="ZINCTC2COMPLETED" value="1" requirementtype="Hide" />
+		</response>
+		<response id="Finished" text="ZombieINC_Dialog_Ritual_Finished" >
+			<requirement type="CheckCVar" id="ZINCTC10COMPLETED" value="1" requirementtype="Hide" />
+		</response>	
+		<response id="done" text="ZombieINC_Dialog_Ritual_done" />	
+	</dialog>
+	
+	
+	<!--<dialog id="ritual" startstatementid="start">
+	
+		<statement id="start" text="ZombieINC_Dialog_Ritual_Start">
+			<response_entry id="jobsnone" />
+			<response_entry id="jobshave1" />		
+			<response_entry id="jobshave2" />
+			<response_entry id="jobshave3" />
+			<response_entry id="jobshave4" />
+			<response_entry id="jobshave5" />
+			<response_entry id="StartRitual" />
+			<!{1}**<response_entry id="RitualStarted" />**{1}>
+			<response_entry id="jobshavenotallowed" />
+			<response_entry id="pick" />
+			<response_entry id="resetallprogress" />
+			<!{1}**<response_entry id="resetquestlist" />**{1}>
+			<response_entry id="done" />
+		</statement>
+		
+		<response id="nevermind" text="ZombieINC_Dialog_Ritual_NeverMind" nextstatementid="start" />
+		
+		<response id="resetquestlist" text="dialog_trader_response_resetquests" >
+			<action type="Trader" id="reset_quests" />
+		</response>
+		
+		<statement id="currentjobs1" text="ZombieINC_Dialog_Ritual_QuestList" nextstatementid="start" >	
+			<quest_entry listindex="0" tier="1" />
+			<quest_entry listindex="1" tier="1" />
+			<quest_entry listindex="2" tier="1" />
+			<quest_entry listindex="3" tier="1" />
+			<quest_entry listindex="4" tier="1" />
+			<response_entry id="nevermind" />
+		</statement>
+		<response id="jobshave1" text="ZombieINC_Dialog_Ritual_Quest" nextstatementid="currentjobs1" >
+			<requirement type="QuestStatus" value="NotStarted" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCTC2COMPLETED" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCRitualStarted" value="1" requirementtype="Hide" />
+		</response>
+		
+		
+		<statement id="currentjobs2" text="ZombieINC_Dialog_Ritual_QuestList" nextstatementid="start" >
+			<quest_entry listindex="0" tier="2" />
+			<quest_entry listindex="1" tier="2" />
+			<quest_entry listindex="2" tier="2" />
+			<quest_entry listindex="3" tier="2" />
+			<quest_entry listindex="4" tier="2" />
+			<response_entry id="nevermind" />
+		</statement>
+		<response id="jobshave2" text="ZombieINC_Dialog_Ritual_Quest" nextstatementid="currentjobs2" >
+			<requirement type="QuestStatus" value="NotStarted" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCRitualStarted" value="1" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCTC4COMPLETED" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCTC3COMPLETED" value="1" requirementtype="Hide" />
+		</response>
+		
+		<statement id="currentjobs3" text="ZombieINC_Dialog_Ritual_QuestList" nextstatementid="start" >
+			<quest_entry listindex="0" tier="3" />
+			<quest_entry listindex="1" tier="3" />
+			<quest_entry listindex="2" tier="3" />
+			<quest_entry listindex="3" tier="3" />
+			<quest_entry listindex="4" tier="3" />
+			<response_entry id="nevermind" />
+		</statement>
+		<response id="jobshave3" text="ZombieINC_Dialog_Ritual_Quest" nextstatementid="currentjobs3" >
+			<requirement type="QuestStatus" value="NotStarted" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCRitualStarted" value="1" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCTC6COMPLETED" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCTC5COMPLETED" value="1" requirementtype="Hide" />
+		</response>
+		
+		<statement id="currentjobs4" text="ZombieINC_Dialog_Ritual_QuestList" nextstatementid="start" >
+			<quest_entry listindex="0" tier="4" />
+			<quest_entry listindex="1" tier="4" />
+			<quest_entry listindex="2" tier="4" />
+			<quest_entry listindex="3" tier="4" />
+			<quest_entry listindex="4" tier="4" />
+			<response_entry id="nevermind" />
+		</statement>
+		<response id="jobshave4" text="ZombieINC_Dialog_Ritual_Quest" nextstatementid="currentjobs4" >
+			<requirement type="QuestStatus" value="NotStarted" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCRitualStarted" value="1" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCTC8COMPLETED" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCTC7COMPLETED" value="1" requirementtype="Hide" />
+		</response>
+		
+		<statement id="currentjobs5" text="ZombieINC_Dialog_Ritual_QuestList" nextstatementid="start" >
+			<quest_entry listindex="0" tier="5" />
+			<quest_entry listindex="1" tier="5" />
+			<quest_entry listindex="2" tier="5" />
+			<quest_entry listindex="3" tier="5" />
+			<quest_entry listindex="4" tier="5" />
+			<response_entry id="nevermind" />
+		</statement>
+		<response id="jobshave5" text="ZombieINC_Dialog_Ritual_Quest" nextstatementid="currentjobs5" >
+			<requirement type="QuestStatus" value="NotStarted" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCRitualStarted" value="1" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCTC10COMPLETED" value="0" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="ZINCTC9COMPLETED" value="1" requirementtype="Hide" />
+		</response>
+		
+		<response id="StartRitual" text="ZombieINC_Dialog_Ritual_StartRitual" >
+			<requirement type="CheckCVar" id="ZINCRitualStarted" value="0" requirementtype="Hide" />
+			<action type="AddBuff" id="ZombieINC_RitualStart1_Buff" />
+		</response>
+		<response id="RitualStarted" text="ZombieINC_Dialog_RitualStarted" nextstatementid="start" >
+			<!{1}**<requirement type="Buff" id="ZombieINC_RitualStart_Buff" requirementtype="Hide" />**{1}>
+			<requirement type="CheckCVar" id="ZINCRitualStarted" value="1" requirementtype="Hide" />
+			<!{1}**<action type="AddQuest" id="zincpriest" />**{1}>
+			<!{1}**<action type="AddQuest" quest="zincpriest" listindex="0"/>**{1}>
+		</response>
+		
+		
+		
+		<statement id="nojobs" text="ZombieINC_Dialog_Ritual_QuestInProgressNext" nextstatementid="start" />
+		
+		<response id="jobsnone" text="ZombieINC_Dialog_Ritual_QuestInProgress" nextstatementid="nojobs" >
+			<requirement type="QuestStatus" value="InProgress" requirementtype="Hide" tag="thecult" />
+		</response>
+		
+		<statement id="jobsnotallowed" text="ZombieINC_Dialog_Ritual_DisableQuestingNext" nextstatementid="start" />
+		
+		<response id="jobshavenotallowed" text="ZombieINC_Dialog_Ritual_DisableQuesting" nextstatementid="jobsnotallowed" >
+			<requirement type="CheckCVar" id="DisableQuesting" value="1" requirementtype="Hide" />
+		</response>
+		
+		
+		<response id="pick" text="ZombieINC_Dialog_Ritual_Pickme">
+			<action type="AddBuff" id="ZombieINC_TheCult_RitualToPlayer_Dialog_Buff" />
+		</response>
+		
+		<response id="resetallprogress" text="ZombieINC_Dialog_Ritual_resetallprogress">
+			<!{1}**<requirement type="CheckCVar" id="ZINCTC10COMPLETED" value="1" requirementtype="Hide" />**{1}>
+			<requirement type="CheckCVar" id="ZINCTC2COMPLETED" value="1" requirementtype="Hide" />
+			<action type="AddBuff" id="ZombieINC_TheCult_ResetAllProgress_Dialog_Buff" />
+		</response>
+		
+		<response id="done" text="ZombieINC_Dialog_Ritual_done" />
+		
+	</dialog>-->
+	
+	
+	
+	
+	
+	
+	<dialog id="thecultP1" startstatementid="start">
+		<statement id="start" text="dialog_trader_statement_start_test">
+			<response_entry id="pickP1" />	
+			<response_entry id="done" />
+		</statement>
+		<response id="pickP1" text="pickme">
+			<action type="AddBuff" id="ZombieINC_TheCult_RitualToPlayerP1_Dialog_Buff" />
+		</response>			
+		<response id="done" text="dialog_trader_response_nevermind" />	
+	</dialog>
+	<dialog id="thecultP2" startstatementid="start">
+		<statement id="start" text="dialog_trader_statement_start_test">
+			<response_entry id="pickP2" />	
+			<response_entry id="done" />
+		</statement>
+		<response id="pickP2" text="pickme">
+			<action type="AddBuff" id="ZombieINC_TheCult_RitualToPlayerP2_Dialog_Buff" />
+		</response>			
+		<response id="done" text="dialog_trader_response_nevermind" />	
+	</dialog>
+	<dialog id="thecultP3" startstatementid="start">
+		<statement id="start" text="dialog_trader_statement_start_test">
+			<response_entry id="pickP3" />	
+			<response_entry id="done" />
+		</statement>
+		<response id="pickP3" text="pickme">
+			<action type="AddBuff" id="ZombieINC_TheCult_RitualToPlayerP3_Dialog_Buff" />
+		</response>			
+		<response id="done" text="dialog_trader_response_nevermind" />	
+	</dialog>
+	<dialog id="thecultP4" startstatementid="start">
+		<statement id="start" text="dialog_trader_statement_start_test">
+			<response_entry id="pickP4" />	
+			<response_entry id="done" />
+		</statement>
+		<response id="pickP4" text="pickme">
+			<action type="AddBuff" id="ZombieINC_TheCult_RitualToPlayerP4_Dialog_Buff" />
+		</response>			
+		<response id="done" text="dialog_trader_response_nevermind" />	
+	</dialog>
+	<dialog id="thecultP5" startstatementid="start">
+		<statement id="start" text="dialog_trader_statement_start_test">
+			<response_entry id="pickP5" />	
+			<response_entry id="done" />
+		</statement>
+		<response id="pickP5" text="pickme">
+			<action type="AddBuff" id="ZombieINC_TheCult_RitualToPlayerP5_Dialog_Buff" />
+		</response>			
+		<response id="done" text="dialog_trader_response_nevermind" />	
+	</dialog>
+
+</append>
+
+</Config>

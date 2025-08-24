@@ -1,0 +1,75 @@
+<Config>
+	<append xpath="/gameevents/action_sequence[@name='ZombieINC_ND_RemoveBuffsWhenFail_T1']/wait[@class='While']">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincnestdemolition1_1"/>
+		</requirement>
+	</append>
+	<append xpath="/gameevents/action_sequence[@name='ZombieINC_ND_RemoveBuffsWhenFail_T2']/wait[@class='While']">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincnestdemolition2_1"/>
+		</requirement>
+	</append>
+	<append xpath="/gameevents/action_sequence[@name='ZombieINC_ND_RemoveBuffsWhenFail_T3']/wait[@class='While']">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincnestdemolition3_1"/>
+		</requirement>
+	</append>
+	<append xpath="/gameevents/action_sequence[@name='ZombieINC_ND_RemoveBuffsWhenFail_T4']/wait[@class='While']">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincnestdemolition4_1"/>
+		</requirement>
+	</append>
+	<append xpath="/gameevents/action_sequence[@name='ZombieINC_ND_RemoveBuffsWhenFail_T5']/wait[@class='While']">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincnestdemolition5_1"/>
+		</requirement>
+	</append>
+	<append xpath="/gameevents/action_sequence[@name='ZombieINC_ND_RemoveBuffsWhenFail_T6']/wait[@class='While']">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincnestdemolition6_1"/>
+		</requirement>
+	</append>
+	<insertAfter xpath="/gameevents//action[@class='FailQuest'][property[@name='quest' and contains(@value,'zincnestdemolition1')]]">
+		<action class="FailQuest">
+			<property name="quest" value="zincnestdemolition1_1" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />			
+		</action>
+	</insertAfter>
+	<insertAfter xpath="/gameevents//action[@class='FailQuest'][property[@name='quest' and contains(@value,'zincnestdemolition2')]]">
+		<action class="FailQuest">
+			<property name="quest" value="zincnestdemolition2_1" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />			
+		</action>
+	</insertAfter>
+	<insertAfter xpath="/gameevents//action[@class='FailQuest'][property[@name='quest' and contains(@value,'zincnestdemolition3')]]">
+		<action class="FailQuest">
+			<property name="quest" value="zincnestdemolition3_1" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />			
+		</action>
+	</insertAfter>
+	<insertAfter xpath="/gameevents//action[@class='FailQuest'][property[@name='quest' and contains(@value,'zincnestdemolition4')]]">
+		<action class="FailQuest">
+			<property name="quest" value="zincnestdemolition4_1" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />			
+		</action>
+	</insertAfter>
+	<insertAfter xpath="/gameevents//action[@class='FailQuest'][property[@name='quest' and contains(@value,'zincnestdemolition5')]]">
+		<action class="FailQuest">
+			<property name="quest" value="zincnestdemolition5_1" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />			
+		</action>
+	</insertAfter>
+	<insertAfter xpath="/gameevents//action[@class='FailQuest'][property[@name='quest' and contains(@value,'zincnestdemolition6')]]">
+		<action class="FailQuest">
+			<property name="quest" value="zincnestdemolition6_1" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />			
+		</action>
+	</insertAfter>
+
+</Config>

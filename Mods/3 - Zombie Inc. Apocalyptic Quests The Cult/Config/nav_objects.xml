@@ -1,0 +1,122 @@
+<Config>
+
+	<append xpath="/nav_object_classes">
+		
+		<nav_object_class name="ZombieINC_ritual">
+		<property name="requirement_type" value="NoActiveQuests" />
+
+			<map_settings>
+			  <property name="sprite_name" value="ui_game_symbol_talk"/>
+			  <property name="min_distance" value="0"/>
+			  <property name="max_distance" value="50"/>
+			  <property name="color" value="255,255,0,255"/>
+			  <property name="has_pulse" value="true"/>
+			</map_settings>
+
+			<onscreen_settings>
+			  <property name="sprite_name" value="ui_game_symbol_talk"/>
+			  <property name="min_distance" value="3"/>
+			  <property name="max_distance" value="20"/>
+			  <property name="color" value="255,255,0,255"/>
+			  <property name="has_pulse" value="true"/>
+			  <property name="text_type" value="Distance"/>
+			  <property name="offset" value="0,2.1,0" />
+			</onscreen_settings>
+		</nav_object_class>
+		<nav_object_class name="ZombieINC_return_to_ritual">
+
+			<inactive_map_settings>
+				<property name="sprite_name" value="ui_game_symbol_quest"/>
+				<property name="min_distance" value="0"/>
+				<property name="max_distance" value="-1"/>
+				<property name="color" value="200,200,200,255"/>
+				<property name="has_pulse" value="false"/>
+			</inactive_map_settings>
+
+			<map_settings>
+				<property name="sprite_name" value="ui_game_symbol_quest"/>
+				<property name="min_distance" value="0"/>
+				<property name="max_distance" value="-1"/>
+				<property name="color" value="255,180,0,255"/>
+				<property name="has_pulse" value="false"/>
+			</map_settings>
+
+			<inactive_compass_settings>
+				<property name="sprite_name" value="ui_game_symbol_quest"/>
+				<property name="min_distance" value="0"/>
+				<property name="max_distance" value="1024"/>
+				<property name="color" value="200,200,200,255"/>
+				<property name="has_pulse" value="false"/>
+				<property name="icon_clamped" value="false" />
+			</inactive_compass_settings>
+
+			<compass_settings>
+				<property name="sprite_name" value="ui_game_symbol_quest"/>
+				<property name="min_distance" value="0"/>
+				<property name="max_scale_distance" value="1024"/>
+				<property name="color" value="255,180,0,255"/>
+				<property name="has_pulse" value="false"/>
+				<property name="icon_clamped" value="false" />
+			</compass_settings>
+
+			<onscreen_settings>
+				<property name="sprite_name" value="ui_game_symbol_quest"/>
+				<property name="min_distance" value="0"/>
+				<property name="max_distance" value="-1"/>
+				<property name="color" value="255,180,0,255"/>
+				<property name="has_pulse" value="true"/>
+				<property name="text_type" value="Distance"/>
+				<property name="offset" value="0,2.1,0" />
+				<property name="show_offscreen" value="true" />
+			</onscreen_settings>
+		</nav_object_class>
+	
+		<nav_object_class name="ZombieINC_mountainlion" >
+			
+			<map_settings>
+				<property name="sprite_name" value="ui_game_symbol_animal_tracker"/>
+				<property name="min_distance" value="0"/>
+				<property name="max_distance" value="-1"/>
+				<property name="color" value="0,255,0,255"/>
+				<property name="has_pulse" value="true"/>
+			</map_settings>
+
+			<compass_settings>
+				<property name="sprite_name" value="ui_game_symbol_animal_tracker"/>
+				<property name="min_distance" value="0"/>
+				<property name="max_scale_distance" value="1024"/>
+				<property name="color" value="0,255,0,255"/>
+				<property name="has_pulse" value="true"/>
+				<property name="icon_clamped" value="false" />
+			</compass_settings>
+
+			<onscreen_settings>
+				<property name="sprite_name" value="ui_game_symbol_animal_tracker"/>
+				<property name="min_distance" value="0"/>
+				<property name="max_distance" value="25"/>
+				<property name="color" value="0,255,0,255"/>
+				<property name="has_pulse" value="false"/>
+				<property name="offset" value="0,1.1,0"/>
+			</onscreen_settings>
+		</nav_object_class>
+		
+		
+		<nav_object_class name="ZombieINC_EnemyDot" extends="zombie">
+					
+			<map_settings>
+				<property name="sprite_name" value="ui_game_symbol_enemy_dot"/>
+				<property name="color" value="255,0,0,255"/>
+				<property name="has_pulse" value="true"/>
+			</map_settings>
+
+			<compass_settings>
+				<property name="sprite_name" value="ui_game_symbol_enemy_dot"/>
+				<property name="color" value="255,0,0,255"/>
+				<property name="has_pulse" value="true"/>
+				<property name="icon_clamped" value="true" />
+			</compass_settings>
+		</nav_object_class>	
+		
+	</append>
+
+</Config>

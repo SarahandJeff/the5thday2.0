@@ -1,0 +1,245 @@
+<Config>
+<append xpath="/entity_classes">
+<!--###New Quest Giver 2.6-->	
+
+	<entity_class name="ZombieINC_GiverQuest_npcTraderTemplate">
+	<property name="Class" value="EntityTrader"/>
+	<property name="UserSpawnType" value="None"/>
+	<property name="Tags" value="entity,npc,human"/>
+	<property name="EntityType" value="Player"/>
+	<property name="Faction" value="trader"/>
+	<!--<property name="Faction" value="thecult"/>-->
+	<property name="Mesh" value="Player/Male/player_maleRagdoll"/>
+	<property name="AvatarController" value="AvatarNpcController"/>
+	<property name="ModelType" value="Npc"/>
+	<property name="HasRagdoll" value="false"/>
+	<property name="Prefab" value="NPC"/>
+	<property name="Parent" value="Players"/>
+	<property name="PhysicsBody" value="Player"/>
+	<property name="Weight" value="70"/>
+	<property name="LookAtAngle" value="0"/>
+
+	<property name="NPCID" value="traderric"/>
+	<property name="IsEnemyEntity" value="true"/>
+	<property name="WalkType" value="7"/>
+	<property name="SurfaceCategory" value="organic"/>
+	<property name="ParticleOnDeath" value="blood_death"/>
+	<property name="HasDeathAnim" value="true"/>
+	<property name="SoundRandomTime" value="200"/>
+	<property name="Archetype" value="TraderJoel"/>
+	<property name="SoundHurt" value=""/>
+	<property name="SoundHurtSmall" value=""/>
+	<property name="SoundDeath" value=""/>
+	<property name="SoundStamina" value=""/>
+	<property name="SoundDrownPain" value=""/>
+	<property name="SoundWaterSurface" value=""/>
+	<property name="SoundDrownDeath" value=""/>
+	<property name="SoundJump" value=""/>
+	<property name="SoundLandSoft" value=""/>
+	<property name="SoundLandHard" value=""/>
+	<property name="SoundPlayerLandThump" value=""/>
+	<!-- <property name="CorpseBlock" value="air"/><property name="CorpseBlockChance" value="0"/> -->
+
+	<!-- Stealth -->
+	<property name="MaxViewAngle" value="180"/>
+
+	<!-- Gameplay  -->
+	<property name="LootListAlive" value="traderNPC"/>
+
+	<property name="MoveSpeed" value="0.75"/>
+	<property name="MoveSpeedAggro" value="1.15, 1.15"/>
+	<property name="MoveSpeedPanic" value="1.35"/>
+	<property name="CanClimbLadders" value="true"/>
+
+	<!-- <property name="Buffs" value="god"/> -->
+
+	<property name="ExperienceGain" value="130"/>
+	<property name="TimeStayAfterDeath" value="30"/>
+	<property name="DeadBodyHitPoints" value="251"/>
+
+	
+	
+	
+	<property name="AITask" value="
+	"/>
+	
+	
+		
+	
+	<effect_group name="Base Effects">
+		
+		<passive_effect name="HealthMax" operation="base_set" value="100000"/>
+		<passive_effect name="BuffResistance" operation="base_set" value="1" tags="buffFatiguedTrigger,buffArmSprainedCHTrigger,buffLegSprainedCHTrigger,buffLaceration,buffInfectionCatch,buffAbrasionCatch,buffInjuryStunned01CHTrigger,buffInjuryBleedingOne,buffInjuryBleedingTwo,buffInjuryBleeding,buffBurningZombie,buffBurningElement,buffBurningEnvironment,buffBurningEnvironmentHack,buffBurningFlamingArrow,buffBurningMolotov,buffIsOnFire,buffShocked,buffRadiationPool"/>
+	</effect_group>
+</entity_class>
+	
+	<entity_class name="ZombieINC_RadioDecoy" extends="zombieTomClark">
+	<property name="UserSpawnType" value="Menu"/>
+	<property name="Tags" value="entity,zombie,walker,Objective,radiodecoy"/>
+	<property name="SizeScale" value="0.3"/>
+	<property name="SoundRandom" value=""/>
+	<property name="SoundAlert" value=""/>
+	<property name="SoundAttack" value=""/>
+	<property name="SoundHurt" value=""/>
+	<property name="SoundDeath" value=""/>
+	<property name="SoundSense" value=""/>
+	<property name="PhysicsBody" value="zombieINCEmpty_TA"/>
+	<property name="ModelType" value="Standard"/>
+	<property name="PainResistPerHit" value="1"/>
+	<property name="WalkType" value="40"/>
+	<property name="Mass" value="5000"/>
+	<property name="Weight" value="700"/>
+	<property name="RootMotion" value="false"/>
+	<property name="CorpseBlock" value="air"/>
+	<property name="CorpseBlockChance" value="0"/>
+	<property name="TimeStayAfterDeath" value="0"/>
+	<property name="DeadBodyHitPoints" value="1"/>
+	<property name="PushFactor" value="100"/>
+	<property name="AIPathCostScale" value="0.1, 0.1"/>
+	<property name="SurfaceCategory" value="metal"/>
+	<property name="HasRagdoll" value="false"/>
+	<property name="DanceType" value="2" />
+	<property name="LootDropProb" value="0"/>
+	<property name="MaxTurnSpeed" value="1"/>
+	<property name="MoveSpeed" value="1"/> 
+	<property name="MoveSpeedAggro" value="1,1"/> 
+	<property name="MoveSpeedRand" value="1,1"/> 
+	<property name="MoveSpeedPanic" value="1"/>
+	<property name="SwimSpeed" value="0"/>
+	<property name="SwimStrokeRate" value="0,0"/>
+	<property name="CanClimbLadders" value="false"/>
+	<property name="JumpMaxDistance" value="0,0"/>
+	<property name="DismemberMultiplierLegs" value="0"/>
+	<property name="DismemberMultiplierHead" value="0"/>
+	<property name="DismemberMultiplierArms" value="0"/>
+	<property name="HasDeathAnim" value="false"/>
+	<property name="ParticleOnDeath" value=""/>
+	<property name="DismemberTag_L_HeadGore" value=""/>
+	<property name="DismemberTag_L_LeftUpperLegGore" value=""/>
+	<property name="DismemberTag_L_LeftLowerLegGore" value=""/>
+	<property name="DismemberTag_L_RightUpperLegGore" value=""/>
+	<property name="DismemberTag_L_RightLowerLegGore" value=""/>
+	<property name="DismemberTag_L_LeftUpperArmGore" value=""/>
+	<property name="DismemberTag_L_LeftLowerArmGore" value=""/>
+	<property name="DismemberTag_L_RightUpperArmGore" value=""/>
+	<property name="DismemberTag_L_RightLowerArmGore" value=""/>
+	<property name="Buffs" value="ZombieINC_MD_Objective_Buff"/>
+	<property name="NavObject" value="ZombieINC_Objective" />
+	
+	<property name="AITask" value="
+	"/>
+	
+	<effect_group name="Base Effects">
+		<passive_effect name="HealthMax" operation="base_set" value="999999"/>	
+		<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="ZombieINC_MD_Objective_Buff"/>	
+	</effect_group>
+</entity_class>	
+	
+	<entity_class name="ZombieINC_NPC_Radio_1" extends="ZombieINC_GiverQuest_npcTraderTemplate">
+		<property name="UserSpawnType" value="Menu"/>
+	<!--	<property name="Tags" value="entity,npc,ritual,TheCult,ritualonly"/>-->
+		<property name="Tags" value="entity,npc,human,radio,trader,radio1"/>
+		<property name="Mesh" value="@:Entities/Traders/Prefabs/TraderHugh.prefab"/>
+		<!--<property name="Mesh" value="@:Entities/Zombies/Steve/ZSteve.prefab"/>-->
+		<!--<property name="NPCID" value="NPCIDtheCultNPCFirst"/>-->
+		<property name="NPCID" value="traderradio1"/>
+		<property name="SizeScale" value="1"/>
+		<property name="DanceType" value="1" />
+		<property name="HasRagdoll" value="true"/>
+		<!--<property name="Buffs" value="ZombieINC_TheCult_RitualToPlayer_Buff"/>-->	
+		<property name="Buffs" value="ZombieINC_NPC_Radio_1_Prefab"/>	
+		<effect_group name="Base Effects">
+			<!--<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="ZombieINC_TheCult_RitualToPlayer_Buff"/>	-->
+			<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="ZombieINC_NPC_Radio_1_Prefab"/>	
+		</effect_group>
+	</entity_class>
+	<entity_class name="ZombieINC_NPC_Radio_2" extends="ZombieINC_GiverQuest_npcTraderTemplate">
+		<property name="UserSpawnType" value="Menu"/>
+	<!--	<property name="Tags" value="entity,npc,ritual,TheCult,ritualonly"/>-->
+		<property name="Tags" value="entity,npc,human,radio,trader,radio2"/>
+		<property name="Mesh" value="@:Entities/Traders/Prefabs/TraderHugh.prefab"/>
+		<!--<property name="Mesh" value="@:Entities/Zombies/Steve/ZSteve.prefab"/>-->
+		<!--<property name="NPCID" value="NPCIDtheCultNPCFirst"/>-->
+		<property name="NPCID" value="traderradio2"/>
+		<property name="DanceType" value="1" />
+		<property name="HasRagdoll" value="true"/>
+		<!--<property name="Buffs" value="ZombieINC_TheCult_RitualToPlayer_Buff"/>-->	
+		<property name="Buffs" value="ZombieINC_NPC_Radio_1_Prefab"/>	
+		<effect_group name="Base Effects">
+			<!--<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="ZombieINC_TheCult_RitualToPlayer_Buff"/>	-->
+			<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="ZombieINC_NPC_Radio_1_Prefab"/>	
+		</effect_group>
+	</entity_class>
+	<entity_class name="ZombieINC_NPC_Radio_3" extends="ZombieINC_GiverQuest_npcTraderTemplate">
+		<property name="UserSpawnType" value="Menu"/>
+	<!--	<property name="Tags" value="entity,npc,ritual,TheCult,ritualonly"/>-->
+		<property name="Tags" value="entity,npc,human,radio,trader,radio3"/>
+		<property name="Mesh" value="@:Entities/Traders/Prefabs/TraderHugh.prefab"/>
+		<!--<property name="Mesh" value="@:Entities/Zombies/Steve/ZSteve.prefab"/>-->
+		<!--<property name="NPCID" value="NPCIDtheCultNPCFirst"/>-->
+		<property name="NPCID" value="traderradio3"/>
+		<property name="DanceType" value="1" />
+		<property name="HasRagdoll" value="true"/>
+		<!--<property name="Buffs" value="ZombieINC_TheCult_RitualToPlayer_Buff"/>-->	
+		<property name="Buffs" value="ZombieINC_NPC_Radio_1_Prefab"/>	
+		<effect_group name="Base Effects">
+			<!--<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="ZombieINC_TheCult_RitualToPlayer_Buff"/>	-->
+			<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="ZombieINC_NPC_Radio_1_Prefab"/>	
+		</effect_group>
+	</entity_class>
+	<entity_class name="ZombieINC_NPC_Radio_4" extends="ZombieINC_GiverQuest_npcTraderTemplate">
+		<property name="UserSpawnType" value="Menu"/>
+	<!--	<property name="Tags" value="entity,npc,ritual,TheCult,ritualonly"/>-->
+		<property name="Tags" value="entity,npc,human,radio,trader,radio4"/>
+		<property name="Mesh" value="@:Entities/Traders/Prefabs/TraderHugh.prefab"/>
+		<!--<property name="Mesh" value="@:Entities/Zombies/Steve/ZSteve.prefab"/>-->
+		<!--<property name="NPCID" value="NPCIDtheCultNPCFirst"/>-->
+		<property name="NPCID" value="traderradio4"/>
+		<property name="DanceType" value="1" />
+		<property name="HasRagdoll" value="true"/>
+		<!--<property name="Buffs" value="ZombieINC_TheCult_RitualToPlayer_Buff"/>-->	
+		<property name="Buffs" value="ZombieINC_NPC_Radio_1_Prefab"/>	
+		<effect_group name="Base Effects">
+			<!--<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="ZombieINC_TheCult_RitualToPlayer_Buff"/>	-->
+			<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="ZombieINC_NPC_Radio_1_Prefab"/>	
+		</effect_group>
+	</entity_class>
+	<entity_class name="ZombieINC_NPC_Radio_5" extends="ZombieINC_GiverQuest_npcTraderTemplate">
+		<property name="UserSpawnType" value="Menu"/>
+	<!--	<property name="Tags" value="entity,npc,ritual,TheCult,ritualonly"/>-->
+		<property name="Tags" value="entity,npc,human,radio,trader,radio5"/>
+		<property name="Mesh" value="@:Entities/Traders/Prefabs/TraderHugh.prefab"/>
+		<!--<property name="Mesh" value="@:Entities/Zombies/Steve/ZSteve.prefab"/>-->
+		<!--<property name="NPCID" value="NPCIDtheCultNPCFirst"/>-->
+		<property name="NPCID" value="traderradio5"/>
+		<property name="DanceType" value="1" />
+		<property name="HasRagdoll" value="true"/>
+		<!--<property name="Buffs" value="ZombieINC_TheCult_RitualToPlayer_Buff"/>-->	
+		<property name="Buffs" value="ZombieINC_NPC_Radio_1_Prefab"/>	
+		<effect_group name="Base Effects">
+			<!--<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="ZombieINC_TheCult_RitualToPlayer_Buff"/>	-->
+			<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="ZombieINC_NPC_Radio_1_Prefab"/>	
+		</effect_group>
+	</entity_class>
+	<entity_class name="ZombieINC_NPC_Radio_6" extends="ZombieINC_GiverQuest_npcTraderTemplate">
+		<property name="UserSpawnType" value="Menu"/>
+	<!--	<property name="Tags" value="entity,npc,ritual,TheCult,ritualonly"/>-->
+		<property name="Tags" value="entity,npc,human,radio,trader,radio6"/>
+		<property name="Mesh" value="@:Entities/Traders/Prefabs/TraderHugh.prefab"/>
+		<!--<property name="Mesh" value="@:Entities/Zombies/Steve/ZSteve.prefab"/>-->
+		<!--<property name="NPCID" value="NPCIDtheCultNPCFirst"/>-->
+		<property name="NPCID" value="traderradio6"/>
+		<property name="DanceType" value="1" />
+		<property name="HasRagdoll" value="true"/>
+		<!--<property name="Buffs" value="ZombieINC_TheCult_RitualToPlayer_Buff"/>-->	
+		<property name="Buffs" value="ZombieINC_NPC_Radio_1_Prefab"/>	
+		<effect_group name="Base Effects">
+			<!--<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="ZombieINC_TheCult_RitualToPlayer_Buff"/>	-->
+			<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="ZombieINC_NPC_Radio_1_Prefab"/>	
+		</effect_group>
+	</entity_class>
+<!--New Quest Giver 2.6-->		
+
+
+</append>
+</Config>

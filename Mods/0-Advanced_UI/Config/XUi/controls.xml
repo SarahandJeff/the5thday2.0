@@ -196,7 +196,7 @@
 	</AX_Item_Desc>
 
 	<AX_item_stack_mods controller="ItemStack" on_scroll="false" allow_dropping="true" prefix_id="false" show_favorites="false">
-		<rect controller="${controller}" style="itemStack, hover" collider_scale="1.0" on_scroll="${on_scroll}" allow_dropping="${allow_dropping}" prefix_id="${prefix_id}" show_favorites="${show_favorites}" tooltip="{tooltip}" >
+		<rect controller="${controller}" style="itemStack, hover" collider_scale="1.0" on_scroll="${on_scroll}" allow_dropping="${allow_dropping}" prefix_id="${prefix_id}" show_favorites="${show_favorites}" tooltip="{tooltip}" enabled="{# !defined('userlockmode') or !userlockmode}" visible="{# !defined('container_slots') or (int(${repeat_i}) &lt; int(container_slots)) }">
 			<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="55" height="55" color="[black]" type="sliced" fillcenter="false" />
 			<sprite depth="3" name="background" sprite="menu_empty3px" width="51" height="51" color="{selectionbordercolor}" type="sliced" globalopacity="true" fillcenter="false"/>
 			<sprite depth="2" name="highlightOverlay" width="51" height="51" color="{backgroundcolor}" pos="0,0" type="sliced" globalopacity="true"/>
@@ -214,11 +214,18 @@
 
 			<label depth="7" name="stackValue" pos="1,-31" width="51" height="28" text="{itemcount}" font_size="18" effect="outline" justify="{#hasdurability ? 'Center' : 'Right'}" />
 			<label depth="7" name="timer" pos="25,-25" width="51" height="24" font_size="24" justify="center" pivot="center" color="[beige]" effect="outline" effect_distance="1,1" effect_color="0,0,0,255"/>
-			<sprite depth="9" name="cancel" sprite="ui_game_symbol_x" width="51" height="751" color="255,0,0,255" type="sliced" visible="false" foregroundlayer="true"/>
-			<sprite depth="13" name="assembleIcon" size="40,40" sprite="{stacklockicon}" color="{stacklockcolor}" visible="{isassemblelocked}" pos="6,-6" foregroundlayer="true" />
-			<sprite depth="14" name="quickswapIcon" size="30,30" sprite="server_refresh" pos="10,-2" foregroundlayer="true" />
+			<sprite depth="9" name="cancel" sprite="ui_game_symbol_x" color="255,0,0,255" type="sliced" visible="{# ishovered and islocked}" foregroundlayer="true"	width="70" height="70" />
+			<sprite depth="16" name="assembleIcon" size="35,35" sprite="{stacklockicon}" color="{stacklockcolor}" visible="{isassemblelocked}" pos="16,-16" foregroundlayer="true" />
+			
+			<button name="rectSlotLock" depth="15" style="press, hover" width="73" height="73" visible="{# defined('userlockmode') and userlockmode}" sprite="" hoverscale="1" use_selection_box="true">
+				<sprite depth="16" name="slotLockIcon" width="24" height="24" sprite="{# !defined('userlockmode') ? '' : (userlockedslot ? 'ui_game_symbol_lock' : 'ui_game_symbol_unlock') }" pos="50, -14" style="icon32px" pivot="center" color="{# !defined('userlockmode') ? '255,255,255,1' : (userlockedslot ? '222,206,163' : '255,255,255') }" />
+			</button>
+			<sprite depth="15" name="iconSlotLock" width="20" height="20" sprite="ui_game_symbol_lock" pos="50, -14" style="icon32px" pivot="center" visible="{# defined('userlockmode') and !userlockmode and userlockedslot }" color="[lightGrey]" />
 		</rect>
 	</AX_item_stack_mods>
+
+
+
 
 	<AX_item_stack controller="ItemStack" on_scroll="false" allow_dropping="true" prefix_id="false" show_favorites="false">
 		<rect controller="${controller}" style="itemStack, hover" collider_scale="1.0" on_scroll="${on_scroll}" allow_dropping="${allow_dropping}" prefix_id="${prefix_id}" show_favorites="${show_favorites}" tooltip="{tooltip}" >

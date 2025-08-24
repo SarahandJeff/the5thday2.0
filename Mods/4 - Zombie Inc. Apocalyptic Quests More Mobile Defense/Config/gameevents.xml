@@ -1,0 +1,126 @@
+<Config>
+	<append xpath="/gameevents/action_sequence[@name='ZombieINC_MD_T3_RemoveAllBuffsWhenFail']/wait[@class='While']">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincmobiledefense3_1"/>
+		</requirement>
+		<requirement class="OnQuest">
+			<property name="quest" value="zincmobiledefense3_2"/>
+		</requirement>
+	</append>
+	<append xpath="/gameevents/action_sequence[@name='ZombieINC_MD_T4_RemoveAllBuffsWhenFail']/wait[@class='While']">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincmobiledefense4_1"/>
+		</requirement>
+		<requirement class="OnQuest">
+			<property name="quest" value="zincmobiledefense4_2"/>
+		</requirement>
+	</append>
+	<append xpath="/gameevents/action_sequence[@name='ZombieINC_MD_T5_RemoveAllBuffsWhenFail']/wait[@class='While']">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincmobiledefense5_1"/>
+		</requirement>
+		<requirement class="OnQuest">
+			<property name="quest" value="zincmobiledefense5_2"/>
+		</requirement>
+	</append>
+	<append xpath="/gameevents/action_sequence[@name='ZombieINC_MD_T6_RemoveAllBuffsWhenFail']/wait[@class='While']">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincmobiledefense6_1"/>
+		</requirement>
+		<requirement class="OnQuest">
+			<property name="quest" value="zincmobiledefense6_2"/>
+		</requirement>
+	</append>
+	
+	<insertAfter xpath="/gameevents//action[@class='FailQuest'][property[@name='quest' and contains(@value,'zincmobiledefense3')]]">
+		<action class="FailQuest">
+			<property name="quest" value="zincmobiledefense3_1" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />			
+		</action>
+		<action class="FailQuest">
+			<property name="quest" value="zincmobiledefense3_2" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />			
+		</action>
+	</insertAfter>
+	<insertAfter xpath="/gameevents//action[@class='FailQuest'][property[@name='quest' and contains(@value,'zincmobiledefense4')]]">
+		<action class="FailQuest">
+			<property name="quest" value="zincmobiledefense4_1" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />			
+		</action>
+		<action class="FailQuest">
+			<property name="quest" value="zincmobiledefense4_2" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />			
+		</action>
+	</insertAfter>
+	<insertAfter xpath="/gameevents//action[@class='FailQuest'][property[@name='quest' and contains(@value,'zincmobiledefense5')]]">
+		<action class="FailQuest">
+			<property name="quest" value="zincmobiledefense5_1" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />			
+		</action>
+		<action class="FailQuest">
+			<property name="quest" value="zincmobiledefense5_2" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />			
+		</action>
+	</insertAfter>
+	<insertAfter xpath="/gameevents//action[@class='FailQuest'][property[@name='quest' and contains(@value,'zincmobiledefense6')]]">
+		<action class="FailQuest">
+			<property name="quest" value="zincmobiledefense6_1" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />			
+		</action>
+		<action class="FailQuest">
+			<property name="quest" value="zincmobiledefense6_2" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />			
+		</action>
+	</insertAfter>
+	<!--<gameevents>
+		<action_sequence name="ZombieINC_MD_T3_RemoveAllBuffsWhenFail">
+			<property name="refund_inactivity" value="false" />					
+			<action class="Delay">
+				<property name="phase" value="1" />
+				<property name="time" value="15" />
+			</action>
+			<action class="AddBuff">
+				<property name="phase" value="1" />
+				<property name="buff_name" value="ZombieINC_MD_T3_InQuest_Buff"/>
+				<property name="check_already_exists" value="false"/>
+			</action>
+			<wait class="While">
+				<property name="phase" value="2" />
+				<requirement class="OnQuest">
+					<property name="quest" value="zincmobiledefense3"/>
+				</requirement>			
+			</wait>
+			<action class="RemoveBuffsByTag">
+				<property name="buff_tag" value="ZINC_MD_BUFFS" />
+				<property name="phase" value="3"/>				
+			</action>
+		</action_sequence>
+		
+		<action_sequence name="ZombieINC_MD_T3_FailQuestTimer_Event">
+		<action class="FailQuest">
+			<property name="quest" value="zincmobiledefense3" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />			
+		</action>
+		
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_MD_BeltTooltip_FailQuestTimer"  />
+			<property name="phase" value="2"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_MD_ChatMessage_FailQuestTimer"  />
+			<property name="phase" value="2"/>		
+		</action>
+		
+	</action_sequence>
+	</gameevents>-->
+</Config>

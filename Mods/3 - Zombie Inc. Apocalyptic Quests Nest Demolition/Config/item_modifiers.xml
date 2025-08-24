@@ -1,0 +1,103 @@
+<Config>
+<append xpath="/item_modifiers">
+
+	<item_modifier name="ZombieINC_modGeneralMaster" type="attachment">
+		<property name="CreativeMode" value="None"/>
+		<property name="CustomIcon" value="missingIcon"/>
+		<property name="Stacknumber" value="1"/>
+		<property name="HoldType" value="45"/>
+		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="EconomicValue" value="400"/>
+		<property name="Group" value="Mods,Tool/Weapon Mods"/>
+	</item_modifier>
+
+
+
+	
+	
+	<item_modifier name="ZombieINC_modRoboticDroneRadarMod" installable_tags="drone" modifier_tags="droneRadar" type="attachment">
+		<property name="Extends" value="ZombieINC_modGeneralMaster" param1="CustomIcon"/>
+		<effect_group tiered="false">
+			<!--<triggered_effect trigger="onSelfSecondaryActionStart" action="AddBuff" buff="ZombieINC_NestDemolition_ImADrone_T6"/>-->
+			<!--<triggered_effect trigger="onSelfSecondaryActionEnd" action="AddBuff" buff="ZombieINC_NestDemolition_ImADrone_T6_Player"/>
+			<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="ZombieINC_NestDemolition_ImADrone_T6_Player"/>-->
+		</effect_group>
+	</item_modifier>
+	
+	<!--<item_modifier name="modRoboticDroneWeaponMod" installable_tags="drone" modifier_tags="droneWeapon" type="attachment">
+		<property name="Extends" value="modGeneralMaster"/>
+		<property name="CreativeMode" value="Dev"/>
+		<property name="CustomIcon" value="missingIcon"/>
+		<property name="UnlockedBy" value="modRoboticDroneWeaponModSchematic"/>
+		<property name="TraderStageTemplate" value="modsTier3"/>
+	</item_modifier>-->
+		<!--<effect_group tiered="false">
+			<requirement name="IsLocalPlayer"/>
+			<triggered_effect trigger="onSelfItemActivate" action="ModifyScreenEffect" effect_name="NightVision" intensity="1" fade="0"/>
+			<triggered_effect trigger="onSelfItemDeactivate" action="ModifyScreenEffect" effect_name="NightVision" intensity="0" fade="0"/>
+			<triggered_effect trigger="onSelfEquipStop" action="ModifyScreenEffect" effect_name="NightVision" intensity="0" fade="0"/>
+		</effect_group>-->
+	<!--<effect_group tiered="false">
+			<passive_effect name="AttributeLevel" tags="attFortitude" operation="base_add" value="1"/>
+			<passive_effect name="AttributeLevel" tags="attStrength" operation="base_add" value="1"/>
+			<passive_effect name="AttributeLevel" tags="attPerception" operation="base_add" value="1"/>
+			<passive_effect name="AttributeLevel" tags="attAgility" operation="base_add" value="1"/>
+			<passive_effect name="AttributeLevel" tags="attIntellect" operation="base_add" value="1"/>
+			
+			<passive_effect name="ModSlots" operation="base_set" value="0"/>
+			<passive_effect name="LootStage" operation="base_add" value="5"/>
+			<passive_effect name="PlayerExpGain" operation="perc_add" value=".1"/>
+			
+			<passive_effect name="WalkSpeed" operation="perc_subtract" value=".35"/>
+			<passive_effect name="RunSpeed" operation="perc_subtract" value=".35"/>
+			<passive_effect name="JumpStrength" operation="perc_add" value="3.2"/>
+			<passive_effect name="StaminaLoss" operation="perc_subtract" value=".75" tags="jumping"/>
+			
+			<passive_effect name="ProjectileStickChance" operation="perc_add" value="1"/>
+			<passive_effect name="ReloadSpeedMultiplier" operation="perc_add" value="2"/>
+			
+			<passive_effect name="HealthMax" operation="base_add" value="19900"/>
+			
+			<passive_effect name="EntityDamage" operation="perc_add" value="-.25"/>
+			<passive_effect name="BlockDamage" operation="perc_add" value=".25"/>
+			
+			<passive_effect name="EntityDamage" operation="base_set" value="0"/>
+			<passive_effect name="EntityDamage" operation="perc_add" value="-5"/>
+			<passive_effect name="DismemberChance" operation="base_add" value="90"/>
+			
+			<passive_effect name="BarteringBuying" operation="base_add" value=".1"/>
+			<passive_effect name="BarteringSelling" operation="base_add" value=".1"/>
+			
+			<passive_effect name="LightMultiplier" operation="base_add" value=".28"/>
+			
+			<passive_effect name="NoiseMultiplier" operation="perc_add" value="-.08"/>
+			<display_value name="dNoiseMultiplier" value="-.05"/>
+			
+			<passive_effect name="CarryCapacity" operation="base_add" value="4"/>
+			<display_value name="dCarryCapacity" value="4"/>
+			
+			<passive_effect name="PhysicalDamageResist" operation="base_add" value="2"/>
+			
+			<passive_effect name="Mobility" operation="perc_add" value=".03"/>
+			<passive_effect name="StaminaChangeOT" operation="perc_add" value=".021" tags="walking"/>
+			<passive_effect name="StaminaChangeOT" operation="perc_add" value=".0562" tags="running"/>
+			<display_value name="dStaminaChangeOT" value=".0562"/>
+			
+			<passive_effect name="HyperthermalResist" operation="base_add" value="5"/>
+			<passive_effect name="ElementalDamageResist" operation="base_add" value="1" tags="heat,electrical"/>
+			<passive_effect name="ElementalDamageResist" operation="perc_add" value=".5" tags="radiation"/>
+			
+			<passive_effect name="MagazineSize" operation="perc_add" value="1"/>
+			<passive_effect name="DamageModifier" operation="perc_add" value=".25" tags="earth"/>
+			<passive_effect name="DamageModifier" operation="perc_add" value=".25" tags="stone"/>
+			<passive_effect name="DamageModifier" operation="perc_add" value=".15" tags="metal"/>
+			<passive_effect name="DamageModifier" operation="perc_add" value=".15" tags="wood"/>
+			
+			<passive_effect name="DegradationPerUse" operation="perc_add" value="-.3" tags="perkMiner69r,perkSalvageOperations,perkElectrocutioner,perkJavelinMaster,perkPummelPete,perkSkullCrusher,perkDeepCuts,perkBrawler,admin"/>
+		</effect_group>-->
+
+
+
+</append>
+</Config>

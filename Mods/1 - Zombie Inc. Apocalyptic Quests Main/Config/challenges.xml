@@ -1,0 +1,1566 @@
+
+<Config>
+	<conditional>
+		<if cond="mod_loaded('mateusjobshunt')">
+			<append xpath="/challenges">
+				<challenge_group category="ZINCAC" name="ZINCKILLNORMAL" title_key="ZINCKILLNORMAL_title_key"
+				reward_text_key="ZINCKILLNORMAL_reward_text_key" reward_event="ZombieINC_challenge_group_reward_MonsterSlayer" />
+				
+				<challenge_group category="ZINCAC" name="ZINCKILLINFESTED" title_key="ZINCKILLINFESTED_title_key"
+				reward_text_key="ZINCKILLINFESTED_reward_text_key" reward_event="ZombieINC_challenge_group_reward_GodSlayer" hidden_by="ZINCKILLNORMAL"/>
+				
+				
+				<!--#Hunt Quest-->
+				<challenge name="ZINC_Kill1" title_key="ZINC_Kill1_title_key" icon="ui_game_symbol_zombie" group="ZINCKILLNORMAL"
+				short_description_key="ZINC_Kill1_short_description_key" description_key="ZINC_Kill1_description_key"
+				reward_text_key="ZINC_Kill1_reward_text_key" reward_event="challenge_reward_2000">
+					<objective type="Kill" entity_names="ZombieINC_BossCraven" count="1"/>
+				</challenge>
+				<challenge name="ZINC_Kill2" title_key="ZINC_Kill2_title_key" icon="ui_game_symbol_zombie" group="ZINCKILLNORMAL"
+				short_description_key="ZINC_Kill2_short_description_key" description_key="ZINC_Kill2_description_key"
+				reward_text_key="ZINC_Kill2_reward_text_key" reward_event="challenge_reward_2000">
+					<objective type="Kill" entity_names="ZombieINC_BossCart" count="1"/>
+				</challenge>
+				<challenge name="ZINC_Kill3" title_key="ZINC_Kill3_title_key" icon="ui_game_symbol_zombie" group="ZINCKILLNORMAL"
+				short_description_key="ZINC_Kill3_short_description_key" description_key="ZINC_Kill3_description_key"
+				reward_text_key="ZINC_Kill3_reward_text_key" reward_event="challenge_reward_4000">
+					<objective type="Kill" entity_names="ZombieINC_BossDog" count="1"/>
+				</challenge>
+				<challenge name="ZINC_Kill4" title_key="ZINC_Kill4_title_key" icon="ui_game_symbol_zombie" group="ZINCKILLNORMAL"
+				short_description_key="ZINC_Kill4_short_description_key" description_key="ZINC_Kill4_description_key"
+				reward_text_key="ZINC_Kill4_reward_text_key" reward_event="challenge_reward_4000">
+					<objective type="Kill" entity_names="ZombieINC_BossBiker" count="1"/>
+				</challenge>
+				<challenge name="ZINC_Kill5" title_key="ZINC_Kill5_title_key" icon="ui_game_symbol_zombie" group="ZINCKILLNORMAL"
+				short_description_key="ZINC_Kill5_short_description_key" description_key="ZINC_Kill5_description_key"
+				reward_text_key="ZINC_Kill5_reward_text_key" reward_event="challenge_reward_6000">
+					<objective type="Kill" entity_names="ZombieINC_BossMultiply" count="1"/>
+				</challenge>
+				<challenge name="ZINC_Kill6" title_key="ZINC_Kill6_title_key" icon="ui_game_symbol_zombie" group="ZINCKILLNORMAL"
+				short_description_key="ZINC_Kill6_short_description_key" description_key="ZINC_Kill6_description_key"
+				reward_text_key="ZINC_Kill6_reward_text_key" reward_event="challenge_reward_6000">
+					<objective type="Kill" entity_names="ZombieINC_BossFire" count="1"/>
+				</challenge>
+				<challenge name="ZINC_Kill7" title_key="ZINC_Kill7_title_key" icon="ui_game_symbol_zombie" group="ZINCKILLNORMAL"
+				short_description_key="ZINC_Kill7_short_description_key" description_key="ZINC_Kill7_description_key"
+				reward_text_key="ZINC_Kill7_reward_text_key" reward_event="challenge_reward_8000">
+					<objective type="Kill" entity_names="ZombieINC_BossScientist" count="1"/>
+				</challenge>
+				<challenge name="ZINC_Kill8" title_key="ZINC_Kill8_title_key" icon="ui_game_symbol_zombie" group="ZINCKILLNORMAL"
+				short_description_key="ZINC_Kill8_short_description_key" description_key="ZINC_Kill8_description_key"
+				reward_text_key="ZINC_Kill8_reward_text_key" reward_event="challenge_reward_8000">
+					<objective type="Kill" entity_names="ZombieINC_BossBomber" count="1"/>	
+				</challenge>
+				<challenge name="ZINC_Kill9" title_key="ZINC_Kill9_title_key" icon="ui_game_symbol_zombie" group="ZINCKILLNORMAL"
+				short_description_key="ZINC_Kill9_short_description_key" description_key="ZINC_Kill9_description_key"
+				reward_text_key="ZINC_Kill9_reward_text_key" reward_event="challenge_reward_10000">
+					<objective type="Kill" entity_names="ZombieINC_BossTwinsBlue" count="1"/>
+					<objective type="Kill" entity_names="ZombieINC_BossTwinsRed" count="1"/>
+				</challenge>
+				<challenge name="ZINC_Kill10" title_key="ZINC_Kill10_title_key" icon="ui_game_symbol_zombie" group="ZINCKILLNORMAL"
+				short_description_key="ZINC_Kill10_short_description_key" description_key="ZINC_Kill10_description_key"
+				reward_text_key="ZINC_Kill10_reward_text_key" reward_event="challenge_reward_10000">
+					<objective type="Kill" entity_names="ZombieINC_BossDemolition" count="1"/>
+				</challenge>
+				
+				<challenge name="ZINC_KillGod1" title_key="ZINC_KillGod1_title_key" icon="ui_game_symbol_skull" group="ZINCKILLINFESTED"
+				short_description_key="ZINC_KillGod1_short_description_key" description_key="ZINC_KillGod1_description_key"
+				reward_text_key="ZINC_KillGod1_reward_text_key" reward_event="ZombieINC_challenge_reward_skillpoints_1">
+					<objective type="Kill" entity_names="ZombieINC_BossBikerInfested" count="1"/>
+				</challenge>
+				
+				<challenge name="ZINC_KillGod2" title_key="ZINC_KillGod2_title_key" icon="ui_game_symbol_skull" group="ZINCKILLINFESTED"
+				short_description_key="ZINC_KillGod2_short_description_key" description_key="ZINC_KillGod2_description_key"
+				reward_text_key="ZINC_KillGod2_reward_text_key" reward_event="ZombieINC_challenge_reward_skillpoints_1">
+					<objective type="Kill" entity_names="ZombieINC_BossMultiplyInfested" count="1"/>
+				</challenge>
+
+				<challenge name="ZINC_KillGod3" title_key="ZINC_KillGod3_title_key" icon="ui_game_symbol_skull" group="ZINCKILLINFESTED"
+					short_description_key="ZINC_KillGod3_short_description_key" description_key="ZINC_KillGod3_description_key"
+					reward_text_key="ZINC_KillGod3_reward_text_key" reward_event="ZombieINC_challenge_reward_skillpoints_1">
+						<objective type="Kill" entity_names="ZombieINC_BossFireInfested" count="1"/>
+				</challenge>
+
+				<challenge name="ZINC_KillGod4" title_key="ZINC_KillGod4_title_key" icon="ui_game_symbol_skull" group="ZINCKILLINFESTED"
+					short_description_key="ZINC_KillGod4_short_description_key" description_key="ZINC_KillGod4_description_key"
+					reward_text_key="ZINC_KillGod4_reward_text_key" reward_event="ZombieINC_challenge_reward_skillpoints_1">
+						<objective type="Kill" entity_names="ZombieINC_BossTwinsBlueInfested" count="1"/>
+						<objective type="Kill" entity_names="ZombieINC_BossTwinsRedInfested" count="1"/>
+				</challenge>
+
+				<challenge name="ZINC_KillGod5" title_key="ZINC_KillGod5_title_key" icon="ui_game_symbol_skull" group="ZINCKILLINFESTED"
+					short_description_key="ZINC_KillGod5_short_description_key" description_key="ZINC_KillGod5_description_key"
+					reward_text_key="ZINC_KillGod5_reward_text_key" reward_event="ZombieINC_challenge_reward_skillpoints_1">
+						<objective type="Kill" entity_names="ZombieINC_BossBomberInfested" count="1"/>
+				</challenge>
+
+				<challenge name="ZINC_KillGod6" title_key="ZINC_KillGod6_title_key" icon="ui_game_symbol_skull" group="ZINCKILLINFESTED"
+					short_description_key="ZINC_KillGod6_short_description_key" description_key="ZINC_KillGod6_description_key"
+					reward_text_key="ZINC_KillGod6_reward_text_key" reward_event="ZombieINC_challenge_reward_skillpoints_1">
+						<objective type="Kill" entity_names="ZombieINC_BossCartInfested" count="1"/>
+				</challenge>
+
+				<challenge name="ZINC_KillGod7" title_key="ZINC_KillGod7_title_key" icon="ui_game_symbol_skull" group="ZINCKILLINFESTED"
+					short_description_key="ZINC_KillGod7_short_description_key" description_key="ZINC_KillGod7_description_key"
+					reward_text_key="ZINC_KillGod7_reward_text_key" reward_event="ZombieINC_challenge_reward_skillpoints_1">
+						<objective type="Kill" entity_names="ZombieINC_BossDemolitionInfested" count="1"/>
+				</challenge>
+
+				<challenge name="ZINC_KillGod8" title_key="ZINC_KillGod8_title_key" icon="ui_game_symbol_skull" group="ZINCKILLINFESTED"
+					short_description_key="ZINC_KillGod8_short_description_key" description_key="ZINC_KillGod8_description_key"
+					reward_text_key="ZINC_KillGod8_reward_text_key" reward_event="ZombieINC_challenge_reward_skillpoints_1">
+						<objective type="Kill" entity_names="ZombieINC_BossDroneInfested" count="1"/>
+				</challenge>
+
+				<challenge name="ZINC_KillGod9" title_key="ZINC_KillGod9_title_key" icon="ui_game_symbol_skull" group="ZINCKILLINFESTED"
+					short_description_key="ZINC_KillGod9_short_description_key" description_key="ZINC_KillGod9_description_key"
+					reward_text_key="ZINC_KillGod9_reward_text_key" reward_event="ZombieINC_challenge_reward_skillpoints_2">
+						<objective type="KillByTag" entity_tags="bossinfested" target_name_key="xuiZombies" count="10"/>
+				</challenge>
+
+				<challenge name="ZINC_KillGod10" title_key="ZINC_KillGod10_title_key" icon="ui_game_symbol_skull" group="ZINCKILLINFESTED"
+					short_description_key="ZINC_KillGod10_short_description_key" description_key="ZINC_KillGod10_description_key"
+					reward_text_key="ZINC_KillGod10_reward_text_key" reward_event="ZombieINC_challenge_reward_skillpoints_5">
+						<objective type="KillByTag" entity_tags="bossinfested" target_name_key="xuiZombies" count="50"/>
+				</challenge>
+				<!--Hunt Quest-->
+				
+			</append>
+		</if>
+		<else>
+			<append xpath="/challenges">
+				<challenge_group category="ZINCAC" name="ZINCKILLNORMAL" title_key="ZINC_MNI"
+				reward_text_key="ZINC_MNI" reward_event="ZombieINC_challenge_group_reward_MonsterSlayer" />
+				
+				<challenge_group category="ZINCAC" name="ZINCKILLINFESTED" title_key="ZINC_MNI"
+				reward_text_key="ZINC_MNI" reward_event="ZombieINC_challenge_group_reward_MonsterSlayer" />
+				
+				<challenge name="ZINC_Kill1" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCKILLNORMAL" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_Kill2" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCKILLNORMAL" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_Kill3" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCKILLNORMAL" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_Kill4" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCKILLNORMAL" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_Kill5" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCKILLNORMAL" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_Kill6" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCKILLNORMAL" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_Kill7" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCKILLNORMAL" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_Kill8" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCKILLNORMAL" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_Kill9" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCKILLNORMAL" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_Kill10" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCKILLNORMAL" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				
+				<challenge name="ZINC_KillGod1" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCKILLINFESTED" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_KillGod2" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCKILLINFESTED" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_KillGod3" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCKILLINFESTED" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_KillGod4" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCKILLINFESTED" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_KillGod5" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCKILLINFESTED" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_KillGod6" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCKILLINFESTED" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_KillGod7" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCKILLINFESTED" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_KillGod8" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCKILLINFESTED" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_KillGod9" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCKILLINFESTED" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_KillGod10" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCKILLINFESTED" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+			</append>
+		</else>
+	</conditional>
+	<conditional>
+		<if cond="mod_loaded('mateusjobsdefense')">
+			<append xpath="/challenges">
+				<challenge_group category="ZINCAC" name="ZINCDEFENSE" title_key="ZINCDEFENSE_title_key"
+				reward_text_key="ZINCDEFENSE_reward_text_key" reward_event="ZombieINC_challenge_group_reward_Fortress" />
+			
+				<!--#Defense Quest-->
+				<challenge name="ZINC_DEFENSE1" title_key="ZINC_DEFENSE1_title_key" icon="ui_game_symbol_quest" group="ZINCDEFENSE" 
+						short_description_key="ZINC_DEFENSE1_short_description_key" description_key="ZINC_DEFENSE1_description_key"
+						reward_text_key="ZINC_DEFENSE1_reward_text_key" reward_event="challenge_reward_500">
+						<objective type="QuestComplete" quest_tag="ZINCDefenseT1" quest_text_key="ZINC_DEFENSE1_quest_text_key" count="1"/>
+				</challenge>
+				<challenge name="ZINC_DEFENSE2" title_key="ZINC_DEFENSE2_title_key" icon="ui_game_symbol_quest" group="ZINCDEFENSE" 
+						short_description_key="ZINC_DEFENSE2_short_description_key" description_key="ZINC_DEFENSE2_description_key"
+						reward_text_key="ZINC_DEFENSE2_reward_text_key" reward_event="challenge_reward_1000">
+						<objective type="QuestComplete" quest_tag="ZINCDefenseT2" quest_text_key="ZINC_DEFENSE2_quest_text_key" count="1"/>
+				</challenge>
+				<challenge name="ZINC_DEFENSE3" title_key="ZINC_DEFENSE3_title_key" icon="ui_game_symbol_quest" group="ZINCDEFENSE" 
+						short_description_key="ZINC_DEFENSE3_short_description_key" description_key="ZINC_DEFENSE3_description_key"
+						reward_text_key="ZINC_DEFENSE3_reward_text_key" reward_event="challenge_reward_2000">
+						<objective type="QuestComplete" quest_tag="ZINCDefenseT3" quest_text_key="ZINC_DEFENSE3_quest_text_key" count="1"/>
+				</challenge>
+				<challenge name="ZINC_DEFENSE4" title_key="ZINC_DEFENSE4_title_key" icon="ui_game_symbol_quest" group="ZINCDEFENSE" 
+						short_description_key="ZINC_DEFENSE4_short_description_key" description_key="ZINC_DEFENSE4_description_key"
+						reward_text_key="ZINC_DEFENSE4_reward_text_key" reward_event="challenge_reward_4000">
+						<objective type="QuestComplete" quest_tag="ZINCDefenseT4" quest_text_key="ZINC_DEFENSE4_quest_text_key" count="1"/>
+				</challenge>
+				<challenge name="ZINC_DEFENSE5" title_key="ZINC_DEFENSE5_title_key" icon="ui_game_symbol_quest" group="ZINCDEFENSE" 
+						short_description_key="ZINC_DEFENSE5_short_description_key" description_key="ZINC_DEFENSE5_description_key"
+						reward_text_key="ZINC_DEFENSE5_reward_text_key" reward_event="challenge_reward_6000">
+						<objective type="QuestComplete" quest_tag="ZINCDefenseT5" quest_text_key="ZINC_DEFENSE5_quest_text_key" count="1"/>
+				</challenge>
+				<challenge name="ZINC_DEFENSE6" title_key="ZINC_DEFENSE6_title_key" icon="ui_game_symbol_quest" group="ZINCDEFENSE" 
+						short_description_key="ZINC_DEFENSE6_short_description_key" description_key="ZINC_DEFENSE6_description_key"
+						reward_text_key="ZINC_DEFENSE6_reward_text_key" reward_event="challenge_reward_8000">
+						<objective type="QuestComplete" quest_tag="ZINCDefenseT6" quest_text_key="ZINC_DEFENSE6_quest_text_key" count="1"/>
+				</challenge>
+				<challenge name="ZINC_DEFENSE7" title_key="ZINC_DEFENSE7_title_key" icon="ui_game_symbol_quest" group="ZINCDEFENSE" 
+						short_description_key="ZINC_DEFENSE7_short_description_key" description_key="ZINC_DEFENSE7_description_key"
+						reward_text_key="ZINC_DEFENSE7_reward_text_key" reward_event="challenge_reward_10000">
+						<objective type="QuestComplete" quest_tag="ZINCDefense" quest_text_key="ZINC_DEFENSE7_quest_text_key" count="10"/>
+				</challenge>
+
+				<challenge name="ZINC_DEFENSE8" title_key="ZINC_DEFENSE8_title_key" icon="ui_game_symbol_challenge_homesteading_place_building_block" group="ZINCDEFENSE" 
+						prerequisite_hint="challengePlaceBuildingBlocksHint1" hint="challengePlaceBuildingBlocksHint2"
+						short_description_key="ZINC_DEFENSE8_short_description_key" description_key="ZINC_DEFENSE8_description_key"
+						reward_text_key="ZINC_DEFENSE8_reward_text_key" reward_event="challenge_reward_8000">
+						<objective type="BlockPlace" block="frameShapes:VariantHelper" count="100"/>
+				</challenge>
+				<challenge name="ZINC_DEFENSE9" title_key="ZINC_DEFENSE9_title_key" icon="ui_game_symbol_challenge_homesteading_place_building_block" group="ZINCDEFENSE" 
+						prerequisite_hint="challengePlaceBuildingBlocksHint1" hint="challengePlaceBuildingBlocksHint2"
+						short_description_key="ZINC_DEFENSE9_short_description_key" description_key="ZINC_DEFENSE9_description_key"
+						reward_text_key="ZINC_DEFENSE9_reward_text_key" reward_event="challenge_reward_8000">
+						<objective type="BlockPlace" block="frameShapes:VariantHelper" count="250"/>
+				</challenge>
+
+				<challenge name="ZINC_DEFENSE10" title_key="ZINC_DEFENSE10_title_key" icon="ui_game_symbol_challenge_crafting_read_magazine" group="ZINCDEFENSE"
+						hint="challengeReadMagazinesHint1"
+						short_description_key="ZINC_DEFENSE10_short_description_key" description_key="ZINC_DEFENSE10_description_key"
+						reward_text_key="ZINC_DEFENSE10_reward_text_key" reward_event="challenge_reward_2000">
+						<objective type="UseItem" item_tags="csm" override_text_key="xuiMagazine" count="1"/>
+				</challenge>
+				<!-- Defense Quest -->
+				
+			</append>
+		</if>
+		<else>
+			<append xpath="/challenges">
+				<challenge_group category="ZINCAC" name="ZINCDEFENSE" title_key="ZINC_MNI"
+				reward_text_key="ZINC_MNI" reward_event="ZombieINC_challenge_group_reward_MonsterSlayer" />
+				
+				<challenge name="ZINC_DEFENSE1" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCDEFENSE" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_DEFENSE2" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCDEFENSE" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_DEFENSE3" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCDEFENSE" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_DEFENSE4" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCDEFENSE" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_DEFENSE5" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCDEFENSE" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_DEFENSE6" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCDEFENSE" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_DEFENSE7" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCDEFENSE" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_DEFENSE8" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCDEFENSE" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_DEFENSE9" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCDEFENSE" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_DEFENSE10" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCDEFENSE" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+			</append>
+		</else>
+	</conditional>
+	
+	<conditional>
+		<if cond="mod_loaded('mateusjobssurvival')">
+			<append xpath="/challenges">
+				<challenge_group category="ZINCAC" name="ZINCSURVIVAL" title_key="ZINCSURVIVAL_title_key"
+				reward_text_key="ZINCSURVIVAL_reward_text_key" reward_event="ZombieINC_challenge_group_reward_Surviver" />
+			
+				
+				<!-- #Survival Quest -->
+				<challenge name="ZINC_SURVIVAL1" title_key="ZINC_SURVIVAL1_title_key" icon="ui_game_symbol_quest" group="ZINCSURVIVAL" 
+						short_description_key="ZINC_SURVIVAL1_short_description_key" description_key="ZINC_SURVIVAL1_description_key"
+						reward_text_key="ZINC_SURVIVAL1_reward_text_key" reward_event="challenge_reward_500" >
+						<objective type="QuestComplete" quest_tag="ZINCSurvivalT1" quest_text_key="ZINC_SURVIVAL1_quest_text_key" count="1"/>
+				</challenge>
+				<challenge name="ZINC_SURVIVAL2" title_key="ZINC_SURVIVAL2_title_key" icon="ui_game_symbol_quest" group="ZINCSURVIVAL" 
+						short_description_key="ZINC_SURVIVAL2_short_description_key" description_key="ZINC_SURVIVAL2_description_key"
+						reward_text_key="ZINC_SURVIVAL2_reward_text_key" reward_event="challenge_reward_1000" >
+						<objective type="QuestComplete" quest_tag="ZINCSurvivalT2" quest_text_key="ZINC_SURVIVAL2_quest_text_key" count="1"/>
+				</challenge>
+				<challenge name="ZINC_SURVIVAL3" title_key="ZINC_SURVIVAL3_title_key" icon="ui_game_symbol_quest" group="ZINCSURVIVAL" 
+						short_description_key="ZINC_SURVIVAL3_short_description_key" description_key="ZINC_SURVIVAL3_description_key"
+						reward_text_key="ZINC_SURVIVAL3_reward_text_key" reward_event="challenge_reward_2000" >
+						<objective type="QuestComplete" quest_tag="ZINCSurvivalT3" quest_text_key="ZINC_SURVIVAL3_quest_text_key" count="1"/>
+				</challenge>
+				<challenge name="ZINC_SURVIVAL4" title_key="ZINC_SURVIVAL4_title_key" icon="ui_game_symbol_quest" group="ZINCSURVIVAL" 
+						short_description_key="ZINC_SURVIVAL4_short_description_key" description_key="ZINC_SURVIVAL4_description_key"
+						reward_text_key="ZINC_SURVIVAL4_reward_text_key" reward_event="challenge_reward_4000" >
+						<objective type="QuestComplete" quest_tag="ZINCSurvivalT4" quest_text_key="ZINC_SURVIVAL4_quest_text_key" count="1"/>
+				</challenge>
+				<challenge name="ZINC_SURVIVAL5" title_key="ZINC_SURVIVAL5_title_key" icon="ui_game_symbol_quest" group="ZINCSURVIVAL" 
+						short_description_key="ZINC_SURVIVAL5_short_description_key" description_key="ZINC_SURVIVAL5_description_key"
+						reward_text_key="ZINC_SURVIVAL5_reward_text_key" reward_event="challenge_reward_6000" >
+						<objective type="QuestComplete" quest_tag="ZINCSurvivalT5" quest_text_key="ZINC_SURVIVAL5_quest_text_key" count="1"/>
+				</challenge>
+				<challenge name="ZINC_SURVIVAL6" title_key="ZINC_SURVIVAL6_title_key" icon="ui_game_symbol_quest" group="ZINCSURVIVAL" 
+						short_description_key="ZINC_SURVIVAL6_short_description_key" description_key="ZINC_SURVIVAL6_description_key"
+						reward_text_key="ZINC_SURVIVAL6_reward_text_key" reward_event="challenge_reward_8000" >
+						<objective type="QuestComplete" quest_tag="ZINCSurvivalT6" quest_text_key="ZINC_SURVIVAL6_quest_text_key" count="1"/>
+				</challenge>
+				<challenge name="ZINC_SURVIVAL7" title_key="ZINC_SURVIVAL7_title_key" icon="ui_game_symbol_quest" group="ZINCSURVIVAL" 
+						short_description_key="ZINC_SURVIVAL7_short_description_key" description_key="ZINC_SURVIVAL7_description_key"
+						reward_text_key="ZINC_SURVIVAL7_reward_text_key" reward_event="challenge_reward_10000" >
+						<objective type="QuestComplete" quest_tag="ZINCSurvival" quest_text_key="ZINC_SURVIVAL7_quest_text_key" count="10"/>
+				</challenge>
+				<challenge name="ZINC_SURVIVAL8" title_key="ZINC_SURVIVAL8_title_key" icon="ui_game_symbol_challenge_crafting_read_magazine" group="ZINCSURVIVAL"
+						hint="challengeReadMagazinesHint1"
+						short_description_key="ZINC_SURVIVAL8_short_description_key" description_key="ZINC_SURVIVAL8_description_key"
+						reward_text_key="ZINC_SURVIVAL8_reward_text_key" reward_event="challenge_reward_5000">
+						<objective type="UseItem" item_tags="ZINC_S_CSM" override_text_key="xuiMagazine" count="1"/>
+				</challenge>
+				<challenge name="ZINC_SURVIVAL9" title_key="ZINC_SURVIVAL9_title_key" icon="ui_game_symbol_quest" group="ZINCSURVIVAL" 
+						short_description_key="ZINC_SURVIVAL9_short_description_key" description_key="ZINC_SURVIVAL9_description_key"
+						reward_text_key="ZINC_SURVIVAL9_reward_text_key" reward_event="ZombieINC_challenge_reward_skillpoints_1" day_reset="1">
+						<objective type="QuestComplete" quest_tag="ZINCSurvival" quest_text_key="ZINC_SURVIVAL9_quest_text_key" count="3"/>
+				</challenge>
+				<challenge name="ZINC_SURVIVAL10" title_key="ZINC_SURVIVAL10_title_key" icon="ui_game_symbol_challenge_crafting_read_magazine" group="ZINCSURVIVAL"
+						hint="challengeReadMagazinesHint1"
+						short_description_key="ZINC_SURVIVAL10_short_description_key" description_key="ZINC_SURVIVAL10_description_key"
+						reward_text_key="ZINC_SURVIVAL10_reward_text_key" reward_event="challenge_reward_5000">
+						<objective type="UseItem" item_tags="ZINC_S_CSM" override_text_key="xuiMagazine" count="7"/>
+				</challenge>
+
+				<!-- Survival Quest -->
+			</append>
+		</if>
+		<else>
+			<append xpath="/challenges">
+				<challenge_group category="ZINCAC" name="ZINCSURVIVAL" title_key="ZINC_MNI"
+				reward_text_key="ZINC_MNI" reward_event="ZombieINC_challenge_group_reward_MonsterSlayer" />
+			
+				<challenge name="ZINC_SURVIVAL1" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCSURVIVAL" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_SURVIVAL2" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCSURVIVAL" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_SURVIVAL3" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCSURVIVAL" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_SURVIVAL4" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCSURVIVAL" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_SURVIVAL5" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCSURVIVAL" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_SURVIVAL6" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCSURVIVAL" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_SURVIVAL7" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCSURVIVAL" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_SURVIVAL8" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCSURVIVAL" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_SURVIVAL9" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCSURVIVAL" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_SURVIVAL10" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCSURVIVAL" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+			</append>
+		</else>
+	</conditional>
+	<conditional>
+		<if cond="mod_loaded('mateusjobsvehiclerecovery')">
+			<append xpath="/challenges">
+				<challenge_group category="ZINCAC" name="ZINCVH" title_key="ZINCVH_title_key"
+				reward_text_key="ZINCVH_reward_text_key" reward_event="ZombieINC_challenge_group_reward_CarThief" />
+			
+				
+				<!-- #Vehicle Recovery Quest -->
+				<challenge name="ZINC_VH1" title_key="ZINC_VH1_title_key" icon="ui_game_symbol_quest" group="ZINCVH" 
+						short_description_key="ZINC_VH1_short_description_key" description_key="ZINC_VH1_description_key"
+						reward_text_key="ZINC_VH1_reward_text_key" reward_event="challenge_reward_500" >
+						<objective type="QuestComplete" quest_tag="ZINCVHT1" quest_text_key="ZINC_VH1_quest_text_key" count="1"/>
+				</challenge>
+				<challenge name="ZINC_VH2" title_key="ZINC_VH2_title_key" icon="ui_game_symbol_quest" group="ZINCVH" 
+						short_description_key="ZINC_VH2_short_description_key" description_key="ZINC_VH2_description_key"
+						reward_text_key="ZINC_VH2_reward_text_key" reward_event="challenge_reward_1000" >
+						<objective type="QuestComplete" quest_tag="ZINCVHT2" quest_text_key="ZINC_VH2_quest_text_key" count="1"/>
+				</challenge>
+				<challenge name="ZINC_VH3" title_key="ZINC_VH3_title_key" icon="ui_game_symbol_quest" group="ZINCVH" 
+						short_description_key="ZINC_VH3_short_description_key" description_key="ZINC_VH3_description_key"
+						reward_text_key="ZINC_VH3_reward_text_key" reward_event="challenge_reward_2000" >
+						<objective type="QuestComplete" quest_tag="ZINCVHT3" quest_text_key="ZINC_VH3_quest_text_key" count="1"/>
+				</challenge>
+				<challenge name="ZINC_VH4" title_key="ZINC_VH4_title_key" icon="ui_game_symbol_quest" group="ZINCVH" 
+						short_description_key="ZINC_VH4_short_description_key" description_key="ZINC_VH4_description_key"
+						reward_text_key="ZINC_VH4_reward_text_key" reward_event="challenge_reward_4000" >
+						<objective type="QuestComplete" quest_tag="ZINCVHT4" quest_text_key="ZINC_VH4_quest_text_key" count="1"/>
+				</challenge>
+				<challenge name="ZINC_VH5" title_key="ZINC_VH5_title_key" icon="ui_game_symbol_quest" group="ZINCVH" 
+						short_description_key="ZINC_VH5_short_description_key" description_key="ZINC_VH5_description_key"
+						reward_text_key="ZINC_VH5_reward_text_key" reward_event="challenge_reward_6000" >
+						<objective type="QuestComplete" quest_tag="ZINCVHT5" quest_text_key="ZINC_VH5_quest_text_key" count="1"/>
+				</challenge>
+				<challenge name="ZINC_VH6" title_key="ZINC_VH6_title_key" icon="ui_game_symbol_quest" group="ZINCVH" 
+						short_description_key="ZINC_VH6_short_description_key" description_key="ZINC_VH6_description_key"
+						reward_text_key="ZINC_VH6_reward_text_key" reward_event="challenge_reward_8000" >
+						<objective type="QuestComplete" quest_tag="ZINCVHT6" quest_text_key="ZINC_VH6_quest_text_key" count="1"/>
+				</challenge>
+				<challenge name="ZINC_VH7" title_key="ZINC_VH7_title_key" icon="ui_game_symbol_quest" group="ZINCVH" 
+						short_description_key="ZINC_VH7_short_description_key" description_key="ZINC_VH7_description_key"
+						reward_text_key="ZINC_VH7_reward_text_key" reward_event="challenge_reward_10000" >
+						<objective type="QuestComplete" quest_tag="ZINCVH" quest_text_key="ZINC_VH7_quest_text_key" count="5"/>
+				</challenge>
+				<challenge name="ZINC_VH8" title_key="ZINC_VH8_title_key" icon="ui_game_symbol_quest" group="ZINCVH" 
+						short_description_key="ZINC_VH8_short_description_key" description_key="ZINC_VH8_description_key"
+						reward_text_key="ZINC_VH8_reward_text_key" reward_event="challenge_reward_10000" >
+						<objective type="QuestComplete" quest_tag="ZINCVH" quest_text_key="ZINC_VH8_quest_text_key" count="10"/>
+				</challenge>
+				<challenge name="ZINC_VH9" title_key="ZINC_VH9_title_key" icon="ui_game_symbol_quest" group="ZINCVH" 
+						short_description_key="ZINC_VH9_short_description_key" description_key="ZINC_VH9_description_key"
+						reward_text_key="ZINC_VH9_reward_text_key" reward_event="challenge_reward_10000" >
+						<objective type="QuestComplete" quest_tag="ZINCVH" quest_text_key="ZINC_VH9_quest_text_key" count="20"/>
+				</challenge>
+				<challenge name="ZINC_VH10" title_key="ZINC_VH10_title_key" icon="ui_game_symbol_challenge_crafting_read_magazine" group="ZINCVH"
+						hint="challengeReadMagazinesHint1"
+						short_description_key="ZINC_VH10_short_description_key" description_key="ZINC_VH10_description_key"
+						reward_text_key="ZINC_VH10_reward_text_key" reward_event="challenge_reward_2000">
+						<objective type="UseItem" item_tags="ZINC_VH_CSM" override_text_key="xuiMagazine" count="1"/>
+				</challenge>
+					<!--Vehicle Recovery Quest-->
+			</append>
+		</if>
+		<else>
+			<append xpath="/challenges">
+				<challenge_group category="ZINCAC" name="ZINCVH" title_key="ZINC_MNI"
+				reward_text_key="ZINC_MNI" reward_event="ZombieINC_challenge_group_reward_MonsterSlayer" />
+			
+				<challenge name="ZINC_VH1" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCVH" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_VH2" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCVH" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_VH3" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCVH" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_VH4" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCVH" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_VH5" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCVH" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_VH6" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCVH" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_VH7" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCVH" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_VH8" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCVH" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_VH9" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCVH" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_VH10" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCVH" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+			</append>
+		</else>
+	</conditional>
+	<conditional>
+		<if cond="mod_loaded('mateusjobstheritual')">
+			<append xpath="/challenges">
+				<challenge_group category="ZINCAC" name="ZINCTC" title_key="ZINCTC_title_key"
+				reward_text_key="ZINCTC_reward_text_key" reward_event="ZombieINC_challenge_group_reward_TheCult" />
+			
+				<!--##The Cult-->
+				<challenge name="ZINC_TC1" title_key="ZINC_TC1_title_key" icon="ui_game_symbol_quest" group="ZINCTC" 
+					short_description_key="ZINC_TC1_short_description_key" description_key="ZINC_TC1_description_key"
+					reward_text_key="ZINC_TC1_reward_text_key" reward_event="challenge_reward_500" >
+					<!--<objective type="QuestComplete" quest_tag="ZINCTC1" quest_text_key="ZINC_TC1_quest_text_key" count="1"/>-->
+					<objective type="Gather" item="ZombieINC_Quest_Priest" count="1"/>
+					
+					<effect_group>
+						<!--<passive_effect name="LootProb" operation="base_set" value="0.02" tags="ZINCTCLOOTPRIEST"/>-->
+						<!--<passive_effect name="LootProb" operation="base_set" level="2,3" value="2" tags="ZINCTCLOOTMOTHER"/>
+						<passive_effect name="LootProb" operation="base_set" level="2,3" value="2" tags="ZINCTCLOOTPENITENCE"/>
+						<passive_effect name="LootProb" operation="base_set" level="2,3" value="2" tags="ZINCTCLOOTFARMER"/>
+						<passive_effect name="LootProb" operation="base_set" level="2,3" value="2" tags="ZINCTCLOOTFATHER"/>-->		
+						<!--<triggered_effect trigger="onSelfChallengeCompleteUpdate" action="LogMessage" message="onSelfChallengeCompleteUpdate"/>-->		
+					</effect_group>
+				</challenge>
+				
+				<challenge name="ZINC_TC2" title_key="ZINC_TC2_title_key" icon="ui_game_symbol_quest" group="ZINCTC" 
+					short_description_key="ZINC_TC2_short_description_key" description_key="ZINC_TC2_description_key"
+					reward_text_key="ZINC_TC2_reward_text_key" reward_event="challenge_reward_500" >
+					<objective type="QuestComplete" quest_tag="ZINCTC2" quest_text_key="ZINC_TC2_quest_text_key" count="1"/>
+					<effect_group>
+						<passive_effect name="LootProb" operation="base_set" value="0" tags="ZINCTCLOOTPRIEST"/>
+					</effect_group>
+				</challenge>
+
+				<challenge name="ZINC_TC3" title_key="ZINC_TC3_title_key" icon="ui_game_symbol_quest" group="ZINCTC" 
+					short_description_key="ZINC_TC3_short_description_key" description_key="ZINC_TC3_description_key"
+					reward_text_key="ZINC_TC3_reward_text_key" reward_event="challenge_reward_500" >
+					<objective type="QuestComplete" quest_tag="ZINCTC3" quest_text_key="ZINC_TC3_quest_text_key" count="1"/>
+					
+					<effect_group>
+						<!--<passive_effect name="LootProb" operation="base_add" value="0.02" tags="ZINCTCLOOTMOTHER"/>-->
+					</effect_group>
+				</challenge>
+
+				<challenge name="ZINC_TC4" title_key="ZINC_TC4_title_key" icon="ui_game_symbol_quest" group="ZINCTC" 
+					short_description_key="ZINC_TC4_short_description_key" description_key="ZINC_TC4_description_key"
+					reward_text_key="ZINC_TC4_reward_text_key" reward_event="challenge_reward_500" >
+					<objective type="QuestComplete" quest_tag="ZINCTC4" quest_text_key="ZINC_TC4_quest_text_key" count="1"/>
+					
+					<effect_group>
+						<!--<passive_effect name="LootProb" operation="base_add" value="-0.02" tags="ZINCTCLOOTMOTHER"/>-->
+					</effect_group>
+				</challenge>
+
+				<challenge name="ZINC_TC5" title_key="ZINC_TC5_title_key" icon="ui_game_symbol_quest" group="ZINCTC" 
+					short_description_key="ZINC_TC5_short_description_key" description_key="ZINC_TC5_description_key"
+					reward_text_key="ZINC_TC5_reward_text_key" reward_event="challenge_reward_500" >
+					<objective type="QuestComplete" quest_tag="ZINCTC5" quest_text_key="ZINC_TC5_quest_text_key" count="1"/>
+					
+					<effect_group>
+						<!--<passive_effect name="LootProb" operation="base_add" value="0.02" tags="ZINCTCLOOTPENITENCE"/>-->
+					</effect_group>
+				</challenge>
+
+				<challenge name="ZINC_TC6" title_key="ZINC_TC6_title_key" icon="ui_game_symbol_quest" group="ZINCTC" 
+					short_description_key="ZINC_TC6_short_description_key" description_key="ZINC_TC6_description_key"
+					reward_text_key="ZINC_TC6_reward_text_key" reward_event="challenge_reward_500" >
+					<objective type="QuestComplete" quest_tag="ZINCTC6" quest_text_key="ZINC_TC6_quest_text_key" count="1"/>
+					
+					<effect_group>
+						<!--<passive_effect name="LootProb" operation="base_add" value="-0.02" tags="ZINCTCLOOTPENITENCE"/>-->
+					</effect_group>
+				</challenge>
+
+				<challenge name="ZINC_TC7" title_key="ZINC_TC7_title_key" icon="ui_game_symbol_quest" group="ZINCTC" 
+					short_description_key="ZINC_TC7_short_description_key" description_key="ZINC_TC7_description_key"
+					reward_text_key="ZINC_TC7_reward_text_key" reward_event="challenge_reward_500" >
+					<objective type="QuestComplete" quest_tag="ZINCTC7" quest_text_key="ZINC_TC7_quest_text_key" count="1"/>
+					
+					<effect_group>
+						<!--<passive_effect name="LootProb" operation="base_add" value="0.02" tags="ZINCTCLOOTFARMER"/>-->
+					</effect_group>
+				</challenge>
+
+				<challenge name="ZINC_TC8" title_key="ZINC_TC8_title_key" icon="ui_game_symbol_quest" group="ZINCTC" 
+					short_description_key="ZINC_TC8_short_description_key" description_key="ZINC_TC8_description_key"
+					reward_text_key="ZINC_TC8_reward_text_key" reward_event="challenge_reward_500" >
+					<objective type="QuestComplete" quest_tag="ZINCTC8" quest_text_key="ZINC_TC8_quest_text_key" count="1"/>
+					
+					<effect_group>
+						<!--<passive_effect name="LootProb" operation="base_add" value="-0.02" tags="ZINCTCLOOTFARMER"/>-->
+					</effect_group>
+				</challenge>
+
+				<challenge name="ZINC_TC9" title_key="ZINC_TC9_title_key" icon="ui_game_symbol_quest" group="ZINCTC" 
+					short_description_key="ZINC_TC9_short_description_key" description_key="ZINC_TC9_description_key"
+					reward_text_key="ZINC_TC9_reward_text_key" reward_event="challenge_reward_500" >
+					<objective type="QuestComplete" quest_tag="ZINCTC4" quest_text_key="ZINC_TC9_quest_text_key" count="1"/>
+					<objective type="QuestComplete" quest_tag="ZINCTC6" quest_text_key="ZINC_TC9_quest_text_key" count="1"/>
+					<objective type="QuestComplete" quest_tag="ZINCTC8" quest_text_key="ZINC_TC9_quest_text_key" count="1"/>
+					<!--<objective type="QuestComplete" quest_tag="ZINCTC9" quest_text_key="ZINC_TC9_quest_text_key" count="1"/>-->
+					
+					<effect_group>
+						<!--<passive_effect name="LootProb" operation="base_add" value="0.02" tags="ZINCTCLOOTFATHER"/>-->
+					</effect_group>
+				</challenge>
+
+				<challenge name="ZINC_TC10" title_key="ZINC_TC10_title_key" icon="ui_game_symbol_quest" group="ZINCTC" 
+					short_description_key="ZINC_TC10_short_description_key" description_key="ZINC_TC10_description_key"
+					reward_text_key="ZINC_TC10_reward_text_key" reward_event="challenge_reward_500" >
+					<objective type="QuestComplete" quest_tag="ZINCTC10" quest_text_key="ZINC_TC10_quest_text_key" count="1"/>
+					<effect_group>
+						<!--<passive_effect name="LootProb" operation="base_add" value="-0.02" tags="ZINCTCLOOTFATHER"/>-->
+					</effect_group>
+				</challenge>
+
+				<!--The Cult-->
+			</append>
+		</if>
+		<else>
+			<append xpath="/challenges">
+				<challenge_group category="ZINCAC" name="ZINCTC" title_key="ZINC_MNI"
+				reward_text_key="ZINC_MNI" reward_event="ZombieINC_challenge_group_reward_MonsterSlayer" />
+			
+				<challenge name="ZINC_TC1" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCTC" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_TC2" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCTC" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_TC3" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCTC" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_TC4" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCTC" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_TC5" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCTC" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_TC6" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCTC" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_TC7" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCTC" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_TC8" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCTC" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_TC9" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCTC" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_TC10" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCTC" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+			</append>
+		</else>
+	</conditional>
+	<conditional>
+		<if cond="mod_loaded('mateusjobsmobiledefense')">
+			<append xpath="/challenges">
+				<challenge_group category="ZINCAC2" name="ZINCMD" title_key="ZINCMD_title_key"
+				reward_text_key="ZINCMD_reward_text_key" reward_event="ZombieINC_challenge_group_reward_MobileDefense" />
+				
+				<challenge name="ZINC_MD1" title_key="ZINC_MD1_title_key" icon="ui_game_symbol_quest" group="ZINCMD" 
+					short_description_key="ZINC_MD1_short_description_key" description_key="ZINC_MD1_description_key"
+					reward_text_key="ZINC_MD1_reward_text_key" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINCMD3" quest_text_key="ZINC_MD1_quest_text_key" count="1"/>
+				</challenge>
+				<challenge name="ZINC_MD2" title_key="ZINC_MD2_title_key" icon="ui_game_symbol_quest" group="ZINCMD" 
+					short_description_key="ZINC_MD2_short_description_key" description_key="ZINC_MD2_description_key"
+					reward_text_key="ZINC_MD2_reward_text_key" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINCMD4" quest_text_key="ZINC_MD2_quest_text_key" count="1"/>
+				</challenge>
+				<challenge name="ZINC_MD3" title_key="ZINC_MD3_title_key" icon="ui_game_symbol_quest" group="ZINCMD" 
+					short_description_key="ZINC_MD3_short_description_key" description_key="ZINC_MD3_description_key"
+					reward_text_key="ZINC_MD3_reward_text_key" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINCMD5" quest_text_key="ZINC_MD3_quest_text_key" count="1"/>
+				</challenge>
+				<challenge name="ZINC_MD4" title_key="ZINC_MD4_title_key" icon="ui_game_symbol_quest" group="ZINCMD" 
+					short_description_key="ZINC_MD4_short_description_key" description_key="ZINC_MD4_description_key"
+					reward_text_key="ZINC_MD4_reward_text_key" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINCMD6" quest_text_key="ZINC_MD4_quest_text_key" count="1"/>
+				</challenge>
+				<challenge name="ZINC_MD5" title_key="ZINC_MD5_title_key" icon="ui_game_symbol_quest" group="ZINCMD" 
+					short_description_key="ZINC_MD5_short_description_key" description_key="ZINC_MD5_description_key"
+					reward_text_key="ZINC_MD5_reward_text_key" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINCMD" quest_text_key="ZINC_MD5_quest_text_key" count="5"/>
+				</challenge>
+				<challenge name="ZINC_MD6" title_key="ZINC_MD6_title_key" icon="ui_game_symbol_quest" group="ZINCMD" 
+					short_description_key="ZINC_MD6_short_description_key" description_key="ZINC_MD6_description_key"
+					reward_text_key="ZINC_MD6_reward_text_key" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINCMD" quest_text_key="ZINC_MD6_quest_text_key" count="10"/>
+				</challenge>
+				<challenge name="ZINC_MD7" title_key="ZINC_MD7_title_key" icon="ui_game_symbol_quest" group="ZINCMD" 
+					short_description_key="ZINC_MD7_short_description_key" description_key="ZINC_MD7_description_key"
+					reward_text_key="ZINC_MD7_reward_text_key" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINCMD" quest_text_key="ZINC_MD7_quest_text_key" count="20"/>
+					
+					<effect_group>
+						<passive_effect name="LootProb" operation="perc_add" value="0.5" tags="ZombieINC_MD_LI"/>
+						<passive_effect name="LootQuantity" operation="perc_add" value="1.0" tags="ZombieINC_MD_I"/>						
+						<!--<triggered_effect trigger="onSelfChallengeCompleteUpdate" action="LogMessage" message="onSelfChallengeCompleteUpdate"/>-->		
+					</effect_group>
+				</challenge>
+				<challenge name="ZINC_MD8" title_key="ZINC_MD8_title_key" icon="ui_game_symbol_challenge_adv_survival_kill_zombies" group="ZINCMD" 
+					short_description_key="ZINC_MD8_short_description_key" description_key="ZINC_MD8_description_key"
+					reward_text_key="ZINC_MD8_reward_text_key" reward_event="challenge_reward_10000">
+					
+					<objective type="KillByTag" entity_tags="zombie" killed_has_bufftag="ZINC_MD_BUFFS_ENEMY" target_name_key="xuiZombies" count="500"/>
+				</challenge>
+				<challenge name="ZINC_MD9" title_key="ZINC_MD9_title_key" icon="ui_game_symbol_computer" group="ZINCMD" 
+					short_description_key="ZINC_MD9_short_description_key" description_key="ZINC_MD9_description_key"
+					reward_text_key="ZINC_MD9_reward_text_key" reward_event="challenge_reward_10000">
+					<objective type="Gather" item="ZombieINC_MD_SmallIntel" count="10"/>
+					<objective type="Gather" item="ZombieINC_MD_MediumIntel" count="10"/>
+					<objective type="Gather" item="ZombieINC_MD_LargeIntel" count="10"/>
+				</challenge>
+				<challenge name="ZINC_MD10" title_key="ZINC_MD10_title_key" icon="ui_game_symbol_challenge_crafting_read_magazine" group="ZINCMD" 
+					short_description_key="ZINC_MD10_short_description_key" description_key="ZINC_MD10_description_key"
+					reward_text_key="ZINC_MD10_reward_text_key" reward_event="challenge_reward_10000">
+					
+					<objective type="UseItem" item_tags="ZINC_MD_CSM" override_text_key="xuiMagazine" count="1"/>
+				</challenge>
+			</append>
+		</if>
+		<else>
+			<append xpath="/challenges">
+				<challenge_group category="ZINCAC2" name="ZINCMD" title_key="ZINC_MNI"
+				reward_text_key="ZINC_MNI" reward_event="ZombieINC_challenge_group_reward_MobileDefense" />
+				
+				<challenge name="ZINC_MD1" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCMD" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_MD2" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCMD" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_MD3" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCMD" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_MD4" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCMD" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_MD5" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCMD" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_MD6" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCMD" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_MD7" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCMD" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_MD8" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCMD" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_MD9" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCMD" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_MD10" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCMD" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+			</append>
+		</else>
+	</conditional>
+	<conditional>
+		<if cond="mod_loaded('mateusjobsnestdemolition')">
+			<append xpath="/challenges">
+				<challenge_group category="ZINCAC2" name="ZINCND" title_key="ZINCND_title_key"
+				reward_text_key="ZINCND_reward_text_key" reward_event="ZombieINC_challenge_group_reward_NestDemolition" />
+				
+				<challenge name="ZINC_ND1" title_key="ZINC_ND1_title_key" icon="ui_game_symbol_quest" group="ZINCND"  
+					short_description_key="ZINC_ND1_short_description_key" description_key="ZINC_ND1_description_key"
+					reward_text_key="ZINC_ND1_reward_text_key" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINCND1" quest_text_key="ZINC_ND1_quest_text_key" count="1"/>
+				</challenge>
+				<challenge name="ZINC_ND2" title_key="ZINC_ND2_title_key" icon="ui_game_symbol_quest" group="ZINCND" 
+					short_description_key="ZINC_ND2_short_description_key" description_key="ZINC_ND2_description_key"
+					reward_text_key="ZINC_ND2_reward_text_key" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINCND2" quest_text_key="ZINC_ND2_quest_text_key" count="1"/>
+				</challenge>
+				<challenge name="ZINC_ND3" title_key="ZINC_ND3_title_key" icon="ui_game_symbol_quest" group="ZINCND" 
+					short_description_key="ZINC_ND3_short_description_key" description_key="ZINC_ND3_description_key"
+					reward_text_key="ZINC_ND3_reward_text_key" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINCND3" quest_text_key="ZINC_ND3_quest_text_key" count="1"/>
+				</challenge>
+				<challenge name="ZINC_ND4" title_key="ZINC_ND4_title_key" icon="ui_game_symbol_quest" group="ZINCND" 
+					short_description_key="ZINC_ND4_short_description_key" description_key="ZINC_ND4_description_key"
+					reward_text_key="ZINC_ND4_reward_text_key" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINCND4" quest_text_key="ZINC_ND4_quest_text_key" count="1"/>
+				</challenge>
+				<challenge name="ZINC_ND5" title_key="ZINC_ND5_title_key" icon="ui_game_symbol_quest" group="ZINCND" 
+					short_description_key="ZINC_ND5_short_description_key" description_key="ZINC_ND5_description_key"
+					reward_text_key="ZINC_ND5_reward_text_key" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINCND5" quest_text_key="ZINC_ND5_quest_text_key" count="1"/>
+				</challenge>
+				<challenge name="ZINC_ND6" title_key="ZINC_ND6_title_key" icon="ui_game_symbol_quest" group="ZINCND" 
+					short_description_key="ZINC_ND6_short_description_key" description_key="ZINC_ND6_description_key"
+					reward_text_key="ZINC_ND6_reward_text_key" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINCND6" quest_text_key="ZINC_ND6_quest_text_key" count="1"/>
+				</challenge>
+				<challenge name="ZINC_ND7" title_key="ZINC_ND7_title_key" icon="ui_game_symbol_quest" group="ZINCND" 
+					short_description_key="ZINC_ND7_short_description_key" description_key="ZINC_ND7_description_key"
+					reward_text_key="ZINC_ND7_reward_text_key" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINCND" quest_text_key="ZINC_ND7_quest_text_key" count="5"/>
+				</challenge>
+				<challenge name="ZINC_ND8" title_key="ZINC_ND8_title_key" icon="ui_game_symbol_quest" group="ZINCND" 
+					short_description_key="ZINC_ND8_short_description_key" description_key="ZINC_ND8_description_key"
+					reward_text_key="ZINC_ND8_reward_text_key" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINCND" quest_text_key="ZINC_ND8_quest_text_key" count="10"/>
+				</challenge>
+				<challenge name="ZINC_ND9" title_key="ZINC_ND9_title_key" icon="ui_game_symbol_quest" group="ZINCND" 
+					short_description_key="ZINC_ND9_short_description_key" description_key="ZINC_ND9_description_key"
+					reward_text_key="ZINC_ND9_reward_text_key" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINCND" quest_text_key="ZINC_ND9_quest_text_key" count="20"/>
+				</challenge>
+				<challenge name="ZINC_ND10" title_key="ZINC_ND10_title_key" icon="ui_game_symbol_challenge_crafting_read_magazine" group="ZINCND" 
+					short_description_key="ZINC_ND10_short_description_key" description_key="ZINC_ND10_description_key"
+					reward_text_key="ZINC_ND10_reward_text_key" reward_event="challenge_reward_10000">
+					<objective type="UseItem" item_tags="ZINC_ND_CSM" override_text_key="xuiMagazine" count="1"/>
+				</challenge>
+
+			</append>
+		</if>
+		<else>
+			<append xpath="/challenges">
+				<challenge_group category="ZINCAC2" name="ZINCND" title_key="ZINC_MNI"
+				reward_text_key="ZINC_MNI" reward_event="ZombieINC_challenge_group_reward_NestDemolition" />
+				
+				<challenge name="ZINC_ND1" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCND" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_ND2" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCND" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_ND3" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCND" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_ND4" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCND" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_ND5" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCND" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_ND6" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCND" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_ND7" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCND" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_ND8" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCND" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_ND9" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCND" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_ND10" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCND" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+			</append>
+		</else>
+	</conditional>
+	<conditional>
+		<if cond="mod_loaded('mateusjobsweaponsone')">
+			<append xpath="/challenges">
+				<challenge_group category="ZINCAC2" name="ZINCWEAPON" title_key="ZINCWEAPON_title_key"
+				reward_text_key="ZINCWEAPON_reward_text_key" reward_event="ZombieINC_challenge_group_reward_WeaponsPart1" />
+				
+				<challenge name="ZINC_WEAPON1" title_key="ZINC_WEAPON1_title_key" icon="ui_game_symbol_quest" group="ZINCWEAPON" 
+					short_description_key="ZINC_WEAPON1_short_description_key" description_key="ZINC_WEAPON1_description_key"
+					reward_text_key="ZINC_WEAPON1_reward_text_key" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINCWTP1" quest_text_key="ZINC_WEAPON1_quest_text_key" count="1"/>
+				</challenge>
+				<challenge name="ZINC_WEAPON2" title_key="ZINC_WEAPON2_title_key" icon="ui_game_symbol_challenge_adv_survival_kill_zombies" group="ZINCWEAPON" 
+					short_description_key="ZINC_WEAPON2_short_description_key" description_key="ZINC_WEAPON2_description_key"
+					reward_text_key="ZINC_WEAPON2_reward_text_key" reward_event="challenge_reward_10000">
+					<objective type="KillByTag" entity_tags="zombie" killer_has_bufftag="ZINC_WTPart1_WithWeapon" target_name_key="xuiZombies" count="50"/>
+					<effect_group>
+						<passive_effect name="EntityDamage" operation="perc_add" value="0.05" tags="ZINCWeaponPart1"/>
+					</effect_group>
+				</challenge>
+				<challenge name="ZINC_WEAPON3" title_key="ZINC_WEAPON3_title_key" icon="ui_game_symbol_challenge_adv_survival_kill_zombies" group="ZINCWEAPON" 
+					short_description_key="ZINC_WEAPON3_short_description_key" description_key="ZINC_WEAPON3_description_key"
+					reward_text_key="ZINC_WEAPON3_reward_text_key" reward_event="challenge_reward_10000">		
+					<objective type="KillByTag" entity_tags="zombie" killer_has_bufftag="ZINC_WTPart1_WithWeapon" target_name_key="xuiZombies" count="100"/>
+					<effect_group>
+						<passive_effect name="EntityDamage" operation="perc_add" value="0.05" tags="ZINCWeaponPart1"/>
+					</effect_group>
+				</challenge>
+				<challenge name="ZINC_WEAPON4" title_key="ZINC_WEAPON4_title_key" icon="ui_game_symbol_challenge_adv_survival_kill_zombies" group="ZINCWEAPON" 
+					short_description_key="ZINC_WEAPON4_short_description_key" description_key="ZINC_WEAPON4_description_key"
+					reward_text_key="ZINC_WEAPON4_reward_text_key" reward_event="challenge_reward_10000">
+					<objective type="KillByTag" entity_tags="zombie" killer_has_bufftag="ZINC_WTPart1_WithWeapon" target_name_key="xuiZombies" count="250"/>
+					<effect_group>
+						<passive_effect name="EntityDamage" operation="perc_add" value="0.05" tags="ZINCWeaponPart1"/>
+					</effect_group>
+				</challenge>
+				<challenge name="ZINC_WEAPON5" title_key="ZINC_WEAPON5_title_key" icon="ui_game_symbol_challenge_adv_survival_kill_zombies" group="ZINCWEAPON" 
+					short_description_key="ZINC_WEAPON5_short_description_key" description_key="ZINC_WEAPON5_description_key"
+					reward_text_key="ZINC_WEAPON5_reward_text_key" reward_event="challenge_reward_10000">
+					<objective type="KillByTag" entity_tags="zombie" killer_has_bufftag="ZINC_WTPart1_WithWeapon" target_name_key="xuiZombies" count="500"/>
+					<effect_group>
+						<passive_effect name="EntityDamage" operation="perc_add" value="0.05" tags="ZINCWeaponPart1"/>
+					</effect_group>
+				</challenge>
+				<challenge name="ZINC_WEAPON6" title_key="ZINC_WEAPON6_title_key" icon="ui_game_symbol_challenge_adv_survival_kill_zombies" group="ZINCWEAPON" 
+					short_description_key="ZINC_WEAPON6_short_description_key" description_key="ZINC_WEAPON6_description_key"
+					reward_text_key="ZINC_WEAPON6_reward_text_key" reward_event="challenge_reward_10000">
+					<objective type="KillByTag" entity_tags="zombie" killer_has_bufftag="ZINC_WTPart1_WithWeapon" target_name_key="xuiZombies" count="1000"/>
+					<effect_group>
+						<passive_effect name="EntityDamage" operation="perc_add" value="0.10" tags="ZINCWeaponPart1"/>
+					</effect_group>
+				</challenge>
+				<challenge name="ZINC_WEAPON7" title_key="ZINC_WEAPON7_title_key" icon="ui_game_symbol_forge" group="ZINCWEAPON" 
+					short_description_key="ZINC_WEAPON7_short_description_key" description_key="ZINC_WEAPON7_description_key"
+					reward_text_key="ZINC_WEAPON7_reward_text_key" reward_event="challenge_reward_10000">
+					<objective type="Gather" item="ZombieINC_resourceRepairKit" count="1"/>
+				</challenge>
+				<challenge name="ZINC_WEAPON8" title_key="ZINC_WEAPON8_title_key" icon="ui_game_symbol_forge" group="ZINCWEAPON" 
+					short_description_key="ZINC_WEAPON8_short_description_key" description_key="ZINC_WEAPON8_description_key"
+					reward_text_key="ZINC_WEAPON8_reward_text_key" reward_event="challenge_reward_10000">
+					<objective type="Gather" item="ZombieINC_resourceRepairKit" count="10"/>
+					<effect_group>
+						<passive_effect name="DegradationPerUse" operation="perc_add" value="-0.10" tags="ZINCWeaponPart1"/>
+					</effect_group>
+				</challenge>
+				<challenge name="ZINC_WEAPON9" title_key="ZINC_WEAPON9_title_key" icon="ui_game_symbol_skull" group="ZINCWEAPON" 
+					short_description_key="ZINC_WEAPON9_short_description_key" description_key="ZINC_WEAPON9_description_key"
+					reward_text_key="ZINC_WEAPON9_reward_text_key" reward_event="challenge_reward_10000">
+					
+				</challenge>
+				<challenge name="ZINC_WEAPON10" title_key="ZINC_WEAPON10_title_key" icon="ui_game_symbol_skull" group="ZINCWEAPON" 
+					short_description_key="ZINC_WEAPON10_short_description_key" description_key="ZINC_WEAPON10_description_key"
+					reward_text_key="ZINC_WEAPON10_reward_text_key" reward_event="challenge_reward_10000">
+					
+				</challenge>
+			</append>
+		</if>
+		<else>
+			<append xpath="/challenges">
+				<challenge_group category="ZINCAC2" name="ZINCWEAPON" title_key="ZINC_MNI"
+				reward_text_key="ZINC_MNI" reward_event="ZombieINC_challenge_group_reward_WeaponsPart1" />
+				
+				<challenge name="ZINC_WEAPON1" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCWEAPON" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_WEAPON2" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCWEAPON" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_WEAPON3" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCWEAPON" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_WEAPON4" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCWEAPON" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_WEAPON5" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCWEAPON" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_WEAPON6" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCWEAPON" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_WEAPON7" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCWEAPON" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_WEAPON8" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCWEAPON" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_WEAPON9" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCWEAPON" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_WEAPON10" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCWEAPON" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+			</append>
+		</else>
+	</conditional>
+	<conditional>
+		<if cond="mod_loaded('mateusjobsweaponstwo')">
+			<append xpath="/challenges">
+				<challenge_group category="ZINCAC2" name="ZINCWEAPONTWO" title_key="ZINCWEAPONTWO_title_key"
+				reward_text_key="ZINCWEAPONTWO_reward_text_key" reward_event="ZombieINC_challenge_group_reward_WeaponsPart2" />
+				
+				<challenge name="ZINC_WEAPONTWO1" title_key="ZINC_WEAPONTWO1_title_key" icon="ui_game_symbol_quest" group="ZINCWEAPONTWO" 
+					short_description_key="ZINC_WEAPONTWO1_short_description_key" description_key="ZINC_WEAPONTWO1_description_key"
+					reward_text_key="ZINC_WEAPONTWO1_reward_text_key" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINCWTP2" quest_text_key="ZINC_WEAPONTWO1_quest_text_key" count="1"/>
+				</challenge>
+				<challenge name="ZINC_WEAPONTWO2" title_key="ZINC_WEAPONTWO2_title_key" icon="ui_game_symbol_challenge_adv_survival_kill_zombies" group="ZINCWEAPONTWO" 
+					short_description_key="ZINC_WEAPONTWO2_short_description_key" description_key="ZINC_WEAPONTWO2_description_key"
+					reward_text_key="ZINC_WEAPONTWO2_reward_text_key" reward_event="challenge_reward_10000">
+					<objective type="KillByTag" entity_tags="zombie" killer_has_bufftag="ZINC_WTPart2_WithWeapon" target_name_key="xuiZombies" count="50"/>
+					<effect_group>
+						<passive_effect name="EntityDamage" operation="perc_add" value="0.05" tags="ZINCWeaponPart2"/>
+					</effect_group>
+				</challenge>
+				<challenge name="ZINC_WEAPONTWO3" title_key="ZINC_WEAPONTWO3_title_key" icon="ui_game_symbol_challenge_adv_survival_kill_zombies" group="ZINCWEAPONTWO" 
+					short_description_key="ZINC_WEAPONTWO3_short_description_key" description_key="ZINC_WEAPONTWO3_description_key"
+					reward_text_key="ZINC_WEAPONTWO3_reward_text_key" reward_event="challenge_reward_10000">
+					<objective type="KillByTag" entity_tags="zombie" killer_has_bufftag="ZINC_WTPart2_WithWeapon" target_name_key="xuiZombies" count="100"/>
+					<effect_group>
+						<passive_effect name="EntityDamage" operation="perc_add" value="0.05" tags="ZINCWeaponPart2"/>
+					</effect_group>
+				</challenge>
+				<challenge name="ZINC_WEAPONTWO4" title_key="ZINC_WEAPONTWO4_title_key" icon="ui_game_symbol_challenge_adv_survival_kill_zombies" group="ZINCWEAPONTWO" 
+					short_description_key="ZINC_WEAPONTWO4_short_description_key" description_key="ZINC_WEAPONTWO4_description_key"
+					reward_text_key="ZINC_WEAPONTWO4_reward_text_key" reward_event="challenge_reward_10000">
+					<objective type="KillByTag" entity_tags="zombie" killer_has_bufftag="ZINC_WTPart2_WithWeapon" target_name_key="xuiZombies" count="250"/>
+					<effect_group>
+						<passive_effect name="EntityDamage" operation="perc_add" value="0.05" tags="ZINCWeaponPart2"/>
+					</effect_group>
+				</challenge>
+				<challenge name="ZINC_WEAPONTWO5" title_key="ZINC_WEAPONTWO5_title_key" icon="ui_game_symbol_challenge_adv_survival_kill_zombies" group="ZINCWEAPONTWO" 
+					short_description_key="ZINC_WEAPONTWO5_short_description_key" description_key="ZINC_WEAPONTWO5_description_key"
+					reward_text_key="ZINC_WEAPONTWO5_reward_text_key" reward_event="challenge_reward_10000">
+					<objective type="KillByTag" entity_tags="zombie" killer_has_bufftag="ZINC_WTPart2_WithWeapon" target_name_key="xuiZombies" count="500"/>
+					<effect_group>
+						<passive_effect name="EntityDamage" operation="perc_add" value="0.05" tags="ZINCWeaponPart2"/>
+					</effect_group>
+				</challenge>
+				<challenge name="ZINC_WEAPONTWO6" title_key="ZINC_WEAPONTWO6_title_key" icon="ui_game_symbol_challenge_adv_survival_kill_zombies" group="ZINCWEAPONTWO" 
+					short_description_key="ZINC_WEAPONTWO6_short_description_key" description_key="ZINC_WEAPONTWO6_description_key"
+					reward_text_key="ZINC_WEAPONTWO6_reward_text_key" reward_event="challenge_reward_10000">
+					<objective type="KillByTag" entity_tags="zombie" killer_has_bufftag="ZINC_WTPart2_WithWeapon" target_name_key="xuiZombies" count="1000"/>
+					<effect_group>
+						<passive_effect name="EntityDamage" operation="perc_add" value="0.05" tags="ZINCWeaponPart2"/>
+					</effect_group>
+				</challenge>
+				<challenge name="ZINC_WEAPONTWO7" title_key="ZINC_WEAPONTWO7_title_key" icon="ui_game_symbol_forge" group="ZINCWEAPONTWO" 
+					short_description_key="ZINC_WEAPONTWO7_short_description_key" description_key="ZINC_WEAPONTWO7_description_key"
+					reward_text_key="ZINC_WEAPONTWO7_reward_text_key" reward_event="challenge_reward_10000">
+					<objective type="UseItem" item_tags="ZINCWTP2RepairKit" override_text_key="ZINC_xuiExperimentalRepairKit" count="1"/>
+				</challenge>
+				<challenge name="ZINC_WEAPONTWO8" title_key="ZINC_WEAPONTWO8_title_key" icon="ui_game_symbol_forge" group="ZINCWEAPONTWO" 
+					short_description_key="ZINC_WEAPONTWO8_short_description_key" description_key="ZINC_WEAPONTWO8_description_key"
+					reward_text_key="ZINC_WEAPONTWO8_reward_text_key" reward_event="challenge_reward_10000">
+					<objective type="UseItem" item_tags="ZINCWTP2RepairKit" override_text_key="ZINC_xuiExperimentalRepairKit" count="10"/>
+					<effect_group>
+						<passive_effect name="DegradationPerUse" operation="perc_add" value="-0.10" tags="ZINCWeaponPart2"/>
+					</effect_group>
+				</challenge>
+				<challenge name="ZINC_WEAPONTWO9" title_key="ZINC_WEAPONTWO9_title_key" icon="ui_game_symbol_skull" group="ZINCWEAPONTWO" 
+					short_description_key="ZINC_WEAPONTWO9_short_description_key" description_key="ZINC_WEAPONTWO9_description_key"
+					reward_text_key="ZINC_WEAPONTWO9_reward_text_key" reward_event="challenge_reward_10000">
+					
+				</challenge>
+				<challenge name="ZINC_WEAPONTWO10" title_key="ZINC_WEAPONTWO10_title_key" icon="ui_game_symbol_skull" group="ZINCWEAPONTWO" 
+					short_description_key="ZINC_WEAPONTWO10_short_description_key" description_key="ZINC_WEAPONTWO10_description_key"
+					reward_text_key="ZINC_WEAPONTWO10_reward_text_key" reward_event="challenge_reward_10000">
+					
+				</challenge>
+
+			</append>
+		</if>
+		<else>
+			<append xpath="/challenges">
+				<challenge_group category="ZINCAC2" name="ZINCWEAPONTWO" title_key="ZINC_MNI"
+				reward_text_key="ZINC_MNI" reward_event="ZombieINC_challenge_group_reward_WeaponsPart2" />
+				
+				<challenge name="ZINC_WEAPONTWO1" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCWEAPONTWO" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_WEAPONTWO2" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCWEAPONTWO" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_WEAPONTWO3" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCWEAPONTWO" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_WEAPONTWO4" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCWEAPONTWO" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_WEAPONTWO5" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCWEAPONTWO" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_WEAPONTWO6" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCWEAPONTWO" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_WEAPONTWO7" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCWEAPONTWO" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_WEAPONTWO8" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCWEAPONTWO" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_WEAPONTWO9" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCWEAPONTWO" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+				<challenge name="ZINC_WEAPONTWO10" title_key="ZINC_MNI" icon="ui_game_symbol_quest" group="ZINCWEAPONTWO" 
+					short_description_key="ZINC_MNI" description_key="ZINC_MNI"
+					reward_text_key="ZINC_MNI" reward_event="challenge_reward_10000">
+					<objective type="QuestComplete" quest_tag="ZINC_MNI" quest_text_key="ZINC_MNI" count="10"/>
+				</challenge>
+			</append>
+		</else>
+	</conditional>
+
+<append xpath="/challenges">
+
+
+	<challenge_category name="ZINCAC" title="Apocalyptic Challenges Page 1" icon="ui_game_symbol_skull"/>
+	<challenge_category name="ZINCAC2" title="Apocalyptic Challenges Page 2" icon="ui_game_symbol_skull"/>
+	
+	<!--<objective type="ChallengeStatAwarded" challenge_stat="homerunderby" count="5" stat_text_key="challengeStatHomerunDerby"/>-->
+	<!--On Buffs.xml <triggered_effect trigger="onSelfBuffStart" action="AwardChallenge" challenge_stat="homerunderby" count="1"/>-->
+	
+	<!--#Hunt Quest-->
+	
+	<!--Hunt Quest-->
+	
+	<!--#Defense Quest-->
+	
+	<!--Defense Quest-->
+	
+	<!--#Survival Quest-->
+	
+	<!--Survival Quest-->
+	
+	<!--#Vehicle Recovery Quest-->
+	
+	<!--Vehicle Recovery Quest-->
+	
+	<!--#The Cult Quest-->
+	
+	<!--The Cult Quest-->
+	
+	<!--#Weapons Quest-->
+	
+	
+	<!--<challenge_group category="ZINCAC2" name="ZINCVEHICLES" title_key="COMING SOON"
+	reward_text_key="COMING SOON" reward_event="ZombieINC_challenge_group_reward_GodSlayer" />-->
+	
+	<challenge_group category="ZINCAC2" name="ZINCTCTWO" title_key="COMING SOON"
+	reward_text_key="COMING SOON" reward_event="ZombieINC_challenge_group_reward_GodSlayer" />
+	
+	<!--<challenge_group category="ZINCAC2" name="ZINCMD" title_key="COMING SOON"
+	reward_text_key="COMING SOON" reward_event="ZombieINC_challenge_group_reward_GodSlayer" />
+	
+	<challenge_group category="ZINCAC2" name="ZINCND" title_key="COMING SOON"
+	reward_text_key="COMING SOON" reward_event="ZombieINC_challenge_group_reward_GodSlayer" />-->
+	
+	<!--<challenge_group category="ZINCAC2" name="ZINCTRIALS" title_key="COMING SOON"
+	reward_text_key="COMING SOON" reward_event="ZombieINC_challenge_group_reward_GodSlayer" />-->
+	<!--Weapons Quest-->
+	
+	<!--#Weapons Quest-->
+	
+	<challenge name="ZINCTCTWO1" title_key="COMING SOON" icon="ui_game_symbol_quest" group="ZINCTCTWO" 
+        short_description_key="COMING SOON" description_key="COMING SOON"
+        reward_text_key="COMING SOON" reward_event="challenge_reward_10000">
+        <objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="COMING SOON" count="10"/>
+	</challenge>
+	<challenge name="ZINCTCTWO2" title_key="COMING SOON" icon="ui_game_symbol_quest" group="ZINCTCTWO" 
+        short_description_key="COMING SOON" description_key="COMING SOON"
+        reward_text_key="COMING SOON" reward_event="challenge_reward_10000">
+        <objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="COMING SOON" count="10"/>
+	</challenge>
+	<challenge name="ZINCTCTWO3" title_key="COMING SOON" icon="ui_game_symbol_quest" group="ZINCTCTWO" 
+        short_description_key="COMING SOON" description_key="COMING SOON"
+        reward_text_key="COMING SOON" reward_event="challenge_reward_10000">
+        <objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="COMING SOON" count="10"/>
+	</challenge>
+	<challenge name="ZINCTCTWO4" title_key="COMING SOON" icon="ui_game_symbol_quest" group="ZINCTCTWO" 
+        short_description_key="COMING SOON" description_key="COMING SOON"
+        reward_text_key="COMING SOON" reward_event="challenge_reward_10000">
+        <objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="COMING SOON" count="10"/>
+	</challenge>
+	<challenge name="ZINCTCTWO5" title_key="COMING SOON" icon="ui_game_symbol_quest" group="ZINCTCTWO" 
+        short_description_key="COMING SOON" description_key="COMING SOON"
+        reward_text_key="COMING SOON" reward_event="challenge_reward_10000">
+        <objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="COMING SOON" count="10"/>
+	</challenge>
+	<challenge name="ZINCTCTWO6" title_key="COMING SOON" icon="ui_game_symbol_quest" group="ZINCTCTWO" 
+        short_description_key="COMING SOON" description_key="COMING SOON"
+        reward_text_key="COMING SOON" reward_event="challenge_reward_10000">
+        <objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="COMING SOON" count="10"/>
+	</challenge>
+	<challenge name="ZINCTCTWO7" title_key="COMING SOON" icon="ui_game_symbol_quest" group="ZINCTCTWO" 
+        short_description_key="COMING SOON" description_key="COMING SOON"
+        reward_text_key="COMING SOON" reward_event="challenge_reward_10000">
+        <objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="COMING SOON" count="10"/>
+	</challenge>
+	<challenge name="ZINCTCTWO8" title_key="COMING SOON" icon="ui_game_symbol_quest" group="ZINCTCTWO" 
+        short_description_key="COMING SOON" description_key="COMING SOON"
+        reward_text_key="COMING SOON" reward_event="challenge_reward_10000">
+        <objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="COMING SOON" count="10"/>
+	</challenge>
+	<challenge name="ZINCTCTWO9" title_key="COMING SOON" icon="ui_game_symbol_quest" group="ZINCTCTWO" 
+        short_description_key="COMING SOON" description_key="COMING SOON"
+        reward_text_key="COMING SOON" reward_event="challenge_reward_10000">
+        <objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="COMING SOON" count="10"/>
+	</challenge>
+	<challenge name="ZINCTCTWO10" title_key="COMING SOON" icon="ui_game_symbol_quest" group="ZINCTCTWO" 
+        short_description_key="COMING SOON" description_key="COMING SOON"
+        reward_text_key="COMING SOON" reward_event="challenge_reward_10000">
+        <objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="COMING SOON" count="10"/>
+	</challenge>
+	
+	
+	<!--<challenge name="ZINC_VEHICLE1" title_key="COMING SOON" icon="ui_game_symbol_quest" group="ZINCVEHICLES" 
+        short_description_key="COMING SOON" description_key="COMING SOON"
+        reward_text_key="COMING SOON" reward_event="challenge_reward_10000">
+        <objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="COMING SOON" count="10"/>
+	</challenge>
+	<challenge name="ZINC_VEHICLE2" title_key="COMING SOON" icon="ui_game_symbol_quest" group="ZINCVEHICLES" 
+        short_description_key="COMING SOON" description_key="COMING SOON"
+        reward_text_key="COMING SOON" reward_event="challenge_reward_10000">
+        <objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="COMING SOON" count="10"/>
+	</challenge>
+	<challenge name="ZINC_VEHICLE3" title_key="COMING SOON" icon="ui_game_symbol_quest" group="ZINCVEHICLES" 
+        short_description_key="COMING SOON" description_key="COMING SOON"
+        reward_text_key="COMING SOON" reward_event="challenge_reward_10000">
+        <objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="COMING SOON" count="10"/>
+	</challenge>
+	<challenge name="ZINC_VEHICLE4" title_key="COMING SOON" icon="ui_game_symbol_quest" group="ZINCVEHICLES" 
+        short_description_key="COMING SOON" description_key="COMING SOON"
+        reward_text_key="COMING SOON" reward_event="challenge_reward_10000">
+        <objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="COMING SOON" count="10"/>
+	</challenge>
+	<challenge name="ZINC_VEHICLE5" title_key="COMING SOON" icon="ui_game_symbol_quest" group="ZINCVEHICLES" 
+        short_description_key="COMING SOON" description_key="COMING SOON"
+        reward_text_key="COMING SOON" reward_event="challenge_reward_10000">
+        <objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="COMING SOON" count="10"/>
+	</challenge>
+	<challenge name="ZINC_VEHICLE6" title_key="COMING SOON" icon="ui_game_symbol_quest" group="ZINCVEHICLES" 
+        short_description_key="COMING SOON" description_key="COMING SOON"
+        reward_text_key="COMING SOON" reward_event="challenge_reward_10000">
+        <objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="COMING SOON" count="10"/>
+	</challenge>
+	<challenge name="ZINC_VEHICLE7" title_key="COMING SOON" icon="ui_game_symbol_quest" group="ZINCVEHICLES" 
+        short_description_key="COMING SOON" description_key="COMING SOON"
+        reward_text_key="COMING SOON" reward_event="challenge_reward_10000">
+        <objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="COMING SOON" count="10"/>
+	</challenge>
+	<challenge name="ZINC_VEHICLE8" title_key="COMING SOON" icon="ui_game_symbol_quest" group="ZINCVEHICLES" 
+        short_description_key="COMING SOON" description_key="COMING SOON"
+        reward_text_key="COMING SOON" reward_event="challenge_reward_10000">
+        <objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="COMING SOON" count="10"/>
+	</challenge>
+	<challenge name="ZINC_VEHICLE9" title_key="COMING SOON" icon="ui_game_symbol_quest" group="ZINCVEHICLES" 
+        short_description_key="COMING SOON" description_key="COMING SOON"
+        reward_text_key="COMING SOON" reward_event="challenge_reward_10000">
+        <objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="COMING SOON" count="10"/>
+	</challenge>
+	<challenge name="ZINC_VEHICLE10" title_key="COMING SOON" icon="ui_game_symbol_quest" group="ZINCVEHICLES" 
+        short_description_key="COMING SOON" description_key="COMING SOON"
+        reward_text_key="COMING SOON" reward_event="challenge_reward_10000">
+        <objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="COMING SOON" count="10"/>
+	</challenge>-->
+	
+	
+	
+	
+	
+	
+	<!--<challenge name="ZINC_TRIALS1" title_key="COMING SOON" icon="ui_game_symbol_quest" group="ZINCTRIALS" 
+        short_description_key="COMING SOON" description_key="COMING SOON"
+        reward_text_key="COMING SOON" reward_event="challenge_reward_10000">
+        <objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="COMING SOON" count="10"/>
+	</challenge>
+	<challenge name="ZINC_TRIALS2" title_key="COMING SOON" icon="ui_game_symbol_quest" group="ZINCTRIALS" 
+        short_description_key="COMING SOON" description_key="COMING SOON"
+        reward_text_key="COMING SOON" reward_event="challenge_reward_10000">
+        <objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="COMING SOON" count="10"/>
+	</challenge>
+	<challenge name="ZINC_TRIALS3" title_key="COMING SOON" icon="ui_game_symbol_quest" group="ZINCTRIALS" 
+        short_description_key="COMING SOON" description_key="COMING SOON"
+        reward_text_key="COMING SOON" reward_event="challenge_reward_10000">
+        <objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="COMING SOON" count="10"/>
+	</challenge>
+	<challenge name="ZINC_TRIALS4" title_key="COMING SOON" icon="ui_game_symbol_quest" group="ZINCTRIALS" 
+        short_description_key="COMING SOON" description_key="COMING SOON"
+        reward_text_key="COMING SOON" reward_event="challenge_reward_10000">
+        <objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="COMING SOON" count="10"/>
+	</challenge>
+	<challenge name="ZINC_TRIALS5" title_key="COMING SOON" icon="ui_game_symbol_quest" group="ZINCTRIALS" 
+        short_description_key="COMING SOON" description_key="COMING SOON"
+        reward_text_key="COMING SOON" reward_event="challenge_reward_10000">
+        <objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="COMING SOON" count="10"/>
+	</challenge>
+	<challenge name="ZINC_TRIALS6" title_key="COMING SOON" icon="ui_game_symbol_quest" group="ZINCTRIALS" 
+        short_description_key="COMING SOON" description_key="COMING SOON"
+        reward_text_key="COMING SOON" reward_event="challenge_reward_10000">
+        <objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="COMING SOON" count="10"/>
+	</challenge>
+	<challenge name="ZINC_TRIALS7" title_key="COMING SOON" icon="ui_game_symbol_quest" group="ZINCTRIALS" 
+        short_description_key="COMING SOON" description_key="COMING SOON"
+        reward_text_key="COMING SOON" reward_event="challenge_reward_10000">
+        <objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="COMING SOON" count="10"/>
+	</challenge>
+	<challenge name="ZINC_TRIALS8" title_key="COMING SOON" icon="ui_game_symbol_quest" group="ZINCTRIALS" 
+        short_description_key="COMING SOON" description_key="COMING SOON"
+        reward_text_key="COMING SOON" reward_event="challenge_reward_10000">
+        <objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="COMING SOON" count="10"/>
+	</challenge>
+	<challenge name="ZINC_TRIALS9" title_key="COMING SOON" icon="ui_game_symbol_quest" group="ZINCTRIALS" 
+        short_description_key="COMING SOON" description_key="COMING SOON"
+        reward_text_key="COMING SOON" reward_event="challenge_reward_10000">
+        <objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="COMING SOON" count="10"/>
+	</challenge>
+	<challenge name="ZINC_TRIALS10" title_key="COMING SOON" icon="ui_game_symbol_quest" group="ZINCTRIALS" 
+        short_description_key="COMING SOON" description_key="COMING SOON"
+        reward_text_key="COMING SOON" reward_event="challenge_reward_10000">
+        <objective type="QuestComplete" quest_tag="COMINGSOON" quest_text_key="COMING SOON" count="10"/>
+	</challenge>-->
+	<!--Weapons Quest-->
+	
+</append>
+	<conditional>
+		<if cond="mod_loaded('mateusjobshunt')">
+			<append xpath="/challenges/challenge[@name='ZINC_WEAPON9']">
+				<objective type="KillByTag" entity_tags="ZINCBoss" killer_has_bufftag="ZINC_WTPart1_WithWeapon" target_name_key="ZINC_xuiBoss" count="1"/>
+				<effect_group>
+					<passive_effect name="EntityDamage" operation="perc_add" value="0.05" tags="ZINCWeaponPart1"/>
+				</effect_group>
+			</append>
+			<append xpath="/challenges/challenge[@name='ZINC_WEAPON10']">
+				<objective type="KillByTag" entity_tags="ZINCBoss" killer_has_bufftag="ZINC_WTPart1_WithWeapon" target_name_key="ZINC_xuiBoss" count="10"/>
+				<effect_group>
+					<passive_effect name="EntityDamage" operation="perc_add" value="0.10" tags="ZINCWeaponPart1"/>
+				</effect_group>
+			</append>
+			
+			<append xpath="/challenges/challenge[@name='ZINC_WEAPONTWO9']">
+				<objective type="KillByTag" entity_tags="ZINCBoss" killer_has_bufftag="ZINC_WTPart2_WithWeapon" target_name_key="ZINC_xuiBoss" count="1"/>
+				<effect_group>
+					<passive_effect name="EntityDamage" operation="perc_add" value="0.05" tags="ZINCWeaponPart2"/>
+				</effect_group>
+			</append>
+			<append xpath="/challenges/challenge[@name='ZINC_WEAPONTWO10']">
+				<objective type="KillByTag" entity_tags="ZINCBoss" killer_has_bufftag="ZINC_WTPart2_WithWeapon" target_name_key="ZINC_xuiBoss" count="10"/>
+				<effect_group>
+					<passive_effect name="EntityDamage" operation="perc_add" value="0.10" tags="ZINCWeaponPart2"/>
+				</effect_group>
+			</append>
+		</if>
+		
+		<else>
+			<append xpath="/challenges/challenge[@name='ZINC_WEAPON9']">
+				<objective type="KillByTag" entity_tags="boss" killer_has_bufftag="ZINC_WTPart1_WithWeapon" target_name_key="xuiZombies" count="1"/>
+				<effect_group>
+					<passive_effect name="EntityDamage" operation="perc_add" value="0.05" tags="ZINCWeaponPart1"/>
+				</effect_group>
+			</append>
+			<append xpath="/challenges/challenge[@name='ZINC_WEAPON10']">
+				<objective type="KillByTag" entity_tags="boss" killer_has_bufftag="ZINC_WTPart1_WithWeapon" target_name_key="xuiZombies" count="10"/>
+				<effect_group>
+					<passive_effect name="EntityDamage" operation="perc_add" value="0.10" tags="ZINCWeaponPart1"/>
+				</effect_group>
+			</append>
+			
+			<append xpath="/challenges/challenge[@name='ZINC_WEAPONTWO9']">
+				<objective type="KillByTag" entity_tags="boss" killer_has_bufftag="ZINC_WTPart2_WithWeapon" target_name_key="xuiZombies" count="1"/>
+				<effect_group>
+					<passive_effect name="EntityDamage" operation="perc_add" value="0.05" tags="ZINCWeaponPart2"/>
+				</effect_group>
+			</append>
+			<append xpath="/challenges/challenge[@name='ZINC_WEAPONTWO10']">
+				<objective type="KillByTag" entity_tags="boss" killer_has_bufftag="ZINC_WTPart2_WithWeapon" target_name_key="xuiZombies" count="10"/>
+				<effect_group>
+					<passive_effect name="EntityDamage" operation="perc_add" value="0.10" tags="ZINCWeaponPart2"/>
+				</effect_group>
+			</append>
+		</else>
+	</conditional>	
+
+</Config>

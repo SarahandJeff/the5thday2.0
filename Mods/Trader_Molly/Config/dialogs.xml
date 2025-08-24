@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jeffandsarah>
+    <append xpath="/dialogs">
+	<dialog id="MollyDialog" startstatementid="start">
+		<!-- Statements -->
+		<statement id="start" text="dialog_trader_statement_start">
+			<response_entry id="ShopAccess"/>
+			<response_entry id="ShopNoAccess"/>
+			<response_entry id="mjobsnone" />
+			<response_entry id="mjobshave1" />
+			<response_entry id="mjobshave2" />
+			<response_entry id="mjobshave3" />
+			<response_entry id="mjobshave4" />
+			<response_entry id="mjobshave5" />
+			<response_entry id="mjobshave6" />
+			<response_entry id="mjobshavenotallowed" />
+			<response_entry id="mspecialjobshave" />
+			
+			<response_entry id="resetquestssnj" />
+			<response_entry id="done" />
+		</statement>
+		<response id="ShopAccess" text="(Shop)">
+				<requirement type="HasCVarSDX, Score" requirementtype="Hide" operator="GTE" value="5" id="HOH_Questing_lvl" Hash="Requirement_232902562"/>
+				<action type="Trader" id="trade"/>
+			</response>
+			<response id="resetquestssnj" text="dialog_trader_response_resetquests">
+				<requirement type="HasCVarSDX, Score" requirementtype="Hide" operator="GTE" value="5" id="HOH_Questing_lvl" Hash="Requirement_232902562"/>
+				<action type="Trader" id="reset_quests" />
+			</response>
+		
+			<response id="ShopNoAccess" text="(Shop)" nextstatementid="ShopNoAccessS1">
+				<requirement type="HasCVarSDX, Score" requirementtype="Hide" operator="LT" value="5" id="HOH_Questing_lvl" Hash="Requirement_232902562"/>
+			</response>
+			
+			<statement id="ShopNoAccessS1" text="Molly_Sorryaccessdenied">
+				<response_entry id="Molly_Sorryaccessdenied" text="Molly_Sorryaccessdenied"/>
+			</statement>
+			<response id="Molly_Sorryaccessdenied" text="Molly_Sorryaccessdenied" nextstatementid="start"/>
+		
+		
+	
+		
+		<statement id="mcurrentjobs1" text="dialog_trader_statement_currentjobs" nextstatementid="start" >
+			<quest_entry listindex="0" tier="1" />
+			<quest_entry listindex="1" tier="1" />
+			<quest_entry listindex="2" tier="1" />
+			<quest_entry listindex="3" tier="1" />
+			<quest_entry listindex="4" tier="1" />
+			<response_entry id="jobsnext2" uniqueid="next" />
+			<response_entry id="jobsnext3" uniqueid="next" />
+			<response_entry id="jobsnext4" uniqueid="next" />
+			<response_entry id="jobsnext5" uniqueid="next" />
+			<response_entry id="jobsnext6" uniqueid="next" />
+			<response_entry id="nevermind" />
+		</statement>
+		
+		<statement id="mcurrentjobs2" text="dialog_trader_statement_currentjobs" nextstatementid="start" >
+			<quest_entry listindex="0" tier="2" />
+			<quest_entry listindex="1" tier="2" />
+			<quest_entry listindex="2" tier="2" />
+			<quest_entry listindex="3" tier="2" />
+			<quest_entry listindex="4" tier="2" />
+			
+			<response_entry id="jobsprev1" uniqueid="prev" />
+			
+			<response_entry id="jobsnext3" uniqueid="next" />
+			<response_entry id="jobsnext4" uniqueid="next" />
+			<response_entry id="jobsnext5" uniqueid="next" />
+			<response_entry id="jobsnext6" uniqueid="next" />
+			<response_entry id="nevermind" />
+		</statement>
+		
+		<statement id="mcurrentjobs3" text="dialog_trader_statement_currentjobs" nextstatementid="start" >
+			<quest_entry listindex="0" tier="3" />
+			<quest_entry listindex="1" tier="3" />
+			<quest_entry listindex="2" tier="3" />
+			<quest_entry listindex="3" tier="3" />
+			<quest_entry listindex="4" tier="3" />
+			
+			<response_entry id="jobsprev2" uniqueid="prev" />
+			<response_entry id="jobsprev1" uniqueid="prev" />
+			
+			<response_entry id="jobsnext4" uniqueid="next" />
+			<response_entry id="jobsnext5" uniqueid="next" />
+			<response_entry id="jobsnext6" uniqueid="next" />
+			<response_entry id="nevermind" />
+		</statement>
+		
+		<statement id="mcurrentjobs4" text="dialog_trader_statement_currentjobs" nextstatementid="start" >
+			<quest_entry listindex="0" tier="4" />
+			<quest_entry listindex="1" tier="4" />
+			<quest_entry listindex="2" tier="4" />
+			<quest_entry listindex="3" tier="4" />
+			<quest_entry listindex="4" tier="4" />
+			
+			<response_entry id="jobsprev3" uniqueid="prev" />
+			<response_entry id="jobsprev2" uniqueid="prev" />
+			<response_entry id="jobsprev1" uniqueid="prev" />
+			
+			<response_entry id="jobsnext5" uniqueid="next" />
+			<response_entry id="jobsnext6" uniqueid="next" />
+			<response_entry id="nevermind" />
+		</statement>
+		
+		<statement id="mcurrentjobs5" text="dialog_trader_statement_currentjobs" nextstatementid="start" >
+			<quest_entry listindex="0" tier="5" />
+			<quest_entry listindex="1" tier="5" />
+			<quest_entry listindex="2" tier="5" />
+			<quest_entry listindex="3" tier="5" />
+			<quest_entry listindex="4" tier="5" />
+			
+			<response_entry id="jobsprev4" uniqueid="prev" />
+			<response_entry id="jobsprev3" uniqueid="prev" />
+			<response_entry id="jobsprev2" uniqueid="prev" />
+			<response_entry id="jobsprev1" uniqueid="prev" />
+			
+			<response_entry id="jobsnext6" uniqueid="next" />
+			
+			<response_entry id="nevermind" />
+		</statement>
+		
+		<statement id="mcurrentjobs6" text="dialog_trader_statement_currentjobs" nextstatementid="start" >
+			<quest_entry listindex="0" tier="6" />
+			<quest_entry listindex="1" tier="6" />
+			<quest_entry listindex="2" tier="6" />
+			<quest_entry listindex="3" tier="6" />
+			<quest_entry listindex="4" tier="6" />
+			
+			<response_entry id="jobsprev5" uniqueid="prev" />
+			<response_entry id="jobsprev4" uniqueid="prev" />
+			<response_entry id="jobsprev3" uniqueid="prev" />
+			<response_entry id="jobsprev2" uniqueid="prev" />
+			<response_entry id="jobsprev1" uniqueid="prev" />
+			
+			<response_entry id="nevermind" />
+		</statement>
+		
+		<statement id="mcurrentjobsspecial" text="dialog_trader_statement_currentjobs" nextstatementid="start" >
+			<quest_entry type="special" listindex="0" />
+			<quest_entry type="special" listindex="1" />
+			<quest_entry type="special" listindex="2" />
+			<quest_entry type="special" listindex="3" />
+			<quest_entry type="special" listindex="4" />
+			<response_entry id="nevermind" />
+		</statement>
+		
+		<statement id="nojobs" text="dialog_trader_statement_nojobs" nextstatementid="start" />
+		
+		<statement id="jobsnotallowed" text="dialog_trader_statement_notallowed" nextstatementid="start" />
+		
+		<statement id="admin" text="dialog_trader_statement_admin">
+			<response_entry id="restock" />
+			<response_entry id="resetquests" />
+			<response_entry id="nevermind" />
+		</statement>
+		
+		<!-- Responses -->
+		<response id="shop" text="dialog_trader_response_shop">
+			<action type="Trader" id="trade" />
+		</response>
+		
+		<response id="mjobsnone" text="dialog_trader_response_jobsnone" nextstatementid="nojobs" >
+		<requirement type="HasCVarSDX, Score" requirementtype="Hide" operator="GTE" value="5" id="HOH_Questing_lvl" Hash="Requirement_232902562"/>
+			<requirement type="QuestStatus" value="InProgress" requirementtype="Hide" />
+		</response>
+		
+		<response id="mjobshave1" text="dialog_trader_response_jobshave" nextstatementid="mcurrentjobs1" >
+		<requirement type="HasCVarSDX, Score" requirementtype="Hide" operator="GTE" value="5" id="HOH_Questing_lvl" Hash="Requirement_232902562"/>
+			<requirement type="QuestStatus" value="NotStarted" requirementtype="Hide" />
+			<requirement type="QuestTierHighest" value="1" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="IntroComplete" value="1" requirementtype="Hide" />
+		</response>
+		
+		<response id="mjobshave2" text="dialog_trader_response_jobshave" nextstatementid="mcurrentjobs2" >
+		<requirement type="HasCVarSDX, Score" requirementtype="Hide" operator="GTE" value="5" id="HOH_Questing_lvl" Hash="Requirement_232902562"/>
+			<requirement type="QuestStatus" value="NotStarted" requirementtype="Hide" />
+			<requirement type="QuestTierHighest" value="2" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="IntroComplete" value="1" requirementtype="Hide" />
+		</response>
+		
+		<response id="mjobshave3" text="dialog_trader_response_jobshave" nextstatementid="mcurrentjobs3" >
+		<requirement type="HasCVarSDX, Score" requirementtype="Hide" operator="GTE" value="5" id="HOH_Questing_lvl" Hash="Requirement_232902562"/>
+			<requirement type="QuestStatus" value="NotStarted" requirementtype="Hide" />
+			<requirement type="QuestTierHighest" value="3" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="IntroComplete" value="1" requirementtype="Hide" />
+		</response>
+		
+		<response id="mjobshave4" text="dialog_trader_response_jobshave" nextstatementid="mcurrentjobs4" >
+		<requirement type="HasCVarSDX, Score" requirementtype="Hide" operator="GTE" value="5" id="HOH_Questing_lvl" Hash="Requirement_232902562"/>
+			<requirement type="QuestStatus" value="NotStarted" requirementtype="Hide" />
+			<requirement type="QuestTierHighest" value="4" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="IntroComplete" value="1" requirementtype="Hide" />
+		</response>
+		
+		<response id="mjobshave5" text="dialog_trader_response_jobshave" nextstatementid="mcurrentjobs5" >
+		<requirement type="HasCVarSDX, Score" requirementtype="Hide" operator="GTE" value="5" id="HOH_Questing_lvl" Hash="Requirement_232902562"/>
+			<requirement type="QuestStatus" value="NotStarted" requirementtype="Hide" />
+			<requirement type="QuestTierHighest" value="5" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="IntroComplete" value="1" requirementtype="Hide" />
+		</response>
+		
+		<response id="mjobshave6" text="dialog_trader_response_jobshave" nextstatementid="mcurrentjobs6" >
+		<requirement type="HasCVarSDX, Score" requirementtype="Hide" operator="GTE" value="5" id="HOH_Questing_lvl" Hash="Requirement_232902562"/>
+			<requirement type="QuestStatus" value="NotStarted" requirementtype="Hide" />
+			<requirement type="QuestTierHighest" value="6" requirementtype="Hide" />
+			<requirement type="CheckCVar" id="IntroComplete" value="1" requirementtype="Hide" />
+		</response>
+		
+		<response id="jobshavenotallowed" text="dialog_trader_response_jobshave" nextstatementid="jobsnotallowed" >
+			<requirement type="CheckCVar" id="DisableQuesting" value="1" requirementtype="Hide" />
+		</response>
+		
+		<response id="jobsprev1" text="dialog_trader_response_prevtier" nextstatementid="mcurrentjobs1" >
+			<requirement type="QuestTier" value="1" requirementtype="Hide" />
+		</response>
+		
+		<response id="jobsprev2" text="dialog_trader_response_prevtier" nextstatementid="mcurrentjobs2" >
+			<requirement type="QuestTier" value="2" requirementtype="Hide" />
+		</response>
+		
+		<response id="jobsprev3" text="dialog_trader_response_prevtier" nextstatementid="mcurrentjobs3" >
+			<requirement type="QuestTier" value="3" requirementtype="Hide" />
+		</response>
+		
+		<response id="jobsprev4" text="dialog_trader_response_prevtier" nextstatementid="mcurrentjobs4" >
+			<requirement type="QuestTier" value="4" requirementtype="Hide" />
+		</response>
+		
+		<response id="jobsprev5" text="dialog_trader_response_prevtier" nextstatementid="mcurrentjobs5" >
+			<requirement type="QuestTier" value="5" requirementtype="Hide" />
+		</response>
+			
+		<response id="jobsnext2" text="dialog_trader_response_nexttier" nextstatementid="mcurrentjobs2" >
+			<requirement type="QuestTier" value="2" requirementtype="Hide" />
+		</response>
+		
+		<response id="jobsnext3" text="dialog_trader_response_nexttier" nextstatementid="mcurrentjobs3" >
+			<requirement type="QuestTier" value="3" requirementtype="Hide" />
+		</response>
+		
+		<response id="jobsnext4" text="dialog_trader_response_nexttier" nextstatementid="mcurrentjobs4" >
+			<requirement type="QuestTier" value="4" requirementtype="Hide" />
+		</response>
+		
+		<response id="jobsnext5" text="dialog_trader_response_nexttier" nextstatementid="mcurrentjobs5" >
+			<requirement type="QuestTier" value="5" requirementtype="Hide" />
+		</response>
+		
+		<response id="jobsnext6" text="dialog_trader_response_nexttier" nextstatementid="mcurrentjobs6" >
+			<requirement type="QuestTier" value="6" requirementtype="Hide" />
+		</response>
+		
+		<response id="specialjobshave" text="dialog_trader_response_specialjobshave" nextstatementid="mcurrentjobsspecial" >
+			<requirement type="QuestStatus" value="NotStarted" requirementtype="Hide" tag="special" />
+			<requirement type="QuestsAvailable" value="special" requirementtype="Hide" />
+		</response>
+		
+		<response id="background" text="dialog_trader_response_background" nextstatementid="background">
+		</response>
+		
+		<response id="navezgane" text="dialog_trader_response_navezgane" nextstatementid="navezgane" />
+		<response id="theduke" text="dialog_trader_response_theduke" nextstatementid="theduke" />
+		<response id="cassadores" text="dialog_trader_response_cassadores" nextstatementid="cassadores" />
+		<response id="noah" text="dialog_trader_response_noah" nextstatementid="noah" />
+		<response id="whiteriveroutposts" text="dialog_trader_response_whiteriveroutposts" nextstatementid="whiteriveroutposts" />
+		<response id="nevermind" text="dialog_trader_response_nevermind" nextstatementid="start" />
+		
+		<response id="admin" text="dialog_trader_response_admin" nextstatementid="admin" >
+			<requirement type="Admin" requirementtype="Hide" />
+		</response>
+		
+		<response id="restock" text="dialog_trader_response_restock">
+			<action type="Trader" id="restock" />
+		</response>
+		
+		<response id="resetquests" text="dialog_trader_response_resetquests">
+			<action type="Trader" id="reset_quests" />
+		</response>
+		
+		<response id="done" text="dialog_trader_response_nevermind" />
+		
+	</dialog>
+        <dialog id="MollyDialog1" startstatementid="start">
+			<statement id="start" text="dialog_trader_statement_start">
+				<response_entry id="ShopAccess"/>
+				<response_entry id="ShopNoAccess"/>
+				<!-- <response_entry id="jobsnone" />
+                <response_entry id="jobsMolly" /> -->
+                <response_entry id="done" />
+				<response_entry id="resetquestssnj" />
+				<response_entry id="Tutorial" />
+			</statement>
+            <statement id="currentMollyjobs1" text="dialog_trader_statement_currentjobs" nextstatementid="start" >
+				<quest_entry listindex="0" tier="1" />
+				<quest_entry listindex="1" tier="1" />
+				<quest_entry listindex="2" tier="1" />
+				<quest_entry listindex="3" tier="1" />
+				<quest_entry listindex="4" tier="1" />
+				<response_entry id="nevermind" />
+			</statement>
+			
+			<response id="ShopAccess" text="(Shop)">
+				<requirement type="HasCVarSDX, Score" requirementtype="Hide" operator="GTE" value="5" id="HOH_Questing_lvl" Hash="Requirement_232902562"/>
+				<action type="Trader" id="trade"/>
+			</response>
+			<response id="resetquestssnj" text="dialog_trader_response_resetquests">
+				<requirement type="HasCVarSDX, Score" requirementtype="Hide" operator="GTE" value="5" id="HOH_Questing_lvl" Hash="Requirement_232902562"/>
+				<action type="Trader" id="reset_quests" />
+			</response>
+		
+			<response id="ShopNoAccess" text="(Shop)" nextstatementid="ShopNoAccessS1">
+				<requirement type="HasCVarSDX, Score" requirementtype="Hide" operator="LT" value="5" id="HOH_Questing_lvl" Hash="Requirement_232902562"/>
+			</response>
+			
+			<statement id="ShopNoAccessS1" text="Molly_Sorryaccessdenied">
+				<response_entry id="Molly_Sorryaccessdenied" text="Molly_Sorryaccessdenied"/>
+			</statement>
+
+
+			
+
+
+            <response id="jobsnone" text="dialog_trader_response_jobsnone" nextstatementid="nojobs" >
+			    <requirement type="QuestStatus" value="InProgress" requirementtype="Hide" />
+		    </response>
+			<response id="resetquests" text="dialog_trader_response_resetquests">
+				<action type="Trader" id="reset_quests" />
+			</response>
+
+			<response id="done" text="dialog_trader_response_nevermind" />
+			<response id="Molly_Sorryaccessdenied" text="Molly_Sorryaccessdenied" nextstatementid="start"/>
+
+            <response id="jobsMolly" text="dialog_trader_response_jobshave" nextstatementid="currentMollyjobs1" >
+                <requirement type="QuestStatus" value="NotStarted" requirementtype="Hide" />
+                <requirement type="QuestTierHighest" value="1" requirementtype="Hide" />
+                <requirement type="CheckCVar" id="IntroComplete" value="1" requirementtype="Hide" />
+		    </response>
+            <statement id="nojobs" text="dialog_trader_statement_nojobs" nextstatementid="start" />
+
+
+
+
+			<response id="Tutorial" text="Trader Tutorial" nextstatementid="TutorialList"/>
+			
+			<statement id="TutorialList" text="I can teach you about the new trader dialog. What would you like to learn first?">
+				<response_entry id="ShopTutorial"/>
+				<response_entry id="InfoTutorial"/>
+				<response_entry id="nevermind" />
+			</statement>
+			
+			<!-- Shop -->
+			<response id="ShopTutorial" text="Can you tell me about the Shop?" nextstatementid="ShopInformation"/>
+			<response id="InfoTutorial" text="WTF?" nextstatementid="ShopInformation"/>
+			
+			<statement id="ShopInformation" text="A trader will not sell to people they do not trust. Get your trust level up to unlock more things in the shop.">
+				<response_entry id="ShopTutorial2"/>
+				<response_entry id="BacktoTutorialList"/>
+			</statement>
+			
+			<response id="BacktoTutorialList" text="(Back)" nextstatementid="TutorialList"/>
+			
+			<response id="ShopTutorial2" text="What about trading perks?" nextstatementid="ShopTutorialPerks"/>
+			
+			<statement id="ShopTutorialPerks" text="The Better Barter and Daring Adventurer perks are now integrated into your trader trust level. The higher the Trust level, the more benefit you get.">
+				<response_entry id="TrustLevelUp"/>
+				<response_entry id="BacktoTutorialList"/>
+			</statement>
+			
+			<response id="TrustLevelUp" text="Trust Level?" nextstatementid="TrustExplained"/>
+			
+			<statement id="TrustExplained" text="You gain trust by doing quests. The higher the quest tier, and difficulty, the more trust you gain. See The Quest Tutorial for more information about quests.">
+				<response_entry id="BacktoTutorialList"/>
+			</statement>
+
+
+
+
+
+
+
+
+
+
+
+
+
+		</dialog>
+    </append>
+</jeffandsarah>

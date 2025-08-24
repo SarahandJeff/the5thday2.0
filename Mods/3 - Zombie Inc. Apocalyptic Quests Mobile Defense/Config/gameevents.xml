@@ -1,0 +1,1953 @@
+<Config>
+	<append xpath="/gameevents">
+	
+	
+		<!--###Mobile Defense-->
+<!--##General-->
+
+		<action_sequence name="ZombieINC_MD_VehicleEraseItSelf_AfterWait_45m">
+		<property name="refund_inactivity" value="false" />					
+			<wait class="Until">
+				<property name="phase" value="1" />
+				<requirement class="NearbyEntities">
+					<property name="entity_tags" value="player" />
+					<property name="max_distance" value="5" />
+				</requirement>			
+			</wait>
+			<wait class="While">
+				<property name="phase" value="2" />
+				<requirement class="NearbyEntities">
+					<property name="entity_tags" value="player" />
+					<property name="max_distance" value="45" />
+				</requirement>			
+			</wait>
+			<action class="Kill">
+				<property name="phase" value="3" />
+			</action>
+		</action_sequence>
+
+<!--General-->
+
+<!--##T3-T4-->
+	
+	<action_sequence name="ZombieINC_MD_PickObjective_Event">
+		<property name="refund_inactivity" value="false" />
+
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="Objective" />
+			<property name="group_name" value="Objective" />
+			<property name="max_distance" value="3" />
+		</action>
+		
+		<action class="RemoveEntities">
+			<property name="phase" value="1" />
+			<property name="target_group" value="Objective" />
+		</action>
+		
+		<action class="RemoveBuff">
+			<property name="phase" value="1" />
+			<property name="buff_name" value="ZombieINC_MD_PlayerAttachPrefab_Buff"/>
+		</action>
+		
+		<action class="RemoveBuff">
+			<property name="phase" value="1" />
+			<property name="buff_name" value="ZombieINC_MD_PlayerDeployAntenna_Buff"/>
+		</action>
+		
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_Antenna_T4"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="1" />		
+			<property name="min_distance" value="1" />
+			<property name="air_spawn" value="true" />
+			<property name="phase" value="1" />
+			<property name="add_buffs" value="ZombieINC_MD_AntennaToPlayer_Buff"/>
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_MD_NoVehicleBuff_Event">
+		<action class="AddBuff">
+			<property name="phase" value="1" />
+			<property name="buff_name" value="ZombieINC_MD_NoVehicle_Buff"/>
+			<property name="check_already_exists" value="false"/>
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_MD_DirtPlacementByBuff">
+		<action class="PlaySound">
+				<property name="phase" value="1" />
+				<property name="sound" value="entityhitsground" />
+				<property name="max_distance" value="15" />
+			</action>
+		<action class="BlockReplace">
+				<property name="min_offset" value="-5,-1,-5" />
+				<property name="max_offset" value="5,3,5" />
+				<property name="block_to" value="terrDirt" />
+				<property name="block_tags" value="terrAsphalt" />
+				<property name="allow_terrain" value="true" />
+				<property name="phase" value="1" />
+			</action>
+		</action_sequence>
+		
+		<action_sequence name="ZombieINC_MD_Explode_Event">
+			<action class="ExplodeTarget">
+				<property name="phase" value="1" />
+				<property name="blast_power" value="255" />
+				<property name="block_damage" value="500" />
+				<property name="block_radius" value="4" />
+				<property name="entity_damage" value="100" />
+				<property name="entity_radius" value="3" />
+			</action>
+		</action_sequence>
+<!--T3-T4-->	
+<!--##T3-->
+
+<action_sequence name="ZombieINC_MD_ActivateRallyBuried_Event_T3">
+			<property name="allow_while_dead" value="false" />
+			<action class="AddBuff">
+				<property name="buff_name" value="ZombieINC_MD_ActivateRallyMainBuff_T3" />
+				<property name="check_already_exists" value="false" />
+				<property name="phase" value="1"/>				
+			</action>
+		</action_sequence>
+
+	<action_sequence name="ZombieINC_MD_SpawnAntennaPickable_Event_T3">
+		<property name="refund_inactivity" value="false" />
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_Antenna_T3"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="1" />		
+			<property name="min_distance" value="1" />
+			<property name="air_spawn" value="true" />
+			<property name="phase" value="1" />
+			<property name="add_buffs" value="ZombieINC_MD_AntennaToPlayer_Buff"/>
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_MD_PickAntenna_Event_T3">
+		
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="Antenna" />
+			<property name="group_name" value="Antenna" />
+			<property name="max_distance" value="3" />
+		</action>
+		
+		<action class="Kill">
+			<property name="phase" value="1" />
+			<property name="target_group" value="Antenna" />
+		</action>
+		
+		<action class="AddBuff">
+			<property name="phase" value="1" />
+			<property name="buff_name" value="ZombieINC_MD_PlayerAttachPrefab_Buff"/>
+			<property name="check_already_exists" value="false"/>
+		</action>
+		<action class="AddBuff">
+			<property name="phase" value="1" />
+			<property name="buff_name" value="ZombieINC_MD_PlayerWithAntennaBuff_T3"/>
+			<property name="check_already_exists" value="false"/>
+		</action>
+		<!--<action class="RemoveBuff">
+			<property name="phase" value="1" />
+			<property name="buff_name" value="ZombieINC_MD_PlayerTurnsAntennaPickable_Buff"/>
+		</action>-->
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_MD_T3_RemoveAllBuffsWhenFail">
+		<property name="refund_inactivity" value="false" />					
+		<action class="Delay">
+			<property name="phase" value="1" />
+			<property name="time" value="15" />
+		</action>
+		<action class="AddBuff">
+			<property name="phase" value="1" />
+			<property name="buff_name" value="ZombieINC_MD_T3_InQuest_Buff"/>
+			<property name="check_already_exists" value="false"/>
+		</action>
+		<wait class="While">
+			<property name="phase" value="2" />
+			<property name="condition_type" value="Any" />
+			<requirement class="OnQuest">
+				<property name="quest" value="zincmobiledefense3"/>
+			</requirement>			
+		</wait>
+		<action class="RemoveBuffsByTag">
+			<property name="buff_tag" value="ZINC_MD_BUFFS" />
+			<property name="phase" value="3"/>				
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_MD_T3_SpawnAntenna">					  
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="1" />
+			<property name="entity_tags" value="trader" />
+			<property name="group_name" value="trader" />
+			<property name="max_distance" value="5" />
+		</action>
+		 <action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_MD_T3_Trader_SpawnAntenna_Buff" />
+			<property name="target_group" value="trader" />
+			<property name="phase" value="2"/>				
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_MD_T3_TimerBuff_Event">
+		<action class="AddBuff">
+			<property name="phase" value="1" />
+			<property name="buff_name" value="ZombieINC_MD_T3_PlayerTimer_Buff"/>
+			<property name="check_already_exists" value="false"/>
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_MD_FailQuestCloseParty_T3">
+		<action class="FailQuest">
+			<property name="quest" value="zincmobiledefense3" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />			
+		</action>
+		
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_MD_BeltTooltip_FailQuest_NotHaveAntenna"  />
+			<property name="phase" value="2"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_MD_ChatMessage_FailQuest_NotHaveAntenna"  />
+			<property name="phase" value="2"/>		
+		</action>
+		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_MD_T3_FailQuestPart2_Event">
+		<action class="FailQuest">
+			<property name="quest" value="zincmobiledefense3" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />			
+		</action>
+		
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_MD_BeltTooltip_FailQuest_AntennaDestroy"  />
+			<property name="phase" value="2"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_MD_ChatMessage_FailQuest_AntennaDestroy"  />
+			<property name="phase" value="2"/>		
+		</action>
+		
+	</action_sequence>
+	<action_sequence name="ZombieINC_MD_T3_FailQuestTimer_Event">
+		<action class="FailQuest">
+			<property name="quest" value="zincmobiledefense3" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />			
+		</action>
+		
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_MD_BeltTooltip_FailQuestTimer"  />
+			<property name="phase" value="2"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_MD_ChatMessage_FailQuestTimer"  />
+			<property name="phase" value="2"/>		
+		</action>
+		
+	</action_sequence>
+	<action_sequence name="ZombieINC_MD_T3_SpawnAntenna_Event">
+		<property name="refund_inactivity" value="false"/>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_Antenna_T3" />
+			<!--<property name="add_buffs" value="" />-->
+			<property name="spawn_count" value="1"  />
+			<property name="safe_spawn" value="true"  />
+			<property name="air_spawn" value="true" />
+			<property name="max_distance" value="30" />		
+			<property name="min_distance" value="1" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="phase" value="1" />		
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_MD_PlayerWithAntennaArrived_WaitEvent_T3">
+		<property name="refund_inactivity" value="false"/>
+		
+		<action class="CallGameEvent">
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_MD_PlayerWithAntennaBuff_T3" />
+			</requirement>	
+			<property name="phase" value="1" />
+			<property name="game_events" value="ZombieINC_MD_PlayerWithAntennaArrived_CheckEvent_T3" />
+		</action>
+		
+		<wait class="Until">
+			<property name="phase" value="1" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_MD_PlayerWithAntennaArrived_T3" />
+			</requirement>			
+		</wait>
+	</action_sequence>
+	<action_sequence name="ZombieINC_MD_PlayerWithAntennaArrived_CheckEvent_T3">
+		<property name="refund_inactivity" value="false"/>
+		
+		<wait class="Until">
+			<property name="phase" value="1" />
+			<requirement class="InPOI"/>
+			<requirement class="InSafeZone"/>		
+		</wait>
+		
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="player" />
+		</action>
+		<action class="AddBuff">
+			<property name="phase" value="3" />
+			<property name="buff_name" value="ZombieINC_MD_PlayerWithAntennaArrived_T3"/>
+			<property name="check_already_exists" value="false"/>
+			<property name="target_group" value="player" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_MD_T3_QuestFinished_Event">
+			
+		<action class="RemoveBuffsByTag">
+			<property name="buff_tag" value="ZINC_MD_BUFFS" />
+			<property name="phase" value="1"/>				
+		</action>
+		
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_MD_BeltTooltip_Message3_T3"  />
+			<property name="phase" value="2"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_MD_ChatMessage_Message3_T3"  />
+			<property name="phase" value="2"/>	
+		</action>			
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_MD_W1_Event_T3">
+		<property name="refund_inactivity" value="false" />
+		
+		<action class="Delay">
+			<property name="time" value="15" />
+			<property name="phase" value="0" />
+		</action>
+		
+		<loop class="While">
+			<property name="phase" value="1" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_MD_PlayerWithAntennaBuff_T3" />
+			</requirement>		
+			
+			
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<property name="min_distance" value="10" />
+				<property name="max_distance" value="20" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<property name="min_distance" value="10" />
+				<property name="max_distance" value="20" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<property name="min_distance" value="10" />
+				<property name="max_distance" value="20" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			
+			
+			<action class="Delay">
+				<property name="time" value="40" />
+			</action>
+		</loop>		
+	</action_sequence>
+	<action_sequence name="ZombieINC_MD_W2_Event_T3">
+		<property name="refund_inactivity" value="false" />
+		
+		<loop class="For">
+			<property name="phase" value="1" />
+			<property name="min_loop_count" value="3" />
+			<property name="max_loop_count" value="4" />
+			
+			
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<property name="min_distance" value="10" />
+				<property name="max_distance" value="20" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<property name="min_distance" value="10" />
+				<property name="max_distance" value="20" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<property name="min_distance" value="10" />
+				<property name="max_distance" value="20" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			
+			<action class="SpawnEntity">
+				<property name="entity_group" value="SleeperGSList" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<property name="min_distance" value="1" />
+				<property name="max_distance" value="5" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="SleeperGSList" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<property name="min_distance" value="1" />
+				<property name="max_distance" value="5" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="SleeperGSList" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<property name="min_distance" value="1" />
+				<property name="max_distance" value="5" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			
+			<action class="Delay">
+				<property name="time" value="60" />
+			</action>
+		</loop>		
+	</action_sequence>
+	
+<!--T3-->	
+<!--##T4-->
+	<action_sequence name="ZombieINC_MD_ActivateRallyBuried_Event_T4">
+			<property name="allow_while_dead" value="false" />
+			<action class="AddBuff">
+				<property name="buff_name" value="ZombieINC_MD_ActivateRallyMainBuff_T4" />
+				<property name="check_already_exists" value="false" />
+				<property name="phase" value="1"/>				
+			</action>
+		</action_sequence>
+
+	<action_sequence name="ZombieINC_MD_SpawnAntennaPickable_Event_T4">
+		<property name="refund_inactivity" value="false" />
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_Antenna_T4"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="1" />		
+			<property name="min_distance" value="1" />
+			<property name="air_spawn" value="true" />
+			<property name="phase" value="1" />
+			<property name="add_buffs" value="ZombieINC_MD_AntennaToPlayer_Buff"/>
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_MD_PickAntenna_Event_T4">
+		
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="Antenna" />
+			<property name="group_name" value="Antenna" />
+			<property name="max_distance" value="3" />
+		</action>
+		
+		<action class="Kill">
+			<property name="phase" value="1" />
+			<property name="target_group" value="Antenna" />
+		</action>
+		
+		<action class="AddBuff">
+			<property name="phase" value="1" />
+			<property name="buff_name" value="ZombieINC_MD_PlayerAttachPrefab_Buff"/>
+			<property name="check_already_exists" value="false"/>
+		</action>
+		<action class="AddBuff">
+			<property name="phase" value="1" />
+			<property name="buff_name" value="ZombieINC_MD_PlayerWithAntennaBuff_T4"/>
+			<property name="check_already_exists" value="false"/>
+		</action>
+		<!--<action class="RemoveBuff">
+			<property name="phase" value="1" />
+			<property name="buff_name" value="ZombieINC_MD_PlayerTurnsAntennaPickable_Buff"/>
+		</action>-->
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_MD_T4_RemoveAllBuffsWhenFail">
+		<property name="refund_inactivity" value="false" />					
+		<action class="Delay">
+			<property name="phase" value="1" />
+			<property name="time" value="15" />
+		</action>
+		<action class="AddBuff">
+			<property name="phase" value="1" />
+			<property name="buff_name" value="ZombieINC_MD_T4_InQuest_Buff"/>
+			<property name="check_already_exists" value="false"/>
+		</action>
+		<wait class="While">
+			<property name="phase" value="2" />
+			<property name="condition_type" value="Any" />
+			<requirement class="OnQuest">
+				<property name="quest" value="zincmobiledefense4"/>
+			</requirement>			
+		</wait>
+		<action class="RemoveBuffsByTag">
+			<property name="buff_tag" value="ZINC_MD_BUFFS" />
+			<property name="phase" value="3"/>				
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_MD_T4_SpawnAntenna">					  
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="1" />
+			<property name="entity_tags" value="trader" />
+			<property name="group_name" value="trader" />
+			<property name="max_distance" value="5" />
+		</action>
+		 <action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_MD_T4_Trader_SpawnAntenna_Buff" />
+			<property name="target_group" value="trader" />
+			<property name="phase" value="2"/>				
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_MD_T4_TimerBuff_Event">
+		<action class="AddBuff">
+			<property name="phase" value="1" />
+			<property name="buff_name" value="ZombieINC_MD_T4_PlayerTimer_Buff"/>
+			<property name="check_already_exists" value="false"/>
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_MD_FailQuestCloseParty_T4">
+		<action class="FailQuest">
+			<property name="quest" value="zincmobiledefense4" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />			
+		</action>
+		
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_MD_BeltTooltip_FailQuest_NotHaveAntenna"  />
+			<property name="phase" value="2"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_MD_ChatMessage_FailQuest_NotHaveAntenna"  />
+			<property name="phase" value="2"/>		
+		</action>
+		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_MD_T4_FailQuestPart2_Event">
+		<action class="FailQuest">
+			<property name="quest" value="zincmobiledefense4" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />			
+		</action>
+		
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_MD_BeltTooltip_FailQuest_AntennaDestroy"  />
+			<property name="phase" value="2"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_MD_ChatMessage_FailQuest_AntennaDestroy"  />
+			<property name="phase" value="2"/>		
+		</action>
+		
+	</action_sequence>
+	<action_sequence name="ZombieINC_MD_T4_FailQuestTimer_Event">
+		<action class="FailQuest">
+			<property name="quest" value="zincmobiledefense4" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />			
+		</action>
+		
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_MD_BeltTooltip_FailQuestTimer"  />
+			<property name="phase" value="2"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_MD_ChatMessage_FailQuestTimer"  />
+			<property name="phase" value="2"/>		
+		</action>
+		
+	</action_sequence>
+	<action_sequence name="ZombieINC_MD_T4_SpawnAntenna_Event">
+		<property name="refund_inactivity" value="false"/>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_Antenna_T4" />
+			<!--<property name="add_buffs" value="" />-->
+			<property name="spawn_count" value="1"  />
+			<property name="safe_spawn" value="true"  />
+			<property name="air_spawn" value="true" />
+			<property name="max_distance" value="30" />		
+			<property name="min_distance" value="1" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="phase" value="1" />		
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_MD_PlayerWithAntennaArrived_WaitEvent_T4">
+		<property name="refund_inactivity" value="false"/>
+		
+		<action class="CallGameEvent">
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_MD_PlayerWithAntennaBuff_T4" />
+			</requirement>	
+			<property name="phase" value="1" />
+			<property name="game_events" value="ZombieINC_MD_PlayerWithAntennaArrived_CheckEvent_T4" />
+		</action>
+		
+		<wait class="Until">
+			<property name="phase" value="1" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_MD_PlayerWithAntennaArrived_T4" />
+			</requirement>			
+		</wait>
+	</action_sequence>
+	<action_sequence name="ZombieINC_MD_PlayerWithAntennaArrived_CheckEvent_T4">
+		<property name="refund_inactivity" value="false"/>
+		
+		<wait class="Until">
+			<property name="phase" value="1" />
+			<requirement class="InPOI"/>
+			<requirement class="InSafeZone"/>		
+		</wait>
+		
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="player" />
+		</action>
+		<action class="AddBuff">
+			<property name="phase" value="3" />
+			<property name="buff_name" value="ZombieINC_MD_PlayerWithAntennaArrived_T4"/>
+			<property name="check_already_exists" value="false"/>
+			<property name="target_group" value="player" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_MD_T4_QuestFinished_Event">
+			
+		<action class="RemoveBuffsByTag">
+			<property name="buff_tag" value="ZINC_MD_BUFFS" />
+			<property name="phase" value="1"/>				
+		</action>
+		
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_MD_BeltTooltip_Message3_T4"  />
+			<property name="phase" value="2"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_MD_ChatMessage_Message3_T4"  />
+			<property name="phase" value="2"/>	
+		</action>			
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_MD_W1_Event_T4">
+		<property name="refund_inactivity" value="false" />
+		
+		<action class="Delay">
+			<property name="time" value="15" />
+			<property name="phase" value="0" />
+		</action>
+		
+		<loop class="While">
+			<property name="phase" value="1" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_MD_PlayerWithAntennaBuff_T4" />
+			</requirement>		
+			
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<property name="min_distance" value="10" />
+				<property name="max_distance" value="20" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<property name="min_distance" value="10" />
+				<property name="max_distance" value="20" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<property name="min_distance" value="10" />
+				<property name="max_distance" value="20" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<property name="min_distance" value="10" />
+				<property name="max_distance" value="20" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<property name="min_distance" value="10" />
+				<property name="max_distance" value="20" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<property name="min_distance" value="10" />
+				<property name="max_distance" value="20" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="Delay">
+				<property name="time" value="30" />
+			</action>
+		</loop>		
+	</action_sequence>
+	<action_sequence name="ZombieINC_MD_W2_Event_T4">
+		<property name="refund_inactivity" value="false" />
+		
+		<loop class="For">
+			<property name="phase" value="1" />
+			<property name="min_loop_count" value="3" />
+			<property name="max_loop_count" value="4" />
+			
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<property name="min_distance" value="10" />
+				<property name="max_distance" value="20" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<property name="min_distance" value="10" />
+				<property name="max_distance" value="20" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<property name="min_distance" value="10" />
+				<property name="max_distance" value="20" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<property name="min_distance" value="10" />
+				<property name="max_distance" value="20" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<property name="min_distance" value="10" />
+				<property name="max_distance" value="20" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			
+			<action class="SpawnEntity">
+				<property name="entity_group" value="SleeperGSList" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<property name="min_distance" value="1" />
+				<property name="max_distance" value="5" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="SleeperGSList" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<property name="min_distance" value="1" />
+				<property name="max_distance" value="5" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="SleeperGSList" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<property name="min_distance" value="1" />
+				<property name="max_distance" value="5" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="SleeperGSList" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<property name="min_distance" value="1" />
+				<property name="max_distance" value="5" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="SleeperGSList" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<property name="min_distance" value="1" />
+				<property name="max_distance" value="5" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="Delay">
+				<property name="time" value="45" />
+			</action>
+		</loop>		
+	</action_sequence>
+<!--T4-->	
+<!--##T5-T6-->	
+<!--##T5-->	
+
+	<action_sequence name="ZombieINC_MD_T5_W1_Event">
+		<property name="refund_inactivity" value="false" />
+		
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="1" />
+			<property name="group_name" value="party" />
+			<property name="entity_tags" value="player" />
+			<property name="max_distance" value="80" />
+			<property name="allow_player" value="true" />
+		</action>
+		
+		<loop class="While">
+			<property name="phase" value="2" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_MD_T5_JeepWave1_Buff" />
+			</requirement>		
+			
+			<!--<action class="SpawnEntity">
+				<property name="entity_group" value="SleeperGSList" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<property name="add_to_group" value="zombies" />
+				<property name="safe_spawn" value="true" />
+				<property name="min_distance" value="1" />
+				<property name="max_distance" value="5" />
+				<property name="target_group" value="party" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+			</action>-->
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<!--<property name="add_to_group" value="zombies" />-->
+				<!--<property name="safe_spawn" value="true" />-->
+				<property name="min_distance" value="1" />
+				<property name="max_distance" value="5" />
+				<property name="target_group" value="party" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<!--<property name="add_to_group" value="zombies" />-->
+				<!--<property name="safe_spawn" value="true" />-->
+				<property name="min_distance" value="1" />
+				<property name="max_distance" value="5" />
+				<property name="target_group" value="party" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<!--<property name="add_to_group" value="zombies" />-->
+				<!--<property name="safe_spawn" value="true" />-->
+				<property name="min_distance" value="1" />
+				<property name="max_distance" value="5" />
+				<property name="target_group" value="party" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			
+			<action class="Delay">
+				<property name="time" value="12" />
+			</action>
+		</loop>		
+	</action_sequence>
+	<action_sequence name="ZombieINC_MD_T5_W2_Event">
+		<property name="refund_inactivity" value="false" />
+		
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="1" />
+			<property name="group_name" value="party" />
+			<property name="entity_tags" value="player" />
+			<property name="max_distance" value="80" />
+			<property name="allow_player" value="true" />
+		</action>
+		
+		<loop class="While">
+			<property name="phase" value="2" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_MD_T5_JeepWave2_Buff" />
+			</requirement>		
+				
+			<!--<action class="SpawnEntity">
+				<property name="entity_group" value="SleeperGSList" />
+				<property name="spawn_count" value="2"  />
+				<property name="air_spawn" value="false" />
+				<property name="add_to_group" value="zombies" />
+				<property name="safe_spawn" value="true" />
+				<property name="min_distance" value="1" />
+				<property name="max_distance" value="5" />
+				<property name="target_group" value="party" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+			</action>-->
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<property name="add_to_group" value="zombies" />
+				<property name="safe_spawn" value="true" />
+				<property name="min_distance" value="1" />
+				<property name="max_distance" value="5" />
+				<property name="target_group" value="party" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="target_group" value="party" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="target_group" value="party" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="target_group" value="party" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="Delay">
+				<property name="time" value="15" />
+			</action>
+		</loop>		
+	</action_sequence>
+	<action_sequence name="ZombieINC_MD_T5_W3_Event">
+		<property name="refund_inactivity" value="false" />
+		
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="1" />
+			<property name="group_name" value="party" />
+			<property name="entity_tags" value="player" />
+			<property name="max_distance" value="80" />
+			<property name="allow_player" value="true" />
+		</action>
+		
+		<loop class="While">
+			<property name="phase" value="2" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_MD_T5_JeepWave3_Buff" />
+			</requirement>		
+			<!--<action class="SpawnEntity">
+				<property name="entity_group" value="SleeperGSList" />
+				<property name="spawn_count" value="2"  />
+				<property name="air_spawn" value="false" />
+				<property name="add_to_group" value="zombies" />
+				<property name="safe_spawn" value="true" />
+				<property name="min_distance" value="1" />
+				<property name="max_distance" value="5" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="target_group" value="party" />
+			</action>-->
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<property name="add_to_group" value="zombies" />
+				<property name="safe_spawn" value="true" />
+				<property name="min_distance" value="30" />
+				<property name="max_distance" value="40" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+				<property name="target_group" value="party" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="target_group" value="party" />
+				<property name="min_distance" value="30" />
+				<property name="max_distance" value="40" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="target_group" value="party" />
+				<property name="min_distance" value="30" />
+				<property name="max_distance" value="40" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="target_group" value="party" />
+				<property name="min_distance" value="30" />
+				<property name="max_distance" value="40" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="target_group" value="party" />
+				<property name="min_distance" value="30" />
+				<property name="max_distance" value="40" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="target_group" value="party" />
+				<property name="min_distance" value="30" />
+				<property name="max_distance" value="40" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			
+			<action class="Delay">
+				<property name="time" value="30" />
+			</action>
+		</loop>		
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_MD_T5_W3_Quest">
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="1" />
+			<property name="group_name" value="Truck" />
+			<property name="entity_tags" value="ZINCTruckQuestMD" />
+			<property name="max_distance" value="80" />
+		</action>
+		<action class="AddBuff">
+			<property name="phase" value="2" />
+			<property name="buff_name" value="ZombieINC_MD_T5_JeepWave3_Buff"/>
+			<property name="check_already_exists" value="false"/>
+			<property name="target_group" value="Truck" />
+		</action>
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_MD_T5_TimerBuff_Event">
+		<action class="AddBuff">
+			<property name="phase" value="1" />
+			<property name="buff_name" value="ZombieINC_MD_T5_PlayerTimer_Buff"/>
+			<property name="check_already_exists" value="false"/>
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_MD_T5_FailQuestPart2_Event">
+		<action class="FailQuest">
+			<property name="quest" value="zincmobiledefense5" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />			
+		</action>
+		
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_MD_BeltTooltip_FailQuest"  />
+			<property name="phase" value="2"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_MD_ChatMessage_FailQuest"  />
+			<property name="phase" value="2"/>		
+		</action>
+		
+		<action class="RemoveItems">
+			<property name="phase" value="3" />
+			<property name="items_location" value="Toolbelt,Backpack,Equipment,Held"  />
+			<property name="items_tags" value="ZINCTruckQuestMD" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_MD_T5_FailQuestTimer_Event">
+		<action class="FailQuest">
+			<property name="quest" value="zincmobiledefense5" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />			
+		</action>
+		
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_MD_BeltTooltip_FailQuestTimer"  />
+			<property name="phase" value="2"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_MD_ChatMessage_FailQuestTimer"  />
+			<property name="phase" value="2"/>		
+		</action>
+		
+		<action class="RemoveItems">
+			<property name="phase" value="3" />
+			<property name="items_location" value="Toolbelt,Backpack,Equipment,Held"  />
+			<property name="items_tags" value="ZINCTruckQuestMD" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_MD_T5_RemoveAllBuffsWhenFail">
+		<property name="refund_inactivity" value="false" />					
+		<action class="Delay">
+			<property name="phase" value="1" />
+			<property name="time" value="15" />
+		</action>
+		<action class="AddBuff">
+			<property name="phase" value="1" />
+			<property name="buff_name" value="ZombieINC_MD_T5_InQuest_Buff"/>
+			<property name="check_already_exists" value="false"/>
+		</action>
+		<wait class="While">
+			<property name="phase" value="2" />
+			<property name="condition_type" value="Any" />
+			<requirement class="OnQuest">
+				<property name="quest" value="zincmobiledefense5"/>
+			</requirement>			
+		</wait>
+		<action class="RemoveBuffsByTag">
+			<property name="buff_tag" value="ZINC_MD_BUFFS" />
+			<property name="phase" value="3"/>				
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_MD_T5_FailQuest_Event">
+		<property name="refund_inactivity" value="false" />					
+		<wait class="Until">
+			<property name="phase" value="0" />
+			<requirement class="NearbyEntities">
+				<property name="entity_tags" value="ZINCTruckQuestMD" />
+				<property name="max_distance" value="60" />
+				<property name="target_is_owner" value="false" />
+			</requirement>			
+		</wait>
+		<wait class="While">
+			<property name="phase" value="1" />
+			<requirement class="NearbyEntities">
+				<property name="entity_tags" value="ZINCTruckQuestMD" />
+				<property name="max_distance" value="60" />
+				<property name="target_is_owner" value="false" />
+			</requirement>			
+		</wait>
+		<action class="Delay">
+			<property name="phase" value="2" />
+			<property name="time" value="1" />
+		</action>
+		<action class="CallGameEvent">
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_MD_T5_PlayerTimer_Buff" />
+			</requirement>
+			<requirement class="InSafeZone">
+				<property name="invert" value="true" />
+			</requirement>
+			<property name="phase" value="3" />
+			<property name="game_events" value="ZombieINC_MD_T5_FailQuestPart2_Event" />
+		</action>
+		<action class="RemoveBuffsByTag">
+			<property name="buff_tag" value="ZINC_MD_BUFFS" />
+			<property name="phase" value="3"/>				
+		</action>		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_MD_T5_SpawnVehicle">					  
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="1" />
+			<property name="entity_tags" value="trader" />
+			<property name="group_name" value="trader" />
+			<property name="max_distance" value="5" />
+		</action>
+		 <action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_MD_T5_Trader_SpawnVehicle_Buff" />
+			<property name="target_group" value="trader" />
+			<property name="phase" value="2"/>				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_MD_T5_SpawnVehicle_Event">
+		<property name="refund_inactivity" value="false"/>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_vehicle4x4TruckAntenna" />
+			<property name="add_buffs" value="ZombieINC_MD_T5_JeepTimer_Buff" />
+			<property name="spawn_count" value="1"  />
+			<property name="safe_spawn" value="true"  />
+			<property name="max_distance" value="30" />		
+			<property name="min_distance" value="1" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="phase" value="1" />		
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_MD_T5_QuestFinished_Event">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="ZINCTruckQuestMD" />
+			<property name="max_distance" value="45" />
+			<property name="target_is_owner" value="false" />
+		</requirement>
+	
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="ZINCTruckQuestMD" />
+			<property name="group_name" value="Vehicle" />
+			<property name="max_distance" value="45" />
+		</action>
+		
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="player" />
+		</action>
+		
+		<action class="RemoveBuffsByTag">
+			<property name="buff_tag" value="ZINC_MD_BUFFS" />
+			<property name="target_group" value="player" />
+			<property name="phase" value="1"/>				
+		</action>
+		
+		<action class="RemoveVehicles">
+			<property name="phase" value="2" />
+			<property name="target_group" value="Vehicle" />
+			<property name="return_items" value="true" />
+			<property name="include_vehicle" value="false" />
+		</action>
+		
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_MD_BeltTooltip_Message3_T5"  />
+			<property name="phase" value="3"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_MD_ChatMessage_Message3_T5"  />
+			<property name="phase" value="3"/>	
+		</action>			
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_MD_ResetCvars">	
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />		
+			<property name="cvar" value="ZINCQuestMDDelivery" />
+			<property name="operation" value="Set" />
+			<property name="value" value="0" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_MD_T5_GameEventObjectiveFinal">
+		<property name="refund_inactivity" value="false"/>
+		
+		<wait class="Until">
+			<property name="phase" value="1" />
+			<requirement class="InPOI"/>
+			<requirement class="InSafeZone"/>
+			<requirement class="NearbyEntities">
+				<property name="entity_tags" value="ZINCTruckQuestMD" />
+				<property name="max_distance" value="50" />
+				<property name="target_is_owner" value="false" />
+			</requirement>
+		</wait>
+	</action_sequence>
+
+<!--T5-->	
+<!--##T6-->	
+	<action_sequence name="ZombieINC_MD_T6_W1_Event">
+		<property name="refund_inactivity" value="false" />
+		
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="1" />
+			<property name="group_name" value="party" />
+			<property name="entity_tags" value="player" />
+			<property name="max_distance" value="80" />
+			<property name="allow_player" value="true" />
+		</action>
+		
+		<loop class="While">
+			<property name="phase" value="2" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_MD_T6_JeepWave1_Buff" />
+			</requirement>		
+			
+			<!--<action class="SpawnEntity">
+				<property name="entity_group" value="SleeperGSList" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<property name="add_to_group" value="zombies" />
+				<property name="safe_spawn" value="true" />
+				<property name="min_distance" value="1" />
+				<property name="max_distance" value="5" />
+				<property name="target_group" value="party" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+			</action>-->
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<!--<property name="add_to_group" value="zombies" />-->
+				<!--<property name="safe_spawn" value="true" />-->
+				<property name="min_distance" value="1" />
+				<property name="max_distance" value="5" />
+				<property name="target_group" value="party" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<!--<property name="add_to_group" value="zombies" />-->
+				<!--<property name="safe_spawn" value="true" />-->
+				<property name="min_distance" value="1" />
+				<property name="max_distance" value="5" />
+				<property name="target_group" value="party" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<!--<property name="add_to_group" value="zombies" />-->
+				<!--<property name="safe_spawn" value="true" />-->
+				<property name="min_distance" value="1" />
+				<property name="max_distance" value="5" />
+				<property name="target_group" value="party" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			
+			<action class="Delay">
+				<property name="time" value="12" />
+			</action>
+		</loop>		
+	</action_sequence>
+	<action_sequence name="ZombieINC_MD_T6_W2_Event">
+		<property name="refund_inactivity" value="false" />
+		
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="1" />
+			<property name="group_name" value="party" />
+			<property name="entity_tags" value="player" />
+			<property name="max_distance" value="80" />
+			<property name="allow_player" value="true" />
+		</action>
+		
+		<loop class="While">
+			<property name="phase" value="2" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_MD_T6_JeepWave2_Buff" />
+			</requirement>		
+				
+			<!--<action class="SpawnEntity">
+				<property name="entity_group" value="SleeperGSList" />
+				<property name="spawn_count" value="2"  />
+				<property name="air_spawn" value="false" />
+				<property name="add_to_group" value="zombies" />
+				<property name="safe_spawn" value="true" />
+				<property name="min_distance" value="1" />
+				<property name="max_distance" value="5" />
+				<property name="target_group" value="party" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+			</action>-->
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<property name="add_to_group" value="zombies" />
+				<property name="safe_spawn" value="true" />
+				<property name="min_distance" value="1" />
+				<property name="max_distance" value="5" />
+				<property name="target_group" value="party" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="target_group" value="party" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="target_group" value="party" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="target_group" value="party" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="Delay">
+				<property name="time" value="15" />
+			</action>
+		</loop>		
+	</action_sequence>
+	<action_sequence name="ZombieINC_MD_T6_W3_Event">
+		<property name="refund_inactivity" value="false" />
+		
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="1" />
+			<property name="group_name" value="party" />
+			<property name="entity_tags" value="player" />
+			<property name="max_distance" value="80" />
+			<property name="allow_player" value="true" />
+		</action>
+		
+		<loop class="While">
+			<property name="phase" value="2" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_MD_T6_JeepWave3_Buff" />
+			</requirement>		
+			<!--<action class="SpawnEntity">
+				<property name="entity_group" value="SleeperGSList" />
+				<property name="spawn_count" value="2"  />
+				<property name="air_spawn" value="false" />
+				<property name="add_to_group" value="zombies" />
+				<property name="safe_spawn" value="true" />
+				<property name="min_distance" value="1" />
+				<property name="max_distance" value="5" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="target_group" value="party" />
+			</action>-->
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<property name="add_to_group" value="zombies" />
+				<property name="safe_spawn" value="true" />
+				<property name="min_distance" value="30" />
+				<property name="max_distance" value="40" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+				<property name="target_group" value="party" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="target_group" value="party" />
+				<property name="min_distance" value="30" />
+				<property name="max_distance" value="40" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="target_group" value="party" />
+				<property name="min_distance" value="30" />
+				<property name="max_distance" value="40" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="target_group" value="party" />
+				<property name="min_distance" value="30" />
+				<property name="max_distance" value="40" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="target_group" value="party" />
+				<property name="min_distance" value="30" />
+				<property name="max_distance" value="40" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="target_group" value="party" />
+				<property name="min_distance" value="30" />
+				<property name="max_distance" value="40" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="target_group" value="party" />
+				<property name="min_distance" value="30" />
+				<property name="max_distance" value="40" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="Delay">
+				<property name="time" value="30" />
+			</action>
+		</loop>		
+	</action_sequence>
+	<action_sequence name="ZombieINC_MD_T6_W4_Event">
+		<property name="refund_inactivity" value="false" />
+		
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="1" />
+			<property name="group_name" value="party" />
+			<property name="entity_tags" value="player" />
+			<property name="max_distance" value="80" />
+			<property name="allow_player" value="true" />
+		</action>
+		
+		<loop class="While">
+			<property name="phase" value="2" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_MD_T6_JeepWave4_Buff" />
+			</requirement>	
+				
+			<action class="SpawnEntity">	
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<property name="add_to_group" value="zombies" />
+				<property name="safe_spawn" value="true" />
+				<property name="min_distance" value="1" />
+				<property name="max_distance" value="5" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+				<property name="target_group" value="party" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="target_group" value="party" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="target_group" value="party" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ZINC_MD_All_Feral" />
+				<property name="spawn_count" value="1"  />
+				<property name="target_group" value="party" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="add_buffs" value="ZombieINC_MD_EnemyDotBuff"/>
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+			<action class="Delay">
+				<property name="time" value="20" />
+			</action>
+		</loop>		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_MD_T6_W3_Quest">
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="1" />
+			<property name="group_name" value="Truck" />
+			<property name="entity_tags" value="ZINCTruckQuestMD" />
+			<property name="max_distance" value="80" />
+		</action>
+		<action class="AddBuff">
+			<property name="phase" value="2" />
+			<property name="buff_name" value="ZombieINC_MD_T6_JeepWave3_Buff"/>
+			<property name="check_already_exists" value="false"/>
+			<property name="target_group" value="Truck" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_MD_T6_W4_Quest">
+		<action class="AddBuff">
+			<property name="phase" value="1" />
+			<property name="buff_name" value="ZombieINC_MD_T6_JeepWave4_PlayerStart_Buff"/>
+			<property name="check_already_exists" value="false"/>
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_MD_T6_TimerBuff_Event">
+		<action class="AddBuff">
+			<property name="phase" value="1" />
+			<property name="buff_name" value="ZombieINC_MD_T6_PlayerTimer_Buff"/>
+			<property name="check_already_exists" value="false"/>
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_MD_T6_FailQuestPart2_Event">
+		<action class="FailQuest">
+			<property name="quest" value="zincmobiledefense6" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />			
+		</action>
+		
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_MD_BeltTooltip_FailQuest"  />
+			<property name="phase" value="2"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_MD_ChatMessage_FailQuest"  />
+			<property name="phase" value="2"/>		
+		</action>
+		
+		<action class="RemoveItems">
+			<property name="phase" value="3" />
+			<property name="items_location" value="Toolbelt,Backpack,Equipment,Held"  />
+			<property name="items_tags" value="ZINCTruckQuestMD" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_MD_T6_FailQuestTimer_Event">
+		<action class="FailQuest">
+			<property name="quest" value="zincmobiledefense6" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />			
+		</action>
+		
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_MD_BeltTooltip_FailQuestTimer"  />
+			<property name="phase" value="2"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_MD_ChatMessage_FailQuestTimer"  />
+			<property name="phase" value="2"/>		
+		</action>
+		
+		<action class="RemoveItems">
+			<property name="phase" value="3" />
+			<property name="items_location" value="Toolbelt,Backpack,Equipment,Held"  />
+			<property name="items_tags" value="ZINCTruckQuestMD" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_MD_T6_RemoveAllBuffsWhenFail">
+		<property name="refund_inactivity" value="false" />					
+		<action class="Delay">
+			<property name="phase" value="1" />
+			<property name="time" value="15" />
+		</action>
+		<action class="AddBuff">
+			<property name="phase" value="1" />
+			<property name="buff_name" value="ZombieINC_MD_T6_InQuest_Buff"/>
+			<property name="check_already_exists" value="false"/>
+		</action>
+		<wait class="While">
+			<property name="phase" value="2" />
+			<property name="condition_type" value="Any" />
+			<requirement class="OnQuest">
+				<property name="quest" value="zincmobiledefense6"/>
+			</requirement>			
+		</wait>
+		<action class="RemoveBuffsByTag">
+			<property name="buff_tag" value="ZINC_MD_BUFFS" />
+			<property name="phase" value="3"/>				
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_MD_T6_FailQuest_Event">
+		<property name="refund_inactivity" value="false" />					
+		<wait class="Until">
+			<property name="phase" value="0" />
+			<requirement class="NearbyEntities">
+				<property name="entity_tags" value="ZINCTruckQuestMD" />
+				<property name="max_distance" value="60" />
+				<property name="target_is_owner" value="false" />
+			</requirement>			
+		</wait>
+		<wait class="While">
+			<property name="phase" value="1" />
+			<requirement class="NearbyEntities">
+				<property name="entity_tags" value="ZINCTruckQuestMD" />
+				<property name="max_distance" value="60" />
+				<property name="target_is_owner" value="false" />
+			</requirement>			
+		</wait>
+		<action class="Delay">
+			<property name="phase" value="2" />
+			<property name="time" value="1" />
+		</action>
+		<action class="CallGameEvent">
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_MD_T6_PlayerTimer_Buff" />
+			</requirement>
+			<requirement class="InSafeZone">
+				<property name="invert" value="true" />
+			</requirement>
+			<property name="phase" value="3" />
+			<property name="game_events" value="ZombieINC_MD_T6_FailQuestPart2_Event" />
+		</action>
+		<action class="RemoveBuffsByTag">
+			<property name="buff_tag" value="ZINC_MD_BUFFS" />
+			<property name="phase" value="3"/>				
+		</action>		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_MD_T6_SpawnVehicle">					  
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="1" />
+			<property name="entity_tags" value="trader" />
+			<property name="group_name" value="trader" />
+			<property name="max_distance" value="5" />
+		</action>
+		 <action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_MD_T6_Trader_SpawnVehicle_Buff" />
+			<property name="target_group" value="trader" />
+			<property name="phase" value="2"/>				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_MD_T6_SpawnVehicle_Event">
+		<property name="refund_inactivity" value="false"/>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_vehicle4x4TruckAntenna" />
+			<property name="add_buffs" value="ZombieINC_MD_T6_JeepTimer_Buff" />
+			<property name="spawn_count" value="1"  />
+			<property name="safe_spawn" value="true"  />
+			<property name="max_distance" value="30" />		
+			<property name="min_distance" value="1" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="phase" value="1" />		
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_MD_T6_QuestFinished_Event">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="ZINCTruckQuestMD" />
+			<property name="max_distance" value="45" />
+			<property name="target_is_owner" value="false" />
+		</requirement>
+	
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="ZINCTruckQuestMD" />
+			<property name="group_name" value="Vehicle" />
+			<property name="max_distance" value="45" />
+		</action>
+		
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="player" />
+		</action>
+		
+		<action class="RemoveBuffsByTag">
+			<property name="buff_tag" value="ZINC_MD_BUFFS" />
+			<property name="target_group" value="player" />
+			<property name="phase" value="1"/>				
+		</action>
+		
+		<action class="RemoveVehicles">
+			<property name="phase" value="2" />
+			<property name="target_group" value="Vehicle" />
+			<property name="return_items" value="true" />
+			<property name="include_vehicle" value="false" />
+		</action>
+		
+		<action class="BeltTooltip">  								
+			<property name="text_key" value="ZombieINC_MD_BeltTooltip_Message3_T6"  />
+			<property name="phase" value="3"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text_key" value="ZombieINC_MD_ChatMessage_Message3_T6"  />
+			<property name="phase" value="3"/>	
+		</action>			
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_MD_ResetCvars">	
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />		
+			<property name="cvar" value="ZINCQuestMDDelivery" />
+			<property name="operation" value="Set" />
+			<property name="value" value="0" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_MD_T6_GameEventObjectiveFinal">
+		<property name="refund_inactivity" value="false"/>
+		
+		<wait class="Until">
+			<property name="phase" value="1" />
+			<requirement class="InPOI"/>
+			<requirement class="InSafeZone"/>
+			<requirement class="NearbyEntities">
+				<property name="entity_tags" value="ZINCTruckQuestMD" />
+				<property name="max_distance" value="50" />
+				<property name="target_is_owner" value="false" />
+			</requirement>
+		</wait>
+	</action_sequence>
+	
+	<!--<action_sequence name="ZombieINC_MD_T6_GameEventObjectiveFinal">
+		<property name="refund_inactivity" value="false"/>
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="party" />
+		</action>
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="target_group" value="party" />
+			<property name="cvar" value="ZINCQuestMDDelivery" />
+			<property name="operation" value="Add" />
+			<property name="value" value="1" />
+		</action>
+		<wait class="Until">
+			<property name="phase" value="2" />
+			<requirement class="InPOI"/>
+			<requirement class="InSafeZone"/>		
+		</wait>
+		<wait class="Until">
+			<property name="phase" value="3" />
+			<requirement class="NearbyEntities">
+				<property name="entity_tags" value="ZINCTruckQuestMD" />
+				<property name="max_distance" value="50" />
+				<property name="target_is_owner" value="false" />
+			</requirement>
+		</wait>
+		<action class="ModifyCVar">
+			<property name="phase" value="4" />
+			<property name="target_group" value="party" />
+			<property name="cvar" value="ZINCQuestMDDelivery" />
+			<property name="operation" value="Subtract" />
+			<property name="value" value="1" />
+		</action>
+		<wait class="Until">
+			<property name="phase" value="5" />
+			<requirement class="InPOI"/>
+			<requirement class="InSafeZone"/>
+			<requirement class="NearbyEntities">
+				<property name="entity_tags" value="ZINCTruckQuestMD" />
+				<property name="max_distance" value="50" />
+				<property name="target_is_owner" value="false" />
+			</requirement>
+			<requirement class="CVar">
+				<property name="cvar" value="ZINCQuestMDDelivery"/>
+				<property name="operation" value="Equals"/>
+				<property name="value" value="0"/>
+			</requirement>
+		</wait>
+	</action_sequence>-->
+<!--Mobile Defense-->
+	
+<!--###Table-->	
+
+<!--value="zombieArleneFeral,zombieBurntFeral,zombieLabFeral,zombieMarleneFeral,zombieDarleneFeral,zombiePartyGirlFeral,zombieNurseFeral,zombieSkateboarderFeral,zombieTomClarkFeral,zombieBoeFeral,zombieJoeFeral,zombieSteveFeral,zombieYoFeral,zombieBusinessManFeral,zombieUtilityWorkerFeral,zombieMoeFeral,zombieJanitorFeral,zombieBikerFeral,zombieFatHawaiianFeral,zombieLumberjackFeral,zombieFemaleFatFeral,zombieSoldierFeral,zombieMaleHazmatFeral,zombieSpiderFeral,animalZombieDog,zombieFatCopFeral,zombieWightFeral"-->
+
+<!--###Table-->	
+	
+	
+	</append>
+
+
+
+
+</Config>

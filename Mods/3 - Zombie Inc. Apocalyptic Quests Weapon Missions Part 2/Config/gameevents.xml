@@ -1,0 +1,2526 @@
+<Config>
+<append xpath="/gameevents">
+<!--###Weapon Test-->
+	<!--##Fail Quest-->
+	
+	<action_sequence name="ZombieINC_WSPart2_FailQuestIfOnTrader">
+		<property name="refund_inactivity" value="false" />
+		<action class="AddChatMessage">
+			<property name="text_key" value="ZombieINC_WSPart2_FailIfOnTrader_ChatMessage"/>
+			<property name="phase" value="1" />
+		</action>
+		<wait class="While">
+			<property name="phase" value="2" />
+			<property name="phase_on_complete" value="6" />
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_WeaponTest_InQuestBuff"/>
+			</requirement>
+		</wait>
+		<wait class="Until">
+			<property name="phase" value="2" />
+			<property name="phase_on_complete" value="3" />
+			<requirement class="InPOI"/>
+			<requirement class="InSafeZone"/>
+			<requirement class="NearbyEntities">
+				<property name="entity_tags" value="trader" />
+				<property name="max_distance" value="100" />
+			</requirement>			
+		</wait>
+		<action class="CallGameEvent">
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_WeaponTest_InQuestBuff"/>
+			</requirement>
+			<property name="game_events" value="ZombieINC_WeaponTest_MissionRemover"/>
+			<property name="phase" value="3" />
+		</action>
+		<action class="CallGameEvent">
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_WeaponTest_InQuestBuff"/>
+			</requirement>
+			<property name="game_events" value="ZombieINC_WeaponTest_WeaponRemover"/>
+			<property name="phase" value="4" />
+		</action>
+		<action class="CallGameEvent">
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_WeaponTest_InQuestBuff"/>
+			</requirement>
+			<property name="game_events" value="ZombieINC_WeaponTest_BuffRemover"/>
+			<property name="phase" value="5" />
+		</action>
+	</action_sequence>
+	
+	<!--Fail Quest-->
+	<!--##Fatal Errors Protectors Weapon Signature-->
+	<!--##Fatal Errors Protectors Weapon Signature-->
+
+	<action_sequence name="ZombieINC_WS_PipeMachineGun_FailQuest_Event">
+		<property name="allow_user_trigger" value="true" />
+		<!--<requirement class="OnQuest">
+			<property name="quest" value="zincpipemachinegun"/>
+		</requirement>-->
+		<action class="FailQuest">	   
+			<property name="quest" value="zincpipemachinegun" />
+			<property name="remove_quest" value="true"  />		
+		</action>
+		<!--<action class="Delay">			
+			<property name="phase" value="1" />		
+			<property name="time" value="2" />			
+		</action>
+		<action class="AddQuest">
+			<property name="phase" value="2" />	
+			<property name="quest" value="ZINCPipeMachinegun" />
+		</action>-->
+	</action_sequence>
+	<action_sequence name="ZombieINC_WS_PipeMachineGun_FEPBuff_Event">			
+	    <action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_WS_PipeMachineGun_FEP_Buff" />				
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_WS_PipeMachineGun_RemoveFEPBuff_Event">			
+	    <action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_WS_PipeMachineGun_FEP_Buff" />				
+		</action>
+	</action_sequence>
+	
+	
+	<!--###General Messages-->
+	<action_sequence name="ZombieINC_NoTraderNearbyMessages">
+		<action class="AddChatMessage">
+			<property name="text_key" value="ZombieINC_NoTraderNearbyChatMessage"/>
+			<property name="phase" value="1" />
+		</action>
+		<action class="BeltTooltip">
+			<property name="text_key" value="ZombieINC_NoTraderNearbyBeltTooltip"/>
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_LureCooldownMessages">
+		<action class="BeltTooltip">  								
+			<property name="text" value="Cant't activate"  />
+			<property name="text_key" value="ZombieINC_Defense_BeltTooltip_ZombieLureCooldown"  />
+			<property name="phase" value="1"/>
+		</action>				      			    
+		<action class="AddChatMessage">							
+			<property name="text" value="| [FF6600]Player's Mind:[-] Cant't activate, ZombieLure needs to burn for at least 30secs" />
+			<property name="text_key" value="ZombieINC_Defense_ChatMessage_ZombieLureCooldown"  />
+			<property name="phase" value="1"/>	
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ThereAreZombieNearbyMessages">
+		<action class="BeltTooltip">  								
+			<property name="text" value="Cant't activate"  />
+			<property name="text_key" value="ZombieINC_Defense_BeltTooltip_ZombiesNearby"  />
+			<property name="phase" value="1"/>
+		</action>		      			    
+		<action class="AddChatMessage">							
+			<property name="text" value="| [FF6600]Player's Mind:[-] Cant't activate, there are zombies nearby" />
+			<property name="text_key" value="ZombieINC_Defense_ChatMessage_ZombiesNearby"  />
+			<property name="phase" value="1"/>	
+		</action>
+	</action_sequence>
+	<!--General Messages-->
+	<action_sequence name="ZombieINC_PipeMachineGun_RepairKitEvent">
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="trader" />
+			<property name="group_name" value="Trader" />
+			<property name="max_distance" value="4" />
+		</action>
+		
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="Trader"/>
+				<property name="operation" value="GTE"/> 
+				<property name="count" value="1"/>
+			</requirement>
+			
+		<action class="AddItemDurability">
+			<property name="items_tags" value="ZombieINCPipeMachineGun" />
+			<property name="items_location" value="Toolbelt,Backpack" />
+			<property name="amount" value="1" />
+			<property name="is_percent" value="true" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="RemoveItems">
+			<property name="items_location" value="Held"  />
+			<property name="items_tags" value="ZombieINCWeaponParts"  />
+			<property name="count" value="1" />				
+			<property name="phase" value="2" />
+		</action>
+		</decision>
+		<decision class="If">
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="Trader"/>
+				<property name="operation" value="LTE"/> 
+				<property name="count" value="0"/>
+			</requirement>
+		<action class="CallGameEvent">
+			<property name="game_events" value="ZombieINC_NoTraderNearbyMessages"/>
+			<property name="phase" value="1" />
+		</action>
+		</decision>
+	</action_sequence>
+	<action_sequence name="ZombieINC_FireShockSpear_RepairKitEvent">
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="trader" />
+			<property name="group_name" value="Trader" />
+			<property name="max_distance" value="4" />
+		</action>
+		
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="Trader"/>
+				<property name="operation" value="GTE"/> 
+				<property name="count" value="1"/>
+			</requirement>
+			
+		<action class="AddItemDurability">
+			<property name="items_tags" value="ZombieINCFireShockSpear" />
+			<property name="items_location" value="Toolbelt,Backpack" />
+			<property name="amount" value="1" />
+			<property name="is_percent" value="true" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="RemoveItems">
+			<property name="items_location" value="Held"  />
+			<property name="items_tags" value="ZombieINCWeaponParts"  />
+			<property name="count" value="1" />				
+			<property name="phase" value="2" />
+		</action>
+		</decision>
+		<decision class="If">
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="Trader"/>
+				<property name="operation" value="LTE"/> 
+				<property name="count" value="0"/>
+			</requirement>
+		<action class="CallGameEvent">
+			<property name="game_events" value="ZombieINC_NoTraderNearbyMessages"/>
+			<property name="phase" value="1" />
+		</action>
+		</decision>
+	</action_sequence>
+	<action_sequence name="ZombieINC_Nailgun_RepairKitEvent">
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="trader" />
+			<property name="group_name" value="Trader" />
+			<property name="max_distance" value="4" />
+		</action>
+		
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="Trader"/>
+				<property name="operation" value="GTE"/> 
+				<property name="count" value="1"/>
+			</requirement>
+			
+		<action class="AddItemDurability">
+			<property name="items_tags" value="ZombieINCNailgun" />
+			<property name="items_location" value="Toolbelt,Backpack" />
+			<property name="amount" value="1" />
+			<property name="is_percent" value="true" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="RemoveItems">
+			<property name="items_location" value="Held"  />
+			<property name="items_tags" value="ZombieINCWeaponParts"  />
+			<property name="count" value="1" />				
+			<property name="phase" value="2" />
+		</action>
+		</decision>
+		<decision class="If">
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="Trader"/>
+				<property name="operation" value="LTE"/> 
+				<property name="count" value="0"/>
+			</requirement>
+		<action class="CallGameEvent">
+			<property name="game_events" value="ZombieINC_NoTraderNearbyMessages"/>
+			<property name="phase" value="1" />
+		</action>
+		</decision>
+	</action_sequence>
+	<action_sequence name="ZombieINC_IceHammer_RepairKitEvent">
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="trader" />
+			<property name="group_name" value="Trader" />
+			<property name="max_distance" value="4" />
+		</action>
+		
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="Trader"/>
+				<property name="operation" value="GTE"/> 
+				<property name="count" value="1"/>
+			</requirement>
+			
+		<action class="AddItemDurability">
+			<property name="items_tags" value="ZombieINCIceHammer" />
+			<property name="items_location" value="Toolbelt,Backpack" />
+			<property name="amount" value="1" />
+			<property name="is_percent" value="true" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="RemoveItems">
+			<property name="items_location" value="Held"  />
+			<property name="items_tags" value="ZombieINCWeaponParts"  />
+			<property name="count" value="1" />				
+			<property name="phase" value="2" />
+		</action>
+		</decision>
+		<decision class="If">
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="Trader"/>
+				<property name="operation" value="LTE"/> 
+				<property name="count" value="0"/>
+			</requirement>
+		<action class="CallGameEvent">
+			<property name="game_events" value="ZombieINC_NoTraderNearbyMessages"/>
+			<property name="phase" value="1" />
+		</action>
+		</decision>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ExplosiveKnucles_RepairKitEvent">
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="trader" />
+			<property name="group_name" value="Trader" />
+			<property name="max_distance" value="4" />
+		</action>
+		
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="Trader"/>
+				<property name="operation" value="GTE"/> 
+				<property name="count" value="1"/>
+			</requirement>
+			
+		<action class="AddItemDurability">
+			<property name="items_tags" value="ZombieINCExplosiveKnucles" />
+			<property name="items_location" value="Toolbelt,Backpack" />
+			<property name="amount" value="1" />
+			<property name="is_percent" value="true" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="RemoveItems">
+			<property name="items_location" value="Held"  />
+			<property name="items_tags" value="ZombieINCWeaponParts"  />
+			<property name="count" value="1" />				
+			<property name="phase" value="2" />
+		</action>
+		</decision>
+		<decision class="If">
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="Trader"/>
+				<property name="operation" value="LTE"/> 
+				<property name="count" value="0"/>
+			</requirement>
+		<action class="CallGameEvent">
+			<property name="game_events" value="ZombieINC_NoTraderNearbyMessages"/>
+			<property name="phase" value="1" />
+		</action>
+		</decision>
+	</action_sequence>
+	<!--###Weapon Test General-->
+	
+	<action_sequence name="ZombieINC_WeaponTest_InQuest">		
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_InQuestBuff"  />				
+		</action>
+	</action_sequence>	
+	
+	
+	<action_sequence name="ZombieINC_WeaponTest_WeaponRemover">	
+		<property name="allow_while_dead" value="true" />
+		<action class="RemoveItems">
+			<property name="items_location" value="Toolbelt,Backpack"  />
+			<property name="items_tags" value="WeaponTestRemover"  />				
+		</action>
+	</action_sequence>
+
+	<action_sequence name="ZombieINC_WeaponTest_MissionRemover">
+		<property name="allow_while_dead" value="true" />
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="OnQuest">
+				<property name="quest" value="zincsteelknucles"/>
+			</requirement>
+			
+		<action class="FailQuest">
+			<property name="quest" value="zincsteelknucles" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />			
+		</action>	
+		</decision>
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="OnQuest">
+				<property name="quest" value="zincspeargun"/>
+			</requirement>
+			
+		<action class="FailQuest">
+			<property name="quest" value="zincspeargun" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />			
+		</action>	
+		</decision>
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="OnQuest">
+				<property name="quest" value="zincicehammer"/>
+			</requirement>
+			
+		<action class="FailQuest">
+			<property name="quest" value="zincicehammer" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />			
+		</action>	
+		</decision>
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="OnQuest">
+				<property name="quest" value="zincsteelspear"/>
+			</requirement>
+			
+		<action class="FailQuest">
+			<property name="quest" value="zincsteelspear" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />			
+		</action>	
+		</decision>
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="OnQuest">
+				<property name="quest" value="zincnailgun"/>
+			</requirement>
+			
+		<action class="FailQuest">
+			<property name="quest" value="zincnailgun" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />			
+		</action>	
+		</decision>
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="OnQuest">
+				<property name="quest" value="zincm60"/>
+			</requirement>
+			
+		<action class="FailQuest">
+			<property name="quest" value="zincm60" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />			
+		</action>	
+		</decision>
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="OnQuest">
+				<property name="quest" value="zincar"/>
+			</requirement>
+			
+		<action class="FailQuest">
+			<property name="quest" value="zincar" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />			
+		</action>	
+		</decision>
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="OnQuest">
+				<property name="quest" value="zincpistol"/>
+			</requirement>
+			
+		<action class="FailQuest">
+			<property name="quest" value="zincpistol" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />			
+		</action>	
+		</decision>
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="OnQuest">
+				<property name="quest" value="zincak47"/>
+			</requirement>
+			
+		<action class="FailQuest">
+			<property name="quest" value="zincak47" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />			
+		</action>	
+		</decision>
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="OnQuest">
+				<property name="quest" value="zincpepimachinegun"/>
+			</requirement>
+			
+		<action class="FailQuest">
+			<property name="quest" value="zincpepimachinegun" />
+			<property name="remove_quest" value="false" />
+			<property name="phase" value="1" />			
+		</action>	
+		</decision>
+	</action_sequence>		
+	
+	<action_sequence name="ZombieINC_WeaponTest_BuffRemover">	
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_InQuestBuff" />
+			<property name="phase" value="1"/>				
+		</action>		
+	</action_sequence>
+	<!--Weapon Test General-->
+	<!--##Nailgun-->
+	<action_sequence name="ZombieINC_WeaponTest_NailgunRewardEvent">		
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_NailgunRewardBuff"  />				
+		</action>
+		<action class="RemoveBuff">
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_WeaponTest_InQuestBuff"/>
+			</requirement>
+			<property name="buff_name" value="ZombieINC_WeaponTest_InQuestBuff"  />				
+		</action>
+	</action_sequence>	
+	
+	
+	<action_sequence name="ZombieINC_WeaponTest_NailgunRewardQuestEvent">		
+		<action class="AddQuest">
+			<property name="quest" value="ZINCNailgunReward" />		
+		</action>
+	</action_sequence>
+
+	<action_sequence name="ZombieINC_ChimneyEvent_WeaponTestNailgun">
+	
+	<decision class="If">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_ZombieLureCooldown"/>
+		</requirement>
+		
+		<action class="CallGameEvent">  								
+			<property name="game_events" value="ZombieINC_LureCooldownMessages"  />
+			<property name="phase" value="1"/>
+		</action>	
+					      			    		
+	</decision>	
+	
+	<decision class="If">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincnailgun"/>
+		</requirement>
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_ZombieLureCooldown"/>
+			<property name="invert" value="true"/>
+		</requirement>
+		
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTestNailgunSpawnerBuff" />
+			<property name="phase" value="1"/>				
+		</action>	
+		<action class="BlockReplace">  								
+			<property name="block_to" value="ZombieINC_WSPart2_capChimneyLargeSmoke_WeaponTestNailgunActive" />
+			<property name="max_offset" value="1"  />
+			<property name="block_tags" value="ChimneyWeaponTestNailgun" />
+			<property name="phase" value="2"/>	
+		</action>
+		<action class="RemoveBuff">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_InMissionBuff"/>
+		</requirement>
+			<property name="buff_name" value="ZombieINC_WeaponTest_InMissionBuff" />
+			<property name="phase" value="2"/>				
+		</action>
+	</decision>	
+	
+	
+	<decision class="If">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincnailgun"/>
+			<property name="invert" value="true"/>
+		</requirement>
+		
+		<action class="RemoveBuff">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTestNailgunSpawnerBuff"/>
+		</requirement>
+			<property name="buff_name" value="ZombieINC_WeaponTestNailgunSpawnerBuff" />
+			<property name="phase" value="1"/>				
+		</action>	
+		
+		<action class="RemoveBuff">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_InMissionBuff"/>
+		</requirement>
+			<property name="buff_name" value="ZombieINC_WeaponTest_InMissionBuff" />
+			<property name="phase" value="2"/>				
+		</action>
+		
+		<action class="BlockReplace">  								
+			<property name="block_to" value="ZombieINC_WSPart2_capChimneyLargeSmoke_WeaponTestNailgunActive" />
+			<property name="max_offset" value="1"  />
+			<property name="block_tags" value="ChimneyWeaponTestNailgun" />
+			<property name="phase" value="2"/>	
+		</action>
+	</decision>	
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_ChimneyEvent_WeaponTestNailgunActive">	
+		
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="zombie" />
+			<property name="group_name" value="zombies" />
+			<property name="max_distance" value="25" />
+			<property name="y_height" value="5" />
+		</action>
+	
+	<decision class="If">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincnailgun"/>
+			<property name="invert" value="true"/>
+		</requirement>
+	 	
+		<!--<action class="BlockReplace">  								
+			<property name="block_to" value="ZombieINC_WSPart2_capChimneyLargeSmoke_WeaponTestNailgun" />
+			<property name="max_offset" value="1"  />
+			<property name="block_tags" value="ChimneyWeaponTestNailgunActive" />
+			<property name="phase" value="1"/>	
+		</action>-->
+		
+		<action class="RemoveBuff">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTestNailgunSpawnerBuff"/>
+		</requirement>
+			<property name="buff_name" value="ZombieINC_WeaponTestNailgunSpawnerBuff" />
+			<property name="phase" value="1"/>				
+		</action>	
+		
+		<action class="RemoveBuff">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_InMissionBuff"/>
+		</requirement>
+			<property name="buff_name" value="ZombieINC_WeaponTest_InMissionBuff" />
+			<property name="phase" value="2"/>				
+		</action>
+	</decision>		
+		
+	<decision class="If">
+		<property name="condition_type" value="All"/>
+		<requirement class="OnQuest">
+			<property name="quest" value="zincnailgun"/>
+		</requirement>
+		<requirement class="GroupLiveCount">
+			<property name="target_group" value="zombies"/>
+			<property name="operation" value="GTE"/> 
+			<property name="count" value="1"/>
+		</requirement>
+	 	
+		<action class="AddBuff">
+			<property name="phase" value="1" />
+			<property name="target_group" value="zombies" />
+			<property name="buff_name" value="ZombieINC_EnemyDotBuff" />			
+		</action>
+		
+		<action class="CallGameEvent">  								
+			<property name="game_events" value="ZombieINC_ThereAreZombieNearbyMessages"  />
+			<property name="phase" value="1"/>
+		</action>	
+					      			    
+	</decision>	
+		
+	<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="OnQuest">
+				<property name="quest" value="zincnailgun"/>
+			</requirement>
+			<requirement class="GroupLiveCount">
+					<property name="target_group" value="zombies"/>
+					<property name="operation" value="Equals"/> 
+					<property name="count" value="0"/>
+			</requirement>
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_WeaponTest_InQuestBuff"/>
+			</requirement>
+			
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTestNailgunSpawnerBuff" />
+			<property name="phase" value="1"/>				
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_InMissionBuff" />
+			<property name="phase" value="2"/>				
+		</action>
+		<action class="BlockReplace">  								
+			<property name="block_to" value="ZombieINC_WSPart2_capChimneyLargeSmoke_WeaponTestNailgun" />
+			<property name="max_offset" value="1"  />
+			<property name="block_tags" value="ChimneyWeaponTestNailgunActive" />
+			<property name="phase" value="2"/>	
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_ZombieLureCooldown" />
+			<property name="phase" value="3"/>				
+		</action>	
+	</decision>				
+	</action_sequence>
+
+	<action_sequence name="ZombieINC_WeaponTestNailgun_AddItems">	
+		<action class="AddItems">
+			<property name="added_items" value="ZombieINC_Prototype_meleeToolRepairT3Nailgun" />
+			<property name="added_item_counts" value="1" />			 
+			<property name="phase" value="1" />
+		</action>	
+		<action class="AddItems">
+			<property name="added_items" value="ZombieINC_WSPart2_capChimneyLargeSmoke_WeaponTestNailgunActive" />
+			<property name="added_item_counts" value="1" />			 
+			<property name="phase" value="2" />
+		</action>
+		<action class="AddItems">
+			<property name="added_items" value="resourceNail" />
+			<property name="added_item_counts" value="300" />			 
+			<property name="phase" value="3" />
+		</action>
+		
+	</action_sequence>
+	
+	<!--<action_sequence name="ZombieINC_WeaponTestNailgunSpawnerEvent" template="ZombieINC_DefenseWaveOpenArea_Template2">
+		<variable name="zombiename" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse" />
+		<variable name="spawncount" value="3" />
+
+		<variable name="zombiename2" value="zombieArleneFeral,zombieMarleneFeral,zombieSkateboarderFeral,zombieTomClarkFeral,zombieMoeFeral,zombieBoeFeral,zombieJoeFeral,zombieSteveFeral,zombieYoFeral,zombieBusinessManFeral,zombieDarleneFeral,zombiePartyGirlFeral,zombieJanitorFeral,zombieNurseFeral" />
+		<variable name="spawncount2" value="1"  />				
+	</action_sequence>-->
+	
+	<action_sequence name="ZombieINC_WeaponTestNailgunSpawnerEvent">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincnailgun"/>
+		</requirement>
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_InQuestBuff"/>
+		</requirement>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse" param1="zombiename" />
+			<property name="spawn_count" value="3" param1="spawncount" />
+			<property name="air_spawn" value="true" param1="airspawn" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="min_distance" value="30" />
+			<property name="max_distance" value="40" />
+			<property name="add_to_group" value="targets" />
+		</action>
+		
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArleneFeral,zombieMarleneFeral,zombieSkateboarderFeral,zombieTomClarkFeral,zombieMoeFeral,zombieBoeFeral,zombieJoeFeral,zombieSteveFeral,zombieYoFeral,zombieBusinessManFeral,zombieDarleneFeral,zombiePartyGirlFeral,zombieJanitorFeral,zombieNurseFeral" param1="zombiename2" />
+			<property name="spawn_count" value="1" param1="spawncount2" />
+			<property name="air_spawn" value="true" param1="airspawn2" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="min_distance" value="30" />
+			<property name="max_distance" value="40" />
+			<property name="add_to_group" value="targets" />
+		</action>
+
+		<action class="PlaySound">
+			<property name="sound" value="zombiemalealert" param1="alertsound" />
+			<property name="phase" value="1" />
+		</action>
+
+	</action_sequence>
+	<!--Weapon Test Nailgun-->
+	<!--##Weapon Test Ice Hammer-->
+	
+	<action_sequence name="ZombieINC_WeaponTest_IceHammerRewardEvent">		
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_IceHammerRewardBuff"  />				
+		</action>
+		<action class="RemoveBuff">
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_WeaponTest_InQuestBuff"/>
+			</requirement>
+			<property name="buff_name" value="ZombieINC_WeaponTest_InQuestBuff"  />				
+		</action>
+	</action_sequence>	
+	
+	
+	<action_sequence name="ZombieINC_WeaponTest_IceHammerRewardQuestEvent">		
+		<action class="AddQuest">
+			<property name="quest" value="ZINCIceHammerReward" />		
+		</action>
+	</action_sequence>
+
+	<action_sequence name="ZombieINC_ChimneyEvent_WeaponTestIceHammer">
+	
+	<decision class="If">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_ZombieLureCooldown"/>
+		</requirement>
+		
+		<action class="CallGameEvent">  								
+			<property name="game_events" value="ZombieINC_LureCooldownMessages"  />
+			<property name="phase" value="1"/>
+		</action>
+		
+	</decision>	
+	
+	<decision class="If">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincicehammer"/>
+		</requirement>
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_ZombieLureCooldown"/>
+			<property name="invert" value="true"/>
+		</requirement>
+		
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTestIceHammerSpawnerBuff" />
+			<property name="phase" value="1"/>				
+		</action>	
+		<action class="BlockReplace">  								
+			<property name="block_to" value="ZombieINC_WSPart2_capChimneyLargeSmoke_WeaponTestIceHammerActive" />
+			<property name="max_offset" value="1"  />
+			<property name="block_tags" value="ChimneyWeaponTestIceHammer" />
+			<property name="phase" value="2"/>	
+		</action>
+		<action class="RemoveBuff">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_InMissionBuff"/>
+		</requirement>
+			<property name="buff_name" value="ZombieINC_WeaponTest_InMissionBuff" />
+			<property name="phase" value="2"/>				
+		</action>
+	</decision>	
+	
+	
+	<decision class="If">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincicehammer"/>
+			<property name="invert" value="true"/>
+		</requirement>
+		
+		<action class="RemoveBuff">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTestIceHammerSpawnerBuff"/>
+		</requirement>
+			<property name="buff_name" value="ZombieINC_WeaponTestIceHammerSpawnerBuff" />
+			<property name="phase" value="1"/>				
+		</action>	
+		
+		<action class="RemoveBuff">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_InMissionBuff"/>
+		</requirement>
+			<property name="buff_name" value="ZombieINC_WeaponTest_InMissionBuff" />
+			<property name="phase" value="2"/>				
+		</action>
+		
+		<action class="BlockReplace">  								
+			<property name="block_to" value="ZombieINC_WSPart2_capChimneyLargeSmoke_WeaponTestIceHammerActive" />
+			<property name="max_offset" value="1"  />
+			<property name="block_tags" value="ChimneyWeaponTestIceHammer" />
+			<property name="phase" value="2"/>	
+		</action>
+	</decision>	
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_ChimneyEvent_WeaponTestIceHammerActive">	
+		
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="zombie" />
+			<property name="group_name" value="zombies" />
+			<property name="max_distance" value="25" />
+			<property name="y_height" value="5" />
+		</action>
+	
+	<decision class="If">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincicehammer"/>
+			<property name="invert" value="true"/>
+		</requirement>
+	 	
+		<!--<action class="BlockReplace">  								
+			<property name="block_to" value="ZombieINC_WSPart2_capChimneyLargeSmoke" />
+			<property name="max_offset" value="1"  />
+			<property name="block_tags" value="ChimneyWeaponTestIceHammerActive" />
+			<property name="phase" value="1"/>	
+		</action>-->
+		
+		<action class="RemoveBuff">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTestIceHammerSpawnerBuff"/>
+		</requirement>
+			<property name="buff_name" value="ZombieINC_WeaponTestIceHammerSpawnerBuff" />
+			<property name="phase" value="1"/>				
+		</action>	
+		
+		<action class="RemoveBuff">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_InMissionBuff"/>
+		</requirement>
+			<property name="buff_name" value="ZombieINC_WeaponTest_InMissionBuff" />
+			<property name="phase" value="2"/>				
+		</action>
+	</decision>		
+		
+	<decision class="If">
+		<property name="condition_type" value="All"/>
+		<requirement class="OnQuest">
+			<property name="quest" value="zincicehammer"/>
+		</requirement>
+		<requirement class="GroupLiveCount">
+			<property name="target_group" value="zombies"/>
+			<property name="operation" value="GTE"/> 
+			<property name="count" value="1"/>
+		</requirement>
+	 	
+		<action class="AddBuff">
+			<property name="phase" value="1" />
+			<property name="target_group" value="zombies" />
+			<property name="buff_name" value="ZombieINC_EnemyDotBuff" />			
+		</action>
+		
+		<action class="CallGameEvent">  								
+			<property name="game_events" value="ZombieINC_ThereAreZombieNearbyMessages"  />
+			<property name="phase" value="1"/>
+		</action>
+	</decision>	
+		
+	<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="OnQuest">
+				<property name="quest" value="zincicehammer"/>
+			</requirement>
+			<requirement class="GroupLiveCount">
+					<property name="target_group" value="zombies"/>
+					<property name="operation" value="Equals"/> 
+					<property name="count" value="0"/>
+			</requirement>
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_WeaponTest_InQuestBuff"/>
+			</requirement>
+			
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTestIceHammerSpawnerBuff" />
+			<property name="phase" value="1"/>				
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_InMissionBuff" />
+			<property name="phase" value="2"/>				
+		</action>
+		<action class="BlockReplace">  								
+			<property name="block_to" value="ZombieINC_WSPart2_capChimneyLargeSmoke_WeaponTestIceHammer" />
+			<property name="max_offset" value="1"  />
+			<property name="block_tags" value="ChimneyWeaponTestIceHammerActive" />
+			<property name="phase" value="2"/>	
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_ZombieLureCooldown" />
+			<property name="phase" value="3"/>				
+		</action>	
+	</decision>				
+	</action_sequence>
+
+	<action_sequence name="ZombieINC_WeaponTestIceHammer_AddItems">	
+		<action class="AddItems">
+			<property name="added_items" value="ZombieINC_Prototype_meleeWpnSledgeT3SteelSledgehammer" />
+			<property name="added_item_counts" value="1" />			 
+			<property name="phase" value="1" />
+		</action>	
+		<action class="AddItems">
+			<property name="added_items" value="ZombieINC_WSPart2_capChimneyLargeSmoke_WeaponTestIceHammerActive" />
+			<property name="added_item_counts" value="1" />			 
+			<property name="phase" value="2" />
+		</action>			
+	</action_sequence>
+	
+	<!--<action_sequence name="ZombieINC_WeaponTestIceHammerSpawnerEvent" template="ZombieINC_DefenseWaveOpenArea_Template2">
+		<variable name="zombiename" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse" />
+		<variable name="spawncount" value="2" />
+
+		<variable name="zombiename2" value="zombieArleneFeral,zombieMarleneFeral,zombieSkateboarderFeral,zombieTomClarkFeral,zombieMoeFeral,zombieBoeFeral,zombieJoeFeral,zombieSteveFeral,zombieYoFeral,zombieBusinessManFeral,zombieDarleneFeral,zombiePartyGirlFeral,zombieJanitorFeral,zombieNurseFeral" />
+		<variable name="spawncount2" value="2"  />				
+	</action_sequence>-->
+	
+	<action_sequence name="ZombieINC_WeaponTestIceHammerSpawnerEvent">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincicehammer"/>
+		</requirement>
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_InQuestBuff"/>
+		</requirement>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse" param1="zombiename" />
+			<property name="spawn_count" value="2" param1="spawncount" />
+			<property name="air_spawn" value="true" param1="airspawn" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="min_distance" value="30" />
+			<property name="max_distance" value="40" />
+			<property name="add_to_group" value="targets" />
+		</action>
+		
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArleneFeral,zombieMarleneFeral,zombieSkateboarderFeral,zombieTomClarkFeral,zombieMoeFeral,zombieBoeFeral,zombieJoeFeral,zombieSteveFeral,zombieYoFeral,zombieBusinessManFeral,zombieDarleneFeral,zombiePartyGirlFeral,zombieJanitorFeral,zombieNurseFeral" param1="zombiename2" />
+			<property name="spawn_count" value="2" param1="spawncount2" />
+			<property name="air_spawn" value="true" param1="airspawn2" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="min_distance" value="30" />
+			<property name="max_distance" value="40" />
+			<property name="add_to_group" value="targets" />
+		</action>
+
+		<action class="PlaySound">
+			<property name="sound" value="zombiemalealert" param1="alertsound" />
+			<property name="phase" value="1" />
+		</action>
+
+	</action_sequence>
+	<!--Weapon Test Ice Hammer-->
+	<!--##Weapon Test Knucles-->
+	<action_sequence name="ZombieINC_WeaponTest_KnuclesRewardEvent">		
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_KnuclesRewardBuff"  />				
+		</action>
+		<action class="RemoveBuff">
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_WeaponTest_InQuestBuff"/>
+			</requirement>
+			<property name="buff_name" value="ZombieINC_WeaponTest_InQuestBuff"  />				
+		</action>
+	</action_sequence>	
+	
+	
+	<action_sequence name="ZombieINC_WeaponTest_KnuclesRewardQuestEvent">		
+		<action class="AddQuest">
+			<property name="quest" value="ZINCSteelKnuclesReward" />		
+		</action>
+	</action_sequence>	
+	
+	
+	<action_sequence name="ZombieINC_ExplosiveKnuclesExplosionEvent">		
+		<action class="ExplodeTarget">
+			<property name="blast_power" value="30" />
+			<property name="block_damage" value="100" />
+			<property name="block_radius" value="1" />
+			<property name="entity_damage" value="5" />
+			<property name="entity_radius" value="1" />
+			<property name="particle_index" value="11" />	
+		</action>
+	</action_sequence>	
+	
+	<!-- 1 Bugged, 2 too big, 3 Bugged, 4 explosion with a car, 5 very very big explosion, 
+	6 Continuos explosion, 7 Tiny Acid, 8 body parts explosion, 9 Big explosioin, 10 molotov, 
+	11 Medium explosion, 12 Medium explosion, 13 MidToBig explosion, 14 barrel explosion Vertical, 15 barrel explosion Horizontal, 
+	16 Double barrel explosion, 17 Another barrel explosion, 18 Just another Barel explosion, 19  Barel explosion with black smoke, 20 none, 21 none -->
+	
+	<!--<action_sequence name="ZombieINC_WeaponTestKnuclesSpawnerEvent" template="ZombieINC_DefenseWaveOpenArea_Template2">
+		<variable name="zombiename" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse" />
+		<variable name="spawncount" value="2" />
+
+		<variable name="zombiename2" value="zombieArleneFeral,zombieMarleneFeral,zombieSkateboarderFeral,zombieTomClarkFeral,zombieMoeFeral,zombieBoeFeral,zombieJoeFeral,zombieSteveFeral,zombieYoFeral,zombieBusinessManFeral,zombieDarleneFeral,zombiePartyGirlFeral,zombieJanitorFeral,zombieNurseFeral" />
+		<variable name="spawncount2" value="2"  />				
+	</action_sequence>-->
+	
+	<action_sequence name="ZombieINC_WeaponTestKnuclesSpawnerEvent">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincsteelknucles"/>
+		</requirement>
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_InQuestBuff"/>
+		</requirement>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse" param1="zombiename" />
+			<property name="spawn_count" value="2" param1="spawncount" />
+			<property name="air_spawn" value="true" param1="airspawn" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="min_distance" value="30" />
+			<property name="max_distance" value="40" />
+			<property name="add_to_group" value="targets" />
+		</action>
+		
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArleneFeral,zombieMarleneFeral,zombieSkateboarderFeral,zombieTomClarkFeral,zombieMoeFeral,zombieBoeFeral,zombieJoeFeral,zombieSteveFeral,zombieYoFeral,zombieBusinessManFeral,zombieDarleneFeral,zombiePartyGirlFeral,zombieJanitorFeral,zombieNurseFeral" param1="zombiename2" />
+			<property name="spawn_count" value="2" param1="spawncount2" />
+			<property name="air_spawn" value="true" param1="airspawn2" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="min_distance" value="30" />
+			<property name="max_distance" value="40" />
+			<property name="add_to_group" value="targets" />
+		</action>
+
+		<action class="PlaySound">
+			<property name="sound" value="zombiemalealert" param1="alertsound" />
+			<property name="phase" value="1" />
+		</action>
+
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ChimneyEvent_WeaponTestKnucles">
+	
+	<decision class="If">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_ZombieLureCooldown"/>
+		</requirement>
+		
+		<action class="CallGameEvent">  								
+			<property name="game_events" value="ZombieINC_LureCooldownMessages"  />
+			<property name="phase" value="1"/>
+		</action>
+		
+	</decision>	
+	
+	<decision class="If">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincsteelknucles"/>
+		</requirement>
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_ZombieLureCooldown"/>
+			<property name="invert" value="true"/>
+		</requirement>
+		
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTestKnuclesSpawnerBuff" />
+			<property name="phase" value="1"/>				
+		</action>	
+		<action class="BlockReplace">  								
+			<property name="block_to" value="ZombieINC_WSPart2_capChimneyLargeSmoke_WeaponTestKnuclesActive" />
+			<property name="max_offset" value="1"  />
+			<property name="block_tags" value="ChimneyWeaponTestKnucles" />
+			<property name="phase" value="2"/>	
+		</action>
+		<action class="RemoveBuff">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_InMissionBuff"/>
+		</requirement>
+			<property name="buff_name" value="ZombieINC_WeaponTest_InMissionBuff" />
+			<property name="phase" value="2"/>				
+		</action>
+	</decision>	
+	
+	
+	<decision class="If">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincsteelknucles"/>
+			<property name="invert" value="true"/>
+		</requirement>
+		
+		<action class="RemoveBuff">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTestKnuclesSpawnerBuff"/>
+		</requirement>
+			<property name="buff_name" value="ZombieINC_WeaponTestKnuclesSpawnerBuff" />
+			<property name="phase" value="1"/>				
+		</action>	
+		
+		<action class="RemoveBuff">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_InMissionBuff"/>
+		</requirement>
+			<property name="buff_name" value="ZombieINC_WeaponTest_InMissionBuff" />
+			<property name="phase" value="2"/>				
+		</action>
+		
+		<action class="BlockReplace">  								
+			<property name="block_to" value="ZombieINC_WSPart2_capChimneyLargeSmoke_WeaponTestKnuclesActive" />
+			<property name="max_offset" value="1"  />
+			<property name="block_tags" value="ChimneyWeaponTestKnucles" />
+			<property name="phase" value="2"/>	
+		</action>
+	</decision>	
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_ChimneyEvent_WeaponTestKnuclesActive">	
+		
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="zombie" />
+			<property name="group_name" value="zombies" />
+			<property name="max_distance" value="25" />
+			<property name="y_height" value="5" />
+		</action>
+	
+	<decision class="If">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincsteelknucles"/>
+			<property name="invert" value="true"/>
+		</requirement>
+	 	
+		<!--<action class="BlockReplace">  								
+			<property name="block_to" value="ZombieINC_WSPart2_capChimneyLargeSmoke" />
+			<property name="max_offset" value="1"  />
+			<property name="block_tags" value="ChimneyWeaponTestKnuclesActive" />
+			<property name="phase" value="1"/>	
+		</action>-->
+		
+		<action class="RemoveBuff">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTestKnuclesSpawnerBuff"/>
+		</requirement>
+			<property name="buff_name" value="ZombieINC_WeaponTestKnuclesSpawnerBuff" />
+			<property name="phase" value="1"/>				
+		</action>	
+		
+		<action class="RemoveBuff">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_InMissionBuff"/>
+		</requirement>
+			<property name="buff_name" value="ZombieINC_WeaponTest_InMissionBuff" />
+			<property name="phase" value="2"/>				
+		</action>
+	</decision>		
+		
+	<decision class="If">
+		<property name="condition_type" value="All"/>
+		<requirement class="OnQuest">
+			<property name="quest" value="zincsteelknucles"/>
+		</requirement>
+		<requirement class="GroupLiveCount">
+			<property name="target_group" value="zombies"/>
+			<property name="operation" value="GTE"/> 
+			<property name="count" value="1"/>
+		</requirement>
+	 	
+		<action class="AddBuff">
+			<property name="phase" value="1" />
+			<property name="target_group" value="zombies" />
+			<property name="buff_name" value="ZombieINC_EnemyDotBuff" />			
+		</action>
+		
+		<action class="CallGameEvent">  								
+			<property name="game_events" value="ZombieINC_ThereAreZombieNearbyMessages"  />
+			<property name="phase" value="1"/>
+		</action>
+	</decision>	
+		
+	<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="OnQuest">
+				<property name="quest" value="zincsteelknucles"/>
+			</requirement>
+			<requirement class="GroupLiveCount">
+					<property name="target_group" value="zombies"/>
+					<property name="operation" value="Equals"/> 
+					<property name="count" value="0"/>
+			</requirement>
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_WeaponTest_InQuestBuff"/>
+			</requirement>
+			
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTestKnuclesSpawnerBuff" />
+			<property name="phase" value="1"/>				
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_InMissionBuff" />
+			<property name="phase" value="2"/>				
+		</action>
+		<action class="BlockReplace">  								
+			<property name="block_to" value="ZombieINC_WSPart2_capChimneyLargeSmoke_WeaponTestKnucles" />
+			<property name="max_offset" value="1"  />
+			<property name="block_tags" value="ChimneyWeaponTestKnuclesActive" />
+			<property name="phase" value="2"/>	
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_ZombieLureCooldown" />
+			<property name="phase" value="3"/>				
+		</action>
+		<!--<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_InQuestBuff"  />	
+			<property name="phase" value="4"/>				
+		</action>-->		
+	</decision>				
+	</action_sequence>
+
+
+	
+	<action_sequence name="ZombieINC_WeaponTestKnucles_AddItems">	
+		<action class="AddItems">
+			<property name="added_items" value="ZombieINC_Prototype_meleeWpnKnucklesT3SteelKnuckles" />
+			<property name="added_item_counts" value="1" />			 
+			<property name="phase" value="1" />
+		</action>	
+		<action class="AddItems">
+			<property name="added_items" value="ZombieINC_WSPart2_capChimneyLargeSmoke_WeaponTestKnuclesActive" />
+			<property name="added_item_counts" value="1" />			 
+			<property name="phase" value="2" />
+		</action>			
+	</action_sequence>	
+	
+	<action_sequence name="ZombieINC_WeaponTestKnucles_BuffRemover">	
+		<!--<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTestKnuclesSpawnerBuff" />
+			<property name="phase" value="1"/>				
+		</action>-->
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_InQuestBuff" />
+			<property name="phase" value="1"/>				
+		</action>		
+	</action_sequence>	
+	
+	
+	<!--Weapon Test Knucles-->
+	<!--##Weapon Test SpearGun-->
+	
+	
+	<action_sequence name="ZombieINC_SpearGun_Ranged_DegradationEvent">
+	
+		<action class="AddItemDurability">
+			<property name="items_location" value="Held" />
+			<property name="amount" value="1" />
+			<property name="is_percent" value="true" />
+		</action>
+	
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="CVar">
+				<property name="cvar" value="$ZombieINCSpearGunRanged"/>
+				<property name="operation" value="GTE"/>
+				<property name="value" value="20"/>
+			</requirement>	
+		<action class="AddItemDurability">
+			<property name="items_location" value="Held" />
+			<property name="amount" value="0.10" />
+			<property name="is_negative" value="true" />
+			<property name="is_percent" value="true" />
+		</action>
+		</decision>
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="CVar">
+				<property name="cvar" value="$ZombieINCSpearGunRanged"/>
+				<property name="operation" value="GTE"/>
+				<property name="value" value="40"/>
+			</requirement>	
+		<action class="AddItemDurability">
+			<property name="items_location" value="Held" />
+			<property name="amount" value="0.10" />
+			<property name="is_negative" value="true" />
+			<property name="is_percent" value="true" />
+		</action>
+		</decision>
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="CVar">
+				<property name="cvar" value="$ZombieINCSpearGunRanged"/>
+				<property name="operation" value="GTE"/>
+				<property name="value" value="60"/>
+			</requirement>	
+		<action class="AddItemDurability">
+			<property name="items_location" value="Held" />
+			<property name="amount" value="0.10" />
+			<property name="is_negative" value="true" />
+			<property name="is_percent" value="true" />
+		</action>
+		</decision>
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="CVar">
+				<property name="cvar" value="$ZombieINCSpearGunRanged"/>
+				<property name="operation" value="GTE"/>
+				<property name="value" value="80"/>
+			</requirement>	
+		<action class="AddItemDurability">
+			<property name="items_location" value="Held" />
+			<property name="amount" value="0.10" />
+			<property name="is_percent" value="true" />
+			<property name="is_negative" value="true" />
+		</action>
+		</decision>
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="CVar">
+				<property name="cvar" value="$ZombieINCSpearGunRanged"/>
+				<property name="operation" value="GTE"/>
+				<property name="value" value="100"/>
+			</requirement>	
+		<action class="AddItemDurability">
+			<property name="items_location" value="Held" />
+			<property name="amount" value="0.10" />
+			<property name="is_negative" value="true" />
+			<property name="is_percent" value="true" />
+		</action>
+		</decision>
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="CVar">
+				<property name="cvar" value="$ZombieINCSpearGunRanged"/>
+				<property name="operation" value="GTE"/>
+				<property name="value" value="120"/>
+			</requirement>	
+		<action class="AddItemDurability">
+			<property name="items_location" value="Held" />
+			<property name="amount" value="0.10" />
+			<property name="is_negative" value="true" />
+			<property name="is_percent" value="true" />
+		</action>
+		</decision>
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="CVar">
+				<property name="cvar" value="$ZombieINCSpearGunRanged"/>
+				<property name="operation" value="GTE"/>
+				<property name="value" value="140"/>
+			</requirement>	
+		<action class="AddItemDurability">
+			<property name="items_location" value="Held" />
+			<property name="amount" value="0.10" />
+			<property name="is_negative" value="true" />
+			<property name="is_percent" value="true" />
+		</action>
+		</decision>
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="CVar">
+				<property name="cvar" value="$ZombieINCSpearGunRanged"/>
+				<property name="operation" value="GTE"/>
+				<property name="value" value="160"/>
+			</requirement>	
+		<action class="AddItemDurability">
+			<property name="items_location" value="Held" />
+			<property name="amount" value="0.10" />
+			<property name="is_negative" value="true" />
+			<property name="is_percent" value="true" />
+		</action>
+		</decision>
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="CVar">
+				<property name="cvar" value="$ZombieINCSpearGunRanged"/>
+				<property name="operation" value="GTE"/>
+				<property name="value" value="180"/>
+			</requirement>	
+		<action class="AddItemDurability">
+			<property name="items_location" value="Held" />
+			<property name="amount" value="0.10" />
+			<property name="is_negative" value="true" />
+			<property name="is_percent" value="true" />
+		</action>
+		</decision>
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="CVar">
+				<property name="cvar" value="$ZombieINCSpearGunRanged"/>
+				<property name="operation" value="GTE"/>
+				<property name="value" value="200"/>
+			</requirement>	
+		<action class="AddItemDurability">
+			<property name="items_location" value="Held" />
+			<property name="amount" value="0.10" />
+			<property name="is_negative" value="true" />
+			<property name="is_percent" value="true" />
+		</action>
+		</decision>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SpearGun_Melee_DegradationEvent">
+		
+		<action class="AddItemDurability">
+			<property name="items_location" value="Held" />
+			<property name="amount" value="1" />
+			<property name="is_percent" value="true" />
+		</action>
+	
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="CVar">
+				<property name="cvar" value="$ZombieINCSpearGunMelee"/>
+				<property name="operation" value="GTE"/>
+				<property name="value" value="200"/>
+			</requirement>	
+		<action class="AddItemDurability">
+			<property name="items_location" value="Held" />
+			<property name="amount" value="0.10" />
+			<property name="is_negative" value="true" />
+			<property name="is_percent" value="true" />
+		</action>
+		</decision>
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="CVar">
+				<property name="cvar" value="$ZombieINCSpearGunMelee"/>
+				<property name="operation" value="GTE"/>
+				<property name="value" value="400"/>
+			</requirement>	
+		<action class="AddItemDurability">
+			<property name="items_location" value="Held" />
+			<property name="amount" value="0.10" />
+			<property name="is_negative" value="true" />
+			<property name="is_percent" value="true" />
+		</action>
+		</decision>
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="CVar">
+				<property name="cvar" value="$ZombieINCSpearGunMelee"/>
+				<property name="operation" value="GTE"/>
+				<property name="value" value="600"/>
+			</requirement>	
+		<action class="AddItemDurability">
+			<property name="items_location" value="Held" />
+			<property name="amount" value="0.10" />
+			<property name="is_negative" value="true" />
+			<property name="is_percent" value="true" />
+		</action>
+		</decision>
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="CVar">
+				<property name="cvar" value="$ZombieINCSpearGunMelee"/>
+				<property name="operation" value="GTE"/>
+				<property name="value" value="800"/>
+			</requirement>	
+		<action class="AddItemDurability">
+			<property name="items_location" value="Held" />
+			<property name="amount" value="0.10" />
+			<property name="is_negative" value="true" />
+			<property name="is_percent" value="true" />
+		</action>
+		</decision>
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="CVar">
+				<property name="cvar" value="$ZombieINCSpearGunMelee"/>
+				<property name="operation" value="GTE"/>
+				<property name="value" value="1000"/>
+			</requirement>	
+		<action class="AddItemDurability">
+			<property name="items_location" value="Held" />
+			<property name="amount" value="0.10" />
+			<property name="is_negative" value="true" />
+			<property name="is_percent" value="true" />
+		</action>
+		</decision>
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="CVar">
+				<property name="cvar" value="$ZombieINCSpearGunMelee"/>
+				<property name="operation" value="GTE"/>
+				<property name="value" value="1200"/>
+			</requirement>	
+		<action class="AddItemDurability">
+			<property name="items_location" value="Held" />
+			<property name="amount" value="0.10" />
+			<property name="is_negative" value="true" />
+			<property name="is_percent" value="true" />
+		</action>
+		</decision>
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="CVar">
+				<property name="cvar" value="$ZombieINCSpearGunMelee"/>
+				<property name="operation" value="GTE"/>
+				<property name="value" value="1400"/>
+			</requirement>	
+		<action class="AddItemDurability">
+			<property name="items_location" value="Held" />
+			<property name="amount" value="0.10" />
+			<property name="is_negative" value="true" />
+			<property name="is_percent" value="true" />
+		</action>
+		</decision>
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="CVar">
+				<property name="cvar" value="$ZombieINCSpearGunMelee"/>
+				<property name="operation" value="GTE"/>
+				<property name="value" value="1600"/>
+			</requirement>	
+		<action class="AddItemDurability">
+			<property name="items_location" value="Held" />
+			<property name="amount" value="0.10" />
+			<property name="is_negative" value="true" />
+			<property name="is_percent" value="true" />
+		</action>
+		</decision>
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="CVar">
+				<property name="cvar" value="$ZombieINCSpearGunMelee"/>
+				<property name="operation" value="GTE"/>
+				<property name="value" value="1800"/>
+			</requirement>	
+		<action class="AddItemDurability">
+			<property name="items_location" value="Held" />
+			<property name="amount" value="0.10" />
+			<property name="is_negative" value="true" />
+			<property name="is_percent" value="true" />
+		</action>
+		</decision>
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="CVar">
+				<property name="cvar" value="$ZombieINCSpearGunMelee"/>
+				<property name="operation" value="GTE"/>
+				<property name="value" value="2000"/>
+			</requirement>	
+		<action class="AddItemDurability">
+			<property name="items_location" value="Held" />
+			<property name="amount" value="0.10" />
+			<property name="is_negative" value="true" />
+			<property name="is_percent" value="true" />
+		</action>
+		</decision>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SpearGun_Ranged">	
+		<action class="ReplaceItems">
+			<property name="phase" value="1" />
+			<property name="items_location" value="Held" />
+			<property name="replaced_by_item" value="ZombieINC_GunSpearMelee_meleeWpnSpearT3SteelSpear" />
+			<property name="items_tags" value="ZombieINC_GunSpearRanged" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_SpearGun_Melee">	
+		<action class="ReplaceItems">
+			<property name="phase" value="1" />
+			<property name="items_location" value="Held" />
+			<property name="replaced_by_item" value="ZombieINC_GunSpearRanged_meleeWpnSpearT3SteelSpear" />
+			<property name="items_tags" value="ZombieINC_GunSpearMelee" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SpearGun_RepairKitMeleeEvent">
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="trader" />
+			<property name="group_name" value="Trader" />
+			<property name="max_distance" value="4" />
+		</action>
+		
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="Trader"/>
+				<property name="operation" value="GTE"/> 
+				<property name="count" value="1"/>
+			</requirement>	
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="cvar" value="$ZombieINCSpearGunMelee" />
+			<property name="operation" value="Set" />
+			<property name="value" value="0" />
+		</action>
+		
+		<action class="RemoveItems">
+			<property name="items_location" value="Held" />
+			<property name="items_tags" value="ZombieINCRepairKitMelee" />
+			<property name="count" value="1" />	
+			<property name="phase" value="2" />
+		</action>
+		
+		</decision>
+		<decision class="If">
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="Trader"/>
+				<property name="operation" value="LTE"/> 
+				<property name="count" value="0"/>
+			</requirement>
+		<action class="CallGameEvent">
+			<property name="game_events" value="ZombieINC_NoTraderNearbyMessages"/>
+			<property name="phase" value="1" />
+		</action>
+		</decision>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SpearGun_RepairKitRangedEvent">
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="trader" />
+			<property name="group_name" value="Trader" />
+			<property name="max_distance" value="4" />
+		</action>
+		
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="Trader"/>
+				<property name="operation" value="GTE"/> 
+				<property name="count" value="1"/>
+			</requirement>	
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="cvar" value="$ZombieINCSpearGunRanged" />
+			<property name="operation" value="Set" />
+			<property name="value" value="0" />
+		</action>
+		
+		<action class="RemoveItems">
+			<property name="items_location" value="Held"  />
+			<property name="items_tags" value="ZombieINCRepairKitRanged"  />
+			<property name="count" value="1" />				
+			<property name="phase" value="2" />
+		</action>
+		
+		</decision>
+		<decision class="If">
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="Trader"/>
+				<property name="operation" value="LTE"/> 
+				<property name="count" value="0"/>
+			</requirement>
+		<action class="CallGameEvent">
+			<property name="game_events" value="ZombieINC_NoTraderNearbyMessages"/>
+			<property name="phase" value="1" />
+		</action>
+		</decision>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Prototype_SpearGun_Ranged">	
+		<action class="ReplaceItems">
+			<property name="phase" value="1" />
+			<property name="items_location" value="Held" />
+			<property name="replaced_by_item" value="ZombieINC_Prototype_GunSpearMelee_meleeWpnSpearT3SteelSpear" />
+			<property name="items_tags" value="ZombieINC_GunSpearRanged" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_Prototype_SpearGun_Melee">	
+		<action class="ReplaceItems">
+			<property name="phase" value="1" />
+			<property name="items_location" value="Held" />
+			<property name="replaced_by_item" value="ZombieINC_Prototype_GunSpearRanged_meleeWpnSpearT3SteelSpear" />
+			<property name="items_tags" value="ZombieINC_GunSpearMelee" />
+		</action>
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_WeaponTest_SpearGunRewardEvent">		
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_SpearGunRewardBuff"  />				
+		</action>
+		<action class="RemoveBuff">
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_WeaponTest_InQuestBuff"/>
+			</requirement>
+			<property name="buff_name" value="ZombieINC_WeaponTest_InQuestBuff"  />				
+		</action>
+	</action_sequence>	
+	
+	
+	<action_sequence name="ZombieINC_WeaponTest_SpearGunRewardQuestEvent">		
+		<action class="AddQuest">
+			<property name="quest" value="ZINCSpearGunReward" />		
+		</action>
+	</action_sequence>
+
+	<action_sequence name="ZombieINC_ChimneyEvent_WeaponTestSpearGun">
+	
+	<decision class="If">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_ZombieLureCooldown"/>
+		</requirement>
+		
+		<action class="CallGameEvent">  								
+			<property name="game_events" value="ZombieINC_LureCooldownMessages"  />
+			<property name="phase" value="1"/>
+		</action>
+		
+	</decision>	
+	
+	<decision class="If">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincspeargun"/>
+		</requirement>
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_ZombieLureCooldown"/>
+			<property name="invert" value="true"/>
+		</requirement>
+		
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTestSpearGunSpawnerBuff" />
+			<property name="phase" value="1"/>				
+		</action>	
+		<action class="BlockReplace">  								
+			<property name="block_to" value="ZombieINC_WSPart2_capChimneyLargeSmoke_WeaponTestSpearGunActive" />
+			<property name="max_offset" value="1"  />
+			<property name="block_tags" value="ChimneyWeaponTestSpearGun" />
+			<property name="phase" value="2"/>	
+		</action>
+		<action class="RemoveBuff">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_InMissionBuff"/>
+		</requirement>
+			<property name="buff_name" value="ZombieINC_WeaponTest_InMissionBuff" />
+			<property name="phase" value="2"/>				
+		</action>
+	</decision>	
+	
+	
+	<decision class="If">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincspeargun"/>
+			<property name="invert" value="true"/>
+		</requirement>
+		
+		<action class="RemoveBuff">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTestSpearGunSpawnerBuff"/>
+		</requirement>
+			<property name="buff_name" value="ZombieINC_WeaponTestSpearGunSpawnerBuff" />
+			<property name="phase" value="1"/>				
+		</action>	
+		
+		<action class="RemoveBuff">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_InMissionBuff"/>
+		</requirement>
+			<property name="buff_name" value="ZombieINC_WeaponTest_InMissionBuff" />
+			<property name="phase" value="2"/>				
+		</action>
+		
+		<action class="BlockReplace">  								
+			<property name="block_to" value="ZombieINC_WSPart2_capChimneyLargeSmoke_WeaponTestSpearGunActive" />
+			<property name="max_offset" value="1"  />
+			<property name="block_tags" value="ChimneyWeaponTestSpearGun" />
+			<property name="phase" value="2"/>	
+		</action>
+	</decision>	
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_ChimneyEvent_WeaponTestSpearGunActive">	
+		
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="zombie" />
+			<property name="group_name" value="zombies" />
+			<property name="max_distance" value="25" />
+			<property name="y_height" value="5" />
+		</action>
+	
+	<decision class="If">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincspeargun"/>
+			<property name="invert" value="true"/>
+		</requirement>
+	 	
+		<!--<action class="BlockReplace">  								
+			<property name="block_to" value="ZombieINC_WSPart2_capChimneyLargeSmoke" />
+			<property name="max_offset" value="1"  />
+			<property name="block_tags" value="ChimneyWeaponTestSpearGunActive" />
+			<property name="phase" value="1"/>	
+		</action>-->
+		
+		<action class="RemoveBuff">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTestSpearGunSpawnerBuff"/>
+		</requirement>
+			<property name="buff_name" value="ZombieINC_WeaponTestSpearGunSpawnerBuff" />
+			<property name="phase" value="1"/>				
+		</action>	
+		
+		<action class="RemoveBuff">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_InMissionBuff"/>
+		</requirement>
+			<property name="buff_name" value="ZombieINC_WeaponTest_InMissionBuff" />
+			<property name="phase" value="2"/>				
+		</action>
+	</decision>		
+		
+	<decision class="If">
+		<property name="condition_type" value="All"/>
+		<requirement class="OnQuest">
+			<property name="quest" value="zincspeargun"/>
+		</requirement>
+		<requirement class="GroupLiveCount">
+			<property name="target_group" value="zombies"/>
+			<property name="operation" value="GTE"/> 
+			<property name="count" value="1"/>
+		</requirement>
+	 	
+		<action class="AddBuff">
+			<property name="phase" value="1" />
+			<property name="target_group" value="zombies" />
+			<property name="buff_name" value="ZombieINC_EnemyDotBuff" />			
+		</action>
+		
+		<action class="CallGameEvent">  								
+			<property name="game_events" value="ZombieINC_ThereAreZombieNearbyMessages"  />
+			<property name="phase" value="1"/>
+		</action>
+	</decision>	
+		
+	<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="OnQuest">
+				<property name="quest" value="zincspeargun"/>
+			</requirement>
+			<requirement class="GroupLiveCount">
+					<property name="target_group" value="zombies"/>
+					<property name="operation" value="Equals"/> 
+					<property name="count" value="0"/>
+			</requirement>
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_WeaponTest_InQuestBuff"/>
+			</requirement>
+			
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTestSpearGunSpawnerBuff" />
+			<property name="phase" value="1"/>				
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_InMissionBuff" />
+			<property name="phase" value="2"/>				
+		</action>
+		<action class="BlockReplace">  								
+			<property name="block_to" value="ZombieINC_WSPart2_capChimneyLargeSmoke_WeaponTestSpearGun" />
+			<property name="max_offset" value="1"  />
+			<property name="block_tags" value="ChimneyWeaponTestSpearGunActive" />
+			<property name="phase" value="2"/>	
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_ZombieLureCooldown" />
+			<property name="phase" value="3"/>				
+		</action>	
+	</decision>				
+	</action_sequence>
+
+	<action_sequence name="ZombieINC_WeaponTestSpearGun_AddItems">	
+		<action class="AddItems">
+			<property name="added_items" value="ZombieINC_Prototype_GunSpearMelee_meleeWpnSpearT3SteelSpear" />
+			<property name="added_item_counts" value="1" />			 
+			<property name="phase" value="1" />
+		</action>	
+		<action class="AddItems">
+			<property name="added_items" value="ZombieINC_WSPart2_capChimneyLargeSmoke_WeaponTestSpearGunActive" />
+			<property name="added_item_counts" value="1" />			 
+			<property name="phase" value="2" />
+		</action>
+		<action class="AddItems">
+			<property name="added_items" value="ZombieINC_Gunpowder" />
+			<property name="added_item_counts" value="100" />			 
+			<property name="phase" value="3" />
+		</action>		
+	</action_sequence>
+	
+	<!--<action_sequence name="ZombieINC_WeaponTestSpearGunSpawnerEvent" template="ZombieINC_DefenseWaveOpenArea_Template2">
+		<variable name="zombiename" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse" />
+		<variable name="spawncount" value="2" />
+
+		<variable name="zombiename2" value="zombieArleneFeral,zombieMarleneFeral,zombieSkateboarderFeral,zombieTomClarkFeral,zombieMoeFeral,zombieBoeFeral,zombieJoeFeral,zombieSteveFeral,zombieYoFeral,zombieBusinessManFeral,zombieDarleneFeral,zombiePartyGirlFeral,zombieJanitorFeral,zombieNurseFeral" />
+		<variable name="spawncount2" value="2"  />				
+	</action_sequence>-->
+	
+	<action_sequence name="ZombieINC_WeaponTestSpearGunSpawnerEvent">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincspeargun"/>
+		</requirement>
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_InQuestBuff"/>
+		</requirement>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse" param1="zombiename" />
+			<property name="spawn_count" value="2" param1="spawncount" />
+			<property name="air_spawn" value="true" param1="airspawn" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="min_distance" value="30" />
+			<property name="max_distance" value="40" />
+			<property name="add_to_group" value="targets" />
+		</action>
+		
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArleneFeral,zombieMarleneFeral,zombieSkateboarderFeral,zombieTomClarkFeral,zombieMoeFeral,zombieBoeFeral,zombieJoeFeral,zombieSteveFeral,zombieYoFeral,zombieBusinessManFeral,zombieDarleneFeral,zombiePartyGirlFeral,zombieJanitorFeral,zombieNurseFeral" param1="zombiename2" />
+			<property name="spawn_count" value="2" param1="spawncount2" />
+			<property name="air_spawn" value="true" param1="airspawn2" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="min_distance" value="30" />
+			<property name="max_distance" value="40" />
+			<property name="add_to_group" value="targets" />
+		</action>
+
+		<action class="PlaySound">
+			<property name="sound" value="zombiemalealert" param1="alertsound" />
+			<property name="phase" value="1" />
+		</action>
+
+	</action_sequence>
+	<!--Weapon Test SpearGun-->
+	<!--##Fire Shock Spear-->
+	
+	<action_sequence name="ZombieINC_WeaponTest_FireShockSpearRewardEvent">		
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_FireShockSpearRewardBuff"  />				
+		</action>
+		<action class="RemoveBuff">
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_WeaponTest_InQuestBuff"/>
+			</requirement>
+			<property name="buff_name" value="ZombieINC_WeaponTest_InQuestBuff"  />				
+		</action>
+	</action_sequence>	
+	
+	
+	<action_sequence name="ZombieINC_WeaponTest_FireShockSpearRewardQuestEvent">		
+		<action class="AddQuest">
+			<property name="quest" value="ZINCSteelSpearReward" />		
+		</action>
+	</action_sequence>
+
+	<action_sequence name="ZombieINC_ChimneyEvent_WeaponTestFireShockSpear">
+	
+	<decision class="If">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_ZombieLureCooldown"/>
+		</requirement>
+		
+		<action class="CallGameEvent">  								
+			<property name="game_events" value="ZombieINC_LureCooldownMessages"  />
+			<property name="phase" value="1"/>
+		</action>
+		
+	</decision>	
+	
+	<decision class="If">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincsteelspear"/>
+		</requirement>
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_ZombieLureCooldown"/>
+			<property name="invert" value="true"/>
+		</requirement>
+		
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTestFireShockSpearSpawnerBuff" />
+			<property name="phase" value="1"/>				
+		</action>	
+		<action class="BlockReplace">  								
+			<property name="block_to" value="ZombieINC_WSPart2_capChimneyLargeSmoke_WeaponTestFireShockSpearActive" />
+			<property name="max_offset" value="1"  />
+			<property name="block_tags" value="ChimneyWeaponTestFireShockSpear" />
+			<property name="phase" value="2"/>	
+		</action>
+		<action class="RemoveBuff">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_InMissionBuff"/>
+		</requirement>
+			<property name="buff_name" value="ZombieINC_WeaponTest_InMissionBuff" />
+			<property name="phase" value="2"/>				
+		</action>
+	</decision>	
+	
+	
+	<decision class="If">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincsteelspear"/>
+			<property name="invert" value="true"/>
+		</requirement>
+		
+		<action class="RemoveBuff">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTestFireShockSpearSpawnerBuff"/>
+		</requirement>
+			<property name="buff_name" value="ZombieINC_WeaponTestFireShockSpearSpawnerBuff" />
+			<property name="phase" value="1"/>				
+		</action>	
+		
+		<action class="RemoveBuff">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_InMissionBuff"/>
+		</requirement>
+			<property name="buff_name" value="ZombieINC_WeaponTest_InMissionBuff" />
+			<property name="phase" value="2"/>				
+		</action>
+		
+		<action class="BlockReplace">  								
+			<property name="block_to" value="ZombieINC_WSPart2_capChimneyLargeSmoke_WeaponTestFireShockSpearActive" />
+			<property name="max_offset" value="1"  />
+			<property name="block_tags" value="ChimneyWeaponTestFireShockSpear" />
+			<property name="phase" value="2"/>	
+		</action>
+	</decision>	
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_ChimneyEvent_WeaponTestFireShockSpearActive">	
+		
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="zombie" />
+			<property name="group_name" value="zombies" />
+			<property name="max_distance" value="25" />
+			<property name="y_height" value="5" />
+		</action>
+	
+	<decision class="If">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincsteelspear"/>
+			<property name="invert" value="true"/>
+		</requirement>
+	 	
+		<!--<action class="BlockReplace">  								
+			<property name="block_to" value="ZombieINC_WSPart2_capChimneyLargeSmoke" />
+			<property name="max_offset" value="1"  />
+			<property name="block_tags" value="ChimneyWeaponTestFireShockSpearActive" />
+			<property name="phase" value="1"/>	
+		</action>-->
+		
+		<action class="RemoveBuff">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTestFireShockSpearSpawnerBuff"/>
+		</requirement>
+			<property name="buff_name" value="ZombieINC_WeaponTestFireShockSpearSpawnerBuff" />
+			<property name="phase" value="1"/>				
+		</action>	
+		
+		<action class="RemoveBuff">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_InMissionBuff"/>
+		</requirement>
+			<property name="buff_name" value="ZombieINC_WeaponTest_InMissionBuff" />
+			<property name="phase" value="2"/>				
+		</action>
+	</decision>		
+		
+	<decision class="If">
+		<property name="condition_type" value="All"/>
+		<requirement class="OnQuest">
+			<property name="quest" value="zincsteelspear"/>
+		</requirement>
+		<requirement class="GroupLiveCount">
+			<property name="target_group" value="zombies"/>
+			<property name="operation" value="GTE"/> 
+			<property name="count" value="1"/>
+		</requirement>
+	 	
+		<action class="AddBuff">
+			<property name="phase" value="1" />
+			<property name="target_group" value="zombies" />
+			<property name="buff_name" value="ZombieINC_EnemyDotBuff" />			
+		</action>
+		
+		<action class="CallGameEvent">  								
+			<property name="game_events" value="ZombieINC_ThereAreZombieNearbyMessages"  />
+			<property name="phase" value="1"/>
+		</action>
+	</decision>	
+		
+	<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="OnQuest">
+				<property name="quest" value="zincsteelspear"/>
+			</requirement>
+			<requirement class="GroupLiveCount">
+					<property name="target_group" value="zombies"/>
+					<property name="operation" value="Equals"/> 
+					<property name="count" value="0"/>
+			</requirement>
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_WeaponTest_InQuestBuff"/>
+			</requirement>
+			
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTestFireShockSpearSpawnerBuff" />
+			<property name="phase" value="1"/>				
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_InMissionBuff" />
+			<property name="phase" value="2"/>				
+		</action>
+		<action class="BlockReplace">  								
+			<property name="block_to" value="ZombieINC_WSPart2_capChimneyLargeSmoke_WeaponTestFireShockSpear" />
+			<property name="max_offset" value="1"  />
+			<property name="block_tags" value="ChimneyWeaponTestFireShockSpearActive" />
+			<property name="phase" value="2"/>	
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_ZombieLureCooldown" />
+			<property name="phase" value="3"/>				
+		</action>	
+	</decision>				
+	</action_sequence>
+
+	<action_sequence name="ZombieINC_WeaponTestFireShockSpear_AddItems">	
+		<action class="AddItems">
+			<property name="added_items" value="ZombieINC_Prototype_meleeWpnSpearT3SteelSpear" />
+			<property name="added_item_counts" value="1" />			 
+			<property name="phase" value="1" />
+		</action>	
+		<action class="AddItems">
+			<property name="added_items" value="ZombieINC_WSPart2_capChimneyLargeSmoke_WeaponTestFireShockSpearActive" />
+			<property name="added_item_counts" value="1" />			 
+			<property name="phase" value="2" />
+		</action>		
+	</action_sequence>
+	
+	<!--<action_sequence name="ZombieINC_WeaponTestFireShockSpearSpawnerEvent" template="ZombieINC_DefenseWaveOpenArea_Template2">
+		<variable name="zombiename" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse" />
+		<variable name="spawncount" value="2" />
+
+		<variable name="zombiename2" value="zombieArleneFeral,zombieMarleneFeral,zombieSkateboarderFeral,zombieTomClarkFeral,zombieMoeFeral,zombieBoeFeral,zombieJoeFeral,zombieSteveFeral,zombieYoFeral,zombieBusinessManFeral,zombieDarleneFeral,zombiePartyGirlFeral,zombieJanitorFeral,zombieNurseFeral" />
+		<variable name="spawncount2" value="2"  />				
+	</action_sequence>-->
+	
+	
+	<action_sequence name="ZombieINC_WeaponTestFireShockSpearSpawnerEvent">
+		<requirement class="OnQuest">
+			<property name="quest" value="zincsteelspear"/>
+		</requirement>
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_InQuestBuff"/>
+		</requirement>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse" param1="zombiename" />
+			<property name="spawn_count" value="2" param1="spawncount" />
+			<property name="air_spawn" value="true" param1="airspawn" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="min_distance" value="30" />
+			<property name="max_distance" value="40" />
+			<property name="add_to_group" value="targets" />
+		</action>
+		
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArleneFeral,zombieMarleneFeral,zombieSkateboarderFeral,zombieTomClarkFeral,zombieMoeFeral,zombieBoeFeral,zombieJoeFeral,zombieSteveFeral,zombieYoFeral,zombieBusinessManFeral,zombieDarleneFeral,zombiePartyGirlFeral,zombieJanitorFeral,zombieNurseFeral" param1="zombiename2" />
+			<property name="spawn_count" value="2" param1="spawncount2" />
+			<property name="air_spawn" value="true" param1="airspawn2" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff" />
+			<property name="safe_spawn" value="true" />
+			<property name="min_distance" value="30" />
+			<property name="max_distance" value="40" />
+			<property name="add_to_group" value="targets" />
+		</action>
+
+		<action class="PlaySound">
+			<property name="sound" value="zombiemalealert" param1="alertsound" />
+			<property name="phase" value="1" />
+		</action>
+
+	</action_sequence>
+	<!--Fire Shock Spear-->
+	
+	
+	
+	<action_sequence name="ZombieINC_InMissionWeaponSignature_AddBuffEvent">	
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_WeaponTest_InMissionBuff" />			
+		</action>	
+	</action_sequence>
+	
+	<!--##PipeMachineGun-->
+	<action_sequence name="ZombieINC_RemoveSuppliesPipeMachineGun_AddBuffEvent">					  
+		<action class="AddBuff">	
+			<property name="buff_name" value="ZombieINC_NearTraderPipeMachineGun_RemoverItemBuff" />				
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_SuppliesPipeMachineGun_RemoveItemEvent">
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="trader" />
+			<property name="group_name" value="Trader" />
+			<property name="max_distance" value="10" />
+		</action>
+		
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="GroupLiveCount">
+					<property name="target_group" value="Trader"/>
+					<property name="operation" value="Equals"/> 
+					<property name="count" value="1"/>
+			</requirement>
+	
+		<action class="RemoveItems">
+			<property name="phase" value="1" />
+			<property name="items_location" value="Backpack,Toolbelt,Held" />
+			<property name="items_tags" value="WeaponMissionPartsRemover" />
+		</action>
+		
+		<action class="RemoveBuff">	
+			<property name="phase" value="1" />
+			<property name="buff_name" value="ZombieINC_NearTraderPipeMachineGun_RemoverItemBuff" />				
+		</action>
+		</decision>
+	</action_sequence>
+	
+	
+	<!--<action_sequence name="ZombieINC_SuppliesPipeMachineGun_RemoveItemEvent">					  
+		<action class="RemoveItems">
+			<property name="items_location" value="Backpack,Toolbelt,Held" />
+			<property name="items_tags" value="WeaponMissionPartsRemover" />
+		</action>
+	</action_sequence>-->
+	<action_sequence name="ZombieINC_NearTraderPipeMachineGun_AddBuffEvent">					  
+		<action class="AddBuff">	
+			<property name="buff_name" value="ZombieINC_NearTraderPipeMachineGun_CheckerBuff" />				
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_MiniBossPipeMachineGun_AddSpawnerBuffEvent">					  
+		<action class="AddBuff">	
+			<property name="buff_name" value="ZombieINC_MiniBossPipeMachineGun_SpawnerBuff" />				
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_BearPipeMachineGun_AddSpawnerBuffEvent">					  
+		<action class="AddBuff">	
+			<property name="buff_name" value="ZombieINC_MiniBossBear_SpawnerBuff" />				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_MiniBossPipeMachineGun_SpawnEvent">
+	   <action class="Delay">
+			<property name="phase" value="1" />
+			<property name="time" value="1-10" />
+		</action>
+		
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="2" />
+			<property name="entity_tags" value="boss" />
+			<property name="group_name" value="bossgroup" />
+			<property name="max_distance" value="40" />
+		</action>
+		
+		<action class="SpawnEntity">
+				<requirement class="GroupLiveCount">
+					<property name="target_group" value="bossgroup"/>
+					<property name="operation" value="Equals"/> 
+					<property name="count" value="0"/>
+				</requirement>
+	    
+			<property name="entity_names" value="ZombieINC_MiniBossPipeMachineGun"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="12" />
+			<property name="min_distance" value="8" />
+			<property name="phase" value="3" />
+		</action>
+	<action class="AddPartyToGroup">
+			<property name="phase" value="4" />
+			<property name="group_name" value="player" />
+		</action>		
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_MiniBossPipeMachineGun_SpawnerBuff" />
+			<property name="target_group" value="player" />
+			<property name="phase" value="5"/>				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_MiniBossBear_SpawnEvent">
+	
+		<wait class="Until">
+			<requirement class="IsIndoors">
+				<property name="invert" value="true" />
+			</requirement>
+		</wait>
+	
+	   <action class="Delay">
+			<property name="time" value="1-2" />
+			<property name="phase" value="1" />
+		</action>
+		
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="2" />
+			<property name="entity_tags" value="boss" />
+			<property name="group_name" value="bossgroup" />
+			<property name="max_distance" value="40" />
+		</action>
+		
+		<action class="SpawnEntity">
+				<requirement class="GroupLiveCount">
+					<property name="target_group" value="bossgroup"/>
+					<property name="operation" value="Equals"/> 
+					<property name="count" value="0"/>
+				</requirement>
+	    
+			<property name="entity_names" value="animalBear"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="50" />
+			<property name="min_distance" value="8" />
+			<property name="air_spawn" value="true" />
+			<property name="safe_spawn" value="true" />
+			<property name="add_buffs" value="ZombieINC_EnemyDotBuff,ZombieINC_MiniBossBear_Buff" />
+			<property name="phase" value="3" />
+		</action>
+	<action class="AddPartyToGroup">
+			<property name="phase" value="4" />
+			<property name="group_name" value="player" />
+		</action>		
+		<action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_MiniBossBear_SpawnerBuff" />
+			<property name="target_group" value="player" />
+			<property name="phase" value="5"/>				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_NearTraderPipeMachineGun_Event">
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="trader" />
+			<property name="group_name" value="Trader" />
+			<property name="max_distance" value="65" />
+		</action>
+		
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="GroupLiveCount">
+					<property name="target_group" value="Trader"/>
+					<property name="operation" value="Equals"/> 
+					<property name="count" value="0"/>
+			</requirement>
+			<requirement class="InPOI">
+				<property name="invert" value="true" />
+			</requirement>	
+		<action class="FailQuest">
+			<property name="phase" value="1" />
+			<property name="quest" value="zincpipemachinegunpart2" />
+			<property name="remove_quest" value="false" />			
+		</action>
+		
+		<action class="RemoveBuff">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_NearTraderPipeMachineGun_CheckerBuff"/>
+		</requirement>
+			<property name="phase" value="1" />
+			<property name="buff_name" value="ZombieINC_NearTraderPipeMachineGun_CheckerBuff" />	
+		</action>
+		
+		<action class="RemoveBuff">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_IsInDoorsChecker"/>
+		</requirement>
+			<property name="phase" value="2" />
+			<property name="buff_name" value="ZombieINC_IsInDoorsChecker" />	
+		</action>
+		
+		<action class="RemoveBuff">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_IsInDoorsCheckerDisplay"/>
+		</requirement>
+			<property name="phase" value="2" />
+			<property name="buff_name" value="ZombieINC_IsInDoorsCheckerDisplay" />	
+		</action>
+		
+		<action class="BeltTooltip">  								
+			<property name="text" value="Cant't activate"  />
+			<property name="text_key" value="ZombieINC_Defense_BeltTooltip_LeaveTraderAreaFail"  />
+			<property name="phase" value="2"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text" value="| [FF6600]Player's Mind:[-] Cant't activate, there are zombies nearby" />
+			<property name="text_key" value="ZombieINC_Defense_ChatMessage_LeaveTraderAreaFail"  />
+			<property name="phase" value="2"/>	
+		</action>
+		</decision>
+		
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="GroupLiveCount">
+					<property name="target_group" value="Trader"/>
+					<property name="operation" value="Equals"/> 
+					<property name="count" value="0"/>
+			</requirement>
+			<requirement class="InPOI">
+				<property name="invert" value="false" />
+			</requirement>	
+		<action class="FailQuest">
+			<property name="phase" value="1" />
+			<property name="quest" value="zincpipemachinegunpart2" />
+			<property name="remove_quest" value="false" />			
+		</action>
+		
+		<action class="RemoveBuff">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_NearTraderPipeMachineGun_CheckerBuff"/>
+		</requirement>
+			<property name="phase" value="1" />
+			<property name="buff_name" value="ZombieINC_NearTraderPipeMachineGun_CheckerBuff" />	
+		</action>
+		
+		<action class="RemoveBuff">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_IsInDoorsChecker"/>
+		</requirement>
+			<property name="phase" value="2" />
+			<property name="buff_name" value="ZombieINC_IsInDoorsChecker" />	
+		</action>
+		
+		<action class="RemoveBuff">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_IsInDoorsCheckerDisplay"/>
+		</requirement>
+			<property name="phase" value="2" />
+			<property name="buff_name" value="ZombieINC_IsInDoorsCheckerDisplay" />	
+		</action>
+		
+		<action class="BeltTooltip">  								
+			<property name="text" value="Cant't activate"  />
+			<property name="text_key" value="ZombieINC_Defense_BeltTooltip_LeaveTraderAreaFail"  />
+			<property name="phase" value="2"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text" value="| [FF6600]Player's Mind:[-] Cant't activate, there are zombies nearby" />
+			<property name="text_key" value="ZombieINC_Defense_ChatMessage_LeaveTraderAreaFail"  />
+			<property name="phase" value="2"/>	
+		</action>
+		</decision>
+		
+		<decision class="If">
+		<property name="condition_type" value="All"/>
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="Trader"/>
+				<property name="operation" value="GTE"/> 
+				<property name="count" value="1"/>
+			</requirement>
+			 <requirement class="InPOI">
+				<property name="invert" value="true" />
+			</requirement>			
+		<action class="FailQuest">
+			<property name="phase" value="1" />
+			<property name="quest" value="zincpipemachinegunpart2" />
+			<property name="remove_quest" value="false" />			
+		</action>
+		
+		<action class="RemoveBuff">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_NearTraderPipeMachineGun_CheckerBuff"/>
+		</requirement>
+			<property name="phase" value="1" />
+			<property name="buff_name" value="ZombieINC_NearTraderPipeMachineGun_CheckerBuff" />	
+		</action>
+		
+		<action class="RemoveBuff">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_IsInDoorsChecker"/>
+		</requirement>
+			<property name="phase" value="2" />
+			<property name="buff_name" value="ZombieINC_IsInDoorsChecker" />	
+		</action>
+		
+		<action class="RemoveBuff">
+		<requirement class="HasBuff">
+			<property name="buff_name" value="ZombieINC_IsInDoorsCheckerDisplay"/>
+		</requirement>
+			<property name="phase" value="2" />
+			<property name="buff_name" value="ZombieINC_IsInDoorsCheckerDisplay" />	
+		</action>
+		
+		<action class="BeltTooltip">  								
+			<property name="text" value="Cant't activate"  />
+			<property name="text_key" value="ZombieINC_Defense_BeltTooltip_LeaveTraderAreaFail"  />
+			<property name="phase" value="2"/>
+		</action>	
+					      			    
+		<action class="AddChatMessage">							
+			<property name="text" value="| [FF6600]Player's Mind:[-] Cant't activate, there are zombies nearby" />
+			<property name="text_key" value="ZombieINC_Defense_ChatMessage_LeaveTraderAreaFail"  />
+			<property name="phase" value="2"/>	
+		</action>
+		</decision>	
+	</action_sequence>
+	<!--PipeMachineGun-->
+	
+</append>
+</Config>
