@@ -7,7 +7,197 @@
 <set xpath="//item[@name='biomeBadge1']/property[@name='AutoEquip']/@value">false</set>
 <set xpath="//item[@name='biomeBadge1']/property[@name='IsCosmetic']/@value">true</set> -->
 
-<set xpath="//item[starts-with(@name,'biomeWeatherItem')]/property[@name='EquipSlot']/@value">BiomeBadge</set>
+<!-- <set xpath="//item[starts-with(@name,'biomeWeatherItem')]/property[@name='EquipSlot']/@value">BiomeBadge</set> -->
+
+
+<set xpath="//item[@name='biomeWeatherItem1']">
+<property name="Extends" value="armorLightMaster" param1="DisplayType"/>
+	<property name="CustomIcon" value="biomeWeatherItem1"/>
+	<property name="DescriptionKey" value="biomeWeatherItem1Desc"/>
+	<property name="EquipSlot" value="BiomeBadge"/>
+	<property name="Tags" value="biomeBadge1"/>
+	<property name="ShowQuality" value="false"/>
+	<property name="KeepOnDeath" value="true"/>
+	<property name="AllowUnEquip" value="false"/>
+	<property name="IsCosmetic" value="false"/>
+	<property name="AutoEquip" value="true"/>
+	<property name="ReplaceByTag" value="None"/>
+	<property name="SoundPickup" value="headwear_cloth_grab"/>
+	<property name="SoundPlace" value="headwear_cloth_place"/>
+
+	<effect_group>
+		<passive_effect name="ModSlots" operation="base_set" value="0"/>
+	</effect_group>
+
+	<effect_group>
+		<requirement name="CVarCompare" cvar="_equipReload" operation="LT" value="1"/>
+
+			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$BurntHazardTimerMax" operation="set" value="-1"/>
+			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$DesertHazardTimerMax" operation="set" value="180"/>
+			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$SnowHazardTimerMax" operation="set" value="120"/>
+			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$WastelandHazardTimerMax" operation="set" value="60"/>
+
+			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$BurntHazardTimer" operation="set" value="0">
+				<requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="1"/></triggered_effect>
+			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$DesertHazardTimer" operation="set" value="180">
+				<requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="1"/></triggered_effect>
+			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$SnowHazardTimer" operation="set" value="120">
+				<requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="1"/></triggered_effect>
+			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$WastelandHazardTimer" operation="set" value="60">
+				<requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="1"/></triggered_effect>
+		
+			<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$BurntHazardTimerMax" operation="set" value="180"/>
+			<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$DesertHazardTimerMax" operation="set" value="120"/>
+			<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$SnowHazardTimerMax" operation="set" value="60"/>
+			<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$WastelandHazardTimerMax" operation="set" value="30"/>
+		
+			<!-- BiomeBadgeLevel CVar is referenced in code. Do not change. -->
+			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$BiomeBadgeLevel" operation="set" value="1"/>
+			<triggered_effect trigger="onSelfEquipStop" action="RemoveCVar" cvar="$BiomeBadgeLevel"/>
+
+			<passive_effect name="LootStageMax" operation="base_add" value="30"> <!-- 40 + 30 = 70 -->
+				<requirement name="InBiome" biome="3"/><!-- pine_forest -->
+			</passive_effect>
+	</effect_group>
+</set>
+<set xpath="//item[@name='biomeWeatherItem2']">
+<property name="Extends" value="biomeWeatherItem1"/>
+	<property name="CustomIcon" value="biomeWeatherItem2"/>
+	<property name="DescriptionKey" value="biomeWeatherItem2Desc"/>
+	
+	<property name="Tags" value="CanReplace1,biomeBadge2"/>
+	<property name="ReplaceByTag" value="None"/>
+	<property name="EquipSlot" value="BiomeBadge"/>
+
+	<effect_group>
+		<passive_effect name="ModSlots" operation="base_set" value="0"/>
+	</effect_group>
+
+	<effect_group>
+		<requirement name="CVarCompare" cvar="_equipReload" operation="LT" value="1"/>
+
+			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$BurntHazardTimerMax" operation="set" value="-1"/>
+			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$DesertHazardTimerMax" operation="set" value="-1"/>
+			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$SnowHazardTimerMax" operation="set" value="180"/>
+			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$WastelandHazardTimerMax" operation="set" value="120"/>
+
+			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$BurntHazardTimer" operation="set" value="0">
+				<requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="2"/></triggered_effect>
+			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$DesertHazardTimer" operation="set" value="0">
+				<requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="2"/></triggered_effect>
+			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$SnowHazardTimer" operation="set" value="180">
+				<requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="2"/></triggered_effect>
+			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$WastelandHazardTimer" operation="set" value="120">
+				<requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="2"/></triggered_effect>
+			
+			<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$BurntHazardTimerMax" operation="set" value="180"/>
+			<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$DesertHazardTimerMax" operation="set" value="120"/>
+			<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$SnowHazardTimerMax" operation="set" value="60"/>
+			<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$WastelandHazardTimerMax" operation="set" value="30"/>
+			
+			<!-- BiomeBadgeLevel CVar is referenced in code. Do not change. -->
+			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$BiomeBadgeLevel" operation="set" value="2"/>
+			<triggered_effect trigger="onSelfEquipStop" action="RemoveCVar" cvar="$BiomeBadgeLevel"/>
+
+			<passive_effect name="LootStageMax" operation="base_add" value="50">
+				<requirement name="InBiome" biome="3"/></passive_effect><!-- pine_forest -->
+			<passive_effect name="LootStageMax" operation="base_add" value="10">
+				<requirement name="InBiome" biome="9"/></passive_effect><!-- burnt_forest -->
+	</effect_group>
+</set>
+<set xpath="//item[@name='biomeWeatherItem3']">
+	<property name="Extends" value="biomeWeatherItem1"/>
+	<property name="CustomIcon" value="biomeWeatherItem3"/>
+	<property name="DescriptionKey" value="biomeWeatherItem3Desc"/>
+	<property name="EquipSlot" value="BiomeBadge"/>
+	<property name="Tags" value="CanReplace1,CanReplace2,biomeBadge3"/>
+		<property name="ReplaceByTag" value="None"/>
+
+	<effect_group>
+		<passive_effect name="ModSlots" operation="base_set" value="0"/>
+	</effect_group>
+
+	<effect_group>
+		<requirement name="CVarCompare" cvar="_equipReload" operation="LT" value="1"/>
+
+			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$BurntHazardTimerMax" operation="set" value="-1"/>
+			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$DesertHazardTimerMax" operation="set" value="-1"/>
+			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$SnowHazardTimerMax" operation="set" value="-1"/>
+			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$WastelandHazardTimerMax" operation="set" value="180"/>
+			
+			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$BurntHazardTimer" operation="set" value="0">
+				<requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="3"/></triggered_effect>
+			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$DesertHazardTimer" operation="set" value="0">
+				<requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="3"/></triggered_effect>
+			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$SnowHazardTimer" operation="set" value="0">
+				<requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="3"/></triggered_effect>
+			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$WastelandHazardTimer" operation="set" value="180">
+				<requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="3"/></triggered_effect>
+			
+			<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$BurntHazardTimerMax" operation="set" value="180"/>
+			<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$DesertHazardTimerMax" operation="set" value="120"/>
+			<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$SnowHazardTimerMax" operation="set" value="60"/>
+			<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$WastelandHazardTimerMax" operation="set" value="30"/>
+			
+			<!-- BiomeBadgeLevel CVar is referenced in code. Do not change. -->
+			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$BiomeBadgeLevel" operation="set" value="3"/>
+			<triggered_effect trigger="onSelfEquipStop" action="RemoveCVar" cvar="$BiomeBadgeLevel"/>
+
+			<passive_effect name="LootStageMax" operation="base_add" value="60">
+				<requirement name="InBiome" biome="3"/></passive_effect><!-- pine_forest -->
+			<passive_effect name="LootStageMax" operation="base_add" value="40">
+				<requirement name="InBiome" biome="9"/></passive_effect><!-- burnt_forest -->
+			<passive_effect name="LootStageMax" operation="base_add" value="15">
+				<requirement name="InBiome" biome="5"/></passive_effect><!-- desert -->
+	</effect_group>
+	</set>
+<set xpath="//item[@name='biomeWeatherItem4']">
+	<property name="Extends" value="biomeWeatherItem1"/>
+	<property name="CustomIcon" value="biomeWeatherItem4"/>
+	<property name="DescriptionKey" value="biomeWeatherItem4Desc"/>
+	<property name="Tags" value="CanReplace1,CanReplace2,CanReplace3,biomeBadge4"/>
+	<property name="ReplaceByTag" value="None"/>
+	<property name="EquipSlot" value="BiomeBadge"/>
+	<effect_group>
+		<passive_effect name="ModSlots" operation="base_set" value="0"/>
+	</effect_group>
+
+	<effect_group>
+		<requirement name="CVarCompare" cvar="_equipReload" operation="LT" value="1"/>
+
+			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$BurntHazardTimerMax" operation="set" value="-1"/>
+			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$DesertHazardTimerMax" operation="set" value="-1"/>
+			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$SnowHazardTimerMax" operation="set" value="-1"/>
+			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$WastelandHazardTimerMax" operation="set" value="-1"/>
+			
+			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$BurntHazardTimer" operation="set" value="0">
+				<requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="4"/></triggered_effect>
+			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$DesertHazardTimer" operation="set" value="0">
+				<requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="4"/></triggered_effect>
+			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$SnowHazardTimer" operation="set" value="0">
+				<requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="4"/></triggered_effect>
+			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$WastelandHazardTimer" operation="set" value="0">
+				<requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="4"/></triggered_effect>
+			
+			<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$BurntHazardTimerMax" operation="set" value="180"/>
+			<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$DesertHazardTimerMax" operation="set" value="120"/>
+			<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$SnowHazardTimerMax" operation="set" value="60"/>
+			<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$WastelandHazardTimerMax" operation="set" value="30"/>
+			
+			<!-- BiomeBadgeLevel CVar is referenced in code. Do not change. -->
+			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$BiomeBadgeLevel" operation="set" value="4"/>
+			<triggered_effect trigger="onSelfEquipStop" action="RemoveCVar" cvar="$BiomeBadgeLevel"/>
+
+			<passive_effect name="LootStageMax" operation="base_add" value="100">
+				<requirement name="InBiome" biome="3"/></passive_effect><!-- pine_forest -->
+			<passive_effect name="LootStageMax" operation="base_add" value="50">
+				<requirement name="InBiome" biome="9"/></passive_effect><!-- burnt_forest -->
+			<passive_effect name="LootStageMax" operation="base_add" value="45">
+				<requirement name="InBiome" biome="5"/></passive_effect><!-- desert -->
+			<passive_effect name="LootStageMax" operation="base_add" value="20">
+				<requirement name="InBiome" biome="1"/></passive_effect><!-- snow -->
+	</effect_group>
+</set>
 
 <append xpath="/items">
 

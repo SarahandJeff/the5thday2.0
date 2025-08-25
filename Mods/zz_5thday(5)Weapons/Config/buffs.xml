@@ -1,4 +1,47 @@
 <snj>
+
+
+
+<insertBefore xpath="//buff[@name='HOH_Level_Display_shotguns']/effect_group[@name='progressionBasics']/triggered_effect/requirement[@name='HitLocation' and @body_parts='Head']">
+
+<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_Shotguns_XP_Temp_Killed" operation="add" value="5">
+					<requirement name="ItemHasTags" tags="5d_LeverActionShotgun"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_Shotguns_XP_Temp_Killed" operation="add" value="10">
+					<requirement name="ItemHasTags" tags="5d_doubleBarrelShotgun"/>
+					<requirement name="CVarCompare" cvar="HOH_Shotguns_lvl" operation="GTE" value="25"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_Shotguns_XP_Temp_Killed" operation="add" value="15">
+					<requirement name="ItemHasTags" tags="5thday_SPAS12"/>
+					<requirement name="CVarCompare" cvar="HOH_Shotguns_lvl" operation="GTE" value="50"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_Shotguns_XP_Temp_Killed" operation="add" value="20">
+					<requirement name="ItemHasTags" tags="5thday_Shotgun_Auto"/>
+					<requirement name="CVarCompare" cvar="HOH_Shotguns_lvl" operation="GTE" value="75"/>
+				</triggered_effect>
+				<!-- <triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="HOH_Shotguns_XP_Temp_Killed" operation="add" value="12"/> -->
+</insertBefore>
+<insertBefore xpath="//buff[@name='HOH_Level_Display_shotguns']/effect_group[@name='progressionBasics']/triggered_effect/requirement[@name='HitLocation' and @body_parts='Head']">
+
+<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_MachineGun_XP_Temp" operation="add" value="5">
+					<requirement name="ItemHasTags" tags="5thdayAR15"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_MachineGun_XP_Temp" operation="add" value="10">
+					<requirement name="ItemHasTags" tags="5thdayAR15_556"/>
+					<requirement name="CVarCompare" cvar="HOH_Shotguns_lvl" operation="GTE" value="25"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_MachineGun_XP_Temp" operation="add" value="15">
+					<requirement name="ItemHasTags" tags="5thday_Scar_L"/>
+					<requirement name="CVarCompare" cvar="HOH_Shotguns_lvl" operation="GTE" value="25"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_MachineGun_XP_Temp" operation="add" value="20">
+					<requirement name="ItemHasTags" tags="5thday_Scar_H"/>
+					<requirement name="CVarCompare" cvar="HOH_Shotguns_lvl" operation="GTE" value="75"/>
+				</triggered_effect>
+				<!-- <triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="HOH_Shotguns_XP_Temp_Killed" operation="add" value="12"/> -->
+
+<!-- <triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_MachineGun_XP_Temp" operation="add" value="2"/> -->
+</insertBefore>
 <append xpath="/buffs">
 <buff name="5d_22RTrackerActivate" hidden="true" icon="ui_game_symbol_add" icon_color="255,0,0" icon_blink="true">
 			<stack_type value="replace"/>
