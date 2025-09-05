@@ -20,46 +20,55 @@
 
 
 <append xpath="/recipes">
-<recipe name="foodBacon" count="8" craft_area="campfire" craft_tool="toolCookingGrill" tags="perkMasterChef,learnable">
+
+
+<recipe name="foodJerky" count="8" craft_area="campfire" craft_tool="toolCookingGrill" tags="learnable">
+    <ingredient name="foodRawRabbitMeat" count="1"/>
+</recipe>
+<recipe name="foodJerky" count="8" craft_area="campfire" craft_tool="toolCookingGrill" tags="learnable">
+    <ingredient name="foodRawSnakeMeat" count="1"/>
+</recipe>
+
+<recipe name="foodBacon" count="8" craft_area="campfire" craft_tool="toolCookingGrill" tags="learnable">
     <ingredient name="foodRawPorkMeat" count="1"/>
 	
 </recipe>
-<recipe name="foodFriedEggs" count="1" craft_time="5" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable">
+<recipe name="foodFriedEggs" count="1" craft_time="5" craft_area="campfire" craft_tool="toolCookingPot" tags="learnable">
     <ingredient name="foodEgg" count="1"/>
 	
 	
 </recipe>
 
 
-<recipe name="foodGrilledChicken" craft_time="10" count="2" craft_area="campfire" craft_tool="toolCookingGrill" tags="perkMasterChef,learnable">
+<recipe name="foodGrilledChicken" craft_time="10" count="2" craft_area="campfire" craft_tool="toolCookingGrill" tags="learnable">
     <ingredient name="foodRawChicken" count="1"/>
 	
 </recipe>
-<recipe name="foodSteakAndEggs" count="1"  craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable">
+<recipe name="foodSteakAndEggs" count="1"  craft_area="campfire" craft_tool="toolCookingPot" tags="learnable">
     <ingredient name="foodGrilledMeat" count="1"/>
     <ingredient name="foodFriedEggs" count="4" />
     </recipe>
-<recipe name="foodBaconAndEggs" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable">
+<recipe name="foodBaconAndEggs" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="learnable">
     <ingredient name="foodBacon" count="4"/>
     <ingredient name="foodFriedEggs" count="4" />
     </recipe>
 	
-  <recipe name="foodBoiledMeat" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable">
-    <ingredient name="foodRawMeat" count="1"/>
+  <recipe name="foodBoiledMeat" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="learnable">
+    <ingredient name="foodRawBeefMeat" count="1"/>
     <ingredient name="drinkJarBoiledWater" count="1" />
   </recipe>
   <recipe name="foodCharredMeat" count="1" craft_area="campfire">
-    <ingredient name="foodRawMeat" count="1"/>
+    <ingredient name="foodRawBeefMeat" count="1"/>
   </recipe>
-  <recipe name="foodGrilledMeat" count="1" craft_area="campfire" craft_tool="toolCookingGrill" tags="perkMasterChef,learnable">
-    <ingredient name="foodRawMeat" count="1"/>
+  <recipe name="foodGrilledMeat" count="1" craft_area="campfire" craft_tool="toolCookingGrill" tags="learnable">
+    <ingredient name="foodRawBeefMeat" count="1"/>
 	
   </recipe>
-  <recipe name="foodPorkChop" count="1" craft_area="campfire" craft_tool="toolCookingGrill" tags="perkMasterChef,learnable">
+  <recipe name="foodPorkChop" count="1" craft_area="campfire" craft_tool="toolCookingGrill" tags="learnable">
     <ingredient name="foodRawPorkMeat" count="1"/>
 	
 </recipe>
-  <recipe name="foodSteakAndPotato" count="1" craft_area="campfire" craft_tool="toolCookingGrill" tags="perkMasterChef,learnable">
+  <recipe name="foodSteakAndPotato" count="1" craft_area="campfire" craft_tool="toolCookingGrill" tags="learnable">
     <ingredient name="foodGrilledMeat" count="1"/>
     <ingredient name="foodBakedPotato" count="2" />
     <ingredient name="foodCropMushrooms" count="5" />
@@ -110,7 +119,7 @@
 
 
 
-
+<!-- 
 
     <recipe name="Cooked-foodCanStock" count="1" craft_time="10" craft_area="campfire">
    		 <ingredient name="foodCanStock" count="1"/>
@@ -162,7 +171,7 @@
 	
     <recipe name="Cooked-foodCanChili" count="1" craft_time="10" craft_area="campfire">
    		 <ingredient name="foodCanChili" count="1"/>
-    </recipe>
+    </recipe> -->
 
 	
         <recipe name="drinkJarEmpty" count="1" material_based="true" craft_area="forge" is_trackable="false">
@@ -171,6 +180,150 @@
         </recipe>
     
 	
+
+
+
+
+
+
+
+
+
+
+	<recipe name="foodCanStock" count="2" craft_time="30" craft_area="WorkingStove" craft_tool="stockpot">
+		<ingredient name="drinkJarBoiledWater" count="2"/>
+		<ingredient name="foodRawChicken" count="1"/>
+		<ingredient name="resourceBone" count="5"/>
+		<ingredient name="resourcePotassiumNitratePowder" count="5"/>
+    </recipe>
+
+ 	
+	<recipe name="foodCanChicken" count="2" craft_time="30" craft_area="WorkingStove" craft_tool="stockpot">
+		<ingredient name="foodRawChicken" count="1"/>
+		<ingredient name="drinkJarBoiledWater" count="2"/>
+		<ingredient name="resourcePotassiumNitratePowder" count="5"/>
+    </recipe>
+	<recipe name="foodCanBeef" count="2" craft_time="30" craft_area="WorkingStove" craft_tool="stockpot">
+		<ingredient name="foodRawBeefMeat" count="1"/>
+		<ingredient name="drinkJarBoiledWater" count="2"/>
+		<ingredient name="resourcePotassiumNitratePowder" count="5"/>
+    </recipe>
+	<recipe name="foodCanVenison" count="2" craft_time="30" craft_area="WorkingStove" craft_tool="stockpot">
+		<ingredient name="foodRawVenisonMeat" count="1"/>
+		<ingredient name="drinkJarBoiledWater" count="2"/>
+		<ingredient name="resourcePotassiumNitratePowder" count="5"/>
+    </recipe>
+	<recipe name="foodCanBear" count="2" craft_time="30" craft_area="WorkingStove" craft_tool="stockpot">
+		<ingredient name="foodRawBearMeat" count="1"/>
+		<ingredient name="drinkJarBoiledWater" count="2"/>
+		<ingredient name="resourcePotassiumNitratePowder" count="5"/>
+    </recipe>
+	
+
+	<recipe name="foodCanSoup" count="2" craft_time="30" craft_area="WorkingStove" craft_tool="stockpot">
+		<ingredient name="foodRawChicken" count="1"/>
+		<ingredient name="foodCanMixedVeg" count="1"/>
+		<ingredient name="foodCanStock" count="1"/>
+		<ingredient name="resourcePotassiumNitratePowder" count="5"/>
+    </recipe>
+
+	<recipe name="foodCanChili" count="2" craft_time="30" craft_area="WorkingStove" craft_tool="stockpot">
+		<ingredient name="foodRawBeefMeat" count="2"/>
+		<ingredient name="foodCanMixedVeg" count="1"/>
+		<ingredient name="foodCanStock" count="1"/>
+		<ingredient name="resourcePotassiumNitratePowder" count="5"/>
+    </recipe>
+
+	<recipe name="foodCanSoup" count="4" craft_time="30" craft_area="WorkingStove" craft_tool="stockpot">
+		<ingredient name="foodCanChicken" count="2"/>
+		<ingredient name="foodCanMixedVeg" count="1"/>
+		<ingredient name="foodCanStock" count="1"/>
+		
+    </recipe>
+
+	<recipe name="foodCanChili" count="4" craft_time="30" craft_area="WorkingStove" craft_tool="stockpot">
+		<ingredient name="foodCanBeef" count="2"/>
+		<ingredient name="foodCanMixedVeg" count="1"/>
+		<ingredient name="foodCanStock" count="1"/>
+		
+    </recipe>
+
+
+
+
+	<recipe name="foodBearMeatStew" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable">
+		<ingredient name="foodRawBearMeat" count="1"/>
+		<ingredient name="foodCropPotato" count="2"/>
+		<ingredient name="foodCropCorn" count="2"/>
+		<ingredient name="resourceAnimalFat" count="1"/>
+		<ingredient name="drinkJarBoiledWater" count="1"/>
+		<effect_group>
+			<passive_effect name="CraftingIngredientCount" level="1,3" operation="base_add" value="-1,-2" tags="foodRawMeat"/>
+		</effect_group>
+	</recipe> 
+
+	<recipe name="foodRawBurgerPatty" craft_area="KitchenMixer" craft_tool="toolMeatGrinder" count="4" craft_time="30" >
+		<ingredient name="foodRawBeefMeat" count="2"/>
+		<ingredient name="resourcePaper" count="8"/>
+	</recipe>
+ 	<recipe name="foodGrilledHamburger" craft_time="5" count="1" craft_area="WorkingStove" craft_tool="fryingpan" tags="perkCooking,learnable">
+            <ingredient name="foodRawBurgerPatty" count="1" />
+    </recipe>
+	<recipe name="foodHamburger" craft_time="5" count="1" craft_area="PrepTable">
+            <ingredient name="foodGrilledHamburger" count="1" />
+			<ingredient name="foodBunsBurger" count="1" />
+    </recipe>
+	<recipe name="foodHamburgerBacon" craft_time="5" count="1" craft_area="PrepTable">
+            <ingredient name="foodGrilledHamburger" count="1" />
+			<ingredient name="foodBacon" count="4"/>
+			<ingredient name="foodBunsBurger" count="1" />
+    </recipe>
+	<recipe name="foodHamburgerBaconCheese" craft_time="5" count="1" craft_area="PrepTable">
+            <ingredient name="foodGrilledHamburger" count="1" />
+			<ingredient name="foodBacon" count="4"/>
+			<ingredient name="foodBunsBurger" count="1" />
+			<ingredient name="foodCheeseSliced" count="1" />
+	</recipe>
+
+
+
+
+
+	<recipe name="foodCheeseSliced" craft_time="5" count="10" craft_area="KitchenMixer">
+            <ingredient name="foodMilk" count="2" />
+			<ingredient name="resourceAnimalFat" count="1" />
+			<ingredient name="resourcePotassiumNitratePowder" count="2" />
+    </recipe>
+
+
+
+
+<recipe name="5thday_Mixer" count="1" craft_time="30" craft_area="workbench">
+        <ingredient name="BrokenKitchenMixer" count="1"/>
+		<ingredient name="resourceElectricParts" count="4"/>
+        <ingredient name="HOHWiringRed" count="1" />
+        <ingredient name="HOHWiringWhite" count="1" />
+        <ingredient name="HOHWiringYellow" count="1" />
+
+	</recipe> 
+	<recipe name="5thday_PrepTable" count="1" craft_time="30" craft_area="workbench">
+        <ingredient name="BrokenPrepTable" count="1"/>
+		 <ingredient name="resourceForgedIron" count="16" />
+    	<ingredient name="HOHVehicleBolts4" count="6" />
+	</recipe> 
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </append>
 

@@ -1017,7 +1017,7 @@
 				<sprite depth="-2" name="backgroundCLB" anchor_top="queue,0,-35" anchor_bottom="queue,0,-43" anchor_left="queue,0,3" anchor_right="queue,0,11" rotation="-90" sprite="ui_game_symbol_triangle" flip="Vertically" width="8" height="8" type="sliced"  color="[darkestGrey]"/>
 				<sprite depth="-2" name="backgroundCRB" anchor_top="queue,0,-35" anchor_bottom="queue,0,-43" anchor_left="queue,1,-3" anchor_right="queue,1,5" sprite="ui_game_symbol_triangle" flip="Vertically" width="8" height="8" type="sliced"  color="[darkestGrey]"/>				
 			</rect>
-			<grid depth="12" name="queue" pos="-5,0" rows="10" cols="8" cell_width="60" cell_height="60" repeat_content="true" controller="LootContainer">
+			<grid depth="12" name="queue" pos="-5,0" rows="50" cols="10" cell_width="60" cell_height="60" repeat_content="true" controller="LootContainer">
 				<SNJ_item_stack name="0"/>
 			</grid>
 		</rect>
@@ -1080,7 +1080,7 @@
 		<rect name="content" depth="0" pos="0,175" height="70" disablefallthrough="true">
 			<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" height="70" color="0,0,0,1" type="sliced" fillcenter="false" />
 			<grid depth="10" name="inventory" rows="1" cols="6" pos="6,0" cell_width="70" cell_height="70" controller="WorkstationOutputGrid" repeat_content="true">
-				<SNJ_item_stack name="0"/>
+				<SNJ_item_stack2 name="0"/>
 			</grid>
 		</rect>
 		</rect>
@@ -1125,47 +1125,110 @@
 		<rect name="content" depth="0" pos="0,75" height="70" disablefallthrough="true">
 			<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" height="70" color="0,0,0,1" type="sliced" fillcenter="false" />
 			<grid depth="10" name="inventory" rows="1" cols="6" pos="6,0" cell_width="70" cell_height="70" controller="WorkstationOutputGrid" repeat_content="true">
-				<SNJ_item_stack name="0"/>
+				<SNJ_item_stack2 name="0"/>
 			</grid>
 		</rect>
 		</rect>
 	</window>
-<window name="windowBackpack" width="360" height="650" anchor="CenterCenter" panel="Right" controller="BackpackWindow" cursor_area="true" >
+<window name="windowBackpack" width="430" height="650" anchor="CenterCenter" panel="Right" controller="BackpackWindow" cursor_area="true" >
 		<rect pos="-100,0">
 		<rect name="windowbackground" pos="0,0" depth="-3">
 			<windowBackground name="windowBackground" depth="-3" pos="0,0" width="430" height="650"/>
 		</rect>
-		<panel name="header" height="30" depth="1" disableautobackground="true">
-		<!--<sprite depth="3" name="windowIcon" style="icon32px" pivot="center" pos="210,-21" aspect_ratio="1.0" sprite="ui_game_symbol_weight" />
-		<label depth="3" name="windowName" pos="10,-9" width="250" height="32" controller="Quartz.CVarTimer, Quartz" timer="0.5" text="INVENTORY" text_key="{cvar($odcl_UICurrentWeight:000.00)}/{cvar(MaxEncumbrancecvar:000.00)}" font_size="28" color="{# cvar('encumbranceCVar') > 1 ? '200,0,0,255' : (cvar('encumbranceCVar') > 0.7 ? '120,120,0,255' : '255,255,255,255')}"/>
-		-->		
+			<panel name="header" height="43" depth="1" disableautobackground="true">
 			<sprite depth="3" name="windowIcon" style="icon22px" pivot="center" pos="21,-21" sprite="ui_game_symbol_backpack" />
 			<label depth="3" name="windowName" pos="42,-6" width="150" height="20" text="INVENTORY" text_key="xuiInventory" font_size="22" />
 
-			<rect pos="320,0" width="300" controller="ContainerStandardControls" move_start_bottom_left="true" is_backpack="true">
+				<rect pos="320,0" width="300" controller="ContainerStandardControls" move_start_bottom_left="true" is_backpack="true">
 				<button depth="20"  name="btnClearInventory" sprite="ui_game_symbol_trash" tooltip_key="lblClearInventory" hoverscale="1" pos="-100,-6" style="icon22px, press, hover" sound="[paging_click]" visible="{creativewindowopen}" />
 				
 				<rect pos="35, 0" visible="{lootingorvehiclestorage}">
 					<button   depth="3" name="btnMoveAll" sprite="ui_game_symbol_store_all_down" hoverscale="1" tooltip_key="lblStashAll" pos="0, -6" style="icon22px, press, hover" sound="[paging_click]" />
 					<button   depth="3" name="btnMoveFillAndSmart" sprite="ui_game_symbol_store_similar_down" hoverscale="1" tooltip_key="lblStashFillAndSmart" pos="35, -6" style="icon22px, press, hover" sound="[paging_click]" />
 				</rect>
-				<button depth="3" name="btnSort" sprite="ui_game_symbol_sort" tooltip_key="lblSortContainer"  hoverscale="1" pos="105,-6" style="icon22px, press, hover" sound="[paging_click]" />
-				<button   depth="3" name="btnToggleLockMode" sprite="ui_game_symbol_lock" tooltip_key="xuiStashLockModeToggle" hoverscale="1" pos="140,-6" style="icon22px, press, hover" sound="[paging_click]" selected="{userlockmode}" />
+				<button depth="3" name="btnSort" sprite="ui_game_symbol_sort" tooltip_key="lblSortContainer"  hoverscale="1" pos="-30,-6" style="icon22px, press, hover" sound="[paging_click]" />
+				<button   depth="3" name="btnToggleLockMode" sprite="ui_game_symbol_lock" tooltip_key="xuiStashLockModeToggle" hoverscale="1" pos="0,-6" style="icon22px, press, agfLock" sound="[paging_click]" selected="{userlockmode}" />
 
 				<!-- <combobox depth="5" name="cbxLockedSlots" pos="75,-755" width="100" height="30" tooltip_key="xuiStashLockedSlots" type="ComboBoxInt" value_min="0" value_max="45" value_wrap="true" value_increment="1" /> -->
 			</rect>
 
 			<label depth="2" pos="350,-655" width="100" height="30" text="{currencyamount}" />
 			<sprite depth="4" name="costIcon" sprite="ui_game_symbol_coin" size="24,24" pos="300,-656" color="[white]" foregroundlayer="true" />
-		</panel>
+				</panel>
 
-		<panel name="content" width="100%" height="303" depth="0" pos="0,-50" disableautobackground="true">
-			<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="5,0" width="360" height="650" color="0,0,0,1" type="sliced" fillcenter="false" on_press="true"  gamepad_selectable="false"/>
-			<grid depth="10" name="inventory" rows="10" cols="7" pos="6,0" cell_width="60" cell_height="60" controller="Backpack" repeat_content="true" >
-				<AX_backpack_item_stack name="0"/>
-			</grid>
-		</panel>
+
+			<rect controller="TabSelector" pos="0,0" size="606, 43" depth="5">
+				<rect name="tabsHeader" height="40" pos="150,0">
+					<grid name="tabButtons" rows="1" cols="7" pos="0,-2" cell_width="40" cell_height="43" arrangement="horizontal">
+						<rect controller="TabSelectorButton" width="38" height="38" >
+							<simplebutton depth="1" name="tabButton" font_size="32" width="38" height="38" caption="1"/>
+						</rect>
+						<rect controller="TabSelectorButton" width="38" height="38" >
+							<simplebutton depth="1" name="tabButton" font_size="32" width="38" height="38" caption="2"/>
+						</rect>
+						<rect controller="TabSelectorButton" width="38" height="38" >
+							<simplebutton depth="1" name="tabButton" font_size="32" width="38" height="38" caption="3"/>
+						</rect>
+					
+						<!-- <rect controller="TabSelectorButton" width="26" height="26">
+							<simplebutton depth="1" name="tabButton" font_size="16" pos="0,-12" width="26" height="26" caption="{tab_name_localized}"/>
+						</rect> -->
+					</grid>
+				</rect>
+
+				<panel name="slots" pos="0,0" width="100%" height="335" depth="0" disableautobackground="true">
+					<rect name="content" depth="10" pos="0,0">
+						<rect name="tabsContents" pos="3,-46" controller="Backpack">
+							<rect controller="TabSelectorTab" tab_key="1" pos="0,0">
+								<grid rows="10" cols="7" cell_width="60" cell_height="60" repeat_content="true">
+									<rect pos="0,0" depth="1">
+										<SNJ_item_stack name="0"/>
+									</rect>
+								</grid>
+							</rect>
+							<rect controller="TabSelectorTab" tab_key="2" pos="0,0">
+								<grid rows="10" cols="7" cell_width="60" cell_height="60" repeat_content="true">
+									<rect pos="0,0" depth="1">
+										<SNJ_item_stack name="0"/>
+									</rect>
+								</grid>
+							</rect>
+							<rect controller="TabSelectorTab" tab_key="3" pos="0,0">
+								<grid rows="10" cols="7" cell_width="60" cell_height="60" repeat_content="true">
+									<rect pos="0,0" depth="1">
+										<SNJ_item_stack name="0"/>
+									</rect>
+								</grid>
+							</rect>
+							
+							<!-- <rect controller="TabSelectorTab" tab_key="X" pos="0,0">
+								<rect pos="0,0" height="335">
+									<sprite depth="1" width="603" sprite="menu_empty" color="[mediumGrey]" type="sliced" fillcenter="true" />
+									<sprite depth="2" width="603" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" />
+									<rect depth="3" height="58">
+										<label depth="3" name="TabXContentTitle" pos="0,-10" height="48" justify="center" font_size="38" text_key="wBackpackTabXTitle">
+										
+										</label>
+										
+									</rect>
+									<label depth="3" height="200">
+										<label depth="3" name="TabXContents" pos="10,-60" height="277" width="586" justify="left" font_size="26" text_key="wBackpackTabXContents">
+										
+										</label>
+									</label>
+								</rect>
+							</rect> -->
+						</rect>
+					</rect>
+				</panel>
+			</rect>
 		</rect>
+
+		
+
+
+
+
 	</window>
 <window name="emptyInfoPanel" width="340" height="650" anchor="CenterCenter" panel="Center" controller="EmptyInfoWindow" cursor_area="true" >
 	<rect pos="-100,0">
@@ -1653,7 +1716,7 @@
 		<rect name="content" depth="0" pos="0,-25" height="70" disablefallthrough="true">
 
 			<grid name="inventory" rows="1" cols="3" pos="6,100" cell_width="70" cell_height="70" controller="WorkstationToolGrid" repeat_content="true" required_tools="toolCookingPot,toolCookingGrill,kettle" required_tools_only="true">
-				<SNJ_item_stack controller="RequiredItemStack" name="0"/>
+				<SNJ_item_stack2 controller="RequiredItemStack" name="0"/>
 			</grid>
 		</rect>
 		</rect>
@@ -1669,7 +1732,7 @@
 		<rect name="content" depth="0" pos="0,-25" height="70" disablefallthrough="true">
 
 			<grid name="inventory" rows="1" cols="2" pos="6,100" cell_width="70" cell_height="70" controller="WorkstationToolGrid" repeat_content="true" required_tools="toolCookingPot,kettle" required_tools_only="true">
-				<SNJ_item_stack controller="RequiredItemStack" name="0"/>
+				<SNJ_item_stack2 controller="RequiredItemStack" name="0"/>
 			</grid>
 		</rect>
 		</rect>
@@ -1686,7 +1749,7 @@
 		<rect name="content" depth="0" pos="0,-25" height="70" disablefallthrough="true">
 
 			<grid name="inventory" rows="1" cols="4" pos="6,100" cell_width="70" cell_height="70" controller="WorkstationToolGrid" repeat_content="true" required_tools="stockpot,fryingpan,kettle,toolBakingPan" required_tools_only="true">
-				<SNJ_item_stack controller="RequiredItemStack" name="0"/>
+				<SNJ_item_stack2 controller="RequiredItemStack" name="0"/>
 			</grid>
 		</rect>
 		</rect>
@@ -1702,7 +1765,7 @@
 		<rect name="content" depth="0" pos="0,-25" height="70" disablefallthrough="true">
 
 			<grid name="inventory" rows="1" cols="1" pos="6,100" cell_width="70" cell_height="70" controller="WorkstationToolGrid" repeat_content="true" required_tools="kettle" required_tools_only="true">
-				<SNJ_item_stack controller="RequiredItemStack" name="0"/>
+				<SNJ_item_stack2 controller="RequiredItemStack" name="0"/>
 			</grid>
 		</rect>
 		</rect>
@@ -1745,7 +1808,7 @@
 		<rect name="content" depth="0" pos="0,-25" height="70" disablefallthrough="true">
 			<grid name="inventory" rows="1" cols="3" pos="6,0" cell_width="70" cell_height="70" controller="WorkstationToolGrid" repeat_content="true"
 			required_tools="toolBellows,toolAnvil,toolForgeCrucible" required_tools_only="true">
-				<SNJ_item_stack controller="RequiredItemStack" name="0"/>
+				<SNJ_item_stack2 controller="RequiredItemStack" name="0"/>
 			</grid>
 		</rect>
 		</rect>
@@ -1863,51 +1926,6 @@
 
 
 
-		<!--<rect name="hud"  rows="2" cols="1" width="168"   side="left"  pos="-1373, 70">
-			<rect pos="364,60" width="181" height="25" controller="HUDStatBar" stat_type="VehicleFuel" visible="{statvisible}">
-				<sprite depth="1" name="border" color="0,0,0,128" type="sliced"/>
-				<sprite depth="2" name="background" color="0,0,0,140" type="sliced" />
-				<sprite depth="2" pos="3,-3"  name="background" height="25" width="162" color="64,64,64,100" type="sliced" />
-				<filledsprite depth="5" name="BarContent" color="204, 102, 255" width="169" type="filled" fill="0" flip="Horizontally" />
-				<sprite depth="4" name="Icon" atlas="{staticonatlas|once}" sprite="{staticon|once}" size="20,20" pos="148,-14" pivot="center" foregroundlayer="true" />
-				<label depth="6" name="TextContent" pos="125,-14" font_size="22" color="[white]" justify="center" pivot="right" text="{statcurrentwithmax}" width="120" height="35"/>
-				<sprite depth="8" name="border" color="0,0,0,255" type="sliced" fillcenter="false"/>
-			</rect>
-			
-				<rect  pos="180,60" width="181" height="25"  controller="HUDStatBar" stat_type="VehicleHealth" visible="{statvisible}" >
-					<sprite depth="2"  name="background" color="0,0,0,140" type="sliced" />
-					<filledsprite depth="3" name="background" color="110,110,110,128" width="181" type="filled" fill="{statmodifiedmax}" />
-					<filledsprite depth="5"  name="BarContent" color="255,0,0,180" width="181" type="filled" fill="0" />
-					<sprite depth="6" name="Icon" atlas="{staticonatlas|once}" sprite="{staticon|once}" size="20,20" pos="2,-2" foregroundlayer="true"/>
-					<label depth="7" name="TextContent" pos="46,-2" font_size="22" color="[white]" text="{statcurrentwithmax}" height="34"/>
-					<sprite depth="8" name="border" color="0,0,0,255" type="sliced" fillcenter="false"/>
-					<filledsprite depth="8"  name="background" color="0,0,0,255" width="181" fillcenter="false" type="filled" fill="{statmodifiedmax}" />
-					<filledsprite depth="3" name="background" color="0,0,0,255" width="181" fillcenter="false" type="filled" fill="{statmodifiedmax}" />
-				</rect>
-				
-				<rect pos="182,60" width="181" height="25"  controller="HUDStatBar" stat_type="Stamina" visible="{statvisible}" >
-					<sprite depth="1" name="border" color="0,0,0,235" type="sliced"/>
-					<sprite depth="2" name="background" color="0,0,0,140" type="sliced" />
-					<filledsprite depth="3" name="background" color="110,110,110,128" width="181" type="filled" fill="{statmodifiedmax}" />
-					<filledsprite depth="5" name="BarContent" color="0,54,255,180" width="181" type="filled" fill="0" />
-					<sprite depth="6" name="Icon" atlas="{staticonatlas|once}" sprite="ui_game_symbol_agility" size="20,20" pos="2,-2" foregroundlayer="true"/>
-					<label depth="7" name="TextContent" pos="46,-2" font_size="22" color="[white]" text="{statcurrentwithmax}" height="34"/>
-					<sprite depth="8"  name="border" color="0,0,0,255" type="sliced" fillcenter="false"/>
-					<filledsprite depth="8" name="background" color="0,0,0,255" width="181" fillcenter="false" type="filled" fill="{statmodifiedmax}" />
-					<filledsprite depth="3" name="background" color="0,0,0,255" width="181" fillcenter="false" type="filled" fill="{statmodifiedmax}" />
-				</rect>
-				<rect  pos="0,60" width="181" height="25"  controller="HUDStatBar" stat_type="Health" visible="{statvisible}" >
-					<sprite depth="2"  name="background" color="0,0,0,140" type="sliced" />
-					<filledsprite depth="3" name="background" color="110,110,110,128" width="181" type="filled" fill="{statmodifiedmax}" />
-					<filledsprite depth="5"  name="BarContent" color="255,0,0,180" width="181" type="filled" fill="0" />
-					<sprite depth="6" name="Icon" atlas="{staticonatlas|once}" sprite="{staticon|once}" size="20,20" pos="2,-2" foregroundlayer="true"/>
-					<label depth="7" name="TextContent" pos="46,-2" font_size="22" color="[white]" text="{statcurrentwithmax}" height="34"/>
-					<sprite depth="8" name="border" color="0,0,0,255" type="sliced" fillcenter="false"/>
-					<filledsprite depth="8"  name="background" color="0,0,0,255" width="181" fillcenter="false" type="filled" fill="{statmodifiedmax}" />
-					<filledsprite depth="3" name="background" color="0,0,0,255" width="181" fillcenter="false" type="filled" fill="{statmodifiedmax}" />
-				</rect>
-		</rect>
--->
 	</window>
 </append>
 
@@ -2028,7 +2046,7 @@
 <append xpath="/windows/window[@name='windowBackpack']">
 
 <!-- hidden progression-->
-			<rect depth="30" name="hiddenshit" pos="125,-810" >
+			<rect depth="30" name="hiddenshit" pos="225,-810" >
 					<sprite depth="2" name="background" width="255" height="105" color="[white]" type="sliced" />
 					<sprite depth="3" name="background" width="254" height="104" color="[black]" />
 					
@@ -2879,7 +2897,7 @@
 	<append xpath="/windows/window[@name='windowTrader']">
 		<!--<sprite depth="1" name="timeBackground" width="230" height="50" pos="350,45" color="[black]"/>-->
 		<!--<sprite depth="2" name="dayTimeIcon" width="24" height="24" pos="550,45" sprite="ui_game_symbol_clock" color="[iconColor]" foregroundlayer="true"/>-->
-		<label depth="2" name="dayTimeLabel" width="125" height="28" pos="425,40" text="{mapdaytimetitle}: [DECEA3]{mapdaytime}[-]" font_size="22" controller="MapStats"/>
+		<label depth="2" name="dayTimeLabel" width="125" height="38" pos="425,90" text="{mapdaytimetitle}: [DECEA3]{mapdaytime}[-]" font_size="32" controller="MapStats"/>
 		<!--<label depth="2" name="questlevel" pos="825,40" width="125" height="28" text="Quest Level: {cvar(HOH_Questing_lvl)}" font_size="22"/>-->
 
 	</append>
@@ -2908,7 +2926,7 @@
 		<rect name="content" depth="0" pos="279,75" height="70" >
 			<rect disablefallthrough="true">
 				<grid rows="1" cols="2" pos="6,0" cell_width="70" cell_height="70" controller="WorkstationFuelGrid" repeat_content="true">
-					<SNJ_item_stack name="0"/>
+					<SNJ_item_stack2 name="0"/>
 				</grid>
 			</rect>
 			<grid name="slot_preview" depth="1" rows="1" cols="2" pos="6,0" cell_width="70" cell_height="70" controller="SlotPreview">
@@ -2953,7 +2971,7 @@
 		<rect name="content" depth="0" pos="0,75" height="70" disablefallthrough="true">
 			<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" height="70" color="0,0,0,1" type="sliced" fillcenter="false" />
 			<grid depth="10" name="inventory" rows="1" cols="6" pos="6,0" cell_width="70" cell_height="70" controller="WorkstationOutputGrid" repeat_content="true">
-				<SNJ_item_stack name="0"/>
+				<SNJ_item_stack2 name="0"/>
 			</grid>
 		</rect>
 		</rect>
@@ -3117,7 +3135,7 @@
 		<rect name="content" depth="-5" pos="2012,-22" height="2" >
 			<rect disablefallthrough="true">
 				<grid rows="1" cols="1"  cell_width="2" cell_height="2" controller="WorkstationFuelGrid" repeat_content="true">
-					<SNJ_item_stack name="0"/>
+					<SNJ_item_stack2 name="0"/>
 				</grid>
 			</rect>
 			
@@ -3152,7 +3170,7 @@
 		<rect name="content" depth="0" pos="2013,-62" height="70" >
 			<rect disablefallthrough="true" depth="0">
 				<grid depth="0" rows="1" cols="1" pos="6,0" cell_width="70" cell_height="70" controller="WorkstationFuelGrid" repeat_content="true">
-					<SNJ_item_stack name="0" depth="0"/>
+					<SNJ_item_stack2 name="0" depth="0"/>
 				</grid>
 			</rect>
 			<grid name="slot_preview" depth="0" rows="1" cols="1" pos="6,0" cell_width="70" cell_height="70" controller="SlotPreview">
@@ -3193,7 +3211,7 @@
 		<rect name="content" depth="0" pos="279,-25" height="70" >
 			<rect disablefallthrough="true">
 				<grid rows="1" cols="1" pos="6,0" cell_width="70" cell_height="70" controller="WorkstationFuelGrid" repeat_content="true">
-					<SNJ_item_stack name="0"/>
+					<SNJ_item_stack2 name="0"/>
 				</grid>
 			</rect>
 			<grid name="slot_preview" depth="1" rows="1" cols="1" pos="6,0" cell_width="70" cell_height="70" controller="SlotPreview">
@@ -3466,6 +3484,30 @@
 		</rect>
 		</rect>
 	</window>
+
+<window name="windowToolsPrepTable" depth="20" width="430" height="75" panel="Left" cursor_area="true" >
+	   <rect pos="-100,0">
+	   <windowBackgroundNoHeader name="windowBackgroundNoHeader" depth="-3" pos="5,395" width="420" height="75" text_key="xuiTools"/>
+		<rect name="content" depth="8" pos="0,-46" height="60" disablefallthrough="true">
+			<grid name="inventory" rows="1" cols="2" pos="10,420" cell_width="60" cell_height="60" controller="WorkstationToolGrid" repeat_content="true" 
+			required_tools="toolKitchenKnife,toolCuttingBoard" required_tools_only="true">
+				<item_stack controller="RequiredItemStack" name="0"/>
+			</grid>
+		</rect>
+		</rect>
+	</window>
+	<window name="windowToolsKitchenMixer" depth="20" width="430" height="75" panel="Left" cursor_area="true" >
+	   <rect pos="-100,0">
+	   <windowBackgroundNoHeader name="windowBackgroundNoHeader" depth="-3" pos="5,395" width="420" height="75" text_key="xuiTools"/>
+		<rect name="content" depth="8" pos="0,-46" height="60" disablefallthrough="true">
+			<grid name="inventory" rows="1" cols="3" pos="10,420" cell_width="60" cell_height="60" controller="WorkstationToolGrid" repeat_content="true" 
+			required_tools="toolMixerFin,toolMeatGrinder,toolVegShreder" required_tools_only="true">
+				<item_stack controller="RequiredItemStack" name="0"/>
+			</grid>
+		</rect>
+		</rect>
+	</window>
+
 </append>
 
 
@@ -3489,7 +3531,12 @@
 				</rect>
 			</insertAfter> -->
 
+	<!-- <set xpath="/windows/window[@name='windowBackpack']/panel/rect/button[@name='btnToggleLockMode']/@style">icon32px, press, agfLock</set>
 
+
+
+	<set xpath="/windows/window[@name='windowLooting']/panel/rect/button[@name='btnToggleLockMode']/@style">icon32px, press, agfLock</set>
+	<set xpath="/windows/window[@name='windowVehicleStorage']/panel/rect/button[@name='btnToggleLockMode']/@style">icon32px, press, agfLock</set> -->
 
 
 <include filename="version_control.xml"/>

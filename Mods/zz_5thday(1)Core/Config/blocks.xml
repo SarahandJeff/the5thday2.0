@@ -1,4 +1,8 @@
 <config>
+	
+	<set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='FoodSpoilage']/property[@name='FoodSpoilage']/@value">true</set>
+	<set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='FoodSpoilage']/property[@name='SpoiledItem']/@value">foodScraps</set>
+	 
 	<set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='AdvancedRecipes']/property[@name='ReadFromContainers']/@value">true</set>
 	<set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='AdvancedRecipes']/property[@name='Distance']/@value">5</set>
 	<set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='AdvancedLockpicking']/property[@name='AdvancedLocks']/@value">true</set>
@@ -294,7 +298,7 @@
 			<property name="Group" value="Basics,Food/Cooking,Building,advBuilding"/>
 			<property name="FilterTags" value="MC_playerBlocks,SC_decor,SC_electrical"/>
 		</block>
-		<block name="WorkingStove">
+		<!-- <block name="WorkingStove">
 			<property name="Class" value="Workstation"/>
 			<property class="Workstation">
 				<property name="Modules" value="tools,output,input"/>
@@ -334,7 +338,7 @@
 			<property name="Group" value="Basics,Food/Cooking,Building,advBuilding"/>
 			<property name="DescriptionKey" value="stoveWorkingDesc"/>
 			<property name="SellableToTrader" value="false"/>
-		</block>
+		</block> -->
 		<block name="WorkingCharcoalGrill">
 			<property name="Class" value="Campfire"/>
 			<property name="CustomIcon" value="cntCharcoalGrillClosed"/>
@@ -2172,6 +2176,7 @@
 <append xpath="//block[contains(@name,'generator')]"><property name="ItemWeight" value="7525"/></append>
 <append xpath="//block[starts-with(@name,'tv')]"><property name="ItemWeight" value="925"/></append>
 
-
+<append xpath="//block[starts-with(@name,'cntCooler')]"><property name="PreserveBonus" value="4" /></append>
+<append xpath="//block[@name='cntIceMachine']"><property name="PreserveBonus" value="20" /></append>
 
 </config>
