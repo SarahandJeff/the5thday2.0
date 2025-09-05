@@ -1,0 +1,3717 @@
+<Config>
+<conditional>
+	<if cond="mod_loaded('mateusjobsmain') == 'false'">
+		<append xpath="/gameevents">
+			
+			
+			<action_sequence name="ZombieINC_OneAnchorGenericPlacementByBuff">
+					<property name="target_type" value="Entity" />
+					<property name="allow_while_dead" value="true" />
+					<!--<property name="single_instance" value="true" />-->
+					<property name="refund_inactivity" value="false" />
+					
+					<action class="BlockReplace">
+						<property name="min_offset" value="2,-10,1" />
+						<property name="max_offset" value="2,10,1" />
+						<property name="block_to" value="ZombieINC_Anchor_Generic_Block" />
+						<property name="block_tags" value="air" />
+						<property name="allow_terrain" value="true" />
+						<property name="phase" value="1" />
+					</action>
+				</action_sequence>
+		</append>
+	</if>
+</conditional>
+<append xpath="/gameevents">
+<!--##Hunt Hot Fix 1-->
+	<action_sequence name="ZombieINC_Hunt_SpawnBossAllTags_Event">
+		<property name="refund_inactivity" value="false" />
+	
+			<action class="SpawnEntity">
+				<property name="safe_spawn" value="true" />				
+				<property name="entity_names" value="ZombieINC_Hunt_AllBossesTags"  />
+				<property name="spawn_count" value="1"  />
+				<property name="max_distance" value="3" />
+				<property name="min_distance" value="1" />
+				<!--<property name="spawn_type" value="WanderingHorde" />-->
+				<property name="phase" value="1" />	
+			</action>
+			
+			 <!--<action class="AddBuff">
+				<property name="buff_name" value="ZombieINC_Hunt_BossKiller" />	
+				<property name="phase" value="2" />	
+			</action>-->
+	</action_sequence>
+	<action_sequence name="ZombieINC_Hunt_BossKilled_AddBuffEvent">
+		<property name="refund_inactivity" value="false" />
+			 <action class="AddBuff">
+				<property name="buff_name" value="ZombieINC_Hunt_BossKilled" />	
+			</action>
+	</action_sequence>
+<!--Hunt Hot Fix 1-->
+<!--##Fatal Errors Protectors Hunt-->	
+
+	<action_sequence name="ZombieINC_Hunt_BossDog_FailQuest_Event">
+		<property name="allow_user_trigger" value="true" />
+		<action class="FailQuest">	   
+			<property name="quest" value="zincdog" />
+			<property name="remove_quest" value="true"  />		
+		</action>
+		<!--<action class="AddQuest">
+			<property name="quest" value="zincdog" />
+		</action>-->
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Hunt_BossDog_FatalErrorProtectorBuff_Event">			
+	    <action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Hunt_BossDog_FatalErrorProtector_Buff" />				
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Hunt_BossDog_RemoveFatalErrorProtectorBuff_Event">			
+	    <action class="RemoveBuff">
+			<property name="buff_name" value="ZombieINC_Hunt_BossDog_FatalErrorProtector_Buff" />				
+		</action>
+	</action_sequence>
+
+		<action_sequence name="ZombieINC_Hunt_Activate_Event_Anchor">
+				<action class="SpawnEntity">			
+					<property name="entity_names" value="ZombieINC_Hunt_RallyPointHuntPlaceHolder" />
+				<!--	<property name="add_buffs" value="ZombieINC_Hunt_EnemyDotBuff"/>-->
+					<property name="spawn_count" value="1"  />
+					<property name="max_distance" value="1" />
+					<property name="min_distance" value="1" />
+					<property name="air_spawn" value="true" />		
+				</action>
+			</action_sequence>
+
+	<action_sequence name="ZombieINC_Hunt_RegBagLoot_Event">
+		<property name="allow_while_dead" value="true" />
+		<action class="SpawnEntity">				    
+			<property name="entity_names" value="EntityLootContainerRegular" />
+			<property name="spawn_count" value="1"  />
+			<property name="safe_spawn" value="true" />
+			<property name="max_distance" value="2"  />
+			<property name="min_distance" value="1"  />
+			<property name="air_spawn" value="true" />
+			<property name="phase" value="1" />			
+		</action>	
+	</action_sequence>
+	<action_sequence name="ZombieINC_Hunt_StrongBagLoot_Event">
+		<property name="allow_while_dead" value="true" />
+		<action class="SpawnEntity">				    
+			<property name="entity_names" value="EntityLootContainerStrong" />
+			<property name="spawn_count" value="1"  />
+			<property name="safe_spawn" value="true" />
+			<property name="max_distance" value="2"  />
+			<property name="min_distance" value="1"  />
+			<property name="air_spawn" value="true" />
+			<property name="phase" value="1" />			
+		</action>	
+	</action_sequence>
+	<action_sequence name="ZombieINC_Hunt_BossBagLoot_Event">
+		<property name="allow_while_dead" value="true" />
+		<action class="SpawnEntity">				    
+			<property name="entity_names" value="EntityLootContainerBoss" />
+			<property name="spawn_count" value="1"  />
+			<property name="safe_spawn" value="true" />
+			<property name="max_distance" value="2"  />
+			<property name="min_distance" value="1"  />
+			<property name="air_spawn" value="true" />
+			<property name="phase" value="1" />			
+		</action>	
+	</action_sequence>
+	<action_sequence name="ZINC_BomberInfestedLootBag_Event">
+		<property name="allow_while_dead" value="true" />
+		<action class="SpawnEntity">				    
+			<property name="entity_names" value="EntityLootContainerBoss" />
+			<property name="spawn_count" value="1"  />
+			<property name="safe_spawn" value="true" />
+			<property name="max_distance" value="2"  />
+			<property name="min_distance" value="1"  />
+			<property name="air_spawn" value="true" />
+			<property name="phase" value="1" />			
+		</action>	
+	</action_sequence>
+	
+	
+	<!--###Hunt Quests-->
+	<!--##BossCraven-->
+	
+	<action_sequence name="ZombieINC_SpawnMinionCraven_InPOI">
+		<property name="action_type" value="Game" />
+		<property name="target_type" value="POI" />
+			
+		<action class="SpawnEntity">				    
+			<property name="entity_names" value="ZombieINC_MinionCraven1,ZombieINC_MinionCraven2,ZombieINC_MinionCraven3,ZombieINC_MinionCraven4" />
+			<property name="spawn_count" value="1"  />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_Hunt_EnemyDotBuff,ZombieINC_Hunt_BlockDamageV1_Buff"/>
+			<property name="safe_spawn" value="true" />
+			<!--<property name="spawn_type" value="WanderingHorde" />
+			<property name="max_distance" value="20"  />
+			<property name="min_distance" value="15"  />-->
+			<property name="air_spawn" value="true" />
+			<property name="phase" value="1" />			
+		</action>	
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SpawnMinionCraven">
+	
+	 <action class="AddSpawnedEntitiesToGroup">
+		<property name="phase" value="0" />
+	 	<property name="group_name" value="MinionCravenCount" />
+	  	<property name="entity_tags" value="MinionCraven" />
+		<property name="target_only" value="true" />	 	
+	 </action>
+	 <action class="AddEntitiesToGroup">
+		<property name="phase" value="0" />
+		<property name="entity_tags" value="MinionCraven" />
+		<property name="group_name" value="MinionCravenCount" />
+		<property name="max_distance" value="50" />
+	</action>
+	 <decision class="If">
+		<requirement class="InPOI">
+			<property name="invert" value="true" />
+		</requirement>
+		<requirement class="GroupLiveCount">
+			<property name="target_group" value="MinionCravenCount"/>
+			<property name="operation" value="LessThan"/> 
+			<property name="count" value="5"/>
+		</requirement>
+		<action class="SpawnEntity">
+		
+			<property name="entity_names" value="ZombieINC_MinionCraven1"  />
+			<property name="add_buffs" value="ZombieINC_Hunt_EnemyDotBuff,ZombieINC_Hunt_BlockDamageV1_Buff" />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="35" />		
+			<property name="min_distance" value="25" />
+			<property name="air_spawn" value="true" />
+			<property name="phase" value="1" />
+			
+		</action>	
+		
+	</decision>
+	
+	<decision class="If">
+		<requirement class="InPOI"/>
+				
+		<requirement class="GroupLiveCount">
+			<property name="target_group" value="MinionCravenCount"/>
+			<property name="operation" value="LessThan"/> 
+			<property name="count" value="5"/>
+		</requirement>
+		
+		<action class="CallGameEvent">
+			<property name="game_events" value="ZombieINC_SpawnMinionCraven_InPOI" />
+			<property name="phase" value="1" />
+		</action>
+		<!--<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_MinionCraven1"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="15" />		
+			<property name="min_distance" value="8" />
+			<property name="phase" value="1" />		
+		</action>-->
+	
+	</decision>
+	
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossCravenEvent">
+	<property name="refund_inactivity" value="false" />   
+		<requirement class="CVar">
+			<property name="cvar" value="ZombieINCBossSpawn"/>
+			<property name="operation" value="Equals"/>
+			<property name="value" value="0"/>
+		</requirement>	
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="party" />	
+		</action>
+		
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="target_group" value="party" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="1" />
+		</action>
+		
+		
+		<action class="SpawnEntity">
+			<property name="safe_spawn" value="true" />				
+			<property name="entity_names" value="ZombieINC_BossCraven"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="9" />
+			<property name="min_distance" value="5" />
+			<property name="phase" value="2" />	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossCraven">					  
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="0" />
+		</action>
+		
+		<action class="Delay">
+			<property name="time" value="1-10" />
+			<property name="phase" value="2" />
+		</action>
+		
+		 <action class="CallGameEvent">
+			<requirement class="CVar">
+				<property name="cvar" value="ZombieINCBossSpawn"/>
+				<property name="operation" value="Equals"/>
+				<property name="value" value="0"/>
+			</requirement>	
+			<property name="phase" value="3" />
+			<property name="game_events" value="ZombieINC_KillBossCravenEvent" />
+		</action>
+	</action_sequence>
+	
+	<!--BossCraven-->
+	<!--##BossCravenInfested-->
+	
+	<action_sequence name="ZombieINC_KillBossCravenInfestedEvent">
+	<property name="refund_inactivity" value="false" />   
+		<requirement class="CVar">
+			<property name="cvar" value="ZombieINCBossSpawn"/>
+			<property name="operation" value="Equals"/>
+			<property name="value" value="0"/>
+		</requirement>	
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="party" />	
+		</action>
+		
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="target_group" value="party" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="1" />
+		</action>
+		
+		
+		<action class="SpawnEntity">
+			<property name="safe_spawn" value="true" />		
+			<property name="entity_names" value="ZombieINC_BossCravenInfested"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="9" />
+			<property name="min_distance" value="5" />
+			<property name="phase" value="2" />	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossCravenInfested">					  
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="0" />
+		</action>
+		
+		<action class="Delay">
+			<property name="time" value="1-10" />
+			<property name="phase" value="2" />
+		</action>
+		
+		 <action class="CallGameEvent">
+			<requirement class="CVar">
+				<property name="cvar" value="ZombieINCBossSpawn"/>
+				<property name="operation" value="Equals"/>
+				<property name="value" value="0"/>
+			</requirement>	
+			<property name="phase" value="3" />
+			<property name="game_events" value="ZombieINC_KillBossCravenInfestedEvent" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SpawnMinionCravenInfested">
+	
+	 <action class="AddEntitiesToGroup">
+		<property name="phase" value="0" />
+		<property name="entity_tags" value="MinionCravenInfested" />
+		<property name="group_name" value="MinionCravenCount" />
+		<property name="max_distance" value="50" />
+	</action>
+	
+	 <decision class="If">
+		<requirement class="GroupLiveCount">
+			<property name="target_group" value="MinionCravenCount"/>
+			<property name="operation" value="LTE"/> 
+			<property name="count" value="15"/>
+		</requirement>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_MinionCravenInfested1,ZombieINC_MinionCravenInfested2,ZombieINC_MinionCravenInfested3,ZombieINC_MinionCravenInfested4"  />
+			<property name="spawn_count" value="1"  />
+			<property name="safe_spawn" value="true" />		
+			
+			<property name="add_buffs" value="ZombieINC_Hunt_BlockDamageV5_Buff" />
+			<property name="air_spawn" value="false" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_MinionCravenInfested1,ZombieINC_MinionCravenInfested2,ZombieINC_MinionCravenInfested3,ZombieINC_MinionCravenInfested4"  />
+			<property name="spawn_count" value="1"  />
+			<property name="safe_spawn" value="true" />		
+			
+			<property name="add_buffs" value="ZombieINC_Hunt_BlockDamageV5_Buff" />
+			<property name="air_spawn" value="false" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_MinionCravenInfested1,ZombieINC_MinionCravenInfested2,ZombieINC_MinionCravenInfested3,ZombieINC_MinionCravenInfested4"  />
+			<property name="spawn_count" value="1"  />
+			<property name="safe_spawn" value="true" />		
+			
+			<property name="add_buffs" value="ZombieINC_Hunt_BlockDamageV5_Buff" />
+			<property name="air_spawn" value="false" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_MinionCravenInfested1,ZombieINC_MinionCravenInfested2,ZombieINC_MinionCravenInfested3,ZombieINC_MinionCravenInfested4"  />
+			<property name="spawn_count" value="1"  />
+			<property name="safe_spawn" value="true" />		
+			
+			<property name="add_buffs" value="ZombieINC_Hunt_BlockDamageV5_Buff" />
+			<property name="air_spawn" value="false" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_MinionCravenInfested1,ZombieINC_MinionCravenInfested2,ZombieINC_MinionCravenInfested3,ZombieINC_MinionCravenInfested4"  />
+			<property name="spawn_count" value="1"  />
+			<property name="safe_spawn" value="true" />		
+			
+			<property name="add_buffs" value="ZombieINC_Hunt_BlockDamageV5_Buff" />
+			<property name="air_spawn" value="false" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_MinionCravenInfested1,ZombieINC_MinionCravenInfested2,ZombieINC_MinionCravenInfested3,ZombieINC_MinionCravenInfested4"  />
+			<property name="spawn_count" value="1"  />
+			<property name="safe_spawn" value="true" />		
+			
+			<property name="add_buffs" value="ZombieINC_Hunt_BlockDamageV5_Buff" />
+			<property name="air_spawn" value="false" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_MinionCravenInfested1,ZombieINC_MinionCravenInfested2,ZombieINC_MinionCravenInfested3,ZombieINC_MinionCravenInfested4"  />
+			<property name="spawn_count" value="1"  />
+			<property name="safe_spawn" value="true" />		
+			
+			<property name="add_buffs" value="ZombieINC_Hunt_BlockDamageV5_Buff" />
+			<property name="air_spawn" value="false" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_zombieDemolition_minioncraveninfested"  />
+			<property name="spawn_count" value="1"  />
+			<property name="safe_spawn" value="true" />	
+			<property name="add_buffs" value="ZombieINC_Hunt_EnemyDotBuff,ZombieINC_Hunt_BlockDamageV5_Buff" />
+			<property name="air_spawn" value="false" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="phase" value="1" />
+		</action>
+	</decision>	
+	</action_sequence>
+	<!--BossCravenInfested-->
+	
+	<!--##BossDog-->
+	
+	<action_sequence name="ZombieINC_SpawnMinionDog">
+		 <property name="allow_while_dead" value="false" />         					
+		<action class="SpawnEntity">
+	    		
+			<property name="entity_names" value="ZombieINC_MinionDog1"  />
+			<property name="spawn_count" value="4"  />
+			<property name="max_distance" value="35" />
+			<property name="min_distance" value="30" />
+			<property name="add_buffs" value="ZombieINC_Hunt_EnemyDotBuff" />
+			<property name="add_to_group" value="MinionDogs1" />
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_BossDogInQuestZoneEvent">
+	        <property name="allow_while_dead" value="false" />  			    
+							
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="party" />
+		</action>					
+							
+							
+		<action class="AddBuff">
+	   
+			<property name="buff_name" value="ZombieINC_BossDogInQuestZone" />
+			<property name="phase" value="1" />
+			<property name="target_group" value="party" />
+		</action>
+	
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_BossDogGiveItem">
+	        			    
+							
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="party" />
+		</action>					
+							
+							
+		<action class="AddItems">
+			<property name="added_items" value="ZombieINC_resourceSmellEnhancer" />
+			<property name="added_item_counts" value="1" />			 
+			<property name="phase" value="1" />
+		</action>
+	
+	</action_sequence>
+	
+	
+	<action_sequence name="ZombieINC_KillBossDog">
+		<property name="allow_user_trigger" value="true" />
+	
+	
+		<requirement class="OnQuest">
+			<property name="quest" value="zincdog"/>
+		</requirement>
+
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="party" />
+		</action>	
+		
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="target_group" value="party" />
+			<property name="cvar" value="ZINCDOGBAIT" />
+			<property name="operation" value="Add" />
+			<property name="value" value="1" />
+		</action>
+				
+		<action class="SpawnEntity">
+				<requirement class="CVar">
+					<property name="cvar" value="ZINCDOGBAIT"/>
+					<property name="operation" value="LTE"/>
+					<property name="value" value="3"/>
+				</requirement>
+			<property name="safe_spawn" value="true" />	
+			<property name="entity_names" value="ZombieINC_BossDog"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="55" />
+			<property name="min_distance" value="45" />
+			<property name="air_spawn" value="true" />
+			<property name="phase" value="2" />
+		</action>
+		
+		<action class="SpawnEntity">
+				<requirement class="CVar">
+					<property name="cvar" value="ZINCDOGBAIT"/>
+					<property name="operation" value="GT"/>
+					<property name="value" value="3"/>
+				</requirement>
+			<property name="safe_spawn" value="true" />	
+			<property name="entity_names" value="ZombieINC_BossDog_Alternative"  />
+			<property name="add_buffs" value="ZombieINC_BossDog_Alternative_Buff" />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="55" />
+			<property name="min_distance" value="45" />
+			<property name="air_spawn" value="true" />
+			<property name="phase" value="2" />
+		</action>
+		
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_MinionDog1"  />
+			<property name="spawn_count" value="4"  />
+			<property name="max_distance" value="45" />
+			<property name="min_distance" value="30" />
+			<property name="add_buffs" value="ZombieINC_Hunt_EnemyDotBuff" />
+			<property name="air_spawn" value="true" />
+			<property name="phase" value="3" />
+		</action>
+		
+		<action class="RemoveItems">
+			<property name="items_location" value="Toolbelt,Backpack"  />
+			<property name="items_tags" value="BossDogBaitTag"  />
+			<property name="count" value="1" />			
+			<property name="phase" value="3" />	
+		</action>		
+	</action_sequence>
+	
+
+	
+		
+	
+	<!--BossDog-->
+	<!--##BossDogInfested-->
+	<action_sequence name="ZombieINC_KillBossDogInfested">
+		 <property name="refund_inactivity" value="false" /> 
+		
+		<action class="RemoveItems">
+			<property name="items_location" value="Held"  />
+			<property name="items_tags" value="BossDogBaitInfestedTag"  />		
+			<property name="phase" value="1" />
+		</action>
+		
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_BossDogInfested"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="60" />
+			<property name="min_distance" value="45" />
+			<property name="attack_target" value="true" />
+			<property name="is_aggressive" value="true" />
+			<property name="clear_position_on_complete" value="true" />
+			<property name="add_to_group" value="Boss" />
+			<property name="phase" value="2" />
+		</action>
+				
+		<action class="SpawnEntity">		
+			<property name="entity_names" value="ZombieINC_Hunt_MinionDogInfested_Big"  />
+			<property name="spawn_count" value="3"  />
+			<property name="max_distance" value="60" />
+			<property name="min_distance" value="45" />
+			<property name="attack_target" value="true" />
+			<property name="is_aggressive" value="true" />
+			<property name="clear_position_on_complete" value="true" />
+			<property name="add_buffs" value="ZombieINC_Hunt_EnemyDotBuff" />
+			<property name="add_to_group" value="MinionDogs1" />
+			<property name="phase" value="3" />
+		</action>
+		
+		<action class="SpawnEntity">		
+			<property name="entity_names" value="animalZombieDog"  />
+			<property name="spawn_count" value="12"  />
+			<property name="max_distance" value="60" />
+			<property name="min_distance" value="45" />
+			<property name="attack_target" value="true" />
+			<property name="is_aggressive" value="true" />
+			<property name="clear_position_on_complete" value="true" />
+			<property name="add_buffs" value="ZombieINC_Hunt_EnemyDotBuff" />
+			<property name="add_to_group" value="MinionDogs2" />
+			<property name="phase" value="4" />
+		</action>
+		
+		<loop class="While">
+		<property name="phase" value="5"/>
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="Boss"/>
+				<property name="operation" value="Equals"/>
+				<property name="count" value="1"/>
+			</requirement>
+			<decision class="If">
+				<requirement class="GroupLiveCount">
+					<property name="target_group" value="MinionDogs2"/>
+					<property name="operation" value="LessThan"/>
+					<property name="count" value="10"/>
+				</requirement>
+				<action class="Delay">
+					<property name="time" value="5"/>
+				</action>
+				<action class="SpawnEntity">
+					<property name="entity_names" value="animalZombieDog"  />
+					<property name="spawn_count" value="1"  />
+					<property name="max_distance" value="60" />
+					<property name="min_distance" value="45" />
+					<property name="attack_target" value="true" />
+					<property name="is_aggressive" value="true" />
+					<property name="clear_position_on_complete" value="true" />
+					<property name="add_buffs" value="ZombieINC_Hunt_EnemyDotBuff" />
+					<property name="add_to_group" value="MinionDogs2" />
+				</action>
+				<action class="SpawnEntity">
+					<property name="entity_names" value="animalZombieDog"  />
+					<property name="spawn_count" value="1"  />
+					<property name="max_distance" value="60" />
+					<property name="min_distance" value="45" />
+					<property name="attack_target" value="true" />
+					<property name="is_aggressive" value="true" />
+					<property name="clear_position_on_complete" value="true" />
+					<property name="add_buffs" value="ZombieINC_Hunt_EnemyDotBuff" />
+					<property name="add_to_group" value="MinionDogs2" />
+				</action>
+				
+			</decision>
+		</loop>		
+	</action_sequence>
+	
+
+	<action_sequence name="ZombieINC_SpawnMinionDogInfestedEvent">
+		 <property name="allow_while_dead" value="true" /> 
+		<!-- <property name="refund_inactivity" value="false" />  -->
+		  
+		
+		
+		<!--<action class="WaitForDead">
+			<property name="target_group" value="MinionDogs1" />
+			<property name="phase" value="2" />
+		</action>-->
+	
+	</action_sequence>
+		
+	
+	<!--BossDogInfested-->
+	<!--##BossBiker-->
+	
+	<action_sequence name="ZombieINC_SpawnMinionBiker">       			    
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_MinionBiker1"  />
+			<property name="spawn_count" value="2"  />
+			<property name="max_distance" value="4" />
+			<property name="min_distance" value="1" />
+			<property name="air_spawn" value="true" />
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossBikerEvent">
+	 <property name="refund_inactivity" value="false" />   
+		<requirement class="CVar">
+			<property name="cvar" value="ZombieINCBossSpawn"/>
+			<property name="operation" value="Equals"/>
+			<property name="value" value="0"/>
+		</requirement>	
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="party" />	
+		</action>
+		
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="target_group" value="party" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="1" />
+		</action>
+		
+		
+		<action class="SpawnEntity">
+			<property name="safe_spawn" value="true" />						
+			<property name="entity_names" value="ZombieINC_BossBiker"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="12" />
+			<property name="min_distance" value="8" />
+			<property name="phase" value="2" />	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossBiker">					  
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="0" />
+		</action>
+		
+		<action class="Delay">
+			<property name="time" value="1-10" />
+			<property name="phase" value="2" />
+		</action>
+		
+		 <action class="CallGameEvent">
+			<requirement class="CVar">
+				<property name="cvar" value="ZombieINCBossSpawn"/>
+				<property name="operation" value="Equals"/>
+				<property name="value" value="0"/>
+			</requirement>	
+			<property name="phase" value="3" />
+			<property name="game_events" value="ZombieINC_KillBossBikerEvent" />
+		</action>
+	</action_sequence>
+	
+	
+	<!--BossBiker-->
+	<!--##BossBikerInfested-->
+	
+	<action_sequence name="ZombieINC_SpawnMinionBikerInfested_InPOI">
+		<property name="action_type" value="Game" />
+		<property name="target_type" value="POI" />
+			
+		<action class="SpawnEntity">				    
+			<property name="entity_names" value="ZombieINC_MinionBikerInfested1" />
+			<property name="spawn_count" value="3"  />
+			<property name="add_to_group" value="targets" />
+			<property name="add_buffs" value="ZombieINC_Hunt_EnemyDotBuff,ZombieINC_Hunt_BlockDamageV1_Buff"/>
+			<property name="safe_spawn" value="true" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="max_distance" value="20"  />
+			<property name="min_distance" value="10"  />
+			<property name="air_spawn" value="false" />
+			<property name="phase" value="1" />			
+		</action>	
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SpawnMinionBikerInfested">
+	
+	 <action class="AddEntitiesToGroup">
+		<property name="phase" value="0" />
+		<property name="entity_tags" value="MinionBikerInfested" />
+		<property name="group_name" value="MinionBikerCount" />
+		<property name="max_distance" value="50" />
+	</action>
+	 <decision class="If">
+		<requirement class="InPOI">
+				<property name="invert" value="true" />
+			</requirement>
+		<requirement class="GroupLiveCount">
+			<property name="target_group" value="MinionBikerCount"/>
+			<property name="operation" value="LessThan"/> 
+			<property name="count" value="3"/>
+		</requirement>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_MinionBikerInfested1"  />
+			<property name="spawn_count" value="3"  />
+			<property name="max_distance" value="35" />		
+			<property name="min_distance" value="25" />
+			<property name="air_spawn" value="true" />
+			<property name="phase" value="1" />	
+		</action>	
+	</decision>
+	<decision class="If">
+		<requirement class="InPOI"/>		
+		<requirement class="GroupLiveCount">
+			<property name="target_group" value="MinionBikerCount"/>
+			<property name="operation" value="LessThan"/> 
+			<property name="count" value="3"/>
+		</requirement>	
+		<action class="CallGameEvent">
+			<property name="game_events" value="ZombieINC_SpawnMinionBikerInfested_InPOI" />
+			<property name="phase" value="1" />
+		</action>
+	</decision>
+	</action_sequence>
+	
+	<!--<action_sequence name="ZombieINC_SpawnMinionBikerInfested">     			    
+		<action class="SpawnEntity">  
+			<property name="entity_names" value="ZombieINC_MinionBikerInfested1"  />
+			<property name="spawn_count" value="2"  />
+			<property name="max_distance" value="3" />
+			<property name="min_distance" value="1" />
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>-->
+	
+	<action_sequence name="ZombieINC_KillBossBikerInfestedEvent">
+	<property name="refund_inactivity" value="false" />   
+		<requirement class="CVar">
+			<property name="cvar" value="ZombieINCBossSpawn"/>
+			<property name="operation" value="Equals"/>
+			<property name="value" value="0"/>
+		</requirement>	
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="party" />	
+		</action>
+		
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="target_group" value="party" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="1" />
+		</action>
+		
+		<action class="SpawnEntity">
+			<property name="safe_spawn" value="true" />			
+			<property name="entity_names" value="ZombieINC_BossBikerInfested"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="12" />
+			<property name="min_distance" value="8" />
+			<property name="phase" value="2" />	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossBikerInfested">					  
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="0" />
+		</action>
+		
+		<action class="Delay">
+			<property name="time" value="1-10" />
+			<property name="phase" value="2" />
+		</action>
+		
+		 <action class="CallGameEvent">
+			<requirement class="CVar">
+				<property name="cvar" value="ZombieINCBossSpawn"/>
+				<property name="operation" value="Equals"/>
+				<property name="value" value="0"/>
+			</requirement>	
+			<property name="phase" value="3" />
+			<property name="game_events" value="ZombieINC_KillBossBikerInfestedEvent" />
+		</action>
+	</action_sequence>
+	
+	
+	<!--BossBikerInfested-->
+	<!--##BossGlass-->
+	<action_sequence name="ZombieINC_KillBossGlass">
+	        			    
+		<action class="SpawnEntity">
+	    
+			<property name="entity_names" value="ZombieINC_BossGlass"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="8" />
+			<property name="min_distance" value="7" />
+			<property name="phase" value="1" />
+			<property name="delay" value="1"/>
+		</action>
+	
+	</action_sequence>
+	
+	<!--BossGlass-->
+	
+	<!--##BossMultiply-->
+	
+	<action_sequence name="ZombieINC_KillBossMultiplyEvent">
+	   <property name="refund_inactivity" value="false" />   
+		<requirement class="CVar">
+			<property name="cvar" value="ZombieINCBossSpawn"/>
+			<property name="operation" value="Equals"/>
+			<property name="value" value="0"/>
+		</requirement>	
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="party" />	
+		</action>
+		
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="target_group" value="party" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="1" />
+		</action>
+		
+		<action class="SpawnEntity">
+			<property name="safe_spawn" value="true" />				
+			<property name="entity_names" value="ZombieINC_BossMultiply"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="12" />
+			<property name="min_distance" value="7" />
+			<property name="phase" value="2" />	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossMultiply">					  
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="0" />
+		</action>
+		
+		<action class="Delay">
+			<property name="time" value="1-10" />
+			<property name="phase" value="2" />
+		</action>
+		
+		 <action class="CallGameEvent">
+			<requirement class="CVar">
+				<property name="cvar" value="ZombieINCBossSpawn"/>
+				<property name="operation" value="Equals"/>
+				<property name="value" value="0"/>
+			</requirement>	
+			<property name="phase" value="3" />
+			<property name="game_events" value="ZombieINC_KillBossMultiplyEvent" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SpawnMinionMultiplyAmmo">
+		<property name="allow_while_dead" value="false" />   
+		<property name="target_type" value="Entity" />
+		<action class="SpawnEntity">		
+			<property name="entity_names" value="zombieArlene,zombieBurnt,zombieLab,zombieMarlene,zombieDarlene,zombiePartyGirl,zombieNurse" />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="1" />
+			<property name="min_distance" value="1" />
+			<property name="phase" value="1" />	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SpawnMinionMultiplyInfected"> 
+		<property name="allow_while_dead" value="false" />   
+		<property name="target_type" value="Entity" />
+		<action class="SpawnEntity">		
+			<property name="entity_names" value="zombieArlene,zombieBurnt,zombieLab,zombieMarlene,zombieDarlene,zombiePartyGirl,zombieNurse" />
+			<property name="spawn_count" value="2"  />
+			<property name="max_distance" value="1" />
+			<property name="min_distance" value="1" />
+			<property name="phase" value="1" />
+			<property name="add_to_group" value="MinionMultiplyGroup" />
+		</action>		
+		<action class="RageZombies">
+			<property name="phase" value="2" />
+			<property name="time" value="10" />
+			<property name="speed_percent" value="1.5" />
+			<property name="target_group" value="MinionMultiplyGroup" />
+		</action>
+	</action_sequence>
+	
+	
+	
+	
+	<!--BossMultiply-->
+	<!--##BossMultiplyInfested-->
+	
+	
+	<action_sequence name="ZombieINC_SpawnMinionMultiplyInfestedGS_InPOI">
+		<property name="action_type" value="Game" />
+		<property name="target_type" value="POI" />
+		<property name="allow_while_dead" value="false" />   	
+		<action class="SpawnEntity">				    
+			<property name="entity_names" value="zombieArlene,zombieBurnt,zombieLab,zombieMarlene,zombieDarlene,zombiePartyGirl,zombieNurse,zombieSkateboarder,zombieTomClark,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieUtilityWorker,zombieMoe,zombieJanitor,zombieBiker,zombieFatHawaiian,zombieLumberjack,zombieFemaleFat,zombieSoldier,zombieMaleHazmat,zombieArleneFeral,zombieBurntFeral,zombieLabFeral,zombieMarleneFeral,zombieDarleneFeral,zombiePartyGirlFeral,zombieNurseFeral" />
+			<property name="spawn_count" value="1"  />
+			<property name="add_to_group" value="targets" />
+			<property name="safe_spawn" value="true" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="add_buffs" value="ZombieINC_Survival_SpeedV1_VD_Buff" />
+			<property name="max_distance" value="20"  />
+			<property name="min_distance" value="10"  />
+			<property name="air_spawn" value="false" />
+			<property name="phase" value="1" />			
+		</action>	
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SpawnMinionMultiplyInfestedGS">
+	<property name="allow_while_dead" value="false" />   
+	  <action class="AddEntitiesToGroup">
+		<property name="phase" value="0" />
+		<property name="entity_tags" value="zombie" />
+		<property name="group_name" value="MinionCount" />
+		<property name="max_distance" value="50" />
+	</action>
+	 <decision class="If">
+		<requirement class="InPOI">
+				<property name="invert" value="true" />
+			</requirement>
+		<requirement class="GroupLiveCount">
+			<property name="target_group" value="MinionCount"/>
+			<property name="operation" value="LessThan"/> 
+			<property name="count" value="3"/>
+		</requirement>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="zombieArlene,zombieBurnt,zombieLab,zombieMarlene,zombieDarlene,zombiePartyGirl,zombieNurse,zombieSkateboarder,zombieTomClark,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieUtilityWorker,zombieMoe,zombieJanitor,zombieBiker,zombieFatHawaiian,zombieLumberjack,zombieFemaleFat,zombieSoldier,zombieMaleHazmat,zombieArleneFeral,zombieBurntFeral,zombieLabFeral,zombieMarleneFeral,zombieDarleneFeral,zombiePartyGirlFeral,zombieNurseFeral"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="30" />		
+			<property name="min_distance" value="15" />
+			<property name="air_spawn" value="true" />
+			<property name="add_buffs" value="ZombieINC_Survival_SpeedV1_VD_Buff" />
+			<property name="phase" value="1" />	
+		</action>	
+	</decision>
+	<decision class="If">
+		<requirement class="InPOI"/>		
+		<requirement class="GroupLiveCount">
+			<property name="target_group" value="MinionCount"/>
+			<property name="operation" value="LessThan"/> 
+			<property name="count" value="3"/>
+		</requirement>	
+		<action class="CallGameEvent">
+			<property name="game_events" value="ZombieINC_SpawnMinionMultiplyInfestedGS_InPOI" />
+			<property name="phase" value="1" />
+		</action>
+	</decision>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossMultiplyInfestedEvent">
+		<property name="refund_inactivity" value="false" />   
+		<requirement class="CVar">
+			<property name="cvar" value="ZombieINCBossSpawn"/>
+			<property name="operation" value="Equals"/>
+			<property name="value" value="0"/>
+		</requirement>	
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="party" />	
+		</action>
+		
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="target_group" value="party" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="1" />
+		</action>
+		
+		<action class="SpawnEntity">
+			<property name="safe_spawn" value="true" />			
+			<property name="entity_names" value="ZombieINC_BossMultiplyInfested"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="12" />
+			<property name="min_distance" value="7" />
+			<property name="phase" value="2" />	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossMultiplyInfested">					  
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="0" />
+		</action>
+		
+		<action class="Delay">
+			<property name="time" value="1-10" />
+			<property name="phase" value="2" />
+		</action>
+		
+		 <action class="CallGameEvent">
+			<requirement class="CVar">
+				<property name="cvar" value="ZombieINCBossSpawn"/>
+				<property name="operation" value="Equals"/>
+				<property name="value" value="0"/>
+			</requirement>	
+			<property name="phase" value="3" />
+			<property name="game_events" value="ZombieINC_KillBossMultiplyInfestedEvent" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SpawnMinionMultiplyAmmoInfested1">
+		<property name="target_type" value="Entity" />
+		<property name="allow_while_dead" value="false" />   
+		<action class="SpawnEntity">  				
+			<property name="entity_names" value="zombieArleneRadiated,zombieBurntRadiated,zombieLabRadiated,zombieMarleneRadiated,zombieDarleneRadiated,zombiePartyGirlRadiated,zombieNurseRadiated" />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="1" />
+			<property name="min_distance" value="1" />
+			<property name="add_buffs" value="ZombieINC_MultiplyMinionMain" />
+			<property name="phase" value="1" />	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SpawnMinionMultiplyAmmoInfested2">
+		<property name="target_type" value="Entity" />
+		<property name="allow_while_dead" value="false" />   
+		<action class="SpawnEntity">  				
+			<property name="entity_names" value="zombieSkateboarderRadiated,zombieTomClarkRadiated,zombieBoeRadiated,zombieJoeRadiated,zombieSteveRadiated,zombieYoRadiated,zombieBusinessManRadiated,zombieUtilityWorkerRadiated" />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="1" />
+			<property name="min_distance" value="1" />
+			<property name="add_buffs" value="ZombieINC_MultiplyMinionMain" />
+			<property name="phase" value="1" />	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SpawnMinionMultiplyAmmoInfested3">
+		<property name="target_type" value="Entity" />
+		<property name="allow_while_dead" value="false" />   
+		<action class="SpawnEntity">  				
+			<property name="entity_names" value="zombieMoeRadiated,zombieJanitorRadiated,zombieBikerRadiated,zombieFatHawaiianRadiated,zombieLumberjackRadiated,zombieFemaleFatRadiated,zombieSoldierRadiated,zombieMaleHazmatRadiated,zombieWightRadiated" />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="1" />
+			<property name="min_distance" value="1" />
+			<property name="add_buffs" value="ZombieINC_MultiplyMinionMain" />
+			<property name="phase" value="1" />	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SpawnMinionMultiplyInfested"> 
+		<property name="target_type" value="Entity" />
+		<property name="allow_while_dead" value="false" />   
+		<action class="SpawnEntity">   				
+			<property name="entity_names" value="zombieArlene,zombieMarlene,zombieTomClark,zombieDarlene,zombiePartyGirl,zombieSteve" />
+			<property name="spawn_count" value="2"  />
+			<property name="max_distance" value="1" />
+			<property name="min_distance" value="1" />
+			<property name="phase" value="1" />
+			<property name="add_to_group" value="MinionMultiplyGroup" />
+		</action>
+		
+		<action class="RageZombies">
+			<property name="phase" value="2" />
+			<property name="time" value="60" />
+			<property name="speed_percent" value="2.0" />
+			<property name="target_group" value="MinionMultiplyGroup" />
+		</action>
+	</action_sequence>
+	
+	<!--BossMultiplyInfested-->
+	
+	<!--##BossFire-->
+	<action_sequence name="ZombieINC_KillBossFireEvent">
+	     <property name="refund_inactivity" value="false" />   
+		<requirement class="CVar">
+			<property name="cvar" value="ZombieINCBossSpawn"/>
+			<property name="operation" value="Equals"/>
+			<property name="value" value="0"/>
+		</requirement>	
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="party" />	
+		</action>
+		
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="target_group" value="party" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="1" />
+		</action>
+		
+		<action class="SpawnEntity">
+			<property name="safe_spawn" value="true" />				
+			<property name="entity_names" value="ZombieINC_BossFire"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="12" />
+			<property name="min_distance" value="7" />
+			<property name="phase" value="2" />	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossFire">					  
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="0" />
+		</action>
+		
+		<action class="Delay">
+			<property name="time" value="1-10" />
+			<property name="phase" value="2" />
+		</action>
+		
+		 <action class="CallGameEvent">
+			<requirement class="CVar">
+				<property name="cvar" value="ZombieINCBossSpawn"/>
+				<property name="operation" value="Equals"/>
+				<property name="value" value="0"/>
+			</requirement>	
+			<property name="phase" value="3" />
+			<property name="game_events" value="ZombieINC_KillBossFireEvent" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_GetGroupBossFire">     			    
+		<action class="AddEntitiesToGroup">
+			<property name="entity_tags" value="BossFire"  />			
+			<property name="max_distance" value="10" />
+			<property name="group_name" value="ZombieINC_BossFireG" />
+			<property name="phase" value="0" />
+		</action>
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_SpawnMinionFirePhase1">
+	   <property name="allow_while_dead" value="false" /> 
+	   
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="fire" />
+			<property name="group_name" value="spawnedEnemies" />
+			<property name="max_distance" value="50" />
+		</action>
+		<action class="SpawnEntity">
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_SpawnMinionFireBuff"/>
+			</requirement>
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="spawnedEnemies"/>
+				<property name="operation" value="LessThan"/> 
+				<property name="count" value="3"/>	
+			</requirement> 
+			<property name="entity_names" value="ZombieINC_MinionMaleFire,ZombieINC_MinionWomanFire"  />
+			<property name="spawn_count" value="3"  />
+			<property name="max_distance" value="7" />
+			<property name="min_distance" value="1" />
+			<property name="add_buffs" value="ZombieINC_Hunt_EnemyDotBuff" />
+			<property name="air_spawn" value="false" />
+			<property name="phase" value="1" />	
+		</action>
+			 
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SpawnMinionFirePhase2">
+	    <property name="allow_while_dead" value="false" /> 
+		  
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="fire" />
+			<property name="group_name" value="spawnedEnemies" />
+			<property name="max_distance" value="50" />
+		</action>
+		<action class="SpawnEntity">
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_SpawnMinionFireBuff"/>
+			</requirement>
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="spawnedEnemies"/>
+				<property name="operation" value="LessThan"/> 
+				<property name="count" value="5"/>	
+			</requirement>
+			<property name="entity_names" value="ZombieINC_MinionWomanFire,ZombieINC_MinionKidFire"  />
+			<property name="spawn_count" value="2"  />
+			<property name="max_distance" value="10" />
+			<property name="min_distance" value="3" />
+			<property name="add_to_group" value="ZombieINC_MinionsFire" />
+			<property name="add_buffs" value="ZombieINC_Hunt_EnemyDotBuff" />
+			<property name="phase" value="1" />
+			<property name="air_spawn" value="false" />	
+		</action>
+	
+		<action class="RageZombies">
+			<property name="phase" value="2" />
+			<property name="time" value="120" />
+			<property name="speed_percent" value="1" />
+			<property name="target_group" value="ZombieINC_MinionsFire" />
+		</action>
+	
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SpawnMinionFirePhase3">
+	    <property name="allow_while_dead" value="false" /> 
+		  
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="fire" />
+			<property name="group_name" value="spawnedEnemies" />
+			<property name="max_distance" value="50" />
+		</action>
+		<action class="SpawnEntity">
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_SpawnMinionFireBuff"/>
+			</requirement>
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="spawnedEnemies"/>
+				<property name="operation" value="LessThan"/> 
+				<property name="count" value="7"/>	
+			</requirement>
+			<property name="entity_names" value="ZombieINC_MinionKidFire,ZombieINC_MinionKidFire2"  />
+			<property name="spawn_count" value="2"  />
+			<property name="max_distance" value="15" />
+			<property name="min_distance" value="3" />			
+			<property name="add_to_group" value="ZombieINC_MinionsFire" />
+			<property name="add_buffs" value="ZombieINC_Hunt_EnemyDotBuff" />
+			<property name="phase" value="1" />
+			<property name="air_spawn" value="false" />
+		</action>
+	
+		<action class="RageZombies">
+			<property name="phase" value="2" />
+			<property name="time" value="120" />
+			<property name="speed_percent" value="1" />
+			<property name="target_group" value="ZombieINC_MinionsFire" />
+		</action>
+	
+	</action_sequence>
+	
+	<!--ZombieINC_FireMinions_InvisibleBuff-->
+	<!--BossFire-->
+	<!--##BossFireInfested-->
+	<action_sequence name="ZombieINC_SpawnFireInfestedPhase1">
+	   <property name="allow_while_dead" value="false" /> 	   	
+		<action class="SpawnEntity">
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_SpawnMinionFireInfestedBuff"/>
+			</requirement>	
+			<property name="entity_names" value="ZombieINC_FireExplosions"  />
+			<property name="spawn_count" value="4"  />
+			<property name="max_distance" value="7" />
+			<property name="min_distance" value="1" />
+			<property name="air_spawn" value="false" />
+			<property name="phase" value="1" />	
+		</action>			 
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SpawnFireInfestedPhase2">
+	    <property name="allow_while_dead" value="false" /> 	  
+		<action class="SpawnEntity">
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_SpawnMinionFireInfestedBuff"/>
+			</requirement>
+			<property name="entity_names" value="ZombieINC_FireExplosions"  />
+			<property name="spawn_count" value="4"  />
+			<property name="max_distance" value="10" />
+			<property name="min_distance" value="3" />
+			<property name="phase" value="1" />
+			<property name="air_spawn" value="false" />	
+		</action>	
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SpawnFireInfestedPhase3">
+	    <property name="allow_while_dead" value="false" /> 		  		
+		<action class="SpawnEntity">
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_SpawnMinionFireInfestedBuff"/>
+			</requirement>
+			<property name="entity_names" value="ZombieINC_FireExplosions"  />
+			<property name="spawn_count" value="4"  />
+			<property name="max_distance" value="15" />
+			<property name="min_distance" value="3" />			
+			<property name="phase" value="1" />
+			<property name="air_spawn" value="false" />
+		</action>	
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SpawnMinionFireInfestedPhase1">
+	   <property name="allow_while_dead" value="false" /> 	   
+		<!--<action class="AddSpawnedEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="spawnedEnemies" />
+			<property name="entity_tags" value="fire" />
+			<property name="target_only" value="true" />
+		</action>-->
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="fire" />
+			<property name="group_name" value="spawnedEnemies" />
+			<property name="max_distance" value="50" />
+		</action>
+		<action class="SpawnEntity">
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_SpawnMinionFireInfestedBuff"/>
+			</requirement>
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="spawnedEnemies"/>
+				<property name="operation" value="LessThan"/> 
+				<property name="count" value="3"/>	
+			</requirement> 
+			<property name="entity_names" value="ZombieINC_MinionMaleFireInfested,ZombieINC_MinionWomanFireInfested"  />
+			<property name="spawn_count" value="3"  />
+			<property name="max_distance" value="7" />
+			<property name="min_distance" value="1" />
+			<property name="add_buffs" value="ZombieINC_Hunt_EnemyDotBuff" />
+			<property name="air_spawn" value="false" />
+			<property name="phase" value="1" />	
+		</action>			 
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SpawnMinionFireInfestedPhase2">
+	    <property name="allow_while_dead" value="false" /> 	  
+		<!--<action class="AddSpawnedEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="spawnedEnemies" />
+			<property name="entity_tags" value="fire" />
+			<property name="target_only" value="true" />
+		</action>-->
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="fire" />
+			<property name="group_name" value="spawnedEnemies" />
+			<property name="max_distance" value="50" />
+		</action>
+		<action class="SpawnEntity">
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_SpawnMinionFireInfestedBuff"/>
+			</requirement>
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="spawnedEnemies"/>
+				<property name="operation" value="LessThan"/> 
+				<property name="count" value="5"/>	
+			</requirement>
+			<property name="entity_names" value="ZombieINC_MinionWomanFireInfested,ZombieINC_MinionKidFireInfested"  />
+			<property name="spawn_count" value="2"  />
+			<property name="max_distance" value="10" />
+			<property name="min_distance" value="3" />
+			<property name="add_to_group" value="ZombieINC_MinionsFire" />
+			<property name="add_buffs" value="ZombieINC_Hunt_EnemyDotBuff" />
+			<property name="phase" value="1" />
+			<property name="air_spawn" value="false" />	
+		</action>	
+		<action class="RageZombies">
+			<property name="phase" value="2" />
+			<property name="time" value="120" />
+			<property name="speed_percent" value="1" />
+			<property name="target_group" value="ZombieINC_MinionsFire" />
+		</action>	
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SpawnMinionFireInfestedPhase3">
+	    <property name="allow_while_dead" value="false" /> 		  
+		<!--<action class="AddSpawnedEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="spawnedEnemies" />
+			<property name="entity_tags" value="fire" />
+			<property name="target_only" value="true" />
+		</action>-->
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="fire" />
+			<property name="group_name" value="spawnedEnemies" />
+			<property name="max_distance" value="50" />
+		</action>
+		<action class="SpawnEntity">
+			<requirement class="HasBuff">
+				<property name="buff_name" value="ZombieINC_SpawnMinionFireInfestedBuff"/>
+			</requirement>
+			<requirement class="GroupLiveCount">
+				<property name="target_group" value="spawnedEnemies"/>
+				<property name="operation" value="LessThan"/> 
+				<property name="count" value="7"/>	
+			</requirement>
+			<property name="entity_names" value="ZombieINC_MinionKidFireInfested,ZombieINC_MinionKidFire2Infested"  />
+			<property name="spawn_count" value="2"  />
+			<property name="max_distance" value="15" />
+			<property name="min_distance" value="3" />			
+			<property name="add_to_group" value="ZombieINC_MinionsFire" />
+			<property name="add_buffs" value="ZombieINC_Hunt_EnemyDotBuff" />
+			<property name="phase" value="1" />
+			<property name="air_spawn" value="false" />
+		</action>
+		<action class="RageZombies">
+			<property name="phase" value="2" />
+			<property name="time" value="120" />
+			<property name="speed_percent" value="1" />
+			<property name="target_group" value="ZombieINC_MinionsFire" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossFireInfestedEvent">
+	     <property name="refund_inactivity" value="false" />   
+		<requirement class="CVar">
+			<property name="cvar" value="ZombieINCBossSpawn"/>
+			<property name="operation" value="Equals"/>
+			<property name="value" value="0"/>
+		</requirement>	
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="party" />	
+		</action>
+		
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="target_group" value="party" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="1" />
+		</action>
+		
+		<action class="SpawnEntity">
+			<property name="safe_spawn" value="true" />			
+			<property name="entity_names" value="ZombieINC_BossFireInfested"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="9" />
+			<property name="min_distance" value="5" />
+			<property name="phase" value="2" />	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossFireInfested">					  
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="0" />
+		</action>
+		
+		<action class="Delay">
+			<property name="time" value="1-10" />
+			<property name="phase" value="2" />
+		</action>
+		
+		 <action class="CallGameEvent">
+			<requirement class="CVar">
+				<property name="cvar" value="ZombieINCBossSpawn"/>
+				<property name="operation" value="Equals"/>
+				<property name="value" value="0"/>
+			</requirement>	
+			<property name="phase" value="3" />
+			<property name="game_events" value="ZombieINC_KillBossFireInfestedEvent" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ExplosionSpawn">
+		<action class="ExplodeTarget">
+			<property name="blast_power" value="0" />
+			<property name="block_damage" value="0" />
+			<property name="block_radius" value="0" />
+			<property name="entity_damage" value="0" />
+			<property name="entity_radius" value="0" />
+			<property name="particle_index" value="13" />	
+		</action>
+	</action_sequence>
+	
+	<!--BossFireInfested-->
+	<!--##BossScientist-->
+	<action_sequence name="ZombieINC_KillBossScientistEvent">
+	    <property name="refund_inactivity" value="false" />   
+		<requirement class="CVar">
+			<property name="cvar" value="ZombieINCBossSpawn"/>
+			<property name="operation" value="Equals"/>
+			<property name="value" value="0"/>
+		</requirement>	
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="party" />	
+		</action>
+		
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="target_group" value="party" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="1" />
+		</action>
+		
+		<action class="SpawnEntity">
+			<property name="safe_spawn" value="true" />			
+			<property name="entity_names" value="ZombieINC_BossScientist"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="12" />
+			<property name="min_distance" value="7" />
+			<property name="phase" value="2" />	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossScientist">					  
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="0" />
+		</action>
+		
+		<action class="Delay">
+			<property name="time" value="1-10" />
+			<property name="phase" value="2" />
+		</action>
+		
+		 <action class="CallGameEvent">
+			<requirement class="CVar">
+				<property name="cvar" value="ZombieINCBossSpawn"/>
+				<property name="operation" value="Equals"/>
+				<property name="value" value="0"/>
+			</requirement>	
+			<property name="phase" value="3" />
+			<property name="game_events" value="ZombieINC_KillBossScientistEvent" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SpawnMinionScientistGroup6">
+	        			    
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_MinionScientist1"  />
+			<property name="spawn_count" value="1" />
+			<property name="max_distance" value="1" />
+			<property name="min_distance" value="1" />
+			<property name="phase" value="0" />
+		</action>
+		
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_MinionScientist2"  />
+			<property name="spawn_count" value="1" />
+			<property name="max_distance" value="1" />
+			<property name="min_distance" value="1" />
+			<property name="phase" value="0" />
+		</action>
+		
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_MinionScientist3"  />
+			<property name="spawn_count" value="1" />
+			<property name="max_distance" value="1" />
+			<property name="min_distance" value="1" />
+			<property name="phase" value="0" />
+		</action>
+		
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_MinionScientist4"  />
+			<property name="spawn_count" value="1" />
+			<property name="max_distance" value="1" />
+			<property name="min_distance" value="1" />
+			<property name="phase" value="0" />
+		</action>
+		
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_MinionScientist5"  />
+			<property name="spawn_count" value="1" />
+			<property name="max_distance" value="1" />
+			<property name="min_distance" value="1" />
+			<property name="phase" value="0" />
+		</action>
+		
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_MinionScientist6"  />
+			<property name="spawn_count" value="1" />
+			<property name="max_distance" value="1" />
+			<property name="min_distance" value="1" />
+			<property name="phase" value="0" />
+		</action>
+	
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SpawnMinionScientist1">
+	    <property name="allow_while_dead" value="false" />   			    
+		
+		<action class="SpawnEntity">
+				<requirement class="HasBuff">
+					<property name="buff_name" value="ZomvieINC_MinionScientist1SelfReviveBuff"/>
+				</requirement>
+			<property name="entity_names" value="ZombieINC_MinionScientist1"  />
+			<property name="spawn_count" value="1" />
+			<property name="max_distance" value="1" />
+			<property name="min_distance" value="1" />			
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SpawnMinionScientist2">
+	     <property name="allow_while_dead" value="false" />  
+		 
+		<action class="SpawnEntity">
+				<requirement class="HasBuff">
+					<property name="buff_name" value="ZomvieINC_MinionScientist2SelfReviveBuff"/>
+				</requirement>
+			<property name="entity_names" value="ZombieINC_MinionScientist2"  />
+			<property name="spawn_count" value="1" />
+			<property name="max_distance" value="1" />
+			<property name="min_distance" value="1" />			
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SpawnMinionScientist3">
+	      <property name="allow_while_dead" value="false" /> 
+		  
+		<action class="SpawnEntity">
+				<requirement class="HasBuff">
+					<property name="buff_name" value="ZomvieINC_MinionScientist3SelfReviveBuff"/>
+				</requirement>
+			<property name="entity_names" value="ZombieINC_MinionScientist3"  />
+			<property name="spawn_count" value="1" />
+			<property name="max_distance" value="1" />
+			<property name="min_distance" value="1" />			
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SpawnMinionScientist4">
+	       <property name="allow_while_dead" value="false" />			    
+		<action class="SpawnEntity">
+				<requirement class="HasBuff">
+					<property name="buff_name" value="ZomvieINC_MinionScientist4SelfReviveBuff"/>
+				</requirement>
+			<property name="entity_names" value="ZombieINC_MinionScientist4"  />
+			<property name="spawn_count" value="1" />
+			<property name="max_distance" value="1" />
+			<property name="min_distance" value="1" />			
+			<property name="phase" value="1" />	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SpawnMinionScientist5">
+	     <property name="allow_while_dead" value="false" /> 
+		 
+		<action class="SpawnEntity">
+				<requirement class="HasBuff">
+					<property name="buff_name" value="ZomvieINC_MinionScientist5SelfReviveBuff"/>
+				</requirement> 
+			<property name="entity_names" value="ZombieINC_MinionScientist5"  />
+			<property name="spawn_count" value="1" />
+			<property name="max_distance" value="1" />
+			<property name="min_distance" value="1" />			
+			<property name="phase" value="1" />	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SpawnMinionScientist6">
+	    <property name="allow_while_dead" value="false" />
+		
+		<action class="SpawnEntity">
+				<requirement class="HasBuff">
+					<property name="buff_name" value="ZomvieINC_MinionScientist6SelfReviveBuff"/>
+				</requirement>
+			<property name="entity_names" value="ZombieINC_MinionScientist6"  />
+			<property name="spawn_count" value="1" />
+			<property name="max_distance" value="1" />
+			<property name="min_distance" value="1" />			
+			<property name="phase" value="1" />	
+		</action>
+	</action_sequence>
+	
+	<!--BossScientist-->
+	<!--##BossScientistInfested-->
+	
+	<action_sequence name="ZombieINC_SpawnMinionScientistInfestedGroup">
+	    <property name="refund_inactivity" value="false" /> 			    
+	    <property name="allow_while_dead" value="true" /> 
+		
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_Hunt_ScientistInfestedNurse1"  />
+			<property name="spawn_count" value="1" />
+			<property name="max_distance" value="1" />
+			<property name="min_distance" value="1" />
+			<property name="phase" value="0" />
+		</action>
+		
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_Hunt_ScientistInfestedNurse2"  />
+			<property name="spawn_count" value="1" />
+			<property name="max_distance" value="1" />
+			<property name="min_distance" value="1" />
+			<property name="phase" value="0" />
+		</action>
+		
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_Hunt_ScientistInfestedNurse3"  />
+			<property name="spawn_count" value="1" />
+			<property name="max_distance" value="1" />
+			<property name="min_distance" value="1" />
+			<property name="phase" value="0" />
+		</action>
+		
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_Hunt_ScientistInfestedLab1"  />
+			<property name="spawn_count" value="1" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_Hunt_ScientistInfestedLab1"  />
+			<property name="spawn_count" value="1" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_Hunt_ScientistInfestedLab1"  />
+			<property name="spawn_count" value="1" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_Hunt_ScientistInfestedLab1"  />
+			<property name="spawn_count" value="1" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_Hunt_ScientistInfestedLab1"  />
+			<property name="spawn_count" value="1" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_Hunt_ScientistInfestedLab1"  />
+			<property name="spawn_count" value="1" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_Hunt_ScientistInfestedLab1"  />
+			<property name="spawn_count" value="1" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_Hunt_ScientistInfestedLab1"  />
+			<property name="spawn_count" value="1" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="phase" value="1" />
+		</action>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_Hunt_ScientistInfestedLab1"  />
+			<property name="spawn_count" value="1" />
+			<property name="spawn_type" value="WanderingHorde" />
+			<property name="phase" value="1" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ReviveBoss1">
+	    <property name="allow_while_dead" value="true" />
+		
+		<action class="Delay">
+			<property name="time" value="5" />
+			<property name="phase" value="0" />
+		</action>
+		<action class="RespawnEntity">
+			<property name="add_to_group" value="enemies" />
+			<property name="phase" value="1" />
+			<property name="respawn_sound" value="a_radiated_weak_lp" />
+		</action>
+		<action class="AddBuff">
+			<property name="phase" value="2" />
+			<property name="buff_name" value="ZombieINC_Hunt_ScientistInfestedBossRevived1" />
+			<property name="check_already_exists" value="false" />
+			<property name="target_group" value="enemies" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ReviveBoss2">
+	    <property name="allow_while_dead" value="true" />
+		
+		<action class="Delay">
+			<property name="time" value="5" />
+			<property name="phase" value="0" />
+		</action>
+		<action class="RespawnEntity">
+			<property name="add_to_group" value="enemies" />
+			<property name="phase" value="1" />
+			<property name="respawn_sound" value="a_radiated_weak_lp" />
+		</action>
+		<action class="AddBuff">
+			<property name="phase" value="2" />
+			<property name="buff_name" value="ZombieINC_Hunt_ScientistInfestedBossRevived1" />
+			<property name="check_already_exists" value="false" />
+			<property name="target_group" value="enemies" />
+		</action>
+		<action class="AddBuff">
+			<property name="phase" value="2" />
+			<property name="buff_name" value="ZombieINC_Hunt_ScientistInfestedBossRevived2" />
+			<property name="check_already_exists" value="false" />
+			<property name="target_group" value="enemies" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ReviveBoss3">
+	    <property name="allow_while_dead" value="true" />
+		
+		<action class="Delay">
+			<property name="time" value="5" />
+			<property name="phase" value="0" />
+		</action>
+		<action class="RespawnEntity">
+			<property name="add_to_group" value="enemies" />
+			<property name="phase" value="1" />
+			<property name="respawn_sound" value="a_radiated_weak_lp" />
+		</action>
+		<action class="AddBuff">
+			<property name="phase" value="2" />
+			<property name="buff_name" value="ZombieINC_Hunt_ScientistInfestedBossRevived1" />
+			<property name="check_already_exists" value="false" />
+			<property name="target_group" value="enemies" />
+		</action>
+		<action class="AddBuff">
+			<property name="phase" value="2" />
+			<property name="buff_name" value="ZombieINC_Hunt_ScientistInfestedBossRevived2" />
+			<property name="check_already_exists" value="false" />
+			<property name="target_group" value="enemies" />
+		</action>
+		<action class="AddBuff">
+			<property name="phase" value="2" />
+			<property name="buff_name" value="ZombieINC_Hunt_ScientistInfestedBossRevived3" />
+			<property name="check_already_exists" value="false" />
+			<property name="target_group" value="enemies" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ReviveBoss4">
+	    <property name="allow_while_dead" value="true" />
+		
+		<action class="Delay">
+			<property name="time" value="5" />
+			<property name="phase" value="0" />
+		</action>
+		<action class="RespawnEntity">
+			<property name="add_to_group" value="enemies" />
+			<property name="phase" value="1" />
+			<property name="respawn_sound" value="a_radiated_weak_lp" />
+		</action>
+		<action class="AddBuff">
+			<property name="phase" value="2" />
+			<property name="buff_name" value="ZombieINC_Hunt_ScientistInfestedBossRevived1" />
+			<property name="check_already_exists" value="false" />
+			<property name="target_group" value="enemies" />
+		</action>
+		<action class="AddBuff">
+			<property name="phase" value="2" />
+			<property name="buff_name" value="ZombieINC_Hunt_ScientistInfestedBossRevived2" />
+			<property name="check_already_exists" value="false" />
+			<property name="target_group" value="enemies" />
+		</action>
+		<action class="AddBuff">
+			<property name="phase" value="2" />
+			<property name="buff_name" value="ZombieINC_Hunt_ScientistInfestedBossRevived3" />
+			<property name="check_already_exists" value="false" />
+			<property name="target_group" value="enemies" />
+		</action>
+		<action class="AddBuff">
+			<property name="phase" value="2" />
+			<property name="buff_name" value="ZombieINC_Hunt_ScientistInfestedBossRevived4" />
+			<property name="check_already_exists" value="false" />
+			<property name="target_group" value="enemies" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_ReviveBoss5">
+	    <property name="allow_while_dead" value="true" />
+		
+		<action class="Delay">
+			<property name="time" value="5" />
+			<property name="phase" value="0" />
+		</action>
+		<action class="RespawnEntity">
+			<property name="add_to_group" value="enemies" />
+			<property name="phase" value="1" />
+			<property name="respawn_sound" value="a_radiated_weak_lp" />
+		</action>
+		<action class="AddBuff">
+			<property name="phase" value="2" />
+			<property name="buff_name" value="ZombieINC_Hunt_ScientistInfestedBossRevived1" />
+			<property name="check_already_exists" value="false" />
+			<property name="target_group" value="enemies" />
+		</action>
+		<action class="AddBuff">
+			<property name="phase" value="2" />
+			<property name="buff_name" value="ZombieINC_Hunt_ScientistInfestedBossRevived2" />
+			<property name="check_already_exists" value="false" />
+			<property name="target_group" value="enemies" />
+		</action>
+		<action class="AddBuff">
+			<property name="phase" value="2" />
+			<property name="buff_name" value="ZombieINC_Hunt_ScientistInfestedBossRevived3" />
+			<property name="check_already_exists" value="false" />
+			<property name="target_group" value="enemies" />
+		</action>
+		<action class="AddBuff">
+			<property name="phase" value="2" />
+			<property name="buff_name" value="ZombieINC_Hunt_ScientistInfestedBossRevived4" />
+			<property name="check_already_exists" value="false" />
+			<property name="target_group" value="enemies" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ReviveMinionNurse1">
+	    <property name="allow_while_dead" value="true" />
+		
+		<action class="RespawnEntity">
+			<property name="add_to_group" value="enemies" />
+			<property name="phase" value="1" />
+			<property name="respawn_sound" value="a_radiated_weak_lp" />
+		</action>
+		<action class="AddBuff">
+			<property name="phase" value="2" />
+			<property name="buff_name" value="ZombieINC_recent_rez" />
+			<property name="check_already_exists" value="false" />
+			<property name="target_group" value="enemies" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ReviveMinionNurse2">
+	   <property name="allow_while_dead" value="true" />
+	   
+		<action class="RespawnEntity">
+			<property name="add_to_group" value="enemies" />
+			<property name="phase" value="1" />
+			<property name="respawn_sound" value="a_radiated_weak_lp" />
+		</action>
+		<action class="AddBuff">
+			<property name="phase" value="2" />
+			<property name="buff_name" value="ZombieINC_recent_rez" />
+			<property name="check_already_exists" value="false" />
+			<property name="target_group" value="enemies" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ReviveMinionNurse3">
+	    <property name="allow_while_dead" value="true" />
+		
+		<action class="RespawnEntity">
+			<property name="add_to_group" value="enemies" />
+			<property name="phase" value="1" />
+			<property name="respawn_sound" value="a_radiated_weak_lp" />
+		</action>
+		<action class="AddBuff">
+			<property name="phase" value="2" />
+			<property name="buff_name" value="ZombieINC_recent_rez" />
+			<property name="check_already_exists" value="false" />
+			<property name="target_group" value="enemies" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_ReviveMinionLab1">
+	    <property name="allow_while_dead" value="true" />
+		<action class="RespawnEntity">
+			<property name="add_to_group" value="enemies" />
+			<property name="phase" value="1" />
+			<property name="respawn_sound" value="a_radiated_weak_lp" />
+		</action>
+		<action class="AddBuff">
+			<property name="phase" value="2" />
+			<property name="buff_name" value="ZombieINC_recent_rez" />
+			<property name="check_already_exists" value="false" />
+			<property name="target_group" value="enemies" />
+		</action>
+	</action_sequence>
+	<!--BossScientistInfested-->
+	<!--##BossBomber-->
+	<action_sequence name="ZombieINC_KillBossBomberEvent">
+	   <property name="refund_inactivity" value="false" />   
+		<requirement class="CVar">
+			<property name="cvar" value="ZombieINCBossSpawn"/>
+			<property name="operation" value="Equals"/>
+			<property name="value" value="0"/>
+		</requirement>	
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="party" />	
+		</action>
+		
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="target_group" value="party" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="1" />
+		</action>
+		
+		<action class="SpawnEntity">
+			<property name="safe_spawn" value="true" />			
+			<property name="entity_names" value="ZombieINC_BossBomber"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="12" />
+			<property name="min_distance" value="7" />
+			<property name="phase" value="2" />	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossBomber">					  
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="0" />
+		</action>
+		
+		<action class="Delay">
+			<property name="time" value="1-10" />
+			<property name="phase" value="2" />
+		</action>
+		
+		 <action class="CallGameEvent">
+			<requirement class="CVar">
+				<property name="cvar" value="ZombieINCBossSpawn"/>
+				<property name="operation" value="Equals"/>
+				<property name="value" value="0"/>
+			</requirement>	
+			<property name="phase" value="3" />
+			<property name="game_events" value="ZombieINC_KillBossBomberEvent" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SpawnMinionBomberToPlayer2">	
+		<requirement class="IsIndoors"/>
+				
+		<action class="SpawnEntity">	    
+			<property name="entity_names" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse"  />
+			<property name="spawn_count" value="2"  />
+			<property name="max_distance" value="15" />
+			<property name="min_distance" value="7" />
+			<property name="air_spawn" value="true" />
+			<property name="add_to_group" value="Bombers" />			
+			<property name="add_buffs" value="ZombieINC_ZombieExplode" />
+			<property name="phase" value="0" />		
+		</action>
+		
+		<action class="RageZombies">
+			<property name="phase" value="1" />
+			<property name="time" value="13" />
+			<property name="speed_percent" value="2" />
+			<property name="target_group" value="Bombers" />
+		</action>
+		
+		<action class="Delay">
+			<property name="phase" value="2" />
+			<property name="time" value="13" />
+		</action>
+			
+		<action class="Kill">
+			<property name="phase" value="3" />
+			<property name="target_group" value="Bombers" />
+		</action>
+	
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_SpawnMinionBomberToPlayer1">
+	<decision class="If">
+		<requirement class="InPOI">
+			<property name="invert" value="true" />
+		</requirement>			
+		<action class="SpawnEntity">    
+			<property name="entity_names" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse"  />
+			<property name="spawn_count" value="2"  />
+			<property name="max_distance" value="25" />
+			<property name="min_distance" value="10" />
+			<property name="air_spawn" value="true" />
+			<property name="add_to_group" value="Bombers" />		
+			<property name="add_buffs" value="ZombieINC_ZombieExplode" />
+			<property name="phase" value="1" />		
+		</action>
+			
+		<action class="RageZombies">
+			<property name="phase" value="2" />
+			<property name="time" value="13" />
+			<property name="speed_percent" value="2" />
+			<property name="target_group" value="Bombers" />
+		</action>
+		
+		<action class="Delay">
+			<property name="phase" value="3" />
+			<property name="time" value="13" />
+		</action>
+			
+		<action class="Kill">
+			<property name="phase" value="4" />
+			<property name="target_group" value="Bombers" />
+		</action>				
+	</decision>
+	<decision class="If">
+		<requirement class="InPOI"/>
+	
+		<action class="CallGameEvent">
+			<property name="game_events" value="ZombieINC_SpawnMinionBomberToPlayer_InPOI" />
+			<property name="phase" value="1" />
+		</action>
+	</decision>	
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SpawnMinionBomberToPlayer_InPOI">
+		<property name="action_type" value="Game" />
+		<property name="target_type" value="POI" />
+			
+		<action class="SpawnEntity">				    
+			<property name="entity_names" value="zombieArlene,zombieMarlene,zombieSkateboarder,zombieTomClark,zombieMoe,zombieBoe,zombieJoe,zombieSteve,zombieYo,zombieBusinessMan,zombieDarlene,zombiePartyGirl,zombieJanitor,zombieNurse" />
+			<property name="spawn_count" value="2"  />
+			<property name="add_to_group" value="Bombers" />
+			<property name="add_buffs" value="ZombieINC_Hunt_EnemyDotBuff,ZombieINC_Hunt_BlockDamageV1_Buff,ZombieINC_ZombieExplode"/>
+			<property name="safe_spawn" value="true" />
+			<!--<property name="spawn_type" value="WanderingHorde" />
+			<property name="max_distance" value="20"  />
+			<property name="min_distance" value="15"  />-->
+			<property name="air_spawn" value="true" />
+			<property name="phase" value="1" />			
+		</action>
+
+		<action class="RageZombies">
+			<property name="phase" value="2" />
+			<property name="time" value="13" />
+			<property name="speed_percent" value="2" />
+			<property name="target_group" value="Bombers" />
+		</action>
+		
+		<action class="Delay">
+			<property name="phase" value="3" />
+			<property name="time" value="13" />
+		</action>
+			
+		<action class="Kill">
+			<property name="phase" value="4" />
+			<property name="target_group" value="Bombers" />
+		</action>	
+	</action_sequence>
+	<action_sequence name="ZombieINC_KillSelf">		
+		<action class="Kill"/>		
+	</action_sequence>
+	<!--BossBomber-->
+	<!--##BossBomberInfested-->
+	<action_sequence name="ZombieINC_BomberInfested_Flare">		
+		<action class="ExplodeTarget">
+			<property name="blast_power" value="0" />
+			<property name="block_damage" value="0" />
+			<property name="block_radius" value="1" />
+			<property name="entity_damage" value="1" />
+			<property name="entity_radius" value="1" />
+			<property name="particle_index" value="14" />	
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_Bomb_BossBomberInfested_SpawnerEvent">
+		<property name="allow_while_dead" value="false" />
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_Bomb"  />
+			<property name="spawn_count" value="2"  />
+			<property name="max_distance" value="6" />
+			<property name="min_distance" value="1" />
+			<property name="yOffset" value="10" />
+			<property name="air_spawn" value="true" />
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_KillBossBomberInfestedEvent">
+	    <property name="refund_inactivity" value="false" />   
+		<requirement class="CVar">
+			<property name="cvar" value="ZombieINCBossSpawn"/>
+			<property name="operation" value="Equals"/>
+			<property name="value" value="0"/>
+		</requirement>	
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="party" />	
+		</action>
+		
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="target_group" value="party" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="1" />
+		</action>
+		
+		<action class="SpawnEntity">
+			<property name="safe_spawn" value="true" />			
+			<property name="entity_names" value="ZombieINC_BossBomberInfested"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="12" />
+			<property name="min_distance" value="7" />
+			<property name="phase" value="2" />	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossBomberInfested">					  
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="0" />
+		</action>
+		
+		<action class="Delay">
+			<property name="time" value="1-10" />
+			<property name="phase" value="2" />
+		</action>
+		
+		 <action class="CallGameEvent">
+			<requirement class="CVar">
+				<property name="cvar" value="ZombieINCBossSpawn"/>
+				<property name="operation" value="Equals"/>
+				<property name="value" value="0"/>
+			</requirement>	
+			<property name="phase" value="3" />
+			<property name="game_events" value="ZombieINC_KillBossBomberInfestedEvent" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SpawnMinionBomberToPlayerInfested1">
+	<decision class="If">
+		<requirement class="InPOI">
+			<property name="invert" value="true" />
+		</requirement>			
+		<action class="SpawnEntity">    
+			<property name="entity_names" value="zombieArleneFeral,zombieMarleneFeral,zombieSkateboarderFeral,zombieTomClarkFeral,zombieMoeFeral,zombieBoeFeral,zombieJoeFeral,zombieSteveFeral,zombieYoFeral,zombieBusinessManFeral,zombieDarleneFeral,zombiePartyGirlFeral,zombieJanitorFeral,zombieNurseFeral"  />
+			<property name="spawn_count" value="2"  />
+			<property name="max_distance" value="25" />
+			<property name="min_distance" value="10" />
+			<property name="air_spawn" value="true" />
+			<property name="add_to_group" value="Bombers" />		
+			<property name="add_buffs" value="ZombieINC_Hunt_EnemyDotBuff,ZombieINC_Hunt_BlockDamageV1_Buff,ZombieINC_ZombieExplode" />
+			<property name="phase" value="1" />		
+		</action>
+		<action class="SpawnEntity">    
+			<property name="entity_names" value="zombieSpiderFeral"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="30" />
+			<property name="min_distance" value="20" />
+			<property name="air_spawn" value="true" />
+			<property name="add_to_group" value="Bombers" />		
+			<property name="add_buffs" value="ZombieINC_Hunt_EnemyDotBuff,ZombieINC_Hunt_BlockDamageV1_Buff,ZombieINC_ZombieExplode" />
+			<property name="phase" value="1" />		
+		</action>
+		<action class="SpawnEntity">
+		<requirement class="IsIndoors">
+			<property name="invert" value="true" />
+		</requirement>
+			<property name="entity_names" value="animalZombieVulture" />
+			<property name="spawn_count" value="1"  />
+			<property name="add_to_group" value="Bombers" />
+			<property name="add_buffs" value="ZombieINC_Hunt_EnemyDotBuff,ZombieINC_Hunt_BlockDamageV1_Buff,ZombieINC_ZombieExplodeFlying"/>
+			<property name="safe_spawn" value="true" />
+			<property name="max_distance" value="30" />
+			<property name="min_distance" value="20" />
+			<property name="yOffset" value="10" />
+			<property name="air_spawn" value="true" />
+			<property name="phase" value="1" />			
+		</action>
+	</decision>
+	<decision class="If">
+		<requirement class="InPOI"/>
+		<action class="CallGameEvent">
+			<property name="game_events" value="ZombieINC_SpawnMinionBomberToPlayerInfested_InPOI" />
+			<property name="phase" value="1" />
+		</action>
+	</decision>	
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_SpawnMinionBomberToPlayerInfested_InPOI">
+		<property name="action_type" value="Game" />
+		<property name="target_type" value="POI" />		
+		<action class="SpawnEntity">				    
+			<property name="entity_names" value="zombieArleneFeral,zombieMarleneFeral,zombieSkateboarderFeral,zombieTomClarkFeral,zombieMoeFeral,zombieBoeFeral,zombieJoeFeral,zombieSteveFeral,zombieYoFeral,zombieBusinessManFeral,zombieDarleneFeral,zombiePartyGirlFeral,zombieJanitorFeral,zombieNurseFeral" />
+			<property name="spawn_count" value="1"  />
+			<property name="add_to_group" value="Bombers" />
+			<property name="add_buffs" value="ZombieINC_Hunt_EnemyDotBuff,ZombieINC_Hunt_BlockDamageV1_Buff,ZombieINC_ZombieExplode"/>
+			<property name="safe_spawn" value="true" />
+			<!--<property name="spawn_type" value="WanderingHorde" />
+			<property name="max_distance" value="20"  />
+			<property name="min_distance" value="15"  />-->
+			<property name="air_spawn" value="true" />
+			<property name="phase" value="1" />			
+		</action>
+		<action class="SpawnEntity">				    
+			<property name="entity_names" value="zombieSpiderFeral" />
+			<property name="spawn_count" value="1"  />
+			<property name="add_to_group" value="Bombers" />
+			<property name="add_buffs" value="ZombieINC_Hunt_EnemyDotBuff,ZombieINC_Hunt_BlockDamageV1_Buff,ZombieINC_ZombieExplode"/>
+			<property name="safe_spawn" value="true" />
+			<property name="air_spawn" value="true" />
+			<property name="phase" value="1" />			
+		</action>
+		<action class="SpawnEntity">
+		<requirement class="IsIndoors">
+			<property name="invert" value="true" />
+		</requirement>
+			<property name="entity_names" value="animalZombieVulture" />
+			<property name="spawn_count" value="1"  />
+			<property name="add_to_group" value="Bombers" />
+			<property name="add_buffs" value="ZombieINC_Hunt_EnemyDotBuff,ZombieINC_Hunt_BlockDamageV1_Buff,ZombieINC_ZombieExplodeFlying"/>
+			<property name="safe_spawn" value="true" />
+			<property name="yOffset" value="10" />
+			<property name="air_spawn" value="true" />
+			<property name="phase" value="1" />			
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_Bomb_Event">
+		<property name="allow_while_dead" value="true" />
+		<action class="ExplodeTarget">
+			<property name="blast_power" value="200" />
+			<property name="block_damage" value="50" />
+			<property name="block_radius" value="3" />
+			<property name="entity_damage" value="30" />
+			<property name="entity_radius" value="5" />
+			<property name="particle_index" value="9" />	
+		</action>
+	</action_sequence>	
+	<action_sequence name="ZombieINC_Bomb_SpawnerEvent">
+		<property name="allow_while_dead" value="false" />
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_Bomb"  />
+			<property name="spawn_count" value="2"  />
+			<property name="max_distance" value="6" />
+			<property name="min_distance" value="1" />
+			<property name="yOffset" value="10" />
+			<property name="air_spawn" value="true" />
+		</action>
+	</action_sequence>
+	<!--BossBomberInfested-->
+	<!--##BossTwins-->
+	
+	<action_sequence name="ZombieINC_KillBossTwinsBlueEvent">
+	    <property name="refund_inactivity" value="false" />   
+		<requirement class="CVar">
+			<property name="cvar" value="ZombieINCBossSpawn"/>
+			<property name="operation" value="Equals"/>
+			<property name="value" value="0"/>
+		</requirement>	
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="party" />	
+		</action>
+		
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="target_group" value="party" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="1" />
+		</action>
+		
+		<action class="SpawnEntity">
+			<property name="safe_spawn" value="true" />				
+			<property name="entity_names" value="ZombieINC_BossTwinsBlue"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="12" />
+			<property name="min_distance" value="7" />
+			<property name="phase" value="2" />	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossTwinsBlue">					  
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="0" />
+		</action>
+		
+		<action class="Delay">
+			<property name="time" value="1-10" />
+			<property name="phase" value="2" />
+		</action>
+		
+		 <action class="CallGameEvent">
+			<requirement class="CVar">
+				<property name="cvar" value="ZombieINCBossSpawn"/>
+				<property name="operation" value="Equals"/>
+				<property name="value" value="0"/>
+			</requirement>	
+			<property name="phase" value="3" />
+			<property name="game_events" value="ZombieINC_KillBossTwinsBlueEvent" />
+		</action>
+	</action_sequence>
+	
+	
+	
+	<action_sequence name="ZombieINC_KillBossTwinsRedEvent">
+	    <property name="refund_inactivity" value="false" />   
+		<requirement class="CVar">
+			<property name="cvar" value="ZombieINCBossSpawn2"/>
+			<property name="operation" value="Equals"/>
+			<property name="value" value="0"/>
+		</requirement>	
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="party" />	
+		</action>
+		
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="target_group" value="party" />
+			<property name="cvar" value="ZombieINCBossSpawn2" />
+			<property name="operation" value="Set" />
+			<property name="value" value="1" />
+		</action>
+		
+		<action class="SpawnEntity">
+			<property name="safe_spawn" value="true" />			
+			<property name="entity_names" value="ZombieINC_BossTwinsRed"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="9" />
+			<property name="min_distance" value="5" />
+			<property name="phase" value="2" />	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossTwinsRed">					  
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="cvar" value="ZombieINCBossSpawn2" />
+			<property name="operation" value="Set" />
+			<property name="value" value="0" />
+		</action>
+		
+		<action class="Delay">
+			<property name="time" value="1-10" />
+			<property name="phase" value="2" />
+		</action>
+		
+		 <action class="CallGameEvent">
+			<requirement class="CVar">
+				<property name="cvar" value="ZombieINCBossSpawn2"/>
+				<property name="operation" value="Equals"/>
+				<property name="value" value="0"/>
+			</requirement>	
+			<property name="phase" value="3" />
+			<property name="game_events" value="ZombieINC_KillBossTwinsRedEvent" />
+		</action>
+	</action_sequence>
+	
+	<!--BossTwins-->
+	<!--##BossTwinsInfested-->
+	<action_sequence name="ZombieINC_KillBossTwinsBlueInfestedEvent">
+	    <property name="refund_inactivity" value="false" />   
+		<requirement class="CVar">
+			<property name="cvar" value="ZombieINCBossSpawn"/>
+			<property name="operation" value="Equals"/>
+			<property name="value" value="0"/>
+		</requirement>	
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="party" />	
+		</action>
+		
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="target_group" value="party" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="1" />
+		</action>
+		
+		<action class="SpawnEntity">
+			<property name="safe_spawn" value="true" />				
+			<property name="entity_names" value="ZombieINC_BossTwinsBlueInfested"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="12" />
+			<property name="min_distance" value="7" />
+			<property name="phase" value="2" />	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossTwinsBlueInfested">					  
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="0" />
+		</action>
+		
+		<action class="Delay">
+			<property name="time" value="1-10" />
+			<property name="phase" value="2" />
+		</action>
+		
+		 <action class="CallGameEvent">
+			<requirement class="CVar">
+				<property name="cvar" value="ZombieINCBossSpawn"/>
+				<property name="operation" value="Equals"/>
+				<property name="value" value="0"/>
+			</requirement>	
+			<property name="phase" value="3" />
+			<property name="game_events" value="ZombieINC_KillBossTwinsBlueInfestedEvent" />
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossTwinsRedInfestedEvent">
+	     <property name="refund_inactivity" value="false" />   
+		<requirement class="CVar">
+			<property name="cvar" value="ZombieINCBossSpawn2"/>
+			<property name="operation" value="Equals"/>
+			<property name="value" value="0"/>
+		</requirement>	
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="party" />	
+		</action>
+		
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="target_group" value="party" />
+			<property name="cvar" value="ZombieINCBossSpawn2" />
+			<property name="operation" value="Set" />
+			<property name="value" value="1" />
+		</action>
+		
+		<action class="SpawnEntity">
+			<property name="safe_spawn" value="true" />			
+			<property name="entity_names" value="ZombieINC_BossTwinsRedInfested"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="9" />
+			<property name="min_distance" value="5" />
+			<property name="phase" value="2" />	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossTwinsRedInfested">					  
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="cvar" value="ZombieINCBossSpawn2" />
+			<property name="operation" value="Set" />
+			<property name="value" value="0" />
+		</action>
+		
+		<action class="Delay">
+			<property name="time" value="1-10" />
+			<property name="phase" value="2" />
+		</action>
+		
+		 <action class="CallGameEvent">
+			<requirement class="CVar">
+				<property name="cvar" value="ZombieINCBossSpawn2"/>
+				<property name="operation" value="Equals"/>
+				<property name="value" value="0"/>
+			</requirement>	
+			<property name="phase" value="3" />
+			<property name="game_events" value="ZombieINC_KillBossTwinsRedInfestedEvent" />
+		</action>
+	</action_sequence>
+	
+	<!--BossTwinsInfested-->
+	<!--##BossDemolition-->
+	<action_sequence name="ZombieINC_KillBossDemolitionEvent">
+	    <property name="refund_inactivity" value="false" />   
+		<requirement class="CVar">
+			<property name="cvar" value="ZombieINCBossSpawn"/>
+			<property name="operation" value="Equals"/>
+			<property name="value" value="0"/>
+		</requirement>	
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="party" />	
+		</action>
+		
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="target_group" value="party" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="1" />
+		</action>
+		
+		<action class="SpawnEntity">
+			<property name="safe_spawn" value="true" />	
+			<property name="entity_names" value="ZombieINC_BossDemolition"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="15" />
+			<property name="min_distance" value="8" />
+			<property name="phase" value="2" />	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossDemolition">					  
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="0" />
+		</action>
+		
+		<action class="Delay">
+			<property name="time" value="1-10" />
+			<property name="phase" value="2" />
+		</action>
+		
+		 <action class="CallGameEvent">
+			<requirement class="CVar">
+				<property name="cvar" value="ZombieINCBossSpawn"/>
+				<property name="operation" value="Equals"/>
+				<property name="value" value="0"/>
+			</requirement>	
+			<property name="phase" value="3" />
+			<property name="game_events" value="ZombieINC_KillBossDemolitionEvent" />
+		</action>
+	</action_sequence>
+	<!--BossDemolition-->
+	<!--##BossDemolitionInfested-->
+	<action_sequence name="ZombieINC_KillBossDemolitionInfestedEvent">
+	    <property name="refund_inactivity" value="false" />   
+		<requirement class="CVar">
+			<property name="cvar" value="ZombieINCBossSpawn"/>
+			<property name="operation" value="Equals"/>
+			<property name="value" value="0"/>
+		</requirement>	
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="party" />	
+		</action>
+		
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="target_group" value="party" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="1" />
+		</action>
+		
+		
+		<action class="SpawnEntity">
+			<property name="safe_spawn" value="true" />		
+			<property name="entity_names" value="ZombieINC_BossDemolitionInfested"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="15" />
+			<property name="min_distance" value="7" />
+			<property name="phase" value="2" />	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossDemolitionInfested">					  
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="0" />
+		</action>
+		
+		<action class="Delay">
+			<property name="time" value="1-10" />
+			<property name="phase" value="2" />
+		</action>
+		
+		 <action class="CallGameEvent">
+			<requirement class="CVar">
+				<property name="cvar" value="ZombieINCBossSpawn"/>
+				<property name="operation" value="Equals"/>
+				<property name="value" value="0"/>
+			</requirement>	
+			<property name="phase" value="3" />
+			<property name="game_events" value="ZombieINC_KillBossDemolitionInfestedEvent" />
+		</action>
+	</action_sequence>
+	<!--BossDemolitionInfested-->
+	<!--##BossCart-->
+	<action_sequence name="ZombieINC_KillBossCartEvent">
+	<property name="refund_inactivity" value="false" />   
+		<requirement class="CVar">
+			<property name="cvar" value="ZombieINCBossSpawn"/>
+			<property name="operation" value="Equals"/>
+			<property name="value" value="0"/>
+		</requirement>	
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="party" />	
+		</action>
+		
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="target_group" value="party" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="1" />
+		</action>
+		
+		<action class="SpawnEntity">
+			<property name="safe_spawn" value="true" />				
+			<property name="entity_names" value="ZombieINC_BossCart"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="9" />
+			<property name="min_distance" value="5" />
+			<property name="phase" value="2" />	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossCart">					  
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="0" />
+		</action>
+		
+		<action class="Delay">
+			<property name="time" value="1-10" />
+			<property name="phase" value="2" />
+		</action>
+		
+		 <action class="CallGameEvent">
+			<requirement class="CVar">
+				<property name="cvar" value="ZombieINCBossSpawn"/>
+				<property name="operation" value="Equals"/>
+				<property name="value" value="0"/>
+			</requirement>	
+			<property name="phase" value="3" />
+			<property name="game_events" value="ZombieINC_KillBossCartEvent" />
+		</action>
+	</action_sequence>
+	<!--BossCart-->
+	<!--##BossCartInfested-->
+	<action_sequence name="ZombieINC_KillBossCartInfestedEvent">
+	<property name="refund_inactivity" value="false" />   
+		<requirement class="CVar">
+			<property name="cvar" value="ZombieINCBossSpawn"/>
+			<property name="operation" value="Equals"/>
+			<property name="value" value="0"/>
+		</requirement>	
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="party" />	
+		</action>
+		
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="target_group" value="party" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="1" />
+		</action>
+		
+		<action class="SpawnEntity">
+			<property name="safe_spawn" value="true" />				
+			<property name="entity_names" value="ZombieINC_BossCartInfested"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="9" />
+			<property name="min_distance" value="5" />
+			<property name="phase" value="2" />	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossCartInfested">					  
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="0" />
+		</action>
+		
+		<action class="Delay">
+			<property name="time" value="1-10" />
+			<property name="phase" value="2" />
+		</action>
+		
+		 <action class="CallGameEvent">
+			<requirement class="CVar">
+				<property name="cvar" value="ZombieINCBossSpawn"/>
+				<property name="operation" value="Equals"/>
+				<property name="value" value="0"/>
+			</requirement>	
+			<property name="phase" value="3" />
+			<property name="game_events" value="ZombieINC_KillBossCartInfestedEvent" />
+		</action>
+	</action_sequence>
+	<!--BossCartInfested-->
+	<!--##BossDroneInfested-->
+	<action_sequence name="ZombieINC_SpawnDroneInfestedMinions">
+	<!-- <action class="AddSpawnedEntitiesToGroup">
+		<property name="phase" value="0" />
+	 	<property name="group_name" value="Minions" />
+	  	<property name="entity_tags" value="MinionDroneInfested" />
+		<property name="target_only" value="true" />
+	 </action>-->
+	 <action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="entity_tags" value="MinionDroneInfested" />
+			<property name="group_name" value="Minions" />
+			<property name="max_distance" value="50" />
+		</action>
+	 <decision class="If">
+		<requirement class="GroupLiveCount">
+			<property name="target_group" value="Minions"/>
+			<property name="operation" value="LessThan"/> 
+			<property name="count" value="4"/>
+		</requirement>
+		<action class="SpawnEntity">
+			<property name="entity_names" value="ZombieINC_BossDroneInfestedMinion"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="35" />		
+			<property name="min_distance" value="15" />
+			<property name="air_spawn" value="true" />
+			<property name="phase" value="1" />	
+		</action>		
+	</decision>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossDroneInfestedEvent">
+	<property name="refund_inactivity" value="false" />   
+		<requirement class="CVar">
+			<property name="cvar" value="ZombieINCBossSpawn"/>
+			<property name="operation" value="Equals"/>
+			<property name="value" value="0"/>
+		</requirement>	
+		<action class="AddPartyToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="party" />	
+		</action>
+		
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="target_group" value="party" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="1" />
+		</action>
+		
+		<action class="SpawnEntity">
+			<property name="safe_spawn" value="true" />			
+			<property name="entity_names" value="ZombieINC_BossDroneInfested"  />
+			<property name="spawn_count" value="1"  />
+			<property name="max_distance" value="25" />
+			<property name="min_distance" value="10" />
+			<property name="phase" value="2" />	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossDroneInfested">					  
+		<action class="ModifyCVar">
+			<property name="phase" value="1" />
+			<property name="cvar" value="ZombieINCBossSpawn" />
+			<property name="operation" value="Set" />
+			<property name="value" value="0" />
+		</action>
+		
+		<action class="Delay">
+			<property name="time" value="1-10" />
+			<property name="phase" value="2" />
+		</action>
+		
+		 <action class="CallGameEvent">
+			<requirement class="CVar">
+				<property name="cvar" value="ZombieINCBossSpawn"/>
+				<property name="operation" value="Equals"/>
+				<property name="value" value="0"/>
+			</requirement>	
+			<property name="phase" value="3" />
+			<property name="game_events" value="ZombieINC_KillBossDroneInfestedEvent" />
+		</action>
+	</action_sequence>
+	<!--BossDroneInfested-->
+	
+	
+	<!--###New Hunt Spawn Method-->
+	
+	
+	<action_sequence name="ZombieINC_KillBossCravenNew">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="Anchor" />
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Anchor_KillBossCraven_Buff" />
+			<property name="check_already_exists" value="false" />
+			<property name="phase" value="1"/>
+			<property name="target_group" value="Anchor"/>	
+		</action>
+	</action_sequence>
+	<action_sequence name="ZombieINC_KillBossCravenNew_Anchor">
+		<property name="refund_inactivity" value="false" />
+	
+			<action class="SpawnEntity">
+				<property name="safe_spawn" value="true" />				
+				<property name="entity_names" value="ZombieINC_BossCraven"  />
+				<property name="spawn_count" value="1"  />
+				<property name="max_distance" value="3" />
+				<property name="min_distance" value="1" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="phase" value="1" />	
+			</action>
+			
+		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossCartNew">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="Anchor" />
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Anchor_KillBossCart_Buff" />
+			<property name="check_already_exists" value="false" />
+			<property name="phase" value="1"/>
+			<property name="target_group" value="Anchor"/>	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossCartNew_Anchor">
+	<property name="refund_inactivity" value="false" />
+			<action class="SpawnEntity">
+				<property name="safe_spawn" value="true" />				
+				<property name="entity_names" value="ZombieINC_BossCart"  />
+				<property name="spawn_count" value="1"  />
+				<property name="max_distance" value="3" />
+				<property name="min_distance" value="1" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="phase" value="1" />	
+			</action>
+			
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossBikerNew">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="Anchor" />
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Anchor_KillBossBiker_Buff" />
+			<property name="check_already_exists" value="false" />
+			<property name="phase" value="1"/>
+			<property name="target_group" value="Anchor"/>	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossBikerNew_Anchor">
+	<property name="refund_inactivity" value="false" />
+	
+			<action class="SpawnEntity">
+				<property name="safe_spawn" value="true" />				
+				<property name="entity_names" value="ZombieINC_BossBiker"  />
+				<property name="spawn_count" value="1"  />
+				<property name="max_distance" value="3" />
+				<property name="min_distance" value="1" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="phase" value="1" />	
+			</action>
+			
+		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossBikerInfestedNew">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="Anchor" />
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Anchor_KillBossBikerInfested_Buff" />
+			<property name="check_already_exists" value="false" />
+			<property name="phase" value="1"/>
+			<property name="target_group" value="Anchor"/>	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossBikerInfestedNew_Anchor">
+	<property name="refund_inactivity" value="false" />
+	
+			<action class="SpawnEntity">
+				<property name="safe_spawn" value="true" />				
+				<property name="entity_names" value="ZombieINC_BossBikerInfested"  />
+				<property name="spawn_count" value="1"  />
+				<property name="max_distance" value="3" />
+				<property name="min_distance" value="1" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="phase" value="1" />	
+			</action>
+			
+		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossMultiplyNew">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="Anchor" />
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Anchor_KillBossMultiply_Buff" />
+			<property name="check_already_exists" value="false" />
+			<property name="phase" value="1"/>
+			<property name="target_group" value="Anchor"/>	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossMultiplyNew_Anchor">
+	<property name="refund_inactivity" value="false" />
+	
+			<action class="SpawnEntity">
+				<property name="safe_spawn" value="true" />				
+				<property name="entity_names" value="ZombieINC_BossMultiply"  />
+				<property name="spawn_count" value="1"  />
+				<property name="max_distance" value="3" />
+				<property name="min_distance" value="1" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="phase" value="1" />	
+			</action>
+		
+		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossMultiplyInfestedNew">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="Anchor" />
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Anchor_KillBossMultiplyInfested_Buff" />
+			<property name="check_already_exists" value="false" />
+			<property name="phase" value="1"/>
+			<property name="target_group" value="Anchor"/>	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossMultiplyInfestedNew_Anchor">
+	<property name="refund_inactivity" value="false" />
+	
+			<action class="SpawnEntity">
+				<property name="safe_spawn" value="true" />				
+				<property name="entity_names" value="ZombieINC_BossMultiplyInfested"  />
+				<property name="spawn_count" value="1"  />
+				<property name="max_distance" value="3" />
+				<property name="min_distance" value="1" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="phase" value="1" />	
+			</action>
+			
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossFireNew">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="Anchor" />
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Anchor_KillBossFire_Buff" />
+			<property name="check_already_exists" value="false" />
+			<property name="phase" value="1"/>
+			<property name="target_group" value="Anchor"/>	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossFireNew_Anchor">
+	<property name="refund_inactivity" value="false" />
+	
+			<action class="SpawnEntity">
+				<property name="safe_spawn" value="true" />				
+				<property name="entity_names" value="ZombieINC_BossFire"  />
+				<property name="spawn_count" value="1"  />
+				<property name="max_distance" value="3" />
+				<property name="min_distance" value="1" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="phase" value="1" />	
+			</action>
+		
+		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossFireInfestedNew">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="Anchor" />
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Anchor_KillBossFireInfested_Buff" />
+			<property name="check_already_exists" value="false" />
+			<property name="phase" value="1"/>
+			<property name="target_group" value="Anchor"/>	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossFireInfestedNew_Anchor">
+	<property name="refund_inactivity" value="false" />
+
+			<action class="SpawnEntity">
+				<property name="safe_spawn" value="true" />				
+				<property name="entity_names" value="ZombieINC_BossFireInfested"  />
+				<property name="spawn_count" value="1"  />
+				<property name="max_distance" value="3" />
+				<property name="min_distance" value="1" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="phase" value="1" />	
+			</action>
+			
+		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossScientistNew">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="Anchor" />
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Anchor_KillBossScientist_Buff" />
+			<property name="check_already_exists" value="false" />
+			<property name="phase" value="1"/>
+			<property name="target_group" value="Anchor"/>	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossScientistNew_Anchor">
+	<property name="refund_inactivity" value="false" />
+
+			<action class="SpawnEntity">
+				<property name="safe_spawn" value="true" />				
+				<property name="entity_names" value="ZombieINC_BossScientist"  />
+				<property name="spawn_count" value="1"  />
+				<property name="max_distance" value="3" />
+				<property name="min_distance" value="1" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="phase" value="1" />	
+			</action>
+			
+		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossScientistInfestedNew">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="Anchor" />
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Anchor_KillBossScientistInfested_Buff" />
+			<property name="check_already_exists" value="false" />
+			<property name="phase" value="1"/>
+			<property name="target_group" value="Anchor"/>	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossScientistInfestedNew_Anchor">
+		<property name="refund_inactivity" value="false" />
+	
+			<action class="SpawnEntity">
+				<property name="safe_spawn" value="true" />				
+				<property name="entity_names" value="ZombieINC_BossScientistInfested"  />
+				<property name="spawn_count" value="1"  />
+				<property name="max_distance" value="3" />
+				<property name="min_distance" value="1" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="phase" value="1" />	
+			</action>
+			
+			<action class="SpawnEntity">
+				<property name="entity_names" value="ZombieINC_Hunt_ScientistInfestedNurse1"  />
+				<property name="spawn_count" value="1" />
+				<property name="max_distance" value="3" />
+				<property name="min_distance" value="1" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="phase" value="1" />
+			</action>
+			
+			<action class="SpawnEntity">
+				<property name="entity_names" value="ZombieINC_Hunt_ScientistInfestedNurse2"  />
+				<property name="spawn_count" value="1" />
+				<property name="max_distance" value="3" />
+				<property name="min_distance" value="1" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="phase" value="1" />
+			</action>
+			
+			<action class="SpawnEntity">
+				<property name="entity_names" value="ZombieINC_Hunt_ScientistInfestedNurse3"  />
+				<property name="spawn_count" value="1" />
+				<property name="max_distance" value="3" />
+				<property name="min_distance" value="1" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="phase" value="1" />
+			</action>
+			
+			<action class="SpawnEntity">
+				<property name="entity_names" value="ZombieINC_Hunt_ScientistInfestedLab1"  />
+				<property name="spawn_count" value="1" />
+				<property name="max_distance" value="3" />
+				<property name="min_distance" value="1" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="phase" value="1" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_names" value="ZombieINC_Hunt_ScientistInfestedLab1"  />
+				<property name="spawn_count" value="1" />
+				<property name="max_distance" value="3" />
+				<property name="min_distance" value="1" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="phase" value="1" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_names" value="ZombieINC_Hunt_ScientistInfestedLab1"  />
+				<property name="spawn_count" value="1" />
+				<property name="max_distance" value="3" />
+				<property name="min_distance" value="1" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="phase" value="1" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_names" value="ZombieINC_Hunt_ScientistInfestedLab1"  />
+				<property name="spawn_count" value="1" />
+				<property name="max_distance" value="3" />
+				<property name="min_distance" value="1" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="phase" value="1" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_names" value="ZombieINC_Hunt_ScientistInfestedLab1"  />
+				<property name="spawn_count" value="1" />
+				<property name="max_distance" value="3" />
+				<property name="min_distance" value="1" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="phase" value="1" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_names" value="ZombieINC_Hunt_ScientistInfestedLab1"  />
+				<property name="spawn_count" value="1" />
+				<property name="max_distance" value="3" />
+				<property name="min_distance" value="1" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="phase" value="1" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_names" value="ZombieINC_Hunt_ScientistInfestedLab1"  />
+				<property name="spawn_count" value="1" />
+				<property name="max_distance" value="3" />
+				<property name="min_distance" value="1" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="phase" value="1" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_names" value="ZombieINC_Hunt_ScientistInfestedLab1"  />
+				<property name="spawn_count" value="1" />
+				<property name="max_distance" value="3" />
+				<property name="min_distance" value="1" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="phase" value="1" />
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_names" value="ZombieINC_Hunt_ScientistInfestedLab1"  />
+				<property name="spawn_count" value="1" />
+				<property name="max_distance" value="3" />
+				<property name="min_distance" value="1" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="phase" value="1" />
+			</action>
+			
+		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossBomberNew">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="Anchor" />
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Anchor_KillBossBomber_Buff" />
+			<property name="check_already_exists" value="false" />
+			<property name="phase" value="1"/>
+			<property name="target_group" value="Anchor"/>	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossBomberNew_Anchor">
+	<property name="refund_inactivity" value="false" />
+	
+			<action class="SpawnEntity">
+				<property name="safe_spawn" value="true" />				
+				<property name="entity_names" value="ZombieINC_BossBomber"  />
+				<property name="spawn_count" value="1"  />
+				<property name="max_distance" value="3" />
+				<property name="min_distance" value="1" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="phase" value="1" />	
+			</action>
+			
+		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossBomberInfestedNew">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="Anchor" />
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Anchor_KillBossBomberInfested_Buff" />
+			<property name="check_already_exists" value="false" />
+			<property name="phase" value="1"/>
+			<property name="target_group" value="Anchor"/>	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossBomberInfestedNew_Anchor">
+	<property name="refund_inactivity" value="false" />
+	
+			<action class="SpawnEntity">
+				<property name="safe_spawn" value="true" />				
+				<property name="entity_names" value="ZombieINC_BossBomberInfested"  />
+				<property name="spawn_count" value="1"  />
+				<property name="max_distance" value="3" />
+				<property name="min_distance" value="1" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="phase" value="1" />	
+			</action>
+			
+		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossCravenInfestedNew">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="Anchor" />
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Anchor_KillBossCravenInfested_Buff" />
+			<property name="check_already_exists" value="false" />
+			<property name="phase" value="1"/>
+			<property name="target_group" value="Anchor"/>	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossCravenInfestedNew_Anchor">
+	<property name="refund_inactivity" value="false" />
+	
+			<action class="SpawnEntity">
+				<property name="safe_spawn" value="true" />				
+				<property name="entity_names" value="ZombieINC_BossCravenInfested"  />
+				<property name="spawn_count" value="1"  />
+				<property name="max_distance" value="3" />
+				<property name="min_distance" value="1" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="phase" value="1" />	
+			</action>
+			
+		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossCartInfestedNew">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="Anchor" />
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Anchor_KillBossCartInfested_Buff" />
+			<property name="check_already_exists" value="false" />
+			<property name="phase" value="1"/>
+			<property name="target_group" value="Anchor"/>	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossCartInfestedNew_Anchor">
+	<property name="refund_inactivity" value="false" />
+	
+			<action class="SpawnEntity">
+				<property name="safe_spawn" value="true" />				
+				<property name="entity_names" value="ZombieINC_BossCartInfested"  />
+				<property name="spawn_count" value="1"  />
+				<property name="max_distance" value="3" />
+				<property name="min_distance" value="1" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="phase" value="1" />	
+			</action>
+			
+		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossDemolitionNew">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="Anchor" />
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Anchor_KillBossDemolition_Buff" />
+			<property name="check_already_exists" value="false" />
+			<property name="phase" value="1"/>
+			<property name="target_group" value="Anchor"/>	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossDemolitionNew_Anchor">
+	<property name="refund_inactivity" value="false" />
+	
+			<action class="SpawnEntity">
+				<property name="safe_spawn" value="true" />				
+				<property name="entity_names" value="ZombieINC_BossDemolition"  />
+				<property name="spawn_count" value="1"  />
+				<property name="max_distance" value="3" />
+				<property name="min_distance" value="1" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="phase" value="1" />	
+			</action>
+			
+		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossDemolitionInfestedNew">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="Anchor" />
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Anchor_KillBossDemolitionInfested_Buff" />
+			<property name="check_already_exists" value="false" />
+			<property name="phase" value="1"/>
+			<property name="target_group" value="Anchor"/>	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossDemolitionInfestedNew_Anchor">
+	<property name="refund_inactivity" value="false" />
+
+			<action class="SpawnEntity">
+				<property name="safe_spawn" value="true" />				
+				<property name="entity_names" value="ZombieINC_BossDemolitionInfested"  />
+				<property name="spawn_count" value="1"  />
+				<property name="max_distance" value="3" />
+				<property name="min_distance" value="1" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="phase" value="1" />	
+			</action>
+			
+		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossDroneInfestedNew">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="Anchor" />
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Anchor_KillBossDroneInfested_Buff" />
+			<property name="check_already_exists" value="false" />
+			<property name="phase" value="1"/>
+			<property name="target_group" value="Anchor"/>	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossDroneInfestedNew_Anchor">
+	<property name="refund_inactivity" value="false" />
+	
+			<action class="SpawnEntity">
+				<property name="safe_spawn" value="true" />				
+				<property name="entity_names" value="ZombieINC_BossDroneInfested"  />
+				<property name="spawn_count" value="1"  />
+				<property name="max_distance" value="3" />
+				<property name="min_distance" value="1" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="phase" value="1" />	
+			</action>
+		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossTwinsNew">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="Anchor" />
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Anchor_KillBossTwins_Buff" />
+			<property name="check_already_exists" value="false" />
+			<property name="phase" value="1"/>
+			<property name="target_group" value="Anchor"/>	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossTwinsNew_Anchor">
+	<property name="refund_inactivity" value="false" />
+	
+			<action class="SpawnEntity">
+				<property name="safe_spawn" value="true" />				
+				<property name="entity_names" value="ZombieINC_BossTwinsBlue"  />
+				<property name="spawn_count" value="1"  />
+				
+				<property name="max_distance" value="3" />
+				<property name="min_distance" value="1" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="phase" value="1" />	
+			</action>
+			<action class="SpawnEntity">
+				<property name="safe_spawn" value="true" />				
+				<property name="entity_names" value="ZombieINC_BossTwinsRed"  />
+				<property name="spawn_count" value="1"  />
+				
+				<property name="max_distance" value="3" />
+				<property name="min_distance" value="1" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="phase" value="1" />	
+			</action>
+			
+		
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossTwinsInfestedNew">
+		<requirement class="NearbyEntities">
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</requirement>
+		<action class="AddEntitiesToGroup">
+			<property name="phase" value="0" />
+			<property name="group_name" value="Anchor" />
+			<property name="entity_tags" value="Anchor" />
+			<property name="max_distance" value="120" />
+		</action>
+		<action class="AddBuff">
+			<property name="buff_name" value="ZombieINC_Anchor_KillBossTwinsInfested_Buff" />
+			<property name="check_already_exists" value="false" />
+			<property name="phase" value="1"/>
+			<property name="target_group" value="Anchor"/>	
+		</action>
+	</action_sequence>
+	
+	<action_sequence name="ZombieINC_KillBossTwinsInfestedNew_Anchor">
+	<property name="refund_inactivity" value="false" />
+
+			<action class="SpawnEntity">
+				<property name="safe_spawn" value="true" />				
+				<property name="entity_names" value="ZombieINC_BossTwinsBlueInfested"  />
+				<property name="spawn_count" value="1"  />
+				
+				<property name="max_distance" value="3" />
+				<property name="min_distance" value="1" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="phase" value="1" />	
+			</action>
+			<action class="SpawnEntity">
+				<property name="safe_spawn" value="true" />				
+				<property name="entity_names" value="ZombieINC_BossTwinsRedInfested"  />
+				<property name="spawn_count" value="1"  />
+				
+				<property name="max_distance" value="3" />
+				<property name="min_distance" value="1" />
+				<property name="spawn_type" value="WanderingHorde" />
+				<property name="phase" value="1" />	
+			</action>
+			
+		
+	</action_sequence>
+	
+<!--New Hunt Spawn Method-->	
+	
+</append>
+
+</Config>
