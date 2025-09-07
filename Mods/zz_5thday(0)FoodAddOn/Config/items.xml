@@ -2455,7 +2455,8 @@
     <set xpath="//item[starts-with(@name,'foodPumpkinPie') or (contains(@name,'foodPumpkinCheesecake')) or (contains(@name,'foodPumpkinBread'))]/property[@name='Group']/@value">Baking</set>
     <set xpath="//item/property[(@name='Group') and (@value='Food/Cooking,CFFood/Cooking')]/@value">HomeCooking</set>
     <append xpath="//item[starts-with(@name,'food')]/property[@name='Group']/@value">,TransSellReckt</append>
-    <append xpath="//item[(@name='foodGrilledMeat') or (@name='foodGrilledChicken') or (@name='foodGrilledHamburger') or (@name='foodCharredMeat') or (@name='foodBoiledMeat') or (@name='foodBakedPotato') or (@name='foodJerky') or (@name='foodHotDog')]/property[@name='Group']/@value">,BBQGrill</append>
+    <append xpath="//item[(@name='foodGrilledMeat') or (@name='foodGrilledChicken') or (@name='foodGrilledHamburger') or (@name='foodCharredMeat') or (@name='foodBoiledMeat') or (@name='foodBakedPotato') or (@name='foodJerky') or (@name='foodHotDog') or (contains(@name,'foodBaked'))]/property[@name='Group']/@value">,BBQGrill</append>
+    
     <append xpath="//item[(@name='foodMilk') or (@name='foodBearMeatStew') or (contains(@name,'foodRaw')) or (contains(@name,'foodBaked')) or (contains(@name,'foodCan')) or (contains(@name,'foodCrop')) or (contains(@name,'food'))]">
         <property name="Spoilable" value="true" />
         <property name="ShowQuality" value="false" />
@@ -2466,11 +2467,11 @@
         <property name="SpoilagePerTick" value="3" />
     </append>
     <!-- <set xpath="//item[(contains(@name,'foodCan'))]/property[@name='SpoilagePerTick']/@value">1</set> -->
-    <remove xpath="//item[(@name='foodRottingFlesh') or (@name='foodScraps') or (contains(@name,'foodCan')) or (@name='foodFlour') or (@name='foodCornMeal') or (@name='foodJerky')]/property[@name='Spoilable']" />
-    <remove xpath="//item[(@name='foodRottingFlesh') or (@name='foodScraps') or (contains(@name,'foodCan')) or  (@name='foodFlour') or (@name='foodCornMeal') or (@name='foodJerky')]/property[@name='ShowQuality']" />
-    <remove xpath="//item[(@name='foodRottingFlesh') or (@name='foodScraps') or  (contains(@name,'foodCan')) or (@name='foodFlour') or (@name='foodCornMeal') or (@name='foodJerky')]/property[@name='QualityTierColor']" />
-    <remove xpath="//item[(@name='foodRottingFlesh') or (@name='foodScraps') or  (contains(@name,'foodCan')) or (@name='foodFlour') or (@name='foodCornMeal') or (@name='foodJerky')]/property[@name='SpoiledItem']" />
-    <remove xpath="//item[(@name='foodRottingFlesh') or (@name='foodScraps') or  (contains(@name,'foodCan')) or (@name='foodFlour') or (@name='foodCornMeal') or (@name='foodJerky')]/property[@name='TickPerLoss']" />
-    <remove xpath="//item[(@name='foodRottingFlesh') or (@name='foodScraps') or  (contains(@name,'foodCan')) or (@name='foodFlour') or (@name='foodCornMeal') or (@name='foodJerky')]/property[@name='SpoilageMax']" />
-    <remove xpath="//item[(@name='foodRottingFlesh') or (@name='foodScraps') or  (contains(@name,'foodCan')) or (@name='foodFlour') or (@name='foodCornMeal') or (@name='foodJerky')]/property[@name='SpoilagePerTick']" />
+    <remove xpath="//item[(@name='foodRottingFlesh') or (@name='foodHoney') or (@name='foodScraps') or (contains(@name,'foodCan')) or (@name='foodFlour') or (@name='foodCornMeal') or (@name='foodJerky')]/property[@name='Spoilable']" />
+    <remove xpath="//item[(@name='foodRottingFlesh') or (@name='foodHoney') or (@name='foodScraps') or (contains(@name,'foodCan')) or  (@name='foodFlour') or (@name='foodCornMeal') or (@name='foodJerky')]/property[@name='ShowQuality']" />
+    <remove xpath="//item[(@name='foodRottingFlesh') or (@name='foodHoney') or (@name='foodScraps') or  (contains(@name,'foodCan')) or (@name='foodFlour') or (@name='foodCornMeal') or (@name='foodJerky')]/property[@name='QualityTierColor']" />
+    <remove xpath="//item[(@name='foodRottingFlesh') or (@name='foodHoney') or (@name='foodScraps') or  (contains(@name,'foodCan')) or (@name='foodFlour') or (@name='foodCornMeal') or (@name='foodJerky')]/property[@name='SpoiledItem']" />
+    <remove xpath="//item[(@name='foodRottingFlesh') or (@name='foodHoney') or (@name='foodScraps') or  (contains(@name,'foodCan')) or (@name='foodFlour') or (@name='foodCornMeal') or (@name='foodJerky')]/property[@name='TickPerLoss']" />
+    <remove xpath="//item[(@name='foodRottingFlesh') or (@name='foodHoney') or (@name='foodScraps') or  (contains(@name,'foodCan')) or (@name='foodFlour') or (@name='foodCornMeal') or (@name='foodJerky')]/property[@name='SpoilageMax']" />
+    <remove xpath="//item[(@name='foodRottingFlesh') or (@name='foodHoney') or (@name='foodScraps') or  (contains(@name,'foodCan')) or (@name='foodFlour') or (@name='foodCornMeal') or (@name='foodJerky')]/property[@name='SpoilagePerTick']" />
 </configs>

@@ -1,235 +1,239 @@
 <configs>
-<insertafter xpath="/items/item[@name='bookArtOfMiningLuckyStrike']/effect_group/triggered_effect[@progression_name='perkArtOfMiningLuckyStrike']">
-<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_BookRead_Mining1" operation="set" value="1" />
-</insertafter>
+    <insertafter xpath="/items/item[@name='bookArtOfMiningLuckyStrike']/effect_group/triggered_effect[@progression_name='perkArtOfMiningLuckyStrike']">
+        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_BookRead_Mining1" operation="set" value="1" />
+    </insertafter>
+<set xpath="//item[@name='ammoProjectileZombieVomit']/property[@name='Action1']/property[@name='Buff']/@value">buffRadiation01</set>
+<set xpath="//item[@name='ammoProjectileZombieVomit']/effect_group/passive_effect[@name='BuffProcChance']/@value">.50</set>
+<set xpath="//item[@name='ammoProjectileZombieVomit']/effect_group/passive_effect[@name='BuffProcChance']/@tags">buffRadiation01</set>
 
-<!-- <set xpath="//item[@name='biomeBadge1']/property[@name='AllowUnEquip']/@value">true</set>
+
+
+
+    <!-- <set xpath="//item[@name='biomeBadge1']/property[@name='AllowUnEquip']/@value">true</set>
 <set xpath="//item[@name='biomeBadge1']/property[@name='AutoEquip']/@value">false</set>
 <set xpath="//item[@name='biomeBadge1']/property[@name='IsCosmetic']/@value">true</set> -->
-
-<!-- <set xpath="//item[starts-with(@name,'biomeWeatherItem')]/property[@name='EquipSlot']/@value">BiomeBadge</set> -->
-
-
-<set xpath="//item[@name='biomeWeatherItem1']">
-<property name="Extends" value="armorLightMaster" param1="DisplayType"/>
-	<property name="CustomIcon" value="biomeWeatherItem1"/>
-	<property name="DescriptionKey" value="biomeWeatherItem1Desc"/>
-	<property name="EquipSlot" value="BiomeBadge"/>
-	<property name="Tags" value="biomeBadge1"/>
-	<property name="ShowQuality" value="false"/>
-	<property name="KeepOnDeath" value="true"/>
-	<property name="AllowUnEquip" value="false"/>
-	<property name="IsCosmetic" value="false"/>
-	<property name="AutoEquip" value="true"/>
-	<property name="ReplaceByTag" value="None"/>
-	<property name="SoundPickup" value="headwear_cloth_grab"/>
-	<property name="SoundPlace" value="headwear_cloth_place"/>
-
-	<effect_group>
-		<passive_effect name="ModSlots" operation="base_set" value="0"/>
-	</effect_group>
-
-	<effect_group>
-		<requirement name="CVarCompare" cvar="_equipReload" operation="LT" value="1"/>
-
-			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$BurntHazardTimerMax" operation="set" value="-1"/>
-			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$DesertHazardTimerMax" operation="set" value="180"/>
-			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$SnowHazardTimerMax" operation="set" value="120"/>
-			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$WastelandHazardTimerMax" operation="set" value="60"/>
-
-			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$BurntHazardTimer" operation="set" value="0">
-				<requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="1"/></triggered_effect>
-			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$DesertHazardTimer" operation="set" value="180">
-				<requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="1"/></triggered_effect>
-			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$SnowHazardTimer" operation="set" value="120">
-				<requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="1"/></triggered_effect>
-			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$WastelandHazardTimer" operation="set" value="60">
-				<requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="1"/></triggered_effect>
-		
-			<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$BurntHazardTimerMax" operation="set" value="180"/>
-			<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$DesertHazardTimerMax" operation="set" value="120"/>
-			<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$SnowHazardTimerMax" operation="set" value="60"/>
-			<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$WastelandHazardTimerMax" operation="set" value="30"/>
-		
-			<!-- BiomeBadgeLevel CVar is referenced in code. Do not change. -->
-			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$BiomeBadgeLevel" operation="set" value="1"/>
-			<triggered_effect trigger="onSelfEquipStop" action="RemoveCVar" cvar="$BiomeBadgeLevel"/>
-
-			<passive_effect name="LootStageMax" operation="base_add" value="30"> <!-- 40 + 30 = 70 -->
-				<requirement name="InBiome" biome="3"/><!-- pine_forest -->
-			</passive_effect>
-	</effect_group>
-</set>
-<set xpath="//item[@name='biomeWeatherItem2']">
-<property name="Extends" value="biomeWeatherItem1"/>
-	<property name="CustomIcon" value="biomeWeatherItem2"/>
-	<property name="DescriptionKey" value="biomeWeatherItem2Desc"/>
-	
-	<property name="Tags" value="CanReplace1,biomeBadge2"/>
-	<property name="ReplaceByTag" value="None"/>
-	<property name="EquipSlot" value="BiomeBadge"/>
-
-	<effect_group>
-		<passive_effect name="ModSlots" operation="base_set" value="0"/>
-	</effect_group>
-
-	<effect_group>
-		<requirement name="CVarCompare" cvar="_equipReload" operation="LT" value="1"/>
-
-			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$BurntHazardTimerMax" operation="set" value="-1"/>
-			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$DesertHazardTimerMax" operation="set" value="-1"/>
-			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$SnowHazardTimerMax" operation="set" value="180"/>
-			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$WastelandHazardTimerMax" operation="set" value="120"/>
-
-			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$BurntHazardTimer" operation="set" value="0">
-				<requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="2"/></triggered_effect>
-			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$DesertHazardTimer" operation="set" value="0">
-				<requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="2"/></triggered_effect>
-			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$SnowHazardTimer" operation="set" value="180">
-				<requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="2"/></triggered_effect>
-			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$WastelandHazardTimer" operation="set" value="120">
-				<requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="2"/></triggered_effect>
-			
-			<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$BurntHazardTimerMax" operation="set" value="180"/>
-			<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$DesertHazardTimerMax" operation="set" value="120"/>
-			<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$SnowHazardTimerMax" operation="set" value="60"/>
-			<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$WastelandHazardTimerMax" operation="set" value="30"/>
-			
-			<!-- BiomeBadgeLevel CVar is referenced in code. Do not change. -->
-			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$BiomeBadgeLevel" operation="set" value="2"/>
-			<triggered_effect trigger="onSelfEquipStop" action="RemoveCVar" cvar="$BiomeBadgeLevel"/>
-
-			<passive_effect name="LootStageMax" operation="base_add" value="50">
-				<requirement name="InBiome" biome="3"/></passive_effect><!-- pine_forest -->
-			<passive_effect name="LootStageMax" operation="base_add" value="10">
-				<requirement name="InBiome" biome="9"/></passive_effect><!-- burnt_forest -->
-	</effect_group>
-</set>
-<set xpath="//item[@name='biomeWeatherItem3']">
-	<property name="Extends" value="biomeWeatherItem1"/>
-	<property name="CustomIcon" value="biomeWeatherItem3"/>
-	<property name="DescriptionKey" value="biomeWeatherItem3Desc"/>
-	<property name="EquipSlot" value="BiomeBadge"/>
-	<property name="Tags" value="CanReplace1,CanReplace2,biomeBadge3"/>
-		<property name="ReplaceByTag" value="None"/>
-
-	<effect_group>
-		<passive_effect name="ModSlots" operation="base_set" value="0"/>
-	</effect_group>
-
-	<effect_group>
-		<requirement name="CVarCompare" cvar="_equipReload" operation="LT" value="1"/>
-
-			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$BurntHazardTimerMax" operation="set" value="-1"/>
-			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$DesertHazardTimerMax" operation="set" value="-1"/>
-			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$SnowHazardTimerMax" operation="set" value="-1"/>
-			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$WastelandHazardTimerMax" operation="set" value="180"/>
-			
-			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$BurntHazardTimer" operation="set" value="0">
-				<requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="3"/></triggered_effect>
-			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$DesertHazardTimer" operation="set" value="0">
-				<requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="3"/></triggered_effect>
-			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$SnowHazardTimer" operation="set" value="0">
-				<requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="3"/></triggered_effect>
-			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$WastelandHazardTimer" operation="set" value="180">
-				<requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="3"/></triggered_effect>
-			
-			<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$BurntHazardTimerMax" operation="set" value="180"/>
-			<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$DesertHazardTimerMax" operation="set" value="120"/>
-			<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$SnowHazardTimerMax" operation="set" value="60"/>
-			<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$WastelandHazardTimerMax" operation="set" value="30"/>
-			
-			<!-- BiomeBadgeLevel CVar is referenced in code. Do not change. -->
-			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$BiomeBadgeLevel" operation="set" value="3"/>
-			<triggered_effect trigger="onSelfEquipStop" action="RemoveCVar" cvar="$BiomeBadgeLevel"/>
-
-			<passive_effect name="LootStageMax" operation="base_add" value="60">
-				<requirement name="InBiome" biome="3"/></passive_effect><!-- pine_forest -->
-			<passive_effect name="LootStageMax" operation="base_add" value="40">
-				<requirement name="InBiome" biome="9"/></passive_effect><!-- burnt_forest -->
-			<passive_effect name="LootStageMax" operation="base_add" value="15">
-				<requirement name="InBiome" biome="5"/></passive_effect><!-- desert -->
-	</effect_group>
-	</set>
-<set xpath="//item[@name='biomeWeatherItem4']">
-	<property name="Extends" value="biomeWeatherItem1"/>
-	<property name="CustomIcon" value="biomeWeatherItem4"/>
-	<property name="DescriptionKey" value="biomeWeatherItem4Desc"/>
-	<property name="Tags" value="CanReplace1,CanReplace2,CanReplace3,biomeBadge4"/>
-	<property name="ReplaceByTag" value="None"/>
-	<property name="EquipSlot" value="BiomeBadge"/>
-	<effect_group>
-		<passive_effect name="ModSlots" operation="base_set" value="0"/>
-	</effect_group>
-
-	<effect_group>
-		<requirement name="CVarCompare" cvar="_equipReload" operation="LT" value="1"/>
-
-			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$BurntHazardTimerMax" operation="set" value="-1"/>
-			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$DesertHazardTimerMax" operation="set" value="-1"/>
-			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$SnowHazardTimerMax" operation="set" value="-1"/>
-			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$WastelandHazardTimerMax" operation="set" value="-1"/>
-			
-			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$BurntHazardTimer" operation="set" value="0">
-				<requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="4"/></triggered_effect>
-			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$DesertHazardTimer" operation="set" value="0">
-				<requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="4"/></triggered_effect>
-			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$SnowHazardTimer" operation="set" value="0">
-				<requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="4"/></triggered_effect>
-			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$WastelandHazardTimer" operation="set" value="0">
-				<requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="4"/></triggered_effect>
-			
-			<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$BurntHazardTimerMax" operation="set" value="180"/>
-			<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$DesertHazardTimerMax" operation="set" value="120"/>
-			<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$SnowHazardTimerMax" operation="set" value="60"/>
-			<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$WastelandHazardTimerMax" operation="set" value="30"/>
-			
-			<!-- BiomeBadgeLevel CVar is referenced in code. Do not change. -->
-			<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$BiomeBadgeLevel" operation="set" value="4"/>
-			<triggered_effect trigger="onSelfEquipStop" action="RemoveCVar" cvar="$BiomeBadgeLevel"/>
-
-			<passive_effect name="LootStageMax" operation="base_add" value="100">
-				<requirement name="InBiome" biome="3"/></passive_effect><!-- pine_forest -->
-			<passive_effect name="LootStageMax" operation="base_add" value="50">
-				<requirement name="InBiome" biome="9"/></passive_effect><!-- burnt_forest -->
-			<passive_effect name="LootStageMax" operation="base_add" value="45">
-				<requirement name="InBiome" biome="5"/></passive_effect><!-- desert -->
-			<passive_effect name="LootStageMax" operation="base_add" value="20">
-				<requirement name="InBiome" biome="1"/></passive_effect><!-- snow -->
-	</effect_group>
-</set>
-
-<append xpath="/items">
-
-
-
-
-
-
-
-<item name="drugIodidePills">
-	<property name="Tags" value="medical,medicalSkill"/>
-	<property name="DisplayType" value="IodidePillsResist"/>
-	<property name="HoldType" value="16"/>
-	<property name="Meshfile" value="@:Other/Items/Health/painkillersPrefab.prefab"/>
-	<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
-	<property name="DescriptionKey" value="drugIodidePillsDesc"/>
-	<property name="Material" value="Morganic"/>
-	<property name="CustomIcon" value="drugPainkillers"/>
-	<property name="CustomIconTint" value="4b0082"/>
-	<property name="EconomicValue" value="600"/>
-	<property name="CarryWeight" value="0.01"/>
-	<property name="Stacknumber" value="20"/> <!-- STK loot -->
-	<property name="UnlockedBy" value="craftingMedical"/>
-	<property name="Group" value="Science,CFChemicals,Medical,TCMedical"/>
-	<property name="TraderStageTemplate" value="baseTier2"/>
-	<property class="Action0">
-		<property name="Class" value="Eat"/>
-		<property name="Delay" value="1.0"/>
-		<property name="Use_time" value="..."/>
-		<property name="Sound_start" value="player_painkillers"/>
-	</property>
-	<effect_group tiered="false">
+    <!-- <set xpath="//item[starts-with(@name,'biomeWeatherItem')]/property[@name='EquipSlot']/@value">BiomeBadge</set> -->
+    <set xpath="//item[@name='biomeWeatherItem1']">
+        <property name="Extends" value="armorLightMaster" param1="DisplayType" />
+        <property name="CustomIcon" value="biomeWeatherItem1" />
+        <property name="DescriptionKey" value="biomeWeatherItem1Desc" />
+        <property name="EquipSlot" value="BiomeBadge" />
+        <property name="Tags" value="biomeBadge1" />
+        <property name="ShowQuality" value="false" />
+        <property name="KeepOnDeath" value="true" />
+        <property name="AllowUnEquip" value="false" />
+        <property name="IsCosmetic" value="false" />
+        <property name="AutoEquip" value="true" />
+        <property name="ReplaceByTag" value="None" />
+        <property name="SoundPickup" value="headwear_cloth_grab" />
+        <property name="SoundPlace" value="headwear_cloth_place" />
+        <effect_group>
+            <passive_effect name="ModSlots" operation="base_set" value="0" />
+        </effect_group>
+        <effect_group>
+            <requirement name="CVarCompare" cvar="_equipReload" operation="LT" value="1" />
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$BurntHazardTimerMax" operation="set" value="-1" />
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$DesertHazardTimerMax" operation="set" value="180" />
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$SnowHazardTimerMax" operation="set" value="120" />
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$WastelandHazardTimerMax" operation="set" value="60" />
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$BurntHazardTimer" operation="set" value="0">
+                <requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="1" />
+            </triggered_effect>
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$DesertHazardTimer" operation="set" value="180">
+                <requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="1" />
+            </triggered_effect>
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$SnowHazardTimer" operation="set" value="120">
+                <requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="1" />
+            </triggered_effect>
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$WastelandHazardTimer" operation="set" value="60">
+                <requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="1" />
+            </triggered_effect>
+            <triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$BurntHazardTimerMax" operation="set" value="180" />
+            <triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$DesertHazardTimerMax" operation="set" value="120" />
+            <triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$SnowHazardTimerMax" operation="set" value="60" />
+            <triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$WastelandHazardTimerMax" operation="set" value="30" />
+            <!-- BiomeBadgeLevel CVar is referenced in code. Do not change. -->
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$BiomeBadgeLevel" operation="set" value="1" />
+            <triggered_effect trigger="onSelfEquipStop" action="RemoveCVar" cvar="$BiomeBadgeLevel" />
+            <passive_effect name="LootStageMax" operation="base_add" value="30">
+                <!-- 40 + 30 = 70 -->
+                <requirement name="InBiome" biome="3" />
+                <!-- pine_forest -->
+            </passive_effect>
+        </effect_group>
+    </set>
+    <set xpath="//item[@name='biomeWeatherItem2']">
+        <property name="Extends" value="biomeWeatherItem1" />
+        <property name="CustomIcon" value="biomeWeatherItem2" />
+        <property name="DescriptionKey" value="biomeWeatherItem2Desc" />
+        <property name="Tags" value="CanReplace1,biomeBadge2" />
+        <property name="ReplaceByTag" value="None" />
+        <property name="EquipSlot" value="BiomeBadge" />
+        <effect_group>
+            <passive_effect name="ModSlots" operation="base_set" value="0" />
+        </effect_group>
+        <effect_group>
+            <requirement name="CVarCompare" cvar="_equipReload" operation="LT" value="1" />
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$BurntHazardTimerMax" operation="set" value="-1" />
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$DesertHazardTimerMax" operation="set" value="-1" />
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$SnowHazardTimerMax" operation="set" value="180" />
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$WastelandHazardTimerMax" operation="set" value="120" />
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$BurntHazardTimer" operation="set" value="0">
+                <requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="2" />
+            </triggered_effect>
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$DesertHazardTimer" operation="set" value="0">
+                <requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="2" />
+            </triggered_effect>
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$SnowHazardTimer" operation="set" value="180">
+                <requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="2" />
+            </triggered_effect>
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$WastelandHazardTimer" operation="set" value="120">
+                <requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="2" />
+            </triggered_effect>
+            <triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$BurntHazardTimerMax" operation="set" value="180" />
+            <triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$DesertHazardTimerMax" operation="set" value="120" />
+            <triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$SnowHazardTimerMax" operation="set" value="60" />
+            <triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$WastelandHazardTimerMax" operation="set" value="30" />
+            <!-- BiomeBadgeLevel CVar is referenced in code. Do not change. -->
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$BiomeBadgeLevel" operation="set" value="2" />
+            <triggered_effect trigger="onSelfEquipStop" action="RemoveCVar" cvar="$BiomeBadgeLevel" />
+            <passive_effect name="LootStageMax" operation="base_add" value="50">
+                <requirement name="InBiome" biome="3" />
+            </passive_effect>
+            <!-- pine_forest -->
+            <passive_effect name="LootStageMax" operation="base_add" value="10">
+                <requirement name="InBiome" biome="9" />
+            </passive_effect>
+            <!-- burnt_forest -->
+        </effect_group>
+    </set>
+    <set xpath="//item[@name='biomeWeatherItem3']">
+        <property name="Extends" value="biomeWeatherItem1" />
+        <property name="CustomIcon" value="biomeWeatherItem3" />
+        <property name="DescriptionKey" value="biomeWeatherItem3Desc" />
+        <property name="EquipSlot" value="BiomeBadge" />
+        <property name="Tags" value="CanReplace1,CanReplace2,biomeBadge3" />
+        <property name="ReplaceByTag" value="None" />
+        <effect_group>
+            <passive_effect name="ModSlots" operation="base_set" value="0" />
+        </effect_group>
+        <effect_group>
+            <requirement name="CVarCompare" cvar="_equipReload" operation="LT" value="1" />
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$BurntHazardTimerMax" operation="set" value="-1" />
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$DesertHazardTimerMax" operation="set" value="-1" />
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$SnowHazardTimerMax" operation="set" value="-1" />
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$WastelandHazardTimerMax" operation="set" value="180" />
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$BurntHazardTimer" operation="set" value="0">
+                <requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="3" />
+            </triggered_effect>
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$DesertHazardTimer" operation="set" value="0">
+                <requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="3" />
+            </triggered_effect>
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$SnowHazardTimer" operation="set" value="0">
+                <requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="3" />
+            </triggered_effect>
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$WastelandHazardTimer" operation="set" value="180">
+                <requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="3" />
+            </triggered_effect>
+            <triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$BurntHazardTimerMax" operation="set" value="180" />
+            <triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$DesertHazardTimerMax" operation="set" value="120" />
+            <triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$SnowHazardTimerMax" operation="set" value="60" />
+            <triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$WastelandHazardTimerMax" operation="set" value="30" />
+            <!-- BiomeBadgeLevel CVar is referenced in code. Do not change. -->
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$BiomeBadgeLevel" operation="set" value="3" />
+            <triggered_effect trigger="onSelfEquipStop" action="RemoveCVar" cvar="$BiomeBadgeLevel" />
+            <passive_effect name="LootStageMax" operation="base_add" value="60">
+                <requirement name="InBiome" biome="3" />
+            </passive_effect>
+            <!-- pine_forest -->
+            <passive_effect name="LootStageMax" operation="base_add" value="40">
+                <requirement name="InBiome" biome="9" />
+            </passive_effect>
+            <!-- burnt_forest -->
+            <passive_effect name="LootStageMax" operation="base_add" value="15">
+                <requirement name="InBiome" biome="5" />
+            </passive_effect>
+            <!-- desert -->
+        </effect_group>
+    </set>
+    <set xpath="//item[@name='biomeWeatherItem4']">
+        <property name="Extends" value="biomeWeatherItem1" />
+        <property name="CustomIcon" value="biomeWeatherItem4" />
+        <property name="DescriptionKey" value="biomeWeatherItem4Desc" />
+        <property name="Tags" value="CanReplace1,CanReplace2,CanReplace3,biomeBadge4" />
+        <property name="ReplaceByTag" value="None" />
+        <property name="EquipSlot" value="BiomeBadge" />
+        <effect_group>
+            <passive_effect name="ModSlots" operation="base_set" value="0" />
+        </effect_group>
+        <effect_group>
+            <requirement name="CVarCompare" cvar="_equipReload" operation="LT" value="1" />
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$BurntHazardTimerMax" operation="set" value="-1" />
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$DesertHazardTimerMax" operation="set" value="-1" />
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$SnowHazardTimerMax" operation="set" value="-1" />
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$WastelandHazardTimerMax" operation="set" value="-1" />
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$BurntHazardTimer" operation="set" value="0">
+                <requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="4" />
+            </triggered_effect>
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$DesertHazardTimer" operation="set" value="0">
+                <requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="4" />
+            </triggered_effect>
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$SnowHazardTimer" operation="set" value="0">
+                <requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="4" />
+            </triggered_effect>
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$WastelandHazardTimer" operation="set" value="0">
+                <requirement name="CVarCompare" cvar="$BiomeBadgeLevel" operation="LT" value="4" />
+            </triggered_effect>
+            <triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$BurntHazardTimerMax" operation="set" value="180" />
+            <triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$DesertHazardTimerMax" operation="set" value="120" />
+            <triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$SnowHazardTimerMax" operation="set" value="60" />
+            <triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="$WastelandHazardTimerMax" operation="set" value="30" />
+            <!-- BiomeBadgeLevel CVar is referenced in code. Do not change. -->
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="$BiomeBadgeLevel" operation="set" value="4" />
+            <triggered_effect trigger="onSelfEquipStop" action="RemoveCVar" cvar="$BiomeBadgeLevel" />
+            <passive_effect name="LootStageMax" operation="base_add" value="100">
+                <requirement name="InBiome" biome="3" />
+            </passive_effect>
+            <!-- pine_forest -->
+            <passive_effect name="LootStageMax" operation="base_add" value="50">
+                <requirement name="InBiome" biome="9" />
+            </passive_effect>
+            <!-- burnt_forest -->
+            <passive_effect name="LootStageMax" operation="base_add" value="45">
+                <requirement name="InBiome" biome="5" />
+            </passive_effect>
+            <!-- desert -->
+            <passive_effect name="LootStageMax" operation="base_add" value="20">
+                <requirement name="InBiome" biome="1" />
+            </passive_effect>
+            <!-- snow -->
+        </effect_group>
+    </set>
+    <append xpath="/items">
+        <item name="drugIodidePills">
+            <property name="Tags" value="medical,medicalSkill" />
+            <property name="DisplayType" value="IodidePillsResist" />
+            <property name="HoldType" value="16" />
+            <property name="Meshfile" value="@:Other/Items/Health/painkillersPrefab.prefab" />
+            <property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab" />
+            <property name="DescriptionKey" value="drugIodidePillsDesc" />
+            <property name="Material" value="Morganic" />
+            <property name="CustomIcon" value="drugPainkillers" />
+            <property name="CustomIconTint" value="4b0082" />
+            <property name="EconomicValue" value="600" />
+            <property name="CarryWeight" value="0.01" />
+            <property name="Stacknumber" value="20" />
+            <!-- STK loot -->
+            <property name="UnlockedBy" value="craftingMedical" />
+            <property name="Group" value="Science,CFChemicals,Medical,TCMedical" />
+            <property name="TraderStageTemplate" value="baseTier2" />
+            <property class="Action0">
+                <property name="Class" value="Eat" />
+                <property name="Delay" value="1.0" />
+                <property name="Use_time" value="..." />
+                <property name="Sound_start" value="player_painkillers" />
+            </property>
+            <!-- <effect_group tiered="false">
 		<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveBuff" buff="buffRadiationMain"/>
 		<display_value name="dRadiationResist" value="1"/>
 		<display_value name="$waterAmountAdd" value="-10"/>
@@ -246,189 +250,215 @@
         <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="5"/>
 		<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffHomeBrewEffectsDuration" operation="set" value="120"/>
 		<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffHomeBrewEffects"/>
-	</effect_group>	
-</item>
-
-
-	<item name="resourceUrainium"> <!-- scrap material -->
-		<property name="HoldType" value="45"/>
-		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
-		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
-		<property name="CustomIcon" value="resourceGoldNugget"/>
-		<property name="CustomIconTint" value="0,255,0"/>
-		<property name="DescriptionKey" value="resourceRadiumDesc"/>
-		<property name="Material" value="MresourceRadium"/>
-		<property name="Weight" value="20"/>
-		<property name="Stacknumber" value="25"/> <!-- stack size -->
-		<property name="EconomicValue" value="100"/>
-		<property name="Group" value="Resources"/>
-		<property name="RepairAmount" value="100"/>
-		<property name="LootExpValue" value="1"/>
-		<property name="CraftingIngredientTime" value=".5"/>
-	</item>
-	
-	<item name="resourceQuartz"> <!-- scrap material -->
-		<property name="HoldType" value="45"/>
-		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
-		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
-
-		<property name="DescriptionKey" value="resourceRadiumDesc"/>
-		<property name="Material" value="MresourceRadium"/>
-		<property name="Weight" value="1"/>
-		<property name="Stacknumber" value="15000"/> <!-- stack size -->
-		<property name="EconomicValue" value="100"/>
-		<property name="Group" value="Resources"/>
-		<property name="RepairAmount" value="1"/>
-		<property name="LootExpValue" value="1"/>
-		<property name="CraftingIngredientTime" value=".5"/>
-	</item>
-
-	<item name="resourceBlackDiamond"> <!-- scrap material -->
-		<property name="HoldType" value="45"/>
-		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
-		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
-
-		<property name="DescriptionKey" value="resourceRadiumDesc"/>
-		<property name="Material" value="MresourceRadium"/>
-		<property name="Weight" value="1"/>
-		<property name="Stacknumber" value="15000"/> <!-- stack size -->
-		<property name="EconomicValue" value="150"/>
-		<property name="Group" value="Resources"/>
-		<property name="RepairAmount" value="1"/>
-		<property name="LootExpValue" value="1"/>
-		<property name="CraftingIngredientTime" value=".5"/>
-	</item>
-	<item name="resourceRuby"> <!-- scrap material -->
-		<property name="HoldType" value="45"/>
-		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
-		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
-		
-		<property name="DescriptionKey" value="resourceRadiumDesc"/>
-		<property name="Material" value="MresourceRadium"/>
-		<property name="Weight" value="1"/>
-		<property name="Stacknumber" value="15000"/> <!-- stack size -->
-		<property name="EconomicValue" value="200"/>
-		<property name="Group" value="Resources"/>
-		<property name="RepairAmount" value="1"/>
-		<property name="LootExpValue" value="1"/>
-		<property name="CraftingIngredientTime" value=".5"/>
-	</item>
-	<item name="resourceBlueSaffire"> <!-- scrap material -->
-		<property name="HoldType" value="45"/>
-		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
-		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
-		
-		<property name="DescriptionKey" value="resourceRadiumDesc"/>
-		<property name="Material" value="MresourceRadium"/>
-		<property name="Weight" value="1"/>
-		<property name="Stacknumber" value="15000"/> <!-- stack size -->
-		<property name="EconomicValue" value="300"/>
-		<property name="Group" value="Resources"/>
-		<property name="RepairAmount" value="1"/>
-		<property name="LootExpValue" value="1"/>
-		<property name="CraftingIngredientTime" value=".5"/>
-	</item>
-
- 
-
-	<item name="resourceForgedUrainium"> <!-- forged material -->
-		<property name="CustomIcon" value="resourceForgedIron"/>
-		<property name="CustomIconTint" value="0,255,0"/>
-		<property name="DescriptionKey" value="resourceForgedRadiumDesc"/>
-		<property name="HoldType" value="45"/>
-		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
-		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
-		<property name="Material" value="Mradium"/>
-		<property name="Stacknumber" value="500"/> <!-- stack size -->
-		<property name="EconomicValue" value="12"/>
-		<property name="CraftingIngredientTime" value="10"/>
-		<property name="RepairTime" value=".5"/>
-		<property name="RepairAmount" value="270"/>
-		<property name="Group" value="Resources,Chemicals"/>
-	</item>
-	<item name="biomePartbf">
-		<property name="HoldType" value="45"/>
-		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
-		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
-		<property name="Material" value="Morganic"/>
-		<property name="Weight" value="0"/>
-		<property name="Stacknumber" value="5"/> <!-- STK resource -->
-		<property name="EconomicValue" value="500"/>
-		<property name="EconomicBundleSize" value="1"/>
-	 </item>
-	<item name="biomePartds">
-		<property name="HoldType" value="45"/>
-		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
-		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
-		<property name="Material" value="Morganic"/>
-		<property name="Weight" value="0"/>
-		<property name="Stacknumber" value="5"/> <!-- STK resource -->
-		<property name="EconomicValue" value="500"/>
-		<property name="EconomicBundleSize" value="1"/>
-	 </item>
-	<item name="biomePartsn">
-		<property name="HoldType" value="45"/>
-		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
-		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
-		<property name="Material" value="Morganic"/>
-		<property name="Weight" value="0"/>
-		<property name="Stacknumber" value="5"/> <!-- STK resource -->
-		<property name="EconomicValue" value="500"/>
-		<property name="EconomicBundleSize" value="1"/>
-	 </item>
-	<item name="biomePartwl">
-		<property name="HoldType" value="45"/>
-		<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
-		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
-		<property name="Material" value="Morganic"/>
-		<property name="Weight" value="0"/>
-		<property name="Stacknumber" value="5"/> <!-- STK resource -->
-		<property name="EconomicValue" value="500"/>
-		<property name="EconomicBundleSize" value="1"/>
-	 </item>
-</append>
-<append xpath="//item[@name='biomeWeatherItem1']">
-			<effect_group>
-				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="AcidProt" operation="set" value="100"/>
-				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="AcidProt" operation="set" value="0"/>
-			</effect_group>
-</append>
-<append xpath="//item[@name='biomeWeatherItem2']">
-			<effect_group>
-				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="AcidProt" operation="set" value="100"/>
-				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="AcidProt" operation="set" value="0"/>
-				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="DHProt" operation="set" value="100"/>
-				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="DHProt" operation="set" value="0"/>
-			</effect_group>
-</append>
-
-<append xpath="//item[@name='biomeWeatherItem3']">
-			<effect_group>
-				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="AcidProt" operation="set" value="100"/>
-				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="AcidProt" operation="set" value="0"/>
-				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="FNProt" operation="set" value="100"/>
-				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="FNProt" operation="set" value="0"/>
-				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="DHProt" operation="set" value="100"/>
-				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="DHProt" operation="set" value="0"/>
-			</effect_group>
-</append>
-
-
-
-<append xpath="//item[@name='biomeWeatherItem4']">
-	<effect_group tiered="false">
-				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="FNProt" operation="set" value="100"/>
-				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="FNProt" operation="set" value="0"/>
-				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="DHProt" operation="set" value="100"/>
-				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="DHProt" operation="set" value="0"/>
-					<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="AcidProt" operation="set" value="100"/>
-				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="AcidProt" operation="set" value="0"/>
-				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="RadiationProt" operation="set" value="100"/>
-				<triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="RadiationProt" operation="set" value="0"/>
-				<triggered_effect trigger="onSelfEquipStart" action="AddBuff" target="self" buff="buffmodRad"/>
-				<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" target="self" buff="buffmodRad"/>
-			</effect_group>
-		
-</append>
-	
+	</effect_group> -->
+            <effect_group tiered="false" name="Hazard Reducer">
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveBuff" buff="buffRadiationMain" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="10" />
+                <display_value name="dDuration" value="300" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$WastelandHazardTimer" operation="add" value="300">
+                    <requirement name="CVarCompare" cvar="$BiomeProgressionOn" operation="EQ" value="1" />
+                    <requirement name="WornItems" tags="biomeBadge4" operation="EQ" value="0" />
+                </triggered_effect>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$WastelandHazardTimer" operation="set" value="900">
+                    <requirement name="CVarCompare" cvar="$WastelandHazardTimer" operation="GT" value="900" />
+                </triggered_effect>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffWasteland_Hazard_Over">
+                    <requirement name="CVarCompare" cvar="$BiomeProgressionOn" operation="EQ" value="1" />
+                    <requirement name="WornItems" tags="biomeBadge4" operation="EQ" value="0" />
+                </triggered_effect>
+            </effect_group>
+            <effect_group tiered="false">
+                <!-- Setup run speed boost if not using buffWasteland_Hazard_Over -->
+                <requirement name="!HasBuff" buff="buffWasteland_Hazard_Over" />
+                <requirement name="WornItems" tags="biomeBadge4" operation="GTE" value="1" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffAtomicSmoothieRunDuration" operation="add" value="303" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffAtomicSmoothieRunDuration" operation="set" value="909">
+                    <requirement name="CVarCompare" cvar="$buffAtomicSmoothieRunDuration" operation="GT" value="909" />
+                </triggered_effect>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffAtomicSmoothieRun" />
+            </effect_group>
+        </item>
+        <item name="resourceUrainium">
+            <!-- scrap material -->
+            <property name="HoldType" value="45" />
+            <property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab" />
+            <property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab" />
+            <property name="CustomIcon" value="resourceGoldNugget" />
+            <property name="CustomIconTint" value="0,255,0" />
+            <property name="DescriptionKey" value="resourceRadiumDesc" />
+            <property name="Material" value="MresourceRadium" />
+            <property name="Weight" value="20" />
+            <property name="Stacknumber" value="25" />
+            <!-- stack size -->
+            <property name="EconomicValue" value="100" />
+            <property name="Group" value="Resources" />
+            <property name="RepairAmount" value="100" />
+            <property name="LootExpValue" value="1" />
+            <property name="CraftingIngredientTime" value=".5" />
+        </item>
+        <item name="resourceQuartz">
+            <!-- scrap material -->
+            <property name="HoldType" value="45" />
+            <property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab" />
+            <property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab" />
+            <property name="DescriptionKey" value="resourceRadiumDesc" />
+            <property name="Material" value="MresourceRadium" />
+            <property name="Weight" value="1" />
+            <property name="Stacknumber" value="15000" />
+            <!-- stack size -->
+            <property name="EconomicValue" value="100" />
+            <property name="Group" value="Resources" />
+            <property name="RepairAmount" value="1" />
+            <property name="LootExpValue" value="1" />
+            <property name="CraftingIngredientTime" value=".5" />
+        </item>
+        <item name="resourceBlackDiamond">
+            <!-- scrap material -->
+            <property name="HoldType" value="45" />
+            <property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab" />
+            <property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab" />
+            <property name="DescriptionKey" value="resourceRadiumDesc" />
+            <property name="Material" value="MresourceRadium" />
+            <property name="Weight" value="1" />
+            <property name="Stacknumber" value="15000" />
+            <!-- stack size -->
+            <property name="EconomicValue" value="150" />
+            <property name="Group" value="Resources" />
+            <property name="RepairAmount" value="1" />
+            <property name="LootExpValue" value="1" />
+            <property name="CraftingIngredientTime" value=".5" />
+        </item>
+        <item name="resourceRuby">
+            <!-- scrap material -->
+            <property name="HoldType" value="45" />
+            <property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab" />
+            <property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab" />
+            <property name="DescriptionKey" value="resourceRadiumDesc" />
+            <property name="Material" value="MresourceRadium" />
+            <property name="Weight" value="1" />
+            <property name="Stacknumber" value="15000" />
+            <!-- stack size -->
+            <property name="EconomicValue" value="200" />
+            <property name="Group" value="Resources" />
+            <property name="RepairAmount" value="1" />
+            <property name="LootExpValue" value="1" />
+            <property name="CraftingIngredientTime" value=".5" />
+        </item>
+        <item name="resourceBlueSaffire">
+            <!-- scrap material -->
+            <property name="HoldType" value="45" />
+            <property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab" />
+            <property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab" />
+            <property name="DescriptionKey" value="resourceRadiumDesc" />
+            <property name="Material" value="MresourceRadium" />
+            <property name="Weight" value="1" />
+            <property name="Stacknumber" value="15000" />
+            <!-- stack size -->
+            <property name="EconomicValue" value="300" />
+            <property name="Group" value="Resources" />
+            <property name="RepairAmount" value="1" />
+            <property name="LootExpValue" value="1" />
+            <property name="CraftingIngredientTime" value=".5" />
+        </item>
+        <item name="resourceForgedUrainium">
+            <!-- forged material -->
+            <property name="CustomIcon" value="resourceForgedIron" />
+            <property name="CustomIconTint" value="0,255,0" />
+            <property name="DescriptionKey" value="resourceForgedRadiumDesc" />
+            <property name="HoldType" value="45" />
+            <property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab" />
+            <property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab" />
+            <property name="Material" value="Mradium" />
+            <property name="Stacknumber" value="500" />
+            <!-- stack size -->
+            <property name="EconomicValue" value="12" />
+            <property name="CraftingIngredientTime" value="10" />
+            <property name="RepairTime" value=".5" />
+            <property name="RepairAmount" value="270" />
+            <property name="Group" value="Resources,Chemicals" />
+        </item>
+        <item name="biomePartbf">
+            <property name="HoldType" value="45" />
+            <property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab" />
+            <property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab" />
+            <property name="Material" value="Morganic" />
+            <property name="Weight" value="0" />
+            <property name="Stacknumber" value="5" />
+            <!-- STK resource -->
+            <property name="EconomicValue" value="500" />
+            <property name="EconomicBundleSize" value="1" />
+        </item>
+        <item name="biomePartds">
+            <property name="HoldType" value="45" />
+            <property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab" />
+            <property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab" />
+            <property name="Material" value="Morganic" />
+            <property name="Weight" value="0" />
+            <property name="Stacknumber" value="5" />
+            <!-- STK resource -->
+            <property name="EconomicValue" value="500" />
+            <property name="EconomicBundleSize" value="1" />
+        </item>
+        <item name="biomePartsn">
+            <property name="HoldType" value="45" />
+            <property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab" />
+            <property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab" />
+            <property name="Material" value="Morganic" />
+            <property name="Weight" value="0" />
+            <property name="Stacknumber" value="5" />
+            <!-- STK resource -->
+            <property name="EconomicValue" value="500" />
+            <property name="EconomicBundleSize" value="1" />
+        </item>
+        <item name="biomePartwl">
+            <property name="HoldType" value="45" />
+            <property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab" />
+            <property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab" />
+            <property name="Material" value="Morganic" />
+            <property name="Weight" value="0" />
+            <property name="Stacknumber" value="5" />
+            <!-- STK resource -->
+            <property name="EconomicValue" value="500" />
+            <property name="EconomicBundleSize" value="1" />
+        </item>
+    </append>
+    <append xpath="//item[@name='biomeWeatherItem1']">
+        <effect_group>
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="AcidProt" operation="set" value="100" />
+            <triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="AcidProt" operation="set" value="0" />
+        </effect_group>
+    </append>
+    <append xpath="//item[@name='biomeWeatherItem2']">
+        <effect_group>
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="AcidProt" operation="set" value="100" />
+            <triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="AcidProt" operation="set" value="0" />
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="DHProt" operation="set" value="100" />
+            <triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="DHProt" operation="set" value="0" />
+        </effect_group>
+    </append>
+    <append xpath="//item[@name='biomeWeatherItem3']">
+        <effect_group>
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="AcidProt" operation="set" value="100" />
+            <triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="AcidProt" operation="set" value="0" />
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="FNProt" operation="set" value="100" />
+            <triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="FNProt" operation="set" value="0" />
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="DHProt" operation="set" value="100" />
+            <triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="DHProt" operation="set" value="0" />
+        </effect_group>
+    </append>
+    <append xpath="//item[@name='biomeWeatherItem4']">
+        <effect_group tiered="false">
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="FNProt" operation="set" value="100" />
+            <triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="FNProt" operation="set" value="0" />
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="DHProt" operation="set" value="100" />
+            <triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="DHProt" operation="set" value="0" />
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="AcidProt" operation="set" value="100" />
+            <triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="AcidProt" operation="set" value="0" />
+            <triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar="RadiationProt" operation="set" value="100" />
+            <triggered_effect trigger="onSelfEquipStop" action="ModifyCVar" cvar="RadiationProt" operation="set" value="0" />
+            <triggered_effect trigger="onSelfEquipStart" action="AddBuff" target="self" buff="buffmodRad" />
+            <triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" target="self" buff="buffmodRad" />
+        </effect_group>
+    </append>
 </configs>

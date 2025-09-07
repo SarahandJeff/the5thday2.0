@@ -83,7 +83,7 @@
 		<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="self" buff="HOH_Level_Display_Hunting"/>
 		<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="self" buff="HOH_Level_Display_Questing"/>
 		<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="self" buff="HOH_Perk_Trackers"/>
-		<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="self" buff="buffProtectionCheck"/>
+		<!-- <triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="self" buff="buffProtectionCheck"/> -->
 	</insertAfter>
 	<append xpath="/buffs">
 		<buff name="ActionSkillStart" hidden="true">
@@ -3844,8 +3844,66 @@
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_Cooked-foodCanStock" operation="add" value="1" />
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Cooking_XP" operation="add" value="3" />
 			</effect_group>
-			
 
+
+			<effect_group name="jerky">
+				<requirement name="CVarCompare" cvar="HOH_Cooking_lvl" operation="LT" value="100"/>
+				<requirement name="CVarCompare" cvar="processedCount_foodJerky" operation="LT" value="@_craftCount_foodJerky" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_foodJerky" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Cooking_XP" operation="add" value="2" />
+			</effect_group>
+			<effect_group name="hotdog">
+				<requirement name="CVarCompare" cvar="HOH_Cooking_lvl" operation="LT" value="100"/>
+				<requirement name="CVarCompare" cvar="processedCount_foodHotDog" operation="LT" value="@_craftCount_foodHotDog" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_foodHotDog" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Cooking_XP" operation="add" value="2" />
+			</effect_group>
+			<effect_group name="burger">
+				<requirement name="CVarCompare" cvar="HOH_Cooking_lvl" operation="LT" value="100"/>
+				<requirement name="CVarCompare" cvar="processedCount_foodGrilledHamburger" operation="LT" value="@_craftCount_foodGrilledHamburger" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_foodGrilledHamburger" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Cooking_XP" operation="add" value="2" />
+			</effect_group>
+
+
+			<effect_group name="bass">
+				<requirement name="CVarCompare" cvar="HOH_Cooking_lvl" operation="LT" value="100"/>
+				<requirement name="CVarCompare" cvar="processedCount_foodCookedBass" operation="LT" value="@_craftCount_foodCookedBass" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_foodCookedBass" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Cooking_XP" operation="add" value="2" />
+			</effect_group>
+				<effect_group name="carp">
+				<requirement name="CVarCompare" cvar="HOH_Cooking_lvl" operation="LT" value="100"/>
+				<requirement name="CVarCompare" cvar="processedCount_foodBakedCarp" operation="LT" value="@_craftCount_foodBakedCarp" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_foodBakedCarp" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Cooking_XP" operation="add" value="2" />
+			</effect_group>
+			<effect_group name="perch">
+				<requirement name="CVarCompare" cvar="HOH_Cooking_lvl" operation="LT" value="100"/>
+				<requirement name="CVarCompare" cvar="processedCount_foodBakedPerch" operation="LT" value="@_craftCount_foodBakedPerch" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_foodBakedPerch" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Cooking_XP" operation="add" value="2" />
+			</effect_group>
+			<effect_group name="catfish">
+				<requirement name="CVarCompare" cvar="HOH_Cooking_lvl" operation="LT" value="100"/>
+				<requirement name="CVarCompare" cvar="processedCount_foodCookedCatfish" operation="LT" value="@_craftCount_foodCookedCatfish" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_foodCookedCatfish" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Cooking_XP" operation="add" value="2" />
+			</effect_group>
+			<effect_group name="bluegil">
+				<requirement name="CVarCompare" cvar="HOH_Cooking_lvl" operation="LT" value="100"/>
+				<requirement name="CVarCompare" cvar="processedCount_foodCookedBluegil" operation="LT" value="@_craftCount_foodBluegil" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_foodBluegil" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Cooking_XP" operation="add" value="2" />
+			</effect_group>
+
+
+			<effect_group name="butter">
+				<requirement name="CVarCompare" cvar="HOH_Cooking_lvl" operation="LT" value="100"/>
+				<requirement name="CVarCompare" cvar="processedCount_foodButter" operation="LT" value="@_craftCount_foodButter" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_foodButter" operation="add" value="1" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Cooking_XP" operation="add" value="2" />
+			</effect_group>
 
 
 
