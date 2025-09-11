@@ -3360,6 +3360,11 @@
 		<buff name="HOH_Level_Display_SMG" hidden="true" remove_on_death="false">
 			<update_rate value="0.1"/>
 			<stack_type value="ignore"/>
+			<effect_group>
+				<requirement name="ItemHasTags" tags="PerkHOHSMG"/>
+				<requirement name="CVarCompare" cvar="HOH_MachineGun_lvl" operation="LT" value="50"/>
+				<passive_effect name="EntityDamage" operation="base_set" value="0"/>
+			</effect_group>
 			<!-- Pistol Progression -->
 			<effect_group name="HOH_SMG_Levelup">
 				<requirement name="CVarCompare" cvar="HOH_Pistols_lvl" operation="GTE" value="50"/>

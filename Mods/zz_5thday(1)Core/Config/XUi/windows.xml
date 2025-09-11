@@ -37,8 +37,19 @@
 <remove xpath="//window[@name='windowQuestOffer']"/>
 <remove xpath="//window[@name='windowQuestTurnInDescription']"/>
 
+	
 
+<remove xpath="//window[@name='windowResponses']"/>
 <append xpath="/windows">
+<window name="windowResponses" pos="300,-450" width="710" height="400" anchor="LeftTop" cursor_area="true" controller="DialogResponseList">
+<!-- <window name="windowResponses" pos="-425,60" width="775" height="360" anchor="RightCenter" cursor_area="true" controller="DialogResponseList"> -->
+		<!-- <sprite depth="1" name="background" sprite="ui_game_text_body_back" /> -->
+		<sprite depth="1" color="[black]" pos="12,-6" size="1400,400" type="sliced"/>
+		<label name="lblName" style="subtitle" text="{respondentname}" color="[selectedColor]" justify="left" depth="2" pos="12,-6" />
+		<grid name="items" pos="3,-46" rows="6" cols="2" width="800" height="200" cell_width="800" cell_height="40" repeat_content="true" arrangement="vertical">
+			<response_entry id="0" />
+		</grid>
+	</window>
 <window name="windowQuestTurnInDescription" width="653" height="312" panel="Left" cursor_area="true" controller="QuestTurnInDetailsWindow">
 		<rect pos='-100,0'>
 		<panel name="header" height="43" depth="1" backgroundspritename="ui_game_panel_header">

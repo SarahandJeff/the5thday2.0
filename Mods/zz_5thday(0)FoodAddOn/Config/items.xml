@@ -1505,10 +1505,11 @@
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthFarmer" operation="set" value="2">
                     <requirement name="HasBuff" buff="buffFarmerSetBonus" />
                 </triggered_effect>
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="-1" />
+                
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".foodStaminaBonusAdd" operation="add" value="2" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables" />
-                <display_value name="$waterAmountAdd" value="-5" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="-1" />
+                <display_value name="$waterAmountAdd" value="-1" />
             </effect_group>
         </item>
         <item name="foodPorkChop">

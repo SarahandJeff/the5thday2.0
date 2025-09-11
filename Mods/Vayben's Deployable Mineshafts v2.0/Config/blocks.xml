@@ -1,0 +1,32 @@
+<config>
+    <append xpath="/blocks/block[contains(@name, 'woodMaster')]">
+        <property name="Tags" value="wood"/>
+    </append>
+    <append xpath="/blocks/block[contains(@name, 'ladderWood')]">
+        <property name="Tags" value="wood"/>
+    </append>
+    <append xpath="/blocks">
+        <block name="VaybensDeployableMineshaft">
+            <property name="CreativeMode" value="Player"/>
+            <property name="Class" value="GameEvent"/>
+            <property name="ActivateEvent" value="VaybensDeployableMineshaft"/>
+            <property name="CustomIcon" value="electricalBox01"/>
+            <property name="DescriptionKey" value="VaybensDeployableMineshaft_Desc"/>
+            <property name="Material" value="Mmetal_medium"/>
+            <property name="Shape" value="ModelEntity"/>
+            <property name="WaterFlow" value="permitted"/>
+            <property name="Model" value="@:Entities/Industrial/utilityElectricalBox_01Prefab.prefab"/>
+            <property name="Texture" value="282"/>
+            <property name="IsTerrainDecoration" value="false"/>
+            <property name="EconomicValue" value="1800"/>
+            <property name="EconomicBundleSize" value="1"/>
+            <drop event="Destroy" count="0"/>
+            <drop event="Fall" count="0" stick_chance="0"/>
+            <!-- <drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/> -->
+            <property name="Group" value="Decor/Miscellaneous"/>
+            <property name="FilterTags" value="MC_building"/>
+            <property name="DestroyOnEvent" value="false" />
+            <property name="Tags" value="VaybensDeployableMineshaft"/>
+        </block>
+    </append>
+</config>
