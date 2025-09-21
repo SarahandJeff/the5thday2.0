@@ -1,0 +1,37 @@
+<configs>
+
+    <append xpath="/buffs">
+
+        <buff name="buffPoweredFlashLight" hidden="true">
+            <update_rate value="1" />
+            <effect_group name="poweredFlashLight">
+                <triggered_effect trigger="onSelfBuffStart" action="MinEventActionDecayFlashLight, cave-lights" />
+                <triggered_effect trigger="onSelfBuffUpdate" action="MinEventActionDecayFlashLight, cave-lights" />
+            </effect_group>
+        </buff>
+
+        <buff name="buffPoweredHeadLight" hidden="true">
+            <update_rate value="1" />
+            <effect_group name="poweredHeadLight">
+                <triggered_effect trigger="onSelfBuffStart" action="MinEventActionDecayHeadLight, cave-lights" />
+                <triggered_effect trigger="onSelfBuffUpdate" action="MinEventActionDecayHeadLight, cave-lights" />
+            </effect_group>
+        </buff>
+
+        <buff name="buffPoweredGunLight" hidden="true">
+            <update_rate value="1" />
+            <effect_group name="poweredHeadLight">
+                <triggered_effect trigger="onSelfBuffStart" action="MinEventActionDecayGunLight, cave-lights" />
+                <triggered_effect trigger="onSelfBuffUpdate" action="MinEventActionDecayGunLight, cave-lights" />
+            </effect_group>
+        </buff>
+
+        <buff name="buffFlashlightDisabled">
+            <update_rate value="1" />
+            <effect_group>
+                <triggered_effect trigger="onSelfBuffUpdate" action="MinEventActionTurnOffLights, cave-lights" />
+            </effect_group>
+        </buff>
+
+    </append>
+</configs>

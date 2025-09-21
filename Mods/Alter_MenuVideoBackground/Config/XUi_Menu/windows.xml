@@ -1,0 +1,13 @@
+<configs>
+	<setattribute xpath="/windows/window[@name='menuBackground']" name="controller">VideoPlayer, MenuVideoBackground</setattribute>
+	<append xpath="/windows/window[@name='menuBackground']">
+		<texture depth="2" texture="@modfolder:Textures/overlay.png" anchor_left="#cam,0,-5" anchor_bottom="#cam,0,-5" anchor_right="#cam,1,5" anchor_top="#cam,1,5" />
+	</append>
+	<set xpath="/windows/window[@name='loadingScreen']/texture[@name='loading_image']/@anchor_bottom">#cam,0,-5</set> 
+	<set xpath="/windows/window[@name='loadingScreen']/texture[@name='loading_image']/@texture">""</set>
+	<append xpath="/windows/window[@name='loadingScreen']">
+		<texture depth="2" texture="@modfolder:Textures/overlay.png" anchor_left="#cam,0,-5" anchor_bottom="#cam,0,-5" anchor_right="#cam,1,5" anchor_top="#cam,1,5" />
+		<sprite depth="4" anchor_left="#cam,0,-100" anchor_right="#cam,1,100" anchor_bottom="#cam,0,-5" anchor_top="#cam,0,251" color="0,0,0,255" globalopacity="false" type="sliced" fillcenter="true" />
+		<!-- <sprite depth="5" height="300" width="2000" pos="-1000, -265" color="[black]" type="sliced" globalopacity="false" /> -->
+	</append>
+</configs>

@@ -1,0 +1,99 @@
+<configs>
+
+    <!-- meleeToolFlashlight02 -->
+    <append xpath="/items/item[@name='meleeToolFlashlight02']/property[@name='Tags']/@value">,powered</append>
+    <append xpath="/items/item[@name='meleeToolFlashlight02']">
+        <property name="ShowQuality" value="true" />
+        <property name="RepairTools" value="aa_battery" />
+        <property name="DegradationBreaksAfter" value="false" />
+        <property name="MaxIntensity" value="1.3" />
+        <property name="MinIntensity" value="0.5" />
+
+        <effect_group>
+            <passive_effect name="DegradationMax" operation="base_set" value="1200,2400,3600,4800,6000,7200" tier="1,2,3,4,5,6" />
+            <triggered_effect trigger="onSelfItemActivate" action="AddBuff" buff="buffPoweredFlashLight" />
+            <triggered_effect trigger="onSelfItemDeactivate" action="RemoveBuff" buff="buffPoweredFlashLight" />
+            <triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="buffPoweredFlashLight" />
+        </effect_group>
+    </append>
+
+    <!-- aa batteries -->
+    <append xpath="/items">
+
+        <item name="aa_battery">
+            <property name="CustomIcon" value="aa_battery" />
+            <property name="HoldType" value="45" />
+            <property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab" />
+            <property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab" />
+            <property name="Material" value="MresourceScrapLeadSmall" />
+            <property name="Stacknumber" value="20" />
+            <property name="RepairAmount" value="9999" />
+            <property name="Weight" value="1" />
+            <property name="EconomicValue" value="1" />
+            <property name="EconomicBundleSize" value="12" />
+            <property name="CraftingIngredientTime" value="9" />
+            <property name="Group" value="Resources,Chemicals" />
+            <property name="DescriptionKey" value="aaBatteryDesc" />
+            <property name="SoundPickup" value="shotgunshells_grab" />
+            <property name="SoundPlace" value="shotgunshells_place" />
+
+        </item>
+
+        <item name="aa_battery_pack_4">
+            <property name="CustomIcon" value="aa_battery_pack_4" />
+            <property name="HoldType" value="45" />
+            <property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab" />
+            <property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab" />
+            <property name="Material" value="MresourceScrapLeadMedium" />
+            <property name="Stacknumber" value="5" />
+            <property name="Weight" value="0" />
+            <property name="EconomicValue" value="1" />
+            <property name="EconomicBundleSize" value="12" />
+            <property name="CraftingIngredientTime" value="9" />
+            <property name="Group" value="Resources" />
+            <property name="SoundPickup" value="drug_covertcats_grab" />
+            <property name="SoundPlace" value="drug_covertcats_place" />
+            <property name="DescriptionKey" value="aa_battery_pack_4" />
+
+            <property class="Action0">
+                <property name="Class" value="OpenBundle" />
+                <property name="Delay" value="0" />
+                <property name="Sound_start" value="close_garbage" />
+                <property name="Create_item" value="aa_battery" />
+                <property name="Create_item_count" value="4" />
+            </property>
+        </item>
+
+        <item name="aa_battery_pack_2">
+            <property name="CustomIcon" value="aa_battery_pack_2" />
+            <property name="HoldType" value="45" />
+            <property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab" />
+            <property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab" />
+            <property name="Material" value="MresourceScrapLeadMedium" />
+            <property name="Stacknumber" value="5" />
+            <property name="Weight" value="0" />
+            <property name="EconomicValue" value="1" />
+            <property name="EconomicBundleSize" value="12" />
+            <property name="CraftingIngredientTime" value="9" />
+            <property name="Group" value="Resources" />
+            <property name="SoundPickup" value="drug_covertcats_grab" />
+            <property name="SoundPlace" value="drug_covertcats_place" />
+            <property name="DescriptionKey" value="aa_battery_pack_2" />
+
+            <property class="Action0">
+                <property name="Class" value="OpenBundle" />
+                <property name="Delay" value="0" />
+                <property name="Sound_start" value="close_garbage" />
+                <property name="Create_item" value="aa_battery" />
+                <property name="Create_item_count" value="2" />
+            </property>
+        </item>
+
+    </append>
+
+    <!-- Torch light intensity -->
+    <append xpath="/items/item[@name='meleeToolTorch']">
+        <property name="MaxIntensity" value="0.5" />
+    </append>
+
+</configs>

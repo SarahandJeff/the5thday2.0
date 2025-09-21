@@ -1,0 +1,96 @@
+<!--
+    Duplicates Loot containers used in cave decoration, to insert
+    custom loot in caves whithout affecting vanilla loot containers
+-->
+
+<configs>
+    <append xpath="/lootcontainers">
+
+        <lootgroup name="caveGroupWoodenChest" count="4">
+            <item count="1" group="groupJunk" loot_prob_template="high" />
+            <item count="1" group="dyes" loot_prob_template="low" />
+            <item count="1" group="groupAmmoLarge" loot_prob_template="high" force_prob="true" />
+        </lootgroup>
+
+        <!-- woodenChest -->
+        <lootcontainer name="caveWoodenChest" size="6,2" sound_open="UseActions/open_chest" sound_close="UseActions/close_chest" loot_quality_template="qualBaseTemplate" destroy_on_close="empty">
+            <item group="caveGroupWoodenChest" />
+        </lootcontainer>
+
+        <!-- MilitaryChest -->
+        <lootgroup name="caveGroupMilitaryFootlocker" count="all">
+            <item group="groupMilitaryFootlocker01" count="2" />
+            <item group="groupMilitaryFootlocker02" loot_prob_template="med" force_prob="true" />
+            <item group="groupAmmoLarge" loot_prob_template="high" force_prob="true" />
+        </lootgroup>
+
+        <lootcontainer name="caveMilitaryChest" size="6,2" sound_open="UseActions/open_chest" sound_close="UseActions/close_chest" loot_quality_template="qualBaseTemplate" destroy_on_close="empty">
+            <item group="caveGroupMilitaryFootlocker" />
+        </lootcontainer>
+
+        <!-- oldWestChest -->
+        <lootgroup name="caveGroupOldWestChest" count="all">
+            <item count="1" group="groupOldWestChest01" />
+            <item group="groupOldWestChest02" loot_prob_template="veryLow" force_prob="true" />
+            <item group="groupAmmoLarge" loot_prob_template="high" force_prob="true" />
+        </lootgroup>
+
+        <lootcontainer name="caveOldWestChest" size="6,2" sound_open="UseActions/open_chest" sound_close="UseActions/close_chest" loot_quality_template="qualBaseTemplate" destroy_on_close="empty">
+            <item group="caveGroupOldWestChest" />
+        </lootcontainer>
+
+        <!-- rottenChest -->
+        <lootgroup name="caveGroupRottenChest" count="all">
+            <item group="groupRottenChest01" count="2" />
+            <item group="groupRottenChest02" loot_prob_template="med" force_prob="true" />
+            <item group="groupRottenChest03" loot_prob_template="veryLow" force_prob="true" />
+            <item group="groupAmmoLarge" loot_prob_template="high" force_prob="true" />
+        </lootgroup>
+
+        <lootcontainer name="caveRottenChest" size="6,2" sound_open="UseActions/open_chest" sound_close="UseActions/close_chest" loot_quality_template="qualBaseTemplate" destroy_on_close="empty">
+            <item group="caveGroupRottenChest" />
+        </lootcontainer>
+
+        <!-- cntBackPack -->
+        <lootgroup name="caveGroupBackpacks" count="all">
+            <item group="groupBackpacks01" count="1" />
+            <item group="groupBackpacks02" loot_prob_template="medLow" force_prob="true" />
+        </lootgroup>
+
+        <lootcontainer name="caveCntBackpack" count="3" size="6,2" sound_open="UseActions/open_backpack" sound_close="UseActions/close_backpack" open_time="1.5" loot_quality_template="qualPrimitiveItemsTemplate" destroy_on_close="empty">
+            <item group="caveGroupBackpacks" />
+            <item group="groupAmmoLarge" loot_prob_template="high" />
+        </lootcontainer>
+
+        <!-- militaryGoods -->
+        <lootcontainer name="caveMilitaryGoods" size="6,2" sound_open="UseActions/open_garbage" sound_close="UseActions/close_garbage" loot_quality_template="qualBaseTemplate" destroy_on_close="empty">
+            <item group="caveGroupMilitaryFootlocker" />
+        </lootcontainer>
+
+        <!-- CampingTents -->
+        <lootgroup name="caveGroupCampingTents01">
+            <item group="survivalMedical" />
+            <item group="skillMagazines" loot_prob_template="medLow" />
+            <item name="drinkJarRiverWater" loot_prob_template="med" />
+            <item group="groupAmmoLarge" loot_prob_template="high" />
+        </lootgroup>
+
+        <lootgroup name="caveGroupCampingTents02">
+            <item group="perkBooks" loot_prob_template="low" />
+            <item name="meleeToolFlashlight02" loot_prob_template="low" />
+            <item name="lanternDecorLightBlockVariantHelper" loot_prob_template="low" />
+            <item name="toolCookingPot" loot_prob_template="veryLow" />
+            <item name="toolCookingGrill" loot_prob_template="veryLow" />
+            <item group="groupAmmoLarge" loot_prob_template="high" />
+        </lootgroup>
+
+        <lootgroup name="caveGroupCampingTents" count="all">
+            <item group="caveGroupCampingTents01" count="2" />
+            <item group="caveGroupCampingTents02" count="2" />
+        </lootgroup>
+
+        <lootcontainer name="caveCntCampingTents" count="1" size="6,2" sound_open="UseActions/open_backpack" sound_close="UseActions/close_backpack" open_time="1.5" loot_quality_template="qualPrimitiveItemsTemplate" destroy_on_close="empty">
+            <item group="caveGroupCampingTents" />
+        </lootcontainer>
+    </append>
+</configs>
