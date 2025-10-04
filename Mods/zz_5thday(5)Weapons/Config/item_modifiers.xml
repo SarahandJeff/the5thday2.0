@@ -480,5 +480,48 @@
 		</effect_group>
 	</item_modifier>
 </append>
+ <remove xpath="/item_modifiers/item_modifier[@name='modArmorNightVision']" />
+    <append xpath="/item_modifiers">
+        <item_modifier name="modArmorNightVision" installable_tags="armorHead" modifier_tags="nightVision" blocked_tags="noMods" type="attachment">
+            <property name="Extends" value="modGeneralMaster" param1="CustomIcon" />
+            <property name="CustomIcon" value="modArmorNightVision" />
+            <property name="TraderStageTemplate" value="modsTier2" />
+            <property name="Material" value="Msteel" />
+            <property name="EconomicValue" value="1200" />
+            <!-- <property name="LightValue" value=".6"/> -->
+            <effect_group tiered="false">
+                <requirement name="IsLocalPlayer" />
+                <triggered_effect trigger="onSelfEquipStart" action="AddPart" part="HeadLightTPV" prefab="ScreenEffects/DeferredNV/NVGLight" parentTransform="Spotlight" localPos="0,0,0" localRot="90,0,0" />
+                <triggered_effect trigger="onSelfEquipStart" action="AddPart" part="HeadLightFPV" prefab="ScreenEffects/DeferredNV/NVGLight" parentTransform="CameraNode" localPos="0,0,.1" localRot="-90,0,0" />
+                <triggered_effect trigger="onSelfEquipStop" action="RemovePart" part="HeadLightTPV" />
+                <triggered_effect trigger="onSelfEquipStop" action="RemovePart" part="HeadLightFPV" />
+                <triggered_effect trigger="onSelfItemActivate" action="ModifyScreenEffect" effect_name="Bright" intensity="0.950" fade="0" />
+                <triggered_effect trigger="onSelfItemDeactivate" action="ModifyScreenEffect" effect_name="Bright" intensity="0" fade="0" />
+                <triggered_effect trigger="onSelfEquipStop" action="ModifyScreenEffect" effect_name="Bright" intensity="0" fade="0" />
+      <!-- <triggered_effect trigger="onSelfItemActivate" action="ModifyScreenEffect" effect_name="NightVision" intensity="1" fade="0"/>
+		<triggered_effect trigger="onSelfItemDeactivate" action="ModifyScreenEffect" effect_name="NightVision" intensity="0" fade="0"/>
+		<triggered_effect trigger="onSelfEquipStop" action="ModifyScreenEffect" effect_name="NightVision" intensity="0" fade="0"/> -->
+
+                <triggered_effect trigger="onSelfItemActivate" action="SetPartActive" part="HeadLightTPV" active="@!.IsFPV" />
+                <triggered_effect trigger="onSelfItemActivate" action="SetPartActive" part="HeadLightFPV" active="@.IsFPV" />
+                <triggered_effect trigger="onSelfItemDeactivate" action="SetPartActive" part="HeadLightTPV" active="false" />
+                <triggered_effect trigger="onSelfItemDeactivate" action="SetPartActive" part="HeadLightFPV" active="false" />
+                <triggered_effect trigger="onSelfChangedView" action="SetPartActive" part="HeadLightTPV" active="@!.IsFPV" />
+                <triggered_effect trigger="onSelfChangedView" action="SetPartActive" part="HeadLightFPV" active="@.IsFPV" />
+            </effect_group>
+            <property name="Tags" value="powered" />
+        <property name="ShowQuality" value="true" />
+        <property name="RepairTools" value="aa_battery" />
+        <property name="DegradationBreaksAfter" value="false" />
+        <property name="MaxIntensity" value="0.9" />
+        <property name="MinIntensity" value="0.5" />
+
+        <effect_group>
+            <passive_effect name="DegradationMax" operation="base_set" value="1200,2400,3600,4800,6000,7200" tier="1,2,3,4,5,6" />
+            <triggered_effect trigger="onSelfItemActivate" action="AddBuff" buff="buffPoweredHeadLight" />
+            <triggered_effect trigger="onSelfItemDeactivate" action="RemoveBuff" buff="buffPoweredHeadLight" />
+        </effect_group>
+        </item_modifier>
+    </append>
 
 </snj>

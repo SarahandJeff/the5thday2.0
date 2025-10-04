@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <configs>
     <!-- <set xpath="//triggered_effect[@cvar='$foodAmountAdd']/@value">-5</set>
 <set xpath="//triggered_effect[@cvar='$waterAmountAdd']/@value">-3</set>
@@ -87,7 +88,7 @@
                 <property name="Delay" value="1.0" />
                 <property name="Sound_start" value="player_eating" />
             </property>
-            <property name="Group" value="Food/Cooking,CFFood/Cooking" />
+            <property name="Group" value="Food/Cooking,CFFood/Cooking,Mixer" />
             <effect_group tiered="false" name="Food Tier 0">
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="2" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="3" />
@@ -1505,7 +1506,6 @@
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthFarmer" operation="set" value="2">
                     <requirement name="HasBuff" buff="buffFarmerSetBonus" />
                 </triggered_effect>
-                
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".foodStaminaBonusAdd" operation="add" value="2" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="-1" />
@@ -1569,7 +1569,7 @@
                 <property name="Delay" value="2.1" />
                 <property name="Sound_start" value="player_eating" />
             </property>
-            <property name="Group" value="Food/Cooking,CFFood/Cooking" />
+            <property name="Group" value="Mixer" />
             <effect_group tiered="false" name="Food Tier 1">
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="5" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="-5" />
@@ -1600,7 +1600,7 @@
                 <property name="Delay" value="2.1" />
                 <property name="Sound_start" value="player_eating" />
             </property>
-            <property name="Group" value="Food/Cooking,CFFood/Cooking" />
+            <property name="Group" value="Food/Cooking,CFFood/Cooking,Mixer" />
             <effect_group tiered="false" name="Food Tier 1">
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="5" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="-5" />
@@ -1762,7 +1762,7 @@
                 <property name="Delay" value="2.1" />
                 <property name="Sound_start" value="player_eating" />
             </property>
-            <property name="Group" value="Prep" />
+            <property name="Group" value="Prep,Mixer" />
             <effect_group tiered="false" name="Food Tier 1">
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="5" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="1" />
@@ -1794,7 +1794,7 @@
                 <property name="Delay" value="2.1" />
                 <property name="Sound_start" value="player_eating" />
             </property>
-            <property name="Group" value="Prep" />
+            <property name="Group" value="Prep,Mixer" />
             <effect_group tiered="false" name="Food Tier 1">
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="5" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="1" />
@@ -2432,13 +2432,39 @@
                 <passive_effect name="CraftingTime" operation="base_set" value="10" tags="boiledWater" />
             </effect_group>
         </item>
+        <item name="foodCropWheat">
+            <property name="Tags" value="food,foodSkill,fitness,farmerFoodBonus" />
+            <property name="DisplayType" value="foodRaw" />
+            <property name="HoldType" value="31" />
+            <property name="Meshfile" value="@:Other/Items/Food/parcelGenericPrefab.prefab" />
+            <property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab" />
+            <property name="Material" value="MresourceCrop" />
+            <property name="Stacknumber" value="125" />
+            <!-- STK food -->
+            <property name="EconomicValue" value="10" />
+            <property name="EconomicBundleSize" value="1" />
+            <property name="SoundPickup" value="yuccafruit_grab" />
+            <property name="SoundPlace" value="yuccafruit_place" />
+            <property class="Action0">
+                <property name="Class" value="Eat" />
+                <property name="Delay" value="1.0" />
+                <property name="Sound_start" value="player_eating" />
+            </property>
+            <property name="Group" value="Food/Cooking,CFFood/Cooking" />
+            <!-- ,Medicine -->
+            <effect_group tiered="false" name="Food Tier 0">
+                
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="-3"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables" />
+            </effect_group>
+        </item>
     </append>
     <set xpath="//item[@name='foodGrilledMeat']/property[@name='Meshfile']/@value">#@modfolder:Assets/Foods.unity3d?GrilledSteak</set>
     <set xpath="//item[@name='foodGrilledMeat']/property[@name='DropMeshfile']/@value">#@modfolder:Assets/Foods.unity3d?GrilledSteak</set>
     <append xpath="//item[contains(@name,'drink')]/property[@class='Action0']">
         <property name="Create_item" value="drinkJarEmpty" />
     </append>
-    <set xpath="//item[starts-with(@name,'foodCan') and not (contains(@name,'Cat')) and not (contains(@name,'Dog'))]/effect_group">
+    <set xpath="//item[starts-with(@name,'foodCan') and not (contains(@name,'Cat')) and not (contains(@name,'Dog')) and not (contains(@name,'Chili')) and not (contains(@name,'Soup'))]/effect_group">
         <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="5" />
         <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="2" />
         <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="2" />
@@ -2452,12 +2478,11 @@
     <append xpath="//item[@name='foodCanPasta']">
         <property name="CustomIcon" value="foodCanTomato" />
     </append>
-    <set xpath="//item[(contains(@name,'foodGrilledMeat')) or (contains(@name,'Patty'))]/property[@name='Group']/@value">Prep</set>
+    <set xpath="//item[(contains(@name,'foodGrilledMeat'))]/property[@name='Group']/@value">Prep</set>
     <set xpath="//item[starts-with(@name,'foodPumpkinPie') or (contains(@name,'foodPumpkinCheesecake')) or (contains(@name,'foodPumpkinBread'))]/property[@name='Group']/@value">Baking</set>
     <set xpath="//item/property[(@name='Group') and (@value='Food/Cooking,CFFood/Cooking')]/@value">HomeCooking</set>
     <append xpath="//item[starts-with(@name,'food')]/property[@name='Group']/@value">,TransSellReckt</append>
     <append xpath="//item[(@name='foodGrilledMeat') or (@name='foodGrilledChicken') or (@name='foodGrilledHamburger') or (@name='foodCharredMeat') or (@name='foodBoiledMeat') or (@name='foodBakedPotato') or (@name='foodJerky') or (@name='foodHotDog') or (contains(@name,'foodBaked'))]/property[@name='Group']/@value">,BBQGrill</append>
-    
     <append xpath="//item[(@name='foodMilk') or (@name='foodBearMeatStew') or (contains(@name,'foodRaw')) or (contains(@name,'foodBaked')) or (contains(@name,'foodCan')) or (contains(@name,'foodCrop')) or (contains(@name,'food'))]">
         <property name="Spoilable" value="true" />
         <property name="ShowQuality" value="false" />

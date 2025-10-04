@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <snj>
     <!-- <remove xpath="//item_stack/rect/sprite[@name='quickswapIcon']"/>
 <set xpath="//item_stack/rect/sprite[@name='backgroundmain']/@height">60</set>
@@ -163,13 +164,11 @@
                 </button>
                 <sprite depth="15" name="iconSlotLock" width="20" height="20" sprite="ui_game_symbol_lock" pos="50, -14" style="icon32px" pivot="center" visible="{# defined('userlockmode') and !userlockmode and userlockedslot }" color="[lightGrey]" /> -->
                 <button name="rectSlotLock" depth="15" style="press, hover" width="60" height="60" visible="{userlockmode}" sprite="" hoverscale="1" use_selection_box="true">
-					<sprite depth="3" name="iconSlotLock" width="60" height="60" sprite="menu_empty3px"  type="sliced" fillcenter="true" color="{# userlockedslot ? '255, 0, 0,150' : '0,255,0,150' }"  />
-					<sprite depth="3" name="iconSlotLock" width="60" height="60" sprite="menu_empty3px"  type="sliced" fillcenter="false" color="{# userlockedslot ? '255, 0, 0,150' : '0,255,0,150' }"  />
-				</button>
-				<sprite depth="3" name="iconSlotLock" width="60" height="60" sprite="menu_empty3px"  type="sliced" fillcenter="true" visible="{# userlockedslot and !userlockmode}" color="255,0,0,150" />
-				<sprite depth="3" name="iconSlotLock" width="60" height="60" sprite="menu_empty3px"  type="sliced" fillcenter="false" visible="{# userlockedslot and !userlockmode}" color="255,0,0,150" />
-
-
+                    <sprite depth="3" name="iconSlotLock" width="60" height="60" sprite="menu_empty3px" type="sliced" fillcenter="true" color="{# userlockedslot ? '255, 0, 0,150' : '0,255,0,150' }" />
+                    <sprite depth="3" name="iconSlotLock" width="60" height="60" sprite="menu_empty3px" type="sliced" fillcenter="false" color="{# userlockedslot ? '255, 0, 0,150' : '0,255,0,150' }" />
+                </button>
+                <sprite depth="3" name="iconSlotLock" width="60" height="60" sprite="menu_empty3px" type="sliced" fillcenter="true" visible="{# userlockedslot and !userlockmode}" color="255,0,0,150" />
+                <sprite depth="3" name="iconSlotLock" width="60" height="60" sprite="menu_empty3px" type="sliced" fillcenter="false" visible="{# userlockedslot and !userlockmode}" color="255,0,0,150" />
             </rect>
         </SNJ_item_stack>
         <SNJ_item_stack2 controller="ItemStack" on_scroll="false" allow_dropping="true" prefix_id="false" show_favorites="false">
@@ -202,11 +201,30 @@
 				</button>
 				<sprite depth="3" name="iconSlotLock" width="60" height="60" sprite="menu_empty3px"  type="sliced" fillcenter="true" visible="{# userlockedslot and !userlockmode}" color="255,0,0,150" />
 				<sprite depth="3" name="iconSlotLock" width="60" height="60" sprite="menu_empty3px"  type="sliced" fillcenter="false" visible="{# userlockedslot and !userlockmode}" color="255,0,0,150" /> -->
-
-
             </rect>
         </SNJ_item_stack2>
-       
+        <SNJ_item_stack3 controller="ItemStack" on_scroll="false" allow_dropping="true" prefix_id="false" show_favorites="false">
+            <rect controller="${controller}" style="itemStack, hover" width="70" height="70" collider_scale="1.0" on_scroll="${on_scroll}" allow_dropping="${allow_dropping}" prefix_id="${prefix_id}" show_favorites="${show_favorites}" tooltip="{tooltip}" enabled="{# !defined('userlockmode') or !userlockmode}" visible="{# !defined('container_slots') or (int(${repeat_i}) &lt; int(container_slots)) }">
+                <sprite depth="1" name="backgroundMain" sprite="menu_empty3px" pos="-1,1" width="66" height="66" color="[black]" type="sliced" fillcenter="false" />
+                <sprite depth="4" name="background" sprite="menu_empty3px" pos="1,-1" width="66" height="66" color="{# selectionbordercolor == '96,96,96,255' ? '0,0,0,0' : selectionbordercolor }" type="sliced" globalopacity="true" fillcenter="false" />
+                <sprite depth="2" name="highlightOverlay" pos="1,-1" width="66" height="66" color="{backgroundcolor}" type="sliced" globalopacity="true" />
+                <texture depth="6" name="backgroundTexture" material="Materials/Transparent Colored" size="66,66" globalopacity="true" />
+                <sprite depth="14" name="favoriteIcon" width="24" height="24" sprite="server_favorite" pos="2,-2" foregroundlayer="true" visible="{isfavorite}" />
+                <sprite depth="7" name="itemIcon" width="45" height="45" atlas="ItemIconAtlas" sprite="{itemicon}" pos="34,-30" pivot="center" foregroundlayer="true" color="{iconcolor}" />
+                <sprite depth="15" name="lockTypeIcon" width="24" height="24" sprite="{locktypeicon}" pos="2,-2" foregroundlayer="true" />
+                <sprite depth="15" name="itemtypeicon" width="24" height="24" sprite="ui_game_symbol_{itemtypeicon}" pos="2,-2" foregroundlayer="true" visible="{hasitemtypeicon}" color="{itemtypeicontint}" />
+                <sprite depth="3" name="read" sprite="Glow - Inner" color="207,207,207,180" width="66" height="66" pos="1,0" visible="{# itemtypeicon == 'book_read'}" />
+                <sprite depth="3" name="unread" sprite="Glow - Inner" color="99,251,255,180" width="66" height="66" pos="1,0" visible="{# itemtypeicon == 'book'}" />
+                <sprite depth="8" name="durabilitySquareBackground" pos="1,-1" width="66" height="6" sprite="Glow - Inner" color="{durabilitycolor}" type="sliced" foregroundlayer="true" globalopacity="true" visible="{hasdurability}" />
+                <sprite depth="9" name="durabilityBackground" width="64" height="10" sprite="menu_empty3px" color="[darkGrey]" type="sliced" pos="2,-55" foregroundlayer="true" visible="{hasdurability}" />
+                <filledsprite depth="10" name="durability" width="64" height="10" sprite="menu_empty2px" color="{durabilitycolor}" fill="{durabilityfill}" type="filled" pos="2,-55" foregroundlayer="true" visible="{hasdurability}" />
+                <sprite depth="8" name="disabledOverlay" width="66" height="66" color="[darkGrey_half_alpha]" pos="1,-1" type="sliced" visible="false" />
+                <label depth="12" name="stackValue" pos="0,-50" width="66" height="28" text="{itemcount}" font_size="20" effect="outline" justify="{#hasdurability ? 'Center' : 'Right'}" />
+                <label depth="12" name="timer" pos="35,-33" width="66" height="24" font_size="20" justify="center" pivot="center" color="[beige]" effect="outline" effect_distance="1,1" effect_color="0,0,0,255" />
+                <sprite depth="9" name="cancel" sprite="ui_game_symbol_x" color="255,0,0,255" type="sliced" visible="{# ishovered and islocked}" foregroundlayer="true" width="70" height="70" />
+                <sprite depth="16" name="assembleIcon" size="35,35" sprite="{stacklockicon}" color="{stacklockcolor}" visible="{isassemblelocked}" pos="16,-16" foregroundlayer="true" />
+            </rect>
+        </SNJ_item_stack3>
         <Bonus_equipment_stack_sdcs>
             <rect depth="1" controller="EquipmentStack" style="itemStack, hover" tooltip="test">
                 <sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="55" height="55" color="[black]" type="sliced" fillcenter="false" />
@@ -285,6 +303,63 @@
                 <label depth="7" name="stackValue" width="55" height="28" text="Backpack" font_size="26" justify="center" />
             </rect>
         </equipment_Backpack_stack>
+        <recipe_entryR>
+            <rect height="43" style="press, hover, scroll" controller="RecipeEntry" disabled_font_color="[disabledLabelColor]" enabled_font_color="[labelColor]" sound="[recipe_click]" sound_play_on_hover="[default_hover]">
+                <sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="419" height="49" color="[black]" type="sliced" fillcenter="false" />
+                <sprite depth="3" name="background" width="100%" height="45" pos="0,1" color="[darkGrey]" type="sliced" />
+                <sprite depth="4" name="Icon" atlas="ItemIconAtlas" sprite="{recipeicon}" color="{recipeicontint}" size="40,40" pos="34,-22" pivot="center" foregroundlayer="true" />
+                <sprite depth="8" name="itemtypeicon" width="12" height="12" sprite="ui_game_symbol_{itemtypeicon}" pos="2,-2" foregroundlayer="true" visible="{hasitemtypeicon}" color="{itemtypeicontint}" />
+                <label depth="4" name="Name" pos="200,-19" width="270" height="30" text="{recipename}" font_size="28" color="{hasingredientsstatecolor}" justify="center" pivot="center" />
+                <sprite depth="5" name="Favorite" sprite="server_favorite" size="14,14" pos="6,-4" visible="{isfavorite}" foregroundlayer="true" />
+                <sprite depth="4" name="Unlocked" sprite="{unlockicon}" size="24,24" pos="352,-10" visible="{isunlockable}" color="{unlockstatecolor}" foregroundlayer="true" />
+                <rect depth="4" name="enought" width="100%" height="100%" pos="1,-1" visible="{# unlockicon != 'ui_game_symbol_lock'}">
+                    <sprite depth="0" name="enough" color="{# hasingredientsstatecolor == '255,255,255,255' ? '0,255,0,90' : '255,0,0,90'}" visible="{hasrecipe}" />
+                </rect>
+                <rect depth="4" name="notenought" width="100%" height="100%" pos="1,-1" visible="{# unlockicon == 'ui_game_symbol_lock'}">
+                    <sprite depth="0" name="enough" color="{# hasingredientsstatecolor == '255,255,255,255' ? '255,0,0,90' : '255,0,0,90'}" visible="{hasrecipe}" />
+                </rect>
+            </rect>
+        </recipe_entryR>
+        <forge_material_snj>
+            <rect name="forgeinput_entry" depth="1" width="101" height="45" tooltip_key="${name}">
+                <sprite depth="1" width="101" pivot="center" sprite="smx_menu_background" color="7,7,7,275" />
+                <sprite name="materialIcon" depth="2" pos="-13,0" width="32" height="32" pivot="center" atlas="ItemIconAtlas" sprite="${name}" color="{itemicontint}" foregroundlayer="true" />
+                <label name="material" depth="2" width="100" height="24" pivot="center" style="label_outline_snj" force_hide="true" />
+                <label name="weight" depth="2" pos="50,0" width="90" height="24" pivot="center" style="label_outline_snj" font_size="22" justify="left" color="255,255,255,255" />
+            </rect>
+        </forge_material_snj>
+        <snjStatVehicle visible="true" width="260" height="35" text_key="">
+            <rect width="${width}" height="${height}" visible="${visible}">
+                <sprite style="background" />
+                <sprite depth="2" pos="0,-${height - 4}" height="4" style="ulmFilled" color="32,32,32,128" foregroundlayer="true" />
+                <label depth="2" name="title" pos="10,-6" width="${width - 17}" font_size="20" style="outline" text_key="${text_key}" upper_case="true" />
+                <label depth="2" name="value" pos="10,-6" width="${width - 17}" font_size="20" style="outline" text="${value}" justify="right" color="[labelColor2]" />
+            </rect>
+        </snjStatVehicle>
+        <snjVehiclePartSlot pos="0,0">
+            <rect>
+                <rect pos="${pos}" controller="VehiclePartStack" size="92,92" hover_icon_grow="1.5" pickup_sound="[pickup_click]" place_sound="[place_click]" sound_volume="0.75" on_press="true" on_hover="true" hover_background_color="0,255,144" default_background_color="255,255,255" selected_background_color="222,206,163">
+                    <sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="92" height="92" color="[black]" type="sliced" fillcenter="false" />
+                    <sprite depth="2" name="background" color="[darkGrey]" height="92" pos="0,1" type="sliced" />
+                    <sprite depth="2" name="hoverBackground" sprite="ui_stack_hover" />
+                    <sprite depth="3" type="sliced" sprite="ui_stack_bg" globalopacity="true" visible="{hasQuality}" color="{qualityColor}" />
+                    <sprite depth="5" name="itemIcon" pos="46,-46" size="80,80" atlas="{partatlas}" sprite="{particon}" pivot="center" foregroundlayer="true" color="{particoncolor}" visible="{partvisible}" />
+                    <sprite depth="4" pos="46,-46" size="70,70" sprite="mod_slot_bg" color="255,255,255,32" pivot="center" foregroundlayer="true" visible="{emptyvisible}" />
+                </rect>
+            </rect>
+        </snjVehiclePartSlot>
+        <snjitem_part_slot pos="0,0">
+            <rect>
+                <rect pos="${pos}" controller="${controller}" size="60,60" hover_icon_grow="1.5" pickup_sound="[pickup_click]" place_sound="[place_click]" sound_volume="0.75" on_press="true" on_hover="true" hover_background_color="0,255,144" default_background_color="255,255,255" selected_background_color="222,206,163">
+                    <sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="60" height="60" color="[black]" type="sliced" fillcenter="false" />
+                    <sprite depth="2" name="background" color="[darkGrey]" height="60" pos="0,1" type="sliced" />
+                    <sprite depth="2" name="hoverBackground" sprite="ui_stack_hover" />
+                    <sprite depth="3" type="sliced" sprite="ui_stack_bg" globalopacity="true" visible="{hasQuality}" color="{qualityColor}" />
+                    <sprite depth="5" name="itemIcon" pos="26,-30" size="50,50" atlas="{partatlas}" sprite="{particon}" pivot="center" foregroundlayer="true" color="{particoncolor}" visible="{partvisible}" />
+                    <sprite depth="4" pos="46,-46" size="70,70" sprite="mod_slot_bg" color="255,255,255,32" pivot="center" foregroundlayer="true" visible="{emptyvisible}" />
+                </rect>
+            </rect>
+        </snjitem_part_slot>
     </insertAfter>
     <set xpath="/controls/equipment_weather_stack/rect/@allow_remove_item">true</set>
 </snj>

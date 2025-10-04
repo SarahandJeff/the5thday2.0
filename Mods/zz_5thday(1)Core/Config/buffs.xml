@@ -4023,7 +4023,7 @@
             <!-- Rifle Progression -->
             <effect_group name="HOH_Farming_Levelup">
                 <requirement name="CVarCompare" cvar="HOH_Farming_XP" operation="GTE" value="@HOH_Farming_lvl_Next_Needed" />
-                <requirement name="CVarCompare" cvar="HOH_Farming_lvl" operation="LT" value="500" />
+                <requirement name="CVarCompare" cvar="HOH_Farming_lvl" operation="LT" value="250" />
                 <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Farming_XP" operation="subtract" value="@HOH_Farming_lvl_Next_Needed" />
                 <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Farming_lvl_Next_Needed" operation="multiply" value="@HOH_Farming_Multiplier" />
                 <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Farming_lvl" operation="add" value="1" />
@@ -4036,45 +4036,45 @@
             <!-- Forest Farming -->
             <!-- T1 -->
             <effect_group name="PlantBreaking">
-                <requirement name="CVarCompare" cvar="HOH_Farming_lvl" operation="LT" value="500" />
+                <requirement name="CVarCompare" cvar="HOH_Farming_lvl" operation="LT" value="250" />
                 <requirement name="TriggerHasTags" tags="challenge_farming" />
                 <requirement name="InBiome" biome="03" />
-                <triggered_effect trigger="onSelfDestroyedBlock" action="ModifyCVar" cvar="HOH_Farming_XP" operation="add" value="5" />
+                <triggered_effect trigger="onSelfDestroyedBlock" action="ModifyCVar" cvar="HOH_Farming_XP" operation="add" value=".75" />
             </effect_group>
             <!-- Desert Farming -->
             <!-- T1 -->
             <effect_group name="PlantBreaking">
-                <requirement name="CVarCompare" cvar="HOH_Farming_lvl" operation="LT" value="500" />
+                <requirement name="CVarCompare" cvar="HOH_Farming_lvl" operation="LT" value="250" />
                 <requirement name="TriggerHasTags" tags="challenge_farming" />
                 <requirement name="InBiome" biome="05" />
-                <triggered_effect trigger="onSelfDestroyedBlock" action="ModifyCVar" cvar="HOH_Farming_XP" operation="add" value="10" />
+                <triggered_effect trigger="onSelfDestroyedBlock" action="ModifyCVar" cvar="HOH_Farming_XP" operation="add" value="1.25" />
             </effect_group>
             <!-- Snow Farming -->
             <!-- T1 -->
             <effect_group name="PlantBreaking">
-                <requirement name="CVarCompare" cvar="HOH_Farming_lvl" operation="LT" value="500" />
+                <requirement name="CVarCompare" cvar="HOH_Farming_lvl" operation="LT" value="250" />
                 <requirement name="TriggerHasTags" tags="challenge_farming" />
                 <requirement name="InBiome" biome="01" />
-                <triggered_effect trigger="onSelfDestroyedBlock" action="ModifyCVar" cvar="HOH_Farming_XP" operation="add" value="20" />
+                <triggered_effect trigger="onSelfDestroyedBlock" action="ModifyCVar" cvar="HOH_Farming_XP" operation="add" value="1.5" />
             </effect_group>
             <!-- Burnt Farming -->
             <!-- T1 -->
             <effect_group name="PlantBreaking">
-                <requirement name="CVarCompare" cvar="HOH_Farming_lvl" operation="LT" value="500" />
+                <requirement name="CVarCompare" cvar="HOH_Farming_lvl" operation="LT" value="250" />
                 <requirement name="TriggerHasTags" tags="challenge_farming" />
                 <requirement name="InBiome" biome="09" />
-                <triggered_effect trigger="onSelfDestroyedBlock" action="ModifyCVar" cvar="HOH_Farming_XP" operation="add" value="40" />
+                <triggered_effect trigger="onSelfDestroyedBlock" action="ModifyCVar" cvar="HOH_Farming_XP" operation="add" value="1.75" />
             </effect_group>
             <!-- Wasteland Farming -->
             <!-- T1 -->
             <effect_group name="PlantBreaking">
-                <requirement name="CVarCompare" cvar="HOH_Farming_lvl" operation="LT" value="500" />
+                <requirement name="CVarCompare" cvar="HOH_Farming_lvl" operation="LT" value="250" />
                 <requirement name="TriggerHasTags" tags="challenge_farming" />
                 <requirement name="InBiome" biome="08" />
-                <triggered_effect trigger="onSelfDestroyedBlock" action="ModifyCVar" cvar="HOH_Farming_XP" operation="add" value="80" />
+                <triggered_effect trigger="onSelfDestroyedBlock" action="ModifyCVar" cvar="HOH_Farming_XP" operation="add" value="2" />
             </effect_group>
             <effect_group name="armorbonus">
-                <triggered_effect trigger="onSelfDestroyedBlock" action="ModifyCVar" cvar="HOH_Farming_XP" operation="multiply" value="1.5">
+                <triggered_effect trigger="onSelfDestroyedBlock" action="ModifyCVar" cvar="HOH_Farming_XP" operation="multiply" value="1.25">
                     <requirement name="HasBuff" buff="buffFarmerSetBonus" />
                     <requirement name="TriggerHasTags" tags="challenge_farming" />
                 </triggered_effect>

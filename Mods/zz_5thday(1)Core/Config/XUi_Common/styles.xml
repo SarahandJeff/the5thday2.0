@@ -1,29 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <AGF-HUDPlus>
-
-
-<!--This is to make the "lock" icone in the header of your inventory to blink RED while you are in locking/unlocking mode-->
-		<append xpath="/styles/global">
-			<style_entry name="agfselectedColor" value="255,0,0" />
-		</append>
-
-		<append xpath="/styles">
-
-			<style type="button" name="agfLock">
-				<style_entry name="atlas" value="UIAtlas"/>
-				<style_entry name="sprite" value="[default_sprite]"/>
-				<style_entry name="defaultcolor" value="[iconColor]"/>
-				<style_entry name="hovercolor" value="[hoverColor]" />
-				<style_entry name="selectedcolor" value="[agfselectedColor]" />
-				<style_entry name="hoverscale" value="1.25" />			
-			</style>
-		</append>
-
-
-
-
-
-
-<!--MAP IMPROVEMENTS
+    <!-- This is to make the "lock" icone in the header of your inventory to blink RED while you are in locking/unlocking mode -->
+    <append xpath="/styles/global">
+        <style_entry name="agfselectedColor" value="255,0,0" />
+        <style_entry name="bgDefault" value="255,255,255,40" />
+    </append>
+    <append xpath="/styles">
+        <style type="button" name="agfLock">
+            <style_entry name="atlas" value="UIAtlas" />
+            <style_entry name="sprite" value="[default_sprite]" />
+            <style_entry name="defaultcolor" value="[iconColor]" />
+            <style_entry name="hovercolor" value="[hoverColor]" />
+            <style_entry name="selectedcolor" value="[agfselectedColor]" />
+            <style_entry name="hoverscale" value="1.25" />
+        </style>
+        <style name="label_outline_snj" type="label">
+            <style_entry name="font_size" value="22" />
+            <style_entry name="color" value="255,255,255,255" />
+            <style_entry name="crispness" value="OnDesktop" />
+            <style_entry name="effect" value="Outline8" />
+            <style_entry name="effect_distance" value="1,1" />
+            <style_entry name="effect_color" value="20,20,20,230" />
+        </style>
+    </append>
+    <!-- MAP IMPROVEMENTS
 	Feature: 	Map information moved to its own section next to the map with labels.
 	
 		Why: 	Many stats and buttons are crammed together and most don't realize they exist.
@@ -44,27 +44,92 @@
 				(windows.xml) Created the new panel next to the map of the stats and buttons.
 				(windows.xml) Adjusted Map header width to include the new panel.
 				(windows.xml) Adjusted position of debug map overlay buttons to account for new header width.
-				(windows.xml) Adjusted map view positioning to go where subheader used to be.
--->
-
-	<!--Created icon style that defaults to red for remove quick waypoint button.-->
-		<append xpath="/styles">
-			<style name="icon32pxRed" type="button">
-				<style_entry name="defaultcolor" value="[red]"/>
-				<style_entry name="width" value="32"/>
-				<style_entry name="height" value="32"/>
-				<style_entry name="foregroundlayer" value="true" />
-			</style>
-			<style name="icon32pxRed" type="sprite">
-				<style_entry name="color" value="[red]"/>
-				<style_entry name="width" value="32"/>
-				<style_entry name="height" value="32"/>
-				<style_entry name="foregroundlayer" value="true" />
-			</style>
-		</append>
-
-
-
-
-
+				(windows.xml) Adjusted map view positioning to go where subheader used to be. -->
+    <!-- Created icon style that defaults to red for remove quick waypoint button. -->
+    <append xpath="/styles">
+        <style name="icon32pxRed" type="button">
+            <style_entry name="defaultcolor" value="[red]" />
+            <style_entry name="width" value="32" />
+            <style_entry name="height" value="32" />
+            <style_entry name="foregroundlayer" value="true" />
+        </style>
+        <style name="icon32pxRed" type="sprite">
+            <style_entry name="color" value="[red]" />
+            <style_entry name="width" value="32" />
+            <style_entry name="height" value="32" />
+            <style_entry name="foregroundlayer" value="true" />
+        </style>
+        <style name="background" type="sprite">
+            <style_entry name="depth" value="1" />
+            <style_entry name="sprite" value="ui_fill" />
+            <style_entry name="color" value="[bgDefault]" />
+            <!-- 70,75,73,235; 43,51,47; 255,255,255,40 -->
+            <style_entry name="type" value="sliced" />
+        </style>
+        <style name="ulmStack90" type="sprite">
+            <style_entry name="depth" value="0" />
+            <style_entry name="size" value="92,92" />
+            <style_entry name="atlas" value="UIAtlas" />
+            <style_entry name="sprite" value="ui_stack_bg" />
+            <style_entry name="color" value="200,200,200,220" />
+            <!-- 255,255,255,200 -->
+            <style_entry name="type" value="sliced" />
+        </style>
+        <style name="ulmButton_2x4" type="button">
+            <style_entry name="depth" value="1" />
+            <style_entry name="size" value="100,66" />
+            <style_entry name="name" value="clickable" />
+            <style_entry name="pivot" value="center" />
+            <style_entry name="type" value="sliced" />
+            <style_entry name="hoverscale" value="1" />
+            <style_entry name="sprite" value="ui_btn" />
+            <style_entry name="hoversprite" value="ui_btn_hover" />
+            <style_entry name="hovercolor" value="[white]" />
+            <style_entry name="on_hover" value="true" />
+            <style_entry name="on_press" value="true" />
+            <style_entry name="sound" value="[sfx_btn_category]" />
+            <style_entry name="sound_play_on_press" value="true" />
+            <style_entry name="sound_play_on_hover" value="[default_hover]" />
+            <style_entry name="sound_volume" value="0.75" />
+        </style>
+        <style name="ulmButton_2x4" type="simplebutton">
+            <style_entry name="depth" value="1" />
+            <style_entry name="size" value="100,66" />
+            <style_entry name="name" value="clickable" />
+            <style_entry name="pivot" value="center" />
+            <style_entry name="type" value="sliced" />
+            <style_entry name="hoverscale" value="1" />
+            <style_entry name="sprite" value="ui_btn_186x66" />
+            <style_entry name="hoversprite" value="ui_btn_186x66_h" />
+            <style_entry name="bordercolor" value="0,0,0,1" />
+            <style_entry name="defaultcolor" value="[white]" />
+            <style_entry name="hovercolor" value="[white]" />
+            <style_entry name="on_press" value="true" />
+            <style_entry name="sound" value="[sfx_btn_category]" />
+            <style_entry name="sound_play_on_press" value="true" />
+            <style_entry name="sound_volume" value="0.75" />
+        </style>
+        <style name="HeaderIcon" type="sprite">
+            <style_entry name="depth" value="2" />
+            <style_entry name="name" value="windowIcon" />
+            <style_entry name="pivot" value="center" />
+            <style_entry name="size" value="30,30" />
+            <style_entry name="pos" value="25,-21" />
+            <style_entry name="sprite" value="transparent" />
+            <style_entry name="foregroundlayer" value="true" />
+        </style>
+        <style name="HeaderLabel" type="label">
+            <style_entry name="depth" value="5" />
+            <style_entry name="name" value="windowName" />
+            <style_entry name="pos" value="55,-9" />
+            <style_entry name="size" value="280,30" />
+            <style_entry name="font_size" value="26" />
+            <style_entry name="color" value="[labelColor]" />
+            <style_entry name="foregroundlayer" value="true" />
+            <style_entry name="effect" value="outline" />
+            <style_entry name="effect_color" value="0,0,0,160" />
+            <style_entry name="effect_distance" value="1,1" />
+            <style_entry name="upper_case" value="true" />
+        </style>
+    </append>
 </AGF-HUDPlus>

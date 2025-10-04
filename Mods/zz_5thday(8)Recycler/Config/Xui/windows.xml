@@ -105,24 +105,20 @@
 
 		<panel name="content" width="100%" height="650" depth="1" pos="0,-43" on_scroll="true" disableautobackground="true">
 
-			<rect depth="2" name="categorySelector" width="419" height="44" pos="3,-6">
-				<sprite name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="419" height="49" color="[black]" type="sliced" fillcenter="false" />
+			<rect depth="2" name="categorySelector" width="390" height="44" pos="3,-6">
+				<sprite name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="396" height="49" color="[black]" type="sliced" fillcenter="false" />
 				<sprite color="[mediumGrey]" type="sliced" />
-				<grid name="categories" pos="23,-21" rows="1" cols="9" width="419" height="43" cell_width="43" cell_height="43" repeat_content="true" controller="CategoryList">
+				<grid name="categories" pos="23,-21" rows="1" cols="9" width="390" height="43" cell_width="43" cell_height="43" repeat_content="true" controller="CategoryList">
 					<category_icon />
 				</grid>
 			</rect>
 
-			<rect depth="3" name="searchControls" width="419" height="44" pos="3,-52">
-				<sprite name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="419" height="49" color="[black]" type="sliced" fillcenter="false" />
+			<rect depth="3" name="searchControls" width="390" height="44" pos="3,-52">
+				<sprite name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="396" height="49" color="[black]" type="sliced" fillcenter="false" />
 				<sprite color="[darkGrey]" type="sliced" />
-				<!--#$-IGS BEGIN: Increasing collider scale to improve snap responsiveness -$#-->
 				<button depth="4" name="favorites" style="icon30px, press" pos="18,-22" sprite="server_favorite" pivot="center" sound="[paging_click]" tooltip="Favorites" tooltip_key="lblFavorites" collider_scale="1.5" />
-				<!--*#$-IGS END.-$#-->
 
-				<!--#$-IGS BEGIN: Disabling an element for console builds. -$#-->
 				<panel pos="104,0" width="200" disableautobackground="true">
-				<!--*#$-IGS END.-$#-->
 					<sprite depth="4" name="searchIcon" style="icon30px" pos="0,-22" sprite="ui_game_symbol_search" pivot="center"/>
 					<textfield depth="5" name="searchInput" pos="22,-7" width="140" height="30" virtual_keyboard_prompt="vkPromptSearchTerm" search_field="true" close_group_on_tab="true" clear_button="true" />
 				</panel>
@@ -132,7 +128,7 @@
 				</panel>
 			</rect>
 
-			<grid name="recipes" rows="10" cols="1" pos="3,-98" width="419" height="552" cell_width="390" cell_height="46" controller="RecipeList" repeat_content="true" arrangement="vertical" >
+			<grid name="recipes" rows="12" cols="1" pos="3,-98" width="100%" height="552" cell_width="100%" cell_height="46" controller="RecipeList" repeat_content="true" arrangement="vertical" >
 				<recipe_entryR name="0"/>
 			</grid>
 		</panel>

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <config>
     <set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='FoodSpoilage']/property[@name='FoodSpoilage']/@value">true</set>
     <set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='FoodSpoilage']/property[@name='SpoiledItem']/@value">foodScraps</set>
@@ -2267,4 +2268,690 @@
     <append xpath="//block[@name='cntIceMachine']">
         <property name="PreserveBonus" value="20" />
     </append>
-</config>
+    <!-- Farming Upgrades -->
+    <!-- Minerals -->
+    <append xpath="/blocks">
+        <block name="fertilizedplantedPotato1">
+            <property name="Extends" value="plantedPotato1" />
+            <property name="CreativeMode" value="Player" />
+            <property name="PlantGrowing.Next" value="fertilizedplantedPotato2" />
+            <property name="PlantGrowing.GrowthRate" value="30" />
+            <property name="CustomIcon" value="plantedPotato1" />
+            <property name="TintColor" value="6707E5" />
+            <property name="CustomIconTint" value="6707E5" />
+            <property name="Group" value="Farming" />
+        </block>
+        <block name="fertilizedplantedPotato2">
+            <property name="Extends" value="plantedPotato2" />
+            <property name="CreativeMode" value="Player" />
+            <property name="PlantGrowing.Next" value="fertilizedplantedPotato3HarvestPlayer" />
+            <property name="PlantGrowing.GrowthRate" value="30" />
+            <property name="TintColor" value="6707E5" />
+            <property name="CustomIconTint" value="6707E5" />
+        </block>
+        <block name="fertilizedplantedPotato3HarvestPlayer">
+            <property name="Extends" value="plantedPotato3HarvestPlayer" />
+            <property name="CreativeMode" value="Player" />
+            <drop event="Harvest" name="foodCropPotato" prob="0.5" count="2" tag="bonusCropHarvest" />
+            <drop event="Harvest" name="foodCropPotato" count="2" tag="farmerBonusHarvest" />
+            <property name="CustomIcon" value="plantedPotato1" />
+            <property name="TintColor" value="6707E5" />
+            <property name="CustomIconTint" value="6707E5" />
+        </block>
+        <block name="fertilizedplantedMushroom1">
+            <property name="Extends" value="plantedMushroom1" />
+            <property name="CreativeMode" value="Player" />
+            <property name="PlantGrowing.Next" value="fertilizedplantedMushroom2" />
+            <property name="PlantGrowing.GrowthRate" value="30" />
+            <property name="CustomIcon" value="plantedMushroom1" />
+            <property name="TintColor" value="6707E5" />
+            <property name="CustomIconTint" value="6707E5" />
+        </block>
+        <block name="fertilizedplantedMushroom2">
+            <property name="Extends" value="plantedMushroom2" />
+            <property name="CreativeMode" value="Player" />
+            <property name="PlantGrowing.Next" value="fertilizedplantedMushroom3HarvestPlayer" />
+            <property name="PlantGrowing.GrowthRate" value="30" />
+            <property name="TintColor" value="6707E5" />
+            <property name="CustomIconTint" value="6707E5" />
+        </block>
+        <block name="fertilizedplantedMushroom3HarvestPlayer">
+            <property name="Extends" value="plantedMushroom3HarvestPlayer" />
+            <property name="CreativeMode" value="Player" />
+            <drop event="Harvest" name="foodCropMushrooms" prob="0.5" count="2" tag="bonusCropHarvest" />
+            <drop event="Harvest" name="foodCropMushrooms" count="2" tag="farmerBonusHarvest" />
+            <property name="CustomIcon" value="plantedMushroom1" />
+            <property name="TintColor" value="6707E5" />
+            <property name="CustomIconTint" value="6707E5" />
+        </block>
+        <block name="fertilizedplantedCoffee1">
+            <property name="Extends" value="plantedCoffee1" />
+            <property name="CreativeMode" value="Player" />
+            <property name="PlantGrowing.Next" value="fertilizedplantedCoffee2" />
+            <property name="PlantGrowing.GrowthRate" value="30" />
+            <property name="CustomIcon" value="plantedCoffee1" />
+            <property name="TintColor" value="6707E5" />
+            <property name="CustomIconTint" value="6707E5" />
+        </block>
+        <block name="fertilizedplantedCoffee2">
+            <property name="Extends" value="plantedCoffee2" />
+            <property name="CreativeMode" value="Player" />
+            <property name="PlantGrowing.Next" value="fertilizedplantedCoffee3HarvestPlayer" />
+            <property name="PlantGrowing.GrowthRate" value="30" />
+            <property name="TintColor" value="6707E5" />
+            <property name="CustomIconTint" value="6707E5" />
+        </block>
+        <block name="fertilizedplantedCoffee3HarvestPlayer">
+            <property name="Extends" value="plantedCoffee3HarvestPlayer" />
+            <property name="CreativeMode" value="Player" />
+            <drop event="Harvest" name="resourceCropCoffeeBeans" prob="0.5" count="2" tag="bonusCropHarvest" />
+            <drop event="Harvest" name="resourceCropCoffeeBeans" count="2" tag="farmerBonusHarvest" />
+            <property name="CustomIcon" value="plantedCoffee1" />
+            <property name="TintColor" value="6707E5" />
+            <property name="CustomIconTint" value="6707E5" />
+        </block>
+        <block name="fertilizedplantedGoldenrod1">
+            <property name="Extends" value="plantedGoldenrod1" />
+            <property name="CreativeMode" value="Player" />
+            <property name="PlantGrowing.Next" value="fertilizedplantedGoldenrod2" />
+            <property name="PlantGrowing.GrowthRate" value="30" />
+            <property name="CustomIcon" value="plantedGoldenrod1" />
+            <property name="TintColor" value="6707E5" />
+            <property name="CustomIconTint" value="6707E5" />
+            <property name="Group" value="Farming" />
+        </block>
+        <block name="fertilizedplantedGoldenrod2">
+            <property name="Extends" value="plantedGoldenrod2" />
+            <property name="CreativeMode" value="Player" />
+            <property name="PlantGrowing.Next" value="fertilizedplantedGoldenrod3HarvestPlayer" />
+            <property name="PlantGrowing.GrowthRate" value="30" />
+            <property name="TintColor" value="6707E5" />
+            <property name="CustomIconTint" value="6707E5" />
+        </block>
+        <block name="fertilizedplantedGoldenrod3HarvestPlayer">
+            <property name="Extends" value="plantedGoldenrod3HarvestPlayer" />
+            <property name="CreativeMode" value="Player" />
+            <drop event="Harvest" name="resourceCropGoldenrodPlant" prob="0.5" count="2" tag="bonusCropHarvest" />
+            <drop event="Harvest" name="resourceCropGoldenrodPlant" count="2" tag="farmerBonusHarvest" />
+            <property name="CustomIcon" value="plantedGoldenrod1" />
+            <property name="TintColor" value="6707E5" />
+            <property name="CustomIconTint" value="6707E5" />
+        </block>
+        <block name="fertilizedplantedAloe1">
+            <property name="Extends" value="plantedAloe1" />
+            <property name="CreativeMode" value="Player" />
+            <property name="PlantGrowing.Next" value="fertilizedplantedAloe2" />
+            <property name="PlantGrowing.GrowthRate" value="30" />
+            <property name="CustomIcon" value="plantedAloe1" />
+            <property name="TintColor" value="6707E5" />
+            <property name="CustomIconTint" value="6707E5" />
+            <property name="Group" value="Farming" />
+        </block>
+        <block name="fertilizedplantedAloe2">
+            <property name="Extends" value="plantedAloe2" />
+            <property name="CreativeMode" value="Player" />
+            <property name="PlantGrowing.Next" value="fertilizedplantedAloe3HarvestPlayer" />
+            <property name="PlantGrowing.GrowthRate" value="30" />
+            <property name="TintColor" value="6707E5" />
+            <property name="CustomIconTint" value="6707E5" />
+        </block>
+        <block name="fertilizedplantedAloe3HarvestPlayer">
+            <property name="Extends" value="plantedAloe3HarvestPlayer" />
+            <property name="CreativeMode" value="Player" />
+            <drop event="Harvest" name="resourceCropAloeLeaf" prob="0.5" count="2" tag="bonusCropHarvest" />
+            <drop event="Harvest" name="resourceCropAloeLeaf" count="2" tag="farmerBonusHarvest" />
+            <property name="CustomIcon" value="plantedAloe1" />
+            <property name="TintColor" value="6707E5" />
+            <property name="CustomIconTint" value="6707E5" />
+        </block>
+        <block name="fertilizedplantedBlueberry1">
+            <property name="Extends" value="plantedBlueberry1" />
+            <property name="CreativeMode" value="Player" />
+            <property name="PlantGrowing.Next" value="fertilizedplantedBlueberry2" />
+            <property name="PlantGrowing.GrowthRate" value="30" />
+            <property name="CustomIcon" value="plantedBlueberry1" />
+            <property name="TintColor" value="6707E5" />
+            <property name="CustomIconTint" value="6707E5" />
+            <property name="Group" value="Farming" />
+        </block>
+        <block name="fertilizedplantedBlueberry2">
+            <property name="Extends" value="plantedBlueberry2" />
+            <property name="CreativeMode" value="Player" />
+            <property name="PlantGrowing.Next" value="fertilizedplantedBlueberry3HarvestPlayer" />
+            <property name="PlantGrowing.GrowthRate" value="30" />
+            <property name="TintColor" value="6707E5" />
+            <property name="CustomIconTint" value="6707E5" />
+        </block>
+        <block name="fertilizedplantedBlueberry3HarvestPlayer">
+            <property name="Extends" value="plantedBlueberry3HarvestPlayer" />
+            <property name="CreativeMode" value="Player" />
+            <drop event="Harvest" name="foodCropBlueberries" prob="0.5" count="2" tag="bonusCropHarvest" />
+            <drop event="Harvest" name="foodCropBlueberries" count="2" tag="farmerBonusHarvest" />
+            <property name="CustomIcon" value="plantedBlueberry1" />
+            <property name="TintColor" value="6707E5" />
+            <property name="CustomIconTint" value="6707E5" />
+        </block>
+        <block name="fertilizedplantedChrysanthemum1">
+            <property name="Extends" value="plantedChrysanthemum1" />
+            <property name="CreativeMode" value="Player" />
+            <property name="PlantGrowing.Next" value="fertilizedplantedChrysanthemum2" />
+            <property name="PlantGrowing.GrowthRate" value="30" />
+            <property name="CustomIcon" value="plantedChrysanthemum1" />
+            <property name="TintColor" value="6707E5" />
+            <property name="CustomIconTint" value="6707E5" />
+            <property name="Group" value="Farming" />
+        </block>
+        <block name="fertilizedplantedChrysanthemum2">
+            <property name="Extends" value="plantedChrysanthemum2" />
+            <property name="CreativeMode" value="Player" />
+            <property name="PlantGrowing.Next" value="fertilizedplantedChrysanthemum3HarvestPlayer" />
+            <property name="PlantGrowing.GrowthRate" value="30" />
+            <property name="TintColor" value="6707E5" />
+            <property name="CustomIconTint" value="6707E5" />
+        </block>
+        <block name="fertilizedplantedChrysanthemum3HarvestPlayer">
+            <property name="Extends" value="plantedChrysanthemum3HarvestPlayer" />
+            <property name="CreativeMode" value="Player" />
+            <drop event="Harvest" name="resourceCropChrysanthemumPlant" prob="0.5" count="2" tag="bonusCropHarvest" />
+            <drop event="Harvest" name="resourceCropChrysanthemumPlant" count="2" tag="farmerBonusHarvest" />
+            <property name="CustomIcon" value="plantedChrysanthemum1" />
+            <property name="TintColor" value="6707E5" />
+            <property name="CustomIconTint" value="6707E5" />
+        </block>
+        <block name="fertilizedplantedCorn1">
+            <property name="Extends" value="plantedCorn1" />
+            <property name="CreativeMode" value="Player" />
+            <property name="PlantGrowing.Next" value="fertilizedplantedCorn2" />
+            <property name="PlantGrowing.GrowthRate" value="30" />
+            <property name="CustomIcon" value="plantedCorn1" />
+            <property name="TintColor" value="6707E5" />
+            <property name="CustomIconTint" value="6707E5" />
+            <property name="Group" value="Farming" />
+        </block>
+        <block name="fertilizedplantedCorn2">
+            <property name="Extends" value="plantedCorn2" />
+            <property name="CreativeMode" value="Player" />
+            <property name="PlantGrowing.Next" value="fertilizedplantedCorn3HarvestPlayer" />
+            <property name="PlantGrowing.GrowthRate" value="30" />
+            <property name="TintColor" value="6707E5" />
+            <property name="CustomIconTint" value="6707E5" />
+        </block>
+        <block name="fertilizedplantedCorn3HarvestPlayer">
+            <property name="Extends" value="plantedCorn3HarvestPlayer" />
+            <property name="CreativeMode" value="Player" />
+            <drop event="Harvest" name="foodCropCorn" prob="0.5" count="2" tag="bonusCropHarvest" />
+            <drop event="Harvest" name="foodCropCorn" count="2" tag="farmerBonusHarvest" />
+            <property name="CustomIcon" value="plantedCorn1" />
+            <property name="TintColor" value="6707E5" />
+            <property name="CustomIconTint" value="6707E5" />
+        </block>
+        <block name="fertilizedplantedGraceCorn1">
+            <property name="Extends" value="plantedGraceCorn1" />
+            <property name="CreativeMode" value="Player" />
+            <property name="PlantGrowing.Next" value="fertilizedplantedGraceCorn2" />
+            <property name="PlantGrowing.GrowthRate" value="30" />
+            <property name="CustomIcon" value="plantedCorn1" />
+            <property name="TintColor" value="6707E5" />
+            <property name="CustomIconTint" value="6707E5" />
+            <property name="Group" value="Farming" />
+        </block>
+        <block name="fertilizedplantedGraceCorn2">
+            <property name="Extends" value="plantedGraceCorn2" />
+            <property name="CreativeMode" value="Player" />
+            <property name="PlantGrowing.Next" value="fertilizedplantedGraceCorn3HarvestPlayer" />
+            <property name="PlantGrowing.GrowthRate" value="30" />
+            <property name="TintColor" value="6707E5" />
+            <property name="CustomIconTint" value="6707E5" />
+        </block>
+        <block name="fertilizedplantedGraceCorn3HarvestPlayer">
+            <property name="Extends" value="plantedGraceCorn3HarvestPlayer" />
+            <property name="CreativeMode" value="Player" />
+            <drop event="Harvest" name="foodCropGraceCorn" prob="0.5" count="2" tag="bonusCropHarvest" />
+            <drop event="Harvest" name="foodCropGraceCorn" count="2" tag="farmerBonusHarvest" />
+            <property name="CustomIcon" value="plantedGraceCorn1" />
+            <property name="TintColor" value="6707E5" />
+            <property name="CustomIconTint" value="6707E5" />
+        </block>
+        <block name="fertilizedplantedHop1">
+            <property name="Extends" value="plantedHop1" />
+            <property name="CreativeMode" value="Player" />
+            <property name="PlantGrowing.Next" value="fertilizedplantedHop2" />
+            <property name="PlantGrowing.GrowthRate" value="30" />
+            <property name="CustomIcon" value="plantedHop1" />
+            <property name="TintColor" value="6707E5" />
+            <property name="CustomIconTint" value="6707E5" />
+            <property name="Group" value="Farming" />
+        </block>
+        <block name="fertilizedplantedHop2">
+            <property name="Extends" value="plantedHop2" />
+            <property name="CreativeMode" value="Player" />
+            <property name="PlantGrowing.Next" value="fertilizedplantedHop3HarvestPlayer" />
+            <property name="PlantGrowing.GrowthRate" value="30" />
+            <property name="TintColor" value="6707E5" />
+            <property name="CustomIconTint" value="6707E5" />
+        </block>
+        <block name="fertilizedplantedHop3HarvestPlayer">
+            <property name="Extends" value="plantedHop3HarvestPlayer" />
+            <property name="CreativeMode" value="Player" />
+            <drop event="Harvest" name="resourceCropHopsFlower" prob="0.5" count="2" tag="bonusCropHarvest" />
+            <drop event="Harvest" name="resourceCropHopsFlower" count="2" tag="farmerBonusHarvest" />
+            <property name="CustomIcon" value="plantedHop1" />
+            <property name="TintColor" value="6707E5" />
+            <property name="CustomIconTint" value="6707E5" />
+        </block>
+        <block name="fertilizedplantedPumpkin1">
+            <property name="Extends" value="plantedPumpkin1" />
+            <property name="CreativeMode" value="Player" />
+            <property name="PlantGrowing.Next" value="fertilizedplantedPumpkin2" />
+            <property name="PlantGrowing.GrowthRate" value="30" />
+            <property name="CustomIcon" value="plantedPumpkin1" />
+            <property name="TintColor" value="6707E5" />
+            <property name="CustomIconTint" value="6707E5" />
+            <property name="Group" value="Farming" />
+        </block>
+        <block name="fertilizedplantedPumpkin2">
+            <property name="Extends" value="plantedPumpkin2" />
+            <property name="CreativeMode" value="Player" />
+            <property name="PlantGrowing.Next" value="fertilizedplantedPumpkin3HarvestPlayer" />
+            <property name="PlantGrowing.GrowthRate" value="30" />
+            <property name="TintColor" value="6707E5" />
+            <property name="CustomIconTint" value="6707E5" />
+        </block>
+        <block name="fertilizedplantedPumpkin3HarvestPlayer">
+            <property name="Extends" value="plantedPumpkin3HarvestPlayer" />
+            <property name="CreativeMode" value="Player" />
+            <drop event="Harvest" name="foodCropPumpkin" prob="0.5" count="2" tag="bonusCropHarvest" />
+            <drop event="Harvest" name="foodCropPumpkin" count="2" tag="farmerBonusHarvest" />
+            <property name="CustomIcon" value="plantedPumpkin1" />
+            <property name="TintColor" value="6707E5" />
+            <property name="CustomIconTint" value="6707E5" />
+        </block>
+    </append>
+    <append xpath="/blocks">
+        <block name="TitaniumShapes" shapes="All">
+            <property name="CreativeMode" value="None" />
+            <property name="CustomIconTint" value="47556e" />
+            <property name="DisplayType" value="blockHardened" />
+            <property name="DescriptionKey" value="steelBlockGroupDesc" />
+            <property name="Material" value="MresourceTitanium" />
+            <property name="Texture" value="435" />
+            <property name="UiBackgroundTexture" value="435" />
+            <property name="TintColor" value="47556e" />
+            <property name="Shape" value="New" />
+            <property name="Model" value="cube" />
+            <property name="Group" value="Building,advBuilding" />
+            <property name="FilterTags" value="MC_Shapes" />
+            <property class="RepairItems">
+                <property name="resourceForgedTitanium" value="1" />
+            </property>
+            <property name="DowngradeBlock" value="stainlessSteelShapes" />
+            <drop event="Harvest" name="resourceScrapIron" count="15" tag="allHarvest" />
+            <drop event="Destroy" count="0" />
+            <drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1" />
+            <property name="EconomicValue" value="500" />
+            <property name="EconomicBundleSize" value="1" />
+            <property name="SellableToTrader" value="false" />
+            <property name="SortOrder1" value="S200" />
+            <property name="CanPickup" value="false" />
+        </block>
+        <!-- drawbridges -->
+        <block name="TitaniumReinforcedDrawBridge">
+            <property name="UnlockedBy" value="perkAdvancedEngineering" />
+            <property name="CustomIcon" value="metalReinforcedWoodDrawBridge" />
+            <property name="CustomIconTint" value="33FFE3" />
+            <property name="Extends" value="metalReinforcedWoodDrawBridge" param1="DowngradeBlock" />
+            <property name="CanPickup" value="false" />
+            <property name="Material" value="MresourceTitanium" />
+            <property name="OpenSound" value="open_bridge" />
+            <property name="CloseSound" value="close_bridge" />
+            <property class="RepairItems">
+                <property name="resourceForgedTitanium" value="50" />
+                <property name="resourceWood" value="800" />
+            </property>
+            <drop event="Harvest" name="TitaniumDrawBridge" count="1" tag="allHarvest" />
+            <property name="SortOrder1" value="B400" />
+            <property class="UpgradeBlock">
+                <property name="ToBlock" value="TitaniumReinforcedDrawBridge_Powered" />
+                <property name="Item" value="resourceForgedSpring,resourceForgedTitanium" />
+                <property name="ItemCount" value="2" />
+                <property name="UpgradeHitCount" value="5" />
+            </property>
+        </block>
+        <block name="TitaniumReinforcedDrawBridge_Powered">
+            <property name="Material" value="MresourceTitanium" />
+            <property name="Extends" value="TitaniumReinforcedDrawBridge" param1="UpgradeBlock.Item" />
+            <property name="Class" value="PoweredDoor" />
+            <property name="UnlockedBy" value="craftingElectrician" />
+            <property name="Tags" value="electricianSkill" />
+        </block>
+        <!-- vault doors -->
+        <block name="TitaniumvaultDoor01">
+            <property name="UnlockedBy" value="perkAdvancedEngineering" />
+            <property name="CustomIcon" value="vaultDoor01" />
+            <property name="CustomIconTint" value="33FFE3" />
+            <property name="Extends" value="vaultDoor01" param1="DowngradeBlock" />
+            <property name="CanPickup" value="false" />
+            <property name="Material" value="MresourceTitanium" />
+            <property name="MaxDamage" value="18000" />
+            <property name="MeshDamage" value="Door/DMG0, 18000,Door/DMG1, 12000,Door/DMG2, 8000,Door/DMG3, 4000,-, 1" />
+            <property class="RepairItems">
+                <property name="resourceForgedTitanium" value="5" />
+            </property>
+            <drop event="Harvest" name="TitaniumvaultDoor01" count="1" tag="allHarvest" />
+            <property name="SortOrder1" value="B360" />
+            <property class="UpgradeBlock">
+                <property name="ToBlock" value="TitaniumvaultDoor01_Powered" />
+                <property name="Item" value="resourceForgedSpring,resourceForgedTitanium" />
+                <property name="ItemCount" value="2" />
+                <property name="UpgradeHitCount" value="5" />
+            </property>
+        </block>
+        <block name="TitaniumvaultDoor01_Powered">
+            <property name="Material" value="MresourceTitanium" />
+            <property name="Extends" value="TitaniumvaultDoor01" param1="UpgradeBlock.Item" />
+            <property name="Class" value="PoweredDoor" />
+            <property name="UnlockedBy" value="craftingElectrician" />
+            <property name="Tags" value="electricianSkill" />
+        </block>
+        <block name="TitaniumvaultDoor01Double">
+            <property name="UnlockedBy" value="perkAdvancedEngineering" />
+            <property name="CustomIcon" value="vaultDoor01Double" />
+            <property name="CustomIconTint" value="33FFE3" />
+            <property name="Extends" value="vaultDoor01Double" param1="UpgradeBlock.Item" />
+            <property name="CanPickup" value="false" />
+            <property name="Material" value="MresourceTitanium" />
+            <property name="MaxDamage" value="18000" />
+            <property name="MeshDamage" value="Door/DMG0, 18000,Door/DMG1, 12000,Door/DMG2, 8000,Door/DMG3, 4000,-, 1" />
+            <property class="RepairItems">
+                <property name="resourceForgedTitanium" value="5" />
+            </property>
+            <drop event="Harvest" name="TitaniumVaultDoorDouble" count="1" tag="allHarvest" />
+            <property name="SortOrder1" value="B370" />
+            <property class="UpgradeBlock">
+                <property name="ToBlock" value="TitaniumvaultDoor01Double_Powered" />
+                <property name="Item" value="resourceForgedSpring,resourceForgedTitanium" />
+                <property name="ItemCount" value="2" />
+                <property name="UpgradeHitCount" value="5" />
+            </property>
+        </block>
+        <block name="TitaniumvaultDoor01Double_Powered">
+            <property name="Material" value="MresourceTitanium" />
+            <property name="Extends" value="TitaniumvaultDoor01Double" param1="DowngradeBlock" />
+            <property name="Class" value="PoweredDoor" />
+            <property name="UnlockedBy" value="craftingElectrician" />
+            <property name="Tags" value="electricianSkill" />
+        </block>
+        <!-- hatches -->
+        <block name="TitaniumvaultHatch01">
+            <property name="Material" value="MresourceTitanium" />
+            <property name="Extends" value="vaultHatch01" param1="UpgradeBlock.Item" />
+            <property name="CustomIcon" value="vaultHatch01" />
+            <property name="CustomIconTint" value="33FFE3" />
+            <property name="DisplayType" value="blockHardened" />
+            <property name="MaxDamage" value="24000" />
+            <property class="UpgradeBlock">
+                <property name="ToBlock" value="TitaniumvaultHatch01_Powered" />
+                <property name="Item" value="resourceForgedSpring,resourceForgedTitanium" />
+                <property name="ItemCount" value="1" />
+                <property name="UpgradeHitCount" value="5" />
+            </property>
+        </block>
+        <block name="TitaniumvaultHatch01_Powered">
+            <property name="Material" value="MresourceTitanium" />
+            <property name="Extends" value="TitaniumvaultHatch01" param1="DowngradeBlock" />
+            <property name="Class" value="PoweredDoor" />
+            <property name="UnlockedBy" value="craftingElectrician" />
+            <property name="CustomIcon" value="vaultHatch01" />
+            <property name="Tags" value="electricianSkill" />
+        </block>
+        <!-- bars -->
+        <block name="TitaniumBarsCentered">
+            <property name="UnlockedBy" value="perkAdvancedEngineering" />
+            <property name="CustomIcon" value="ironBarsCentered" />
+            <property name="CustomIconTint" value="33FFE3" />
+            <property name="Extends" value="ironBarsCentered" />
+            <property name="Material" value="MresourceTitanium" />
+            <property class="RepairItems">
+                <property name="resourceForgedTitanium" value="1" />
+            </property>
+            <drop event="Harvest" name="TitaniumBarsCentered" count="1" tag="allHarvest" />
+        </block>
+        <block name="TitaniumBars">
+            <property name="UnlockedBy" value="craftingElectrician" />
+            <property name="Extends" value="TitaniumBarsCentered" />
+            <property name="CustomIcon" value="ironBarsCentered" />
+            <property name="CustomIconTint" value="33FFE3" />
+            <drop event="Harvest" name="TitaniumBars" count="1" tag="allHarvest" />
+        </block>
+        <!-- jail doors -->
+        <block name="TitaniumjailDoorSingle">
+            <property name="UnlockedBy" value="perkAdvancedEngineering" />
+            <property name="CustomIcon" value="jailDoorWhite" />
+            <property name="CustomIconTint" value="33FFE3" />
+            <property name="Extends" value="jailDoorWhite" />
+            <property name="Material" value="MresourceTitanium" />
+            <property name="MaxDamage" value="10000" />
+            <property name="MeshDamage" value="Door/DMG0, 10000,Door/DMG1, 7000,Door/DMG2, 5000,Door/DMG3, 2500," />
+            <property class="RepairItems">
+                <property name="resourceForgedTitanium" value="1" />
+            </property>
+            <drop event="Harvest" name="TitaniumjailDoorWhite" count="1" tag="allHarvest" />
+        </block>
+        <block name="TitaniumjailDoorDouble">
+            <property name="UnlockedBy" value="perkAdvancedEngineering" />
+            <property name="Extends" value="jailDoorDoubleWhite" />
+            <property name="CustomIcon" value="jailDoorDoubleWhite" />
+            <property name="CustomIconTint" value="33FFE3" />
+            <property name="MaxDamage" value="10000" />
+            <property name="MeshDamage" value="Door/DMG0, 10000,Door/DMG1, 7000,Door/DMG2, 5000,Door/DMG3, 2500," />
+            <drop event="Harvest" name="TitaniumjailDoorDoubleWhite" count="1" tag="allHarvest" />
+        </block>
+        <!-- garage doors -->
+        <block name="TitaniumGarageDoor">
+            <property name="Extends" value="ironGarageDoorWhite" />
+            <property name="UnlockedBy" value="perkAdvancedEngineering" />
+            <property name="CustomIcon" value="ironGarageDoorWhite" />
+            <property name="CustomIconTint" value="33FFE3" />
+            <property name="Material" value="MresourceTitanium" />
+            <property name="DisplayType" value="blockMulti" />
+            <property name="MaxDamage" value="15000" />
+            <property name="MeshDamage" value="Door/DMG0, 15000,Door/DMG1, 10000,Door/DMG2, 5000,Door/DMG3, 2500," />
+            <property class="RepairItems">
+                <property name="resourceForgedTitanium" value="5" />
+            </property>
+            <property name="CustomUpgradeSound" value="place_block_metal" />
+            <drop event="Harvest" name="TitaniumGarageDoor" count="1" tag="allHarvest" />
+                /&gt;
+            </block>
+            <block name="TitaniumGarageDoor_Powered">
+                <property name="Extends" value="TitaniumGarageDoor" param1="DowngradeBlock" />
+                <property name="Material" value="MresourceTitanium" />
+                <property name="Class" value="PoweredDoor" />
+                <property name="UnlockedBy" value="craftingElectrician" />
+                <property name="CustomIcon" value="ironGarageDoorWhite" />
+                <property name="Tags" value="electricianSkill" />
+            </block>
+        </append>
+        <append xpath="blocks">
+            <block name="terrOreTitanium">
+                <property name="CustomIcon" value="terrOreIron" />
+                <property name="CustomIconTint" value="8C28EC" />
+                <property name="Material" value="MoreMetal" />
+                <property name="MaxDamage" value="1000" />
+                <property name="Tags" value="ore,deepOre" />
+                <property name="Shape" value="Terrain" />
+                <property name="Mesh" value="terrain" />
+                <property name="Map.Color" value="64,8,118" />
+                <property name="Texture" value="33" />
+                <property name="TintColor" value="64,8,118" />
+                <property name="UMA.Overlay0Tint" value="64,8,118" />
+                <property name="ImposterExclude" value="true" />
+                <drop event="Harvest" name="resourceTitanium" count="50" tag="oreWoodHarvest" />
+                <drop event="Harvest" name="resourceScrapIron" count="14" tag="oreWoodHarvest" />
+                <drop event="Destroy" count="0" />
+                <drop event="Fall" name="resourceTitanium" count="50" prob="0.4" stick_chance="0" />
+                <property name="CanMobsSpawnOn" value="true" />
+                <property name="FilterTags" value="MC_outdoor,SC_terrain" />
+                <property name="SortOrder1" value="d0l0" />
+                <property name="SortOrder2" value="0050" />
+                <property name="DisplayType" value="blockTerrain" />
+                <drop event="Harvest" name="resourceRawDiamond" prob=".005" count="1" tag="artOfMiningLuckyStrikeHarvest" />
+                <drop event="Harvest" name="resourceSilverNugget" prob=".01" count="1" tag="artOfMiningLuckyStrikeHarvest" />
+                <drop event="Harvest" name="resourceGoldNugget" prob=".007" count="1" tag="artOfMiningLuckyStrikeHarvest" />
+                <property name="DescriptionKey" value="terrainBlockGroupDesc" />
+            </block>
+            <block name="oreTitaniumBoulder">
+                <property name="Extends" value="oreBoulderMaster" />
+                <property name="Material" value="MTitanium" />
+                <property name="MaxDamage" value="1000" />
+                <property name="Model" value="Entities/Resources/resourceRock01Prefab" />
+                <property name="Map.Color" value="64,8,118" />
+                <property name="TintColor" value="64,8,118" />
+                <property name="UMA.Overlay0Tint" value="64,8,118" />
+                <property name="MultiBlockDim" value="2,2,2" />
+                <drop event="Harvest" name="resourceTitanium" count="50" tag="oreWoodHarvest" />
+            </block>
+        </append>
+        <!-- <remove xpath="/blocks/block[@name='forge']"/> -->
+        <append xpath="//block[@name='forge']/property[@class='Workstation']/property[@name='InputMaterials']/@value">,Titanium</append>
+        <!-- <append xpath="blocks">
+            <block name="advforge">
+              
+                <property name="Class" value="Forge" />
+                <property class="Workstation">
+                    <property name="CraftingAreaRecipes" value="advforge" />
+                    <property name="Modules" value="tools,output,fuel,material_input" />
+                    <property name="InputMaterials" value="iron,brass,lead,glass,stone,clay,Titanium" />
+                    <property name="ToolNames" value="1,2,3" />
+                </property>
+                <property name="UnlockedBy" value="craftingWorkstations" />
+              
+                <property name="CreativeMode" value="Player" />
+                <property name="DescriptionKey" value="forgeDesc" />
+                <property name="WorkstationIcon" value="ui_game_symbol_forge" />
+                <property name="WorkstationJournalTip" value="forgeTip" />
+                <property name="Stacknumber" value="1" />
+              
+                <property name="CustomIcon" value="forge" />
+                <property name="TintColor" value="64,8,118" />
+                <property name="UMA.Overlay0Tint" value="64,8,118" />
+                <property name="Material" value="Mstone_scrap" />
+                <property name="Shape" value="ModelEntity" />
+                <property name="Model" value="Entities/Crafting/forgeWorkstationPrefab" />
+                <property name="MultiBlockDim" value="2,2,1" />
+                <property name="ImposterDontBlock" value="true" />
+                <property name="WaterFlow" value="permitted" />
+                <property name="ParticleName" value="forgeWorkstation" />
+                <property name="ParticleOffset" value="0,0.4,0.5" />
+              
+                <property name="Place" value="TowardsPlacerInverted" />
+                <property name="OnlySimpleRotations" value="true" />
+                <property name="Path" value="solid" />
+                <property name="IsTerrainDecoration" value="true" />
+                <property name="StabilitySupport" value="true" />
+              
+                <property name="Weight" value="0" />
+                <property name="EconomicValue" value="1000" />
+                <property name="TraderStageTemplate" value="midTier0" />
+              
+                <property name="MaxDamage" value="800" />
+                <property name="HeatMapStrength" value="6" />
+                <property name="HeatMapTime" value="5000" />
+                <property name="HeatMapFrequency" value="1000" />
+                <property name="BuffsWhenWalkedOn" value="buffBurningEnvironment" />
+                <property name="ActiveRadiusEffects" value="buffCampfireAOE(5)" />
+                <property name="OpenSound" value="forge_open" />
+                <property name="CloseSound" value="forge_close" />
+                <property name="CraftSound" value="forge_smelt_click" />
+                <property name="CraftCompleteSound" value="forge_item_complete" />
+                <property name="TakeDelay" value="15" />
+                <property class="RepairItems">
+                    <property name="resourceCobblestones" value="50" />
+                </property>
+                <drop event="Harvest" name="resourceRockSmall" count="40" tag="allHarvest" />
+                <drop event="Harvest" name="resourceClayLump" count="20" tag="allHarvest" />
+                <drop event="Harvest" name="resourceLeather" count="5" tag="allHarvest" />
+                <drop event="Destroy" count="0" />
+                <drop event="Fall" name="terrDestroyedStone" count="1" prob="0.75" stick_chance="1" />
+              
+                <property name="SortOrder1" value="B281" />
+                <property name="SortOrder2" value="0200" />
+                <property name="Group" value="Building,TCScience,advBuilding" />
+                <property name="Tags" value="workstationSkill,twitch_workstation" />
+                <property name="FilterTags" value="MC_playerBlocks,SC_decor" />
+            </block>
+        </append> -->
+        <append xpath="//block[@name='metalReinforcedWoodDrawBridge']">
+            <property class="UpgradeBlock">
+                <property name="ToBlock" value="TitaniumReinforcedDrawBridge" />
+                <property name="Item" value="TitaniumPolish" />
+                <property name="ItemCount" value="2" />
+                <property name="UpgradeHitCount" value="4" />
+            </property>
+        </append>
+         <append xpath="//block[@name='vaultDoor01']">
+            <property class="UpgradeBlock">
+                <property name="ToBlock" value="TitaniumvaultDoor01" />
+                <property name="Item" value="TitaniumPolish" />
+                <property name="ItemCount" value="2" />
+                <property name="UpgradeHitCount" value="4" />
+            </property>
+        </append>
+         <!-- <append xpath="//block[@name='GarageDoor_Powered']">
+            <property class="UpgradeBlock">
+                <property name="ToBlock" value="TitaniumGarageDoor_Powered" />
+                <property name="Item" value="TitaniumPolish" />
+                <property name="ItemCount" value="2" />
+                <property name="UpgradeHitCount" value="4" />
+            </property>
+        </append>
+         <append xpath="//block[@name='GarageDoor']">
+            <property class="UpgradeBlock">
+                <property name="ToBlock" value="TitaniumGarageDoor" />
+                <property name="Item" value="TitaniumPolish" />
+                <property name="ItemCount" value="2" />
+                <property name="UpgradeHitCount" value="4" />
+            </property>
+        </append> -->
+         <append xpath="//block[@name='vaultHatch01_Powered']">
+            <property class="UpgradeBlock">
+                <property name="ToBlock" value="TitaniumvaultHatch01_Powered" />
+                <property name="Item" value="TitaniumPolish" />
+                <property name="ItemCount" value="2" />
+                <property name="UpgradeHitCount" value="4" />
+            </property>
+        </append>
+         <append xpath="//block[@name='vaultHatch01']">
+            <property class="UpgradeBlock">
+                <property name="ToBlock" value="TitaniumvaultHatch01" />
+                <property name="Item" value="TitaniumPolish" />
+                <property name="ItemCount" value="2" />
+                <property name="UpgradeHitCount" value="4" />
+            </property>
+        </append>
+         <append xpath="//block[@name='vaultDoor01Double']">
+            <property class="UpgradeBlock">
+                <property name="ToBlock" value="TitaniumvaultDoor01Double" />
+                <property name="Item" value="TitaniumPolish" />
+                <property name="ItemCount" value="2" />
+                <property name="UpgradeHitCount" value="4" />
+            </property>
+        </append>
+         <append xpath="//block[@name='vaultDoor01_Powered']">
+            <property class="UpgradeBlock">
+                <property name="ToBlock" value="TitaniumvaultDoor01_Powered" />
+                <property name="Item" value="TitaniumPolish" />
+                <property name="ItemCount" value="2" />
+                <property name="UpgradeHitCount" value="4" />
+            </property>
+        </append>
+
+
+
+
+        <set xpath="//block[@name='chemistryStation']/property/property[@name='Modules']/@value">output,input</set>
+        <append xpath="//block[@name='chemistryStation']">
+            <property name="RequirePower" value="true" />
+            <property name="RequiredPower" value="7" />
+        </append>
+    </config>

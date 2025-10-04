@@ -1,314 +1,446 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <snj>
-<append xpath="/blocks">
-    <block name="HOH_Food_Crate">
-        <property name="Material" value="Mwood"/>
-        <property name="Shape" value="ModelEntity"/>
-        <property name="CustomIcon" value="Crate-Empty1"/>
-        <property name="Model" value="#@modfolder:Assets/HOH_FoodCrate.unity3d?HOH_Food_Crate"/>
-        <property name="ModelOffset" value="0,0,0"/>
-        <property name="ImposterExchange" value="imposterBlock" param1="19"/>
-        <property name="WaterFlow" value="permitted"/>
-        <property name="Collide" value="sight,movement,melee,bullet,arrow,rocket"/>
-        <property name="Path" value="solid"/>
-        <property name="MaxDamage" value="200"/>
-        <drop event="Destroy" name="resourceWood" count="3" tag="allHarvest"/>
-        <drop event="Fall" name="terrDestroyedStone" count="1" prob="0.5" stick_chance="1"/>
-        <property name="SortOrder1" value="B278"/>
-        <property name="SortOrder2" value="0600"/>
-        <property name="FilterTags" value="MC_building,SC_commercial,SC_construction,SC_decor"/>
-        <property name="Class" value="Loot"/>
-		<property name='LootList' value='Food_Crate'/>
-    </block>
-    <block name="5thday_Range">
-			<!-- Class -->
-			<property name="Class" value="Campfire"/>
-			<property name="UnlockedBy" value="perkCooking"/>
-			<property name="CraftTimeMultiplier" value=".75"/>
-			<property class="Workstation">
-				<property name="Modules" value="tools,output,input"/>
-				<property name="ToolNames" value="1,2,3,4"/>
-				<property name="CraftingAreaRecipes" value="WorkingStove" />
-				<property name="Collide" value="melee,bullet,arrow,rocket"/></property>
-			<!--<property name="Fuels" value="fuelPropane,100"/>-->
-			<!-- UI_Info -->
-			<property name="Place" value="TowardsPlacerInverted"/>
-			<property name="RequirePower" value="true"/>
-			<property name="CreativeMode" value="Player"/>
-			<property name="DescriptionKey" value="SNJOvenMaticDesc"/>
-			<property name="PickupJournalEntry" value="campfireTip"/>
-			<property name="WorkstationIcon" value="ui_game_symbol_range"/>
-			<property name="WorkstationJournalTip" value="heatMapTip"/>
-			<property name="CraftIcon" value="ui_game_symbol_range"/>
-			<property name="CraftActionName" value="lblContextActionCook"/>
-			<property name="CustomIcon" value="cntStoveModernVer1Closed"/>
-			<property name="CustomIconTint" value="7C7974"/>
-			<property name="TraderStageTemplate" value="electricTier1"/>
-			<property name="RuntimeSwitch" value="true"/>
-			<!--<property name="TintColor" value="b37676"/>-->
-			<property name="Stacknumber" value="1"/>
-			<!-- Visual -->
-			<property name="Material" value="Mmetal"/>
-			<property name="Shape" value="ModelEntity"/>
-			<property name="Model" value="#@modfolder:Assets/5thdayAppliances.unity3d?5d_Range"/>
-            <property name="ModelOffset" value="0,0,0"/>
-			<property name="TintColor" value="7C7974"/>
-			<property name="ImposterDontBlock" value="true"/>
-			<property name="WaterFlow" value="permitted"/>
-			<property name="ParticleName" value="campfire"/>
-			<property name="ParticleOffset" value =".25,.5,.5"/>
-			<!-- Placement -->
-			<!--<property name="Place" value="TowardsPlacer"/>-->
-			<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
-			<property name="IsTerrainDecoration" value="true"/>
-			<property name="StabilitySupport" value="false"/>
-			<!-- Value -->
-			<property name="EconomicValue" value="5"/>
-			<property name="EconomicBundleSize" value="1"/>
-			<property name="SellableToTrader" value="false"/>
-			<!-- Interaction -->
-			<property name="MaxDamage" value="500"/>
-			<property name="HeatMapStrength" value="5"/>
-			<property name="HeatMapTime" value="5000"/>
-			<property name="HeatMapFrequency" value="1000"/>
-			<property name="ActiveRadiusEffects" value="buffCampfireAOE(3)"/>
-			<property name="OpenSound" value="campfire_open"/>
-			<property name="CloseSound" value="campfire_close"/>
-			<property name="CraftSound" value="campfire_cook_click"/>
-			<property name="CraftCompleteSound" value="campfire_complete_item"/>
-			<property class="RepairItems">
-				<property name="resourceForgedIron" value="15"/>
-				<property name="resourceMechanicalParts" value="5"/>
-				<property name="resourceScrapPolymers" value="10"/></property>
-			<drop event="Harvest" name="resourceScrapIron" count="300" tag="allHarvest"/>
-			<drop event="Harvest" name="resourceForgedIron" count="5" tag="salvageHarvest"/>
-			<drop event="Harvest" name="resourceMechanicalParts" count="4" tag="salvageHarvest"/>
-			<drop event="Harvest" name="resourceScrapPolymers" count="4" tag="salvageHarvest"/>
-			<drop event="Destroy" count="0"/>
-			<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
-			<!-- Sorting -->
-			<property name="SortOrder1" value="B281"/>
-			<property name="SortOrder2" value="0303"/>
-			<property name="Group" value="Basics,Food/Cooking,Building,advBuilding"/>
-			<property name="FilterTags" value="MC_playerBlocks,SC_decor,SC_electrical"/>
-		</block>
-    <block name="5thday_Fridge">
-			<property name="CustomIcon" value="cntFridgeStainlessSteel" />
-			<property name="CustomIconTint" value="ccffff" />
-			<property name="Model" value="#@modfolder:Assets/5thdayAppliances.unity3d?5d_Fridge"/>
-			<property name="ModelOffset" value="0,0,0"/>
-			<property name="MultiBlockDim" value="1,2,1"/>
-			<property name="CreativeMode" value="Player"/>
-			<property name="Class" value="SecureLoot"/>
-			<property name="LootList" value="playerFridge"/>
-			<property name="DescriptionKey" value="refrigeratorGroupDesc"/>
-			<property name="DisplayType" value="blockMulti"/>
-			<property name="Material" value="Mmetal"/>
-			<property name="Shape" value="ModelEntity"/>
-			<property name="ImposterExchange" value="imposterBlock" param1="27"/>
-			<property name="Place" value="TowardsPlacerInverted"/>
-			<property name="Collide" value="melee,bullet,arrow,rocket,movement"/>
-			<property name="Path" value="solid"/>
-			<property name="OpenSound" value="open_fridge"/>
-			<property name="CloseSound" value="close_fridge"/>
-			<property name="IsTerrainDecoration" value="true"/>
-			<property name="EconomicValue" value="192"/>
-			<property class="RepairItems">
-				<property name="resourceForgedIron" value="10"/>
-				<property name="resourceMetalPipe" value="2"/>
-				<property name="resourceElectricParts" value="10"/></property>
-			<property name="SortOrder1" value="B156"/>
-			<property name="SortOrder2" value="0000"/>
-			<property name="FilterTags" value="MC_playerBlocks,SC_electrical"/>
-			<property name="PreserveBonus" value="10" />
-			<property name="CanPickup" value="true"/>
-			<property name="Stacknumber" value="1"/>
-			<property name="TakeDelay" value="5"/>
-		</block>
-	<block name="5thday_PrepTable">
-		<!-- Class -->
-		<property name="Class" value="Workstation"/>
-		<property class="Workstation">
-			<property name="Modules" value="output"/>
-			<property name="CraftingAreaRecipes" value="PrepTable"/>
-		</property>
-		<property name="UnlockedBy" value="perkCooking"/>
-		<!-- UI_Info -->
-		<property name="CreativeMode" value="Player"/>
-		<property name="DescriptionKey" value="5thday_PrepTableDesc"/>
-		<property name="DisplayType" value="blockMulti"/>
-		<property name="WorkstationIcon" value="ui_game_symbol_workbench"/>
-		<property name="Stacknumber" value="1"/>
-		<!-- Visual -->
-		<property name="Material" value="Mmetal"/>
-		<property name="Shape" value="ModelEntity"/>
-		<property name="Model" value="#@modfolder:Assets/5thdayAppliances.unity3d?5d_PrepTable"/>
-		<property name="ModelOffset" value="0,0,0"/>
-		<property name="MultiBlockDim" value="2,1,1"/>
-		<property name="ImposterDontBlock" value="true"/>
-		<property name="WaterFlow" value="permitted"/>
-		<!-- Placement -->
-		<property name="Place" value="TowardsPlacerInverted"/>
-		<property name="OnlySimpleRotations" value="true"/>
-		<property name="IsTerrainDecoration" value="true"/>
-		<property name="StabilitySupport" value="false"/>
-		<!-- Value -->
-		<property name="Weight" value="0"/>
-		<property name="EconomicValue" value="2000"/>
-		<property name="TraderStageTemplate" value="midTier1"/><!-- workbench -->
-		<!-- Interaction -->
-		<property name="MaxDamage" value="800"/>
-		<property name="HeatMapStrength" value="5"/>
-		<property name="HeatMapTime" value="5000"/>
-		<property name="HeatMapFrequency" value="1000"/>
-		<property name="OpenSound" value="open_workbench"/>
-		<property name="CloseSound" value="close_workbench"/>
-		<property name="TakeDelay" value="15"/>
-		<property class="RepairItems">
-			<property name="resourceForgedIron" value="25"/>
-			<property name="resourceMechanicalParts" value="20"/>
-			<property name="resourceWood" value="50"/>
-		</property>
-		<drop event="Harvest" name="resourceScrapIron" count="200" tag="allHarvest,perkJunkMiner"/>
-		<drop event="Harvest" name="resourceWood" count="20" tag="allHarvest,lumberjackHarvest,perkJunkMiner"/>
-		<drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
-		<drop event="Harvest" name="resourceForgedIron" count="10" tag="salvageHarvest"/>
-		<drop event="Harvest" name="resourceMechanicalParts" count="8" tag="salvageHarvest"/>
-		<drop event="Harvest" name="resourceWood" count="20" tag="salvageHarvest"/>
-		<drop event="Destroy" count="0"/>
-		<drop event="Fall" name="terrDestroyedWoodDebris" count="1" prob="0.75" stick_chance="1"/>
-		<!-- Sorting -->
-		<property name="SortOrder1" value="B281"/>
-		<property name="SortOrder2" value="0300"/>
-		<property name="Group" value="Building,TCScience,advBuilding"/>
-		<property name="Tags" value="workstationSkill,twitch_workstation"/>
-		<property name="FilterTags" value="MC_playerBlocks,SC_decor"/>
-		<property name="SoundPickup" value="workbench_grab"/>
-		<property name="SoundPlace" value="workbench_place"/>
-	</block>
-	<block name="5thday_Mixer">
-		<!-- Class -->
-		<property name="Class" value="Workstation"/>
-		<property class="Workstation">
-			<property name="Modules" value="output"/>
-			<property name="CraftingAreaRecipes" value="KitchenMixer"/>
-		</property>
-		<property name="UnlockedBy" value="perkCooking"/>
-		<!-- UI_Info -->
-		<property name="CreativeMode" value="Player"/>
-		<property name="DescriptionKey" value="5thday_MixerDesc"/>
-		<property name="DisplayType" value="blockMulti"/>
-		<property name="WorkstationIcon" value="ui_game_symbol_workbench"/>
-		<property name="Stacknumber" value="1"/>
-		<!-- Visual -->
-		<property name="Material" value="Mmetal"/>
-		<property name="Shape" value="ModelEntity"/>
-		<property name="Model" value="#@modfolder:Assets/5thdayAppliances.unity3d?5d_Mixer"/>
-		<property name="ModelOffset" value="0,0,0"/>
-		<property name="MultiBlockDim" value="1,1,1"/>
-		<property name="ImposterDontBlock" value="true"/>
-		<property name="WaterFlow" value="permitted"/>
-		<!-- Placement -->
-		<property name="Place" value="TowardsPlacerInverted"/>
-		<property name="OnlySimpleRotations" value="true"/>
-		<property name="IsTerrainDecoration" value="true"/>
-		<property name="StabilitySupport" value="false"/>
-		<!-- Value -->
-		<property name="Weight" value="0"/>
-		<property name="EconomicValue" value="2000"/>
-		<property name="TraderStageTemplate" value="midTier1"/><!-- workbench -->
-		<!-- Interaction -->
-		<property name="MaxDamage" value="800"/>
-		<property name="HeatMapStrength" value="5"/>
-		<property name="HeatMapTime" value="5000"/>
-		<property name="HeatMapFrequency" value="1000"/>
-		<property name="OpenSound" value="open_workbench"/>
-		<property name="CloseSound" value="close_workbench"/>
-		<property name="TakeDelay" value="15"/>
-		<property class="RepairItems">
-			<property name="resourceForgedIron" value="25"/>
-			<property name="resourceMechanicalParts" value="20"/>
-			<property name="resourceWood" value="50"/>
-		</property>
-		<drop event="Harvest" name="resourceScrapIron" count="200" tag="allHarvest,perkJunkMiner"/>
-		<drop event="Harvest" name="resourceWood" count="20" tag="allHarvest,lumberjackHarvest,perkJunkMiner"/>
-		<drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
-		<drop event="Harvest" name="resourceForgedIron" count="10" tag="salvageHarvest"/>
-		<drop event="Harvest" name="resourceMechanicalParts" count="8" tag="salvageHarvest"/>
-		<drop event="Harvest" name="resourceWood" count="20" tag="salvageHarvest"/>
-		<drop event="Destroy" count="0"/>
-		<drop event="Fall" name="terrDestroyedWoodDebris" count="1" prob="0.75" stick_chance="1"/>
-		<!-- Sorting -->
-		<property name="SortOrder1" value="B281"/>
-		<property name="SortOrder2" value="0300"/>
-		<property name="Group" value="Building,TCScience,advBuilding"/>
-		<property name="Tags" value="workstationSkill,twitch_workstation"/>
-		<property name="FilterTags" value="MC_playerBlocks,SC_decor"/>
-		<property name="SoundPickup" value="workbench_grab"/>
-		<property name="SoundPlace" value="workbench_place"/>
-	</block>
-	<block name="BrokenPrepTable">
-			<property name="DescriptionKey" value="5thday_PrepTableDesc"/>
-			<property name="Class" value="Loot"/>
-			<property name="LootList" value="BrokenPrepTable"/>
-			<property name="DisplayType" value="blockMulti"/>
-			<property name="Material" value="Mmetal"/>
-			<property name="Shape" value="ModelEntity"/>
-			<property name="Model" value="#@modfolder:Assets/5thdayAppliances.unity3d?5d_PrepTable"/>
-			<property name="ModelOffset" value="0,0,0"/>
-			<property name="MultiBlockDim" value="2,1,1"/>
-			<property name="ImposterDontBlock" value="true"/>
-			<property name="WaterFlow" value="permitted"/>
-			<property name="Place" value="TowardsPlacerInverted"/>
-			<property name="OnlySimpleRotations" value="true"/>
-			<property name="IsTerrainDecoration" value="true"/>
-			<property name="StabilitySupport" value="false"/>
-			<property name="MaxDamage" value="500"/>
-			<property name="SellableToTrader" value="false"/>
-			<property class="RepairItems">
-				<property name="resourceForgedIron" value="25"/>
-			</property>
-			<drop event="Harvest" name="" count="0" tool_category="Disassemble"></drop>
-			<drop event="Destroy" name="BrokenPrepTable" count="1" tool_category="Disassemble"/>
-			<drop event="Fall" name="terrDestroyedWoodDebris" count="1" prob="0.75" stick_chance="1"/>
-			<property name="SortOrder1" value="B281"/>
-			<property name="SortOrder2" value="0301"/>
-			<property name="Group" value="Decor/Miscellaneous"/>
-			<property name="FilterTags" value="MC_building,SC_decor"/>
-			<property name="Tags" value="Car"></property>
-	     </block>
-		 <block name="BrokenKitchenMixer">
-			<property name="DescriptionKey" value="5thday_MixerDesc"/>
-			<property name="Class" value="Loot"/>
-			<property name="LootList" value="BrokenKitchenMixer"/>
-			<property name="DisplayType" value="blockMulti"/>
-			<property name="Material" value="Mmetal"/>
-			<property name="Shape" value="ModelEntity"/>
-			<property name="Model" value="#@modfolder:Assets/5thdayAppliances.unity3d?5d_Mixer"/>
-			<property name="ModelOffset" value="0,0,0"/>
-			<property name="MultiBlockDim" value="1,1,1"/>
-			<property name="ImposterDontBlock" value="true"/>
-			<property name="WaterFlow" value="permitted"/>
-			<property name="Place" value="TowardsPlacerInverted"/>
-			<property name="OnlySimpleRotations" value="true"/>
-			<property name="IsTerrainDecoration" value="true"/>
-			<property name="StabilitySupport" value="false"/>
-			<property name="MaxDamage" value="500"/>
-			<property name="SellableToTrader" value="false"/>
-			<property class="RepairItems">
-				<property name="resourceForgedIron" value="25"/>
-			</property>
-			<drop event="Harvest" name="" count="0" tool_category="Disassemble"></drop>
-			<drop event="Destroy" name="BrokenKitchenMixer" count="1" tool_category="Disassemble"/>
-			<drop event="Fall" name="terrDestroyedWoodDebris" count="1" prob="0.75" stick_chance="1"/>
-			<property name="SortOrder1" value="B281"/>
-			<property name="SortOrder2" value="0301"/>
-			<property name="Group" value="Decor/Miscellaneous"/>
-			<property name="FilterTags" value="MC_building,SC_decor"/>
-			<property name="Tags" value="Car"></property>
-	     </block>
-</append>
-
-
-
-<append xpath="//block[starts-with(@name,'planted') and (contains(@name,'1'))]"><property name="Group" value="TransSellReckt"/></append>
+    <append xpath="/blocks">
+        <block name="HOH_Food_Crate">
+            <property name="Material" value="Mwood" />
+            <property name="Shape" value="ModelEntity" />
+            <property name="CustomIcon" value="Crate-Empty1" />
+            <property name="Model" value="#@modfolder:Assets/HOH_FoodCrate.unity3d?HOH_Food_Crate" />
+            <property name="ModelOffset" value="0,0,0" />
+            <property name="ImposterExchange" value="imposterBlock" param1="19" />
+            <property name="WaterFlow" value="permitted" />
+            <property name="Collide" value="sight,movement,melee,bullet,arrow,rocket" />
+            <property name="Path" value="solid" />
+            <property name="MaxDamage" value="200" />
+            <drop event="Destroy" name="resourceWood" count="3" tag="allHarvest" />
+            <drop event="Fall" name="terrDestroyedStone" count="1" prob="0.5" stick_chance="1" />
+            <property name="SortOrder1" value="B278" />
+            <property name="SortOrder2" value="0600" />
+            <property name="FilterTags" value="MC_building,SC_commercial,SC_construction,SC_decor" />
+            <property name="Class" value="Loot" />
+            <property name="LootList" value="Food_Crate" />
+        </block>
+        <block name="5thday_Range">
+            <!-- Class -->
+            <property name="Class" value="Campfire" />
+            <property name="UnlockedBy" value="perkCooking" />
+            <property name="CraftTimeMultiplier" value=".75" />
+            <property class="Workstation">
+                <property name="Modules" value="tools,output,input" />
+                <property name="ToolNames" value="1,2,3,4" />
+                <property name="CraftingAreaRecipes" value="WorkingStove" />
+                <property name="Collide" value="melee,bullet,arrow,rocket" />
+            </property>
+            <!-- <property name="Fuels" value="fuelPropane,100"/> -->
+            <!-- UI_Info -->
+            <property name="Place" value="TowardsPlacerInverted" />
+            <property name="RequirePower" value="true" />
+            <property name="CreativeMode" value="Player" />
+            <property name="DescriptionKey" value="SNJOvenMaticDesc" />
+            <property name="PickupJournalEntry" value="campfireTip" />
+            <property name="WorkstationIcon" value="ui_game_symbol_range" />
+            <property name="WorkstationJournalTip" value="heatMapTip" />
+            <property name="CraftIcon" value="ui_game_symbol_range" />
+            <property name="CraftActionName" value="lblContextActionCook" />
+            <property name="CustomIcon" value="cntStoveModernVer1Closed" />
+            <property name="CustomIconTint" value="7C7974" />
+            <property name="TraderStageTemplate" value="electricTier1" />
+            <property name="RuntimeSwitch" value="true" />
+            <!-- <property name="TintColor" value="b37676"/> -->
+            <property name="Stacknumber" value="1" />
+            <!-- Visual -->
+            <property name="Material" value="Mmetal" />
+            <property name="Shape" value="ModelEntity" />
+            <property name="Model" value="#@modfolder:Assets/5thdayAppliances.unity3d?5d_Range" />
+            <property name="ModelOffset" value="0,0,0" />
+            <property name="TintColor" value="7C7974" />
+            <property name="ImposterDontBlock" value="true" />
+            <property name="WaterFlow" value="permitted" />
+            <property name="ParticleName" value="campfire" />
+            <property name="ParticleOffset" value=".25,.5,.5" />
+            <!-- Placement -->
+            <!-- <property name="Place" value="TowardsPlacer"/> -->
+            <property name="Collide" value="movement,melee,bullet,arrow,rocket" />
+            <property name="IsTerrainDecoration" value="true" />
+            <property name="StabilitySupport" value="false" />
+            <!-- Value -->
+            <property name="EconomicValue" value="5" />
+            <property name="EconomicBundleSize" value="1" />
+            <property name="SellableToTrader" value="false" />
+            <!-- Interaction -->
+            <property name="MaxDamage" value="500" />
+            <property name="HeatMapStrength" value="5" />
+            <property name="HeatMapTime" value="5000" />
+            <property name="HeatMapFrequency" value="1000" />
+            <property name="ActiveRadiusEffects" value="buffCampfireAOE(3)" />
+            <property name="OpenSound" value="campfire_open" />
+            <property name="CloseSound" value="campfire_close" />
+            <property name="CraftSound" value="campfire_cook_click" />
+            <property name="CraftCompleteSound" value="campfire_complete_item" />
+            <property class="RepairItems">
+                <property name="resourceForgedIron" value="15" />
+                <property name="resourceMechanicalParts" value="5" />
+                <property name="resourceScrapPolymers" value="10" />
+            </property>
+            <drop event="Harvest" name="resourceScrapIron" count="300" tag="allHarvest" />
+            <drop event="Harvest" name="resourceForgedIron" count="5" tag="salvageHarvest" />
+            <drop event="Harvest" name="resourceMechanicalParts" count="4" tag="salvageHarvest" />
+            <drop event="Harvest" name="resourceScrapPolymers" count="4" tag="salvageHarvest" />
+            <drop event="Destroy" count="0" />
+            <drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1" />
+            <!-- Sorting -->
+            <property name="SortOrder1" value="B281" />
+            <property name="SortOrder2" value="0303" />
+            <property name="Group" value="Basics,Food/Cooking,Building,advBuilding" />
+            <property name="FilterTags" value="MC_playerBlocks,SC_decor,SC_electrical" />
+        </block>
+        <block name="5thday_Fridge">
+            <property name="CustomIcon" value="cntFridgeStainlessSteel" />
+            <property name="CustomIconTint" value="ccffff" />
+            <property name="Model" value="#@modfolder:Assets/5thdayAppliances.unity3d?5d_Fridge" />
+            <property name="ModelOffset" value="0,0,0" />
+            <property name="MultiBlockDim" value="1,2,1" />
+            <property name="CreativeMode" value="Player" />
+            <property name="Class" value="SecureLoot" />
+            <property name="LootList" value="playerFridge" />
+            <property name="DescriptionKey" value="refrigeratorGroupDesc" />
+            <property name="DisplayType" value="blockMulti" />
+            <property name="Material" value="Mmetal" />
+            <property name="Shape" value="ModelEntity" />
+            <property name="ImposterExchange" value="imposterBlock" param1="27" />
+            <property name="Place" value="TowardsPlacerInverted" />
+            <property name="Collide" value="melee,bullet,arrow,rocket,movement" />
+            <property name="Path" value="solid" />
+            <property name="OpenSound" value="open_fridge" />
+            <property name="CloseSound" value="close_fridge" />
+            <property name="IsTerrainDecoration" value="true" />
+            <property name="EconomicValue" value="192" />
+            <property class="RepairItems">
+                <property name="resourceForgedIron" value="10" />
+                <property name="resourceMetalPipe" value="2" />
+                <property name="resourceElectricParts" value="10" />
+            </property>
+            <property name="SortOrder1" value="B156" />
+            <property name="SortOrder2" value="0000" />
+            <property name="FilterTags" value="MC_playerBlocks,SC_electrical" />
+            <property name="PreserveBonus" value="10" />
+            <property name="CanPickup" value="true" />
+            <property name="Stacknumber" value="1" />
+            <property name="TakeDelay" value="5" />
+        </block>
+        <block name="5thday_PrepTable">
+            <!-- Class -->
+            <property name="Class" value="Workstation" />
+            <property class="Workstation">
+                <property name="Modules" value="output" />
+                <property name="CraftingAreaRecipes" value="PrepTable" />
+            </property>
+            <property name="UnlockedBy" value="perkCooking" />
+            <!-- UI_Info -->
+            <property name="CreativeMode" value="Player" />
+            <property name="DescriptionKey" value="5thday_PrepTableDesc" />
+            <property name="DisplayType" value="blockMulti" />
+            <property name="WorkstationIcon" value="ui_game_symbol_workbench" />
+            <property name="Stacknumber" value="1" />
+            <!-- Visual -->
+            <property name="Material" value="Mmetal" />
+            <property name="Shape" value="ModelEntity" />
+            <property name="Model" value="#@modfolder:Assets/5thdayAppliances.unity3d?5d_PrepTable" />
+            <property name="ModelOffset" value="0,0,0" />
+            <property name="MultiBlockDim" value="2,1,1" />
+            <property name="ImposterDontBlock" value="true" />
+            <property name="WaterFlow" value="permitted" />
+            <!-- Placement -->
+            <property name="Place" value="TowardsPlacerInverted" />
+            <property name="OnlySimpleRotations" value="true" />
+            <property name="IsTerrainDecoration" value="true" />
+            <property name="StabilitySupport" value="false" />
+            <!-- Value -->
+            <property name="Weight" value="0" />
+            <property name="EconomicValue" value="2000" />
+            <property name="TraderStageTemplate" value="midTier1" />
+            <!-- workbench -->
+            <!-- Interaction -->
+            <property name="MaxDamage" value="800" />
+            <property name="HeatMapStrength" value="5" />
+            <property name="HeatMapTime" value="5000" />
+            <property name="HeatMapFrequency" value="1000" />
+            <property name="OpenSound" value="open_workbench" />
+            <property name="CloseSound" value="close_workbench" />
+            <property name="TakeDelay" value="15" />
+            <property class="RepairItems">
+                <property name="resourceForgedIron" value="25" />
+                <property name="resourceMechanicalParts" value="20" />
+                <property name="resourceWood" value="50" />
+            </property>
+            <drop event="Harvest" name="resourceScrapIron" count="200" tag="allHarvest,perkJunkMiner" />
+            <drop event="Harvest" name="resourceWood" count="20" tag="allHarvest,lumberjackHarvest,perkJunkMiner" />
+            <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble" />
+            <drop event="Harvest" name="resourceForgedIron" count="10" tag="salvageHarvest" />
+            <drop event="Harvest" name="resourceMechanicalParts" count="8" tag="salvageHarvest" />
+            <drop event="Harvest" name="resourceWood" count="20" tag="salvageHarvest" />
+            <drop event="Destroy" count="0" />
+            <drop event="Fall" name="terrDestroyedWoodDebris" count="1" prob="0.75" stick_chance="1" />
+            <!-- Sorting -->
+            <property name="SortOrder1" value="B281" />
+            <property name="SortOrder2" value="0300" />
+            <property name="Group" value="Building,TCScience,advBuilding" />
+            <property name="Tags" value="workstationSkill,twitch_workstation" />
+            <property name="FilterTags" value="MC_playerBlocks,SC_decor" />
+            <property name="SoundPickup" value="workbench_grab" />
+            <property name="SoundPlace" value="workbench_place" />
+        </block>
+        <block name="5thday_Mixer">
+            <!-- Class -->
+            <property name="Class" value="Workstation" />
+            <property class="Workstation">
+                <property name="Modules" value="output" />
+                <property name="CraftingAreaRecipes" value="KitchenMixer" />
+            </property>
+            <property name="UnlockedBy" value="perkCooking" />
+            <!-- UI_Info -->
+            <property name="CreativeMode" value="Player" />
+            <property name="DescriptionKey" value="5thday_MixerDesc" />
+            <property name="DisplayType" value="blockMulti" />
+            <property name="WorkstationIcon" value="ui_game_symbol_workbench" />
+            <property name="Stacknumber" value="1" />
+            <!-- Visual -->
+            <property name="Material" value="Mmetal" />
+            <property name="Shape" value="ModelEntity" />
+            <property name="Model" value="#@modfolder:Assets/5thdayAppliances.unity3d?5d_Mixer" />
+            <property name="ModelOffset" value="0,0,0" />
+            <property name="MultiBlockDim" value="1,1,1" />
+            <property name="ImposterDontBlock" value="true" />
+            <property name="WaterFlow" value="permitted" />
+            <!-- Placement -->
+            <property name="Place" value="TowardsPlacerInverted" />
+            <property name="OnlySimpleRotations" value="true" />
+            <property name="IsTerrainDecoration" value="true" />
+            <property name="StabilitySupport" value="false" />
+            <!-- Value -->
+            <property name="Weight" value="0" />
+            <property name="EconomicValue" value="2000" />
+            <property name="TraderStageTemplate" value="midTier1" />
+            <!-- workbench -->
+            <!-- Interaction -->
+            <property name="MaxDamage" value="800" />
+            <property name="HeatMapStrength" value="5" />
+            <property name="HeatMapTime" value="5000" />
+            <property name="HeatMapFrequency" value="1000" />
+            <property name="OpenSound" value="open_workbench" />
+            <property name="CloseSound" value="close_workbench" />
+            <property name="TakeDelay" value="15" />
+            <property class="RepairItems">
+                <property name="resourceForgedIron" value="25" />
+                <property name="resourceMechanicalParts" value="20" />
+                <property name="resourceWood" value="50" />
+            </property>
+            <drop event="Harvest" name="resourceScrapIron" count="200" tag="allHarvest,perkJunkMiner" />
+            <drop event="Harvest" name="resourceWood" count="20" tag="allHarvest,lumberjackHarvest,perkJunkMiner" />
+            <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble" />
+            <drop event="Harvest" name="resourceForgedIron" count="10" tag="salvageHarvest" />
+            <drop event="Harvest" name="resourceMechanicalParts" count="8" tag="salvageHarvest" />
+            <drop event="Harvest" name="resourceWood" count="20" tag="salvageHarvest" />
+            <drop event="Destroy" count="0" />
+            <drop event="Fall" name="terrDestroyedWoodDebris" count="1" prob="0.75" stick_chance="1" />
+            <!-- Sorting -->
+            <property name="SortOrder1" value="B281" />
+            <property name="SortOrder2" value="0300" />
+            <property name="Group" value="Building,TCScience,advBuilding" />
+            <property name="Tags" value="workstationSkill,twitch_workstation" />
+            <property name="FilterTags" value="MC_playerBlocks,SC_decor" />
+            <property name="SoundPickup" value="workbench_grab" />
+            <property name="SoundPlace" value="workbench_place" />
+        </block>
+        <block name="BrokenPrepTable">
+            <property name="DescriptionKey" value="5thday_PrepTableDesc" />
+            <property name="Class" value="Loot" />
+            <property name="LootList" value="BrokenPrepTable" />
+            <property name="DisplayType" value="blockMulti" />
+            <property name="Material" value="Mmetal" />
+            <property name="Shape" value="ModelEntity" />
+            <property name="Model" value="#@modfolder:Assets/5thdayAppliances.unity3d?5d_PrepTable" />
+            <property name="ModelOffset" value="0,0,0" />
+            <property name="MultiBlockDim" value="2,1,1" />
+            <property name="ImposterDontBlock" value="true" />
+            <property name="WaterFlow" value="permitted" />
+            <property name="Place" value="TowardsPlacerInverted" />
+            <property name="OnlySimpleRotations" value="true" />
+            <property name="IsTerrainDecoration" value="true" />
+            <property name="StabilitySupport" value="false" />
+            <property name="MaxDamage" value="500" />
+            <property name="SellableToTrader" value="false" />
+            <property class="RepairItems">
+                <property name="resourceForgedIron" value="25" />
+            </property>
+            <drop event="Harvest" name="" count="0" tool_category="Disassemble" />
+            <drop event="Destroy" name="BrokenPrepTable" count="1" tool_category="Disassemble" />
+            <drop event="Fall" name="terrDestroyedWoodDebris" count="1" prob="0.75" stick_chance="1" />
+            <property name="SortOrder1" value="B281" />
+            <property name="SortOrder2" value="0301" />
+            <property name="Group" value="Decor/Miscellaneous" />
+            <property name="FilterTags" value="MC_building,SC_decor" />
+            <property name="Tags" value="Car" />
+        </block>
+        <block name="BrokenKitchenMixer">
+            <property name="DescriptionKey" value="5thday_MixerDesc" />
+            <property name="Class" value="Loot" />
+            <property name="LootList" value="BrokenKitchenMixer" />
+            <property name="DisplayType" value="blockMulti" />
+            <property name="Material" value="Mmetal" />
+            <property name="Shape" value="ModelEntity" />
+            <property name="Model" value="#@modfolder:Assets/5thdayAppliances.unity3d?5d_Mixer" />
+            <property name="ModelOffset" value="0,0,0" />
+            <property name="MultiBlockDim" value="1,1,1" />
+            <property name="ImposterDontBlock" value="true" />
+            <property name="WaterFlow" value="permitted" />
+            <property name="Place" value="TowardsPlacerInverted" />
+            <property name="OnlySimpleRotations" value="true" />
+            <property name="IsTerrainDecoration" value="true" />
+            <property name="StabilitySupport" value="false" />
+            <property name="MaxDamage" value="500" />
+            <property name="SellableToTrader" value="false" />
+            <property class="RepairItems">
+                <property name="resourceForgedIron" value="25" />
+            </property>
+            <drop event="Harvest" name="" count="0" tool_category="Disassemble" />
+            <drop event="Destroy" name="BrokenKitchenMixer" count="1" tool_category="Disassemble" />
+            <drop event="Fall" name="terrDestroyedWoodDebris" count="1" prob="0.75" stick_chance="1" />
+            <property name="SortOrder1" value="B281" />
+            <property name="SortOrder2" value="0301" />
+            <property name="Group" value="Decor/Miscellaneous" />
+            <property name="FilterTags" value="MC_building,SC_decor" />
+            <property name="Tags" value="Car" />
+        </block>
+        <block name="5thday_Mixer_Powered">
+            <!-- Class -->
+            <property name="Class" value="Workstation" />
+            <property class="Workstation">
+                <property name="Modules" value="output" />
+                <property name="CraftingAreaRecipes" value="KitchenMixer" />
+            </property>
+            <property name="UnlockedBy" value="perkCooking" />
+            <!-- UI_Info -->
+            <property name="CreativeMode" value="Player" />
+            <property name="DescriptionKey" value="5thday_MixerDesc" />
+            <property name="DisplayType" value="blockMulti" />
+            <property name="WorkstationIcon" value="ui_game_symbol_workbench" />
+            <property name="Stacknumber" value="1" />
+            <!-- Visual -->
+            <property name="Material" value="Mmetal" />
+            <property name="Shape" value="ModelEntity" />
+            <property name="Model" value="#@modfolder:Assets/5thdayAppliancesPowered.unity3d?5d_Mixer_Powered" />
+            <property name="ModelOffset" value="0,0,0" />
+            <property name="MultiBlockDim" value="1,1,1" />
+            <property name="ImposterDontBlock" value="true" />
+            <property name="WaterFlow" value="permitted" />
+            <!-- Placement -->
+            <property name="Place" value="TowardsPlacerInverted" />
+            <property name="OnlySimpleRotations" value="true" />
+            <property name="IsTerrainDecoration" value="true" />
+            <property name="StabilitySupport" value="false" />
+            <!-- Value -->
+            <property name="Weight" value="0" />
+            <property name="EconomicValue" value="2000" />
+            <property name="TraderStageTemplate" value="midTier1" />
+            <!-- workbench -->
+            <!-- Interaction -->
+            <property name="MaxDamage" value="800" />
+            <property name="HeatMapStrength" value="5" />
+            <property name="HeatMapTime" value="5000" />
+            <property name="HeatMapFrequency" value="1000" />
+            <property name="OpenSound" value="open_workbench" />
+            <property name="CloseSound" value="close_workbench" />
+            <property name="TakeDelay" value="15" />
+            <property class="RepairItems">
+                <property name="resourceForgedIron" value="25" />
+                <property name="resourceMechanicalParts" value="20" />
+                <property name="resourceWood" value="50" />
+            </property>
+            <drop event="Harvest" name="resourceScrapIron" count="200" tag="allHarvest,perkJunkMiner" />
+            <drop event="Harvest" name="resourceWood" count="20" tag="allHarvest,lumberjackHarvest,perkJunkMiner" />
+            <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble" />
+            <drop event="Harvest" name="resourceForgedIron" count="10" tag="salvageHarvest" />
+            <drop event="Harvest" name="resourceMechanicalParts" count="8" tag="salvageHarvest" />
+            <drop event="Harvest" name="resourceWood" count="20" tag="salvageHarvest" />
+            <drop event="Destroy" count="0" />
+            <drop event="Fall" name="terrDestroyedWoodDebris" count="1" prob="0.75" stick_chance="1" />
+            <!-- Sorting -->
+            <property name="SortOrder1" value="B281" />
+            <property name="SortOrder2" value="0300" />
+            <property name="Group" value="Building,TCScience,advBuilding" />
+            <property name="Tags" value="workstationSkill,twitch_workstation" />
+            <property name="FilterTags" value="MC_playerBlocks,SC_decor" />
+            <property name="SoundPickup" value="workbench_grab" />
+            <property name="SoundPlace" value="workbench_place" />
+        </block>
+        <!-- <block name="plantedWheat">
+            <property name="Extends" value="cropsGrowingMaster" param1="CustomIcon" />
+            <property name="CreativeMode" value="Player" />
+            <property name="PlantGrowing.Next" value="plantedPotato2" />
+            <property name="Shape" value="ModelEntity" />
+            <property name="Model" value="#@modfolder:Assets/5thdayCrops.unity3d?wheat_planted" />
+            <property name="PlaceAsRandomRotation" value="true" />
+            <drop event="Destroy" name="foodFlour" count="1" />
+            <property name="SortOrder1" value="B958" />
+            <property name="Tags" value="seedSkill" />
+            <property name="SoundPickup" value="seeds_generic2_grab" />
+            <property name="SoundPlace" value="seeds_generic2_place" />
+        </block> -->
+        <block name="plantedWheat">
+            <property name="Extends" value="cropsGrowingMaster" param1="CustomIcon" />
+            <property name="CreativeMode" value="Player" />
+            <property name="PlantGrowing.Next" value="plantedWheat2" />
+            <property name="ModelOffset" value="0,0,0" />
+            <property name="Shape" value="ModelEntity" />
+            <property name="Model" value="#@modfolder:Assets/5thdayCrops.unity3d?wheat_planted" />
+            <property name="PlaceAsRandomRotation" value="true" />
+            <drop event="Destroy" name="plantedWheat" count="1" />
+            <property name="SortOrder1" value="B958" />
+            <property name="Tags" value="seedSkill" />
+            <property name="SoundPickup" value="seeds_generic2_grab" />
+            <property name="SoundPlace" value="seeds_generic2_place" />
+        </block>
+        <block name="plantedWheat2">
+            <property name="Extends" value="cropsGrowingMaster" />
+            <property name="CreativeMode" value="None" />
+            <property name="PlantGrowing.Next" value="plantedWheat3HarvestPlayer" />
+            <property name="CustomIcon" value="plantedWheat" />
+            <property name="ModelOffset" value="0,0,0" />
+            <property name="Shape" value="ModelEntity" />
+            <property name="Model" value="#@modfolder:Assets/5thdayCrops.unity3d?wheat_planted_stage2" />
+            <drop event="Destroy" name="plantedWheat" count="1" />
+            <property name="SortOrder1" value="B958" />
+            <property name="SortOrder2" value="0001" />
+        </block>
+        <block name="plantedWheat3Harvest">
+            <property name="Extends" value="cropsHarvestableMaster" />
+            <property name="Shape" value="ModelEntity" />
+            <property name="ModelOffset" value="0,0,0" />
+            <property name="Model" value="#@modfolder:Assets/5thdayCrops.unity3d?wheat_planted_harvest" />
+            <drop event="Harvest" name="foodCropWheat" count="1" tag="wildCropsHarvest" />
+            <drop event="Harvest" name="foodCropWheat" prob="0.5" count="1" tag="bonusCropHarvest" />
+            <drop event="Harvest" name="foodCropWheat" count="1" tag="farmerBonusHarvest" />
+            <drop event="Harvest" name="foodCropWheat" count="1" tag="sickle" />
+            <property name="SortOrder1" value="B958" />
+            <property name="SortOrder2" value="0002" />
+        </block>
+        <block name="plantedWheat3HarvestPlayer">
+            <property name="Extends" value="plantedWheat3Harvest" />
+            <property name="CreativeMode" value="None" />
+            <property name="CustomIcon" value="plantedWheat" />
+            <property name="DescriptionKey" value="plantedWheatHarvestDesc" />
+            <drop event="Harvest" name="foodCropWheat" count="2" tag="cropHarvest" />
+            <drop event="Harvest" name="foodCropWheat" prob="0.5" count="1" tag="bonusCropHarvest" />
+            <drop event="Harvest" name="foodCropWheat" count="1" tag="farmerBonusHarvest" />
+            <drop event="Harvest" name="foodCropWheat" count="1" tag="sickle" />
+            <drop event="Harvest" name="plantedWheat" count="1" tag="farmerBonusSeed" />
+            <drop event="Destroy" name="plantedWheat" count="1" prob="0.5" />
+            <!-- <property name="DowngradeBlock" value="plantedPotato1"/> -->
+            <property name="SortOrder2" value="0005" />
+        </block>
+    </append>
+    <append xpath="//block[starts-with(@name,'planted') and (contains(@name,'1'))]">
+        <property name="Group" value="TransSellReckt" />
+    </append>
 </snj>

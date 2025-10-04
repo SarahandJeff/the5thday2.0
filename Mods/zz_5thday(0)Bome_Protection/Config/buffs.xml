@@ -1,11 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <configs>
     <append xpath="//buff[@name='buffForest_Hazard']">
         <effect_group name="Moist me thinks the rain should leave">
-            <requirement name="CVarCompare" cvar="_wetnessrate" operation="GTE" value=".5"  />
+            <requirement name="CVarCompare" cvar="_wetnessrate" operation="GTE" value=".5" />
             <triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" target="self" buff="buffForest_Hazard">
                 <requirement name="!InBiome" biome="8" />
             </triggered_effect>
-			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" target="self" buff="buffacidrain">
+            <triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" target="self" buff="buffacidrain">
                 <requirement name="!InBiome" biome="8" />
             </triggered_effect>
         </effect_group>
@@ -59,6 +60,18 @@
                 </triggered_effect>
             </effect_group>
         </buff>
+        <buff name="TitaniumHarvesting">
+            <stack_type value="ignore" />
+            <duration value="0" />
+            <effect_group>
+                <triggered_effect trigger="onSelfDestroyedBlock" action="CallGameEvent" event="GiveTitanium" allow_client_call="true">
+                    <requirement name="CVarCompare" cvar="HOH_BookRead_Mining1" operation="GT" value="0" />
+                    <requirement name="TriggerHasTags" tags="Titanium" />
+                    <requirement name="RandomRoll" seed_type="Random" min_max="0,30" operation="GT" value="5" />
+                    <requirement name="RandomRoll" seed_type="Random" min_max="0,30" operation="LT" value="10" />
+                </triggered_effect>
+            </effect_group>
+        </buff>
     </append>
     <append xpath="/buffs/buff[@name='buffStatusCheck01']">
         <effect_group name="inbiomeforest">
@@ -95,6 +108,15 @@
             </triggered_effect>
             <triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" target="self" buff="BlueSaffireHarvesting">
                 <requirement name="!InBiome" biome="1" />
+            </triggered_effect>
+        </effect_group>
+        <effect_group name="inbiomewasteland">
+            <triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="self" buff="TitaniumHarvesting">
+                <requirement name="!HasBuff" buff="TitaniumHarvesting" />
+                <requirement name="InBiome" biome="8" />
+            </triggered_effect>
+            <triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" target="self" buff="TitaniumHarvesting">
+                <requirement name="!InBiome" biome="8" />
             </triggered_effect>
         </effect_group>
     </append>
