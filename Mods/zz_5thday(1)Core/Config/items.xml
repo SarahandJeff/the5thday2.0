@@ -630,6 +630,15 @@
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$MetabolismDuration" operation="set" value="1" />
             </effect_group>
         </item>
+          <item name="FarmerrlevelRedeem">
+            <property name="Extends" value="schematicMaster" />
+            <property name="CreativeMode" value="Player" />
+            <property name="CustomIcon" value="adminQuestTicketMaster" />
+            <property name="CustomIconTint" value="FF0000" />
+            <effect_group tiered="false">
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_Farming_XP" operation="set" value="@HOH_Farming_lvl_Next_Needed" />
+            </effect_group>
+        </item>
     </Append>
     <!-- Hold trigger down to keep painting -->
     <append xpath="/items/item[@name='meleeToolPaintTool']/effect_group">
@@ -728,7 +737,7 @@
     <set xpath="//item[@name='meleeWpnSledgeT1IronSledgehammer']/property[@name='UnlockedBy']/@value">perkClubs</set>
     <set xpath="//item[@name='meleeWpnSledgeT3SteelSledgehammer']/property[@name='UnlockedBy']/@value">perkClubs</set>
     <!-- Food -->
-    <set xpath="//item[starts-with(@name, 'food') and not (starts-with(@name, 'foodCharred'))]/property[@name='UnlockedBy']/@value">perkCooking</set>
+    <set xpath="//item[starts-with(@name, 'food') and not (starts-with(@name, 'foodCharred')) and not (contains(@name, 'Raw'))]/property[@name='UnlockedBy']/@value">perkCooking</set>
     <set xpath="//item[starts-with(@name, 'drink') and not (contains(@name, 'drinkJarBlackStrapCoffee')) and not (contains(@name, 'Empty')) and not (contains(@name, 'boiled')) and not (contains(@name, 'river'))]/property[@name='UnlockedBy']/@value">perkCooking</set>
     <!-- Brawler -->
     <set xpath="//item[@name='meleeWpnKnucklesT1IronKnuckles']/property[@name='UnlockedBy']/@value">perkBrawler</set>

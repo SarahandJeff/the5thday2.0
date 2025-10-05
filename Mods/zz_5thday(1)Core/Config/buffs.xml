@@ -2278,7 +2278,7 @@
             <stack_type value="ignore" />
             <effect_group name="HOH_Brawler_Levelup">
                 <requirement name="CVarCompare" cvar="HOH_Brawler_XP" operation="GTE" value="@HOH_Brawler_lvl_Next_Needed" />
-                <requirement name="CVarCompare" cvar="HOH_Brawler_lvl" operation="LT" value="100" />
+                <requirement name="CVarCompare" cvar="HOH_Brawler_lvl" operation="LT" value="250" />
                 <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Brawler_XP" operation="subtract" value="@HOH_Brawler_lvl_Next_Needed" />
                 <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Brawler_lvl_Next_Needed" operation="multiply" value="@HOH_Brawler_Multiplier" />
                 <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Brawler_lvl" operation="add" value="1" />
@@ -4288,10 +4288,27 @@
                 <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Hunting_XP" operation="subtract" value="@HOH_Hunting_lvl_Next_Needed" />
                 <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Hunting_lvl_Next_Needed" operation="multiply" value="@HOH_Hunting_Multiplier" />
                 <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Hunting_lvl" operation="add" value="1" />
+                <triggered_effect trigger="onSelfBuffUpdate" action="AddProgressionLevel" progression_name="perkHunting" level="1" />
                 <triggered_effect trigger="onSelfBuffUpdate" action="AddProgressionLevel" progression_name="PerkHOHHunting" level="1" />
                 <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Hunting_Perk_Tracker" operation="add" value="1" />
                 <triggered_effect trigger="onSelfBuffUpdate" action="ShowToolbeltMessage" message="[804cba][I]Your Skill with Hunting has increased!" />
                 <triggered_effect trigger="onSelfBuffUpdate" action="PlaySound" sound="levelup" />
+            </effect_group>
+             <effect_group name="fix my shit">
+                <requirement name="ProgressionLevel" progression_name="perkHunting" operation="LT" value="@HOH_Hunting_Perk_Tracker" />
+                <triggered_effect trigger="onSelfBuffUpdate" action="AddProgressionLevel" progression_name="perkHunting" level="1" />
+            </effect_group>
+             <effect_group name="butcher">
+                <requirement name="CVarCompare" cvar="HOH_Hunting_lvl" operation="LT" value="250" />
+                <requirement name="CVarCompare" cvar="processedCount_foodRawMeat" operation="LT" value="@_craftCount_foodRawMeat" />
+                <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_foodRawMeat" operation="add" value="1" />
+                <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Hunting_XP" operation="add" value="5" />
+            </effect_group>
+             <effect_group name="butcher">
+                <requirement name="CVarCompare" cvar="HOH_Hunting_lvl" operation="LT" value="250" />
+                <requirement name="CVarCompare" cvar="processedCount_foodRawPorkMeat" operation="LT" value="@_craftCount_foodRawPorkMeat" />
+                <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_foodRawPorkMeat" operation="add" value="1" />
+                <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Hunting_XP" operation="add" value="5" />
             </effect_group>
             <effect_group name="harvesting">
                 <requirement name="CVarCompare" cvar="HOH_Hunting_lvl" operation="LT" value="250" />

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <configs>
     <!-- <set xpath="//triggered_effect[@cvar='$foodAmountAdd']/@value">-5</set>
 <set xpath="//triggered_effect[@cvar='$waterAmountAdd']/@value">-3</set>
@@ -725,8 +725,8 @@
                 <requirement name="NotHasBuff" buff="buffIsOnFire" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="25" />
                 <display_value name="dStaminaRegen" value=".25" />
-                <display_value name="dCureInfection" value=".06" />
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffInfectionAddCurePerc" operation="add" value="6" />
+                <display_value name="dCureInfection" value=".01" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffInfectionAddCurePerc" operation="add" value="1" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffInfectionAddCure" />
                 <display_value name="dRunSpeed" value=".5" />
                 <display_value name="dDuration" value="120" />
@@ -764,8 +764,8 @@
                 <requirement name="NotHasBuff" buff="buffIsOnFire" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="25" />
                 <display_value name="dStaminaRegen" value=".25" />
-                <display_value name="dCureInfection" value=".06" />
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffInfectionAddCurePerc" operation="add" value="6" />
+                <display_value name="dCureInfection" value=".03" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffInfectionAddCurePerc" operation="add" value="3" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffInfectionAddCure" />
                 <display_value name="dRunSpeed" value=".5" />
                 <display_value name="dDuration" value="120" />
@@ -803,8 +803,8 @@
                 <requirement name="NotHasBuff" buff="buffIsOnFire" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="25" />
                 <display_value name="dStaminaRegen" value=".25" />
-                <display_value name="dCureInfection" value=".06" />
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffInfectionAddCurePerc" operation="add" value="6" />
+                <display_value name="dCureInfection" value=".01" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffInfectionAddCurePerc" operation="add" value="1" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffInfectionAddCure" />
                 <display_value name="dRunSpeed" value=".5" />
                 <display_value name="dDuration" value="120" />
@@ -1245,6 +1245,7 @@
             <property name="CraftingIngredientTime" value="3" />
             <property name="SoundPickup" value="meat_raw_grab" />
             <property name="SoundPlace" value="meat_raw_place" />
+            <property name="UnlockedBy" value="perkHunting" />
             <property class="Action0">
                 <property name="Class" value="Eat" />
                 <property name="Delay" value="1.0" />
@@ -1996,7 +1997,7 @@
             <property name="Material" value="Morganic" />
             <property name="Weight" value="1" />
             <property name="Stacknumber" value="300" />
-            <property name="Group" value="Resources" />
+            <property name="Group" value="Food/Cooking,CFFood/Cooking,Mixer" />
             <property name="SellableToTrader" value="false" />
             <property name="DescriptionKey" value="foodFlourDesc" />
         </item>
@@ -2453,19 +2454,20 @@
             <property name="Group" value="Food/Cooking,CFFood/Cooking" />
             <!-- ,Medicine -->
             <effect_group tiered="false" name="Food Tier 0">
-                
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="-3"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="-3" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables" />
             </effect_group>
         </item>
     </append>
+    
+    
     <set xpath="//item[@name='foodGrilledMeat']/property[@name='Meshfile']/@value">#@modfolder:Assets/Foods.unity3d?GrilledSteak</set>
     <set xpath="//item[@name='foodGrilledMeat']/property[@name='DropMeshfile']/@value">#@modfolder:Assets/Foods.unity3d?GrilledSteak</set>
     <append xpath="//item[contains(@name,'drink')]/property[@class='Action0']">
         <property name="Create_item" value="drinkJarEmpty" />
     </append>
-    <set xpath="//item[starts-with(@name,'foodCan') and not (contains(@name,'Cat')) and not (contains(@name,'Dog')) and not (contains(@name,'Chili')) and not (contains(@name,'Soup'))]/effect_group">
-        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="5" />
+    <set xpath="//item[starts-with(@name,'foodCan') and not (contains(@name,'Cat')) and not (contains(@name,'Dog')) and not (contains(@name,'Chili')) and not (contains(@name,'Soup')) and not (contains(@name,'Miso'))]/effect_group">
+        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="10" />
         <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="2" />
         <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="2" />
         <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthFarmer" operation="set" value="2">
@@ -2473,6 +2475,7 @@
         </triggered_effect>
         <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables" />
     </set>
+   
     <set xpath="//item[starts-with(@name,'foodCan') and not (contains(@name,'Cat')) and not (contains(@name,'Dog'))]/property[@name='Group']/@value">CookedCan</set>
     <set xpath="//item[starts-with(@name,'foodCan') and not (contains(@name,'Cat')) and not (contains(@name,'Dog'))]/property[@name='DisplayType']/@value">foodWaterRaw</set>
     <append xpath="//item[@name='foodCanPasta']">
@@ -2500,4 +2503,60 @@
     <remove xpath="//item[(@name='foodRottingFlesh') or (@name='foodHoney') or (@name='foodScraps') or  (contains(@name,'foodCan')) or (@name='foodFlour') or (@name='foodCornMeal') or (@name='foodJerky')]/property[@name='TickPerLoss']" />
     <remove xpath="//item[(@name='foodRottingFlesh') or (@name='foodHoney') or (@name='foodScraps') or  (contains(@name,'foodCan')) or (@name='foodFlour') or (@name='foodCornMeal') or (@name='foodJerky')]/property[@name='SpoilageMax']" />
     <remove xpath="//item[(@name='foodRottingFlesh') or (@name='foodHoney') or (@name='foodScraps') or  (contains(@name,'foodCan')) or (@name='foodFlour') or (@name='foodCornMeal') or (@name='foodJerky')]/property[@name='SpoilagePerTick']" />
+    <append xpath="//item[@name='foodRawMeat']">
+        <property name="UnlockedBy" value="perkHunting" />
+    </append>
+
+<!--soup benefits-->
+     <set xpath="//item[starts-with(@name,'foodCanSoup')]/effect_group">
+        <display_value name="dCureInfection" value=".05" />
+        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffInfectionAddCurePerc" operation="add" value="5" />
+        <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffInfectionAddCure" />
+        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="10" />
+        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="10" />
+        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="10" />
+        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthFarmer" operation="set" value="2">
+            <requirement name="HasBuff" buff="buffFarmerSetBonus" />
+        </triggered_effect>
+        <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables" />
+    </set>
+    <append xpath="//item[@name='foodCanSoup']"><property name="DisplayType" value="foodWaterSoup" /></append>
+    <set xpath="//item[starts-with(@name,'foodCanStock')]/effect_group">
+        <display_value name="dCureInfection" value=".05" />
+        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffInfectionAddCurePerc" operation="add" value="5" />
+        <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffInfectionAddCure" />
+        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="5" />
+        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="5" />
+        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="10" />
+        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthFarmer" operation="set" value="2">
+            <requirement name="HasBuff" buff="buffFarmerSetBonus" />
+        </triggered_effect>
+        <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables" />
+    </set>
+    <append xpath="//item[@name='foodCanStock']"><property name="DisplayType" value="foodWaterSoup" /></append>
+     <set xpath="//item[starts-with(@name,'foodCanMiso')]/effect_group">
+        <display_value name="dCureInfection" value=".05" />
+        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffInfectionAddCurePerc" operation="add" value="5" />
+        <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffInfectionAddCure" />
+        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="5" />
+        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="5" />
+        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="10" />
+        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthFarmer" operation="set" value="2">
+            <requirement name="HasBuff" buff="buffFarmerSetBonus" />
+        </triggered_effect>
+        <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables" />
+    </set>
+    <append xpath="//item[@name='foodCanMiso']"><property name="DisplayType" value="foodWaterSoup" /></append>
+
+<!--veggie alters-->
+ <set xpath="//item[starts-with(@name,'foodCanPasta') or starts-with(@name,'foodCanPeas') or starts-with(@name,'foodCanPears') or starts-with(@name,'foodCanmixedVeg')]/effect_group">
+      
+        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="5" />
+        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="5" />
+        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="10" />
+        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthFarmer" operation="set" value="2">
+            <requirement name="HasBuff" buff="buffFarmerSetBonus" />
+        </triggered_effect>
+        
+    </set>
 </configs>
