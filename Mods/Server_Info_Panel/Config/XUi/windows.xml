@@ -1,72 +1,262 @@
-<snj>
+<?xml version="1.0" encoding="UTF-8"?>
+<configs>
+    <append xpath="/windows">
+        <window name="windowESC" depth="10" width="1240" height="900" anchor="CenterCenter" cursor_area="true">
+            <panel name="core" depth="10" pos="-647,425" disableautobackground="true">
+                <rect name="header" width="1240" height="96">
+                    <sprite name="headerBackground" depth="1" color="20,18,18" width="1240" height="96" type="sliced" globalopacity="true" globalopacitymod="1.2" />
+                    <sprite name="headerBorder" depth="2" sprite="menu_empty2px" color="194,124,14,110" width="1240" height="96" type="sliced" fillcenter="false" />
+                    <label name="headerTitle" depth="10" pos="0,-18" justify="center" effect="Outline8" effect_color="0,0,0,255" effect_distance="1,1" font_size="48" text_key="spd_headerTitle" />
+                    <label name="headerMotto" depth="10" pos="0,-60" justify="center" effect="Outline8" effect_color="0,0,0,255" effect_distance="1,1" font_size="26" text_key="spd_headerMotto" />
+                </rect>
+                <rect depth="50" name="links" width="36" height="36" pos="40,-48">
+                    <rect name="link1" pos="1,0" pivot="center">
+                        <texture depth="50" pivot="center" height="80" width="80" texture="@https://www.jeffthepcguy.com/5thday/hohlogoNew.png" />
+                    </rect>
+                </rect>
+                <rect depth="50" name="logo" width="36" height="36" pos="1180,-50">
+                    <rect name="logo" pos="1,0" pivot="center">
+                        <texture depth="50" pivot="center" height="100" width="100" texture="@https://www.jeffthepcguy.com/5thday/5thdaylogo.png" />
+                    </rect>
+                </rect>
+                <rect name="body" pos="0,-96" width="1240" height="804">
+                    <sprite name="bodyBg" depth="1" color="20,18,18" width="1240" height="804" type="sliced" globalopacity="true" globalopacitymod="1.75" />
+                    <sprite name="bodyBorder" depth="2" sprite="menu_empty3px" color="80, 29, 153" width="1240" height="804" type="sliced" fillcenter="false" />
+                    <rect name="sections" controller="TabSelector" depth="20" pos="0,0" width="1240" height="736" select_tab_contents_on_open="true">
+                        <rect name="tabsHeader" pos="10,-10" width="1220" height="712" depth="25">
+                            <rect name="leftStrip" pos="0,0" width="173" height="712" depth="26">
+                                <sprite name="sbBg" depth="1" sprite="menu_empty3px" color="[black]" width="180" height="712" type="sliced" globalopacity="true" globalopacitymod="0.18" />
+                                <sprite name="sbBorder" depth="2" sprite="menu_empty2px" color="80, 29, 153" width="180" height="712" type="sliced" fillcenter="false" />
+                            </rect>
+                            <rect controller="TabSelectorButton" tab_key="basics">
+                                <button name="basics" width="170" height="45" pos="90,-37" pivot="center" sprite="menu_empty3px" bordercolor="[black_half_alpha]" defaultcolor="[darkGrey]" hovercolor="255,165,0,255" selectedcolor="[white]">
+                                    <sprite name="icon" pos="-75,0" pivot="left" size="20,20" sprite="ui_game_symbol_survival" depth="21" color="[white]" style="icon32px" />
+                                    <label name="tabTitle1" depth="10" justify="left" pos="-50,15" effect="Outline8" effect_color="80, 29, 153" effect_distance="1,1" color="[white]" font_size="36" text_key="tab1" foregroundlayer="true" />
+                                    <sprite name="sbBorder" depth="2" sprite="menu_empty2px" pos="-85,25" color="80, 29, 153" width="170" height="45" type="sliced" fillcenter="false" />
+                                </button>
+                            </rect>
+                            <rect controller="TabSelectorButton" tab_key="biomes">
+                                <button name="biomes" width="170" height="45" pos="90,-107" pivot="center" sprite="menu_empty3px" bordercolor="[black_half_alpha]" defaultcolor="[darkGrey]" hovercolor="255,165,0,255" selectedcolor="[white]">
+                                    <sprite name="icon" pos="-75,0" pivot="left" size="20,20" sprite="ui_game_symbol_map" depth="21" color="[white]" style="icon32px" />
+                                    <label name="tabTitle1" depth="10" justify="left" pos="-50,15" effect="Outline8" effect_color="80, 29, 153" effect_distance="1,1" color="[white]" font_size="36" text_key="tab2" foregroundlayer="true" />
+                                    <sprite name="sbBorder" depth="2" sprite="menu_empty2px" pos="-85,25" color="80, 29, 153" width="170" height="45" type="sliced" fillcenter="false" />
+                                </button>
+                            </rect>
+                            <rect controller="TabSelectorButton" tab_key="workstations">
+                                <button name="workstations" width="170" height="45" pos="90,-177" pivot="center" sprite="menu_empty3px" bordercolor="[black_half_alpha]" defaultcolor="[darkGrey]" hovercolor="255,165,0,255" selectedcolor="[white]">
+                                    <sprite name="icon" pos="-75,0" pivot="left" size="20,20" sprite="ui_game_symbol_workbench" depth="21" color="[white]" style="icon32px" />
+                                    <label name="tabTitle1" depth="10" justify="left" pos="-50,15" effect="Outline8" effect_color="80, 29, 153" effect_distance="1,1" color="[white]" font_size="28" text_key="tab3" foregroundlayer="true" />
+                                    <sprite name="sbBorder" depth="2" sprite="menu_empty2px" pos="-85,25" color="80, 29, 153" width="170" height="45" type="sliced" fillcenter="false" />
+                                </button>
+                            </rect>
+                            <rect controller="TabSelectorButton" tab_key="armor">
+                                <button name="armor" width="170" height="45" pos="90,-247" pivot="center" sprite="menu_empty3px" bordercolor="[black_half_alpha]" defaultcolor="[darkGrey]" hovercolor="255,165,0,255" selectedcolor="[white]">
+                                    <sprite name="icon" pos="-75,0" pivot="left" size="20,20" sprite="ui_game_symbol_armor_iron" depth="21" color="[white]" style="icon32px" />
+                                    <label name="tabTitle1" depth="10" justify="left" pos="-50,15" effect="Outline8" effect_color="80, 29, 153" effect_distance="1,1" color="[white]" font_size="36" text_key="tab4" foregroundlayer="true" />
+                                    <sprite name="sbBorder" depth="2" sprite="menu_empty2px" pos="-85,25" color="80, 29, 153" width="170" height="45" type="sliced" fillcenter="false" />
+                                </button>
+                            </rect>
+                            <rect controller="TabSelectorButton" tab_key="farming">
+                                <button name="farming" width="170" height="45" pos="90,-317" pivot="center" sprite="menu_empty3px" bordercolor="[black_half_alpha]" defaultcolor="[darkGrey]" hovercolor="255,165,0,255" selectedcolor="[white]">
+                                    <sprite name="icon" pos="-75,0" pivot="left" size="20,20" sprite="ui_game_symbol_crops" depth="21" color="[white]" style="icon32px" />
+                                    <label name="tabTitle1" depth="10" justify="left" pos="-50,15" effect="Outline8" effect_color="80, 29, 153" effect_distance="1,1" color="[white]" font_size="36" text_key="tab5" foregroundlayer="true" />
+                                    <sprite name="sbBorder" depth="2" sprite="menu_empty2px" pos="-85,25" color="80, 29, 153" width="170" height="45" type="sliced" fillcenter="false" />
+                                </button>
+                            </rect>
+                            <rect controller="TabSelectorButton" tab_key="vehicles">
+                                <button name="vehicles" width="170" height="45" pos="90,-387" pivot="center" sprite="menu_empty3px" bordercolor="[black_half_alpha]" defaultcolor="[darkGrey]" hovercolor="255,165,0,255" selectedcolor="[white]">
+                                    <sprite name="icon" pos="-75,0" pivot="left" size="20,20" sprite="ui_game_symbol_4x4" depth="21" color="[white]" style="icon32px" />
+                                    <label name="tabTitle1" depth="10" justify="left" pos="-50,15" effect="Outline8" effect_color="80, 29, 153" effect_distance="1,1" color="[white]" font_size="36" text_key="tab6" foregroundlayer="true" />
+                                    <sprite name="sbBorder" depth="2" sprite="menu_empty2px" pos="-85,25" color="80, 29, 153" width="170" height="45" type="sliced" fillcenter="false" />
+                                </button>
+                            </rect>
+                            <rect controller="TabSelectorButton" tab_key="weapons">
+                                <button name="weapons" width="170" height="45" pos="90,-457" pivot="center" sprite="menu_empty3px" bordercolor="[black_half_alpha]" defaultcolor="[darkGrey]" hovercolor="255,165,0,255" selectedcolor="[white]">
+                                    <sprite name="icon" pos="-75,0" pivot="left" size="20,20" sprite="ui_game_symbol_shotgun" depth="21" color="[white]" style="icon32px" />
+                                    <label name="tabTitle1" depth="10" justify="left" pos="-50,15" effect="Outline8" effect_color="80, 29, 153" effect_distance="1,1" color="[white]" font_size="36" text_key="tab7" foregroundlayer="true" />
+                                    <sprite name="sbBorder" depth="2" sprite="menu_empty2px" pos="-85,25" color="80, 29, 153" width="170" height="45" type="sliced" fillcenter="false" />
+                                </button>
+                            </rect>
+                            <rect controller="TabSelectorButton" tab_key="questing">
+                                <button name="questing" width="170" height="45" pos="90,-527" pivot="center" sprite="menu_empty3px" bordercolor="[black_half_alpha]" defaultcolor="[darkGrey]" hovercolor="255,165,0,255" selectedcolor="[white]">
+                                    <sprite name="icon" pos="-75,0" pivot="left" size="20,20" sprite="ui_game_symbol_quest" depth="21" color="[white]" style="icon32px" />
+                                    <label name="tabTitle1" depth="10" justify="left" pos="-50,15" effect="Outline8" effect_color="80, 29, 153" effect_distance="1,1" color="[white]" font_size="36" text_key="tab8" foregroundlayer="true" />
+                                    <sprite name="sbBorder" depth="2" sprite="menu_empty2px" pos="-85,25" color="80, 29, 153" width="170" height="45" type="sliced" fillcenter="false" />
+                                </button>
+                            </rect>
+                            <rect controller="TabSelectorButton" tab_key="skills">
+                                <button name="skills" width="170" height="45" pos="90,-597" pivot="center" sprite="menu_empty3px" bordercolor="[black_half_alpha]" defaultcolor="[darkGrey]" hovercolor="255,165,0,255" selectedcolor="[white]">
+                                    <sprite name="icon" pos="-75,0" pivot="left" size="20,20" sprite="ui_game_symbol_run_and_gun" depth="21" color="[white]" style="icon32px" />
+                                    <label name="tabTitle1" depth="10" justify="left" pos="-50,15" effect="Outline8" effect_color="80, 29, 153" effect_distance="1,1" color="[white]" font_size="36" text_key="tab9" foregroundlayer="true" />
+                                    <sprite name="sbBorder" depth="2" sprite="menu_empty2px" pos="-85,25" color="80, 29, 153" width="170" height="45" type="sliced" fillcenter="false" />
+                                </button>
+                            </rect>
+                            <rect controller="TabSelectorButton" tab_key="credits">
+                                <button name="credits" width="170" height="45" pos="90,-667" pivot="center" sprite="menu_empty3px" bordercolor="[black_half_alpha]" defaultcolor="[darkGrey]" hovercolor="255,165,0,255" selectedcolor="[white]">
+                                    <sprite name="icon" pos="-75,0" pivot="left" size="20,20" sprite="ui_game_symbol_twitch_history" depth="21" color="[white]" style="icon32px" />
+                                    <label name="tabTitle1" depth="10" justify="left" pos="-50,15" effect="Outline8" effect_color="80, 29, 153" effect_distance="1,1" color="[white]" font_size="36" text_key="tab10" foregroundlayer="true" />
+                                    <sprite name="sbBorder" depth="2" sprite="menu_empty2px" pos="-85,25" color="80, 29, 153" width="170" height="45" type="sliced" fillcenter="false" />
+                                </button>
+                            </rect>
+                        </rect>
+                        <rect name="tabsContents" pos="196,-10" width="1224" height="712" depth="25">
+                            <sprite name="cfBg" depth="1" sprite="menu_empty3px" color="[black]" width="1046" height="712" type="sliced" globalopacity="true" globalopacitymod="0.12" />
+                            <sprite name="cfBorder" depth="2" sprite="menu_empty2px" color="80, 29, 153" width="1046" height="712" type="sliced" fillcenter="false" />
+                            <button name="btnLink" pos="0,0" width="0" height="0" visible="false" />
+                            <rect name="basics" controller="TabSelectorTab" tab_key="sec_welcome" width="1046" height="712">
+                                <label depth="15" pos="0,-12" justify="center" text_key="tab1" effect="Outline8" effect_color="0,0,0,255" effect_distance="1,1" />
+                                <label depth="13" pos="14,-52" text_key="tab1Desc" parse_actions="true" width="1018" height="650" justify="left" effect="Outline8" effect_color="0,0,0,255" effect_distance="1,1" color="" font_size="28" />
+                            </rect>
+                            <rect name="biomes" controller="TabSelectorTab" tab_key="sec_rules" width="1046" height="712">
+                                <label depth="15" pos="0,-12" justify="center" text_key="tab2" effect="Outline8" effect_color="0,0,0,255" effect_distance="1,1" />
+                                <label depth="13" pos="14,-52" text_key="tab2Desc" parse_actions="true" width="1018" height="650" justify="left" effect="Outline8" effect_color="0,0,0,255" effect_distance="1,1" color="" font_size="28" />
+                            </rect>
+                            <rect name="workstations" controller="TabSelectorTab" tab_key="sec_commands" width="1046" height="712">
+                                <label depth="15" pos="0,-12" justify="center" text_key="tab3" effect="Outline8" effect_color="0,0,0,255" effect_distance="1,1" />
+                                <label depth="13" pos="14,-52" text_key="tab3Desc" parse_actions="true" width="1018" height="650" justify="left" effect="Outline8" effect_color="0,0,0,255" effect_distance="1,1" color="" font_size="28" />
+                            </rect>
+                            <rect name="armor" controller="TabSelectorTab" tab_key="sec_shop" width="1046" height="712">
+                                <label depth="15" pos="0,-12" justify="center" text_key="tab4" effect="Outline8" effect_color="0,0,0,255" effect_distance="1,1" />
+                                <label depth="13" pos="14,-52" text_key="tab4Desc" parse_actions="true" width="1018" height="650" justify="left" effect="Outline8" effect_color="0,0,0,255" effect_distance="1,1" color="" font_size="28" />
+                            </rect>
+                            <rect name="farming" controller="TabSelectorTab" tab_key="sec_vote" width="1046" height="712">
+                                <label depth="15" pos="0,-12" justify="center" text_key="tab5" effect="Outline8" effect_color="0,0,0,255" effect_distance="1,1" />
+                                <label depth="13" pos="14,-52" text_key="tab5Desc" parse_actions="true" width="1018" height="650" justify="left" effect="Outline8" effect_color="0,0,0,255" effect_distance="1,1" color="" font_size="28" />
+                            </rect>
+                            <rect name="vehicles" controller="TabSelectorTab" tab_key="sec_support1" width="1046" height="712">
+                                <label depth="15" pos="0,-12" justify="center" text_key="tab6" effect="Outline8" effect_color="0,0,0,255" effect_distance="1,1" />
+                                <label depth="13" pos="14,-52" text_key="tab6Desc" parse_actions="true" width="1018" height="650" justify="left" effect="Outline8" effect_color="0,0,0,255" effect_distance="1,1" color="" font_size="28" />
+                            </rect>
+                            <rect name="weapons" controller="TabSelectorTab" tab_key="sec_support2" width="1046" height="712">
+                                <label depth="15" pos="0,-12" justify="center" text_key="tab7" effect="Outline8" effect_color="0,0,0,255" effect_distance="1,1" />
+                                <label depth="13" pos="14,-52" text_key="tab7Desc" parse_actions="true" width="1018" height="650" justify="left" effect="Outline8" effect_color="0,0,0,255" effect_distance="1,1" color="" font_size="28" />
+                            </rect>
+                            <rect name="questing" controller="TabSelectorTab" tab_key="sec_credits" width="1046" height="712">
+                                <label depth="15" pos="0,-12" justify="center" text_key="tab8" effect="Outline8" effect_color="0,0,0,255" effect_distance="1,1" />
+                                <label depth="13" pos="14,-52" text_key="tab8Desc" parse_actions="true" width="1018" height="650" justify="left" effect="Outline8" effect_color="0,0,0,255" effect_distance="1,1" color="" font_size="28" />
+                            </rect>
+                            <rect name="skills" controller="TabSelectorTab" tab_key="sec_credits" width="1046" height="712">
+                                <label depth="15" pos="0,-12" justify="center" text_key="tab9" effect="Outline8" effect_color="0,0,0,255" effect_distance="1,1" />
+                                <label depth="13" pos="14,-52" text_key="tab9Desc" parse_actions="true" width="1018" height="650" justify="left" effect="Outline8" effect_color="0,0,0,255" effect_distance="1,1" color="" font_size="28" />
+                            </rect>
+                            <rect name="credits" controller="TabSelectorTab" tab_key="sec_credits" width="1046" height="712">
+                                <label depth="15" pos="0,-12" justify="center" text_key="tab10" effect="Outline8" effect_color="0,0,0,255" effect_distance="1,1" />
+								<label depth="15" pos="0,-40" justify="center" text_key="tab10Thanks" effect="Outline8" effect_color="0,0,0,255" effect_distance="1,1" />
+                                <label depth="13" pos="14,-82" text_key="tab10DescLeft" parse_actions="true" width="500" height="650" justify="left" effect="Outline8" effect_color="0,0,0,255" effect_distance="1,1" color="" font_size="20" />
+								<label depth="13" pos="530,-82" text_key="tab10DescRight" parse_actions="true" width="500" height="650" justify="left" effect="Outline8" effect_color="0,0,0,255" effect_distance="1,1" color="" font_size="20" />
 
-<set xpath="//window[@name='ingameMenuSCore']/@anchor">LeftTop</set>
-<set xpath="//window[@name='ingameMenuSCore']/@pos">20,-560</set>
-	<append xpath="/windows">
-		<window name="windowSNJ" depth="10" width="800" height="100" anchor="CenterCenter" cursor_area="true" >
-			<panel name="core" depth="10" pos="-387,425" disableautobackground="true">
-				<rect name="header">
-					<label name="headerTitle" depth="10" pos="0,-22" justify="center" effect="Outline8" effect_color="0,0,0,255" effect_distance="1,1" font_size="48" text_key="spd_headerTitle"/>
-					<label name="headerMotto" depth="10" pos="0,-68" justify="center" effect="Outline8" effect_color="0,0,0,255" effect_distance="1,1" font_size="28" text_key="spd_headerMotto"/>
-					<sprite name="headerBorder" depth="3" sprite="menu_empty2px" color="[black]" type="sliced" fillcenter="false" />
-					<sprite name="headerBackground" color="20,18,18" type="sliced" globalopacitymod="1.2" />
-				</rect>
-			
-				<rect depth="50" name="links" width="36" height="36" pos="20,-18">
-					<rect name="link1" pos="1,0" pivot="center">
-						<texture depth="50" pivot="center" height="30" width="30" texture="@https://www.jeffthepcguy.com/5thday/discord.png"/>
-						<rect controller="NewsWindow" sources="https://www.jeffthepcguy.com/5thday/discord.xml">
-							<button depth="49" name="btnLink" pos="-18,16" height="36" width="36" hoverscale="1" defaultcolor="0,0,0,1" disabledcolor="0,0,0,1" hovercolor="0,0,0,1" type="sliced" enabled="{has_link}" gamepad_selectable="{has_news}" tooltip_key="link1"/>
-						</rect>
-					</rect>
-					<rect name="link2" pos="39,0" pivot="center">
-						<texture depth="50" pivot="center" height="30" width="30" texture="@https://www.jeffthepcguy.com/5thday/twitch.png"/>
-						<rect controller="NewsWindow" sources="https://www.jeffthepcguy.com/5thday/twitch.xml">
-							<button depth="49" name="btnLink" pos="-18,16" height="36" width="36" hoverscale="1" defaultcolor="0,0,0,1" disabledcolor="0,0,0,1" hovercolor="0,0,0,1" type="sliced" enabled="{has_link}" gamepad_selectable="{has_news}" tooltip_key="link2"/>
-						</rect>
-					</rect>
-					<rect name="link3" pos="76,0" pivot="center">
-						<texture depth="50" pivot="center" height="30" width="30" texture="@https://www.jeffthepcguy.com/5thday/youtube.png"/>
-						<rect controller="NewsWindow" sources="https://www.jeffthepcguy.com/5thday/youtube.xml">
-							<button depth="49" name="btnLink" pos="-18,16" height="36" width="36" hoverscale="1" defaultcolor="0,0,0,1" disabledcolor="0,0,0,1" hovercolor="0,0,0,1" type="sliced" enabled="{has_link}" gamepad_selectable="{has_news}" tooltip_key="link3"/>
-						</rect>
-					</rect>
-					
-				</rect>
-
-
-
-		<rect name="tabs" controller="TabSelector" pos="0,-100" height="800">
-			<sprite depth="10" name="border" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" globalopacity="true" globalopacitymod="0.9" />
-			<sprite depth="0" pos="0,-120" width="798" height="680" name="backgroundMain" sprite="menu_empty3px" color="[darkestGrey]" type="sliced" fillcenter="true" globalopacity="false"/>
-			<rect name="tabsHeader" height="39" depth="0">
-				<sprite depth="0" name="backgroundMainTabs" sprite="menu_empty3px" color="0,0,0,150" type="sliced" fillcenter="true" globalopacity="true" />
-
-				<grid name="tabButtons" pos="3,-2" depth="2" rows="2" cols="5" cell_width="160" cell_height="55" repeat_content="true" arrangement="horizontal">
-					<rect controller="TabSelectorButton">
-						<simplebutton name="tabButton" depth="2" pos="-1,0" width="158" height="53" font_size="34" bordercolor="[transparent]" defaultcolor="[darkGrey]" selectedsprite="menu_empty" selectedcolor="[mediumGrey]" foregroundlayer="false" caption="{tab_name_localized}" />
-					</rect>
-				</grid>
-			</rect>
-
-			<rect name="tabsContents" depth="2" pos="5,-150" height="680" >
-				
-
-				<rect controller="TabSelectorTab" tab_key="tab1"><label depth="7" name="TextContent"  font_size="24" color="[white]" justify="left" pivot="topleft" text="tab1Desc" text_key="tab1Desc"/></rect>
-				<rect controller="TabSelectorTab" tab_key="tab2"><label depth="7" name="TextContent"  font_size="24" color="[white]" justify="left" pivot="topleft" text="tab2Desc" text_key="tab2Desc"/></rect>
-				<rect controller="TabSelectorTab" tab_key="tab3"><label depth="7" name="TextContent"  font_size="24" color="[white]" justify="left" pivot="topleft" text="tab3Desc" text_key="tab3Desc"/></rect>
-				<rect controller="TabSelectorTab" tab_key="tab4"><label depth="7" name="TextContent"  font_size="24" color="[white]" justify="left" pivot="topleft" text="tab4Desc" text_key="tab4Desc"/></rect>
-				<rect controller="TabSelectorTab" tab_key="tab5"><label depth="7" name="TextContent"  font_size="24" color="[white]" justify="left" pivot="topleft" text="tab5Desc" text_key="tab5Desc"/></rect>
-
-				<rect controller="TabSelectorTab" tab_key="tab6"><label depth="7" name="TextContent"  font_size="24" color="[white]" justify="left" pivot="topleft" text="tab6Desc" text_key="tab6Desc"/></rect>
-				<rect controller="TabSelectorTab" tab_key="tab7"><label depth="7" name="TextContent"  font_size="24" color="[white]" justify="left" pivot="topleft" text="tab7Desc" text_key="tab7Desc"/></rect>
-				<rect controller="TabSelectorTab" tab_key="tab8"><label depth="7" name="TextContent"  font_size="24" color="[white]" justify="left" pivot="topleft" text="tab8Desc" text_key="tab8Desc"/></rect>
-				<rect controller="TabSelectorTab" tab_key="tab9"><label depth="7" name="TextContent"  font_size="24" color="[white]" justify="left" pivot="topleft" text="tab9Desc" text_key="tab9Desc"/></rect>
-				<rect controller="TabSelectorTab" tab_key="tab10"><label depth="7" name="TextContent"  font_size="24" color="[white]" justify="left" pivot="topleft" text="tab10Desc" text_key="tab10Desc"/></rect>
-			</rect>
-		</rect>
-
-			</panel>
-		</window>
-	</append>
-</snj>
+								<label depth="15" pos="0,-600" justify="center" text_key="SpecialThanks" effect="Outline8" effect_color="0,0,0,255" effect_distance="1,1" />
+                            </rect>
+                        </rect>
+                    </rect>
+                    <rect name="globalFooter" pos="10,-746" width="1220" height="52" depth="60">
+                        <sprite name="gfBg" depth="1" color="[black]" width="1220" height="52" type="sliced" globalopacity="true" globalopacitymod="0.22" />
+                        <sprite name="gfBorder" depth="2" sprite="menu_empty2px" color="80, 29, 153" width="1220" height="52" type="sliced" fillcenter="false" />
+                        <rect name="footerDiscord" pos="250,-28" width="220" height="36">
+                            <rect name="link1" pos="1,0" pivot="center">
+                                <texture depth="50" pivot="center" height="30" width="30" texture="@https://www.jeffthepcguy.com/5thday/discord.png" />
+                                <rect controller="NewsWindow" sources="https://www.jeffthepcguy.com/5thday/discord.xml">
+                                    <button depth="49" name="btnLink" pos="-18,16" height="36" width="36" hoverscale="1" defaultcolor="0,0,0,1" disabledcolor="0,0,0,1" hovercolor="0,0,0,1" type="sliced" enabled="{has_link}" gamepad_selectable="{has_news}" tooltip_key="link1" />
+                                </rect>
+                            </rect>
+                        </rect>
+                        <rect name="footerTwitch" pos="600,-28" width="220" height="36">
+                            <rect name="link2" pos="39,0" pivot="center">
+                                <texture depth="50" pivot="center" height="30" width="30" texture="@https://www.jeffthepcguy.com/5thday/twitch.png" />
+                                <rect controller="NewsWindow" sources="https://www.jeffthepcguy.com/5thday/twitch.xml">
+                                    <button depth="49" name="btnLink" pos="-18,16" height="36" width="36" hoverscale="1" defaultcolor="0,0,0,1" disabledcolor="0,0,0,1" hovercolor="0,0,0,1" type="sliced" enabled="{has_link}" gamepad_selectable="{has_news}" tooltip_key="link2" />
+                                </rect>
+                            </rect>
+                        </rect>
+                        <rect name="footerYouttube" pos="900,-28" width="220" height="36">
+                            <rect name="link3" pos="76,0" pivot="center">
+                                <texture depth="50" pivot="center" height="30" width="30" texture="@https://www.jeffthepcguy.com/5thday/youtube.png" />
+                                <rect controller="NewsWindow" sources="https://www.jeffthepcguy.com/5thday/youtube.xml">
+                                    <button depth="49" name="btnLink" pos="-18,16" height="36" width="36" hoverscale="1" defaultcolor="0,0,0,1" disabledcolor="0,0,0,1" hovercolor="0,0,0,1" type="sliced" enabled="{has_link}" gamepad_selectable="{has_news}" tooltip_key="link3" />
+                                </rect>
+                            </rect>
+                        </rect>
+                    </rect>
+                </rect>
+            </panel>
+        </window>
+    </append>
+    <set xpath="//window[@name='ingameMenuSCore']/@anchor">LeftTop</set>
+    <set xpath="//window[@name='ingameMenuSCore']/@pos">20,-560</set>
+    <append xpath="/windows">
+        <window name="windowSNJ" depth="10" width="800" height="100" anchor="CenterCenter" cursor_area="true">
+            <panel name="core" depth="10" pos="-387,425" disableautobackground="true">
+                <rect name="header">
+                    <label name="headerTitle" depth="10" pos="0,-22" justify="center" effect="Outline8" effect_color="0,0,0,255" effect_distance="1,1" font_size="48" text_key="spd_headerTitle" />
+                    <label name="headerMotto" depth="10" pos="0,-68" justify="center" effect="Outline8" effect_color="0,0,0,255" effect_distance="1,1" font_size="28" text_key="spd_headerMotto" />
+                    <sprite name="headerBorder" depth="3" sprite="menu_empty2px" color="[black]" type="sliced" fillcenter="false" />
+                    <sprite name="headerBackground" color="20,18,18" type="sliced" globalopacitymod="1.2" />
+                </rect>
+                <rect depth="50" name="links" width="36" height="36" pos="20,-18">
+                    <rect name="link1" pos="1,0" pivot="center">
+                        <texture depth="50" pivot="center" height="30" width="30" texture="@https://www.jeffthepcguy.com/5thday/discord.png" />
+                        <rect controller="NewsWindow" sources="https://www.jeffthepcguy.com/5thday/discord.xml">
+                            <button depth="49" name="btnLink" pos="-18,16" height="36" width="36" hoverscale="1" defaultcolor="0,0,0,1" disabledcolor="0,0,0,1" hovercolor="0,0,0,1" type="sliced" enabled="{has_link}" gamepad_selectable="{has_news}" tooltip_key="link1" />
+                        </rect>
+                    </rect>
+                    <rect name="link2" pos="39,0" pivot="center">
+                        <texture depth="50" pivot="center" height="30" width="30" texture="@https://www.jeffthepcguy.com/5thday/twitch.png" />
+                        <rect controller="NewsWindow" sources="https://www.jeffthepcguy.com/5thday/twitch.xml">
+                            <button depth="49" name="btnLink" pos="-18,16" height="36" width="36" hoverscale="1" defaultcolor="0,0,0,1" disabledcolor="0,0,0,1" hovercolor="0,0,0,1" type="sliced" enabled="{has_link}" gamepad_selectable="{has_news}" tooltip_key="link2" />
+                        </rect>
+                    </rect>
+                    <rect name="link3" pos="76,0" pivot="center">
+                        <texture depth="50" pivot="center" height="30" width="30" texture="@https://www.jeffthepcguy.com/5thday/youtube.png" />
+                        <rect controller="NewsWindow" sources="https://www.jeffthepcguy.com/5thday/youtube.xml">
+                            <button depth="49" name="btnLink" pos="-18,16" height="36" width="36" hoverscale="1" defaultcolor="0,0,0,1" disabledcolor="0,0,0,1" hovercolor="0,0,0,1" type="sliced" enabled="{has_link}" gamepad_selectable="{has_news}" tooltip_key="link3" />
+                        </rect>
+                    </rect>
+                </rect>
+                <rect name="tabs" controller="TabSelector" pos="0,-100" height="800">
+                    <sprite depth="10" name="border" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" globalopacity="true" globalopacitymod="0.9" />
+                    <sprite depth="0" pos="0,-120" width="798" height="680" name="backgroundMain" sprite="menu_empty3px" color="[darkestGrey]" type="sliced" fillcenter="true" globalopacity="false" />
+                    <rect name="tabsHeader" height="39" depth="0">
+                        <sprite depth="0" name="backgroundMainTabs" sprite="menu_empty3px" color="0,0,0,150" type="sliced" fillcenter="true" globalopacity="true" />
+                        <grid name="tabButtons" pos="3,-2" depth="2" rows="2" cols="5" cell_width="160" cell_height="55" repeat_content="true" arrangement="horizontal">
+                            <rect controller="TabSelectorButton">
+                                <simplebutton name="tabButton" depth="2" pos="-1,0" width="158" height="53" font_size="34" bordercolor="[transparent]" defaultcolor="[darkGrey]" selectedsprite="menu_empty" selectedcolor="[mediumGrey]" foregroundlayer="false" caption="{tab_name_localized}" />
+                            </rect>
+                        </grid>
+                    </rect>
+                    <rect name="tabsContents" depth="2" pos="5,-150" height="680">
+                        <rect controller="TabSelectorTab" tab_key="tab1">
+                            <label depth="7" name="TextContent" font_size="24" color="[white]" justify="left" pivot="topleft" text="tab1Desc" text_key="tab1Desc" />
+                        </rect>
+                        <rect controller="TabSelectorTab" tab_key="tab2">
+                            <label depth="7" name="TextContent" font_size="24" color="[white]" justify="left" pivot="topleft" text="tab2Desc" text_key="tab2Desc" />
+                        </rect>
+                        <rect controller="TabSelectorTab" tab_key="tab3">
+                            <label depth="7" name="TextContent" font_size="24" color="[white]" justify="left" pivot="topleft" text="tab3Desc" text_key="tab3Desc" />
+                        </rect>
+                        <rect controller="TabSelectorTab" tab_key="tab4">
+                            <label depth="7" name="TextContent" font_size="24" color="[white]" justify="left" pivot="topleft" text="tab4Desc" text_key="tab4Desc" />
+                        </rect>
+                        <rect controller="TabSelectorTab" tab_key="tab5">
+                            <label depth="7" name="TextContent" font_size="24" color="[white]" justify="left" pivot="topleft" text="tab5Desc" text_key="tab5Desc" />
+                        </rect>
+                        <rect controller="TabSelectorTab" tab_key="tab6">
+                            <label depth="7" name="TextContent" font_size="24" color="[white]" justify="left" pivot="topleft" text="tab6Desc" text_key="tab6Desc" />
+                        </rect>
+                        <rect controller="TabSelectorTab" tab_key="tab7">
+                            <label depth="7" name="TextContent" font_size="24" color="[white]" justify="left" pivot="topleft" text="tab7Desc" text_key="tab7Desc" />
+                        </rect>
+                        <rect controller="TabSelectorTab" tab_key="tab8">
+                            <label depth="7" name="TextContent" font_size="24" color="[white]" justify="left" pivot="topleft" text="tab8Desc" text_key="tab8Desc" />
+                        </rect>
+                        <rect controller="TabSelectorTab" tab_key="tab9">
+                            <label depth="7" name="TextContent" font_size="24" color="[white]" justify="left" pivot="topleft" text="tab9Desc" text_key="tab9Desc" />
+                        </rect>
+                        <rect controller="TabSelectorTab" tab_key="tab10">
+                            <label depth="7" name="TextContent" font_size="24" color="[white]" justify="left" pivot="topleft" text="tab10Desc" text_key="tab10Desc" />
+                        </rect>
+                    </rect>
+                </rect>
+            </panel>
+        </window>
+    </append>
+</configs>

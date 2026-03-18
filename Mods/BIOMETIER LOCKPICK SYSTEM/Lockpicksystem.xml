@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LockPickSystem>
+  <!--
+    Lockpicksystem.xml
+    Tune the lockpick system without recompiling the DLL.
+
+    Difficulty scale:
+      0 = Very Easy
+      1 = Easy
+      2 = Medium
+      3 = Hard
+      4 = Very Hard
+      5 = Master
+
+    Notes:
+    - Chances accept: "0.85", "85", or "85%".
+    - If this file is missing/invalid, defaults are used.
+  -->
+
+  <!-- Normal lockpick: failed attempts allowed before the lock becomes JAMMED. -->
+  <Pick maxFails="10" />
+
+  <!-- Hardcore: if true, a failed FORCE LOCK disables all lockpicking options on that lock (pick + force). -->
+  <Hardcore enabled="false" />
+
+  <!-- Force Lock chances: chance(perkLevel) - difficultyStep * difficulty -->
+  <ForceLock>
+    <Default perk0="50%" perk1="70%" perk2="85%" perk3plus="100%" difficultyStep="15%" />
+
+    <!-- Example per-block override:
+    <Block name="cntLootCrateStandard" perk0="40%" perk1="60%" perk2="80%" perk3plus="100%" difficultyStep="10%" />
+    -->
+  </ForceLock>
+
+  <!-- Biome difficulty ranges (optional). -->
+  <Biomes>
+    <!-- Examples:
+    <Biome type="Forest" min="VeryEasy" max="Easy" />
+    <Biome type="Desert" min="Easy" max="Medium" />
+    <Biome type="Snow" min="Medium" max="Hard" />
+    <Biome type="Wasteland" min="Hard" max="VeryHard" />
+    <Biome type="Radiated" min="VeryHard" max="Master" />
+    -->
+  </Biomes>
+</LockPickSystem>

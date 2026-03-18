@@ -853,7 +853,6 @@
                 <ingredient name="foodCanStock" count="1" />
             </recipe>
             <!-- Fertilized Seeds -->
-            
             <recipe name="liquidFertilizer" count="5" craft_time="30" craft_area="chemistryStation" tags="learnable,perkFarming,chemStationCrafting">
                 <ingredient name="resourceChickenPoop" count="5" />
                 <ingredient name="resourcePotassiumNitratePowder" count="5" />
@@ -932,21 +931,37 @@
             <recipe name="partTitaniumBlade" count="1" craft_area="PowerHammer" craft_time="30" craft_exp_gain="0" use_ingredient_modifier="false" tags="workbenchCrafting">
                 <ingredient name="resourceForgedTitanium" count="2" />
             </recipe>
-            <recipe name="TitaniumHuntingKnife" count="1" craft_area="workbench" craft_time="30" craft_exp_gain="0" use_ingredient_modifier="false" tags="workbenchCrafting">
+            <recipe name="TitaniumHuntingKnife" count="1" craft_area="workbench" craft_time="30" craft_exp_gain="0" use_ingredient_modifier="false" tags="perkKnifes,workbenchCrafting">
                 <ingredient name="partTitaniumBlade" count="1" />
                 <ingredient name="meleeWpnBladeT1HuntingKnife" count="1" />
+                <ingredient name="resourceForgedTitanium" count="0" />
+                <effect_group>
+                    <passive_effect name="CraftingIngredientCount" level="2,3,4,5,6" operation="base_add" value="1,2,3,4,5" tags="resourceForgedTitanium" />
+                </effect_group>
             </recipe>
-            <recipe name="TitaniumShovel" count="1" craft_area="workbench" craft_time="55" craft_exp_gain="0" use_ingredient_modifier="false" tags="workbenchCrafting">
+            <recipe name="TitaniumShovel" count="1" craft_area="workbench" craft_time="55" craft_exp_gain="0" use_ingredient_modifier="false" tags="perkShovels,workbenchCrafting">
                 <ingredient name="partTitaniumShovelhead" count="1" />
                 <ingredient name="meleeToolShovelT2SteelShovel" count="1" />
+                <ingredient name="resourceForgedTitanium" count="0" />
+                <effect_group>
+                    <passive_effect name="CraftingIngredientCount" level="2,3,4,5,6" operation="base_add" value="1,2,3,4,5" tags="resourceForgedTitanium" />
+                </effect_group>
             </recipe>
             <recipe name="TitaniumPickaxe" count="1" craft_area="workbench" craft_time="90" craft_exp_gain="0" use_ingredient_modifier="false" tags="workbenchCrafting">
                 <ingredient name="partTitaniumPickhead" count="1" />
                 <ingredient name="meleeToolPickT2SteelPickaxe" count="1" />
+                <ingredient name="resourceForgedTitanium" count="0" />
+                <effect_group>
+                    <passive_effect name="CraftingIngredientCount" level="2,3,4,5,6" operation="base_add" value="1,2,3,4,5" tags="resourceForgedTitanium" />
+                </effect_group>
             </recipe>
-            <recipe name="TitaniumAxe" count="1" craft_area="workbench" craft_time="60" craft_exp_gain="0" use_ingredient_modifier="false" tags="workbenchCrafting">
+            <recipe name="TitaniumAxe" count="1" craft_area="workbench" craft_time="60" craft_exp_gain="0" use_ingredient_modifier="false" tags="workbenchCrafting,perkAxes">
                 <ingredient name="partTitaniumAxehead" count="1" />
                 <ingredient name="meleeToolAxeT2SteelAxe" count="1" />
+                <ingredient name="resourceForgedTitanium" count="0" />
+                <effect_group>
+                    <passive_effect name="CraftingIngredientCount" level="2,3,4,5,6" operation="base_add" value="1,2,3,4,5" tags="resourceForgedTitanium" />
+                </effect_group>
             </recipe>
             <recipe name="TitaniumPolish" count="15" craft_time="60" craft_area="chemistryStation" tags="perkAdvancedEngineering,chemStationCrafting">
                 <ingredient name="resourceTitanium" count="5" />
@@ -955,10 +970,8 @@
             </recipe>
             <recipe name="resourceTitaniumRefined" count="5" craft_time="60" craft_area="chemistryStation" tags="perkAdvancedEngineering,chemStationCrafting">
                 <ingredient name="resourceTitanium" count="5" />
-                
                 <ingredient name="resourceAcidPint" count="10" />
             </recipe>
-            
         </append>
         <set xpath="//recipe[contains(@name,'drink') and (@craft_area='campfire')]/@craft_tool">kettle</set>
         <append xpath="//recipe[@name='woodShapes:VariantHelper']">

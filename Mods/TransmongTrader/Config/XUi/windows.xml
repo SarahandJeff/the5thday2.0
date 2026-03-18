@@ -1,0 +1,187 @@
+<configs>
+
+	<append xpath="/windows">
+
+		<window name="WindowTransmongTrader" anchor="CenterCenter" pos="-250,100" width="500" height="400" controller="WindowTransmongTrader, TransmongTrader">
+			<panel name="content" depth="3" backgroundcolor="[black]" globalopacity="true">
+				<rect name="MainWindowOutLay" pos="250,-50">
+					<rect name="MainWindowLayOut" pos="-250,100">
+						<!-- Top Window Header -->
+						<sprite depth="2" name="TopHeaderBox" sprite="menu_empty3px" pos="2,298" width="495" height="55" color="[black]" type="sliced" fillcenter="true" />
+						<label depth="2" name="TopHeaderText" text="Market" pos="210,290" font_size="38"/>
+						<!-- Restock Time -->
+						<label depth="2" name="TestTestTest" text="Restock: {nextrestocktime}" pos="172,280" font_size="17" justify="center"/>
+
+						<!-- Game time -->
+						<label depth="2" name="CurrentGameTime" text="Time: {currentgametime}" pos="-172,280" font_size="17" justify="center"/>
+
+						<sprite depth="2" name="TopHeaderBoxOutline" sprite="menu_empty3px" pos="2,298" width="495" height="55" globalopacity="false" color="[black]" type="sliced" fillcenter="false" />
+						<sprite depth="2" name="TopHeaderBoxOutline" sprite="menu_empty3px" pos="2,298" width="150" height="55" globalopacity="false" color="[black]" type="sliced" fillcenter="false" />
+						<sprite depth="2" name="TopHeaderBoxOutline" sprite="menu_empty3px" pos="2,298" width="350" height="55" globalopacity="false" color="[black]" type="sliced" fillcenter="false" />
+						
+						<!-- Main Window -->
+						<sprite depth="1" name="MainBackGround" sprite="menu_empty3px" pos="2,245" width="495" height="300" color="[darkGrey]" type="sliced" fillcenter="true" />
+						<sprite depth="1" name="MainBackGroundOutline" sprite="menu_empty3px" pos="2,245" width="495" height="300" globalopacity="false" color="[black]" type="sliced" fillcenter="false" />
+						<sprite depth="1" name="WindowTransmongTraderOutline" sprite="menu_empty3px" pos="2,-49" width="495" height="400" globalopacity="false" color="[black]" type="sliced" fillcenter="false" />
+						
+					</rect>
+					<!--Sellable and Buyable Item (1)-->
+					<rect name="Sell Item 1" pos="-150,0">
+						<button depth="2" name="itemPreview" size="65,65" pos="0,-200" pivot="center" sprite="{sellableitem1}" tooltip="{sellableitem1name}\nValue: {sellableitem1value}" atlas="ItemIconAtlas" color="[iconColor]" globalopacity="false" sound="[paging_click]" />
+						<button depth="2" name="itemPreview" size="65,65" pos="0,0" pivot="center" sprite="{sellableitem1currency}" tooltip="{sellableitem1currencyname}\nValue: {sellableitem1currencyvalue}" color="[iconColor]" atlas="ItemIconAtlas" globalopacity="false" sound="[paging_click]" />
+						<label depth="2" name="transmongcount" pivot="center" justify="center" text="x{sellableitemquantity1}" pos="40,-150" font_size="20"/>
+						<label name="tradeQuantity1" text="{sellableitem1tradequantity}" pos="0,-120" font_size="20" />
+						<label name="currencyQuantity1" pivot="center" justify="center" text="{sellableitem1currencyquantity}" pos="0,-50" font_size="20" />
+						<!--Trade Button Item (1)-->
+						<rect name="btnBuySellableItem1" depth="3" pos="-33,-265" width="70" height="36">
+							<button name="clickable" sprite="menu_empty" defaultcolor="[mediumGrey]" sound="[paging_click]" hoversprite="ui_game_select_row" hovercolor="[white]" type="sliced" hoverscale="1.0" />
+							<label depth="3" name="BuyButton" text="Trade" pos="12,-7" font_size="26"/>
+							<label depth="2" name="lblOnOff" pos="0,-6" justify="center" text="{acceptbuttontext}" font_size="24" />
+							<sprite depth="3" name="backgroundMain" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" />
+						</rect>
+						<!--Buy All (1)-->
+						<rect name="btnBuyAllSellableItem1" depth="3" pos="-33,-306" width="70" height="36">
+							<button name="clickable" sprite="menu_empty" defaultcolor="[mediumGrey]" sound="[paging_click]" hoversprite="ui_game_select_row" hovercolor="[white]" type="sliced" hoverscale="1.0" />
+							<label depth="3" name="BuyAllButton" text="Buy All" pos="4,-7" font_size="22" />
+							<sprite depth="3" name="backgroundMain" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" />
+						</rect>
+					</rect>
+					<!--Sellable and Buyable Item (2)-->
+					<rect name="Sell Item 2" pos="0,0">
+						<button depth="2" name="Icon" size="65,65" pos="0,-200" pivot="center" sprite="{sellableitem2}" tooltip="{sellableitem2name}\nValue: {sellableitem2value}" atlas="ItemIconAtlas" color="[iconColor]" globalopacity="false" sound="[paging_click]" />
+						<button depth="2" name="CurrencyIcon" size="65,65" pos="0,0" pivot="center" sprite="{sellableitem2currency}" tooltip="{sellableitem2currencyname}\nValue: {sellableitem2currencyvalue}" color="[iconColor]" atlas="ItemIconAtlas" globalopacity="false" sound="[paging_click]" />
+						<label depth="2" name="transmongcount" pivot="center" justify="center" text="x{sellableitemquantity2}" pos="40,-150" font_size="20"/>
+						<label name="tradeQuantity2" text="{sellableitem2tradequantity}"  pos="0,-120" font_size="20" /> <!-- NEW -->
+						<label name="currencyQuantity2" text="{sellableitem2currencyquantity}" pos="0,-50" font_size="20" /> <!-- NEW -->
+						<!--Trade Button Item (2)-->
+						<rect name="btnBuySellableItem2" depth="3" pos="-32,-265" width="70" height="36">
+							<button name="clickable" sprite="menu_empty" defaultcolor="[mediumGrey]" sound="[paging_click]" hoversprite="ui_game_select_row" hovercolor="[white]" type="sliced" hoverscale="1.0" />
+							<label depth="3" name="BuyButton" text="Trade" pos="12,-7" font_size="26"/>
+							<label depth="2" name="lblOnOff" pos="0,-6" justify="center" text="{acceptbuttontext}" font_size="24" />
+							<sprite depth="3" name="backgroundMain" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" />
+						</rect>
+						<!--Buy All (2)-->
+						<rect name="btnBuyAllSellableItem2" depth="3" pos="-32,-306" width="70" height="36">
+							<button name="clickable" sprite="menu_empty" defaultcolor="[mediumGrey]" sound="[paging_click]" hoversprite="ui_game_select_row" hovercolor="[white]" type="sliced" hoverscale="1.0" />
+							<label depth="3" name="BuyAllButton" text="Buy All" pos="4,-7" font_size="22" />
+							<sprite depth="3" name="backgroundMain" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" />
+						</rect>
+					</rect>
+					<!--Sellable and Buyable Item (3)-->
+					<rect name="Sell Item 3" pos="150,0">
+						<button depth="2" name="Icon" size="65,65" pos="0,-200" pivot="center" sprite="{sellableitem3}" tooltip="{sellableitem3name}\nValue: {sellableitem3value}" atlas="ItemIconAtlas" color="[iconColor]" globalopacity="false" sound="[paging_click]" />
+						<button depth="2" name="CurrencyIcon" size="65,65" pos="0,0" pivot="center" sprite="{sellableitem3currency}" tooltip="{sellableitem3currencyname}\nValue: {sellableitem3currencyvalue}" color="[iconColor]" atlas="ItemIconAtlas" globalopacity="false" sound="[paging_click]" />
+						<label depth="2" name="transmongcount" pivot="center" justify="center" text="x{sellableitemquantity3}" pos="40,-150" font_size="20"/>
+						<label name="tradeQuantity3" text="{sellableitem3tradequantity}"  pos="0,-120" font_size="20" /> <!-- NEW -->
+						<label name="currencyQuantity3" text="{sellableitem3currencyquantity}" pos="0,-50" font_size="20" /> <!-- NEW -->
+						<!--Trade Button Item (3)-->
+						<rect name="btnBuySellableItem3" depth="3" pos="-32,-265" width="70" height="36">
+							<button name="clickable" sprite="menu_empty" defaultcolor="[mediumGrey]" sound="[paging_click]" hoversprite="ui_game_select_row" hovercolor="[white]" type="sliced" hoverscale="1.0" />
+							<label depth="3" name="BuyButton" text="Trade" pos="12,-7" font_size="26"/>
+							<label depth="2" name="lblOnOff" pos="0,-6" justify="center" text="{acceptbuttontext}" font_size="24" />
+							<sprite depth="3" name="backgroundMain" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" />
+						</rect>
+						<!--Buy All (3)-->
+						<rect name="btnBuyAllSellableItem3" depth="3" pos="-32,-306" width="70" height="36">
+							<button name="clickable" sprite="menu_empty" defaultcolor="[mediumGrey]" sound="[paging_click]" hoversprite="ui_game_select_row" hovercolor="[white]" type="sliced" hoverscale="1.0" />
+							<label depth="3" name="BuyAllButton" text="Buy All" pos="4,-7" font_size="22" />
+							<sprite depth="3" name="backgroundMain" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" />
+						</rect>
+					</rect>
+					<!--Reset Items Command-->
+					<rect depth="3" pos="0,-375" height="42" width="75" visible="false">
+						<button name="resetButton" sprite="menu_empty" defaultcolor="[mediumGrey]" hoversprite="ui_game_select_row" hovercolor="[white]" pivot="center" type="sliced" hoverscale="1.1" sound="[paging_click]" pos="0,-1" width="100" height="30"  visible="false"/>
+						<label depth="2" name="windowName" pos="0,-1" justify="center" pivot="center" text="RESET" font_size="24" visible="false"/>
+					</rect>
+					
+				</rect>
+			</panel>
+		</window>
+
+	</append>		
+
+</configs>
+
+
+<!-- 
+    Transmong Trader Window Properties
+    The following properties are added to windows.xml for the WindowTransmongTrader to display
+    trade-related information in the Transmong Trader UI, controlled by XUiC_WindowTransmongTrader.
+
+    Available Properties (Bindings):
+    - sellableitemX (string):
+        Displays the sprite icon for the sell item (trader's offered item) in slot X (1, 2, or 3).
+        Uses the item's CustomIcon if available, otherwise the item's name.
+        - Example: sprite="{sellableitem1}" (shows icon for the first sell item).
+    
+    - sellableitemXcurrency (string):
+        Displays the sprite icon for the currency item (player's trade item) in slot X.
+        Uses the currency item's CustomIcon if available, otherwise the item's name.
+        - Example: sprite="{sellableitem1currency}" (shows icon for the first currency item).
+
+    - sellableitemquantityX (string):
+        Displays the trader's current stock quantity for the sell item in slot X.
+        Reflects available items, decreasing with each trade until restock or reset.
+        - Example: text="x{sellableitemquantity1}" (shows stock, e.g., "x10" for 10 items).
+
+    - sellableitemXname (string):
+        Displays the localized name of the sell item in slot X, used in tooltips.
+        - Example: tooltip="{sellableitem1name}" (shows name, e.g., "Steak and Potato Meal").
+
+    - sellableitemXcurrencyname (string):
+        Displays the localized name of the currency item in slot X, used in tooltips.
+        - Example: tooltip="{sellableitem1currencyname}" (shows name, e.g., "Forged Iron").
+
+    - sellableitemXvalue (string):
+        Displays the EconomicValue of the sell item in slot X, used in tooltips.
+        Defaults to "0" if not defined in items.xml.
+        - Example: tooltip="Value: {sellableitem1value}" (shows value, e.g., "Value: 100").
+
+    - sellableitemXcurrencyvalue (string):
+        Displays the EconomicValue of the currency item in slot X, used in tooltips.
+        Defaults to "0" if not defined in items.xml.
+        - Example: tooltip="Value: {sellableitem1currencyvalue}" (shows value, e.g., "Value: 12").
+
+    - sellableitemXtradequantity (string):
+        Displays the number of sell items the player receives per trade in slot X, based on
+        EconomicValue ratio. E.g., 1 for high-value sell items, multiple for low-value ones.
+        - Example: text="{sellableitem1tradequantity}" (shows trade quantity, e.g., "8" for Pumpkin Pies).
+
+    - sellableitemXcurrencyquantity (string):
+        Displays the number of currency items the player must give per trade in slot X, based on
+        EconomicValue ratio. E.g., multiple for low-value currency, 1 for high-value currency.
+        - Example: text="{sellableitem1currencyquantity}" (shows quantity, e.g., "9" for Forged Iron).
+
+    Usage Notes:
+    - Bindings are used in <sprite>, <label>, or <button> elements to display trade details.
+    - All bindings are slot-specific (X = 1, 2, 3 for three trade slots).
+    - EconomicValue-based bindings (value, tradequantity, currencyquantity) rely on items.xml definitions.
+    - tradequantity and currencyquantity reflect trade ratios (e.g., 9 Forged Iron for 1 Steak, or
+      8 Pumpkin Pies for 1 Engine).
+    - Bindings are dynamic, updated after trades, restocks, or resets via RefreshBindings.
+
+    Example Usage in a Sell Item Rect:
+    <rect name="Sell Item 1" pos="-150,0">
+        <button sprite="{sellableitem1}" tooltip="{sellableitem1name}\nValue: {sellableitem1value}" />
+        <button sprite="{sellableitem1currency}" tooltip="{sellableitem1currencyname}\nValue: {sellableitem1currencyvalue}" />
+        <label text="x{sellableitemquantity1}" pos="40,-150" />
+        <label text="{sellableitem1tradequantity}" pos="40,-170" />  (Trade quantity)
+        <label text="{sellableitem1currencyquantity}" pos="40,20" /> (Currency quantity)
+        <rect name="btnBuySellableItem1" pos="-33,-290">
+            <button name="clickable" />
+        </rect>
+    </rect>
+
+    Example Scenarios:
+    - Slot 1: Steak (EconomicValue=100) for Forged Iron (EconomicValue=12):
+        - sellableitem1name: "Steak and Potato Meal"
+        - sellableitem1value: "100"
+        - sellableitem1currencyname: "Forged Iron"
+        - sellableitem1currencyvalue: "12"
+        - sellableitem1tradequantity: "1" (1 Steak)
+        - sellableitem1currencyquantity: "9" (9 Forged Iron)
+        - sellableitemquantity1: "10" (trader's stock)
+    - Slot 2: Pumpkin Pie (EconomicValue=124) for Engine (EconomicValue=1000):
+        - sellableitem2tradequantity: "8" (8 Pumpkin Pies)
+        - sellableitem2currencyquantity: "1" (1 Engine)
+-->

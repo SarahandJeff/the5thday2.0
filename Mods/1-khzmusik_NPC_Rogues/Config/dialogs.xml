@@ -1,0 +1,866 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configs>
+    <!--
+        These are dialogs for the "advanced" versions of these NPCs.
+        They have the NPC Core dialog options, plus additional dialog options for NPC backstories.
+    -->
+    <append xpath="/dialogs">
+        <!-- Rogue female dialog -->
+        <dialog id="FemaleRogueNPC" startstatementid="start">
+            <statement id="start" text="dialog_rogues_statement_start">
+                <!-- Different "Let's Talk" dialog trees, by faction relationship or ally status -->
+                <response_entry id="LetsTalkDislike" />
+                <response_entry id="LetsTalkNeutral" />
+                <response_entry id="LetsTalkHired" />
+                <!-- NPC Core -->
+                <response_entry id="Hire" ref_text="I am interested in hiring you." />
+                <response_entry id="Command Menu" ref_text="Command Menu" />
+                <response_entry id="Weapon Menu" ref_text="Weapon Menu" />
+                <response_entry id="Admin Menu" ref_text="Admin Menu" />
+                <response_entry id="Pickup" ref_text="Pick Me up!" />
+                <response_entry id="ShowMe" ref_text="Show Me your inventory" />
+                <response_entry id="done" ref_text="Nevermind." />
+            </statement>
+            <statement id="Command Menu" text="GenericNPC_Command Menu" ref_text="Command Menu">
+                <response_entry id="Wander" ref_text="Patrol around here" />
+                <response_entry id="FollowMe" ref_text="Follow me" />
+                <response_entry id="GuardHere" ref_text="Stay where I am standing" />
+                <response_entry id="GuardReturnHere" ref_text="Guard and return to where I am standing" />
+                <response_entry id="StayHere" ref_text="Stay where you are standing" />
+                <response_entry id="Loot" ref_text="Loot around here" />
+                <response_entry id="Dismiss" ref_text="Dismiss" />
+                <response_entry id="done" ref_text="Nevermind." />
+            </statement>
+            <statement id="Admin Menu" text="GenericNPC_Admin Menu" ref_text="Admin Menu">
+                <response_entry id="SetCode" ref_text="Here is your Patrol Code" />
+                <response_entry id="Patrol" ref_text="Patrol your coded route" />
+                <response_entry id="Dump2Log" ref_text="Dump Values to Log" />
+                <response_entry id="done" ref_text="Nevermind." />
+            </statement>
+            <statement id="Weapon Classes" text="GenericNPC_Weapon Classes" ref_text="Weapon Classes" nextstatementid="WeaponClasses">
+                <response_entry id="Melee" ref_text="Melee Menu" />
+                <response_entry id="Pistols" ref_text="Pistol Menu" />
+                <response_entry id="Rifles" ref_text="Rifle Menu" />
+                <response_entry id="ShotGuns" ref_text="ShotGun Menu" />
+                <response_entry id="Others" ref_text="Other Menu" />
+                <response_entry id="done" ref_text="Nevermind." />
+            </statement>
+            <statement id="Melee Menu" text="GenericNPC_Melee Menu" ref_text="Melee Weapons">
+                <response_entry id="BareHands" ref_text="Use BareHands" />
+                <response_entry id="Club" ref_text="Use Club" />
+                <response_entry id="Knife" ref_text="Use Knife" />
+                <response_entry id="Bat" ref_text="Use Bat" />
+                <response_entry id="Spear" ref_text="Use Spear" />
+                <response_entry id="Machete" ref_text="Use Machete" />
+                <response_entry id="Axe" ref_text="Use Axe" />
+                <response_entry id="Weapon Menu" ref_text="Weapon Menu" />
+            </statement>
+            <statement id="Pistol Menu" text="GenericNPC_Pistol Menu" ref_text="Pistols">
+                <response_entry id="SMG" ref_text="Use SMG" />
+                <response_entry id="PipePistol" ref_text="Use PipePistol" />
+                <response_entry id="Pistol" ref_text="Use Pistol" />
+                <response_entry id="DPistol" ref_text="Use DesertEagle" />
+                <response_entry id="Weapon Menu" ref_text="Weapon Menu" />
+            </statement>
+            <statement id="Rifle Menu" text="GenericNPC_Rifle Menu" ref_text="Rifles">
+                <response_entry id="PipeRifle" ref_text="Use PipeRifle" />
+                <response_entry id="PipeMG" ref_text="Use PipeMachinegun" />
+                <response_entry id="M60" ref_text="Use M60" />
+                <response_entry id="AK47" ref_text="Use AK47" />
+                <response_entry id="TRifle" ref_text="Use AssaultRifle" />
+                <response_entry id="HRifle" ref_text="Use HuntingR" />
+                <response_entry id="SRifle" ref_text="Use SniperRifle" />
+                <response_entry id="Weapon Menu" ref_text="Weapon Menu" />
+            </statement>
+            <statement id="ShotGun Menu" text="GenericNPC_ShotGun Menu" ref_text="Shotguns">
+                <response_entry id="PipeShotgun" ref_text="Use PipeShotgun" />
+                <response_entry id="PShotgun" ref_text="Use Shotgun" />
+                <response_entry id="AShotgun" ref_text="Use AutoShotgun" />
+                <response_entry id="Weapon Menu" ref_text="Weapon Menu" />
+            </statement>
+            <statement id="Other Menu" text="GenericNPC_Other Menu" ref_text="Other Weapons">
+                <response_entry id="LBow" ref_text="Use Longbow" />
+                <response_entry id="XBow" ref_text="Use Crossbow" />
+                <response_entry id="RLauncher" ref_text="Use RLauncher" />
+                <response_entry id="Weapon Menu" ref_text="Weapon Menu" />
+            </statement>
+            <response id="Hire" text="GenericNPC_Hire" ref_text="I am interested in hiring you.">
+                <requirement type="HiredSDX, SCore" requirementtype="Hide" value="not" />
+                <action type="OpenDialogSDX, SCore" id="Hire" />
+            </response>
+            <response id="FollowMe" text="GenericNPC_FollowMe" ref_text="Follow me">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <action type="AddBuffSDX, SCore" id="buffOrderFollow" value="Self" />
+            </response>
+            <response id="Dump2Log" text="GenericNPC_Dump2Log" ref_text="Dump Values to Log">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="Admin" requirementtype="Hide" />
+                <action type="DisplayInfo, SCore" />
+            </response>
+            <response id="ShowMe" text="GenericNPC_ShowMe" ref_text="Show Me your inventory">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <action type="ExecuteCommandSDX, SCore" id="OpenInventory" />
+            </response>
+            <response id="StayHere" text="GenericNPC_StayHere" ref_text="Stay where you are standing">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <action type="AddBuffSDX, SCore" id="buffOrderStay" value="Self" />
+            </response>
+            <response id="Wander" text="GenericNPC_Wander" ref_text="Patrol around here">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <action type="AddBuffSDX, SCore" id="buffOrderWander" value="Self" />
+            </response>
+            <response id="Patrol" text="GenericNPC_Patrol" ref_text="Patrol your coded route">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="Admin" requirementtype="Hide" />
+                <action type="AddBuffSDX, SCore" id="buffOrderPatrol" value="Self" />
+            </response>
+            <response id="GuardHere" text="GenericNPC_GuardHere" ref_text="Stay where I am standing">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="HasTask, SCore" requirementtype="Hide" value="Stay" />
+                <action type="AddBuffSDX, SCore" id="buffOrderGuardHere" value="Self" />
+            </response>
+            <response id="GuardReturnHere" text="GenericNPC_GuardReturnHere" ref_text="Guard and return to where I am standing">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="HasTask, SCore" requirementtype="Hide" value="Guard" />
+                <action type="AddBuffSDX, SCore" id="buffOrderGuard" value="Self" />
+            </response>
+            <response id="SetCode" text="GenericNPC_SetCode" ref_text="Here is your Patrol Code">
+                <requirement type="HiredSDX, SCore" requirementtype="Hide" />
+                <requirement type="Admin" requirementtype="Hide" />
+                <action type="OpenWindowSDX, SCore" id="SetCode" />
+            </response>
+            <response id="Loot" text="GenericNPC_Loot" ref_text="Loot around here">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="HasTask, SCore" requirementtype="Hide" value="LootBasic" />
+                <action type="AddBuffSDX, SCore" id="buffOrderLoot" value="Self" />
+            </response>
+            <response id="Dismiss" text="GenericNPC_Dismiss" ref_text="Dismiss">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <action type="ExecuteCommandSDX, SCore" id="Dismiss" />
+                <action type="AddBuffSDX, SCore" id="buffOrderDismiss" value="Self" />
+            </response>
+            <response id="Pickup" text="GenericNPC_Pickup" ref_text="Pick Me up!">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <action type="PickUpNPC, SCore" />
+            </response>
+            <response id="Weapon Menu" text="GenericNPC_Weapon Menu" nextstatementid="Weapon Classes" ref_text="Weapon Menu">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <action type="PlaySoundSDX, SCore" id="GenericNPC_Weapon Classes" />
+            </response>
+            <response id="Command Menu" text="GenericNPC_Command Menu" nextstatementid="Command Menu" ref_text="Command Menu">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <action type="PlaySoundSDX, SCore" id="GenericNPC_Command Menu" />
+            </response>
+            <response id="Admin Menu" text="GenericNPC_Admin Menu" nextstatementid="Admin Menu" ref_text="Admin Menu">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="Admin" requirementtype="Hide" />
+                <action type="PlaySoundSDX, SCore" id="GenericNPC_Command Menu" />
+            </response>
+            <response id="Melee" text="GenericNPC_Melee" nextstatementid="Melee Menu" ref_text="Melee Menu">
+                <action type="PlaySoundSDX, SCore" id="GenericNPC_Melee Menu" />
+            </response>
+            <response id="Pistols" text="GenericNPC_Pistols" nextstatementid="Pistol Menu" ref_text="Pistol Menu">
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="SMG,PipePistol,Pistol,DPistol" />
+                <action type="PlaySoundSDX, SCore" id="GenericNPC_Pistol Menu" />
+            </response>
+            <response id="Rifles" text="GenericNPC_Rifles" nextstatementid="Rifle Menu" ref_text="Rifle Menu">
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="PipeRifle,PipeMG,M60,Ak47,TRifle,HRifle,SRifle" />
+                <action type="PlaySoundSDX, SCore" id="GenericNPC_Rifle Menu" />
+            </response>
+            <response id="ShotGuns" text="GenericNPC_ShotGuns" nextstatementid="ShotGun Menu" ref_text="ShotGun Menu">
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="PipeShotgun,PShotgun,AShotgun" />
+                <action type="PlaySoundSDX, SCore" id="GenericNPC_ShotGun Menu" />
+            </response>
+            <response id="Others" text="GenericNPC_Others" nextstatementid="Other Menu" ref_text="Other Menu">
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="LBow,XBow,RocketL" />
+                <action type="PlaySoundSDX, SCore" id="GenericNPC_Other Menu" />
+            </response>
+
+            <!-- Each character needs tags for each weapon they may swap too.  Add all or some of these tags below according to which weapon swaps you want allowed  -->
+            <!-- Knife,Machete,ClubWood,BatWood,Axe,Spear,SMG,PipePistol,PipeShotgun,PipeRifle,PipeMG,M60,Pistol,DPistol,Ak47,TRifle,HRifle,SRifle,LBow,XBow,PShotgun,AShotgun,RocketL  -->
+
+            <response id="BareHands" text="GenericNPC_BareHands" ref_text="Use BareHands">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <action type="SwapWeapon, SCore" id="meleeNPCEmptyHand" />
+            </response>
+            <response id="Club" text="GenericNPC_Club" ref_text="Use Club">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="meleeWpnClubT0WoodenClub" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="ClubWood" />
+                <action type="SwapWeapon, SCore" id="meleeNPCClubWood" />
+            </response>
+            <response id="Knife" text="GenericNPC_Knife" ref_text="Use Knife">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="meleeWpnBladeT1HuntingKnife" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="Knife" />
+                <action type="SwapWeapon, SCore" id="meleeNPCKnife" />
+            </response>
+            <response id="Bat" text="GenericNPC_Bat" ref_text="Use Bat">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="meleeWpnClubT1BaseballBat" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="BatWood" />
+                <action type="SwapWeapon, SCore" id="meleeNPCBatWood" />
+            </response>
+            <response id="Spear" text="GenericNPC_Spear" ref_text="Use Spear">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="meleeWpnSpearT1IronSpear" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="Spear" />
+                <action type="SwapWeapon, SCore" id="meleeNPCSpear" />
+            </response>
+            <response id="Machete" text="GenericNPC_Machete" ref_text="Use Machete">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="meleeWpnBladeT3Machete" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="Machete" />
+                <action type="SwapWeapon, SCore" id="meleeNPCMachete" />
+            </response>
+            <response id="Axe" text="GenericNPC_Axe" ref_text="Use Axe">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="meleeToolAxeT1IronFireaxe" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="Axe" />
+                <action type="SwapWeapon, SCore" id="meleeNPCAxe" />
+            </response>
+            <response id="SMG" text="GenericNPC_SMG" ref_text="Use SMG">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="gunHandgunT3SMG5" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="SMG" />
+                <action type="SwapWeapon, SCore" id="gunNPCSMG5" />
+            </response>
+            <response id="PipePistol" text="GenericNPC_PipePistol" ref_text="Use PipePistol">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="gunHandgunT0PipePistol" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="PipePistol" />
+                <action type="SwapWeapon, SCore" id="gunNPCPipePistol" />
+            </response>
+            <response id="PipeShotgun" text="GenericNPC_PipeShotgun" ref_text="Use PipeShotgun">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="gunShotgunT0PipeShotgun" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="PipeShotgun" />
+                <action type="SwapWeapon, SCore" id="gunNPCPipeShotgun" />
+            </response>
+            <response id="PipeRifle" text="GenericNPC_PipeRifle" ref_text="Use PipeRifle">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="gunRifleT0PipeRifle" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="PipeRifle" />
+                <action type="SwapWeapon, SCore" id="gunNPCPipeRifle" />
+            </response>
+            <response id="PipeMG" text="GenericNPC_PipeMG" ref_text="Use PipeMachinegun">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="gunMGT0PipeMachineGun" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="PipeMG" />
+                <action type="SwapWeapon, SCore" id="gunNPCPipeMG" />
+            </response>
+            <response id="M60" text="GenericNPC_M60" ref_text="Use M60">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="gunMGT3M60" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="M60" />
+                <action type="SwapWeapon, SCore" id="gunNPCM60" />
+            </response>
+            <response id="Pistol" text="GenericNPC_Pistol" ref_text="Use Pistol">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="gunHandgunT1Pistol" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="Pistol" />
+                <action type="SwapWeapon, SCore" id="gunNPCPistol" />
+            </response>
+            <response id="DPistol" text="GenericNPC_DPistol" ref_text="Use DesertEagle">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="gunHandgunT3DesertVulture" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="DPistol" />
+                <action type="SwapWeapon, SCore" id="gunNPCDPistol" />
+            </response>
+            <response id="AK47" text="GenericNPC_AK47" ref_text="Use AK47">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="gunMGT1AK47" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="AK47" />
+                <action type="SwapWeapon, SCore" id="gunNPCAk47" />
+            </response>
+            <response id="TRifle" text="GenericNPC_TRifle" ref_text="Use AssaultRifle">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="gunMGT2TacticalAR" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="TRifle" />
+                <action type="SwapWeapon, SCore" id="gunNPCTRifle" />
+            </response>
+            <response id="HRifle" text="GenericNPC_HRifle" ref_text="Use HuntingR">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="gunRifleT1HuntingRifle" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="HRifle" />
+                <action type="SwapWeapon, SCore" id="gunNPCHRifle" />
+            </response>
+            <response id="SRifle" text="GenericNPC_SRifle" ref_text="Use SniperRifle">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="gunRifleT3SniperRifle" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="SRifle" />
+                <action type="SwapWeapon, SCore" id="gunNPCSRifle" />
+            </response>
+            <response id="LBow" text="GenericNPC_LBow" ref_text="Use Longbow">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="gunBowT1WoodenBow" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="LBow" />
+                <action type="SwapWeapon, SCore" id="gunNPCLBow" />
+            </response>
+            <response id="XBow" text="GenericNPC_XBow" ref_text="Use Crossbow">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="gunBowT1IronCrossbow" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="XBow" />
+                <action type="SwapWeapon, SCore" id="gunNPCXBow" />
+            </response>
+            <response id="PShotgun" text="GenericNPC_PShotgun" ref_text="Use Shotgun">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="gunShotgunT2PumpShotgun" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="PShotgun" />
+                <action type="SwapWeapon, SCore" id="gunNPCPShotgun" />
+            </response>
+            <response id="AShotgun" text="GenericNPC_AShotgun" ref_text="Use AutoShotgun">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="gunShotgunT3AutoShotgun" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="AShotgun" />
+                <action type="SwapWeapon, SCore" id="gunNPCAShotgun" />
+            </response>
+            <response id="RLauncher" text="GenericNPC_RLauncher" ref_text="Use RLauncher">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="gunExplosivesT3RocketLauncher" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="RocketL" />
+                <action type="SwapWeapon, SCore" id="gunNPCRocketLauncher" />
+            </response>
+            <response id="done" text="GenericNPC_done" ref_text="Nevermind." />
+
+            <!--
+                Custom dialog trees for Rogue Female characters
+            -->
+            <!-- Statements -->
+            <statement id="LetsTalkStatementDislike" text="dialog_rogues_statement_lets_talk_not_interested">
+                <response_entry id="start" />
+            </statement>
+
+            <statement id="LetsTalkStatementNeutral" text="dialog_rogues_statement_lets_talk_what_to_know">
+                <response_entry id="BeforeNeutral" />
+                <response_entry id="GroupNeutral" />
+                <response_entry id="FamilyNeutral" />
+                <response_entry id="SurviveNeutral" />
+                <response_entry id="start" />
+            </statement>
+            <statement id="BeforeStatementNeutral" text="dialog_rogues_statement_nothing_before_apocalypse">
+                <response_entry id="GroupNeutral" />
+                <response_entry id="FamilyNeutral" />
+                <response_entry id="SurviveNeutral" />
+                <response_entry id="start" />
+            </statement>
+            <!-- Now hollow fires burn out to black by A. E. Housman -->
+            <statement id="GroupStatementNeutral" text="dialog_rogues_statement_endless_road_nothing_but_night">
+                <response_entry id="BeforeNeutral" />
+                <response_entry id="FamilyNeutral" />
+                <response_entry id="SurviveNeutral" />
+                <response_entry id="start" />
+            </statement>
+            <statement id="FamilyStatementNeutral" text="dialog_rogues_statement_nunya">
+                <response_entry id="BeforeNeutral" />
+                <response_entry id="GroupNeutral" />
+                <response_entry id="SurviveNeutral" />
+                <response_entry id="start" />
+            </statement>
+            <!-- Attributed to Taitu Betul -->
+            <statement id="SurviveStatementNeutral" text="dialog_rogues_statement_heart_without_tenderness">
+                <response_entry id="BeforeNeutral" />
+                <response_entry id="GroupNeutral" />
+                <response_entry id="FamilyNeutral" />
+                <response_entry id="start" />
+            </statement>
+
+            <statement id="LetsTalkStatementHired" text="dialog_rogues_statement_lets_talk_what_to_know">
+                <response_entry id="BeforeHired" />
+                <response_entry id="GroupHired" />
+                <response_entry id="FamilyHired" />
+                <response_entry id="SurviveHired" />
+                <response_entry id="start" />
+            </statement>
+            <statement id="BeforeStatementHired" text="dialog_rogues_statement_was_housewife">
+                <response_entry id="BeforeHiredFollowUp" />
+            </statement>
+            <statement id="BeforeStatementHiredFollowUp" text="dialog_rogues_statement_husband_eaten_best">
+                <response_entry id="GroupHired" />
+                <response_entry id="FamilyHired" />
+                <response_entry id="SurviveHired" />
+                <response_entry id="start" />
+            </statement>
+            <!-- Inez, from No Exit by Jean-Paul Sartre -->
+            <statement id="GroupStatementHired" text="dialog_rogues_statement_flame_hearts_extinguished">
+                <response_entry id="BeforeHired" />
+                <response_entry id="FamilyHired" />
+                <response_entry id="SurviveHired" />
+                <response_entry id="start" />
+            </statement>
+            <statement id="FamilyStatementHired" text="dialog_rogues_statement_they_didnt_make_it">
+                <response_entry id="FamilyHiredFollowUp" />
+                <response_entry id="start" />
+            </statement>
+            <statement id="FamilyStatementHiredFollowUp" text="dialog_rogues_statement_dont_want_to_talk_about_it">
+                <response_entry id="BeforeHired" />
+                <response_entry id="GroupHired" />
+                <response_entry id="SurviveHired" />
+                <response_entry id="start" />
+            </statement>
+            <!-- Sophie Scholl -->
+            <statement id="SurviveStatementHired" text="dialog_rogues_statement_life_edge_of_death_choose_burn">
+                <response_entry id="BeforeHired" />
+                <response_entry id="GroupHired" />
+                <response_entry id="FamilyHired" />
+                <response_entry id="start" />
+            </statement>
+
+            <!-- Responses -->
+            <response id="start" text="dialog_trader_response_nevermind" nextstatementid="start" />
+
+            <response id="LetsTalkDislike" text="dialog_rogues_response_lets_talk" nextstatementid="LetsTalkStatementDislike">
+                <requirement requirementtype="Hide" type="HiredSDX, SCore" value="not" />
+                <requirement requirementtype="Hide" type="FactionValue, SCore" value="400" operator="lt" />
+            </response>
+
+            <response id="LetsTalkNeutral" text="dialog_rogues_response_lets_talk" nextstatementid="LetsTalkStatementNeutral">
+                <requirement requirementtype="Hide" type="HiredSDX, SCore" value="not" />
+                <requirement requirementtype="Hide" type="FactionValue, SCore" value="400" operator="gte" />
+            </response>
+            <response id="BeforeNeutral" text="dialog_rogues_response_what_do_before_apocalypse" nextstatementid="BeforeStatementNeutral" />
+            <response id="GroupNeutral" text="dialog_rogues_response_what_happened_group" nextstatementid="GroupStatementNeutral" />
+            <response id="FamilyNeutral" text="dialog_rogues_response_have_family" nextstatementid="FamilyStatementNeutral" />
+            <response id="SurviveNeutral" text="dialog_rogues_response_how_survive" nextstatementid="SurviveStatementNeutral" />
+
+            <response id="LetsTalkHired" text="dialog_rogues_response_lets_talk" nextstatementid="LetsTalkStatementHired">
+                <requirement requirementtype="Hide" type="Leader, SCore" />
+            </response>
+            <response id="BeforeHired" text="dialog_rogues_response_what_do_before_apocalypse" nextstatementid="BeforeStatementHired" />
+            <response id="BeforeHiredFollowUp" text="dialog_rogues_response_what_happened" nextstatementid="BeforeStatementHiredFollowUp" />
+            <response id="GroupHired" text="dialog_rogues_response_what_happened_group" nextstatementid="GroupStatementHired" />
+            <response id="FamilyHired" text="dialog_rogues_response_have_family" nextstatementid="FamilyStatementHired" />
+            <response id="FamilyHiredFollowUp" text="dialog_rogues_response_what_happened" nextstatementid="FamilyStatementHiredFollowUp" />
+            <response id="SurviveHired" text="dialog_rogues_response_how_survive" nextstatementid="SurviveStatementHired" />
+        </dialog>
+
+        <!-- Rogue male dialog -->
+        <dialog id="MaleRogueNPC" startstatementid="start">
+            <statement id="start" text="dialog_rogues_statement_start">
+                <!-- Different "Let's Talk" dialog trees, by faction relationship or ally status -->
+                <response_entry id="LetsTalkDislike" />
+                <response_entry id="LetsTalkNeutral" />
+                <response_entry id="LetsTalkHired" />
+                <!-- NPC Core -->
+                <response_entry id="Hire" ref_text="I am interested in hiring you." />
+                <response_entry id="Command Menu" ref_text="Command Menu" />
+                <response_entry id="Weapon Menu" ref_text="Weapon Menu" />
+                <response_entry id="Admin Menu" ref_text="Admin Menu" />
+                <response_entry id="Pickup" ref_text="Pick Me up!" />
+                <response_entry id="ShowMe" ref_text="Show Me your inventory" />
+                <response_entry id="done" ref_text="Nevermind." />
+            </statement>
+            <statement id="Command Menu" text="GenericNPC_Command Menu" ref_text="Command Menu">
+                <response_entry id="Wander" ref_text="Patrol around here" />
+                <response_entry id="FollowMe" ref_text="Follow me" />
+                <response_entry id="GuardHere" ref_text="Stay where I am standing" />
+                <response_entry id="GuardReturnHere" ref_text="Guard and return to where I am standing" />
+                <response_entry id="StayHere" ref_text="Stay where you are standing" />
+                <response_entry id="Loot" ref_text="Loot around here" />
+                <response_entry id="Dismiss" ref_text="Dismiss" />
+                <response_entry id="done" ref_text="Nevermind." />
+            </statement>
+            <statement id="Admin Menu" text="GenericNPC_Admin Menu" ref_text="Admin Menu">
+                <response_entry id="SetCode" ref_text="Here is your Patrol Code" />
+                <response_entry id="Patrol" ref_text="Patrol your coded route" />
+                <response_entry id="Dump2Log" ref_text="Dump Values to Log" />
+                <response_entry id="done" ref_text="Nevermind." />
+            </statement>
+            <statement id="Weapon Classes" text="GenericNPC_Weapon Classes" ref_text="Weapon Classes" nextstatementid="WeaponClasses">
+                <response_entry id="Melee" ref_text="Melee Menu" />
+                <response_entry id="Pistols" ref_text="Pistol Menu" />
+                <response_entry id="Rifles" ref_text="Rifle Menu" />
+                <response_entry id="ShotGuns" ref_text="ShotGun Menu" />
+                <response_entry id="Others" ref_text="Other Menu" />
+                <response_entry id="done" ref_text="Nevermind." />
+            </statement>
+            <statement id="Melee Menu" text="GenericNPC_Melee Menu" ref_text="Melee Weapons">
+                <response_entry id="BareHands" ref_text="Use BareHands" />
+                <response_entry id="Club" ref_text="Use Club" />
+                <response_entry id="Knife" ref_text="Use Knife" />
+                <response_entry id="Bat" ref_text="Use Bat" />
+                <response_entry id="Spear" ref_text="Use Spear" />
+                <response_entry id="Machete" ref_text="Use Machete" />
+                <response_entry id="Axe" ref_text="Use Axe" />
+                <response_entry id="Weapon Menu" ref_text="Weapon Menu" />
+            </statement>
+            <statement id="Pistol Menu" text="GenericNPC_Pistol Menu" ref_text="Pistols">
+                <response_entry id="SMG" ref_text="Use SMG" />
+                <response_entry id="PipePistol" ref_text="Use PipePistol" />
+                <response_entry id="Pistol" ref_text="Use Pistol" />
+                <response_entry id="DPistol" ref_text="Use DesertEagle" />
+                <response_entry id="Weapon Menu" ref_text="Weapon Menu" />
+            </statement>
+            <statement id="Rifle Menu" text="GenericNPC_Rifle Menu" ref_text="Rifles">
+                <response_entry id="PipeRifle" ref_text="Use PipeRifle" />
+                <response_entry id="PipeMG" ref_text="Use PipeMachinegun" />
+                <response_entry id="M60" ref_text="Use M60" />
+                <response_entry id="AK47" ref_text="Use AK47" />
+                <response_entry id="TRifle" ref_text="Use AssaultRifle" />
+                <response_entry id="HRifle" ref_text="Use HuntingR" />
+                <response_entry id="SRifle" ref_text="Use SniperRifle" />
+                <response_entry id="Weapon Menu" ref_text="Weapon Menu" />
+            </statement>
+            <statement id="ShotGun Menu" text="GenericNPC_ShotGun Menu" ref_text="Shotguns">
+                <response_entry id="PipeShotgun" ref_text="Use PipeShotgun" />
+                <response_entry id="PShotgun" ref_text="Use Shotgun" />
+                <response_entry id="AShotgun" ref_text="Use AutoShotgun" />
+                <response_entry id="Weapon Menu" ref_text="Weapon Menu" />
+            </statement>
+            <statement id="Other Menu" text="GenericNPC_Other Menu" ref_text="Other Weapons">
+                <response_entry id="LBow" ref_text="Use Longbow" />
+                <response_entry id="XBow" ref_text="Use Crossbow" />
+                <response_entry id="RLauncher" ref_text="Use RLauncher" />
+                <response_entry id="Weapon Menu" ref_text="Weapon Menu" />
+            </statement>
+            <response id="Hire" text="GenericNPC_Hire" ref_text="I am interested in hiring you.">
+                <requirement type="HiredSDX, SCore" requirementtype="Hide" value="not" />
+                <action type="OpenDialogSDX, SCore" id="Hire" />
+            </response>
+            <response id="FollowMe" text="GenericNPC_FollowMe" ref_text="Follow me">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <action type="AddBuffSDX, SCore" id="buffOrderFollow" value="Self" />
+            </response>
+            <response id="Dump2Log" text="GenericNPC_Dump2Log" ref_text="Dump Values to Log">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="Admin" requirementtype="Hide" />
+                <action type="DisplayInfo, SCore" />
+            </response>
+            <response id="ShowMe" text="GenericNPC_ShowMe" ref_text="Show Me your inventory">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <action type="ExecuteCommandSDX, SCore" id="OpenInventory" />
+            </response>
+            <response id="StayHere" text="GenericNPC_StayHere" ref_text="Stay where you are standing">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <action type="AddBuffSDX, SCore" id="buffOrderStay" value="Self" />
+            </response>
+            <response id="Wander" text="GenericNPC_Wander" ref_text="Patrol around here">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <action type="AddBuffSDX, SCore" id="buffOrderWander" value="Self" />
+            </response>
+            <response id="Patrol" text="GenericNPC_Patrol" ref_text="Patrol your coded route">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="Admin" requirementtype="Hide" />
+                <action type="AddBuffSDX, SCore" id="buffOrderPatrol" value="Self" />
+            </response>
+            <response id="GuardHere" text="GenericNPC_GuardHere" ref_text="Stay where I am standing">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="HasTask, SCore" requirementtype="Hide" value="Stay" />
+                <action type="AddBuffSDX, SCore" id="buffOrderGuardHere" value="Self" />
+            </response>
+            <response id="GuardReturnHere" text="GenericNPC_GuardReturnHere" ref_text="Guard and return to where I am standing">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="HasTask, SCore" requirementtype="Hide" value="Guard" />
+                <action type="AddBuffSDX, SCore" id="buffOrderGuard" value="Self" />
+            </response>
+            <response id="SetCode" text="GenericNPC_SetCode" ref_text="Here is your Patrol Code">
+                <requirement type="HiredSDX, SCore" requirementtype="Hide" />
+                <requirement type="Admin" requirementtype="Hide" />
+                <action type="OpenWindowSDX, SCore" id="SetCode" />
+            </response>
+            <response id="Loot" text="GenericNPC_Loot" ref_text="Loot around here">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="HasTask, SCore" requirementtype="Hide" value="LootBasic" />
+                <action type="AddBuffSDX, SCore" id="buffOrderLoot" value="Self" />
+            </response>
+            <response id="Dismiss" text="GenericNPC_Dismiss" ref_text="Dismiss">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <action type="ExecuteCommandSDX, SCore" id="Dismiss" />
+                <action type="AddBuffSDX, SCore" id="buffOrderDismiss" value="Self" />
+            </response>
+            <response id="Pickup" text="GenericNPC_Pickup" ref_text="Pick Me up!">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <action type="PickUpNPC, SCore" />
+            </response>
+            <response id="Weapon Menu" text="GenericNPC_Weapon Menu" nextstatementid="Weapon Classes" ref_text="Weapon Menu">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <action type="PlaySoundSDX, SCore" id="GenericNPC_Weapon Classes" />
+            </response>
+            <response id="Command Menu" text="GenericNPC_Command Menu" nextstatementid="Command Menu" ref_text="Command Menu">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <action type="PlaySoundSDX, SCore" id="GenericNPC_Command Menu" />
+            </response>
+            <response id="Admin Menu" text="GenericNPC_Admin Menu" nextstatementid="Admin Menu" ref_text="Admin Menu">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="Admin" requirementtype="Hide" />
+                <action type="PlaySoundSDX, SCore" id="GenericNPC_Command Menu" />
+            </response>
+            <response id="Melee" text="GenericNPC_Melee" nextstatementid="Melee Menu" ref_text="Melee Menu">
+                <action type="PlaySoundSDX, SCore" id="GenericNPC_Melee Menu" />
+            </response>
+            <response id="Pistols" text="GenericNPC_Pistols" nextstatementid="Pistol Menu" ref_text="Pistol Menu">
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="SMG,PipePistol,Pistol,DPistol" />
+                <action type="PlaySoundSDX, SCore" id="GenericNPC_Pistol Menu" />
+            </response>
+            <response id="Rifles" text="GenericNPC_Rifles" nextstatementid="Rifle Menu" ref_text="Rifle Menu">
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="PipeRifle,PipeMG,M60,Ak47,TRifle,HRifle,SRifle" />
+                <action type="PlaySoundSDX, SCore" id="GenericNPC_Rifle Menu" />
+            </response>
+            <response id="ShotGuns" text="GenericNPC_ShotGuns" nextstatementid="ShotGun Menu" ref_text="ShotGun Menu">
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="PipeShotgun,PShotgun,AShotgun" />
+                <action type="PlaySoundSDX, SCore" id="GenericNPC_ShotGun Menu" />
+            </response>
+            <response id="Others" text="GenericNPC_Others" nextstatementid="Other Menu" ref_text="Other Menu">
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="LBow,XBow,RocketL" />
+                <action type="PlaySoundSDX, SCore" id="GenericNPC_Other Menu" />
+            </response>
+
+            <!-- Each character needs tags for each weapon they may swap too.  Add all or some of these tags below according to which weapon swaps you want allowed  -->
+            <!-- Knife,Machete,ClubWood,BatWood,Axe,Spear,SMG,PipePistol,PipeShotgun,PipeRifle,PipeMG,M60,Pistol,DPistol,Ak47,TRifle,HRifle,SRifle,LBow,XBow,PShotgun,AShotgun,RocketL  -->
+
+            <response id="BareHands" text="GenericNPC_BareHands" ref_text="Use BareHands">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <action type="SwapWeapon, SCore" id="meleeNPCEmptyHand" />
+            </response>
+            <response id="Club" text="GenericNPC_Club" ref_text="Use Club">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="meleeWpnClubT0WoodenClub" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="ClubWood" />
+                <action type="SwapWeapon, SCore" id="meleeNPCClubWood" />
+            </response>
+            <response id="Knife" text="GenericNPC_Knife" ref_text="Use Knife">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="meleeWpnBladeT1HuntingKnife" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="Knife" />
+                <action type="SwapWeapon, SCore" id="meleeNPCKnife" />
+            </response>
+            <response id="Bat" text="GenericNPC_Bat" ref_text="Use Bat">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="meleeWpnClubT1BaseballBat" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="BatWood" />
+                <action type="SwapWeapon, SCore" id="meleeNPCBatWood" />
+            </response>
+            <response id="Spear" text="GenericNPC_Spear" ref_text="Use Spear">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="meleeWpnSpearT1IronSpear" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="Spear" />
+                <action type="SwapWeapon, SCore" id="meleeNPCSpear" />
+            </response>
+            <response id="Machete" text="GenericNPC_Machete" ref_text="Use Machete">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="meleeWpnBladeT3Machete" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="Machete" />
+                <action type="SwapWeapon, SCore" id="meleeNPCMachete" />
+            </response>
+            <response id="Axe" text="GenericNPC_Axe" ref_text="Use Axe">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="meleeToolAxeT1IronFireaxe" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="Axe" />
+                <action type="SwapWeapon, SCore" id="meleeNPCAxe" />
+            </response>
+            <response id="SMG" text="GenericNPC_SMG" ref_text="Use SMG">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="gunHandgunT3SMG5" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="SMG" />
+                <action type="SwapWeapon, SCore" id="gunNPCSMG5" />
+            </response>
+            <response id="PipePistol" text="GenericNPC_PipePistol" ref_text="Use PipePistol">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="gunHandgunT0PipePistol" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="PipePistol" />
+                <action type="SwapWeapon, SCore" id="gunNPCPipePistol" />
+            </response>
+            <response id="PipeShotgun" text="GenericNPC_PipeShotgun" ref_text="Use PipeShotgun">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="gunShotgunT0PipeShotgun" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="PipeShotgun" />
+                <action type="SwapWeapon, SCore" id="gunNPCPipeShotgun" />
+            </response>
+            <response id="PipeRifle" text="GenericNPC_PipeRifle" ref_text="Use PipeRifle">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="gunRifleT0PipeRifle" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="PipeRifle" />
+                <action type="SwapWeapon, SCore" id="gunNPCPipeRifle" />
+            </response>
+            <response id="PipeMG" text="GenericNPC_PipeMG" ref_text="Use PipeMachinegun">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="gunMGT0PipeMachineGun" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="PipeMG" />
+                <action type="SwapWeapon, SCore" id="gunNPCPipeMG" />
+            </response>
+            <response id="M60" text="GenericNPC_M60" ref_text="Use M60">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="gunMGT3M60" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="M60" />
+                <action type="SwapWeapon, SCore" id="gunNPCM60" />
+            </response>
+            <response id="Pistol" text="GenericNPC_Pistol" ref_text="Use Pistol">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="gunHandgunT1Pistol" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="Pistol" />
+                <action type="SwapWeapon, SCore" id="gunNPCPistol" />
+            </response>
+            <response id="DPistol" text="GenericNPC_DPistol" ref_text="Use DesertEagle">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="gunHandgunT3DesertVulture" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="DPistol" />
+                <action type="SwapWeapon, SCore" id="gunNPCDPistol" />
+            </response>
+            <response id="AK47" text="GenericNPC_AK47" ref_text="Use AK47">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="gunMGT1AK47" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="AK47" />
+                <action type="SwapWeapon, SCore" id="gunNPCAk47" />
+            </response>
+            <response id="TRifle" text="GenericNPC_TRifle" ref_text="Use AssaultRifle">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="gunMGT2TacticalAR" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="TRifle" />
+                <action type="SwapWeapon, SCore" id="gunNPCTRifle" />
+            </response>
+            <response id="HRifle" text="GenericNPC_HRifle" ref_text="Use HuntingR">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="gunRifleT1HuntingRifle" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="HRifle" />
+                <action type="SwapWeapon, SCore" id="gunNPCHRifle" />
+            </response>
+            <response id="SRifle" text="GenericNPC_SRifle" ref_text="Use SniperRifle">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="gunRifleT3SniperRifle" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="SRifle" />
+                <action type="SwapWeapon, SCore" id="gunNPCSRifle" />
+            </response>
+            <response id="LBow" text="GenericNPC_LBow" ref_text="Use Longbow">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="gunBowT1WoodenBow" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="LBow" />
+                <action type="SwapWeapon, SCore" id="gunNPCLBow" />
+            </response>
+            <response id="XBow" text="GenericNPC_XBow" ref_text="Use Crossbow">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="gunBowT1IronCrossbow" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="XBow" />
+                <action type="SwapWeapon, SCore" id="gunNPCXBow" />
+            </response>
+            <response id="PShotgun" text="GenericNPC_PShotgun" ref_text="Use Shotgun">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="gunShotgunT2PumpShotgun" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="PShotgun" />
+                <action type="SwapWeapon, SCore" id="gunNPCPShotgun" />
+            </response>
+            <response id="AShotgun" text="GenericNPC_AShotgun" ref_text="Use AutoShotgun">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="gunShotgunT3AutoShotgun" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="AShotgun" />
+                <action type="SwapWeapon, SCore" id="gunNPCAShotgun" />
+            </response>
+            <response id="RLauncher" text="GenericNPC_RLauncher" ref_text="Use RLauncher">
+                <requirement type="Leader, SCore" requirementtype="Hide" />
+                <requirement type="NPCHasItemSDX, SCore" requirementtype="Hide" id="gunExplosivesT3RocketLauncher" />
+                <requirement type="HasTag, SCore" requirementtype="Hide" value="RocketL" />
+                <action type="SwapWeapon, SCore" id="gunNPCRocketLauncher" />
+            </response>
+            <response id="done" text="GenericNPC_done" ref_text="Nevermind." />
+
+            <!--
+                Custom dialog trees for Rogue Male characters
+            -->
+            <!-- Statements -->
+            <statement id="LetsTalkStatementDislike" text="dialog_rogues_statement_dont_want_to_talk_with_you">
+                <response_entry id="start" />
+            </statement>
+
+            <statement id="LetsTalkStatementNeutral" text="dialog_rogues_statement_lets_talk_what_to_know">
+                <response_entry id="BeforeNeutral" />
+                <response_entry id="GroupNeutral" />
+                <response_entry id="FamilyNeutral" />
+                <response_entry id="SurviveNeutral" />
+                <response_entry id="start" />
+            </statement>
+            <statement id="BeforeStatementNeutral" text="dialog_rogues_statement_nothing_before_apocalypse">
+                <response_entry id="GroupNeutral" />
+                <response_entry id="FamilyNeutral" />
+                <response_entry id="SurviveNeutral" />
+                <response_entry id="start" />
+            </statement>
+            <!-- Attila -->
+            <statement id="GroupStatementNeutral" text="dialog_rogues_statement_defend_alliance_cowardice">
+                <response_entry id="BeforeNeutral" />
+                <response_entry id="FamilyNeutral" />
+                <response_entry id="SurviveNeutral" />
+                <response_entry id="start" />
+            </statement>
+            <!-- Adopted from Clarence Darrow's Plea for Mercy, Leopold and Loeb trial -->
+            <statement id="FamilyStatementNeutral" text="dialog_rogues_statement_fed_flesh_drank_blood">
+                <response_entry id="BeforeNeutral" />
+                <response_entry id="GroupNeutral" />
+                <response_entry id="SurviveNeutral" />
+                <response_entry id="start" />
+            </statement>
+            <!-- Richard Ramirez -->
+            <statement id="SurviveStatementNeutral" text="dialog_rogues_statement_power_kill_control_life">
+                <response_entry id="BeforeNeutral" />
+                <response_entry id="GroupNeutral" />
+                <response_entry id="FamilyNeutral" />
+                <response_entry id="start" />
+            </statement>
+
+            <statement id="LetsTalkStatementHired" text="dialog_rogues_statement_lets_talk_what_to_know">
+                <response_entry id="BeforeHired" />
+                <response_entry id="GroupHired" />
+                <response_entry id="FamilyHired" />
+                <response_entry id="SurviveHired" />
+                <response_entry id="start" />
+            </statement>
+            <statement id="BeforeStatementHired" text="dialog_rogues_statement_was_teacher">
+                <response_entry id="BeforeHiredFollowUp" />
+            </statement>
+            <statement id="BeforeStatementHiredFollowUp" text="dialog_rogues_statement_bringer_of_death">
+                <response_entry id="GroupHired" />
+                <response_entry id="FamilyHired" />
+                <response_entry id="SurviveHired" />
+                <response_entry id="start" />
+            </statement>
+            <statement id="GroupStatementHired" text="dialog_rogues_statement_they_were_weak_didnt_survive">
+                <response_entry id="BeforeHired" />
+                <response_entry id="FamilyHired" />
+                <response_entry id="SurviveHired" />
+                <response_entry id="start" />
+            </statement>
+            <statement id="FamilyStatementHired" text="dialog_rogues_statement_family_killed_wife_cancer">
+                <response_entry id="BeforeHired" />
+                <response_entry id="GroupHired" />
+                <response_entry id="SurviveHired" />
+                <response_entry id="start" />
+            </statement>
+            <!-- Richard Ramirez -->
+            <statement id="SurviveStatementHired" text="dialog_rogues_statement_gave_up_love_all_die">
+                <response_entry id="BeforeHired" />
+                <response_entry id="GroupHired" />
+                <response_entry id="FamilyHired" />
+                <response_entry id="start" />
+            </statement>
+
+            <!-- Responses -->
+            <response id="start" text="dialog_trader_response_nevermind" nextstatementid="start" />
+
+            <response id="LetsTalkDislike" text="dialog_rogues_response_lets_talk" nextstatementid="LetsTalkStatementDislike">
+                <requirement requirementtype="Hide" type="HiredSDX, SCore" value="not" />
+                <requirement requirementtype="Hide" type="FactionValue, SCore" value="400" operator="lt" />
+            </response>
+
+            <response id="LetsTalkNeutral" text="dialog_rogues_response_lets_talk" nextstatementid="LetsTalkStatementNeutral">
+                <requirement requirementtype="Hide" type="HiredSDX, SCore" value="not" />
+                <requirement requirementtype="Hide" type="FactionValue, SCore" value="400" operator="gte" />
+            </response>
+            <response id="BeforeNeutral" text="dialog_rogues_response_what_do_before_apocalypse" nextstatementid="BeforeStatementNeutral" />
+            <response id="GroupNeutral" text="dialog_rogues_response_what_happened_group" nextstatementid="GroupStatementNeutral" />
+            <response id="FamilyNeutral" text="dialog_rogues_response_have_family" nextstatementid="FamilyStatementNeutral" />
+            <response id="SurviveNeutral" text="dialog_rogues_response_how_survive" nextstatementid="SurviveStatementNeutral" />
+
+            <response id="LetsTalkHired" text="dialog_rogues_response_lets_talk" nextstatementid="LetsTalkStatementHired">
+                <requirement requirementtype="Hide" type="Leader, SCore" />
+            </response>
+            <response id="BeforeHired" text="dialog_rogues_response_what_do_before_apocalypse" nextstatementid="BeforeStatementHired" />
+            <response id="BeforeHiredFollowUp" text="dialog_rogues_response_what_happened" nextstatementid="BeforeStatementHiredFollowUp" />
+            <response id="GroupHired" text="dialog_rogues_response_what_happened_group" nextstatementid="GroupStatementHired" />
+            <response id="FamilyHired" text="dialog_rogues_response_have_family" nextstatementid="FamilyStatementHired" />
+            <response id="SurviveHired" text="dialog_rogues_response_how_survive" nextstatementid="SurviveStatementHired" />
+        </dialog>
+    </append>
+
+    <!--
+        This makes all but the top-level "done" statement go back to the "start" statement menu.
+    -->
+    <set xpath="//dialog[contains(@id,'Rogue')]/statement[not(@id='start')]/response_entry[@id='done']/@id">start</set>
+</configs>

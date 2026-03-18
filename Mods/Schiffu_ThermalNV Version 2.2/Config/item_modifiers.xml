@@ -1,0 +1,39 @@
+<configs>
+  <append xpath="/item_modifiers">
+    <item_modifier name="modArmorThermalVision"
+               installable_tags="head"
+               blocked_tags="clothing"
+               modifier_tags="thermalVision"
+               type="attachment">
+
+
+      <!-- UI / Localization -->
+      <property name="CustomIcon" value="modArmorThermalVision"/>
+      <property name="LocalizationKey" value="itemModArmorThermalVisionName"/>
+      <property name="DescriptionKey" value="itemModArmorThermalVisionDesc"/>
+
+      <!-- Economy -->
+      <property name="TraderStageTemplate" value="modsTier3"/>
+      <property name="Material" value="Msteel"/>
+      <property name="EconomicValue" value="30000"/>
+
+      <!-- Thermal nur als Buff-Flag + Sound -->
+      <effect_group tiered="false">
+        <requirement name="IsEquipped"/>
+
+        <triggered_effect trigger="onSelfItemActivate"
+                          action="AddBuff" buff="buffThermalNV"/>
+        <triggered_effect trigger="onSelfItemDeactivate"
+                          action="RemoveBuff" buff="buffThermalNV"/>
+
+        <triggered_effect trigger="onSelfItemActivate"
+                          action="PlaySound" silent_on_equip="true"
+                          target="self" sound="flashlight_toggle" play_in_head="false"/>
+        <triggered_effect trigger="onSelfItemDeactivate"
+                          action="PlaySound" silent_on_equip="true"
+                          target="self" sound="flashlight_toggle" play_in_head="false"/>
+      </effect_group>
+
+    </item_modifier>
+  </append>
+</configs>

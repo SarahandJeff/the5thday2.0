@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configs>
+    <!-- Fixes for the Male Hate sounds -->
+    <!--
+        Since the Male Hate sounds do not already use the "Mouth" channel, use it now.
+        This will allow each NPC to make only one of those sounds at a time.
+    -->
+    <append xpath="//SoundDataNode[contains(@name, 'malehate')]">
+        <Channel name="Mouth" />
+    </append>
+    <!-- Also reduce the maximum total number of voices that can play at once. -->
+    <set xpath="//SoundDataNode[contains(@name, 'malehate')]/MaxVoices/@value">3</set>
+
+    <append xpath="/Sounds">
+        <!--
+            Rogue player 2 (female) sigh.
+            This just plays the "player2stamina" audio clip, which ordinarily can't be accessed
+            because there is a SoundDataNode of the same name.
+        -->
+        <SoundDataNode name="rogueplayer2sigh">
+            <AudioSource name="Sounds/AudioSource_Player" />
+            <Channel name="Mouth" />
+            <AudioClip ClipName="Sounds/Player_Female/player2stamina" />
+            <maxVoicesPerEntity value="1" />
+            <LocalCrouchVolumeScale value="1.0" />
+            <CrouchNoiseScale value="0.5" />
+            <NoiseScale value="1" />
+            <MaxVoices value="3" />
+            <MaxRepeatRate value="0.9" />
+        </SoundDataNode>
+
+        <!-- On Fire sounds -->
+        <SoundDataNode name="rogueMaleOnFire">
+            <AudioSource name="Sounds/AudioSource_VO" />
+            <Noise ID="4" noise="60" time="2" heat_map_strength="0.2" heat_map_time="90" />
+            <Channel name="Mouth" />
+            <!-- Multiple death_09 sounds are intentional -->
+            <AudioClip ClipName="Sounds/VO/Male_Hate/male_hate_death_09" />
+            <AudioClip ClipName="Sounds/VO/Male_Hate/male_hate_alert_02" />
+            <AudioClip ClipName="Sounds/VO/Male_Hate/male_hate_attack_01" />
+            <AudioClip ClipName="Sounds/VO/Male_Hate/male_hate_attack_02" />
+            <AudioClip ClipName="Sounds/VO/Male_Hate/male_hate_death_04" />
+            <AudioClip ClipName="Sounds/VO/Male_Hate/male_hate_death_09" />
+            <AudioClip ClipName="Sounds/VO/Male_Hate/male_hate_pain_04" />
+            <AudioClip ClipName="Sounds/VO/Male_Hate/male_hate_pain_09" />
+            <AudioClip ClipName="Sounds/VO/Male_Hate/male_hate_pain_10" />
+            <AudioClip ClipName="Sounds/VO/Male_Hate/male_hate_death_09" />
+            <maxVoicesPerEntity value="1" />
+            <LowestPitch name="0.95" />
+            <HighestPitch name="1.05" />
+            <LocalCrouchVolumeScale value="1.0" />
+            <CrouchNoiseScale value="0.5" />
+            <NoiseScale value="1" />
+            <MaxVoices value="3" />
+            <MaxRepeatRate value="1.111" />
+        </SoundDataNode>
+        <SoundDataNode name="rogueFemaleOnFire">
+            <AudioSource name="Sounds/AudioSource_PlayerDeath" />
+            <Noise ID="4" noise="60" time="2" heat_map_strength="0.2" heat_map_time="90" />
+            <Channel name="Mouth" />
+            <AudioClip ClipName="Sounds/Player_Female/player2death3" />
+            <AudioClip ClipName="Sounds/Player_Female/player2death6" />
+            <AudioClip ClipName="Sounds/Player_Female/player2drownsurface4" />
+            <AudioClip ClipName="Sounds/Player_Female/player2drownsurface5" />
+            <AudioClip ClipName="Sounds/Player_Female/player2painlg3" />
+            <maxVoicesPerEntity value="1" />
+            <LowestPitch name="0.95" />
+            <HighestPitch name="1.05" />
+            <LocalCrouchVolumeScale value="1.0" />
+            <CrouchNoiseScale value="0.5" />
+            <NoiseScale value="1" />
+            <MaxVoices value="3" />
+            <MaxRepeatRate value="0.9" /> 
+        </SoundDataNode>
+    </append>
+</configs>

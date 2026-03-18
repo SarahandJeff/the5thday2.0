@@ -1,0 +1,40 @@
+<configs>
+
+<!-- WALK/RUN/DRIVE FASTER ON ASPHALT & CONCRETE -->
+	<append xpath="/buffs">
+		<buff name="buffAsphaltConcreteSpeed" name_key="buffAsphaltConcreteSpeed" description_key="buffAsphaltConcreteSpeedDesc" icon="ui_game_symbol_run" icon_color="85,255,47" showonhud="false">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<effect_group>
+				<requirement name="EntityTagCompare" tags="player"/>
+				<requirement name="!IsIndoors" tags="player"/>
+				<requirement name="EntityHasMovementTag" tags="walking,running"/>
+					<passive_effect name="WalkSpeed" operation="perc_add" value=".10"/>
+					<passive_effect name="RunSpeed" operation="perc_add" value=".20"/>
+					<passive_effect name="StaminaChangeOT" operation="perc_add" value="-.30"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="EntityTagCompare" tags="vehicle"/>
+				<requirement name="EntityHasMovementTag" tags="driving"/>
+					<passive_effect name="VehicleVelocityMaxPer" operation="perc_add" value="0.15"/>
+			</effect_group>
+<!-- MovementFactorMultiplier - used to mitigate the movement slowdown that certain blocks apply 
+			<effect_group>
+				<requirement name="!IsIndoors" tags="player"/>
+				<requirement name="BlockStandingOn" tags="concreteShapes"/>
+					<passive_effect name="MovementFactorMultiplier" operation="perc_add" value="0.15"/>		
+			</effect_group>
+-->
+			<effect_group>
+				<requirement name="!BlockStandingOn" tags="terrGravel,terrAsphalt,terrConcrete"/>
+					<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffAsphaltConcreteSpeed"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="EntityHasMovementTag" tags="idle"/>
+				<requirement name="EntityTagCompare" tags="player,vehicle"/>
+					<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffAsphaltConcreteSpeed"/>
+			</effect_group>
+		</buff>
+	</append>
+
+</configs>

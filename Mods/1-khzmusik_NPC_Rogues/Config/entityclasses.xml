@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configs>
+    <!--
+        NPC Core removes "EntityBandit" from animal targeting.
+        Since the 1.0 BM templates use a class that descends from "EntityBandit" we need to add it back.
+        But only append it if it's not already there, so this won't cause issues if NPC Core fixes that bug.
+    -->
+    <conditional>
+        <!-- This is also done in the Psychos pack, so don't even try if it is installed. -->
+        <if cond="mod_loaded('1-khzmusik_NPC_Psychos') == false">
+            <append xpath="//entity_class[starts-with(@name, 'animal')]//property[@value='SetNearestEntityAsTarget' and contains(@data,'EntityPlayer') and not(contains(@data,'EntityBandit'))]/@data">,EntityBandit,0,0</append>
+            <append xpath="//entity_class[starts-with(@name, 'animal')]//property[@value='ApproachAndAttackTarget' and contains(@data,'EntityPlayer') and not(contains(@data,'EntityBandit'))]/@data">,EntityBandit,15</append>
+        </if>
+    </conditional>
+
+    <!--
+        Append only the entity_class XML tags for each entity, including the templates they extend.
+        The remaining XML tags will be appended to each entity_class, specific to each character.
+        This keeps the XML tags consistent within characters, makes it easier to debug characters,
+        and reduces the chance of copy-and-paste errors.
+    -->
+    <append xpath="/entity_classes">
+        <!--
+            Female Rogue Aged (khzmusik)
+        -->
+        <entity_class name="RogueFemaleAgedKhzClub" extends="npcBMClubTemplate"></entity_class>
+        <entity_class name="RogueFemaleAgedKhzKnife" extends="npcBMKnifeTemplate"></entity_class>
+        <entity_class name="RogueFemaleAgedKhzAxe" extends="npcBMAxeTemplate"></entity_class>
+        <entity_class name="RogueFemaleAgedKhzSpear" extends="npcBMSpearTemplate"></entity_class>
+        <entity_class name="RogueFemaleAgedKhzBat" extends="npcBMBatTemplate"></entity_class>
+        <entity_class name="RogueFemaleAgedKhzMachete" extends="npcBMMacheteTemplate"></entity_class>
+        <entity_class name="RogueFemaleAgedKhzSMG" extends="npcBMSMGTemplate"></entity_class>
+        <entity_class name="RogueFemaleAgedKhzM60" extends="npcBMM60Template"></entity_class>
+        <entity_class name="RogueFemaleAgedKhzPipePistol" extends="npcBMPipePistolTemplate"></entity_class>
+        <entity_class name="RogueFemaleAgedKhzPistol" extends="npcBMPistolTemplate"></entity_class>
+        <entity_class name="RogueFemaleAgedKhzDPistol" extends="npcBMDPistolTemplate"></entity_class>
+        <entity_class name="RogueFemaleAgedKhzPipeMG" extends="npcBMPipeMGTemplate"></entity_class>
+        <entity_class name="RogueFemaleAgedKhzAK47" extends="npcBMAK47Template"></entity_class>
+        <entity_class name="RogueFemaleAgedKhzTRifle" extends="npcBMTRifleTemplate"></entity_class>
+        <entity_class name="RogueFemaleAgedKhzPipeRifle" extends="npcBMPipeRifleTemplate"></entity_class>
+        <entity_class name="RogueFemaleAgedKhzHRifle" extends="npcBMHRifleTemplate"></entity_class>
+        <entity_class name="RogueFemaleAgedKhzSRifle" extends="npcBMSRifleTemplate"></entity_class>
+        <entity_class name="RogueFemaleAgedKhzPipeShotgun" extends="npcBMPipeShotgunTemplate"></entity_class>
+        <entity_class name="RogueFemaleAgedKhzPShotgun" extends="npcBMPShotgunTemplate"></entity_class>
+        <entity_class name="RogueFemaleAgedKhzAShotgun" extends="npcBMAShotgunTemplate"></entity_class>
+        <entity_class name="RogueFemaleAgedKhzXBow" extends="npcBMXBowTemplate"></entity_class>
+        <entity_class name="RogueFemaleAgedKhzLBow" extends="npcBMLBowTemplate"></entity_class>
+        <entity_class name="RogueFemaleAgedKhzRocketL" extends="npcBMRocketLTemplate"></entity_class>
+        <!--
+            Female Rogue Heavy (khzmusik)
+        -->
+        <entity_class name="RogueFemaleHeavyKhzClub" extends="npcBMClubTemplate"></entity_class>
+        <entity_class name="RogueFemaleHeavyKhzKnife" extends="npcBMKnifeTemplate"></entity_class>
+        <entity_class name="RogueFemaleHeavyKhzAxe" extends="npcBMAxeTemplate"></entity_class>
+        <entity_class name="RogueFemaleHeavyKhzSpear" extends="npcBMSpearTemplate"></entity_class>
+        <entity_class name="RogueFemaleHeavyKhzBat" extends="npcBMBatTemplate"></entity_class>
+        <entity_class name="RogueFemaleHeavyKhzMachete" extends="npcBMMacheteTemplate"></entity_class>
+        <entity_class name="RogueFemaleHeavyKhzSMG" extends="npcBMSMGTemplate"></entity_class>
+        <entity_class name="RogueFemaleHeavyKhzM60" extends="npcBMM60Template"></entity_class>
+        <entity_class name="RogueFemaleHeavyKhzPipePistol" extends="npcBMPipePistolTemplate"></entity_class>
+        <entity_class name="RogueFemaleHeavyKhzPistol" extends="npcBMPistolTemplate"></entity_class>
+        <entity_class name="RogueFemaleHeavyKhzDPistol" extends="npcBMDPistolTemplate"></entity_class>
+        <entity_class name="RogueFemaleHeavyKhzPipeMG" extends="npcBMPipeMGTemplate"></entity_class>
+        <entity_class name="RogueFemaleHeavyKhzAK47" extends="npcBMAK47Template"></entity_class>
+        <entity_class name="RogueFemaleHeavyKhzTRifle" extends="npcBMTRifleTemplate"></entity_class>
+        <entity_class name="RogueFemaleHeavyKhzPipeRifle" extends="npcBMPipeRifleTemplate"></entity_class>
+        <entity_class name="RogueFemaleHeavyKhzHRifle" extends="npcBMHRifleTemplate"></entity_class>
+        <entity_class name="RogueFemaleHeavyKhzSRifle" extends="npcBMSRifleTemplate"></entity_class>
+        <entity_class name="RogueFemaleHeavyKhzPipeShotgun" extends="npcBMPipeShotgunTemplate"></entity_class>
+        <entity_class name="RogueFemaleHeavyKhzPShotgun" extends="npcBMPShotgunTemplate"></entity_class>
+        <entity_class name="RogueFemaleHeavyKhzAShotgun" extends="npcBMAShotgunTemplate"></entity_class>
+        <entity_class name="RogueFemaleHeavyKhzXBow" extends="npcBMXBowTemplate"></entity_class>
+        <entity_class name="RogueFemaleHeavyKhzLBow" extends="npcBMLBowTemplate"></entity_class>
+        <entity_class name="RogueFemaleHeavyKhzRocketL" extends="npcBMRocketLTemplate"></entity_class>
+        <!--
+            Female Rogue Leather 1 (khzmusik)
+        -->
+        <entity_class name="RogueFemaleLeather01KhzClub" extends="npcBMClubTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather01KhzKnife" extends="npcBMKnifeTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather01KhzAxe" extends="npcBMAxeTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather01KhzSpear" extends="npcBMSpearTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather01KhzBat" extends="npcBMBatTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather01KhzMachete" extends="npcBMMacheteTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather01KhzSMG" extends="npcBMSMGTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather01KhzM60" extends="npcBMM60Template"></entity_class>
+        <entity_class name="RogueFemaleLeather01KhzPipePistol" extends="npcBMPipePistolTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather01KhzPistol" extends="npcBMPistolTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather01KhzDPistol" extends="npcBMDPistolTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather01KhzPipeMG" extends="npcBMPipeMGTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather01KhzAK47" extends="npcBMAK47Template"></entity_class>
+        <entity_class name="RogueFemaleLeather01KhzTRifle" extends="npcBMTRifleTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather01KhzPipeRifle" extends="npcBMPipeRifleTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather01KhzHRifle" extends="npcBMHRifleTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather01KhzSRifle" extends="npcBMSRifleTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather01KhzPipeShotgun" extends="npcBMPipeShotgunTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather01KhzPShotgun" extends="npcBMPShotgunTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather01KhzAShotgun" extends="npcBMAShotgunTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather01KhzXBow" extends="npcBMXBowTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather01KhzLBow" extends="npcBMLBowTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather01KhzRocketL" extends="npcBMRocketLTemplate"></entity_class>
+        <!--
+            Female Rogue Leather 2 (khzmusik)
+        -->
+        <entity_class name="RogueFemaleLeather02KhzClub" extends="npcBMClubTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather02KhzKnife" extends="npcBMKnifeTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather02KhzAxe" extends="npcBMAxeTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather02KhzSpear" extends="npcBMSpearTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather02KhzBat" extends="npcBMBatTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather02KhzMachete" extends="npcBMMacheteTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather02KhzSMG" extends="npcBMSMGTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather02KhzM60" extends="npcBMM60Template"></entity_class>
+        <entity_class name="RogueFemaleLeather02KhzPipePistol" extends="npcBMPipePistolTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather02KhzPistol" extends="npcBMPistolTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather02KhzDPistol" extends="npcBMDPistolTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather02KhzPipeMG" extends="npcBMPipeMGTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather02KhzAK47" extends="npcBMAK47Template"></entity_class>
+        <entity_class name="RogueFemaleLeather02KhzTRifle" extends="npcBMTRifleTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather02KhzPipeRifle" extends="npcBMPipeRifleTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather02KhzHRifle" extends="npcBMHRifleTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather02KhzSRifle" extends="npcBMSRifleTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather02KhzPipeShotgun" extends="npcBMPipeShotgunTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather02KhzPShotgun" extends="npcBMPShotgunTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather02KhzAShotgun" extends="npcBMAShotgunTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather02KhzXBow" extends="npcBMXBowTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather02KhzLBow" extends="npcBMLBowTemplate"></entity_class>
+        <entity_class name="RogueFemaleLeather02KhzRocketL" extends="npcBMRocketLTemplate"></entity_class>
+        <!--
+            Male Rogue Aged (khzmusik)
+        -->
+        <entity_class name="RogueMaleAgedKhzKhzClub" extends="npcBMClubTemplate"></entity_class>
+        <entity_class name="RogueMaleAgedKhzKhzKnife" extends="npcBMKnifeTemplate"></entity_class>
+        <entity_class name="RogueMaleAgedKhzKhzAxe" extends="npcBMAxeTemplate"></entity_class>
+        <entity_class name="RogueMaleAgedKhzKhzSpear" extends="npcBMSpearTemplate"></entity_class>
+        <entity_class name="RogueMaleAgedKhzKhzBat" extends="npcBMBatTemplate"></entity_class>
+        <entity_class name="RogueMaleAgedKhzKhzMachete" extends="npcBMMacheteTemplate"></entity_class>
+        <entity_class name="RogueMaleAgedKhzKhzSMG" extends="npcBMSMGTemplate"></entity_class>
+        <entity_class name="RogueMaleAgedKhzKhzM60" extends="npcBMM60Template"></entity_class>
+        <entity_class name="RogueMaleAgedKhzKhzPipePistol" extends="npcBMPipePistolTemplate"></entity_class>
+        <entity_class name="RogueMaleAgedKhzKhzPistol" extends="npcBMPistolTemplate"></entity_class>
+        <entity_class name="RogueMaleAgedKhzKhzDPistol" extends="npcBMDPistolTemplate"></entity_class>
+        <entity_class name="RogueMaleAgedKhzKhzPipeMG" extends="npcBMPipeMGTemplate"></entity_class>
+        <entity_class name="RogueMaleAgedKhzKhzAK47" extends="npcBMAK47Template"></entity_class>
+        <entity_class name="RogueMaleAgedKhzKhzTRifle" extends="npcBMTRifleTemplate"></entity_class>
+        <entity_class name="RogueMaleAgedKhzKhzPipeRifle" extends="npcBMPipeRifleTemplate"></entity_class>
+        <entity_class name="RogueMaleAgedKhzKhzHRifle" extends="npcBMHRifleTemplate"></entity_class>
+        <entity_class name="RogueMaleAgedKhzKhzSRifle" extends="npcBMSRifleTemplate"></entity_class>
+        <entity_class name="RogueMaleAgedKhzKhzPipeShotgun" extends="npcBMPipeShotgunTemplate"></entity_class>
+        <entity_class name="RogueMaleAgedKhzKhzPShotgun" extends="npcBMPShotgunTemplate"></entity_class>
+        <entity_class name="RogueMaleAgedKhzKhzAShotgun" extends="npcBMAShotgunTemplate"></entity_class>
+        <entity_class name="RogueMaleAgedKhzKhzXBow" extends="npcBMXBowTemplate"></entity_class>
+        <entity_class name="RogueMaleAgedKhzKhzLBow" extends="npcBMLBowTemplate"></entity_class>
+        <entity_class name="RogueMaleAgedKhzKhzRocketL" extends="npcBMRocketLTemplate"></entity_class>
+        <!--
+            Male Rogue Blonde (khzmusik)
+        -->
+        <entity_class name="RogueMaleBlondeKhzClub" extends="npcBMClubTemplate"></entity_class>
+        <entity_class name="RogueMaleBlondeKhzKnife" extends="npcBMKnifeTemplate"></entity_class>
+        <entity_class name="RogueMaleBlondeKhzAxe" extends="npcBMAxeTemplate"></entity_class>
+        <entity_class name="RogueMaleBlondeKhzSpear" extends="npcBMSpearTemplate"></entity_class>
+        <entity_class name="RogueMaleBlondeKhzBat" extends="npcBMBatTemplate"></entity_class>
+        <entity_class name="RogueMaleBlondeKhzMachete" extends="npcBMMacheteTemplate"></entity_class>
+        <entity_class name="RogueMaleBlondeKhzSMG" extends="npcBMSMGTemplate"></entity_class>
+        <entity_class name="RogueMaleBlondeKhzM60" extends="npcBMM60Template"></entity_class>
+        <entity_class name="RogueMaleBlondeKhzPipePistol" extends="npcBMPipePistolTemplate"></entity_class>
+        <entity_class name="RogueMaleBlondeKhzPistol" extends="npcBMPistolTemplate"></entity_class>
+        <entity_class name="RogueMaleBlondeKhzDPistol" extends="npcBMDPistolTemplate"></entity_class>
+        <entity_class name="RogueMaleBlondeKhzPipeMG" extends="npcBMPipeMGTemplate"></entity_class>
+        <entity_class name="RogueMaleBlondeKhzAK47" extends="npcBMAK47Template"></entity_class>
+        <entity_class name="RogueMaleBlondeKhzTRifle" extends="npcBMTRifleTemplate"></entity_class>
+        <entity_class name="RogueMaleBlondeKhzPipeRifle" extends="npcBMPipeRifleTemplate"></entity_class>
+        <entity_class name="RogueMaleBlondeKhzHRifle" extends="npcBMHRifleTemplate"></entity_class>
+        <entity_class name="RogueMaleBlondeKhzSRifle" extends="npcBMSRifleTemplate"></entity_class>
+        <entity_class name="RogueMaleBlondeKhzPipeShotgun" extends="npcBMPipeShotgunTemplate"></entity_class>
+        <entity_class name="RogueMaleBlondeKhzPShotgun" extends="npcBMPShotgunTemplate"></entity_class>
+        <entity_class name="RogueMaleBlondeKhzAShotgun" extends="npcBMAShotgunTemplate"></entity_class>
+        <entity_class name="RogueMaleBlondeKhzXBow" extends="npcBMXBowTemplate"></entity_class>
+        <entity_class name="RogueMaleBlondeKhzLBow" extends="npcBMLBowTemplate"></entity_class>
+        <entity_class name="RogueMaleBlondeKhzRocketL" extends="npcBMRocketLTemplate"></entity_class>
+        <!--
+            Male Rogue Cowboy (khzmusik)
+        -->
+        <entity_class name="RogueMaleCowboyKhzClub" extends="npcBMClubTemplate"></entity_class>
+        <entity_class name="RogueMaleCowboyKhzKnife" extends="npcBMKnifeTemplate"></entity_class>
+        <entity_class name="RogueMaleCowboyKhzAxe" extends="npcBMAxeTemplate"></entity_class>
+        <entity_class name="RogueMaleCowboyKhzSpear" extends="npcBMSpearTemplate"></entity_class>
+        <entity_class name="RogueMaleCowboyKhzBat" extends="npcBMBatTemplate"></entity_class>
+        <entity_class name="RogueMaleCowboyKhzMachete" extends="npcBMMacheteTemplate"></entity_class>
+        <entity_class name="RogueMaleCowboyKhzSMG" extends="npcBMSMGTemplate"></entity_class>
+        <entity_class name="RogueMaleCowboyKhzM60" extends="npcBMM60Template"></entity_class>
+        <entity_class name="RogueMaleCowboyKhzPipePistol" extends="npcBMPipePistolTemplate"></entity_class>
+        <entity_class name="RogueMaleCowboyKhzPistol" extends="npcBMPistolTemplate"></entity_class>
+        <entity_class name="RogueMaleCowboyKhzDPistol" extends="npcBMDPistolTemplate"></entity_class>
+        <entity_class name="RogueMaleCowboyKhzPipeMG" extends="npcBMPipeMGTemplate"></entity_class>
+        <entity_class name="RogueMaleCowboyKhzAK47" extends="npcBMAK47Template"></entity_class>
+        <entity_class name="RogueMaleCowboyKhzTRifle" extends="npcBMTRifleTemplate"></entity_class>
+        <entity_class name="RogueMaleCowboyKhzPipeRifle" extends="npcBMPipeRifleTemplate"></entity_class>
+        <entity_class name="RogueMaleCowboyKhzHRifle" extends="npcBMHRifleTemplate"></entity_class>
+        <entity_class name="RogueMaleCowboyKhzSRifle" extends="npcBMSRifleTemplate"></entity_class>
+        <entity_class name="RogueMaleCowboyKhzPipeShotgun" extends="npcBMPipeShotgunTemplate"></entity_class>
+        <entity_class name="RogueMaleCowboyKhzPShotgun" extends="npcBMPShotgunTemplate"></entity_class>
+        <entity_class name="RogueMaleCowboyKhzAShotgun" extends="npcBMAShotgunTemplate"></entity_class>
+        <entity_class name="RogueMaleCowboyKhzXBow" extends="npcBMXBowTemplate"></entity_class>
+        <entity_class name="RogueMaleCowboyKhzLBow" extends="npcBMLBowTemplate"></entity_class>
+        <entity_class name="RogueMaleCowboyKhzRocketL" extends="npcBMRocketLTemplate"></entity_class>
+        <!--
+            Male Rogue Young (khzmusik)
+        -->
+        <entity_class name="RogueMaleYoungKhzClub" extends="npcBMClubTemplate"></entity_class>
+        <entity_class name="RogueMaleYoungKhzKnife" extends="npcBMKnifeTemplate"></entity_class>
+        <entity_class name="RogueMaleYoungKhzBat" extends="npcBMBatTemplate"></entity_class>
+        <entity_class name="RogueMaleYoungKhzMachete" extends="npcBMMacheteTemplate"></entity_class>
+        <entity_class name="RogueMaleYoungKhzAxe" extends="npcBMAxeTemplate"></entity_class>
+        <entity_class name="RogueMaleYoungKhzSpear" extends="npcBMSpearTemplate"></entity_class>
+        <entity_class name="RogueMaleYoungKhzPipePistol" extends="npcBMPipePistolTemplate"></entity_class>
+        <entity_class name="RogueMaleYoungKhzPipeRifle" extends="npcBMPipeRifleTemplate"></entity_class>
+        <entity_class name="RogueMaleYoungKhzPipeMG" extends="npcBMPipeMGTemplate"></entity_class>
+        <entity_class name="RogueMaleYoungKhzPipeShotgun" extends="npcBMPipeShotgunTemplate"></entity_class>
+        <entity_class name="RogueMaleYoungKhzSMG" extends="npcBMSMGTemplate"></entity_class>
+        <entity_class name="RogueMaleYoungKhzM60" extends="npcBMM60Template"></entity_class>
+        <entity_class name="RogueMaleYoungKhzPistol" extends="npcBMPistolTemplate"></entity_class>
+        <entity_class name="RogueMaleYoungKhzDPistol" extends="npcBMDPistolTemplate"></entity_class>
+        <entity_class name="RogueMaleYoungKhzAK47" extends="npcBMAK47Template"></entity_class>
+        <entity_class name="RogueMaleYoungKhzTRifle" extends="npcBMTRifleTemplate"></entity_class>
+        <entity_class name="RogueMaleYoungKhzHRifle" extends="npcBMHRifleTemplate"></entity_class>
+        <entity_class name="RogueMaleYoungKhzSRifle" extends="npcBMSRifleTemplate"></entity_class>
+        <entity_class name="RogueMaleYoungKhzPShotgun" extends="npcBMPShotgunTemplate"></entity_class>
+        <entity_class name="RogueMaleYoungKhzAShotgun" extends="npcBMAShotgunTemplate"></entity_class>
+        <entity_class name="RogueMaleYoungKhzLBow" extends="npcBMLBowTemplate"></entity_class>
+        <entity_class name="RogueMaleYoungKhzXBow" extends="npcBMXBowTemplate"></entity_class>
+        <entity_class name="RogueMaleYoungKhzRocketL" extends="npcBMRocketLTemplate"></entity_class>
+    </append>
+
+    <!--
+        Append the XML that is common to all entity classes for a character.
+    -->
+
+    <!--
+        Rogues: Basic NPCs
+        These NPCs don't have dialog options and can't be hired.
+        However, they can be spawned into hordes (wandering or blood moon).
+
+        NOTE: This XPath adds tags and properties that are only used for "advanced" characters.
+        Their presence doesn't do any harm, but they make it much easier to turn the characters
+        into their "advanced" versions later, using XPath - see below.
+    -->
+    <!-- This character should only spawn into the pine forest or snow biomes. -->
+    <append xpath="//entity_class[starts-with(@name,'RogueFemaleAgedKhz')]">
+        <property name="UserSpawnType" value="Menu" />
+        <property name="Tags" value="entity,female,npc,walker,bandit,pine_forest,snow,Knife,Machete,ClubWood,BatWood,Axe,Spear,SMG,PipePistol,PipeShotgun,PipeRifle,PipeMG,M60,Pistol,DPistol,Ak47,TRifle,HRifle,SRifle,LBow,XBow,PShotgun,AShotgun,RocketL" />
+        <property name="Faction" value="bandits" />
+        <property name="NPCID" value="npcRogueFemaleAgedKhz" />
+        <property name="Names" value="Belle,Bonnie,Eleanor,Etta,Jane,Kate,Katherine,Laura,Mary,Pearl,Rose,Sarah" />
+        <property name="DanceType" value="2" />
+        <property name="Mesh" value="#@modfolder:Resources/Rogues_KHz.unity3d?FemaleRogueAged_KHz" />
+        <property name="Mass" value="130" />
+        <property name="IsMale" value="false" />
+        <property name="PickUpItem" value="npcRogueFemaleAgedKhzPickUp" />
+        <property name="SoundHurt" value="Player_Female/player2painlg" />
+        <property name="SoundHurtSmall" value="Player_Female/player2painsm" />
+        <property name="SoundDeath" value="Player_Female/player2death" />
+        <property name="SoundStamina" value="Player_Female/player2stamina" />
+        <property name="SoundDrownPain" value="Player_Female/player2drownpain" />
+        <property name="SoundWaterSurface" value="Player_Female/player2drownsurface" />
+        <property name="SoundDrownDeath" value="Player_Female/player2drowndeath" />
+        <property name="SoundJump" value="Player_Male/player2Jump" />
+        <property name="SoundLandSoft" value="Player_Male/player2LandSoft" />
+        <property name="SoundLandHard" value="Player_Male/player2LandHard" />
+        <property name="SoundPlayerLandThump" value="PlayerLandThump" />
+        <property name="SoundRandom" value="rogueplayer2sigh" />
+        <property name="SoundRandomTime" value="60" />
+        <property name="SoundAlert" value="Player_Female/player2painsm" />
+        <property name="SoundAttack" value="Player_Female/player2powerattack" />
+        <property name="SoundSense" value="Player_Female/player2stamina" />
+        <property name="Buffs" value="buffRogueIsOnFireCheck" />
+        <property name="AIPackages" value="NPCRoguesBasicKHz" />
+    </append>
+    <!-- This character should only spawn into the pine forest or desert biomes. -->
+    <append xpath="//entity_class[starts-with(@name,'RogueFemaleHeavyKhz')]">
+        <property name="UserSpawnType" value="Menu" />
+        <property name="Tags" value="entity,female,npc,walker,bandit,pine_forest,desert,Knife,Machete,ClubWood,BatWood,Axe,Spear,SMG,PipePistol,PipeShotgun,PipeRifle,PipeMG,M60,Pistol,DPistol,Ak47,TRifle,HRifle,SRifle,LBow,XBow,PShotgun,AShotgun,RocketL" />
+        <property name="Faction" value="bandits" />
+        <property name="NPCID" value="npcRogueFemaleHeavyKhz" />
+        <property name="Names" value="Belle,Bonnie,Eleanor,Etta,Jane,Kate,Katherine,Laura,Mary,Pearl,Rose,Sarah" />
+        <property name="DanceType" value="2" />
+        <property name="Mesh" value="#@modfolder:Resources/Rogues_KHz.unity3d?FemaleRogueHeavy_KHz" />
+        <property name="Mass" value="230" />
+        <property name="IsMale" value="false" />
+        <property name="PickUpItem" value="npcRogueFemaleHeavyKhzPickUp" />
+        <property name="SoundHurt" value="Player_Female/player2painlg" />
+        <property name="SoundHurtSmall" value="Player_Female/player2painsm" />
+        <property name="SoundDeath" value="Player_Female/player2death" />
+        <property name="SoundStamina" value="Player_Female/player2stamina" />
+        <property name="SoundDrownPain" value="Player_Female/player2drownpain" />
+        <property name="SoundWaterSurface" value="Player_Female/player2drownsurface" />
+        <property name="SoundDrownDeath" value="Player_Female/player2drowndeath" />
+        <property name="SoundJump" value="Player_Male/player2Jump" />
+        <property name="SoundLandSoft" value="Player_Male/player2LandSoft" />
+        <property name="SoundLandHard" value="Player_Male/player2LandHard" />
+        <property name="SoundPlayerLandThump" value="PlayerLandThump" />
+        <property name="SoundRandom" value="rogueplayer2sigh" />
+        <property name="SoundRandomTime" value="60" />
+        <property name="SoundAlert" value="Player_Female/player2stamina" />
+        <property name="SoundAttack" value="Player_Female/player2powerattack" />
+        <property name="SoundSense" value="Player_Female/player2stamina" />
+        <property name="Buffs" value="buffRogueIsOnFireCheck" />
+        <property name="AIPackages" value="NPCRoguesBasicKHz" />
+        <effect_group name="Base Effects">
+            <passive_effect name="HealthMax" operation="base_set" value="400" />
+        </effect_group>
+    </append>
+    <!-- This character should only spawn into the pine forest, burnt forest, or snow biomes. -->
+    <append xpath="//entity_class[starts-with(@name,'RogueFemaleLeather01Khz')]">
+        <property name="UserSpawnType" value="Menu" />
+        <property name="Tags" value="entity,female,npc,walker,bandit,pine_forest,burnt_forest,snow,Knife,Machete,ClubWood,BatWood,Axe,Spear,SMG,PipePistol,PipeShotgun,PipeRifle,PipeMG,M60,Pistol,DPistol,Ak47,TRifle,HRifle,SRifle,LBow,XBow,PShotgun,AShotgun,RocketL" />
+        <property name="Faction" value="bandits" />
+        <property name="NPCID" value="npcRogueFemaleLeather01Khz" />
+        <property name="Names" value="Celia,Haley,Karen,Lizzie,Martha,Mary,Michelle,Molly,Paula,Theresa" />
+        <property name="DanceType" value="2" />
+        <property name="Mesh" value="#@modfolder:Resources/Rogues_KHz.unity3d?FemaleRogueLeather01_KHz" />
+        <property name="Mass" value="130" />
+        <property name="IsMale" value="false" />
+        <property name="PickUpItem" value="npcRogueFemaleLeather01KhzPickUp" />
+        <property name="PickUpItem" value="npcRogueFemaleLeather01KhzPickUp" />
+        <property name="SoundHurt" value="Player_Female/player2painlg" />
+        <property name="SoundHurtSmall" value="Player_Female/player2painsm" />
+        <property name="SoundDeath" value="Player_Female/player2death" />
+        <property name="SoundStamina" value="Player_Female/player2stamina" />
+        <property name="SoundDrownPain" value="Player_Female/player2drownpain" />
+        <property name="SoundWaterSurface" value="Player_Female/player2drownsurface" />
+        <property name="SoundDrownDeath" value="Player_Female/player2drowndeath" />
+        <property name="SoundJump" value="Player_Male/player2Jump" />
+        <property name="SoundLandSoft" value="Player_Male/player2LandSoft" />
+        <property name="SoundLandHard" value="Player_Male/player2LandHard" />
+        <property name="SoundPlayerLandThump" value="PlayerLandThump" />
+        <property name="SoundRandom" value="rogueplayer2sigh" />
+        <property name="SoundRandomTime" value="60" />
+        <property name="SoundAlert" value="Player_Female/player2stamina" />
+        <property name="SoundAttack" value="Player_Female/player2powerattack" />
+        <property name="SoundSense" value="Player_Female/player2stamina" />
+        <property name="Buffs" value="buffRogueIsOnFireCheck" />
+        <property name="AIPackages" value="NPCRoguesBasicKHz" />
+    </append>
+    <!-- This character should only spawn into the pine forest, burnt forest, or snow biomes. -->
+    <append xpath="//entity_class[starts-with(@name,'RogueFemaleLeather02Khz')]">
+        <property name="UserSpawnType" value="Menu" />
+        <property name="Tags" value="entity,female,npc,walker,bandit,pine_forest,burnt_forest,snow,Knife,Machete,ClubWood,BatWood,Axe,Spear,SMG,PipePistol,PipeShotgun,PipeRifle,PipeMG,M60,Pistol,DPistol,Ak47,TRifle,HRifle,SRifle,LBow,XBow,PShotgun,AShotgun,RocketL" />
+        <property name="Faction" value="bandits" />
+        <property name="NPCID" value="npcRogueFemaleLeather02Khz" />
+        <property name="Names" value="Celia,Haley,Karen,Lizzie,Martha,Mary,Michelle,Molly,Paula,Theresa" />
+        <property name="DanceType" value="2" />
+        <property name="Mesh" value="#@modfolder:Resources/Rogues_KHz.unity3d?FemaleRogueLeather02_KHz" />
+        <property name="Mass" value="130" />
+        <property name="IsMale" value="false" />
+        <property name="PickUpItem" value="npcRogueFemaleLeather02KhzPickUp" />
+        <property name="SoundHurt" value="Player_Female/player2painlg" />
+        <property name="SoundHurtSmall" value="Player_Female/player2painsm" />
+        <property name="SoundDeath" value="Player_Female/player2death" />
+        <property name="SoundStamina" value="Player_Female/player2stamina" />
+        <property name="SoundDrownPain" value="Player_Female/player2drownpain" />
+        <property name="SoundWaterSurface" value="Player_Female/player2drownsurface" />
+        <property name="SoundDrownDeath" value="Player_Female/player2drowndeath" />
+        <property name="SoundJump" value="Player_Male/player2Jump" />
+        <property name="SoundLandSoft" value="Player_Male/player2LandSoft" />
+        <property name="SoundLandHard" value="Player_Male/player2LandHard" />
+        <property name="SoundPlayerLandThump" value="PlayerLandThump" />
+        <property name="SoundRandom" value="rogueplayer2sigh" />
+        <property name="SoundRandomTime" value="60" />
+        <property name="SoundAlert" value="Player_Female/player2stamina" />
+        <property name="SoundAttack" value="Player_Female/player2powerattack" />
+        <property name="SoundSense" value="Player_Female/player2stamina" />
+        <property name="Buffs" value="buffRogueIsOnFireCheck" />
+        <property name="AIPackages" value="NPCRoguesBasicKHz" />
+    </append>
+    <!-- This character should only spawn into the pine forest or snow biomes. -->
+    <append xpath="//entity_class[starts-with(@name,'RogueMaleAgedKhzKhz')]">
+        <property name="UserSpawnType" value="Menu" />
+        <property name="Tags" value="entity,male,npc,walker,bandit,pine_forest,snow,Knife,Machete,ClubWood,BatWood,Axe,Spear,SMG,PipePistol,PipeShotgun,PipeRifle,PipeMG,M60,Pistol,DPistol,Ak47,TRifle,HRifle,SRifle,LBow,XBow,PShotgun,AShotgun,RocketL" />
+        <property name="Faction" value="bandits" />
+        <property name="NPCID" value="npcRogueMaleAgedKhz" />
+        <property name="Names" value="Billy,Dan,Harley,Joe,Len,Lou,Tony" />
+        <property name="Mesh" value="#@modfolder:Resources/Rogues_KHz.unity3d?MaleRogueAged_KHz" />
+        <property name="Mass" value="170" />
+        <property name="IsMale" value="true" />
+        <property name="PickUpItem" value="npcRogueMaleAgedKhzPickUp" />
+        <property name="SoundRandomTime" value="200" />
+        <property name="SoundRandom" value="malehateroam" />
+        <property name="SoundAlert" value="malehatealert" />
+        <property name="SoundSense" value="malehatesense" />
+        <property name="SoundHurt" value="malehatepain" />
+        <property name="SoundDeath" value="malehatedeath" />
+        <property name="SoundAttack" value="Player_Male/player1powerattack" />
+        <property name="Buffs" value="buffRogueIsOnFireCheck" />
+        <property name="AIPackages" value="NPCRoguesBasicKHz" />
+    </append>
+    <!-- This character should only spawn into the pine forest, burnt forest, or snow biomes. -->
+    <append xpath="//entity_class[starts-with(@name,'RogueMaleBlondeKhz')]">
+        <property name="UserSpawnType" value="Menu" />
+        <property name="Tags" value="entity,male,npc,walker,bandit,pine_forest,burnt_forest,snow,Knife,Machete,ClubWood,BatWood,Axe,Spear,SMG,PipePistol,PipeShotgun,PipeRifle,PipeMG,M60,Pistol,DPistol,Ak47,TRifle,HRifle,SRifle,LBow,XBow,PShotgun,AShotgun,RocketL" />
+        <property name="Faction" value="bandits" />
+        <property name="NPCID" value="npcRogueMaleBlondeKhz" />
+        <property name="Names" value="Adam,Andrew,Frank,Gil,Gunner,Ivan,Jensen,Jon,John,Konstantin,Nathaniel,Sam,Scott" />
+        <property name="Mesh" value="#@modfolder:Resources/Rogues_KHz.unity3d?MaleRogueBlonde_KHz" />
+        <property name="Mass" value="170" />
+        <property name="IsMale" value="true" />
+        <property name="PickUpItem" value="npcRogueMaleBlondeKhzPickUp" />
+        <property name="SoundRandomTime" value="200" />
+        <property name="SoundRandom" value="malehateroam" />
+        <property name="SoundAlert" value="malehatealert" />
+        <property name="SoundSense" value="malehatesense" />
+        <property name="SoundHurt" value="malehatepain" />
+        <property name="SoundDeath" value="malehatedeath" />
+        <property name="SoundAttack" value="Player_Male/player1powerattack" />
+        <property name="Buffs" value="buffRogueIsOnFireCheck" />
+        <property name="AIPackages" value="NPCRoguesBasicKHz" />
+    </append>
+    <!-- This character should only spawn into the pine forest, burnt forest, or desert biomes. -->
+    <append xpath="//entity_class[starts-with(@name,'RogueMaleCowboyKhz')]">
+        <property name="UserSpawnType" value="Menu" />
+        <property name="Tags" value="entity,male,npc,walker,bandit,pine_forest,burnt_forest,desert,Knife,Machete,ClubWood,BatWood,Axe,Spear,SMG,PipePistol,PipeShotgun,PipeRifle,PipeMG,M60,Pistol,DPistol,Ak47,TRifle,HRifle,SRifle,LBow,XBow,PShotgun,AShotgun,RocketL" />
+        <property name="Faction" value="bandits" />
+        <property name="NPCID" value="npcRogueMaleCowboyKhz" />
+        <property name="Names" value="Alonzo,Bill,Butch,Cassidy,Harry,James,Jesse,Jim,John,Sam,Wesley" />
+        <property name="Mesh" value="#@modfolder:Resources/Rogues_KHz.unity3d?MaleRogueCowboy_KHz" />
+        <property name="Mass" value="170" />
+        <property name="IsMale" value="true" />
+        <property name="PickUpItem" value="npcRogueMaleCowboyKhzPickUp" />
+        <property name="SoundRandomTime" value="200" />
+        <property name="SoundRandom" value="malehateroam" />
+        <property name="SoundAlert" value="malehatealert" />
+        <property name="SoundSense" value="malehatesense" />
+        <property name="SoundHurt" value="malehatepain" />
+        <property name="SoundDeath" value="malehatedeath" />
+        <property name="SoundAttack" value="Player_Male/player1powerattack" />
+        <property name="Buffs" value="buffRogueIsOnFireCheck" />
+        <property name="AIPackages" value="NPCRoguesBasicKHz" />
+    </append>
+    <!-- This character should only spawn into the pine forest, burnt forest, or snow biomes. -->
+    <append xpath="//entity_class[starts-with(@name,'RogueMaleYoungKhz')]">
+        <property name="UserSpawnType" value="Menu" />
+        <property name="Tags" value="entity,male,npc,walker,bandit,pine_forest,burnt_forest,snow,Knife,Machete,ClubWood,BatWood,Axe,Spear,SMG,PipePistol,PipeShotgun,PipeRifle,PipeMG,M60,Pistol,DPistol,Ak47,TRifle,HRifle,SRifle,LBow,XBow,PShotgun,AShotgun,RocketL" />
+        <property name="Faction" value="bandits" />
+        <property name="NPCID" value="npcRogueMaleYoungKhz" />
+        <property name="Names" value="Albert,Alex,Chuck,Gareth,Greg,Martin,Mike" />
+        <property name="Mesh" value="#@modfolder:Resources/Rogues_KHz.unity3d?MaleRogueYoung_KHz" />
+        <property name="Mass" value="170" />
+        <property name="IsMale" value="true" />
+        <property name="PickUpItem" value="npcRogueMaleYoungKhzPickUp" />
+        <property name="SoundRandomTime" value="200" />
+        <property name="SoundRandom" value="malehateroam" />
+        <property name="SoundAlert" value="malehatealert" />
+        <property name="SoundSense" value="malehatesense" />
+        <property name="SoundHurt" value="malehatepain" />
+        <property name="SoundDeath" value="malehatedeath" />
+        <property name="SoundAttack" value="Player_Male/player1powerattack" />
+        <property name="Buffs" value="buffRogueIsOnFireCheck" />
+        <property name="AIPackages" value="NPCRoguesBasicKHz" />
+    </append>
+
+    <!-- Append the "ranged" and "melee" tags. -->
+    <csv xpath="//entity_class[contains(@name,'Rogue') and contains(@name,'KhzClub')]/property[@name='Tags']/@value" delim="," op="add">melee</csv>
+    <csv xpath="//entity_class[contains(@name,'Rogue') and contains(@name,'KhzKnife')]/property[@name='Tags']/@value" delim="," op="add">melee</csv>
+    <csv xpath="//entity_class[contains(@name,'Rogue') and contains(@name,'KhzAxe')]/property[@name='Tags']/@value" delim="," op="add">melee</csv>
+    <csv xpath="//entity_class[contains(@name,'Rogue') and contains(@name,'KhzSpear')]/property[@name='Tags']/@value" delim="," op="add">melee</csv>
+    <csv xpath="//entity_class[contains(@name,'Rogue') and contains(@name,'KhzBat')]/property[@name='Tags']/@value" delim="," op="add">melee</csv>
+    <csv xpath="//entity_class[contains(@name,'Rogue') and contains(@name,'KhzMachete')]/property[@name='Tags']/@value" delim="," op="add">melee</csv>
+    <csv xpath="//entity_class[contains(@name,'Rogue') and contains(@name,'KhzPipePistol')]/property[@name='Tags']/@value" delim="," op="add">ranged</csv>
+    <csv xpath="//entity_class[contains(@name,'Rogue') and contains(@name,'KhzPipeRifle')]/property[@name='Tags']/@value" delim="," op="add">ranged</csv>
+    <csv xpath="//entity_class[contains(@name,'Rogue') and contains(@name,'KhzPipeMG')]/property[@name='Tags']/@value" delim="," op="add">ranged</csv>
+    <csv xpath="//entity_class[contains(@name,'Rogue') and contains(@name,'KhzPipeShotgun')]/property[@name='Tags']/@value" delim="," op="add">ranged</csv>
+    <csv xpath="//entity_class[contains(@name,'Rogue') and contains(@name,'KhzSMG')]/property[@name='Tags']/@value" delim="," op="add">ranged</csv>
+    <csv xpath="//entity_class[contains(@name,'Rogue') and contains(@name,'KhzM60')]/property[@name='Tags']/@value" delim="," op="add">ranged</csv>
+    <csv xpath="//entity_class[contains(@name,'Rogue') and contains(@name,'KhzPistol')]/property[@name='Tags']/@value" delim="," op="add">ranged</csv>
+    <csv xpath="//entity_class[contains(@name,'Rogue') and contains(@name,'KhzDPistol')]/property[@name='Tags']/@value" delim="," op="add">ranged</csv>
+    <csv xpath="//entity_class[contains(@name,'Rogue') and contains(@name,'KhzAK47')]/property[@name='Tags']/@value" delim="," op="add">ranged</csv>
+    <csv xpath="//entity_class[contains(@name,'Rogue') and contains(@name,'KhzTRifle')]/property[@name='Tags']/@value" delim="," op="add">ranged</csv>
+    <csv xpath="//entity_class[contains(@name,'Rogue') and contains(@name,'KhzHRifle')]/property[@name='Tags']/@value" delim="," op="add">ranged</csv>
+    <csv xpath="//entity_class[contains(@name,'Rogue') and contains(@name,'KhzSRifle')]/property[@name='Tags']/@value" delim="," op="add">ranged</csv>
+    <csv xpath="//entity_class[contains(@name,'Rogue') and contains(@name,'KhzPShotgun')]/property[@name='Tags']/@value" delim="," op="add">ranged</csv>
+    <csv xpath="//entity_class[contains(@name,'Rogue') and contains(@name,'KhzAShotgun')]/property[@name='Tags']/@value" delim="," op="add">ranged</csv>
+    <csv xpath="//entity_class[contains(@name,'Rogue') and contains(@name,'KhzLBow')]/property[@name='Tags']/@value" delim="," op="add">ranged</csv>
+    <csv xpath="//entity_class[contains(@name,'Rogue') and contains(@name,'KhzXBow')]/property[@name='Tags']/@value" delim="," op="add">ranged</csv>
+    <csv xpath="//entity_class[contains(@name,'Rogue') and contains(@name,'KhzRocketL')]/property[@name='Tags']/@value" delim="," op="add">ranged</csv>
+
+    <!-- Now that we've appended the proper tags, append the melee/ranged UAI packages by tag -->
+    <csv xpath="//entity_class[contains(@name,'Rogue') and contains(@name,'Khz') and descendant::property[@name='Tags' and contains(@value,'melee')]]/property[@name='AIPackages']/@value" delim="," op="add">NPCRoguesMeleeBasicKHz</csv>
+    <csv xpath="//entity_class[contains(@name,'Rogue') and contains(@name,'Khz') and descendant::property[@name='Tags' and contains(@value,'ranged')]]/property[@name='AIPackages']/@value" delim="," op="add">NPCRoguesRangedBasicKHz</csv>
+
+    <!--
+        Rogues: Advanced NPCs
+        These NPCs have dialog interactions, and can be hired, assuming your standing with
+        their faction is good enough.
+        However, they can NOT be spawned into hordes (wandering or blood moon) -
+        if you try this, the game will throw an InvalidCastException.
+
+        If you want the Rogue NPCs to be the advanced versions, then un-comment the code below.
+    -->
+    <!--
+    <set xpath="//entity_class[contains(@name, 'Rogue') and contains(@name, 'Khz') and @extends='npcBMClubTemplate']/@extends">npcAdvancedClubTemplate</set>
+    <set xpath="//entity_class[contains(@name, 'Rogue') and contains(@name, 'Khz') and @extends='npcBMKnifeTemplate']/@extends">npcAdvancedKnifeTemplate</set>
+    <set xpath="//entity_class[contains(@name, 'Rogue') and contains(@name, 'Khz') and @extends='npcBMBatTemplate']/@extends">npcAdvancedBatTemplate</set>
+    <set xpath="//entity_class[contains(@name, 'Rogue') and contains(@name, 'Khz') and @extends='npcBMMacheteTemplate']/@extends">npcAdvancedMacheteTemplate</set>
+    <set xpath="//entity_class[contains(@name, 'Rogue') and contains(@name, 'Khz') and @extends='npcBMAxeTemplate']/@extends">npcAdvancedAxeTemplate</set>
+    <set xpath="//entity_class[contains(@name, 'Rogue') and contains(@name, 'Khz') and @extends='npcBMSpearTemplate']/@extends">npcAdvancedSpearTemplate</set>
+    <set xpath="//entity_class[contains(@name, 'Rogue') and contains(@name, 'Khz') and @extends='npcBMPipePistolTemplate']/@extends">npcAdvancedPipePistolTemplate</set>
+    <set xpath="//entity_class[contains(@name, 'Rogue') and contains(@name, 'Khz') and @extends='npcBMPipeRifleTemplate']/@extends">npcAdvancedPipeRifleTemplate</set>
+    <set xpath="//entity_class[contains(@name, 'Rogue') and contains(@name, 'Khz') and @extends='npcBMPipeMGTemplate']/@extends">npcAdvancedPipeMGTemplate</set>
+    <set xpath="//entity_class[contains(@name, 'Rogue') and contains(@name, 'Khz') and @extends='npcBMPipeShotgunTemplate']/@extends">npcAdvancedPipeShotgunTemplate</set>
+    <set xpath="//entity_class[contains(@name, 'Rogue') and contains(@name, 'Khz') and @extends='npcBMSMGTemplate']/@extends">npcAdvancedSMGTemplate</set>
+    <set xpath="//entity_class[contains(@name, 'Rogue') and contains(@name, 'Khz') and @extends='npcBMM60Template']/@extends">npcAdvancedM60Template</set>
+    <set xpath="//entity_class[contains(@name, 'Rogue') and contains(@name, 'Khz') and @extends='npcBMPistolTemplate']/@extends">npcAdvancedPistolTemplate</set>
+    <set xpath="//entity_class[contains(@name, 'Rogue') and contains(@name, 'Khz') and @extends='npcBMDPistolTemplate']/@extends">npcAdvancedDPistolTemplate</set>
+    <set xpath="//entity_class[contains(@name, 'Rogue') and contains(@name, 'Khz') and @extends='npcBMAK47Template']/@extends">npcAdvancedAK47Template</set>
+    <set xpath="//entity_class[contains(@name, 'Rogue') and contains(@name, 'Khz') and @extends='npcBMTRifleTemplate']/@extends">npcAdvancedTRifleTemplate</set>
+    <set xpath="//entity_class[contains(@name, 'Rogue') and contains(@name, 'Khz') and @extends='npcBMHRifleTemplate']/@extends">npcAdvancedHRifleTemplate</set>
+    <set xpath="//entity_class[contains(@name, 'Rogue') and contains(@name, 'Khz') and @extends='npcBMSRifleTemplate']/@extends">npcAdvancedSRifleTemplate</set>
+    <set xpath="//entity_class[contains(@name, 'Rogue') and contains(@name, 'Khz') and @extends='npcBMPShotgunTemplate']/@extends">npcAdvancedPShotgunTemplate</set>
+    <set xpath="//entity_class[contains(@name, 'Rogue') and contains(@name, 'Khz') and @extends='npcBMAShotgunTemplate']/@extends">npcAdvancedAShotgunTemplate</set>
+    <set xpath="//entity_class[contains(@name, 'Rogue') and contains(@name, 'Khz') and @extends='npcBMLBowTemplate']/@extends">npcAdvancedLBowTemplate</set>
+    <set xpath="//entity_class[contains(@name, 'Rogue') and contains(@name, 'Khz') and @extends='npcBMXBowTemplate']/@extends">npcAdvancedXBowTemplate</set>
+    <set xpath="//entity_class[contains(@name, 'Rogue') and contains(@name, 'Khz') and @extends='npcBMRocketLTemplate']/@extends">npcAdvancedRocketLTemplate</set>
+    <set xpath="//entity_class[contains(@name, 'Rogue') and contains(@name, 'Khz')]/property[@name='AIPackages']/@value">NPCRoguesAdvancedKHz, NPCRoguesMeleeAdvancedKHz, NPCRoguesRangedAdvancedKHz, NPCModNPCHired</set>
+    -->
+
+    <!--
+        Civilian Rogues
+
+        Un-comment this line if you also want to include civilian (non-enemy, "Whiteriver") versions of these NPCs.
+        It will automatically include the contents of the entityclasses-whiteriver.xml file.
+
+        If you un-comment this line, you should also un-comment the relevant lines in:
+        * entitygroups.xml
+            adds entity groups for spawning the civilian versions into biomes and Whiteriver POIs
+        * spawning.xml
+            adds biome spawners for the biome entity groups
+    -->
+    <!-- <include filename="entityclasses-civilians.xml" /> -->
+</configs>

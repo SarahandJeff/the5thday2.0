@@ -127,13 +127,14 @@
 							<gameoption name="ServerMaxPlayerCount" title="goMaxPlayers" value_wrap="false" value_type="int" values="2, 4, 6, 8, 16" display_names="" value_localization_prefix="goPlayer" platform="!PS5,!XBOX_S,!XBOX_X"/>
 							<gameoption name="ServerMaxPlayerCount" title="goMaxPlayers" value_wrap="false" value_type="int" values="2, 3, 4" values_enforced="true" display_names="" value_localization_prefix="goPlayer" platform="PS5,XBOX_X"/>
 							<gameoption name="ServerMaxPlayerCount" title="goMaxPlayers" value_wrap="false" value_type="int" values="2" values_enforced="true" display_names="" value_localization_prefix="goPlayer" platform="XBOX_S"/>
-							<rect/>
+							
 							
 							<gameoption name="GameDifficulty" title="goDifficulty" value_wrap="false" value_type="int" values="" display_names="goDifficulty1,goDifficulty2,goDifficulty3,goDifficulty4,goDifficulty5,goDifficulty6" value_localization_prefix="" />
 							<gameoption name="PersistentPlayerProfiles" title="goPersistentCharacters" value_wrap="false" value_type="bool" values="" display_names="" value_localization_prefix="" />
 							<gameoption name="XPMultiplier" title="goXPMultiplier" value_wrap="false" value_type="int" values="25, 50, 75, 100, 125, 150, 175, 200, 300" display_names="" value_localization_prefix="goXPMultiplierValue" />
 							<gameoption name="DayNightLength" title="goDayLength" value_wrap="false" value_type="int" values="10, 20, 30, 40, 50, 60, 90, 120" display_names="" value_localization_prefix="goMinute" />
 							<gameoption name="DayLightLength" title="goDayLightLength" value_wrap="false" value_type="int" values="12, 14, 16, 18" display_names="" value_localization_prefix="goDayLightLengthValue" />
+							
 						</grid>
 					</rect>
 
@@ -519,6 +520,7 @@
 							<browsergameoptioncombined name="XPMultiplier" title="goXPMultiplier" value_wrap="false" value_type="int" values="25, 50, 75, 100, 125, 150, 175, 200, 300" display_names="" value_localization_prefix="goXPMultiplierValue" />
 							<browsergameoptioncombined name="DayNightLength" title="goDayLength" value_wrap="false" values="10, 20, 30, 40, 50, 60, 90, 120" display_names="" value_localization_prefix="goMinute" />
 							<browsergameoptioncombined name="DayLightLength" title="goDayLightLength" value_wrap="false" values="12, 14, 16, 18" display_names="" value_localization_prefix="goDayLightLengthValue" />
+							
 						</grid>
 					</rect>
 
@@ -711,5 +713,32 @@
 	   <rect>
 		<label name="5thdayVersion" pos="900, 0" depth="0" size="250,33" text="5d v:8.1" font_size="22"  color="[white]" justify="center" />
 		</rect>
+	</append>
+	<append xpath="/windows">
+	<window name="SNJ-Credits" anchor="CenterCenter" pos="-500,400" width="1000" height="800" controller="Credits" cursor_area="true">
+
+		<panel disableautobackground="true" clipping="softclip" clippingsoftness="0,40" >
+			<rect name="categoryTemplates">
+				<rect name="headerTemplate">
+					<label name="caption" depth="1" height="42" font_size="40" justify="center" text="test" />
+				</rect>
+			</rect>
+			<rect name="creditTemplates">
+				<rect name="rowTemplate">
+					<label name="name" depth="1" height="32" font_size="30" justify="left" text="test1" />
+					<label name="centertext" depth="1" height="32" font_size="30" justify="center" text="test2" />
+					<label name="contribution" depth="1" height="32" font_size="30" justify="right" text="test3" />
+					<sprite name="line" depth="1" pos="0,-27" height="1" color="255,255,255,50" />
+				</rect>
+			</rect>
+		
+			<grid name="creditsGrid" rows="0" cell_width="590" cell_height="32" repeat_content="false" arrangement="vertical" >
+			</grid>
+		</panel>
+
+		<widget anchor_left="#bottomleft,0,40" anchor_bottom="#bottomleft,0,80" anchor_right="#bottomleft,0,50" anchor_top="#bottomleft,0,90" pivot="bottomleft">
+			<mainmenubutton name="btnBack" pivot="left" width="200" height="50" caption_key="xuiBack" />
+		</widget>
+	</window>
 	</append>
 </snj>

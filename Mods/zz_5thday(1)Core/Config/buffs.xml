@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <snj>
     <append xpath="buffs">
         <buff name="buffGumballMining" name_key="buffGumballMining" description_key="buffGumballMining" icon="ui_game_symbol_twitch_strength_melee">
@@ -414,6 +415,7 @@
                 <requirement name="CVarCompare" cvar="HOH_Rifles_lvl" operation="Equals" value="0" />
                 <requirement name="CVarCompare" cvar="HOH_Rifles_Perk_Tracker" operation="Equals" value="0" />
                 <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Rifles_lvl" value="1" />
+                <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Rifles_lvl_Ranked" value="1" />
                 <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Rifles_lvl_Next_Needed" value="100" />
                 <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Rifles_Multiplier" operation="set" value="1.03" />
                 <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Rifles_Perk_Tracker" operation="set" value="1" />
@@ -423,6 +425,7 @@
                 <requirement name="CVarCompare" cvar="HOH_MachineGun_lvl" operation="Equals" value="0" />
                 <requirement name="CVarCompare" cvar="HOH_MachineGun_Perk_Tracker" operation="Equals" value="0" />
                 <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_MachineGun_lvl" value="1" />
+                <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_MachineGun_lvl_Ranked" value="1" />
                 <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_MachineGun_lvl_Next_Needed" value="100" />
                 <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_MachineGun_Multiplier" operation="set" value="1.03" />
                 <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_MachineGun_Perk_Tracker" operation="set" value="1" />
@@ -450,6 +453,7 @@
                 <requirement name="CVarCompare" cvar="HOH_Shotguns_lvl" operation="Equals" value="0" />
                 <requirement name="CVarCompare" cvar="HOH_Shotguns_Perk_Tracker" operation="Equals" value="0" />
                 <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Shotguns_lvl" value="1" />
+                <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Shotguns_lvl_Ranked" value="1" />
                 <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Shotguns_lvl_Next_Needed" value="100" />
                 <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Shotguns_Multiplier" operation="set" value="1.03" />
                 <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Shotguns_Perk_Tracker" operation="set" value="1" />
@@ -495,6 +499,7 @@
                 <requirement name="CVarCompare" cvar="HOH_Pistols_lvl" operation="Equals" value="0" />
                 <requirement name="CVarCompare" cvar="HOH_Pistols_Perk_Tracker" operation="Equals" value="0" />
                 <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Pistols_lvl" value="1" />
+                <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Pistols_lvl_Ranked" value="1" />
                 <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Pistols_lvl_Next_Needed" value="100" />
                 <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Pistols_Multiplier" operation="set" value="1.03" />
                 <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Pistols_Perk_Tracker" operation="set" value="1" />
@@ -664,12 +669,14 @@
             <effect_group name="BeginningShitRifles">
                 <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Rifles_XP" operation="set" value="0" />
                 <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Rifles_lvl" operation="set" value="1" />
+                <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Rifles_lvl_Ranked" operation="set" value="1" />
                 <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Rifles_lvl_Next_Needed" operation="set" value="100" />
                 <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Rifles_Perk_Tracker" operation="set" value="1" />
             </effect_group>
             <effect_group name="BeginningShitMachineGun">
                 <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_MachineGun_XP" operation="set" value="0" />
                 <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_MachineGun_lvl" operation="set" value="1" />
+                <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_MachineGun_lvl_Ranked" operation="set" value="1" />
                 <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_MachineGun_lvl_Next_Needed" operation="set" value="100" />
                 <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_MachineGun_Perk_Tracker" operation="set" value="1" />
             </effect_group>
@@ -688,6 +695,7 @@
             <effect_group name="BeginningShitShotguns">
                 <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Shotguns_XP" operation="set" value="0" />
                 <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Shotguns_lvl" operation="set" value="1" />
+                <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Shotguns_lvl_Ranked" operation="set" value="1" />
                 <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Shotguns_lvl_Next_Needed" operation="set" value="100" />
                 <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Shotguns_Perk_Tracker" operation="set" value="1" />
             </effect_group>
@@ -718,6 +726,7 @@
             <effect_group name="BeginningShitPistols">
                 <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Pistols_XP" value="0" />
                 <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Pistols_lvl" value="1" />
+                <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Pistols_lvl_Ranked" value="1" />
                 <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Pistols_lvl_Next_Needed" value="100" />
                 <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="HOH_Pistols_Perk_Tracker" operation="set" value="1" />
             </effect_group>
@@ -3258,6 +3267,18 @@
                 <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Pistols_Perk_Tracker" operation="add" value="1" />
                 <triggered_effect trigger="onSelfBuffUpdate" action="ShowToolbeltMessage" message="[804cba][I]Your Skill with Pistols has increased!" />
                 <triggered_effect trigger="onSelfBuffUpdate" action="PlaySound" sound="levelup" />
+                <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Pistols_lvl_Ranked" operation="add" value="1">
+                    <requirement name="CVarCompare" cvar="HOH_Pistols_lvl_Ranked" operation="LTE" value="100" />
+                </triggered_effect>
+
+                <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Pistols_Ranked_Display" operation="set" value="@HOH_Pistols_lvl_Ranked" />
+                <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Pistols_Ranked_Display" operation="divide" value="100" />
+            </effect_group>
+            <effect_group name="fix my shit">
+                <requirement name="CVarCompare" cvar="HOH_Pistols_lvl_Ranked" operation="LT" value="@HOH_Pistols_Perk_Tracker" />
+                <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Pistols_lvl_Ranked" operation="add" value="1" />
+                <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Pistols_Ranked_Display" operation="set" value="@HOH_Pistols_lvl_Ranked" />
+                <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Pistols_Ranked_Display" operation="divide" value="100" />
             </effect_group>
             <effect_group>
                 <!-- <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Pistols_Unlocked" operation="set" value="1">
@@ -3268,7 +3289,7 @@
             <effect_group name="HOH_Pistols_Levelup50">
                 <requirement name="CVarCompare" cvar="HOH_Pistols_lvl" operation="EQ" value="50" />
                 <requirement name="CVarCompare" cvar="HOH_MachineGun_lvl" operation="LT" value="2" />
-                <requirement name="CVarCompare" cvar="HOH_MachineGun_Unlocked" operation="LT" value="2" />
+                <requirement name="CVarCompare" cvar="HOH_MachineGun_Unlocked" operation="LT" value="1" />
                 <!-- <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_MachineGun_XP" operation="set" value="@HOH_MachineGun_lvl_Next_Needed"/> -->
                 <triggered_effect trigger="onSelfBuffUpdate" action="AddProgressionLevel" progression_name="perkHOHMachineGuns" level="1" />
                 <!-- <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_MachineGun_lvl" operation="add" value="1"/>
@@ -3280,7 +3301,7 @@
             <effect_group name="HOH_Pistols_Levelup502">
                 <requirement name="CVarCompare" cvar="HOH_Pistols_lvl" operation="EQ" value="50" />
                 <requirement name="CVarCompare" cvar="HOH_Shotguns_lvl" operation="LT" value="2" />
-                <requirement name="CVarCompare" cvar="HOH_Shotguns_Unlocked" operation="LT" value="2" />
+                <requirement name="CVarCompare" cvar="HOH_Shotguns_Unlocked" operation="LT" value="1" />
                 <!-- <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Shotguns_XP" operation="set" value="@HOH_Shotguns_lvl_Next_Needed"/> -->
                 <triggered_effect trigger="onSelfBuffUpdate" action="AddProgressionLevel" progression_name="perkHOHShotguns" level="1" />
                 <!-- <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Shotguns_lvl" operation="add" value="1"/>
@@ -4294,17 +4315,17 @@
                 <triggered_effect trigger="onSelfBuffUpdate" action="ShowToolbeltMessage" message="[804cba][I]Your Skill with Hunting has increased!" />
                 <triggered_effect trigger="onSelfBuffUpdate" action="PlaySound" sound="levelup" />
             </effect_group>
-             <effect_group name="fix my shit">
+            <effect_group name="fix my shit">
                 <requirement name="ProgressionLevel" progression_name="perkHunting" operation="LT" value="@HOH_Hunting_Perk_Tracker" />
                 <triggered_effect trigger="onSelfBuffUpdate" action="AddProgressionLevel" progression_name="perkHunting" level="1" />
             </effect_group>
-             <effect_group name="butcher">
+            <effect_group name="butcher">
                 <requirement name="CVarCompare" cvar="HOH_Hunting_lvl" operation="LT" value="250" />
                 <requirement name="CVarCompare" cvar="processedCount_foodRawMeat" operation="LT" value="@_craftCount_foodRawMeat" />
                 <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_foodRawMeat" operation="add" value="1" />
                 <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Hunting_XP" operation="add" value="5" />
             </effect_group>
-             <effect_group name="butcher">
+            <effect_group name="butcher">
                 <requirement name="CVarCompare" cvar="HOH_Hunting_lvl" operation="LT" value="250" />
                 <requirement name="CVarCompare" cvar="processedCount_foodRawPorkMeat" operation="LT" value="@_craftCount_foodRawPorkMeat" />
                 <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_foodRawPorkMeat" operation="add" value="1" />
@@ -7750,7 +7771,6 @@
         <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Armor_lvl" operation="set" value="@HOH_Armor_Perk_Tracker" />
         <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Food_lvl" operation="set" value="@HOH_Food_Perk_Tracker" />
         <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Fishing_lvl" operation="set" value="@HOH_Fishing_Perk_Tracker" />
-        
     </insertAfter>
     <insertAfter xpath="//buff[@name='buffStatusCheck01']">
         <buff name="buffPerkFix" hidden="false">
@@ -8034,7 +8054,6 @@
 
 
 </append> -->
- 
     <append xpath="buffs">
         <buff name="buffTar" description_key="" tooltip_key="buffShockedTooltip" icon="" name_key="buffShockedName" icon_color="255,0,0">
             <damage_type value="electrical" />

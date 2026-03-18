@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Table_of_Contents -->
+<!-- Search_Find_All_for *** -->
+
+<!-- Forge weight: We have auto-scaling based on resources IF there is a recipe for the item. -->
+
+<items>
+
+
+	<append xpath="/items">
+
+		<item name="mpl_ft_eatShrooms">
+			<property name="Tags" value="drinks,foodSkill,fitness"/>
+			<property name="HoldType" value="3"/>
+			<property name="Meshfile" value="@:Entities/OutdoorDecor/mushroom_01Prefab"/>
+			
+			<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+			<property name="Material" value="Mmushrooms"/>
+			<property name="Stacknumber" value="10"/> 
+			<property name="DisplayType" value="waterBeer"/>
+			<property name="Group" value="Food/Cooking,CFDrink/Cooking,Medical"/>
+			<property name="SoundPickup" value="bloodbag_grab"/>
+			<property name="SoundPlace" value="bloodbag_place"/>
+			<property class="Action0">
+				<property name="Class" value="Eat"/>
+				<property name="Delay" value="2"/>
+				<property name="Sound_start" value="player_eating"/>
+				
+			</property>
+			<effect_group tiered="false" name="Drink Tier 3">
+				<requirement name="NotHasBuff" buff="buffIsOnFire"/>
+					<display_value name="dStaminaRegen" value=".4"/>
+					<display_value name="dEntityDamageBrawling" value="3"/>
+					<display_value name="dStunResist" value="1"/>
+					<display_value name="dDuration" value="60"/>
+					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffShroomsDuration" operation="add" value="63"/>
+					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffShroomsDuration" operation="set" value="183">
+						<requirement name="CVarCompare" cvar="$buffShroomsDuration" operation="GT" value="183"/></triggered_effect>
+					<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffShrooms"/>
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement name="HasBuff" buff="buffIsOnFire"/>
+					<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffExtinguishFire"/>
+			</effect_group>
+		</item>
+
+	</append>
+</items> 

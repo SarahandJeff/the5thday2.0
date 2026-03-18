@@ -1,0 +1,64 @@
+<configs>
+	
+	<append xpath="//entity_class[@name='npcTraderRekt']">
+		<property name="TransmongGroupCurrency" value="Resources"/>
+		<property name="TransmongGroupsSell" value="Food/Cooking,CFFood/Cooking"/>
+        <property name="ExcludedCurrencyItems" value=""/>
+        <property name="ExcludedSellItems" value="gunBowT3CompoundCrossbow,gunBowT1IronCrossbow,gunBowT3CompoundBow,gunBowT1WoodenBow,gunBowT0PrimitiveBow"/>
+        <property name="RestockDays" value="1"/>
+	</append>
+
+    <append xpath="//entity_class[@name='npcTraderJen']">
+		<property name="TransmongGroupCurrency" value="casinoCoin,oldCash"/>
+		<property name="TransmongGroupsSell" value="Medical,TCMedical"/>
+        <property name="RestockDays" value="1"/>
+	</append>
+
+</configs>
+
+<!-- 
+    Transmong Trader Entity Class Properties
+    The following properties can be added to an entity class in entityclasses.xml to configure
+    the behavior of the Transmong Trader's restocking system in the XUiC_WindowTransmongTrader.
+
+    Available Properties:
+    - RestockDays (integer, optional):
+        Defines the number of in-game days between automatic restocks of the trader's offers.
+        When the specified number of days has elapsed, the trader's offers (items and stock)
+        are refreshed. If not specified, defaults to 3 days.
+        - Minimum: 1 (restock every day).
+        - Maximum: No strict limit, but large values (e.g., 100) delay restocking significantly.
+        - Example: <property name="RestockDays" value="5"/> (restock every 5 days).
+
+    - RestockHours (integer, optional):
+        Defines the number of in-game hours between automatic restocks of the trader's offers.
+        When the specified number of hours has elapsed, the trader's offers are refreshed.
+        If not specified, defaults to 24 hours. Can be used alongside RestockDays, with restock
+        occurring when either interval is met.
+        - Minimum: 1 (restock every hour).
+        - Maximum: No strict limit, but typically less than 24 for hourly restocks.
+        - Example: <property name="RestockHours" value="12"/> (restock every 12 hours).
+
+    Usage Notes:
+    - Both properties are optional and can be used independently or together.
+    - If both RestockDays and RestockHours are specified, restocking occurs when either condition
+      is met (e.g., after 12 hours OR 5 days, whichever comes first).
+    - Values must be positive integers. Non-integer or negative values are ignored, and defaults apply.
+    - Restocking resets all trade offers, including sell items, currency items, and stock quantities,
+      using the same logic as the reset button (calls RefreshOffers).
+
+    Example Entity Class Configuration:
+    <entity_class name="traderExample">
+        <property name="RestockDays" value="5"/> (Restock every 5 days)
+        <property name="RestockHours" value="12"/> (Restock every 12 hours)
+        (Other properties)
+    </entity_class>
+
+    Example Scenarios:
+    - Only RestockDays: <property name="RestockDays" value="3"/> 
+        Trader restocks every 3 days (72 in-game hours), with no hourly checks.
+    - Only RestockHours: <property name="RestockHours" value="6"/> 
+        Trader restocks every 6 hours, regardless of day boundaries.
+    - Both: <property name="RestockDays" value="7"/> <property name="RestockHours" value="24"/> 
+        Trader restocks every 24 hours or every 7 days, whichever comes first.
+-->

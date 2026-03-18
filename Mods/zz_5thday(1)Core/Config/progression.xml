@@ -2319,38 +2319,51 @@
                 <display_entry icon="meleeToolAxeT2SteelAxe" name_key="harvestToolsSteel" has_quality="true" unlock_level="160,170,180,190,200,250">
                     <unlock_entry item="meleeToolAxeT2SteelAxe" unlock_tier="1" />
                 </display_entry>
+                <display_entry icon="TitaniumAxe" name_key="harvestToolsSteel" has_quality="true" unlock_level="275,300,325,350">
+                    <unlock_entry item="TitaniumAxe" unlock_tier="1" />
+                </display_entry>
                 <display_entry icon="meleeToolAxeT3Chainsaw" name_key="harvestToolsMechanical" has_quality="true" unlock_level="410,420,430,440,450,500">
                     <unlock_entry item="meleeToolAxeT3Chainsaw" unlock_tier="1" />
                 </display_entry>
                 <effect_group>
                     <passive_effect name="RecipeTagUnlocked" operation="base_set" level="75,500" value="1" tags="meleeToolAxeT1IronFireaxe" />
                     <passive_effect name="RecipeTagUnlocked" operation="base_set" level="150,500" value="1" tags="meleeToolAxeT2SteelAxe" />
+                    <passive_effect name="RecipeTagUnlocked" operation="base_set" level="275,500" value="2" tags="TitaniumAxe" />
                     <passive_effect name="RecipeTagUnlocked" operation="base_set" level="400,500" value="1" tags="meleeToolAxeT3Chainsaw" />
                     <passive_effect name="CraftingTier" operation="base_add" level="80,90,100,115,125,150" value="1,2,3,4,5,5" tags="meleeToolAxeT1IronFireaxe" />
                     <passive_effect name="CraftingTier" operation="base_add" level="160,170,180,190,200,250" value="1,2,3,4,5,5" tags="meleeToolAxeT2SteelAxe" />
+                    <passive_effect name="CraftingTier" operation="base_add" level="275,300,325,350,500" value="1,2,3,4,5" tags="TitaniumAxe" />
                     <passive_effect name="CraftingTier" operation="base_add" level="410,420,430,440,450,500" value="1,2,3,4,5" tags="meleeToolAxeT3Chainsaw" />
                 </effect_group>
             </crafting_skill>
             <crafting_skill name="perkPickaxes" max_level="500" parent="attCrafting" name_key="PerkHOHPickAxe" desc_key="" long_desc_key="" icon="ui_game_symbol_tool">
                 <display_entry item="meleeToolPickT1IronPickaxe" unlock_level="75" />
                 <display_entry item="meleeToolPickT2SteelPickaxe" unlock_level="150" />
+                <display_entry item="TitaniumPickaxe"  has_quality="true" unlock_level="200,210,225,250,275,300,500"/>/>
+                
                 <effect_group>
                     <passive_effect name="RecipeTagUnlocked" operation="base_set" level="75,500" value="1" tags="meleeToolPickT1IronPickaxe" />
                     <passive_effect name="RecipeTagUnlocked" operation="base_set" level="150,500" value="1" tags="meleeToolPickT2SteelPickaxe" />
+                    <passive_effect name="RecipeTagUnlocked" operation="base_set" level="200,500" value="1" tags="TitaniumPickaxe" />
                     <passive_effect name="CraftingTier" operation="base_add" level="80,90,100,110,120,500" value="1,2,3,4,5,5" tags="meleeToolPickT1IronPickaxe" />
                     <passive_effect name="CraftingTier" operation="base_add" level="160,170,180,190,200,500" value="1,2,3,4,5,5" tags="meleeToolPickT2SteelPickaxe" />
+                    <passive_effect name="CraftingTier" operation="base_add" level="210,225,250,275,300,500" value="1,2,3,4,5,5" tags="TitaniumPickaxe" />
                 </effect_group>
             </crafting_skill>
             <crafting_skill name="perkShovels" max_level="500" parent="attCrafting" name_key="PerkHOHShovel" desc_key="" long_desc_key="" icon="ui_game_symbol_tool">
                 <display_entry item="meleeToolShovelT1IronShovel" unlock_level="75" />
                 <display_entry item="meleeToolShovelT2SteelShovel" unlock_level="150" />
+                <display_entry item="TitaniumShovel"  has_quality="true" unlock_level="200,210,225,250,275,300,500"/>
                 <display_entry item="meleeToolPickT3Auger" unlock_level="400" />
+                
                 <effect_group>
                     <passive_effect name="RecipeTagUnlocked" operation="base_set" level="75,500" value="1" tags="meleeToolShovelT1IronShovel" />
                     <passive_effect name="RecipeTagUnlocked" operation="base_set" level="150,500" value="1" tags="meleeToolShovelT2SteelShovel" />
+                    <passive_effect name="RecipeTagUnlocked" operation="base_set" level="200,500" value="1" tags="TitaniumShovel" />
                     <passive_effect name="RecipeTagUnlocked" operation="base_set" level="300,500" value="1" tags="meleeToolPickT3Auger" />
                     <passive_effect name="CraftingTier" operation="base_add" level="80,90,100,110,120,500" value="1,2,3,4,5,5" tags="meleeToolShovelT1IronShovel" />
                     <passive_effect name="CraftingTier" operation="base_add" level="160,170,180,190,200,500" value="1,2,3,4,5,5" tags="meleeToolShovelT2SteelShovel" />
+                    <passive_effect name="CraftingTier" operation="base_add" level="210,225,250,275,300,500" value="1,2,3,4,5,5" tags="TitaniumShovel" />
                     <passive_effect name="CraftingTier" operation="base_add" level="310,320,330,340,350,500" value="1,2,3,4,5,5" tags="meleeToolPickT3Auger" />
                 </effect_group>
             </crafting_skill>
@@ -2370,11 +2383,15 @@
             <crafting_skill name="perkKnifes" max_level="250" parent="attCrafting" name_key="PerkHOHKnifes" desc_key="" long_desc_key="" icon="ui_game_symbol_tool">
                 <display_entry item="meleeWpnBladeT1HuntingKnife" unlock_level="1,20,30,40,50,60" />
                 <display_entry item="meleeWpnBladeT3Machete" unlock_level="75,85,95,105,115,125" />
+                <display_entry item="TitaniumHuntingKnife" unlock_level="215,225,235,240,250" />
+                
                 <effect_group>
                     <passive_effect name="RecipeTagUnlocked" operation="base_set" level="1,250" value="1" tags="meleeWpnBladeT1HuntingKnife" />
                     <passive_effect name="CraftingTier" operation="base_add" level="20,30,40,50,60,250" value="1,2,3,4,5,5" tags="meleeWpnBladeT1HuntingKnife" />
                     <passive_effect name="RecipeTagUnlocked" operation="base_set" level="75,250" value="1" tags="meleeWpnBladeT3Machete" />
                     <passive_effect name="CraftingTier" operation="base_add" level="85,95,105,115,125,250" value="1,2,3,4,5,5" tags="meleeWpnBladeT3Machete" />
+                    <passive_effect name="RecipeTagUnlocked" operation="base_set" level="200,250" value="1" tags="TitaniumHuntingKnife" />
+                    <passive_effect name="CraftingTier" operation="base_add" level="215,225,235,240,250" value="1,2,3,4,5,5" tags="TitaniumHuntingKnife" />
                 </effect_group>
             </crafting_skill>
             <crafting_skill name="perkSpears" max_level="100" parent="attCrafting" name_key="PerkHOHJavelin" desc_key="" long_desc_key="" icon="ui_game_symbol_tool">

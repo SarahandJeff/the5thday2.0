@@ -1,0 +1,29 @@
+<!-- - - - - - - - - - - - - - -
+################################
+###### full credit to ##########
+###Eihwaz © www.eihwaz.de ######
+################################
+- - - - - - - - - - - - - - -->
+
+<configs>
+	<remove xpath="//item[@name='modArmorQuadStoragePocketSchematic']"/>
+	<conditional>
+		<if cond="mod_loaded('Khaines96BBM') or mod_loaded('larger_backpack_84') or mod_loaded('BigInv60slots') or mod_loaded('DewtasBackpackPages90Slots') or mod_loaded('Steel-UI-Backpack') or mod_loaded('V1epicSpiresBiggerLockableBackpack_91')">
+			<set xpath="/lootcontainers/lootcontainer[@name='playerBackpack']/@size">10,10</set>
+		</if>
+		<if cond="mod_loaded('Donovan_MegaBackpack')">
+			<set xpath="/lootcontainers/lootcontainer[@name='playerBackpack']/@size">11,13</set>
+		</if>
+		<if cond="mod_loaded('DewtasBackpackPages150Slots') or mod_loaded('DewtasBackpackPages270Slots') or mod_loaded('ScrollableBackpack_A88')">
+			<set xpath="/lootcontainers/lootcontainer[@name='playerBackpack']/@size">15,20</set>
+		</if>
+	</conditional>
+<!--	
+	<append xpath="/lootcontainers/lootgroup[@name='groupBackpacks01']">
+		<item name="PA_smallBackpack" loot_prob_template="med"/>
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='groupBackpacks02']">
+		<item name="PA_mediumBackpack" loot_prob_template="med"/>
+	</append>
+-->
+</configs> 

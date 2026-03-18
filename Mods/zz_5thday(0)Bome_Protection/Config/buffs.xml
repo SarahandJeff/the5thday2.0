@@ -1,5 +1,17 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <configs>
+    <remove xpath="//buff[@name='buffBurnt_Hazard']/effect_group[@name='Update']/triggered_effect/requirement[@name='WornItems']"/>
+    <remove xpath="//buff[@name='buffBurnt_Hazard']/effect_group[@name='Update Time']/requirement[@name='WornItems']"/>
+    <append xpath="//buff[@name='buffBurnt_Hazard']/effect_group[@name='Update']/triggered_effect[@buff='buffBurnt_Hazard01']">
+        <requirement_group op="or">
+            <requirement name="WornItems" tags="biomeBadge1" operation="LT" value="1" />
+            <requirement name="WornItems" tags="biomeBadge2" operation="LT" value="1" />
+            <requirement name="WornItems" tags="biomeBadge3" operation="LT" value="1" />
+            <requirement name="WornItems" tags="biomeBadge4" operation="LT" value="1" />
+        </requirement_group>
+    </append>
+
+    
     <append xpath="//buff[@name='buffForest_Hazard']">
         <effect_group name="Moist me thinks the rain should leave">
             <requirement name="CVarCompare" cvar="_wetnessrate" operation="GTE" value=".5" />

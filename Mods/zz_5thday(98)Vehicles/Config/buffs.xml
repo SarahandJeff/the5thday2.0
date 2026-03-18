@@ -1,46 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <snj>
-
-
-
-<!-- <append xpath="/buffs/buff[@name='buffProtectionCheck']/effect_group[@name='InBiomeBurntForest']">
+    <!-- <append xpath="/buffs/buff[@name='buffProtectionCheck']/effect_group[@name='InBiomeBurntForest']">
 <triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" target="self" buff="buffAcidRain">
 		<requirement name="CVarCompare" cvar="_wetness" operation="GTE" value=".25" />
 </triggered_effect>
 </append> -->
-
-
-<append xpath="/buffs">
-<buff name="BuffJigsaw" hidden="true">
-					<stack_type value="ignore"/>
-					<update_rate value="0.2"/>
-					<duration value="0"/>
-					<effect_group tiered="false">
-						<triggered_effect trigger="onSelfBuffUpdate" action="RemovePart" part="Costume">
-							<requirement name="IsFPV"/>
-							<requirement name="EntityHasMovementTag" tags="driving"/>
-						</triggered_effect>
-						<triggered_effect trigger="onSelfBuffUpdate" action="AddPart" part="Costume" prefab="#@modfolder:Assets/HOH_Costume_Jigsaw.unity3d?Costume_Jigsaw" local_scale="1.5,1.5,1.5" parentTransform="Head" localPos="0,-.61,.05" localRot="0,-270,0">
-							<requirement name="!IsFPV"/>
-						</triggered_effect>
-						<triggered_effect trigger="onSelfBuffRemove" action="RemovePart" part="Costume"/>
-					</effect_group>
-			</buff>
-			</append>
-<!--
-<buff name="BuffUnicorn" hidden="true">
-					<stack_type value="ignore"/>
-					<update_rate value="0.2"/>
-					<duration value="0"/>
-					<effect_group tiered="false">
-						<triggered_effect trigger="onSelfBuffUpdate" action="RemovePart" part="Costume">
-							<requirement name="IsFPV"/>
-							<requirement name="CVarCompare" cvar="noCostume" operation="LT" value="1"/>
-						</triggered_effect>
-						<triggered_effect trigger="onSelfBuffUpdate" action="AddPart" part="Costume" prefab="#@modfolder:Assets/HOH_Costume_Unicorn.unity3d?Costume_Unicorn" local_scale="1.5,1.5,1.5" parentTransform="Head" localPos="0,-.61,.05" localRot="0,-270,0">
-							<requirement name="!IsFPV"/>
-						</triggered_effect>
-						<triggered_effect trigger="onSelfBuffRemove" action="RemovePart" part="Costume"/>
-					</effect_group>
-			</buff>
-</append>-->
+    <!-- <append xpath="//buff[@name='buffStatusCheck02']"> -->
+        <!-- <effect_group name="jigsaw_add">
+            <triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="BuffJigsaw">
+			<requirement name="ItemHasTags" tags="trike"/>
+                <requirement name="IsAttachedToEntity"/>
+            </triggered_effect>
+        </effect_group>
+        <effect_group name="jigsaw_remove">
+            <triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="BuffJigsaw">
+                <requirement name="ItemHasTags" tags="trike"/>
+				<requirement name="!IsAttachedToEntity" />
+            </triggered_effect>
+        </effect_group> -->
+		 <!-- <effect_group name="unicorn_add">
+            <triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="BuffUnicorn">
+			<requirement name="ItemHasTags" tags="Bike"/>
+                <requirement name="IsAttachedToEntity" />
+            </triggered_effect>
+        </effect_group>
+        <effect_group name="unicorn_remove">
+            <triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="BuffUnicorn">
+                <requirement name="ItemHasTags" tags="Bike"/>
+				<requirement name="!IsAttachedToEntity" />
+            </triggered_effect>
+        </effect_group> -->
+    <!-- </append> -->
+    <append xpath="/buffs">
+        <buff name="BuffJigsaw" hidden="true">
+            <stack_type value="ignore" />
+            <update_rate value="0.2" />
+            <duration value="0" />
+            <effect_group tiered="false">
+                <triggered_effect trigger="onSelfBuffUpdate" action="RemovePart" part="Costume">
+                    <requirement name="IsFPV" />
+                    
+                </triggered_effect>
+                <triggered_effect trigger="onSelfBuffUpdate" action="AddPart" part="Costume" prefab="#@modfolder:Assets/HOH_Costume_Jigsaw.unity3d?Costume_Jigsaw" local_scale="1.5,1.5,1.5" parentTransform="Head" localPos="0,-.61,.05" localRot="0,-270,0">
+                    <requirement name="!IsFPV" />
+                </triggered_effect>
+                <triggered_effect trigger="onSelfBuffRemove" action="RemovePart" part="Costume" />
+            </effect_group>
+        </buff>
+		 <buff name="BuffUnicorn" hidden="true">
+            <stack_type value="ignore" />
+            <update_rate value="0.2" />
+            <duration value="0" />
+            <effect_group tiered="false">
+                <triggered_effect trigger="onSelfBuffUpdate" action="RemovePart" part="Costume">
+                    <requirement name="IsFPV" />
+                    
+                </triggered_effect>
+                <triggered_effect trigger="onSelfBuffUpdate" action="AddPart" part="Costume" prefab="#@modfolder:Assets/HOH_Costume_Unicorn.unity3d?Costume_Unicorn" local_scale="1.5,1.5,1.5" parentTransform="Head" localPos="0,-.61,.05" localRot="0,-270,0">
+                    <requirement name="!IsFPV" />
+                </triggered_effect>
+                <triggered_effect trigger="onSelfBuffRemove" action="RemovePart" part="Costume" />
+            </effect_group>
+        </buff>
+    </append>
+    
 </snj>

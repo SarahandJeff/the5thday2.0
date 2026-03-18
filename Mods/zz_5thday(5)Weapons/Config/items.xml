@@ -1051,12 +1051,12 @@
             <property name="HoldType" value="45" />
             <property name="Meshfile" value="@:Other/Items?Misc/sackPrefab.prefab" />
             <property name="DropMeshfile" value="@:Other/Items?Misc/sack_droppedPrefab.prefab" />
-            <property name="Material" value="Mmetal" />
+            <property name="Material" value="Mbrass" />
+            <property name="MeltTimePerUnit" value=".4" />
             <property name="Stacknumber" value="600" />
             <property name="Group" value="Ammo_Spent_Clean,Ammo_Firearm_Cases" />
-            <property name="EconomicValue" value="10" />
+            <property name="EconomicValue" value="1" />
             <property name="CustomIcon" value="ammo338Case" />
-            <property name="SellableToTrader" value="false" />
             <property name="DescriptionKey" value="ammo338CaseDesc" />
         </item>
         <item name="ammo338Tip">
@@ -5574,7 +5574,8 @@
             <property name="HoldType" value="45" />
             <property name="Meshfile" value="@:Other/Items?Misc/sackPrefab.prefab" />
             <property name="DropMeshfile" value="@:Other/Items?Misc/sack_droppedPrefab.prefab" />
-            <property name="Material" value="Mmetal" />
+            <property name="Material" value="MresourceScrapBrassSmall" />
+            <property name="MeltTimePerUnit" value=".4" />
             <property name="Stacknumber" value="600" />
             <property name="Group" value="Ammo_Spent_Clean,Ammo_Firearm_Cases" />
             <property name="EconomicValue" value="10" />
@@ -5585,7 +5586,8 @@
             <property name="HoldType" value="45" />
             <property name="Meshfile" value="@:Other/Items?Misc/sackPrefab.prefab" />
             <property name="DropMeshfile" value="@:Other/Items?Misc/sack_droppedPrefab.prefab" />
-            <property name="Material" value="Mmetal" />
+            <property name="Material" value="MresourceScrapBrassSmall" />
+            <property name="MeltTimePerUnit" value=".4" />
             <property name="Stacknumber" value="600" />
             <property name="Group" value="Ammo_Firearm_Tips" />
             <property name="EconomicValue" value="10" />
@@ -5596,7 +5598,8 @@
             <property name="HoldType" value="45" />
             <property name="Meshfile" value="@:Other/Items?Misc/sackPrefab.prefab" />
             <property name="DropMeshfile" value="@:Other/Items?Misc/sack_droppedPrefab.prefab" />
-            <property name="Material" value="Mmetal" />
+            <property name="Material" value="MresourceScrapBrassSmall" />
+            <property name="MeltTimePerUnit" value=".4" />
             <property name="Stacknumber" value="600" />
             <property name="Group" value="Ammo_Spent_Clean,Ammo_Firearm_Cases" />
             <property name="EconomicValue" value="10" />
@@ -5607,7 +5610,8 @@
             <property name="HoldType" value="45" />
             <property name="Meshfile" value="@:Other/Items?Misc/sackPrefab.prefab" />
             <property name="DropMeshfile" value="@:Other/Items?Misc/sack_droppedPrefab.prefab" />
-            <property name="Material" value="Mmetal" />
+            <property name="Material" value="MresourceScrapBrassSmall" />
+            <property name="MeltTimePerUnit" value=".4" />
             <property name="Stacknumber" value="600" />
             <property name="Group" value="Ammo_Firearm_Tips" />
             <property name="EconomicValue" value="10" />
@@ -7525,7 +7529,7 @@
                 <property name="Class" value="Zoom" />
                 <property name="Zoom_max_out" value="55" />
                 <property name="Zoom_max_in" value="55" />
-                <property name="SightsCameraOffset" value="-.0004,.005,.1" />
+                <property name="SightsCameraOffset" value="-.0004,.018,.1" />
             </property>
             <effect_group name="5thday_MK23">
                 <passive_effect name="MaxRange" operation="base_set" value="50" />
@@ -8864,7 +8868,6 @@
                 <passive_effect name="DamageModifier" operation="perc_add" value="-.99" tags="wood" />
                 <triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="SickleBlockTrackerActivate" />
                 <triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="SickleBlockTrackerActivate" />
-                
             </effect_group>
         </item>
         <item name="tanto">
@@ -9579,7 +9582,7 @@
             <property name="DisplayType" value="rangedGun" />
             <property name="HoldType" value="85" />
             <property name="Meshfile" value="#@modfolder:Assets/HOH_Ranged_Weapons_Shotguns.unity3d?5d_LeverActionShotgun" />
-            <property name="Material" value="MRifleParts" />
+            <property name="Material" value="MShotgunParts" />
             <property name="TintColor" value="98, 117, 132" />
             <property name="Weight" value="4" />
             <property name="ScrapTimeOverride" value="10.0" />
@@ -9754,6 +9757,7 @@
     <set xpath="//item[starts-with(@name,'ammo3006Case')]/property[@name='Material']/@value">MresourceScrapBrassMedium</set>
     <set xpath="//item[starts-with(@name,'ammo50BMGCase')]/property[@name='Material']/@value">MresourceScrapBrassMedium</set>
     <set xpath="//item[starts-with(@name,'ammo338Case')]/property[@name='Material']/@value">MresourceScrapBrassMedium</set>
+    <set xpath="//item[starts-with(@name,'ammo38Case')]/property[@name='Material']/@value">MresourceScrapBrassSmall</set>
     <append xpath="//item[starts-with(@name,'ammo9mm')]">
         <property name="Weight" value="1" />
         <property name="MeltTimePerUnit" value="1" />
@@ -9800,5 +9804,27 @@
     </append>
     <append xpath="//item[contains(@name,'Feather')]">
         <property name="ItemWeight" value="1.1" />
+    </append>
+    <!-- broken tools & weapons & -->
+    <append xpath="/items">
+        <item name="broken_glock">
+            <property name="CustomIcon" value="broken_glock" />
+            <property name="HoldType" value="45" />
+            <property name="Meshfile" value="@:Other/Items?Misc/sackPrefab.prefab" />
+            <property name="DropMeshfile" value="@:Other/Items?Misc/sack_droppedPrefab.prefab" />
+            <property name="Material" value="Msteel" />
+            <property name="Stacknumber" value="1" />
+            <property name="Group" value="tools/Traps" />
+            <property name="EconomicValue" value="10" />
+            <property name="SellableToTrader" value="true" />
+            <property name="ItemTypeIcon" value="forge" />
+            <property name="DescriptionKey" value="broken_glockDesc" />
+        </item>
+        <item name="repairedGlock">
+            <property name="Extends" value="5thday_Glock9mm" />
+            <effect_group name="repairedGlock">
+                <passive_effect name="ModSlots" operation="base_set" value="1" tier="1" />
+            </effect_group>
+        </item>
     </append>
 </snj>

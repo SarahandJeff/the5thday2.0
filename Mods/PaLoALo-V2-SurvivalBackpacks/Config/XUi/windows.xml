@@ -1,0 +1,17 @@
+<config>
+
+	<!-- Expand the armor tab's grid to 2 rows and add the backpack -->
+	<set xpath="//window[@name='CharacterFrameWindow']//rect[@controller='TabSelectorTab'][@tab_key='armor']//grid[@name='inventory']/@rows">2</set>
+
+	<!-- Add backpack as 5th item in the grid (will wrap to row 2) -->
+	<append xpath="//window[@name='CharacterFrameWindow']//rect[@controller='TabSelectorTab'][@tab_key='armor']//grid[@name='inventory']">
+		<equipment_stack_sdcs name="backpackStack" slot="Backpack" empty_sprite="weapon_bags_largePrefab" empty_tooltip="lblBackpack" />
+	</append>
+
+	<!-- Adjust the panel height to accommodate 2 rows -->
+	<set xpath="//window[@name='CharacterFrameWindow']//rect[@controller='TabSelectorTab'][@tab_key='armor']//panel[@name='equipment']/@height">140</set>
+
+	<!-- Shift the preview panel down to avoid overlap -->
+	<set xpath="//window[@name='CharacterFrameWindow']//panel[@name='previewFrameSDCS']/@pos">0,-191</set>
+	<set xpath="//window[@name='CharacterFrameWindow']//panel[@name='previewFrameSDCS']/@height">554</set>
+</config>

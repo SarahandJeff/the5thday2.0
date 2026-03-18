@@ -48,6 +48,24 @@
 			<property name="distance" value="2"/>
 		</property>
 </append>
+<conditional>
+<if cond="mod_loaded('Zzzzzzxcp_Big_Cities_Big_Maps')">
+		<append xpath="/rwgmixer/world[@name='larger']">
+		<property class="oldwest">
+            <property name="count" value="1, 1, 1"/>
+			<property name="tiles" value="12, 16"/>
+			<property name="distance" value="2"/>
+		</property>
+</append>
+<append xpath="/rwgmixer/world[@name='largest']">
+		<property class="oldwest">
+            <property name="count" value="1, 1, 1"/>
+			<property name="tiles" value="15, 21"/>
+			<property name="distance" value="2"/>
+		</property>
+</append>
+</if>
+</conditional>
 <append xpath="/rwgmixer">
 	<township name="oldwest">
 		<property name="spawn_trader" value="false"/>
@@ -465,7 +483,7 @@
     </streettile> 
 	<streettile name="rwg_tile_downtown_intersection_zzxcpv_02">
         <property name="maxtiles" value="1"/>
-        <property name="mintiles" value="1"/>-->
+        <property name="mintiles" value="1"/>
         <property name="maxdensity" value="4000"/>
     </streettile>
 	<streettile name="rwg_tile_downtown_intersection_zzxcpv_03">
@@ -1147,7 +1165,7 @@
 	<prefab_spawn_adjust partial_name="xcpv_Murky_Mooring_Fluffy_Panda" biomeTags="burntforest,wasteland" min_count="1" max_count="1"/>
 	<prefab_spawn_adjust partial_name="xcpv_House_Shanty_01_Svarii" biomeTags="burntforest,wasteland" min_count="1" max_count="1"/>	
 	<prefab_spawn_adjust partial_name="xcpv_Corvins_Castle_Mahem3000" biomeTags="forest,snow" min_count="1" max_count="1"/>
-	
+	<prefab_spawn_adjust partial_name="xcpv_Abandoned_Shelter_Viper_Seven" biomeTags="wasteland,burntforest" min_count="1" max_count="1"/>	
 	<prefab_spawn_adjust partial_name="xcpv_Airport_2_Ouch" biomeTags="burntforest" min_count="1" max_count="1"/>
 	<prefab_spawn_adjust partial_name="xcpv_Airstrip_Telric" biomeTags="wasteland,burntforest" min_count="1" max_count="1"/>
 	<prefab_spawn_adjust partial_name="xcpv_Alamo_Level50Unlocked" biomeTags="desert" min_count="1" max_count="1"/>
@@ -1221,7 +1239,7 @@
 	<prefab_spawn_adjust partial_name="xcpv_NSite_Missile_Silo_Ephoie" biomeTags="wasteland,burntforest" min_count="1" max_count="1"/>
 	<prefab_spawn_adjust partial_name="xcpv_Nepa_Base_01_Eihwaz" biomeTags="forest,desert,snow" min_count="1" max_count="1"/>
 	<prefab_spawn_adjust partial_name="xcpv_Nepa_Base_Eihwaz" biomeTags="wasteland,burntforest" min_count="1" max_count="1"/>
-	
+	<prefab_spawn_adjust partial_name="xcpv_Nuclear_Missile_Silo_Viper_Seven" biomeTags="wasteland,burntforest" min_count="1" max_count="1"/>	
 	<prefab_spawn_adjust partial_name="xcpv_Observatory_NLBlackEagle" biomeTags="snow" min_count="1" max_count="1"/>
 	<prefab_spawn_adjust partial_name="xcpv_Oil_Pump_WillyBilly" biomeTags="desert" min_count="1" max_count="1"/>	
 	<prefab_spawn_adjust partial_name="xcpv_Oil_Well_Rukminesh" biomeTags="desert" min_count="1" max_count="1"/>	
@@ -1289,6 +1307,8 @@
 	<prefab_spawn_adjust partial_name="xcpv_House_04_Infected_Gaming" biomeTags="forest,desert,snow" min_count="1" max_count="1"/>	
 	<prefab_spawn_adjust partial_name="xcpv_Mountain_Bike_Stallionsden" biomeTags="burntforest,wasteland" min_count="1" max_count="1"/>	
 	<prefab_spawn_adjust partial_name="xcpv_Bike_BB_Zeebark" biomeTags="forest,desert,snow" min_count="1" max_count="1"/>	
+	<prefab_spawn_adjust partial_name="xcpv_Military_Supply_Stash_Viper7" biomeTags="forest,burntforest" min_count="1" max_count="1"/>	
+	<prefab_spawn_adjust partial_name="xcpv_Mountain_Remnant_Observatory_Viper7" biomeTags="desert,snow,wasteland" min_count="1" max_count="1"/>	
 	<prefab_spawn_adjust partial_name="xcpv_Underground_01_ZZTong" biomeTags="forest,burntforest,desert,snow,wasteland" min_count="1" max_count="1"/>
 	<prefab_spawn_adjust partial_name="xcpv_Underground_02_ZZTong" biomeTags="forest,burntforest,desert,snow,wasteland" min_count="1" max_count="1"/>
 	<prefab_spawn_adjust partial_name="xcpv_Underground_03_ZZTong" biomeTags="forest,burntforest,desert,snow,wasteland" min_count="1" max_count="1"/>
@@ -3065,7 +3085,29 @@
 </append>
 </if>
 </conditional>
-
+<append xpath="/rwgmixer">
+	<township name="privair">
+		<property name="spawn_trader" value="false"/>
+		<property name="spawn_gateway" value="false"/>
+		<property name="biomes" value="desert"/>
+	</township>	
+	
+	<district name="privair">
+		<property name="tag" value="privair"/>
+		<property name="prefab_name" value="privair"/>
+		<property name="spawn_weight" value="1"/>
+		<property name="required_township" value="privair"/>
+		<property name="preview_color" value="0,0.5,0"/>
+		<property name="poi_required_tags_all" value="privair"/>
+	</district>	
+	
+		<streettile name="rwg_tile_privair_cap">
+			<property name="maxdensity" value="3000"/>		
+		</streettile>
+		
+		
+	<prefab_spawn_adjust partial_name="xcpv_Private_Airstrip_Viper_Seven" biomeTags="desert" min_count="1" max_count="1"/>
+	</append>
 	<!--RACETRACKS-->
 	<append xpath="/rwgmixer/world[@name='tiny']">
 		<property class="racetracks">
@@ -4892,7 +4934,7 @@
 	<prefab_spawn_adjust partial_name="xcpv_Refuge_Camp_LazyTurtle89" biomeTags="wasteland,burntforest" min_count="1" max_count="1" />
 	<prefab_spawn_adjust partial_name="xcpv_ReloadTime_Warehouse_TheStainGaming" biomeTags="forest,desert,snow" min_count="1" max_count="1" />
 	<prefab_spawn_adjust partial_name="xcpv_Reload_Time_TheStainGaming" biomeTags="forest,desert,snow" min_count="1" max_count="1" />
-	
+	<prefab_spawn_adjust partial_name="xcpv_Remnant_Observatory_02_Viper_Seven" biomeTags="snow" min_count="1" max_count="1" />
 	<prefab_spawn_adjust partial_name="xcpv_Restaurant_01_ZZTong" biomeTags="forest,desert,snow" min_count="1" max_count="1" />
 	<prefab_spawn_adjust partial_name="xcpv_Retail_Park_Mute" biomeTags="wasteland" min_count="1" max_count="1" />
 	<prefab_spawn_adjust partial_name="xcpv_Retirement_Village_TheStainGaming" biomeTags="forest,desert,snow" min_count="1" max_count="1" />
@@ -4962,7 +5004,7 @@
 	<prefab_spawn_adjust partial_name="xcpv_TFP_BK_Book_Store_BadKarma64" biomeTags="forest,desert,snow" min_count="1" max_count="1" />
 	<prefab_spawn_adjust partial_name="xcpv_TFP_Brr_Icecream_VoltraLux" biomeTags="forest,desert,snow" min_count="1" max_count="1" />
 	<prefab_spawn_adjust partial_name="xcpv_TFP_House_New_04_ZZTong" biomeTags="forest,desert,snow" min_count="1" max_count="1" />
-	
+	<prefab_spawn_adjust partial_name="xcpv_TFP_Modern_House_Viper_Seven" biomeTags="forest,desert,snow" min_count="1" max_count="1" />
 	<prefab_spawn_adjust partial_name="xcpv_TFP_Office88_Voltralux" biomeTags="forest,desert,snow" min_count="1" max_count="1" />
 	<prefab_spawn_adjust partial_name="xcpv_TFP_School_K6_01_ZZTong" biomeTags="forest,desert,snow" min_count="1" max_count="1" />
 	<prefab_spawn_adjust partial_name="xcpv_TFP_Skyscraper_02_ZZTong" biomeTags="forest,desert,snow" min_count="1" max_count="1" />

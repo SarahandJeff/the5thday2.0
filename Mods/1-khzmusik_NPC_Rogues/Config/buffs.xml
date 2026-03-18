@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configs>
+    <append xpath="/buffs">
+        <!-- Tells Rogue NPCs to crouch. -->
+        <buff name="buffRogueCrouch" hidden="true" remove_on_death="true">
+            <stack_type value="ignore" />
+            <effect_group>
+                <triggered_effect trigger="onSelfBuffStart" action="AnimatorSetBool" property="IsCrouching" value="true" />
+                <triggered_effect trigger="onSelfBuffRemove" action="AnimatorSetBool" property="IsCrouching" value="false" />
+            </effect_group>
+        </buff>
+
+        <!-- Continuously checks whether a Rogue is on fire, and if so triggers animations and sounds. -->
+        <buff name="buffRogueIsOnFireCheck" hidden="true">
+            <stack_type value="ignore" />
+            <update_rate value="0.5" />
+
+            <effect_group name="IsOnFire Sounds">
+                <triggered_effect trigger="onSelfBuffUpdate" action="PlaySound" sound="rogue$OnFire" />
+                <requirement name="HasBuff" buff="buffIsOnFire" />
+            </effect_group>
+
+            <effect_group name="Add IsOnFire Animation Buff">
+                <triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffRogueIsOnFireAnimations" />
+                <requirement name="HasBuff" buff="buffIsOnFire" />
+                <requirement name="NotHasBuff" buff="buffRogueIsOnFireAnimations" />
+            </effect_group>
+
+            <effect_group name="Remove IsOnFire Animation Buff">
+                <triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffRogueIsOnFireAnimations" />
+                <requirement name="NotHasBuff" buff="buffIsOnFire" />
+                <requirement name="HasBuff" buff="buffRogueIsOnFireAnimations" />
+            </effect_group>
+
+            <effect_group name="Remove IsOnFire Animation Buff On Death">
+                <triggered_effect trigger="onSelfDied" action="RemoveBuff" buff="buffRogueIsOnFireAnimations" />
+                <requirement name="HasBuff" buff="buffRogueIsOnFireAnimations" />
+            </effect_group>
+        </buff>
+
+        <!-- Triggers animations when a Rogue is on fire. -->
+        <buff name="buffRogueIsOnFireAnimations" hidden="true">
+            <stack_type value="ignore" />
+            <update_rate value="0.5" />
+
+            <effect_group name="Start IsOnFire Animation">
+                <triggered_effect trigger="onSelfBuffStart" action="AnimatorSetBool" property="IsOnFire" value="true" />
+                <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".CaughtFire" operation="set" value="1" />
+                <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".OnFireMotion" operation="set" value="randomint(1,4)" />
+            </effect_group>
+
+            <effect_group name="Random IsOnFire Animation">
+                <triggered_effect trigger="onSelfBuffUpdate" action="AnimatorSetFloat" property="OnFireBlend" value="0">
+                    <requirement name="CVarCompare" cvar=".OnFireMotion" operation="Equals" value="1" />
+                </triggered_effect>
+                <triggered_effect trigger="onSelfBuffUpdate" action="AnimatorSetFloat" property="OnFireBlend" value="0.25">
+                    <requirement name="CVarCompare" cvar=".OnFireMotion" operation="Equals" value="2" />
+                </triggered_effect>
+                <triggered_effect trigger="onSelfBuffUpdate" action="AnimatorSetFloat" property="OnFireBlend" value="0.5">
+                    <requirement name="CVarCompare" cvar=".OnFireMotion" operation="Equals" value="3" />
+                </triggered_effect>
+                <triggered_effect trigger="onSelfBuffUpdate" action="AnimatorSetFloat" property="OnFireBlend" value="0.75">
+                    <requirement name="CVarCompare" cvar=".OnFireMotion" operation="Equals" value="4" />
+                </triggered_effect>
+                <requirement name="CVarCompare" cvar=".OnFireMotion" operation="GT" value="0" />
+            </effect_group>
+            
+            <effect_group name="Remove IsOnFire Animation On Buff Removed">
+                <triggered_effect trigger="onSelfBuffRemove" action="AnimatorSetBool" property="IsOnFire" value="false" />
+                <triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".CaughtFire" operation="set" value="0" />
+                <triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".OnFireMotion" operation="set" value="0" />
+            </effect_group>
+
+            <effect_group name="Remove IsOnFire Animation On Death">
+                <triggered_effect trigger="onSelfDied" action="AnimatorSetBool" property="IsOnFire" value="false" />
+                <triggered_effect trigger="onSelfDied" action="ModifyCVar" cvar=".CaughtFire" operation="set" value="0" />
+                <triggered_effect trigger="onSelfDied" action="ModifyCVar" cvar=".OnFireMotion" operation="set" value="0" />
+            </effect_group>
+        </buff>
+    </append>
+</configs>

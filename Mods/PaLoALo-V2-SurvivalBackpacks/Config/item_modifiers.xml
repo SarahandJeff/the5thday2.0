@@ -1,0 +1,21 @@
+<!-- - - - - - - - - - - - - - -
+################################
+###### full credit to ##########
+###Eihwaz © www.eihwaz.de ######
+################################
+- - - - - - - - - - - - - - -->
+<eihwaz.de>
+	<remove xpath="//item_modifier[@name='modArmorQuadStoragePocket']/effect_group"/>
+	<append xpath="//item_modifier[@name='modArmorQuadStoragePocket']">
+		<property name="CreativeMode" value="None"/>
+		<property name="DescriptionKey" value="deluxe_backpackRemove"/>
+		<effect_group tiered="false"/>
+	</append>
+	<set xpath="//item_modifier[@name='modArmorStoragePocket']/@modifier_tags">pocketMod1</set>
+	<csv xpath="//item_modifier[@name='modArmorStoragePocket']/@blocked_tags" delim="," op="add">armorHead</csv>
+	<set xpath="//item_modifier[@name='modArmorDoubleStoragePocket']/@modifier_tags">pocketMod2</set>
+	<csv xpath="//item_modifier[@name='modArmorDoubleStoragePocket']/@blocked_tags" delim="," op="add">armorHead</csv>
+	<set xpath="//item_modifier[@name='modArmorTripleStoragePocket']/@modifier_tags">pocketMod1,pocketMod2,pocketMod3</set>
+	<csv xpath="//item_modifier[@name='modArmorTripleStoragePocket']/@blocked_tags" delim="," op="add">armorHead</csv>
+	
+</eihwaz.de> 

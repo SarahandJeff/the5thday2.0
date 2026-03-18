@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configs>
+    <!--
+        If you do not want these prefabs to spawn, comment out or remove the following lines.
+        You can also adjust the "prob" values if you want more or fewer to spawn in.
+        I have tried my best to make it a rare event to encounter one of these prefabs,
+        but you or your players might not desire that.
+    -->
+
+    <!-- Snow: buried rogue camps -->
+    <insertAfter xpath="//biome[@name='snow']/subbiome//decoration[@name='deco_coal_vein']">
+        <decoration type="prefab" name="deco_rogue_camp_4" prob=".0013" />
+        <decoration type="prefab" name="deco_rogue_camp_5" prob=".0013" />
+    </insertAfter>
+    <insertAfter xpath="//biome[@name='snow']/subbiome//decoration[@name='deco_iron_vein']">
+        <decoration type="prefab" name="deco_rogue_camp_4" prob=".0015" />
+        <decoration type="prefab" name="deco_rogue_camp_5" prob=".0007" />
+    </insertAfter>
+    <insertAfter xpath="//biome[@name='snow']/subbiome//decoration[@name='deco_lead_vein']">
+        <decoration type="prefab" name="deco_rogue_camp_4" prob=".006" />
+        <decoration type="prefab" name="deco_rogue_camp_5" prob=".006" />
+    </insertAfter>
+    <insertAfter xpath="//biome[@name='snow']/subbiome//decoration[@name='deco_nitrate_vein']">
+        <decoration type="prefab" name="deco_rogue_camp_4" prob=".0015" />
+        <decoration type="prefab" name="deco_rogue_camp_5" prob=".0007" />
+    </insertAfter>
+    <append xpath="//biome[@name='snow']/decorations">
+        <decoration type="prefab" name="deco_rogue_camp_4" prob=".0005" />
+        <decoration type="prefab" name="deco_rogue_camp_5" prob=".001" />
+    </append>
+
+    <!-- Pine forest: small rogue camps -->
+    <insertAfter xpath="//biome[@name='pine_forest']/subbiome//decoration[@name='deco_coal_vein']">
+        <decoration type="prefab" name="deco_rogue_camp_3" prob="0.0007" />
+        <decoration type="prefab" name="deco_rogue_camp_6" prob="0.0008" />
+    </insertAfter>
+    <insertAfter xpath="//biome[@name='pine_forest']/subbiome//decoration[@name='deco_lead_vein']">
+        <decoration type="prefab" name="deco_rogue_camp_3" prob="0.001" />
+        <decoration type="prefab" name="deco_rogue_camp_6" prob="0.0015" />
+    </insertAfter>
+    <insertAfter xpath="//biome[@name='pine_forest']/subbiome//decoration[@name='deco_nitrate_vein']">
+        <decoration type="prefab" name="deco_rogue_camp_3" prob="0.0007" />
+        <decoration type="prefab" name="deco_rogue_camp_6" prob="0.001" />
+    </insertAfter>
+    <append xpath="//biome[@name='pine_forest']/decorations">
+        <decoration type="prefab" name="deco_rogue_camp_3" prob="0.0005" />
+        <decoration type="prefab" name="deco_rogue_camp_6" prob="0.0005" />
+    </append>
+
+    <!-- Desert: small & large rogue camps - spawn near oil shale & cars -->
+    <insertAfter xpath="//biome[@name='desert']//decoration[@name='deco_shale_vein']">
+        <decoration type="prefab" name="deco_rogue_camp_1" prob="0.001" />
+        <decoration type="prefab" name="deco_rogue_camp_2" prob="0.0005" />
+        <decoration type="prefab" name="deco_rogue_camp_3" prob="0.0007" />
+    </insertAfter>
+    <!-- Increase vanilla car prob so there is more chance of spawning with rogue camps -->
+    <set xpath="//biome[@name='desert']//decoration[@blockname='carsRandomHelper']/@prob">0.01</set>
+    <insertAfter xpath="//biome[@name='desert']//decoration[@blockname='carsRandomHelper']">
+        <decoration type="prefab" name="deco_rogue_camp_2" prob="0.001" />
+        <decoration type="prefab" name="deco_rogue_camp_3" prob="0.004" />
+    </insertAfter>
+    <append xpath="//biome[@name='desert']/decorations">
+        <decoration type="prefab" name="deco_rogue_camp_1" prob="0.002" />
+        <decoration type="prefab" name="deco_rogue_camp_2" prob="0.0004" />
+        <decoration type="prefab" name="deco_rogue_camp_3" prob="0.0007" />
+    </append>
+</configs>

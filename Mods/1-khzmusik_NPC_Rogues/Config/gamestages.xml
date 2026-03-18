@@ -1,0 +1,115 @@
+﻿<configs>
+    <!-- 
+        Gamestage groups
+        
+        These are shown in the UI when choosing sleeper volumes.
+        
+        IMPORTANT! TFP changed the naming standard in 1.0.
+        If you have pre-1.0 prefabs, you must edit them to change the groups!
+    -->
+    <insertAfter xpath="/gamestages/group[last()]">
+        <group name="2GroupNPCRogueAll" spawner="NPCRogueAllHorde" />
+        <group name="2GroupNPCRogueMelee" spawner="NPCRogueMeleeHorde" />
+        <group name="2GroupNPCRogueRanged" spawner="NPCRogueRangedHorde" />
+        <group name="2GroupNPCRogueBoss" spawner="NPCRogueBossHorde" />
+    </insertAfter>
+
+    <!-- 
+        Spawners
+
+        These are used by gamestage groups, and use entity groups by game stage.
+
+        The gamestage levels and spawn attributes are modeled after vanilla spawners.
+    -->
+    <insertAfter xpath="/gamestages/spawner[last()]">
+        <spawner name="NPCRogueAllHorde">
+            <gamestage stage="1">
+                <spawn group="npcRogueAllGroupGS01" num="1" maxAlive="1" duration="1" />
+            </gamestage>
+            <gamestage stage="50">
+                <spawn group="npcRogueAllGroupGS50" num="1" maxAlive="1" duration="1" />
+            </gamestage>
+            <gamestage stage="100">
+                <spawn group="npcRogueAllGroupGS100" num="1" maxAlive="1" duration="1" />
+            </gamestage>
+            <gamestage stage="200">
+                <spawn group="npcRogueAllGroupGS200" num="1" maxAlive="1" duration="1" />
+            </gamestage>
+            <gamestage stage="400">
+                <spawn group="npcRogueAllGroupGS400" num="1" maxAlive="1" duration="1" />
+            </gamestage>
+            <gamestage stage="800">
+                <spawn group="npcRogueAllGroupGS800" num="1" maxAlive="1" duration="1" />
+            </gamestage>
+        </spawner>
+        <spawner name="NPCRogueMeleeHorde">
+            <gamestage stage="1">
+                <spawn group="npcRogueMeleeGroupGS01" num="1" maxAlive="1" duration="1" />
+            </gamestage>
+            <gamestage stage="50">
+                <spawn group="npcRogueMeleeGroupGS50" num="1" maxAlive="1" duration="1" />
+            </gamestage>
+            <gamestage stage="100">
+                <spawn group="npcRogueMeleeGroupGS100" num="1" maxAlive="1" duration="1" />
+            </gamestage>
+            <gamestage stage="200">
+                <spawn group="npcRogueMeleeGroupGS200" num="1" maxAlive="1" duration="1" />
+            </gamestage>
+            <gamestage stage="400">
+                <spawn group="npcRogueMeleeGroupGS400" num="1" maxAlive="1" duration="1" />
+            </gamestage>
+            <gamestage stage="800">
+                <spawn group="npcRogueMeleeGroupGS800" num="1" maxAlive="1" duration="1" />
+            </gamestage>
+        </spawner>
+        <spawner name="NPCRogueRangedHorde">
+            <gamestage stage="1">
+                <spawn group="npcRogueRangedGroupGS01" num="1" maxAlive="1" duration="1" />
+            </gamestage>
+            <gamestage stage="50">
+                <spawn group="npcRogueRangedGroupGS50" num="1" maxAlive="1" duration="1" />
+            </gamestage>
+            <gamestage stage="100">
+                <spawn group="npcRogueRangedGroupGS100" num="1" maxAlive="1" duration="1" />
+            </gamestage>
+            <gamestage stage="200">
+                <spawn group="npcRogueRangedGroupGS200" num="1" maxAlive="1" duration="1" />
+            </gamestage>
+            <gamestage stage="400">
+                <spawn group="npcRogueRangedGroupGS400" num="1" maxAlive="1" duration="1" />
+            </gamestage>
+            <gamestage stage="800">
+                <spawn group="npcRogueRangedGroupGS800" num="1" maxAlive="1" duration="1" />
+            </gamestage>
+        </spawner>
+        <spawner name="NPCRogueBossHorde">
+            <gamestage stage="1">
+                <spawn group="npcRogueBossGroupGS01" num="1" maxAlive="1" duration="1" />
+            </gamestage>
+            <gamestage stage="50">
+                <spawn group="npcRogueBossGroupGS50" num="1" maxAlive="1" duration="1" />
+            </gamestage>
+            <gamestage stage="100">
+                <spawn group="npcRogueBossGroupGS100" num="1" maxAlive="1" duration="1" />
+            </gamestage>
+            <gamestage stage="200">
+                <spawn group="npcRogueBossGroupGS200" num="1" maxAlive="1" duration="1" />
+            </gamestage>
+            <gamestage stage="400">
+                <spawn group="npcRogueBossGroupGS400" num="1" maxAlive="1" duration="1" />
+            </gamestage>
+            <gamestage stage="800">
+                <spawn group="npcRogueBossGroupGS800" num="1" maxAlive="1" duration="1" />
+            </gamestage>
+        </spawner>
+    </insertAfter>
+
+    <!--
+        This mod also includes custom entity groups for wandering hordes.
+        Here is how you might use them.
+    -->
+    <!-- Replace wandering horde stages 8, 24, and 41 with Rogues -->
+    <!-- <set xpath="//spawner[@name='WanderingHorde']/gamestage[@stage='08']/spawn/@group">wanderingRogueHordeStageGS08</set> -->
+    <!-- <set xpath="//spawner[@name='WanderingHorde']/gamestage[@stage='24']/spawn/@group">wanderingRogueHordeStageGS24</set> -->
+    <!-- <set xpath="//spawner[@name='WanderingHorde']/gamestage[@stage='41']/spawn/@group">wanderingRogueHordeStageGS41</set> -->
+</configs>
