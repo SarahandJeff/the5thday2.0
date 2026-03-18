@@ -1,6 +1,6 @@
 # 5thDay
-5th Day mod for EXP V2.3 of 7 Days to Die
-THIS VERSION IS ONLY FOR EXP 2.3 AND REQUIRES A NEW SAVE (THANKS FUN PIMPS)
+5th Day mod for EXP V2.5 of 7 Days to Die
+
 
 Jeff had this weird thought that he should take the idea from Crystal Hell mod (Thanks Shavick) and build upon the learn by doing system. Then along the way was like. ok I don't like the workbechs let's make our own and change how you craft them, Then out of the blue was like I don't like the weapons and how you craft ammo let's change that too, etc.
 
