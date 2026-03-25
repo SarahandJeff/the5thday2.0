@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<snj>
+    <set xpath="/buffs/buff[@name='buffSmellGrace']">
+        <stack_type value="ignore" />
+        <duration value="0" />
+        <effect_group>
+            <triggered_effect trigger="onSelfBuffStart" action="RemoveSelf" />
+        </effect_group>
+    </set>
+    <set xpath="/buffs/buff[@name='buffSmellCheck']">
+        <stack_type value="ignore" />
+        <update_rate value="1" />
+        <effect_group>
+            <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="smell" operation="set" value="0" />
+        </effect_group>
+        <effect_group>
+            <triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="buffSmell" />
+            <triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="buffSmellGrace" />
+            <triggered_effect trigger="onSelfEnteredGame" action="RemoveCVar" cvar=".smellDisplay" />
+            <triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="buffSmell" />
+            <triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="buffSmellGrace" />
+            <triggered_effect trigger="onSelfLeaveGame" action="RemoveCVar" cvar=".smellDisplay" />
+        </effect_group>
+    </set>
+    <set xpath="/buffs/buff[@name='buffSmell']">
+        <stack_type value="ignore" />
+        <duration value="0" />
+        <effect_group>
+            <triggered_effect trigger="onSelfBuffStart" action="RemoveSelf" />
+        </effect_group>
+    </set>
+</snj>
