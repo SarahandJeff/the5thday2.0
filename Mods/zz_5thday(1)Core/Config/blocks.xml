@@ -2318,7 +2318,7 @@
         <block name="fertilizedplantedMushroom3HarvestPlayer">
             <property name="Extends" value="plantedMushroom3HarvestPlayer" />
             <property name="CreativeMode" value="Player" />
-            <drop event="Harvest" name="foodCropMushrooms" count="2" tag="cropHarvest"/>
+            <drop event="Harvest" name="foodCropMushrooms" count="2" tag="cropHarvest" />
             <drop event="Harvest" name="foodCropMushrooms" prob="0.5" count="2" tag="bonusCropHarvest" />
             <drop event="Harvest" name="foodCropMushrooms" count="2" tag="farmerBonusHarvest" />
             <property name="CustomIcon" value="plantedMushroom1" />
@@ -2890,7 +2890,7 @@
                 <property name="UpgradeHitCount" value="4" />
             </property>
         </append>
-         <append xpath="//block[@name='vaultDoor01']">
+        <append xpath="//block[@name='vaultDoor01']">
             <property class="UpgradeBlock">
                 <property name="ToBlock" value="TitaniumvaultDoor01" />
                 <property name="Item" value="TitaniumPolish" />
@@ -2898,7 +2898,7 @@
                 <property name="UpgradeHitCount" value="4" />
             </property>
         </append>
-         <!-- <append xpath="//block[@name='GarageDoor_Powered']">
+        <!-- <append xpath="//block[@name='GarageDoor_Powered']">
             <property class="UpgradeBlock">
                 <property name="ToBlock" value="TitaniumGarageDoor_Powered" />
                 <property name="Item" value="TitaniumPolish" />
@@ -2914,7 +2914,7 @@
                 <property name="UpgradeHitCount" value="4" />
             </property>
         </append> -->
-         <append xpath="//block[@name='vaultHatch01_Powered']">
+        <append xpath="//block[@name='vaultHatch01_Powered']">
             <property class="UpgradeBlock">
                 <property name="ToBlock" value="TitaniumvaultHatch01_Powered" />
                 <property name="Item" value="TitaniumPolish" />
@@ -2922,7 +2922,7 @@
                 <property name="UpgradeHitCount" value="4" />
             </property>
         </append>
-         <append xpath="//block[@name='vaultHatch01']">
+        <append xpath="//block[@name='vaultHatch01']">
             <property class="UpgradeBlock">
                 <property name="ToBlock" value="TitaniumvaultHatch01" />
                 <property name="Item" value="TitaniumPolish" />
@@ -2930,7 +2930,7 @@
                 <property name="UpgradeHitCount" value="4" />
             </property>
         </append>
-         <append xpath="//block[@name='vaultDoor01Double']">
+        <append xpath="//block[@name='vaultDoor01Double']">
             <property class="UpgradeBlock">
                 <property name="ToBlock" value="TitaniumvaultDoor01Double" />
                 <property name="Item" value="TitaniumPolish" />
@@ -2938,7 +2938,7 @@
                 <property name="UpgradeHitCount" value="4" />
             </property>
         </append>
-         <append xpath="//block[@name='vaultDoor01_Powered']">
+        <append xpath="//block[@name='vaultDoor01_Powered']">
             <property class="UpgradeBlock">
                 <property name="ToBlock" value="TitaniumvaultDoor01_Powered" />
                 <property name="Item" value="TitaniumPolish" />
@@ -2946,13 +2946,45 @@
                 <property name="UpgradeHitCount" value="4" />
             </property>
         </append>
-
-
-
-
         <set xpath="//block[@name='chemistryStation']/property/property[@name='Modules']/@value">output,input</set>
         <append xpath="//block[@name='chemistryStation']">
             <property name="RequirePower" value="true" />
             <property name="RequiredPower" value="7" />
         </append>
+        <remove xpath="//block[@name='utilityTransformerHanging']"/>
+        <insertAfter xpath="//block[@name='utilityTransformer']">
+            <block name="utilityTransformerHanging">
+                <property name="CreativeMode" value="Player" />
+                <property name="Class" value="Powered" />
+                <property name="RequiredPower" value="1" />
+                <property name="UnlockedBy" value="craftingElectrician" />
+                <property name="DisplayType" value="blockElectrical" />
+                <property name="Material" value="Mmetal" />
+                <property name="Shape" value="ModelEntity" />
+                <property name="Model" value="@:Entities/Electrical/utilityTransformerHangingPrefab.prefab" />
+                <property name="ImposterDontBlock" value="true" />
+                <property name="WaterFlow" value="permitted" />
+                <property name="HandleFace" value="Bottom" />
+                <property name="Collide" value="movement,melee,bullet,arrow,rocket" />
+                <property name="StabilitySupport" value="false" />
+                <property name="EconomicValue" value="28" />
+                <property name="SoundPickup" value="relay_grab" />
+                <property name="SoundPlace" value="relay_place" />
+                <property name="TraderStageTemplate" value="electricTier1" />
+                <!-- electricwirerelay -->
+                <property name="TakeDelay" value="5" />
+                <property class="RepairItems">
+                    <property name="resourceForgedIron" value="1" />
+                </property>
+                <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble" />
+                <drop event="Harvest" name="resourceElectricParts" count="1" tag="salvageHarvest" />
+                <drop event="Destroy" name="resourceScrapIron" count="1,5" />
+                <drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1" />
+                <property name="SortOrder1" value="B155" />
+                <property name="SortOrder2" value="0006" />
+                <property name="Group" value="Science,TCScience" />
+                <property name="Tags" value="electricianSkill" />
+                <property name="FilterTags" value="MC_playerBlocks,SC_electrical" />
+            </block>
+        </insertAfter>
     </config>
