@@ -76,6 +76,9 @@
             <book_group name="skillWasteTreasures" parent="attBooks" name_key="perkWasteTreasures0Name" desc_key="perkWasteTreasures0Desc" long_desc_key="perkBookGroupLongDesc" icon="ui_game_symbol_treasure">
                 <effect_group />
             </book_group>
+            <book_group name="skillBHGCooking" parent="attBooks" name_key="skillBHGCooking" desc_key="skillBHGCookingDesc" long_desc_key="skillBHGCookingLongDesc" icon="ui_game_symbol_spatula">
+                <effect_group />
+            </book_group>
         </skills>
         <perks min_level="0" max_level="0" base_skill_point_cost="0">
             <perk name="PerkHOHAxes" parent="skillActionTools" max_level="300" base_skill_point_cost="0" name_key="Axe Skills" desc_key="PerkHOHAxeDesc" icon="ui_game_symbol_tool">
@@ -2307,6 +2310,48 @@
                     </triggered_effect>
                 </effect_group>
             </book>
+            <!-- better home and garden -->
+            <book name="bookBHGBreakFast" parent="skillBHGCooking" max_level="1" base_skill_point_cost="0" desc_key="bookBHGBreakFastDesc" long_desc_key="bookBHGBreakFastLongDesc">
+                <effect_group>
+                    <passive_effect name="RecipeTagUnlocked" operation="base_set" level="1" value="1" tags="foodFriedEggs,foodBacon,foodBaconAndEggs,foodSteakAndEggs,drinkJarCoffee" />
+                </effect_group>
+            </book>
+            <book name="bookBHGAmericanBBQ" parent="skillBHGCooking" max_level="1" base_skill_point_cost="0" desc_key="bookBHGAmericanBBQDesc" long_desc_key="bookBHGAmericanBBQLongDesc">
+                <effect_group>
+                    <passive_effect name="RecipeTagUnlocked" operation="base_set" level="1" value="1" tags="foodGrilledChicken,foodGrilledChickenSandwich,foodGrilledMeat,foodGrilledHamburger,foodPorkChop,foodGrilledPorkchopSandwich,foodSteakAndPotato,drinkJarRedTea,drinkJarGoldenRodTea,drinkJarHoneyTea" />
+                </effect_group>
+            </book>
+            <book name="bookBHGBaker" parent="skillBHGCooking" max_level="1" base_skill_point_cost="0" desc_key="bookBHGBakerDesc" long_desc_key="bookBHGBakerLongDesc">
+                <effect_group>
+                    <passive_effect name="RecipeTagUnlocked" operation="base_set" level="1" value="1" tags="foodBunsBurger,foodBunsDog,foodBread" />
+                </effect_group>
+            </book>
+            <book name="bookBHGDessert" parent="skillBHGCooking" max_level="1" base_skill_point_cost="0" desc_key="bookBHGDessertDesc" long_desc_key="bookBHGDessertLongDesc">
+                <effect_group>
+                    <passive_effect name="RecipeTagUnlocked" operation="base_set" level="1" value="1" tags="foodPumpkinCheesecake,foodPumpkinBread" />
+                </effect_group>
+            </book>
+            <book name="bookBHGHomeCooking1" parent="skillBHGCooking" max_level="1" base_skill_point_cost="0" desc_key="bookBHGHomeCooking1Desc" long_desc_key="bookBHGHomeCooking1LongDesc">
+                <effect_group>
+                    <passive_effect name="RecipeTagUnlocked" operation="base_set" level="1" value="1" tags="foodMeatStew,foodShamChowder,foodVegetableStew" />
+                </effect_group>
+            </book>
+            <book name="bookBHGHomeCooking2" parent="skillBHGCooking" max_level="1" base_skill_point_cost="0" desc_key="bookBHGHomeCooking2Desc" long_desc_key="bookBHGHomeCooking2LongDesc">
+                <effect_group>
+                    <passive_effect name="RecipeTagUnlocked" operation="base_set" level="1" value="1" tags="foodSundayChickenDinner,foodBearMeatStew" />
+                </effect_group>
+            </book>
+            <book name="bookBHGLivinOffHoney" parent="skillBHGCooking" max_level="1" base_skill_point_cost="0" desc_key="bookBHGLivinOffHoneyDesc" long_desc_key="bookBHGLivinOffHoneyLongDesc">
+                <effect_group>
+                    <passive_effect name="RecipeTagUnlocked" operation="base_set" level="1" value="1" tags="foodHoneyGlazedSham,foodHoneyBrisket" />
+                </effect_group>
+            </book>
+            <book name="bookBHGComplete" parent="skillBHGCooking" max_level="1" base_skill_point_cost="0" desc_key="bookBHGCompleteDesc" long_desc_key="bookBHGCompleteCompleteLongDesc">
+                <effect_group>
+                    <passive_effect name="HarvestCount" operation="base_set" level="1" value="1" tags="WasteTreasuresCompleteHarvest" />
+                </effect_group>
+            </book>
+            <!-- *** -->
         </perks>
     </append>
     <remove xpath="/progression/perks/book[@name='perkFiremansAlmanacComplete']/effect_group/passive_effect[@name='CarryCapacity']" />
@@ -2339,7 +2384,7 @@
             <crafting_skill name="perkPickaxes" max_level="500" parent="attCrafting" name_key="PerkHOHPickAxe" desc_key="" long_desc_key="" icon="ui_game_symbol_tool">
                 <display_entry item="meleeToolPickT1IronPickaxe" unlock_level="75" />
                 <display_entry item="meleeToolPickT2SteelPickaxe" unlock_level="150" />
-                <display_entry item="TitaniumPickaxe"  has_quality="true" unlock_level="200,210,225,250,275,300,500"/>/>
+                <display_entry item="TitaniumPickaxe" has_quality="true" unlock_level="200,210,225,250,275,300,500" />/&gt;
                 
                 <effect_group>
                     <passive_effect name="RecipeTagUnlocked" operation="base_set" level="75,500" value="1" tags="meleeToolPickT1IronPickaxe" />
@@ -2353,9 +2398,8 @@
             <crafting_skill name="perkShovels" max_level="500" parent="attCrafting" name_key="PerkHOHShovel" desc_key="" long_desc_key="" icon="ui_game_symbol_tool">
                 <display_entry item="meleeToolShovelT1IronShovel" unlock_level="75" />
                 <display_entry item="meleeToolShovelT2SteelShovel" unlock_level="150" />
-                <display_entry item="TitaniumShovel"  has_quality="true" unlock_level="200,210,225,250,275,300,500"/>
+                <display_entry item="TitaniumShovel" has_quality="true" unlock_level="200,210,225,250,275,300,500" />
                 <display_entry item="meleeToolPickT3Auger" unlock_level="400" />
-                
                 <effect_group>
                     <passive_effect name="RecipeTagUnlocked" operation="base_set" level="75,500" value="1" tags="meleeToolShovelT1IronShovel" />
                     <passive_effect name="RecipeTagUnlocked" operation="base_set" level="150,500" value="1" tags="meleeToolShovelT2SteelShovel" />
@@ -2384,7 +2428,6 @@
                 <display_entry item="meleeWpnBladeT1HuntingKnife" unlock_level="1,20,30,40,50,60" />
                 <display_entry item="meleeWpnBladeT3Machete" unlock_level="75,85,95,105,115,125" />
                 <display_entry item="TitaniumHuntingKnife" unlock_level="215,225,235,240,250" />
-                
                 <effect_group>
                     <passive_effect name="RecipeTagUnlocked" operation="base_set" level="1,250" value="1" tags="meleeWpnBladeT1HuntingKnife" />
                     <passive_effect name="CraftingTier" operation="base_add" level="20,30,40,50,60,250" value="1,2,3,4,5,5" tags="meleeWpnBladeT1HuntingKnife" />
@@ -2660,19 +2703,19 @@
                     <unlock_entry item="foodBakedPotato,foodBoiledMeat,foodCornBread,foodGrilledChicken,foodGrilledHamburger" unlock_tier="1" />
                 </display_entry>
                 <display_entry icon="foodGrilledMeat" name_key="Cooking-Tier 3" has_quality="false" unlock_level="20">
-                    <unlock_entry item="foodGrilledMeat,foodPorkChop,foodPumpkinBread,foodVegetableStew,foodBread,foodBunsBurger,FoodBunsDog" unlock_tier="1" />
+                    <unlock_entry item="foodGrilledMeat,foodPorkChop,foodPumpkinBread,foodVegetableStew,foodBread,foodBunsBurger,foodBunsDog" unlock_tier="1" />
                 </display_entry>
                 <display_entry icon="drinkJarCoffee" name_key="Cooking-Tier 4" has_quality="false" unlock_level="25,28">
                     <unlock_entry item="drinkJarCoffee,WorkingGasGrill,5thday_Range,foodGrilledChickenSandwich,HOH_Collection_workstations_CoffeeMaker,fryingpan,kettle,stockpot,toolBakingPan" unlock_tier="1" />
                     <unlock_entry item="foodBacon,foodBaconAndEggs,foodSteakAndEggs" unlock_tier="2" />
                 </display_entry>
                 <display_entry icon="drinkJarGoldenRodTea" name_key="Cooking-Tier 5" has_quality="false" unlock_level="30,35">
-                    <unlock_entry item="drinkJarGoldenRodTea,foodShamChowder,drinkJarRedTea,drinkjarBlackStrapCoffee" unlock_tier="1" />
-                    <unlock_entry item="foodSteakAndPotato,drinkJarYuccaJuice" unlock_tier="2" />
+                    <unlock_entry item="drinkJarGoldenRodTea,foodShamChowder,drinkJarRedTea,drinkJarBlackStrapCoffee" unlock_tier="1" />
+                    <unlock_entry item="foodSteakAndPotato,drinkJarYuccaJuice,drinkJarHoneyTea" unlock_tier="2" />
                 </display_entry>
                 <display_entry icon="foodMeatStew" name_key="Cooking-Tier 6" has_quality="false" unlock_level="50,80">
                     <unlock_entry item="foodMeatStew,foodSundayChickenDinner,foodPumpkinPie,foodPumpkinCheesecake,drinkJarGrandpasAwesomeSauce" unlock_tier="1" />
-                    <unlock_entry item="drinkYuccaJuiceSmoothie,drinkJarBeer,foodBearMeatStew,foodGumboStew" unlock_tier="2" />
+                    <unlock_entry item="drinkYuccaJuiceSmoothie,drinkJarBeer,foodBearMeatStew,foodGumboStew,foodHoneyGlazedSham,foodHoneyBrisket" unlock_tier="2" />
                 </display_entry>
                 <effect_group>
                     <passive_effect name="RecipeTagUnlocked" operation="base_set" level="2,100" value="1" tags="foodCornOnTheCob,foodFriedEggs,kettle" />
@@ -2681,9 +2724,9 @@
                     <passive_effect name="RecipeTagUnlocked" operation="base_set" level="25,100" value="1" tags="drinkJarCoffee,WorkingGasGrill,5thday_Range,foodGrilledChickenSandwich,HOH_Collection_workstations_CoffeeMaker,fryingpan,stockpot,toolBakingPan" />
                     <passive_effect name="RecipeTagUnlocked" operation="base_set" level="28,100" value="1" tags="foodBaconAndEggs,foodSteakAndEggs,foodBacon" />
                     <passive_effect name="RecipeTagUnlocked" operation="base_set" level="30,100" value="1" tags="drinkJarGoldenRodTea,drinkJarRedTea,foodShamChowder,drinkjarBlackStrapCoffee" />
-                    <passive_effect name="RecipeTagUnlocked" operation="base_set" level="35,100" value="1" tags="drinkJarYuccaJuice,foodSteakAndPotato" />
+                    <passive_effect name="RecipeTagUnlocked" operation="base_set" level="35,100" value="1" tags="drinkJarYuccaJuice,foodSteakAndPotato,drinkJarHoneyTea" />
                     <passive_effect name="RecipeTagUnlocked" operation="base_set" level="50,100" value="1" tags="foodPumpkinPie,foodPumpkinCheesecake,drinkJarGrandpasAwesomeSauce,foodMeatStew,foodSundayChickenDinner" />
-                    <passive_effect name="RecipeTagUnlocked" operation="base_set" level="80,100" value="1" tags="drinkYuccaJuiceSmoothie,drinkJarBeer,foodBearMeatStew,foodGumboStew" />
+                    <passive_effect name="RecipeTagUnlocked" operation="base_set" level="80,100" value="1" tags="drinkYuccaJuiceSmoothie,drinkJarBeer,foodBearMeatStew,foodGumboStew,foodHoneyGlazedSham,foodHoneyBrisket" />
                 </effect_group>
             </crafting_skill>
             <crafting_skill name="perkFarming" max_level="250" parent="attCrafting" name_key="PerkHOHFarming" desc_key="" long_desc_key="" icon="ui_game_symbol_tool">

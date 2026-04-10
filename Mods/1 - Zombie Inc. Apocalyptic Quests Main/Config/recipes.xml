@@ -2,9 +2,125 @@
 
 
 
+<setattribute  xpath="/recipes/recipe[@name='woodShapes:VariantHelper']" name="tags">ZombieINC_PerkDefenseBlockWoodShape</setattribute>
+<setattribute  xpath="/recipes/recipe[@name='cobblestoneShapes:VariantHelper']" name="tags">ZombieINC_PerkDefenseBlockStoneShape</setattribute>
+<setattribute  xpath="/recipes/recipe[@name='concreteShapes:VariantHelper']" name="tags">ZombieINC_PerkDefenseBlockConcreteShape</setattribute>
+<setattribute  xpath="/recipes/recipe[@name='steelShapes:VariantHelper']" name="tags">ZombieINC_PerkDefenseBlockSteelShape</setattribute>
+
+<setattribute  xpath="/recipes/recipe[@name='trapSpikesWoodDmg0']" name="tags">ZombieINC_PerkDefenseTrapWood</setattribute>
+<setattribute  xpath="/recipes/recipe[@name='trapSpikesIronDmg0']" name="tags">ZombieINC_PerkDefenseTrapIron</setattribute>
+
+<setattribute  xpath="/recipes/recipe[@name='mineCandyTin']" name="tags">ZombieINC_PerkDefenseTrapMineTin</setattribute>
+
+<append  xpath="/recipes/recipe[@name='mineHubcap']/@tags">,ZombieINC_PerkDefenseTrapMineCap</append>
+<append  xpath="/recipes/recipe[@name='mineAirFilter']/@tags">,ZombieINC_PerkDefenseTrapMineFilter</append>
+<append  xpath="/recipes/recipe[@name='mineCookingPot']/@tags">,ZombieINC_PerkDefenseTrapMinePot</append>
+
+
+
+<append xpath="/recipes/recipe[@name='woodShapes:VariantHelper']">
+	<effect_group>
+		<passive_effect name="CraftingIngredientCount" operation="perc_add" level="2,3" value="-0.1,-0.3" tags="resourceWood"/>
+	</effect_group>
+</append>
+<append xpath="/recipes/recipe[@name='cobblestoneShapes:VariantHelper']">
+	<effect_group>
+		<passive_effect name="CraftingIngredientCount" operation="perc_add" level="2,3" value="-0.1,-0.3" tags="resourceCobblestones"/>
+	</effect_group>
+</append>
+<append xpath="/recipes/recipe[@name='concreteShapes:VariantHelper']">
+	<effect_group>
+		<passive_effect name="CraftingIngredientCount" operation="perc_add" level="2,3" value="-0.1,-0.3" tags="resourceConcreteMix"/>
+	</effect_group>
+</append>
+<append xpath="/recipes/recipe[@name='steelShapes:VariantHelper']">
+	<effect_group>
+		<passive_effect name="CraftingIngredientCount" operation="perc_add" level="2,3" value="-0.1,-0.3" tags="resourceForgedSteel"/>
+	</effect_group>
+</append>
+
+<append xpath="/recipes/recipe[@name='trapSpikesWoodDmg0']">
+	<effect_group>
+		<passive_effect name="CraftingIngredientCount" operation="perc_add" level="2,3" value="-0.1,-0.3" tags="resourceWood"/>
+	</effect_group>
+</append>
+<append xpath="/recipes/recipe[@name='trapSpikesIronDmg0']">
+	<effect_group>
+		<passive_effect name="CraftingIngredientCount" operation="base_add" level="2,3" value="-1,-2" tags="resourceForgedIron"/>
+	</effect_group>
+</append>
+
+<append xpath="/recipes/recipe[@name='mineCandyTin']">
+	<effect_group>
+		<passive_effect name="CraftingIngredientCount" operation="base_add" level="2,3" value="-1,-2" tags="resourceGunPowder,resourceScrapIron"/>
+	</effect_group>
+</append>
+<append xpath="/recipes/recipe[@name='mineCookingPot']">
+	<effect_group>
+		<passive_effect name="CraftingIngredientCount" operation="base_add" level="2,3" value="-1,-2" tags="resourceGunPowder"/>
+	</effect_group>
+</append>
+<append xpath="/recipes/recipe[@name='mineHubcap']">
+	<effect_group>
+		<passive_effect name="CraftingIngredientCount" operation="base_add" level="2,3" value="-1,-3" tags="resourceGunPowder"/>
+	</effect_group>
+</append>
+<append xpath="/recipes/recipe[@name='mineAirFilter']">
+	<effect_group>
+		<passive_effect name="CraftingIngredientCount" operation="base_add" level="2,3" value="-2,-4" tags="resourceGunPowder"/>
+	</effect_group>
+</append>
+
 <append xpath="/recipes">
 <!--###New Turrets and Ammo-->
 	
+	<recipe name="ZombieINC_Turret_gunBotT2JunkTurret_M60" count="1" craft_area="workbench" tags="learnable">
+		<ingredient name="gunBotT2JunkTurret" count="1"/>
+		<ingredient name="gunMGT3M60" count="1"/>
+		<ingredient name="resourceDuctTape" count="30"/>
+		<ingredient name="resourceSpring" count="20"/>
+		<ingredient name="resourceLegendaryParts" count="1"/>
+		<effect_group>
+			<passive_effect name="CraftingIngredientCount" level="2,6" operation="perc_add" value="1,5" tags="resourceDuctTape,resourceSpring"/>
+			<passive_effect name="CraftingIngredientCount" level="2,6" operation="base_add" value="1,5" tags="resourceLegendaryParts"/>
+		</effect_group>
+	</recipe>
+
+	<recipe name="ZombieINC_Turret_gunBotT2JunkTurret_Sniper" count="1" craft_area="workbench" tags="learnable">
+		<ingredient name="gunBotT2JunkTurret" count="1"/>
+		<ingredient name="gunRifleT0PipeRifle" count="1"/>
+		<ingredient name="resourceDuctTape" count="30"/>
+		<ingredient name="resourceSpring" count="20"/>
+		<ingredient name="resourceLegendaryParts" count="1"/>
+		<effect_group>
+			<passive_effect name="CraftingIngredientCount" level="2,6" operation="perc_add" value="1,5" tags="resourceDuctTape,resourceSpring"/>
+			<passive_effect name="CraftingIngredientCount" level="2,6" operation="base_add" value="1,5" tags="resourceLegendaryParts"/>
+		</effect_group>
+	</recipe>
+
+	<recipe name="ZombieINC_Turret_gunBotT2JunkTurret_Rocket" count="1" craft_area="workbench" tags="learnable">
+		<ingredient name="gunBotT2JunkTurret" count="1"/>
+		<ingredient name="gunExplosivesT3RocketLauncher" count="1"/>
+		<ingredient name="resourceDuctTape" count="30"/>
+		<ingredient name="resourceSpring" count="20"/>
+		<ingredient name="resourceLegendaryParts" count="1"/>
+		<effect_group>
+			<passive_effect name="CraftingIngredientCount" level="2,6" operation="perc_add" value="1,5" tags="resourceDuctTape,resourceSpring"/>
+			<passive_effect name="CraftingIngredientCount" level="2,6" operation="base_add" value="1,5" tags="resourceLegendaryParts"/>
+		</effect_group>
+	</recipe>
+
+	<recipe name="ZombieINC_Turret_gunBotT2JunkTurret_RocketBarrage" count="1" craft_area="workbench" tags="learnable">
+		<ingredient name="gunBotT2JunkTurret" count="1"/>
+		<ingredient name="gunExplosivesT3RocketLauncher" count="1"/>
+		<ingredient name="resourceDuctTape" count="100"/>
+		<ingredient name="resourceSpring" count="60"/>
+		<ingredient name="resourceLegendaryParts" count="2"/>
+		<effect_group>
+			<passive_effect name="CraftingIngredientCount" level="2,6" operation="perc_add" value="1,5" tags="resourceDuctTape,resourceSpring"/>
+			<passive_effect name="CraftingIngredientCount" level="2,6" operation="base_add" value="2,10" tags="resourceLegendaryParts"/>
+		</effect_group>
+	</recipe>
 	
 	<recipe name="ZombieINC_Turret_gunBotT2JunkTurret_Taser" count="1" craft_area="workbench" tags="learnable">
 		<ingredient name="gunBotT2JunkTurret" count="1"/>
@@ -33,6 +149,44 @@
 
 	
 	
+	<recipe name="ZombieINC_ammoJunkTurret_M60" count="1" craft_area="workbench" tags="learnable">
+		<ingredient name="resourceScrapLead" count="3"/>
+		<ingredient name="resourceScrapIron" count="3"/>
+		<ingredient name="resourceGunPowder" count="1"/>
+	</recipe>
+
+	<recipe name="ZombieINC_ammoBundleJunkTurret_M60" count="1" craft_time="360" craft_area="workbench" tags="learnable">
+		<ingredient name="resourceScrapLead" count="2400"/>
+		<ingredient name="resourceScrapIron" count="2400"/>
+		<ingredient name="resourceGunPowder" count="800"/>
+	</recipe>
+
+	<recipe name="ZombieINC_ammoJunkTurret_Sniper" count="1" craft_area="workbench" tags="learnable">
+		<ingredient name="resourceScrapLead" count="3"/>
+		<ingredient name="resourceScrapIron" count="3"/>
+		<ingredient name="resourceGunPowder" count="5"/>
+	</recipe>
+
+	<recipe name="ZombieINC_ammoBundleJunkTurret_Sniper" count="1" craft_time="360" craft_area="workbench" tags="learnable">
+		<ingredient name="resourceScrapLead" count="2400"/>
+		<ingredient name="resourceScrapIron" count="2400"/>
+		<ingredient name="resourceGunPowder" count="4000"/>
+	</recipe>
+	
+	<recipe name="ZombieINC_ammoJunkTurret_Rocket" count="1" craft_area="workbench" tags="learnable">
+		<ingredient name="resourceScrapIron" count="3"/>
+		<ingredient name="resourceGunPowder" count="5"/>
+		<ingredient name="resourceDuctTape" count="1"/>
+		<ingredient name="ammoGasCan" count="10"/>
+	</recipe>
+
+	<recipe name="ZombieINC_ammoBundleJunkTurret_Rocket" count="1" craft_time="360" craft_area="workbench" tags="learnable">
+		<ingredient name="resourceScrapIron" count="2400"/>
+		<ingredient name="resourceGunPowder" count="4000"/>
+		<ingredient name="resourceDuctTape" count="800"/>
+		<ingredient name="ammoGasCan" count="8000"/>
+	</recipe>
+	
 	<recipe name="ZombieINC_ammoJunkTurret_Taser" count="5" craft_area="workbench" tags="learnable">
 		<ingredient name="resourceElectricParts" count="1"/>
 		<ingredient name="resourceScrapIron" count="1"/>
@@ -56,7 +210,43 @@
 	</recipe>
 	<!--New Turrets and Ammo-->
 	<!--###New Weapons and Ammo-->
-	
+	<recipe name="ZombieINC_ammoRocketNuke" count="1" craft_time="10" craft_area="workbench" tags="learnable,workbenchCrafting">
+		<ingredient name="ZombieINC_MixtureV1" count="20"/>
+		<ingredient name="resourceDuctTape" count="2"/>
+		<ingredient name="ammoGasCan" count="100"/>
+		<ingredient name="resourceRocketCasing" count="1"/>		
+	</recipe>
+	<recipe name="ZombieINC_MixtureV1" count="1" craft_time="60" craft_area="chemistryStation" tags="learnable,chemStationCrafting">
+		<ingredient name="resourceGunPowder" count="5"/>
+		<ingredient name="resourcePotassiumNitratePowder" count="5"/>
+		<ingredient name="ZombieINC_RadioactiveAshes" count="1"/>
+		<ingredient name="ZombieINC_StrongAcid" count="1"/>
+	</recipe>
+	<recipe name="ZombieINC_thrownAmmoPipeBomb" count="1" craft_time="24" craft_area="workbench" tags="learnable,workbenchCrafting">
+		<ingredient name="ZombieINC_RadioactiveAshes" count="1"/>
+		<ingredient name="resourceYuccaFibers" count="1"/>
+		<ingredient name="resourceMetalPipe" count="1"/>
+	</recipe>
+	<recipe name="ZombieINC_thrownTimedCharge" count="1" craft_time="60" craft_area="workbench" tags="learnable,workbenchCrafting">
+		<ingredient name="resourceScrapIron" count="20"/>
+		<ingredient name="resourceGunPowder" count="10"/>
+		<ingredient name="ZombieINC_RadioactiveAshes" count="5"/>
+		<ingredient name="resourceElectricParts" count="1"/>
+	</recipe>
+	<recipe name="ZombieINC_TunedSniperT4" count="1" craft_time="20" craft_area="workbench" tags="learnable,workbenchCrafting">
+		<ingredient name="gunRifleT3SniperRifle" count="1"/>
+		<ingredient name="resourceForgedSteel" count="15"/>
+		<ingredient name="resourceMechanicalParts" count="15"/>
+		<ingredient name="resourceElectricParts" count="15"/>
+		<ingredient name="ZombieINC_MixtureV1" count="20"/>
+	</recipe>
+	<recipe name="ZombieINC_AcidGrenade" count="1" craft_time="20" craft_area="workbench" tags="learnable,workbenchCrafting">
+		<ingredient name="resourceMechanicalParts" count="2"/>
+		<ingredient name="resourceGunPowder" count="8"/>
+		<ingredient name="ZombieINC_StrongAcid" count="2"/>
+		<ingredient name="resourceForgedIron" count="4"/>
+		<ingredient name="resourceSpring" count="1"/>
+	</recipe>
 	<recipe name="ZombieINC_PEMGrenade" count="1" craft_time="20" craft_area="workbench" tags="learnable,workbenchCrafting">
 		<ingredient name="resourceMechanicalParts" count="2"/>
 		<ingredient name="resourceGunPowder" count="14"/>
@@ -64,8 +254,30 @@
 		<ingredient name="resourceForgedIron" count="4"/>
 		<ingredient name="resourceSpring" count="1"/>
 	</recipe>
-	
-	
+	<recipe name="ZombieINC_gunMGT0PipeMachineGunV2" count="1" craft_time="20" craft_area="workbench" tags="learnable,workbenchCrafting">
+		
+	</recipe>
+	<recipe name="ZombieINC_ammoRocketMultiV1" count="1" craft_time="10" craft_area="workbench" tags="learnable,workbenchCrafting">
+		<ingredient name="resourceBuckshot" count="5"/>
+		<ingredient name="resourceGunPowder" count="5"/>
+		<ingredient name="resourceDuctTape" count="2"/>
+		<ingredient name="ammoGasCan" count="100"/>
+		<ingredient name="resourceRocketCasing" count="1"/>		
+	</recipe>
+	<recipe name="ZombieINC_gunExplosivesT3RocketLauncher" count="1" craft_time="20" craft_area="workbench" tags="learnable,workbenchCrafting">
+		<ingredient name="gunExplosivesT3RocketLauncher" count="1"/>		
+		<ingredient name="resourceDuctTape" count="10"/>	
+		<ingredient name="resourceForgedIron" count="15"/>
+		<ingredient name="resourceMechanicalParts" count="15"/>
+		<ingredient name="resourceMetalPipe" count="5"/>	
+	</recipe>
+	<recipe name="ZombieINC_gunHandgunT0PipePistol" count="1" craft_time="20" craft_area="workbench" tags="learnable,workbenchCrafting">
+		<ingredient name="resourceMetalPipe" count="6"/>
+		<ingredient name="resourceDuctTape" count="10"/>	
+		<ingredient name="resourceForgedIron" count="5"/>
+		<ingredient name="resourceMechanicalParts" count="5"/>
+		<ingredient name="medicalFirstAidKit" count="5"/>	
+	</recipe>
 	
 	<recipe name="ZombieINC_resourceNail_HealV1" count="5" craft_time="20" craft_area="workbench" tags="learnable,workbenchCrafting">
 		<ingredient name="resourceMetalPipe" count="1"/>
@@ -103,8 +315,36 @@
 		<ingredient name="resourceSewingKit" count="1"/>
 	</recipe>
 	
+	<recipe name="ZombieINC_gunRifleT0PipeRifle" count="1" craft_time="20" craft_area="workbench" tags="learnable,workbenchCrafting">
+		<ingredient name="resourceMetalPipe" count="6"/>
+		<ingredient name="carBattery" count="3"/>	
+		<ingredient name="resourceForgedIron" count="5"/>
+		<ingredient name="resourceMechanicalParts" count="5"/>
+		<ingredient name="resourceElectricParts" count="5"/>
+	</recipe>
 	
 	<!--New Weapons and Ammo-->
 </append>
+
+<conditional>
+	<if cond="mod_loaded('mateusjobsweaponstwo')">
+		<append xpath="/recipes/recipe[@name='ZombieINC_gunMGT0PipeMachineGunV2']">
+			<ingredient name="ZombieINC_gunMGT0PipeMachineGun" count="1"/>
+			<ingredient name="ZombieINC_RadioactiveAshes" count="20"/>	
+			<ingredient name="resourceForgedIron" count="15"/>
+			<ingredient name="resourceMechanicalParts" count="15"/>
+			<ingredient name="resourceMetalPipe" count="5"/>
+		</append>
+	</if>
+	<else>
+		<append xpath="/recipes/recipe[@name='ZombieINC_gunMGT0PipeMachineGunV2']">
+			<ingredient name="gunMGT0PipeMachineGun" count="5"/>
+			<ingredient name="ZombieINC_RadioactiveAshes" count="20"/>	
+			<ingredient name="resourceForgedIron" count="15"/>
+			<ingredient name="resourceMechanicalParts" count="15"/>
+			<ingredient name="resourceMetalPipe" count="5"/>
+		</append>
+	</else>
+</conditional>
 
 </Config>

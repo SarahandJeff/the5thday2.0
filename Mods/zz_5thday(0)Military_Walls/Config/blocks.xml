@@ -764,14 +764,51 @@
             <property name="FilterTags" value="MC_building,SC_doors" />
         </block>
         <block name="HOH_Car_Ramp_Powered">
-            <property name="Extends" value="HOH_Car_Ramp" param1="DowngradeBlock" />
+            <!-- <property name="Extends" value="HOH_Car_Ramp" param1="DowngradeBlock" />
             <property name="Class" value="PoweredDoor" />
-            <!-- <property name="UnlockedBy" value="PerkWrenches"/> -->
+            
             <property name="CustomIcon" value="HOH_Car_Ramp" />
             <property name="ItemTypeIcon" value="electric_power" />
             <property name="DescriptionKey" value="HOH_Car_Ramp_Powered_Desc" />
+            <property name="RequiredPower" value="7"/>
             <property name="SortOrder2" value="0001" />
-            <property name="Tags" value="electricianSkill" />
+            <property name="Tags" value="electricianSkill" /> -->
+            <property name="CustomIcon" value="HOH_Car_Ramp" />
+            <property name="Class" value="PoweredDoor" />
+            <property name="OpenSound" value="open_bridge" />
+            <property name="CloseSound" value="close_bridge" />
+            <property name="DescriptionKey" value="HOH_Car_Ramp_Powered_Desc" />
+            <property name="DisplayType" value="blockMulti" />
+            <property name="RequiredPower" value="7"/>
+            <property name="Stacknumber" value="500" />
+            <property name="ActivationDistance" value="20" />
+            <property name="Material" value="Miron_scrap" />
+            <property name="Shape" value="ModelEntity" />
+            <property name="Model" value="#@modfolder:Resources/Military_Ramp.unity3d?HOH_Raising_Ramp_5T" />
+            <property name="WireOffset" value="0,1,0"/>
+            <property name="IsPowered" value="true"/>
+            <property name="ModelOffset" value="0,0,0" />
+            <property name="MultiBlockDim" value="5,6,1" />
+            <property name="ImposterExchange" value="imposterBlock" param1="25" />
+            <property name="LightOpacity" value="1" />
+            <property name="WaterFlow" value="permitted" />
+            <property name="MaxDamage" value="100" />
+            <property name="Place" value="Door" />
+            <property name="PlaceEverywhere" value="true" />
+            <property name="AllowAllRotations" value="true" />
+            <property name="StabilitySupport" value="false" />
+            <property name="MaxDamage" value="15000" />
+            <property class="RepairItems">
+                <property name="resourceForgedSteel" value="10" />
+            </property>
+            <drop event="Harvest" name="resourceScrapIron" count="2,5" tag="allHarvest" />
+            <drop event="Destroy" name="resourceScrapIron" count="5" tag="allHarvest" />
+            <drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1" />
+            <property name="SortOrder1" value="B306" />
+            <property name="SortOrder2" value="0600" />
+            <property name="Group" value="Building,advBuilding" />
+            <property name="Tags" value="door,openbyhorn,distlong" />
+            <property name="FilterTags" value="MC_building,SC_doors" />
         </block>
     </append>
 </HOH_Militay_Wall_Pack>

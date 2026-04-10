@@ -851,6 +851,16 @@
         <property name="FallOver" value="false" />
         <property name="DowngradeBlock" value="treeStump" />
     </append>
+    <append xpath="/blocks/block[starts-with(@name,'mpl_') and contains(@name,'tree')]">
+        <property name="FallOver" value="false" />
+        <property name="DowngradeBlock" value="treeStump" />
+    </append>
+    <append xpath="/blocks/block[starts-with(@name,'mpl_') and contains(@name,'poplar')]">
+        <property name="FallOver" value="false" />
+        <property name="DowngradeBlock" value="treeStump" />
+    </append>
+
+
     <setattribute xpath="blocks/block[starts-with(@name, 'tree')]/drop[(@event='Destroy') and (@name='treePlantedMountainPine1m' or @name='treePlantedOak1m' or @name='treePlantedWinterPine1m')]" name="prob">0.03</setattribute>
     <setattribute xpath="blocks/block[starts-with(@name, 'tree')]/drop[(@event='Destroy') and (@name='treePlantedMountainPine1m' or @name='treePlantedOak1m' or @name='treePlantedWinterPine1m')]" name="count">1</setattribute>
     <set xpath="//block/property[(@name='UnlockedBy') and (@value='craftingSeeds')]/@value">perkFarming</set>
@@ -2951,7 +2961,7 @@
             <property name="RequirePower" value="true" />
             <property name="RequiredPower" value="7" />
         </append>
-        <remove xpath="//block[@name='utilityTransformerHanging']"/>
+        <remove xpath="//block[@name='utilityTransformerHanging']" />
         <insertAfter xpath="//block[@name='utilityTransformer']">
             <block name="utilityTransformerHanging">
                 <property name="CreativeMode" value="Player" />
@@ -2987,4 +2997,19 @@
                 <property name="FilterTags" value="MC_playerBlocks,SC_electrical" />
             </block>
         </insertAfter>
+        <append xpath="//block[starts-with(@name,'mpl_ft') and (contains(@name,'tree') or contains(@name,'Poplar') or contains(@name,'Stump') or contains(@name,'Beech') or contains(@name,'beech'))]">
+            <property name="Tags" value="wood" />
+            <drop event="Harvest" name="woodLogPillar100" count="1" tag="oreWoodHarvest" />
+        </append>
+        <!-- <append xpath="//block[starts-with(@name,'mpl_ft') and (contains(@name,'Poplar'))]">
+            <property name="Tags" value="wood" />
+            <drop event="Harvest" name="woodLogPillar100" count="1" tag="oreWoodHarvest" />
+        </append> -->
+        <append xpath="//block[starts-with(@name,'mpl_ft') and (contains(@name,'Stump'))]">
+            <!-- <property name="Tags" value="wood" />
+            <drop event="Harvest" name="woodLogPillar100" count="1" tag="oreWoodHarvest" /> -->
+            <property name="DestroyedEvent" value="block_tree_stump_bees"/>
+        </append>
+        <remove xpath="//block[starts-with(@name,'mpl_')]/drop[@name='resourceWood']"/>
+        <!-- <remove xpath="//block[@name='cntApiary')]"/> -->
     </config>

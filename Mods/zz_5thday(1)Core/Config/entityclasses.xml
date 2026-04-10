@@ -1,9 +1,17 @@
 <configs>
-
+<!-- <passive_effect name="PlayerExpGain" operation="perc_add" value="5" tags="Upgrading"/> -->
+<set xpath="//entity_class[@name='playerMale']/effect_group/passive_effect[@name='PlayerExpGain']/@value">0</set>
+<set xpath="//entity_class[@name='playerMale']/effect_group/passive_effect[@name='PlayerExpGain']/@operation">base_set</set>
+<!-- <remove xpath="//entity_class[@name='playerMale']/effect_group/passive_effect[@tags='Upgrading']"/> -->
 <set xpath="//entity_class[starts-with(@name,'npcNurse')]//property[@name='Faction']/@value">Drunkasses</set>
 <set xpath="//entity_class[starts-with(@name,'npcBaker')]//property[@name='Faction']/@value">Drunkasses</set>
 
+<set xpath="/entity_classes/entity_class[@name='playerMale']/effect_group/passive_effect[@name='CarryCapacity']/@value">119</set><!--Total capacity - 36-->
 
+
+	<set xpath="/entity_classes/entity_class[@name='playerMale']/effect_group/passive_effect[@name='BagSize']/@value">119</set>
+
+	
 
 <set xpath="//entity_class[starts-with(@name,'zombieSteveCrawler')]//property[@name='MoveSpeed']/@value">.5</set>
 <append xpath="//entity_class[starts-with(@name,'zombieBurnt')]//property[@name='Tags']/@value">,krispy</append>

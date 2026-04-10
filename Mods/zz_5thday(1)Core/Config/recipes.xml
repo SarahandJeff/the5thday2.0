@@ -22,16 +22,18 @@
     <remove xpath="//recipe[@name='meleeToolShovelT0StoneShovel']" />
     <remove xpath="//recipe[@name='drinkJarGrandpasAwesomeSauce']" />
     <remove xpath="//recipe[@name='drinkJarGrandpasLearningElixir']" />
-    <remove xpath="/recipes/recipe[starts-with(@name,'vehicleSnowMobile')]" />
+    <!-- <remove xpath="/recipes/recipe[starts-with(@name,'vehicleSnowMobile')]" />
     <remove xpath="/recipes/recipe[starts-with(@name,'vehicleWitosQuadPlaceable')]" />
     <remove xpath="/recipes/recipe[starts-with(@name,'Quadbars')]" />
     <remove xpath="/recipes/recipe[starts-with(@name,'Quadchassis')]" />
-    <remove xpath="/recipes/recipe[contains(@name,'BMX')]" />
+    <remove xpath="/recipes/recipe[contains(@name,'BMX')]" /> -->
     <remove xpath="/recipes/recipe[@name='resourceRockSmall']" />
     <remove xpath="/recipes/recipe/ingredient[@name='unit_stone']" />
     <remove xpath="//recipe[starts-with(@name,'drug') and (@craft_area='campfire')]" />
     <remove xpath="//recipe[starts-with(@name,'medicalPlasterCast') and (@craft_area='campfire')]" />
     <remove xpath="//recipe[@name='foodCornBread']" />
+    <remove xpath="//recipe[@name='foodHoneyGlazedSham']" />
+    <remove xpath="//recipe[@name='foodHoneyBrisket']" />
     <append xpath="/recipes">
         <recipe name="resourceCrushedSandBundle" count="1" craft_time="10" tags="learnable">
             <ingredient name="resourceCrushedSand" count="12000" />
@@ -39,12 +41,12 @@
         <recipe name="resourceClayLumpBundle" count="1" craft_time="10" tags="learnable">
             <ingredient name="resourceClayLump" count="12000" />
         </recipe>
-        <recipe name="cntRetroFridgePlayer" count="1" craft_time="30" craft_area="workbench">
+        <!-- <recipe name="cntRetroFridgePlayer" count="1" craft_time="30" craft_area="workbench">
             <ingredient name="cntRetroFridgeVer2Open" count="1" />
             <ingredient name="resourceMechanicalParts" count="5" />
             <ingredient name="resourceElectricParts" count="5" />
             <ingredient name="resourceMetalPipe" count="4" />
-        </recipe>
+        </recipe> -->
         <recipe name="5thday_Fridge" count="1" craft_time="30" craft_area="workbench">
             <ingredient name="cntFridgeStainlessSteelVer2Open" count="1" />
             <ingredient name="resourceMechanicalParts" count="5" />
@@ -533,6 +535,21 @@
                 <ingredient name="foodCropPotato" count="4" />
                 <ingredient name="foodCanMixedVeg" count="2" />
             </recipe>
+            <recipe name="foodHoneyGlazedSham" count="1" craft_area="WorkingStove" craft_tool="toolBakingPan" tags="perkCooking,learnable">
+                <ingredient name="foodCanSham" count="1" />
+                <ingredient name="foodRawPorkMeat" count="1" />
+                <ingredient name="foodCropCorn" count="4" />
+                <ingredient name="foodCropPotato" count="1" />
+                <ingredient name="resourceAnimalFat" count="1" />
+                <ingredient name="foodHoney" count="1" />
+            </recipe>
+            <recipe name="foodHoneyBrisket" count="1" craft_area="WorkingStove" craft_tool="toolBakingPan" tags="perkCooking,learnable">
+                <ingredient name="foodRawMeat" count="3" />
+                <ingredient name="foodCornMeal" count="1" />
+                <ingredient name="foodCropMushrooms" count="1" />
+                <ingredient name="resourceAnimalFat" count="1" />
+                <ingredient name="foodHoney" count="1" />
+            </recipe>
             <recipe name="foodBacon" count="8" craft_area="WorkingStove" craft_tool="fryingpan" tags="perkCooking,learnable">
                 <ingredient name="foodRawPorkMeat" count="1" />
             </recipe>
@@ -618,8 +635,14 @@
                 <ingredient name="foodFlour" count="1" />
                 <ingredient name="foodMilk" count="1" />
                 <ingredient name="foodEgg" count="2" />
-                <ingredient name="foodMilk" count="1" />
                 <ingredient name="foodButter" count="1" />
+            </recipe>
+            <recipe name="foodPumpkinPie" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable">
+                <ingredient name="foodCropPumpkin" count="3" />
+                <ingredient name="foodEgg" count="3" />
+                <ingredient name="foodCornMeal" count="5" />
+                <ingredient name="resourceAnimalFat" count="1" />
+                <ingredient name="foodMilk" count="1" />
             </recipe>
             <recipe name="foodHotDog" count="1" craft_time="2" craft_area="WorkingStove" craft_tool="fryingpan">
                 <ingredient name="foodrawHotdog" count="1" />
@@ -981,4 +1004,6 @@
         <append xpath="//recipe[@name='cobblestoneShapes:VariantHelper']/@tags">,learnable</append>
         <append xpath="//recipe[@name='concreteShapes:VariantHelper']/@tags">,learnable</append>
         <append xpath="//recipe[@name='steelShapes:VariantHelper']/@tags">,learnable</append>
+        <remove xpath="//recipe[@name='cntApiary']" />
+        <remove xpath="//recipe[starts-with(@name,'toolApiary')]" />
     </snj>

@@ -1,4 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <snj>
-
-
+<append xpath="/progression/crafting_skills">
+<crafting_skill name="skillAutomotive" max_level="5" parent="attCrafting" name_key="Automotive" desc_key="" long_desc_key="" icon="ui_game_symbol_gyrocopter">
+      
+      <display_entry icon="Quadchassis" name_key="jewelT1" has_quality="false" unlock_level="2">
+        <unlock_entry item="Quadchassis" unlock_tier="1" recipes="Quadbars,Quadchassis" />
+         <unlock_entry item="Quadbars" unlock_tier="1" recipes="Quadchassis" />
+      </display_entry>
+      <effect_group>
+        <passive_effect name="RecipeTagUnlocked" operation="base_set" level="2,5" value="1" tags="Quadbars,Quadchassis" />
+      </effect_group>
+    </crafting_skill>
+</append>
+    <!-- <append xpath="//crafting_skill[@name='craftingVehicles']/display_entry[@icon='vehicleMotorcyclePlaceable']/unlock_entry/@item">,Quadbars,Quadchassis</append>
+    <append xpath="//crafting_skill[@name='craftingVehicles']/effect_group">
+        <passive_effect name="RecipeTagUnlocked" operation="base_set" level="45,100" value="1" tags=",Quadbars,Quadchassis" />
+    </append> -->
 </snj>

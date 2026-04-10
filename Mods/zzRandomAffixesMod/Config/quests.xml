@@ -1,0 +1,49 @@
+<configs>
+    <append xpath="/quests/quest[contains(@id,'tier4') and not(contains(@id,'complete'))]">
+        <reward type="LootItem" id="groupQuestT3Token" ischosen="true" value="1"/>
+    </append>
+
+    <append xpath="/quests/quest[contains(@id,'tier5') and not(contains(@id,'complete'))]">
+        <reward type="LootItem" id="groupQuestT3Token,groupQuestT4Token,groupQuestT5Token" ischosen="true" value="1"/>
+    </append>
+
+    <append xpath="/quests/quest[contains(@id,'tier6') and not(contains(@id,'complete'))]">
+        <reward type="LootItem" id="groupQuestT3Token,groupQuestT4Token,groupQuestT5Token,groupQuestT6Token" ischosen="true" value="1"/>
+    </append>
+
+    <append xpath="/quests/quest[@id='quest_tier3complete']">
+        <reward type="LootItem" id="groupQuestT3Token" ischosen="true" value="2"/>
+    </append>
+
+    <append xpath="/quests/quest[@id='quest_tier4complete']">
+        <reward type="LootItem" id="groupQuestT3Token,groupQuestT4Token,groupQuestT5Token" ischosen="true" value="3"/>
+    </append>
+
+    <append xpath="/quests/quest[@id='quest_tier5complete']">
+        <reward type="LootItem" id="groupQuestT5TokenBundle" ischosen="true" value="1"/>
+    </append>
+
+    <append xpath="/quests/quest[@id='quest_tier6complete']">
+        <reward type="LootItem" id="groupQuestT5TokenBundle" ischosen="true" value="1"/>
+    </append>
+
+    <insertAfter xpath="/quests/quest[@id='quest_reward_demolition_zombie_slayer']">
+        <quest id="challengegroup_reward_advanced" template="challengegroup_reward_homesteading">
+            <variable name="name" value="reward_ram_advanced_name"/>
+            <variable name="subtitle" value="reward_ram_advanced_subtitle"/>
+            <variable name="description" value="ram_advanced_desc"/>
+            <variable name="completion" value="ram_advanced_completion"/>
+            <reward type="Exp" value="2000"/>
+            <reward type="Item" id="questRewardTokenBundle" ischosen="true" isfixed="true" value="1"/>
+        </quest>
+
+        <quest id="challengegroup_reward_legendary" template="challengegroup_reward_homesteading">
+            <variable name="name" value="reward_ram_legendary_name"/>
+            <variable name="subtitle" value="reward_ram_legendary_subtitle"/>
+            <variable name="description" value="ram_legendary_desc"/>
+            <variable name="completion" value="ram_legendary_completion"/>
+            <reward type="Exp" value="2000"/>
+            <reward type="Item" id="questRewardTokenBundle" ischosen="true" isfixed="true" value="1"/>
+        </quest>
+    </insertAfter>
+</configs>

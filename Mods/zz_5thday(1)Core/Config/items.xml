@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <snj>
     <append xpath="/items">
         <item name="RandoGumball">
@@ -572,9 +572,8 @@
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_Pistols_XP" operation="set" value="0" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_Pistols_lvl" operation="set" value="1" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_Pistols_lvl_Ranked" operation="set" value="1" />
-                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_Pistols_Ranked_Display" operation="set" value="@HOH_Pistols_lvl_Ranked" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_Pistols_Ranked_Display" operation="set" value="@HOH_Pistols_lvl_Ranked" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_Pistols_Ranked_Display" operation="divide" value="100" />
-                
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_Pistols_lvl_Next_Needed" operation="set" value="100" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_Pistols_Perk_Tracker" operation="set" value="1" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_MachineGun_Unlocked" operation="set" value="0" />
@@ -634,7 +633,7 @@
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$MetabolismDuration" operation="set" value="1" />
             </effect_group>
         </item>
-          <item name="FarmerrlevelRedeem">
+        <item name="FarmerrlevelRedeem">
             <property name="Extends" value="schematicMaster" />
             <property name="CreativeMode" value="Player" />
             <property name="CustomIcon" value="adminQuestTicketMaster" />
@@ -3131,11 +3130,19 @@
             <property name="CustomIcon" value="adminQuestTicketMaster" />
             <property name="CustomIconTint" value="FF0000" />
             <effect_group tiered="false">
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_Wrenches_XP" operation="set" value="0" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_Wrenches_lvl" operation="set" value="1" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_Wrenches_lvl_Next_Needed" operation="set" value="100" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_Wrenches_Perk_Tracker" operation="set" value="1" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkWrenches" level="1" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_Construction_XP" operation="set" value="0" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_Construction_lvl" operation="set" value="1" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_Construction_lvl_Next_Needed" operation="set" value="100" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_Construction_Perk_Tracker" operation="set" value="1" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkConstruction" level="1" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkMadScientist" level="1" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="skillMadScientist" level="1" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_MadScientist_next_requirement" operation="set" value="0" />
             </effect_group>
         </item>
         <item name="spearlevelRedeem">
@@ -3339,7 +3346,7 @@
         <property name="ItemTypeIconColor" value="0,255,0" />
         <property name="AltItemTypeIconColor" value="229,24,7" />
     </insertafter>
-      <append xpath="/items">
+    <append xpath="/items">
         <!-- Resources -->
         <item name="partTitaniumPickhead">
             <property name="CustomIconTint" value="0000b0" />
@@ -3647,7 +3654,7 @@
             <property name="RepairAmount" value="20" />
             <property name="CraftingIngredientTime" value=".2" />
         </item>
-         <item name="resourceTitaniumRefined">
+        <item name="resourceTitaniumRefined">
             <!-- scrap material -->
             <property name="HoldType" value="45" />
             <property name="CustomIcon" value="resourceTitanium" />
@@ -3698,7 +3705,6 @@
             <property name="DropMeshfile" value="#Other/Items?Misc/sack_droppedPrefab.prefab" />
             <property name="Material" value="MresourceTitanium" />
             <property name="Weight" value="30" />
-            
             <property name="Stacknumber" value="50000" />
             <property name="EconomicValue" value="150" />
             <property name="RepairTime" value="1" />
@@ -3717,10 +3723,159 @@
             </property>
         </item>
     </append>
-      <append xpath="//item[contains(@name,'Titanium')]">
+    <append xpath="/items">
+        <item name="bookBHGBreakFast">
+            <property name="Extends" value="bookFiremansAlmanacHeat" />
+            <property name="CustomIcon" value="bookBHGCooking" />
+            <property name="DescriptionKey" value="bookBHGBreakFastDesc" />
+            <property name="Unlocks" value="bookBHGBreakFast" />
+            <property name="Tags" value="BHGProb" />
+            <property name="Group" value="Books,BooksOnly,TCReading" />
+            <effect_group tiered="false">
+                <requirement name="ProgressionLevel" progression_name="bookBHGBreakFast" operation="Equals" value="0" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="bookBHGBreakFast" level="-1" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="bookBHG8Complete" level="-1">
+                    <requirement name="PerksUnlocked" skill_name="skillBHGCooking" operation="GTE" value="7" />
+                </triggered_effect>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+                    <requirement name="PerksUnlocked" skill_name="skillBHGCooking" operation="GTE" value="7" />
+                </triggered_effect>
+            </effect_group>
+            <effect_group tiered="false">
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50" />
+            </effect_group>
+        </item>
+        <item name="bookBHGAmericanBBQ">
+            <property name="Extends" value="bookFiremansAlmanacHeat" />
+            <property name="CustomIcon" value="bookBHGCooking" />
+            <property name="DescriptionKey" value="bookBHGAmericanBBQDesc" />
+            <property name="Unlocks" value="bookBHGAmericanBBQ" />
+            <property name="Tags" value="BHGProb" />
+            <property name="Group" value="Books,BooksOnly,TCReading" />
+            <effect_group tiered="false">
+                <requirement name="ProgressionLevel" progression_name="bookBHGAmericanBBQ" operation="Equals" value="0" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="bookBHGAmericanBBQ" level="-1" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="bookBHG8Complete" level="-1">
+                    <requirement name="PerksUnlocked" skill_name="skillBHGCooking" operation="GTE" value="7" />
+                </triggered_effect>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+                    <requirement name="PerksUnlocked" skill_name="skillBHGCooking" operation="GTE" value="7" />
+                </triggered_effect>
+            </effect_group>
+            <effect_group tiered="false">
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50" />
+            </effect_group>
+        </item>
+
+           <item name="bookBHGBaker">
+            <property name="Extends" value="bookFiremansAlmanacHeat" />
+            <property name="CustomIcon" value="bookBHGCooking" />
+            <property name="DescriptionKey" value="bookBHGBakerDesc" />
+            <property name="Unlocks" value="bookBHGBaker" />
+            <property name="Tags" value="BHGProb" />
+            <property name="Group" value="Books,BooksOnly,TCReading" />
+            <effect_group tiered="false">
+                <requirement name="ProgressionLevel" progression_name="bookBHGBaker" operation="Equals" value="0" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="bookBHGBaker" level="-1" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="bookBHG8Complete" level="-1">
+                    <requirement name="PerksUnlocked" skill_name="skillBHGCooking" operation="GTE" value="7" />
+                </triggered_effect>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+                    <requirement name="PerksUnlocked" skill_name="skillBHGCooking" operation="GTE" value="7" />
+                </triggered_effect>
+            </effect_group>
+            <effect_group tiered="false">
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50" />
+            </effect_group>
+        </item>
+           <item name="bookBHGDessert">
+            <property name="Extends" value="bookFiremansAlmanacHeat" />
+            <property name="CustomIcon" value="bookBHGCooking" />
+            <property name="DescriptionKey" value="bookBHGDessertDesc" />
+            <property name="Unlocks" value="bookBHGDessert" />
+            <property name="Tags" value="BHGProb" />
+            <property name="Group" value="Books,BooksOnly,TCReading" />
+            <effect_group tiered="false">
+                <requirement name="ProgressionLevel" progression_name="bookBHGDessert" operation="Equals" value="0" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="bookBHGDessert" level="-1" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="bookBHG8Complete" level="-1">
+                    <requirement name="PerksUnlocked" skill_name="skillBHGCooking" operation="GTE" value="7" />
+                </triggered_effect>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+                    <requirement name="PerksUnlocked" skill_name="skillBHGCooking" operation="GTE" value="7" />
+                </triggered_effect>
+            </effect_group>
+            <effect_group tiered="false">
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50" />
+            </effect_group>
+        </item>
+           <item name="bookBHGHomeCooking1">
+            <property name="Extends" value="bookFiremansAlmanacHeat" />
+            <property name="CustomIcon" value="bookBHGCooking" />
+            <property name="DescriptionKey" value="bookBHGHomeCooking1Desc" />
+            <property name="Unlocks" value="bookBHGHomeCooking1" />
+            <property name="Tags" value="BHGProb" />
+            <property name="Group" value="Books,BooksOnly,TCReading" />
+            <effect_group tiered="false">
+                <requirement name="ProgressionLevel" progression_name="bookBHGHomeCooking1" operation="Equals" value="0" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="bookBHGHomeCooking1" level="-1" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="bookBHG8Complete" level="-1">
+                    <requirement name="PerksUnlocked" skill_name="skillBHGCooking" operation="GTE" value="7" />
+                </triggered_effect>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+                    <requirement name="PerksUnlocked" skill_name="skillBHGCooking" operation="GTE" value="7" />
+                </triggered_effect>
+            </effect_group>
+            <effect_group tiered="false">
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50" />
+            </effect_group>
+        </item>
+           <item name="bookBHGHomeCooking2">
+            <property name="Extends" value="bookFiremansAlmanacHeat" />
+            <property name="CustomIcon" value="bookBHGCooking" />
+            <property name="DescriptionKey" value="bookBHGHomeCooking2Desc" />
+            <property name="Unlocks" value="bookBHGHomeCooking2" />
+            <property name="Tags" value="BHGProb" />
+            <property name="Group" value="Books,BooksOnly,TCReading" />
+            <effect_group tiered="false">
+                <requirement name="ProgressionLevel" progression_name="bookBHGHomeCooking2" operation="Equals" value="0" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="bookBHGHomeCooking2" level="-1" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="bookBHG8Complete" level="-1">
+                    <requirement name="PerksUnlocked" skill_name="skillBHGCooking" operation="GTE" value="7" />
+                </triggered_effect>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+                    <requirement name="PerksUnlocked" skill_name="skillBHGCooking" operation="GTE" value="7" />
+                </triggered_effect>
+            </effect_group>
+            <effect_group tiered="false">
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50" />
+            </effect_group>
+        </item>
+           <item name="bookBHGLivinOffHoney">
+            <property name="Extends" value="bookFiremansAlmanacHeat" />
+            <property name="CustomIcon" value="bookBHGCooking" />
+            <property name="DescriptionKey" value="bookBHGLivinOffHoneyDesc" />
+            <property name="Unlocks" value="bookBHGLivinOffHoney" />
+            <property name="Tags" value="BHGProb" />
+            <property name="Group" value="Books,BooksOnly,TCReading" />
+            <effect_group tiered="false">
+                <requirement name="ProgressionLevel" progression_name="bookBHGLivinOffHoney" operation="Equals" value="0" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="bookBHGLivinOffHoney" level="-1" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="bookBHG8Complete" level="-1">
+                    <requirement name="PerksUnlocked" skill_name="skillBHGCooking" operation="GTE" value="7" />
+                </triggered_effect>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+                    <requirement name="PerksUnlocked" skill_name="skillBHGCooking" operation="GTE" value="7" />
+                </triggered_effect>
+            </effect_group>
+            <effect_group tiered="false">
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50" />
+            </effect_group>
+        </item>
+    </append>
+    <append xpath="//item[contains(@name,'Titanium')]">
         <property name="ItemWeight" value="25" />
     </append>
     <!-- <set xpath="//item/property[(@name='UnlockedBy') and (@value='craftingWorkstations')]/@value">perkWrenches</set> -->
     <!-- <set xpath="//item/property[(@name='UnlockedBy') and (@value='craftingSeeds')]/@value">perkFarming</set> -->
-
 </snj>
