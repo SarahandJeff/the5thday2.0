@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Config>
+    <!-- Tools - Hydroponics Farm and Seed Station -->
+    <append xpath="/items/item[@name='drugSteroids']">
+        <effect_group tiered="false">
+            <passive_effect name="CraftingIngredientCount" operation="base_subtract" value="2" tags="plantedAloe1" />
+            <passive_effect name="CraftingIngredientCount" operation="base_subtract" value="2" tags="plantedBlueberry1" />
+            <passive_effect name="CraftingIngredientCount" operation="base_subtract" value="2" tags="plantedChrysanthemum1" />
+            <passive_effect name="CraftingIngredientCount" operation="base_subtract" value="2" tags="plantedCoffee1" />
+            <passive_effect name="CraftingIngredientCount" operation="base_subtract" value="2" tags="plantedCorn1" />
+            <passive_effect name="CraftingIngredientCount" operation="base_subtract" value="2" tags="plantedCotton1" />
+            <passive_effect name="CraftingIngredientCount" operation="base_subtract" value="2" tags="plantedGoldenrod1" />
+            <passive_effect name="CraftingIngredientCount" operation="base_subtract" value="2" tags="plantedGraceCorn1" />
+            <passive_effect name="CraftingIngredientCount" operation="base_subtract" value="2" tags="plantedHop1" />
+            <passive_effect name="CraftingIngredientCount" operation="base_subtract" value="2" tags="plantedMushroom1" />
+            <passive_effect name="CraftingIngredientCount" operation="base_subtract" value="2" tags="plantedPotato1" />
+            <passive_effect name="CraftingIngredientCount" operation="base_subtract" value="2" tags="plantedYucca1" />
+            <passive_effect name="CraftingIngredientCount" operation="base_subtract" value="2" tags="plantedPumpkin1" />
+        </effect_group>
+    </append>
+    <append xpath="/items/item[@name='toolDewFilter']">
+        <effect_group tiered="false">
+            <passive_effect name="CraftingIngredientCount" operation="base_subtract" value="2" tags="resourceCropAloeLeaf" />
+            <passive_effect name="CraftingIngredientCount" operation="base_subtract" value="2" tags="foodCropBlueberries" />
+            <passive_effect name="CraftingIngredientCount" operation="base_subtract" value="2" tags="resourceCropChrysanthemumPlant" />
+            <passive_effect name="CraftingIngredientCount" operation="base_subtract" value="2" tags="resourceCropCoffeeBeans" />
+            <passive_effect name="CraftingIngredientCount" operation="base_subtract" value="2" tags="foodCropCorn" />
+            <passive_effect name="CraftingIngredientCount" operation="base_subtract" value="2" tags="resourceCropCottonPlant" />
+            <passive_effect name="CraftingIngredientCount" operation="base_subtract" value="2" tags="resourceCropGoldenrodPlant" />
+            <passive_effect name="CraftingIngredientCount" operation="base_subtract" value="2" tags="foodCropGraceCorn" />
+            <passive_effect name="CraftingIngredientCount" operation="base_subtract" value="2" tags="resourceCropHopsFlower" />
+            <passive_effect name="CraftingIngredientCount" operation="base_subtract" value="2" tags="foodCropMushrooms" />
+            <passive_effect name="CraftingIngredientCount" operation="base_subtract" value="2" tags="foodCropPotato" />
+            <passive_effect name="CraftingIngredientCount" operation="base_subtract" value="2" tags="foodCropYuccaFruit" />
+            <passive_effect name="CraftingIngredientCount" operation="base_subtract" value="2" tags="foodCropPumpkin" />
+        </effect_group>
+    </append>
+    <append xpath="/items/item[@name='smallEngine']">
+        <effect_group tiered="false">
+            <passive_effect name="CraftingTime" operation="perc_subtract" value="0.8" tags="HydroponicSeedStation_Buff" />
+        </effect_group>
+    </append>
+    <append xpath="/items/item[@name='carBattery']">
+        <effect_group>
+            <passive_effect name="CraftingTime" tier="1" operation="perc_subtract" value="0.10" tags="IndoorGarden_Power" />
+            <passive_effect name="CraftingTime" tier="2" operation="perc_subtract" value="0.15" tags="IndoorGarden_Power" />
+            <passive_effect name="CraftingTime" tier="3" operation="perc_subtract" value="0.20" tags="IndoorGarden_Power" />
+            <passive_effect name="CraftingTime" tier="4" operation="perc_subtract" value="0.25" tags="IndoorGarden_Power" />
+            <passive_effect name="CraftingTime" tier="5" operation="perc_subtract" value="0.30" tags="IndoorGarden_Power" />
+            <passive_effect name="CraftingTime" tier="6" operation="perc_subtract" value="0.35" tags="IndoorGarden_Power" />
+        </effect_group>
+    </append>
+    <!-- UI List - Hydroponic Farm Vertical -->
+    <append xpath="/items/item[@name='resourceCropAloeLeaf']/property[@name='Group']/@value">,IndoorGarden_All</append>
+    <append xpath="/items/item[@name='foodCropBlueberries']/property[@name='Group']/@value">,IndoorGarden_All</append>
+    <append xpath="/items/item[@name='resourceCropChrysanthemumPlant']/property[@name='Group']/@value">,IndoorGarden_All</append>
+    <append xpath="/items/item[@name='resourceCropCoffeeBeans']/property[@name='Group']/@value">,IndoorGarden_All</append>
+    <append xpath="/items/item[@name='resourceCropGoldenrodPlant']/property[@name='Group']/@value">,IndoorGarden_All</append>
+    <append xpath="/items/item[@name='resourceCropHopsFlower']/property[@name='Group']/@value">,IndoorGarden_All</append>
+    <append xpath="/items/item[@name='foodCropMushrooms']/property[@name='Group']/@value">,IndoorGarden_All</append>
+    <append xpath="/items/item[@name='foodCropPotato']/property[@name='Group']/@value">,IndoorGarden_All</append>
+    
+
+
+
+    <conditional>
+        <if cond="mod_loaded('SEVtG')">
+          <append xpath="/items/item[@name='foodCropSVETGTomato']/property[@name='Group']/@value">,IndoorGarden_All</append>
+          <append xpath="/items/item[@name='foodCropSVETGRice']/property[@name='Group']/@value">,IndoorGarden_All</append>
+          <append xpath="/items/item[@name='foodCropSVETGRedChilli']/property[@name='Group']/@value">,IndoorGarden_All</append>
+          <append xpath="/items/item[@name='foodCropSVETGPaprika']/property[@name='Group']/@value">,IndoorGarden_All</append>
+          <append xpath="/items/item[@name='foodCropSVETGOnion']/property[@name='Group']/@value">,IndoorGarden_All</append>
+          <append xpath="/items/item[@name='foodCropSVETGOlives']/property[@name='Group']/@value">,IndoorGarden_All</append>
+          <append xpath="/items/item[@name='foodCropSVETGMintLeaves']/property[@name='Group']/@value">,IndoorGarden_All</append>
+          <append xpath="/items/item[@name='foodCropSVETGCabbage']/property[@name='Group']/@value">,IndoorGarden_All</append>
+        </if>
+    </conditional>
+</Config>

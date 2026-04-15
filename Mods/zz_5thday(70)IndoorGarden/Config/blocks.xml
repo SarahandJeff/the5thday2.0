@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Config>
+    <!-- alter the vanilla block to be pickup or destroy -->
+    <remove xpath="/blocks/block[@name='plantHydroponicAloe']/drop" />
+    <append xpath="/blocks/block[@name='plantHydroponicAloe']">
+        <drop event="Destroy" name="plantHydroponicAloe" count="1" tool_category="Disassemble" prob="1" />
+    </append>
+    <remove xpath="/blocks/block[@name='plantHydroponicVertical']" />
+    <insertAfter xpath="/blocks/block[@name='plantHydroponicAloe']">
+        <block name="plantHydroponicVertical">
+            <property name="CreativeMode" value="Dev" />
+            <property name="Model" value="@:Entities/Plants/plantHydroponicVerticalPrefab.prefab" />
+            <property name="Class" value="Light" />
+            <property name="IndexName" value="POILight" />
+            <property name="DisplayType" value="blockMulti" />
+            <property name="Material" value="Mmetal" />
+            <property name="Shape" value="ModelEntity" />
+            <property name="MultiBlockDim" value="1,2,1" />
+            <property name="WaterFlow" value="permitted" />
+            <property name="Collide" value="movement,melee,bullet,arrow,rocket" />
+            <property name="EconomicValue" value="56" />
+            <property class="RepairItems">
+                <property name="resourceForgedIron" value="1" />
+                <property name="resourceElectricParts" value="3" />
+            </property>
+            <property name="Tags" value="Car" />
+            <drop event="Destroy" name="plantHydroponicVertical" count="1" tool_category="Disassemble" prob="1" />
+            <drop event="Destroy" count="0" />
+            <property name="CanPickup" value="true" />
+            <property name="SortOrder1" value="B202" />
+            <property name="SortOrder2" value="3500" />
+            <property name="FilterTags" value="MC_building,SC_decor" />
+        </block>
+    </insertAfter>
+    <!-- Hydroponics -->
+    <append xpath="/blocks/block[@name='plantHydroponicAloe']">
+        <property name="Class" value="Loot" />
+        <property name="LootList" value="seedsNoFlowers1" />
+    </append>
+    <append xpath="/blocks/block[@name='plantHydroponicVertical']">
+        <property name="Class" value="Loot" />
+        <property name="LootList" value="seedsNoFlowers1" />
+    </append>
+    <append xpath="/blocks">
+        <block name="IndoorGarden">
+            <property name="Class" value="Workstation" />
+            <property class="Workstation">
+                <property name="Modules" value="output" />
+                <property name="CraftingAreaRecipes" value="IndoorGarden" />
+            </property>
+            <property name="CustomIcon" value="plantHydroponicVertical" />
+            <property name="TintColor" value="C0C0C0" />
+            <property name="DisplayType" value="blockMulti" />
+            <property name="Stacknumber" value="1" />
+            <property name="WorkstationIcon" value="ui_game_symbol_crops" />
+            <property name="Material" value="Miron_scrap" />
+            <property name="Shape" value="ModelEntity" />
+            <property name="Model" value="@:Entities/Plants/plantHydroponicVerticalPrefab.prefab" />
+            <property name="ModelOffset" value="0,0.5,0" />
+            <property name="MultiBlockDim" value="1,2,1" />
+            <property name="ImposterDontBlock" value="true" />
+            <property name="Place" value="TowardsPlacerInverted" />
+            <property name="OnlySimpleRotations" value="true" />
+            <property name="IsTerrainDecoration" value="true" />
+            <property name="StabilitySupport" value="true" />
+            <property name="Weight" value="0" />
+            <property name="EconomicValue" value="1000" />
+            <property name="TraderStageTemplate" value="midTier1" />
+            <property name="MaxDamage" value="800" />
+            <property name="HeatMapStrength" value="0" />
+            <property name="HeatMapTime" value="0" />
+            <property name="HeatMapFrequency" value="0" />
+            <property name="OpenSound" value="open_workbench" />
+            <property name="CloseSound" value="close_workbench" />
+            <property name="TakeDelay" value="5" />
+            <property name="UnlockedBy" value="perkFarming" />
+            <property name="Tags" value="seedSkill" />
+            <property class="RepairItems">
+                <property name="resourceForgedIron" value="10" />
+                <property name="resourceElectricParts" value="5" />
+                <property name="resourceMetalPipe" value="2" />
+            </property>
+            <drop event="Destroy" name="IndoorGarden1x1" count="1" tool_category="Disassemble" prob="1" />
+            <drop event="Destroy" count="0" />
+            <property name="SortOrder1" value="B281" />
+            <property name="SortOrder2" value="0303" />
+            <property name="Group" value="Building,TCScience,advBuilding" />
+            <property name="FilterTags" value="MC_playerBlocks,SC_decor" />
+        </block>
+    </append>
+    <remove xpath="//block[@name='plantedGraceCorn1']/property[@name='CustomIconTint']" />
+    <append xpath="//block[@name='plantedGraceCorn1']">
+        <property name="CustomIcon" value="seedPacketSuperCorn" />
+    </append>
+    <append xpath="//block[@name='plantedMushroom1']">
+        <property name="CustomIcon" value="seedPacketMushroom" />
+    </append>
+    <append xpath="//block[@name='plantedYucca1']">
+        <property name="CustomIcon" value="seedPacketYucca" />
+    </append>
+    <append xpath="//block[@name='plantedCotton1']">
+        <property name="CustomIcon" value="seedPacketCotton" />
+    </append>
+    <append xpath="//block[@name='plantedCoffee1']">
+        <property name="CustomIcon" value="seedPacketCoffee" />
+    </append>
+    <append xpath="//block[@name='plantedGoldenrod1']">
+        <property name="CustomIcon" value="seedPacketGoldenRod" />
+    </append>
+    <append xpath="//block[@name='plantedAloe1']">
+        <property name="CustomIcon" value="seedPacketAloe" />
+    </append>
+    <append xpath="//block[@name='plantedBlueberry1']">
+        <property name="CustomIcon" value="seedPacketBlueBerry" />
+    </append>
+    <append xpath="//block[@name='plantedPotato1']">
+        <property name="CustomIcon" value="seedPacketPotato" />
+    </append>
+    <append xpath="//block[@name='plantedChrysanthemum1']">
+        <property name="CustomIcon" value="seedPacketChrysanthermum" />
+    </append>
+    <append xpath="//block[@name='plantedCorn1']">
+        <property name="CustomIcon" value="seedPacketCorn" />
+    </append>
+    <append xpath="//block[@name='plantedHop1']">
+        <property name="CustomIcon" value="seedPacketHops" />
+    </append>
+    <append xpath="//block[@name='plantedPumpkin1']">
+        <property name="CustomIcon" value="seedPacketPumpkin" />
+    </append>
+
+    <!--fertilized-->
+    <set xpath="//block[@name='fertilizedplantedPumpkin1']/property[@name='CustomIcon']/@value">seedPacketPumpkin</set>
+    <set xpath="//block[@name='fertilizedplantedHop1']/property[@name='CustomIcon']/@value">seedPacketHops</set>
+    <set xpath="//block[@name='fertilizedplantedCorn1']/property[@name='CustomIcon']/@value">seedPacketCorn</set>
+    <set xpath="//block[@name='fertilizedplantedChrysanthemum1']/property[@name='CustomIcon']/@value">seedPacketChrysanthermum</set>
+    <set xpath="//block[@name='fertilizedplantedPotato1']/property[@name='CustomIcon']/@value">seedPacketPotato</set>
+    <set xpath="//block[@name='fertilizedplantedBlueberry1']/property[@name='CustomIcon']/@value">seedPacketBlueBerry</set>
+    <set xpath="//block[@name='fertilizedplantedAloe1']/property[@name='CustomIcon']/@value">seedPacketAloe</set>
+    <set xpath="//block[@name='fertilizedplantedGoldenrod1']/property[@name='CustomIcon']/@value">seedPacketGoldenRod</set>
+    <set xpath="//block[@name='fertilizedplantedCoffee1']/property[@name='CustomIcon']/@value">seedPacketCoffee</set>
+    <set xpath="//block[@name='fertilizedplantedCotton1']/property[@name='CustomIcon']/@value">seedPacketCotton</set>
+    <set xpath="//block[@name='fertilizedplantedYucca1']/property[@name='CustomIcon']/@value">seedPacketYucca</set>
+    <set xpath="//block[@name='fertilizedplantedMushroom1']/property[@name='CustomIcon']/@value">seedPacketMushroom</set>
+    <set xpath="//block[@name='fertilizedplantedGraceCorn1']/property[@name='CustomIcon']/@value">seedPacketSuperCorn</set>
+
+        
+    
+</Config>

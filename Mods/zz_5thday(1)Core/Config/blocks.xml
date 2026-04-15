@@ -855,12 +855,10 @@
         <property name="FallOver" value="false" />
         <property name="DowngradeBlock" value="treeStump" />
     </append>
-    <append xpath="/blocks/block[starts-with(@name,'mpl_') and contains(@name,'poplar')]">
+    <append xpath="/blocks/block[starts-with(@name,'mpl_') and contains(@name,'Poplar')]">
         <property name="FallOver" value="false" />
         <property name="DowngradeBlock" value="treeStump" />
     </append>
-
-
     <setattribute xpath="blocks/block[starts-with(@name, 'tree')]/drop[(@event='Destroy') and (@name='treePlantedMountainPine1m' or @name='treePlantedOak1m' or @name='treePlantedWinterPine1m')]" name="prob">0.03</setattribute>
     <setattribute xpath="blocks/block[starts-with(@name, 'tree')]/drop[(@event='Destroy') and (@name='treePlantedMountainPine1m' or @name='treePlantedOak1m' or @name='treePlantedWinterPine1m')]" name="count">1</setattribute>
     <set xpath="//block/property[(@name='UnlockedBy') and (@value='craftingSeeds')]/@value">perkFarming</set>
@@ -1991,7 +1989,18 @@
     <append xpath="/blocks">
         <block name="MiliShelfSml">
             <property name="CreativeMode" value="Player" />
-            <property name="Class" value="SecureLootSigned" />
+            <property name="Class" value="CompositeTileEntity" />
+            <property class="CompositeFeatures">
+                <property class="TEFeatureStorage">
+                    <property name="LootList" value="playerWoodWritableStorage" />
+                </property>
+                <property class="TEFeatureLockable" />
+                <property class="TEFeatureSignable">
+                    <property name="FontSize" value="90" />
+                    <property name="LineCount" value="3" />
+                    <property name="LineWidth" value="0.55" />
+                </property>
+            </property>
             <property name="LootList" value="HOHChestsml" />
             <property name="CustomIcon" value="cntShippingCrateSml" />
             <property name="DescriptionKey" value="cntStorageGenericSignedDesc" />
@@ -2015,7 +2024,18 @@
         </block>
         <block name="MiliShelfLrg">
             <property name="CreativeMode" value="Player" />
-            <property name="Class" value="SecureLootSigned" />
+            <property name="Class" value="CompositeTileEntity" />
+            <property class="CompositeFeatures">
+                <property class="TEFeatureStorage">
+                    <property name="LootList" value="playerWoodWritableStorage" />
+                </property>
+                <property class="TEFeatureLockable" />
+                <property class="TEFeatureSignable">
+                    <property name="FontSize" value="90" />
+                    <property name="LineCount" value="3" />
+                    <property name="LineWidth" value="0.55" />
+                </property>
+            </property>
             <property name="LootList" value="HOHChestlrg" />
             <property name="CustomIcon" value="cntShippingCrateLrg" />
             <property name="DescriptionKey" value="cntStorageGenericSignedDesc" />
@@ -2293,7 +2313,7 @@
         </block>
         <block name="fertilizedplantedPotato2">
             <property name="Extends" value="plantedPotato2" />
-            <property name="CreativeMode" value="Player" />
+            <property name="CreativeMode" value="None" />
             <property name="PlantGrowing.Next" value="fertilizedplantedPotato3HarvestPlayer" />
             <property name="PlantGrowing.GrowthRate" value="30" />
             <property name="TintColor" value="6707E5" />
@@ -2301,7 +2321,7 @@
         </block>
         <block name="fertilizedplantedPotato3HarvestPlayer">
             <property name="Extends" value="plantedPotato3HarvestPlayer" />
-            <property name="CreativeMode" value="Player" />
+            <property name="CreativeMode" value="None" />
             <drop event="Harvest" name="foodCropPotato" prob="0.5" count="2" tag="bonusCropHarvest" />
             <drop event="Harvest" name="foodCropPotato" count="2" tag="farmerBonusHarvest" />
             <property name="CustomIcon" value="plantedPotato1" />
@@ -2319,7 +2339,7 @@
         </block>
         <block name="fertilizedplantedMushroom2">
             <property name="Extends" value="plantedMushroom2" />
-            <property name="CreativeMode" value="Player" />
+            <property name="CreativeMode" value="None" />
             <property name="PlantGrowing.Next" value="fertilizedplantedMushroom3HarvestPlayer" />
             <property name="PlantGrowing.GrowthRate" value="30" />
             <property name="TintColor" value="6707E5" />
@@ -2327,7 +2347,7 @@
         </block>
         <block name="fertilizedplantedMushroom3HarvestPlayer">
             <property name="Extends" value="plantedMushroom3HarvestPlayer" />
-            <property name="CreativeMode" value="Player" />
+            <property name="CreativeMode" value="None" />
             <drop event="Harvest" name="foodCropMushrooms" count="2" tag="cropHarvest" />
             <drop event="Harvest" name="foodCropMushrooms" prob="0.5" count="2" tag="bonusCropHarvest" />
             <drop event="Harvest" name="foodCropMushrooms" count="2" tag="farmerBonusHarvest" />
@@ -2346,7 +2366,7 @@
         </block>
         <block name="fertilizedplantedCoffee2">
             <property name="Extends" value="plantedCoffee2" />
-            <property name="CreativeMode" value="Player" />
+            <property name="CreativeMode" value="None" />
             <property name="PlantGrowing.Next" value="fertilizedplantedCoffee3HarvestPlayer" />
             <property name="PlantGrowing.GrowthRate" value="30" />
             <property name="TintColor" value="6707E5" />
@@ -2354,7 +2374,7 @@
         </block>
         <block name="fertilizedplantedCoffee3HarvestPlayer">
             <property name="Extends" value="plantedCoffee3HarvestPlayer" />
-            <property name="CreativeMode" value="Player" />
+            <property name="CreativeMode" value="None" />
             <drop event="Harvest" name="resourceCropCoffeeBeans" prob="0.5" count="2" tag="bonusCropHarvest" />
             <drop event="Harvest" name="resourceCropCoffeeBeans" count="2" tag="farmerBonusHarvest" />
             <property name="CustomIcon" value="plantedCoffee1" />
@@ -2373,7 +2393,7 @@
         </block>
         <block name="fertilizedplantedGoldenrod2">
             <property name="Extends" value="plantedGoldenrod2" />
-            <property name="CreativeMode" value="Player" />
+            <property name="CreativeMode" value="None" />
             <property name="PlantGrowing.Next" value="fertilizedplantedGoldenrod3HarvestPlayer" />
             <property name="PlantGrowing.GrowthRate" value="30" />
             <property name="TintColor" value="6707E5" />
@@ -2381,7 +2401,7 @@
         </block>
         <block name="fertilizedplantedGoldenrod3HarvestPlayer">
             <property name="Extends" value="plantedGoldenrod3HarvestPlayer" />
-            <property name="CreativeMode" value="Player" />
+            <property name="CreativeMode" value="None" />
             <drop event="Harvest" name="resourceCropGoldenrodPlant" prob="0.5" count="2" tag="bonusCropHarvest" />
             <drop event="Harvest" name="resourceCropGoldenrodPlant" count="2" tag="farmerBonusHarvest" />
             <property name="CustomIcon" value="plantedGoldenrod1" />
@@ -2400,7 +2420,7 @@
         </block>
         <block name="fertilizedplantedAloe2">
             <property name="Extends" value="plantedAloe2" />
-            <property name="CreativeMode" value="Player" />
+            <property name="CreativeMode" value="None" />
             <property name="PlantGrowing.Next" value="fertilizedplantedAloe3HarvestPlayer" />
             <property name="PlantGrowing.GrowthRate" value="30" />
             <property name="TintColor" value="6707E5" />
@@ -2408,7 +2428,7 @@
         </block>
         <block name="fertilizedplantedAloe3HarvestPlayer">
             <property name="Extends" value="plantedAloe3HarvestPlayer" />
-            <property name="CreativeMode" value="Player" />
+            <property name="CreativeMode" value="None" />
             <drop event="Harvest" name="resourceCropAloeLeaf" prob="0.5" count="2" tag="bonusCropHarvest" />
             <drop event="Harvest" name="resourceCropAloeLeaf" count="2" tag="farmerBonusHarvest" />
             <property name="CustomIcon" value="plantedAloe1" />
@@ -2427,7 +2447,7 @@
         </block>
         <block name="fertilizedplantedBlueberry2">
             <property name="Extends" value="plantedBlueberry2" />
-            <property name="CreativeMode" value="Player" />
+            <property name="CreativeMode" value="None" />
             <property name="PlantGrowing.Next" value="fertilizedplantedBlueberry3HarvestPlayer" />
             <property name="PlantGrowing.GrowthRate" value="30" />
             <property name="TintColor" value="6707E5" />
@@ -2435,7 +2455,7 @@
         </block>
         <block name="fertilizedplantedBlueberry3HarvestPlayer">
             <property name="Extends" value="plantedBlueberry3HarvestPlayer" />
-            <property name="CreativeMode" value="Player" />
+            <property name="CreativeMode" value="None" />
             <drop event="Harvest" name="foodCropBlueberries" prob="0.5" count="2" tag="bonusCropHarvest" />
             <drop event="Harvest" name="foodCropBlueberries" count="2" tag="farmerBonusHarvest" />
             <property name="CustomIcon" value="plantedBlueberry1" />
@@ -2454,7 +2474,7 @@
         </block>
         <block name="fertilizedplantedChrysanthemum2">
             <property name="Extends" value="plantedChrysanthemum2" />
-            <property name="CreativeMode" value="Player" />
+            <property name="CreativeMode" value="None" />
             <property name="PlantGrowing.Next" value="fertilizedplantedChrysanthemum3HarvestPlayer" />
             <property name="PlantGrowing.GrowthRate" value="30" />
             <property name="TintColor" value="6707E5" />
@@ -2462,7 +2482,7 @@
         </block>
         <block name="fertilizedplantedChrysanthemum3HarvestPlayer">
             <property name="Extends" value="plantedChrysanthemum3HarvestPlayer" />
-            <property name="CreativeMode" value="Player" />
+            <property name="CreativeMode" value="None" />
             <drop event="Harvest" name="resourceCropChrysanthemumPlant" prob="0.5" count="2" tag="bonusCropHarvest" />
             <drop event="Harvest" name="resourceCropChrysanthemumPlant" count="2" tag="farmerBonusHarvest" />
             <property name="CustomIcon" value="plantedChrysanthemum1" />
@@ -2481,7 +2501,7 @@
         </block>
         <block name="fertilizedplantedCorn2">
             <property name="Extends" value="plantedCorn2" />
-            <property name="CreativeMode" value="Player" />
+            <property name="CreativeMode" value="None" />
             <property name="PlantGrowing.Next" value="fertilizedplantedCorn3HarvestPlayer" />
             <property name="PlantGrowing.GrowthRate" value="30" />
             <property name="TintColor" value="6707E5" />
@@ -2489,7 +2509,7 @@
         </block>
         <block name="fertilizedplantedCorn3HarvestPlayer">
             <property name="Extends" value="plantedCorn3HarvestPlayer" />
-            <property name="CreativeMode" value="Player" />
+            <property name="CreativeMode" value="None" />
             <drop event="Harvest" name="foodCropCorn" prob="0.5" count="2" tag="bonusCropHarvest" />
             <drop event="Harvest" name="foodCropCorn" count="2" tag="farmerBonusHarvest" />
             <property name="CustomIcon" value="plantedCorn1" />
@@ -2508,7 +2528,7 @@
         </block>
         <block name="fertilizedplantedGraceCorn2">
             <property name="Extends" value="plantedGraceCorn2" />
-            <property name="CreativeMode" value="Player" />
+            <property name="CreativeMode" value="None" />
             <property name="PlantGrowing.Next" value="fertilizedplantedGraceCorn3HarvestPlayer" />
             <property name="PlantGrowing.GrowthRate" value="30" />
             <property name="TintColor" value="6707E5" />
@@ -2516,7 +2536,7 @@
         </block>
         <block name="fertilizedplantedGraceCorn3HarvestPlayer">
             <property name="Extends" value="plantedGraceCorn3HarvestPlayer" />
-            <property name="CreativeMode" value="Player" />
+            <property name="CreativeMode" value="None" />
             <drop event="Harvest" name="foodCropGraceCorn" prob="0.5" count="2" tag="bonusCropHarvest" />
             <drop event="Harvest" name="foodCropGraceCorn" count="2" tag="farmerBonusHarvest" />
             <property name="CustomIcon" value="plantedGraceCorn1" />
@@ -2535,7 +2555,7 @@
         </block>
         <block name="fertilizedplantedHop2">
             <property name="Extends" value="plantedHop2" />
-            <property name="CreativeMode" value="Player" />
+            <property name="CreativeMode" value="None" />
             <property name="PlantGrowing.Next" value="fertilizedplantedHop3HarvestPlayer" />
             <property name="PlantGrowing.GrowthRate" value="30" />
             <property name="TintColor" value="6707E5" />
@@ -2543,7 +2563,7 @@
         </block>
         <block name="fertilizedplantedHop3HarvestPlayer">
             <property name="Extends" value="plantedHop3HarvestPlayer" />
-            <property name="CreativeMode" value="Player" />
+            <property name="CreativeMode" value="None" />
             <drop event="Harvest" name="resourceCropHopsFlower" prob="0.5" count="2" tag="bonusCropHarvest" />
             <drop event="Harvest" name="resourceCropHopsFlower" count="2" tag="farmerBonusHarvest" />
             <property name="CustomIcon" value="plantedHop1" />
@@ -2562,7 +2582,7 @@
         </block>
         <block name="fertilizedplantedPumpkin2">
             <property name="Extends" value="plantedPumpkin2" />
-            <property name="CreativeMode" value="Player" />
+            <property name="CreativeMode" value="None" />
             <property name="PlantGrowing.Next" value="fertilizedplantedPumpkin3HarvestPlayer" />
             <property name="PlantGrowing.GrowthRate" value="30" />
             <property name="TintColor" value="6707E5" />
@@ -2570,7 +2590,7 @@
         </block>
         <block name="fertilizedplantedPumpkin3HarvestPlayer">
             <property name="Extends" value="plantedPumpkin3HarvestPlayer" />
-            <property name="CreativeMode" value="Player" />
+            <property name="CreativeMode" value="None" />
             <drop event="Harvest" name="foodCropPumpkin" prob="0.5" count="2" tag="bonusCropHarvest" />
             <drop event="Harvest" name="foodCropPumpkin" count="2" tag="farmerBonusHarvest" />
             <property name="CustomIcon" value="plantedPumpkin1" />
@@ -3008,8 +3028,8 @@
         <append xpath="//block[starts-with(@name,'mpl_ft') and (contains(@name,'Stump'))]">
             <!-- <property name="Tags" value="wood" />
             <drop event="Harvest" name="woodLogPillar100" count="1" tag="oreWoodHarvest" /> -->
-            <property name="DestroyedEvent" value="block_tree_stump_bees"/>
+            <property name="DestroyedEvent" value="block_tree_stump_bees" />
         </append>
-        <remove xpath="//block[starts-with(@name,'mpl_')]/drop[@name='resourceWood']"/>
+        <remove xpath="//block[starts-with(@name,'mpl_')]/drop[@name='resourceWood']" />
         <!-- <remove xpath="//block[@name='cntApiary')]"/> -->
     </config>
