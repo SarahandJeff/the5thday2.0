@@ -912,9 +912,11 @@
     <!-- = = = = = Wrenches = = = = = -->
     <append xpath="//item[starts-with(@name,'meleeToolSalvage')]/effect_group/passive_effect[@tags='perkSalvageOperations']/@tags">,perkHOHWrenches</append>
     <append xpath="//item[@name='meleeToolSalvageT1Wrench']/property[@name='Tags']/@value">,wrench,perkHOHWrenches</append>
-    <append xpath="//item[@name='meleeToolSalvageT2Ratchet']/property[@name='Tags']/@value">,ratchet,perkHOHWrenches</append>
-    <append xpath="//item[@name='meleeToolSalvageT3ImpactDriver']/property[@name='Tags']/@value">,driver,perkHOHWrenches</append>
+    <append xpath="//item[@name='meleeToolSalvageT2Ratchet']/property[@name='Tags']/@value">,ratchet,perkHOHWrenches,Sockets</append>
+    <append xpath="//item[@name='meleeToolSalvageT3ImpactDriver']/property[@name='Tags']/@value">,driver,perkHOHWrenches,Sockets,Reduction</append>
     <append xpath="//item[@name='meleeToolPickT3Auger']/property[@name='Tags']/@value">,auger,PerkHOHShovels,PerkHOHPickAxes</append>
+     
+    
     <!-- Wrench Buff -->
     <append xpath="//item[@name='meleeToolSalvageT1Wrench']/effect_group[@name='meleeToolSalvageT1Wrench']">
         <triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="WrenchBlockTrackerActivate" />
@@ -3140,9 +3142,21 @@
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_Construction_lvl_Next_Needed" operation="set" value="100" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_Construction_Perk_Tracker" operation="set" value="1" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkConstruction" level="1" />
+
+
+
+                
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkMadScientist" level="1" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="skillMadScientist" level="1" />
+
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_MadScientist_next_requirement" operation="set" value="0" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_MadScientist_Xp_Total" operation="set" value="0" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_MadScientist_lvl_Next_Display" operation="set" value="0" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_MadScientist_XP_Temp" operation="set" value="0" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_MadScientist_XP" operation="set" value="0" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_MadScientist_lvl" operation="set" value="0" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_MadScientist_Perk_Tracker" operation="set" value="0" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_MadScientist_lvl_Next_Needed" operation="set" value="100" />
             </effect_group>
         </item>
         <item name="spearlevelRedeem">

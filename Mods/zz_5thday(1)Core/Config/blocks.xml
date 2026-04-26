@@ -3,7 +3,7 @@
     <set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='FoodSpoilage']/property[@name='FoodSpoilage']/@value">true</set>
     <set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='FoodSpoilage']/property[@name='SpoiledItem']/@value">foodScraps</set>
     <set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='AdvancedRecipes']/property[@name='ReadFromContainers']/@value">true</set>
-    <set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='AdvancedRecipes']/property[@name='Distance']/@value">5</set>
+    <set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='AdvancedRecipes']/property[@name='Distance']/@value">7</set>
     <set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='AdvancedLockpicking']/property[@name='AdvancedLocks']/@value">true</set>
     <set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='AdvancedLockpicking']/property[@name='LockPrefab']/@value">#@modfolder(Locks):Resources/Locks.unity3d?padlock01</set>
     <set xpath="/blocks/block[@name='ConfigFeatureBlock']/property[@class='AdvancedPlayerFeatures']/property[@name='VehicleNoTake']/@value">true</set>
@@ -399,9 +399,10 @@
             <drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1" />
             <property name="Group" value="Basics,Food/Cooking,Building,advBuilding" />
             <property name="DescriptionKey" value="stoveWorkingDesc" />
-            <property name="SellableToTrader" value="false" />
+            <property name="SellableToTrader" value="true" />
             <property name="StabilitySupport" value="false" />
             <property name="Tags" value="workstationSkill" />
+            <property name="EconomicValue" value="650"/>
         </block>
         <block name="WorkingGasGrill">
             <property name="Class" value="Workstation" />
@@ -452,14 +453,14 @@
         <drop event="Destroy" count="0" />
         <property name="CanPickup" value="true" />
     </append>
-    <remove xpath="/blocks/block[@name='cntGasGrillRandomLootHelper']/drop" />
+    <!-- <remove xpath="/blocks/block[@name='cntGasGrillRandomLootHelper']/drop" />
     <append xpath="/blocks/block[@name='cntGasGrillRandomLootHelper']">
         <property name="EconomicValue" value="587" />
         <property name="SellableToTrader" value="true" />
         <drop event="Destroy" name="cntGasGrillOpen" count="1" tool_category="Disassemble" prob="1" />
         <drop event="Destroy" count="0" />
-        <!-- <property name="CanPickup" value="true" /> -->
-    </append>
+        
+    </append> -->
     <remove xpath="/blocks/block[@name='cntStoveOldVer2Open']/drop" />
     <append xpath="/blocks/block[@name='cntStoveOldVer2Open']">
         <property name="Tags" value="Car,WrenchXPGain" />

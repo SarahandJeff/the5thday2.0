@@ -1483,12 +1483,19 @@
                     <requirement name="IsNight" />
                 </triggered_effect>
             </effect_group>
+           
             <effect_group name="resourceLeadIngot">
                 <requirement name="CVarCompare" cvar="HOH_Wrenches_lvl" operation="LT" value="250" />
                 <requirement name="CVarCompare" cvar="processedCount_resourceLeadIngot" operation="LT" value="@_craftCount_resourceLeadIngot" />
                 <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_resourceLeadIngot" operation="add" value="1" />
                 <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Wrenches_XP" operation="add" value="1" />
             </effect_group>
+              <!-- <effect_group name="liquidBlockVariantHelperT1">
+                <requirement name="CVarCompare" cvar="HOH_Wrenches_lvl" operation="LT" value="250" />
+                <requirement name="CVarCompare" cvar="processedCount_liquidBlockVariantHelperT1" operation="LT" value="@_craftCount_liquidBlockVariantHelperT1" />
+                <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="processedCount_liquidBlockVariantHelperT1" operation="add" value="1" />
+                <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Wrenches_XP" operation="add" value="1" />
+            </effect_group> -->
             <effect_group name="resourceForgedIron">
                 <requirement name="CVarCompare" cvar="HOH_Wrenches_lvl" operation="LT" value="250" />
                 <requirement name="CVarCompare" cvar="processedCount_resourceForgedIron" operation="LT" value="@_craftCount_resourceForgedIron" />
@@ -3270,7 +3277,6 @@
                 <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Pistols_lvl_Ranked" operation="add" value="1">
                     <requirement name="CVarCompare" cvar="HOH_Pistols_lvl_Ranked" operation="LTE" value="100" />
                 </triggered_effect>
-
                 <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Pistols_Ranked_Display" operation="set" value="@HOH_Pistols_lvl_Ranked" />
                 <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="HOH_Pistols_Ranked_Display" operation="divide" value="100" />
             </effect_group>

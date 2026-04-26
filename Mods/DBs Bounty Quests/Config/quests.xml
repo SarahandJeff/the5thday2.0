@@ -1,10 +1,8 @@
 <configs> 
 
-<!--<set xpath="/quests/quest[@name='intro_buried_supplies']/reward[@id='questRewardPipePistolBundle']">vehicleMotorcyclePlaceable</set>-->
-
-<insertAfter xpath="/quests/quest[@id='tier1_fetch']">
-
-<quest id="KillQuestHound">
+<insertAfter xpath="/quests/quest[@id='tier1_fetch']"> 
+	
+	<quest id="KillQuestHound">
 		<property name="name_key" value="quest_KillHound" param1="name"/>
 		<property name="subtitle_key" value="quest_KillHound_subtitle"/>
 		<property name="description_key" value="quest_KillHound_description"/>
@@ -12,7 +10,7 @@
 		<property name="repeatable" value="true"/>
 		<property name="category_key" value="quest"/>
 		<property name="offer_key" value="quest_KillHound_offer" param1="offer"/>
-		<property name="difficulty_tier" value="1"/>
+		<property name="difficulty_tier" value="1" param1="difficulty"/>
 		<property name="statement_key" value="KillHound_statement"/>
 		<property name="response_key" value="KillHound_response"/>
 		<property name="login_rally_reset" value="true"/>
@@ -34,12 +32,8 @@
             <objective type="RallyPoint">
 				<property name="phase" value="2"/>
 				<property name="nav_object" value="rally"/>
-			<property name="rally_marker_type" value="questRallyMarkerClear"/>
+			    <property name="rally_marker_type" value="questRallyMarkerClear"/>
 			</objective>
-			
-			<action type="UnlockPOI" >
-				<property name="phase" value="2"/>
-			</action>
 			
 			<objective type="ClearSleepers">
 				<property name="phase" value="3"/>
@@ -55,7 +49,7 @@
 				<property name="hidden" value="false"/>				
 			</objective> 
 			
-			<action type="SpawnEnemy" id="animalHellHound" value="1" phase="4"/>
+			<action type="SpawnEnemy" id="animalHellHound" value="3" phase="4"/>
 		    <property name="delay" value="8"/>
 		    <objective type="Time" value="3" phase="4" />
 			
@@ -72,12 +66,12 @@
 			</objective>
 
 			<objective type="InteractWithNPC">
-				<property name="phase" value="7"/>
+				<property name="phase" value="6"/>
 				<property name="nav_object" value="return_to_trader" />
 			</objective>
 
 		<reward type="Exp" value="4000"/>
-		<reward type="Item" id="casinoCoin" value="800"/>
+		<reward type="Item" id="casinoCoin" value="600"/>
 
 		<reward type="LootItem" id="groupQuestFood,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="2"/>
 		<reward type="LootItem" id="groupQuestFood,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="2"/>
@@ -87,8 +81,7 @@
 		<reward type="LootItem" id="groupQuestResourcesT0,seedsNoFlowers" ischosen="true"/>
 		<reward type="LootItem" id="groupQuestResourcesT0,groupQuestT1SkillMagazineBundle" ischosen="true"/>
 	</quest>
-	</insertAfter>
-<insertAfter xpath="/quests/quest[@id='tier1_fetch']">		
+		
 <quest id="KillQuestCrawler">
 		<property name="name_key" value="quest_KillCrawler" param1="name"/>
 		<property name="subtitle_key" value="quest_KillCrawler_subtitle"/>
@@ -119,12 +112,8 @@
 			<objective type="RallyPoint">
 				<property name="phase" value="2"/>
 				<property name="nav_object" value="rally"/>
-			<property name="rally_marker_type" value="questRallyMarkerClear"/>
+			    <property name="rally_marker_type" value="questRallyMarkerClear"/>
 			</objective>
-			
-			<action type="UnlockPOI" >
-				<property name="phase" value="2"/>
-			</action>
 			
 			<objective type="ClearSleepers">
 				<property name="phase" value="3"/>
@@ -140,7 +129,7 @@
 				<property name="hidden" value="false"/>				
 			</objective> 
 			
-			<action type="SpawnEnemy" id="Acid Crawler" value="1" phase="4"/>
+			<action type="SpawnEnemy" id="QAcidCrawler" value="3" phase="4"/>
 		    <property name="delay" value="8"/>
 		    <objective type="Time" value="3" phase="4" />
 			
@@ -157,12 +146,12 @@
 			</objective>
 
 			<objective type="InteractWithNPC">
-				<property name="phase" value="7"/>
+				<property name="phase" value="6"/>
 				<property name="nav_object" value="return_to_trader" />
 			</objective>
 
 		<reward type="Exp" value="4000"/>
-		<reward type="Item" id="casinoCoin" value="800"/>
+		<reward type="Item" id="casinoCoin" value="600"/>
 
 		<reward type="LootItem" id="groupQuestFood,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="2"/>
 		<reward type="LootItem" id="groupQuestFood,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="2"/>
@@ -172,8 +161,6 @@
 		<reward type="LootItem" id="groupQuestResourcesT0,seedsNoFlowers" ischosen="true"/>
 		<reward type="LootItem" id="groupQuestResourcesT0,groupQuestT1SkillMagazineBundle" ischosen="true"/>
 	</quest>
-</insertAfter>
-<insertAfter xpath="/quests/quest[@id='tier3_fetch']">		
 
 <quest id="KillQuestHazmat">
 		<property name="name_key" value="quest_KillHazmat" param1="name"/>
@@ -183,7 +170,7 @@
 		<property name="repeatable" value="true"/>
 		<property name="category_key" value="quest"/>
 		<property name="offer_key" value="quest_KillHazmat_offer" param1="offer"/>
-	<property name="difficulty" value="4"/>
+		<property name="difficulty_tier" value="1" param1="difficulty"/>
 		<property name="statement_key" value="KillHazmat_statement"/>
 		<property name="response_key" value="KillHazmat_response"/>
 		<property name="login_rally_reset" value="true"/>
@@ -205,12 +192,8 @@
 			<objective type="RallyPoint">
 				<property name="phase" value="2"/>
 				<property name="nav_object" value="rally"/>
-			<property name="rally_marker_type" value="questRallyMarkerClear"/>
+			    <property name="rally_marker_type" value="questRallyMarkerClear"/>
 			</objective>
-			
-			<action type="UnlockPOI" >
-				<property name="phase" value="2"/>
-			</action>
 			
 			<objective type="ClearSleepers">
 				<property name="phase" value="3"/>
@@ -226,7 +209,7 @@
 				<property name="hidden" value="false"/>				
 			</objective> 
 			
-			<action type="SpawnEnemy" id="Hazmat Joe" value="15" phase="4"/>
+			<action type="SpawnEnemy" id="QHazmatJoe" value="15" phase="4"/>
 		    <property name="delay" value="8"/>
 		    <objective type="Time" value="3" phase="4" />
 			
@@ -243,12 +226,12 @@
 			</objective>
 
 			<objective type="InteractWithNPC">
-				<property name="phase" value="7"/>
+				<property name="phase" value="6"/>
 				<property name="nav_object" value="return_to_trader" />
 			</objective>
 
 		<reward type="Exp" value="4000"/>
-		<reward type="Item" id="casinoCoin" value="800"/>
+		<reward type="Item" id="casinoCoin" value="600"/>
 
 		<reward type="LootItem" id="groupQuestFood,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="2"/>
 		<reward type="LootItem" id="groupQuestFood,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="2"/>
@@ -258,8 +241,7 @@
 		<reward type="LootItem" id="groupQuestResourcesT0,seedsNoFlowers" ischosen="true"/>
 		<reward type="LootItem" id="groupQuestResourcesT0,groupQuestT1SkillMagazineBundle" ischosen="true"/>
 	</quest>
-</insertAfter>
-<insertAfter xpath="/quests/quest[@id='tier1_fetch']">		
+
 <quest id="KillQuestGhost">
 		<property name="name_key" value="quest_KillGhost" param1="name"/>
 		<property name="subtitle_key" value="quest_KillGhost_subtitle"/>
@@ -290,12 +272,8 @@
 			<objective type="RallyPoint">
 				<property name="phase" value="2"/>
 				<property name="nav_object" value="rally"/>
-			<property name="rally_marker_type" value="questRallyMarkerClear"/>
+			    <property name="rally_marker_type" value="questRallyMarkerClear"/>
 			</objective>
-			
-			<action type="UnlockPOI" >
-				<property name="phase" value="2"/>
-			</action>
 			
 			<objective type="ClearSleepers">
 				<property name="phase" value="3"/>
@@ -305,14 +283,14 @@
 			</objective>
 			
 			<objective type="EntityKill">             
-				<property name="needed_count" value="3" />
+				<property name="needed_count" value="5" />
 				<property name="target_tags" value="zombie"/>
 				<property name="phase" value="3"/>
 				<property name="hidden" value="false"/>				
 			</objective> 
 			
-			<action type="SpawnEnemy" id="zombieGhostQueen" value="1" phase="4"/>
-			<action type="SpawnEnemy" id="Ghost" value="5" phase="4"/>
+			<action type="SpawnEnemy" id="QzombieGhostQueen" value="3" phase="4"/>
+		<!--	<action type="SpawnEnemy" id="Ghost" value="6" phase="4"/> -->
 		    <property name="delay" value="8"/>
 		    <objective type="Time" value="3" phase="4" />
 			
@@ -329,12 +307,12 @@
 			</objective>
 
 			<objective type="InteractWithNPC">
-				<property name="phase" value="7"/>
+				<property name="phase" value="6"/>
 				<property name="nav_object" value="return_to_trader" />
 			</objective>
 
 		<reward type="Exp" value="6000"/>
-		<reward type="Item" id="casinoCoin" value="1200"/>
+		<reward type="Item" id="casinoCoin" value="900"/>
 
 		<reward type="LootItem" id="groupQuestFood,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="3"/>
 		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="2"/>
@@ -345,8 +323,6 @@
 		<reward type="LootItem" id="groupQuestResourcesT1,groupQuestT1SkillMagazineBundle" ischosen="true"/>
 	</quest>
 
-</insertAfter>
-<insertAfter xpath="/quests/quest[@id='tier2_fetch']">		
 <quest id="KillQuestRotnier">
 		<property name="name_key" value="quest_KillRotnier" param1="name"/>
 		<property name="subtitle_key" value="quest_KillRotnier_subtitle"/>
@@ -377,13 +353,9 @@
 			<objective type="RallyPoint">
 				<property name="phase" value="2"/>
 				<property name="nav_object" value="rally"/>
-			<property name="rally_marker_type" value="questRallyMarkerClear"/>
+			    <property name="rally_marker_type" value="questRallyMarkerClear"/>
 			</objective>
-			
-			<action type="UnlockPOI" >
-				<property name="phase" value="2"/>
-			</action>
-			
+		
 			<objective type="ClearSleepers">
 				<property name="phase" value="3"/>
 				<property name="nav_object" value="sleeper_volume"/>
@@ -392,13 +364,13 @@
 			</objective>
 			
 			<objective type="EntityKill">             
-				<property name="needed_count" value="3" />
+				<property name="needed_count" value="5" />
 				<property name="target_tags" value="zombie"/>
 				<property name="phase" value="3"/>
 				<property name="hidden" value="false"/>				
 			</objective> 
 			
-			<action type="SpawnEnemy" id="Rotnier" value="6" phase="4"/>
+			<action type="SpawnEnemy" id="QRotnier" value="8" phase="4"/>
 		    <property name="delay" value="8"/>
 		    <objective type="Time" value="3" phase="4" />
 			
@@ -415,12 +387,12 @@
 			</objective>
 
 			<objective type="InteractWithNPC">
-				<property name="phase" value="7"/>
+				<property name="phase" value="6"/>
 				<property name="nav_object" value="return_to_trader" />
 			</objective>
 
 		<reward type="Exp" value="6000"/>
-		<reward type="Item" id="casinoCoin" value="1200"/>
+		<reward type="Item" id="casinoCoin" value="900"/>
 
 		<reward type="LootItem" id="groupQuestFood,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="3"/>
 		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="2"/>
@@ -430,8 +402,7 @@
 		<reward type="LootItem" id="groupQuestResourcesT0,seedsNoFlowers,groupQuestSteel01" ischosen="true"/>
 		<reward type="LootItem" id="groupQuestResourcesT1,groupQuestT1SkillMagazineBundle" ischosen="true"/>
 	</quest>
-</insertAfter>
-<insertAfter xpath="/quests/quest[@id='tier3_fetch']">		
+
 <quest id="KillQuestRegenerator">
 		<property name="name_key" value="quest_KillRegenerator" param1="name"/>
 		<property name="subtitle_key" value="quest_KillRegenerator_subtitle"/>
@@ -462,12 +433,8 @@
 			<objective type="RallyPoint">
 				<property name="phase" value="2"/>
 				<property name="nav_object" value="rally"/>
-			<property name="rally_marker_type" value="questRallyMarkerClear"/>
+			    <property name="rally_marker_type" value="questRallyMarkerClear"/>
 			</objective>
-			
-			<action type="UnlockPOI" >
-				<property name="phase" value="2"/>
-			</action>
 			
 			<objective type="ClearSleepers">
 				<property name="phase" value="3"/>
@@ -477,13 +444,13 @@
 			</objective>
 			
 			<objective type="EntityKill">             
-				<property name="needed_count" value="3" />
+				<property name="needed_count" value="8" />
 				<property name="target_tags" value="zombie"/>
 				<property name="phase" value="3"/>
 				<property name="hidden" value="false"/>				
 			</objective> 
 			
-			<action type="SpawnEnemy" id="Regenerator" value="1" phase="4"/>
+			<action type="SpawnEnemy" id="QRegenerator" value="3" phase="4"/>
 		    <property name="delay" value="8"/>
 		    <objective type="Time" value="3" phase="4" />
 			
@@ -500,12 +467,12 @@
 			</objective>
 
 			<objective type="InteractWithNPC">
-				<property name="phase" value="7"/>
+				<property name="phase" value="6"/>
 				<property name="nav_object" value="return_to_trader" />
 			</objective>
 
 		<reward type="Exp" value="8000"/>
-		<reward type="Item" id="casinoCoin" value="1600"/>
+		<reward type="Item" id="casinoCoin" value="1200"/>
 
 		<reward type="LootItem" id="groupQuestFood,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="4"/>
 		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="3"/>
@@ -516,8 +483,6 @@
 		<reward type="LootItem" id="groupQuestResourcesT1,groupQuestT1SkillMagazineBundle" ischosen="true"/>
 	</quest>
 
-</insertAfter>
-<insertAfter xpath="/quests/quest[@id='tier2_fetch']">		
 <quest id="KillQuestFireDevil">
 		<property name="name_key" value="quest_KillFireDevil" param1="name"/>
 		<property name="subtitle_key" value="quest_KillFireDevil_subtitle"/>
@@ -548,12 +513,8 @@
 			<objective type="RallyPoint">
 				<property name="phase" value="2"/>
 				<property name="nav_object" value="rally"/>
-			<property name="rally_marker_type" value="questRallyMarkerClear"/>
+			    <property name="rally_marker_type" value="questRallyMarkerClear"/>
 			</objective>
-			
-			<action type="UnlockPOI" >
-				<property name="phase" value="2"/>
-			</action>
 			
 			<objective type="ClearSleepers">
 				<property name="phase" value="3"/>
@@ -563,13 +524,13 @@
 			</objective>
 			
 			<objective type="EntityKill">             
-				<property name="needed_count" value="3" />
+				<property name="needed_count" value="8" />
 				<property name="target_tags" value="zombie"/>
 				<property name="phase" value="3"/>
 				<property name="hidden" value="false"/>				
 			</objective> 
 			
-			<action type="SpawnEnemy" id="Fire Devil" value="1" phase="4"/>
+			<action type="SpawnEnemy" id="QFireDevil" value="3" phase="4"/>
 		    <property name="delay" value="8"/>
 		    <objective type="Time" value="3" phase="4" />
 			
@@ -586,12 +547,12 @@
 			</objective>
 
 			<objective type="InteractWithNPC">
-				<property name="phase" value="7"/>
+				<property name="phase" value="6"/>
 				<property name="nav_object" value="return_to_trader" />
 			</objective>
 
 		<reward type="Exp" value="8000"/>
-		<reward type="Item" id="casinoCoin" value="1600"/>
+		<reward type="Item" id="casinoCoin" value="1200"/>
 
 		<reward type="LootItem" id="groupQuestFood,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="4"/>
 		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="3"/>
@@ -601,8 +562,7 @@
 		<reward type="LootItem" id="groupQuestResourcesT1,groupQuestSteel01" ischosen="true"/>
 		<reward type="LootItem" id="groupQuestResourcesT1,groupQuestT1SkillMagazineBundle" ischosen="true"/>
 	</quest>
-</insertAfter>
-<insertAfter xpath="/quests/quest[@id='tier2_fetch']">		
+
 <quest id="KillQuestPlagueBearer">
 		<property name="name_key" value="quest_KillPlagueBearer" param1="name"/>
 		<property name="subtitle_key" value="quest_KillPlagueBearer_subtitle"/>
@@ -633,13 +593,9 @@
 			<objective type="RallyPoint">
 				<property name="phase" value="2"/>
 				<property name="nav_object" value="rally"/>
-			<property name="rally_marker_type" value="questRallyMarkerClear"/>
+			    <property name="rally_marker_type" value="questRallyMarkerClear"/>
 			</objective>
-			
-			<action type="UnlockPOI" >
-				<property name="phase" value="2"/>
-			</action>
-			
+	
 			<objective type="ClearSleepers">
 				<property name="phase" value="3"/>
 				<property name="nav_object" value="sleeper_volume"/>
@@ -648,13 +604,13 @@
 			</objective>
 			
 			<objective type="EntityKill">             
-				<property name="needed_count" value="3" />
+				<property name="needed_count" value="8" />
 				<property name="target_tags" value="zombie"/>
 				<property name="phase" value="3"/>
 				<property name="hidden" value="false"/>				
 			</objective> 
 			
-			<action type="SpawnEnemy" id="Plague Bearer" value="1" phase="4"/>
+			<action type="SpawnEnemy" id="QPlagueBearer" value="3" phase="4"/>
 		    <property name="delay" value="8"/>
 		    <objective type="Time" value="3" phase="4" />
 			
@@ -671,12 +627,12 @@
 			</objective>
 
 			<objective type="InteractWithNPC">
-				<property name="phase" value="7"/>
+				<property name="phase" value="6"/>
 				<property name="nav_object" value="return_to_trader" />
 			</objective>
 
 		<reward type="Exp" value="8000"/>
-		<reward type="Item" id="casinoCoin" value="1600"/>
+		<reward type="Item" id="casinoCoin" value="1200"/>
 
 		<reward type="LootItem" id="groupQuestFood,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="4"/>
 		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="3"/>
@@ -687,8 +643,6 @@
 		<reward type="LootItem" id="groupQuestResourcesT1,groupQuestT1SkillMagazineBundle" ischosen="true"/>
 	</quest>
 
-</insertAfter>
-<insertAfter xpath="/quests/quest[@id='tier4_fetch']">		
 <quest id="KillQuestHuntingParty">
 		<property name="name_key" value="quest_KillHuntingParty" param1="name"/>
 		<property name="subtitle_key" value="quest_KillHuntingParty_subtitle"/>
@@ -719,12 +673,8 @@
 			<objective type="RallyPoint">
 				<property name="phase" value="2"/>
 				<property name="nav_object" value="rally"/>
-			<property name="rally_marker_type" value="questRallyMarkerClear"/>
+			    <property name="rally_marker_type" value="questRallyMarkerClear"/>
 			</objective>
-			
-			<action type="UnlockPOI" >
-				<property name="phase" value="2"/>
-			</action>
 			
 			<objective type="ClearSleepers">
 				<property name="phase" value="3"/>
@@ -734,14 +684,14 @@
 			</objective>
 			
 			<objective type="EntityKill">             
-				<property name="needed_count" value="3" />
+				<property name="needed_count" value="8" />
 				<property name="target_tags" value="zombie"/>
 				<property name="phase" value="3"/>
 				<property name="hidden" value="false"/>				
 			</objective> 
 			
-			<action type="SpawnEnemy" id="Slow Hunter" value="15" phase="4"/>
-			<action type="SpawnEnemy" id="Devil Dog" value="3" phase="4"/>
+			<action type="SpawnEnemy" id="QSlowHunter" value="15" phase="4"/>
+			<action type="SpawnEnemy" id="QDevilDog" value="3" phase="4"/>
 		    <property name="delay" value="8"/>
 		    <objective type="Time" value="3" phase="4" />
 			
@@ -758,12 +708,12 @@
 			</objective>
 
 			<objective type="InteractWithNPC">
-				<property name="phase" value="7"/>
+				<property name="phase" value="6"/>
 				<property name="nav_object" value="return_to_trader" />
 			</objective>
 
 		<reward type="Exp" value="8000"/>
-		<reward type="Item" id="casinoCoin" value="1600"/>
+		<reward type="Item" id="casinoCoin" value="1200"/>
 
 		<reward type="LootItem" id="groupQuestFood,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="4"/>
 		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="3"/>
@@ -773,8 +723,7 @@
 		<reward type="LootItem" id="groupQuestResourcesT1,groupQuestSteel01" ischosen="true"/>
 		<reward type="LootItem" id="groupQuestResourcesT1,groupQuestT1SkillMagazineBundle" ischosen="true"/>
 	</quest>
-</insertAfter>
-<insertAfter xpath="/quests/quest[@id='tier3_fetch']">		
+
 <quest id="KillQuestGrumm">
 		<property name="name_key" value="quest_KillGrumm" param1="name"/>
 		<property name="subtitle_key" value="quest_KillGrumm_subtitle"/>
@@ -805,12 +754,8 @@
 			<objective type="RallyPoint">
 				<property name="phase" value="2"/>
 				<property name="nav_object" value="rally"/>
-			<property name="rally_marker_type" value="questRallyMarkerClear"/>
+			    <property name="rally_marker_type" value="questRallyMarkerClear"/>
 			</objective>
-			
-			<action type="UnlockPOI" >
-				<property name="phase" value="2"/>
-			</action>
 			
 			<objective type="ClearSleepers">
 				<property name="phase" value="3"/>
@@ -820,13 +765,13 @@
 			</objective>
 			
 			<objective type="EntityKill">             
-				<property name="needed_count" value="3" />
+				<property name="needed_count" value="12" />
 				<property name="target_tags" value="zombie"/>
 				<property name="phase" value="3"/>
 				<property name="hidden" value="false"/>				
 			</objective> 
 			
-			<action type="SpawnEnemy" id="Grumm" value="1" phase="4"/>
+			<action type="SpawnEnemy" id="QGrumm" value="3" phase="4"/>
 		    <property name="delay" value="8"/>
 		    <objective type="Time" value="3" phase="4" />
 			
@@ -843,12 +788,12 @@
 			</objective>
 
 			<objective type="InteractWithNPC">
-				<property name="phase" value="7"/>
+				<property name="phase" value="6"/>
 				<property name="nav_object" value="return_to_trader" />
 			</objective>
 
 		<reward type="Exp" value="12000"/>
-		<reward type="Item" id="casinoCoin" value="2500"/>
+		<reward type="Item" id="casinoCoin" value="1800"/>
 
 		<reward type="LootItem" id="groupQuestArmorResources" ischosen="true" value="1"/>
 		<reward type="LootItem" id="groupQuestFood,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="4"/>
@@ -859,8 +804,6 @@
 		<reward type="LootItem" id="groupQuestResourcesT1,groupQuestT1SkillMagazineBundle" ischosen="true"/>
 	</quest>
 
-</insertAfter>
-<insertAfter xpath="/quests/quest[@id='tier3_fetch']">		
 <quest id="KillQuestJuggernaut">
 		<property name="name_key" value="quest_KillJuggernaut" param1="name"/>
 		<property name="subtitle_key" value="quest_KillJuggernaut_subtitle"/>
@@ -891,12 +834,8 @@
 			<objective type="RallyPoint">
 				<property name="phase" value="2"/>
 				<property name="nav_object" value="rally"/>
-			<property name="rally_marker_type" value="questRallyMarkerClear"/>
+			    <property name="rally_marker_type" value="questRallyMarkerClear"/>
 			</objective>
-			
-			<action type="UnlockPOI" >
-				<property name="phase" value="2"/>
-			</action>
 			
 			<objective type="ClearSleepers">
 				<property name="phase" value="3"/>
@@ -906,13 +845,13 @@
 			</objective>
 			
 			<objective type="EntityKill">             
-				<property name="needed_count" value="3" />
+				<property name="needed_count" value="12" />
 				<property name="target_tags" value="zombie"/>
 				<property name="phase" value="3"/>
 				<property name="hidden" value="false"/>				
 			</objective> 
 			
-			<action type="SpawnEnemy" id="Juggernaut" value="1" phase="4"/>
+			<action type="SpawnEnemy" id="QJuggernaut" value="3" phase="4"/>
 		    <property name="delay" value="8"/>
 		    <objective type="Time" value="3" phase="4" />
 			
@@ -929,12 +868,12 @@
 			</objective>
 
 			<objective type="InteractWithNPC">
-				<property name="phase" value="7"/>
+				<property name="phase" value="6"/>
 				<property name="nav_object" value="return_to_trader" />
 			</objective>
 
 		<reward type="Exp" value="12000"/>
-		<reward type="Item" id="casinoCoin" value="2500"/>
+		<reward type="Item" id="casinoCoin" value="1800"/>
 
 		<reward type="LootItem" id="groupQuestArmorResources" ischosen="true" value="1"/>
 		<reward type="LootItem" id="groupQuestFood,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="4"/>
@@ -943,9 +882,8 @@
 		<reward type="LootItem" id="groupQuestMedical,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="5"/>
 		<reward type="LootItem" id="groupQuestGas,groupQuestSteel02" ischosen="true"/>
 		<reward type="LootItem" id="groupQuestResourcesT1,groupQuestT1SkillMagazineBundle" ischosen="true"/>
- </quest>
-</insertAfter>
-<insertAfter xpath="/quests/quest[@id='tier4_fetch']">		
+	</quest>
+
 <quest id="KillQuestSuperHorde">
 		<property name="name_key" value="quest_KillSuperHorde" param1="name"/>
 		<property name="subtitle_key" value="quest_KillSuperHorde_subtitle"/>
@@ -976,12 +914,8 @@
 			<objective type="RallyPoint">
 				<property name="phase" value="2"/>
 				<property name="nav_object" value="rally"/>
-			<property name="rally_marker_type" value="questRallyMarkerClear"/>
+			    <property name="rally_marker_type" value="questRallyMarkerClear"/>
 			</objective>
-			
-			<action type="UnlockPOI" >
-				<property name="phase" value="2"/>
-			</action>
 			
 			<objective type="ClearSleepers">
 				<property name="phase" value="3"/>
@@ -991,18 +925,18 @@
 			</objective>
 			
 			<objective type="EntityKill">             
-				<property name="needed_count" value="3" />
+				<property name="needed_count" value="15" />
 				<property name="target_tags" value="zombie"/>
 				<property name="phase" value="3"/>
 				<property name="hidden" value="false"/>				
 			</objective> 
 			
-			<action type="SpawnEnemy" id="Juggernaut" value="1" phase="4"/>
-			<action type="SpawnEnemy" id="Grumm" value="1" phase="4"/>
-			<action type="SpawnEnemy" id="Hunter" value="6" phase="4"/>
-			<action type="SpawnEnemy" id="Wight" value="10" phase="4"/>
-			<action type="SpawnEnemy" id="zombieGhostQueen" value="4" phase="3"/>
-			<action type="SpawnEnemy" id="Plague Bearer" value="2" phase="5"/>
+			<action type="SpawnEnemy" id="QJuggernaut" value="2" phase="4"/>
+			<action type="SpawnEnemy" id="QGrumm" value="2" phase="4"/>
+			<action type="SpawnEnemy" id="QHunter" value="6" phase="4"/>
+			<action type="SpawnEnemy" id="QWight" value="10" phase="4"/>
+			<action type="SpawnEnemy" id="QzombieGhostQueen" value="4" phase="3"/>
+			<action type="SpawnEnemy" id="QPlagueBearer" value="2" phase="4"/>
 		    <property name="delay" value="8"/>
 		    <objective type="Time" value="3" phase="4" />
 			
@@ -1026,12 +960,12 @@
 			</objective>
 
 			<objective type="InteractWithNPC">
-				<property name="phase" value="7"/>
+				<property name="phase" value="6"/>
 				<property name="nav_object" value="return_to_trader" />
 			</objective>
 
 		<reward type="Exp" value="20000"/>
-		<reward type="Item" id="casinoCoin" value="5000"/>
+		<reward type="Item" id="casinoCoin" value="3000"/>
 
 		<reward type="Item" id="resourceLegendaryParts" ischosen="true" isfixed="true" value="1"/>
 		<reward type="LootItem" id="groupQuestFood,groupQuestAmmo,groupQuestSchematics,groupQuestMods" ischosen="true" value="5"/>
@@ -1041,91 +975,23 @@
 		<reward type="LootItem" id="groupQuestGas,groupQuestSteel02" ischosen="true"/>
 		<reward type="LootItem" id="groupQuestResourcesT1,groupQuestT1SkillMagazineBundle" ischosen="true"/>
 	</quest>
-	</insertAfter>
-
-
-<insertAfter xpath="/quests/quest_list[@id='trader_rekt_quests']/quest[@id='tier6_clear_infested']">
-
-   <quest id="KillQuestHound"/>
-   <quest id="KillQuestCrawler"/>
-   <quest id="KillQuestHazmat"/>
-   <quest id="KillQuestGhost"/>
-   <quest id="KillQuestRotnier"/>
-   <quest id="KillQuestRegenerator"/>
-   <quest id="KillQuestFireDevil"/>
-   <quest id="KillQuestPlagueBearer"/>
-   <quest id="KillQuestHuntingParty"/>
-   <quest id="KillQuestGrumm"/>
-   <quest id="KillQuestJuggernaut"/>
-   <quest id="KillQuestSuperHorde"/>
-
+	
 </insertAfter>
 
-<append xpath="/quests/quest_list[@id='trader_jen_quests']">
+<append xpath="/quests/quest_list[@id='trader_rekt_quests' or @id='trader_jen_quests' or @id='trader_bob_quests' or @id='trader_hugh_quests' or @id='trader_joel_quests']">
 
-   <quest id="KillQuestHound"/>
-   <quest id="KillQuestCrawler"/>
-   <quest id="KillQuestHazmat"/>
-   <quest id="KillQuestGhost"/>
-   <quest id="KillQuestRotnier"/>
-   <quest id="KillQuestRegenerator"/>
-   <quest id="KillQuestFireDevil"/>
-   <quest id="KillQuestPlagueBearer"/>
-   <quest id="KillQuestHuntingParty"/>
-   <quest id="KillQuestGrumm"/>
-   <quest id="KillQuestJuggernaut"/>
-   <quest id="KillQuestSuperHorde"/>
-
-</append>
-
-<append xpath="/quests/quest_list[@id='trader_bob_quests']">
-
-   <quest id="KillQuestHound"/>
-   <quest id="KillQuestCrawler"/>
-   <quest id="KillQuestHazmat"/>
-   <quest id="KillQuestGhost"/>
-   <quest id="KillQuestRotnier"/>
-   <quest id="KillQuestRegenerator"/>
-   <quest id="KillQuestFireDevil"/>
-   <quest id="KillQuestPlagueBearer"/>
-   <quest id="KillQuestHuntingParty"/>
-   <quest id="KillQuestGrumm"/>
-   <quest id="KillQuestJuggernaut"/>
-   <quest id="KillQuestSuperHorde"/>
-
-</append>
-
-<append xpath="/quests/quest_list[@id='trader_hugh_quests']">
-
-   <quest id="KillQuestHound"/>
-   <quest id="KillQuestCrawler"/>
-   <quest id="KillQuestHazmat"/>
-   <quest id="KillQuestGhost"/>
-   <quest id="KillQuestRotnier"/>
-   <quest id="KillQuestRegenerator"/>
-   <quest id="KillQuestFireDevil"/>
-   <quest id="KillQuestPlagueBearer"/>
-   <quest id="KillQuestHuntingParty"/>
-   <quest id="KillQuestGrumm"/>
-   <quest id="KillQuestJuggernaut"/>
-   <quest id="KillQuestSuperHorde"/>
-
-</append>
-
-<append xpath="/quests/quest_list[@id='trader_joel_quests']">
-
-   <quest id="KillQuestHound"/>
-   <quest id="KillQuestCrawler"/>
-   <quest id="KillQuestHazmat"/>
-   <quest id="KillQuestGhost"/>
-   <quest id="KillQuestRotnier"/>
-   <quest id="KillQuestRegenerator"/>
-   <quest id="KillQuestFireDevil"/>
-   <quest id="KillQuestPlagueBearer"/>
-   <quest id="KillQuestHuntingParty"/>
-   <quest id="KillQuestGrumm"/>
-   <quest id="KillQuestJuggernaut"/>
-   <quest id="KillQuestSuperHorde"/>
+  <quest id="KillQuestHound"/>
+  <quest id="KillQuestCrawler"/>
+  <quest id="KillQuestHazmat"/>
+  <quest id="KillQuestGhost"/>
+  <quest id="KillQuestRotnier"/>
+  <quest id="KillQuestRegenerator"/>
+  <quest id="KillQuestFireDevil"/>
+  <quest id="KillQuestPlagueBearer"/>
+  <quest id="KillQuestHuntingParty"/>
+  <quest id="KillQuestGrumm"/>
+  <quest id="KillQuestJuggernaut"/>
+  <quest id="KillQuestSuperHorde"/>
 
 </append>
 
