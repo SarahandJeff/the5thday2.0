@@ -533,7 +533,7 @@
             <property name="CustomIcon" value="adminQuestTicketMaster" />
             <property name="CustomIconTint" value="FF0000" />
             <effect_group tiered="false">
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_Questing_XP_temp" operation="set" value="@HOH_Knifes_lvl_Next_Needed" />
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_Questing_XP" operation="set" value="@HOH_Questing_lvl_Next_Needed" />
             </effect_group>
         </item>
         <item name="knifelevelRedeem">
@@ -915,8 +915,6 @@
     <append xpath="//item[@name='meleeToolSalvageT2Ratchet']/property[@name='Tags']/@value">,ratchet,perkHOHWrenches,Sockets</append>
     <append xpath="//item[@name='meleeToolSalvageT3ImpactDriver']/property[@name='Tags']/@value">,driver,perkHOHWrenches,Sockets,Reduction</append>
     <append xpath="//item[@name='meleeToolPickT3Auger']/property[@name='Tags']/@value">,auger,PerkHOHShovels,PerkHOHPickAxes</append>
-     
-    
     <!-- Wrench Buff -->
     <append xpath="//item[@name='meleeToolSalvageT1Wrench']/effect_group[@name='meleeToolSalvageT1Wrench']">
         <triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="WrenchBlockTrackerActivate" />
@@ -3142,13 +3140,8 @@
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_Construction_lvl_Next_Needed" operation="set" value="100" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_Construction_Perk_Tracker" operation="set" value="1" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkConstruction" level="1" />
-
-
-
-                
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkMadScientist" level="1" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="skillMadScientist" level="1" />
-
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_MadScientist_next_requirement" operation="set" value="0" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_MadScientist_Xp_Total" operation="set" value="0" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="HOH_MadScientist_lvl_Next_Display" operation="set" value="0" />
@@ -3476,7 +3469,7 @@
             <effect_group name="TitaniumAxe">
                 <passive_effect name="EntityDamage" operation="base_set" value="140" tags="PerkHOHAxes" />
                 <passive_effect name="BlockDamage" operation="base_set" value="400" tags="PerkHOHAxes" />
-                <passive_effect name="AttacksPerMinute" operation="base_set" value="60" tags="PerkHOHAxes,axe" />
+                <passive_effect name="AttacksPerMinute" operation="base_set" value="75" tags="PerkHOHAxes,axe" />
                 <passive_effect name="StaminaLoss" operation="base_set" value="10.0" tags="primary" />
                 <passive_effect name="DegradationMax" operation="base_set" value="300,1100" tier="1,6" tags="PerkHOHAxes" />
                 <passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="PerkHOHAxes" />
@@ -3512,14 +3505,14 @@
             <property name="Material" value="MmeleeToolAllSteel" />
             <property name="Weight" value="6" />
             <effect_group name="TitaniumShovel">
-                <passive_effect name="EntityDamage" operation="base_set" value="90" tags="perkMiner69r" />
-                <passive_effect name="BlockDamage" operation="base_set" value="500" tags="perkMiner69r" />
-                <passive_effect name="AttacksPerMinute" operation="base_set" value="60" tags="perkMiner69r" />
+                <passive_effect name="EntityDamage" operation="base_set" value="90" tags="PerkHOHShovels" />
+                <passive_effect name="BlockDamage" operation="base_set" value="500" tags="PerkHOHShovels" />
+                <passive_effect name="AttacksPerMinute" operation="base_set" value="60" tags="PerkHOHShovels" />
                 <passive_effect name="StaminaLoss" operation="base_set" value="10.0" tags="primary" />
-                <passive_effect name="DegradationMax" operation="base_set" value="300,1100" tier="1,6" tags="perkMiner69r" />
-                <passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="perkMiner69r" />
-                <passive_effect name="MaxRange" operation="base_set" value="2.6" tags="perkMiner69r" />
-                <passive_effect name="BlockRange" operation="base_set" value="3.5" tags="perkMiner69r" />
+                <passive_effect name="DegradationMax" operation="base_set" value="300,1100" tier="1,6" tags="PerkHOHShovels" />
+                <passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="PerkHOHShovels" />
+                <passive_effect name="MaxRange" operation="base_set" value="2.6" tags="PerkHOHShovels" />
+                <passive_effect name="BlockRange" operation="base_set" value="3.5" tags="PerkHOHShovels" />
                 <passive_effect name="ModSlots" operation="base_set" value="2" tier="1,2,3,4,5,6" />
                 <passive_effect name="ModPowerBonus" operation="perc_add" value=".10" tags="EntityDamage,BlockDamage" />
                 <passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue" />
@@ -3592,15 +3585,15 @@
                 </property>
             </property>
             <effect_group name="TitaniumHuntingKnife">
-                <passive_effect name="EntityDamage" operation="base_set" value="90" tags="perkDeepCuts,knife" />
+                <passive_effect name="EntityDamage" operation="base_set" value="90" tags="PerkHOHKnifes,knife" />
                 <!-- meleeWpnBladeT1HuntingKnife -->
-                <passive_effect name="BlockDamage" operation="base_set" value="9.0" tags="perkDeepCuts" />
-                <passive_effect name="AttacksPerMinute" operation="base_set" value="120" tags="perkDeepCuts,perkFlurryOfBlows" />
+                <passive_effect name="BlockDamage" operation="base_set" value="9.0" tags="PerkHOHKnifes" />
+                <passive_effect name="AttacksPerMinute" operation="base_set" value="120" tags="PerkHOHKnifes,perkFlurryOfBlows" />
                 <passive_effect name="StaminaLoss" operation="base_set" value="2.0" tags="primary" />
-                <passive_effect name="DegradationMax" operation="base_set" value="462,5154" tier="1,6" tags="perkDeepCuts" />
-                <passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="perkDeepCuts" />
-                <passive_effect name="MaxRange" operation="base_set" value="2.0" tags="perkDeepCuts" />
-                <passive_effect name="BlockRange" operation="base_set" value="2.5" tags="perkDeepCuts" />
+                <passive_effect name="DegradationMax" operation="base_set" value="462,5154" tier="1,6" tags="PerkHOHKnifes" />
+                <passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="PerkHOHKnifes" />
+                <passive_effect name="MaxRange" operation="base_set" value="2.0" tags="PerkHOHKnifes" />
+                <passive_effect name="BlockRange" operation="base_set" value="2.5" tags="PerkHOHKnifes" />
                 <passive_effect name="ModSlots" operation="base_set" value="2" tier="1,2,3,4,5,6" />
                 <passive_effect name="ModPowerBonus" operation="perc_add" value=".10" tags="EntityDamage,BlockDamage" />
                 <passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue" />
@@ -3626,7 +3619,7 @@
                 <requirement name="CVarCompare" cvar="_crouching" operation="Equals" value="1" />
                 <requirement name="CVarCompare" cvar="_notAlerted" operation="GT" value="0" target="other" />
                 <passive_effect name="DamageBonus" operation="base_add" value="6" />
-                <passive_effect name="EntityDamage" operation="perc_add" value="4" tags="perkDeepCuts" />
+                <passive_effect name="EntityDamage" operation="perc_add" value="4" tags="PerkHOHKnifes" />
                 <display_value name="dEntityDamageSneak" value="4" />
             </effect_group>
             <property name="Group" value="Ammo/Weapons" />
@@ -3719,7 +3712,7 @@
             <property name="DropMeshfile" value="#Other/Items?Misc/sack_droppedPrefab.prefab" />
             <property name="Material" value="MresourceTitanium" />
             <property name="Weight" value="30" />
-            <property name="Stacknumber" value="50000" />
+            <property name="Stacknumber" value="500" />
             <property name="EconomicValue" value="150" />
             <property name="RepairTime" value="1" />
             <property name="RepairAmount" value="400" />
@@ -3748,7 +3741,7 @@
             <effect_group tiered="false">
                 <requirement name="ProgressionLevel" progression_name="bookBHGBreakFast" operation="Equals" value="0" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="bookBHGBreakFast" level="-1" />
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="bookBHG8Complete" level="-1">
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="bookBHGComplete" level="-1">
                     <requirement name="PerksUnlocked" skill_name="skillBHGCooking" operation="GTE" value="7" />
                 </triggered_effect>
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
@@ -3769,7 +3762,7 @@
             <effect_group tiered="false">
                 <requirement name="ProgressionLevel" progression_name="bookBHGAmericanBBQ" operation="Equals" value="0" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="bookBHGAmericanBBQ" level="-1" />
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="bookBHG8Complete" level="-1">
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="bookBHGComplete" level="-1">
                     <requirement name="PerksUnlocked" skill_name="skillBHGCooking" operation="GTE" value="7" />
                 </triggered_effect>
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
@@ -3780,8 +3773,7 @@
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50" />
             </effect_group>
         </item>
-
-           <item name="bookBHGBaker">
+        <item name="bookBHGBaker">
             <property name="Extends" value="bookFiremansAlmanacHeat" />
             <property name="CustomIcon" value="bookBHGCooking" />
             <property name="DescriptionKey" value="bookBHGBakerDesc" />
@@ -3791,7 +3783,7 @@
             <effect_group tiered="false">
                 <requirement name="ProgressionLevel" progression_name="bookBHGBaker" operation="Equals" value="0" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="bookBHGBaker" level="-1" />
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="bookBHG8Complete" level="-1">
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="bookBHGComplete" level="-1">
                     <requirement name="PerksUnlocked" skill_name="skillBHGCooking" operation="GTE" value="7" />
                 </triggered_effect>
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
@@ -3802,7 +3794,7 @@
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50" />
             </effect_group>
         </item>
-           <item name="bookBHGDessert">
+        <item name="bookBHGDessert">
             <property name="Extends" value="bookFiremansAlmanacHeat" />
             <property name="CustomIcon" value="bookBHGCooking" />
             <property name="DescriptionKey" value="bookBHGDessertDesc" />
@@ -3812,7 +3804,7 @@
             <effect_group tiered="false">
                 <requirement name="ProgressionLevel" progression_name="bookBHGDessert" operation="Equals" value="0" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="bookBHGDessert" level="-1" />
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="bookBHG8Complete" level="-1">
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="bookBHGComplete" level="-1">
                     <requirement name="PerksUnlocked" skill_name="skillBHGCooking" operation="GTE" value="7" />
                 </triggered_effect>
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
@@ -3823,7 +3815,7 @@
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50" />
             </effect_group>
         </item>
-           <item name="bookBHGHomeCooking1">
+        <item name="bookBHGHomeCooking1">
             <property name="Extends" value="bookFiremansAlmanacHeat" />
             <property name="CustomIcon" value="bookBHGCooking" />
             <property name="DescriptionKey" value="bookBHGHomeCooking1Desc" />
@@ -3833,7 +3825,7 @@
             <effect_group tiered="false">
                 <requirement name="ProgressionLevel" progression_name="bookBHGHomeCooking1" operation="Equals" value="0" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="bookBHGHomeCooking1" level="-1" />
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="bookBHG8Complete" level="-1">
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="bookBHGComplete" level="-1">
                     <requirement name="PerksUnlocked" skill_name="skillBHGCooking" operation="GTE" value="7" />
                 </triggered_effect>
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
@@ -3844,7 +3836,7 @@
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50" />
             </effect_group>
         </item>
-           <item name="bookBHGHomeCooking2">
+        <item name="bookBHGHomeCooking2">
             <property name="Extends" value="bookFiremansAlmanacHeat" />
             <property name="CustomIcon" value="bookBHGCooking" />
             <property name="DescriptionKey" value="bookBHGHomeCooking2Desc" />
@@ -3854,7 +3846,7 @@
             <effect_group tiered="false">
                 <requirement name="ProgressionLevel" progression_name="bookBHGHomeCooking2" operation="Equals" value="0" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="bookBHGHomeCooking2" level="-1" />
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="bookBHG8Complete" level="-1">
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="bookBHGComplete" level="-1">
                     <requirement name="PerksUnlocked" skill_name="skillBHGCooking" operation="GTE" value="7" />
                 </triggered_effect>
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
@@ -3865,7 +3857,7 @@
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50" />
             </effect_group>
         </item>
-           <item name="bookBHGLivinOffHoney">
+        <item name="bookBHGLivinOffHoney">
             <property name="Extends" value="bookFiremansAlmanacHeat" />
             <property name="CustomIcon" value="bookBHGCooking" />
             <property name="DescriptionKey" value="bookBHGLivinOffHoneyDesc" />
@@ -3875,7 +3867,7 @@
             <effect_group tiered="false">
                 <requirement name="ProgressionLevel" progression_name="bookBHGLivinOffHoney" operation="Equals" value="0" />
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="bookBHGLivinOffHoney" level="-1" />
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="bookBHG8Complete" level="-1">
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="bookBHGComplete" level="-1">
                     <requirement name="PerksUnlocked" skill_name="skillBHGCooking" operation="GTE" value="7" />
                 </triggered_effect>
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
@@ -3886,6 +3878,7 @@
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50" />
             </effect_group>
         </item>
+        
     </append>
     <append xpath="//item[contains(@name,'Titanium')]">
         <property name="ItemWeight" value="25" />

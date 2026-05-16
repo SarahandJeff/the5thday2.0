@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<snj>
+    <append xpath="/buffs">
+        <buff name="fuckinHot" name_key="Spicy Burn" description_key="Why the fuck did i just eat that." icon="ui_game_symbol_talk" icon_color="255,0,0">
+            <duration value="120" />
+            <stack_type value="duration" />
+            <update_rate value="30" />
+            <effect_group>
+                <triggered_effect trigger="onSelfBuffStart" action="ShowToolbeltMessage" message="Well that was fuckin stupid. That shit was HOT!!" />
+                <triggered_effect trigger="onSelfBuffStack" action="ShowToolbeltMessage" message="Well they are hot as sweaty balls but we must like em~~" />
+                <triggered_effect trigger="onSelfBuffUpdate" action="ShowToolbeltMessage" message="WATER WATER, Fuck it gimme Whiskey!!!!" />
+                <triggered_effect trigger="onSelfBuffRemove" action="ShowToolbeltMessage" message="I say i'll never eat that again. bull shit gimme more." />
+                <passive_effect name="AttributeLevel" tags="attPerception" operation="base_subtract" value="1" />
+                <triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="self" buff="buffPerkAbilityUpdate" />
+                <triggered_effect trigger="onSelfBuffRemove" action="AddBuff" target="self" buff="buffPerkAbilityUpdate" />
+                <passive_effect name="WaterLossPerStaminaPointGained" operation="perc_add" value="3" />
+                <triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" intensity="0.4" fade="2" effect_name="Hot" />
+                <triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" intensity="0" fade="1" effect_name="Hot" />
+                <triggered_effect trigger="onSelfBuffUpdate" action="PlaySound" target="self" sound="player1sick" play_in_head="true">
+                    <requirement name="IsMale" />
+                </triggered_effect>
+                <triggered_effect trigger="onSelfBuffUpdate" action="PlaySound" target="self" sound="player2sick" play_in_head="true">
+                    <requirement name="IsMale" invert="true" />
+                </triggered_effect>
+            </effect_group>
+        </buff>
+        <buff name="200PercentBonusBuff" hidden="false" remove_on_death="true" icon="200PercentBonus" icon_color="255,255,255" name_key="200PercentBonusName" description_key="200PercentBonusDesc" tooltip_key="">
+            <stack_type value="replace" />
+            <update_rate value="1" />
+            <duration value="0" />
+            <display_value value="200PercentBonusTimer" />
+            <display_value_format value="time" />
+            <effect_group name="Activation">
+                <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="200PercentBonus" operation="set" value="1" />
+                <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="200PercentBonusTimer" operation="set" value="90" />
+                <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="200PercentBonusTimer" operation="add" value="-1" />
+                <triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="200PercentBonusBuff">
+                    <requirement name="CVarCompare" cvar="200PercentBonusTimer" operation="LTE" value="0" />
+                </triggered_effect>
+                <triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="200PercentBonus" operation="set" value="0" />
+            </effect_group>
+        </buff>
+    </append>
+    <insertAfter xpath="//buff[@name='HOH_Level_Display_Pickaxes']/effect_group[@name='armorbonus']">
+        <effect_group name="DoublingBonus">
+            <triggered_effect trigger="onSelfDamagedBlock" action="ModifyCVar" cvar="HOH_Pickaxes_XP_Temp" operation="multiply" value="2">
+                <requirement name="CVarCompare" target="self" cvar="200PercentBonus" operation="Equals" value="1" />
+                <requirement name="HoldingItemHasTags" tags="PerkHOHPickaxes" />
+            </triggered_effect>
+        </effect_group>
+    </insertAfter>
+    <insertAfter xpath="//buff[@name='HOH_Level_Display_Shovels']/effect_group[@name='crafttool3']">
+        <effect_group name="DoublingBonus">
+            <triggered_effect trigger="onSelfDamagedBlock" action="ModifyCVar" cvar="HOH_Shovels_XP_Temp" operation="multiply" value="2">
+                <requirement name="CVarCompare" target="self" cvar="200PercentBonus" operation="Equals" value="1" />
+                <requirement name="HoldingItemHasTags" tags="PerkHOHShovels" />
+            </triggered_effect>
+        </effect_group>
+    </insertAfter>
+<insertAfter xpath="//buff[@name='HOH_Level_Display_Axes']/effect_group[@name='armorbonus']">
+        <effect_group name="DoublingBonus">
+            <triggered_effect trigger="onSelfDamagedBlock" action="ModifyCVar" cvar="HOH_Axes_XP_Temp" operation="multiply" value="2">
+                <requirement name="CVarCompare" target="self" cvar="200PercentBonus" operation="Equals" value="1" />
+                <requirement name="HoldingItemHasTags" tags="PerkHOHShovels" />
+            </triggered_effect>
+        </effect_group>
+    </insertAfter>
+    <!-- <insertAfter xpath="//buff[@name='HOH_Level_Display_rifles']/effect_group[@name='armorbonus']">
+        <effect_group name="DoublingBonus">
+            <triggered_effect trigger="onSelfDamagedBlock" action="ModifyCVar" cvar="HOH_Axes_XP_Temp" operation="multiply" value="2">
+                <requirement name="CVarCompare" target="self" cvar="200PercentBonus" operation="Equals" value="1" />
+                <requirement name="HoldingItemHasTags" tags="PerkHOHShovels" />
+            </triggered_effect>
+        </effect_group>
+    </insertAfter> -->
+    <!-- <insertAfter xpath="//buff[@name='HOH_Level_Display_machineguns']/effect_group[@name='armorbonus']">
+        <effect_group name="DoublingBonus">
+            <triggered_effect trigger="onSelfDamagedBlock" action="ModifyCVar" cvar="HOH_Axes_XP_Temp" operation="multiply" value="2">
+                <requirement name="CVarCompare" target="self" cvar="200PercentBonus" operation="Equals" value="1" />
+                <requirement name="HoldingItemHasTags" tags="PerkHOHShovels" />
+            </triggered_effect>
+        </effect_group>
+    </insertAfter>
+    <insertAfter xpath="//buff[@name='HOH_Level_Display_brawler']/effect_group[@name='armorbonus']">
+        <effect_group name="DoublingBonus">
+            <triggered_effect trigger="onSelfDamagedBlock" action="ModifyCVar" cvar="HOH_Axes_XP_Temp" operation="multiply" value="2">
+                <requirement name="CVarCompare" target="self" cvar="200PercentBonus" operation="Equals" value="1" />
+                <requirement name="HoldingItemHasTags" tags="PerkHOHShovels" />
+            </triggered_effect>
+        </effect_group>
+    </insertAfter>
+    <insertAfter xpath="//buff[@name='HOH_Level_Display_spears']/effect_group[@name='armorbonus']">
+        <effect_group name="DoublingBonus">
+            <triggered_effect trigger="onSelfDamagedBlock" action="ModifyCVar" cvar="HOH_Axes_XP_Temp" operation="multiply" value="2">
+                <requirement name="CVarCompare" target="self" cvar="200PercentBonus" operation="Equals" value="1" />
+                <requirement name="HoldingItemHasTags" tags="PerkHOHShovels" />
+            </triggered_effect>
+        </effect_group>
+    </insertAfter>
+    <insertAfter xpath="//buff[@name='HOH_Level_Display_shotguns']/effect_group[@name='armorbonus']">
+        <effect_group name="DoublingBonus">
+            <triggered_effect trigger="onSelfDamagedBlock" action="ModifyCVar" cvar="HOH_Axes_XP_Temp" operation="multiply" value="2">
+                <requirement name="CVarCompare" target="self" cvar="200PercentBonus" operation="Equals" value="1" />
+                <requirement name="HoldingItemHasTags" tags="PerkHOHShovels" />
+            </triggered_effect>
+        </effect_group>
+    </insertAfter>
+    <insertAfter xpath="//buff[@name='HOH_Level_Display_clubs']/effect_group[@name='armorbonus']">
+        <effect_group name="DoublingBonus">
+            <triggered_effect trigger="onSelfDamagedBlock" action="ModifyCVar" cvar="HOH_Axes_XP_Temp" operation="multiply" value="2">
+                <requirement name="CVarCompare" target="self" cvar="200PercentBonus" operation="Equals" value="1" />
+                <requirement name="HoldingItemHasTags" tags="PerkHOHShovels" />
+            </triggered_effect>
+        </effect_group>
+    </insertAfter>
+    <insertAfter xpath="//buff[@name='HOH_Level_Display_sledges']/effect_group[@name='armorbonus']">
+        <effect_group name="DoublingBonus">
+            <triggered_effect trigger="onSelfDamagedBlock" action="ModifyCVar" cvar="HOH_Axes_XP_Temp" operation="multiply" value="2">
+                <requirement name="CVarCompare" target="self" cvar="200PercentBonus" operation="Equals" value="1" />
+                <requirement name="HoldingItemHasTags" tags="PerkHOHShovels" />
+            </triggered_effect>
+        </effect_group>
+    </insertAfter>
+    <insertAfter xpath="//buff[@name='HOH_Level_Display_knifes']/effect_group[@name='armorbonus']">
+        <effect_group name="DoublingBonus">
+            <triggered_effect trigger="onSelfDamagedBlock" action="ModifyCVar" cvar="HOH_Axes_XP_Temp" operation="multiply" value="2">
+                <requirement name="CVarCompare" target="self" cvar="200PercentBonus" operation="Equals" value="1" />
+                <requirement name="HoldingItemHasTags" tags="PerkHOHShovels" />
+            </triggered_effect>
+        </effect_group>
+    </insertAfter>
+    <insertAfter xpath="//buff[@name='HOH_Level_Display_bows']/effect_group[@name='armorbonus']">
+        <effect_group name="DoublingBonus">
+            <triggered_effect trigger="onSelfDamagedBlock" action="ModifyCVar" cvar="HOH_Axes_XP_Temp" operation="multiply" value="2">
+                <requirement name="CVarCompare" target="self" cvar="200PercentBonus" operation="Equals" value="1" />
+                <requirement name="HoldingItemHasTags" tags="PerkHOHShovels" />
+            </triggered_effect>
+        </effect_group>
+    </insertAfter>
+    <insertAfter xpath="//buff[@name='HOH_Level_Display_pistols']/effect_group[@name='armorbonus']">
+        <effect_group name="DoublingBonus">
+            <triggered_effect trigger="onSelfDamagedBlock" action="ModifyCVar" cvar="HOH_Axes_XP_Temp" operation="multiply" value="2">
+                <requirement name="CVarCompare" target="self" cvar="200PercentBonus" operation="Equals" value="1" />
+                <requirement name="HoldingItemHasTags" tags="PerkHOHShovels" />
+            </triggered_effect>
+        </effect_group>
+    </insertAfter> -->
+    <insertAfter xpath="//buff[@name='HOH_Level_Display_SMG']/effect_group/triggered_effect[@cvar='HOH_SMG_XP_Temp']/requirement[@value='20']">
+        <effect_group name="DoublingBonus">
+            <triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar="HOH_SMG_XP_Temp" operation="multiply" value="2">
+                <requirement name="CVarCompare" target="self" cvar="200PercentBonus" operation="Equals" value="1" />
+                <requirement name="HoldingItemHasTags" tags="PerkHOHSMG" />
+            </triggered_effect>
+        </effect_group>
+    </insertAfter>
+
+
+</snj>

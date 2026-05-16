@@ -478,7 +478,7 @@
         </recipe>
         <recipe name="kettle" count="1" material_based="true" craft_area="workbench" tags="learnable">
             <ingredient name="kettlebase" count="1" />
-            <ingredient name="resourceScrapPolymers" count="25" />&gt;
+            <ingredient name="resourceScrapPolymers" count="25" />
 		</recipe>
             <recipe name="FlatTarTrap" count="1" craft_area="workbench" tags="perkTraps,learnable">
                 <ingredient name="pressureplate" count="1" />
@@ -534,6 +534,11 @@
                 <ingredient name="foodRawChicken" count="1" />
                 <ingredient name="foodCropPotato" count="4" />
                 <ingredient name="foodCanMixedVeg" count="2" />
+                 <effect_group name="Additional Output">
+                    <triggered_effect trigger="onSelfItemCrafted" action="AddAdditionalOutput, SCore" item="foodScraps" count="1">
+                        <!-- <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/> -->
+                    </triggered_effect>
+                </effect_group>
             </recipe>
             <recipe name="foodHoneyGlazedSham" count="1" craft_area="WorkingStove" craft_tool="toolBakingPan" tags="perkCooking,learnable">
                 <ingredient name="foodCanSham" count="1" />
@@ -542,6 +547,11 @@
                 <ingredient name="foodCropPotato" count="1" />
                 <ingredient name="resourceAnimalFat" count="1" />
                 <ingredient name="foodHoney" count="1" />
+                 <effect_group name="Additional Output">
+                    <triggered_effect trigger="onSelfItemCrafted" action="AddAdditionalOutput, SCore" item="foodScraps" count="1">
+                        <!-- <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/> -->
+                    </triggered_effect>
+                </effect_group>
             </recipe>
             <recipe name="foodHoneyBrisket" count="1" craft_area="WorkingStove" craft_tool="toolBakingPan" tags="perkCooking,learnable">
                 <ingredient name="foodRawMeat" count="3" />
@@ -549,50 +559,105 @@
                 <ingredient name="foodCropMushrooms" count="1" />
                 <ingredient name="resourceAnimalFat" count="1" />
                 <ingredient name="foodHoney" count="1" />
+                 <effect_group name="Additional Output">
+                    <triggered_effect trigger="onSelfItemCrafted" action="AddAdditionalOutput, SCore" item="foodScraps" count="1">
+                        <!-- <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/> -->
+                    </triggered_effect>
+                </effect_group>
             </recipe>
             <recipe name="foodBacon" count="8" craft_area="WorkingStove" craft_tool="fryingpan" tags="perkCooking,learnable">
                 <ingredient name="foodRawPorkMeat" count="1" />
+                 <effect_group name="Additional Output">
+                    <triggered_effect trigger="onSelfItemCrafted" action="AddAdditionalOutput, SCore" item="foodScraps" count="1">
+                        <!-- <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/> -->
+                    </triggered_effect>
+                </effect_group>
             </recipe>
             <recipe name="foodFriedEggs" count="1" craft_time="5" craft_area="WorkingStove" craft_tool="fryingpan" tags="perkCooking,learnable">
                 <ingredient name="foodEgg" count="1" />
                 <effect_group name="Additional Output">
-                    <triggered_effect trigger="onSelfItemCrafted" action="AddAdditionalOutput, SCore" item="foodScraps" count="2">
+                    <triggered_effect trigger="onSelfItemCrafted" action="AddAdditionalOutput, SCore" item="foodScraps" count="1">
                         <!-- <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/> -->
                     </triggered_effect>
                 </effect_group>
             </recipe>
             <recipe name="foodGrilledChicken" craft_time="10" count="2" craft_area="WorkingStove" craft_tool="fryingpan" tags="perkCooking,learnable">
                 <ingredient name="foodRawChicken" count="1" />
+                 <effect_group name="Additional Output">
+                    <triggered_effect trigger="onSelfItemCrafted" action="AddAdditionalOutput, SCore" item="foodScraps" count="1">
+                        <!-- <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/> -->
+                    </triggered_effect>
+                </effect_group>
             </recipe>
             <recipe name="foodBakedCarp" count="1" craft_time="30" craft_exp_gain="0" craft_area="WorkingStove" craft_tool="fryingpan">
                 <ingredient name="foodRawFishCarp" count="1" />
                 <ingredient name="resourcePaper" count="20" />
+                 <effect_group name="Additional Output">
+                    <triggered_effect trigger="onSelfItemCrafted" action="AddAdditionalOutput, SCore" item="foodScraps" count="1">
+                        <!-- <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/> -->
+                    </triggered_effect>
+                </effect_group>
             </recipe>
             <recipe name="foodBakedPerch" count="1" craft_time="30" craft_exp_gain="0" craft_area="WorkingStove" craft_tool="fryingpan">
                 <ingredient name="foodRawFishPerch" count="1" />
                 <ingredient name="resourcePaper" count="20" />
+                 <effect_group name="Additional Output">
+                    <triggered_effect trigger="onSelfItemCrafted" action="AddAdditionalOutput, SCore" item="foodScraps" count="1">
+                        <!-- <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/> -->
+                    </triggered_effect>
+                </effect_group>
             </recipe>
             <recipe name="foodBakedCatfish" count="1" craft_time="30" craft_exp_gain="0" craft_area="WorkingStove" craft_tool="fryingpan">
                 <ingredient name="foodRawFishCatfish" count="1" />
                 <ingredient name="resourcePaper" count="20" />
+                 <effect_group name="Additional Output">
+                    <triggered_effect trigger="onSelfItemCrafted" action="AddAdditionalOutput, SCore" item="foodScraps" count="1">
+                        <!-- <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/> -->
+                    </triggered_effect>
+                </effect_group>
             </recipe>
             <recipe name="foodBakedBass" count="1" craft_time="30" craft_exp_gain="0" craft_area="WorkingStove" craft_tool="fryingpan">
                 <ingredient name="foodRawFishBass" count="1" />
                 <ingredient name="resourcePaper" count="20" />
+                 <effect_group name="Additional Output">
+                    <triggered_effect trigger="onSelfItemCrafted" action="AddAdditionalOutput, SCore" item="foodScraps" count="1">
+                        <!-- <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/> -->
+                    </triggered_effect>
+                </effect_group>
             </recipe>
             <recipe name="foodBakedBluegil" count="1" craft_time="30" craft_exp_gain="0" craft_area="WorkingStove" craft_tool="fryingpan">
                 <ingredient name="foodRawFishBlueGil" count="1" />
                 <ingredient name="resourcePaper" count="20" />
+                 <effect_group name="Additional Output">
+                    <triggered_effect trigger="onSelfItemCrafted" action="AddAdditionalOutput, SCore" item="foodScraps" count="1">
+                        <!-- <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/> -->
+                    </triggered_effect>
+                </effect_group>
             </recipe>
             <recipe name="foodBoiledMeat" count="1" craft_area="WorkingStove" craft_tool="stockpot" tags="perkCooking,learnable">
                 <ingredient name="foodRawMeat" count="1" />
                 <ingredient name="drinkJarBoiledWater" count="1" />
+                 <effect_group name="Additional Output">
+                    <triggered_effect trigger="onSelfItemCrafted" action="AddAdditionalOutput, SCore" item="foodScraps" count="1">
+                        <!-- <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/> -->
+                    </triggered_effect>
+                </effect_group>
             </recipe>
             <recipe name="foodGrilledMeat" count="1" craft_area="WorkingStove" craft_tool="toolBakingPan" tags="perkCooking,learnable">
                 <ingredient name="foodRawMeat" count="1" />
+                 <effect_group name="Additional Output">
+                    <triggered_effect trigger="onSelfItemCrafted" action="AddAdditionalOutput, SCore" item="foodScraps" count="1">
+                        <!-- <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/> -->
+                    </triggered_effect>
+                </effect_group>
             </recipe>
             <recipe name="foodPorkChop" count="1" craft_area="WorkingStove" craft_tool="toolBakingPan" tags="perkCooking,learnable">
                 <ingredient name="foodRawPorkMeat" count="1" />
+                 <effect_group name="Additional Output">
+                    <triggered_effect trigger="onSelfItemCrafted" action="AddAdditionalOutput, SCore" item="foodScraps" count="1">
+                        <!-- <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/> -->
+                    </triggered_effect>
+                </effect_group>
             </recipe>
             <recipe name="foodMeatStew" count="1" craft_area="WorkingStove" craft_tool="stockpot" tags="perkCooking,learnable">
                 <ingredient name="foodCanBeef" count="2" />
@@ -629,6 +694,11 @@
                 <ingredient name="resourceAnimalFat" count="1" />
                 <ingredient name="drinkJarBeer" count="1" />
                 <ingredient name="foodMilk" count="1" />
+                 <effect_group name="Additional Output">
+                    <triggered_effect trigger="onSelfItemCrafted" action="AddAdditionalOutput, SCore" item="foodScraps" count="1">
+                        <!-- <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/> -->
+                    </triggered_effect>
+                </effect_group>
             </recipe>
             <recipe name="foodPumpkinBread" count="1" craft_area="WorkingStove" craft_tool="toolBakingPan" tags="perkCooking,learnable">
                 <ingredient name="foodCropPumpkin" count="1" />
@@ -636,6 +706,11 @@
                 <ingredient name="foodMilk" count="1" />
                 <ingredient name="foodEgg" count="2" />
                 <ingredient name="foodButter" count="1" />
+                 <effect_group name="Additional Output">
+                    <triggered_effect trigger="onSelfItemCrafted" action="AddAdditionalOutput, SCore" item="foodScraps" count="1">
+                        <!-- <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/> -->
+                    </triggered_effect>
+                </effect_group>
             </recipe>
             <recipe name="foodPumpkinPie" count="1" craft_area="WorkingStove" craft_tool="toolBakingPan" tags="perkCooking,learnable">
                 <ingredient name="foodCropPumpkin" count="3" />
@@ -643,6 +718,11 @@
                 <ingredient name="foodCornMeal" count="5" />
                 <ingredient name="resourceAnimalFat" count="1" />
                 <ingredient name="foodMilk" count="1" />
+                 <effect_group name="Additional Output">
+                    <triggered_effect trigger="onSelfItemCrafted" action="AddAdditionalOutput, SCore" item="foodScraps" count="1">
+                        <!-- <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/> -->
+                    </triggered_effect>
+                </effect_group>
             </recipe>
             <recipe name="foodHotDog" count="1" craft_time="2" craft_area="WorkingStove" craft_tool="fryingpan">
                 <ingredient name="foodrawHotdog" count="1" />
@@ -701,9 +781,19 @@
             <!-- charcoal grill -->
             <recipe name="foodGrilledChicken" craft_time="10" count="2" craft_area="CharcoalGrill" craft_tool="toolCookingPot" tags="perkCooking,learnable">
                 <ingredient name="foodRawChicken" count="1" />
+                 <effect_group name="Additional Output">
+                    <triggered_effect trigger="onSelfItemCrafted" action="AddAdditionalOutput, SCore" item="foodScraps" count="1">
+                        <!-- <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/> -->
+                    </triggered_effect>
+                </effect_group>
             </recipe>
             <recipe name="foodGrilledHamburger" craft_time="5" count="1" craft_area="CharcoalGrill" tags="perkCooking,learnable">
                 <ingredient name="foodRawBurgerPatty" count="1" />
+                 <effect_group name="Additional Output">
+                    <triggered_effect trigger="onSelfItemCrafted" action="AddAdditionalOutput, SCore" item="foodScraps" count="1">
+                        <!-- <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/> -->
+                    </triggered_effect>
+                </effect_group>
             </recipe>
             <recipe name="foodHotDog" count="1" craft_time="2" craft_area="CharcoalGrill">
                 <ingredient name="foodrawHotdog" count="1" />
@@ -728,12 +818,27 @@
             </recipe>
             <recipe name="foodCharredMeat" count="1" craft_area="CharcoalGrill">
                 <ingredient name="foodRawMeat" count="1" />
+                 <effect_group name="Additional Output">
+                    <triggered_effect trigger="onSelfItemCrafted" action="AddAdditionalOutput, SCore" item="foodScraps" count="1">
+                        <!-- <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/> -->
+                    </triggered_effect>
+                </effect_group>
             </recipe>
             <recipe name="foodGrilledMeat" count="1" craft_area="CharcoalGrill" tags="perkCooking,learnable">
                 <ingredient name="foodRawMeat" count="1" />
+                 <effect_group name="Additional Output">
+                    <triggered_effect trigger="onSelfItemCrafted" action="AddAdditionalOutput, SCore" item="foodScraps" count="1">
+                        <!-- <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/> -->
+                    </triggered_effect>
+                </effect_group>
             </recipe>
             <recipe name="foodPorkChop" count="1" craft_area="CharcoalGrill" tags="perkCooking,learnable">
                 <ingredient name="foodRawPorkMeat" count="1" />
+                 <effect_group name="Additional Output">
+                    <triggered_effect trigger="onSelfItemCrafted" action="AddAdditionalOutput, SCore" item="foodScraps" count="1">
+                        <!-- <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/> -->
+                    </triggered_effect>
+                </effect_group>
             </recipe>
             <recipe name="drinkJarBoiledWater" count="1" craft_time="5" craft_area="CharcoalGrill" craft_tool="kettle" tags="perkCooking,perkChefBoiledWater,boiledWater">
                 <ingredient name="drinkJarRiverWater" count="1" />
@@ -753,22 +858,47 @@
             <recipe name="foodBakedCarp" count="1" craft_time="30" craft_exp_gain="0" craft_area="CharcoalGrill">
                 <ingredient name="foodRawFishCarp" count="1" />
                 <ingredient name="resourcePaper" count="20" />
+                 <effect_group name="Additional Output">
+                    <triggered_effect trigger="onSelfItemCrafted" action="AddAdditionalOutput, SCore" item="foodScraps" count="1">
+                        <!-- <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/> -->
+                    </triggered_effect>
+                </effect_group>
             </recipe>
             <recipe name="foodBakedPerch" count="1" craft_time="30" craft_exp_gain="0" craft_area="CharcoalGrill">
                 <ingredient name="foodRawFishPerch" count="1" />
                 <ingredient name="resourcePaper" count="20" />
+                 <effect_group name="Additional Output">
+                    <triggered_effect trigger="onSelfItemCrafted" action="AddAdditionalOutput, SCore" item="foodScraps" count="1">
+                        <!-- <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/> -->
+                    </triggered_effect>
+                </effect_group>
             </recipe>
             <recipe name="foodBakedCatfish" count="1" craft_time="30" craft_exp_gain="0" craft_area="CharcoalGrill">
                 <ingredient name="foodRawFishCatfish" count="1" />
                 <ingredient name="resourcePaper" count="20" />
+                 <effect_group name="Additional Output">
+                    <triggered_effect trigger="onSelfItemCrafted" action="AddAdditionalOutput, SCore" item="foodScraps" count="1">
+                        <!-- <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/> -->
+                    </triggered_effect>
+                </effect_group>
             </recipe>
             <recipe name="foodBakedBass" count="1" craft_time="30" craft_exp_gain="0" craft_area="CharcoalGrill">
                 <ingredient name="foodRawFishBass" count="1" />
                 <ingredient name="resourcePaper" count="20" />
+                 <effect_group name="Additional Output">
+                    <triggered_effect trigger="onSelfItemCrafted" action="AddAdditionalOutput, SCore" item="foodScraps" count="1">
+                        <!-- <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/> -->
+                    </triggered_effect>
+                </effect_group>
             </recipe>
             <recipe name="foodBakedBluegil" count="1" craft_time="30" craft_exp_gain="0" craft_area="CharcoalGrill">
                 <ingredient name="foodRawFishBlueGil" count="1" />
                 <ingredient name="resourcePaper" count="20" />
+                 <effect_group name="Additional Output">
+                    <triggered_effect trigger="onSelfItemCrafted" action="AddAdditionalOutput, SCore" item="foodScraps" count="1">
+                        <!-- <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/> -->
+                    </triggered_effect>
+                </effect_group>
             </recipe>
             <!-- CampStove -->
             <recipe name="foodCornBread" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable">
@@ -781,6 +911,11 @@
                 <ingredient name="foodCropCorn" count="2" />
                 <ingredient name="resourceAnimalFat" count="1" />
                 <ingredient name="drinkJarBoiledWater" count="1" />
+                 <effect_group name="Additional Output">
+                    <triggered_effect trigger="onSelfItemCrafted" action="AddAdditionalOutput, SCore" item="foodScraps" count="1">
+                        <!-- <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/> -->
+                    </triggered_effect>
+                </effect_group>
                 <effect_group>
                     <passive_effect name="CraftingIngredientCount" level="1,3" operation="base_add" value="-1,-2" tags="foodRawMeat" />
                 </effect_group>
@@ -793,12 +928,27 @@
             </recipe>
             <recipe name="foodBacon" count="8" craft_area="campfire" craft_tool="toolCookingGrill" tags="learnable">
                 <ingredient name="foodRawPorkMeat" count="1" />
+                 <effect_group name="Additional Output">
+                    <triggered_effect trigger="onSelfItemCrafted" action="AddAdditionalOutput, SCore" item="foodScraps" count="1">
+                        <!-- <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/> -->
+                    </triggered_effect>
+                </effect_group>
             </recipe>
             <recipe name="foodFriedEggs" count="1" craft_time="5" craft_area="campfire" craft_tool="toolCookingPot" tags="learnable">
                 <ingredient name="foodEgg" count="1" />
+                 <effect_group name="Additional Output">
+                    <triggered_effect trigger="onSelfItemCrafted" action="AddAdditionalOutput, SCore" item="foodScraps" count="1">
+                        <!-- <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/> -->
+                    </triggered_effect>
+                </effect_group>
             </recipe>
             <recipe name="foodGrilledChicken" craft_time="10" count="2" craft_area="campfire" craft_tool="toolCookingGrill" tags="learnable">
                 <ingredient name="foodRawChicken" count="1" />
+                 <effect_group name="Additional Output">
+                    <triggered_effect trigger="onSelfItemCrafted" action="AddAdditionalOutput, SCore" item="foodScraps" count="1">
+                        <!-- <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/> -->
+                    </triggered_effect>
+                </effect_group>
             </recipe>
             <recipe name="foodSteakAndEggs" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="learnable">
                 <ingredient name="foodGrilledMeat" count="1" />
@@ -811,21 +961,46 @@
             <recipe name="foodBoiledMeat" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="learnable">
                 <ingredient name="foodRawMeat" count="1" />
                 <ingredient name="drinkJarBoiledWater" count="1" />
+                 <effect_group name="Additional Output">
+                    <triggered_effect trigger="onSelfItemCrafted" action="AddAdditionalOutput, SCore" item="foodScraps" count="1">
+                        <!-- <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/> -->
+                    </triggered_effect>
+                </effect_group>
             </recipe>
             <recipe name="foodCharredMeat" count="1" craft_area="campfire">
                 <ingredient name="foodRawMeat" count="1" />
+                 <effect_group name="Additional Output">
+                    <triggered_effect trigger="onSelfItemCrafted" action="AddAdditionalOutput, SCore" item="foodScraps" count="1">
+                        <!-- <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/> -->
+                    </triggered_effect>
+                </effect_group>
             </recipe>
             <recipe name="foodGrilledMeat" count="1" craft_area="campfire" craft_tool="toolCookingGrill" tags="learnable">
                 <ingredient name="foodRawMeat" count="1" />
+                 <effect_group name="Additional Output">
+                    <triggered_effect trigger="onSelfItemCrafted" action="AddAdditionalOutput, SCore" item="foodScraps" count="1">
+                        <!-- <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/> -->
+                    </triggered_effect>
+                </effect_group>
             </recipe>
             <recipe name="foodPorkChop" count="1" craft_area="campfire" craft_tool="toolCookingGrill" tags="learnable">
                 <ingredient name="foodRawPorkMeat" count="1" />
+                 <effect_group name="Additional Output">
+                    <triggered_effect trigger="onSelfItemCrafted" action="AddAdditionalOutput, SCore" item="foodScraps" count="1">
+                        <!-- <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/> -->
+                    </triggered_effect>
+                </effect_group>
             </recipe>
             <recipe name="foodSteakAndPotato" count="1" craft_area="campfire" craft_tool="toolCookingGrill" tags="learnable">
                 <ingredient name="foodGrilledMeat" count="1" />
                 <ingredient name="foodBakedPotato" count="2" />
                 <ingredient name="foodCropMushrooms" count="5" />
                 <ingredient name="resourceAnimalFat" count="1" />
+                 <effect_group name="Additional Output">
+                    <triggered_effect trigger="onSelfItemCrafted" action="AddAdditionalOutput, SCore" item="foodScraps" count="1">
+                        <!-- <requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/> -->
+                    </triggered_effect>
+                </effect_group>
             </recipe>
             <recipe name="foodCanStock" count="2" craft_time="30" craft_area="campfire" craft_tool="toolCookingPot">
                 <ingredient name="drinkJarBoiledWater" count="2" />
@@ -986,15 +1161,13 @@
                     <passive_effect name="CraftingIngredientCount" level="2,3,4,5,6" operation="base_add" value="1,2,3,4,5" tags="resourceForgedTitanium" />
                 </effect_group>
             </recipe>
-            <recipe name="TitaniumPolish" count="15" craft_time="60" craft_area="chemistryStation" tags="perkAdvancedEngineering,chemStationCrafting">
+            <recipe name="TitaniumPolish" count="50" craft_time="60" craft_area="chemistryStation" tags="perkAdvancedEngineering,chemStationCrafting">
                 <ingredient name="resourceTitanium" count="5" />
+                <ingredient name="resourceOil" count="10" />
                 <ingredient name="resourceScrapPolymers" count="50" />
                 <ingredient name="resourceAcidPint" count="10" />
             </recipe>
-            <recipe name="resourceTitaniumRefined" count="5" craft_time="60" craft_area="chemistryStation" tags="perkAdvancedEngineering,chemStationCrafting">
-                <ingredient name="resourceTitanium" count="5" />
-                <ingredient name="resourceAcidPint" count="10" />
-            </recipe>
+           
         </append>
         <set xpath="//recipe[contains(@name,'drink') and (@craft_area='campfire')]/@craft_tool">kettle</set>
         <append xpath="//recipe[@name='woodShapes:VariantHelper']">
